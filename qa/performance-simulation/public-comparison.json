@@ -1,0 +1,32 @@
+{
+  "beforeDeployment": "dpl_EQRAGZnf1fbAg3ZiUsD8HRtNe1ov",
+  "afterDeployment": "dpl_DNTvAZgFTcFCc48muGd2hRt4grfo",
+  "cpuThrottle": 4,
+  "sampleMs": 4000,
+  "comparison": [
+    {
+      "scenario": "panel-idle-820",
+      "busyBeforeMs": 71,
+      "busyAfterMs": 80,
+      "busyReductionPercent": -12.2,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.8
+    },
+    {
+      "scenario": "panel-running-820",
+      "busyBeforeMs": 3533,
+      "busyAfterMs": 1120,
+      "busyReductionPercent": 68.3,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.8
+    },
+    {
+      "scenario": "panel-pan-running-820",
+      "busyBeforeMs": 3201,
+      "busyAfterMs": 2157,
+      "busyReductionPercent": 32.6,
+      "p95BeforeMs": 33.4,
+      "p95AfterMs": 33.4
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "checks": [
+    "47 original lines, grouped source nodes including repeated references",
+    "Equivalent two-bridge chains accepted, removal invalidates progress",
+    "Partial correct connections color real diagram paths",
+    "Cross-net connections rejected; unknown endpoints and branches remain unevaluated",
+    "Source-only transitive short detection, no inferred F/TP behavior",
+    "Safe mappings and complete learning JSON round trip"
+  ]
+}

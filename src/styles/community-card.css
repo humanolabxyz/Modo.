@@ -1,0 +1,12 @@
+.modo-home .modo-community{position:relative;display:flex;align-items:center;gap:24px;min-height:154px;margin-top:24px;padding:28px;text-decoration:none;color:var(--modo-ink);background:linear-gradient(110deg,#fff 40%,#f0f6f3);transition:border-color .18s ease,box-shadow .18s ease}
+.modo-community-icon{display:grid;place-items:center;flex:none;width:70px;height:70px;border:1px solid #dce8e1;border-radius:16px;background:#eaf2ed;color:#3e806b}
+.modo-home .modo-community-copy h2{margin:0 0 7px;font-size:30px;letter-spacing:-.8px}
+.modo-home .modo-community-copy .modo-eyebrow{margin:0 0 7px;color:#5f7a6b;font-size:9px;letter-spacing:1.8px}
+.modo-community-copy>p:last-child{margin:0;font-size:16px;line-height:1.5;color:var(--modo-muted)}
+.modo-community-note{margin-left:auto;padding:0 28px 0 32px;border-left:1px solid #d8e3dd;font-size:12px;font-weight:500;line-height:1.8;color:#73877a}
+.modo-community-arrow{display:grid;place-items:center;flex:none;width:48px;height:48px;border:1px solid #d6e4dc;border-radius:50%;background:#fff;color:#3e806b;transition:transform .18s ease}
+.modo-home .modo-community:hover{border-color:#a2c0af;box-shadow:0 6px 24px #3e806b0b}
+.modo-home .modo-community:hover .modo-community-arrow{transform:translate(2px,-2px)}
+.modo-home .modo-community:focus-visible{outline:3px solid #3e806b;outline-offset:4px}
+@media(max-width:760px){.modo-home .modo-community{gap:14px;margin-top:16px;padding:18px 14px;min-height:132px}.modo-community-icon{width:46px;height:52px;border-radius:12px}.modo-community-icon svg{width:25px}.modo-community-note{display:none}.modo-community-arrow{width:42px;height:42px;margin-left:auto}.modo-home .modo-community-copy{flex:1;min-width:0}.modo-home .modo-community-copy h2{font-size:22px}.modo-home .modo-community-copy .modo-eyebrow{font-size:8px;letter-spacing:1.2px}.modo-community-copy>p:last-child{font-size:13px;max-width:205px}}
+@media(prefers-reduced-motion:reduce){.modo-home .modo-community,.modo-community-arrow{transition:none}.modo-home .modo-community:hover .modo-community-arrow{transform:none}}

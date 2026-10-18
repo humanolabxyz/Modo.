@@ -1,0 +1,31 @@
+---
+/* Va dentro de <head> en cada página. Decide, antes de pintar, si corresponde la entrada de marca
+   (una sola vez por sesión) y anota la dirección de las transiciones entre páginas. */
+import '../../styles/modo-motion.css';
+---
+<script is:inline>
+(function(){
+ var d=document.documentElement;
+ var reduced=false;
+ try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;var q=new URLSearchParams(location.search).get('movimiento');if(q==='completo')localStorage.setItem('modo-movimiento','completo');else if(q==='sistema')localStorage.removeItem('modo-movimiento');if(localStorage.getItem('modo-movimiento')==='completo')reduced=false}catch(e){}
+ if(reduced)d.classList.add('modo-reduced');
+ try{if(!reduced&&document.visibilityState!=='hidden'&&!sessionStorage.getItem('modo-splash')){sessionStorage.setItem('modo-splash','1');d.classList.add('modo-splash-on','modo-splash-reveal')}}catch(e){}
+ try{if(new URLSearchParams(location.search).get('view')==='simulator')d.classList.add('modo-boot-simulator')}catch(e){}
+ /* Orden de las herramientas: avanzar desliza hacia la izquierda; regresar, hacia la derecha. */
+ var RANK={'/':0,'/estudio':2,'/laboratorio':3};
+ function rank(u){try{var x=new URL(u,location.href);if(x.origin!==location.origin)return -1;var p=x.pathname.replace(/index\.html$/,'').replace(/\/+$/,'')||'/';if(p==='/'&&x.searchParams.get('view')==='simulator')return 1;return p in RANK?RANK[p]:-1}catch(e){return -1}}
+ function clear(){delete d.dataset.motion;delete d.dataset.motionDir}
+ addEventListener('pageswap',function(e){if(e.viewTransition){e.viewTransition.ready.catch(function(){});e.viewTransition.finished.catch(function(){});}if(e.viewTransition&&reduced){e.viewTransition.skipTransition();return}if(e.viewTransition){d.dataset.motion='page';e.viewTransition.finished.catch(function(){}).finally(clear)}});
+ addEventListener('pagereveal',function(e){
+  if(e.viewTransition){e.viewTransition.ready.catch(function(){});e.viewTransition.finished.catch(function(){});}
+  if(!e.viewTransition){clear();return}
+  if(reduced){e.viewTransition.skipTransition();clear();return}
+  var nav=window.navigation,from=nav&&nav.activation&&nav.activation.from,a=rank(from?from.url:document.referrer),b=rank(location.href);
+  d.dataset.motion='page';d.dataset.motionDir=a<0||b<0||a===b?'none':b>a?'forward':'back';
+  e.viewTransition.finished.catch(function(){}).finally(clear);
+ });
+})();
+</script>
+<script>
+import '../../motion/indicators';
+</script>

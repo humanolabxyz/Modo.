@@ -1,0 +1,7 @@
+{
+  "checks": [],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 94\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-practice.cjs:18:9"
+  ],
+  "viewports": []
+}

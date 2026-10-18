@@ -1,0 +1,32 @@
+PANEL LAB — INSTRUCCIÓN ACTUALIZADA PARA CODEX (CON TODAS LAS FOTOGRAFÍAS)
+
+Tienes un proyecto Astro + React + TypeScript YA EXISTENTE que debo seguir construyendo LOCALMENTE. No uses Sites ni despliegues nada. La preview visual de fase 1 está aprobada; NO rehagas la interfaz desde cero y NO elimines el inspector, los 108 bornes existentes, el zoom ni la búsqueda.
+
+ANTES DE TOCAR CÓDIGO, ABRE ESTAS CARPETAS/ARCHIVOS DENTRO DE PanelLab-INACAP:
+- 00_FOTOS_DEL_LABORATORIO/INDICE_VISUAL_20_FOTOS.jpg
+- 00_FOTOS_DEL_LABORATORIO/01_panel_original/ (9 fotos)
+- 00_FOTOS_DEL_LABORATORIO/02_fotos_nuevas_y_conexiones/ (8 fotos)
+- 00_FOTOS_DEL_LABORATORIO/03_diagramas_de_clase/ (3 fotos)
+- 00_FOTOS_DEL_LABORATORIO/INVENTARIO_DE_FOTOGRAFIAS.md
+- referencias/capturas-prototipo-aprobado/preview-aprobada.png
+- AGENTS.md
+- INSTRUCCION_CODEX_V1_1.md
+- TABLA_TECNICA_PANEL_V1_1.md
+- REFERENCIAS_FOTOGRAFICAS_V1_1.md
+- PRUEBAS_Y_APROBACION_V1_1.md
+
+IMPORTANTE: LAS FOTOS ESTÁN ADJUNTAS EN LA CARPETA DEL PROYECTO. No las busques en internet ni trabajes a partir de imágenes imaginadas. Úsalas para verificar los módulos, las posiciones de los conectores, el aspecto de los cables banana y las referencias impresas. La cámara cambia de posición y los módulos se reordenan entre fotos: conserva la composición de la preview aprobada y toma las fotografías como referencia física de cada módulo. Si un número o etiqueta no se lee con seguridad, márcalo como pendiente en vez de inventarlo.
+
+IMPLEMENTA LA ITERACIÓN VISUAL V1.1 SOBRE EL PROYECTO EXISTENTE:
+1. Representar con mayor fidelidad el bastidor gris, paneles blancos, ranuras del fondo, transformador, fusible, luces, pulsadores y componentes centrales.
+2. Afinar ubicaciones, escala, colores y textos de terminales sobre los módulos: alimentación; luces piloto y botoneras; contactor con relé térmico; contactor trifásico; los dos temporizadores neumáticos; bornera del motor.
+3. Botoneras: tres pulsadores verde/rojo/verde; bornes 1–2 rojos y 3–4 crema en cada grupo, y terminal N y TP en sus posiciones. Los contactos NA/NC solo deben catalogarse como definitivos cuando estén verificados, sin usar el color como única prueba.
+4. Luces piloto: verde/rojo/ámbar/verde arriba, cuatro bornes rojos debajo. En la imagen IMG_4737(1).jpeg la luz roja está encendida: úsala como referencia de aspecto de encendido, NO como estado permanente.
+5. Mejorar representación visual de conectores banana: el cable del laboratorio es verde petróleo, largo y flexible, con punta cilíndrica redondeada; hay conexiones apiladas/compartidas en las fotos. Dibuja curvas naturales y cabezales visibles; prepara el modelo de cable para la siguiente fase, pero en V1.1 no implementes aún el simulador eléctrico.
+6. Mantener los bornes seleccionables con ID interno único para diferenciar A1 de módulos distintos, junto con inspector, buscador, paneo y zoom. No introducir pantallas adicionales; una pantalla principal es la prioridad.
+7. Mantener nombres de referencias KM configurables: no asignar KM1/KM2 sin confirmar en la foto o documentación.
+8. Ejecutar build/tests locales y validar desktop/mobile. Entregar capturas comparativas antes/después, descripción de cambios y problemas aún pendientes.
+
+CRITERIO DE TERMINADO: la interfaz se reconoce como el panel INACAP real y cada borne es legible y seleccionable, sin regresiones. No pasar a lógica de cables o a diagrama guiado todavía; serán las fases 2 y 3.
+
+Al concluir, indícame dónde está el build local y cómo ejecutarlo. Guarda el prototipo anterior para comparación.

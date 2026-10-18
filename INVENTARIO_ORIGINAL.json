@@ -1,0 +1,955 @@
+{
+  "proyecto": "PanelLab — Simulador de panel de control",
+  "version": "1.0-datos-preliminares",
+  "origen": "Fotografías del banco didáctico INACAP aportadas por el usuario, octubre 2026",
+  "advertencia": "Inventario para simulación informática desenergizada. No es un manual de montaje eléctrico real. Verificar referencias y contactos con el docente.",
+  "estados_verificacion": [
+    "foto",
+    "convencion_por_confirmar",
+    "no_verificado"
+  ],
+  "modulos": [
+    {
+      "id": "FUENTE",
+      "nombre_visible": "ALIMENTACIÓN / 24 V A.C.",
+      "posicion": "fila superior izquierda",
+      "identificador_esquema": null,
+      "componentes": [
+        "seccionador visible",
+        "protecciones",
+        "transformador 220V/24V, 3A",
+        "fusible rotulado FUS 3A"
+      ],
+      "terminales": [
+        {
+          "id": "R",
+          "color_fisico": "azul",
+          "funcion": "fase aparente",
+          "verificacion": "foto"
+        },
+        {
+          "id": "S",
+          "color_fisico": "negro",
+          "funcion": "fase aparente",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T",
+          "color_fisico": "rojo",
+          "funcion": "fase aparente",
+          "verificacion": "foto"
+        },
+        {
+          "id": "N",
+          "color_fisico": "blanco/crema",
+          "funcion": "borne auxiliar, función interna pendiente",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "F",
+          "color_fisico": "rojo",
+          "funcion": "borne auxiliar, función interna pendiente",
+          "verificacion": "no_verificado"
+        },
+        {
+          "id": "TP",
+          "color_fisico": "verde",
+          "funcion": "tierra de protección",
+          "verificacion": "foto"
+        }
+      ]
+    },
+    {
+      "id": "PILOTOS",
+      "nombre_visible": "LUCES PILOTO 24V A.C.",
+      "posicion": "fila superior derecha",
+      "identificador_esquema": null,
+      "componentes": [
+        "piloto verde 1",
+        "piloto rojo 2",
+        "piloto ámbar 3",
+        "piloto verde 4"
+      ],
+      "terminales": [
+        {
+          "id": "PILOTO_1_JACK",
+          "color_fisico": "rojo",
+          "funcion": "borne visible del piloto 1",
+          "verificacion": "foto"
+        },
+        {
+          "id": "PILOTO_2_JACK",
+          "color_fisico": "rojo",
+          "funcion": "borne visible del piloto 2",
+          "verificacion": "foto"
+        },
+        {
+          "id": "PILOTO_3_JACK",
+          "color_fisico": "rojo",
+          "funcion": "borne visible del piloto 3",
+          "verificacion": "foto"
+        },
+        {
+          "id": "PILOTO_4_JACK",
+          "color_fisico": "rojo",
+          "funcion": "borne visible del piloto 4",
+          "verificacion": "foto"
+        }
+      ],
+      "pendiente": "Determinar retornos internos; no suponer un común sin validar."
+    },
+    {
+      "id": "BOTONERAS",
+      "nombre_visible": "BOTONERAS",
+      "posicion": "fila superior derecha, bajo luces",
+      "identificador_esquema": null,
+      "terminales": [
+        {
+          "id": "N",
+          "color_fisico": "blanco/crema",
+          "funcion": "borne N visible, relación interna pendiente",
+          "verificacion": "no_verificado"
+        },
+        {
+          "id": "TP_IZQ",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        }
+      ],
+      "pulsadores": [
+        {
+          "id": "S1_PROVISIONAL",
+          "nombre_temporal": "Pulsador izquierdo",
+          "color_boton": "verde",
+          "identificador_esquema": "pendiente",
+          "pares": [
+            {
+              "bornes": [
+                "1",
+                "2"
+              ],
+              "colores": [
+                "rojo",
+                "rojo"
+              ],
+              "estado_reposo": "NC",
+              "verificacion": "convencion_por_confirmar"
+            },
+            {
+              "bornes": [
+                "3",
+                "4"
+              ],
+              "colores": [
+                "blanco/crema",
+                "blanco/crema"
+              ],
+              "estado_reposo": "NA",
+              "verificacion": "convencion_por_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "S2_PROVISIONAL",
+          "nombre_temporal": "Pulsador central",
+          "color_boton": "rojo",
+          "identificador_esquema": "pendiente",
+          "pares": [
+            {
+              "bornes": [
+                "1",
+                "2"
+              ],
+              "colores": [
+                "rojo",
+                "rojo"
+              ],
+              "estado_reposo": "NC",
+              "verificacion": "convencion_por_confirmar"
+            },
+            {
+              "bornes": [
+                "3",
+                "4"
+              ],
+              "colores": [
+                "blanco/crema",
+                "blanco/crema"
+              ],
+              "estado_reposo": "NA",
+              "verificacion": "convencion_por_confirmar"
+            }
+          ]
+        },
+        {
+          "id": "S3_PROVISIONAL",
+          "nombre_temporal": "Pulsador derecho",
+          "color_boton": "verde",
+          "identificador_esquema": "pendiente",
+          "pares": [
+            {
+              "bornes": [
+                "1",
+                "2"
+              ],
+              "colores": [
+                "rojo",
+                "rojo"
+              ],
+              "estado_reposo": "NC",
+              "verificacion": "convencion_por_confirmar"
+            },
+            {
+              "bornes": [
+                "3",
+                "4"
+              ],
+              "colores": [
+                "blanco/crema",
+                "blanco/crema"
+              ],
+              "estado_reposo": "NA",
+              "verificacion": "convencion_por_confirmar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CONTACTOR_TERMICO",
+      "nombre_visible": "CONTACTOR + RELE TERMICO",
+      "posicion": "fila central izquierda",
+      "identificador_esquema": "pendiente",
+      "terminales": [
+        {
+          "id": "A1",
+          "color_fisico": "blanco/crema",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "A2",
+          "color_fisico": "rojo",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L1",
+          "color_fisico": "azul",
+          "funcion": "entrada de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L2",
+          "color_fisico": "negro",
+          "funcion": "entrada de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L3",
+          "color_fisico": "rojo",
+          "funcion": "entrada de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T1",
+          "color_fisico": "azul",
+          "funcion": "salida de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T2",
+          "color_fisico": "negro",
+          "funcion": "salida de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T3",
+          "color_fisico": "rojo",
+          "funcion": "salida de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "71",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "72",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "81",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "82",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "95",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "96",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "63",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "64",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "93",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "94",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "97",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "98",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        }
+      ],
+      "pares": [
+        {
+          "contactos": [
+            "71",
+            "72"
+          ],
+          "tipo": "NC"
+        },
+        {
+          "contactos": [
+            "81",
+            "82"
+          ],
+          "tipo": "NC"
+        },
+        {
+          "contactos": [
+            "95",
+            "96"
+          ],
+          "tipo": "NC (térmico)"
+        },
+        {
+          "contactos": [
+            "13",
+            "14"
+          ],
+          "tipo": "NA"
+        },
+        {
+          "contactos": [
+            "63",
+            "64"
+          ],
+          "tipo": "NA"
+        },
+        {
+          "contactos": [
+            "93",
+            "94"
+          ],
+          "tipo": "NA"
+        },
+        {
+          "contactos": [
+            "97",
+            "98"
+          ],
+          "tipo": "NA (térmico)"
+        }
+      ]
+    },
+    {
+      "id": "CONTACTOR_TRIFASICO",
+      "nombre_visible": "CONTACTOR TRIFASICO",
+      "posicion": "fila central derecha",
+      "identificador_esquema": "inscripción a mano KM? ilegible, pendiente",
+      "terminales": [
+        {
+          "id": "A1",
+          "color_fisico": "blanco/crema",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "A2",
+          "color_fisico": "rojo",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L1",
+          "color_fisico": "azul",
+          "funcion": "entrada de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L2",
+          "color_fisico": "negro",
+          "funcion": "entrada de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L3",
+          "color_fisico": "rojo",
+          "funcion": "entrada de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T1",
+          "color_fisico": "azul",
+          "funcion": "salida de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T2",
+          "color_fisico": "negro",
+          "funcion": "salida de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T3",
+          "color_fisico": "rojo",
+          "funcion": "salida de fuerza",
+          "verificacion": "foto"
+        },
+        {
+          "id": "71",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "72",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "81",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "82",
+          "color_fisico": "negro",
+          "funcion": "NC probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "63",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "64",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "93",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "94",
+          "color_fisico": "azul",
+          "funcion": "NA probable por numeración",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        }
+      ],
+      "pares": [
+        {
+          "contactos": [
+            "71",
+            "72"
+          ],
+          "tipo": "NC"
+        },
+        {
+          "contactos": [
+            "81",
+            "82"
+          ],
+          "tipo": "NC"
+        },
+        {
+          "contactos": [
+            "13",
+            "14"
+          ],
+          "tipo": "NA"
+        },
+        {
+          "contactos": [
+            "63",
+            "64"
+          ],
+          "tipo": "NA"
+        },
+        {
+          "contactos": [
+            "93",
+            "94"
+          ],
+          "tipo": "NA"
+        }
+      ]
+    },
+    {
+      "id": "TEMPORIZADOR_1",
+      "nombre_visible": "TEMPORIZADOR NEUMATICO BOBINA 24V A.C.",
+      "posicion": "fila inferior, temporizador 1",
+      "identificador_esquema": "pendiente",
+      "terminales": [
+        {
+          "id": "A1",
+          "color_fisico": "blanco/crema",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "A2",
+          "color_fisico": "rojo",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L1",
+          "color_fisico": "azul",
+          "funcion": "entrada potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L2",
+          "color_fisico": "negro",
+          "funcion": "entrada potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L3",
+          "color_fisico": "rojo",
+          "funcion": "entrada potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T1",
+          "color_fisico": "azul",
+          "funcion": "salida potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T2",
+          "color_fisico": "negro",
+          "funcion": "salida potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T3",
+          "color_fisico": "rojo",
+          "funcion": "salida potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "55",
+          "color_fisico": "negro",
+          "funcion": "contacto temporizado NC probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "56",
+          "color_fisico": "negro",
+          "funcion": "contacto temporizado NC probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "color_fisico": "azul",
+          "funcion": "contacto auxiliar NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "color_fisico": "azul",
+          "funcion": "contacto auxiliar NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "67",
+          "color_fisico": "azul",
+          "funcion": "contacto temporizado NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "68",
+          "color_fisico": "azul",
+          "funcion": "contacto temporizado NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        }
+      ],
+      "pares": [
+        {
+          "contactos": [
+            "55",
+            "56"
+          ],
+          "tipo": "NC temporizado esperado",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "contactos": [
+            "67",
+            "68"
+          ],
+          "tipo": "NA temporizado esperado",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "contactos": [
+            "13",
+            "14"
+          ],
+          "tipo": "NA auxiliar esperado",
+          "verificacion": "convencion_por_confirmar"
+        }
+      ],
+      "pendiente": "Identificar marca/modelo y tipo de retardo; no simular tiempo definitivo sin validar."
+    },
+    {
+      "id": "TEMPORIZADOR_2",
+      "nombre_visible": "TEMPORIZADOR NEUMATICO BOBINA 24V A.C.",
+      "posicion": "fila inferior, temporizador 2",
+      "identificador_esquema": "pendiente",
+      "terminales": [
+        {
+          "id": "A1",
+          "color_fisico": "blanco/crema",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "A2",
+          "color_fisico": "rojo",
+          "funcion": "bobina",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L1",
+          "color_fisico": "azul",
+          "funcion": "entrada potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L2",
+          "color_fisico": "negro",
+          "funcion": "entrada potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "L3",
+          "color_fisico": "rojo",
+          "funcion": "entrada potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T1",
+          "color_fisico": "azul",
+          "funcion": "salida potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T2",
+          "color_fisico": "negro",
+          "funcion": "salida potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "T3",
+          "color_fisico": "rojo",
+          "funcion": "salida potencia",
+          "verificacion": "foto"
+        },
+        {
+          "id": "55",
+          "color_fisico": "negro",
+          "funcion": "contacto temporizado NC probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "56",
+          "color_fisico": "negro",
+          "funcion": "contacto temporizado NC probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "color_fisico": "azul",
+          "funcion": "contacto auxiliar NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "color_fisico": "azul",
+          "funcion": "contacto auxiliar NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "67",
+          "color_fisico": "azul",
+          "funcion": "contacto temporizado NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "68",
+          "color_fisico": "azul",
+          "funcion": "contacto temporizado NA probable",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "color_fisico": "verde",
+          "funcion": "protección",
+          "verificacion": "foto"
+        }
+      ],
+      "pares": [
+        {
+          "contactos": [
+            "55",
+            "56"
+          ],
+          "tipo": "NC temporizado esperado",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "contactos": [
+            "67",
+            "68"
+          ],
+          "tipo": "NA temporizado esperado",
+          "verificacion": "convencion_por_confirmar"
+        },
+        {
+          "contactos": [
+            "13",
+            "14"
+          ],
+          "tipo": "NA auxiliar esperado",
+          "verificacion": "convencion_por_confirmar"
+        }
+      ],
+      "pendiente": "Identificar marca/modelo y tipo de retardo; no simular tiempo definitivo sin validar."
+    },
+    {
+      "id": "BORNERA_MOTOR",
+      "nombre_visible": "BORNE MOTOR",
+      "posicion": "módulo móvil de sobremesa",
+      "identificador_esquema": "M? pendiente",
+      "terminales": [
+        {
+          "id": "U1",
+          "color_fisico": "azul",
+          "funcion": "borne del motor",
+          "verificacion": "foto"
+        },
+        {
+          "id": "V1",
+          "color_fisico": "negro",
+          "funcion": "borne del motor",
+          "verificacion": "foto"
+        },
+        {
+          "id": "W1",
+          "color_fisico": "rojo",
+          "funcion": "borne del motor",
+          "verificacion": "foto"
+        },
+        {
+          "id": "W2",
+          "color_fisico": "rojo",
+          "funcion": "borne del motor",
+          "verificacion": "foto"
+        },
+        {
+          "id": "U2",
+          "color_fisico": "azul",
+          "funcion": "borne del motor",
+          "verificacion": "foto"
+        },
+        {
+          "id": "V2",
+          "color_fisico": "negro",
+          "funcion": "borne del motor",
+          "verificacion": "foto"
+        },
+        {
+          "id": "TP",
+          "color_fisico": "verde",
+          "funcion": "tierra de protección",
+          "verificacion": "foto"
+        }
+      ],
+      "pendiente": "No inferir conexiones estrella/triángulo de la sola fotografía."
+    },
+    {
+      "id": "LOGO",
+      "nombre_visible": "Siemens LOGO! (visible en proyección)",
+      "posicion": "en diagrama; no identificado entre los módulos físicos fotografiados",
+      "terminales": [],
+      "pendiente": "Modelo exacto, voltaje, ubicación de banco físico y bornes I/Q del ejercicio."
+    }
+  ],
+  "cables": {
+    "tipo": "banana con extremo redondeado, reproducción visual simplificada",
+    "puentes": "permitir múltiples cables en un mismo borne como nodo lógico compartido",
+    "maximo": "sin límite arbitrario de tres en software; conexión física real según conector verificado",
+    "colores": [
+      "rojo",
+      "negro",
+      "azul",
+      "amarillo",
+      "verde"
+    ],
+    "acciones": [
+      "elegir cable",
+      "conectar extremo A",
+      "conectar extremo B",
+      "mostrar ruta flexible",
+      "retirar cable",
+      "deshacer",
+      "rehacer",
+      "resaltar nodo compartido"
+    ]
+  },
+  "diagramas": {
+    "estado": "fotos de proyección disponibles, textos pequeños no legibles",
+    "metodo_v1": "carga de imagen/PDF y mapeo manual de cada tramo; confirmar antes de evaluar"
+  },
+  "niveles_ayuda": [
+    "resaltar tramo",
+    "identificar componentes",
+    "mostrar bornes específicos"
+  ],
+  "pantallas": [
+    "inicio",
+    "simulador combinado"
+  ],
+  "modos": [
+    "guiado",
+    "practica",
+    "examen"
+  ],
+  "seguridad": "Software exclusivamente simulado y desenergizado; las comprobaciones físicas las hace el docente."
+}

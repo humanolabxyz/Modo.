@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "lesson": "objetivos-fallas",
+  "screen": "progress",
+  "progress": {
+    "objetivos-fallas": {
+      "correct": [],
+      "started": true,
+      "attempted": true,
+      "activity": true
+    }
+  },
+  "drafts": {
+    "objetivos-fallas": {
+      "scenario": "sobrecarga",
+      "effect": "calor",
+      "practiceTab": "activity",
+      "choice": "1"
+    }
+  },
+  "practiceAnswers": {},
+  "attempts": [
+    {
+      "id": "0ba86701-4db5-4266-94db-24ffd510e6f0",
+      "topic": "objetivos-fallas",
+      "item": "actividad-objetivos-fallas",
+      "correct": true,
+      "at": "2026-10-16T00:22:50.850Z"
+    }
+  ],
+  "exams": []
+}

@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-15",
+  "origin": "http://127.0.0.1:4336",
+  "observed": {
+    "homeFiveTools": true,
+    "startRetentionStop": true,
+    "plcQOutput": true,
+    "hmiStop": true,
+    "tankHighLevel": "80.1%; pump stopped",
+    "drainToggle": true,
+    "breadboardVoltage": "5.000 V",
+    "resistorCurrent": "3.069 mA",
+    "editUndoRedoReload": true,
+    "exportedFile": "C:\\Users\\HUMANO LAB\\Downloads\\Llenado-automático.panellab.json",
+    "importedAsCopy": true,
+    "mobileLaboratory": {
+      "body": 376,
+      "viewport": 391
+    },
+    "mobileHome": {
+      "body": 376,
+      "viewport": 391
+    },
+    "console": []
+  },
+  "limitations": [
+    "Browser checks performed on local dev server",
+    "Responsive viewport, not a physical mobile device",
+    "No physical PLC, hardware or UNIFCAD full equivalence validation"
+  ]
+}

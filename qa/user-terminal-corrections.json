@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-14",
+  "source": "Usuario: al contactor trifasico tambien le falta el 95 y 96",
+  "additions": [
+    "CONTACTOR_TRIFASICO:95",
+    "CONTACTOR_TRIFASICO:96"
+  ],
+  "retiredModules": [
+    "TEMPORIZADOR_2"
+  ],
+  "retirementSource": "Usuario: quites un temporizador neumatico, es solo uno. Mantener KM2 y colocar KM1 con termico en el centro.",
+  "verification": "usuario",
+  "limits": "La presencia 95/96 de KM2 y los contactos gris NC / azul NA fueron indicados por el usuario. Posiciones de referencia; accionamiento interno de 95/96 de KM2 pendiente. Los colores de bobina y potencia no indican NA/NC.",
+  "contactSource": "Usuario: en el contactor + rele y el contactor solo el gris normalmente cerrado y el azul normalmente abierto.",
+  "colorOverrides": {
+    "CONTACTOR_TERMICO:71": "gray",
+    "CONTACTOR_TERMICO:72": "gray",
+    "CONTACTOR_TERMICO:81": "gray",
+    "CONTACTOR_TERMICO:82": "gray",
+    "CONTACTOR_TERMICO:95": "gray",
+    "CONTACTOR_TERMICO:96": "gray",
+    "CONTACTOR_TRIFASICO:71": "gray",
+    "CONTACTOR_TRIFASICO:72": "gray",
+    "CONTACTOR_TRIFASICO:81": "gray",
+    "CONTACTOR_TRIFASICO:82": "gray",
+    "CONTACTOR_TRIFASICO:95": "gray",
+    "CONTACTOR_TRIFASICO:96": "gray"
+  }
+}

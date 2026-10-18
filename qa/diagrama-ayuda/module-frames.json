@@ -1,0 +1,80 @@
+[
+  {
+    "frame": 0,
+    "fallback": "stage",
+    "opacity": "0.12",
+    "title": "Procesos"
+  },
+  {
+    "frame": 1,
+    "fallback": "stage",
+    "opacity": "0.450325",
+    "title": "Procesos"
+  },
+  {
+    "frame": 2,
+    "fallback": "stage",
+    "opacity": "0.691976",
+    "title": "Procesos"
+  },
+  {
+    "frame": 3,
+    "fallback": "stage",
+    "opacity": "0.820093",
+    "title": "Procesos"
+  },
+  {
+    "frame": 4,
+    "fallback": "stage",
+    "opacity": "0.898042",
+    "title": "Procesos"
+  },
+  {
+    "frame": 5,
+    "fallback": "stage",
+    "opacity": "0.947448",
+    "title": "Procesos"
+  },
+  {
+    "frame": 6,
+    "fallback": "stage",
+    "opacity": "0.984505",
+    "title": "Procesos"
+  },
+  {
+    "frame": 7,
+    "fallback": "stage",
+    "opacity": "0.994096",
+    "title": "Procesos"
+  },
+  {
+    "frame": 8,
+    "opacity": "1",
+    "title": "Procesos"
+  },
+  {
+    "frame": 9,
+    "opacity": "1",
+    "title": "Procesos"
+  },
+  {
+    "frame": 10,
+    "opacity": "1",
+    "title": "Procesos"
+  },
+  {
+    "frame": 11,
+    "opacity": "1",
+    "title": "Procesos"
+  },
+  {
+    "frame": 12,
+    "opacity": "1",
+    "title": "Procesos"
+  },
+  {
+    "frame": 13,
+    "opacity": "1",
+    "title": "Procesos"
+  }
+]

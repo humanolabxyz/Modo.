@@ -1,0 +1,16 @@
+qa/verify-model.mjs exit=0
+qa/verify-wiring.mjs exit=0
+qa/verify-learning.mjs exit=0
+qa/verify-simulation.mjs exit=0
+qa/verify-ui.cjs exit=1
+qa/verify-practice.cjs exit=0
+qa/verify-clean-interface.cjs exit=1
+qa/verify-tools-reading.cjs exit=0
+qa/verify-cade.cjs exit=0
+qa/verify-canvas.cjs exit=1
+qa/verify-learning-ui.cjs exit=0
+qa/verify-simulation-ui.cjs exit=0
+qa/verify-routes.cjs exit=0
+qa/verify-diagram-layout.cjs exit=0
+qa/verify-diagram-simple.cjs exit=0
+qa/verify-cable-color.cjs exit=0

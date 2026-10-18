@@ -1,0 +1,46 @@
+.study-focus-shell .fault-schematic { border: 1px solid #c1cdc3; border-radius: 12px; background: #fff; overflow: hidden; margin-bottom: 22px; }
+.study-focus-shell .fault-sheet-heading { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-bottom: 1px solid #dbe2dc; background: #f6f8f3; }
+.study-focus-shell .fault-sheet-heading strong { color: #284c39; font-size: 15px; }
+.study-focus-shell .fault-sheet-heading span { font-size: 12px; color: #4e6252; align-self: center; }
+.study-focus-shell .fault-schematic > svg { display: block; width: 100%; max-width: 460px; height: auto; margin: 10px auto; }
+.study-focus-shell .fault-sheet-wires { stroke: #253e3b; }
+.study-focus-shell .fault-pivot { fill: #fff; }
+.study-focus-shell .fault-mechanical { stroke: #536d62; stroke-width: 1.2; }
+.study-focus-shell .fault-release-frame { stroke: #4b665c; stroke-width: 1.2; }
+.study-focus-shell .fault-pe { stroke: #477d48; stroke-width: 2.5; }
+.study-focus-shell .fault-motor { fill: #fff; }
+.study-focus-shell .fault-highlight { color: #a15d13; stroke: currentColor; pointer-events: none; }
+.study-focus-shell .is-short .fault-highlight { color: #b33930; }
+.study-focus-shell .is-normal .fault-highlight { color: #356d4a; }
+.study-focus-shell .is-open .fault-highlight { color: #9a5c55; }
+.study-focus-shell .fault-sheet-labels { fill: #273f39; font-size: 15px; font-family: 'Source Sans 3', sans-serif; }
+.study-focus-shell .fault-reference { font-size: 19px; font-weight: 700; }
+.study-focus-shell .fault-terminal { font-size: 16px; }
+.study-focus-shell .fault-trip-mark { font-size: 14px; font-style: italic; }
+.study-focus-shell .fault-motor-kind { font-size: 23px; }
+.study-focus-shell .fault-fault-label { fill: #a12f28; font-size: 15px; font-weight: 700; }
+.study-focus-shell .fault-callout { stroke: #a12f28; stroke-width: 1.5; }
+.study-focus-shell .fault-selection { fill: none; stroke: #3d7564; stroke-width: 2; stroke-dasharray: 5 4; pointer-events: none; }
+.study-focus-shell .fault-symbol-buttons { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 18px 0; border-top: 1px solid #dce3dc; }
+.study-focus-shell .fault-symbol-buttons button { flex: 1; min-width: 48px; padding: 8px 10px; min-height: 44px; background: #fafcf7; color: #335640; border: 1px solid #adbfaf; font-size: 13px; border-radius: 7px; }
+.study-focus-shell .fault-symbol-buttons button:first-child { min-width: 108px; }
+.study-focus-shell .fault-symbol-buttons button[aria-pressed="true"] { background: #e7efe0; border-color: #5c7c51; color: #2e512d; font-weight: 700; }
+.study-focus-shell .fault-symbol-explanation { padding: 16px 18px; }
+.study-focus-shell .fault-symbol-explanation strong { color: #31573b; font-size: 16px; }
+.study-focus-shell .fault-symbol-explanation p { color: #405c48; font-size: 15px; line-height: 1.6; margin: 8px 0 0; }
+.study-focus-shell .fault-opening-button { min-height: 44px; margin: 0 18px 16px; padding: 10px 15px; font-size: 14px; color: #315c43; background: #f4f7ee; border-color: #aabc9e; }
+.study-focus-shell .fault-opening-note { margin: 0 18px 16px; color: #4a5c4d; font-size: 14px; line-height: 1.6; }
+.study-focus-shell .fault-conventions { border-top: 1px solid #dbe3d7; padding: 14px 18px; background: #fafbf7; }
+.study-focus-shell .fault-conventions summary { color: #3f604c; font-size: 12px; cursor: pointer; min-height: 28px; }
+.study-focus-shell .fault-conventions p { font-size: 13px; color: #475e4b; line-height: 1.65; }
+.study-focus-shell .fault-conventions a { color: #285b48; text-underline-offset: 3px; }
+@media(max-width:600px) {
+  .study-focus-shell .fault-sheet-heading { padding: 12px 13px; gap: 7px; }
+  .study-focus-shell .fault-sheet-heading strong { font-size: 14px; }
+  .study-focus-shell .fault-sheet-heading span { font-size: 11px; }
+  .study-focus-shell .fault-symbol-buttons { padding: 12px 13px 0; }
+  .study-focus-shell .fault-symbol-explanation { padding: 15px 13px; }
+  .study-focus-shell .fault-symbol-explanation p { font-size: 14px; }
+  .study-focus-shell .fault-opening-button { margin-inline: 13px; font-size: 13px; }
+  .study-focus-shell .fault-conventions { padding-inline: 13px; }
+}

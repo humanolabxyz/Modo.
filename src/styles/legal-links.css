@@ -1,0 +1,7 @@
+.humano-legal-link{display:inline-flex;flex:none;align-items:center;justify-content:center;gap:7px;min-width:44px;min-height:44px;padding:0 9px;border-radius:9px;color:#46535d;text-decoration:none;font:600 12px Inter,Arial,sans-serif;box-sizing:border-box}
+.humano-legal-link:hover{background:#edf1f3;color:#182832}
+.humano-legal-link:focus-visible,.humano-credit a:focus-visible{outline:2px solid #236582;outline-offset:3px}
+.compact-legal{display:none}.editor-workbench .compact-legal{display:block}.compact-legal .humano-legal-link{justify-content:flex-start}.compact-legal .humano-legal-link span{display:inline}
+.humano-credit{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding:22px 0 8px;color:#58636c;font:400 12px/1.65 Inter,Arial,sans-serif}
+.humano-credit p{margin:0}.humano-credit strong{color:#263540;font-weight:600}.humano-credit a{color:inherit;text-underline-offset:3px;padding:10px 0}
+@media(max-width:900px){.humano-legal-link span{display:none}.humano-legal-link{padding:0}.humano-credit{align-items:flex-start;flex-direction:column;gap:2px}.humano-credit p{max-width:42ch}}

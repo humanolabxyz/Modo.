@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# Se permite el rastreo para que los buscadores puedan leer X-Robots-Tag: noindex.
+# El acceso permanece abierto; robots.txt no es un control de acceso.

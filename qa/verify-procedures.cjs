@@ -1,0 +1,58 @@
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const base=process.env.PANELLAB_URL||'http://127.0.0.1:4326/';
+const out='qa/procedimientos-2026-10-15';fs.mkdirSync(out,{recursive:true});
+const report={checks:[],errors:[],viewports:[]};
+(async()=>{const browser=await chromium.launch();const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce',acceptDownloads:true});const page=await context.newPage();
+page.on('pageerror',e=>report.errors.push(e.message));
+page.on('response',r=>{if(r.status()>=400)report.errors.push(r.status()+' '+r.url());});
+const button=(name)=>page.getByRole('button',{name,exact:true}),drawer=()=>page.locator('.procedure-drawer'),stored=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('modo-action-sessions-v1'))),doc=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('panellab-practice-v2')));
+const open=async()=>{if(!await drawer().count())await button('Procedimientos y grabación').click();};
+const close=async()=>{if(await drawer().count())await button('Cerrar procedimientos').click();};
+const settle=()=>page.waitForFunction(()=>document.querySelector('.board-svg')?.dataset.animating!=='true');
+try{
+await page.goto(base+'?view=simulator');await page.locator('.board-svg').waitFor();await button('Procedimientos y grabación').waitFor();
+await page.screenshot({path:out+'/panel-desktop.png'});
+await open();await button('Grabar acciones').click();await close();
+await button('Conectar cables').click();
+const search=async id=>{await page.getByRole('textbox',{name:'Buscar un borne o componente'}).fill(id);await page.locator('.search-results button').first().click();};
+await search('CONTACTOR_TERMICO:95');await search('CONTACTOR_TERMICO:96');
+await page.waitForFunction(()=>JSON.parse(localStorage.getItem('panellab-practice-v2')).wires.length===1);
+let sessions=await stored();assert.equal(sessions[0].steps.length,1);assert.match(sessions[0].steps[0].label,/Conectar CONTACTOR_TERMICO:95/);
+await button('Deshacer').click();await button('Rehacer').click();sessions=await stored();assert.equal(sessions[0].steps.length,3);assert.match(sessions[0].steps[1].label,/Deshacer/);assert.equal(sessions[0].steps[1].frame.practice.wires.length,0);assert.equal(sessions[0].steps[2].frame.practice.wires.length,1);
+report.checks.push('Conexión, Deshacer y Rehacer se registran como tres pasos completos con sus montajes.');
+await button('Simular mando de 24 V').click();await page.getByLabel('Opciones de simulación',{exact:true}).click();
+await page.locator('.simulation-menu-body').getByRole('button',{name:'Enchufar corriente virtual',exact:true}).click();
+await button('CONTROL 1 · OFF').click();await button('CONTROL 2 · OFF').click();await page.getByLabel('Opciones de simulación',{exact:true}).click();
+await page.locator('.practice-menu>summary').click();await page.getByRole('combobox',{name:'Enfocar un módulo'}).selectOption('BOTONERAS');await page.locator('.practice-menu>summary').click();await settle();
+await button('Pulsador verde derecho').focus();await page.keyboard.down('Space');await page.keyboard.up('Space');
+sessions=await stored();assert.ok(sessions[0].steps.some(s=>s.label==='Pulsar S3'));assert.ok(sessions[0].steps.some(s=>['Soltar pulsadores','Soltar S3'].includes(s.label)));
+assert.ok(sessions[0].steps.some(s=>s.frame.simulation.breakers.every(Boolean)));report.checks.push('Mando virtual: habilitación, enchufe, dos interruptores y pulsación/liberación de botón registrados.');
+await open();await button('LOTO').click();assert.ok(await button('Revisar esta etapa').nth(1).isDisabled());
+for(let i=0;i<8;i++){const name=i===5?'Registrar verificación educativa':'Revisar esta etapa';await drawer().getByRole('button',{name,exact:true}).filter({visible:true}).all().then(async list=>{for(const item of list)if(await item.isEnabled()){await item.click();return;}});}
+assert.ok(await drawer().getByText('8 de 8 etapas revisadas en el ejercicio.',{exact:true}).count());
+sessions=await stored();assert.equal(sessions[0].steps.at(-1).frame.loto,8);
+report.checks.push('LOTO exige orden, alcanza ocho etapas y queda dentro de la grabación.');
+await page.screenshot({path:out+'/loto-desktop.png'});
+await button('Grabación').click();await button('Detener grabación').click();
+const activeDoc=JSON.stringify(await doc()),count=(await stored())[0].steps.length;
+await button('Paso siguiente').click();assert.match(await page.locator('.recorded-step').innerText(),/1 \//);assert.equal(JSON.stringify(await doc()),activeDoc);
+assert.equal(await page.locator('.procedure-preview').getAttribute('inert'),'');await button('Reproducir pasos').click();await page.waitForTimeout(800);await button('Pausar reproducción').click();assert.equal(JSON.stringify(await doc()),activeDoc);
+await button('Guía de bornes').click();await button('Paso anterior').click();await page.screenshot({path:out+'/grabacion-desktop.png'});
+report.checks.push('Reproducción temporal y por pasos preserva la práctica activa; vista previa inerte y guía de bornes disponible.');
+const downloadPromise=page.waitForEvent('download');await button('Exportar grabación').click();const download=await downloadPromise;await download.saveAs(out+'/procedimiento-exportado.json');
+const exported=JSON.parse(fs.readFileSync(out+'/procedimiento-exportado.json','utf8'));assert.equal(exported.steps.length,count);
+await drawer().locator('input[type=file]:not([aria-label])').setInputFiles(out+'/procedimiento-exportado.json');await page.waitForFunction(()=>JSON.parse(localStorage.getItem('modo-action-sessions-v1')).length===2);
+assert.notEqual((await stored())[0].id,(await stored())[1].id);
+await drawer().locator('input[type=file]:not([aria-label])').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({...exported,steps:[{at:-1}]}))});await page.waitForTimeout(150);assert.equal((await stored()).length,2);
+report.checks.push('Exportación e importación conservan pasos; copia con identidad nueva y archivo inválido rechazado.');
+await button('Usar este montaje en mi práctica').click();assert.equal(await button('Simular mando de 24 V').getAttribute('aria-pressed'),'false');await close();await button('Deshacer').click();assert.equal(JSON.stringify(await doc()),activeDoc);
+await page.reload();await page.locator('.board-svg').waitFor();await open();assert.equal((await stored()).length,2);assert.ok(await button('Grabar acciones').count());assert.equal((await stored())[0].steps.length,count);
+report.checks.push('Recuperar montaje detiene simulación y se puede deshacer; recarga conserva biblioteca y no reanuda grabación.');
+for(const viewport of [{width:1920,height:1080},{width:390,height:844},{width:360,height:800},{width:844,height:390}]){
+ await page.setViewportSize(viewport);await button('Fotos').click();await button('Foto 6').click();await page.locator('.procedure-photo').evaluate(img=>img.decode());assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));const box=await drawer().boundingBox();assert.ok(box.x>=0&&box.y>=0&&box.x+box.width<=viewport.width+1&&box.y+box.height<=viewport.height+1);report.viewports.push(viewport);if(viewport.width===390)await page.screenshot({path:out+'/fotos-mobile.png'});await button('LOTO').click();if(viewport.width===390)await page.screenshot({path:out+'/loto-mobile.png'});
+}
+const touchContext=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),tp=await touchContext.newPage();await tp.goto(base+'?view=simulator');await tp.getByRole('button',{name:'Procedimientos y grabación',exact:true}).tap();await tp.getByRole('button',{name:'LOTO',exact:true}).tap();await tp.locator('.procedure-drawer').getByRole('button',{name:'Revisar esta etapa',exact:true}).first().tap();assert.ok(await tp.getByText('1 de 8 etapas revisadas en el ejercicio.',{exact:true}).count());await touchContext.close();
+report.checks.push('Escritorio, 390, 360 y horizontal sin desbordamiento; interacción táctil emulada comprobada.');
+assert.deepEqual(report.errors,[]);report.result='PASS';
+}finally{await browser.close();fs.writeFileSync(out+'/verification.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}})().catch(e=>{console.error(e);process.exitCode=1;});

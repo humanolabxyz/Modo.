@@ -1,0 +1,58 @@
+---
+/* Compatibilidad con tablets y navegadores antiguos, y pantalla de error en lugar de página en blanco.
+   Va antes que cualquier otro script de la página.
+   - Al abrir el sitio por una dirección de red local (http://192.168…) el navegador lo trata como contexto NO seguro y
+     no ofrece crypto.randomUUID: sin este arreglo la aplicación se cae al arrancar y queda en blanco.
+   - Safari de iPad anterior a 15.4 no trae Array.at, structuredClone ni Object.hasOwn; antes de 14, tampoco MediaQueryList.addEventListener. */
+---
+<script is:inline>
+(function(){
+ function define(target,name,value){try{if(target&&typeof target[name]!=='function')Object.defineProperty(target,name,{value:value,writable:true,configurable:true})}catch(e){}}
+ /* UUID v4 con getRandomValues (disponible también sin HTTPS) */
+ try{
+  var c=window.crypto||window.msCrypto;
+  if(c&&typeof c.randomUUID!=='function'){
+   var bytes=function(n){var b=new Uint8Array(n);if(typeof c.getRandomValues==='function')c.getRandomValues(b);else for(var i=0;i<n;i++)b[i]=Math.floor(Math.random()*256);return b};
+   c.randomUUID=function(){var b=bytes(16),h=[],i;b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;for(i=0;i<16;i++)h.push((b[i]+256).toString(16).slice(1));return h.slice(0,4).join('')+'-'+h.slice(4,6).join('')+'-'+h.slice(6,8).join('')+'-'+h.slice(8,10).join('')+'-'+h.slice(10).join('')};
+  }
+ }catch(e){}
+ function at(n){n=Math.trunc(n)||0;if(n<0)n+=this.length;return n<0||n>=this.length?undefined:this[n]}
+ define(Array.prototype,'at',at);define(String.prototype,'at',function(n){var r=at.call(this,n);return r});
+ if(typeof Uint8Array!=='undefined')define(Object.getPrototypeOf(Uint8Array.prototype),'at',at);
+ define(Array.prototype,'findLast',function(f,t){for(var i=this.length-1;i>=0;i--)if(f.call(t,this[i],i,this))return this[i]});
+ define(Array.prototype,'findLastIndex',function(f,t){for(var i=this.length-1;i>=0;i--)if(f.call(t,this[i],i,this))return i;return -1});
+ define(Object,'hasOwn',function(o,k){return Object.prototype.hasOwnProperty.call(o,k)});
+ define(String.prototype,'replaceAll',function(a,b){return a instanceof RegExp?this.replace(a,b):this.split(String(a)).join(typeof b==='function'?b(String(a)):b)});
+ define(window,'structuredClone',function(v){return v===undefined?v:JSON.parse(JSON.stringify(v))});
+ define(window,'queueMicrotask',function(f){Promise.resolve().then(f)});
+ /* Safari < 14: los MediaQueryList solo tienen addListener/removeListener */
+ try{if(window.MediaQueryList&&!MediaQueryList.prototype.addEventListener){
+  MediaQueryList.prototype.addEventListener=function(t,f){if(t==='change')this.addListener(f)};
+  MediaQueryList.prototype.removeEventListener=function(t,f){if(t==='change')this.removeListener(f)};
+ }}catch(e){}
+ /* Si la aplicación se cae al arrancar, se muestra el motivo en lugar de dejar la página en blanco. */
+ var failures=[],shown=false;
+ function describe(x){try{return x&&x.message?String(x.message):String(x)}catch(e){return 'Error desconocido'}}
+ /* «Rota» = quedó sin contenido visible (React desmonta todo si falla al arrancar) o la isla sigue sin hidratar. */
+ function stuck(){var t=(document.body&&document.body.innerText||'').replace(/\s+/g,' ').trim();if(t.length<30)return true;var islands=document.querySelectorAll('astro-island');for(var i=0;i<islands.length;i++)if(islands[i].hasAttribute('ssr')&&!islands[i].querySelector('*'))return true;return false}
+ function show(){
+  if(shown||!failures.length||!stuck())return;shown=true;
+  var d=document.documentElement;d.classList.remove('modo-splash-on','modo-boot-simulator');
+  var box=document.createElement('div');box.id='modo-crash';box.setAttribute('role','alert');
+  box.style.cssText='position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#f4f6f7;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:#24323a';
+  var card=document.createElement('div');card.style.cssText='max-width:560px;width:100%;background:#fff;border:1px solid #d5e0e6;border-radius:18px;padding:26px;box-shadow:0 18px 50px #1c354530';
+  var h=document.createElement('h1');h.textContent='No se pudo abrir el panel';h.style.cssText='margin:0 0 8px;font-size:22px';
+  var p=document.createElement('p');p.textContent='Tu navegador detuvo la aplicación al arrancar. Prueba recargar; si sigue igual, borra los datos locales y vuelve a abrirla. Muestra este mensaje a quien te ayude:';p.style.margin='0 0 12px';
+  var pre=document.createElement('pre');pre.style.cssText='margin:0 0 16px;padding:12px;border-radius:10px;background:#f1f5f7;font:12.5px/1.45 ui-monospace,Consolas,monospace;white-space:pre-wrap;word-break:break-word';
+  pre.textContent=failures.slice(0,3).join('\n')+'\n\n'+(window.isSecureContext?'Contexto seguro':'Contexto NO seguro (http sin localhost)')+' · '+navigator.userAgent;
+  function button(label,primary,onClick){var b=document.createElement('button');b.type='button';b.textContent=label;b.style.cssText='min-height:46px;padding:0 18px;margin:0 10px 8px 0;border-radius:12px;font:600 15px system-ui;cursor:pointer;border:1px solid '+(primary?'#1f5f78':'#bcd0da')+';background:'+(primary?'#1f5f78':'#fff')+';color:'+(primary?'#fff':'#24404f');b.onclick=onClick;return b}
+  card.appendChild(h);card.appendChild(p);card.appendChild(pre);
+  card.appendChild(button('Recargar',true,function(){location.reload()}));
+  card.appendChild(button('Borrar datos locales y recargar',false,function(){try{localStorage.clear();sessionStorage.clear()}catch(e){}try{if(window.caches)caches.keys().then(function(k){return Promise.all(k.map(function(x){return caches.delete(x)}))}).finally(function(){location.reload()});else location.reload()}catch(e){location.reload()}}));
+  box.appendChild(card);document.body.appendChild(box);
+ }
+ function fail(text){if(failures.indexOf(text)<0)failures.push(text);setTimeout(show,1800);setTimeout(show,6000)}
+ window.addEventListener('error',function(e){fail(describe(e.error||e.message))});
+ window.addEventListener('unhandledrejection',function(e){fail(describe(e.reason))});
+})();
+</script>

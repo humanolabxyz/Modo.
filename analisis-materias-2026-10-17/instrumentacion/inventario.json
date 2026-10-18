@@ -1,0 +1,942 @@
+[
+  {
+    "id": "I01",
+    "name": "Presentación de la Asignatura (1).pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Presentación de la Asignatura (1).pdf",
+    "path": "fuentes/Presentación de la Asignatura (1).pdf",
+    "sha256": "0355238d25b7e344932d39ae3d33ed5079f0fd4931be9feae9356a0e6a9f1a58",
+    "page_count": 13,
+    "pages": [
+      {
+        "page": 1,
+        "text": "PRESENTACIÓN ASIGNATURA\nÁrea Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2026"
+      },
+      {
+        "page": 2,
+        "text": "Presentación\nAcadémico: \nLieter Javier Silva Díaz\nlieter.silva@inacapmail.cl (Correo Institucional, vía oficial)\nlietersilva@gmail.com \nEstudiantes: \n"
+      },
+      {
+        "page": 3,
+        "text": "Introducción\n• Vía oficial de comunicación: Correo institucional (Correos Inacap). \nMi correo: lieter.silva@inacapmail.cl\nDeben ocupar su correo institucional (@inacapmail.cl). \n• Los recursos de apoyo a la docencia y la entrega de tareas y evaluaciones, \nse realiza por el Ambiente de Aprendizaje, en caso de existir problemas \ntécnicos en el momento, se envía por correo. \n• Inasistencias de estudiantes trabajadores e inasistencias a evaluaciones de \nforma en general, justificar por sistema. \n• Actividades presenciales y online asincrónicas. "
+      },
+      {
+        "page": 4,
+        "text": "Introducción\n"
+      },
+      {
+        "page": 5,
+        "text": "Introducción\n• Instrumentación Industrial es una asignatura práctica, del \nárea formativa de Automatización y Robótica dictada en \nmodalidad presencial. \n• Al finalizar, el estudiante será capaz de utilizar e instalar \nequipamiento de instrumentación analógicos y digitales, en \nbase a información técnica, a la vez que diseña e interpreta \nplanos de instrumentación, considerando el Trabajo \nColaborativo y Comunicación."
+      },
+      {
+        "page": 6,
+        "text": "Introducción\n"
+      },
+      {
+        "page": 7,
+        "text": "Unidades de Aprendizaje\nUNIDADES PRESENCIALES ONLINE TOTALES\n1 Clasificación y características \nde instrumentos 16 0 16\n2\nInstrumentos de medida y \nactuación de variables \ndiscretas y análogas\n36 0 36\n3\nInterpretación de\ndiagramas de\nInstrumentación y Control\n20 0 20 "
+      },
+      {
+        "page": 8,
+        "text": "Unidades de Aprendizaje\nUnidad 1: Clasificación y \ncaracterísticas de \ninstrumentos (16 horas). \n1.1.2 Clasifica instrumentos \nindustriales, adaptando roles según \nlos desafíos que se presenten, \nconsiderando las características \ntécnicas, variable medida y su \nfuncionalidad."
+      },
+      {
+        "page": 9,
+        "text": "Unidades de Aprendizaje\nUnidad 2: Instrumentos de \nmedida y actuación de \nvariables discretas y análogas \n(36 horas). \n2.1.2 Selecciona los instrumentos \nde medición discretos y analógicos, \nen base al tipo de proceso \nindustrial."
+      },
+      {
+        "page": 10,
+        "text": "Unidades de Aprendizaje\nUnidad 3: Interpretación de \ndiagramas de  \nInstrumentación y Control \n(20 horas). \n3.1.1 Reconoce variables, \ninstrumentos y lazos de control de \nacuerdo con requerimientos técnicos \nen planos P&ID."
+      },
+      {
+        "page": 11,
+        "text": "Evaluaciones\nUnidad de \nAprendizaje Instancia Evaluativa Instrumento \nde Evaluación Fecha Porcentaje\n1 Laboratorio\no taller\nEscala de \nApreciación Por definir 15%\n100%\n2 Laboratorio\no taller\nEscala de \nApreciación Por definir 20%\n2 Laboratorio\no taller\nEscala de \nApreciación Por definir 35%\n3 Laboratorio\no taller\nEscala de \nApreciación Por definir 30%\nPróxima semana se entregarán fechas de evaluaciones"
+      },
+      {
+        "page": 12,
+        "text": "Bibliografía\nPlataforma E-Libro de Inacap \n(Biblioteca Virtual).\nBibliografía Básica\nTítulo Autor\nControladores lógicos Álvarez Pulido, Manuel\nInstrumentación electrónica Mandado Pérez, \nEnrique\nInstrumentación industrial Creus Solé, Antonio\nInstrumentación y control en instalaciones de \nprocesos, energía y servicios auxiliares \n(MF0047_2)\nRojano Ramos, \nSantiago\nLaboratorio de instrumentación y control Díaz Murillo, Rodolfo"
+      },
+      {
+        "page": 13,
+        "text": "PRESENTACIÓN ASIGNATURA\nÁrea Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2026"
+      }
+    ],
+    "attachments": []
+  },
+  {
+    "id": "I02",
+    "name": "Conf. 1 (1).pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Conf. 1 (1).pdf",
+    "path": "fuentes/Conf. 1 (1).pdf",
+    "sha256": "a68df2d507d18de369f75d312dd7c88ed4a6c86e1edb771db125a327d98a5fb9",
+    "page_count": 38,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Conferencia 1\n-Definición de Automatización. \n-Ciclo fundamental de la automatización. \n-Instrumentación Industrial. \nÁrea de Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2023"
+      },
+      {
+        "page": 2,
+        "text": "Definición de automatización.\n• Definición 1: La automatización es la rama de la tecnología\nque se ocupa de la aplicación de sistemas de control a las\ndiversas actividades humanas, fundamentalmente a la\nindustria. También se define como la acción y efecto de\nautomatizar, es decir, realizar un acto de producción,\ndistribución o gobierno, sin intervención directa de la\nconciencia y la voluntad (Mataix, 2008).\n• Definición 2: La automatización es una implementación\naltamente técnica que usualmente involucra hardware y\ndispositivos electrónicos para reemplazar a los humanos por\nmáquinas en algunas labores (diccionario en línea de Webster\n(http://www.websters-online-\ndictionary.org/definition/automation) ."
+      },
+      {
+        "page": 3,
+        "text": "Definición de automatización .\n• Definición 3: La automatización, estrictamente en el ámbito\nde la manufactura, es la tecnología involucrada con la\naplicación de sistemas mecánicos, electrónicos y basados en\ncomputadoras, para operar y controlar la producción\n(Groover, 2016).\n• Análisis:\n• Estas definiciones, de forma general, coinciden con la idea del\nuso de ‘cierta tecnología’ para controlar un proceso de\nproducción. Además, las dos primeras definiciones incluyen el\nconcepto de ‘reemplazar a los humanos por máquinas’, con\nlo que se concuerda, pero es necesario agregar que este\nreemplazo es parcial y se realiza también para el beneficio\ndel trabajador, al evitar la realización de tareas peligrosas y\nrutinarias."
+      },
+      {
+        "page": 4,
+        "text": "Definición de automatización .\n• Análisis:\n• A partir de estos elementos, se puede plantear que la\nautomatización es la tecnología que incluye elementos físicos,\npor ejemplo elementos mecánicos, electrónicos y sistemas de\ncómputo (hardware y software), y conocimientos teóricos,\ncomo la ingeniería de control, que se implementa en diversas\nactividades humanas, fundamentalmente en la industria, con\nla finalidad de sustituir al ser humano en actividades\nrepetitivas y tediosas, que exigen gran precisión y velocidad\no que pudieran resultar peligrosas o perjudiciales para la\nvida, quedando éste relegado a un rol donde se puede\naprovechar mucho más su intelecto, por ejemplo como\nsupervisor."
+      },
+      {
+        "page": 5,
+        "text": "Definición de automatización .\nAutomatización\nElementos físicos\nConocimientos teóricos\nElementos mecánicos, electrónicos \ny sistemas de cómputo (hardware y \nsoftware), \nTeoría de control \n• Sensores\n• Actuadores\n• Controladores\n• Ecuaciones diferenciales\n• Función de transferencia\n• Etc. \nInstrumentación \nIndustrial\nIngeniería de control, \nModelado y simulación \n"
+      },
+      {
+        "page": 6,
+        "text": "Beneficios de la automatización .\n• Según Sharma (2017), algunos de los beneficios del uso de la\nautomatización en los procesos industriales son:\n– Reducción de las pérdidas en la producción.\n– Optimización de recursos (ahorro de materias primas y energía).\n– Mayor seguridad, confiabilidad y seguridad funcional.\n– Contribución al cumplimiento de requerimientos regulatorios externos\ncomo los medioambientales.\n– Flexibilidad en el control, permitiendo adaptarse con facilidad a otras\nproducciones."
+      },
+      {
+        "page": 7,
+        "text": "Ciclo fundamental de la automatización\n• Sensar (medir).\n• Decidir (Controlar).\n• Actuar."
+      },
+      {
+        "page": 8,
+        "text": "Ciclo fundamental de la automatización\n• Medir (Conocer el estado del proceso).\n• Controlar (toma de decisión).\n• Actuar (Cambiar el estado del proceso).\nMedir\n Controlar\n Actuar\nSensor\n Controlador\n Actuador\n"
+      },
+      {
+        "page": 9,
+        "text": "Control automático\n• Se sustituye el controlador humano por un dispositivo de\ncontrol automático.\n"
+      },
+      {
+        "page": 10,
+        "text": "Control automático\nr(t): señal de referencia, valor deseado, punto de consigna, valor \nprescrito (set point) \ne(t): señal de error e(t) = r(t) – b(t) \nu(t): señal de control \nm(t): variable manipulada \nc(t): variable controlada \nb(t): variable medida \nn(t): señal perturbadora, perturbación, carga "
+      },
+      {
+        "page": 11,
+        "text": "Instrumentación\n"
+      },
+      {
+        "page": 12,
+        "text": "Instrumentación\nInstrumentación\nControladores\nSensores\n Actuadores\n• De temperatura.\n• De nivel.\n• De flujo o caudal\n• De presión.\n• PLC.\n• DSC\n• Regulador.\nindustrial.\n• Computador\nindustrial.\n• Válvulas. \n• Motores\n• Variadores de \nfrecuencia. \n• Cilindros \nneumáticos. \n"
+      },
+      {
+        "page": 13,
+        "text": "Instrumentación\nSensores\n"
+      },
+      {
+        "page": 14,
+        "text": "Instrumentación\nControladores\n"
+      },
+      {
+        "page": 15,
+        "text": "Instrumentación\nActuadores\n"
+      },
+      {
+        "page": 16,
+        "text": "Clasificación de los instrumentos \n• Clasificación de los instrumentos:\n– Por Función o Funcionalidad.\n– Por Variable de Proceso."
+      },
+      {
+        "page": 17,
+        "text": "Clasificación por Función o Funcionalidad\n• Instrumentos ciegos: Son aquellos que no tienen indicación\nvisible de la variable. A este grupo pertenecen los\ninstrumentos de alarma, los transmisores o receptores sin\nindicación.\n• Instrumentos indicadores: Disponen de un índice y una escala\ngraduada en los analógicos o de indicación numérica en los\ndigitales en los que puede leerse el valor de la variable\nmedida.\n• Instrumentos registradores: Registran con trazo continuo o\nde puntos la variable. Pueden ser de forma circular, de gráfico\nrectangular o alargado."
+      },
+      {
+        "page": 18,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\nAnemómetro\nTermómetro\nFlujómetro, \ncaudalímetro o \nsensor de flujo\nRegistrador de \nvibraciones\nCiego\n Indicador\n Indicador\n Registrador\n"
+      },
+      {
+        "page": 19,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\n• Elementos primarios: Están en contacto con la variable y\nutilizan o absorben energía del medio medido.\n• Transmisores: Captan la variable de proceso a través del\nelemento primario y la transmiten a distancia. La señal\ntransmitida puede ser neumática o eléctrica.\n• Transductores: Reciben una señal de entrada función de una\no más cantidades físicas y la convierten, modificada o no, en\nuna señal de salida.\n• Convertidores: Reciben una señal neumática (3-15psi) o\neléctrica (4-20ma) y la modifica a una señal estándar de\ncorriente o neumática."
+      },
+      {
+        "page": 20,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\nTransmisor para \nPt100 \nSITRANS TH100\nconexión a 2 hilos\nConvertidores \nelectroneumáticos para\nseñales de corriente \ncontinua\nRTD (Pt100)\nElemento \nprimario, \nTransductor\nTransmisor, \nTransductor\nConvertidor, \nTransductor"
+      },
+      {
+        "page": 21,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\n• Receptores: Reciben las señales procedentes de los\ntransmisores y la indican o registran.\n• Controladores: Comparan la variable controlada con el valor\ndeseado (referencia, punto de consigna) y ejercen una acción\ncorrectiva de acuerdo con la desviación (señal de error).\n• Elemento final de control: Recibe la señal del controlador\n(acción de control) y actúa sobre una variable del proceso\n(señal manipulada) modificando las condiciones de operación\ndel mismo."
+      },
+      {
+        "page": 22,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\nPanel HMI\nRegulador industrial de \ntemperatura\nElectroválvula\nReceptor\nControlador\n Actuador"
+      },
+      {
+        "page": 23,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\n• Indicadores Locales: Son aquellos instrumentos que captan la\nvariable de proceso y la muestran en una escala visible\nlocalmente.\n• Interruptores: Son aquellos instrumentos que captan la\nvariable de proceso, y para un valor establecido actúan sobre\nun interruptor. Es decir, cambian de estado de reposo a\nactivado cuando el proceso llega a un valor predeterminado.\nEs un instrumento todo-nada."
+      },
+      {
+        "page": 24,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\nPresostato o \ninterruptor de \npresiónTermómetro\nIndicador local\n Interruptor"
+      },
+      {
+        "page": 25,
+        "text": "Clasificación por Función o Funcionalidad (cont.)\n• Instrumentos ciegos.\n• Instrumentos indicadores.\n• Instrumentos registradores.\n• Elementos primarios.\n• Transmisores.\n• Transductores.\n• Convertidores.\n• Receptores.\n• Controladores.\n• Elemento final de control:\n• Indicadores Locales\n• Interruptores\nNota: Un mismo instrumento \npuede clasificar en varias \ncategorías!!!\nTarea 1: Realice una \nbúsqueda en la web de \ninstrumentos y clasifíquelos \npor su Función o \nFuncionalidad"
+      },
+      {
+        "page": 26,
+        "text": "Clasificación por variable del proceso\nLos instrumentos se clasificarán de acuerdo con la variable de\nproceso medida por el sistema del que forma parte.\n• Instrumentos de Medidas de presión\n• Instrumentos de Medidas de caudal\n• Instrumentos de Medidas de temperatura\n• Instrumentos de Medidas de nivel\n• Instrumentos de Medidas de análisis (pH, redox, etc.)"
+      },
+      {
+        "page": 27,
+        "text": "Clasificación por variable del proceso\n• Medidas de Presión\nLa medición de presión, junto a la de temperatura y nivel, son las\nvariables de proceso más utilizadas en los procesos industriales.\nLas medidas de presión comúnmente utilizadas en la industria\nson:\n• Presión relativa o manómetro.\n• Presión absoluta.\n• Presión diferencial.\nEn cuanto a las unidades utilizadas para las presiones, las más\nutilizadas son “bar”, “kg/cm²” para la mayoría de los proyectos.\nEn proyectos americanos la unidad de presión por excelencia es\nel “psi”."
+      },
+      {
+        "page": 28,
+        "text": "Clasificación por variable del proceso\n• Medidas de Caudal\nLas medidas de caudal tienen una gran importancia dentro de\nlos procesos ya que se utilizan habitualmente para control del\nproceso y para medidas de contabilidad (facturación,\nimportación/exportación de productos, etc.), por lo que la\nselección de la mejor tecnología tiene una gran implicación."
+      },
+      {
+        "page": 29,
+        "text": "Clasificación por variable del proceso\n• Medidas de Caudal\nHay muchas formas de diferenciar los diferentes tipos de\nmediciones de caudal, siendo una de ellas la siguiente:\n• Medidores deprimógenos.\n• Medidores de área variable.\n• Medidores de desplazamiento positivo.\n• Medidores másicos.\n• Medidores magnéticos.\n• Medidores ultrasónico y vortex."
+      },
+      {
+        "page": 30,
+        "text": "Clasificación por variable del proceso\n• Medidas de Temperatura\nAl igual que las medidas de presión y nivel, la medida de\ntemperatura es una de las variables de proceso más utilizadas en\nlos procesos industriales.\nEs bueno indicar que las medidas de temperatura para su\ntransmisión remota se producen como consecuencia de una\nserie de fenómenos que a continuación enumeramos:\n• Efecto “Seebeck” (Generación de una f.e.m. por el efecto de\nvariación de la temperatura en un bimetal o termopar).\n• Efecto “Peltier” (efecto contrario al Seebeck, al generar una\ncorriente en un bimetal, se desprende calor).\n• Efecto “Thomson” (diferencia de densidad de electrones en\ndiferentes puntos de un hilo a distinta temperatura)."
+      },
+      {
+        "page": 31,
+        "text": "Clasificación por variable del proceso\n• Medidas de Temperatura\nAsí como se utilizan diversos fenómenos, tales como:\n• Variaciones en volumen o estado de cuerpos (termómetros de\nmercurio, gases, etc.).\n• Variación de la resistencia de un conductor\n(termorresistencias).\n• Variación de la resistencia de un semiconductor (termistores).\n• F.e.m. creada en la unión de dos bimetales (termopares).\n• Intensidad de radiación (pirómetros ópticos).\n• Etc."
+      },
+      {
+        "page": 32,
+        "text": "Clasificación por variable del proceso\n• Medidas de Nivel\nLa medición de nivel es muy importante en las industrias y en\nalgunas de ellas, como la del papel, la minera, la del petróleo, la\nquímica, la petroquímica y la alimenticia, es indispensable.\nEn la selección correcta de un instrumento para la medición de\nnivel, intervienen en mayor o menor grado los siguientes\nfactores: el intervalo de medición (rango), la naturaleza del\nfluido que va a ser medido y las condiciones de operación.\nDeben distinguirse dos situaciones totalmente diferenciadas en\nla medición de nivel:\n• medición de nivel en líquidos\n• medición de nivel en sólidos"
+      },
+      {
+        "page": 33,
+        "text": "Clasificación por variable del proceso\n• Medidas de Nivel\nClasificación de los instrumentos medidores de nivel:\n• Mediciones directas.\n• Mediciones indirectas (por inferencia)."
+      },
+      {
+        "page": 34,
+        "text": "Clasificación por variable del proceso\n• Medidas de Nivel\nClasificación de los instrumentos medidores de nivel:\nMediciones directas:\n• De sonda.\n• De cinta y plomada.\n• Nivel de cristal.\n• Instrumentos de flotador.\n"
+      },
+      {
+        "page": 35,
+        "text": "Clasificación por variable del proceso\n• Medidas de Nivel\nClasificación de los instrumentos medidores de nivel:\nMediciones indirectas:\n• Mediante la presión hidrostática.\n• Por el empuje en un flotador.\n• Por las características físicas del líquido."
+      },
+      {
+        "page": 36,
+        "text": "Clasificación por variable del proceso\n• Medidas de Nivel\nClasificación de los instrumentos medidores de nivel:\nMediciones indirectas:\nMediante la presión hidrostática:\n• Manométrico.\n• De membrana.\n• De tipo de burbujeo.\n• De diafragma.\n• De presión diferencial.\n"
+      },
+      {
+        "page": 37,
+        "text": "Clasificación por variable del proceso\n• Medidas de Nivel\nClasificación de los instrumentos medidores de nivel:\nMediciones indirectas:\nPor el empuje en un flotador:\n• De desplazamiento a barra de torsión.\nPor las características físicas del líquido:\n• Resistivo.\n• Conductivo.\n• Capacitivo.\n• Ultrasónico.\n• De radiación.\n• De láser.\n"
+      },
+      {
+        "page": 38,
+        "text": "Conferencia 1\n-Definición de Automatización. \n-Ciclo fundamental de la automatización. \n-Instrumentación Industrial. \nÁrea de Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2023"
+      }
+    ],
+    "attachments": []
+  },
+  {
+    "id": "I03",
+    "name": "Conf. 2 (2).pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Conf. 2 (2).pdf",
+    "path": "fuentes/Conf. 2 (2).pdf",
+    "sha256": "725723fa82efd628e478a41aa6e599fcb2367420187eec3ff7460869a941f635",
+    "page_count": 30,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Conferencia 2\n- Esquema interno de instrumentos de medida.\n- Generalidades\nÁrea de Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2026"
+      },
+      {
+        "page": 2,
+        "text": "Sumario \n• Esquema interno de instrumentos de medida.\n• Características metrológicas. "
+      },
+      {
+        "page": 3,
+        "text": "Esquema interno de instrumentos de medida.\n• Esquema general: \nMedio\n(dónde se mide)\nSensor primario \n(elemento \nprimario)\nConversor de variable \n(Transductor)\nManipulador de \nvariable\nTransmisor de \ninformación\n(Transmisor)\nControlador\nPresentador\nReceptor\nObservador\nNo todos los \nelementos \nestán \nsiempre \npresentes en \nun esquema"
+      },
+      {
+        "page": 4,
+        "text": "Esquema interno de instrumentos de medida.\n• Ejemplo: Control de temperatura en un ICTC \nMedio\n(dónde \nse mide)\nManipulador \nde variable\nTransmisor de \ninformación\n(Transmisor)\nControlador\nSensor \nprimario \n(elemento \nprimario)\nConversor de \nvariable \n(Transductor)\nLíquido en \ntubería de salida \n(Líquido \ncalentado)\nRTD (Pt100)\nTransmisor \npara Pt100 \nRegulador \nindustrial de \ntemperatura\n"
+      },
+      {
+        "page": 5,
+        "text": "Características metrológicas\n• Los instrumentos que se usan en la industria para medir \nvariables (como temperatura, presión, nivel, etc.) deben ser \nevaluados y seleccionados no solo por el tipo de variable que \nmiden, sino también por sus características metrológicas, \ntanto estáticas como dinámicas.\n• Estas características permiten responder preguntas como:\n– ¿Qué tan confiable es la medición?\n– ¿Cuál es la variación máxima aceptable del instrumento?\n– ¿Puede el instrumento seguir cambios rápidos en la variable?"
+      },
+      {
+        "page": 6,
+        "text": "Características estáticas y dinámicas\n• Estáticas: Se refieren al comportamiento del instrumento \ncuando la variable medida no cambia con el tiempo.\n– Ejemplos: precisión, exactitud, error, sensibilidad.\n• Dinámicas: Se relacionan con la capacidad del instrumento \npara responder a cambios en el tiempo.\n– Ejemplo: tiempo de respuesta. "
+      },
+      {
+        "page": 7,
+        "text": "Campo de medida\n• El campo de medida o rango (range) es el espectro o \nconjunto de valores de la variable medida que están \ncomprendidos dentro de los límites superior e inferior de la \ncapacidad de medida, de recepción o de transmisión del \ninstrumento. \n• Viene expresado estableciendo los dos valores extremos.\n• Ejemplo: un manómetro de 0 a 10 bar, un instrumento de \ntemperatura de 100 a 300 °C.\n0                                     10 bar\n 100                                300 °C"
+      },
+      {
+        "page": 8,
+        "text": "Alcance\n• El alcance (span) es la diferencia algebraica entre los valores \nsuperior e inferior del campo de medida del instrumento. \n• En los ejemplos anteriores:\n• Ejemplo 1: 10 – 0 bar = 10 bar. \n• Ejemplo 2: 300 -100 °C = 200 °C. \n0                                     10 bar\n 100                                300 °C"
+      },
+      {
+        "page": 9,
+        "text": "Histéresis\n• Diferencia en la lectura del instrumento según si el valor de \nla variable aumenta o disminuye. \n"
+      },
+      {
+        "page": 10,
+        "text": "Exactitud\n• La exactitud (accuracy) es la cualidad de un instrumento de \nmedida por la que tiende a dar lecturas próximas al valor \nverdadero de la magnitud medida. \n• La exactitud (accuracy) define los límites de los errores \ncometidos cuando el instrumento se emplea en condiciones \nnormales de servicio durante un período de tiempo \ndeterminado (normalmente 1 año). "
+      },
+      {
+        "page": 11,
+        "text": "Precisión\n• La precisión es la cualidad de un instrumento por la que \ntiende a dar lecturas muy próximas unas a otras, es decir, es \nel grado de dispersión de las mismas. \n• Los instrumentos de medida son diseñados por los fabricantes \npara que sean precisos, y como periódicamente se \ndescalibran, deben reajustarse para que sean exactos. \n• Se debe señalar que el término precisión es sinónimo de \nrepetibilidad. "
+      },
+      {
+        "page": 12,
+        "text": "• Imagina que estás lanzando flechas a una diana (blanco de \ntiro con arco).\n¿Diferencias entre Exactitud y Precisión?"
+      },
+      {
+        "page": 13,
+        "text": "¿Diferencias entre Exactitud y Precisión?\n• Imagina que estás lanzando flechas a una diana (blanco de \ntiro con arco).\n• Exactitud (Accuracy): Qué tan cerca están tus flechas del \ncentro del blanco (el valor real o verdadero).\n– Alta exactitud = las flechas caen cerca del centro.\n– Baja exactitud = las flechas están lejos del centro.\n"
+      },
+      {
+        "page": 14,
+        "text": "• Imagina que estás lanzando flechas a una diana (blanco de \ntiro con arco).\n• Precisión: Qué tan juntas entre sí caen tus flechas, aunque no \nestén cerca del centro.\n– Alta precisión = todas caen muy cerca unas de otras.\n– Baja precisión = las flechas están dispersas.\n¿Diferencias entre Exactitud y Precisión?\n"
+      },
+      {
+        "page": 15,
+        "text": "Error\n• El error de la medida es la desviación que presentan las \nmedidas prácticas de una variable de proceso con relación a \nlas medidas teóricas o ideales, como resultado de las \nimperfecciones de los aparatos y de las variables parásitas \nque afectan al proceso. Es decir: \nError = Valor leído en el instrumento − Valor ideal de la variable \nmedida\n• El error absoluto es:\nError absoluto = Valor leído − Valor verdadero\n• El error relativo representa la calidad de la medida y es:\nError relativo = Error absoluto / Valor verdadero"
+      },
+      {
+        "page": 16,
+        "text": "Error\n• Ejemplo:\n• Calcule el error absoluto y relativo de las siguientes medidas \ntomadas en un experimento (se mide la longitud de un \nelemento): \n•  \nPrimero calcular la media aritmética o promedio para considerar \neste valor como el Valor verdadero\n𝑉𝑎𝑙𝑜𝑟 𝑣𝑒𝑟𝑑𝑎𝑑𝑒𝑟𝑜 = 4,4 + 4,6 + 4,5 + 4,8\n4 = 4,575\nNúmero de medición Valor medido (m)\n1 4,4\n2 4,6\n3 4,5\n4 4,8"
+      },
+      {
+        "page": 17,
+        "text": "Error\n• Ejemplo:\n• Medición 1: \nError absoluto = 4,4 − 4,575 = −0,175 \nError relativo = −0,175/4,575= −0,0383 \n• Medición 2: \nError absoluto = 4,6 − 4,575 = 0,025 \nError relativo = 0,025 /4,575= 0,0055 \n• Medición 3: \nError absoluto = 4,5 − 4,575 = −0,075 \nError relativo = −0,075/4,575= −0,0164 \n• Medición 4: \nError absoluto = 4,8 − 4,575 = 0,225 \nError relativo = 0,225 /4,575= 0,0492 \nNúmero de \nmedición\nValor medido \n(m)\n1 4,4\n2 4,6\n3 4,5\n4 4,8"
+      },
+      {
+        "page": 18,
+        "text": "Ejercicio 1\n• Un sensor de temperatura mide la temperatura de un baño \ntérmico que ha sido ajustado y verificado con un instrumento \npatrón certificado (valor verdadero: 100,0 °C). El sensor bajo \nprueba entrega 10 mediciones consecutivas: \nNúmero de \nmedición\nValor medido (°C) Número de \nmedición\nValor medido (°C)\n1 98,7 6 98,8\n2 99,0 7 98,9\n3 98,8 8 98,8\n4 98,9 9 98,7\n5 98,7 10 98,9"
+      },
+      {
+        "page": 19,
+        "text": "• A) Complete la siguiente tabla: \nNúmero de \nmedición\nValor medido (°C) Error absoluto Error relativo\n1 98,7\n2 99,0\n3 98,8\n4 98,9\n5 98,7\n6 98,8\n7 98,9\n8 98,8\n9 98,7\n10 98,9\nEjercicio 1"
+      },
+      {
+        "page": 20,
+        "text": "• B) Calcule el promedio de las mediciones. \n𝑃𝑟𝑜𝑚𝑒𝑑𝑖𝑜 = σ 𝑚𝑒𝑑𝑖𝑐𝑖𝑜𝑛𝑒𝑠\n𝑡𝑜𝑡𝑎𝑙\nEjercicio 1"
+      },
+      {
+        "page": 21,
+        "text": "• C) Calcule el error medio. \n𝐸𝑟𝑟𝑜𝑟 𝑚𝑒𝑑𝑖𝑜 =  𝑃𝑟𝑜𝑚𝑒𝑑𝑖𝑜 –  𝑉𝑎𝑙𝑜𝑟 𝑣𝑒𝑟𝑑𝑎𝑑𝑒𝑟𝑜\nEjercicio 1"
+      },
+      {
+        "page": 22,
+        "text": "• D) Calcule la Desviación estándar muestral (es una medida de \nprecisión). \n• 𝑥𝑖 = 𝑣𝑎𝑙𝑜𝑟 𝑑𝑒 𝑐𝑎𝑑𝑎 𝑚𝑒𝑑𝑖𝑐𝑖ó𝑛\n• ҧ𝑥 = 𝑣𝑎𝑙𝑜𝑟 𝑣𝑒𝑟𝑑𝑎𝑑𝑒𝑟𝑜\n• 𝑛 = 𝑐𝑎𝑛𝑡𝑖𝑑𝑎𝑑 𝑑𝑒 𝑚𝑒𝑑𝑖𝑐𝑖𝑜𝑛𝑒𝑠\n𝑠 =\nσ 𝑥𝑖 − ҧ𝑥 2\n𝑛 − 1\nEjercicio 1"
+      },
+      {
+        "page": 23,
+        "text": "• Mediciones (°C): 98,7; 99,0; 98,8\n• Valor verdadero: 98,833\n• 𝑠 =\nσ 𝑥𝑖− ҧ𝑥 2\n𝑛−1 =\n98,7−98,833 2+ 99,0−98,833 2+ 98,8−98,833 2\n3−1\n• 𝑠 =\n−0,133 2+ 0,167 2+ −0,033 2\n2\n• 𝑠 =\n0,017689+0,027889+0,001089\n2\n• 𝑠 =\n0,046667\n2 =\n0,046667\n2 = 0,0233335≈ 0,15\nEjemplo de cálculo de Desviación estándar muestral "
+      },
+      {
+        "page": 24,
+        "text": "• D) Calcule la Desviación estándar muestral (es una medida de \nprecisión). \n• 𝑥𝑖 = 𝑣𝑎𝑙𝑜𝑟 𝑑𝑒 𝑐𝑎𝑑𝑎 𝑚𝑒𝑑𝑖𝑐𝑖ó𝑛\n• ҧ𝑥 = 𝑣𝑎𝑙𝑜𝑟 𝑣𝑒𝑟𝑑𝑎𝑑𝑒𝑟𝑜\n• 𝑛 = 𝑐𝑎𝑛𝑡𝑖𝑑𝑎𝑑 𝑑𝑒 𝑚𝑒𝑑𝑖𝑐𝑖𝑜𝑛𝑒𝑠\n𝑠 =\nσ 𝑥𝑖 − ҧ𝑥 2\n𝑛 − 1\nEjercicio 1"
+      },
+      {
+        "page": 25,
+        "text": "• E) Con base en los resultados anteriores responda las \nsiguientes preguntas:\n– ¿El sensor es preciso? (Justifica con la desviación estándar)\n– ¿El sensor es exacto? (Justifica con el error medio)\n– ¿Hay buena repetibilidad?\n– ¿Sería confiable este sensor para una aplicación crítica?\nEjercicio 1"
+      },
+      {
+        "page": 26,
+        "text": "2\nComparación\nTérmino ¿Qué significa? ¿Por qué importa en \ninstrumentación\nAlcance (SPAN) Diferencia entre el valor \nmáximo y mínimo que el \ninstrumento puede medir.\nDefine el rango útil de \noperación del sensor.\nCampo de medida o rango Los valores mínimo y \nmáximo que el sensor \npuede medir con \nfiabilidad.\nAyuda a seleccionar el \nsensor adecuado para la \nvariable del proceso.\nHistéresis Diferencia en la lectura \ndel instrumento según si \nel valor de la variable \naumenta o disminuye.\nAfecta la precisión \nrepetitiva del sensor \ncuando hay cambios \nfrecuentes de dirección.\nSensibilidad Relación entre el cambio \nde salida del sensor y el \ncambio en la variable \nmedida.\nDetermina cuán sensible \no \"reactivo\" es el \ninstrumento ante \npequeños cambios. "
+      },
+      {
+        "page": 27,
+        "text": "2\nComparación\nTérmino ¿Qué significa? ¿Por qué importa en \ninstrumentación\nError Diferencia entre el valor \nmedido y el valor real.\nImportante para saber la \nfiabilidad de la lectura o \nmedición. \nExactitud Grado de cercanía entre el \nvalor medido y el valor \nverdadero.\nInfluye en qué tan \ncorrecto es un \ninstrumento.\nPrecisión Capacidad del \ninstrumento para repetir \nla misma medición bajo \nlas mismas condiciones.\nAfecta la consistencia en \nlos resultados."
+      },
+      {
+        "page": 28,
+        "text": "Ejercicio 2\n• Un sensor de nivel mide esta variable en reactor químico que \nha sido ajustado y verificado con un instrumento patrón \ncertificado (valor verdadero: 1,5 m). El sensor bajo prueba \nentrega 10 mediciones consecutivas: \nNúmero de \nmedición\nValor medido (m) Número de \nmedición\nValor medido (m)\n1 1,48 6 1,49\n2 1,51 7 1,52\n3 1,49 8 1,51\n4 1,48 9 1,48\n5 1,52 10 1,49"
+      },
+      {
+        "page": 29,
+        "text": "• A) Calcule el error absoluto y relativo. \n• B) Calcule el promedio de las mediciones. \n• C) Calcule el error medio. \n• D) Calcule la Desviación estándar muestral\n• E) Con base en los resultados anteriores responda las \nsiguientes preguntas:\n– ¿El sensor es preciso? (Justifica con la desviación estándar)\n– ¿El sensor es exacto? (Justifica con el error medio)\n– ¿Hay buena repetibilidad?\n– ¿Sería confiable este sensor para una aplicación crítica?\nEjercicio 2"
+      },
+      {
+        "page": 30,
+        "text": "Conferencia 2\n- Esquema interno de instrumentos de medida.\n- Generalidades\nÁrea de Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2026"
+      }
+    ],
+    "attachments": [
+      "equation-1.xml",
+      "equation-2.xml",
+      "equation-3.xml",
+      "equation-4.xml",
+      "equation-5.xml",
+      "equation-6.xml",
+      "equation-7.xml",
+      "equation-8.xml",
+      "equation-9.xml",
+      "equation-10.xml",
+      "equation-11.xml",
+      "equation-12.xml",
+      "equation-13.xml",
+      "equation-14.xml",
+      "equation-15.xml",
+      "equation-16.xml",
+      "equation-17.xml",
+      "equation-18.xml",
+      "equation-19.xml",
+      "equation-20.xml",
+      "equation-21.xml",
+      "equation-22.xml",
+      "equation-23.xml",
+      "equation-24.xml",
+      "equation-25.xml",
+      "equation-26.xml",
+      "equation-27.xml"
+    ]
+  },
+  {
+    "id": "I04",
+    "name": "Conf. 3 Medidas de caudal.pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Conf. 3 Medidas de caudal.pdf",
+    "path": "fuentes/Conf. 3 Medidas de caudal.pdf",
+    "sha256": "3a8e95e2db99a60b9a5d3fcdc9bdecfb55a3881be3ec78ad136bfa24189e71da",
+    "page_count": 29,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Conferencia 3\nMedidas de caudal\nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      },
+      {
+        "page": 2,
+        "text": "Medidas de caudal\nLa medida de caudal se utiliza en la industria para dos\npropósitos fundamentales:\n• Contabilidad.\n• Control de procesos.\n"
+      },
+      {
+        "page": 3,
+        "text": "Medidas de caudal\n• Desde el primer punto de vista, los medidores de caudal se\nutilizan para contabilizar la transferencia de materia entre\ndiversas partes del proceso, diferentes compañías, o bien\nentre suministrador y usuario. Un ejemplo cotidiano de esto\núltimo se tiene al repostar gasolina en el automóvil.\n• En cuanto al control de procesos, la medición de caudal es\nimprescindible para poder realizar control automático, así\ncomo para optimizar rendimientos en las unidades de\nproducción aplicando balances de materia.\n"
+      },
+      {
+        "page": 4,
+        "text": "Medidas de caudal\nHay muchas formas de diferenciar los diferentes tipos de\nmediciones de caudal (flujo), siendo una de ellas la siguiente:\n• Medidores deprimógenos.\n• Medidores de área variable.\n• Medidores de desplazamiento positivo.\n• Medidores másicos.\n• Medidores magnéticos.\n• Medidores ultrasónico y vortex.\n"
+      },
+      {
+        "page": 5,
+        "text": "Medidas de caudal\nUso en la industria:\nFuente: Medidores de flujo másico por efecto Coriolis. Ingeniería Química. Agosto 1992\n"
+      },
+      {
+        "page": 6,
+        "text": "Medidores deprimógenos\nEl método más ampliamente utilizado para la medida de caudal\nen las plantas de proceso es el utilizado por presión diferencial.\nPara esto se utilizan elementos primarios del tipo:\n• Tubos Venturi.\n• Toberas.\n• Tubos Pitot.\n• Placas de orificio.\n• Tubos Annubar. \nDentro de los anteriores, el sistema más barato y utilizado son\nlas placas de orificio.\n"
+      },
+      {
+        "page": 7,
+        "text": "Medidores deprimógenos\n• Los elementos deprimógenos están basados en crear una\nrestricción en la tubería al paso de un fluido, lo que hace\naumentar la velocidad disminuyendo al mismo tiempo la\npresión, permaneciendo la energía total (cinética, potencial e\ninterna) constante.\n• El caudal es función de la presión diferencial. De forma\nsimplificada, conociendo la pérdida de presión que se produce\npor la restricción, se puede conocer el caudal.\n• Estos elementos requieren de un transmisor de presión\ndiferencial para medir la presión antes y después del\nelemento, y así poder calcular el caudal.\n"
+      },
+      {
+        "page": 8,
+        "text": "Medidores deprimógenos\nLas principales ventajas de estos elementos se pueden\nenumerar en:\n• Sencillez de construcción, no hay partes móviles.\n• Tecnología sencilla.\n• Baratos para grandes dimensiones de tuberías.\n• Válidos para casi todas las aplicaciones.\n"
+      },
+      {
+        "page": 9,
+        "text": "Medidores deprimógenos\nLas principales desventajas de estos elementos se pueden\nenumerar en:\n• No válidos para condiciones de proceso (presión, temperatura,\ndensidad, etc.) cambiantes.\n• Producen caídas de presión no recuperables.\n• Señal de salida no es lineal (hay que extraer su raíz cuadrada).\n• Se necesita un flujo laminar, es decir, tramos rectos de\ntuberías antes y después del elemento.\n• Menos precisión que otras tecnologías\n"
+      },
+      {
+        "page": 10,
+        "text": "Placas de orificio.\n• Dentro de los elementos primarios más usados para la\nmedición de caudal a partir de la presión diferencial, se\nencuentran las placas de orificio.\n• A su vez, dentro del grupo de placas de orificio, la más\nutilizada es la concéntrica con aristas vivas, como la que\naparece en la siguiente figura, montada entre las bridas\ncorrespondientes.\n"
+      },
+      {
+        "page": 11,
+        "text": "Placas de orificio.\n"
+      },
+      {
+        "page": 12,
+        "text": "Placas de orificio.\n• Ventajas y limitaciones:\nVentajas Limitaciones\nNo tienen componentes móviles. Relación cuadrática entre presión \ndiferencial y caudal.\nSe dispone de un amplio margen de \nrangos y tamaños.\nRelativamente baja exactitud.\nAptos para la mayoría de gases y \nlíquidos.\nPérdida de presión no recuperable.\nAmpliamente establecido y aceptado. La viscosidad afecta al rango de caudal.\nNo necesita calibración del elemento. La instalación puede llegar a ser costosa.\nSimplicidad.\n"
+      },
+      {
+        "page": 13,
+        "text": "Medidores de área variable.\n• Los medidores de caudal por área variable, conocidos como\nrotámetros, utilizan el mismo principio de medida que los\nmedidores por presión diferencial, es decir, la relación entre la\nenergía cinética y la energía debida a la presión. En el sistema\nde presión diferencial (dP) el área correspondiente a la\nrestricción es constante y la presión diferencial cambia en\nfunción del caudal (Q).\n• Medidor por presión diferencial Q =f(dP) con Área constante\n• En el rotámetro el área de la restricción cambia al mismo\ntiempo que el caudal, permaneciendo constante la presión\ndiferencial.\n"
+      },
+      {
+        "page": 14,
+        "text": "Medidores de área variable.\n• La siguiente figura muestra, de forma simplificada, un\nrotámetro, el cual consta básicamente de un tubo vertical\ntroncocónico, en muchas ocasiones de cristal, en cuyo interior\nse encuentra un flotador. El fluido entra por la parte inferior\ndel tubo, arrastrando el flotador en dirección ascendente. Al\nascender el flotador va dejando libre un área en forma anular\nhasta que la fuerza producida por la presión diferencial en las\ncaras superior e inferior del flotador se equilibra.\n"
+      },
+      {
+        "page": 15,
+        "text": "Medidores de área variable.\nVentajas Limitaciones\nBajo coste. No apto para altas presiones.\nSimplicidad. Debe ser montado verticalmente.\nApto para caudales muy pequeños. Capacidad limitada para caudales muy \naltos.\nCaída de presión constante y muy\npequeña.\nLas versiones estándar no disponen de\nsistema de transmisión.\nLectura lineal del caudal. Se debe utilizar solamente en fluidos\nlimpios.\nLa suciedad sobre el cristal dificulta la\nlectura.\n"
+      },
+      {
+        "page": 16,
+        "text": "Medidores de desplazamiento \npositivo.\n• Los medidores por desplazamiento positivo operan atrapando\nun volumen unitario y conocido de líquido (Vu), desplazándolo\ndesde la entrada hasta la salida, y contando (N) el número de\nvolúmenes desplazados en un tiempo determinado (t).\n• Se conocen con el nombre genérico de contadores porque\ncuentan el volumen de líquido, independientemente del\ntiempo transcurrido. Si se desea obtener la medida en forma\nde caudal (Q), hay que incluir la unidad de tiempo, teniendo\nentonces que:\n• 𝑸 = 𝑽𝒖∗𝑵\n𝒕\n"
+      },
+      {
+        "page": 17,
+        "text": "Medidores de desplazamiento \npositivo.\n• La secuencia de medida se realiza siguiendo el orden de izquierda a\nderecha de la forma que se describe a continuación:\n• En el primer dibujo se está llenando la cámara de medida «M»\nsituada entre la rueda oval derecha y la carcasa del medidor.\n• En el segundo dibujo ha quedado atrapado un volumen conocido de\nlíquido entre la misma rueda oval y la carcasa.\n• En el tercer dibujo se desplaza el líquido desde la entrada hacia la\nsalida del contador.\n• Por último, en el cuarto dibujo se descarga el líquido en la tubería\nsituada a la salida del contador.\n"
+      },
+      {
+        "page": 18,
+        "text": "Medidores de desplazamiento \npositivo.\nVentajas Limitaciones\nBuena exactitud y amplio rango de \nmedida.\nCaro, especialmente en grandes \ntamaños.\nMuy buena repetibilidad. Alta pérdida de carga.\nApto para fluidos con muy alta \nviscosidad, admitiendo grandes cambios \nen la misma.\nNo apto para fluidos abrasivos o sucios. \nEn este último caso necesitan un filtro \nprevio.\nLectura local directa en unidades de \nvolumen.\nLas partes móviles tienen muy poca \ntolerancia entre ellas para evitar fugas \nde líquido. Por tanto están expuestas a \nbloquearse.\nLa lectura se puede transmitir por\nmedio de un sistema de pulsos.\nLimitan el caudal de paso a través suyo.\nNo necesita alimentación eléctrica.\nAmplio rango de caudal.\nPueden dañarse por sobrevelocidad.\n"
+      },
+      {
+        "page": 19,
+        "text": "Medidores másicos.\nLos medidores másicos están diseñados para medir\ndirectamente el caudal de fluido en unidades de masa, tal como\nkg/h, en lugar de medir el caudal en volumen, como m3/h.\nFundamentalmente son de dos tipos:\n• Medidores de volumen con corrección automática de\ndensidad incorporada.\n• Medidores de masa directamente.\n"
+      },
+      {
+        "page": 20,
+        "text": "Medidores másicos.\nAlgunos medidores han sido adaptados con sistemas que\nconvierten el volumen en masa en función de presión y\ntemperatura, de forma que dan como resultado final el caudal\nen unidades de masa. Ejemplos de este tipo lo forman los\nconjuntos de placa de orificio con medida de presión y\ntemperatura incorporadas en el propio conjunto.\n"
+      },
+      {
+        "page": 21,
+        "text": "Medidores másicos.\nMedidores de volumen con corrección automática de densidad\nincorporada.\n• 𝝆 = 𝒎\n𝑽\n• Si se conoce la densidad de la sustancia, a partir del volumen\nse puede calcular la masa.\n• Este es el principio de los medidores de volumen con\ncorrección automática de densidad incorporada.\n"
+      },
+      {
+        "page": 22,
+        "text": "Medidores másicos.\nMedidores de masa directamente.\n• Tipo momento angular.\n• Basados en el efecto Coriolis.\n"
+      },
+      {
+        "page": 23,
+        "text": "Medidores másicos.\nVentajas Limitaciones\nMuy buena exactitud. El conjunto es relativamente caro.\nLectura directa del caudal en unidades\nde masa sin necesidad de \ncompensación.\nPérdida de carga media.\nCostes de mantenimiento reducidos. Generalmente no es utilizable para gases\no vapor.\nSalida lineal. Costes de instalación altos.\nNo utilizable en tuberías de gran \ntamaño.\n"
+      },
+      {
+        "page": 24,
+        "text": "Medidores magnéticos.\n• Se basan en el principio de Faraday según el cual la fuerza\nelectromotriz (fem), inducida en un elemento conductor que\nse mueve a lo largo de un campo magnético, es proporcional a\nla velocidad de ese conductor.\n• En este tipo de medidores, el líquido que pasa a través del\nmismo hace la función de conductor, por lo que la fem\ninducida por el fluido dentro del campo magnético, generado\nen la carcasa del medidor por medio de bobinas, es\nproporcional a la velocidad y, como consecuencia, al caudal.\n"
+      },
+      {
+        "page": 25,
+        "text": "Medidores magnéticos.\n• Dada la particularidad de falta de obstrucción en la línea, este\ntipo de medidor es muy útil para la medida de líquidos muy\nviscosos o abrasivos que sean eléctricamente conductores,\nno siendo utilizable para productos en fase gas.\n• Además de para la medida de productos químicos, estos\nmedidores se utilizan en la industria de alimentación para\nmedir pastas, etc.\n"
+      },
+      {
+        "page": 26,
+        "text": "Transmisores de caudal\n• Recuerden: Para realizar control en lazo cerrado se necesita\nun sensor-transmisor, por lo que estos dispositivos son muy\ncomunes en la industria.\nAlgoritmo \nde control Válvula Tubería\nControlador\nElemento de \nacción final Proceso\nReferencia\nSensor\nCaudal\n"
+      },
+      {
+        "page": 27,
+        "text": "Transmisores de caudal\nRepresentación según norma ISA:\n• La primera letra representa la variable (P: Presión).\n• Las siguientes letras representan la función (T: Transmisor, I:\nIndicador).\nF T F I\nTransmisor de flujo o caudal Indicador de flujo\n"
+      },
+      {
+        "page": 28,
+        "text": "¿Qué temas fueron tratados en la clase de \nhoy?\nMedidas de caudal\n• Medidores deprimógenos (por presión diferencial).\n• Tubos Venturi.\n• Toberas.\n• Tubos Pitot.\n• Placas de orificio.\n• Tubos Annubar. \n• Medidores de área variable.\n• Medidores de desplazamiento positivo.\n• Medidores másicos.\n• Medidores magnéticos.\nMás usado\n"
+      },
+      {
+        "page": 29,
+        "text": "Conferencia 3\nMedidas de caudal\nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      }
+    ],
+    "attachments": []
+  },
+  {
+    "id": "I05",
+    "name": "Conf. 4 Medidas de Presión.pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Conf. 4 Medidas de Presión.pdf",
+    "path": "fuentes/Conf. 4 Medidas de Presión.pdf",
+    "sha256": "4bccb3711ac28b722e5ec7e24a1a0d5858029472c0f6b048b54ac96056726d1b",
+    "page_count": 23,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Conferencia 4\nMedidas de presión \nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      },
+      {
+        "page": 2,
+        "text": "Bibliografía\n• Bibliografía principal\n• Control Avanzado de Procesos (Teoría y Práctica) - J Acedo \nSánchez (Capítulos del 9 al 12)\n• Bibliografía opcional\n• Ingeniería de control moderna - Katsuhiko Ogata\n• Instrumentación industrial - Antonio Creus Solé\n• Principles and Practice of Automatic Process Control - Carlos \nA. Smith y Armando B. Corripio\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 3,
+        "text": "Medidas de presión\n¿Qué es presión?\n• La presión se define como la fuerza normal (FN) que,\ndistribuida uniformemente, actúa sobre una superficie dada\n(S).\n• 𝑷 = 𝑭𝑵\n𝑺\n• La fuerza puede estar ocasionada por líquidos, gases o\nvapores, o por cuerpos sólidos, y su unidad de medida, en el\nSistema Internacional (SI), es el Newton, el cual se define\ncomo:\n• 1 𝑁 = 1 𝐾𝑔 𝑚\n𝑠2\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 4,
+        "text": "Medidas de presión\n• Conocida esta fuerza y utilizando como unidad de superficie el\nmetro cuadrado se obtiene como unidad de presión el Pascal,\nnombre debido al físico francés del siglo XVII, Blas Pascal.\n• 1 𝑃𝑎 = 1 𝑁\n𝑚2\n• Un Pascal (Pa) corresponde a la presión ejercida\nuniformemente sobre una superficie, en la cual la fuerza de 1\nNewton actúa verticalmente sobre 1 m2.\n• En la práctica se utiliza el Bar como unidad de presión,\nequivalente a 100 KPa.\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 5,
+        "text": "Medidas de presión\nOtras equivalencias entre unidades de presión, utilizadas\ncomúnmente son:\n• 1 Kg/cm2 = 0,981 Bar.\n• 1 Atm = 1,013 Bar = 760 mmHg\n• 1 Kg/m2 = 1mmCA (mm Columna Agua)\n• 1 mmCA = 0,0981 mBar = 9,806 Pa\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 6,
+        "text": "Medidas de presión\nLas medidas de presión comúnmente utilizadas en la industria\nson:\n• Presión absoluta.\n• Presión diferencial.\n• Presión relativa o manométrica.\nLos diferentes tipos de presión se diferencian entre sí solamente\npor su punto de referencia a presión cero.\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 7,
+        "text": "Presión absoluta\n• Los diferentes tipos de presión se diferencian entre sí\nsolamente por su punto de referencia a presión cero. La falta\nde presión (vacío total) en un espacio cualquiera del universo\nse conoce como cero absoluto.\n• Si una presión está referida al cero absoluto se conoce como\npresión absoluta. Para distinguirla de otros tipos de presión se\ncaracteriza por el sufijo o subíndice abs. Otra forma de\nconocer la presión absoluta es sumando la presión\natmosférica a la presión relativa que indica cualquier\nmanómetro.\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 8,
+        "text": "Presión diferencial\n• La diferencia entre dos presiones P1 y P2 se conoce como\npresión diferencial.\n• 𝒅𝒑 = 𝑷𝟏 − 𝑷𝟐\n• Cuando se mide la diferencia de presión entre dos puntos,\nhabitualmente con el mismo cero de referencia, la medida se\ndenomina presión diferencial P1.2 o también dP1.2.\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 9,
+        "text": "Presión relativa\n• En la práctica se suele utilizar como medida de presión la\ndiferencia entre la presión absoluta y la presión atmosférica.\nEsta diferencia se conoce como presión relativa. Para\ndistinguirla de otros tipos de presión se caracteriza por el\nsufijo o subíndice rel.\n• 𝑷𝒓𝒆𝒍 = 𝑷𝒂𝒃𝒔 − 𝑷𝒂𝒕𝒎\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 10,
+        "text": "Presión atmosférica\n• La presión necesaria para la vida en la Tierra se conoce como\npresión atmosférica del aire.\n• Se ocasiona por el peso de la atmósfera que rodea la Tierra\nhasta una altitud aproximada de 500 Km. Desde la superficie\nde la Tierra hasta esta altitud se produce una caída de presión\nconstante, llegando a presión cero a los 500 Km, es decir,\npresión absoluta cero. Para distinguirla de otros tipos de\npresión se caracteriza por el sufijo o subíndice atm.\n• La presión atmosférica es la fuerza por unidad de área que\nejerce el aire sobre la superficie terrestre.\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 11,
+        "text": "Presión atmosférica\n• La presión atmosférica depende de los cambios climáticos,\ntomándose como referencia la existente como valor medio a\nnivel del mar, denominada Atmósfera, o lo que es igual, 1.013\nBar ó 760 mm Hg. Los cambios climáticos pueden hacer\naumentar o disminuir la presión atmosférica en valores de\n±5%.\nIng. Lieter J. Silva Díaz"
+      },
+      {
+        "page": 12,
+        "text": "Ejemplo\nIng. Lieter J. Silva Díaz\nA1\nA2\nB1 B2 B3\nC\nD1 D2 D3\nIntervalo de variación de \nla presión atmosférica\n• Presión absoluta: A1, A2.\n• Presión relativa o manométrica: B1, B2, B3.\n• Presión diferencial: C.\n• Presión de vacío: D1, D2, D3."
+      },
+      {
+        "page": 13,
+        "text": "Medidas de presión\nIng. Lieter J. Silva Díaz\nMedidas de presión\nPresión absoluta\nPresión diferencial\nPresión relativa"
+      },
+      {
+        "page": 14,
+        "text": "Medidas de presión\nIng. Lieter J. Silva Díaz\nClases de presión que \ncomúnmente se miden\nPresión \nabsoluta\nPresión \ndiferencial\nPresión \nrelativa\nPresión \natmosférica Vacío\nBarómetro ManómetroVacuómetro\nMuy utilizados en \nla industria\nUtilizados en algunas \naplicaciones \nindustriales"
+      },
+      {
+        "page": 15,
+        "text": "Clasificación de instrumentos \npara medir presión\nIng. Lieter J. Silva Díaz\nClasificación\nElectromecánicos\nEléctricos\nMecánicos\nFotoeléctricos\nResistivos\nMagnéticos\nCapacitivos\nExtensométricos\nPiezoeléctricos\nDeformación \nelástica\nHidrostáticos\nTubo Bourdon\nDiafragma\nFuelle\nManómetro de \nreservorio\nDe tubo en U\nDe tubo inclinado\nManómetro de \nanillo\nManómetro de \nflotante"
+      },
+      {
+        "page": 16,
+        "text": "Medidas de presión\nIng. Lieter J. Silva Díaz\nSensor de presión de deformación elástica:\n• Manómetro de tubo Bourdon.\n• Manómetro de diafragma.\n• Manómetro de fuelle."
+      },
+      {
+        "page": 17,
+        "text": "Manómetro de tubo Bourdon\nIng. Lieter J. Silva Díaz\n• Consiste en un tubo de metal de sección transversal ovalada y\ncurvado a lo largo hasta formar la sección de un círculo\n(bourdon tipo C); o hasta formar varios círculos (bourdon tipo\nhelicoidal) ;o hasta formar varias espiras (bourdon tipo\nespiral).\nManómetro \ndigitalTipo C Tipo helicoidal Tipo espiral"
+      },
+      {
+        "page": 18,
+        "text": "Manómetro de diafragma\nIng. Lieter J. Silva Díaz\n• Es un disco flexible con corrugaciones concéntricas. Los\ndiafragmas pueden ser metálicos y no metálicos. Entre los\nmateriales mas utilizados se encuentran: bronce, cobre-\nberilio, acero inoxidable, aleaciones de níquel, siliconas y\nteflón.\n• Se utilizan para pequeñas presiones.\n"
+      },
+      {
+        "page": 19,
+        "text": "Manómetro de fuelle\nIng. Lieter J. Silva Díaz\n• El fuelle tiene el aspecto exterior de un acordeón, con la base\ny cubierta rígidas. Los cambios de presión en el proceso hacen\nque se expanda y contraiga.\n"
+      },
+      {
+        "page": 20,
+        "text": "Transmisores de presión\nIng. Lieter J. Silva Díaz\n• Transmisor: Los transmisores son instrumentos que captan la\nvariable de proceso y la transmiten a distancia a un\ninstrumento receptor indicador, registrador, controlador o una\ncombinación de estos.\n• Los transmisores de presión convierten la deformación\nproducida por la presión en señales estándar para\ntransmitirlas en la distancia, por ejemplo: neumáticas (3 a 15\npsi), hidráulicas, eléctricas (4 a 20mA) y digitales (Buses de\ncampo).\n• Las transmisión con señales neumáticas e hidráulicas están en\ndesuso, fueron reemplazadas por las señales eléctricas (4 a\n20mA) y por las señales digitales, pues la mayoría de los\ninstrumentos actuales son “inteligentes” y capaces de\ncomunicarse mediante buses de campo."
+      },
+      {
+        "page": 21,
+        "text": "Transmisores de presión\nIng. Lieter J. Silva Díaz\n• Recuerden: Para realizar control en lazo cerrado se necesita\nun sensor-transmisor, por lo que estos dispositivos son muy\ncomunes en la industria.\n"
+      },
+      {
+        "page": 22,
+        "text": "Transmisores de presión\nIng. Lieter J. Silva Díaz\nRepresentación según norma ISA:\n• La primera letra representa la variable (P: Presión).\n• Las siguientes letras representan la función (T: Transmisor, I:\nIndicador).\nP T P I\nTransmisor de presión Indicador de presión"
+      },
+      {
+        "page": 23,
+        "text": "Conferencia 4\nMedidas de presión \nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      }
+    ],
+    "attachments": []
+  },
+  {
+    "id": "I06",
+    "name": "Conf. 5 Medidas de nivel.pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Conf. 5 Medidas de nivel.pdf",
+    "path": "fuentes/Conf. 5 Medidas de nivel.pdf",
+    "sha256": "7eb6b334877a4d370e58ca79501533523a74cfccb16727cd854a486598e0bd22",
+    "page_count": 25,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Conferencia 5\nMedidas de nivel \nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      },
+      {
+        "page": 2,
+        "text": "Medidas de nivel\nMedidas de Nivel\n• La medición de nivel es muy importante en las industrias y en\nalgunas de ellas, como la del papel, la minera, la del petróleo,\nla química, la petroquímica y la alimenticia, es indispensable.\n• En la selección correcta de un instrumento para la medición\nde nivel, intervienen en mayor o menor grado los siguientes\nfactores: el rango de medición, la naturaleza del fluido que va\na ser medido y las condiciones de operación.\n• Deben distinguirse dos situaciones totalmente diferenciadas\nen la medición de nivel: la medición de nivel en líquidos y la\nmedición de nivel en sólidos.\n"
+      },
+      {
+        "page": 3,
+        "text": "Medidas de nivel\nClasificación de los instrumentos medidores de nivel:\n• Mediciones directas.\n• Mediciones indirectas (por inferencia).\nMediciones directas:\nDe sonda.\nDe cinta y plomada.\nNivel de cristal.\nInstrumentos de flotador.\nMediciones indirectas:\nMediante la presión\nhidrostática.\nPor el empuje en un flotador.\nPor las características físicas\ndel líquido.\nDificultad \npara la \ntransmisión\nMayor \nfacilidad \npara la \ntransmisión\n"
+      },
+      {
+        "page": 4,
+        "text": "Medidas de nivel\n• Mediciones indirectas (por inferencia).\nMediante la presión\nhidrostática:\nManométrico.\nDe membrana.\nDe tipo de burbujeo.\nDe diafragma.\nDe presión diferencial.\nPor las características\nfísicas del líquido:\nResistivo.\nConductivo.\nCapacitivo.\nUltrasónico.\nDe radiación.\nDe láser.\nPor el empuje en un flotador:\nDe desplazamiento a barra de torsión.\n"
+      },
+      {
+        "page": 5,
+        "text": "Medidores basados en la \npresión hidrostática\n"
+      },
+      {
+        "page": 6,
+        "text": "Medidores manométricos\n• Este tipo de instrumento no puede utilizarse para líquidos\ncon características corrosivas, ni con sólidos en suspensión,\nsolo para líquidos limpios.\n• La distancia entre el tanque y el manómetro debe ser limitada.\n• La medida está limitada a tanques abiertos.\n"
+      },
+      {
+        "page": 7,
+        "text": "Medidores manométricos\n"
+      },
+      {
+        "page": 8,
+        "text": "Medidores de membrana\n• Es empleado en tanques abiertos.\n• Es frágil y delicado.\n• Cualquier pequeña fuga del aire influirá negativamente en la\ncalibración del instrumento.\n• No se puede utilizar en líquidos corrosivos.\n• En aquellos líquidos que contienen sólidos en suspensión es\nnecesario conectar una tubería de purga en la parte inferior\nde la membrana para permitir la limpieza periódica del\ninstrumento.\n"
+      },
+      {
+        "page": 9,
+        "text": "Medidores de membrana\n"
+      },
+      {
+        "page": 10,
+        "text": "Medidores por burbujeo\n• Emplea un tubo sumergido en el líquido a través del cual se\nhace burbujear aire mediante un rotámetro con un regulador\nde caudal incorporado.\n• La presión de aire en la tubería equivale a la presión\nhidrostática ejercida por la columna del líquido, es decir por el\nnivel.\n• No se recomienda para líquidos\naltamente viscosos donde las\nburbujas presentan el riesgo de\nno separarse rápidamente del\ntubo.\n"
+      },
+      {
+        "page": 11,
+        "text": "Medidor de presión diferencial\n• La diferencia de presión depende de la presión que el líquido \nejerce.\nSi el tanque no está\npresurizado, ésta depende\nprincipalmente de la altura\ndel líquido por encima de la\ntoma inferior.\nEn el caso de que el tanque\nesté cerrado y bajo presión\nhay que corregir la\nindicación del aparato para\nla presión ejercida sobre el\nlíquido.\n"
+      },
+      {
+        "page": 12,
+        "text": "Medidor de presión diferencial\n• Una de las aplicaciones de los medidores de presión\ndiferencial son los domos de las calderas generadoras de\nvapor.\nSensor de nivel de \npresión diferencial \n(de membrana)\n"
+      },
+      {
+        "page": 13,
+        "text": "Medidor de nivel conductivo o \nresistivo\n• Consiste en uno o varios electrodos y un relé electromecánico\no electrónico que es excitado cuando el líquido moja a los\nelectrodos.\nBajo\nTierra\nMedio\nAlto\nMínimo\nMáximo\nMedio-Alto\nMedio-Bajo\n"
+      },
+      {
+        "page": 14,
+        "text": "Medidor de nivel conductivo o \nresistivo\n• El líquido debe ser lo suficientemente conductor como para\nexcitar el circuito electrónico.\n• El instrumento se emplea como alarma o control de nivel alto\ny bajo.\n"
+      },
+      {
+        "page": 15,
+        "text": "Medidor de nivel capacitivo\n• Miden la capacidad del condensador formado por el electrodo\nsumergido en el líquido y las paredes del tanque. La capacidad\ndel conjunto depende linealmente del nivel del líquido.\n• Consiste de una varilla de acero inoxidable rígida o flexible,\ncon y sin recubrimiento de teflón que actúa como sonda o\nsensor y es uno de los polos del sistema; el otro polo es la\npared del tanque. Cuando el recipiente no es de metal, se\ncoloca entonces una cinta metálica en la pared para que actúe\ncomo otro polo.\nC = K A/d\nDonde:\nK es la constante dieléctrica,\nA es el área de las placas y \nd es la distancia entre placas.\n"
+      },
+      {
+        "page": 16,
+        "text": "Medidor de nivel capacitivo\nVentajas\n• No presentan partes móviles.\n• Son ligeros.\n• Presentan resistencia a la corrosión y son de fácil limpieza.\n• Tienen un campo de medida muy amplio.\n• Se emplean en la medida de interface.\n• Es posible construir instrumentos a prueba de explosión.\n• El costo es competitivo con relación a sistemas mecánicos.\nDesventajas\n• Las variaciones de temperatura y los contaminantes del\nlíquido actúan sobre la constante dieléctrica.\n• Los contaminantes del líquido pueden adherirse al electrodo.\n"
+      },
+      {
+        "page": 17,
+        "text": "Medidor de nivel por \nultrasonido\n• Una fuente realiza la emisión pulsante de ondas sonoras. El\ntiempo que tarda el sonido en ir y regresar del emisor-\nreceptor a la superficie del líquido, se usa como medición del\nnivel por que ese tiempo de tránsito es proporcional a la\ncantidad de líquido en el recipiente.\nSon adecuados para todo tipo de \ntanques y de líquidos o fangos. \nPueden ser utilizados en una \ngama amplia de líquidos \nincluidos los líquidos inflamables.\n"
+      },
+      {
+        "page": 18,
+        "text": "Medidor de nivel de radar\n• El sistema de radar de microondas emplea la propagación de\nuna onda electromagnética que no es influida por la\ntemperatura ni por las variaciones de densidad que puedan\nexistir sobre el líquido.\n• De este modo, la espuma, que es transparente a la señal de\nradar, deja de ser un problema como ocurre con el medidor de\nultrasonidos.\n"
+      },
+      {
+        "page": 19,
+        "text": "Medidor de nivel de radar\n• Un oscilador de estado sólido genera una frecuencia de\nbarrido de 10 a 11GHz y enfoca la señal sobre el líquido por\nmedio de una antena. La diferencia de frecuencia entre las\nseñales de transmisión y retorno es proporcional al tiempo\nempleado por las mismas.\n"
+      },
+      {
+        "page": 20,
+        "text": "Ejemplos de tecnologías \nexistentes en el mercado\n"
+      },
+      {
+        "page": 21,
+        "text": "SITRANS LC300\n• Variable: Nivel.\n• Tipo: Capacitivo. \n• Fabricante: SIEMENS.\n• Rango de medida: 5.5 m (Varilla), 25 m \n(Cable)\n• Salida:  4 a 20 mA\n• Temperatura de proceso: -40 a 200 °C\n• Presión de proceso : Hasta 35 bar\n"
+      },
+      {
+        "page": 22,
+        "text": "SITRANS LR200\n• Variable: Nivel.\n• Tipo: Radar. \n• Fabricante: SIEMENS.\n• Rango de medida: 20 m\n• Salida: HART o PROFIBUS PA\n• Temperatura de proceso: -40 a 200 °C\n• Presión de proceso : Hasta 40 bar\n"
+      },
+      {
+        "page": 23,
+        "text": "SITRANS ProbeLU\n• Variable: Nivel.\n• Tipo: Ultrasónico. \n• Fabricante: SIEMENS.\n• Rango de medida: 0,25 a 12 m\n• Salida: 4 a 20mA/HART o PROFIBUS PA\n• Temperatura de proceso: -40 a 85 °C\n"
+      },
+      {
+        "page": 24,
+        "text": "Transmisores de nivel\nRepresentación según norma ISA:\n• La primera letra representa la variable (L: Nivel).\n• Las siguientes letras representan la función (T: Transmisor, I:\nIndicador).\nL T L I\nTransmisor de nivel Indicador de nivel\n"
+      },
+      {
+        "page": 25,
+        "text": "Conferencia 5\nMedidas de nivel \nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      }
+    ],
+    "attachments": []
+  },
+  {
+    "id": "I07",
+    "name": "Conf. 6 Medidas de temperatura.pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Conf. 6 Medidas de temperatura.pdf",
+    "path": "fuentes/Conf. 6 Medidas de temperatura.pdf",
+    "sha256": "cdfdd35e152356851260a1672abad6a321782f4a4e3215481f78da24427c8b20",
+    "page_count": 36,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Conferencia 6\nMedidas de temperatura \nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      },
+      {
+        "page": 2,
+        "text": "Medidas de temperatura\nLas escalas de temperatura están basadas en el hecho en el cual\nel punto de fusión del hielo y el punto de ebullición del agua,\nocurre a cierta temperatura, a la presión de una atmósfera al\nnivel del mar (10.13*104 Pa).\n• Celsius (centígrados)\n• Fahrenheit\n• Kelvin\n• Rankin\n"
+      },
+      {
+        "page": 3,
+        "text": "Medidas de temperatura\nEquivalencias entre las escalas:\nK = C + 273,16\ndonde:\n• C = temperatura en °C\n• K = temperatura en Kelvin. \n𝐅 = 𝟗\n𝟓 𝑪 + 𝟑𝟐\ndonde: \n• F = temperatura en °F. \nR = °F + 459,67\ndonde: \n• R = temperatura en °R.\n"
+      },
+      {
+        "page": 4,
+        "text": "Medidas de temperatura\nFenómenos más usados en la medición de temperatura:\n• Variaciones en volumen o estado de cuerpos (termómetros de\nmercurio, gases, etc.).\n• Variación de la resistencia de un conductor\n(termorresistencias).\n• Variación de la resistencia de un semiconductor (termistores).\n• F.e.m. creada en la unión de dos bimetales (termopares).\n• Intensidad de radiación (pirómetros ópticos).\n• Etc.\n"
+      },
+      {
+        "page": 5,
+        "text": "Termómetro de vidrio\nTermómetro de vidrio\n• Se basan en la variación de volumen de la sustancia\ntermométrica producto del cambio de la temperatura a\npresión constante.\n• Ejemplo: Termómetro de mercurio\nIndicación local. \n"
+      },
+      {
+        "page": 6,
+        "text": "Termorresistencia(RTD)\n• Son dispositivos cuya resistencia cambia a medida que lo hace\nla temperatura.\n"
+      },
+      {
+        "page": 7,
+        "text": "Termorresistencia(RTD)\n• Formados por un arrollamiento de hilo conductor muy fino\nbobinado entre capas de material aislante y protegido con\nrevestimiento de vidrio o cerámica.\nLos elementos industriales\nse construyen de un\nalambre fino cuyo\ndiámetro se encuentra\nentre 0.05 y 0.07mm. Este\nalambre se enrolla sin\naislamiento sobre un\nmaterial aislante conocido\ncomo armadura.\n"
+      },
+      {
+        "page": 8,
+        "text": "Termorresistencia(RTD)\n• El material utilizado en la armadura depende del intervalo de\nla temperatura medida. Hasta 200°C se utiliza el plástico, hasta\n500°C la mica, el cuarzo y la porcelana.\n• Luego, el sensor se coloca en una vaina protectora o camisa.\n• Para mejorar las características del instrumento, el espacio\nvacío se rellena con otro material que posea buenas\npropiedades de transferencia de calor (óxido de aluminio y de\nmagnesio).\n"
+      },
+      {
+        "page": 9,
+        "text": ""
+      },
+      {
+        "page": 10,
+        "text": "Termorresistencia(RTD)\nTerminales de conexión\nLos terminales de conexiones puede ser:\n• de tipo conector en la cabeza de conexión,\n• de tipo de desconexión rápida (enchufar), o\n• de alambres de conexión.\n"
+      },
+      {
+        "page": 11,
+        "text": "Termorresistencia(RTD)\nCabezales de conexión\n• Los cabezales de conexión, donde se instalan los zócalos de\nterminales o el transmisor, difieren en formas y composición\nde sus materiales según el tipo de aplicación. Los materiales\nutilizados son: plástico, aluminio barnizado o acero inoxidable.\nSin indicador Con indicador\n"
+      },
+      {
+        "page": 12,
+        "text": "Termorresistencia(RTD)\nConexión al proceso\nRosca Brida\n"
+      },
+      {
+        "page": 13,
+        "text": "Termorresistencia(RTD)\nFunda o vaina\n• La funda es un tubo cerrado, que\ncontiene el elemento sensor y sus\nalambres, ésta inmoviliza al elemento\nsensor protegiéndolo en contra de la\nhumedad y el medio ambiente, y\nprotegiendo también los alambres.\n• La funda puede ser fabricada de acero\ninoxidable, inconel, o de aleación de\nníquel acero-cromo, que presenta\nbuena resistencia a la corrosión.\n"
+      },
+      {
+        "page": 14,
+        "text": "Termorresistencia(RTD)\n"
+      },
+      {
+        "page": 15,
+        "text": "Termorresistencia(RTD)\nAlgunas conexiones a proceso\n"
+      },
+      {
+        "page": 16,
+        "text": "Termorresistencia(RTD)\n• Las RTD, principalmente las versiones de platino, se\ncaracterizan principalmente por su precisión y su amplio rango\nde temperaturas de operación, el cual se extiende desde -\n250°C hasta 850°C. Tienen también una sensibilidad,\nestabilidad y repetibilidad muy altas, y ofrecen una respuesta\nmás lineal que las termocuplas o los termistores.\n• Los valores nominales de resistencia (Ro) más comunes en los\ncuales se consiguen las sondas de platino son 25, 50 100, 200,\n500 y 1000 Ω. Estos valores están definidos a 0°C. Las\npopulares sondas Pt 100, por ejemplo, son RTD de platino con\nuna Ro de 100Ω.\n"
+      },
+      {
+        "page": 17,
+        "text": "Termistores\nTermistores\n• Son elementos termosensibles cuya conductividad aumenta\ncon la temperatura. En estos elementos la resistencia\ndisminuye con la temperatura.\n• El coeficiente de temperatura es negativo y grande. El valor de\nR del termistor está entre 100 y un millón de ohm.\n• Se basan en la variación de la resistencia de los materiales\nsemiconductores y los circuitos integrados.\n"
+      },
+      {
+        "page": 18,
+        "text": "Termistores\n• Sondas para procesos industriales. \n"
+      },
+      {
+        "page": 19,
+        "text": "Termistores\nClases generales de termistores\n• Coeficiente negativo de temperatura (NTC, Negative\nTemperatureCoefficient).\n• Coeficiente positivo de temperatura (PTC,\nPositiveTemperatureCoefficient).\nEn un NTC, la resistencia disminuye a medida que aumenta la\ntemperatura y viceversa.\n"
+      },
+      {
+        "page": 20,
+        "text": "Termistores\nAplicaciones de los termistores PTC\n• Limitador de corrientes.\n• Sensor de temperatura, para desmagnetización y para la\nprotección contra el recalentamiento de equipos tales como\nmotores eléctricos.\n"
+      },
+      {
+        "page": 21,
+        "text": "Termistores\nSímbolos del termistor\n"
+      },
+      {
+        "page": 22,
+        "text": "Termistores\nDesventajas\n• Son no lineales. \n• El rango de temperatura es limitado. \n• Presentan autocalentamiento.\n"
+      },
+      {
+        "page": 23,
+        "text": "Termopar\nTermopares (Thermocouples) \n• Es un dispositivo que actúa produciendo un voltaje, en función \nde una diferencia de temperatura (ΔT) entre sus extremos.\n"
+      },
+      {
+        "page": 24,
+        "text": "Termopar\nTipos de termopares\n"
+      },
+      {
+        "page": 25,
+        "text": "Termopar\nColores y Polaridad en los termopares \n• Una característica importante en un termopar es su polaridad,\naunque no es riesgoso el invertir la pola-ridad, esto puede\ncausar descontrol ya que las indi-caciones se ven alteradas.\n• Un termopar consta de un forro externo que cubre los dos\nalambres y uno interno que cubre el alambre individualmente.\nEl forro externo indica el tipo de termopar y el interno la\npolaridad.\n"
+      },
+      {
+        "page": 26,
+        "text": "Termopar\nColores y Polaridad en los termopares \n"
+      },
+      {
+        "page": 27,
+        "text": "Termopar\nFundas \n• Cuando se requiere la medición de temperatura en atmósferas\nperjudiciales para los metales del termopar, se acostumbra\nemplear una funda como protector en el extremo de la unión\nde medición (unión caliente). Esas fundas protectoras se\nconstruyen de una gran variedad de materiales y dependen\ndel uso que se les va a dar.\nFundas\n"
+      },
+      {
+        "page": 28,
+        "text": "Termopar\nTermopozos\n• Los termopozos son los elementos que proveen la máxima\nprotección a los sensores de temperatura contra la presión, la\ntemperatura y la fatiga generada por la velocidad de fluido; y\ntambién aíslan al proceso de tal manera que cuando se desee\ncambiar o dar mantenimiento al termopar, éste puede ser\nretirado sin afectar la operación del proceso.\n• Un termopar está constituido por varias partes, una de las\ncuales es el termopozo, el cual es adicional a la funda de\nprotección del termopar.\n"
+      },
+      {
+        "page": 29,
+        "text": "Termopar\nTermopozos\n"
+      },
+      {
+        "page": 30,
+        "text": "Pirómetro\nPirómetros\n• Los métodos basados en la radiación de los cuerpos calientes,\nse caracterizan por no hacer contacto físico directo con el\ncuerpo, cuya temperatura se mide.\n• Estos métodos se basan en el uso de las leyes de la radiación\nde los cuerpos y sus propiedades ópticas.\n• Se utilizan la medición de altas temperaturas, pues algunos de\nlos materiales más empleados en los métodos de medición\npor contacto se degradan y deterioran.\n"
+      },
+      {
+        "page": 31,
+        "text": "Pirómetro\nPirómetros\n• La pirometría es una técnica para determinar la temperatura\nde un cuerpo mediante la medición de su radiación\nelectromagnética y se basa en dos principios.\n• La intensidad de la radiación electromagnética de un cuerpo\nestá en función de su temperatura y de su habilidad para\nradiar energía (emisividad o emitancia).\n"
+      },
+      {
+        "page": 32,
+        "text": "Pirómetro\nPermiten medir la \ntemperatura a distancia \n(sin hacer contacto físico \ncon el elemento a medir).\nApropiado para altas \ntemperaturas. \nAlgunos solo son \npermiten indicación local, \notros son transmisores. \n"
+      },
+      {
+        "page": 33,
+        "text": "Pirómetro\nIndicación local\nTransmisores Ejemplo: Pirómetros optris CX LT\nSon robustos y de instalación básica o, como opción, \nvía dos hilos o conexión al PC vía USB. \nParámetros importantes\nRango de temperatura: \ndesde -30 °C hasta 900 °C\nRango espectral: 8 - 14 µm\nTiempo de respuesta: 150 ms\nPrecio desde 450,- € (más IVA)\n"
+      },
+      {
+        "page": 34,
+        "text": "Transmisores de temperatura\nRepresentación según norma ISA:\n• La primera letra representa la variable (T: Temperatura).\n• Las siguientes letras representan la función (T: Transmisor, I:\nIndicador).\nT T T I\nTransmisor de temperatura Indicador de temperatura\n"
+      },
+      {
+        "page": 35,
+        "text": "¿Qué temas fueron tratados en la clase de \nhoy?\nMedidas de temperatura. \n• Termómetros de vidrio. \n• Termorresistencias.\n• Termopares. \n• Pirómetros. \n"
+      },
+      {
+        "page": 36,
+        "text": "Conferencia 6\nMedidas de temperatura \nLieter J. Silva Díaz\nÁrea de Automatización y Robótica\nInstrumentación Industrial\n"
+      }
+    ],
+    "attachments": []
+  },
+  {
+    "id": "I08",
+    "name": "Conf. 2 (3).pdf",
+    "original": "C:\\Users\\HUMANO LAB\\Downloads\\Conf. 2 (3).pdf",
+    "path": "fuentes/Conf. 2 (3).pdf",
+    "sha256": "2173bff4f606599f02c3a0fd472d504ec84bde357c491a51caec6a13ad5271d9",
+    "page_count": 12,
+    "pages": [
+      {
+        "page": 1,
+        "text": "Conferencia 2\nSensores discretos: \n-Detectores de proximidad. \nÁrea de Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2026"
+      },
+      {
+        "page": 2,
+        "text": "Sumario \n• Detectores de proximidad\n– Detectores capacitivos \n– Detectores inductivos\n– Detectores fotoeléctricos\n• Conexión "
+      },
+      {
+        "page": 3,
+        "text": "Detectores de proximidad \n• Un detector o sensor de proximidad es un transductor que \ndetecta la presencia de objetos que se encuentran cerca del \nelemento sensor.  \n• Los más comunes son los detectores capacitivos, inductivos y \nfotoeléctricos. \n"
+      },
+      {
+        "page": 4,
+        "text": "Representación \n"
+      },
+      {
+        "page": 5,
+        "text": "Representación\n• Tipos:\n– Detectores capacitivos (Detecta metales y no metales).  \n– Detectores inductivos (Detecta metales). \n– Detectores fotoeléctricos (Detecta metales y no metales). \n \n"
+      },
+      {
+        "page": 6,
+        "text": "Representación\n• Ejemplo: Detectores de proximidad de 3 hilos \nelectromagnético, inductivo, capacitivo y fotoeléctrico. \n \n"
+      },
+      {
+        "page": 7,
+        "text": "Representación\n• Salida:\n– NPN\n– PNP\n \n"
+      },
+      {
+        "page": 8,
+        "text": "Conexión \n• Salida:\n– NPN\n– PNP\n \n"
+      },
+      {
+        "page": 9,
+        "text": "Conexión \n• Detector de proximidad de 4 hilos: Posee dos salidas \ncomplementarias (una normalmente abierta y otra cerrada).  \n"
+      },
+      {
+        "page": 10,
+        "text": "Videos recomendados:  \n• Detectores de proximidad: Conexión y funcionamiento. Parte \n1: https://www.youtube.com/watch?v=SLI8puzK5V8\n• Detectores de proximidad: Conexión y funcionamiento. Parte \n2: https://www.youtube.com/watch?v=xpU3WOVWkfs"
+      },
+      {
+        "page": 11,
+        "text": "Ejemplos:  \n• Detectores de proximidad SIMATIC PX de SIEMENS: \nhttps://www.automation.siemens.com/simatic-sensors-\nstatic/ftp/6zb5330-0ad04-0ba3.pdf"
+      },
+      {
+        "page": 12,
+        "text": "Conferencia 2\nSensores discretos: \n-Detectores de proximidad. \nÁrea de Automatización y Robótica\nInstrumentación Industrial\nLieter Javier Silva Díaz\n2026"
+      }
+    ],
+    "attachments": []
+  }
+]

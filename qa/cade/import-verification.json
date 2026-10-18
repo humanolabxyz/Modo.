@@ -1,0 +1,47 @@
+{
+  "sourceBytes": 6111,
+  "sha256": "c4dcaa7aebe40e500fb94529fc4dd9d47a279ef32689d73a2bb604a5c8b0a138",
+  "objects": 79,
+  "wires": 47,
+  "junctions": 12,
+  "symbols": 19,
+  "types": {
+    "1001": 1,
+    "6009": 1,
+    "2001": 1,
+    "4010": 1,
+    "3000": 1,
+    "4000": 39,
+    "4001": 12,
+    "6010": 1,
+    "8018": 1,
+    "3001": 1,
+    "8001": 1,
+    "8000": 1,
+    "7000": 1,
+    "9000": 1,
+    "9008": 3,
+    "7001": 1,
+    "4009": 7,
+    "20000": 1,
+    "3002": 1,
+    "6007": 2,
+    "3004": 1
+  },
+  "unknownTypes": [],
+  "coincidentRecords": [
+    [
+      58,
+      95
+    ],
+    [
+      60,
+      97
+    ],
+    [
+      100,
+      101
+    ]
+  ],
+  "note": "IDs, labels and coordinates read directly. Symbol artwork is reconstructed; not a native CADe export. Coincident records retained."
+}

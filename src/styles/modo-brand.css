@@ -1,0 +1,7 @@
+@import './modo-tokens.css';
+@font-face{font-family:Inter;src:url('/fonts/InterVariable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+.modo-logo{display:block;width:auto;height:34px;max-width:100%;object-fit:contain}
+.brand-wrap:has(.modo-logo){text-decoration:none;flex-shrink:0}
+.lab-brand:has(.modo-logo){display:flex;align-items:center;flex-shrink:0}
+.lab-brand .modo-logo{height:29px}
+@media(max-width:600px){.modo-logo{height:28px}.lab-brand .modo-logo{height:25px}}

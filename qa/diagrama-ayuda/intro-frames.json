@@ -1,0 +1,130 @@
+[
+  {
+    "frame": 0,
+    "time": 1792126473861,
+    "bottom": "matrix(1, 0, 0, 1, 8.26298, 12.5655)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, -8.26298, -12.5655)",
+    "visible": true
+  },
+  {
+    "frame": 1,
+    "time": 1792126473943,
+    "bottom": "matrix(1, 0, 0, 1, -0.657214, -0.963445)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0.657214, 0.963445)",
+    "visible": true
+  },
+  {
+    "frame": 2,
+    "time": 1792126473989,
+    "bottom": "matrix(1, 0, 0, 1, -1.95058, -2.92504)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 1.95058, 2.92504)",
+    "visible": true
+  },
+  {
+    "frame": 3,
+    "time": 1792126474035,
+    "bottom": "matrix(1, 0, 0, 1, -0.267385, -0.401077)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0.267385, 0.401077)",
+    "visible": true
+  },
+  {
+    "frame": 4,
+    "time": 1792126474084,
+    "bottom": "matrix(1, 0, 0, 1, -0.0071114, -0.0106671)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0.0071114, 0.0106671)",
+    "visible": true
+  },
+  {
+    "frame": 5,
+    "time": 1792126474129,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 6,
+    "time": 1792126474177,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 7,
+    "time": 1792126474207,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 8,
+    "time": 1792126474243,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 9,
+    "time": 1792126474275,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 10,
+    "time": 1792126474315,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 11,
+    "time": 1792126474349,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 12,
+    "time": 1792126474380,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 13,
+    "time": 1792126474425,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 14,
+    "time": 1792126474480,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  },
+  {
+    "frame": 15,
+    "time": 1792126474533,
+    "bottom": "matrix(1, 0, 0, 1, 0, 0)",
+    "parts": 2,
+    "top": "matrix(1, 0, 0, 1, 0, 0)",
+    "visible": true
+  }
+]

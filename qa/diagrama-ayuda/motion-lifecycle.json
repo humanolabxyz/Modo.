@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Abrir reproduce la intro una vez; tres ciclos de reposo no la reinician",
+    "Una nueva apertura directa vuelve a reproducirla aunque la pestaña ya se usó",
+    "Recargar cuenta como nueva apertura",
+    "Navegar entre módulos conserva la sesión sin repetir intro",
+    "Volver desde el historial no repite intro",
+    "Una apertura en segundo plano espera la primera vista; después no se reinicia",
+    "Sistema, movimiento completo y reducido conservan sus preferencias",
+    "Sin almacenamiento, navegar entre módulos tampoco repite intro"
+  ]
+}

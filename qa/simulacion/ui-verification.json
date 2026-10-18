@@ -1,0 +1,22 @@
+{
+  "checks": [
+    "One pneumatic timer, KM2 retained, KM1 centred, 6 modules and 94 independent sockets",
+    "Both physical CONTROL switches enable supply; right green works by held mouse and Space, releases correctly and never changes the installed cable count",
+    "A missing neutral-return cable prevents illumination; undo recovers the cable",
+    "KM1 starts and holds after release; red stop drops it, stays stopped and does not actuate KM2",
+    "Thermal trip drops coil and lights fault pilot through real cables; reset does not restart",
+    "Short-circuit latches off both breakers and outputs; correction plus explicit reset clears protection",
+    "Reload preserves the wired practice and always returns simulation to OFF"
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900
+    }
+  ]
+}

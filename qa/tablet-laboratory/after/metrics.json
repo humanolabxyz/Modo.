@@ -1,0 +1,666 @@
+[
+  {
+    "width": 768,
+    "height": 1024,
+    "tool": "schematic",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 1024,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 50,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-topbar": null,
+      ".lab-projectbar": null,
+      ".lab-tool-nav": null,
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 1024,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 1024,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-pan": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 968,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "8px"
+      },
+      ".lab-pan-content": {
+        "x": 8,
+        "y": 192.08053588867188,
+        "w": 908.4563598632812,
+        "h": 646.013427734375,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "8px"
+      },
+      ".lab-dock": {
+        "x": 239.5,
+        "y": 906,
+        "w": 289,
+        "h": 54,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-zoombar": {
+        "x": 609,
+        "y": 62,
+        "w": 147,
+        "h": 38,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-inspector": null,
+      ".lab-board-svg": null
+    },
+    "errors": []
+  },
+  {
+    "width": 820,
+    "height": 1180,
+    "tool": "schematic",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 50,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-topbar": null,
+      ".lab-projectbar": null,
+      ".lab-tool-nav": null,
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-pan": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "16px"
+      },
+      ".lab-pan-content": {
+        "x": 16,
+        "y": 351.6375732421875,
+        "w": 951.9463500976562,
+        "h": 676.9395751953125,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "16px"
+      },
+      ".lab-dock": {
+        "x": 115.5,
+        "y": 1108,
+        "w": 289,
+        "h": 54,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-zoombar": {
+        "x": 661,
+        "y": 62,
+        "w": 147,
+        "h": 38,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-inspector": null,
+      ".lab-board-svg": null
+    },
+    "errors": []
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "tool": "schematic",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 768,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 50,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-topbar": null,
+      ".lab-projectbar": null,
+      ".lab-tool-nav": null,
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 768,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 768,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-pan": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 768,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "16px"
+      },
+      ".lab-pan-content": {
+        "x": 83.010986328125,
+        "y": 121.45054626464844,
+        "w": 1036.4835205078125,
+        "h": 737.0549926757812,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "16px"
+      },
+      ".lab-dock": {
+        "x": 217.5,
+        "y": 696,
+        "w": 289,
+        "h": 54,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-zoombar": {
+        "x": 865,
+        "y": 62,
+        "w": 147,
+        "h": 38,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-inspector": null,
+      ".lab-board-svg": null
+    },
+    "errors": []
+  },
+  {
+    "width": 1180,
+    "height": 820,
+    "tool": "schematic",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 1180,
+        "h": 820,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": {
+        "x": 0,
+        "y": 0,
+        "w": 1180,
+        "h": 50,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-topbar": null,
+      ".lab-projectbar": null,
+      ".lab-tool-nav": null,
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 1180,
+        "h": 820,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": {
+        "x": 0,
+        "y": 0,
+        "w": 1180,
+        "h": 820,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-pan": {
+        "x": 0,
+        "y": 0,
+        "w": 1180,
+        "h": 820,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "16px"
+      },
+      ".lab-pan-content": {
+        "x": 118.43955993652344,
+        "y": 118.02198028564453,
+        "w": 1139.3406982421875,
+        "h": 810.1978149414062,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "16px"
+      },
+      ".lab-dock": {
+        "x": 295.5,
+        "y": 748,
+        "w": 289,
+        "h": 54,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-zoombar": {
+        "x": 1021,
+        "y": 62,
+        "w": 147,
+        "h": 38,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-inspector": null,
+      ".lab-board-svg": null
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "tool": "schematic",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 900,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": null,
+      ".lab-topbar": {
+        "x": 14,
+        "y": 14,
+        "w": 769.4375,
+        "h": 54,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-projectbar": {
+        "x": 642.3125,
+        "y": 14,
+        "w": 783.6875,
+        "h": 54,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-tool-nav": {
+        "x": 14,
+        "y": 78,
+        "w": 428.9375,
+        "h": 48,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 900,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 900,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-pan": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 900,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "322px"
+      },
+      ".lab-pan-content": {
+        "x": 63.69230651855469,
+        "y": 143.38461303710938,
+        "w": 1218.4615478515625,
+        "h": 866.4615478515625,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "322px"
+      },
+      ".lab-dock": {
+        "x": 419,
+        "y": 826,
+        "w": 302,
+        "h": 56,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-zoombar": {
+        "x": 945,
+        "y": 836,
+        "w": 173,
+        "h": 46,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-inspector": {
+        "x": 1134,
+        "y": 78,
+        "w": 292,
+        "h": 188.5,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-board-svg": null
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "tool": "schematic",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 50,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-topbar": null,
+      ".lab-projectbar": null,
+      ".lab-tool-nav": null,
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-pan": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 788,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "8px"
+      },
+      ".lab-pan-content": {
+        "x": 8,
+        "y": 232.73153686523438,
+        "w": 451.8121032714844,
+        "h": 321.2886047363281,
+        "display": "block",
+        "position": "absolute",
+        "panRight": "8px"
+      },
+      ".lab-dock": {
+        "x": 86,
+        "y": 728,
+        "w": 218,
+        "h": 52,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-zoombar": {
+        "x": 231,
+        "y": 62,
+        "w": 147,
+        "h": 38,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-inspector": null,
+      ".lab-board-svg": null
+    },
+    "errors": []
+  },
+  {
+    "width": 820,
+    "height": 1180,
+    "tool": "breadboard",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 50,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-topbar": null,
+      ".lab-projectbar": null,
+      ".lab-tool-nav": null,
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": null,
+      ".lab-pan": null,
+      ".lab-pan-content": null,
+      ".lab-dock": {
+        "x": 218.5,
+        "y": 1116,
+        "w": 383,
+        "h": 54,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-zoombar": {
+        "x": 599,
+        "y": 62,
+        "w": 209,
+        "h": 38,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-inspector": null,
+      ".lab-board-svg": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "tool": "plc",
+    "metrics": {
+      ".lab-page": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 768,
+        "display": "block",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-compact-bar": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 50,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-topbar": null,
+      ".lab-projectbar": null,
+      ".lab-tool-nav": null,
+      ".lab-editor": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 768,
+        "display": "block",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-stage": {
+        "x": 12,
+        "y": 62,
+        "w": 1000,
+        "h": 630,
+        "display": "flex",
+        "position": "absolute",
+        "panRight": ""
+      },
+      ".lab-pan": null,
+      ".lab-pan-content": null,
+      ".lab-dock": {
+        "x": 367.5,
+        "y": 704,
+        "w": 289,
+        "h": 54,
+        "display": "flex",
+        "position": "fixed",
+        "panRight": ""
+      },
+      ".lab-zoombar": null,
+      ".lab-inspector": null,
+      ".lab-board-svg": null
+    },
+    "errors": []
+  }
+]

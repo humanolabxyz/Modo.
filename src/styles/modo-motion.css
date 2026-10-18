@@ -1,0 +1,145 @@
+/* modo. · Sistema de movimiento v1
+   Un solo lenguaje para toda la aplicación: entrada de marca (una vez por sesión),
+   transiciones entre herramientas (View Transitions), transiciones internas y microinteracciones.
+   Las clases de estado las ponen src/motion/*.ts y src/components/motion/*.astro. */
+:root{
+  --motion-ease:cubic-bezier(.2,0,0,1);          /* estándar: respuesta inmediata, frenado suave */
+  --motion-ease-enter:cubic-bezier(.16,1,.3,1);  /* lo que llega */
+  --motion-ease-exit:cubic-bezier(.4,0,1,1);     /* lo que se retira */
+  --motion-instant:90ms;
+  --motion-fast:140ms;
+  --motion-base:180ms;
+  --motion-page:320ms;
+  --motion-page-out:150ms;
+  --motion-shift:22px;
+  --motion-shift-small:8px;
+}
+@media(max-width:700px){:root{--motion-shift:10px;--motion-shift-small:6px;--motion-page:280ms}}
+
+/* ── 1 · Entrada de marca ───────────────────────────────────────────────── */
+.modo-splash{display:none}
+html.modo-splash-on .modo-splash{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:var(--modo-bg,#F7F8FA);pointer-events:none;contain:strict;animation:modo-splash-exit 130ms ease-out 700ms both}
+.modo-splash-logo{display:block;width:min(160px,34vw);height:auto;overflow:visible}
+.modo-splash-a,.modo-splash-b{transform-box:view-box;animation-duration:460ms;animation-timing-function:cubic-bezier(.2,.75,.2,1);animation-fill-mode:both}
+.modo-splash-a{animation-name:modo-bolt-top}
+.modo-splash-b{animation-name:modo-bolt-bottom}
+.modo-splash-impact{transform-origin:66px 71px;animation:modo-bolt-impact 460ms linear both}
+@keyframes modo-bolt-top{0%{opacity:0;transform:translate(-58px,-88px)}18%{opacity:1}66%{transform:translate(2px,3px)}84%,100%{opacity:1;transform:translate(0,0)}}
+@keyframes modo-bolt-bottom{0%{opacity:0;transform:translate(58px,88px)}18%{opacity:1}66%{transform:translate(-2px,-3px)}84%,100%{opacity:1;transform:translate(0,0)}}
+@keyframes modo-bolt-impact{0%,62%{transform:scale(1)}72%{transform:scale(1.065)}100%{transform:scale(1)}}
+@keyframes modo-splash-exit{to{opacity:0}}
+/* El panel abierto desde otra herramienta (/?view=simulator) no enseña el inicio un instante. */
+html.modo-boot-simulator .modo-home-shell main{visibility:hidden}
+
+/* ── 2 · Transiciones entre herramientas (View Transitions) ─────────────── */
+@view-transition{navigation:auto}
+/* Elementos comunes: la cabecera y la marca permanecen mientras cambia el contenido. */
+html[data-motion=page] :is(.modo-home-shell>.topbar,.study-header,.lab-topbar){view-transition-name:modo-header}
+html[data-motion=page] .modo-logo{view-transition-name:modo-brand}
+::view-transition-group(*){animation-duration:var(--motion-page);animation-timing-function:var(--motion-ease)}
+::view-transition-old(root){animation:var(--motion-page-out) var(--motion-ease-exit) both modo-fade-out}
+::view-transition-new(root){animation:var(--motion-page) var(--motion-ease-enter) both modo-fade-in}
+html[data-motion=page]::view-transition-old(root){animation:var(--motion-page-out) var(--motion-ease-exit) both modo-page-out}
+html[data-motion=page]::view-transition-new(root){animation:var(--motion-page) var(--motion-ease-enter) both modo-page-in}
+html[data-motion=page][data-motion-dir=back]::view-transition-old(root){animation-name:modo-page-out-back}
+html[data-motion=page][data-motion-dir=back]::view-transition-new(root){animation-name:modo-page-in-back}
+html[data-motion=page][data-motion-dir=none]::view-transition-old(root){animation-name:modo-fade-out}
+html[data-motion=page][data-motion-dir=none]::view-transition-new(root){animation-name:modo-page-in-none}
+::view-transition-old(modo-header),::view-transition-new(modo-header){animation-duration:var(--motion-base)}
+@keyframes modo-page-out{to{opacity:0;transform:translateX(calc(var(--motion-shift)*-.75)) scale(.992)}}
+@keyframes modo-page-in{from{opacity:0;transform:translateX(var(--motion-shift)) scale(1.004)}}
+@keyframes modo-page-out-back{to{opacity:0;transform:translateX(calc(var(--motion-shift)*.75)) scale(.992)}}
+@keyframes modo-page-in-back{from{opacity:0;transform:translateX(calc(var(--motion-shift)*-1)) scale(1.004)}}
+@keyframes modo-page-in-none{from{opacity:0;transform:scale(.994)}}
+@keyframes modo-fade-out{to{opacity:0}}
+@keyframes modo-fade-in{from{opacity:0}}
+
+/* ── 3 · Transiciones internas ───────────────────────────────────────────
+   internal: el lienzo permanece y solo se reorganizan los paneles con nombre.
+   stage: la zona de trabajo cambia de herramienta; la navegación queda quieta. */
+html:is([data-motion=internal],[data-motion=stage])::view-transition-old(root){animation:none;opacity:0}
+html:is([data-motion=internal],[data-motion=stage])::view-transition-new(root){animation:none}
+html[data-motion=internal] .practice-workspace .diagram-pane{view-transition-name:modo-diagram}
+html[data-motion=internal] .editor-workbench .practice-workspace .inspector{view-transition-name:modo-inspector}
+html[data-motion=internal] .diagram-window:not([hidden]){view-transition-name:modo-diagram-window}
+html[data-motion=stage] :is(.lab-editor,.study-layout){view-transition-name:modo-stage}
+::view-transition-group(modo-diagram),::view-transition-group(modo-diagram-window),::view-transition-group(modo-inspector){animation-duration:var(--motion-base)}
+::view-transition-old(modo-diagram),::view-transition-new(modo-diagram),::view-transition-old(modo-diagram-window),::view-transition-new(modo-diagram-window){animation-duration:var(--motion-base);height:100%;object-fit:cover;object-position:left top}
+:is(::view-transition-new(modo-diagram),::view-transition-new(modo-diagram-window),::view-transition-new(modo-inspector)):only-child{animation:var(--motion-base) var(--motion-ease-enter) both modo-panel-in}
+:is(::view-transition-old(modo-diagram),::view-transition-old(modo-diagram-window),::view-transition-old(modo-inspector)):only-child{animation:var(--motion-fast) var(--motion-ease-exit) both modo-panel-out}
+::view-transition-group(modo-stage){animation-duration:320ms}
+::view-transition-old(modo-stage){animation:var(--motion-fast) var(--motion-ease-exit) both modo-stage-out}
+::view-transition-new(modo-stage){animation:320ms var(--motion-ease-enter) both modo-stage-in}
+html[data-motion-dir=back]::view-transition-old(modo-stage){animation-name:modo-stage-out-back}
+html[data-motion-dir=back]::view-transition-new(modo-stage){animation-name:modo-stage-in-back}
+html[data-motion-dir=none]::view-transition-old(modo-stage){animation-name:modo-fade-out}
+html[data-motion-dir=none]::view-transition-new(modo-stage){animation-name:modo-page-in-none}
+@keyframes modo-panel-in{from{opacity:0;transform:translateY(var(--motion-shift-small)) scale(.985)}}
+@keyframes modo-panel-out{to{opacity:0;transform:translateY(calc(var(--motion-shift-small)*.6)) scale(.985)}}
+@keyframes modo-stage-out{to{opacity:0;transform:translateX(calc(var(--motion-shift-small)*-1))}}
+@keyframes modo-stage-in{from{opacity:0;transform:translateX(var(--motion-shift-small))}}
+@keyframes modo-stage-out-back{to{opacity:0;transform:translateX(var(--motion-shift-small))}}
+@keyframes modo-stage-in-back{from{opacity:0;transform:translateX(calc(var(--motion-shift-small)*-1))}}
+/* Con View Transitions la llegada del diagrama la anima la transición; sin ellas se conserva la animación CSS previa. */
+@supports (view-transition-name:none){html .editor-workbench:not(.editor-reading) .practice-workspace .diagram-pane{animation:none}}
+
+/* Indicador activo deslizante: src/motion/indicators.ts mide y escribe --seg-*. */
+.motion-seg{position:relative;isolation:isolate}
+.motion-seg::before{content:'';position:absolute;z-index:-1;left:0;top:0;width:var(--seg-w,0);height:var(--seg-h,0);transform:translate(var(--seg-x,0),var(--seg-y,0));border-radius:var(--seg-r,9px);background:var(--seg-bg,#edf4f8);box-shadow:var(--seg-shadow,none);opacity:var(--seg-o,0);pointer-events:none;transition:transform var(--motion-base) var(--motion-ease),width var(--motion-base) var(--motion-ease),height var(--motion-base) var(--motion-ease),opacity var(--motion-fast) var(--motion-ease)}
+.motion-seg.motion-seg-init::before{transition:none}
+.motion-seg>.motion-seg-item{position:relative;z-index:1}
+.motion-seg>.motion-seg-item:is([aria-pressed=true],[aria-selected=true],[aria-checked=true],[aria-current=page],[aria-current=true],.current){background-color:transparent!important;box-shadow:none!important;border-color:transparent!important}
+
+/* ── 4 · Microinteracciones ─────────────────────────────────────────────── */
+:where(button,summary,[role=tab],[role=radio],select,input,textarea,.modo-import,.modo-laboratory-tools a,.lab-back,.lab-header-links a,.study-top-link,.home-link){transition-property:background-color,border-color,color,box-shadow,opacity,scale,translate;transition-duration:var(--motion-fast);transition-timing-function:var(--motion-ease)}
+/* Pulsación: respuesta inmediata al presionar, sin retrasar la acción. Se excluyen controles que ya tienen su propia pulsación. */
+:where(button,summary,[role=tab],.modo-import,.modo-laboratory-tools a,.lab-back,.lab-header-links a,.study-top-link):active:not(:disabled):not(:is(.tool-dock button,.lab-dock button,.sim-tile,.menu-tile,.calc-key,.study-shell button,.modo-primary,.modo-continue,.lab-run,.float-handle)){scale:.97;transition-duration:var(--motion-instant)}
+:where(.modo-primary,.modo-continue,.lab-run):active:not(:disabled){scale:.985;transition-duration:var(--motion-instant)}
+/* Iconos que indican dirección avanzan levemente. */
+:where(.modo-primary,.modo-continue,.modo-tools-arrow,.lab-back,.study-top-link) svg{transition:translate var(--motion-fast) var(--motion-ease)}
+:where(.modo-primary,.modo-continue,.modo-tools-arrow):hover:not(:disabled) svg:last-child{translate:3px 0}
+.lab-back:hover svg{translate:-2px 0}
+.modo-laboratory-tools a svg{transition:scale var(--motion-fast) var(--motion-ease)}
+.modo-laboratory-tools a:hover svg{scale:1.08}
+/* Tarjetas del inicio que abren otra herramienta: se elevan apenas. */
+.modo-home :is(.modo-study,.modo-laboratory){transition:translate var(--motion-base) var(--motion-ease),box-shadow var(--motion-base) var(--motion-ease),border-color var(--motion-base) var(--motion-ease)}
+.modo-home .modo-study:hover,.modo-home .modo-laboratory:has(.modo-laboratory-open:hover){translate:0 -2px;box-shadow:0 10px 28px #1012150d,0 2px 6px #10121508}
+.modo-home .modo-study:active,.modo-home .modo-laboratory:has(.modo-laboratory-open:active){translate:0 0;transition-duration:var(--motion-instant)}
+.modo-round-arrow{transition:transform var(--motion-fast) var(--motion-ease),background-color var(--motion-fast) var(--motion-ease)}
+/* Menús desplegables y divulgaciones: abren con un desplazamiento corto. */
+:is(.lab-project-menu,.modo-diagram,.cade-controls,.module-filters,.reviewed-steps,.study-shell details)[open]>:not(summary){animation:modo-menu-in var(--motion-fast) var(--motion-ease) both}
+.modo-diagram>summary>svg{transition:transform var(--motion-base) var(--motion-ease)}
+@keyframes modo-menu-in{from{opacity:0;translate:0 -4px}to{opacity:1;translate:0 0}}
+/* Ventanas y diálogos: aparecen desde una escala casi completa. */
+.modal-backdrop{animation:modo-fade-in var(--motion-base) var(--motion-ease) both}
+.modal-backdrop>.dialog,dialog[open]{animation:modo-dialog-in var(--motion-page) var(--motion-ease-enter) both}
+dialog[open]::backdrop{animation:modo-fade-in var(--motion-base) var(--motion-ease) both}
+@keyframes modo-dialog-in{from{opacity:0;scale:.97;translate:0 6px}to{opacity:1;scale:1;translate:0 0}}
+/* Campos: el foco se ilumina sin saltar. */
+:where(select,input,textarea):focus-visible{transition-duration:var(--motion-instant)}
+
+/* ── 5 · Movimiento reducido ────────────────────────────────────────────── */
+/* JS pone html.modo-reduced cuando el sistema pide movimiento reducido (anulable con ?movimiento=completo). */
+html.modo-reduced.modo-splash-on .modo-splash{display:none}
+html.modo-reduced.modo-splash-on .modo-logo{opacity:1}
+html.modo-reduced::view-transition-group(*),html.modo-reduced::view-transition-old(*),html.modo-reduced::view-transition-new(*){animation:none!important}
+html.modo-reduced .motion-seg::before,html.modo-reduced :where(button,summary,[role=tab],[role=radio],select,input,textarea,a),html.modo-reduced :where(button,summary,a) svg,html.modo-reduced .modo-home :is(.modo-study,html.modo-reduced .modo-laboratory),html.modo-reduced .modo-round-arrow{transition:none!important}
+html.modo-reduced :where(button,summary,[role=tab],a):active{scale:none!important}
+html.modo-reduced .modo-home .modo-study:hover,html.modo-reduced .modo-home .modo-laboratory:has(.modo-laboratory-open:hover){translate:none}
+html.modo-reduced [open]>:not(summary),html.modo-reduced .modal-backdrop,html.modo-reduced .modal-backdrop>.dialog,html.modo-reduced dialog[open],html.modo-reduced dialog[open]::backdrop,html.modo-reduced.modo-splash-reveal .modo-home *{animation:none!important}
+
+/* ── 6 · Pantalla de apertura ───────────────────────────────────────────── */
+/* Aviso de carga entre módulos: fondo blanco, el rayo de la marca y, si tarda, una barra con el texto.
+   Es informativo, no decorativo: se muestra también con movimiento reducido. */
+.modo-opening{position:fixed;inset:0;z-index:2147483000;display:none;place-items:center;background:#fff;color:#101215;font-family:Inter,system-ui,sans-serif;opacity:1;transition:opacity .2s ease}
+html.modo-opening-on .modo-opening{display:grid}
+.modo-opening.is-out{opacity:0;pointer-events:none}
+.modo-opening-box{display:flex;flex-direction:column;align-items:center;gap:26px;padding:24px;text-align:center}
+.modo-opening-logo{display:block;animation:modo-opening-pop .32s cubic-bezier(.2,.8,.3,1) both}
+.modo-opening-late{display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:modo-opening-late .25s ease .4s forwards}
+.modo-opening-bar{position:relative;display:block;width:168px;height:3px;border-radius:3px;background:#e6e9ec;overflow:hidden}
+.modo-opening-bar i{position:absolute;inset:0 auto 0 0;width:42%;border-radius:3px;background:#3e806b;animation:modo-opening-run 1.1s cubic-bezier(.45,0,.35,1) infinite}
+.modo-opening-label{margin:0;font-size:14px;font-weight:600;letter-spacing:-.005em;color:#5b6570}
+@keyframes modo-opening-pop{from{opacity:0;scale:.9}to{opacity:1;scale:1}}
+@keyframes modo-opening-late{to{opacity:1}}
+@keyframes modo-opening-run{0%{translate:-100% 0}100%{translate:240% 0}}

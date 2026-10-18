@@ -1,0 +1,4595 @@
+{
+ "estrellaManual": {
+  "name": "Estrella-triángulo sin temporizador",
+  "source": "Cableado del archivo 1-modo-panel-con-historial-2-.json; funciones según el modelo virtual.",
+  "origin": "lesson",
+  "splitX": 215,
+  "objects": [
+   {
+    "id": 1,
+    "type": 9100,
+    "shape": "terminal-round",
+    "reference": "Fuente",
+    "x": 63,
+    "y": 24,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "R",
+      "x": 63,
+      "y": 26,
+      "panel": "FUENTE:R"
+     },
+     {
+      "terminal": "S",
+      "x": 72,
+      "y": 26,
+      "panel": "FUENTE:S"
+     },
+     {
+      "terminal": "T",
+      "x": 81,
+      "y": 26,
+      "panel": "FUENTE:T"
+     }
+    ],
+    "labels": [
+     "R",
+     "S",
+     "T"
+    ],
+    "box": [
+     38,
+     19,
+     93,
+     49
+    ],
+    "pins": [
+     "R",
+     "S",
+     "T"
+    ]
+   },
+   {
+    "id": 2,
+    "type": 9100,
+    "shape": "contactor3",
+    "reference": "KM1",
+    "x": 63,
+    "y": 60,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "L1",
+      "x": 63,
+      "y": 60,
+      "panel": "CONTACTOR_TERMICO:L1"
+     },
+     {
+      "terminal": "L2",
+      "x": 72,
+      "y": 60,
+      "panel": "CONTACTOR_TERMICO:L2"
+     },
+     {
+      "terminal": "L3",
+      "x": 81,
+      "y": 60,
+      "panel": "CONTACTOR_TERMICO:L3"
+     },
+     {
+      "terminal": "T1",
+      "x": 63,
+      "y": 78,
+      "panel": "CONTACTOR_TERMICO:T1"
+     },
+     {
+      "terminal": "T2",
+      "x": 72,
+      "y": 78,
+      "panel": "CONTACTOR_TERMICO:T2"
+     },
+     {
+      "terminal": "T3",
+      "x": 81,
+      "y": 78,
+      "panel": "CONTACTOR_TERMICO:T3"
+     }
+    ],
+    "labels": [
+     "L1",
+     "L2",
+     "L3",
+     "T1",
+     "T2",
+     "T3"
+    ],
+    "box": [
+     38,
+     55,
+     93,
+     85
+    ]
+   },
+   {
+    "id": 3,
+    "type": 9100,
+    "shape": "contactor3",
+    "reference": "KM2",
+    "x": 120,
+    "y": 60,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "L1",
+      "x": 120,
+      "y": 60,
+      "panel": "CONTACTOR_TRIFASICO:L1"
+     },
+     {
+      "terminal": "L2",
+      "x": 129,
+      "y": 60,
+      "panel": "CONTACTOR_TRIFASICO:L2"
+     },
+     {
+      "terminal": "L3",
+      "x": 138,
+      "y": 60,
+      "panel": "CONTACTOR_TRIFASICO:L3"
+     },
+     {
+      "terminal": "T1",
+      "x": 120,
+      "y": 78,
+      "panel": "CONTACTOR_TRIFASICO:T1"
+     },
+     {
+      "terminal": "T2",
+      "x": 129,
+      "y": 78,
+      "panel": "CONTACTOR_TRIFASICO:T2"
+     },
+     {
+      "terminal": "T3",
+      "x": 138,
+      "y": 78,
+      "panel": "CONTACTOR_TRIFASICO:T3"
+     }
+    ],
+    "labels": [
+     "L1",
+     "L2",
+     "L3",
+     "T1",
+     "T2",
+     "T3"
+    ],
+    "box": [
+     95,
+     55,
+     150,
+     85
+    ]
+   },
+   {
+    "id": 4,
+    "type": 9100,
+    "shape": "contactor3",
+    "reference": "KM3",
+    "x": 184,
+    "y": 200,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "L1",
+      "x": 184,
+      "y": 200,
+      "panel": "CONTACTOR_TRIFASICO_3:L1"
+     },
+     {
+      "terminal": "L2",
+      "x": 193,
+      "y": 200,
+      "panel": "CONTACTOR_TRIFASICO_3:L2"
+     },
+     {
+      "terminal": "L3",
+      "x": 202,
+      "y": 200,
+      "panel": "CONTACTOR_TRIFASICO_3:L3"
+     },
+     {
+      "terminal": "T1",
+      "x": 184,
+      "y": 218,
+      "panel": "CONTACTOR_TRIFASICO_3:T1"
+     },
+     {
+      "terminal": "T2",
+      "x": 193,
+      "y": 218,
+      "panel": "CONTACTOR_TRIFASICO_3:T2"
+     },
+     {
+      "terminal": "T3",
+      "x": 202,
+      "y": 218,
+      "panel": "CONTACTOR_TRIFASICO_3:T3"
+     }
+    ],
+    "labels": [
+     "L1",
+     "L2",
+     "L3",
+     "T1",
+     "T2",
+     "T3"
+    ],
+    "box": [
+     159,
+     195,
+     214,
+     225
+    ]
+   },
+   {
+    "id": 5,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 26,
+    "x2": 63,
+    "y2": 40,
+    "color": "#2f343a"
+   },
+   {
+    "id": 6,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 40,
+    "x2": 63,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 7,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 40,
+    "x2": 120,
+    "y2": 40,
+    "color": "#2f343a"
+   },
+   {
+    "id": 8,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 120,
+    "y": 40,
+    "x2": 120,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 9,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 40,
+    "x2": 63,
+    "y2": 40
+   },
+   {
+    "id": 10,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 26,
+    "x2": 72,
+    "y2": 46,
+    "color": "#2f343a"
+   },
+   {
+    "id": 11,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 46,
+    "x2": 72,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 12,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 46,
+    "x2": 129,
+    "y2": 46,
+    "color": "#2f343a"
+   },
+   {
+    "id": 13,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 129,
+    "y": 46,
+    "x2": 129,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 14,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 46,
+    "x2": 72,
+    "y2": 46
+   },
+   {
+    "id": 15,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 26,
+    "x2": 81,
+    "y2": 52,
+    "color": "#2f343a"
+   },
+   {
+    "id": 16,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 52,
+    "x2": 81,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 17,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 52,
+    "x2": 138,
+    "y2": 52,
+    "color": "#2f343a"
+   },
+   {
+    "id": 18,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 138,
+    "y": 52,
+    "x2": 138,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 19,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 52,
+    "x2": 81,
+    "y2": 52
+   },
+   {
+    "id": 20,
+    "type": 9100,
+    "shape": "motor",
+    "reference": "M1",
+    "x": 72,
+    "y": 150,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "U1",
+      "x": 63,
+      "y": 142,
+      "panel": "BORNERA_MOTOR:U1"
+     },
+     {
+      "terminal": "V1",
+      "x": 72,
+      "y": 138,
+      "panel": "BORNERA_MOTOR:V1"
+     },
+     {
+      "terminal": "W1",
+      "x": 81,
+      "y": 142,
+      "panel": "BORNERA_MOTOR:W1"
+     },
+     {
+      "terminal": "W2",
+      "x": 63,
+      "y": 158,
+      "panel": "BORNERA_MOTOR:W2"
+     },
+     {
+      "terminal": "U2",
+      "x": 72,
+      "y": 162,
+      "panel": "BORNERA_MOTOR:U2"
+     },
+     {
+      "terminal": "V2",
+      "x": 81,
+      "y": 158,
+      "panel": "BORNERA_MOTOR:V2"
+     }
+    ],
+    "labels": [
+     "U1",
+     "V1",
+     "W1",
+     "W2",
+     "U2",
+     "V2"
+    ],
+    "box": [
+     47,
+     145,
+     102,
+     175
+    ]
+   },
+   {
+    "id": 21,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 78,
+    "x2": 63,
+    "y2": 142,
+    "color": "#2f343a"
+   },
+   {
+    "id": 22,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 78,
+    "x2": 72,
+    "y2": 138,
+    "color": "#2f343a"
+   },
+   {
+    "id": 23,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 78,
+    "x2": 81,
+    "y2": 142,
+    "color": "#2f343a"
+   },
+   {
+    "id": 24,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 120,
+    "y": 78,
+    "x2": 120,
+    "y2": 180,
+    "color": "#2f343a"
+   },
+   {
+    "id": 25,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 120,
+    "y": 180,
+    "x2": 63,
+    "y2": 180,
+    "color": "#2f343a"
+   },
+   {
+    "id": 26,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 180,
+    "x2": 63,
+    "y2": 158,
+    "color": "#2f343a"
+   },
+   {
+    "id": 27,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 202,
+    "y": 218,
+    "x2": 202,
+    "y2": 230,
+    "color": "#2f343a"
+   },
+   {
+    "id": 28,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 202,
+    "y": 230,
+    "x2": 63,
+    "y2": 230,
+    "color": "#2f343a"
+   },
+   {
+    "id": 29,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 230,
+    "x2": 63,
+    "y2": 180,
+    "color": "#2f343a"
+   },
+   {
+    "id": 30,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 180,
+    "x2": 63,
+    "y2": 180
+   },
+   {
+    "id": 31,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 129,
+    "y": 78,
+    "x2": 129,
+    "y2": 184,
+    "color": "#2f343a"
+   },
+   {
+    "id": 32,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 129,
+    "y": 184,
+    "x2": 72,
+    "y2": 184,
+    "color": "#2f343a"
+   },
+   {
+    "id": 33,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 184,
+    "x2": 72,
+    "y2": 162,
+    "color": "#2f343a"
+   },
+   {
+    "id": 34,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 218,
+    "x2": 193,
+    "y2": 238,
+    "color": "#2f343a"
+   },
+   {
+    "id": 35,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 238,
+    "x2": 72,
+    "y2": 238,
+    "color": "#2f343a"
+   },
+   {
+    "id": 36,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 238,
+    "x2": 72,
+    "y2": 184,
+    "color": "#2f343a"
+   },
+   {
+    "id": 37,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 184,
+    "x2": 72,
+    "y2": 184
+   },
+   {
+    "id": 38,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 138,
+    "y": 78,
+    "x2": 138,
+    "y2": 188,
+    "color": "#2f343a"
+   },
+   {
+    "id": 39,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 138,
+    "y": 188,
+    "x2": 81,
+    "y2": 188,
+    "color": "#2f343a"
+   },
+   {
+    "id": 40,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 188,
+    "x2": 81,
+    "y2": 158,
+    "color": "#2f343a"
+   },
+   {
+    "id": 41,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 218,
+    "x2": 184,
+    "y2": 246,
+    "color": "#2f343a"
+   },
+   {
+    "id": 42,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 246,
+    "x2": 81,
+    "y2": 246,
+    "color": "#2f343a"
+   },
+   {
+    "id": 43,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 246,
+    "x2": 81,
+    "y2": 188,
+    "color": "#2f343a"
+   },
+   {
+    "id": 44,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 188,
+    "x2": 81,
+    "y2": 188
+   },
+   {
+    "id": 45,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 200,
+    "x2": 184,
+    "y2": 190,
+    "color": "#2f343a"
+   },
+   {
+    "id": 46,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 190,
+    "x2": 193,
+    "y2": 190,
+    "color": "#2f343a"
+   },
+   {
+    "id": 47,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 190,
+    "x2": 202,
+    "y2": 190,
+    "color": "#2f343a"
+   },
+   {
+    "id": 48,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 202,
+    "y": 190,
+    "x2": 202,
+    "y2": 200,
+    "color": "#2f343a"
+   },
+   {
+    "id": 49,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 190,
+    "x2": 193,
+    "y2": 200,
+    "color": "#2f343a"
+   },
+   {
+    "id": 50,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 190,
+    "x2": 193,
+    "y2": 190
+   },
+   {
+    "id": 51,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 230,
+    "y": 26,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "F",
+      "x": 230,
+      "y": 26,
+      "panel": "FUENTE:F"
+     }
+    ],
+    "labels": [
+     "F"
+    ],
+    "box": [
+     205,
+     21,
+     260,
+     51
+    ],
+    "pins": [
+     "F"
+    ]
+   },
+   {
+    "id": 52,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 800,
+    "y": 26,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "N",
+      "x": 800,
+      "y": 26,
+      "panel": "FUENTE:N"
+     }
+    ],
+    "labels": [
+     "N"
+    ],
+    "box": [
+     775,
+     21,
+     830,
+     51
+    ],
+    "pins": [
+     "N"
+    ]
+   },
+   {
+    "id": 53,
+    "type": 9100,
+    "shape": "f1aux",
+    "reference": "F1",
+    "x": 230,
+    "y": 40,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "95",
+      "x": 230,
+      "y": 40,
+      "panel": "CONTACTOR_TERMICO:95"
+     },
+     {
+      "terminal": "96",
+      "x": 230,
+      "y": 58,
+      "panel": "CONTACTOR_TERMICO:96"
+     },
+     {
+      "terminal": "97",
+      "x": 243.5,
+      "y": 40,
+      "panel": "CONTACTOR_TERMICO:97"
+     },
+     {
+      "terminal": "98",
+      "x": 243.5,
+      "y": 58,
+      "panel": "CONTACTOR_TERMICO:98"
+     }
+    ],
+    "labels": [
+     "95",
+     "96",
+     "97",
+     "98"
+    ],
+    "box": [
+     205,
+     35,
+     260,
+     65
+    ]
+   },
+   {
+    "id": 54,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 26,
+    "x2": 230,
+    "y2": 32,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 55,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 230,
+    "y2": 40,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 56,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 243.5,
+    "y2": 32,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 57,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 243.5,
+    "y": 32,
+    "x2": 243.5,
+    "y2": 40,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 58,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 230,
+    "y2": 32
+   },
+   {
+    "id": 59,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 58,
+    "x2": 230,
+    "y2": 80,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 60,
+    "type": 9100,
+    "shape": "push-nc",
+    "reference": "S2",
+    "x": 230,
+    "y": 80,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "1",
+      "x": 230,
+      "y": 80,
+      "panel": "BOTONERAS:S2:1"
+     },
+     {
+      "terminal": "2",
+      "x": 230,
+      "y": 98,
+      "panel": "BOTONERAS:S2:2"
+     }
+    ],
+    "labels": [
+     "1",
+     "2"
+    ],
+    "box": [
+     205,
+     75,
+     260,
+     105
+    ]
+   },
+   {
+    "id": 61,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 98,
+    "x2": 230,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 62,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 108,
+    "x2": 280,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 63,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 108,
+    "x2": 320,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 64,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 108,
+    "x2": 500,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 65,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 108,
+    "x2": 280,
+    "y2": 118,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 66,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 108,
+    "x2": 280,
+    "y2": 108
+   },
+   {
+    "id": 67,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 108,
+    "x2": 320,
+    "y2": 118,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 68,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 108,
+    "x2": 320,
+    "y2": 108
+   },
+   {
+    "id": 69,
+    "type": 9100,
+    "shape": "push-no",
+    "reference": "S1",
+    "x": 280,
+    "y": 118,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "3",
+      "x": 280,
+      "y": 118,
+      "panel": "BOTONERAS:S1:3"
+     },
+     {
+      "terminal": "4",
+      "x": 280,
+      "y": 136,
+      "panel": "BOTONERAS:S1:4"
+     }
+    ],
+    "labels": [
+     "3",
+     "4"
+    ],
+    "box": [
+     255,
+     113,
+     310,
+     143
+    ]
+   },
+   {
+    "id": 70,
+    "type": 9100,
+    "shape": "contact-no",
+    "reference": "KM1",
+    "x": 320,
+    "y": 118,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "13",
+      "x": 320,
+      "y": 118,
+      "panel": "CONTACTOR_TERMICO:13"
+     },
+     {
+      "terminal": "14",
+      "x": 320,
+      "y": 136,
+      "panel": "CONTACTOR_TERMICO:14"
+     }
+    ],
+    "labels": [
+     "13",
+     "14"
+    ],
+    "box": [
+     295,
+     113,
+     350,
+     143
+    ]
+   },
+   {
+    "id": 71,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 136,
+    "x2": 280,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 72,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 146,
+    "x2": 320,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 73,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 136,
+    "x2": 320,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 74,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 146,
+    "x2": 280,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 75,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 146,
+    "x2": 280,
+    "y2": 146
+   },
+   {
+    "id": 76,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 146,
+    "x2": 320,
+    "y2": 146
+   },
+   {
+    "id": 77,
+    "type": 9100,
+    "shape": "coil",
+    "reference": "KM1",
+    "x": 280,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "A1",
+      "x": 280,
+      "y": 230,
+      "panel": "CONTACTOR_TERMICO:A1"
+     },
+     {
+      "terminal": "A2",
+      "x": 280,
+      "y": 248,
+      "panel": "CONTACTOR_TERMICO:A2"
+     }
+    ],
+    "labels": [
+     "A1",
+     "A2"
+    ],
+    "box": [
+     255,
+     225,
+     310,
+     255
+    ]
+   },
+   {
+    "id": 78,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 146,
+    "x2": 400,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 79,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 146,
+    "x2": 560,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 80,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 146,
+    "x2": 400,
+    "y2": 146
+   },
+   {
+    "id": 81,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 146,
+    "x2": 400,
+    "y2": 164,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 82,
+    "type": 9100,
+    "shape": "push-nc",
+    "reference": "S3",
+    "x": 400,
+    "y": 164,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "1",
+      "x": 400,
+      "y": 164,
+      "panel": "BOTONERAS:S3:1"
+     },
+     {
+      "terminal": "2",
+      "x": 400,
+      "y": 182,
+      "panel": "BOTONERAS:S3:2"
+     }
+    ],
+    "labels": [
+     "1",
+     "2"
+    ],
+    "box": [
+     375,
+     159,
+     430,
+     189
+    ]
+   },
+   {
+    "id": 83,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 182,
+    "x2": 400,
+    "y2": 194,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 84,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 500,
+    "y": 108,
+    "x2": 500,
+    "y2": 118,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 85,
+    "type": 9100,
+    "shape": "push-no",
+    "reference": "S3",
+    "x": 500,
+    "y": 118,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "3",
+      "x": 500,
+      "y": 118,
+      "panel": "BOTONERAS:S3:3"
+     },
+     {
+      "terminal": "4",
+      "x": 500,
+      "y": 136,
+      "panel": "BOTONERAS:S3:4"
+     }
+    ],
+    "labels": [
+     "3",
+     "4"
+    ],
+    "box": [
+     475,
+     113,
+     530,
+     143
+    ]
+   },
+   {
+    "id": 86,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 500,
+    "y": 136,
+    "x2": 500,
+    "y2": 182,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 87,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 500,
+    "y": 182,
+    "x2": 530,
+    "y2": 182,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 88,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 182,
+    "x2": 560,
+    "y2": 182,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 89,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 182,
+    "x2": 530,
+    "y2": 194,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 90,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 182,
+    "x2": 530,
+    "y2": 182
+   },
+   {
+    "id": 91,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 560,
+    "y": 146,
+    "x2": 560,
+    "y2": 164,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 92,
+    "type": 9100,
+    "shape": "contact-no",
+    "reference": "KM2",
+    "x": 560,
+    "y": 164,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "13",
+      "x": 560,
+      "y": 164,
+      "panel": "CONTACTOR_TRIFASICO:13"
+     },
+     {
+      "terminal": "14",
+      "x": 560,
+      "y": 182,
+      "panel": "CONTACTOR_TRIFASICO:14"
+     }
+    ],
+    "labels": [
+     "13",
+     "14"
+    ],
+    "box": [
+     535,
+     159,
+     590,
+     189
+    ]
+   },
+   {
+    "id": 93,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM2",
+    "x": 400,
+    "y": 194,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "71",
+      "x": 400,
+      "y": 194,
+      "panel": "CONTACTOR_TRIFASICO:71"
+     },
+     {
+      "terminal": "72",
+      "x": 400,
+      "y": 212,
+      "panel": "CONTACTOR_TRIFASICO:72"
+     }
+    ],
+    "labels": [
+     "71",
+     "72"
+    ],
+    "box": [
+     375,
+     189,
+     430,
+     219
+    ]
+   },
+   {
+    "id": 94,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 212,
+    "x2": 400,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 95,
+    "type": 9100,
+    "shape": "coil",
+    "reference": "KM3",
+    "x": 400,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "A1",
+      "x": 400,
+      "y": 230,
+      "panel": "CONTACTOR_TRIFASICO_3:A1"
+     },
+     {
+      "terminal": "A2",
+      "x": 400,
+      "y": 248,
+      "panel": "CONTACTOR_TRIFASICO_3:A2"
+     }
+    ],
+    "labels": [
+     "A1",
+     "A2"
+    ],
+    "box": [
+     375,
+     225,
+     430,
+     255
+    ]
+   },
+   {
+    "id": 96,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM3",
+    "x": 530,
+    "y": 194,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "71",
+      "x": 530,
+      "y": 194,
+      "panel": "CONTACTOR_TRIFASICO_3:71"
+     },
+     {
+      "terminal": "72",
+      "x": 530,
+      "y": 212,
+      "panel": "CONTACTOR_TRIFASICO_3:72"
+     }
+    ],
+    "labels": [
+     "71",
+     "72"
+    ],
+    "box": [
+     505,
+     189,
+     560,
+     219
+    ]
+   },
+   {
+    "id": 97,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 212,
+    "x2": 530,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 98,
+    "type": 9100,
+    "shape": "coil",
+    "reference": "KM2",
+    "x": 530,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "A1",
+      "x": 530,
+      "y": 230,
+      "panel": "CONTACTOR_TRIFASICO:A1"
+     },
+     {
+      "terminal": "A2",
+      "x": 530,
+      "y": 248,
+      "panel": "CONTACTOR_TRIFASICO:A2"
+     }
+    ],
+    "labels": [
+     "A1",
+     "A2"
+    ],
+    "box": [
+     505,
+     225,
+     560,
+     255
+    ]
+   },
+   {
+    "id": 99,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 220,
+    "x2": 450,
+    "y2": 220,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 100,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 450,
+    "y": 220,
+    "x2": 450,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 101,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 220,
+    "x2": 400,
+    "y2": 220
+   },
+   {
+    "id": 102,
+    "type": 9100,
+    "shape": "lamp",
+    "reference": "P1",
+    "x": 450,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "X1",
+      "x": 450,
+      "y": 230,
+      "panel": "BOTONERAS:PILOTO_1"
+     },
+     {
+      "terminal": "X2",
+      "x": 450,
+      "y": 248
+     }
+    ],
+    "labels": [
+     "X1",
+     "X2"
+    ],
+    "box": [
+     425,
+     225,
+     480,
+     255
+    ]
+   },
+   {
+    "id": 103,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 220,
+    "x2": 600,
+    "y2": 220,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 104,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 600,
+    "y": 220,
+    "x2": 600,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 105,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 220,
+    "x2": 530,
+    "y2": 220
+   },
+   {
+    "id": 106,
+    "type": 9100,
+    "shape": "lamp",
+    "reference": "P4",
+    "x": 600,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "X1",
+      "x": 600,
+      "y": 230,
+      "panel": "BOTONERAS:PILOTO_4"
+     },
+     {
+      "terminal": "X2",
+      "x": 600,
+      "y": 248
+     }
+    ],
+    "labels": [
+     "X1",
+     "X2"
+    ],
+    "box": [
+     575,
+     225,
+     630,
+     255
+    ]
+   },
+   {
+    "id": 107,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 248,
+    "x2": 280,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": false
+   },
+   {
+    "id": 108,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 248,
+    "x2": 400,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": false
+   },
+   {
+    "id": 109,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 248,
+    "x2": 530,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": false
+   },
+   {
+    "id": 110,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 450,
+    "y": 248,
+    "x2": 450,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": true
+   },
+   {
+    "id": 111,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 600,
+    "y": 248,
+    "x2": 600,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": true
+   },
+   {
+    "id": 112,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 690,
+    "y2": 32,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 113,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 32,
+    "x2": 690,
+    "y2": 80,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 114,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM1",
+    "x": 690,
+    "y": 80,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "71",
+      "x": 690,
+      "y": 80,
+      "panel": "CONTACTOR_TERMICO:71"
+     },
+     {
+      "terminal": "72",
+      "x": 690,
+      "y": 98,
+      "panel": "CONTACTOR_TERMICO:72"
+     }
+    ],
+    "labels": [
+     "71",
+     "72"
+    ],
+    "box": [
+     665,
+     75,
+     720,
+     105
+    ]
+   },
+   {
+    "id": 115,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 98,
+    "x2": 690,
+    "y2": 110,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 116,
+    "type": 9100,
+    "shape": "lamp",
+    "reference": "P2",
+    "x": 690,
+    "y": 110,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "X1",
+      "x": 690,
+      "y": 110,
+      "panel": "BOTONERAS:PILOTO_2"
+     },
+     {
+      "terminal": "X2",
+      "x": 690,
+      "y": 128
+     }
+    ],
+    "labels": [
+     "X1",
+     "X2"
+    ],
+    "box": [
+     665,
+     105,
+     720,
+     135
+    ]
+   },
+   {
+    "id": 117,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 128,
+    "x2": 690,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": true
+   },
+   {
+    "id": 118,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 243.5,
+    "y": 58,
+    "x2": 243.5,
+    "y2": 64,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 119,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 243.5,
+    "y": 64,
+    "x2": 750,
+    "y2": 64,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 120,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 750,
+    "y": 64,
+    "x2": 750,
+    "y2": 80,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 121,
+    "type": 9100,
+    "shape": "lamp",
+    "reference": "P3",
+    "x": 750,
+    "y": 80,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "X1",
+      "x": 750,
+      "y": 80,
+      "panel": "BOTONERAS:PILOTO_3"
+     },
+     {
+      "terminal": "X2",
+      "x": 750,
+      "y": 98
+     }
+    ],
+    "labels": [
+     "X1",
+     "X2"
+    ],
+    "box": [
+     725,
+     75,
+     780,
+     105
+    ]
+   },
+   {
+    "id": 122,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 750,
+    "y": 98,
+    "x2": 750,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": true
+   },
+   {
+    "id": 123,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 250,
+    "y": 310,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "N · BOT",
+      "x": 250,
+      "y": 310,
+      "panel": "BOTONERAS:N"
+     }
+    ],
+    "labels": [
+     "N · BOT"
+    ],
+    "box": [
+     225,
+     305,
+     280,
+     335
+    ],
+    "pins": [
+     "N · BOT"
+    ]
+   },
+   {
+    "id": 124,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 250,
+    "y": 310,
+    "x2": 800,
+    "y2": 310,
+    "color": "#3d6fae"
+   },
+   {
+    "id": 125,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 800,
+    "y": 26,
+    "x2": 800,
+    "y2": 310,
+    "color": "#3d6fae"
+   },
+   {
+    "id": 126,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 310,
+    "x2": 280,
+    "y2": 310
+   },
+   {
+    "id": 127,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 310,
+    "x2": 400,
+    "y2": 310
+   },
+   {
+    "id": 128,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 310,
+    "x2": 530,
+    "y2": 310
+   },
+   {
+    "id": 129,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 450,
+    "y": 310,
+    "x2": 450,
+    "y2": 310
+   },
+   {
+    "id": 130,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 600,
+    "y": 310,
+    "x2": 600,
+    "y2": 310
+   },
+   {
+    "id": 131,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 310,
+    "x2": 690,
+    "y2": 310
+   },
+   {
+    "id": 132,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 750,
+    "y": 310,
+    "x2": 750,
+    "y2": 310
+   },
+   {
+    "id": 133,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 800,
+    "y": 310,
+    "x2": 800,
+    "y2": 310
+   },
+   {
+    "id": 134,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 44,
+    "y": 340,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "TP",
+      "x": 44,
+      "y": 340,
+      "panel": "FUENTE:TP"
+     }
+    ],
+    "labels": [
+     "TP"
+    ],
+    "box": [
+     19,
+     335,
+     74,
+     365
+    ],
+    "pins": [
+     "TP"
+    ]
+   },
+   {
+    "id": 135,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 76,
+    "y": 340,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "TP",
+      "x": 76,
+      "y": 340,
+      "panel": "BOTONERAS:TP_IZQ"
+     }
+    ],
+    "labels": [
+     "TP"
+    ],
+    "box": [
+     51,
+     335,
+     106,
+     365
+    ],
+    "pins": [
+     "TP"
+    ]
+   },
+   {
+    "id": 136,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 44,
+    "y": 340,
+    "x2": 76,
+    "y2": 340,
+    "color": "#2a8a62",
+    "dashed": true
+   },
+   {
+    "id": 137,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 108,
+    "y": 340,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "TP",
+      "x": 108,
+      "y": 340,
+      "panel": "CONTACTOR_TERMICO:TP_DER"
+     }
+    ],
+    "labels": [
+     "TP"
+    ],
+    "box": [
+     83,
+     335,
+     138,
+     365
+    ],
+    "pins": [
+     "TP"
+    ]
+   },
+   {
+    "id": 138,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 76,
+    "y": 340,
+    "x2": 108,
+    "y2": 340,
+    "color": "#2a8a62",
+    "dashed": true
+   },
+   {
+    "id": 139,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 140,
+    "y": 340,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "TP",
+      "x": 140,
+      "y": 340,
+      "panel": "CONTACTOR_TRIFASICO:TP_IZQ"
+     }
+    ],
+    "labels": [
+     "TP"
+    ],
+    "box": [
+     115,
+     335,
+     170,
+     365
+    ],
+    "pins": [
+     "TP"
+    ]
+   },
+   {
+    "id": 140,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 108,
+    "y": 340,
+    "x2": 140,
+    "y2": 340,
+    "color": "#2a8a62",
+    "dashed": true
+   },
+   {
+    "id": 141,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 172,
+    "y": 340,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "TP",
+      "x": 172,
+      "y": 340,
+      "panel": "CONTACTOR_TRIFASICO:TP_DER"
+     }
+    ],
+    "labels": [
+     "TP"
+    ],
+    "box": [
+     147,
+     335,
+     202,
+     365
+    ],
+    "pins": [
+     "TP"
+    ]
+   },
+   {
+    "id": 142,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 204,
+    "y": 340,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "TP",
+      "x": 204,
+      "y": 340,
+      "panel": "BORNERA_MOTOR:TP"
+     }
+    ],
+    "labels": [
+     "TP"
+    ],
+    "box": [
+     179,
+     335,
+     234,
+     365
+    ],
+    "pins": [
+     "TP"
+    ]
+   },
+   {
+    "id": 143,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 172,
+    "y": 340,
+    "x2": 204,
+    "y2": 340,
+    "color": "#2a8a62",
+    "dashed": true
+   },
+   {
+    "id": 144,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 236,
+    "y": 340,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "TP",
+      "x": 236,
+      "y": 340,
+      "panel": "CONTACTOR_TRIFASICO_3:TP_IZQ"
+     }
+    ],
+    "labels": [
+     "TP"
+    ],
+    "box": [
+     211,
+     335,
+     266,
+     365
+    ],
+    "pins": [
+     "TP"
+    ]
+   },
+   {
+    "id": 145,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 204,
+    "y": 340,
+    "x2": 236,
+    "y2": 340,
+    "color": "#2a8a62",
+    "dashed": true
+   }
+  ],
+  "views": {
+   "all": {
+    "x": 20,
+    "y": 10,
+    "w": 810,
+    "h": 344
+   },
+   "power": {
+    "x": 20,
+    "y": 14,
+    "w": 195,
+    "h": 340
+   },
+   "control": {
+    "x": 215,
+    "y": 14,
+    "w": 615,
+    "h": 310
+   }
+  }
+ },
+ "estrellaTimer": {
+  "name": "Estrella-triángulo con temporizador",
+  "source": "Cableado del archivo 2-modo-panel-con-historial-3-.json; funciones según el modelo virtual.",
+  "origin": "lesson",
+  "splitX": 215,
+  "objects": [
+   {
+    "id": 1,
+    "type": 9100,
+    "shape": "terminal-round",
+    "reference": "Fuente",
+    "x": 63,
+    "y": 24,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "R",
+      "x": 63,
+      "y": 26,
+      "panel": "FUENTE:R"
+     },
+     {
+      "terminal": "S",
+      "x": 72,
+      "y": 26,
+      "panel": "FUENTE:S"
+     },
+     {
+      "terminal": "T",
+      "x": 81,
+      "y": 26,
+      "panel": "FUENTE:T"
+     }
+    ],
+    "labels": [
+     "R",
+     "S",
+     "T"
+    ],
+    "box": [
+     38,
+     19,
+     93,
+     49
+    ],
+    "pins": [
+     "R",
+     "S",
+     "T"
+    ]
+   },
+   {
+    "id": 2,
+    "type": 9100,
+    "shape": "contactor3",
+    "reference": "KM1",
+    "x": 63,
+    "y": 60,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "L1",
+      "x": 63,
+      "y": 60,
+      "panel": "CONTACTOR_TERMICO:L1"
+     },
+     {
+      "terminal": "L2",
+      "x": 72,
+      "y": 60,
+      "panel": "CONTACTOR_TERMICO:L2"
+     },
+     {
+      "terminal": "L3",
+      "x": 81,
+      "y": 60,
+      "panel": "CONTACTOR_TERMICO:L3"
+     },
+     {
+      "terminal": "T1",
+      "x": 63,
+      "y": 78,
+      "panel": "CONTACTOR_TERMICO:T1"
+     },
+     {
+      "terminal": "T2",
+      "x": 72,
+      "y": 78,
+      "panel": "CONTACTOR_TERMICO:T2"
+     },
+     {
+      "terminal": "T3",
+      "x": 81,
+      "y": 78,
+      "panel": "CONTACTOR_TERMICO:T3"
+     }
+    ],
+    "labels": [
+     "L1",
+     "L2",
+     "L3",
+     "T1",
+     "T2",
+     "T3"
+    ],
+    "box": [
+     38,
+     55,
+     93,
+     85
+    ]
+   },
+   {
+    "id": 3,
+    "type": 9100,
+    "shape": "contactor3",
+    "reference": "KM3",
+    "x": 120,
+    "y": 60,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "L1",
+      "x": 120,
+      "y": 60,
+      "panel": "CONTACTOR_TRIFASICO_3:L1"
+     },
+     {
+      "terminal": "L2",
+      "x": 129,
+      "y": 60,
+      "panel": "CONTACTOR_TRIFASICO_3:L2"
+     },
+     {
+      "terminal": "L3",
+      "x": 138,
+      "y": 60,
+      "panel": "CONTACTOR_TRIFASICO_3:L3"
+     },
+     {
+      "terminal": "T1",
+      "x": 120,
+      "y": 78,
+      "panel": "CONTACTOR_TRIFASICO_3:T1"
+     },
+     {
+      "terminal": "T2",
+      "x": 129,
+      "y": 78,
+      "panel": "CONTACTOR_TRIFASICO_3:T2"
+     },
+     {
+      "terminal": "T3",
+      "x": 138,
+      "y": 78,
+      "panel": "CONTACTOR_TRIFASICO_3:T3"
+     }
+    ],
+    "labels": [
+     "L1",
+     "L2",
+     "L3",
+     "T1",
+     "T2",
+     "T3"
+    ],
+    "box": [
+     95,
+     55,
+     150,
+     85
+    ]
+   },
+   {
+    "id": 4,
+    "type": 9100,
+    "shape": "contactor3",
+    "reference": "KM2",
+    "x": 184,
+    "y": 200,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "L1",
+      "x": 184,
+      "y": 200,
+      "panel": "CONTACTOR_TRIFASICO:L1"
+     },
+     {
+      "terminal": "L2",
+      "x": 193,
+      "y": 200,
+      "panel": "CONTACTOR_TRIFASICO:L2"
+     },
+     {
+      "terminal": "L3",
+      "x": 202,
+      "y": 200,
+      "panel": "CONTACTOR_TRIFASICO:L3"
+     },
+     {
+      "terminal": "T1",
+      "x": 184,
+      "y": 218,
+      "panel": "CONTACTOR_TRIFASICO:T1"
+     },
+     {
+      "terminal": "T2",
+      "x": 193,
+      "y": 218,
+      "panel": "CONTACTOR_TRIFASICO:T2"
+     },
+     {
+      "terminal": "T3",
+      "x": 202,
+      "y": 218,
+      "panel": "CONTACTOR_TRIFASICO:T3"
+     }
+    ],
+    "labels": [
+     "L1",
+     "L2",
+     "L3",
+     "T1",
+     "T2",
+     "T3"
+    ],
+    "box": [
+     159,
+     195,
+     214,
+     225
+    ]
+   },
+   {
+    "id": 5,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 26,
+    "x2": 63,
+    "y2": 40,
+    "color": "#2f343a"
+   },
+   {
+    "id": 6,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 40,
+    "x2": 63,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 7,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 40,
+    "x2": 120,
+    "y2": 40,
+    "color": "#2f343a"
+   },
+   {
+    "id": 8,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 120,
+    "y": 40,
+    "x2": 120,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 9,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 40,
+    "x2": 63,
+    "y2": 40
+   },
+   {
+    "id": 10,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 26,
+    "x2": 72,
+    "y2": 46,
+    "color": "#2f343a"
+   },
+   {
+    "id": 11,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 46,
+    "x2": 72,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 12,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 46,
+    "x2": 129,
+    "y2": 46,
+    "color": "#2f343a"
+   },
+   {
+    "id": 13,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 129,
+    "y": 46,
+    "x2": 129,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 14,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 46,
+    "x2": 72,
+    "y2": 46
+   },
+   {
+    "id": 15,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 26,
+    "x2": 81,
+    "y2": 52,
+    "color": "#2f343a"
+   },
+   {
+    "id": 16,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 52,
+    "x2": 81,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 17,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 52,
+    "x2": 138,
+    "y2": 52,
+    "color": "#2f343a"
+   },
+   {
+    "id": 18,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 138,
+    "y": 52,
+    "x2": 138,
+    "y2": 60,
+    "color": "#2f343a"
+   },
+   {
+    "id": 19,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 52,
+    "x2": 81,
+    "y2": 52
+   },
+   {
+    "id": 20,
+    "type": 9100,
+    "shape": "motor",
+    "reference": "M1",
+    "x": 72,
+    "y": 150,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "U1",
+      "x": 63,
+      "y": 142,
+      "panel": "BORNERA_MOTOR:U1"
+     },
+     {
+      "terminal": "V1",
+      "x": 72,
+      "y": 138,
+      "panel": "BORNERA_MOTOR:V1"
+     },
+     {
+      "terminal": "W1",
+      "x": 81,
+      "y": 142,
+      "panel": "BORNERA_MOTOR:W1"
+     },
+     {
+      "terminal": "W2",
+      "x": 63,
+      "y": 158,
+      "panel": "BORNERA_MOTOR:W2"
+     },
+     {
+      "terminal": "U2",
+      "x": 72,
+      "y": 162,
+      "panel": "BORNERA_MOTOR:U2"
+     },
+     {
+      "terminal": "V2",
+      "x": 81,
+      "y": 158,
+      "panel": "BORNERA_MOTOR:V2"
+     }
+    ],
+    "labels": [
+     "U1",
+     "V1",
+     "W1",
+     "W2",
+     "U2",
+     "V2"
+    ],
+    "box": [
+     47,
+     145,
+     102,
+     175
+    ]
+   },
+   {
+    "id": 21,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 78,
+    "x2": 63,
+    "y2": 142,
+    "color": "#2f343a"
+   },
+   {
+    "id": 22,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 78,
+    "x2": 72,
+    "y2": 138,
+    "color": "#2f343a"
+   },
+   {
+    "id": 23,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 78,
+    "x2": 81,
+    "y2": 142,
+    "color": "#2f343a"
+   },
+   {
+    "id": 24,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 120,
+    "y": 78,
+    "x2": 120,
+    "y2": 180,
+    "color": "#2f343a"
+   },
+   {
+    "id": 25,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 120,
+    "y": 180,
+    "x2": 63,
+    "y2": 180,
+    "color": "#2f343a"
+   },
+   {
+    "id": 26,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 180,
+    "x2": 63,
+    "y2": 158,
+    "color": "#2f343a"
+   },
+   {
+    "id": 27,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 202,
+    "y": 218,
+    "x2": 202,
+    "y2": 230,
+    "color": "#2f343a"
+   },
+   {
+    "id": 28,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 202,
+    "y": 230,
+    "x2": 63,
+    "y2": 230,
+    "color": "#2f343a"
+   },
+   {
+    "id": 29,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 230,
+    "x2": 63,
+    "y2": 180,
+    "color": "#2f343a"
+   },
+   {
+    "id": 30,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 63,
+    "y": 180,
+    "x2": 63,
+    "y2": 180
+   },
+   {
+    "id": 31,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 129,
+    "y": 78,
+    "x2": 129,
+    "y2": 184,
+    "color": "#2f343a"
+   },
+   {
+    "id": 32,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 129,
+    "y": 184,
+    "x2": 72,
+    "y2": 184,
+    "color": "#2f343a"
+   },
+   {
+    "id": 33,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 184,
+    "x2": 72,
+    "y2": 162,
+    "color": "#2f343a"
+   },
+   {
+    "id": 34,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 218,
+    "x2": 193,
+    "y2": 238,
+    "color": "#2f343a"
+   },
+   {
+    "id": 35,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 238,
+    "x2": 72,
+    "y2": 238,
+    "color": "#2f343a"
+   },
+   {
+    "id": 36,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 238,
+    "x2": 72,
+    "y2": 184,
+    "color": "#2f343a"
+   },
+   {
+    "id": 37,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 72,
+    "y": 184,
+    "x2": 72,
+    "y2": 184
+   },
+   {
+    "id": 38,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 138,
+    "y": 78,
+    "x2": 138,
+    "y2": 188,
+    "color": "#2f343a"
+   },
+   {
+    "id": 39,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 138,
+    "y": 188,
+    "x2": 81,
+    "y2": 188,
+    "color": "#2f343a"
+   },
+   {
+    "id": 40,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 188,
+    "x2": 81,
+    "y2": 158,
+    "color": "#2f343a"
+   },
+   {
+    "id": 41,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 218,
+    "x2": 184,
+    "y2": 246,
+    "color": "#2f343a"
+   },
+   {
+    "id": 42,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 246,
+    "x2": 81,
+    "y2": 246,
+    "color": "#2f343a"
+   },
+   {
+    "id": 43,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 246,
+    "x2": 81,
+    "y2": 188,
+    "color": "#2f343a"
+   },
+   {
+    "id": 44,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 81,
+    "y": 188,
+    "x2": 81,
+    "y2": 188
+   },
+   {
+    "id": 45,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 200,
+    "x2": 184,
+    "y2": 190,
+    "color": "#2f343a"
+   },
+   {
+    "id": 46,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 184,
+    "y": 190,
+    "x2": 193,
+    "y2": 190,
+    "color": "#2f343a"
+   },
+   {
+    "id": 47,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 190,
+    "x2": 202,
+    "y2": 190,
+    "color": "#2f343a"
+   },
+   {
+    "id": 48,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 202,
+    "y": 190,
+    "x2": 202,
+    "y2": 200,
+    "color": "#2f343a"
+   },
+   {
+    "id": 49,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 190,
+    "x2": 193,
+    "y2": 200,
+    "color": "#2f343a"
+   },
+   {
+    "id": 50,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 193,
+    "y": 190,
+    "x2": 193,
+    "y2": 190
+   },
+   {
+    "id": 51,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 230,
+    "y": 26,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "F",
+      "x": 230,
+      "y": 26,
+      "panel": "FUENTE:F"
+     }
+    ],
+    "labels": [
+     "F"
+    ],
+    "box": [
+     205,
+     21,
+     260,
+     51
+    ],
+    "pins": [
+     "F"
+    ]
+   },
+   {
+    "id": 52,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 800,
+    "y": 26,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "N",
+      "x": 800,
+      "y": 26,
+      "panel": "FUENTE:N"
+     }
+    ],
+    "labels": [
+     "N"
+    ],
+    "box": [
+     775,
+     21,
+     830,
+     51
+    ],
+    "pins": [
+     "N"
+    ]
+   },
+   {
+    "id": 53,
+    "type": 9100,
+    "shape": "f1aux",
+    "reference": "F1",
+    "x": 230,
+    "y": 40,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "95",
+      "x": 230,
+      "y": 40,
+      "panel": "CONTACTOR_TERMICO:95"
+     },
+     {
+      "terminal": "96",
+      "x": 230,
+      "y": 58,
+      "panel": "CONTACTOR_TERMICO:96"
+     },
+     {
+      "terminal": "97",
+      "x": 243.5,
+      "y": 40,
+      "panel": "CONTACTOR_TERMICO:97"
+     },
+     {
+      "terminal": "98",
+      "x": 243.5,
+      "y": 58,
+      "panel": "CONTACTOR_TERMICO:98"
+     }
+    ],
+    "labels": [
+     "95",
+     "96",
+     "97",
+     "98"
+    ],
+    "box": [
+     205,
+     35,
+     260,
+     65
+    ]
+   },
+   {
+    "id": 54,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 26,
+    "x2": 230,
+    "y2": 32,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 55,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 230,
+    "y2": 40,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 56,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 243.5,
+    "y2": 32,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 57,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 243.5,
+    "y": 32,
+    "x2": 243.5,
+    "y2": 40,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 58,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 230,
+    "y2": 32
+   },
+   {
+    "id": 59,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 58,
+    "x2": 230,
+    "y2": 80,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 60,
+    "type": 9100,
+    "shape": "push-nc",
+    "reference": "S2",
+    "x": 230,
+    "y": 80,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "1",
+      "x": 230,
+      "y": 80,
+      "panel": "BOTONERAS:S2:1"
+     },
+     {
+      "terminal": "2",
+      "x": 230,
+      "y": 98,
+      "panel": "BOTONERAS:S2:2"
+     }
+    ],
+    "labels": [
+     "1",
+     "2"
+    ],
+    "box": [
+     205,
+     75,
+     260,
+     105
+    ]
+   },
+   {
+    "id": 61,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 98,
+    "x2": 230,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 62,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 108,
+    "x2": 280,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 63,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 108,
+    "x2": 320,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 64,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 108,
+    "x2": 280,
+    "y2": 118,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 65,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 108,
+    "x2": 280,
+    "y2": 108
+   },
+   {
+    "id": 66,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 108,
+    "x2": 320,
+    "y2": 118,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 67,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 108,
+    "x2": 320,
+    "y2": 108
+   },
+   {
+    "id": 68,
+    "type": 9100,
+    "shape": "push-no",
+    "reference": "S1",
+    "x": 280,
+    "y": 118,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "3",
+      "x": 280,
+      "y": 118,
+      "panel": "BOTONERAS:S1:3"
+     },
+     {
+      "terminal": "4",
+      "x": 280,
+      "y": 136,
+      "panel": "BOTONERAS:S1:4"
+     }
+    ],
+    "labels": [
+     "3",
+     "4"
+    ],
+    "box": [
+     255,
+     113,
+     310,
+     143
+    ]
+   },
+   {
+    "id": 69,
+    "type": 9100,
+    "shape": "contact-no",
+    "reference": "KM1",
+    "x": 320,
+    "y": 118,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "13",
+      "x": 320,
+      "y": 118,
+      "panel": "CONTACTOR_TERMICO:13"
+     },
+     {
+      "terminal": "14",
+      "x": 320,
+      "y": 136,
+      "panel": "CONTACTOR_TERMICO:14"
+     }
+    ],
+    "labels": [
+     "13",
+     "14"
+    ],
+    "box": [
+     295,
+     113,
+     350,
+     143
+    ]
+   },
+   {
+    "id": 70,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 136,
+    "x2": 280,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 71,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 146,
+    "x2": 320,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 72,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 136,
+    "x2": 320,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 73,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 146,
+    "x2": 280,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 74,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 146,
+    "x2": 280,
+    "y2": 146
+   },
+   {
+    "id": 75,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 146,
+    "x2": 320,
+    "y2": 146
+   },
+   {
+    "id": 76,
+    "type": 9100,
+    "shape": "coil",
+    "reference": "KM1",
+    "x": 280,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "A1",
+      "x": 280,
+      "y": 230,
+      "panel": "CONTACTOR_TERMICO:A1"
+     },
+     {
+      "terminal": "A2",
+      "x": 280,
+      "y": 248,
+      "panel": "CONTACTOR_TERMICO:A2"
+     }
+    ],
+    "labels": [
+     "A1",
+     "A2"
+    ],
+    "box": [
+     255,
+     225,
+     310,
+     255
+    ]
+   },
+   {
+    "id": 77,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 146,
+    "x2": 400,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 78,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 146,
+    "x2": 530,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 79,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 146,
+    "x2": 650,
+    "y2": 146,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 80,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 146,
+    "x2": 400,
+    "y2": 146
+   },
+   {
+    "id": 81,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 146,
+    "x2": 530,
+    "y2": 146
+   },
+   {
+    "id": 82,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 650,
+    "y": 146,
+    "x2": 650,
+    "y2": 146
+   },
+   {
+    "id": 83,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 146,
+    "x2": 400,
+    "y2": 164,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 84,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KT1 · retardo",
+    "x": 400,
+    "y": 164,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "55",
+      "x": 400,
+      "y": 164,
+      "panel": "TEMPORIZADOR_1:55"
+     },
+     {
+      "terminal": "56",
+      "x": 400,
+      "y": 182,
+      "panel": "TEMPORIZADOR_1:56"
+     }
+    ],
+    "labels": [
+     "55",
+     "56"
+    ],
+    "box": [
+     375,
+     159,
+     430,
+     189
+    ]
+   },
+   {
+    "id": 85,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 182,
+    "x2": 400,
+    "y2": 194,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 86,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 146,
+    "x2": 530,
+    "y2": 164,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 87,
+    "type": 9100,
+    "shape": "contact-no",
+    "reference": "KT1 · retardo",
+    "x": 530,
+    "y": 164,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "67",
+      "x": 530,
+      "y": 164,
+      "panel": "TEMPORIZADOR_1:67"
+     },
+     {
+      "terminal": "68",
+      "x": 530,
+      "y": 182,
+      "panel": "TEMPORIZADOR_1:68"
+     }
+    ],
+    "labels": [
+     "67",
+     "68"
+    ],
+    "box": [
+     505,
+     159,
+     560,
+     189
+    ]
+   },
+   {
+    "id": 88,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 182,
+    "x2": 530,
+    "y2": 194,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 89,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 650,
+    "y": 146,
+    "x2": 650,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 90,
+    "type": 9100,
+    "shape": "coil",
+    "reference": "KT1",
+    "x": 650,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "A1",
+      "x": 650,
+      "y": 230,
+      "panel": "TEMPORIZADOR_1:A1"
+     },
+     {
+      "terminal": "A2",
+      "x": 650,
+      "y": 248,
+      "panel": "TEMPORIZADOR_1:A2"
+     }
+    ],
+    "labels": [
+     "A1",
+     "A2"
+    ],
+    "box": [
+     625,
+     225,
+     680,
+     255
+    ]
+   },
+   {
+    "id": 91,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 146,
+    "x2": 320,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 92,
+    "type": 9100,
+    "shape": "lamp",
+    "reference": "P1",
+    "x": 320,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "X1",
+      "x": 320,
+      "y": 230,
+      "panel": "BOTONERAS:PILOTO_1"
+     },
+     {
+      "terminal": "X2",
+      "x": 320,
+      "y": 248
+     }
+    ],
+    "labels": [
+     "X1",
+     "X2"
+    ],
+    "box": [
+     295,
+     225,
+     350,
+     255
+    ]
+   },
+   {
+    "id": 93,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM3",
+    "x": 400,
+    "y": 194,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "71",
+      "x": 400,
+      "y": 194,
+      "panel": "CONTACTOR_TRIFASICO_3:71"
+     },
+     {
+      "terminal": "72",
+      "x": 400,
+      "y": 212,
+      "panel": "CONTACTOR_TRIFASICO_3:72"
+     }
+    ],
+    "labels": [
+     "71",
+     "72"
+    ],
+    "box": [
+     375,
+     189,
+     430,
+     219
+    ]
+   },
+   {
+    "id": 94,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 212,
+    "x2": 400,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 95,
+    "type": 9100,
+    "shape": "coil",
+    "reference": "KM2",
+    "x": 400,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "A1",
+      "x": 400,
+      "y": 230,
+      "panel": "CONTACTOR_TRIFASICO:A1"
+     },
+     {
+      "terminal": "A2",
+      "x": 400,
+      "y": 248,
+      "panel": "CONTACTOR_TRIFASICO:A2"
+     }
+    ],
+    "labels": [
+     "A1",
+     "A2"
+    ],
+    "box": [
+     375,
+     225,
+     430,
+     255
+    ]
+   },
+   {
+    "id": 96,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM2",
+    "x": 530,
+    "y": 194,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "71",
+      "x": 530,
+      "y": 194,
+      "panel": "CONTACTOR_TRIFASICO:71"
+     },
+     {
+      "terminal": "72",
+      "x": 530,
+      "y": 212,
+      "panel": "CONTACTOR_TRIFASICO:72"
+     }
+    ],
+    "labels": [
+     "71",
+     "72"
+    ],
+    "box": [
+     505,
+     189,
+     560,
+     219
+    ]
+   },
+   {
+    "id": 97,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 212,
+    "x2": 530,
+    "y2": 230,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 98,
+    "type": 9100,
+    "shape": "coil",
+    "reference": "KM3",
+    "x": 530,
+    "y": 230,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "A1",
+      "x": 530,
+      "y": 230,
+      "panel": "CONTACTOR_TRIFASICO_3:A1"
+     },
+     {
+      "terminal": "A2",
+      "x": 530,
+      "y": 248,
+      "panel": "CONTACTOR_TRIFASICO_3:A2"
+     }
+    ],
+    "labels": [
+     "A1",
+     "A2"
+    ],
+    "box": [
+     505,
+     225,
+     560,
+     255
+    ]
+   },
+   {
+    "id": 99,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 248,
+    "x2": 280,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": false
+   },
+   {
+    "id": 100,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 248,
+    "x2": 400,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": false
+   },
+   {
+    "id": 101,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 248,
+    "x2": 530,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": false
+   },
+   {
+    "id": 102,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 248,
+    "x2": 320,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": true
+   },
+   {
+    "id": 103,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 650,
+    "y": 248,
+    "x2": 650,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": false
+   },
+   {
+    "id": 104,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 230,
+    "y": 32,
+    "x2": 690,
+    "y2": 32,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 105,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 32,
+    "x2": 690,
+    "y2": 80,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 106,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM1",
+    "x": 690,
+    "y": 80,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "81",
+      "x": 690,
+      "y": 80,
+      "panel": "CONTACTOR_TERMICO:81"
+     },
+     {
+      "terminal": "82",
+      "x": 690,
+      "y": 98,
+      "panel": "CONTACTOR_TERMICO:82"
+     }
+    ],
+    "labels": [
+     "81",
+     "82"
+    ],
+    "box": [
+     665,
+     75,
+     720,
+     105
+    ]
+   },
+   {
+    "id": 107,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 98,
+    "x2": 690,
+    "y2": 108,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 108,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM2",
+    "x": 690,
+    "y": 108,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "81",
+      "x": 690,
+      "y": 108,
+      "panel": "CONTACTOR_TRIFASICO:81"
+     },
+     {
+      "terminal": "82",
+      "x": 690,
+      "y": 126,
+      "panel": "CONTACTOR_TRIFASICO:82"
+     }
+    ],
+    "labels": [
+     "81",
+     "82"
+    ],
+    "box": [
+     665,
+     103,
+     720,
+     133
+    ]
+   },
+   {
+    "id": 109,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 126,
+    "x2": 690,
+    "y2": 136,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 110,
+    "type": 9100,
+    "shape": "contact-nc",
+    "reference": "KM3",
+    "x": 690,
+    "y": 136,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "81",
+      "x": 690,
+      "y": 136,
+      "panel": "CONTACTOR_TRIFASICO_3:81"
+     },
+     {
+      "terminal": "82",
+      "x": 690,
+      "y": 154,
+      "panel": "CONTACTOR_TRIFASICO_3:82"
+     }
+    ],
+    "labels": [
+     "81",
+     "82"
+    ],
+    "box": [
+     665,
+     131,
+     720,
+     161
+    ]
+   },
+   {
+    "id": 111,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 154,
+    "x2": 690,
+    "y2": 166,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 112,
+    "type": 9100,
+    "shape": "lamp",
+    "reference": "P2",
+    "x": 690,
+    "y": 166,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "X1",
+      "x": 690,
+      "y": 166,
+      "panel": "BOTONERAS:PILOTO_2"
+     },
+     {
+      "terminal": "X2",
+      "x": 690,
+      "y": 184
+     }
+    ],
+    "labels": [
+     "X1",
+     "X2"
+    ],
+    "box": [
+     665,
+     161,
+     720,
+     191
+    ]
+   },
+   {
+    "id": 113,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 184,
+    "x2": 690,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": true
+   },
+   {
+    "id": 114,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 243.5,
+    "y": 58,
+    "x2": 243.5,
+    "y2": 64,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 115,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 243.5,
+    "y": 64,
+    "x2": 750,
+    "y2": 64,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 116,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 750,
+    "y": 64,
+    "x2": 750,
+    "y2": 80,
+    "color": "#a64a4a"
+   },
+   {
+    "id": 117,
+    "type": 9100,
+    "shape": "lamp",
+    "reference": "P3",
+    "x": 750,
+    "y": 80,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "X1",
+      "x": 750,
+      "y": 80,
+      "panel": "BOTONERAS:PILOTO_3"
+     },
+     {
+      "terminal": "X2",
+      "x": 750,
+      "y": 98
+     }
+    ],
+    "labels": [
+     "X1",
+     "X2"
+    ],
+    "box": [
+     725,
+     75,
+     780,
+     105
+    ]
+   },
+   {
+    "id": 118,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 750,
+    "y": 98,
+    "x2": 750,
+    "y2": 310,
+    "color": "#3d6fae",
+    "internal": true
+   },
+   {
+    "id": 119,
+    "type": 9100,
+    "shape": "terminal-diamond",
+    "reference": "",
+    "x": 250,
+    "y": 310,
+    "x2": 0,
+    "y2": 0,
+    "ports": [
+     {
+      "terminal": "N · BOT",
+      "x": 250,
+      "y": 310,
+      "panel": "BOTONERAS:N"
+     }
+    ],
+    "labels": [
+     "N · BOT"
+    ],
+    "box": [
+     225,
+     305,
+     280,
+     335
+    ],
+    "pins": [
+     "N · BOT"
+    ]
+   },
+   {
+    "id": 120,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 250,
+    "y": 310,
+    "x2": 800,
+    "y2": 310,
+    "color": "#3d6fae"
+   },
+   {
+    "id": 121,
+    "type": 4000,
+    "reference": "",
+    "labels": [],
+    "x": 800,
+    "y": 26,
+    "x2": 800,
+    "y2": 310,
+    "color": "#3d6fae"
+   },
+   {
+    "id": 122,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 280,
+    "y": 310,
+    "x2": 280,
+    "y2": 310
+   },
+   {
+    "id": 123,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 400,
+    "y": 310,
+    "x2": 400,
+    "y2": 310
+   },
+   {
+    "id": 124,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 530,
+    "y": 310,
+    "x2": 530,
+    "y2": 310
+   },
+   {
+    "id": 125,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 320,
+    "y": 310,
+    "x2": 320,
+    "y2": 310
+   },
+   {
+    "id": 126,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 650,
+    "y": 310,
+    "x2": 650,
+    "y2": 310
+   },
+   {
+    "id": 127,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 690,
+    "y": 310,
+    "x2": 690,
+    "y2": 310
+   },
+   {
+    "id": 128,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 750,
+    "y": 310,
+    "x2": 750,
+    "y2": 310
+   },
+   {
+    "id": 129,
+    "type": 4001,
+    "reference": "",
+    "labels": [],
+    "x": 800,
+    "y": 310,
+    "x2": 800,
+    "y2": 310
+   }
+  ],
+  "views": {
+   "all": {
+    "x": 20,
+    "y": 10,
+    "w": 810,
+    "h": 318
+   },
+   "power": {
+    "x": 20,
+    "y": 14,
+    "w": 195,
+    "h": 280
+   },
+   "control": {
+    "x": 215,
+    "y": 14,
+    "w": 615,
+    "h": 310
+   }
+  }
+ }
+}

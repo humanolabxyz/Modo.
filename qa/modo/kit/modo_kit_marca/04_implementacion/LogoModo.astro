@@ -1,0 +1,9 @@
+---
+/** Logo vectorial modo. — copiar 01_svg_vector a public/brand/ */
+interface Props { variant?: 'light' | 'dark'; size?: 'small' | 'normal' | 'large'; class?: string; }
+const { variant = 'light', size = 'normal', class: className = '' } = Astro.props;
+const file = variant === 'dark' ? 'modo-logo-horizontal-blanco.svg' : 'modo-logo-horizontal-color.svg';
+---
+<a href="/" aria-label="modo. · Inicio" class:list={['modo-logo', `modo-logo--${size}`, className]}>
+  <img class="modo-logo-img" src={`/brand/${file}`} alt="modo." decoding="async" />
+</a>

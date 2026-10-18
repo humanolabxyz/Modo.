@@ -1,0 +1,127 @@
+{
+  "cpuThrottle": 4,
+  "viewportTablet": "820x1180",
+  "sampleMs": 4000,
+  "comparison": [
+    {
+      "scenario": "lab-board-idle-820",
+      "busyBeforeMs": 999,
+      "busyAfterMs": 532,
+      "busyReductionPercent": 46.8,
+      "p95BeforeMs": 16.8,
+      "p95AfterMs": 16.8,
+      "leadWritesBefore": 10080,
+      "leadWritesAfter": 4139
+    },
+    {
+      "scenario": "lab-board-running-820",
+      "busyBeforeMs": 1403,
+      "busyAfterMs": 824,
+      "busyReductionPercent": 41.3,
+      "p95BeforeMs": 16.8,
+      "p95AfterMs": 16.7,
+      "leadWritesBefore": 10122,
+      "leadWritesAfter": 5700
+    },
+    {
+      "scenario": "lab-board-probes-820",
+      "busyBeforeMs": 1555,
+      "busyAfterMs": 1086,
+      "busyReductionPercent": 30.2,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.8,
+      "leadWritesBefore": 10122,
+      "leadWritesAfter": 8927
+    },
+    {
+      "scenario": "lab-board-pan-running-820",
+      "busyBeforeMs": 1934,
+      "busyAfterMs": 1336,
+      "busyReductionPercent": 30.9,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.7,
+      "leadWritesBefore": 10122,
+      "leadWritesAfter": 8948
+    },
+    {
+      "scenario": "lab-hbridge-running-820",
+      "busyBeforeMs": 1533,
+      "busyAfterMs": 658,
+      "busyReductionPercent": 57.1,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.7,
+      "leadWritesBefore": 10122,
+      "leadWritesAfter": 5738
+    },
+    {
+      "scenario": "lab-board-idle-1440",
+      "busyBeforeMs": 1380,
+      "busyAfterMs": 658,
+      "busyReductionPercent": 52.3,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.7,
+      "leadWritesBefore": 10122,
+      "leadWritesAfter": 6517
+    },
+    {
+      "scenario": "lab-board-running-1440",
+      "busyBeforeMs": 1592,
+      "busyAfterMs": 311,
+      "busyReductionPercent": 80.5,
+      "p95BeforeMs": 16.8,
+      "p95AfterMs": 16.8,
+      "leadWritesBefore": 10122,
+      "leadWritesAfter": 0
+    },
+    {
+      "scenario": "lab-board-probes-1440",
+      "busyBeforeMs": 1874,
+      "busyAfterMs": 1224,
+      "busyReductionPercent": 34.7,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.7,
+      "leadWritesBefore": 10122,
+      "leadWritesAfter": 9158
+    },
+    {
+      "scenario": "lab-hbridge-running-1440",
+      "busyBeforeMs": 1731,
+      "busyAfterMs": 953,
+      "busyReductionPercent": 44.9,
+      "p95BeforeMs": 16.8,
+      "p95AfterMs": 16.7,
+      "leadWritesBefore": 10080,
+      "leadWritesAfter": 5301
+    },
+    {
+      "scenario": "panel-idle-820",
+      "busyBeforeMs": 123,
+      "busyAfterMs": 112,
+      "busyReductionPercent": 8.7,
+      "p95BeforeMs": 16.7,
+      "p95AfterMs": 16.7,
+      "leadWritesBefore": 0,
+      "leadWritesAfter": 0
+    },
+    {
+      "scenario": "panel-running-820",
+      "busyBeforeMs": 3944,
+      "busyAfterMs": 1075,
+      "busyReductionPercent": 72.7,
+      "p95BeforeMs": 33.3,
+      "p95AfterMs": 16.8,
+      "leadWritesBefore": 0,
+      "leadWritesAfter": 0
+    },
+    {
+      "scenario": "panel-pan-running-820",
+      "busyBeforeMs": 3408,
+      "busyAfterMs": 2245,
+      "busyReductionPercent": 34.1,
+      "p95BeforeMs": 49.9,
+      "p95AfterMs": 33.4,
+      "leadWritesBefore": 0,
+      "leadWritesAfter": 0
+    }
+  ]
+}

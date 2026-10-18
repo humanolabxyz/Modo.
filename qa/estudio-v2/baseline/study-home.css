@@ -1,0 +1,222 @@
+.home-view.home-modules {
+  max-width: 1060px;
+  margin: 14px auto 40px;
+}
+.home-modules > .eyebrow,
+.home-modules > h1,
+.home-modules > p {
+  margin-left: 100px;
+}
+.home-modules > h1 {
+  font-size: 46px;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+.home-modules > p {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.home-module-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.home-module-card {
+  border: 1px solid #e1e6e8;
+  border-radius: 18px;
+  padding: 26px 28px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.home-module-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.home-module-heading > svg {
+  padding: 12px;
+  box-sizing: content-box;
+  background: #edf2f0;
+  border-radius: 12px;
+  color: #42685e;
+  flex-shrink: 0;
+}
+.home-module-heading h2 {
+  font-size: 23px;
+  margin: 8px 0;
+}
+.home-module-heading p {
+  font-size: 17px;
+  color: #65768b;
+  line-height: 1.5;
+  margin: 0;
+}
+.home-modules .home-options {
+  border: 0;
+  border-top: 1px solid #e3e8ea;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 24px 0 0;
+  flex: 1;
+  gap: 16px;
+  margin: 24px 0 0;
+}
+.home-modules .home-options label {
+  font-size: 16px;
+}
+.home-modules .home-options select {
+  font-size: 16px;
+  min-height: 52px;
+}
+.home-modules .home-reference > summary {
+  font-size: 16px;
+  min-height: 48px;
+}
+.home-modules .home-options .primary-action {
+  margin-top: auto;
+  min-height: 54px;
+  font-size: 18px;
+}
+.home-study-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 24px 0 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 230px;
+  background: #f2f4f3;
+}
+.home-study-photos img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+.home-study-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  min-height: 54px;
+  text-decoration: none;
+  background: #edf2f0;
+  color: #3f655a;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: auto;
+}
+.home-modules .continue-practice {
+  padding: 24px 28px;
+  border-radius: 18px;
+}
+.home-modules .continue-practice h2 {
+  font-size: 21px;
+}
+.home-modules .continue-practice p {
+  font-size: 15px;
+}
+.home-modules .continue-practice .primary-action {
+  font-size: 16px;
+  min-height: 52px;
+  padding: 12px 22px;
+}
+.home-modules .import-practice {
+  font-size: 16px;
+}
+.home-study-link:focus-visible {
+  outline: 3px solid #f2b952;
+  outline-offset: 3px;
+}
+@media (min-width: 1500px) {
+  .home-view.home-modules {
+    margin-top: 18px;
+  }
+  .home-study-photos {
+    height: 250px;
+  }
+  .home-study-photos img {
+    height: 250px;
+  }
+}
+@media (max-width: 800px) {
+  .home-view.home-modules {
+    margin: 12px auto;
+  }
+  .home-modules > .eyebrow,
+  .home-modules > h1,
+  .home-modules > p {
+    margin-left: 0;
+  }
+  .home-module-card {
+    padding: 22px;
+  }
+  .home-module-heading {
+    gap: 12px;
+  }
+  .home-module-heading h2 {
+    font-size: 20px;
+  }
+  .home-module-heading p {
+    font-size: 16px;
+  }
+  .home-module-heading > svg {
+    padding: 10px;
+  }
+  .home-study-photos {
+    height: 210px;
+  }
+  .home-study-photos img {
+    height: 210px;
+  }
+}
+@media (max-width: 620px) {
+  .home-module-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-modules > h1 {
+    font-size: 34px;
+  }
+  .home-modules > p {
+    font-size: 17px;
+  }
+  .home-modules .continue-practice {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 22px;
+  }
+  .home-modules .continue-practice .primary-action {
+    max-width: none;
+  }
+  .home-modules .home-options .primary-action {
+    margin-top: 8px;
+  }
+  .home-module-heading p {
+    font-size: 16px;
+  }
+}
+.home-view.home-modules > h1 {
+  font-size: 46px;
+  margin: 12px 0 8px 100px;
+}
+.home-view.home-modules > p {
+  font-size: 18px;
+  margin: 0 0 24px 100px;
+}
+@media (max-width: 800px) {
+  .home-view.home-modules > h1,
+  .home-view.home-modules > p {
+    margin-left: 0;
+  }
+}
+@media (max-width: 620px) {
+  .home-view.home-modules > h1 {
+    font-size: 34px;
+  }
+  .home-view.home-modules > p {
+    font-size: 17px;
+  }
+}

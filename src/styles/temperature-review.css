@@ -1,0 +1,11 @@
+.temp-review .temp-review-progress{font-size:13px;letter-spacing:.4px;color:#65766b;margin:0 0 14px}
+.temp-review-score{font-size:28px!important;font-weight:700;color:#237768!important;margin:0 0 14px!important}
+.temp-review-actions{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 6px}
+.temp-review-group h3{margin:28px 0 8px}
+.temp-review-list{list-style:none;margin:0 0 6px;padding:0!important;display:grid;gap:8px;line-height:1.5!important}
+.temp-review-list li{display:grid;gap:3px;border:1px solid #dfe5e1;border-radius:9px;padding:11px 14px;font-size:15px}.temp-review-list li span{color:#46594e;font-size:14px}
+.temp-review-list li[data-status=pendiente]{border-color:#e2b95a;background:#fffaf0}
+.temp-review-list a{display:inline-flex;align-items:center;gap:6px;color:#237768;font-size:14px;text-decoration:none}.temp-review-list a:hover{text-decoration:underline}
+.temp-review-chip{justify-self:start;border-radius:999px;padding:2px 10px;font-size:12px!important;font-weight:600;background:#eef3ef;color:#46594e!important}
+.temp-review-chip.pendiente{background:#fbe9c4;color:#6e5320!important}.temp-review-chip.dominado{background:#dcf3e6;color:#1d5a3a!important}
+.temp-review-reset{margin:28px 0 0;font-size:14px}.temp-review-reset summary{cursor:pointer;color:#65766b}

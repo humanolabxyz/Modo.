@@ -1,0 +1,30 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const dir=path.join(__dirname,'limpieza');
+(async()=>{const browser=await chromium.launch();try{
+ const page=await browser.newPage({viewport:{width:1440,height:1080}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+ const settleCanvas=()=>page.waitForFunction(()=>document.querySelector('.board-svg')?.dataset.animating!=='true');
+ await page.goto('http://127.0.0.1:4322/?revision=interfaz-simple');await page.waitForFunction(()=>!document.querySelector('astro-island')?.hasAttribute('ssr'));
+ await page.waitForFunction(()=>{const button=document.querySelector('.home-options button');return button&&!button.disabled});await page.screenshot({path:path.join(dir,'inicio-desktop.png'),fullPage:true});
+ await page.getByRole('button',{name:'Empezar práctica'}).click();
+ assert.equal(await page.locator('.inspector').count(),0);assert.ok(!(await page.locator('.diagram-pane').isVisible()));assert.equal(await page.locator('.terminal').count(),94);
+ await page.screenshot({path:path.join(dir,'panel-desktop.png'),fullPage:true});
+ const search=async id=>{await page.getByRole('textbox',{name:'Buscar un borne o componente'}).fill(id);await page.locator('.search-results button').first().click()};
+ await page.getByRole('button',{name:'Conectar cables',exact:true}).click();await search('CONTACTOR_TERMICO:95');await search('CONTACTOR_TERMICO:96');assert.equal(await page.locator('.interactive-wire').count(),1);assert.equal(await page.locator('.inspector').count(),0);
+ await page.getByRole('button',{name:'Deshacer',exact:true}).click();assert.equal(await page.locator('.interactive-wire').count(),0);await page.getByRole('button',{name:'Rehacer',exact:true}).click();assert.equal(await page.locator('.interactive-wire').count(),1);
+ await page.locator('.cables-menu>summary').click();await page.getByRole('combobox',{name:'Seleccionar un cable'}).selectOption({index:1});await page.locator('.cables-menu>summary').click();
+ assert.ok(await page.getByRole('region',{name:'Inspector del cable'}).isVisible());assert.ok(!(await page.getByRole('slider',{name:'Caída del cable',exact:true}).isVisible()));
+ await page.locator('.wire-settings>summary').click();await page.getByRole('slider',{name:'Caída del cable',exact:true}).fill('250');await page.getByRole('button',{name:'Aplicar recorrido'}).click();
+ await page.locator('.wire-settings>summary').click();await page.getByRole('button',{name:'Ajustar al tablero'}).click();await settleCanvas();await page.screenshot({path:path.join(dir,'cable-desktop.png'),fullPage:true});
+ await page.getByRole('button',{name:'Retirar este cable'}).click();assert.equal(await page.locator('.interactive-wire').count(),0);await page.getByRole('button',{name:'Deshacer',exact:true}).click();
+ if(await page.getByRole('button',{name:'Cerrar inspector'}).count())await page.getByRole('button',{name:'Cerrar inspector'}).click();
+ await page.getByRole('button',{name:'Seleccionar',exact:true}).click();await search('CONTACTOR_TERMICO:95');assert.ok(await page.locator('.terminal-feature').isVisible());assert.ok(!(await page.locator('.info-lines').isVisible()));
+ await page.locator('.terminal-details>summary').click();assert.ok(await page.locator('.info-lines').isVisible());assert.match(await page.locator('.info-lines').innerText(),/CONTACTOR_TERMICO:95/);await page.locator('.terminal-details>summary').click();
+ await page.getByRole('button',{name:'Ampliar fotografía',exact:true}).click();assert.ok(await page.getByRole('dialog').isVisible());await page.keyboard.press('Escape');
+ await page.screenshot({path:path.join(dir,'borne-desktop.png'),fullPage:true});await page.getByRole('button',{name:'Cerrar inspector'}).click();
+ for(const v of [{width:1920,height:1080},{width:768,height:1024},{width:390,height:844},{width:360,height:800}]){await page.setViewportSize(v);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),JSON.stringify(v));if(v.width===390)await page.screenshot({path:path.join(dir,'panel-mobile.png'),fullPage:true});}
+ await page.setViewportSize({width:1440,height:1080});await page.locator('.practice-menu>summary').click();await page.getByRole('combobox',{name:'Modo de la práctica'}).selectOption('identify');await page.locator('.practice-menu>summary').click();
+ assert.ok(await page.getByRole('button',{name:'Comprobar borne'}).isVisible());assert.ok(!(await page.getByRole('button',{name:'Bornes',exact:true}).isVisible()));await page.locator('.guide-hints>summary').click();await page.getByRole('button',{name:'Bornes',exact:true}).click();await page.getByRole('button',{name:'Acercar componente'}).click();await search('CONTACTOR_TERMICO:95');await page.getByRole('button',{name:'Comprobar borne'}).click();assert.ok(await page.locator('.guide-success').isVisible());await page.getByRole('button',{name:'Siguiente paso'}).click();await page.locator('.guide-hints>summary').click();
+ await page.screenshot({path:path.join(dir,'estudio-desktop.png'),fullPage:true});
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(dir,'verification.json'),JSON.stringify({checks:['94 bornes y banco sin columnas iniciales','95 → 96 conecta sin mover el banco','Deshacer / rehacer / retirar','Inspector de cable y recorrido plegado','Inspector de borne, detalles y fotografía a demanda','Sin overflow en 1920, 1440, 768, 390, 360','Estudio con ayudas plegadas y comprobación real'],errors},null,2));console.log('PASS: interfaz limpia, contexto, cableado, estudio y tamaños.');
+}finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});

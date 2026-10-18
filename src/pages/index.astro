@@ -1,0 +1,60 @@
+---
+import MotionHead from '../components/motion/MotionHead.astro';
+import ModoSplash from '../components/motion/ModoSplash.astro';
+import App from '../components/App';
+import '../styles/global.css';
+import '../styles/canvas.css';
+import '../styles/learning.css';
+import '../styles/diagram-layout.css';
+import '../styles/simulation.css';
+import '../styles/cable-color.css';
+import '../styles/mobile.css';
+import '../styles/board-layout.css';
+import '../styles/modo-brand.css';
+import '../styles/procedures.css';
+import '../styles/touch-portrait.css';
+import '../styles/compact-ui.css';
+import '../styles/loto.css';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#F7F8FA" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/brand/modo-app-oscuro.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="modo." />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="description" content="modo. · Práctica virtual con cables banana, diagrama y guía revisable. Simulación virtual de mando de 24 V." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="modo." />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:title" content="modo. — Tu espacio de trabajo" />
+    <meta property="og:description" content="Practica con cables banana, interpreta diagramas y estudia a tu ritmo. Simulador de panel de control de 24 V." />
+    <meta property="og:url" content="https://modo-lab.vercel.app/" />
+    <meta property="og:image" content="https://modo-lab.vercel.app/brand/og-modo.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="modo. — Tu espacio de trabajo: simulador de panel de control, estudio y laboratorio." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="modo. — Tu espacio de trabajo" />
+    <meta name="twitter:description" content="Practica con cables banana, interpreta diagramas y estudia a tu ritmo." />
+    <meta name="twitter:image" content="https://modo-lab.vercel.app/brand/og-modo.jpg" />
+    <meta name="panellab-version" content="2.0" />
+    <meta name="modo-version" content="1.0" />
+    <link rel="icon" href="/brand/favicon.ico" sizes="any" />
+    <title>modo. — Tu espacio de trabajo</title>
+  <meta name="author" content="Humano Lab · Félix Levancini"/><meta name="robots" content="noindex, nofollow, noarchive"/><MotionHead/></head>
+  <body><ModoSplash/><App client:load />
+    <script>
+      if ('serviceWorker' in navigator && import.meta.env.PROD) {
+        window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "Solo el documento de GeoGebra admite marco del mismo origen; las otras rutas conservan DENY",
+    "CSP principal intacta; recursos y compilación WebAssembly limitados al marco de GeoGebra",
+    "Versión compilada con cabeceras emuladas: GeoGebra y CAS se ejecutan sin bloqueos CSP",
+    "La página principal sigue bloqueando una inyección de script"
+  ],
+  "errors": [],
+  "expectedViolations": [
+    "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-uaMFX4nW2dTRWH3P5Ch4C6xdfLx7REF970QbQKldwhs=' 'sha256-C+pa/uIitXOp2U6w7JcwP6ufnjNFVhGvSYRLgo"
+  ],
+  "deploymentHeaders": "emulated locally from vercel.json",
+  "status": "PASS"
+}

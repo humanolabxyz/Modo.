@@ -1,0 +1,2579 @@
+{
+  "version": 2,
+  "title": "Armar y explicar · Marcha y paro con retención",
+  "wires": [
+    {
+      "id": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:95"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 1
+    },
+    {
+      "id": "039312e7-a241-4af6-896b-a5b84b45170f",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "FUENTE:N"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 2
+    }
+  ],
+  "diagram": {
+    "id": "leccion-marcha-paro",
+    "name": "Mapa de bornes · marcha y paro",
+    "src": "/diagrams/leccion-marcha-paro.png",
+    "origin": "class_photo"
+  },
+  "steps": [],
+  "mode": "free",
+  "stepIndex": 0,
+  "assessment": {
+    "version": 1,
+    "id": "e8a5afaa-b2ea-4358-90d0-77bb7b55e77d",
+    "lessonId": "simple",
+    "submitted": true,
+    "reflection": "",
+    "answers": [
+      {
+        "wireId": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+        "from": "FUENTE:F",
+        "to": "CONTACTOR_TERMICO:95",
+        "text": "El térmico puede abrir el mando y retirar la alimentación a la bobina."
+      },
+      {
+        "wireId": "039312e7-a241-4af6-896b-a5b84b45170f",
+        "from": "FUENTE:F",
+        "to": "FUENTE:N",
+        "text": "Borrador que todavía debo revisar."
+      }
+    ]
+  },
+  "format": "modo-panel",
+  "panelHistory": {
+    "version": 1,
+    "id": "a6bd3bc5-409a-4059-b080-d599cc3efc34",
+    "name": "Historial del panel",
+    "createdAt": "2026-10-16T20:56:23.787Z",
+    "initial": {
+      "practice": {
+        "version": 2,
+        "title": "Mi práctica INACAP",
+        "wires": [],
+        "diagram": {
+          "id": "clase-1",
+          "name": "Fotografía de clase 1 · referencia sin validar",
+          "src": "/diagrams/clase-1.jpg",
+          "origin": "class_photo"
+        },
+        "steps": [],
+        "mode": "free",
+        "stepIndex": 0
+      },
+      "simulation": {
+        "enabled": false,
+        "plugged": false,
+        "forceBreaker": false,
+        "thermalTripped": false,
+        "breakers": [
+          false,
+          false
+        ],
+        "pressed": []
+      },
+      "loto": 0
+    },
+    "steps": [
+      {
+        "at": 726,
+        "label": "Actualizar práctica o guía",
+        "targets": [],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Lección · Marcha y paro con retención",
+            "wires": [],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [
+              {
+                "id": "simple-01",
+                "title": "Fase al mando por el térmico",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:95",
+                "region": {
+                  "x": 32,
+                  "y": 79,
+                  "w": 308,
+                  "h": 566
+                },
+                "explanation": "La fase F entra al mando pasando por el contacto 95–96 del relé térmico, que es NC. Si el térmico dispara, este contacto abre y corta todo el mando.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-02",
+                "title": "Fase hacia el aviso de reposo",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "CONTACTOR_TERMICO:71",
+                "region": {
+                  "x": 32,
+                  "y": 427,
+                  "w": 162,
+                  "h": 218
+                },
+                "explanation": "Desde 96 (hay fase mientras el térmico esté sano) se alimenta el contacto NC 71–72 de KM1. Cuando KM1 esté en reposo, ese contacto estará cerrado.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-03",
+                "title": "Lámpara de reposo (P2)",
+                "from": "CONTACTOR_TERMICO:72",
+                "to": "BOTONERAS:PILOTO_2",
+                "region": {
+                  "x": 90,
+                  "y": 38,
+                  "w": 503,
+                  "h": 499
+                },
+                "explanation": "El piloto 2 (rojo) se enciende solo con KM1 en reposo: la fase llega por 71–72, que está cerrado. Cuando KM1 entra, 71–72 abre y P2 se apaga.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-04",
+                "title": "Neutro para las lámparas",
+                "from": "BOTONERAS:N",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 182,
+                  "y": 56,
+                  "w": 787,
+                  "h": 133
+                },
+                "explanation": "Los pilotos retornan por el borne N de las botoneras; únelo al neutro de la fuente para cerrar sus circuitos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-05",
+                "title": "Del térmico al paro (S2)",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "BOTONERAS:S2:1",
+                "region": {
+                  "x": 90,
+                  "y": 123,
+                  "w": 591,
+                  "h": 521
+                },
+                "explanation": "Desde 96 la fase va al pulsador rojo S2. Su contacto 1–2 es NC: el mando queda alimentado mientras no pulses el paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-06",
+                "title": "Del paro a la marcha (S1)",
+                "from": "BOTONERAS:S2:2",
+                "to": "BOTONERAS:S1:3",
+                "region": {
+                  "x": 419,
+                  "y": 123,
+                  "w": 262,
+                  "h": 160
+                },
+                "explanation": "S2:2 es el punto «protegido por el paro»: todo lo que sale de aquí se apaga al pulsar S2. Llévalo al borne 3 de S1 (verde izquierdo), contacto NA 3–4.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-07",
+                "title": "A la bobina de KM1",
+                "from": "BOTONERAS:S1:4",
+                "to": "CONTACTOR_TERMICO:A1",
+                "region": {
+                  "x": 23,
+                  "y": 172,
+                  "w": 499,
+                  "h": 298
+                },
+                "explanation": "Al pulsar S1 la fase sale por el borne 4 y llega a A1, el borne de la bobina de KM1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-08",
+                "title": "Retorno de la bobina",
+                "from": "CONTACTOR_TERMICO:A2",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 262,
+                  "h": 343
+                },
+                "explanation": "A2 va al neutro N: la bobina de 24 V CA queda entre la fase (A1) y el neutro (A2). Con S1 pulsado, KM1 ya debería entrar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-09",
+                "title": "Retención: entrada",
+                "from": "BOTONERAS:S2:2",
+                "to": "CONTACTOR_TERMICO:13",
+                "region": {
+                  "x": 323,
+                  "y": 172,
+                  "w": 357,
+                  "h": 303
+                },
+                "explanation": "El contacto auxiliar NA 13–14 de KM1 hace de memoria. Su entrada 13 recibe la fase desde S2:2, después del paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-10",
+                "title": "Retención: salida en paralelo con S1",
+                "from": "CONTACTOR_TERMICO:14",
+                "to": "BOTONERAS:S1:4",
+                "region": {
+                  "x": 382,
+                  "y": 172,
+                  "w": 141,
+                  "h": 303
+                },
+                "explanation": "14 devuelve la fase a S1:4, en paralelo con el pulsador. Cuando KM1 entra, 13–14 cierra y mantiene la bobina aunque sueltes S1; solo el paro la suelta.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-11",
+                "title": "Lámpara de KM1 (P1)",
+                "from": "CONTACTOR_TERMICO:A1",
+                "to": "BOTONERAS:PILOTO_1",
+                "region": {
+                  "x": 23,
+                  "y": 38,
+                  "w": 445,
+                  "h": 432
+                },
+                "explanation": "El piloto 1 toma la fase del mismo punto que la bobina: se enciende cuando KM1 está activo.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-12",
+                "title": "Fase al aviso de térmico disparado",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:97",
+                "region": {
+                  "x": 236,
+                  "y": 79,
+                  "w": 191,
+                  "h": 468
+                },
+                "explanation": "El contacto 97–98 de KM1 es NA: cierra cuando el relé térmico dispara. Alimenta 97 con la fase.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-13",
+                "title": "Lámpara de térmico disparado (P3)",
+                "from": "CONTACTOR_TERMICO:98",
+                "to": "BOTONERAS:PILOTO_3",
+                "region": {
+                  "x": 382,
+                  "y": 38,
+                  "w": 337,
+                  "h": 508
+                },
+                "explanation": "Al disparar el térmico, 97–98 cierra y enciende el piloto 3 (amarillo).",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-14",
+                "title": "Fuerza: R a KM1",
+                "from": "FUENTE:R",
+                "to": "CONTACTOR_TERMICO:L1",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "Las tres fases entran al contactor. R (azul) va a L1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-15",
+                "title": "Fuerza: S a KM1",
+                "from": "FUENTE:S",
+                "to": "CONTACTOR_TERMICO:L2",
+                "region": {
+                  "x": 73,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase S (negra) va a L2. Mantén el orden R–S–T en L1–L2–L3.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-16",
+                "title": "Fuerza: T a KM1",
+                "from": "FUENTE:T",
+                "to": "CONTACTOR_TERMICO:L3",
+                "region": {
+                  "x": 123,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase T (roja) va a L3. Con las tres fases en KM1, solo falta que su bobina cierre los contactos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-17",
+                "title": "KM1 al motor: U1",
+                "from": "CONTACTOR_TERMICO:T1",
+                "to": "BORNERA_MOTOR:U1",
+                "region": {
+                  "x": 157,
+                  "y": 525,
+                  "w": 228,
+                  "h": 289
+                },
+                "explanation": "Con KM1 cerrado, T1 entrega la fase R al borne U1 del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-18",
+                "title": "KM1 al motor: V1",
+                "from": "CONTACTOR_TERMICO:T2",
+                "to": "BORNERA_MOTOR:V1",
+                "region": {
+                  "x": 207,
+                  "y": 525,
+                  "w": 237,
+                  "h": 289
+                },
+                "explanation": "T2 (negro) va a V1: la fase S queda en el borne central del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-19",
+                "title": "KM1 al motor: W1",
+                "from": "CONTACTOR_TERMICO:T3",
+                "to": "BORNERA_MOTOR:W1",
+                "region": {
+                  "x": 257,
+                  "y": 525,
+                  "w": 245,
+                  "h": 289
+                },
+                "explanation": "T3 (rojo) va a W1. Con KM1 cerrado el motor recibe R–S–T en U1–V1–W1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-20",
+                "title": "Motor en estrella (1)",
+                "from": "BORNERA_MOTOR:W2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 282,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Unir W2 con U2 es la primera mitad del puente de estrella.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-21",
+                "title": "Motor en estrella (2)",
+                "from": "BORNERA_MOTOR:V2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 340,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Con W2, U2 y V2 unidos las tres bobinas quedan en estrella y el motor puede girar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-22",
+                "title": "Tierra del motor",
+                "from": "BORNERA_MOTOR:TP",
+                "to": "CONTACTOR_TERMICO:TP_DER",
+                "region": {
+                  "x": 223,
+                  "y": 525,
+                  "w": 262,
+                  "h": 338
+                },
+                "explanation": "Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. No cambian el funcionamiento del simulador.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-23",
+                "title": "Tierra de KM1 a la fuente",
+                "from": "CONTACTOR_TERMICO:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 245,
+                  "h": 606
+                },
+                "explanation": "La cadena llega a la tierra de protección de la fuente.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-24",
+                "title": "Tierra de las botoneras",
+                "from": "BOTONERAS:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 728,
+                  "h": 231
+                },
+                "explanation": "Última conexión: las botoneras también quedan a tierra.",
+                "review": "user_reviewed"
+              }
+            ],
+            "mode": "guided",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "title",
+            "diagram",
+            "steps",
+            "mode"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 1943,
+        "label": "Actualizar práctica o guía",
+        "targets": [],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Lección · Marcha y paro con retención",
+            "wires": [],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [
+              {
+                "id": "simple-01",
+                "title": "Fase al mando por el térmico",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:95",
+                "region": {
+                  "x": 32,
+                  "y": 79,
+                  "w": 308,
+                  "h": 566
+                },
+                "explanation": "La fase F entra al mando pasando por el contacto 95–96 del relé térmico, que es NC. Si el térmico dispara, este contacto abre y corta todo el mando.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-02",
+                "title": "Fase hacia el aviso de reposo",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "CONTACTOR_TERMICO:71",
+                "region": {
+                  "x": 32,
+                  "y": 427,
+                  "w": 162,
+                  "h": 218
+                },
+                "explanation": "Desde 96 (hay fase mientras el térmico esté sano) se alimenta el contacto NC 71–72 de KM1. Cuando KM1 esté en reposo, ese contacto estará cerrado.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-03",
+                "title": "Lámpara de reposo (P2)",
+                "from": "CONTACTOR_TERMICO:72",
+                "to": "BOTONERAS:PILOTO_2",
+                "region": {
+                  "x": 90,
+                  "y": 38,
+                  "w": 503,
+                  "h": 499
+                },
+                "explanation": "El piloto 2 (rojo) se enciende solo con KM1 en reposo: la fase llega por 71–72, que está cerrado. Cuando KM1 entra, 71–72 abre y P2 se apaga.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-04",
+                "title": "Neutro para las lámparas",
+                "from": "BOTONERAS:N",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 182,
+                  "y": 56,
+                  "w": 787,
+                  "h": 133
+                },
+                "explanation": "Los pilotos retornan por el borne N de las botoneras; únelo al neutro de la fuente para cerrar sus circuitos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-05",
+                "title": "Del térmico al paro (S2)",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "BOTONERAS:S2:1",
+                "region": {
+                  "x": 90,
+                  "y": 123,
+                  "w": 591,
+                  "h": 521
+                },
+                "explanation": "Desde 96 la fase va al pulsador rojo S2. Su contacto 1–2 es NC: el mando queda alimentado mientras no pulses el paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-06",
+                "title": "Del paro a la marcha (S1)",
+                "from": "BOTONERAS:S2:2",
+                "to": "BOTONERAS:S1:3",
+                "region": {
+                  "x": 419,
+                  "y": 123,
+                  "w": 262,
+                  "h": 160
+                },
+                "explanation": "S2:2 es el punto «protegido por el paro»: todo lo que sale de aquí se apaga al pulsar S2. Llévalo al borne 3 de S1 (verde izquierdo), contacto NA 3–4.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-07",
+                "title": "A la bobina de KM1",
+                "from": "BOTONERAS:S1:4",
+                "to": "CONTACTOR_TERMICO:A1",
+                "region": {
+                  "x": 23,
+                  "y": 172,
+                  "w": 499,
+                  "h": 298
+                },
+                "explanation": "Al pulsar S1 la fase sale por el borne 4 y llega a A1, el borne de la bobina de KM1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-08",
+                "title": "Retorno de la bobina",
+                "from": "CONTACTOR_TERMICO:A2",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 262,
+                  "h": 343
+                },
+                "explanation": "A2 va al neutro N: la bobina de 24 V CA queda entre la fase (A1) y el neutro (A2). Con S1 pulsado, KM1 ya debería entrar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-09",
+                "title": "Retención: entrada",
+                "from": "BOTONERAS:S2:2",
+                "to": "CONTACTOR_TERMICO:13",
+                "region": {
+                  "x": 323,
+                  "y": 172,
+                  "w": 357,
+                  "h": 303
+                },
+                "explanation": "El contacto auxiliar NA 13–14 de KM1 hace de memoria. Su entrada 13 recibe la fase desde S2:2, después del paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-10",
+                "title": "Retención: salida en paralelo con S1",
+                "from": "CONTACTOR_TERMICO:14",
+                "to": "BOTONERAS:S1:4",
+                "region": {
+                  "x": 382,
+                  "y": 172,
+                  "w": 141,
+                  "h": 303
+                },
+                "explanation": "14 devuelve la fase a S1:4, en paralelo con el pulsador. Cuando KM1 entra, 13–14 cierra y mantiene la bobina aunque sueltes S1; solo el paro la suelta.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-11",
+                "title": "Lámpara de KM1 (P1)",
+                "from": "CONTACTOR_TERMICO:A1",
+                "to": "BOTONERAS:PILOTO_1",
+                "region": {
+                  "x": 23,
+                  "y": 38,
+                  "w": 445,
+                  "h": 432
+                },
+                "explanation": "El piloto 1 toma la fase del mismo punto que la bobina: se enciende cuando KM1 está activo.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-12",
+                "title": "Fase al aviso de térmico disparado",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:97",
+                "region": {
+                  "x": 236,
+                  "y": 79,
+                  "w": 191,
+                  "h": 468
+                },
+                "explanation": "El contacto 97–98 de KM1 es NA: cierra cuando el relé térmico dispara. Alimenta 97 con la fase.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-13",
+                "title": "Lámpara de térmico disparado (P3)",
+                "from": "CONTACTOR_TERMICO:98",
+                "to": "BOTONERAS:PILOTO_3",
+                "region": {
+                  "x": 382,
+                  "y": 38,
+                  "w": 337,
+                  "h": 508
+                },
+                "explanation": "Al disparar el térmico, 97–98 cierra y enciende el piloto 3 (amarillo).",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-14",
+                "title": "Fuerza: R a KM1",
+                "from": "FUENTE:R",
+                "to": "CONTACTOR_TERMICO:L1",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "Las tres fases entran al contactor. R (azul) va a L1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-15",
+                "title": "Fuerza: S a KM1",
+                "from": "FUENTE:S",
+                "to": "CONTACTOR_TERMICO:L2",
+                "region": {
+                  "x": 73,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase S (negra) va a L2. Mantén el orden R–S–T en L1–L2–L3.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-16",
+                "title": "Fuerza: T a KM1",
+                "from": "FUENTE:T",
+                "to": "CONTACTOR_TERMICO:L3",
+                "region": {
+                  "x": 123,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase T (roja) va a L3. Con las tres fases en KM1, solo falta que su bobina cierre los contactos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-17",
+                "title": "KM1 al motor: U1",
+                "from": "CONTACTOR_TERMICO:T1",
+                "to": "BORNERA_MOTOR:U1",
+                "region": {
+                  "x": 157,
+                  "y": 525,
+                  "w": 228,
+                  "h": 289
+                },
+                "explanation": "Con KM1 cerrado, T1 entrega la fase R al borne U1 del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-18",
+                "title": "KM1 al motor: V1",
+                "from": "CONTACTOR_TERMICO:T2",
+                "to": "BORNERA_MOTOR:V1",
+                "region": {
+                  "x": 207,
+                  "y": 525,
+                  "w": 237,
+                  "h": 289
+                },
+                "explanation": "T2 (negro) va a V1: la fase S queda en el borne central del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-19",
+                "title": "KM1 al motor: W1",
+                "from": "CONTACTOR_TERMICO:T3",
+                "to": "BORNERA_MOTOR:W1",
+                "region": {
+                  "x": 257,
+                  "y": 525,
+                  "w": 245,
+                  "h": 289
+                },
+                "explanation": "T3 (rojo) va a W1. Con KM1 cerrado el motor recibe R–S–T en U1–V1–W1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-20",
+                "title": "Motor en estrella (1)",
+                "from": "BORNERA_MOTOR:W2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 282,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Unir W2 con U2 es la primera mitad del puente de estrella.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-21",
+                "title": "Motor en estrella (2)",
+                "from": "BORNERA_MOTOR:V2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 340,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Con W2, U2 y V2 unidos las tres bobinas quedan en estrella y el motor puede girar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-22",
+                "title": "Tierra del motor",
+                "from": "BORNERA_MOTOR:TP",
+                "to": "CONTACTOR_TERMICO:TP_DER",
+                "region": {
+                  "x": 223,
+                  "y": 525,
+                  "w": 262,
+                  "h": 338
+                },
+                "explanation": "Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. No cambian el funcionamiento del simulador.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-23",
+                "title": "Tierra de KM1 a la fuente",
+                "from": "CONTACTOR_TERMICO:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 245,
+                  "h": 606
+                },
+                "explanation": "La cadena llega a la tierra de protección de la fuente.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-24",
+                "title": "Tierra de las botoneras",
+                "from": "BOTONERAS:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 728,
+                  "h": 231
+                },
+                "explanation": "Última conexión: las botoneras también quedan a tierra.",
+                "review": "user_reviewed"
+              }
+            ],
+            "mode": "guided",
+            "stepIndex": 1
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "stepIndex"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 2444,
+        "label": "Actualizar práctica o guía",
+        "targets": [],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Lección · Marcha y paro con retención",
+            "wires": [],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [
+              {
+                "id": "simple-01",
+                "title": "Fase al mando por el térmico",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:95",
+                "region": {
+                  "x": 32,
+                  "y": 79,
+                  "w": 308,
+                  "h": 566
+                },
+                "explanation": "La fase F entra al mando pasando por el contacto 95–96 del relé térmico, que es NC. Si el térmico dispara, este contacto abre y corta todo el mando.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-02",
+                "title": "Fase hacia el aviso de reposo",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "CONTACTOR_TERMICO:71",
+                "region": {
+                  "x": 32,
+                  "y": 427,
+                  "w": 162,
+                  "h": 218
+                },
+                "explanation": "Desde 96 (hay fase mientras el térmico esté sano) se alimenta el contacto NC 71–72 de KM1. Cuando KM1 esté en reposo, ese contacto estará cerrado.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-03",
+                "title": "Lámpara de reposo (P2)",
+                "from": "CONTACTOR_TERMICO:72",
+                "to": "BOTONERAS:PILOTO_2",
+                "region": {
+                  "x": 90,
+                  "y": 38,
+                  "w": 503,
+                  "h": 499
+                },
+                "explanation": "El piloto 2 (rojo) se enciende solo con KM1 en reposo: la fase llega por 71–72, que está cerrado. Cuando KM1 entra, 71–72 abre y P2 se apaga.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-04",
+                "title": "Neutro para las lámparas",
+                "from": "BOTONERAS:N",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 182,
+                  "y": 56,
+                  "w": 787,
+                  "h": 133
+                },
+                "explanation": "Los pilotos retornan por el borne N de las botoneras; únelo al neutro de la fuente para cerrar sus circuitos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-05",
+                "title": "Del térmico al paro (S2)",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "BOTONERAS:S2:1",
+                "region": {
+                  "x": 90,
+                  "y": 123,
+                  "w": 591,
+                  "h": 521
+                },
+                "explanation": "Desde 96 la fase va al pulsador rojo S2. Su contacto 1–2 es NC: el mando queda alimentado mientras no pulses el paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-06",
+                "title": "Del paro a la marcha (S1)",
+                "from": "BOTONERAS:S2:2",
+                "to": "BOTONERAS:S1:3",
+                "region": {
+                  "x": 419,
+                  "y": 123,
+                  "w": 262,
+                  "h": 160
+                },
+                "explanation": "S2:2 es el punto «protegido por el paro»: todo lo que sale de aquí se apaga al pulsar S2. Llévalo al borne 3 de S1 (verde izquierdo), contacto NA 3–4.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-07",
+                "title": "A la bobina de KM1",
+                "from": "BOTONERAS:S1:4",
+                "to": "CONTACTOR_TERMICO:A1",
+                "region": {
+                  "x": 23,
+                  "y": 172,
+                  "w": 499,
+                  "h": 298
+                },
+                "explanation": "Al pulsar S1 la fase sale por el borne 4 y llega a A1, el borne de la bobina de KM1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-08",
+                "title": "Retorno de la bobina",
+                "from": "CONTACTOR_TERMICO:A2",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 262,
+                  "h": 343
+                },
+                "explanation": "A2 va al neutro N: la bobina de 24 V CA queda entre la fase (A1) y el neutro (A2). Con S1 pulsado, KM1 ya debería entrar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-09",
+                "title": "Retención: entrada",
+                "from": "BOTONERAS:S2:2",
+                "to": "CONTACTOR_TERMICO:13",
+                "region": {
+                  "x": 323,
+                  "y": 172,
+                  "w": 357,
+                  "h": 303
+                },
+                "explanation": "El contacto auxiliar NA 13–14 de KM1 hace de memoria. Su entrada 13 recibe la fase desde S2:2, después del paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-10",
+                "title": "Retención: salida en paralelo con S1",
+                "from": "CONTACTOR_TERMICO:14",
+                "to": "BOTONERAS:S1:4",
+                "region": {
+                  "x": 382,
+                  "y": 172,
+                  "w": 141,
+                  "h": 303
+                },
+                "explanation": "14 devuelve la fase a S1:4, en paralelo con el pulsador. Cuando KM1 entra, 13–14 cierra y mantiene la bobina aunque sueltes S1; solo el paro la suelta.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-11",
+                "title": "Lámpara de KM1 (P1)",
+                "from": "CONTACTOR_TERMICO:A1",
+                "to": "BOTONERAS:PILOTO_1",
+                "region": {
+                  "x": 23,
+                  "y": 38,
+                  "w": 445,
+                  "h": 432
+                },
+                "explanation": "El piloto 1 toma la fase del mismo punto que la bobina: se enciende cuando KM1 está activo.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-12",
+                "title": "Fase al aviso de térmico disparado",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:97",
+                "region": {
+                  "x": 236,
+                  "y": 79,
+                  "w": 191,
+                  "h": 468
+                },
+                "explanation": "El contacto 97–98 de KM1 es NA: cierra cuando el relé térmico dispara. Alimenta 97 con la fase.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-13",
+                "title": "Lámpara de térmico disparado (P3)",
+                "from": "CONTACTOR_TERMICO:98",
+                "to": "BOTONERAS:PILOTO_3",
+                "region": {
+                  "x": 382,
+                  "y": 38,
+                  "w": 337,
+                  "h": 508
+                },
+                "explanation": "Al disparar el térmico, 97–98 cierra y enciende el piloto 3 (amarillo).",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-14",
+                "title": "Fuerza: R a KM1",
+                "from": "FUENTE:R",
+                "to": "CONTACTOR_TERMICO:L1",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "Las tres fases entran al contactor. R (azul) va a L1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-15",
+                "title": "Fuerza: S a KM1",
+                "from": "FUENTE:S",
+                "to": "CONTACTOR_TERMICO:L2",
+                "region": {
+                  "x": 73,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase S (negra) va a L2. Mantén el orden R–S–T en L1–L2–L3.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-16",
+                "title": "Fuerza: T a KM1",
+                "from": "FUENTE:T",
+                "to": "CONTACTOR_TERMICO:L3",
+                "region": {
+                  "x": 123,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase T (roja) va a L3. Con las tres fases en KM1, solo falta que su bobina cierre los contactos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-17",
+                "title": "KM1 al motor: U1",
+                "from": "CONTACTOR_TERMICO:T1",
+                "to": "BORNERA_MOTOR:U1",
+                "region": {
+                  "x": 157,
+                  "y": 525,
+                  "w": 228,
+                  "h": 289
+                },
+                "explanation": "Con KM1 cerrado, T1 entrega la fase R al borne U1 del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-18",
+                "title": "KM1 al motor: V1",
+                "from": "CONTACTOR_TERMICO:T2",
+                "to": "BORNERA_MOTOR:V1",
+                "region": {
+                  "x": 207,
+                  "y": 525,
+                  "w": 237,
+                  "h": 289
+                },
+                "explanation": "T2 (negro) va a V1: la fase S queda en el borne central del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-19",
+                "title": "KM1 al motor: W1",
+                "from": "CONTACTOR_TERMICO:T3",
+                "to": "BORNERA_MOTOR:W1",
+                "region": {
+                  "x": 257,
+                  "y": 525,
+                  "w": 245,
+                  "h": 289
+                },
+                "explanation": "T3 (rojo) va a W1. Con KM1 cerrado el motor recibe R–S–T en U1–V1–W1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-20",
+                "title": "Motor en estrella (1)",
+                "from": "BORNERA_MOTOR:W2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 282,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Unir W2 con U2 es la primera mitad del puente de estrella.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-21",
+                "title": "Motor en estrella (2)",
+                "from": "BORNERA_MOTOR:V2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 340,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Con W2, U2 y V2 unidos las tres bobinas quedan en estrella y el motor puede girar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-22",
+                "title": "Tierra del motor",
+                "from": "BORNERA_MOTOR:TP",
+                "to": "CONTACTOR_TERMICO:TP_DER",
+                "region": {
+                  "x": 223,
+                  "y": 525,
+                  "w": 262,
+                  "h": 338
+                },
+                "explanation": "Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. No cambian el funcionamiento del simulador.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-23",
+                "title": "Tierra de KM1 a la fuente",
+                "from": "CONTACTOR_TERMICO:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 245,
+                  "h": 606
+                },
+                "explanation": "La cadena llega a la tierra de protección de la fuente.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-24",
+                "title": "Tierra de las botoneras",
+                "from": "BOTONERAS:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 728,
+                  "h": 231
+                },
+                "explanation": "Última conexión: las botoneras también quedan a tierra.",
+                "review": "user_reviewed"
+              }
+            ],
+            "mode": "guided",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "stepIndex"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 2570,
+        "label": "Conectar FUENTE:F → CONTACTOR_TERMICO:95",
+        "targets": [
+          "FUENTE:F",
+          "CONTACTOR_TERMICO:95"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Lección · Marcha y paro con retención",
+            "wires": [
+              {
+                "id": "4a990fcb-45d7-4654-83aa-757af438ada6",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [
+              {
+                "id": "simple-01",
+                "title": "Fase al mando por el térmico",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:95",
+                "region": {
+                  "x": 32,
+                  "y": 79,
+                  "w": 308,
+                  "h": 566
+                },
+                "explanation": "La fase F entra al mando pasando por el contacto 95–96 del relé térmico, que es NC. Si el térmico dispara, este contacto abre y corta todo el mando.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-02",
+                "title": "Fase hacia el aviso de reposo",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "CONTACTOR_TERMICO:71",
+                "region": {
+                  "x": 32,
+                  "y": 427,
+                  "w": 162,
+                  "h": 218
+                },
+                "explanation": "Desde 96 (hay fase mientras el térmico esté sano) se alimenta el contacto NC 71–72 de KM1. Cuando KM1 esté en reposo, ese contacto estará cerrado.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-03",
+                "title": "Lámpara de reposo (P2)",
+                "from": "CONTACTOR_TERMICO:72",
+                "to": "BOTONERAS:PILOTO_2",
+                "region": {
+                  "x": 90,
+                  "y": 38,
+                  "w": 503,
+                  "h": 499
+                },
+                "explanation": "El piloto 2 (rojo) se enciende solo con KM1 en reposo: la fase llega por 71–72, que está cerrado. Cuando KM1 entra, 71–72 abre y P2 se apaga.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-04",
+                "title": "Neutro para las lámparas",
+                "from": "BOTONERAS:N",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 182,
+                  "y": 56,
+                  "w": 787,
+                  "h": 133
+                },
+                "explanation": "Los pilotos retornan por el borne N de las botoneras; únelo al neutro de la fuente para cerrar sus circuitos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-05",
+                "title": "Del térmico al paro (S2)",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "BOTONERAS:S2:1",
+                "region": {
+                  "x": 90,
+                  "y": 123,
+                  "w": 591,
+                  "h": 521
+                },
+                "explanation": "Desde 96 la fase va al pulsador rojo S2. Su contacto 1–2 es NC: el mando queda alimentado mientras no pulses el paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-06",
+                "title": "Del paro a la marcha (S1)",
+                "from": "BOTONERAS:S2:2",
+                "to": "BOTONERAS:S1:3",
+                "region": {
+                  "x": 419,
+                  "y": 123,
+                  "w": 262,
+                  "h": 160
+                },
+                "explanation": "S2:2 es el punto «protegido por el paro»: todo lo que sale de aquí se apaga al pulsar S2. Llévalo al borne 3 de S1 (verde izquierdo), contacto NA 3–4.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-07",
+                "title": "A la bobina de KM1",
+                "from": "BOTONERAS:S1:4",
+                "to": "CONTACTOR_TERMICO:A1",
+                "region": {
+                  "x": 23,
+                  "y": 172,
+                  "w": 499,
+                  "h": 298
+                },
+                "explanation": "Al pulsar S1 la fase sale por el borne 4 y llega a A1, el borne de la bobina de KM1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-08",
+                "title": "Retorno de la bobina",
+                "from": "CONTACTOR_TERMICO:A2",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 262,
+                  "h": 343
+                },
+                "explanation": "A2 va al neutro N: la bobina de 24 V CA queda entre la fase (A1) y el neutro (A2). Con S1 pulsado, KM1 ya debería entrar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-09",
+                "title": "Retención: entrada",
+                "from": "BOTONERAS:S2:2",
+                "to": "CONTACTOR_TERMICO:13",
+                "region": {
+                  "x": 323,
+                  "y": 172,
+                  "w": 357,
+                  "h": 303
+                },
+                "explanation": "El contacto auxiliar NA 13–14 de KM1 hace de memoria. Su entrada 13 recibe la fase desde S2:2, después del paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-10",
+                "title": "Retención: salida en paralelo con S1",
+                "from": "CONTACTOR_TERMICO:14",
+                "to": "BOTONERAS:S1:4",
+                "region": {
+                  "x": 382,
+                  "y": 172,
+                  "w": 141,
+                  "h": 303
+                },
+                "explanation": "14 devuelve la fase a S1:4, en paralelo con el pulsador. Cuando KM1 entra, 13–14 cierra y mantiene la bobina aunque sueltes S1; solo el paro la suelta.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-11",
+                "title": "Lámpara de KM1 (P1)",
+                "from": "CONTACTOR_TERMICO:A1",
+                "to": "BOTONERAS:PILOTO_1",
+                "region": {
+                  "x": 23,
+                  "y": 38,
+                  "w": 445,
+                  "h": 432
+                },
+                "explanation": "El piloto 1 toma la fase del mismo punto que la bobina: se enciende cuando KM1 está activo.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-12",
+                "title": "Fase al aviso de térmico disparado",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:97",
+                "region": {
+                  "x": 236,
+                  "y": 79,
+                  "w": 191,
+                  "h": 468
+                },
+                "explanation": "El contacto 97–98 de KM1 es NA: cierra cuando el relé térmico dispara. Alimenta 97 con la fase.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-13",
+                "title": "Lámpara de térmico disparado (P3)",
+                "from": "CONTACTOR_TERMICO:98",
+                "to": "BOTONERAS:PILOTO_3",
+                "region": {
+                  "x": 382,
+                  "y": 38,
+                  "w": 337,
+                  "h": 508
+                },
+                "explanation": "Al disparar el térmico, 97–98 cierra y enciende el piloto 3 (amarillo).",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-14",
+                "title": "Fuerza: R a KM1",
+                "from": "FUENTE:R",
+                "to": "CONTACTOR_TERMICO:L1",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "Las tres fases entran al contactor. R (azul) va a L1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-15",
+                "title": "Fuerza: S a KM1",
+                "from": "FUENTE:S",
+                "to": "CONTACTOR_TERMICO:L2",
+                "region": {
+                  "x": 73,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase S (negra) va a L2. Mantén el orden R–S–T en L1–L2–L3.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-16",
+                "title": "Fuerza: T a KM1",
+                "from": "FUENTE:T",
+                "to": "CONTACTOR_TERMICO:L3",
+                "region": {
+                  "x": 123,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase T (roja) va a L3. Con las tres fases en KM1, solo falta que su bobina cierre los contactos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-17",
+                "title": "KM1 al motor: U1",
+                "from": "CONTACTOR_TERMICO:T1",
+                "to": "BORNERA_MOTOR:U1",
+                "region": {
+                  "x": 157,
+                  "y": 525,
+                  "w": 228,
+                  "h": 289
+                },
+                "explanation": "Con KM1 cerrado, T1 entrega la fase R al borne U1 del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-18",
+                "title": "KM1 al motor: V1",
+                "from": "CONTACTOR_TERMICO:T2",
+                "to": "BORNERA_MOTOR:V1",
+                "region": {
+                  "x": 207,
+                  "y": 525,
+                  "w": 237,
+                  "h": 289
+                },
+                "explanation": "T2 (negro) va a V1: la fase S queda en el borne central del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-19",
+                "title": "KM1 al motor: W1",
+                "from": "CONTACTOR_TERMICO:T3",
+                "to": "BORNERA_MOTOR:W1",
+                "region": {
+                  "x": 257,
+                  "y": 525,
+                  "w": 245,
+                  "h": 289
+                },
+                "explanation": "T3 (rojo) va a W1. Con KM1 cerrado el motor recibe R–S–T en U1–V1–W1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-20",
+                "title": "Motor en estrella (1)",
+                "from": "BORNERA_MOTOR:W2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 282,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Unir W2 con U2 es la primera mitad del puente de estrella.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-21",
+                "title": "Motor en estrella (2)",
+                "from": "BORNERA_MOTOR:V2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 340,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Con W2, U2 y V2 unidos las tres bobinas quedan en estrella y el motor puede girar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-22",
+                "title": "Tierra del motor",
+                "from": "BORNERA_MOTOR:TP",
+                "to": "CONTACTOR_TERMICO:TP_DER",
+                "region": {
+                  "x": 223,
+                  "y": 525,
+                  "w": 262,
+                  "h": 338
+                },
+                "explanation": "Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. No cambian el funcionamiento del simulador.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-23",
+                "title": "Tierra de KM1 a la fuente",
+                "from": "CONTACTOR_TERMICO:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 245,
+                  "h": 606
+                },
+                "explanation": "La cadena llega a la tierra de protección de la fuente.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-24",
+                "title": "Tierra de las botoneras",
+                "from": "BOTONERAS:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 728,
+                  "h": 231
+                },
+                "explanation": "Última conexión: las botoneras también quedan a tierra.",
+                "review": "user_reviewed"
+              }
+            ],
+            "mode": "guided",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [
+            {
+              "id": "4a990fcb-45d7-4654-83aa-757af438ada6",
+              "from": {
+                "terminalId": "FUENTE:F"
+              },
+              "to": {
+                "terminalId": "CONTACTOR_TERMICO:95"
+              },
+              "color": "#145650",
+              "route": {
+                "sag": 130
+              },
+              "layer": 1
+            }
+          ],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 7202,
+        "label": "Actualizar práctica o guía",
+        "targets": [],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Lección · Marcha y paro con retención",
+            "wires": [
+              {
+                "id": "4a990fcb-45d7-4654-83aa-757af438ada6",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [
+              {
+                "id": "simple-01",
+                "title": "Fase al mando por el térmico",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:95",
+                "region": {
+                  "x": 32,
+                  "y": 79,
+                  "w": 308,
+                  "h": 566
+                },
+                "explanation": "La fase F entra al mando pasando por el contacto 95–96 del relé térmico, que es NC. Si el térmico dispara, este contacto abre y corta todo el mando.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-02",
+                "title": "Fase hacia el aviso de reposo",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "CONTACTOR_TERMICO:71",
+                "region": {
+                  "x": 32,
+                  "y": 427,
+                  "w": 162,
+                  "h": 218
+                },
+                "explanation": "Desde 96 (hay fase mientras el térmico esté sano) se alimenta el contacto NC 71–72 de KM1. Cuando KM1 esté en reposo, ese contacto estará cerrado.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-03",
+                "title": "Lámpara de reposo (P2)",
+                "from": "CONTACTOR_TERMICO:72",
+                "to": "BOTONERAS:PILOTO_2",
+                "region": {
+                  "x": 90,
+                  "y": 38,
+                  "w": 503,
+                  "h": 499
+                },
+                "explanation": "El piloto 2 (rojo) se enciende solo con KM1 en reposo: la fase llega por 71–72, que está cerrado. Cuando KM1 entra, 71–72 abre y P2 se apaga.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-04",
+                "title": "Neutro para las lámparas",
+                "from": "BOTONERAS:N",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 182,
+                  "y": 56,
+                  "w": 787,
+                  "h": 133
+                },
+                "explanation": "Los pilotos retornan por el borne N de las botoneras; únelo al neutro de la fuente para cerrar sus circuitos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-05",
+                "title": "Del térmico al paro (S2)",
+                "from": "CONTACTOR_TERMICO:96",
+                "to": "BOTONERAS:S2:1",
+                "region": {
+                  "x": 90,
+                  "y": 123,
+                  "w": 591,
+                  "h": 521
+                },
+                "explanation": "Desde 96 la fase va al pulsador rojo S2. Su contacto 1–2 es NC: el mando queda alimentado mientras no pulses el paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-06",
+                "title": "Del paro a la marcha (S1)",
+                "from": "BOTONERAS:S2:2",
+                "to": "BOTONERAS:S1:3",
+                "region": {
+                  "x": 419,
+                  "y": 123,
+                  "w": 262,
+                  "h": 160
+                },
+                "explanation": "S2:2 es el punto «protegido por el paro»: todo lo que sale de aquí se apaga al pulsar S2. Llévalo al borne 3 de S1 (verde izquierdo), contacto NA 3–4.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-07",
+                "title": "A la bobina de KM1",
+                "from": "BOTONERAS:S1:4",
+                "to": "CONTACTOR_TERMICO:A1",
+                "region": {
+                  "x": 23,
+                  "y": 172,
+                  "w": 499,
+                  "h": 298
+                },
+                "explanation": "Al pulsar S1 la fase sale por el borne 4 y llega a A1, el borne de la bobina de KM1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-08",
+                "title": "Retorno de la bobina",
+                "from": "CONTACTOR_TERMICO:A2",
+                "to": "FUENTE:N",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 262,
+                  "h": 343
+                },
+                "explanation": "A2 va al neutro N: la bobina de 24 V CA queda entre la fase (A1) y el neutro (A2). Con S1 pulsado, KM1 ya debería entrar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-09",
+                "title": "Retención: entrada",
+                "from": "BOTONERAS:S2:2",
+                "to": "CONTACTOR_TERMICO:13",
+                "region": {
+                  "x": 323,
+                  "y": 172,
+                  "w": 357,
+                  "h": 303
+                },
+                "explanation": "El contacto auxiliar NA 13–14 de KM1 hace de memoria. Su entrada 13 recibe la fase desde S2:2, después del paro.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-10",
+                "title": "Retención: salida en paralelo con S1",
+                "from": "CONTACTOR_TERMICO:14",
+                "to": "BOTONERAS:S1:4",
+                "region": {
+                  "x": 382,
+                  "y": 172,
+                  "w": 141,
+                  "h": 303
+                },
+                "explanation": "14 devuelve la fase a S1:4, en paralelo con el pulsador. Cuando KM1 entra, 13–14 cierra y mantiene la bobina aunque sueltes S1; solo el paro la suelta.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-11",
+                "title": "Lámpara de KM1 (P1)",
+                "from": "CONTACTOR_TERMICO:A1",
+                "to": "BOTONERAS:PILOTO_1",
+                "region": {
+                  "x": 23,
+                  "y": 38,
+                  "w": 445,
+                  "h": 432
+                },
+                "explanation": "El piloto 1 toma la fase del mismo punto que la bobina: se enciende cuando KM1 está activo.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-12",
+                "title": "Fase al aviso de térmico disparado",
+                "from": "FUENTE:F",
+                "to": "CONTACTOR_TERMICO:97",
+                "region": {
+                  "x": 236,
+                  "y": 79,
+                  "w": 191,
+                  "h": 468
+                },
+                "explanation": "El contacto 97–98 de KM1 es NA: cierra cuando el relé térmico dispara. Alimenta 97 con la fase.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-13",
+                "title": "Lámpara de térmico disparado (P3)",
+                "from": "CONTACTOR_TERMICO:98",
+                "to": "BOTONERAS:PILOTO_3",
+                "region": {
+                  "x": 382,
+                  "y": 38,
+                  "w": 337,
+                  "h": 508
+                },
+                "explanation": "Al disparar el térmico, 97–98 cierra y enciende el piloto 3 (amarillo).",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-14",
+                "title": "Fuerza: R a KM1",
+                "from": "FUENTE:R",
+                "to": "CONTACTOR_TERMICO:L1",
+                "region": {
+                  "x": 23,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "Las tres fases entran al contactor. R (azul) va a L1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-15",
+                "title": "Fuerza: S a KM1",
+                "from": "FUENTE:S",
+                "to": "CONTACTOR_TERMICO:L2",
+                "region": {
+                  "x": 73,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase S (negra) va a L2. Mantén el orden R–S–T en L1–L2–L3.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-16",
+                "title": "Fuerza: T a KM1",
+                "from": "FUENTE:T",
+                "to": "CONTACTOR_TERMICO:L3",
+                "region": {
+                  "x": 123,
+                  "y": 79,
+                  "w": 237,
+                  "h": 343
+                },
+                "explanation": "La fase T (roja) va a L3. Con las tres fases en KM1, solo falta que su bobina cierre los contactos.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-17",
+                "title": "KM1 al motor: U1",
+                "from": "CONTACTOR_TERMICO:T1",
+                "to": "BORNERA_MOTOR:U1",
+                "region": {
+                  "x": 157,
+                  "y": 525,
+                  "w": 228,
+                  "h": 289
+                },
+                "explanation": "Con KM1 cerrado, T1 entrega la fase R al borne U1 del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-18",
+                "title": "KM1 al motor: V1",
+                "from": "CONTACTOR_TERMICO:T2",
+                "to": "BORNERA_MOTOR:V1",
+                "region": {
+                  "x": 207,
+                  "y": 525,
+                  "w": 237,
+                  "h": 289
+                },
+                "explanation": "T2 (negro) va a V1: la fase S queda en el borne central del motor.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-19",
+                "title": "KM1 al motor: W1",
+                "from": "CONTACTOR_TERMICO:T3",
+                "to": "BORNERA_MOTOR:W1",
+                "region": {
+                  "x": 257,
+                  "y": 525,
+                  "w": 245,
+                  "h": 289
+                },
+                "explanation": "T3 (rojo) va a W1. Con KM1 cerrado el motor recibe R–S–T en U1–V1–W1.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-20",
+                "title": "Motor en estrella (1)",
+                "from": "BORNERA_MOTOR:W2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 282,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Unir W2 con U2 es la primera mitad del puente de estrella.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-21",
+                "title": "Motor en estrella (2)",
+                "from": "BORNERA_MOTOR:V2",
+                "to": "BORNERA_MOTOR:U2",
+                "region": {
+                  "x": 340,
+                  "y": 802,
+                  "w": 162,
+                  "h": 111
+                },
+                "explanation": "Con W2, U2 y V2 unidos las tres bobinas quedan en estrella y el motor puede girar.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-22",
+                "title": "Tierra del motor",
+                "from": "BORNERA_MOTOR:TP",
+                "to": "CONTACTOR_TERMICO:TP_DER",
+                "region": {
+                  "x": 223,
+                  "y": 525,
+                  "w": 262,
+                  "h": 338
+                },
+                "explanation": "Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. No cambian el funcionamiento del simulador.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-23",
+                "title": "Tierra de KM1 a la fuente",
+                "from": "CONTACTOR_TERMICO:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 245,
+                  "h": 606
+                },
+                "explanation": "La cadena llega a la tierra de protección de la fuente.",
+                "review": "user_reviewed"
+              },
+              {
+                "id": "simple-24",
+                "title": "Tierra de las botoneras",
+                "from": "BOTONERAS:TP_DER",
+                "to": "FUENTE:TP",
+                "region": {
+                  "x": 240,
+                  "y": 29,
+                  "w": 728,
+                  "h": 231
+                },
+                "explanation": "Última conexión: las botoneras también quedan a tierra.",
+                "review": "user_reviewed"
+              }
+            ],
+            "mode": "guided",
+            "stepIndex": 1
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "stepIndex"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 7385,
+        "label": "Retirar FUENTE:F → CONTACTOR_TERMICO:95",
+        "targets": [
+          "FUENTE:F",
+          "CONTACTOR_TERMICO:95"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Armar y explicar · Marcha y paro con retención",
+            "wires": [],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0,
+            "assessment": {
+              "version": 1,
+              "id": "e8a5afaa-b2ea-4358-90d0-77bb7b55e77d",
+              "lessonId": "simple",
+              "submitted": false,
+              "reflection": "",
+              "answers": []
+            }
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [
+            {
+              "id": "4a990fcb-45d7-4654-83aa-757af438ada6",
+              "from": {
+                "terminalId": "FUENTE:F"
+              },
+              "to": {
+                "terminalId": "CONTACTOR_TERMICO:95"
+              },
+              "color": "#145650",
+              "route": {
+                "sag": 130
+              },
+              "layer": 1
+            }
+          ],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "title",
+            "steps",
+            "mode",
+            "stepIndex",
+            "assessment"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 8728,
+        "label": "Conectar FUENTE:F → CONTACTOR_TERMICO:95",
+        "targets": [
+          "FUENTE:F",
+          "CONTACTOR_TERMICO:95"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Armar y explicar · Marcha y paro con retención",
+            "wires": [
+              {
+                "id": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0,
+            "assessment": {
+              "version": 1,
+              "id": "e8a5afaa-b2ea-4358-90d0-77bb7b55e77d",
+              "lessonId": "simple",
+              "submitted": false,
+              "reflection": "",
+              "answers": []
+            }
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [
+            {
+              "id": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+              "from": {
+                "terminalId": "FUENTE:F"
+              },
+              "to": {
+                "terminalId": "CONTACTOR_TERMICO:95"
+              },
+              "color": "#145650",
+              "route": {
+                "sag": 130
+              },
+              "layer": 1
+            }
+          ],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 8865,
+        "label": "Guardar respuesta de evaluación",
+        "targets": [],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Armar y explicar · Marcha y paro con retención",
+            "wires": [
+              {
+                "id": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0,
+            "assessment": {
+              "version": 1,
+              "id": "e8a5afaa-b2ea-4358-90d0-77bb7b55e77d",
+              "lessonId": "simple",
+              "submitted": false,
+              "reflection": "",
+              "answers": [
+                {
+                  "wireId": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                  "from": "FUENTE:F",
+                  "to": "CONTACTOR_TERMICO:95",
+                  "text": "El térmico puede abrir el mando y retirar la alimentación a la bobina."
+                }
+              ]
+            }
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "assessment"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 9022,
+        "label": "Conectar FUENTE:F → FUENTE:N",
+        "targets": [
+          "FUENTE:F",
+          "FUENTE:N"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Armar y explicar · Marcha y paro con retención",
+            "wires": [
+              {
+                "id": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              },
+              {
+                "id": "039312e7-a241-4af6-896b-a5b84b45170f",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "FUENTE:N"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 2
+              }
+            ],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0,
+            "assessment": {
+              "version": 1,
+              "id": "e8a5afaa-b2ea-4358-90d0-77bb7b55e77d",
+              "lessonId": "simple",
+              "submitted": false,
+              "reflection": "",
+              "answers": [
+                {
+                  "wireId": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                  "from": "FUENTE:F",
+                  "to": "CONTACTOR_TERMICO:95",
+                  "text": "El térmico puede abrir el mando y retirar la alimentación a la bobina."
+                }
+              ]
+            }
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [
+            {
+              "id": "039312e7-a241-4af6-896b-a5b84b45170f",
+              "from": {
+                "terminalId": "FUENTE:F"
+              },
+              "to": {
+                "terminalId": "FUENTE:N"
+              },
+              "color": "#145650",
+              "route": {
+                "sag": 130
+              },
+              "layer": 2
+            }
+          ],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 9527,
+        "label": "Guardar respuesta de evaluación",
+        "targets": [],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Armar y explicar · Marcha y paro con retención",
+            "wires": [
+              {
+                "id": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              },
+              {
+                "id": "039312e7-a241-4af6-896b-a5b84b45170f",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "FUENTE:N"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 2
+              }
+            ],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0,
+            "assessment": {
+              "version": 1,
+              "id": "e8a5afaa-b2ea-4358-90d0-77bb7b55e77d",
+              "lessonId": "simple",
+              "submitted": false,
+              "reflection": "",
+              "answers": [
+                {
+                  "wireId": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                  "from": "FUENTE:F",
+                  "to": "CONTACTOR_TERMICO:95",
+                  "text": "El térmico puede abrir el mando y retirar la alimentación a la bobina."
+                },
+                {
+                  "wireId": "039312e7-a241-4af6-896b-a5b84b45170f",
+                  "from": "FUENTE:F",
+                  "to": "FUENTE:N",
+                  "text": "Borrador que todavía debo revisar."
+                }
+              ]
+            }
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "assessment"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 9693,
+        "label": "Entregar evaluación",
+        "targets": [],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Armar y explicar · Marcha y paro con retención",
+            "wires": [
+              {
+                "id": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              },
+              {
+                "id": "039312e7-a241-4af6-896b-a5b84b45170f",
+                "from": {
+                  "terminalId": "FUENTE:F"
+                },
+                "to": {
+                  "terminalId": "FUENTE:N"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 2
+              }
+            ],
+            "diagram": {
+              "id": "leccion-marcha-paro",
+              "name": "Mapa de bornes · marcha y paro",
+              "src": "/diagrams/leccion-marcha-paro.png",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0,
+            "assessment": {
+              "version": 1,
+              "id": "e8a5afaa-b2ea-4358-90d0-77bb7b55e77d",
+              "lessonId": "simple",
+              "submitted": true,
+              "reflection": "",
+              "answers": [
+                {
+                  "wireId": "bae5ba87-eea8-47af-87ed-419dae77d3a0",
+                  "from": "FUENTE:F",
+                  "to": "CONTACTOR_TERMICO:95",
+                  "text": "El térmico puede abrir el mando y retirar la alimentación a la bobina."
+                },
+                {
+                  "wireId": "039312e7-a241-4af6-896b-a5b84b45170f",
+                  "from": "FUENTE:F",
+                  "to": "FUENTE:N",
+                  "text": "Borrador que todavía debo revisar."
+                }
+              ]
+            }
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [
+            "assessment"
+          ],
+          "simulation": []
+        },
+        "operation": "edit"
+      }
+    ],
+    "origin": "snapshot"
+  }
+}

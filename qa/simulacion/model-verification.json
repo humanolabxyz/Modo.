@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Both control poles, correct momentary contact and explicit neutral return required; wrong button and missing return cannot light pilot; no mutation of cable topology",
+    "Pilot fed directly lights; protection terminal and same-potential connections do not provide a valid return",
+    "KM1 coil pickup, separate NO/NC auxiliaries, holding, stop, thermal 95-96 trip and 97-98 alarm; reset never restarts implicitly",
+    "Direct and switch-dependent shorts stop outputs; cyclic contactor wiring reports unstable rather than claiming stable operation",
+    "KM2 retained and electrically independent from KM1; unconfirmed KM2 95/96 and timer do not create internal bridges",
+    "Old removed-timer cables, reviewed steps and mappings archived without loss; reload/export round-trip stable; invented retired IDs rejected"
+  ]
+}

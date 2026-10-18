@@ -1,0 +1,127 @@
+[
+  {
+    "name": "verify:data",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-data.log"
+  },
+  {
+    "name": "verify:ui",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-ui.log"
+  },
+  {
+    "name": "verify:wiring",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-wiring.log"
+  },
+  {
+    "name": "verify:practice",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-practice.log"
+  },
+  {
+    "name": "verify:interface",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-interface.log"
+  },
+  {
+    "name": "verify:reading",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-reading.log"
+  },
+  {
+    "name": "verify:cade",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-cade.log"
+  },
+  {
+    "name": "verify:canvas",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-canvas.log"
+  },
+  {
+    "name": "verify:learning",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-learning.log"
+  },
+  {
+    "name": "verify:learning-ui",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-learning-ui.log"
+  },
+  {
+    "name": "verify:simulation",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-simulation.log"
+  },
+  {
+    "name": "verify:simulation-ui",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-simulation-ui.log"
+  },
+  {
+    "name": "verify:routes",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-routes.log"
+  },
+  {
+    "name": "verify:diagram-layout",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-diagram-layout.log"
+  },
+  {
+    "name": "verify:diagram-simple",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-diagram-simple.log"
+  },
+  {
+    "name": "verify:cable-color",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-cable-color.log"
+  },
+  {
+    "name": "verify:float",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-float.log"
+  },
+  {
+    "name": "verify:estrella",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-estrella.log"
+  },
+  {
+    "name": "verify:focus",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-focus.log"
+  },
+  {
+    "name": "verify:mobile",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-mobile.log"
+  },
+  {
+    "name": "verify:pwa",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-pwa.log"
+  },
+  {
+    "name": "verify:lab-ui",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-lab-ui.log"
+  },
+  {
+    "name": "verify:lab",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-lab.log"
+  },
+  {
+    "name": "verify:modo",
+    "exitCode": 0,
+    "log": "qa\\verificacion-2026-10-15\\verify-modo.log"
+  },
+  {
+    "name": "verify:modo-preservation",
+    "exitCode": 1,
+    "log": "qa\\verificacion-2026-10-15\\verify-modo-preservation.log"
+  }
+]

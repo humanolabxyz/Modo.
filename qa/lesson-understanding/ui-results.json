@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "PASS 320px: repaso sin cablear, pausa/avance, prueba sin pistas, pregunta por cable, borradores, entrega, recarga y exportación",
+    "PASS 390px: repaso sin cablear, pausa/avance, prueba sin pistas, pregunta por cable, borradores, entrega, recarga y exportación",
+    "PASS 844px: repaso sin cablear, pausa/avance, prueba sin pistas, pregunta por cable, borradores, entrega, recarga y exportación",
+    "PASS 1440px: repaso sin cablear, pausa/avance, prueba sin pistas, pregunta por cable, borradores, entrega, recarga y exportación"
+  ],
+  "errors": []
+}

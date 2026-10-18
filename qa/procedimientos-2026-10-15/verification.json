@@ -1,0 +1,31 @@
+{
+  "checks": [
+    "Conexión, Deshacer y Rehacer se registran como tres pasos completos con sus montajes.",
+    "Mando virtual: habilitación, enchufe, dos interruptores y pulsación/liberación de botón registrados.",
+    "LOTO exige orden, alcanza ocho etapas y queda dentro de la grabación.",
+    "Reproducción temporal y por pasos preserva la práctica activa; vista previa inerte y guía de bornes disponible.",
+    "Exportación e importación conservan pasos; copia con identidad nueva y archivo inválido rechazado.",
+    "Recuperar montaje detiene simulación y se puede deshacer; recarga conserva biblioteca y no reanuda grabación.",
+    "Escritorio, 390, 360 y horizontal sin desbordamiento; interacción táctil emulada comprobada."
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 844,
+      "height": 390
+    }
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,560 @@
+{
+  "version": 2,
+  "title": "Mi práctica INACAP",
+  "wires": [],
+  "diagram": {
+    "id": "clase-1",
+    "name": "Fotografía de clase 1 · referencia sin validar",
+    "src": "/diagrams/clase-1.jpg",
+    "origin": "class_photo"
+  },
+  "steps": [],
+  "mode": "free",
+  "stepIndex": 0,
+  "format": "modo-panel",
+  "panelHistory": {
+    "version": 1,
+    "id": "093a0f5d-46bd-4906-8767-c14855f004c8",
+    "name": "Historial del panel",
+    "createdAt": "2026-10-16T01:17:45.928Z",
+    "initial": {
+      "practice": {
+        "version": 2,
+        "title": "Mi práctica INACAP",
+        "wires": [],
+        "diagram": {
+          "id": "clase-1",
+          "name": "Fotografía de clase 1 · referencia sin validar",
+          "src": "/diagrams/clase-1.jpg",
+          "origin": "class_photo"
+        },
+        "steps": [],
+        "mode": "free",
+        "stepIndex": 0
+      },
+      "simulation": {
+        "enabled": false,
+        "plugged": false,
+        "forceBreaker": false,
+        "thermalTripped": false,
+        "breakers": [
+          false,
+          false
+        ],
+        "pressed": []
+      },
+      "loto": 0
+    },
+    "steps": [
+      {
+        "at": 599,
+        "label": "Conectar CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96",
+        "targets": [
+          "CONTACTOR_TERMICO:95",
+          "CONTACTOR_TERMICO:96"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Mi práctica INACAP",
+            "wires": [
+              {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "clase-1",
+              "name": "Fotografía de clase 1 · referencia sin validar",
+              "src": "/diagrams/clase-1.jpg",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [
+            {
+              "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+              "from": {
+                "terminalId": "CONTACTOR_TERMICO:95"
+              },
+              "to": {
+                "terminalId": "CONTACTOR_TERMICO:96"
+              },
+              "color": "#145650",
+              "route": {
+                "sag": 130
+              },
+              "layer": 1
+            }
+          ],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 1299,
+        "label": "Modificar cable CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96 · color",
+        "targets": [
+          "CONTACTOR_TERMICO:95",
+          "CONTACTOR_TERMICO:96"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Mi práctica INACAP",
+            "wires": [
+              {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#d8ab28",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "clase-1",
+              "name": "Fotografía de clase 1 · referencia sin validar",
+              "src": "/diagrams/clase-1.jpg",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [
+            {
+              "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+              "before": {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#145650",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              },
+              "after": {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#d8ab28",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              },
+              "fields": [
+                "color"
+              ]
+            }
+          ],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 1399,
+        "label": "Modificar cable CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96 · recorrido",
+        "targets": [
+          "CONTACTOR_TERMICO:95",
+          "CONTACTOR_TERMICO:96"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Mi práctica INACAP",
+            "wires": [
+              {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#d8ab28",
+                "route": {
+                  "sag": 250,
+                  "fromOffset": {
+                    "x": 12,
+                    "y": 0
+                  },
+                  "toOffset": {
+                    "x": -12,
+                    "y": 0
+                  }
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "clase-1",
+              "name": "Fotografía de clase 1 · referencia sin validar",
+              "src": "/diagrams/clase-1.jpg",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "modified": [
+            {
+              "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+              "before": {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#d8ab28",
+                "route": {
+                  "sag": 130
+                },
+                "layer": 1
+              },
+              "after": {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#d8ab28",
+                "route": {
+                  "sag": 250,
+                  "fromOffset": {
+                    "x": 12,
+                    "y": 0
+                  },
+                  "toOffset": {
+                    "x": -12,
+                    "y": 0
+                  }
+                },
+                "layer": 1
+              },
+              "fields": [
+                "route"
+              ]
+            }
+          ],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 1450,
+        "label": "Retirar CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96",
+        "targets": [
+          "CONTACTOR_TERMICO:95",
+          "CONTACTOR_TERMICO:96"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Mi práctica INACAP",
+            "wires": [],
+            "diagram": {
+              "id": "clase-1",
+              "name": "Fotografía de clase 1 · referencia sin validar",
+              "src": "/diagrams/clase-1.jpg",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [
+            {
+              "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+              "from": {
+                "terminalId": "CONTACTOR_TERMICO:95"
+              },
+              "to": {
+                "terminalId": "CONTACTOR_TERMICO:96"
+              },
+              "color": "#d8ab28",
+              "route": {
+                "sag": 250,
+                "fromOffset": {
+                  "x": 12,
+                  "y": 0
+                },
+                "toOffset": {
+                  "x": -12,
+                  "y": 0
+                }
+              },
+              "layer": 1
+            }
+          ],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "edit"
+      },
+      {
+        "at": 1518,
+        "label": "Deshacer · Conectar CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96",
+        "targets": [
+          "CONTACTOR_TERMICO:95",
+          "CONTACTOR_TERMICO:96"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Mi práctica INACAP",
+            "wires": [
+              {
+                "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+                "from": {
+                  "terminalId": "CONTACTOR_TERMICO:95"
+                },
+                "to": {
+                  "terminalId": "CONTACTOR_TERMICO:96"
+                },
+                "color": "#d8ab28",
+                "route": {
+                  "sag": 250,
+                  "fromOffset": {
+                    "x": 12,
+                    "y": 0
+                  },
+                  "toOffset": {
+                    "x": -12,
+                    "y": 0
+                  }
+                },
+                "layer": 1
+              }
+            ],
+            "diagram": {
+              "id": "clase-1",
+              "name": "Fotografía de clase 1 · referencia sin validar",
+              "src": "/diagrams/clase-1.jpg",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [
+            {
+              "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+              "from": {
+                "terminalId": "CONTACTOR_TERMICO:95"
+              },
+              "to": {
+                "terminalId": "CONTACTOR_TERMICO:96"
+              },
+              "color": "#d8ab28",
+              "route": {
+                "sag": 250,
+                "fromOffset": {
+                  "x": 12,
+                  "y": 0
+                },
+                "toOffset": {
+                  "x": -12,
+                  "y": 0
+                }
+              },
+              "layer": 1
+            }
+          ],
+          "removed": [],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "undo"
+      },
+      {
+        "at": 1565,
+        "label": "Rehacer · Retirar CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96",
+        "targets": [
+          "CONTACTOR_TERMICO:95",
+          "CONTACTOR_TERMICO:96"
+        ],
+        "frame": {
+          "practice": {
+            "version": 2,
+            "title": "Mi práctica INACAP",
+            "wires": [],
+            "diagram": {
+              "id": "clase-1",
+              "name": "Fotografía de clase 1 · referencia sin validar",
+              "src": "/diagrams/clase-1.jpg",
+              "origin": "class_photo"
+            },
+            "steps": [],
+            "mode": "free",
+            "stepIndex": 0
+          },
+          "simulation": {
+            "enabled": false,
+            "plugged": false,
+            "forceBreaker": false,
+            "thermalTripped": false,
+            "breakers": [
+              false,
+              false
+            ],
+            "pressed": []
+          },
+          "loto": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [
+            {
+              "id": "785fd177-753f-40ce-aac0-29bfff67ca15",
+              "from": {
+                "terminalId": "CONTACTOR_TERMICO:95"
+              },
+              "to": {
+                "terminalId": "CONTACTOR_TERMICO:96"
+              },
+              "color": "#d8ab28",
+              "route": {
+                "sag": 250,
+                "fromOffset": {
+                  "x": 12,
+                  "y": 0
+                },
+                "toOffset": {
+                  "x": -12,
+                  "y": 0
+                }
+              },
+              "layer": 1
+            }
+          ],
+          "modified": [],
+          "wireOrderChanged": false,
+          "practiceFields": [],
+          "simulation": []
+        },
+        "operation": "redo"
+      }
+    ],
+    "origin": "snapshot"
+  }
+}

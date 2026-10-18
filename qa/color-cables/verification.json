@@ -1,0 +1,41 @@
+{
+  "checks": [
+    "Color is always visible beside the wiring tools. Presets/custom picker color only newly completed cables; changing color while an origin is pending retains that origin and existing cables.",
+    "With a cable selected, the same visible color control edits only that cable, preserving endpoints and the next-cable color; Undo/Redo restore color changes.",
+    "Both toolbar states and the color palette fit seven desktop/tablet/mobile/landscape viewports; Escape closes palette and returns focus.",
+    "Cable colors survive practice save and reload.",
+    "Real mobile touch chooses a preset and mounts a cable of that color."
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1062,
+      "height": 834
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 844,
+      "height": 390
+    }
+  ],
+  "result": "PASS"
+}

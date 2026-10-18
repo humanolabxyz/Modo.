@@ -1,0 +1,206 @@
+{
+  "description": "12 preguntas originales de desarrollo con pautas orientativas y respuestas modelo; no corresponden a prueba oficial.",
+  "count": 12,
+  "questions": [
+    {
+      "id": "DES-01",
+      "theme": "fallas",
+      "slides": [
+        3,
+        4
+      ],
+      "prompt": "Explica la diferencia entre una sobrecarga y un cortocircuito y menciona sus consecuencias.",
+      "rubric": [
+        "Sobrecarga: corriente sobre normal y recalentamiento",
+        "Cortocircuito: camino de muy baja impedancia y corriente alta",
+        "Identifica arco eléctrico, calor y esfuerzo magnético"
+      ],
+      "model_answer": "En una sobrecarga la corriente supera la normal y puede recalentar el conductor. En un cortocircuito aparece un camino de baja impedancia por el que puede circular una corriente muy alta, causando arco eléctrico, calentamiento y fuerzas magnéticas capaces de dañar materiales.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-02",
+      "theme": "coordinacion",
+      "slides": [
+        5,
+        6
+      ],
+      "prompt": "Describe qué datos revisarías antes de seleccionar una protección e interpreta In ≤ Ip ≤ Iz.",
+      "rubric": [
+        "Corriente/tensión/tipo de carga, corto previsto",
+        "Cable: material, sección, capacidad corregida",
+        "Entiende In, Ip, Iz y que no basta con desigualdad"
+      ],
+      "model_answer": "Primero conozco corriente y tipo de carga, tensión, cortocircuito previsto y datos del cable y ambiente. En la notación del profesor In es la corriente de carga, Ip la corriente de protección e Iz la capacidad corregida del cable. La protección debe soportar la carga sin exceder la capacidad del cable. También reviso disparo y poder de corte.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-03",
+      "theme": "termomagnetico",
+      "slides": [
+        7,
+        8
+      ],
+      "prompt": "Explica cómo funciona un interruptor termomagnético y los criterios de selección.",
+      "rubric": [
+        "Térmico para sobrecarga",
+        "Magnético para cortocircuito",
+        "Revisa corriente nominal, tensión, polos, curvas B/C/D y corte"
+      ],
+      "model_answer": "El disyuntor termomagnético combina un mecanismo térmico para sobrecargas y uno magnético para cortocircuitos. Seleccionaría corriente nominal, tensión y polos adecuados a la carga, una curva B, C o D según el comportamiento de arranque y un poder de corte no menor que el corto previsto.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-04",
+      "theme": "fusibles",
+      "slides": [
+        9,
+        10
+      ],
+      "prompt": "¿Cómo eliges un fusible y por qué no basta con su apariencia?",
+      "rubric": [
+        "Clase según aplicación",
+        "Corriente nominal, tensión y ruptura",
+        "Rápido/lento y clases gG/aR/gR según escenario"
+      ],
+      "model_answer": "La apariencia externa no indica la función. Debo revisar clase de aplicación y tipo de actuación, corriente nominal, tensión admisible, poder de ruptura y las características del fabricante. En el material gG se menciona para conductores y aR o gR para semiconductores.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-05",
+      "theme": "conductores",
+      "slides": [
+        11,
+        12
+      ],
+      "prompt": "Calcula Iz con Itabla=30 A, fT=0,9 y fG=0,8; explica qué verificaciones faltan.",
+      "rubric": [
+        "Multiplicación 30×0,9×0,8=21,6 A",
+        "Distingue capacidad corregida y protección",
+        "Menciona caída de tensión y soportar corto"
+      ],
+      "model_answer": "La capacidad corregida es Iz=30×0,9×0,8=21,6 A. Después debo verificar coordinación entre corriente de carga, protección y cable, comprobar caída de tensión para la longitud y revisar la energía de cortocircuito mediante el criterio térmico aplicable.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-06",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "prompt": "Describe cómo seleccionas y ajustas un guardamotor para un motor.",
+      "rubric": [
+        "Leer corriente nominal/tensión/conexión en placa",
+        "Elegir rango que la incluya y ajustar térmico",
+        "Verificar arranque/magnético/poder de corte y contactor para mando remoto"
+      ],
+      "model_answer": "Leo los datos de placa, especialmente corriente nominal. Elijo un guardamotor cuyo rango térmico incluya esa corriente y lo ajusto de acuerdo con el fabricante. Después compruebo tiempo de arranque, disparo magnético y poder de corte. Si necesito mando remoto normalmente utilizo contactor.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-07",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "prompt": "Compara las funciones de SPD y diferencial.",
+      "rubric": [
+        "SPD limita transitorios de tensión",
+        "Diferencial detecta fuga por desequilibrio",
+        "No reemplaza sobrecorriente; compatibilidad y normativa"
+      ],
+      "model_answer": "Un SPD limita sobretensiones transitorias y deriva corriente de impulso. El diferencial detecta desequilibrio por fuga a tierra y puede aportar protección adicional a personas con sensibilidad adecuada. Son funciones diferentes; el diferencial no sustituye protección contra sobrecorrientes.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-08",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "prompt": "Escribe y explica la fórmula de corriente de un motor trifásico cuando P es potencia mecánica de salida.",
+      "rubric": [
+        "I=Psalida/(√3×VLL×η×cosφ)",
+        "Identifica unidades y variables",
+        "Compara con placa y continúa con protección/cable"
+      ],
+      "model_answer": "La corriente se calcula como I=Psalida/(√3×VLL×η×cosφ), usando potencia en watts, tensión entre líneas en volts, rendimiento y factor de potencia. Luego comparo con placa y verifico guardamotor, termomagnético, cable y corriente de falla.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-09",
+      "theme": "coordinacion",
+      "slides": [
+        6,
+        12
+      ],
+      "prompt": "Para In=18 A, Ip=20 A, Iz=21,6 A, comprueba coordinación y explica qué no valida todavía.",
+      "rubric": [
+        "Aplica 18 ≤ 20 ≤ 21,6",
+        "Reconoce que la desigualdad se cumple",
+        "Menciona poder de corte, disparo, energía, caída tensión"
+      ],
+      "model_answer": "La relación de coordinación se cumple porque 18 ≤ 20 ≤ 21,6 A. Sin embargo, eso no demuestra por sí solo una instalación segura: faltan verificar poder de corte, condiciones de disparo, cortocircuito, caída de tensión y condiciones reales del conductor.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-10",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "prompt": "Compara las curvas B, C y D y explica por qué importa la corriente de arranque.",
+      "rubric": [
+        "B: 3–5×",
+        "C: 5–10×",
+        "D: 10–20× y no reemplaza ficha fabricante"
+      ],
+      "model_answer": "Las curvas muestran distintos umbrales de disparo magnético: B 3–5 veces la nominal, C 5–10, D 10–20. Elegirla depende del tipo de carga y los picos de arranque; siempre deben verificarse curvas y condiciones reales del fabricante.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-11",
+      "theme": "conductores",
+      "slides": [
+        11,
+        12
+      ],
+      "prompt": "Explica qué factores influyen en elegir la sección de un cable.",
+      "rubric": [
+        "Método de instalación/material/aislación",
+        "Temperatura/agrupamiento",
+        "Corriente, caída de tensión y cortocircuito"
+      ],
+      "model_answer": "Se revisa capacidad de corriente según material, aislación y método de instalación, corrigiendo por temperatura y agrupamiento. Luego se comprueba caída de tensión y resistencia térmica frente al cortocircuito hasta la actuación de la protección.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    },
+    {
+      "id": "DES-12",
+      "theme": "objetivos",
+      "slides": [
+        2,
+        16
+      ],
+      "prompt": "Resume los criterios que seguirías al revisar una selección final de protecciones.",
+      "rubric": [
+        "Corriente, tensión, polos, curva y corte",
+        "Coordinación y verificaciones del cable",
+        "Guardamotor, arranque, SPD/diferencial según riesgo y normativa"
+      ],
+      "model_answer": "Comprobaría corriente, tensión, polos, curva y poder de corte; verificaría coordinación con carga y cable; revisaría caída de tensión y energía de cortocircuito; confirmaría ajustes y arranque del motor, riesgos de fuga y sobretensión, normativa y ficha de fabricante.",
+      "grading_policy": "Autoevaluación guiada por conceptos; no usar coincidencia literal ni calificación automática como definitiva.",
+      "origin": "Simulacro elaborado, no pregunta oficial."
+    }
+  ]
+}

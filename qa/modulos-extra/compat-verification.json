@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "Sin crypto.randomUUID, Array.at, structuredClone ni MediaQueryList.addEventListener (iPad con Safari antiguo o sitio por http en red local) el panel arranca, dibuja el banco y conecta un cable en iPad vertical y horizontal y en una tableta Android",
+    "Si la aplicación se cae al arrancar se ve una pantalla con el motivo y botones para recargar o borrar datos locales, en lugar de una página en blanco"
+  ],
+  "errors": []
+}

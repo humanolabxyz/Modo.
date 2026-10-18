@@ -1,0 +1,28 @@
+export const READING_PARTS=[
+ {id:'feed',kind:'line',title:'Entrada del mando',path:'M360 70 V120',from:'L',to:'F1 · 95',explanation:'Empieza en la referencia de alimentación y sigue el conductor hasta el primer símbolo. La línea termina en el borne 95; no atraviesa el símbolo del contacto.',terminals:['CONTACTOR_TERMICO:95']},
+ {id:'thermal',kind:'nc',x:360,y:140,title:'F1 · contacto de protección',from:'95',to:'96',explanation:'La barra inclinada distingue un contacto normalmente cerrado en esta representación. 95 y 96 son sus extremos. El símbolo describe un contacto: no es un cable que deba puentearse.',terminals:['CONTACTOR_TERMICO:95','CONTACTOR_TERMICO:96']},
+ {id:'thermal-stop',kind:'line',title:'Entre protección y parada',path:'M360 160 V230',from:'F1 · 96',to:'S0 · 1',explanation:'Este tramo une dos dispositivos en serie. Lee primero la referencia del dispositivo y después el número de su borne. La ubicación del dibujo no es la ubicación física en el banco.',terminals:['CONTACTOR_TERMICO:96']},
+ {id:'stop',kind:'nc',x:360,y:250,title:'S0 · pulsador de parada',from:'1',to:'2',explanation:'En este ejemplo S0 es un contacto de parada normalmente cerrado. El estado normal corresponde al pulsador sin accionar. Es una referencia didáctica; identifica por separado el dispositivo físico de tu práctica.',terminals:[]},
+ {id:'after-stop',kind:'line',title:'Hasta la bifurcación',path:'M360 270 V330',from:'S0 · 2',to:'Nodo A',explanation:'El punto sólido en A marca una unión: desde allí el circuito se dibuja en dos ramas. No confundas un cruce visual con una unión marcada.',terminals:[]},
+ {id:'to-start',kind:'line',title:'Rama de marcha · entrada',path:'M360 330 V390',from:'Nodo A',to:'S1 · 3',explanation:'Esta es la entrada del pulsador de marcha. Sigue una rama completa antes de volver al punto donde se divide.',terminals:[]},
+ {id:'start',kind:'no',x:360,y:410,title:'S1 · pulsador de marcha',from:'3',to:'4',explanation:'Las dos barras separadas representan el contacto normalmente abierto de este ejemplo. La separación forma parte del símbolo: no es una línea faltante.',terminals:[]},
+ {id:'from-start',kind:'line',title:'Rama de marcha · salida',path:'M360 430 V510',from:'S1 · 4',to:'Nodo B',explanation:'Esta rama regresa al nodo B. Un conductor llega a cada extremo del contacto; el contacto no se sustituye por un cable.',terminals:[]},
+ {id:'branch-in',kind:'line',title:'Rama paralela · entrada',path:'M360 330 H570 V390',from:'Nodo A',to:'K · 13',explanation:'Este recorrido nace en el mismo nodo A y rodea el pulsador de marcha. Comparte los nodos de entrada y salida con la otra rama: por eso están en paralelo.',terminals:[]},
+ {id:'aux',kind:'no',x:570,y:410,title:'K · contacto auxiliar',from:'13',to:'14',explanation:'El contacto auxiliar K pertenece al mismo dispositivo que la bobina K del dibujo. Comparten referencia, aunque sus símbolos aparezcan separados. La rama se conoce como mantenimiento o retención.',terminals:[]},
+ {id:'branch-out',kind:'line',title:'Rama paralela · salida',path:'M570 430 V510 H360',from:'K · 14',to:'Nodo B',explanation:'Aquí la rama auxiliar vuelve a unirse con la de marcha. El punto B es una unión común; la separación gráfica entre ramas no crea dos alimentaciones distintas.',terminals:[]},
+ {id:'to-coil',kind:'line',title:'Entrada de la bobina',path:'M360 510 V550',from:'Nodo B',to:'K · A1',explanation:'Las dos ramas se reúnen antes de A1. A1 y A2 son los extremos de la bobina, no dos bornes que debas unir entre sí.',terminals:[]},
+ {id:'coil',kind:'coil',x:360,y:571,title:'K · bobina',from:'A1',to:'A2',explanation:'El rectángulo representa la bobina del contactor en este esquema. La misma letra K permite relacionarla con su contacto auxiliar. El lector enseña símbolos y recorridos; no calcula energización.',terminals:[]},
+ {id:'return',kind:'line',title:'Retorno del mando',path:'M360 592 V650',from:'K · A2',to:'Retorno',explanation:'Termina la lectura en el retorno indicado. El nombre y la tensión dependen del esquema concreto; no lo confundas con tierra de protección.',terminals:[]},
+] as const;
+export const READING_CHALLENGES=[
+ {target:'feed',question:'¿Qué línea llega primero a la protección?',hint:'Empieza en L, en la parte superior.'},
+ {target:'thermal',question:'Identifica el símbolo del contacto 95–96.',hint:'Busca la barra inclinada y la referencia F1.'},
+ {target:'thermal-stop',question:'Sigue la línea desde 96 hasta la parada.',hint:'Selecciona el conductor entre F1 y S0.'},
+ {target:'stop',question:'¿Cuál es el contacto de parada S0?',hint:'Es un símbolo de contacto, no la línea que sale de él.'},
+ {target:'start',question:'Identifica el contacto de marcha 3–4.',hint:'El contacto abierto S1 está en la rama izquierda.'},
+ {target:'branch-in',question:'Encuentra la línea que abre la rama paralela.',hint:'Parte del nodo A hacia la derecha.'},
+ {target:'aux',question:'¿Qué contacto comparte referencia con la bobina K?',hint:'Busca K en la rama derecha.'},
+ {target:'branch-out',question:'¿Qué línea vuelve de 14 al nodo B?',hint:'Sigue la salida de la rama derecha hacia abajo.'},
+ {target:'coil',question:'Identifica la bobina, entre A1 y A2.',hint:'El símbolo es un rectángulo, debajo de las dos ramas.'},
+ {target:'return',question:'Sigue la línea desde A2 hasta el retorno.',hint:'Es el último conductor en la parte inferior.'},
+] as const;

@@ -1,0 +1,108 @@
+{
+  "version": 2,
+  "title": "Mi práctica INACAP",
+  "wires": [
+    {
+      "id": "d96da6d7-5ef6-4c0f-a7f9-ad4ab2e7a9ed",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:S1:3"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 1
+    },
+    {
+      "id": "6a39cae4-e407-4b6a-84f2-a2a4e0aa0020",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:S2:3"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 500,
+        "fromOffset": {
+          "x": 12,
+          "y": 0
+        },
+        "toOffset": {
+          "x": -12,
+          "y": 0
+        }
+      },
+      "layer": 5
+    },
+    {
+      "id": "2add0430-ca48-4b07-a708-8298bc36bb12",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:A1"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 3
+    },
+    {
+      "id": "3ddd7081-b7b5-43ad-ae3f-95406c66578d",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TRIFASICO:A1"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 4
+    },
+    {
+      "id": "59f6f2ff-9010-4210-bb06-1628c7469e05",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:95"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:96"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 6
+    }
+  ],
+  "diagram": {
+    "id": "clase-1",
+    "name": "Fotografía de clase 1 · referencia sin validar",
+    "src": "/diagrams/clase-1.jpg",
+    "origin": "class_photo"
+  },
+  "steps": [
+    {
+      "id": "6f5b6d32-c920-418f-9c74-de4242341705",
+      "title": "Tramo de estudio · ejemplo manual",
+      "from": "CONTACTOR_TERMICO:95",
+      "to": "CONTACTOR_TERMICO:96",
+      "region": {
+        "x": 0,
+        "y": 349.99996971795906,
+        "w": 922.8188048497141,
+        "h": 250.00000762939453
+      },
+      "explanation": "Ejemplo de prueba de la herramienta: par elegido manualmente, sin afirmar que sea un circuito válido.",
+      "review": "user_reviewed"
+    }
+  ],
+  "mode": "guided",
+  "stepIndex": 0
+}

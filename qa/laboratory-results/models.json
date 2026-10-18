@@ -1,0 +1,160 @@
+{
+  "tests": [
+    {
+      "name": "All three project templates survive JSON export/import",
+      "status": "PASS"
+    },
+    {
+      "name": "Duplicate identities and dangling terminals rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Reversed duplicate cable rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Start, retention after release, and stop in relay circuit and PLC",
+      "status": "PASS"
+    },
+    {
+      "name": "Short between supply poles stops simulation",
+      "status": "PASS"
+    },
+    {
+      "name": "Ladder unknown contact and input coil produce diagnostics",
+      "status": "PASS"
+    },
+    {
+      "name": "TON reaches preset and resets when input drops",
+      "status": "PASS"
+    },
+    {
+      "name": "TOF holds after input drops and expires at preset",
+      "status": "PASS"
+    },
+    {
+      "name": "CTU counts edges instead of scans",
+      "status": "PASS"
+    },
+    {
+      "name": "ST boolean conditions, arithmetic precedence and comments",
+      "status": "PASS"
+    },
+    {
+      "name": "ST rejects unknown names, type errors, loops and input assignment",
+      "status": "PASS"
+    },
+    {
+      "name": "ST division by zero fails explicitly",
+      "status": "PASS"
+    },
+    {
+      "name": "Automatic tank reaches high level and turns pump off",
+      "status": "PASS"
+    },
+    {
+      "name": "Drain returns to low level and pump restarts",
+      "status": "PASS"
+    },
+    {
+      "name": "Tank volume follows inflow minus outflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Default LED circuit current agrees with resistor and diode model",
+      "status": "PASS"
+    },
+    {
+      "name": "Reversed LED does not light",
+      "status": "PASS"
+    },
+    {
+      "name": "Breadboard columns connected internally; channel and split rails separated",
+      "status": "PASS"
+    },
+    {
+      "name": "Shorted breadboard source detected before solving",
+      "status": "PASS"
+    },
+    {
+      "name": "Floating circuit has no fabricated voltage",
+      "status": "PASS"
+    },
+    {
+      "name": "Nodal solver handles series and parallel resistors",
+      "status": "PASS"
+    },
+    {
+      "name": "LED without limiting resistor produces overcurrent warning",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid versions, JSON, holes, nonfinite values and mismatched widget types rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Resistance labels use ohms, kilo and mega with decimal comma",
+      "status": "PASS"
+    },
+    {
+      "name": "Resistance input: decimal comma, scale and thousands are never confused; values are stored in ohms",
+      "status": "PASS"
+    },
+    {
+      "name": "Resistor bands are computed only when the value is exactly representable with two digits",
+      "status": "PASS"
+    },
+    {
+      "name": "Confirmed resistor edit to 4,7 kΩ is stored as 4700 and the solver uses it; reference stays 3,069 mA",
+      "status": "PASS"
+    },
+    {
+      "name": "Value labels sit in hole-free lanes, away from legs, wires and each other",
+      "status": "PASS"
+    },
+    {
+      "name": "Puente H con L293D (Práctica 2): sentido de giro, habilitación, conflictos y validación",
+      "status": "PASS"
+    },
+    {
+      "name": "Transistor NPN 2N2222: corte, región activa (Ic = β·Ib) y saturación",
+      "status": "PASS"
+    },
+    {
+      "name": "Transistor en la protoboard: base en el orificio del medio, validación y advertencias",
+      "status": "PASS"
+    },
+    {
+      "name": "Práctica 1 (puente H con cuatro 2N2222): S1 y S2 invierten el giro; ambos juntos provocan cortocircuito del puente",
+      "status": "PASS"
+    },
+    {
+      "name": "Óhmetro: sin energía, resistencia en serie, circuito abierto, cortocircuito y LED (OL a 0,4 V)",
+      "status": "PASS"
+    },
+    {
+      "name": "Valores reales: tolerancia estable por pieza, ±5 % en resistencias y lectura distinta del valor nominal",
+      "status": "PASS"
+    },
+    {
+      "name": "Amperímetro en serie, en paralelo y fusible; fallas por sobreesfuerzo y protección de la fuente",
+      "status": "PASS"
+    },
+    {
+      "name": "Transistor PNP (2N2907) y diodo 1N4007: polaridad, regiones y corriente",
+      "status": "PASS"
+    },
+    {
+      "name": "Reubicar componentes: extremos libres, transistor y L293D conservan su forma y no pisan otras patas",
+      "status": "PASS"
+    },
+    {
+      "name": "Cable del multímetro: cuelga con holgura, conserva su longitud, reacciona al mover la punta y se asienta",
+      "status": "PASS"
+    }
+  ],
+  "passed": 38,
+  "total": 38,
+  "elapsedMs": 402,
+  "scope": "Own local educational models; no physical hardware, manufacturer PLC or UNIFCAD PRO validation."
+}

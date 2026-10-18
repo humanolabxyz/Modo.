@@ -1,0 +1,3 @@
+const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{const b=await chromium.launch();for(const [w,h] of [[390,844],[844,390],[1440,900]]){const p=await b.newPage({viewport:{width:w,height:h}});await p.goto('http://127.0.0.1:4325/?view=simulator');await p.locator('.board-svg').waitFor();await p.getByRole('button',{name:'Guía paso a paso',exact:true}).click();await p.screenshot({path:`qa/touch-portrait/before-${w}.png`});console.log(w,await p.locator('.guide-menu-pop').boundingBox());await p.close()}await b.close()})().catch(e=>{console.error(e);process.exitCode=1});
+

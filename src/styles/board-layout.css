@@ -1,0 +1,180 @@
+/* Tablero: asa de arrastre, acoplamiento y rotor del motor */
+.module-grip{cursor:grab;outline:none}
+.module-grip .grip-dots{fill:#9aa4ab;opacity:.75;transition:fill .15s,opacity .15s}
+.module-grip:hover .grip-dots,.module-grip:focus-visible .grip-dots{fill:#1c8fb5;opacity:1}
+.module-grip:focus-visible>rect{stroke:#1c8fb5;stroke-width:3;stroke-dasharray:8 6}
+.board-module.is-dragging{cursor:grabbing;filter:drop-shadow(0 16px 24px #1c354544)}
+.board-module.is-dragging .module-grip{cursor:grabbing}
+.board-module.is-dragging .module-grip .grip-dots{fill:#1c8fb5;opacity:1}
+svg[data-dragging=true] .module-grip{cursor:grabbing}
+@keyframes motor-spin{to{transform:rotate(360deg)}}
+/* El giro es contenido esencial (muestra el sentido), por eso solo se modera con movimiento reducido. */
+/* El rotor es un grupo SVG dentro de translate(eje): gira sobre su propio origen (0 0). Sin foreignObject ni will-change, así sigue el zoom y el arrastre del tablero en móvil y tablet. */
+.motor-rotor{transform-origin:0 0;animation:motor-spin var(--spin,0s) linear infinite;animation-play-state:paused}
+.motor-rotor[data-spinning=true]{animation-play-state:running}
+/* canvas.css apaga todas las animaciones con «reducir movimiento»; estas dos son realimentación esencial y se dejan, más calmadas. */
+@media(prefers-reduced-motion:reduce){.editor-workbench .board-svg .motor-rotor[data-spinning=true]{animation:motor-spin calc(var(--spin,1s)*2.4) linear infinite!important}}
+/* Clic al conectar un cable: la clavija viene hacia el borne, encaja con un pequeño rebote y el borne emite un anillo */
+@keyframes plug-seat{0%{transform:scale(1.45);opacity:0}55%{transform:scale(.94);opacity:1}78%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes plug-ripple{0%{transform:scale(.55);opacity:.95}100%{transform:scale(2.6);opacity:0}}
+.plug-seat{transform-box:fill-box;transform-origin:50% 40%;animation:plug-seat .3s cubic-bezier(.2,.8,.3,1) both}
+.plug-ripple{transform-box:fill-box;transform-origin:center;animation:plug-ripple .55s ease-out both;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.editor-workbench .wire-layer .plug-seat{animation:plug-seat .22s cubic-bezier(.2,.8,.3,1) both!important}.editor-workbench .wire-layer .plug-ripple{animation:plug-ripple .45s ease-out both!important}}
+.simulation-motor{margin:8px 0;padding:8px 10px;border-radius:8px;background:#f1f4f5;font-size:12.5px;line-height:1.45;color:#56656f}
+.simulation-motor b{margin-right:6px;color:#2f4452}
+.simulation-motor.running{background:#e2f4ea;color:#1e6a49}
+.simulation-motor.fault{background:#fbe8e6;color:#9a2f2a}
+
+/* Un reloj compartido en WireLayer mueve los destellos; evita una animación CSS por cada cable. */
+.wire-flow{filter:none}
+/* Estado de energía */
+.power-status{position:absolute;z-index:6;right:12px;top:140px;display:grid;gap:6px;justify-items:end;pointer-events:none;font:600 12px/1 var(--ui-font,system-ui)}
+.power-status>span{display:flex;align-items:center;gap:7px;padding:7px 11px 7px 9px;border:1px solid var(--float-border,#dfe5e9);border-radius:99px;background:var(--float-bg,#fffffff5);box-shadow:var(--float-shadow,0 4px 14px #28384914);color:#5d707c;white-space:nowrap}
+.power-status i{width:9px;height:9px;border-radius:50%;background:#b9c3c9;flex:none}
+.power-status b{font-weight:800;letter-spacing:.4px;color:#33495a}
+.power-status em{font-style:normal;font-weight:600;color:#6c7f8b}
+.power-status .is-on em{color:#1d5f45}
+.power-status .is-force i{background:#f0ad2e;box-shadow:0 0 0 3px #f0ad2e33}
+.power-status .is-control i,.power-status .is-motor i{background:#1fa36b;box-shadow:0 0 0 3px #1fa36b33}
+.power-status .is-flow i{background:#f7d34a;box-shadow:0 0 0 3px #f7d34a44}
+.power-status .is-fault{border-color:#e0a09b;background:#fdeeed}.power-status .is-fault i{background:#d34b43;box-shadow:0 0 0 3px #d34b4333}.power-status .is-fault em{color:#9a2f2a}
+@media(max-width:900px){.power-status{top:128px;font-size:11px}.power-status>span{padding:6px 9px 6px 8px}}
+/* Dentro de su ventana, las píldoras se apilan y ocupan el ancho que tenga la ventana (se puede mover y ajustar). */
+.floating-power .power-status{position:static;inset:auto;z-index:auto;display:grid;gap:8px;justify-items:stretch;pointer-events:auto;font-size:13px}
+.floating-power .power-status>span{box-shadow:none;white-space:normal;flex-wrap:wrap;border-radius:14px}
+.floating-power .floating-window-body{padding:10px}
+/* Inspector de bornes y cables dentro de su ventana: sin el panel fijo de antes, el contenido usa todo el ancho de la ventana. */
+.inspector-window .inspector{position:static;inset:auto;width:auto;max-height:none;overflow:visible;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;display:flex;flex-direction:column;grid-template-columns:none;gap:0}
+.inspector-window .floating-window-body{padding:12px 14px}
+.power-status-chip{position:absolute;z-index:6;left:14px;bottom:92px;display:flex;align-items:center;gap:7px;height:38px;padding:0 13px 0 11px;border:1px solid var(--float-border,#dfe5e9);border-radius:99px;background:var(--float-bg,#fffffff5);box-shadow:var(--float-shadow,0 4px 14px #28384914);color:#33495a;font:700 12.5px/1 var(--ui-font,system-ui);cursor:pointer}
+.power-status-chip i{width:9px;height:9px;border-radius:50%;background:#b9c3c9}.power-status-chip i.is-on{background:#1fa36b;box-shadow:0 0 0 3px #1fa36b33}
+/* El botón vive abajo a la izquierda, sobre la barra de herramientas: es la zona que casi siempre queda libre en móvil, tablet y escritorio (arriba están los avisos, el zoom y los módulos). */
+
+/* Arrastre desde cualquier parte libre de la cara del módulo */
+.board-module{cursor:grab}
+.board-module .terminal,.board-module .simulation-control,.board-module .module-remove{cursor:pointer}
+.board-module.is-dragging,.board-module.is-dragging *{cursor:grabbing!important}
+.board-module.is-dragging{opacity:.94}
+svg[data-dragging=true] .board-module{cursor:grabbing}
+.board-svg .board-tool-pan .board-module,.board-tool-pan .board-module{cursor:grab}
+/* Quitar un panel añadido */
+.module-remove{cursor:pointer;outline:none}
+.module-remove-bg{fill:#fff;stroke:#b8c1c7;stroke-width:1.6;transition:fill .15s,stroke .15s}
+.module-remove-x{fill:none;stroke:#7b858c;stroke-width:3;stroke-linecap:round;transition:stroke .15s}
+.module-remove:hover .module-remove-bg,.module-remove:focus-visible .module-remove-bg{fill:#fdeeed;stroke:#d34b43}
+.module-remove:hover .module-remove-x,.module-remove:focus-visible .module-remove-x{stroke:#b3352e}
+/* Añadir panel */
+.add-panel{position:relative}
+.add-panel-toggle{display:flex;align-items:center;gap:7px;width:100%;min-height:42px;padding:9px 12px;border:1px solid var(--float-border,#dfe5e9);border-radius:11px;background:var(--float-bg,#fff);box-shadow:var(--float-shadow,0 4px 14px #28384914);color:#35566a;font:600 12px system-ui,sans-serif;cursor:pointer}
+.add-panel-toggle:hover,.add-panel-toggle[aria-expanded=true]{background:#eef6fa;border-color:#b9d6e4}
+.add-panel-pop{position:absolute;z-index:30;left:0;top:calc(100% + 6px);width:min(300px,86vw);display:grid;gap:6px;padding:10px;border:1px solid var(--float-border,#dfe5e9);border-radius:12px;background:var(--float-bg,#fff);box-shadow:0 12px 32px #28384930}
+.add-panel-pop>p{margin:0 0 2px;font-size:11.5px;line-height:1.45;color:#5d707c}
+.add-panel-pop>button{display:grid;gap:2px;text-align:left;padding:9px 11px;border:1px solid #d5e3ea;border-radius:9px;background:#f6fafc;color:#2d4a5c;cursor:pointer;font:inherit}
+.add-panel-pop>button:hover:not(:disabled){background:#e6f2f8;border-color:#9cc6da}
+.add-panel-pop>button:disabled{opacity:.5;cursor:not-allowed}
+.add-panel-pop b{font-size:12.5px}
+.add-panel-pop small{font-size:11px;color:#6b7f8b;line-height:1.35}
+.add-panel-pop .add-panel-count{padding:2px 2px 0;font-size:10.5px;color:#7d8e98}
+.add-panel-tile .add-panel-pop{position:fixed;left:12px;right:12px;top:auto;bottom:76px;width:auto}
+.add-panel-tile{display:contents}
+.add-panel-tile .add-panel-pop{z-index:80}
+
+/* Temporizador: la barra se llena durante el retardo (estado esencial; se conserva con «reducir movimiento») */
+@keyframes timer-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.timer-fill{transform-box:fill-box;transform-origin:left center;animation:timer-fill var(--delay,4s) linear forwards}
+@media(prefers-reduced-motion:reduce){.editor-workbench .board-svg .timer-fill{animation:timer-fill var(--delay,4s) linear forwards!important}}
+.sim-delay{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:6px 0;font:600 12px var(--ui-font,system-ui);color:#4c6272}
+.sim-delay select{min-height:32px;padding:4px 8px;border:1px solid #cbdde5;border-radius:8px;background:#f6fafc;color:#2d4a5c;font:inherit}
+/* Arrastrar un módulo no debe seleccionar los rótulos del tablero */
+.board-svg text{-webkit-user-select:none;user-select:none}
+
+/* Guía paso a paso: ventana movible y botón con sombrero en la barra de herramientas */
+.guide-window .floating-window-content{padding:0}
+.guide-window .guide-card{margin:0;padding:2px 2px 6px;border:0;border-radius:0;background:transparent;box-shadow:none;display:flex;flex-direction:column;align-items:stretch;gap:8px;grid-template-columns:none}
+.guide-window .guide-card>*{width:auto;max-width:100%;margin-top:0;margin-bottom:0}
+.guide-window .guide-card h3{margin:0;font-size:16px;line-height:1.3;color:#24404f}
+.guide-window .guide-top{display:flex;justify-content:space-between;gap:8px;font:700 10.5px/1.2 var(--ui-font,system-ui);letter-spacing:.5px;color:#6f8794}
+.guide-window .guide-why{margin:0;font-size:13.5px;line-height:1.5;color:#3e5260}
+.guide-window .guide-connect{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:8px 10px;border-radius:10px;background:#eef6f9;border:1px solid #d3e6ee;font-size:13px;color:#24404f}
+.guide-window .guide-connect b{font-weight:700}
+.guide-window .guide-connect svg{flex:none;color:#2c88a8}
+.guide-window .guide-map{margin:0;border:1px solid #dde7ec;border-radius:12px;background:#f4f6f7;overflow:hidden}
+.guide-window .guide-map svg{display:block;width:100%;height:auto;max-height:190px}
+.guide-window .assistance-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.guide-window .assistance-levels button{min-height:38px;border:1px solid #cfe0e8;border-radius:10px;background:#f6fafc;color:#386479;font:600 13px var(--ui-font,system-ui);cursor:pointer}
+.guide-window .assistance-levels button[aria-pressed=true]{background:#1f5f78;border-color:#1f5f78;color:#fff}
+.guide-window .guide-level-note{margin:6px 0 0;font-size:12px;line-height:1.4;color:#6a808c}
+.guide-window .guide-hints summary{font-size:12.5px;font-weight:600;color:#4e6b7a;cursor:pointer}
+.guide-window .guide-back{justify-self:start;display:inline-flex;align-items:center;gap:5px;padding:2px 0;font-size:12.5px}
+.guide-window .guide-success{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:#e6f4ec;color:#1e6a49}
+.guide-window .guide-success p{margin:4px 0 8px;font-size:13px}
+/* Sombrero de la barra */
+.tool-dock .guide-menu{position:relative;display:flex}
+.tool-dock .guide-dot{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:#35c08a;box-shadow:0 0 0 2px #24292e}
+.guide-picker-window .guide-menu-pop{display:grid;gap:6px;color:#2d4a5c;text-align:left}
+.guide-picker-window .guide-menu-pop button{width:auto;height:auto;min-height:0;display:flex;background:transparent;color:inherit}
+.guide-picker-window .guide-menu-title{margin:6px 2px 0;font:700 10.5px/1.2 var(--ui-font,system-ui);letter-spacing:.5px;text-transform:uppercase;color:#7a909c}
+.guide-picker-window .guide-menu-current{display:grid;gap:4px;padding:10px 12px;border-radius:12px;background:#eaf5ef;border:1px solid #cfe7da}
+.guide-picker-window .guide-menu-current small{font:700 10.5px/1 var(--ui-font,system-ui);letter-spacing:.5px;color:#4a8a6c;text-transform:uppercase}
+.guide-picker-window .guide-menu-current strong{font-size:14px;color:#1d4d39}
+.guide-picker-window .guide-menu-current>span{font-size:12px;color:#4d7a64}
+.guide-picker-window .guide-menu-progress{height:6px;border-radius:99px;background:#cfe5d9;overflow:hidden}
+.guide-picker-window .guide-menu-progress i{display:block;height:100%;background:#2fa070;border-radius:99px;width:0}
+.guide-picker-window .guide-menu-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.guide-picker-window .guide-menu-pop .guide-menu-actions button{gap:6px;align-items:center;padding:7px 10px;border:1px solid #b8d9c8;border-radius:9px;background:#fff;color:#2d4a5c;font:600 12.5px var(--ui-font,system-ui)}
+.guide-picker-window .guide-menu-pop .guide-menu-actions button:is(:hover,:focus-visible,:active){background:#f2faf6;color:#24404f}
+.guide-picker-window .guide-menu-pop .guide-menu-item{gap:10px;align-items:flex-start;padding:10px 11px;border:1px solid #d5e3ea;border-radius:11px;background:#f6fafc;color:#2d4a5c;text-align:left;font:inherit;cursor:pointer}
+.guide-picker-window .guide-menu-pop .guide-menu-item:is(:hover,:focus-visible,:active){background:#e6f2f8;color:#24404f;border-color:#9cc6da}
+.guide-picker-window .guide-menu-pop button:focus-visible{outline:2px solid #238eb0;outline-offset:2px}
+.guide-picker-window .guide-menu-item>svg{flex:none;margin-top:2px;color:#2c88a8}
+.guide-picker-window .guide-menu-item span{display:grid;gap:2px}
+.guide-picker-window .guide-menu-item b{font-size:13.5px;color:#24404f}
+.guide-picker-window .guide-menu-item em{font-style:normal;font-size:12px;line-height:1.35;color:#53707f}
+.guide-picker-window .guide-menu-item small{font-size:11px;color:#8197a3}
+
+/* Mapa de la lección en el panel de diagrama */
+.lesson-jump{display:grid;gap:5px;margin:10px 0;font:600 12px var(--ui-font,system-ui);color:#4e6b7a}
+.lesson-jump select{min-height:38px;border:1px solid #cfe0e8;border-radius:9px;background:#f6fafc;padding:6px 8px;color:#24404f;font:inherit}
+.guide-window .guide-map-box>summary{font-size:12.5px;font-weight:600;color:#4e6b7a;cursor:pointer;padding:2px 0 6px}
+@media(max-width:700px){.guide-window .guide-level-note{display:none}.guide-window .guide-card{gap:6px}.guide-window .guide-why{font-size:13px}}
+.guide-window .guide-waiting{display:flex;align-items:center;gap:9px;margin:0;padding:9px 12px;border-radius:10px;background:#f4f8fa;border:1px dashed #bcd3de;font-size:13px;color:#4e6b7a}
+.guide-window .guide-waiting i{flex:none;width:9px;height:9px;border-radius:50%;background:#e0a526;animation:guide-pulse 1.4s ease-in-out infinite}
+@keyframes guide-pulse{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.guide-window .guide-waiting i{animation:none;opacity:1}}
+.guide-window .guide-auto{margin:2px 0 6px;font-size:12.5px;color:#2f7a58}
+/* Esquema de la lección dentro de la guía */
+.guide-window .guide-schematic{margin:0;border:1px solid #dde7ec;border-radius:12px;background:#fff;overflow:hidden}
+.guide-window .guide-schematic svg{display:block;width:100%;height:auto;aspect-ratio:1/.6}
+.guide-window .guide-schematic figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:6px 10px;border-top:1px solid #edf2f5;background:#fafcfd;font-size:11.5px;color:#587080}
+.guide-window .guide-schematic .swatch{display:inline-block;width:14px;height:4px;border-radius:3px;margin-right:5px;vertical-align:middle;background:#e08a10}
+.guide-window .guide-schematic .swatch.done{background:#2fa070}
+.guide-window .guide-schematic figcaption button{margin-left:auto;display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:#2a7ea0;font:600 11.5px var(--ui-font,system-ui);cursor:pointer;padding:3px 0}
+.guide-schematic-end{animation:guide-pulse 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@media(prefers-reduced-motion:reduce){.guide-schematic-end{animation:none}}
+.guide-window .guide-schematic figcaption button{white-space:nowrap}
+
+.board-svg[data-modules-locked=true] .board-module{cursor:inherit}
+.board-svg[data-modules-locked=true] .module-grip{pointer-events:none;cursor:inherit}
+.board-svg[data-modules-locked=true] .grip-dots{opacity:.2}
+.module-edit-actions{display:grid;gap:6px;margin:6px 0}
+.module-lock-controls{display:flex;gap:4px;padding:3px;border:1px solid #d5e3ea;border-radius:10px;background:#edf3f6}
+.module-lock-controls button{display:flex;flex:1;align-items:center;justify-content:center;gap:6px;min-height:38px;padding:5px 8px;border:0;border-radius:7px;background:transparent;color:#47657a;font:600 12px var(--ui-font,system-ui);cursor:pointer}
+.module-lock-controls button[aria-pressed=true]{background:#fff;color:#226e91;box-shadow:0 1px 3px #25405a1f}
+.add-panel-tile.module-edit-actions{display:grid;grid-column:1/-1;grid-template-columns:1fr 2fr;gap:8px;margin:0}
+.add-panel-tile .module-lock-controls{align-self:stretch}
+.floating-add-panel .add-panel-pop{position:static;width:auto;padding:0;border:0;box-shadow:none}
+
+.guide-window .guide-card{position:relative;inset:auto;width:auto;max-height:none;overflow:visible;animation:none}
+.guide-picker-window .guide-menu-item{width:100%;min-width:0}
+.guide-picker-window .guide-menu-item span{min-width:0;overflow-wrap:anywhere}
+
+/* Tablet táctil (iPad, tabletas Android): objetivos de toque cómodos y ventanas legibles */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (pointer:coarse) and (min-width:700px){
+ .editor-workbench .tool-dock button{min-width:50px;min-height:50px}
+ .editor-workbench .zoom-toolbar button{width:46px;height:46px}
+ .guide-window .assistance-levels button,.guide-window .guide-card .outline-full,.guide-window .guide-card .primary-action{min-height:48px}
+ .guide-window .floating-window-header>button{width:48px;height:48px}
+ .tool-dock .guide-menu-item,.add-panel-pop>button{min-height:56px}
+ .module-remove-bg{r:18}
+}

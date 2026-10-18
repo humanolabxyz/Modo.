@@ -1,0 +1,42 @@
+---
+/* La entrada se muestra al abrir o recargar la app, nunca por volver del reposo
+   ni al navegar entre sus módulos. */
+import '../../styles/modo-motion.css';
+import DevCacheReset from '../DevCacheReset.astro';
+import Compat from '../Compat.astro';
+---
+<Compat/>
+<DevCacheReset/>
+<script is:inline>
+(function(){
+ var d=document.documentElement;
+ var reduced=false;
+ try{var q=new URLSearchParams(location.search).get('movimiento'),mode=localStorage.getItem('modo-movimiento')||'sistema';if(['completo','reducido','sistema'].indexOf(q)>=0){mode=q;localStorage.setItem('modo-movimiento',mode)}reduced=mode==='reducido'||(mode!=='completo'&&matchMedia('(prefers-reduced-motion: reduce)').matches);d.classList.toggle('modo-motion-full',mode==='completo')}catch(e){reduced=matchMedia('(prefers-reduced-motion: reduce)').matches}
+ d.classList.toggle('modo-reduced',reduced);
+ var navigation=performance.getEntriesByType('navigation')[0],internal=false,opened=false;
+ try{internal=!!document.referrer&&new URL(document.referrer).origin===location.origin;opened=!!sessionStorage.getItem('modo-opened-v2');sessionStorage.setItem('modo-opened-v2','1')}catch(e){opened=true}
+ var launch=(!navigation||navigation.type!=='back_forward')&&(!opened||!internal||(navigation&&navigation.type==='reload'));
+ if(launch&&!reduced){d.dataset.modoLaunch='1';if(document.visibilityState!=='hidden')d.classList.add('modo-splash-on')}
+ try{if(new URLSearchParams(location.search).get('view')==='simulator')d.classList.add('modo-boot-simulator')}catch(e){}
+ /* Orden de las herramientas: avanzar desliza hacia la izquierda; regresar, hacia la derecha. */
+ var RANK={'/':0,'/estudio':2,'/laboratorio':3,'/comunidad':4};
+ function rank(u){try{var x=new URL(u,location.href);if(x.origin!==location.origin)return -1;var p=x.pathname.replace(/index\.html$/,'').replace(/\/+$/,'')||'/';if(p==='/'&&x.searchParams.get('view')==='simulator')return 1;return p in RANK?RANK[p]:-1}catch(e){return -1}}
+ function clear(){delete d.dataset.motion;delete d.dataset.motionDir}
+ addEventListener('pageswap',function(e){if(e.viewTransition){e.viewTransition.ready.catch(function(){});e.viewTransition.finished.catch(function(){});}if(e.viewTransition&&reduced){e.viewTransition.skipTransition();return}if(e.viewTransition){d.dataset.motion='page';e.viewTransition.finished.catch(function(){}).finally(clear)}});
+ addEventListener('pagereveal',function(e){
+  if(e.viewTransition){e.viewTransition.ready.catch(function(){});e.viewTransition.finished.catch(function(){});}
+  if(!e.viewTransition){clear();return}
+  if(reduced){e.viewTransition.skipTransition();clear();return}
+  var nav=window.navigation,from=nav&&nav.activation&&nav.activation.from,a=rank(from?from.url:document.referrer),b=rank(location.href);
+  d.dataset.motion='page';d.dataset.motionDir=a<0||b<0||a===b?'none':b>a?'forward':'back';
+  e.viewTransition.finished.catch(function(){}).finally(clear);
+ });
+})();
+</script>
+<script>
+import '../../motion/indicators';
+import {animateSurface} from '../../motion/surface';
+if(document.documentElement.dataset.modoLaunch!=='1'&&!('startViewTransition' in document)){
+ requestAnimationFrame(()=>animateSurface('page'));
+}
+</script>

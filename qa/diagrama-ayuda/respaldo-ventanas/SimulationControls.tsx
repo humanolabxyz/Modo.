@@ -1,0 +1,29 @@
+import {useEffect,useRef} from 'react';
+import {ChevronDown,FlaskConical,Flame,Info,Plug,Power,RotateCcw,ToggleRight,Zap} from 'lucide-react';
+import type {SimulationController} from '../hooks/useSimulation';
+import type {SIMULATION_EXAMPLES} from '../data/simulation';
+type ExampleId=keyof typeof SIMULATION_EXAMPLES;
+export function SimulationControls({simulation:s,onExample,hasWires,compact=false}:{simulation:SimulationController;onExample:(id:ExampleId)=>void;hasWires:boolean;compact?:boolean}){
+ const state=s.fault==='short'?'Protección: F y N unidos. Corrige el cableado y restablece.':s.fault==='unstable'?'El cableado hace oscilar un contactor. Corrige el circuito y restablece.':s.result.powered?'Mando virtual: 24 V disponibles entre F y N.':s.input.enabled&&!s.input.plugged?'Enchufa la corriente virtual en el módulo de alimentación.':s.input.enabled?'Cierra ambos interruptores CONTROL para alimentar F y N.':'Simulación detenida.';
+ const menu=useRef<HTMLDetailsElement>(null);
+ /* El menú no tapa la escena: se cierra al tocar fuera, con Escape o al cargar un ejemplo. */
+ useEffect(()=>{const away=(e:PointerEvent)=>{const m=menu.current;if(m?.open&&!m.contains(e.target as Node))m.open=false;};const esc=(e:KeyboardEvent)=>{if(e.key==='Escape'&&menu.current?.open)menu.current.open=false;};document.addEventListener('pointerdown',away);document.addEventListener('keydown',esc);return()=>{document.removeEventListener('pointerdown',away);document.removeEventListener('keydown',esc);};},[]);
+ const load=(id:ExampleId)=>{onExample(id);if(menu.current)menu.current.open=false;};
+ return <div className="simulation-controls">
+  <button className="simulation-toggle" aria-label="Simular mando de 24 V" aria-pressed={s.input.enabled} onClick={()=>s.enable(!s.input.enabled)}><Power size={15}/><span>{compact?'24 V':s.input.enabled?'Detener 24 V':'Simular 24 V'}</span><i className={s.result.powered?'is-powered':''}/></button>
+   <details className="simulation-menu" ref={menu}><summary aria-label="Opciones de simulación"><ChevronDown size={15}/></summary><div className="simulation-menu-body sim-compact">
+   <p role="status" className={`sim-state ${s.fault?'simulation-fault':s.result.powered?'is-powered':''}`}><i aria-hidden="true"/>{state}</p>
+   <div className="sim-tiles" role="group" aria-label="Alimentación y interruptores">
+    <button className="sim-tile simulation-plug-action" aria-label={s.input.plugged?'Desenchufar corriente virtual':'Enchufar corriente virtual'} title={s.input.plugged?'Desenchufar corriente virtual':'Enchufar corriente virtual'} disabled={!s.input.enabled} aria-pressed={s.input.plugged} onClick={()=>s.plug(!s.input.plugged)}><Plug size={22}/><span>Enchufe</span></button>
+    <button className="sim-tile" aria-label={`FUERZA · ${s.input.forceBreaker?'ON':'OFF'}`} title="Interruptor de FUERZA" disabled={!s.enabled} aria-pressed={s.input.forceBreaker} onClick={s.switchForce}><Zap size={22}/><span>Fuerza</span></button>
+    {([0,1] as const).map(i=><button key={i} className="sim-tile" aria-label={`CONTROL ${i+1} · ${s.input.breakers[i]?'ON':'OFF'}`} title={`Interruptor CONTROL ${i+1}`} disabled={!s.enabled} aria-pressed={s.input.breakers[i]} onClick={()=>s.switchBreaker(i)}><ToggleRight size={22}/><span>Control {i+1}</span></button>)}
+   </div>
+   <div className="sim-line"><span className={`sim-chip ${s.result.relays.CONTACTOR_TERMICO?'on':''}`}>KM1 · {s.result.relays.CONTACTOR_TERMICO?'activo':'en reposo'}</span><span className={`sim-chip ${s.result.relays.CONTACTOR_TRIFASICO?'on':''}`}>KM2 · {s.result.relays.CONTACTOR_TRIFASICO?'activo':'en reposo'}</span>
+    <button className="sim-icon" aria-label={s.input.thermalTripped?'Rearmar térmico':'Disparar térmico'} title={s.input.thermalTripped?'Rearmar térmico':'Disparar térmico'} disabled={!s.enabled} aria-pressed={s.input.thermalTripped} onClick={s.trip}><Flame size={18}/></button>
+    <button className="sim-icon" aria-label="Restablecer control" title="Restablecer control" disabled={!s.input.enabled} onClick={s.reset}><RotateCcw size={18}/></button></div>
+   {s.result.powered?<p className={`simulation-motor ${s.result.motor.status}`} role="status"><b>Motor</b> {s.result.motor.message}</p>:null}
+   <details className="simulation-examples"><summary><FlaskConical size={16}/>Probar con un ejemplo virtual</summary><p>{hasWires?'Reemplaza los cables actuales; Deshacer los recupera.':'Los interruptores empiezan abiertos. Enchufa, cierra CONTROL y prueba los pulsadores.'}</p><button onClick={()=>load('lamp')}>Cargar piloto con pulsador</button><button onClick={()=>load('hold')}>Cargar marcha y parada con KM1</button><button onClick={()=>load('motor')}>Cargar arranque del motor con KM1</button><button onClick={()=>load('motorDelta')}>Cargar motor en triángulo</button><button onClick={()=>load('motorRev')}>Cargar giro invertido (cruza dos fases)</button></details>
+   <details className="simulation-model"><summary><Info size={16}/>Qué representa este modelo</summary><p>Mantén pulsado un botón del banco para actuar su contacto. Con auxiliar de mantenimiento, KM1 puede seguir activo después de soltar marcha.</p><p>F/N se usan como alimentación virtual de 24 V; los cuatro pilotos retornan por BOTONERAS:N. Pulsadores: 1–2 cerrados en reposo y 3–4 abiertos. Contactos numerados de KM1 y KM2: gris NC y azul NA, según tu aclaración. Los colores de las fases y de la bobina cumplen otra función.</p><p>Se comprueban circuitos de mando con contactos ideales. No se calcula intensidad ni caída de tensión; el retardo neumático y el accionamiento interno del contacto NC 95–96 de KM2 quedan fuera de esta simulación. Con FUERZA cerrado, R, S y T llevan tensión: el motor gira si las tres fases llegan a U1, V1 y W1 y sus bobinas forman estrella (W2-U2-V2) o triángulo (U1-W2, V1-U2, W1-V2). Si cruzas dos fases, invierte el sentido. N y TP permanecen separados.</p></details>
+  </div></details>
+ </div>;
+}

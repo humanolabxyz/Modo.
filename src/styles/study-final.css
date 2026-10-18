@@ -1,0 +1,196 @@
+/* Estudio · ajustes finales de lectura y progreso.
+   Se importa en último lugar y solo desde src/pages/estudio.astro.
+   Todo está acotado a .study-shell para no afectar el panel práctico. */
+
+/* ---- Lectura: textos auxiliares más legibles ---- */
+.study-shell small { font-size: max(12.5px, 1em); }
+.study-shell .topic-label > small { font-size: 11.5px !important; color: #2a2a2a !important; }
+.study-shell .study-topic-eyebrow { font-size: 12px; }
+.study-shell .journey-eyebrow,
+.study-focus-shell .journey-eyebrow { font-size: 12px; color: #2a2a2a; }
+.study-shell .media-caption-top > span,
+.study-shell .media-caption-top > span:last-child { font-size: 12px; }
+.study-shell .lesson-media figcaption small { font-size: 12.5px; }
+.study-shell .progress-topic-heading small { font-size: 13px; color: #2d2d2d; }
+.study-shell .professor-chart-limit { font-size: 13px; }
+
+/* ---- Simulacro: introducción ---- */
+.study-shell .exam-intro-hero p { color: #2a2a2a; font-size: 16px; }
+.study-shell .exam-format-row small { font-size: 13px; color: #2a2a2a; }
+.study-shell .exam-quiet-note,
+.study-shell .study-exam-intro .study-note { font-size: 14px; line-height: 1.55; }
+
+/* ---- Progreso: resumen, barra y continuación ---- */
+.study-shell .progress-summary {
+  display: grid;
+  gap: 14px;
+  margin: 6px 0 22px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  background: #f8f8f8;
+}
+.study-shell .progress-summary-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.study-shell .progress-summary-stats > div {
+  display: grid;
+  gap: 2px;
+  padding: 2px 0;
+}
+.study-shell .progress-summary-stats strong {
+  font-size: 28px;
+  line-height: 1.1;
+  color: #191919;
+  letter-spacing: -0.5px;
+}
+.study-shell .progress-summary-stats strong span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #323232;
+  letter-spacing: 0;
+}
+.study-shell .progress-summary-stats small { font-size: 13px; color: #2a2a2a; }
+.study-shell .progress-summary-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e3e3e3;
+  overflow: hidden;
+}
+.study-shell .progress-summary-bar > span {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background: #272727;
+  transition: width 0.35s ease;
+}
+.study-shell .progress-continue {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  text-align: left;
+}
+.study-shell .progress-all-done { margin: 0; font-weight: 600; color: #191919; }
+
+.study-shell .progress-topic-dots {
+  grid-column: 2;
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+.study-shell .progress-topic-dots i {
+  width: 22px;
+  height: 5px;
+  border-radius: 999px;
+  background: #dfdfdf;
+}
+.study-shell .progress-topic-dots i.on { background: #272727; }
+.study-shell .study-progress-list strong { font-size: 13px; }
+
+@media (max-width: 720px) {
+  .study-shell .progress-summary { padding: 16px; }
+  .study-shell .progress-summary-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
+  .study-shell .progress-continue { width: 100%; justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .study-shell .progress-summary-bar > span { transition: none; }
+}
+
+/* ---- Para recordar ---- */
+.study-shell .remember-card {
+  margin: 18px 0;
+  padding: 18px 20px;
+  border: 1px solid #d1d1d1;
+  border-left: 4px solid #272727;
+  border-radius: 12px;
+  background: #f3f3f3;
+  text-align: left;
+}
+.study-shell .remember-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  color: #262626;
+}
+.study-shell .remember-key {
+  margin: 6px 0 10px;
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #191919;
+  overflow-wrap: anywhere;
+}
+.study-shell .remember-card ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+.study-shell .remember-card li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #1b1b1b;
+}
+@media (max-width: 720px) {
+  .study-shell .remember-card { padding: 16px; }
+  .study-shell .remember-key { font-size: 17px; }
+}
+.study-shell .lesson-guide > .remember-card { margin: 18px 20px; }
+@media (max-width: 720px) {
+  .study-shell .lesson-guide > .remember-card { margin: 16px; }
+}
+
+/* ---- Evaluación: los 8 temas ---- */
+.study-shell .exam-topics-covered {
+  margin: 0 0 20px;
+  padding: 18px 20px;
+  border: 1px solid #d4d4d4;
+  border-radius: 12px;
+  background: #fff;
+}
+.study-shell .exam-topics-covered h4 { margin: 0 0 12px; font-size: 18px; color: #111; }
+.study-shell .exam-topics-covered ol {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.study-shell .exam-topics-covered li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 9px;
+  background: #f6f6f6;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.study-shell .exam-topics-covered li span {
+  flex: 0 0 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.study-shell .exam-topics-covered p { margin: 0; font-size: 14px; line-height: 1.5; color: #333; }
+@media (max-width: 900px) { .study-shell .exam-topics-covered ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .study-shell .exam-topics-covered { padding: 14px; } }
+
+/* Botón de temas: texto claro */
+.study-focus-shell .topic-mobile-toolbar > button > span { white-space: nowrap; }

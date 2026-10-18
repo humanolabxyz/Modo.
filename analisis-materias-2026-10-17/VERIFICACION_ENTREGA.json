@@ -1,0 +1,19 @@
+{
+  "files": 36,
+  "formats": {
+    ".pdf": 24,
+    ".png": 5,
+    ".txt": 3,
+    ".pptx": 1,
+    ".docx": 2,
+    ".xlsx": 1
+  },
+  "pdf_pages": 234,
+  "pdf_rendered_pages": 234,
+  "source_hashes_unchanged": true,
+  "resources_annotated": 36,
+  "local_links_valid": true,
+  "issues": [],
+  "scope": "Analisis documental y lectura de codigo. Sin cambios a la aplicacion.",
+  "external_review": "9 paginas GeoGebra y variante inicial; YouTube titulo/pagina, sin revision audiovisual completa"
+}

@@ -1,0 +1,36 @@
+{
+  "reduce": {
+    "laboratorio": {
+      "muestras": 17,
+      "barra_visible": true,
+      "texto": "Abriendo el laboratorio…"
+    },
+    "panel": {
+      "muestras": 17,
+      "barra_visible": true,
+      "texto": "Abriendo el panel de control…"
+    },
+    "estudio": {
+      "muestras": 17,
+      "barra_visible": true,
+      "texto": "Abriendo estudio…"
+    }
+  },
+  "no-preference": {
+    "laboratorio": {
+      "muestras": 17,
+      "barra_visible": true,
+      "texto": "Abriendo el laboratorio…"
+    },
+    "panel": {
+      "muestras": 18,
+      "barra_visible": true,
+      "texto": "Abriendo el panel de control…"
+    },
+    "estudio": {
+      "muestras": 17,
+      "barra_visible": true,
+      "texto": "Abriendo estudio…"
+    }
+  }
+}

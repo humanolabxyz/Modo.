@@ -1,0 +1,145 @@
+- banner:
+  - link "PanelLab":
+    - /url: /
+    - strong: PanelLab
+  - text: LABORATORIO DE DISEÑO
+  - generic: Nombre del proyecto
+  - textbox "Nombre del proyecto" [disabled]: Marcha y retención
+  - link "Panel de práctica":
+    - /url: /?view=simulator
+  - link "Estudio":
+    - /url: /estudio
+    - text: Estudio
+  - link "Inicio":
+    - /url: /
+    - generic: Inicio
+- combobox "Proyecto activo" [disabled]:
+  - option "Marcha y retención" [selected]
+- generic "Proyecto":
+  - text: Proyecto
+- button "Deshacer" [disabled]:
+- button "Rehacer" [disabled]:
+- status:
+  - text: Guardado en este navegador
+- generic: Velocidad de simulación
+- combobox "Velocidad de simulación":
+  - option "×0.2"
+  - option "×0.5"
+  - option "×1" [selected]
+  - option "×2"
+  - option "×5"
+- button "Detener" [active]:
+  - generic: Detener
+- navigation "Herramientas del laboratorio":
+  - button "01 Esquemas Dibuja y prueba circuitos de mando.":
+    - generic: "01"
+    - strong: Esquemas
+    - generic: Dibuja y prueba circuitos de mando.
+  - button "02 PLC Programa contactos, bobinas y temporizadores.":
+    - generic: "02"
+    - strong: PLC
+    - generic: Programa contactos, bobinas y temporizadores.
+  - button "03 HMI Crea una pantalla para operar tus señales.":
+    - generic: "03"
+    - strong: HMI
+    - generic: Crea una pantalla para operar tus señales.
+  - button "04 Procesos Controla el llenado de un tanque.":
+    - generic: "04"
+    - strong: Procesos
+    - generic: Controla el llenado de un tanque.
+  - button "05 Protoboard Monta un circuito y mide tensión y corriente.":
+    - generic: "05"
+    - strong: Protoboard
+    - generic: Monta un circuito y mide tensión y corriente.
+  - button "Cómo se conectan":
+    - strong: Cómo se conectan
+- text: TU ESPACIO DE TRABAJO
+- heading "Esquemas" [level=1]
+- text: Simulación activa
+- generic: 0.6 s
+- region "Editor de esquemas":
+  - button "Seleccionar" [pressed]
+  - button "Cablear" [disabled]
+  - generic: Mantén pulsado S1 para arrancar; pulsa S0 para parar.
+  - img "Circuito de mando editable de 24 V DC":
+    - generic: PANEL LAB · MANDO DC
+    - generic: HOJA 01 · Marcha y retención
+    - button "Retirar cable w1"
+    - button "Retirar cable w2"
+    - button "Retirar cable w3"
+    - button "Retirar cable w4"
+    - button "Retirar cable w5"
+    - button "Retirar cable w6"
+    - button "Retirar cable w7"
+    - button "Retirar cable w8"
+    - 'button "G1: Fuente 24 V DC"'
+    - generic: G1
+    - generic: +
+    - generic: −
+    - generic: 24 V DC
+    - button "Terminal G1 1"
+    - button "Terminal G1 2"
+    - 'button "S0: Pulsador NC"'
+    - generic: S0
+    - generic: I0.1
+    - button "Terminal S0 1"
+    - button "Terminal S0 2"
+    - 'button "S1: Pulsador NA"'
+    - generic: S1
+    - generic: I0.0
+    - button "Terminal S1 1"
+    - button "Terminal S1 2"
+    - 'button "K1: Contacto auxiliar NA"'
+    - generic: K1
+    - generic: K1
+    - button "Terminal K1 1"
+    - button "Terminal K1 2"
+    - 'button "K1: Bobina de relé"'
+    - generic: K1
+    - button "Terminal K1 1"
+    - button "Terminal K1 2"
+    - 'button "H1: Piloto"'
+    - generic: H1
+    - button "Terminal H1 1"
+    - button "Terminal H1 2"
+  - generic: 6 componentes · 8 cables
+  - generic: Fuente ideal de 24 V · cargas resistivas didácticas
+- complementary:
+  - heading "Componentes" [level=2]
+  - paragraph: Añade un elemento y conecta sus terminales.
+  - button "+ Fuente 24 V DC" [disabled]:
+    - generic: +
+    - text: Fuente 24 V DC
+  - button "+ Pulsador NA" [disabled]:
+    - generic: +
+    - text: Pulsador NA
+  - button "+ Pulsador NC" [disabled]:
+    - generic: +
+    - text: Pulsador NC
+  - button "+ Bobina de relé" [disabled]:
+    - generic: +
+    - text: Bobina de relé
+  - button "+ Contacto auxiliar NA" [disabled]:
+    - generic: +
+    - text: Contacto auxiliar NA
+  - button "+ Piloto" [disabled]:
+    - generic: +
+    - text: Piloto
+  - button "+ Motor DC ideal" [disabled]:
+    - generic: +
+    - text: Motor DC ideal
+  - button "+ Contacto de salida PLC" [disabled]:
+    - generic: +
+    - text: Contacto de salida PLC
+  - group "S1 · propiedades":
+    - generic: S1 · propiedades
+    - text: Designación
+    - textbox "Designación" [disabled]: S1
+    - text: Señal compartida
+    - combobox "Señal compartida" [disabled]:
+      - option "I0.0 · Marcha" [disabled] [selected]
+      - option "I0.1 · Paro pulsado" [disabled]
+      - option "I0.2 · Nivel bajo" [disabled]
+      - option "I0.3 · Nivel alto" [disabled]
+    - button "Retirar componente y sus cables" [disabled]
+  - generic "Cómo probar la retención"

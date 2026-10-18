@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Explicit endpoints, unique cable IDs",
+    "Cable-only union nodes; no internal component or N/TP assumptions",
+    "Transitive connections and split after removal",
+    "More than three cables on a terminal with independent heads",
+    "JSON round trip and invalid import rejection",
+    "Manual region/endpoint review required"
+  ],
+  "wireCount": 21
+}

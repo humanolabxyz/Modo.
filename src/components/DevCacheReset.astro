@@ -1,0 +1,25 @@
+---
+// Un service worker instalado por preview puede conservar módulos viejos de Vite.
+// En desarrollo se retira solo el worker y la caché de esta app, no sus proyectos.
+---
+{import.meta.env.DEV && <script is:inline>
+(async function () {
+  if (!('serviceWorker' in navigator)) return;
+  const workerURL = new URL('/sw.js', location.href).href;
+  const controlled = navigator.serviceWorker.controller?.scriptURL === workerURL;
+  try {
+    const registrations = (await navigator.serviceWorker.getRegistrations()).filter(registration =>
+      [registration.active, registration.waiting, registration.installing].some(worker => worker?.scriptURL === workerURL)
+    );
+    if (!controlled && !registrations.length) return;
+    await Promise.all(registrations.map(registration => registration.unregister()));
+    if ('caches' in window) {
+      const names = await caches.keys();
+      await Promise.all(names.filter(name => name.startsWith('panellab-')).map(name => caches.delete(name)));
+    }
+    if (controlled) location.reload();
+  } catch (error) {
+    console.warn('No se pudo retirar la caché de desarrollo de modo.', error);
+  }
+})();
+</script>}

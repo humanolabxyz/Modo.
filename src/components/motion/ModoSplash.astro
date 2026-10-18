@@ -1,0 +1,84 @@
+---
+/* Solo las dos piezas originales del rayo. Sin letras, viaje a la cabecera ni efectos extra. */
+---
+<div id="modo-splash" class="modo-splash" aria-hidden="true">
+ <svg class="modo-splash-logo" viewBox="0 0 132 142" width="132" height="142" focusable="false">
+  <g class="modo-splash-impact" fill="#101215">
+   <g class="modo-splash-a"><path d="M0 70 L78 0 L55 70 Z" transform="translate(6 6)"/></g>
+   <g class="modo-splash-b"><path d="M74 55 L120 55 L41 130 Z" transform="translate(6 6)"/></g>
+  </g>
+ </svg>
+</div>
+<div id="modo-opening" class="modo-opening" role="status" aria-live="polite" aria-hidden="true">
+ <div class="modo-opening-box">
+  <svg class="modo-opening-logo" viewBox="0 0 132 142" width="64" height="69" focusable="false" aria-hidden="true">
+   <g fill="#101215" transform="translate(6 6)"><path d="M0 70 L78 0 L55 70 Z M74 55 L120 55 L41 130 Z"/></g>
+  </svg>
+  <div class="modo-opening-late">
+   <span class="modo-opening-bar" aria-hidden="true"><i></i></span>
+   <p class="modo-opening-label">Abriendo…</p>
+  </div>
+ </div>
+</div>
+<script is:inline>
+/* El aviso de instalación puede llegar antes de que cargue la aplicación: se guarda aquí. */
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__modoInstall=e});
+</script>
+<script is:inline>
+/* Pantalla de apertura: aparece al pulsar un enlace a otro módulo (o al abrir el panel), sigue visible
+   mientras carga y se retira cuando la aplicación terminó de montarse. Es un aviso funcional: se muestra
+   también con movimiento reducido. */
+(function(){
+ var d=document.documentElement,el=document.getElementById('modo-opening'),KEY='modo-opening';
+ if(!el)return;
+ var label=el.querySelector('.modo-opening-label'),shownAt=0,timer=0,fail=0,out=0;
+ function pending(){return document.readyState!=='complete'||!!document.querySelector('astro-island[ssr],.lab-loading,.modo-pending')}
+ function check(){if(Date.now()-shownAt>=450&&!pending())hide()}
+ function show(text){
+  if(label)label.textContent=(text||'Abriendo')+'…';
+  clearTimeout(out);
+  if(!d.classList.contains('modo-opening-on')){shownAt=Date.now();el.classList.remove('is-out');d.classList.add('modo-opening-on');el.setAttribute('aria-hidden','false')}
+  clearInterval(timer);timer=setInterval(check,120);
+  clearTimeout(fail);fail=setTimeout(hide,12000);
+ }
+ function hide(){
+  clearInterval(timer);clearTimeout(fail);
+  if(!d.classList.contains('modo-opening-on'))return;
+  el.classList.add('is-out');
+  out=setTimeout(function(){d.classList.remove('modo-opening-on');el.classList.remove('is-out');el.setAttribute('aria-hidden','true')},220);
+ }
+ window.modoOpening={show:show,hide:hide};
+ function labelFor(u){
+  var p=u.pathname.replace(/index\.html$/,'').replace(/\/+$/,'')||'/';
+  if(p==='/laboratorio')return 'Abriendo el laboratorio';
+  if(p==='/estudio')return 'Abriendo estudio';
+  if(p==='/')return u.searchParams.get('view')==='simulator'?'Abriendo el panel de control':'Volviendo al inicio';
+  return '';
+ }
+ addEventListener('click',function(e){
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  var a=e.target&&e.target.closest&&e.target.closest('a[href]');
+  if(!a||(a.target&&a.target!=='_self')||a.hasAttribute('download'))return;
+  var u;try{u=new URL(a.href,location.href)}catch(x){return}
+  if(u.origin!==location.origin)return;
+  var t=labelFor(u);if(!t)return;
+  try{sessionStorage.setItem(KEY,t+'|'+Date.now())}catch(x){}
+  show(t);
+ });
+ addEventListener('pageshow',function(e){if(e.persisted)hide()});
+ try{var f=sessionStorage.getItem(KEY);if(f){sessionStorage.removeItem(KEY);var s=f.split('|');if(Date.now()-Number(s[1])<15000)show(s[0])}}catch(x){}
+})();
+</script>
+<script is:inline>
+(function(){
+ var d=document.documentElement,splash=document.getElementById('modo-splash'),started=false,done=false;
+ if(!splash)return;
+ function finish(){if(done)return;done=true;d.classList.remove('modo-splash-on');splash.remove();document.removeEventListener('visibilitychange',visible)}
+ function start(){if(started||done)return;started=true;d.classList.add('modo-splash-on');setTimeout(finish,1100)}
+ function visible(){if(document.visibilityState==='visible'){if(!started)start()}else if(started)finish()}
+ if(d.dataset.modoLaunch!=='1'||d.classList.contains('modo-reduced')){finish();return}
+ splash.addEventListener('animationend',function(e){if(e.animationName==='modo-splash-exit')finish()});
+ document.addEventListener('visibilitychange',visible);
+ if(document.visibilityState!=='hidden')start();
+})();
+</script>

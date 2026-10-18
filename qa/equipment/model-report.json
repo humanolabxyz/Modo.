@@ -1,0 +1,70 @@
+{
+  "results": [
+    {
+      "name": "Every catalog piece survives strict validation with unique, bounded ports",
+      "passed": true
+    },
+    {
+      "name": "Old projects round trip unchanged; equipment, positions and parameters share the project file",
+      "passed": true
+    },
+    {
+      "name": "Unknown types, duplicate IDs, invalid terminals and duplicate reversed wires are rejected",
+      "passed": true
+    },
+    {
+      "name": "Circuit retains after release and emergency stays latched until explicit rearm",
+      "passed": true
+    },
+    {
+      "name": "N and PE remain different networks and unconnected readings are not fabricated",
+      "passed": true
+    },
+    {
+      "name": "An explicit source short reports a fault rather than energizing the load",
+      "passed": true
+    },
+    {
+      "name": "Variator ramps to setpoint and drives a six-terminal star motor",
+      "passed": true
+    },
+    {
+      "name": "Reversing a moving drive first decelerates to zero",
+      "passed": true
+    },
+    {
+      "name": "Drive validates missing phases, duplicated phases and output-source conflicts",
+      "passed": true
+    },
+    {
+      "name": "Energy integrates measured active power and user tariff; dt=0 does not accumulate",
+      "passed": true
+    },
+    {
+      "name": "Battery SOC decreases under load and remains within 0–100%",
+      "passed": true
+    },
+    {
+      "name": "The solar example powers its load and solar charging disappears without irradiance",
+      "passed": true
+    },
+    {
+      "name": "PLC physical inputs reach the existing program and Q output contacts feed a wired load",
+      "passed": true
+    },
+    {
+      "name": "A microinverter requires grid, injects with solar and respects its nominal limit",
+      "passed": true
+    },
+    {
+      "name": "The inverter reduces output under a load exceeding its modeled rating",
+      "passed": true
+    },
+    {
+      "name": "Solver does not mutate saved parts, wires or parameters",
+      "passed": true
+    }
+  ],
+  "passed": 16,
+  "total": 16
+}

@@ -1,0 +1,7 @@
+{
+  "base": "http://127.0.0.1:4342/",
+  "checks": [],
+  "errors": [],
+  "captures": [],
+  "expectedViolations": []
+}

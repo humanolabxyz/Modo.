@@ -1,0 +1,25 @@
+.study-focus-shell .professor-fault-view { margin: 0 0 22px; border: 1px solid #c8c8c8; border-radius: 12px; overflow: hidden; background: #fff; }
+.study-focus-shell .professor-fault-view > header { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 15px 18px; background: #f4f4f4; border-bottom: 1px solid #d9d9d9; }
+.study-focus-shell .professor-fault-view > header strong { color: #1e1e1e; font-size: 16px; }
+.study-focus-shell .professor-fault-view > header a { display: inline-flex; align-items: center; min-height: 32px; font-size: 13px; color: #252525; white-space: nowrap; }
+.study-focus-shell .professor-fault-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 22px; padding: 22px; align-items: start; }
+.study-focus-shell .professor-current-chart svg { display: block; width: 100%; height: auto; margin: 12px 0 8px; }
+.study-focus-shell .professor-current-chart text { fill: #1c1c1c; font-size: 15px; }
+.study-focus-shell .professor-chart-limit { color: #2d2d2d; font-size: 12px; line-height: 1.55; margin: 15px 0; }
+.study-focus-shell .professor-chart-explanation { font-size: 16px; color: #232323; line-height: 1.65; margin: 0; padding-top: 16px; border-top: 1px solid #d5d5d5; }
+.study-focus-shell .professor-motor-reference { margin: 0; border: 1px solid #d8d8d8; border-radius: 8px; overflow: hidden; }
+.study-focus-shell .professor-motor-reference img { display: block; width: 100%; height: auto; }
+.study-focus-shell .professor-motor-reference figcaption { display: block; padding: 13px 14px; background: #f6f6f6; }
+.study-focus-shell .professor-motor-reference strong { display: block; font-size: 14px; color: #212121; margin-bottom: 7px; }
+.study-focus-shell .professor-motor-reference span { display: block; font-size: 12px; line-height: 1.55; color: #2b2b2b; }
+@media(max-width:600px) {
+  .study-focus-shell .professor-fault-view > header { padding: 12px 14px; gap: 10px; }
+  .study-focus-shell .professor-fault-view > header strong { font-size: 14px; }
+  .study-focus-shell .professor-fault-grid { grid-template-columns: 1fr; padding: 17px 14px; gap: 20px; }
+  .study-focus-shell .professor-current-chart text { font-size: 16px; }
+  .study-focus-shell .professor-chart-explanation { font-size: 15px; }
+  .study-focus-shell .professor-motor-reference { display: grid; grid-template-columns: 110px minmax(0, 1fr); align-items: center; background: #f6f6f6; }
+  .study-focus-shell .professor-motor-reference figcaption { padding: 12px; }
+  .study-focus-shell .professor-motor-reference strong { font-size: 13px; }
+  .study-focus-shell .professor-motor-reference span { font-size: 12px; }
+}

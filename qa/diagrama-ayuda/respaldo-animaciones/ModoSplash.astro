@@ -1,0 +1,46 @@
+---
+/* Entrada de marca: geometría original de public/brand/modo-logo-horizontal-color.svg,
+   con el rayo separado en sus dos piezas. Solo se muestra si MotionHead activó html.modo-splash-on.
+   No bloquea la interacción (pointer-events:none) y se retira sola. */
+---
+<div id="modo-splash" class="modo-splash" aria-hidden="true">
+ <svg class="modo-splash-logo" viewBox="0 0 316 90" width="316" height="90" focusable="false">
+  <g class="modo-splash-lockup">
+   <g class="modo-splash-a"><path d="M0 70 L78 0 L55 70 Z" fill="#101215" transform="translate(5 10) scale(.49)"/></g>
+   <g class="modo-splash-b"><path d="M74 55 L120 55 L41 130 Z" fill="#101215" transform="translate(5 10) scale(.49)"/></g>
+   <g transform="translate(89 0)"><g fill="#101215" transform="translate(0 76)">
+    <g class="modo-splash-letter"><path d="M96 0H440V615C440 732 509 800 603 800C696 800 759 734 759 631V0H1088V622C1088 729 1150 800 1248 800C1341 800 1407 739 1407 627V0H1752V703C1752 938 1603 1079 1395 1079C1244 1079 1110 1004 1056 866C1013 1004 891 1079 750 1079C613 1079 488 1009 427 858V1056H96Z" transform="translate(0.0000 0) scale(0.036621 -0.036621)"/></g>
+    <g class="modo-splash-letter"><path d="M608 -24C939 -24 1163 193 1163 528C1163 861 939 1080 608 1080C277 1080 52 861 52 528C52 193 277 -24 608 -24ZM608 250C487 250 401 349 401 528C401 706 488 806 608 806C728 806 815 706 815 528C815 349 728 250 608 250Z" transform="translate(66.6870 0) scale(0.036621 -0.036621)"/></g>
+    <g class="modo-splash-letter"><path d="M509 -23C648 -23 758 40 813 163H814V0H1155V1490H810V914H809C742 1026 643 1079 506 1079C238 1079 52 853 52 530C52 196 232 -23 509 -23ZM605 252C479 252 401 356 401 530C401 702 479 805 605 805C735 805 824 697 824 530C824 361 735 252 605 252Z" transform="translate(110.2295 0) scale(0.036621 -0.036621)"/></g>
+    <g class="modo-splash-letter"><path d="M608 -24C939 -24 1163 193 1163 528C1163 861 939 1080 608 1080C277 1080 52 861 52 528C52 193 277 -24 608 -24ZM608 250C487 250 401 349 401 528C401 706 488 806 608 806C728 806 815 706 815 528C815 349 728 250 608 250Z" transform="translate(155.0903 0) scale(0.036621 -0.036621)"/></g>
+   </g></g>
+   <circle class="modo-splash-dot" cx="297.63" cy="68" r="8.3" fill="#3E806B"/>
+  </g>
+ </svg>
+</div>
+<script is:inline>
+(function(){
+ var d=document.documentElement,splash=document.getElementById('modo-splash');
+ if(!splash)return;
+ if(!d.classList.contains('modo-splash-on')){splash.remove();return}
+ var logo=splash.querySelector('.modo-splash-logo'),done=false,HANDOFF=700,ease='cubic-bezier(.3,0,0,1)';
+ function finish(){if(done)return;done=true;d.classList.remove('modo-splash-on');splash.remove();setTimeout(function(){d.classList.remove('modo-splash-reveal')},900)}
+ /* Destino: el logotipo visible de la cabecera de la página que se está abriendo. */
+ function target(){var list=document.querySelectorAll('.modo-logo');for(var i=0;i<list.length;i++){var r=list[i].getBoundingClientRect();if(r.width>4&&r.height>4&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth)return r}return null}
+ function handoff(tries){
+  var to=target();
+  if(!to&&tries>0){setTimeout(function(){handoff(tries-1)},50);return}
+  var bg=getComputedStyle(splash).backgroundColor;
+  splash.animate([{backgroundColor:bg},{backgroundColor:'rgba(247,248,250,0)'}],{duration:340,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'});
+  var from=logo.getBoundingClientRect(),flight;
+  if(to&&from.height>0){
+   var s=to.height/from.height;
+   flight=logo.animate([{transform:'translate(0px,0px) scale(1)'},{transform:'translate('+(to.left-from.left)+'px,'+(to.top-from.top)+'px) scale('+s+')'}],{duration:420,easing:ease,fill:'forwards'});
+  }else flight=logo.animate([{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.96)'}],{duration:300,easing:ease,fill:'forwards'});
+  flight.finished.then(finish,finish);
+ }
+ if(!logo.animate){setTimeout(finish,900);return}
+ setTimeout(function(){handoff(4)},HANDOFF);
+ setTimeout(finish,2600);
+})();
+</script>

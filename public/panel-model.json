@@ -1,0 +1,1241 @@
+{
+  "modules": [
+    {
+      "id": "FUENTE",
+      "title": "ALIMENTACIÓN Y TRANSFORMADOR",
+      "subtitle": "Transformador 220 / 24 V · 3 A",
+      "x": 65,
+      "y": 76,
+      "w": 585,
+      "h": 285,
+      "image": "/references/suministro.jpg",
+      "category": "alimentacion",
+      "summary": "Fuentes y puntos de alimentación visibles. No energizar equipos reales sin autorización docente.",
+      "labelBands": [
+        [
+          "R",
+          "S",
+          "T"
+        ],
+        [
+          "N",
+          "F"
+        ]
+      ],
+      "terminals": [
+        {
+          "id": "R",
+          "label": "R",
+          "x": 237,
+          "y": 230,
+          "color": "blue",
+          "note": "Fase R",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "S",
+          "label": "S",
+          "x": 297,
+          "y": 230,
+          "color": "black",
+          "note": "Fase S",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T",
+          "label": "T",
+          "x": 357,
+          "y": 230,
+          "color": "red",
+          "note": "Fase T",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "N",
+          "label": "N",
+          "x": 430,
+          "y": 230,
+          "color": "white",
+          "note": "Neutro / referencia: conexión interna por confirmar",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "F",
+          "label": "F",
+          "x": 493,
+          "y": 230,
+          "color": "red",
+          "note": "Borne marcado F: función interna por confirmar",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "TP",
+          "label": "TP",
+          "x": 550,
+          "y": 242,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "BOTONERAS",
+      "title": "LUCES PILOTO 24 V A.C. / BOTONERAS",
+      "x": 674,
+      "y": 76,
+      "w": 615,
+      "h": 300,
+      "image": "/references/botoneras.jpg",
+      "category": "botoneras",
+      "summary": "Cuatro pilotos y tres pulsadores. Pares rojos 1–2; pares claros 3–4. En el pulsador derecho las columnas están invertidas. NA/NC por convención, pendiente de verificación.",
+      "labelBands": [
+        [
+          "S1:1",
+          "S1:3"
+        ],
+        [
+          "S1:2",
+          "S1:4"
+        ],
+        [
+          "S2:1",
+          "S2:3"
+        ],
+        [
+          "S2:2",
+          "S2:4"
+        ],
+        [
+          "S3:1",
+          "S3:3"
+        ],
+        [
+          "S3:2",
+          "S3:4"
+        ]
+      ],
+      "terminals": [
+        {
+          "id": "PILOTO_1",
+          "label": "PILOTO_1",
+          "x": 78,
+          "y": 105,
+          "color": "red",
+          "note": "Conector visible bajo piloto 1; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "PILOTO_2",
+          "label": "PILOTO_2",
+          "x": 228,
+          "y": 105,
+          "color": "red",
+          "note": "Conector visible bajo piloto 2; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "PILOTO_3",
+          "label": "PILOTO_3",
+          "x": 378,
+          "y": 105,
+          "color": "red",
+          "note": "Conector visible bajo piloto 3; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "PILOTO_4",
+          "label": "PILOTO_4",
+          "x": 530,
+          "y": 105,
+          "color": "red",
+          "note": "Conector visible bajo piloto 4; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "S1:1",
+          "label": "S1:1",
+          "x": 86,
+          "y": 196,
+          "color": "red",
+          "note": "Pulsador 1 · contacto 1–2",
+          "state": "NC por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S1:2",
+          "label": "S1:2",
+          "x": 86,
+          "y": 250,
+          "color": "red",
+          "note": "Pulsador 1 · contacto 1–2",
+          "state": "NC por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S1:3",
+          "label": "S1:3",
+          "x": 144,
+          "y": 196,
+          "color": "white",
+          "note": "Pulsador 1 · contacto 3–4",
+          "state": "NA por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S1:4",
+          "label": "S1:4",
+          "x": 144,
+          "y": 250,
+          "color": "white",
+          "note": "Pulsador 1 · contacto 3–4",
+          "state": "NA por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:1",
+          "label": "S2:1",
+          "x": 274,
+          "y": 196,
+          "color": "red",
+          "note": "Pulsador 2 · contacto 1–2",
+          "state": "NC por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:2",
+          "label": "S2:2",
+          "x": 274,
+          "y": 250,
+          "color": "red",
+          "note": "Pulsador 2 · contacto 1–2",
+          "state": "NC por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:3",
+          "label": "S2:3",
+          "x": 332,
+          "y": 196,
+          "color": "white",
+          "note": "Pulsador 2 · contacto 3–4",
+          "state": "NA por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:4",
+          "label": "S2:4",
+          "x": 332,
+          "y": 250,
+          "color": "white",
+          "note": "Pulsador 2 · contacto 3–4",
+          "state": "NA por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:1",
+          "label": "S3:1",
+          "x": 517,
+          "y": 196,
+          "color": "red",
+          "note": "Pulsador 3 · contacto 1–2",
+          "state": "NC por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:2",
+          "label": "S3:2",
+          "x": 517,
+          "y": 250,
+          "color": "red",
+          "note": "Pulsador 3 · contacto 1–2",
+          "state": "NC por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:3",
+          "label": "S3:3",
+          "x": 459,
+          "y": 196,
+          "color": "white",
+          "note": "Pulsador 3 · contacto 3–4",
+          "state": "NA por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:4",
+          "label": "S3:4",
+          "x": 459,
+          "y": 250,
+          "color": "white",
+          "note": "Pulsador 3 · contacto 3–4",
+          "state": "NA por convención · por confirmar",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "N",
+          "label": "N",
+          "x": 571,
+          "y": 132,
+          "color": "white",
+          "note": "Borne N visible del módulo; conexión interna no verificada",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 40,
+          "y": 260,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 579,
+          "y": 260,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "CONTACTOR_TERMICO",
+      "title": "CONTACTOR + RELÉ TÉRMICO",
+      "subtitle": "Contactor y protección de sobrecarga",
+      "x": 65,
+      "y": 412,
+      "w": 585,
+      "h": 350,
+      "image": "/photos-2026-10-15/foto-6.jpg",
+      "category": "contactores",
+      "summary": "Contactor con relé térmico. Los números de bornes están identificados; referencia KM escrita a mano sin confirmar.",
+      "aliasEditable": true,
+      "labelBands": [
+        [
+          "A2",
+          "A1"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3"
+        ],
+        [
+          "T1",
+          "T2",
+          "T3"
+        ],
+        [
+          "71",
+          "72"
+        ],
+        [
+          "81",
+          "82"
+        ],
+        [
+          "95",
+          "96"
+        ],
+        [
+          "13",
+          "14"
+        ],
+        [
+          "63",
+          "64"
+        ],
+        [
+          "93",
+          "94"
+        ],
+        [
+          "97",
+          "98"
+        ]
+      ],
+      "terminals": [
+        {
+          "id": "A2",
+          "label": "A2",
+          "x": 176,
+          "y": 64,
+          "color": "red",
+          "note": "Bobina, borne A2",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "A1",
+          "label": "A1",
+          "x": 176,
+          "y": 108,
+          "color": "white",
+          "note": "Bobina, borne A1",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "L1",
+          "label": "L1",
+          "x": 264,
+          "y": 70,
+          "color": "blue",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L2",
+          "label": "L2",
+          "x": 341,
+          "y": 70,
+          "color": "black",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L3",
+          "label": "L3",
+          "x": 418,
+          "y": 70,
+          "color": "red",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T1",
+          "label": "T1",
+          "x": 264,
+          "y": 309,
+          "color": "blue",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T2",
+          "label": "T2",
+          "x": 341,
+          "y": 309,
+          "color": "black",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T3",
+          "label": "T3",
+          "x": 418,
+          "y": 309,
+          "color": "red",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "71",
+          "label": "71",
+          "x": 178,
+          "y": 164,
+          "color": "gray",
+          "note": "Auxiliar · contacto 71–72 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "72",
+          "label": "72",
+          "x": 252,
+          "y": 164,
+          "color": "gray",
+          "note": "Auxiliar · contacto 71–72 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "81",
+          "label": "81",
+          "x": 178,
+          "y": 218,
+          "color": "gray",
+          "note": "Auxiliar · contacto 81–82 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "82",
+          "label": "82",
+          "x": 252,
+          "y": 218,
+          "color": "gray",
+          "note": "Auxiliar · contacto 81–82 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "95",
+          "label": "95",
+          "x": 178,
+          "y": 272,
+          "color": "gray",
+          "note": "Protección térmica · contacto 95–96 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "96",
+          "label": "96",
+          "x": 252,
+          "y": 272,
+          "color": "gray",
+          "note": "Protección térmica · contacto 95–96 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "13",
+          "label": "13",
+          "x": 449,
+          "y": 128,
+          "color": "blue",
+          "note": "Auxiliar · contacto 13–14 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "14",
+          "label": "14",
+          "x": 519,
+          "y": 128,
+          "color": "blue",
+          "note": "Auxiliar · contacto 13–14 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "63",
+          "label": "63",
+          "x": 449,
+          "y": 182,
+          "color": "blue",
+          "note": "Auxiliar · contacto 63–64 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "64",
+          "label": "64",
+          "x": 519,
+          "y": 182,
+          "color": "blue",
+          "note": "Auxiliar · contacto 63–64 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "93",
+          "label": "93",
+          "x": 449,
+          "y": 236,
+          "color": "blue",
+          "note": "Auxiliar · contacto 93–94 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "94",
+          "label": "94",
+          "x": 519,
+          "y": 236,
+          "color": "blue",
+          "note": "Auxiliar · contacto 93–94 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "97",
+          "label": "97",
+          "x": 449,
+          "y": 290,
+          "color": "blue",
+          "note": "Protección térmica · contacto 97–98 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "98",
+          "label": "98",
+          "x": 519,
+          "y": 290,
+          "color": "blue",
+          "note": "Protección térmica · contacto 97–98 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 170,
+          "y": 309,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 551,
+          "y": 309,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "CONTACTOR_TRIFASICO",
+      "title": "CONTACTOR TRIFÁSICO",
+      "subtitle": "Referencia escrita KM… por confirmar",
+      "x": 674,
+      "y": 412,
+      "w": 615,
+      "h": 350,
+      "image": "/photos-2026-10-15/foto-3.jpg",
+      "category": "contactores",
+      "summary": "Contactor trifásico con bobina, bornes de potencia y contactos auxiliares. Etiqueta KM manuscrita aún no legible por completo.",
+      "aliasEditable": true,
+      "labelBands": [
+        [
+          "A2",
+          "A1"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3"
+        ],
+        [
+          "T1",
+          "T2",
+          "T3"
+        ],
+        [
+          "71",
+          "72"
+        ],
+        [
+          "81",
+          "82"
+        ],
+        [
+          "13",
+          "14"
+        ],
+        [
+          "63",
+          "64"
+        ],
+        [
+          "93",
+          "94"
+        ],
+        [
+          "95",
+          "96"
+        ]
+      ],
+      "terminals": [
+        {
+          "id": "A2",
+          "label": "A2",
+          "x": 52,
+          "y": 65,
+          "color": "red",
+          "note": "Bobina, borne A2",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "A1",
+          "label": "A1",
+          "x": 52,
+          "y": 112,
+          "color": "white",
+          "note": "Bobina, borne A1",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "L1",
+          "label": "L1",
+          "x": 184,
+          "y": 71,
+          "color": "blue",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L2",
+          "label": "L2",
+          "x": 262,
+          "y": 71,
+          "color": "black",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L3",
+          "label": "L3",
+          "x": 340,
+          "y": 71,
+          "color": "red",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T1",
+          "label": "T1",
+          "x": 184,
+          "y": 309,
+          "color": "blue",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T2",
+          "label": "T2",
+          "x": 262,
+          "y": 309,
+          "color": "black",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T3",
+          "label": "T3",
+          "x": 340,
+          "y": 309,
+          "color": "red",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "71",
+          "label": "71",
+          "x": 80,
+          "y": 157,
+          "color": "gray",
+          "note": "Auxiliar · contacto 71–72 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "72",
+          "label": "72",
+          "x": 137,
+          "y": 157,
+          "color": "gray",
+          "note": "Auxiliar · contacto 71–72 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "81",
+          "label": "81",
+          "x": 72,
+          "y": 217,
+          "color": "gray",
+          "note": "Auxiliar · contacto 81–82 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "82",
+          "label": "82",
+          "x": 137,
+          "y": 217,
+          "color": "gray",
+          "note": "Auxiliar · contacto 81–82 Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "95",
+          "label": "95",
+          "x": 72,
+          "y": 277,
+          "color": "gray",
+          "note": "Contacto 95–96: NC indicado por ti; accionamiento interno por confirmar. Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "96",
+          "label": "96",
+          "x": 137,
+          "y": 277,
+          "color": "gray",
+          "note": "Contacto 95–96: NC indicado por ti; accionamiento interno por confirmar. Gris = normalmente cerrado, indicado por ti.",
+          "state": "NC · normalmente cerrado",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "13",
+          "label": "13",
+          "x": 473,
+          "y": 149,
+          "color": "blue",
+          "note": "Contacto 13–14 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "14",
+          "label": "14",
+          "x": 538,
+          "y": 149,
+          "color": "blue",
+          "note": "Contacto 13–14 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "63",
+          "label": "63",
+          "x": 473,
+          "y": 203,
+          "color": "blue",
+          "note": "Contacto 63–64 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "64",
+          "label": "64",
+          "x": 538,
+          "y": 203,
+          "color": "blue",
+          "note": "Contacto 63–64 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "93",
+          "label": "93",
+          "x": 473,
+          "y": 257,
+          "color": "blue",
+          "note": "Contacto 93–94 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "94",
+          "label": "94",
+          "x": 538,
+          "y": 257,
+          "color": "blue",
+          "note": "Contacto 93–94 Azul = normalmente abierto, indicado por ti.",
+          "state": "NA · normalmente abierto",
+          "labelSide": "top",
+          "verification": "usuario"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 55,
+          "y": 309,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 580,
+          "y": 309,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "BORNERA_MOTOR",
+      "title": "MOTOR TRIFÁSICO",
+      "subtitle": "Motor con bornera U1 V1 W1 · W2 U2 V2",
+      "x": 574,
+      "y": 798,
+      "w": 715,
+      "h": 285,
+      "image": "/references/motor.jpg",
+      "category": "motor",
+      "summary": "Motor trifásico con su bornera: seis extremos de bobinado y tierra de protección. Estrella o triángulo se define con los puentes entre bornes.",
+      "labelBands": [
+        [
+          "U1",
+          "V1",
+          "W1"
+        ],
+        [
+          "W2",
+          "U2",
+          "V2"
+        ]
+      ],
+      "terminals": [
+        {
+          "id": "U1",
+          "label": "U1",
+          "x": 532,
+          "y": 109,
+          "color": "blue",
+          "note": "Terminal de motor U1",
+          "labelSide": "top",
+          "verification": "foto"
+        },
+        {
+          "id": "V1",
+          "label": "V1",
+          "x": 581,
+          "y": 109,
+          "color": "black",
+          "note": "Terminal de motor V1",
+          "labelSide": "top",
+          "verification": "foto"
+        },
+        {
+          "id": "W1",
+          "label": "W1",
+          "x": 630,
+          "y": 109,
+          "color": "red",
+          "note": "Terminal de motor W1",
+          "labelSide": "top",
+          "verification": "foto"
+        },
+        {
+          "id": "W2",
+          "label": "W2",
+          "x": 532,
+          "y": 176,
+          "color": "red",
+          "note": "Terminal de motor W2",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "U2",
+          "label": "U2",
+          "x": 581,
+          "y": 176,
+          "color": "blue",
+          "note": "Terminal de motor U2",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "V2",
+          "label": "V2",
+          "x": 630,
+          "y": 176,
+          "color": "black",
+          "note": "Terminal de motor V2",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP",
+          "label": "TP",
+          "x": 499,
+          "y": 144,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "TEMPORIZADOR_1",
+      "title": "TEMPORIZADOR NEUMÁTICO",
+      "subtitle": "BOBINA 24 V A.C.",
+      "x": 65,
+      "y": 798,
+      "w": 485,
+      "h": 270,
+      "image": "/references/temporizador-1.jpg",
+      "category": "temporizadores",
+      "aliasEditable": true,
+      "summary": "Temporizador neumático de 24 V CA. Antes de simularlo hay que confirmar el modo de retardo y su referencia.",
+      "labelBands": [
+        [
+          "A2",
+          "A1"
+        ],
+        [
+          "L1",
+          "L2",
+          "L3"
+        ],
+        [
+          "T1",
+          "T2",
+          "T3"
+        ],
+        [
+          "55",
+          "56"
+        ],
+        [
+          "13",
+          "14"
+        ],
+        [
+          "67",
+          "68"
+        ]
+      ],
+      "terminals": [
+        {
+          "id": "A2",
+          "label": "A2",
+          "x": 33,
+          "y": 59,
+          "color": "red",
+          "note": "Bobina A2",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "A1",
+          "label": "A1",
+          "x": 33,
+          "y": 102,
+          "color": "white",
+          "note": "Bobina A1",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "L1",
+          "label": "L1",
+          "x": 152,
+          "y": 58,
+          "color": "blue",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L2",
+          "label": "L2",
+          "x": 215,
+          "y": 58,
+          "color": "black",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L3",
+          "label": "L3",
+          "x": 278,
+          "y": 58,
+          "color": "red",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T1",
+          "label": "T1",
+          "x": 152,
+          "y": 222,
+          "color": "blue",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T2",
+          "label": "T2",
+          "x": 215,
+          "y": 222,
+          "color": "black",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T3",
+          "label": "T3",
+          "x": 278,
+          "y": 222,
+          "color": "red",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "55",
+          "label": "55",
+          "x": 45,
+          "y": 169,
+          "color": "black",
+          "note": "Contacto 55–56, retardo no verificado",
+          "state": "NC probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "56",
+          "label": "56",
+          "x": 96,
+          "y": 169,
+          "color": "black",
+          "note": "Contacto 55–56, retardo no verificado",
+          "state": "NC probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "label": "13",
+          "x": 365,
+          "y": 135,
+          "color": "blue",
+          "note": "Auxiliar 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "label": "14",
+          "x": 427,
+          "y": 135,
+          "color": "blue",
+          "note": "Auxiliar 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "67",
+          "label": "67",
+          "x": 365,
+          "y": 191,
+          "color": "blue",
+          "note": "Contacto 67–68, retardo no verificado",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "68",
+          "label": "68",
+          "x": 427,
+          "y": 191,
+          "color": "blue",
+          "note": "Contacto 67–68, retardo no verificado",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 49,
+          "y": 224,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 452,
+          "y": 224,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    }
+  ],
+  "count": 108,
+  "version": "2.1",
+  "portCount": 94,
+  "retiredModuleIds": [
+    "TEMPORIZADOR_2"
+  ]
+}

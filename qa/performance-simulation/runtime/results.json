@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "PASS estrella → triángulo, velocidad, giro continuo, corriente visible, pausa durante paneo y parada",
+    "PASS giro inverso y orientación horizontal",
+    "PASS descanso y despertar de cables, lectura de 5 V y puntas adheridas al mover la placa"
+  ],
+  "errors": []
+}

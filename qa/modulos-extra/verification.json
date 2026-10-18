@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "A2 (rojo) queda sobre A1 (blanco) en el contactor + relé térmico",
+    "Añadir un contactor crea KM3 con bornes únicos, en un hueco libre y sin tocar el inventario base",
+    "KM3 actúa como contactor: su bobina responde al mando y sus contactos de potencia alimentan el motor",
+    "Se pueden añadir más contactores y temporizadores con numeración correlativa",
+    "Los paneles añadidos se pueden quitar; los del banco base no",
+    "Soltar un panel sobre otro lo acopla al lado, encima o debajo, nunca superpuesto",
+    "Soltar un panel sobre otro los intercambia (misma fila o columna, aunque midan distinto) sin superposiciones; un roce solo acopla",
+    "Al abrir una práctica se descartan cables a paneles retirados; los bornes inválidos siguen rechazándose",
+    "Estrella-triángulo: al pulsar marcha entra la estrella; al cumplirse el retardo cae KM3 y entra KM2 (triángulo); parada y térmico detienen todo",
+    "Inversión de giro: la lección tiene los 41 cables del compañero con su orden, sus bornes y regiones son válidos, se guarda y se relee, y el circuito arranca en ambos sentidos con enclavamiento, paro y térmico",
+    "Marcha y paro: la lección de 24 pasos usa solo KM1, coincide con el ejemplo, se guarda y se relee, y el circuito arranca, se retiene, para y respeta el térmico",
+    "Esquemas de las lecciones: los 24 y 41 cables tienen su línea iluminable, todos los bornes tienen símbolo, ningún paso repite línea y no quedan líneas sin armar",
+    "Esquema ↔ banco: cada línea con cable apunta a sus pasos (las uniones internas a ninguno), cada símbolo a sus cables, y el progreso marca en naranja el paso y en verde lo armado"
+  ]
+}

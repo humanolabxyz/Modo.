@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "Teclado, exportación real, importación, rechazo de archivo inválido y reinicio con cancelación/confirmación; guardado del Banco intacto",
+    "Build estático offline: Inicio y Estudio conservan páginas independientes; abrir el PDF no sustituye el inicio en caché",
+    "Interacción táctil real a 390 px: radio, comprobación, entrada a práctica y pista",
+    "Cuota de almacenamiento agotada: aviso visible y exportación disponible, sin falsa confirmación de guardado"
+  ],
+  "result": "PASS"
+}

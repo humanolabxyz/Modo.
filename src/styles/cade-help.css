@@ -1,0 +1,78 @@
+/* Ayudas de lectura del esquema CADe: diccionario de símbolos y recorrido «¿Cómo funciona?». */
+.cade-help-actions{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.cade-help-actions button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border:1px solid #cfe0ea;border-radius:8px;background:#fff;color:#226e91;font:600 13px var(--ui-font,inherit);cursor:pointer;transition:background-color var(--motion-fast,.14s) ease,border-color var(--motion-fast,.14s) ease}
+.cade-help-actions button:hover{background:#f1f8fc;border-color:#9fc9de}
+.cade-help-actions button[aria-pressed=true]{background:#226e91;border-color:#226e91;color:#fff}
+.cade-help-actions button:focus-visible{outline:2px solid #149ccf;outline-offset:2px}
+
+/* Resaltado del recorrido sobre el dibujo */
+.cade-symbol.is-tour{color:#0b7fb0}
+.cade-symbol.is-tour>*{filter:drop-shadow(0 0 .7px #61c4ea)}
+.cade-symbol.is-dim{opacity:.32}
+.cade-symbol{transition:opacity var(--motion-base,.18s) ease,color var(--motion-base,.18s) ease}
+
+/* Tarjeta del recorrido */
+.cade-tour{background:#f1f8fc;border:1px solid #cfe3ef;border-radius:12px;padding:14px 16px;margin:0 0 12px;color:#243a48}
+.cade-tour-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cade-tour-head small{font-size:11px;font-weight:700;letter-spacing:.06em;color:#3c7c9c}
+.cade-tour-head .icon-button{width:30px;height:30px}
+.cade-tour h3{margin:4px 0 6px;font-size:17px;line-height:1.3}
+.cade-tour p{margin:0;font-size:14.5px;line-height:1.6}
+.cade-tour strong{color:#0b6f9a}
+.cade-tour-dots{display:flex;gap:5px;margin:12px 0 10px}
+.cade-tour-dots i{flex:1;height:4px;border-radius:2px;background:#d6e6ef;transition:background-color var(--motion-base,.18s) ease}
+.cade-tour-dots i.is-done{background:#8cc5df}
+.cade-tour-dots i.is-on{background:#149ccf}
+.cade-tour-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cade-tour-nav .text-action:disabled{opacity:.4;cursor:default}
+.cade-tour-nav .primary-action{display:inline-flex;align-items:center;gap:6px;min-height:38px}
+.cade-tour-note{margin-top:10px!important;font-size:12.5px!important;color:#6a7c88}
+
+/* Diccionario */
+.dialog.cade-guide{position:fixed;inset:0;width:min(960px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;padding:0;overflow:auto;overscroll-behavior:contain;background:#fff;border:1px solid #d5e1e8;color:#243a48;box-sizing:border-box}
+.dialog.cade-guide:not([open]){display:none}
+.dialog.cade-guide::backdrop{background:#15283299}
+.cade-guide>header{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 22px 14px;border-bottom:1px solid #e3eaef;background:#fff}
+.cade-guide>header .icon-button{flex-shrink:0;min-width:44px;min-height:44px}
+.cade-guide :focus-visible{outline:2px solid #149ccf;outline-offset:3px}
+.cade-guide>header small{font-size:11px;font-weight:700;letter-spacing:.06em;color:#3c7c9c}
+.cade-guide>header h2{margin:4px 0;font-size:22px}
+.cade-guide>header p{margin:0;color:#5d6f7c;font-size:14px}
+.cade-guide-grid,.cade-guide-extra{padding:16px 22px}
+.cade-guide>.cade-guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:12px;align-content:start}
+.cade-guide-card{display:flex;gap:12px;padding:12px;border:1px solid #e1e9ee;border-radius:12px;background:#fff}
+.cade-guide-card figure{flex:0 0 86px;height:86px;margin:0;border-radius:9px;background:#f5f9fb;display:grid;place-items:center}
+.cade-guide-card figure>.cade-symbol-thumb{display:block;width:80px;height:80px}
+.cade-guide-card .text-action>svg{width:16px;height:16px;flex:0 0 16px}
+.cade-guide-card h3{margin:0 0 4px;font-size:14.5px;line-height:1.3}
+.cade-guide-card p{margin:0 0 5px;font-size:13px;line-height:1.5;color:#3e5260}
+.cade-guide-card p b{color:#243a48}
+.cade-guide-refs{color:#0b6f9a!important;font-weight:600}
+.cade-guide-card .text-action{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;padding:0;margin-top:2px}
+.cade-guide-extra{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px 22px;background:#f7fafc;border-top:1px solid #e3eaef}
+.cade-guide>.cade-guide-grid+.cade-guide-extra{overflow:visible}
+.cade-guide-extra h3{margin:0 0 6px;font-size:14px}
+.cade-guide-extra p{margin:0;font-size:13px;line-height:1.5;color:#3e5260}
+.cade-guide-extra dl{margin:0;display:grid;gap:5px}
+.cade-guide-extra dl div{display:grid;grid-template-columns:auto 1fr;gap:8px;font-size:13px;line-height:1.45}
+.cade-guide-extra dt{font-weight:700;color:#226e91}
+.cade-guide-extra dd{margin:0;color:#3e5260}
+
+/* La sección extra se desplaza junto con las tarjetas en pantallas bajas */
+@media(max-height:760px),(max-width:700px){
+ .dialog.cade-guide{overflow:auto;display:block}
+ .cade-guide>.cade-guide-grid{overflow:visible}
+}
+@media(max-width:700px){
+ .cade-guide-backdrop{padding:10px}
+ .cade-guide>header{padding:16px 16px 12px}
+ .cade-guide>header h2{font-size:19px}
+ .cade-guide-grid,.cade-guide-extra{padding:12px 14px}
+ .cade-guide>.cade-guide-grid{grid-template-columns:1fr}
+ .cade-guide-card figure{flex-basis:70px;height:70px}
+ .cade-guide-card figure>.cade-symbol-thumb{width:64px;height:64px}
+ .cade-guide-extra dl div{grid-template-columns:1fr;gap:0}
+ .cade-tour p{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.cade-symbol,.cade-tour-dots i,.cade-help-actions button{transition:none}}
+html.modo-reduced .cade-symbol,html.modo-reduced .cade-tour-dots i{transition:none}

@@ -1,0 +1,17 @@
+{
+  "ios": {
+    "aviso": true,
+    "instrucciones": true
+  },
+  "pc": {
+    "aviso": true,
+    "promptNativo": true
+  },
+  "android": {
+    "pestanaPorDefecto": "Android",
+    "cambioDePestana": true
+  },
+  "instalada": {
+    "sinAviso": true
+  }
+}

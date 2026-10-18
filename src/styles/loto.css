@@ -1,0 +1,13 @@
+.loto-handle,.loto-lock,.loto-key{cursor:pointer;outline:none}
+.loto-handle:focus-visible,.loto-lock:focus-visible,.loto-key:focus-visible{filter:drop-shadow(0 0 3px #0087c9)}
+.loto-bar{transition:transform .28s cubic-bezier(.3,.7,.3,1)}
+.loto-lock,.loto-shackle{transition:transform .32s cubic-bezier(.3,.7,.3,1)}
+.loto-key{transition:transform .45s cubic-bezier(.3,.7,.3,1);opacity:.55}
+.loto-key[data-active]{opacity:1}
+.loto-key[data-pulse]{animation:loto-pulse .6s 3}
+.loto-box[data-on=true] .loto-lock{opacity:.45;cursor:not-allowed}
+.loto-box[data-shake] .loto-bar{animation:loto-shake .4s}
+@keyframes loto-shake{20%{transform:translate(56px,60px) rotate(-5deg)}50%{transform:translate(56px,60px) rotate(5deg)}80%{transform:translate(56px,60px) rotate(-3deg)}}
+@keyframes loto-pulse{50%{filter:drop-shadow(0 0 5px #f5c400)}}
+.loto-need{display:block;margin-top:4px;color:#8a5a00;font-size:11.5px}
+@media(prefers-reduced-motion:reduce){.loto-bar,.loto-lock,.loto-shackle,.loto-key{transition:none}}

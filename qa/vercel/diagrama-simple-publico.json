@@ -1,0 +1,42 @@
+{
+  "checks": [
+    "Fresh panel opens on the authoritative CADe circuit, with no disabled route buttons, automatic practice or expanded options. Drawing precedes tools.",
+    "Initial and expanded views fit seven viewport sizes with accessible close/expand controls and no horizontal overflow.",
+    "Selected line keeps all known cable branches visible; practice opens only on request and its settings remain optional.",
+    "Unplugged CONTROL switches cannot energize source; plug enables wired control. FUERZA moves all three poles, supports keyboard, and reports ON/OFF. Unplug drops holding relay and pilots without deleting cables or restarting on reconnect.",
+    "Both contactors show gray NC and blue NO with visible legends and user-supplied interpretation in inspector; source and coil colors remain separate.",
+    "Real mobile touch operates the plug and physical FUERZA/CONTROL switches on the source plate."
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1062,
+      "height": 834
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 844,
+      "height": 390
+    }
+  ],
+  "result": "PASS"
+}

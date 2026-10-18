@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "course": "Máquinas Rotativas / Protecciones eléctricas",
+    "source": "protecciones.pptx, J. A. Lepin Quezada, 7-10-2026",
+    "source_type": "docente",
+    "user_exam_format": "8 alternativas + 3 desarrollo (informado por estudiante; no consignado en presentación)",
+    "caveat": "Ninguna lección constituye procedimiento para manipular equipos energizados."
+  },
+  "lessons": [
+    {
+      "id": "objetivos-fallas",
+      "title": "Reconocer las fallas",
+      "slides": [
+        2,
+        3,
+        4
+      ],
+      "duration_min": 12,
+      "concepts": [
+        "protección de personas, instalaciones y servicio",
+        "sobrecarga",
+        "cortocircuito",
+        "arco, calor y esfuerzo magnético"
+      ],
+      "visual": "Circuito didáctico con selector de situación: normal / sobrecarga / cortocircuito. Gráfica temporal cualitativa de corriente y consecuencias sin datos ficticios.",
+      "actions": [
+        "cambiar escenario",
+        "señalar consecuencias",
+        "clasificar fenómenos"
+      ],
+      "learning_outcome": "Explica por qué una sobrecarga no equivale a un cortocircuito y enumera los tres efectos descritos en la diapositiva 4.",
+      "note": "El gráfico de diapositiva 3 es conceptual; sus barras no son escala ni medición de un equipo real."
+    },
+    {
+      "id": "coordinacion",
+      "title": "Coordinar carga, protección y conductor",
+      "slides": [
+        5,
+        6
+      ],
+      "duration_min": 14,
+      "concepts": [
+        "datos de carga",
+        "cortocircuito previsto",
+        "corriente soportada por conductor",
+        "In ≤ Ip ≤ Iz",
+        "poder de corte"
+      ],
+      "visual": "Tres bloques dimensionados por corriente, con valores editables In, Ip, Iz; evaluar desigualdad y explicar cada incumplimiento.",
+      "actions": [
+        "ajustar valores",
+        "verificar desigualdad",
+        "inspeccionar datos faltantes"
+      ],
+      "learning_outcome": "Justifica la selección didáctica 18 A ≤ 20 A ≤ 25 A sin confundir esa condición con aprobación completa de la instalación.",
+      "note": "El poder de corte y energía pasante se comprueban por separado."
+    },
+    {
+      "id": "termomagnetico",
+      "title": "Interruptor termomagnético",
+      "slides": [
+        7,
+        8
+      ],
+      "duration_min": 15,
+      "concepts": [
+        "función térmica",
+        "función magnética",
+        "polos",
+        "tensión",
+        "curva B 3–5 × In",
+        "curva C 5–10 × In",
+        "curva D 10–20 × In",
+        "poder de corte"
+      ],
+      "visual": "Ilustración vectorial explotable del interruptor, sus dos mecanismos e interacción con tres bandas de disparo B/C/D.",
+      "actions": [
+        "alternar sobrecarga/cortocircuito",
+        "seleccionar curva",
+        "ver rangos",
+        "elegir poder de corte adecuado en un ejemplo completo"
+      ],
+      "learning_outcome": "Distingue los dos mecanismos y explica qué revisa antes de seleccionar un termomagnético.",
+      "note": "Rangos de disparo magnético según IEC 60898-1 y la presentación; no sustituir curvas del fabricante."
+    },
+    {
+      "id": "fusibles",
+      "title": "Fusibles",
+      "slides": [
+        9,
+        10
+      ],
+      "duration_min": 12,
+      "concepts": [
+        "tipo rápido/retardado",
+        "corriente nominal",
+        "tensión máxima",
+        "capacidad de ruptura",
+        "gG",
+        "aR",
+        "gR"
+      ],
+      "visual": "Cartuchos comparables seleccionables con ficha de datos; identificar la etiqueta 50 A, 700 V CA/CC, 200 kA como ejemplo de placa (NO del objeto de la foto).",
+      "actions": [
+        "leer datos de placa",
+        "elegir clase de aplicación",
+        "comparar opciones"
+      ],
+      "learning_outcome": "Explica qué datos de un fusible deben revisarse, más allá de su forma externa.",
+      "note": "El ejemplo 50 A / 700 V / 200 kA de diapositiva 10 no identifica los fusibles fotografiados."
+    },
+    {
+      "id": "conductores",
+      "title": "Conductores y verificaciones",
+      "slides": [
+        11,
+        12
+      ],
+      "duration_min": 16,
+      "concepts": [
+        "Iz = Itabla·fT·fG",
+        "temperatura y agrupamiento",
+        "caída de tensión",
+        "I²t ≤ k²S²",
+        "material/aislación/instalación"
+      ],
+      "visual": "Cable ilustrado y tres verificaciones independientes con cálculo editable de ampacidad corregida.",
+      "actions": [
+        "cambiar Itabla, fT y fG",
+        "evaluar corriente de protección",
+        "revisar otros criterios pendientes"
+      ],
+      "learning_outcome": "Calcula 30×0,9×0,8 = 21,6 A y explica qué otras verificaciones exige el profesor.",
+      "note": "La caída de tensión y la verificación térmica requieren datos no incluidos en el ejemplo corto."
+    },
+    {
+      "id": "guardamotor",
+      "title": "Guardamotor y placa de motor",
+      "slides": [
+        13
+      ],
+      "duration_min": 18,
+      "concepts": [
+        "corriente nominal de placa",
+        "tensión y conexión",
+        "rango del térmico",
+        "arranque y disparo magnético",
+        "poder de corte",
+        "contactor para mando remoto"
+      ],
+      "visual": "Motor con placa ampliable y guardamotor ilustrado con dial que permite ajustes compatibles con su rango ficticio etiquetado como ejercicio.",
+      "actions": [
+        "leer placa de ejemplo",
+        "ajustar dial",
+        "detectar rangos incompatibles",
+        "ver diferencia con contactor"
+      ],
+      "learning_outcome": "Describe las tres etapas de selección: placa, ajuste del térmico y verificación del arranque.",
+      "note": "El magnético puede ser fijo; los rangos reales deben depender del fabricante."
+    },
+    {
+      "id": "tierra-sobretension",
+      "title": "Falla a tierra y sobretensión",
+      "slides": [
+        14
+      ],
+      "duration_min": 12,
+      "concepts": [
+        "SPD",
+        "sobretensión transitoria",
+        "RCD/GFCI",
+        "fuga",
+        "30 mA protección adicional según presentación",
+        "no sustitución protección sobrecorriente"
+      ],
+      "visual": "Dos escenas lado a lado: sobretensión por maniobra y fuga a tierra; al activar cada una, resaltar dispositivo correspondiente.",
+      "actions": [
+        "identificar falla",
+        "comparar SPD/diferencial",
+        "ver advertencia de compatibilidad con variadores"
+      ],
+      "learning_outcome": "Explica por qué SPD y RCD resuelven fenómenos distintos.",
+      "note": "La diapositiva indica sensibilidad ≤30 mA habitual bajo IEC para protección adicional de personas y exige normativa vigente."
+    },
+    {
+      "id": "motor-trifasico",
+      "title": "Cálculo de motor trifásico",
+      "slides": [
+        15,
+        16
+      ],
+      "duration_min": 20,
+      "concepts": [
+        "corriente de potencia mecánica de salida",
+        "Pout / (√3·VLL·η·cos φ)",
+        "comparar con placa",
+        "seleccionar protecciones",
+        "verificar cable",
+        "documentar supuestos"
+      ],
+      "visual": "Motor ilustrado, placa simulada de ejercicio, calculadora con cuatro datos y comparación guiada con criterio de selección.",
+      "actions": [
+        "ingresar datos",
+        "ver fórmula con unidades",
+        "calcular corriente",
+        "continuar con coordinación",
+        "marcar verificaciones pendientes"
+      ],
+      "learning_outcome": "Calcula corriente trifásica cuando se conocen todos los datos y justifica verificaciones posteriores.",
+      "note": "La presentación deja vacíos los datos numéricos de la diapositiva 15; los valores de los ejercicios deben señalarse como supuestos."
+    }
+  ]
+}

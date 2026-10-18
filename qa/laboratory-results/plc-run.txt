@@ -1,0 +1,60 @@
+- banner:
+  - link "PanelLab":
+    - /url: /
+    - strong: PanelLab
+  - text: LABORATORIO DE DISEÑO
+  - generic: Nombre del proyecto
+  - textbox "Nombre del proyecto" [disabled]: Marcha y retención
+  - link "Panel de práctica":
+    - /url: /?view=simulator
+  - link "Estudio":
+    - /url: /estudio
+    - text: Estudio
+  - link "Inicio":
+    - /url: /
+    - generic: Inicio
+- combobox "Proyecto activo" [disabled]:
+  - option "Marcha y retención" [selected]
+- generic "Proyecto":
+  - text: Proyecto
+- button "Deshacer" [disabled]:
+- button "Rehacer" [disabled]:
+- status:
+  - text: Guardado en este navegador
+- generic: Velocidad de simulación
+- combobox "Velocidad de simulación":
+  - option "×0.2"
+  - option "×0.5"
+  - option "×1" [selected]
+  - option "×2"
+  - option "×5"
+- button "Detener":
+  - generic: Detener
+- navigation "Herramientas del laboratorio":
+  - button "01 Esquemas Dibuja y prueba circuitos de mando.":
+    - generic: "01"
+    - strong: Esquemas
+    - generic: Dibuja y prueba circuitos de mando.
+  - button "02 PLC Programa contactos, bobinas y temporizadores." [active]:
+    - generic: "02"
+    - strong: PLC
+    - generic: Programa contactos, bobinas y temporizadores.
+  - button "03 HMI Crea una pantalla para operar tus señales.":
+    - generic: "03"
+    - strong: HMI
+    - generic: Crea una pantalla para operar tus señales.
+  - button "04 Procesos Controla el llenado de un tanque.":
+    - generic: "04"
+    - strong: Procesos
+    - generic: Controla el llenado de un tanque.
+  - button "05 Protoboard Monta un circuito y mide tensión y corriente.":
+    - generic: "05"
+    - strong: Protoboard
+    - generic: Monta un circuito y mide tensión y corriente.
+  - button "Cómo se conectan":
+    - strong: Cómo se conectan
+- text: TU ESPACIO DE TRABAJO
+- heading "PLC" [level=1]
+- text: Simulación activa
+- generic: 54.2 s
+- status: Abriendo herramienta…

@@ -1,0 +1,806 @@
+[
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\AddPanelMenu.tsx",
+    "Hash": "3358E29685CA49316EF33B7BB065CE4405806E912B7E0D24AE1C52B15490B1BC"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\App.tsx",
+    "Hash": "9093344B403535A9773A785B49C3182DF0A2F69B0675B5BD8F76F8A6BF23108E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\AssessmentDraft.tsx",
+    "Hash": "0967AD719BDDFC0A9D99E12769706D2E8E876840C6C59D2442B21B3DA200D428"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\AssessmentWindows.tsx",
+    "Hash": "8DF7691EE7F0D1C6F1F9C8F2E59E77BD3BBC74B277C16CCB64B161D5FC02AAA4"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\BananaCable.tsx",
+    "Hash": "ACAB727B7584D537B21B8CF27F351B550437C663A68B095FEA3C92868178CA5F"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\Board.tsx",
+    "Hash": "C636F4A82E3ABB2429D9C040D4AF7C075A8F2A3BCA972E6607F7CB32BC6EFB21"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CableColorPicker.tsx",
+    "Hash": "6D7543C588B9370C44C2F9F7A15C43B14050C7C30624DD10C59CF34CA1074E94"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CablesMenu.tsx",
+    "Hash": "52649C2E03788DA204C5E81933BCC4652D209935F4CA84CAC31008D6F00752D9"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CadeDiagram.tsx",
+    "Hash": "815F23ABDBDBA5F14CC9ED4AD8ABF7C95E88D271A485F667DD2368A1A635539D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CadeHelp.tsx",
+    "Hash": "901EFEE0328C1B557ACB39F4B4AFA0ECDA4101DB367576C1E83A2CD2F148948F"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CadeNames.tsx",
+    "Hash": "F1D53280B6AB749DE73E2253BCAC4F330AFB7D6335F4605E2C2F0D9E6C4ED566"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CadeRoute.tsx",
+    "Hash": "19E4E6AC29C90A8A97ACF00A312297D05275E67B5C3256170A1B30F5BEADF2C0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CadeSheet.tsx",
+    "Hash": "962A0B7BAA457391CAB0DD3E96C6DFEF8D7D872E4A7A91D1328A388878C1D24C"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CommunityCard.tsx",
+    "Hash": "3EDEB91FFBAB89EB2A9D4A982894AA221084B0873437B74757B5A64FCD482056"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\CompactBar.tsx",
+    "Hash": "C406A862E48B3AB00D2BF81E493CCAFFBA941D0C6763D86C7B24E4BA8094AEA0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\Compat.astro",
+    "Hash": "5EF6466B105D63242E348522E30BC64928B5FA7616E931D31E1E23222A84E206"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\ConnectionLesson.tsx",
+    "Hash": "D84E1F105C96CF841AB6B7E21A46474DB24688DF78A23E3EE9B9D757B790165E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\DevCacheReset.astro",
+    "Hash": "1533A8DA76F1C12D6976C959348E6106C578BA1A1CA7BB34EB2627DCA9545038"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\DiagramPane.tsx",
+    "Hash": "0D9A356CC0567AEB923A66251E6738E1866C5AB0142E46563DAF520C78598158"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\DiagramReader.tsx",
+    "Hash": "E04096BEA0C2B84CC735D33E882A4716A3BAD97D4BA96831EE48E2A33E91BF1E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\DiagramWindow.tsx",
+    "Hash": "BB8360C48746AD756C6B76BE2FEF148831FEA93A835E02487C8CDBE6B30C0B3A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\ExamReference.tsx",
+    "Hash": "97FDC99848EDA0D975D4FB1176DF070744FB67A53C89871E3B4C5EEDF1BCA356"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\FloatingDisclosure.tsx",
+    "Hash": "09962C2F6F793FCAD13FD870C5FAACAB84E5E8098AAF4BF8895CA12D4A880318"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\FloatingWindow.tsx",
+    "Hash": "3738386BA665F8DB49E20B4CF8D5C240D82228CFC72343349C8D80ED19A7E995"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\Home.tsx",
+    "Hash": "7BD07156D00AD87680D46DF8D010A8BFDE6EA6490D87D177C0CEC116590E76E3"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\InstallApp.tsx",
+    "Hash": "D5672804872AB901851FE8462370C73228376080B5DC269C2C7E40E181336955"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LegalLink.tsx",
+    "Hash": "6D6E9934C11F6104D2A2BA7722764741D0C936213D349CA5ADF23E5B4DE43915"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LessonAssessment.tsx",
+    "Hash": "A2732A60DDAF3A67A66EBE95AE3D65B61779DE5FA62B9C57F7F3E899F4F91A94"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LessonConnectionCard.tsx",
+    "Hash": "4588760144552E182E8AC74B257DB4FE33DA7DCB08F9B2F11BEC33AEDEB701F0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LessonReference.tsx",
+    "Hash": "8F898E83CA44A970DBF3AD7714016A4F73D2DCBEC3080DAE5EE4F8D3762289A7"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LessonSchematic.tsx",
+    "Hash": "FD6A887B4DAD17A004D4387735F76BDFEB94295E4F9C780D2791668EF3394A7D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LessonUnderstanding.tsx",
+    "Hash": "258B56FE7BFA1EFA52249A375735D20120278FA517CD899B8D7931CF1AED7203"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LogoModo.tsx",
+    "Hash": "4DE71A75F4FA3AC18710FB6E5735173558633DD4FAF0A74A6FA766EB67CF16DB"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\LotoBox.tsx",
+    "Hash": "B24818A19DFF2B18AB27B17C9534F7DB9FC97865B0A359023F5B41A91D1F4F03"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\PowerStatus.tsx",
+    "Hash": "73C4BD129D7F2279D701B75DC86ECE1D2C89E682E098D99391FDFD8B6AB7EFBE"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\ProcedureTools.tsx",
+    "Hash": "DCDB030152A3803EAD984A0571D1E763FF05A9B7BCA4064D88D1EAA7B3A9E7B3"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\SearchBox.tsx",
+    "Hash": "29AB32D4154796FC8EA0C8DF84B5058CB639363117E593C3B37E9BB34B691D42"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\SimulationControls.tsx",
+    "Hash": "1D99E8A8F3CBA943B3B79235FC130E9789CDA9ED27D134EEE6E91E927408D875"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\SimulatorInspector.tsx",
+    "Hash": "B08203A4D77E8B7001FDEF812C7CAFA0443A3A3C0E5BCAAE8BAD8A8E4CAD024B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\StudyGuide.tsx",
+    "Hash": "3ADC0DC93C7AC0DEE55E10479E6B22CAC2203A357EB65CE6B3BF2CD03602D672"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\TeacherMaterial.tsx",
+    "Hash": "C1CC70E55F638B842C9C2F72DF2B01BBC6FAD9E0F9F0EC1EBA0A5F31281E6A7A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\ToolDock.tsx",
+    "Hash": "FBC9FBFB088C13F066F6CFCA1AA0955022B9A4ADE13D055D103B17EA17A6A85F"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\TutorialHelp.tsx",
+    "Hash": "E97EE39133937CC764F300602CE90CB47E1466AA2A41F87C558E13052A5B9AC2"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\WireInspector.tsx",
+    "Hash": "A078E9AD1B57D6A2DF883AE2CBC01FB812E11E18EFFC037C829C88196E419E85"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\WireLayer.tsx",
+    "Hash": "4290BCC07279B0937993CDA0E25F20BEB31C397561027D8B78ACC3EB6EDB2DAB"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\motion\\ModoSplash.astro",
+    "Hash": "811AD268348B206001BB17F33211FBF120F77A34C4A68A7B4ADC94E474D8EA1B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\components\\motion\\MotionHead.astro",
+    "Hash": "164CDDFD629E57B7A7F2771E0BCA34CE0CA6C5AB24F5A240CF183477B9505E2C"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\assessmentState.ts",
+    "Hash": "9763E885FFB624C990CE0E28E92B9BD821919FB99FEC0A22070F22D54D02061B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\cade.ts",
+    "Hash": "CF722600880B98FABD64E88ACEBFD4776028255488917F9A254311B6CD8DA910"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\cadeComponents.ts",
+    "Hash": "136A22CC8EF150B345901472C4C7D97BCF2CEB0F0708B22BB454A6CEB1D84A3C"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\cadeEstrellaTemporizador.json",
+    "Hash": "A2F23624647428A7A0235B58BD851DC7C78946AF0D9783CAA4161307FF72B9B9"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\cadeEstrellaTriangulo.json",
+    "Hash": "10FB7EE17187A615E9EA1EBEE317B8295B0978B9A78C58DF9273789405D3D3D2"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\cadeLearn.ts",
+    "Hash": "4492483F2E72662878ECF70766727191996A8B2A7C1CE23169D05A91E18BFF12"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\cadeLecciones.json",
+    "Hash": "B2FCAA697232B1C530B53CCD50AF577F6F08E500266A000AB7D4D59576B7D59D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\cadePerfecto.json",
+    "Hash": "702E0908D6568FA232D1671A23FA188757E217875FC0C9DD5AE8C3A9DBAFA2C6"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\changes.ts",
+    "Hash": "1AC12FD5F1678F79285355760B34E757994A85F81375282BE6019A1BAEFEEC80"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\community.ts",
+    "Hash": "2C060C5A17A740FC0ED0A51F629E937F16E38987128A051A5C1B6B22C7131455"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\diagramReading.ts",
+    "Hash": "2E95182878D80DD5BC5EB259A39E2BF4E2AFC142EAE41FE5529913F447E2826A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\examReference.ts",
+    "Hash": "6C5A05C37C6C16392C50B6BE32A0553AA935BAB33224AD7F6D177CFE1F276618"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\layout.ts",
+    "Hash": "796B83B7295F15112FE7E49AD6B4988A40757528D7F6D36879CB4E09CD06712C"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\learning.ts",
+    "Hash": "D7773F1F54B596AE1D055FA5DC486FBEAB8EE4562D96AB6E52693D1C67457545"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\leccionInversion.layout.json",
+    "Hash": "5EB29003ED66981391FC3802DC54AFB088F35BCA2488972871BEA3B8F248B2A2"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\lessonAssessment.ts",
+    "Hash": "A240A28B0F98C694D13A1A7F042AEE761E6D837EC3B598103B8EB4855D17F34A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\lessonIds.ts",
+    "Hash": "F7D734A7DAA4978DCD9C96E51FABD60C8EFCEDAD6A92224F07DA7861E8A63057"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\lessons.ts",
+    "Hash": "1F26A4D64C9D1C1E50E746ECDC030037CE77FD07F7E16FB46FFF3F037CEDFE4B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\lessonSchematics.ts",
+    "Hash": "3A9DD0CD9C7A37A5EE3666055F6F13FD035EEEFAC0F3211CAC09B0F74B75F4AE"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\lessonTeaching.ts",
+    "Hash": "54E0654B41EF0D4182FE3E5F5B8EED936F60E934842F710F15B66DD887C35C5E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\panel.ts",
+    "Hash": "0AD505F2D44EFE6B631EC975C0A05CC0872B6A70391A151C82AF20B180C42063"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\panelCorrespondence.ts",
+    "Hash": "859DBD78F1F37223EADFB994269C9FD640D2B777497427112535BE992D27596F"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\panelHistory.ts",
+    "Hash": "733AB98B5F20A901BD3EB328168ED5EDF48C402FDF1F8B5512DED932897DC05B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\practice.ts",
+    "Hash": "349550FBE3E5E40205AE395C256D5D49D23285D3CFF7D1BEB982657A4295224E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\ropes.ts",
+    "Hash": "C7BB9B4A8BCC29A2F2877E5792DD3F1BF4A3BF71A8D1A34015FB3399F94C43FC"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\session.ts",
+    "Hash": "9DB5CAC358CCFC079BFD0408723FB9B046E647A434D76D175B9FFB83F523AB2A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\simulation.ts",
+    "Hash": "16248C7D1D973839BC1998931B6EAB28A864648ED4538852E5A1E57E5E2D0B80"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\starDeltaSources.json",
+    "Hash": "C329323972262690B5F09FBA3A21DBDD75BCCC51DF259E23AC12115926CAEBBA"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\starDeltaTeaching.ts",
+    "Hash": "69BF44C444CC551F1A65BF2BF5FEA658E50D698C9BD813DE4DDC2EEAB17146F6"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\starPanelMap.ts",
+    "Hash": "B0164B84644FF9921183841AF5EBEA7778AA0C7D164D374A1C22288033CD62E8"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\tutorials.ts",
+    "Hash": "572A3848A0DC8FDB1037D4A22BDBE3D882F7230137D18A04162D866160714935"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\data\\wiring.ts",
+    "Hash": "0EB2694ACF6B707E574A27B2D802EEB02C8A1D814A21928224309A2EDF2BB994"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\hooks\\useActionRecorder.ts",
+    "Hash": "0434C984664F0AC9A86D9C4576B9EF1C53DB4AEB28572A04CDE39B2F4A480F6A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\hooks\\useCompactLayout.ts",
+    "Hash": "101D1881A4122959209DC7E169B8D6C24164A024E326F092FDCB16F049D090E8"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\hooks\\usePractice.ts",
+    "Hash": "493F417FF0DFAF6897C65EFBED84D43055ADA56A76D7AFE72F6C9AC231410E31"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\hooks\\useSimulation.ts",
+    "Hash": "31680EEAD89063DD5707D2528BF978FFDA5F697A9D26AB051A7044881F131639"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\hooks\\useSvgNavigation.ts",
+    "Hash": "85FF2A543715F63A2BD3E2DBB9DCA0A4C2A5409162D8A892A60A119B40B2FCA6"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\BreadboardParts.tsx",
+    "Hash": "05A95BDEBB61BF5351C830506A13EB559F6E7BA952FA42DC497F0F823444079B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\BreadboardView.tsx",
+    "Hash": "DF64F360C3A8BDCC60A33AFD85F7966E5E80E813028E50A2EADEBF00E6655C39"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\CanvasControls.tsx",
+    "Hash": "A0E5C5A5A3CE9A778FA454F5780EF1C4400CCB80B8BBC539FBB82608F97CA034"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\cords.ts",
+    "Hash": "413443F936BB3F6B9DCC7C48A079B12A2DB293259D2D0E829C739401C83E1D56"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\dc.ts",
+    "Hash": "B8E0146C66493239E7384807D8951F521DC33E5A5EEE4052CB2EA228ED0C4A36"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\DeviceIcons.tsx",
+    "Hash": "763A52B1AB0B0434EC8B89E7A6BF74403F6EB1E80C065A993BC0F5E76EF91B25"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\DiagramViewer.tsx",
+    "Hash": "BBD2ECCD3839D42875865C06268B7714EBF9C9953C11E2C36C347BC73013729E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\engine.ts",
+    "Hash": "7CE266730156A09530B81E4C02E5BEF8ED095609DE5F6A6F878D2CAA22BE2533"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\HMIView.tsx",
+    "Hash": "4F45BDD0490FB939ED3B179EC9B6CECD5C53BFA70ADD3C250CABE714DAA8E0A1"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\HomeTools.tsx",
+    "Hash": "D268B9E71BF59B079BE1E332CFA9184EF94ACFBFFDD4E223FD70273BFC0B4601"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\InspectorSheet.tsx",
+    "Hash": "E8B2394CD6E6E891DECD1E6644DB158BC7406A7771E6F6A6F2504D408D7EDE33"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\labels.ts",
+    "Hash": "557AAE64204286EFC225234B4D5FAB1803A36B71CFF485112B100E677009FC00"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\LaboratoryApp.tsx",
+    "Hash": "ED01972311F59707C1B66E485016754566C984C0166493797B538BD3F58772BE"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\LaboratoryBar.tsx",
+    "Hash": "9571FC1906B59E34C5189BE6C95ACFB342692A8F9D221C742277F810FABCF41E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\MeterInstrument.tsx",
+    "Hash": "6442F2999518105FAD3376E2292716777863E7D56D2EFB79937AA4FCC110D2FD"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\MeterPanel.tsx",
+    "Hash": "8CEC39A9DAAF9B2A3590C2316A8EAE78CF788E3B39899583F7F93E1A7439977B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\model.ts",
+    "Hash": "2DDF81F67DAA1F2A09F9659A9572166F27685A7BB9972319B735CC8F4FC9CC5D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\PanStage.tsx",
+    "Hash": "F7D6929343A32E309DAF1CC2CFBFB5822411F393519CAE790A09A3A15001C41A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\PLCView.tsx",
+    "Hash": "A5B6E8C76480500F1C78823FB64BB60FBF6EF419B45941116079C9B832349493"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\ProcessView.tsx",
+    "Hash": "1CAA5802A4CAA6931D719628DE2EA794F162DB88DB175C7A5A2F0C76B4DCBB9A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\SchematicView.tsx",
+    "Hash": "13D67D4624AA61F7EA06DCCE3B09F7C5C79A46C862CDA673E528ED7D377CDC86"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\st.ts",
+    "Hash": "A024B3850E88696FD7CAA8AFC6BAA55FEA546B417C6EA63175BDF795AABDEA63"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\SurfaceDock.tsx",
+    "Hash": "9207A996F5D24E38B8D350C6B44B8FF8AD93A00DFB81EA68D0F44A29A4568441"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\units.ts",
+    "Hash": "3A86BE23345AAD39508724183037CB02019216C79576F6487D58F702751BA665"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\useLaboratory.ts",
+    "Hash": "3243B55E40748783AC4A22B2FB3D47AEB4AAEFC270EF82F3076DD07416F60E1C"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\validation.ts",
+    "Hash": "BEB62680041CC8D22AAF47D2A262B2A1A7E3D584A07D03F153E1F4F3AC8D955B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\ValueEditor.tsx",
+    "Hash": "11F2E1CB05BE5887C7382C13AC7CBF07F57BB4DE8174213ED76E1109903F6F96"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\lab\\workspaceLayout.ts",
+    "Hash": "2776FBAC33FBF892690B67882BBA82BA4B016F8C2ECAC93C0D66162A993F97FF"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\layout\\boardViewport.ts",
+    "Hash": "D98B1A206EA65D0FFD8984BE9B374CD8A8D0FDC6415FE22ABC5CCC96C4FA7F7D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\layout\\floatRect.ts",
+    "Hash": "5ADD6F72A26D2B33E48605839CC1A72334004A5E9280D28A453FAB53818650F3"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\layout\\focusView.ts",
+    "Hash": "89CA03BBDB9446B96E1E73F0EF1096D1D93909EDFB161A62B7A39BCD5416A893"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\layout\\scaledWindow.ts",
+    "Hash": "93A3CD973728B1DDE28658953A6853259560EAAD9820AAFF828A294411A20051"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\motion\\indicators.ts",
+    "Hash": "41215596AF5ECEAF8287D00843DCD3ACE12C6C522EFBB748C1FC3E6D09538DFE"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\motion\\opening.ts",
+    "Hash": "C3B3BC13F5F49B8684FFD458377B39F4CD11D8E5B8803B8D644CBC143D33BB13"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\motion\\surface.ts",
+    "Hash": "5F409EECF34CBAFBD6AB9C5DCFB5E807971CF16453456F568DC4EEE6FCA98603"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\motion\\transition.ts",
+    "Hash": "5D37BAC38307ECC865E73D4FFAF0E822C77AF8A225705C167EF46E7A6F684F01"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\pages\\comunidad.astro",
+    "Hash": "80D2997CBBABF66A3FD6CDE3C2ABD2457558F37CFE3EF22E4B2492098C587904"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\pages\\estudio.astro",
+    "Hash": "8F941EF5BFEA5153E298DD1BF1B87B70F83298265C1567FEF67F6473D328DF77"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\pages\\index.astro",
+    "Hash": "1DFB461B7EFE8AC72FCE10D93B3436C2A9A6BAEE6EECB7A18638F37D017B7417"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\pages\\laboratorio.astro",
+    "Hash": "67DBDD25B09CACC0236DB201EB4CDDEF35D6AF6AD4E5BB699FEC038E54CF6798"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\pages\\legal.astro",
+    "Hash": "863B35016532F6AF56993535401BB989DB128F00D877FA866F875B731DAC7247"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\pwa\\install.ts",
+    "Hash": "6C645F02DD3BA6D5AD078D283BD013685709430CCDCCD08DCBABA132ACF89592"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\Activity.tsx",
+    "Hash": "ACF66396EA45A22D09638D4A7521300697A6FEEF3240AAA1FD09E274E5BCB1A0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\calcEngine.ts",
+    "Hash": "361079B2633819E51FE8F7BB91FF3EF76E014678355445F541B557472D0EB723"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\CalcModule.tsx",
+    "Hash": "76465FA48C71D4BE3A1DC41DD63512686F998DB1F646BA6D3B12FDD8AFB2AD63"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\CalculationSteps.tsx",
+    "Hash": "923DB8C9C2C21E206900109A7F0C54D08D3A91A236B7A83CE04134195D8C0FC6"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\Calculator.tsx",
+    "Hash": "A1BF2C20BCFD1E70ABC4930EDBA38377D5B7C4DFD6BC45229EBAB2D68ED1C81D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\CalculatorDock.tsx",
+    "Hash": "2BCDC30D70F34BBBDB341880187E3430CCFC058430130F4B4C787B6312A1CD1A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\dialog.ts",
+    "Hash": "3E55C9EF26D32F78F041D15B08BC39AA86F9ADA10586F73834719B9365D9FBE4"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\ExamView.tsx",
+    "Hash": "83DB5B2F8593A9C46E2A5BAB8D0F92C54067F3B2EBCCD5CA0B36D17D179E2B98"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\FormulaSheet.tsx",
+    "Hash": "25BF3A1D47D9D287694360BF8D5AC72D957E59FABA68184695B3DC4B20E4E5A8"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\grading.ts",
+    "Hash": "67BB4194A2524D9187C79E25A6CA3AE6973B7946F2CA8599CCF6B48503154EA5"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\GuidedLesson.tsx",
+    "Hash": "09E48922DA5964F252FFBBDFEA9289BAAC1E806E3D55EAB8DC2457FEAEE44CB1"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\journeyContent.ts",
+    "Hash": "FA50A3D9B17DA8FD775B4726BD60DCA57A1BB913AEAEA3A34A47662E58CFDB19"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\lessonCards.ts",
+    "Hash": "6DB88BDEA9CC74959D1D99C50E234D43401E8E05AFBF0BB5225613667C7206B0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\lessonContent.ts",
+    "Hash": "9B420E882E698BE5E2482C6D1331451B758058BBBB4C617323E238A782C0D773"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\LessonGuide.tsx",
+    "Hash": "3C8922442E30DE34F17C346F3933D78198A2407A5781630CCFEBD0227EA256FE"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\LessonJourney.tsx",
+    "Hash": "8366CC0D8522DA4529840CFD1628824CC85756F7351F36F98870632DF708D718"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\LessonMedia.tsx",
+    "Hash": "35680224AAD8D9E42F9E52346A83E3661225072FA3F79ED1426ABDB6618FD8C1"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\model.ts",
+    "Hash": "74D454DF487C75A3743A420881BD05FAE6FE356370E79D74FF118F534AA55E63"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\Practice.tsx",
+    "Hash": "5F138DA11905F3B7A64EA8A52FBFBDE83BC954CC25D4C5A730C3C26DAABFD70D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\ProfessorFaultView.tsx",
+    "Hash": "6FCAEC073552D20C04EB3BFBC2A919FE34CD5D89CC3786DDE223B436C91F103D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\QuickExperiment.tsx",
+    "Hash": "8D9515317A329457BC9FF4B11E6F9D97F20F28B3D089AC0D018E0136873A6AB0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\RememberCard.tsx",
+    "Hash": "30DDCD32DCA3739F3A56160C7D550CD03A70352CCAACED7C03D5C3589A121BD6"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\rememberContent.ts",
+    "Hash": "91619E491E101A5C95BE8684A32997F4D64E864973A8FEEF8EE0BF7331BC8247"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\Rich.tsx",
+    "Hash": "E1BC44AC926A8302E426128A6E8D8A01CC41AA9C49D7F54AEE13D9F7CBAE8F5C"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\StudyApp.tsx",
+    "Hash": "2561B9002B0C14202E6956FC10FC37E790BAB5BEAC52611922B59B17761F3F35"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\StudyNavigation.tsx",
+    "Hash": "FE25BA49AC7A6E5540C967702E382175DD2C6DCE5CFC38A65645CCB9378D8437"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\teachingContent.ts",
+    "Hash": "7D2B7212064DF4555A010EB59649942DA59A95C13AB53C568F5A9B6BB9C8F704"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\TermExplorer.tsx",
+    "Hash": "11B601C4B0040C5077E9628E8FCCBA6DDE4BA52D32D769A5084A2B538872332B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\TopicDone.tsx",
+    "Hash": "C10782EBEEF83EC1D15A55C9FC6F44AE642598FCF4C1AA3BA3DBE2CE15C88723"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\content\\casos_interactivos_7.json",
+    "Hash": "5FA85A6060600C775BA78C23A9BD0BCA88643CE121970ACB513EAE1BE7238C4A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\content\\lecciones.json",
+    "Hash": "036E4AB2E0D87955639555945C30FF1BD58AC23FF7D17175F18C5A883A7211C4"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\content\\preguntas_alternativas_32.json",
+    "Hash": "6EA313950E77D7643093EDB5F5BC82D9B2C22407ECAD12CE62B5B21639A7D018"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\content\\preguntas_desarrollo_12.json",
+    "Hash": "DD3E606893101D46E5E0E778ACE3D80274BC4D783314174B4115874BF5EC4734"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\study\\content\\preguntas-publicas.json",
+    "Hash": "67B710B321E63F98F77BF1DB6F4C22C523C7D7F843E9564FF11647B8E9588217"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\board-layout.css",
+    "Hash": "8D8AF9E7D43D18659A5E8290AD7828B8032DE00AC72928B9D2B95656E3391F23"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\cable-color.css",
+    "Hash": "5DBDF8C45629F38DBC8953821A9AEBCB6C8F3331477B43B56E95D9EDC1D44F5B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\cade-help.css",
+    "Hash": "1B332858529E01355D42D29F1D6E6B3CA1F545BDB4D1926537DF78021DCDAE0F"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\canvas.css",
+    "Hash": "FD04E36224DE8628B10C33E79D2E5A84F765B986AB275E83252ACB3714295BDA"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\community-card.css",
+    "Hash": "DCA39DE52AAEC8523C343F06F3E6F30F3DEFF60FF7324D1B2882D3046744D08E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\community.css",
+    "Hash": "D8F518E65C6C314B3B1D43D8DCA4F223BEAB2C3BA7FC80F55B2DDA6437EBBF09"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\compact-ui.css",
+    "Hash": "9024320C5AFE4F6766E0FFAE4B933C25CAC0FE9312F8212363AE83FBBD34FF4C"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\diagram-info-windows.css",
+    "Hash": "CD8680C414704EC3A4559AE2B71434B4EC777C59DF0A9BD3F50EF7684BC9B9FC"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\diagram-layout.css",
+    "Hash": "D735D40507F661B5BE969520C2C0EE03392DCCF86FCF9515B0CD1BBD34ADD8FA"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\floating-window.css",
+    "Hash": "EF3158A16AA40AC8A6147DC8F572B23A1539A8186421561B5A150530770109A6"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\global.css",
+    "Hash": "E5693676BE3B09AF0B2DA2559BBF41C66747D3C5C5C84F4DA0908E52FB6E2D19"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\guide-confirmation.css",
+    "Hash": "2A18F85B5F23FB88695C91E9832248BCC3149C928740A87522D71D1AC0996818"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\home-laboratory.css",
+    "Hash": "4781940B7DFE4CD37C2B98F9242B33B242E816E8ECE09396F43E9EEDB97BD661"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\install.css",
+    "Hash": "58923E382ED1C188BA4A670B179F9CD698F9EEBFE2990FD5C17872F95ECC0AD9"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\laboratory-canvas.css",
+    "Hash": "EE3AEDF384833C757B873E3FB00AE82B5C582E08EA8C3CF58E75B85A470B3571"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\laboratory-compact.css",
+    "Hash": "0791625835D15723EF1F6822DF4EDA67E8C5A401DE8F524458BBC1460B3D8692"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\laboratory.css",
+    "Hash": "6EC968FB934211D0CA02A3264864CBFF973561B8276A9DD18774D164714B2AD7"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\learning.css",
+    "Hash": "2B61D4E51C33C29BA246B6D85D70474B4B2EDC84F96D2C012E53361642754280"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\legal-links.css",
+    "Hash": "4978D330A77446B91D6789BF70D1ACEC7DE9E37A9C2AB9403796839B7074D5C8"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\legal.css",
+    "Hash": "DE33C87B3781DAD12259FC8CE0BB7E02827D3A1C392EB12C44EC2A993C2C4BA9"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\lesson-understanding.css",
+    "Hash": "876856BD414F9EF6871C9D5CA4735248FFF8243721D8BCFDC9A91DC80C3A92DC"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\loto.css",
+    "Hash": "A0AB22BC6480F49FA92CE57445E846C655E2138DED8F475CD43BC373AA2AAF5E"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\mobile.css",
+    "Hash": "2FDF40FB08C59F2138D922D1319B7BEA1C0F30C695A002DCC5FACF316EA2EE2A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\modo-brand.css",
+    "Hash": "590B44028F90C06A6EE2A7B04075749A8393366F8B1133BC16EC7C8F6DA8F0D0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\modo-home.css",
+    "Hash": "180D6EB0AE6F049E1A25082BDAA05A9E1C8A20F7FFDBA9A173B0B0D14B44708F"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\modo-motion.css",
+    "Hash": "685AFF08B9A2E30785B8751F31E8DAE9A23A689014C76B77185863D9B28718F3"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\modo-tokens.css",
+    "Hash": "C9864E4063FA97DA34CF0D267A518760037754881E822E92597A1590542AE779"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\procedures.css",
+    "Hash": "7CE7F0A1AA4129A1E7644DCD1831A318B87B9C20C2AB7B4E789CE4863AA39FE8"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\simulation.css",
+    "Hash": "452AB0F546D15D97B3EB79B2223BA22FFF6A6DA607E54594B66A17A04CDF5775"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-calc.css",
+    "Hash": "8D2F643870718FD11CD3A35D09D9D2E4E4EB464F761B6A735ADAC949EC9AB9E1"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-final.css",
+    "Hash": "460B0F78F6F3599C3F7AB90A627F2F84477D3533B6F22D08D5421CFBC77A2E6A"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-focus.css",
+    "Hash": "CF53F72E8A677B10D4236D2C655E697C8AA5FEB8B6E3949EB35B78955DE37CC0"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-home.css",
+    "Hash": "DD0C1DA099D6E60E23E1581263F08E4A4C10C6BEF06B9A936C20B3DAFBDE0001"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-learning.css",
+    "Hash": "A7905C34A1B43EC3AB84BD8BE1E3CE826ED8FEC3BC8367AE7395EF4D98B4FCD9"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-lesson.css",
+    "Hash": "C8D30256CB9F3EC03F217DD195CF0687CF50516D53260640D2B8B6868C0F8E75"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-polish.css",
+    "Hash": "48CFD6052D313D578DA7CCBB8686A698EEA29C167FC0C610A75B362B38DC4798"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-professor.css",
+    "Hash": "FCEECF4C6AFF7C477B7B179E47201ABB425B4C82A242F4FB3C7456493217707D"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study-v8.css",
+    "Hash": "69DADA2BF0752EF6AB7C88E78B22E6BC4572C4AA262C03BD1FF4E850E8FDFA80"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\study.css",
+    "Hash": "A5B374641CCBE8305C8320B0AEC7B35E0D1393FC0BF76E792A3181F3BAB11403"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\touch-portrait.css",
+    "Hash": "9A6FA32AB97291DB7CB469DC3769EEDE07B7E8E361FF4A608159893D76BF2B7B"
+  },
+  {
+    "Path": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\src\\styles\\tutorials.css",
+    "Hash": "66C58121AD98BCD8CB80F5169FF2D100152EE722541A0AEF9B867DB7FBA24C29"
+  }
+]

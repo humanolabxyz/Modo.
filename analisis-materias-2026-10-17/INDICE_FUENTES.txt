@@ -1,0 +1,36 @@
+F01 | electricidad/Activadad con calculo Ajuste cero.pdf | 6 páginas/diapositivas | 2620 caracteres PDF
+F02 | electricidad/Clase 1.pdf | 16 páginas/diapositivas | 10620 caracteres PDF
+F03 | electricidad/Clase 2.pdf | 16 páginas/diapositivas | 10978 caracteres PDF
+F04 | electricidad/Clase 3.pdf | 23 páginas/diapositivas | 10716 caracteres PDF
+F05 | electricidad/clase 4.pdf | 15 páginas/diapositivas | 4417 caracteres PDF
+F06 | electricidad/Clase 5.pdf | 13 páginas/diapositivas | 7847 caracteres PDF
+F07 | electricidad/Guia 1.pdf | 9 páginas/diapositivas | 11205 caracteres PDF
+F08 | electricidad/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_54.png |  páginas/diapositivas | 0 caracteres PDF
+F09 | intrumetacion/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_03.png |  páginas/diapositivas | 0 caracteres PDF
+F10 | maquinas rotativas/Actividad 1 U2.pdf | 17 páginas/diapositivas | 22054 caracteres PDF
+F11 | maquinas rotativas/Actividad 2 (1).pdf | 15 páginas/diapositivas | 22720 caracteres PDF
+F12 | maquinas rotativas/Actividad 2.pdf | 14 páginas/diapositivas | 22969 caracteres PDF
+F13 | maquinas rotativas/linkdevideo.txt |  páginas/diapositivas | 0 caracteres PDF
+F14 | maquinas rotativas/protecciones (1).pptx | 16 páginas/diapositivas | 0 caracteres PDF
+F15 | maquinas rotativas/Resolucion Prueba (1).docx |  páginas/diapositivas | 0 caracteres PDF
+F16 | maquinas rotativas/Rubrica 1 (1).xlsx |  páginas/diapositivas | 0 caracteres PDF
+F17 | maquinas rotativas/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_24.png |  páginas/diapositivas | 0 caracteres PDF
+F18 | maquinas rotativas/Temario Evaluacion.docx |  páginas/diapositivas | 0 caracteres PDF
+F19 | matrices/Actividad tecnológica 1 Funciones polinómicas de grados 0 y 1.pdf | 7 páginas/diapositivas | 3240 caracteres PDF
+F20 | matrices/Actividad tecnológica 2 Funciones logarítmicas.pdf | 4 páginas/diapositivas | 2178 caracteres PDF
+F21 | matrices/Actividad tecnológica 2 Funciones polinómicas de grado 2.pdf | 6 páginas/diapositivas | 2490 caracteres PDF
+F22 | matrices/ARPA 1 Consumo de energía (extensión).pdf | 1 páginas/diapositivas | 348 caracteres PDF
+F23 | matrices/ARPA 1 Consumo de energía.pdf | 1 páginas/diapositivas | 465 caracteres PDF
+F24 | matrices/ARPA 2 Lanzamiento de una piedra (extensión).pdf | 1 páginas/diapositivas | 711 caracteres PDF
+F25 | matrices/ARPA 2 Lanzamiento de una piedra.pdf | 1 páginas/diapositivas | 402 caracteres PDF
+F26 | matrices/link de actividades formativas 2.txt |  páginas/diapositivas | 0 caracteres PDF
+F27 | matrices/link de actividades formativas.txt |  páginas/diapositivas | 0 caracteres PDF
+F28 | matrices/screencapture-aai-inacap-cl-course-view-2026-10-17-21_16_40.png |  páginas/diapositivas | 0 caracteres PDF
+F29 | matrices/Situación de modelación 1 Servicio eléctrico.pdf | 4 páginas/diapositivas | 4264 caracteres PDF
+F30 | matrices/Situación de modelación 2 Seguidores en Instagram.pdf | 3 páginas/diapositivas | 3336 caracteres PDF
+F31 | matrices/Situación de modelación 2 Sueño dorado.pdf | 3 páginas/diapositivas | 3128 caracteres PDF
+F32 | matrices/Situación de modelación 3 Desabastecimiento.pdf | 3 páginas/diapositivas | 3369 caracteres PDF
+F33 | redes industriales/Clase Teorica.pdf | 43 páginas/diapositivas | 11338 caracteres PDF
+F34 | redes industriales/Guía 1.pdf | 9 páginas/diapositivas | 9502 caracteres PDF
+F35 | redes industriales/Resumen Teorico.pdf | 4 páginas/diapositivas | 11058 caracteres PDF
+F36 | redes industriales/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_38.png |  páginas/diapositivas | 0 caracteres PDF

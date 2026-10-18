@@ -1,0 +1,12 @@
+{
+  "url": "https://panellab-inacap.vercel.app/?view=simulator&revision=km1-centro",
+  "deploymentId": "dpl_CVmTY2SBhS87TrTUKnJ65yATNbzZ",
+  "device": {
+    "x": 288,
+    "y": 110,
+    "width": 129,
+    "height": 181
+  },
+  "terminals": 94,
+  "result": "PASS"
+}

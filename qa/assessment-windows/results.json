@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "PASS 320×740: ventanas independientes, repaso visual, arrastre, acciones visibles, borradores, respuestas, entrega y revisión",
+    "PASS 390×844: ventanas independientes, repaso visual, arrastre, acciones visibles, borradores, respuestas, entrega y revisión",
+    "PASS 844×390: ventanas independientes, repaso visual, arrastre, acciones visibles, borradores, respuestas, entrega y revisión",
+    "PASS 1440×900: ventanas independientes, repaso visual, arrastre, acciones visibles, borradores, respuestas, entrega y revisión"
+  ],
+  "errors": []
+}

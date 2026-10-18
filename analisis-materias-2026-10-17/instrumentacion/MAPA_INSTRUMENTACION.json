@@ -1,0 +1,98 @@
+[
+  {
+    "id": "I01",
+    "title": "Presentación y programa",
+    "placement": "General",
+    "role": "Administrativo y mapa curricular",
+    "path": "fuentes/Presentación de la Asignatura (1).pdf",
+    "page_count": 13,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "No convertir en clase evaluada; 72 horas y porcentajes como procedencia docente.",
+    "sha256": "0355238d25b7e344932d39ae3d33ed5079f0fd4931be9feae9356a0e6a9f1a58"
+  },
+  {
+    "id": "I02",
+    "title": "Automatización y clasificación",
+    "placement": "U1",
+    "role": "Clase",
+    "path": "fuentes/Conf. 1 (1).pdf",
+    "page_count": 38,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "Primera entrega: lazo, funciones, variables y tarea original. Portada 2023.",
+    "sha256": "a68df2d507d18de369f75d312dd7c88ed4a6c86e1edb771db125a327d98a5fb9"
+  },
+  {
+    "id": "I03",
+    "title": "Esquema interno y metrología",
+    "placement": "U1",
+    "role": "Clase con ejercicios",
+    "path": "fuentes/Conf. 2 (2).pdf",
+    "page_count": 30,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "Revisar valor de referencia/media y mantener ambos ejercicios con sus diez datos.",
+    "sha256": "725723fa82efd628e478a41aa6e599fcb2367420187eec3ff7460869a941f635"
+  },
+  {
+    "id": "I04",
+    "title": "Medidas de caudal",
+    "placement": "U1 / consulta de variables",
+    "role": "Conferencia de consulta",
+    "path": "fuentes/Conf. 3 Medidas de caudal.pdf",
+    "page_count": 29,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "Conservar tecnologías; revisar régimen de flujo, condiciones y etiqueta F.",
+    "sha256": "3a8e95e2db99a60b9a5d3fcdc9bdecfb55a3881be3ec78ad136bfa24189e71da"
+  },
+  {
+    "id": "I05",
+    "title": "Medidas de presión",
+    "placement": "U1 / consulta de variables",
+    "role": "Conferencia de consulta",
+    "path": "fuentes/Conf. 4 Medidas de Presión.pdf",
+    "page_count": 23,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "Referencias de cero y unidades; modelo de presión todavía pendiente.",
+    "sha256": "4bccb3711ac28b722e5ec7e24a1a0d5858029472c0f6b048b54ac96056726d1b"
+  },
+  {
+    "id": "I06",
+    "title": "Medidas de nivel",
+    "placement": "U1 / consulta de variables",
+    "role": "Conferencia de consulta",
+    "path": "fuentes/Conf. 5 Medidas de nivel.pdf",
+    "page_count": 25,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "Tanque reutilizable como escena; sensores y física aún por implementar.",
+    "sha256": "7eb6b334877a4d370e58ca79501533523a74cfccb16727cd854a486598e0bd22"
+  },
+  {
+    "id": "I07",
+    "title": "Medidas de temperatura",
+    "placement": "U1 / consulta de variables",
+    "role": "Conferencia de consulta",
+    "path": "fuentes/Conf. 6 Medidas de temperatura.pdf",
+    "page_count": 36,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "Revisar conversión Kelvin; distinguir RTD, NTC/PTC y termopar.",
+    "sha256": "cdfdd35e152356851260a1672abad6a321782f4a4e3215481f78da24427c8b20"
+  },
+  {
+    "id": "I08",
+    "title": "Sensores discretos de proximidad",
+    "placement": "U2; correspondencia por tema y captura previa",
+    "role": "Clase",
+    "path": "fuentes/Conf. 2 (3).pdf",
+    "page_count": 12,
+    "status": "source_received_analyzed",
+    "interactive_ready": false,
+    "adaptation_notes": "Separar PNP/NPN de NA/NC. No es duplicado de la Conferencia 2 de U1.",
+    "sha256": "2173bff4f606599f02c3a0fd472d504ec84bde357c491a51caec6a13ad5271d9"
+  }
+]

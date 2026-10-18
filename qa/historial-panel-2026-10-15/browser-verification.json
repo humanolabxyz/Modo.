@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "Primer cable registrado automáticamente sin iniciar grabación manual.",
+    "Color, recorrido y retiro identificados en historial automático y grabación; comparación antes/después y lectura de bornes sin modificar el trabajo.",
+    "Exportar práctica incluye circuito e historial automático; ambos sobreviven a la recarga.",
+    "JSON abierto desde Inicio recupera circuito y seis pasos anteriores, incluida una conexión que ya fue retirada.",
+    "Archivo incoherente rechazado sin cambiar el panel; JSON antiguo abre el montaje y explica que carece de historial."
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 844,
+      "height": 390
+    }
+  ],
+  "result": "PASS"
+}

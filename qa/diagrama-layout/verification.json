@@ -1,0 +1,39 @@
+{
+  "checks": [
+    "Confirmed KM1/KM2 identities, 11→71 / 12→72 and distinct thermal 95/96 associations",
+    "Expanded tools and all mappings: one content scrollbar, stable accessible header, no overlap or horizontal overflow in desktop/tablet/mobile/landscape",
+    "Local Source Sans 3 actually loads; primary diagram button text is at least 13px",
+    "Professor PDF preserved byte-for-byte; four source figures, separate exam connector reference, seven control networks, and locating 95 creates no 95–96 bridge"
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 844,
+      "height": 390
+    }
+  ]
+}

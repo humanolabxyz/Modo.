@@ -1,0 +1,350 @@
+{
+  "format": "panellab-laboratory",
+  "version": 1,
+  "id": "project-335b487f-55ac-4397-93a8-d81cd0c5c380",
+  "name": "Llenado automático",
+  "schematic": {
+    "devices": [
+      {
+        "id": "g1",
+        "kind": "supply",
+        "tag": "G1",
+        "x": 85,
+        "y": 115,
+        "signal": ""
+      },
+      {
+        "id": "stop",
+        "kind": "nc",
+        "tag": "S0",
+        "x": 260,
+        "y": 115,
+        "signal": "I0.1"
+      },
+      {
+        "id": "start",
+        "kind": "no",
+        "tag": "S1",
+        "x": 450,
+        "y": 115,
+        "signal": "I0.0"
+      },
+      {
+        "id": "aux",
+        "kind": "contact",
+        "tag": "K1",
+        "x": 450,
+        "y": 285,
+        "signal": ""
+      },
+      {
+        "id": "k1",
+        "kind": "coil",
+        "tag": "K1",
+        "x": 660,
+        "y": 115,
+        "signal": ""
+      },
+      {
+        "id": "h1",
+        "kind": "lamp",
+        "tag": "H1",
+        "x": 660,
+        "y": 285,
+        "signal": ""
+      }
+    ],
+    "wires": [
+      {
+        "id": "w1",
+        "from": {
+          "device": "g1",
+          "pin": 0
+        },
+        "to": {
+          "device": "stop",
+          "pin": 0
+        }
+      },
+      {
+        "id": "w2",
+        "from": {
+          "device": "stop",
+          "pin": 1
+        },
+        "to": {
+          "device": "start",
+          "pin": 0
+        }
+      },
+      {
+        "id": "w3",
+        "from": {
+          "device": "start",
+          "pin": 1
+        },
+        "to": {
+          "device": "k1",
+          "pin": 0
+        }
+      },
+      {
+        "id": "w4",
+        "from": {
+          "device": "k1",
+          "pin": 1
+        },
+        "to": {
+          "device": "g1",
+          "pin": 1
+        }
+      },
+      {
+        "id": "w5",
+        "from": {
+          "device": "stop",
+          "pin": 1
+        },
+        "to": {
+          "device": "aux",
+          "pin": 0
+        }
+      },
+      {
+        "id": "w6",
+        "from": {
+          "device": "aux",
+          "pin": 1
+        },
+        "to": {
+          "device": "k1",
+          "pin": 0
+        }
+      },
+      {
+        "id": "w7",
+        "from": {
+          "device": "h1",
+          "pin": 0
+        },
+        "to": {
+          "device": "k1",
+          "pin": 0
+        }
+      },
+      {
+        "id": "w8",
+        "from": {
+          "device": "h1",
+          "pin": 1
+        },
+        "to": {
+          "device": "g1",
+          "pin": 1
+        }
+      }
+    ]
+  },
+  "plc": {
+    "language": "ladder",
+    "tags": [
+      {
+        "address": "I0.0",
+        "name": "Marcha",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "I0.1",
+        "name": "Paro pulsado",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "I0.2",
+        "name": "Nivel bajo",
+        "type": "bool",
+        "initial": true
+      },
+      {
+        "address": "I0.3",
+        "name": "Nivel alto",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "Q0.0",
+        "name": "Bomba / marcha",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "M0.0",
+        "name": "Memoria auxiliar",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "T1",
+        "name": "Temporizador",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "C1",
+        "name": "Contador",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "AI0",
+        "name": "Nivel del tanque (%)",
+        "type": "number",
+        "initial": 20
+      }
+    ],
+    "rungs": [
+      {
+        "id": "low",
+        "comment": "Nivel bajo: memorizar marcha de la bomba",
+        "branches": [
+          [
+            {
+              "address": "I0.2",
+              "negated": false
+            }
+          ]
+        ],
+        "output": "Q0.0",
+        "mode": "set",
+        "preset": 1
+      },
+      {
+        "id": "high",
+        "comment": "Nivel alto o paro: detener bomba",
+        "branches": [
+          [
+            {
+              "address": "I0.3",
+              "negated": false
+            }
+          ],
+          [
+            {
+              "address": "I0.1",
+              "negated": false
+            }
+          ]
+        ],
+        "output": "Q0.0",
+        "mode": "reset",
+        "preset": 1
+      }
+    ],
+    "source": "IF I0.1 THEN\n  Q0.0 := FALSE;\nELSE\n  Q0.0 := I0.0 OR Q0.0;\nEND_IF;"
+  },
+  "hmi": {
+    "widgets": [
+      {
+        "id": "hm1",
+        "kind": "toggle",
+        "label": "Marcha",
+        "address": "I0.0",
+        "x": 45,
+        "y": 65,
+        "max": 100
+      },
+      {
+        "id": "hm2",
+        "kind": "toggle",
+        "label": "Paro",
+        "address": "I0.1",
+        "x": 250,
+        "y": 65,
+        "max": 100
+      },
+      {
+        "id": "hm3",
+        "kind": "lamp",
+        "label": "Bomba en marcha",
+        "address": "Q0.0",
+        "x": 455,
+        "y": 65,
+        "max": 100
+      },
+      {
+        "id": "hm4",
+        "kind": "bar",
+        "label": "Nivel del tanque",
+        "address": "AI0",
+        "x": 45,
+        "y": 260,
+        "max": 100
+      },
+      {
+        "id": "hm5",
+        "kind": "number",
+        "label": "Nivel (%)",
+        "address": "AI0",
+        "x": 455,
+        "y": 260,
+        "max": 100
+      }
+    ]
+  },
+  "process": {
+    "capacity": 100,
+    "initialLevel": 20,
+    "inflow": 6,
+    "outflow": 1,
+    "low": 20,
+    "high": 80,
+    "pumpSignal": "Q0.0",
+    "lowSignal": "I0.2",
+    "highSignal": "I0.3",
+    "levelSignal": "AI0"
+  },
+  "breadboard": {
+    "voltage": 5,
+    "positive": "top+:1",
+    "negative": "top-:1",
+    "components": [
+      {
+        "id": "pr1",
+        "kind": "wire",
+        "from": "top+:1",
+        "to": "a:5",
+        "value": 0,
+        "closed": true,
+        "color": "#0f766e"
+      },
+      {
+        "id": "pr2",
+        "kind": "resistor",
+        "from": "a:5",
+        "to": "a:10",
+        "value": 1000,
+        "closed": true,
+        "color": "#0f766e"
+      },
+      {
+        "id": "pr3",
+        "kind": "led",
+        "from": "b:10",
+        "to": "f:10",
+        "value": 1.9,
+        "closed": true,
+        "color": "#d94848"
+      },
+      {
+        "id": "pr4",
+        "kind": "wire",
+        "from": "g:10",
+        "to": "top-:5",
+        "value": 0,
+        "closed": true,
+        "color": "#334155"
+      }
+    ]
+  }
+}

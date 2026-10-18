@@ -1,0 +1,12 @@
+/** KM1 / KM2 module identity explicitly confirmed by the user on 2026-10-14. */
+export const CONFIRMED_MODULE_ALIASES:Record<string,string>={CONTACTOR_TERMICO:'KM1',CONTACTOR_TRIFASICO:'KM2'};
+/** Labels plus the user's explicit KM1:11/12 → 71/72 correspondence. Power pole translation remains pending. */
+export const DEFAULT_CADE_BINDINGS:Record<string,string>={
+ '-F:95':'CONTACTOR_TERMICO:95','-F:96':'CONTACTOR_TERMICO:96','-F:97':'CONTACTOR_TERMICO:97','-F:98':'CONTACTOR_TERMICO:98',
+ '-M:U1':'BORNERA_MOTOR:U1','-M:V1':'BORNERA_MOTOR:V1','-M:W1':'BORNERA_MOTOR:W1',
+ '-M:W2':'BORNERA_MOTOR:W2','-M:U2':'BORNERA_MOTOR:U2','-M:V2':'BORNERA_MOTOR:V2',
+ '-KM1:A1':'CONTACTOR_TERMICO:A1','-KM1:A2':'CONTACTOR_TERMICO:A2',
+ '-KM1:13':'CONTACTOR_TERMICO:13','-KM1:14':'CONTACTOR_TERMICO:14',
+ '-KM1:11':'CONTACTOR_TERMICO:71','-KM1:12':'CONTACTOR_TERMICO:72',
+ '-SB2:13':'BOTONERAS:S3:3','-SB2:14':'BOTONERAS:S3:4',
+};

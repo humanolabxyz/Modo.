@@ -1,0 +1,127 @@
+/* Banco de temperatura sobre el pizarrón del laboratorio (.lab-canvas-mode / .lab-canvas-workspace). Solo reglas acotadas a .tool-temperature. */
+.tool-temperature .lab-pan{--pan-top:84px;--pan-right:330px;--pan-bottom:96px;--pan-left:14px}
+.tool-temperature.has-guide .lab-pan{--pan-left:336px}
+.tool-temperature .temp-bench{display:block;font-family:Inter,"Source Sans 3",system-ui,sans-serif}
+.temp-bench .temp-floor{stroke:#c5d0d6;stroke-width:2;stroke-dasharray:3 7;stroke-linecap:round;fill:none}
+.temp-bench .temp-name{font:700 12px Inter,system-ui,sans-serif;letter-spacing:1.4px;fill:#6b7c86}
+.temp-bench .temp-tag{font:700 13px Inter,system-ui,sans-serif;fill:#394b55}
+
+/* Equipos interactivos */
+.temp-equipment{cursor:pointer;outline:none}
+.temp-equipment:hover,.temp-equipment.selected,.temp-equipment:focus-visible{filter:drop-shadow(0 0 0 #1599dc) drop-shadow(0 0 6px #1599dcaa)}
+.temp-equipment.selected :is(.bath-body,.tx-body,.head,.psu-body){stroke:#1599dc;stroke-width:3}
+[data-tool=pan] .temp-equipment,[data-tool=pan] .temp-terminal{pointer-events:none}
+[data-tool=pan] .lab-pan{cursor:grab}
+
+/* Horno: calibrador de bloque seco */
+.bath-foot{fill:#1d2327}.bath-body{fill:url(#temp-dark);stroke:#171c20;stroke-width:2}.bath-top{fill:#59646c;stroke:#2c343a;stroke-width:1.5}
+.bath-insert{fill:url(#temp-alu);stroke:#7d8a92;stroke-width:1.5}.bath-hole-rim{fill:#818e96}.bath-hole{fill:#161b1e}
+.bath-vent{fill:#161b1e}.bath-panel{fill:#171d21;stroke:#323b41}.bath-screen{fill:#080c0e;stroke:#2b343a}
+.bath-caption{font:700 9.5px Inter,system-ui,sans-serif;letter-spacing:1.4px;fill:#7c8c95}
+.bath-value{font:600 34px ui-monospace,Consolas,monospace;fill:#ff6a57}.bath-set{font:600 12px ui-monospace,Consolas,monospace;fill:#5cf2a0}
+.bath-btn circle{fill:#39434a;stroke:#59656d}.bath-btn text{font:700 10px Inter,system-ui,sans-serif;fill:#cfd8dd}
+.bath-led{fill:#4a3a2a}.bath-led.on{fill:#ff9a3d;filter:drop-shadow(0 0 5px #ff9a3d)}.bath-led-text{font:600 9.5px Inter,system-ui,sans-serif;fill:#9fb0ba}
+.bath-switch{fill:#ee8a2b;stroke:#b86312}.bath-switch-mark{stroke:#fff;stroke-width:3;stroke-linecap:round;fill:none}.bath-switch-mark.ring{stroke-width:2.5}
+
+/* Sondas de varilla con cable e hilos */
+.temp-probe .sheath{fill:url(#temp-metal);stroke:#8a979f}.temp-probe .sheath-shine{stroke:#fff;stroke-width:1.5;opacity:.7}
+.temp-probe .sleeve{fill:#8e9aa2;stroke:#69767e}.temp-probe .nut-line{stroke:#69767e;stroke-width:1}
+.temp-probe .relief{stroke-width:1.5}.temp-probe .relief.pt{fill:#c4452f;stroke:#8f2c1c}.temp-probe .relief.tc{fill:#7f8b93;stroke:#5a666e}
+.temp-probe .cable{fill:none;stroke-width:6;stroke-linecap:round}.temp-probe .cable.pt{stroke:#c4452f}.temp-probe .cable.tc{stroke:#8a979f;stroke-dasharray:2 1.5}
+.temp-probe .lead-wire{fill:none;stroke-width:4;stroke-linecap:round}.temp-probe .lead-wire[stroke="#f3f3f3"]{filter:drop-shadow(0 0 1px #5d6a73)}
+.temp-probe{transition:opacity .2s}
+.temp-pill rect{fill:#fff3d6;stroke:#d9b45a}.temp-pill.ok rect{fill:#dcf3e6;stroke:#59b985}.temp-pill text{font:700 11px Inter,system-ui,sans-serif;fill:#5b4a1d}.temp-pill.ok text{fill:#1d5a3a}
+
+/* Bornes y puntas */
+.temp-terminal{cursor:pointer;outline:none}.temp-terminal .hit{fill:transparent}
+.temp-terminal .screw{fill:#d9dfe3;stroke:#76848d;stroke-width:2}.temp-terminal .slot{stroke:#76848d;stroke-width:2;stroke-linecap:round}
+.temp-terminal text{font:700 10px Inter,system-ui,sans-serif;fill:#394b55;pointer-events:none}
+.temp-terminal.on-blue text{fill:#e8f2fb}
+.temp-terminal.tip .screw{fill:#e3e8ec;stroke:#6b7780;stroke-width:2}
+.temp-terminal:hover .screw,.temp-terminal:focus-visible .screw{stroke:#1599dc;stroke-width:3}
+.temp-terminal.red .screw{fill:#e5726f;stroke:#b43b38}.temp-terminal.black .screw{fill:#4b5963;stroke:#242c31}
+.temp-leads .lead{fill:none;stroke-width:5;stroke-linecap:round}.temp-leads .lead.red{stroke:#d94848}.temp-leads .lead.black{stroke:#2b343a}
+.temp-wires path{fill:none;stroke:#0f766e;stroke-width:5;stroke-linecap:round}.temp-wires path.red{stroke:#d94848}.temp-wires path.black{stroke:#2b343a}
+
+/* Multímetro de mano */
+.meter-holster{fill:url(#temp-yellow);stroke:#b98310;stroke-width:2}.meter-body{fill:url(#temp-dark);stroke:#171c20}
+.meter-screen{fill:#cfe2d4;stroke:#7e9a8a;stroke-width:2}
+.meter-text{font:600 30px ui-monospace,Consolas,monospace;fill:#1c2e25}.meter-text.open{fill:#4d6a7a}.meter-sub{font:700 11px Inter,system-ui,sans-serif;fill:#4d6a5b;letter-spacing:1px}
+.meter-key{fill:#39434a;stroke:#59656d}
+.meter-dial{fill:#2a3238;stroke:#12171a;stroke-width:2}.meter-dial-label{font:700 11.5px Inter,system-ui,sans-serif;fill:#dde4e8}.meter-dial-label.on{fill:#ffd45a}.meter-dial-label.dim{fill:#7f8d96;font-weight:600}
+.meter-knob{fill:#161b1e;stroke:#6b7780;stroke-width:3}.meter-pointer{stroke:#f4f6f7;stroke-width:5;stroke-linecap:round}.meter-hub{fill:#39434a}
+.meter-jack-label{font:700 11px Inter,system-ui,sans-serif;fill:#dde4e8;letter-spacing:.6px}
+.jack{stroke-width:4}.jack.black{fill:#161b1e;stroke:#6b7780}.jack.red{fill:#161b1e;stroke:#d94848}.jack.ampere{fill:#161b1e;stroke:#ee8a2b}.jack-hole{fill:#06090a}
+
+/* Transmisor azul de riel DIN */
+.din-rail{fill:#c8d0d5;stroke:#9aa7b0}
+.tx-body{fill:url(#temp-blue);stroke:#1a5fa8;stroke-width:2}.tx-strip{fill:#1d5ea5}
+.tx-label{fill:#f7fafc;stroke:#bfd0df}.tx-title{font:800 12px Inter,system-ui,sans-serif;letter-spacing:.8px;fill:#16384f}.tx-sub{font:700 9px Inter,system-ui,sans-serif;letter-spacing:.6px;fill:#3d5a70}
+.tx-key{font:700 8px Inter,system-ui,sans-serif;letter-spacing:.8px;fill:#6b8294}.tx-val{font:700 12px ui-monospace,Consolas,monospace;fill:#173b52}
+.tx-led{fill:#a8b6c0;stroke:#6b8294}.tx-led.on{fill:#3ecf8e;stroke:#1d8f5f;filter:drop-shadow(0 0 4px #3ecf8e)}
+.tx-in circle{fill:#d9dfe3;stroke:#76848d;stroke-width:2}.tx-in path{stroke:#76848d;stroke-width:2;stroke-linecap:round}.tx-in.wired circle{fill:#0f766e;stroke:#0a4f49}.tx-in.wired path{stroke:#fff}
+.tx-in-label{font:700 8px Inter,system-ui,sans-serif;fill:#e8f2fb;letter-spacing:.4px}
+
+/* Fuente de laboratorio */
+.psu-body{fill:url(#temp-dark);stroke:#171c20;stroke-width:2}.psu-screen{fill:#080c0e;stroke:#2b343a}
+.psu-value{font:600 22px ui-monospace,Consolas,monospace;fill:#4a5860}.psu-value.on{fill:#5cf2a0}.psu-sub{font:700 10px Inter,system-ui,sans-serif;letter-spacing:1.4px;fill:#aab6be}
+.psu-knob{fill:#161b1e;stroke:#6b7780;stroke-width:3}.psu-knob-mark{stroke:#f4f6f7;stroke-width:4;stroke-linecap:round}
+.psu-led{fill:#4a2a2a}.psu-led.on{fill:#ff4d4d;filter:drop-shadow(0 0 4px #ff4d4d)}.psu-jack-label{font:700 14px Inter,system-ui,sans-serif;fill:#dde4e8}
+
+/* Dock */
+.temp-dot{display:block;width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 2px #ffffffb0}.temp-dot.red{background:#e5484d}.temp-dot.black{background:#15191c;box-shadow:0 0 0 2px #ffffff}
+
+/* Tarjetas flotantes */
+.temp-right{position:absolute;z-index:30;right:14px;top:78px;bottom:92px;width:304px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:2px;scrollbar-width:thin}
+.temp-right>.lab-float,.temp-left>.lab-float{position:static;flex-shrink:0}
+.temp-left{position:absolute;z-index:30;left:14px;top:136px;bottom:92px;width:310px;overflow:auto;scrollbar-width:thin}
+.temp-reading{min-width:70px;text-align:right}
+.temp-modes{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.tool-temperature .temp-modes button{padding:8px 4px;font:700 13px Inter,system-ui,sans-serif;border-radius:9px}
+.tool-temperature :is(.temp-modes,.temp-tabs,.lab-chips) button[aria-pressed=true],.tool-temperature .temp-tabs button[aria-selected=true]{background:#e6f3fb;border-color:#1599dc;color:#0f5f8a}
+.temp-select{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:#566b78}.temp-select :is(select,input){font:500 14px Inter,system-ui,sans-serif;padding:7px 8px;border:1px solid #cfd8dd;border-radius:8px;background:#fff;color:#26343d}
+.temp-note{margin:0;font-size:12px;line-height:1.5;color:#566b78;min-height:36px}
+.temp-why{font-size:12px;line-height:1.45;color:#8a6a2f}.temp-why.ok{color:#2f6f4d}
+.temp-tabs{display:flex;gap:4px}.tool-temperature .temp-tabs button{flex:1;padding:6px 8px;font-size:12px;font-weight:600;border-radius:8px}
+.temp-real{display:flex;flex-direction:column;gap:8px}
+.temp-table-wrap{max-height:210px;overflow:auto;border:1px solid #e3e9ec;border-radius:10px}
+.temp-table{width:100%;border-collapse:collapse;font:500 12px ui-monospace,Consolas,monospace}.temp-table th{position:sticky;top:0;background:#f3f6f8;text-align:left;font:700 10.5px Inter,system-ui,sans-serif;letter-spacing:.5px;color:#566b78;padding:6px}.temp-table td{padding:5px 6px;border-top:1px solid #edf1f3;white-space:nowrap}
+.temp-empty{margin:0;font-size:12px;color:#6d808b}
+.temp-log-actions{display:flex;gap:6px;flex-wrap:wrap}.tool-temperature .temp-log-actions button{display:flex;align-items:center;gap:5px;font-size:12px;padding:6px 9px}
+.temp-chart{margin:0}.temp-chart svg{width:100%;height:auto;display:block;background:#fbfcfd;border:1px solid #e3e9ec;border-radius:10px}
+.temp-chart .grid{stroke:#e3e9ec}.temp-chart .tick{font:500 10px ui-monospace,Consolas,monospace;fill:#6d808b}.temp-chart .axis{font:600 10px Inter,system-ui,sans-serif;fill:#566b78}
+.temp-chart .reference{fill:none;stroke:#9aa7b0;stroke-width:2;stroke-dasharray:5 4}.temp-chart .p-sim{fill:#1599dc;stroke:#fff;stroke-width:1.5}.temp-chart .p-real{fill:#ee8a2b;stroke:#fff;stroke-width:1.5}
+.temp-chart figcaption{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;font-size:11px;color:#566b78}.temp-chart figcaption span{display:flex;align-items:center;gap:5px}
+.temp-chart .k{display:inline-block;width:12px;height:12px;border-radius:50%}.temp-chart .k.ref{background:none;border-top:2px dashed #9aa7b0;border-radius:0;height:0;width:14px}.temp-chart .k.sim{background:#1599dc}.temp-chart .k.real{background:#ee8a2b;border-radius:2px;transform:rotate(45deg);width:10px;height:10px}
+
+/* Guía */
+.temp-guide h2{margin:2px 0 0;font-size:18px;line-height:1.25}.temp-guide p{margin:0;font-size:13.5px;line-height:1.55;color:#33454f}
+.temp-eyebrow{font-size:11px!important;font-weight:700;letter-spacing:1.2px;color:#6d808b!important}
+.temp-back,.temp-source{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#237768;text-decoration:none}.temp-back:hover,.temp-source:hover{text-decoration:underline}
+.temp-feedback{padding:9px 11px;border-radius:10px;background:#fbf3e3;color:#6e5320!important;font-size:13px!important}.temp-feedback.ok{background:#e3f4ea;color:#1d5a3a!important}
+.temp-steps{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#566b78}.tool-temperature .temp-steps button{width:34px;height:34px;padding:0;display:grid;place-items:center;border-radius:9px}
+.temp-finish{display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;text-align:center}
+.temp-notes{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#566b78}.temp-notes textarea{min-height:76px;padding:8px 10px;border:1px solid #cfd8dd;border-radius:9px;font:400 13px Inter,system-ui,sans-serif;resize:vertical}
+
+/* Edición contextual */
+.temp-pop-anchor{width:292px}
+.temp-hint .temp-save{color:#a4352b}
+
+/* Móvil: el banco conserva el pizarrón y las tarjetas se apilan sobre él. */
+@media(max-width:800px){
+  .tool-temperature .lab-pan{--pan-top:64px;--pan-right:8px;--pan-bottom:150px;--pan-left:8px}
+  .tool-temperature.has-guide .lab-pan{--pan-left:8px}
+  .temp-left{left:8px;right:8px;top:60px;bottom:auto;width:auto;max-height:46dvh}
+  .temp-right{left:8px;right:8px;top:auto;bottom:64px;width:auto;max-height:44dvh;flex-direction:column}
+  .tool-temperature .temp-hint{display:none}
+}
+
+/* Fichas */
+.temp-sheets{display:flex;flex-direction:column;gap:8px;font-size:13.5px;line-height:1.55;color:#33454f}
+.temp-sheet-note{margin:0;padding:9px 11px;border-radius:10px;background:#fbf3e3;color:#6e5320;font-size:12.5px}
+.temp-sheet{border:1px solid #e3e9ec;border-radius:11px;background:#fff}.temp-sheet>summary{cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:10px 12px}.temp-sheet>summary span{font-size:12px;color:#6d808b}
+.temp-sheet-body{padding:2px 12px 12px;display:flex;flex-direction:column;gap:8px}.temp-sheet-body p{margin:0}
+.temp-sheet-body dl{margin:0;display:grid;gap:6px}.temp-sheet-body dl>div{display:grid;grid-template-columns:118px 1fr;gap:8px}.temp-sheet-body dt{font-weight:700;font-size:12px;color:#566b78}.temp-sheet-body dd{margin:0}
+.temp-sheet-body h4{margin:4px 0 0;font-size:11px;letter-spacing:1px;color:#6d808b;text-transform:uppercase}.temp-sheet-body ul{margin:0;padding-left:18px}
+.temp-sheet-sources{list-style:none;padding:0!important;display:flex;flex-direction:column;gap:3px}.temp-sheet-sources a{display:inline-flex;align-items:center;gap:5px;color:#237768;text-decoration:none;font-size:12.5px}.temp-sheet-sources a:hover{text-decoration:underline}
+.temp-pop footer button{display:flex;align-items:center;gap:6px}
+@media(max-width:600px){.temp-sheet-body dl>div{grid-template-columns:1fr;gap:1px}}

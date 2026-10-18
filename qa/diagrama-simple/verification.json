@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Fresh panel opens on the authoritative CADe circuit, with no disabled route buttons, automatic practice or expanded options. Drawing precedes tools."
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "PASS 320×740: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS 390×844: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS 768×1024: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS 820×1180: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS 1024×768: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS 1180×820: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS 1024×1366: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS 1366×1024: cinco herramientas, pizarra completa, controles dentro de pantalla y sin solapamientos",
+    "PASS interacción: paneo y pellizco sin mover piezas, teclado, ventanas táctiles, edición, Deshacer, giro, simulación, exportación, recarga e importación",
+    "PASS regresión: geometría del escritorio conservada y simulador accesible"
+  ],
+  "errors": []
+}

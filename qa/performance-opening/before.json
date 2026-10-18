@@ -1,0 +1,626 @@
+{
+  "base": "https://panellab-inacap.vercel.app/",
+  "label": "before",
+  "profile": {
+    "downloadKbps": 1600,
+    "latencyMs": 150,
+    "cpuSlowdown": 4
+  },
+  "samples": [
+    {
+      "mode": "home",
+      "run": 1,
+      "readyMs": 7334.60000000149,
+      "ttfbMs": 2531.2000000029802,
+      "fcpMs": 3732,
+      "lcpMs": 6644,
+      "cls": 0.00024575382245428407,
+      "longTaskBlockingMs": 87,
+      "transferBytes": 1138355,
+      "requests": 22,
+      "resources": [
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/InterVariable.woff2",
+          "bytes": 352540,
+          "duration": 5883.70000000298
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Regular.woff2",
+          "bytes": 109932,
+          "duration": 4356.39999999851
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Semibold.woff2",
+          "bytes": 109200,
+          "duration": 4340
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.CeDF7DuX.css",
+          "bytes": 3471,
+          "duration": 413.6000000014901
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.DPcpRIqd.css",
+          "bytes": 14138,
+          "duration": 759.3000000007451
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.JPzGJMn5.css",
+          "bytes": 20588,
+          "duration": 1054.6000000014901
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-color.svg",
+          "bytes": 1029,
+          "duration": 179.10000000149012
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/bornes.webp",
+          "bytes": 96952,
+          "duration": 3950.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/protecciones.webp",
+          "bytes": 130862,
+          "duration": 4770
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/laboratorio.webp",
+          "bytes": 130370,
+          "duration": 4753.60000000149
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/App.BmizZgpg.js",
+          "bytes": 76793,
+          "duration": 3187.7999999970198
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/client.zKAmlY2w.js",
+          "bytes": 68355,
+          "duration": 2890.300000000745
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.C-3Iq64T.js",
+          "bytes": 4891,
+          "duration": 339.3999999985099
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/transition.CENt1zj9.js",
+          "bytes": 1983,
+          "duration": 261.6000000014901
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/mouse-pointer-2.feQq-Gly.js",
+          "bytes": 723,
+          "duration": 197.39999999850988
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/useSvgNavigation.B0tY8Tha.js",
+          "bytes": 2928,
+          "duration": 277
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/cable.dChgaOlI.js",
+          "bytes": 902,
+          "duration": 196.89999999850988
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/undo-2.Cu2hjT4R.js",
+          "bytes": 1215,
+          "duration": 228.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/trash-2.DibEMAMV.js",
+          "bytes": 831,
+          "duration": 212
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/search.CniNZlvv.js",
+          "bytes": 856,
+          "duration": 243.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/minus.Bki-bso6.js",
+          "bytes": 738,
+          "duration": 227.10000000149012
+        }
+      ]
+    },
+    {
+      "mode": "home",
+      "run": 2,
+      "readyMs": 4946.199999999255,
+      "ttfbMs": 255.59999999776483,
+      "fcpMs": 1644,
+      "lcpMs": 4360,
+      "cls": 0.00024575382245428407,
+      "longTaskBlockingMs": 303,
+      "transferBytes": 1138355,
+      "requests": 22,
+      "resources": [
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/InterVariable.woff2",
+          "bytes": 352540,
+          "duration": 5867.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Regular.woff2",
+          "bytes": 109932,
+          "duration": 4314.39999999851
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Semibold.woff2",
+          "bytes": 109200,
+          "duration": 4424.300000000745
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.CeDF7DuX.css",
+          "bytes": 3471,
+          "duration": 328.80000000074506
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.DPcpRIqd.css",
+          "bytes": 14138,
+          "duration": 757.8000000007451
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.JPzGJMn5.css",
+          "bytes": 20588,
+          "duration": 945.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-color.svg",
+          "bytes": 1029,
+          "duration": 192.89999999850988
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/bornes.webp",
+          "bytes": 96952,
+          "duration": 3954.900000002235
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/protecciones.webp",
+          "bytes": 130862,
+          "duration": 4759
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/laboratorio.webp",
+          "bytes": 130370,
+          "duration": 4758.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/App.BmizZgpg.js",
+          "bytes": 76793,
+          "duration": 3208
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/client.zKAmlY2w.js",
+          "bytes": 68355,
+          "duration": 2906.39999999851
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.C-3Iq64T.js",
+          "bytes": 4891,
+          "duration": 342.80000000074506
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/transition.CENt1zj9.js",
+          "bytes": 1983,
+          "duration": 276.6000000014901
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/mouse-pointer-2.feQq-Gly.js",
+          "bytes": 723,
+          "duration": 183
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/useSvgNavigation.B0tY8Tha.js",
+          "bytes": 2928,
+          "duration": 261.30000000074506
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/cable.dChgaOlI.js",
+          "bytes": 902,
+          "duration": 197.30000000074506
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/undo-2.Cu2hjT4R.js",
+          "bytes": 1215,
+          "duration": 244.60000000149012
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/trash-2.DibEMAMV.js",
+          "bytes": 831,
+          "duration": 228.19999999925494
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/search.CniNZlvv.js",
+          "bytes": 856,
+          "duration": 243.69999999925494
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/minus.Bki-bso6.js",
+          "bytes": 738,
+          "duration": 227.10000000149012
+        }
+      ]
+    },
+    {
+      "mode": "simulator",
+      "run": 1,
+      "readyMs": 5590.400000002235,
+      "ttfbMs": 256.1000000014901,
+      "fcpMs": 1696,
+      "lcpMs": 2564,
+      "cls": 0,
+      "longTaskBlockingMs": 553,
+      "transferBytes": 1247295,
+      "requests": 23,
+      "resources": [
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/InterVariable.woff2",
+          "bytes": 352540,
+          "duration": 7386.300000000745
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Regular.woff2",
+          "bytes": 109932,
+          "duration": 4401.800000000745
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Semibold.woff2",
+          "bytes": 109200,
+          "duration": 4306.29999999702
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.CeDF7DuX.css",
+          "bytes": 3471,
+          "duration": 297.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.DPcpRIqd.css",
+          "bytes": 14138,
+          "duration": 723.7999999970198
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.JPzGJMn5.css",
+          "bytes": 20588,
+          "duration": 1024.7000000029802
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-color.svg",
+          "bytes": 1029,
+          "duration": 189.10000000149012
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/bornes.webp",
+          "bytes": 96952,
+          "duration": 3944.89999999851
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/protecciones.webp",
+          "bytes": 130862,
+          "duration": 4766.89999999851
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/laboratorio.webp",
+          "bytes": 130370,
+          "duration": 4746.300000000745
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/App.BmizZgpg.js",
+          "bytes": 76793,
+          "duration": 3200.699999999255
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/client.zKAmlY2w.js",
+          "bytes": 68355,
+          "duration": 2899.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.C-3Iq64T.js",
+          "bytes": 4891,
+          "duration": 342.69999999925494
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/transition.CENt1zj9.js",
+          "bytes": 1983,
+          "duration": 262
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/mouse-pointer-2.feQq-Gly.js",
+          "bytes": 723,
+          "duration": 183.30000000074506
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/useSvgNavigation.B0tY8Tha.js",
+          "bytes": 2928,
+          "duration": 261.30000000074506
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/cable.dChgaOlI.js",
+          "bytes": 902,
+          "duration": 214
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/undo-2.Cu2hjT4R.js",
+          "bytes": 1215,
+          "duration": 229.19999999925494
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/trash-2.DibEMAMV.js",
+          "bytes": 831,
+          "duration": 213
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/search.CniNZlvv.js",
+          "bytes": 856,
+          "duration": 228.80000000074506
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/minus.Bki-bso6.js",
+          "bytes": 738,
+          "duration": 243.89999999850988
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Bold.woff2",
+          "bytes": 108940,
+          "duration": 1801.199999999255
+        }
+      ]
+    },
+    {
+      "mode": "simulator",
+      "run": 2,
+      "readyMs": 5681.79999999702,
+      "ttfbMs": 258.5999999977648,
+      "fcpMs": 1732,
+      "lcpMs": 2612,
+      "cls": 0,
+      "longTaskBlockingMs": 572,
+      "transferBytes": 1247295,
+      "requests": 23,
+      "resources": [
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/InterVariable.woff2",
+          "bytes": 352540,
+          "duration": 7335.60000000149
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Regular.woff2",
+          "bytes": 109932,
+          "duration": 4347.5
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Semibold.woff2",
+          "bytes": 109200,
+          "duration": 4315.10000000149
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.CeDF7DuX.css",
+          "bytes": 3471,
+          "duration": 263
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/estudio.DPcpRIqd.css",
+          "bytes": 14138,
+          "duration": 815.7999999970198
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.JPzGJMn5.css",
+          "bytes": 20588,
+          "duration": 1038.3999999985099
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-color.svg",
+          "bytes": 1029,
+          "duration": 222.69999999925494
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/bornes.webp",
+          "bytes": 96952,
+          "duration": 3988.699999999255
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/protecciones.webp",
+          "bytes": 130862,
+          "duration": 4764
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/images/modo/laboratorio.webp",
+          "bytes": 130370,
+          "duration": 4747.79999999702
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/App.BmizZgpg.js",
+          "bytes": 76793,
+          "duration": 3211.099999997765
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/client.zKAmlY2w.js",
+          "bytes": 68355,
+          "duration": 2894.199999999255
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/index.C-3Iq64T.js",
+          "bytes": 4891,
+          "duration": 342.6000000014901
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/transition.CENt1zj9.js",
+          "bytes": 1983,
+          "duration": 247.10000000149012
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/mouse-pointer-2.feQq-Gly.js",
+          "bytes": 723,
+          "duration": 182.60000000149012
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/useSvgNavigation.B0tY8Tha.js",
+          "bytes": 2928,
+          "duration": 277.70000000298023
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/cable.dChgaOlI.js",
+          "bytes": 902,
+          "duration": 229.89999999850988
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/undo-2.Cu2hjT4R.js",
+          "bytes": 1215,
+          "duration": 213.69999999925494
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/trash-2.DibEMAMV.js",
+          "bytes": 831,
+          "duration": 197.09999999776483
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/search.CniNZlvv.js",
+          "bytes": 856,
+          "duration": 213
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/_astro/minus.Bki-bso6.js",
+          "bytes": 738,
+          "duration": 196.60000000149012
+        },
+        {
+          "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Bold.woff2",
+          "bytes": 108940,
+          "duration": 1799.800000000745
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "precache": {
+    "count": 122,
+    "bytes": 12517328,
+    "urls": [
+      "https://panellab-inacap.vercel.app/_astro/App.BmizZgpg.js",
+      "https://panellab-inacap.vercel.app/_astro/BreadboardView.CgL0u9eQ.js",
+      "https://panellab-inacap.vercel.app/_astro/CanvasControls.NG0_qsXw.js",
+      "https://panellab-inacap.vercel.app/_astro/DeviceIcons.DmUIRVQ0.js",
+      "https://panellab-inacap.vercel.app/_astro/HMIView.CszElmhT.js",
+      "https://panellab-inacap.vercel.app/_astro/LaboratoryApp.C2PwGSvj.js",
+      "https://panellab-inacap.vercel.app/_astro/LaboratoryApp.CVjexfw0.js",
+      "https://panellab-inacap.vercel.app/_astro/PLCView.Dkp_3uvS.js",
+      "https://panellab-inacap.vercel.app/_astro/PanStage.7TS_mqfU.js",
+      "https://panellab-inacap.vercel.app/_astro/ProcessView.CfVwwDSo.js",
+      "https://panellab-inacap.vercel.app/_astro/SchematicView.QeZGxCVz.js",
+      "https://panellab-inacap.vercel.app/_astro/StudyApp.BBtABuDO.js",
+      "https://panellab-inacap.vercel.app/_astro/SurfaceDock.ChtilTrH.js",
+      "https://panellab-inacap.vercel.app/_astro/cable.dChgaOlI.js",
+      "https://panellab-inacap.vercel.app/_astro/chevron-right.Bq6frVyX.js",
+      "https://panellab-inacap.vercel.app/_astro/client.zKAmlY2w.js",
+      "https://panellab-inacap.vercel.app/_astro/estudio.CeDF7DuX.css",
+      "https://panellab-inacap.vercel.app/_astro/estudio.DPcpRIqd.css",
+      "https://panellab-inacap.vercel.app/_astro/estudio.XUUmOEsP.css",
+      "https://panellab-inacap.vercel.app/_astro/grading.BuvqMqAq.js",
+      "https://panellab-inacap.vercel.app/_astro/index.C-3Iq64T.js",
+      "https://panellab-inacap.vercel.app/_astro/index.JPzGJMn5.css",
+      "https://panellab-inacap.vercel.app/_astro/laboratorio.DfqiJNYt.css",
+      "https://panellab-inacap.vercel.app/_astro/minus.Bki-bso6.js",
+      "https://panellab-inacap.vercel.app/_astro/mouse-pointer-2.feQq-Gly.js",
+      "https://panellab-inacap.vercel.app/_astro/preload-helper.ufK05Bzk.js",
+      "https://panellab-inacap.vercel.app/_astro/search.CniNZlvv.js",
+      "https://panellab-inacap.vercel.app/_astro/transition.CENt1zj9.js",
+      "https://panellab-inacap.vercel.app/_astro/trash-2.DibEMAMV.js",
+      "https://panellab-inacap.vercel.app/_astro/undo-2.Cu2hjT4R.js",
+      "https://panellab-inacap.vercel.app/_astro/useSvgNavigation.B0tY8Tha.js",
+      "https://panellab-inacap.vercel.app/brand/apple-touch-icon.png",
+      "https://panellab-inacap.vercel.app/brand/favicon.ico",
+      "https://panellab-inacap.vercel.app/brand/icono-app-128.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-16.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-180.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-192.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-256.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-32.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-48.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-512.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-64.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-96.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-claro-512.png",
+      "https://panellab-inacap.vercel.app/brand/icono-app-verde-512.png",
+      "https://panellab-inacap.vercel.app/brand/icono-maskable-192.png",
+      "https://panellab-inacap.vercel.app/brand/icono-maskable-512.png",
+      "https://panellab-inacap.vercel.app/brand/modo-app-claro.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-app-oscuro.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-app-verde.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-blanco-mono.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-blanco.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-color.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logo-horizontal-negro.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logo-vertical-blanco.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logo-vertical-color.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logotipo-blanco.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logotipo-color.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-logotipo-negro.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-maskable-oscuro.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-simbolo-blanco.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-simbolo-negro.svg",
+      "https://panellab-inacap.vercel.app/brand/modo-simbolo-verde.svg",
+      "https://panellab-inacap.vercel.app/diagrams/PERFECTO.cad",
+      "https://panellab-inacap.vercel.app/diagrams/clase-1.jpg",
+      "https://panellab-inacap.vercel.app/diagrams/clase-2.jpg",
+      "https://panellab-inacap.vercel.app/diagrams/clase-3.jpg",
+      "https://panellab-inacap.vercel.app/diagrams/clase-4-l293d-pines.webp",
+      "https://panellab-inacap.vercel.app/diagrams/clase-4-practica-1-transistores.webp",
+      "https://panellab-inacap.vercel.app/diagrams/clase-4-practica-2-l293d.webp",
+      "https://panellab-inacap.vercel.app/estudio/assets/fusibles-v2.webp",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-04.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-06.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-08.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-10.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-12.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-13.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-14.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/lamina-15.png",
+      "https://panellab-inacap.vercel.app/estudio/assets/motor-v2.webp",
+      "https://panellab-inacap.vercel.app/estudio/assets/spd-diferencial-v2.webp",
+      "https://panellab-inacap.vercel.app/estudio/assets/termomagnetico-v2.webp",
+      "https://panellab-inacap.vercel.app/estudio/fotos/01_tablero_electrico.jpg",
+      "https://panellab-inacap.vercel.app/estudio/fotos/02_motor_electrico.jpg",
+      "https://panellab-inacap.vercel.app/estudio/fotos/03_arco_electrico.jpg",
+      "https://panellab-inacap.vercel.app/estudio/fotos/04_interruptor_termomagnetico.jpg",
+      "https://panellab-inacap.vercel.app/estudio/fotos/05_fusibles.jpg",
+      "https://panellab-inacap.vercel.app/estudio/fotos/06_spd_y_diferencial.jpg",
+      "https://panellab-inacap.vercel.app/estudio/fotos/07_motor_trifasico.jpg",
+      "https://panellab-inacap.vercel.app/estudio/",
+      "https://panellab-inacap.vercel.app/estudio/profesor.pdf",
+      "https://panellab-inacap.vercel.app/fonts/INTER-LICENSE.txt",
+      "https://panellab-inacap.vercel.app/fonts/InterVariable.woff2",
+      "https://panellab-inacap.vercel.app/fonts/SOURCE-SANS-LICENSE.md",
+      "https://panellab-inacap.vercel.app/fonts/SourceSans3-Bold.woff2",
+      "https://panellab-inacap.vercel.app/fonts/SourceSans3-Regular.woff2",
+      "https://panellab-inacap.vercel.app/fonts/SourceSans3-Semibold.woff2",
+      "https://panellab-inacap.vercel.app/icons/apple-touch-icon.png",
+      "https://panellab-inacap.vercel.app/icons/icon-192.png",
+      "https://panellab-inacap.vercel.app/icons/icon-512.png",
+      "https://panellab-inacap.vercel.app/icons/icon-maskable-512.png",
+      "https://panellab-inacap.vercel.app/icons/icon.svg",
+      "https://panellab-inacap.vercel.app/images/modo/bornes.webp",
+      "https://panellab-inacap.vercel.app/images/modo/laboratorio.webp",
+      "https://panellab-inacap.vercel.app/images/modo/protecciones.webp",
+      "https://panellab-inacap.vercel.app/",
+      "https://panellab-inacap.vercel.app/laboratorio/",
+      "https://panellab-inacap.vercel.app/manifest.webmanifest",
+      "https://panellab-inacap.vercel.app/materiales/actividad-1-u2.pdf",
+      "https://panellab-inacap.vercel.app/materiales/bornes-estrella.png",
+      "https://panellab-inacap.vercel.app/materiales/bornes-triangulo.png",
+      "https://panellab-inacap.vercel.app/materiales/circuito-fuerza.png",
+      "https://panellab-inacap.vercel.app/materiales/circuito-mando.png",
+      "https://panellab-inacap.vercel.app/materiales/prueba-partida-directa.png",
+      "https://panellab-inacap.vercel.app/panel-model.json",
+      "https://panellab-inacap.vercel.app/references/botoneras.jpg",
+      "https://panellab-inacap.vercel.app/references/contactor-termico.jpg",
+      "https://panellab-inacap.vercel.app/references/contactor-trifasico.jpg",
+      "https://panellab-inacap.vercel.app/references/motor.jpg",
+      "https://panellab-inacap.vercel.app/references/suministro.jpg",
+      "https://panellab-inacap.vercel.app/references/temporizador-1.jpg",
+      "https://panellab-inacap.vercel.app/references/temporizador-2.jpg"
+    ]
+  }
+}

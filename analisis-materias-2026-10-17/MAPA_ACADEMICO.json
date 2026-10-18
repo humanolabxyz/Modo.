@@ -1,0 +1,362 @@
+[
+  {
+    "id": "F01",
+    "course": "Electrónica",
+    "placement": "U1; actividad de acondicionamiento, ítem exacto por confirmar",
+    "role": "Ejercicio",
+    "path": "electricidad/Activadad con calculo Ajuste cero.pdf",
+    "summary": "Seis páginas: amplificador de instrumentación, termopar T, salida 0–5 V, cálculo de ganancia y ajuste de cero para dos rangos. Incluye tablas a completar y esquema. No asumir que es el enlace Ejercicio 1 de la captura.",
+    "proposed_adaptation": "Modelo de sensor y controles separados de ganancia/offset; comprobar ambos extremos. Revisar el rango junto a F07.",
+    "sha256": "1fecba56f6af9c9e5798c2ddd716cf66330f6d5cef23df682bce19066232c5eb"
+  },
+  {
+    "id": "F02",
+    "course": "Electrónica",
+    "placement": "U1 / Clase 1",
+    "role": "Clase",
+    "path": "electricidad/Clase 1.pdf",
+    "summary": "Dieciséis páginas: concepto e historia de electrónica, importancia, señales, ruido, pico/medio/RMS, clasificación de componentes, datasheets y dos tareas. La tabla de fichas pide Zener 1N4733/1N4742 y BJT PN2222A/2N3906.",
+    "proposed_adaptation": "Señal manipulable, clasificación y lectura guiada de una ficha. Explicitar condiciones de las fórmulas de seno.",
+    "sha256": "fedc701febb302339bc5b2113b8598a47cfab0b87bc19d9ab627f2ee7a98d4b1"
+  },
+  {
+    "id": "F03",
+    "course": "Electrónica",
+    "placement": "U1 / Clase 2",
+    "role": "Clase y prácticas",
+    "path": "electricidad/Clase 2.pdf",
+    "summary": "Dieciséis páginas: diodo y polarización, curva I–V, medición y tipos de diodos. Tarea 3 con 1N4007; laboratorio distinto con 1N4001 y LED, tablas de medición y gráfica.",
+    "proposed_adaptation": "Circuitos DC guiados con límites declarados del modelo; conservar las dos actividades y sus tablas.",
+    "sha256": "c4d8b92546bc3e54618ac81d0f962ce0251fb6bc164050744605cbba95ba832c"
+  },
+  {
+    "id": "F04",
+    "course": "Electrónica",
+    "placement": "U1 / Clase 3",
+    "role": "Clase y práctica",
+    "path": "electricidad/Clase 3.pdf",
+    "summary": "Veintitrés páginas: BJT, regiones y configuraciones; FET, JFET, MOSFET y potencia. Práctica con BC337, fuente 10 V y resistencias 270 Ω / 100 kΩ para completar tensiones y corrientes.",
+    "proposed_adaptation": "Identificar terminales y regiones, medir circuito resistivo. El modelo BJT genérico no equivale a una ficha exacta BC337.",
+    "sha256": "3622fc261a80f27edc65789f62d4adce05a1a1c5bdf201e68bf504d62346da90"
+  },
+  {
+    "id": "F05",
+    "course": "Electrónica",
+    "placement": "U1 / Clase 4",
+    "role": "Clase y dos prácticas",
+    "path": "electricidad/clase 4.pdf",
+    "summary": "Quince páginas: puente H discreto y L293D, pinout, alimentación, dirección y habilitación; dos prácticas con mediciones y conclusión breve. Lista y esquema de resistencias difieren.",
+    "proposed_adaptation": "Aprovechar los dos presets existentes después de contrastarlos con las fuentes. Revisar VCC1, alimentación de entradas y corriente L293D.",
+    "sha256": "f5163412512142563de7dccb45cfea33343245a37f63cb2e1dc0813c08073f4e"
+  },
+  {
+    "id": "F06",
+    "course": "Electrónica",
+    "placement": "U1 / Clase 5 según captura",
+    "role": "Clase",
+    "path": "electricidad/Clase 5.pdf",
+    "summary": "Trece páginas: AO, patillas, características ideales, lazo abierto, comparador, inversor/no inversor y acondicionamiento de señales de transductores.",
+    "proposed_adaptation": "Diferencial de entrada, realimentación y saturación visual. Nuevo modelo AO; diferenciar ideal de LM741.",
+    "sha256": "ffda256efc1afa28fbb9ad65a320d4e40b9e6fd5f6c93a3818fce5f8935ef3fc"
+  },
+  {
+    "id": "F07",
+    "course": "Electrónica",
+    "placement": "U1 / Guía 1; título interno Actividad práctica 2",
+    "role": "Guía con resolución",
+    "path": "electricidad/Guia 1.pdf",
+    "summary": "Nueve páginas y cuatro ejercicios: AO abierto con ganancia 10^6, no inversor con ganancia 3 y dos canales de termopar. Cálculo ideal seguido de verificación de saturación; ganancia y offset. Contradicción 150/200 °C en ejercicio 4.",
+    "proposed_adaptation": "Cuatro recorridos independientes; calcular, verificar límites y explicar. Confirmar rango antes de generar la pauta automática.",
+    "sha256": "ed3545b78c6a2f8f45fb53315462169f691ecd0ee871f1e47ba2f9c2d51a05fc"
+  },
+  {
+    "id": "F08",
+    "course": "Electrónica",
+    "placement": "Estructura de U1–U3",
+    "role": "Captura",
+    "path": "electricidad/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_54.png",
+    "summary": "Captura completa del curso: U1 con cinco clases, Ejercicio 1 y Guía 1; U2 Electrónica Digital y U3 Electrónica de Potencia. La captura no contiene sus documentos.",
+    "proposed_adaptation": "Fuente para orden y nombres; nunca marcar unidades vacías como impartidas.",
+    "sha256": "66c9f0cde04c5f4d17e41dcbbb96e5224bc40f30b9cb0a487497b2e0bc81d7c8"
+  },
+  {
+    "id": "F09",
+    "course": "Instrumentación",
+    "placement": "Estructura de U1–U3",
+    "role": "Captura",
+    "path": "intrumetacion/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_03.png",
+    "summary": "Único archivo de Instrumentación: títulos de unidades, conferencias, consulta de caudal/presión/nivel/temperatura y guías de laboratorio, incluida versión 2026. No incluye el contenido de esos recursos.",
+    "proposed_adaptation": "Crear solo la estructura pendiente cuando se implemente; obtener las fuentes antes de escribir clases.",
+    "sha256": "d12d6fc38a73219f2d3cead42d519cb1dbc2b6b1e7fbbb0615358731fa6c2751"
+  },
+  {
+    "id": "F10",
+    "course": "Máquinas",
+    "placement": "U2 / Actividad 1",
+    "role": "Guía de simulación",
+    "path": "maquinas rotativas/Actividad 1 U2.pdf",
+    "summary": "Diecisiete páginas: partida manual estrella–triángulo en CADe_SIMU; mando/fuerza, reposo, marcha estrella, cambio a triángulo, falla por sobrecarga y recuperación. Doce pasos de desarrollo, criterios y entrega de esquema, con posible video.",
+    "proposed_adaptation": "Adaptación prioritaria al panel actual. Mantener versión manual y diferenciar una ampliación temporizada.",
+    "sha256": "2f66c9f2503865c2bdc04b0a34d0049e998a815d0d00db8c9a88ddf76ce0499b"
+  },
+  {
+    "id": "F11",
+    "course": "Máquinas",
+    "placement": "U1 / Guía de Actividad 1, según portada",
+    "role": "Guía experimental",
+    "path": "maquinas rotativas/Actividad 2 (1).pdf",
+    "summary": "Quince páginas sobre motor CC, partes y excitación serie/shunt/compound. Banco EMS Lab-Volt, fuente, dinamómetro, curvas velocidad/par y tablas de corriente. El nombre Actividad 2 (1) es engañoso.",
+    "proposed_adaptation": "Banco virtual de motores CC requiere modelo nuevo y parámetros. Aclarar la contradicción relativa al punto sin carga del motor serie.",
+    "sha256": "7904d787994d2563df9eeb351ed91f181de3475460ffa6e5f24d0fc0cc91cdbb"
+  },
+  {
+    "id": "F12",
+    "course": "Máquinas",
+    "placement": "U1 / Guía de Actividad 2, según portada",
+    "role": "Guía experimental",
+    "path": "maquinas rotativas/Actividad 2.pdf",
+    "summary": "Catorce páginas: motor de inducción trifásico y monofásico, línea/fase, estrella/triángulo, inversión, carga, devanado auxiliar, condensador e interruptor centrífugo. Encabezado interno repite Actividad 1.",
+    "proposed_adaptation": "Modelo AC y de motores nuevo; verificar placa/conexión al pasar a 380 V y criterios de clasificación.",
+    "sha256": "4e5959f14936273c1e5e2fc8fcfb446fd25ff13688ceec11e5bd9ea9b3319cd6"
+  },
+  {
+    "id": "F13",
+    "course": "Máquinas",
+    "placement": "Apoyo de U1",
+    "role": "Enlace",
+    "path": "maquinas rotativas/linkdevideo.txt",
+    "summary": "Texto con un enlace de YouTube sobre motores de inducción trifásicos, situado en 10:30. Se verificó título/página; no se revisó el video completo ni transcripción.",
+    "proposed_adaptation": "Conservar como apoyo externo pendiente de revisión audiovisual. La indicación incluida en el TXT no se ejecutó como orden.",
+    "sha256": "4f7bbc80e96e53f0201ac98f138b914652566b037ac3f8a2740957448d26d9be"
+  },
+  {
+    "id": "F14",
+    "course": "Máquinas",
+    "placement": "U2 / Protecciones, según F17",
+    "role": "Presentación",
+    "path": "maquinas rotativas/protecciones (1).pptx",
+    "summary": "Dieciséis diapositivas con notas y fórmulas: fallas, datos de entrada, coordinación, termomagnético, fusibles, conductor, guardamotor, SPD/RCD y ejercicio de motor con datos por completar. Corresponde a la secuencia del PDF ya usado en Estudio.",
+    "proposed_adaptation": "Reusar la clase existente en su unidad correcta. Distinguir ejemplos didácticos, datos de placa y selección real.",
+    "sha256": "38d11c0b35bf320dc6739c2b4ea4c3d3f37de20300d6e6457480b550bd00240a"
+  },
+  {
+    "id": "F15",
+    "course": "Máquinas",
+    "placement": "U1 / Evaluación 1",
+    "role": "Prueba y respuestas",
+    "path": "maquinas rotativas/Resolucion Prueba (1).docx",
+    "summary": "Word: cinco preguntas de alternativas y tres desarrollos, con respuestas. El desarrollo 2 cambia red, placa y conexión entre enunciado y solución; dibujo ASCII de bornera ambiguo.",
+    "proposed_adaptation": "Banco de preguntas solo después de corregir y revisar pauta. No importar automáticamente la respuesta ni su dibujo.",
+    "sha256": "dd28269e85f0b304015e1147897963bae8d6f4bd1e7558c5440565a27555f1d4"
+  },
+  {
+    "id": "F16",
+    "course": "Máquinas",
+    "placement": "U1 / Informe EVA1",
+    "role": "Rúbrica",
+    "path": "maquinas rotativas/Rubrica 1 (1).xlsx",
+    "summary": "Excel: trece criterios; niveles Muy bien 6, Puede mejorar 4 e Insuficiente 1. E11:E23 inicializados en 0; E24 suma el rango. Máximo calculado 78. Evalúa identificación, esquemas, conexiones, instrumentos, análisis y conclusiones.",
+    "proposed_adaptation": "Lista de evidencias con revisión de conclusiones y alineación de criterios. Mantener separada de la prueba de 70 puntos.",
+    "sha256": "04d854ac6266be6de61d14cbe2e38bd899a864fcf8dc5100cad0f4e61b3a3b9a"
+  },
+  {
+    "id": "F17",
+    "course": "Máquinas",
+    "placement": "Estructura de U1–U3",
+    "role": "Captura",
+    "path": "maquinas rotativas/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_24.png",
+    "summary": "Captura: U1 fundamentos, actividades, video, temario, rúbrica y resolución; U2 control electromecánico con Actividad 1 y Protecciones; U3 control electrónico de motores CA sin material desarrollado visible.",
+    "proposed_adaptation": "Confirma la ubicación de Protecciones en U2 y evita crearla como ramo independiente.",
+    "sha256": "94d5b347abe3b8d0f0ce4189b7a4c9802963b3c4ebd1b95e3390082459444db9"
+  },
+  {
+    "id": "F18",
+    "course": "Máquinas",
+    "placement": "U1 / Evaluación 1",
+    "role": "Temario",
+    "path": "maquinas rotativas/Temario Evaluacion.docx",
+    "summary": "Word: prueba de 70 puntos; 5 alternativas por 5 y desarrollos de 10/15/20. Motores CC y CA, partes, curvas, línea/fase, conexiones, aplicaciones, leyes físicas, monofásico y fallas. Incluye condiciones de prueba presencial.",
+    "proposed_adaptation": "Mapa de repaso y evaluación diferenciada del informe y del simulacro de Protecciones.",
+    "sha256": "b6a70e7d47a2403e19c157b87da101dce841a240d8059fb618592087ead01f20"
+  },
+  {
+    "id": "F19",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 1 / Actividad tecnológica 1",
+    "role": "Tutorial GeoGebra",
+    "path": "matrices/Actividad tecnológica 1 Funciones polinómicas de grados 0 y 1.pdf",
+    "summary": "Siete páginas: constantes y rectas; imágenes, preimágenes, ajuste por dos puntos, ejes, intersección y ajuste de datos. Numeración salta de actividad 8 a 10.",
+    "proposed_adaptation": "Gráfico/tabla/expresión vinculados y acciones de interpretación. No inventar una actividad 9 ausente.",
+    "sha256": "e2586d0d71f42096d4e6fe04738d3dd2bf0aa6252b481c6a50b05154d6afd9da"
+  },
+  {
+    "id": "F20",
+    "course": "Matemáticas",
+    "placement": "U2 / Momento 2 / Actividad tecnológica 2",
+    "role": "Tutorial GeoGebra",
+    "path": "matrices/Actividad tecnológica 2 Funciones logarítmicas.pdf",
+    "summary": "Cuatro páginas y siete actividades: logaritmos de distintas bases, imágenes/preimágenes, intersección con cuadrática, corte con eje X y ajuste logarítmico.",
+    "proposed_adaptation": "Modelo gráfico con dominio explícito y procedimientos paso a paso.",
+    "sha256": "3aa6f6e46d342ca36d1774827612078ec4a48456a23cdd893e15f9d066c6a686"
+  },
+  {
+    "id": "F21",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 2 / Actividad tecnológica 2",
+    "role": "Tutorial GeoGebra",
+    "path": "matrices/Actividad tecnológica 2 Funciones polinómicas de grado 2.pdf",
+    "summary": "Seis páginas y ocho actividades: parábolas, imágenes/preimágenes, raíces, extremos, ajuste de tres puntos, intersecciones y ajuste de datos.",
+    "proposed_adaptation": "Controles de coeficientes y elección de puntos, verificando vértice y raíces; no confundir con F20 por compartir número.",
+    "sha256": "d96b0140050bd6c4ad0110dd4771dce06ce72231c6730479e2b6cba95d735f13"
+  },
+  {
+    "id": "F22",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 1 / ARPA 1 extensión",
+    "role": "Problema",
+    "path": "matrices/ARPA 1 Consumo de energía (extensión).pdf",
+    "summary": "Una página: dos consumos y cobros representados por ampolletas; encontrar el modelo afín. Datos distintos a F23.",
+    "proposed_adaptation": "Construir pendiente e intercepto desde dos pares; respuesta propia para la extensión.",
+    "sha256": "fcf6d1e243f7914f862487ef4669664997a6d4d7c7e3c20e23ec36f2bdfb0ac4"
+  },
+  {
+    "id": "F23",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 1 / ARPA 1",
+    "role": "Problema",
+    "path": "matrices/ARPA 1 Consumo de energía.pdf",
+    "summary": "Una página: consumo de energía, cargo fijo/variable y pregunta inversa para un cobro total de $8300. Datos representados en infografía.",
+    "proposed_adaptation": "Pasar de infografía a tabla y fórmula, luego calcular el consumo con unidades.",
+    "sha256": "2505ef3e048e9c433f26971083631213e098d9f8b511f63ca815f86e9483f884"
+  },
+  {
+    "id": "F24",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 2 / ARPA 2 extensión",
+    "role": "Problema",
+    "path": "matrices/ARPA 2 Lanzamiento de una piedra (extensión).pdf",
+    "summary": "Una página: segunda piedra con h(t)=−5t²+30t+40; comparar altura inicial, máxima, caída y tiempos con F25.",
+    "proposed_adaptation": "Segunda trayectoria diferenciada y comparación sincronizada; no sustituir la actividad base.",
+    "sha256": "f444fbf67c4a306a9cb3b5bf54e603d24c75acb6d8fb9930c08e80ffad9ea342"
+  },
+  {
+    "id": "F25",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 2 / ARPA 2",
+    "role": "Problema",
+    "path": "matrices/ARPA 2 Lanzamiento de una piedra.pdf",
+    "summary": "Una página: piedra desde 40 m; tabla de tiempo 0–6 s y alturas. Pedir máximo y momento en que ocurre.",
+    "proposed_adaptation": "Tabla, puntos, parábola y tiempo animado; distinguir máximo de datos muestreados y máximo del modelo.",
+    "sha256": "ce468bdab3bd42ec1a0afee9bcff5eb79e3aeaab49b437e3d199b68610cc80b8"
+  },
+  {
+    "id": "F26",
+    "course": "Matemáticas",
+    "placement": "U2 / Actividades formativas",
+    "role": "Cuatro enlaces",
+    "path": "matrices/link de actividades formativas 2.txt",
+    "summary": "Cuatro GeoGebra U05 PPMAT01–04: crecimiento poblacional, decaimiento exponencial, ahorro logarítmico y altura de planta. Se observaron sus ejercicios iniciales.",
+    "proposed_adaptation": "Apoyo externo; no asumir que reemplazan los PDF exponenciales ausentes ni que todas sus variantes estén auditadas.",
+    "sha256": "45afa797962295365f4f8bf4a8c6d9918fb5a44a0db581fe109d50fe5dfd366e"
+  },
+  {
+    "id": "F27",
+    "course": "Matemáticas",
+    "placement": "U1 / Actividades formativas",
+    "role": "Cinco enlaces",
+    "path": "matrices/link de actividades formativas.txt",
+    "summary": "Cinco GeoGebra U04 PPMAT07/05/06/01/03: tarifas afines, recta por dos puntos, ajuste lineal de tabla, temperaturas lineal/cuadrática y comparación de saldos. Se observaron sus ejercicios iniciales.",
+    "proposed_adaptation": "Ordenar por aprendizaje y conservar el número local del enlace. Datos aleatorios y soluciones externas requieren revisión al integrar.",
+    "sha256": "3049629efdb3fc2f1208967b48c3d1f7bbc28ec610a7d228605859e8b8382b31"
+  },
+  {
+    "id": "F28",
+    "course": "Matemáticas",
+    "placement": "Estructura de U1–U4",
+    "role": "Captura",
+    "path": "matrices/screencapture-aai-inacap-cl-course-view-2026-10-17-21_16_40.png",
+    "summary": "Captura larga completa: momentos y recursos de polinómicas; exponenciales/logarítmicas; trigonometría; sucesiones/sumatorias/vectores/matrices y ABPro. Prueba visible de 90 puntos/80 minutos, sin todas las preguntas.",
+    "proposed_adaptation": "Mapa curricular y lista de faltantes. No reconstruir documentos o evaluaciones a partir de títulos.",
+    "sha256": "1a1fc3433ef5d9942ca0b29634f5c3553a160c7ad3677354ad3749d0692de266"
+  },
+  {
+    "id": "F29",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 1 / Modelación 1",
+    "role": "Situación de modelación",
+    "path": "matrices/Situación de modelación 1 Servicio eléctrico.pdf",
+    "summary": "Cuatro páginas: Servicio eléctrico, tablas, expresiones, cobro inverso, contraste con valores publicados en el enunciado y comparación LUMINUS/CHISPITA. Las diferencias entre representaciones son parte de las preguntas.",
+    "proposed_adaptation": "Construir y contrastar modelos; no tratar datos educativos como tarifas vigentes ni borrar discrepancias intencionales.",
+    "sha256": "8d3b66932b8fce4a7586658aacfc3840a8510225fe47d4652e5d52cabb7d218d"
+  },
+  {
+    "id": "F30",
+    "course": "Matemáticas",
+    "placement": "U2 / Momento 2 / Modelación 2",
+    "role": "Situación de modelación",
+    "path": "matrices/Situación de modelación 2 Seguidores en Instagram.pdf",
+    "summary": "Tres páginas: Seguidores en Instagram, ajuste logarítmico, dominio, cambio de origen temporal, predicciones y tasas medias.",
+    "proposed_adaptation": "Controles de tiempo y gráfica; aclarar lenguaje de incremento constante frente a crecimiento sostenido.",
+    "sha256": "c92c03d5ea8c77100aeb2bb8c0591236cf34868f1fa9d9f033ceedbe5fe4a035"
+  },
+  {
+    "id": "F31",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 2 / Modelación 2",
+    "role": "Situación de modelación",
+    "path": "matrices/Situación de modelación 2 Sueño dorado.pdf",
+    "summary": "Tres páginas: Sueño dorado, función de ingresos por venta, costos cuadráticos, utilidad, equilibrio y extremos.",
+    "proposed_adaptation": "Gráficas separadas y utilidad derivada; declarar dominio contextual para no extrapolar costos sin sentido.",
+    "sha256": "9c00f68a1c68c1194d403df8cdad89a93835430577df168782f180cc339319bd"
+  },
+  {
+    "id": "F32",
+    "course": "Matemáticas",
+    "placement": "U1 / Momento 3 / Modelación 3",
+    "role": "Situación de modelación",
+    "path": "matrices/Situación de modelación 3 Desabastecimiento.pdf",
+    "summary": "Tres páginas: stock durante siete días, ajustes lineal/cuadrático/cúbico, predicción de agotamiento y argumentación del modelo.",
+    "proposed_adaptation": "Comparar ajustes y límites de extrapolación; valorar la justificación, no imponer una predicción universal.",
+    "sha256": "7f41a9092c2433b87242b3cca7f83d115aa456ab149d5f75d9c9b23830ed41df"
+  },
+  {
+    "id": "F33",
+    "course": "Redes",
+    "placement": "U1 / Clase teórica",
+    "role": "Clase",
+    "path": "redes industriales/Clase Teorica.pdf",
+    "summary": "Cuarenta y tres páginas: redes industriales, códigos NRZ-L/NRZ-I/Manchester/diferencial, LRC/checksum/CRC/Hamming y siete capas OSI con ejemplos.",
+    "proposed_adaptation": "Animar bits y errores y seguir mensajes por funciones OSI. Explicitar convenciones y usar precisiones de F35.",
+    "sha256": "f488c45276f849f5483f769b121b0ae91e7549f1d8dec6f57e41f2cdce468ad6"
+  },
+  {
+    "id": "F34",
+    "course": "Redes",
+    "placement": "U1 / Guía de Actividad 1",
+    "role": "Guía práctica",
+    "path": "redes industriales/Guía 1.pdf",
+    "summary": "Nueve páginas: cable HMI Delta–PLC, continuidad, carga DOPSoft/ISPSoft, marcha/paro, cambio de baud y checklist. RS232/485 y +24 V/datos se contradicen. No se encontraron proyectos DPA/ISP adjuntos.",
+    "proposed_adaptation": "Práctica virtual de comunicación después de revisar cableado y recuperar proyectos; no validar el esquema de +24 V como RS485.",
+    "sha256": "3db3a83c67d160ee075eafb83229a086efa64738037e27acb021f5f12cafdafb"
+  },
+  {
+    "id": "F35",
+    "course": "Redes",
+    "placement": "U1 / Apoyo de la clase teórica",
+    "role": "Resumen",
+    "path": "redes industriales/Resumen Teorico.pdf",
+    "summary": "Cuatro páginas con precisiones de codificación, estado inicial, errores y capas OSI; nueve preguntas de repaso con respuestas orientativas.",
+    "proposed_adaptation": "Apoyo y control conceptual de F33; no duplicar objetivos ni contar como otra unidad.",
+    "sha256": "e11fecf41f70810744c4722cffc309ed29ef46caae31c3513336234bd3f97910"
+  },
+  {
+    "id": "F36",
+    "course": "Redes",
+    "placement": "Estructura de U1–U3",
+    "role": "Captura",
+    "path": "redes industriales/screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_38.png",
+    "summary": "Captura: U1 con guía, clase y resumen; U2 medios y protocolos basados en Ethernet; U3 implementación de redes, sin documentos de esas unidades.",
+    "proposed_adaptation": "Mantener la jerarquía y mostrar las unidades sin fuentes como pendientes.",
+    "sha256": "e62e31b44e36e1ace22b512befb59e830d7b62104270749e88a1d8d47a33adac"
+  }
+]

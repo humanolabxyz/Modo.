@@ -1,0 +1,58 @@
+/* Banco de detectores: reutiliza el pizarrón, el dock y las tarjetas de temperature.css. Solo reglas del escenario y de las tarjetas propias. */
+.det-bench .det-body{fill:url(#det-body);stroke:#bcc7ce;stroke-width:2}
+.det-bench .det-screen{fill:#1f2c33}
+.det-bench .det-lcd{font:600 30px ui-monospace,Consolas,monospace;fill:#7ee0b0}.det-bench .det-lcd.small{font-size:20px;fill:#394b55}
+.det-bench .det-small{font:600 11.5px Inter,system-ui,sans-serif;fill:#5f717c}
+.det-bench .det-title{font:700 13px Inter,system-ui,sans-serif;letter-spacing:1.1px;fill:#394b55}
+.det-bench .det-led{fill:#c7cfd4;stroke:#9aa7b0}.det-bench .det-led.on{fill:#3ecf8e;stroke:#1d8f5f;filter:drop-shadow(0 0 5px #3ecf8e)}
+.det-bench .det-led.out.on{fill:#ffb83d;stroke:#c98a14;filter:drop-shadow(0 0 6px #ffb83d)}
+.det-bench .det-sensor{fill:url(#det-metal);stroke:#8a979f;stroke-width:2}.det-bench .det-face{fill:#37444c}
+.det-bench .det-strip{fill:#eef2f4;stroke:#bcc7ce;stroke-width:2}.det-bench .det-stripline{stroke:#9aa7b0;stroke-width:3;stroke-dasharray:2 5;fill:none}
+.det-bench .det-zone rect{fill:#1599dc22;stroke:#1599dc;stroke-dasharray:5 4;stroke-width:1.5}.det-bench .det-zone text{font:700 11px Inter,system-ui,sans-serif;fill:#0f5f8a}
+.det-bench .det-track{stroke:#c5d0d6;stroke-width:3;fill:none}.det-bench .det-tick{stroke:#98a7af;stroke-width:2}
+.det-bench .det-object{stroke-width:2}.det-bench .det-object.metal{fill:url(#det-metal);stroke:#6d7a82}.det-bench .det-object.plastic{fill:#f0a35a;stroke:#b4691f}
+.det-bench .det-object-none{fill:none;stroke:#b4c0c7;stroke-dasharray:4 5;stroke-width:2}
+.det-bench .det-terminal{cursor:pointer;outline:none}.det-bench .det-terminal .hit{fill:transparent}
+.det-bench .det-terminal .screw{fill:#cdd5da;stroke:#76848d;stroke-width:2}.det-bench .det-terminal text{font:700 12px ui-monospace,Consolas,monospace;fill:#2b3942;pointer-events:none}
+.det-bench .det-terminal .hole{fill:#1b2429;pointer-events:none}
+.det-bench .det-terminal:hover .screw,.det-bench .det-terminal:focus-visible .screw{stroke:#1599dc;stroke-width:3}
+.det-bench .det-terminal.wired .screw{fill:#9fd8cf;stroke:#0f766e}
+.det-bench .det-terminal.pending .screw{fill:#fff3d6;stroke:#d99a14;stroke-width:4}
+.det-bench .det-terminal.red .screw{fill:#e5726f;stroke:#b43b38}.det-bench .det-terminal.black .screw{fill:#4b5963;stroke:#242c31}.det-bench .det-terminal:is(.red,.black) text{fill:#fff}
+.det-bench .det-wires path{fill:none;stroke:#0f766e;stroke-width:5;stroke-linecap:round}
+[data-tool=pan] .det-terminal{pointer-events:none}
+.det-modes{grid-template-columns:repeat(2,1fr)!important}
+.det-status{margin:0;font-size:12.5px;font-weight:600;color:#33454f}
+.det-wire-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.det-wire-list li{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;padding:6px 8px;border:1px solid #e3e9ec;border-radius:9px;background:#fbfcfd}
+.det-ficha{border:1px solid #e3e9ec;border-radius:10px;padding:6px 9px;display:flex;flex-direction:column;gap:8px}
+.det-ficha summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:700;font-size:13px}
+.det-ficha summary span{font-size:11px;font-weight:600;color:#8a6a2f}.det-ficha summary span.ok{color:#2f6f4d}
+.det-ficha[open]{padding-bottom:10px}
+.temp-chart .stem{stroke:#9aa7b0;stroke-width:2}
+
+/* Equipos con aspecto real: fuente de laboratorio, detector cilíndrico roscado y PLC Delta */
+.det-bench .det-small.light{fill:#cbd5da}
+.det-bench .psu-body{fill:url(#det-dark);stroke:#171d21;stroke-width:2}.det-bench .psu-bezel{fill:#1b2327;stroke:#5a6870}.det-bench .psu-brand{font:700 11px Inter,system-ui,sans-serif;letter-spacing:1.2px;fill:#cbd5da}
+.det-bench .det-lcd.unit{font-size:18px;fill:#5fb88d}
+.det-bench .psu-knob{fill:#b7c0c6;stroke:#59656c;stroke-width:3}.det-bench .psu-pointer{stroke:#1d252a;stroke-width:4;stroke-linecap:round}
+.det-bench .psu-switch{fill:#171d21;stroke:#5a6870}.det-bench .psu-rocker{fill:#d8dde0}.det-bench .psu-rocker.on{fill:#7ee0b0}
+.det-bench .psu-gnd{fill:#2f9e5f;stroke:#1b6a3d;stroke-width:3}
+.det-bench :is(.t-gp,.t-gm) text{fill:#e6ecef}
+.det-bench .t-gp .screw{fill:#d94848;stroke:#8f2a2a}.det-bench .t-gm .screw{fill:#2b343a;stroke:#0d1114}
+.det-bench .det-gland{fill:#2d363c;stroke:#171d21;stroke-width:1.5}
+.det-bench .det-barrel{fill:url(#det-metal);stroke:#7c8890;stroke-width:1.5}.det-bench .det-thread{stroke:#8f9ba3;stroke-width:1.4;fill:none}
+.det-bench .det-nut{fill:#b3bcc2;stroke:#6f7b83;stroke-width:1.5}
+.det-bench .det-face{stroke:#5f6b72;stroke-width:1.5}.det-bench .det-lens{fill:#c4313a;stroke:#6e1a20;stroke-width:1.5}
+.det-bench .det-led.out{fill:#8a949a;stroke:#59656c}
+.det-bench .det-sheath{fill:none;stroke:#222a2f;stroke-width:8;stroke-linecap:round}
+.det-bench .det-wirefan path{fill:none;stroke-width:5;stroke-linecap:round}
+.det-bench .det-shine{stroke:#ffffff99;stroke-width:3;stroke-linecap:round;fill:none}
+.det-bench .plc-body{fill:url(#det-plc);stroke:#a9b0ad;stroke-width:2}.det-bench .plc-rail{fill:#3a454c;stroke:#242d33}
+.det-bench .plc-dummy{fill:#aab3b8;stroke:#6d7a82;stroke-width:1.5}.det-bench .plc-dummy.out{fill:#8f9aa0}
+.det-bench .plc-tag{font:700 10.5px ui-monospace,Consolas,monospace;fill:#cbd5da}
+.det-bench .plc-led{fill:#7b868c}.det-bench .plc-led.on{fill:#3ecf8e;filter:drop-shadow(0 0 4px #3ecf8e)}
+.det-bench .plc-brand{font:800 26px Inter,system-ui,sans-serif;letter-spacing:3px;fill:#2e7d52}.det-bench .plc-model{font:600 12.5px Inter,system-ui,sans-serif;fill:#394b55}
+.det-bench :is(.t-pc,.t-px) text{fill:#e6ecef}
+.det-bench :is(.t-pc,.t-px) .screw{fill:#c8d0d4;stroke:#6d7a82}
+.det-sheet-pending li::marker{color:#a4682b}.det-sheet-pending{color:#6e5320}

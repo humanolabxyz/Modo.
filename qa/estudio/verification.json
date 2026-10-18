@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "8 lecciones, 32 alternativas, 12 desarrollos; 7 cálculos; corrección de todas las opciones; 100 simulacros sin duplicados y con cobertura de ocho temas; almacenamiento inválido rechazado"
+  ],
+  "errors": [],
+  "viewports": [],
+  "result": "FAIL",
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   'public\\\\panel-model.json',\n    'public\\\\sw.js',\n+   'src\\\\components\\\\App.tsx',\n+   'src\\\\components\\\\BananaCable.tsx',\n+   'src\\\\components\\\\Board.tsx',\n+   'src\\\\components\\\\CadeDiagram.tsx',\n+   'src\\\\components\\\\CadeRoute.tsx',\n+   'src\\\\components\\\\DiagramPane.tsx',\n    'src\\\\components\\\\Home.tsx',\n+   'src\\\\components\\\\SimulationControls.tsx',\n+   'src\\\\components\\\\WireLayer.tsx',\n+   'src\\\\data\\\\panel.ts',\n+   'src\\\\data\\\\simulation.ts',\n+   'src\\\\data\\\\wiring.ts',\n+   'src\\\\pages\\\\index.astro',\n+   'src\\\\styles\\\\diagram-layout.css'\n  ]\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-study.cjs:103:10\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+}

@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "94 bornes y banco sin columnas iniciales",
+    "95 → 96 conecta sin mover el banco",
+    "Deshacer / rehacer / retirar",
+    "Inspector de cable y recorrido plegado",
+    "Inspector de borne, detalles y fotografía a demanda",
+    "Sin overflow en 1920, 1440, 768, 390, 360",
+    "Estudio con ayudas plegadas y comprobación real"
+  ],
+  "errors": []
+}

@@ -1,0 +1,75 @@
+{
+  "result": "PASS",
+  "scope": "Branding task only; separately observed concurrent edits are excluded from preservation claims.",
+  "unchangedSourceFiles": 109,
+  "changedFiles": [
+    "src/components/Home.tsx",
+    "src/components/TeacherMaterial.tsx",
+    "src/lab/HMIView.tsx",
+    "src/lab/HomeTools.tsx",
+    "src/lab/MeterInstrument.tsx",
+    "src/lab/SchematicView.tsx",
+    "src/lab/useLaboratory.ts",
+    "src/lab/validation.ts",
+    "src/pages/estudio.astro",
+    "src/pages/index.astro",
+    "src/pages/laboratorio.astro",
+    "src/study/StudyApp.tsx"
+  ],
+  "concurrentChanges": [
+    {
+      "file": "src/components/App.tsx",
+      "hash": "4c9200fd4b6a70eaad87176e57a93ef654ca0313292a4ffac560b3a76f343d70",
+      "observedModifiedAt": "2026-10-15T21:10:35.616Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    },
+    {
+      "file": "src/components/SimulationControls.tsx",
+      "hash": "fc9376a57a61bd86c9a72949c7d6418328bd20e23f4f1fda35548fb283b6abb8",
+      "observedModifiedAt": "2026-10-15T21:05:06.108Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    },
+    {
+      "file": "src/lab/LaboratoryApp.tsx",
+      "hash": "097929d857944d56afc4b3cab4e02a790de2e9f1540cce157b6e1e972ac75677",
+      "observedModifiedAt": "2026-10-15T21:10:35.618Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    },
+    {
+      "file": "src/study/CalculatorDock.tsx",
+      "hash": "2bcdc30d70f34bbbdb341880187e3430ccfc058430130f4b4c787b6312a1cd1a",
+      "observedModifiedAt": "2026-10-15T20:54:22.469Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    },
+    {
+      "file": "src/styles/laboratory-canvas.css",
+      "hash": "1dc3541c359465409843c072a89585e0aaddebb6b19763e1c925f6cdbdf1db32",
+      "observedModifiedAt": "2026-10-15T21:10:49.437Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    },
+    {
+      "file": "src/styles/mobile.css",
+      "hash": "71b82f8e3a94f498f92b34a144ae162f602d2b1b65a5a6f2282564270f807444",
+      "observedModifiedAt": "2026-10-15T21:08:48.395Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    },
+    {
+      "file": "src/styles/simulation.css",
+      "hash": "452ab0f546d15d97b3eb79b2223ba22fff6a6da607e54594b66a17a04cdf5775",
+      "observedModifiedAt": "2026-10-15T21:10:35.665Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    },
+    {
+      "file": "src/styles/study-calc.css",
+      "hash": "8d2f643870718fd11cd3a35d09d9d2e4e4eb464f761b6a735adac949ec9ab9e1",
+      "observedModifiedAt": "2026-10-15T20:55:55.831Z",
+      "note": "Contains concurrent edits not performed by this branding task; own brand edits in shared files are accounted for separately."
+    }
+  ],
+  "checks": [
+    "All source changes performed by this task are limited to Home presentation, document metadata, logos, visible brand strings and export filenames.",
+    "Panel data, wiring, learning, simulation engines, project schemas, study content and grading retain their exact original hashes; concurrent UI edits are listed separately.",
+    "Files changed only by this task match the original exactly after accounting for the listed branding changes; shared files with concurrent edits are recorded separately and covered by UI regression checks.",
+    "Legacy localStorage keys and import formats remain compatible with saved practices, study progress and laboratory projects."
+  ]
+}

@@ -1,0 +1,21 @@
+/* modo. · Tokens visuales v1.0 — para UI aprobada */
+:root {
+  --modo-ink: #101215;
+  --modo-accent: #3E806B;
+  --modo-white: #FFFFFF;
+  --modo-bg: #F7F8FA;
+  --modo-surface: #FFFFFF;
+  --modo-border: #DDE3E8;
+  --modo-muted: #667487;
+  --modo-dark: #0D1012;
+  --modo-radius-sm: 12px;
+  --modo-radius-card: 18px;
+  --modo-font: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.modo-logo { display:block; width:auto; height:32px; max-width:100%; }
+.modo-logo--small { height:26px; }
+.modo-logo--large { height:48px; }
+.modo-logo-img { display:block; height:100%; width:auto; }
+.modo-card { background:var(--modo-surface); border:1px solid var(--modo-border); border-radius:var(--modo-radius-card); }
+.modo-btn-primary { background:var(--modo-ink); color:var(--modo-white); border-radius:var(--modo-radius-sm); }
+.modo-btn-primary:focus-visible,.modo-card[tabindex]:focus-visible { outline:3px solid var(--modo-accent); outline-offset:3px; }

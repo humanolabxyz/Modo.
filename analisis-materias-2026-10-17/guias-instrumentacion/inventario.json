@@ -1,0 +1,50 @@
+[
+  {
+    "id": "G01",
+    "name": "Guía práctica laboratorio N°1 (2).docx",
+    "sha256": "651aa242623afa5d1feeb002f53a711ec8998a3d70d5da7c59f610f1d1aa8866",
+    "text_sha256": "5d64ff9973a8c22bd732ca306a6fde3bd6852bfc38436cf3e88c2a2a9d4896bf",
+    "media": [
+      "word/media/image1.jpeg",
+      "word/media/image2.png"
+    ]
+  },
+  {
+    "id": "G02",
+    "name": "Guía práctica laboratorio N°2 - 2026 (4).docx",
+    "sha256": "2b78720b12df46488217651d47cd6dc1147a5d2d63e996a4754a4dceb0664faa",
+    "text_sha256": "73b9947bd765e7bef16238d42d99d703e6367396a1dc848c99524f5876475563",
+    "media": [
+      "word/media/image1.png"
+    ]
+  },
+  {
+    "id": "G03",
+    "name": "Guía práctica laboratorio N°2.docx",
+    "sha256": "eb325909d7d732358ba4d5aefc23d0d7834a7ff23f566c207624bfc55c9f595b",
+    "text_sha256": "ec72ad81a6f145a19667b77364a7dd4f956ad702bf0b4d381b50fa923ea301ec",
+    "media": [
+      "word/media/image1.png",
+      "word/media/image2.png"
+    ]
+  },
+  {
+    "id": "G04",
+    "name": "Guía práctica laboratorio N°2 (1).docx",
+    "sha256": "eb325909d7d732358ba4d5aefc23d0d7834a7ff23f566c207624bfc55c9f595b",
+    "text_sha256": "ec72ad81a6f145a19667b77364a7dd4f956ad702bf0b4d381b50fa923ea301ec",
+    "media": [
+      "word/media/image1.png",
+      "word/media/image2.png"
+    ]
+  },
+  {
+    "id": "G05",
+    "name": "Guía práctica laboratorio N°2 - 2026 (5).docx",
+    "sha256": "2b78720b12df46488217651d47cd6dc1147a5d2d63e996a4754a4dceb0664faa",
+    "text_sha256": "73b9947bd765e7bef16238d42d99d703e6367396a1dc848c99524f5876475563",
+    "media": [
+      "word/media/image1.png"
+    ]
+  }
+]

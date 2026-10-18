@@ -1,0 +1,116 @@
+{
+  "url": "https://panellab-inacap.vercel.app/",
+  "deploymentId": "dpl_98D9fPMXUU43BwDBqQtNfKto2fdF",
+  "state": "READY",
+  "target": "production",
+  "profile": {
+    "downloadKbps": 1600,
+    "latencyMs": 150,
+    "cpuSlowdown": 4
+  },
+  "samplesPerEntry": 2,
+  "metrics": [
+    {
+      "mode": "home",
+      "beforeReadyMs": 6140.4000000003725,
+      "afterReadyMs": 4048.449999999255,
+      "beforeBytes": 1138355,
+      "afterBytes": 444815,
+      "beforeLcpMs": 5502,
+      "afterLcpMs": 3340
+    },
+    {
+      "mode": "simulator",
+      "beforeReadyMs": 5636.0999999996275,
+      "afterReadyMs": 3435.25,
+      "beforeBytes": 1247295,
+      "afterBytes": 476235,
+      "beforeLcpMs": 2588,
+      "afterLcpMs": 2232
+    }
+  ],
+  "precache": {
+    "beforeBytes": 12517328,
+    "afterBytes": 2744414,
+    "reductionPercent": 78.07508119943809
+  },
+  "fonts": [
+    {
+      "file": "public\\fonts\\InterVariable.woff2",
+      "beforeBytes": 352240,
+      "afterBytes": 105968
+    },
+    {
+      "file": "public\\fonts\\SourceSans3-Bold.woff2",
+      "beforeBytes": 108640,
+      "afterBytes": 31120
+    },
+    {
+      "file": "public\\fonts\\SourceSans3-Regular.woff2",
+      "beforeBytes": 109632,
+      "afterBytes": 31264
+    },
+    {
+      "file": "public\\fonts\\SourceSans3-Semibold.woff2",
+      "beforeBytes": 108900,
+      "afterBytes": 31196
+    }
+  ],
+  "assetsVerified": [
+    {
+      "url": "https://panellab-inacap.vercel.app/fonts/InterVariable.woff2",
+      "bytes": 105968
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Bold.woff2",
+      "bytes": 31120
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Regular.woff2",
+      "bytes": 31264
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Semibold.woff2",
+      "bytes": 31196
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/images/modo/bornes-640.webp",
+      "bytes": 25072
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/images/modo/bornes-1024.webp",
+      "bytes": 43392
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/images/modo/protecciones-640.webp",
+      "bytes": 30684
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/images/modo/protecciones-1024.webp",
+      "bytes": 56612
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/images/modo/laboratorio-640.webp",
+      "bytes": 33256
+    },
+    {
+      "url": "https://panellab-inacap.vercel.app/images/modo/laboratorio-1024.webp",
+      "bytes": 59652
+    }
+  ],
+  "networkFallback": [
+    {
+      "route": "?view=simulator&stall=1",
+      "htmlMs": 2041
+    },
+    {
+      "route": "estudio/?stall=1",
+      "htmlMs": 2026
+    },
+    {
+      "route": "laboratorio/?stall=1",
+      "htmlMs": 2025
+    }
+  ],
+  "verifiedAt": "2026-10-16T00:30:49.085Z"
+}

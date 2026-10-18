@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "title": "Mi práctica INACAP",
+  "wires": [
+    {
+      "id": "b133afb2-13e0-4aa0-bd9b-51cda4c12f94",
+      "from": {
+        "terminalId": "BORNERA_MOTOR:W2"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:V2"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 1
+    },
+    {
+      "id": "0674f870-2a13-4e10-8983-1c2c99b7b813",
+      "from": {
+        "terminalId": "BORNERA_MOTOR:V2"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:U2"
+      },
+      "color": "#145650",
+      "route": {
+        "sag": 130
+      },
+      "layer": 2
+    }
+  ],
+  "diagram": {
+    "id": "clase-1",
+    "name": "Fotografía de clase 1 · referencia sin validar",
+    "src": "/diagrams/clase-1.jpg",
+    "origin": "class_photo"
+  },
+  "steps": [],
+  "mode": "free",
+  "stepIndex": 0,
+  "learning": {
+    "mode": "guided",
+    "index": 21,
+    "assistance": 3,
+    "bindings": {
+      "-Q:2": ""
+    },
+    "examFinished": false,
+    "answers": {
+      "0": "Los contactos no se sustituyen por cables."
+    }
+  }
+}

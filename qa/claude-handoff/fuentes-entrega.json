@@ -1,0 +1,478 @@
+[
+  {
+    "path": "AGENTS.md",
+    "sha256": "2CD69AA2150D2D6A087DAAD84D2788DAE4F6D23FF5B236C0B8211C40F61920DA"
+  },
+  {
+    "path": "CONTINUAR_CON_CLAUDE.md",
+    "sha256": "FD9490C438A94F9FD2935BFD8840CE9F1ACD8F06DB44F5BF342510FAC84BCEE8"
+  },
+  {
+    "path": "LABORATORIO_INTEGRADO.md",
+    "sha256": "BE81D17ACBE4E698CB9F93704A573B68CC333A062B270D4626A8D917A52CF8EC"
+  },
+  {
+    "path": "package-lock.json",
+    "sha256": "67B9B0626B2143DC2E60B92BF1FF27B6FF747BA5AC769A98A24F59F8046F253B"
+  },
+  {
+    "path": "package.json",
+    "sha256": "A1A4A929E6EDBDB38D372C31A468DA811CD78C9AFE2BBEBF3E21277008944959"
+  },
+  {
+    "path": "qa/verify-laboratory.mjs",
+    "sha256": "DA744D580AFB7960FE35F387C8C19DB40107A87416511A76ACEE3AC315FBC2A7"
+  },
+  {
+    "path": "src\\components\\App.tsx",
+    "sha256": "42B2C4C1208EE0FB20F6D857204B75A0816F23B15389FB3F0E64F2A19DDF5691"
+  },
+  {
+    "path": "src\\components\\BananaCable.tsx",
+    "sha256": "2619B93ED8D155D9900C2D6235E6ECF91F9C8B26620EBAFAE6126C71371616D3"
+  },
+  {
+    "path": "src\\components\\Board.tsx",
+    "sha256": "80AD2FCDFAC3E000766D24EDC83EA5E151B4DCF3945F741BD26A0B432F99CCE9"
+  },
+  {
+    "path": "src\\components\\CableColorPicker.tsx",
+    "sha256": "CA54C9D62B30DC5A6124C5D200921602365F3038E48366E5123BB70F11233E22"
+  },
+  {
+    "path": "src\\components\\CablesMenu.tsx",
+    "sha256": "021971D9673FDA9896FD4896C4EE76B365E221D875FB3178684CBE3A414344C9"
+  },
+  {
+    "path": "src\\components\\CadeDiagram.tsx",
+    "sha256": "B6FB74F37BEEBB5BA9AD52AFBCDA8ED5B40878A138CE844C85F4F2BC6F1E86F4"
+  },
+  {
+    "path": "src\\components\\CadeNames.tsx",
+    "sha256": "528ADAAB1BCFC1E658227F8B208A3B6D0DAC4C5CD325D3BFD73635ADD6EE22D2"
+  },
+  {
+    "path": "src\\components\\CadeRoute.tsx",
+    "sha256": "19E4E6AC29C90A8A97ACF00A312297D05275E67B5C3256170A1B30F5BEADF2C0"
+  },
+  {
+    "path": "src\\components\\CadeSheet.tsx",
+    "sha256": "6F669B3DB690302F62A76997B91EFC70DA6222306D50517179E11996C76A571D"
+  },
+  {
+    "path": "src\\components\\CompactBar.tsx",
+    "sha256": "C406A862E48B3AB00D2BF81E493CCAFFBA941D0C6763D86C7B24E4BA8094AEA0"
+  },
+  {
+    "path": "src\\components\\ConnectionLesson.tsx",
+    "sha256": "D84E1F105C96CF841AB6B7E21A46474DB24688DF78A23E3EE9B9D757B790165E"
+  },
+  {
+    "path": "src\\components\\DiagramPane.tsx",
+    "sha256": "42716975E3FACAB9475D223DFF2C7C6B2C72F456484DF07F2FBC89F196EF7E1D"
+  },
+  {
+    "path": "src\\components\\DiagramReader.tsx",
+    "sha256": "E04096BEA0C2B84CC735D33E882A4716A3BAD97D4BA96831EE48E2A33E91BF1E"
+  },
+  {
+    "path": "src\\components\\DiagramWindow.tsx",
+    "sha256": "BB8360C48746AD756C6B76BE2FEF148831FEA93A835E02487C8CDBE6B30C0B3A"
+  },
+  {
+    "path": "src\\components\\ExamReference.tsx",
+    "sha256": "97FDC99848EDA0D975D4FB1176DF070744FB67A53C89871E3B4C5EEDF1BCA356"
+  },
+  {
+    "path": "src\\components\\Home.tsx",
+    "sha256": "FB11554C62A926F3E65FB16C391D146FC431091195C3735640924196668AF79C"
+  },
+  {
+    "path": "src\\components\\PowerStatus.tsx",
+    "sha256": "A76CD81EE6DD795B1E1BC5274FF1EC2A7A2FFBBBA33A584E133CB333CF25734D"
+  },
+  {
+    "path": "src\\components\\SearchBox.tsx",
+    "sha256": "29AB32D4154796FC8EA0C8DF84B5058CB639363117E593C3B37E9BB34B691D42"
+  },
+  {
+    "path": "src\\components\\SimulationControls.tsx",
+    "sha256": "1FF0C0360247EA9D4E8A45BDAA389BC36919D57C824D8B69FC594ECB38D57AAA"
+  },
+  {
+    "path": "src\\components\\SimulatorInspector.tsx",
+    "sha256": "BDDD7CEC1760D875C9BFB5A4802AA19CB8B525FCE9C72F6C4465F7D808628044"
+  },
+  {
+    "path": "src\\components\\StudyGuide.tsx",
+    "sha256": "C3E74C8EE301237368F0FA640DD5B365D812ECB98C2F403E75BE2452B3DD1D73"
+  },
+  {
+    "path": "src\\components\\TeacherMaterial.tsx",
+    "sha256": "471F7C6752C01BC29C372B3E34F2F6EA221C6D3A5AD0F2C0CE409074A4A578D7"
+  },
+  {
+    "path": "src\\components\\ToolDock.tsx",
+    "sha256": "2A9E323A10DC2F12E3EB0F582C77C9E854430F98E6CA6D625178642429F1928C"
+  },
+  {
+    "path": "src\\components\\WireInspector.tsx",
+    "sha256": "A078E9AD1B57D6A2DF883AE2CBC01FB812E11E18EFFC037C829C88196E419E85"
+  },
+  {
+    "path": "src\\components\\WireLayer.tsx",
+    "sha256": "5D91699A9CED24B449EEEDDD51DC0D53C66B4E62D4204C7605B59FC98F46BE06"
+  },
+  {
+    "path": "src\\data\\cade.ts",
+    "sha256": "D6F39EF62AC1C39E426BC6BCB6BAE5552CEBF6DBFFCEB6829804725633C85A3B"
+  },
+  {
+    "path": "src\\data\\cadeComponents.ts",
+    "sha256": "31B02454B97DD636FA3F750E2FA968C8E0FBA8479C5BFF9E1D555C53169A84B6"
+  },
+  {
+    "path": "src\\data\\cadeEstrellaTriangulo.json",
+    "sha256": "10FB7EE17187A615E9EA1EBEE317B8295B0978B9A78C58DF9273789405D3D3D2"
+  },
+  {
+    "path": "src\\data\\cadePerfecto.json",
+    "sha256": "702E0908D6568FA232D1671A23FA188757E217875FC0C9DD5AE8C3A9DBAFA2C6"
+  },
+  {
+    "path": "src\\data\\diagramReading.ts",
+    "sha256": "2E95182878D80DD5BC5EB259A39E2BF4E2AFC142EAE41FE5529913F447E2826A"
+  },
+  {
+    "path": "src\\data\\examReference.ts",
+    "sha256": "6C5A05C37C6C16392C50B6BE32A0553AA935BAB33224AD7F6D177CFE1F276618"
+  },
+  {
+    "path": "src\\data\\layout.ts",
+    "sha256": "66ED174BD118C66D82BE13091FC485B83313CCB9134E62824BDEDBE407BEE3DC"
+  },
+  {
+    "path": "src\\data\\learning.ts",
+    "sha256": "D7773F1F54B596AE1D055FA5DC486FBEAB8EE4562D96AB6E52693D1C67457545"
+  },
+  {
+    "path": "src\\data\\panel.ts",
+    "sha256": "DEBAA5915007206D113E487ECA8B2D4537AAC0DA1962CE7290FF8A366AEE2B2F"
+  },
+  {
+    "path": "src\\data\\panelCorrespondence.ts",
+    "sha256": "859DBD78F1F37223EADFB994269C9FD640D2B777497427112535BE992D27596F"
+  },
+  {
+    "path": "src\\data\\practice.ts",
+    "sha256": "EF23E8A99A0B367DED728263A9B486E9423176770DFE8E5F949792AF23473C15"
+  },
+  {
+    "path": "src\\data\\simulation.ts",
+    "sha256": "7EC5CB0EAC059C23291C822BB90869B9FA6241EB2D3F0D539ADC6C81F89D1241"
+  },
+  {
+    "path": "src\\data\\wiring.ts",
+    "sha256": "DAEE8570F8257A7A90ED01F8AAC50B4416A789606E5C22E798A75A7AC1F8F451"
+  },
+  {
+    "path": "src\\hooks\\useCompactLayout.ts",
+    "sha256": "ED458E773446430987F1EB37376E59DD17D6760B64FF62AAC79A3DBDD0F6A8CC"
+  },
+  {
+    "path": "src\\hooks\\usePractice.ts",
+    "sha256": "4FE0ECF4DCC09A3DDEC6D72CB35157FD75D50E3C763125DBD22E4F5E98673658"
+  },
+  {
+    "path": "src\\hooks\\useSimulation.ts",
+    "sha256": "34D0A762797EE33015BB982324138FF23AD680F1F100F60CC89F2C8F95A61D27"
+  },
+  {
+    "path": "src\\hooks\\useSvgNavigation.ts",
+    "sha256": "5F30A337A1C80685EEFF79E10BB37F9FCECE12A031DAB93A275D9D17CE312A0F"
+  },
+  {
+    "path": "src\\lab\\BreadboardView.tsx",
+    "sha256": "A576FE99E0369B901EF7EA01138B94B58E339E8FA39AD3FA385F783609144852"
+  },
+  {
+    "path": "src\\lab\\dc.ts",
+    "sha256": "54BA8866DA86C80BA826EAEDA93EF73AA095A1708191A67BE3A341D3DEE671CD"
+  },
+  {
+    "path": "src\\lab\\engine.ts",
+    "sha256": "7CE266730156A09530B81E4C02E5BEF8ED095609DE5F6A6F878D2CAA22BE2533"
+  },
+  {
+    "path": "src\\lab\\HMIView.tsx",
+    "sha256": "34B8190616E4D3B9FCE0F60D8CE7523C6B3BBE8ECAFB8C3BAAD06E3C2F28ECB2"
+  },
+  {
+    "path": "src\\lab\\HomeTools.tsx",
+    "sha256": "57625E1583BA639411EC5D8F066CCE61ED4305996C6B7E8D2478492CAF84FA70"
+  },
+  {
+    "path": "src\\lab\\LaboratoryApp.tsx",
+    "sha256": "119C7BEB163CBF1326D1D2AD004ADCDEB766ECA2F9B1AFF63E6CC34959F61788"
+  },
+  {
+    "path": "src\\lab\\model.ts",
+    "sha256": "CC693E61E61BCCF1E468F160C3F79ABD54867F903496BA866A7A84A7425E294E"
+  },
+  {
+    "path": "src\\lab\\PLCView.tsx",
+    "sha256": "254150DA91E12B95F3AD2B62CA3207D9DD318AA2FBF7D6EF366652AF4D241757"
+  },
+  {
+    "path": "src\\lab\\ProcessView.tsx",
+    "sha256": "E2DAADFF596B5D9E8BDABFE06557F13D6C213CE0860D47C2B35829D2A4E39537"
+  },
+  {
+    "path": "src\\lab\\SchematicView.tsx",
+    "sha256": "E6A0A3892468003DCFE01275B39CBA193B6F9C20B6F553F2ACDFB16F916A4C42"
+  },
+  {
+    "path": "src\\lab\\st.ts",
+    "sha256": "A024B3850E88696FD7CAA8AFC6BAA55FEA546B417C6EA63175BDF795AABDEA63"
+  },
+  {
+    "path": "src\\lab\\useLaboratory.ts",
+    "sha256": "C712787AC7353779083370373DEDF1E304C827C033EA5D95923C2ED58CF700C4"
+  },
+  {
+    "path": "src\\lab\\validation.ts",
+    "sha256": "7612ACD350867F43E8C9264D5F87D802BBEDCAD4DC2847A24A241EA15679F003"
+  },
+  {
+    "path": "src\\layout\\floatRect.ts",
+    "sha256": "5ADD6F72A26D2B33E48605839CC1A72334004A5E9280D28A453FAB53818650F3"
+  },
+  {
+    "path": "src\\layout\\focusView.ts",
+    "sha256": "89CA03BBDB9446B96E1E73F0EF1096D1D93909EDFB161A62B7A39BCD5416A893"
+  },
+  {
+    "path": "src\\pages\\estudio.astro",
+    "sha256": "FDC392FBFAF7F059CE77FEC23810355E96A30734BBC5E54596640CB0851EE1AF"
+  },
+  {
+    "path": "src\\pages\\index.astro",
+    "sha256": "24F3E59E11370417E1DE39D3AB356332A44B5C64ECF6F0AE51239827A3CAB12C"
+  },
+  {
+    "path": "src\\pages\\laboratorio.astro",
+    "sha256": "86626BB1024AF40DC1A1DB411060ADDD33C0F30CA19CDE5630BE6BE3FE63BE1A"
+  },
+  {
+    "path": "src\\study\\Activity.tsx",
+    "sha256": "ACF66396EA45A22D09638D4A7521300697A6FEEF3240AAA1FD09E274E5BCB1A0"
+  },
+  {
+    "path": "src\\study\\calcEngine.ts",
+    "sha256": "361079B2633819E51FE8F7BB91FF3EF76E014678355445F541B557472D0EB723"
+  },
+  {
+    "path": "src\\study\\CalcModule.tsx",
+    "sha256": "17A68EADA5F0445210DB89D490A83F7C627CD9D70F3A3712A9DAB8FD3EAB928B"
+  },
+  {
+    "path": "src\\study\\CalculationSteps.tsx",
+    "sha256": "923DB8C9C2C21E206900109A7F0C54D08D3A91A236B7A83CE04134195D8C0FC6"
+  },
+  {
+    "path": "src\\study\\Calculator.tsx",
+    "sha256": "DA0EEA2CD4BF37EDADFD89DD3897B1088E63FE648A630A3476C559985D8EC468"
+  },
+  {
+    "path": "src\\study\\CalculatorDock.tsx",
+    "sha256": "58E63EFAF68F7F91DC364F3926FE331ABDE137E7EB28CD48A975FB56BFE71370"
+  },
+  {
+    "path": "src\\study\\content\\casos_interactivos_7.json",
+    "sha256": "5FA85A6060600C775BA78C23A9BD0BCA88643CE121970ACB513EAE1BE7238C4A"
+  },
+  {
+    "path": "src\\study\\content\\lecciones.json",
+    "sha256": "036E4AB2E0D87955639555945C30FF1BD58AC23FF7D17175F18C5A883A7211C4"
+  },
+  {
+    "path": "src\\study\\content\\preguntas_alternativas_32.json",
+    "sha256": "6EA313950E77D7643093EDB5F5BC82D9B2C22407ECAD12CE62B5B21639A7D018"
+  },
+  {
+    "path": "src\\study\\content\\preguntas_desarrollo_12.json",
+    "sha256": "DD3E606893101D46E5E0E778ACE3D80274BC4D783314174B4115874BF5EC4734"
+  },
+  {
+    "path": "src\\study\\content\\preguntas-publicas.json",
+    "sha256": "67B710B321E63F98F77BF1DB6F4C22C523C7D7F843E9564FF11647B8E9588217"
+  },
+  {
+    "path": "src\\study\\dialog.ts",
+    "sha256": "3E55C9EF26D32F78F041D15B08BC39AA86F9ADA10586F73834719B9365D9FBE4"
+  },
+  {
+    "path": "src\\study\\ExamView.tsx",
+    "sha256": "83DB5B2F8593A9C46E2A5BAB8D0F92C54067F3B2EBCCD5CA0B36D17D179E2B98"
+  },
+  {
+    "path": "src\\study\\grading.ts",
+    "sha256": "67BB4194A2524D9187C79E25A6CA3AE6973B7946F2CA8599CCF6B48503154EA5"
+  },
+  {
+    "path": "src\\study\\GuidedLesson.tsx",
+    "sha256": "09E48922DA5964F252FFBBDFEA9289BAAC1E806E3D55EAB8DC2457FEAEE44CB1"
+  },
+  {
+    "path": "src\\study\\journeyContent.ts",
+    "sha256": "FA50A3D9B17DA8FD775B4726BD60DCA57A1BB913AEAEA3A34A47662E58CFDB19"
+  },
+  {
+    "path": "src\\study\\lessonCards.ts",
+    "sha256": "6DB88BDEA9CC74959D1D99C50E234D43401E8E05AFBF0BB5225613667C7206B0"
+  },
+  {
+    "path": "src\\study\\lessonContent.ts",
+    "sha256": "9B420E882E698BE5E2482C6D1331451B758058BBBB4C617323E238A782C0D773"
+  },
+  {
+    "path": "src\\study\\LessonGuide.tsx",
+    "sha256": "3C8922442E30DE34F17C346F3933D78198A2407A5781630CCFEBD0227EA256FE"
+  },
+  {
+    "path": "src\\study\\LessonJourney.tsx",
+    "sha256": "8366CC0D8522DA4529840CFD1628824CC85756F7351F36F98870632DF708D718"
+  },
+  {
+    "path": "src\\study\\LessonMedia.tsx",
+    "sha256": "35680224AAD8D9E42F9E52346A83E3661225072FA3F79ED1426ABDB6618FD8C1"
+  },
+  {
+    "path": "src\\study\\model.ts",
+    "sha256": "74D454DF487C75A3743A420881BD05FAE6FE356370E79D74FF118F534AA55E63"
+  },
+  {
+    "path": "src\\study\\Practice.tsx",
+    "sha256": "5F138DA11905F3B7A64EA8A52FBFBDE83BC954CC25D4C5A730C3C26DAABFD70D"
+  },
+  {
+    "path": "src\\study\\ProfessorFaultView.tsx",
+    "sha256": "6FCAEC073552D20C04EB3BFBC2A919FE34CD5D89CC3786DDE223B436C91F103D"
+  },
+  {
+    "path": "src\\study\\QuickExperiment.tsx",
+    "sha256": "8D9515317A329457BC9FF4B11E6F9D97F20F28B3D089AC0D018E0136873A6AB0"
+  },
+  {
+    "path": "src\\study\\RememberCard.tsx",
+    "sha256": "30DDCD32DCA3739F3A56160C7D550CD03A70352CCAACED7C03D5C3589A121BD6"
+  },
+  {
+    "path": "src\\study\\rememberContent.ts",
+    "sha256": "91619E491E101A5C95BE8684A32997F4D64E864973A8FEEF8EE0BF7331BC8247"
+  },
+  {
+    "path": "src\\study\\Rich.tsx",
+    "sha256": "E1BC44AC926A8302E426128A6E8D8A01CC41AA9C49D7F54AEE13D9F7CBAE8F5C"
+  },
+  {
+    "path": "src\\study\\StudyApp.tsx",
+    "sha256": "E949F1F14D03224E358921B9FC592B67DA33D10EF6377C12017580FE8B160161"
+  },
+  {
+    "path": "src\\study\\StudyNavigation.tsx",
+    "sha256": "FE25BA49AC7A6E5540C967702E382175DD2C6DCE5CFC38A65645CCB9378D8437"
+  },
+  {
+    "path": "src\\study\\teachingContent.ts",
+    "sha256": "7D2B7212064DF4555A010EB59649942DA59A95C13AB53C568F5A9B6BB9C8F704"
+  },
+  {
+    "path": "src\\study\\TermExplorer.tsx",
+    "sha256": "11B601C4B0040C5077E9628E8FCCBA6DDE4BA52D32D769A5084A2B538872332B"
+  },
+  {
+    "path": "src\\study\\TopicDone.tsx",
+    "sha256": "C10782EBEEF83EC1D15A55C9FC6F44AE642598FCF4C1AA3BA3DBE2CE15C88723"
+  },
+  {
+    "path": "src\\styles\\board-layout.css",
+    "sha256": "8D29DF651D712CEE64EAB9D569493DF85D7D5A15EDCE8DBB78523F454CC80525"
+  },
+  {
+    "path": "src\\styles\\cable-color.css",
+    "sha256": "5DBDF8C45629F38DBC8953821A9AEBCB6C8F3331477B43B56E95D9EDC1D44F5B"
+  },
+  {
+    "path": "src\\styles\\canvas.css",
+    "sha256": "03FB453D98160F0FFC64A9D10F31F83D476BCB5187F3B9A4EDA8069B77C8CEB1"
+  },
+  {
+    "path": "src\\styles\\diagram-layout.css",
+    "sha256": "444E8C9439E04FE864EACA94CED690F555BA052654098EEEF52BB3DF44DCA1F0"
+  },
+  {
+    "path": "src\\styles\\global.css",
+    "sha256": "E5693676BE3B09AF0B2DA2559BBF41C66747D3C5C5C84F4DA0908E52FB6E2D19"
+  },
+  {
+    "path": "src\\styles\\home-laboratory.css",
+    "sha256": "4781940B7DFE4CD37C2B98F9242B33B242E816E8ECE09396F43E9EEDB97BD661"
+  },
+  {
+    "path": "src\\styles\\laboratory.css",
+    "sha256": "6EC968FB934211D0CA02A3264864CBFF973561B8276A9DD18774D164714B2AD7"
+  },
+  {
+    "path": "src\\styles\\learning.css",
+    "sha256": "2B61D4E51C33C29BA246B6D85D70474B4B2EDC84F96D2C012E53361642754280"
+  },
+  {
+    "path": "src\\styles\\mobile.css",
+    "sha256": "1F5A3D60D78BCB938F3F0B028597B00AFBABA2439DE64BA157E920947EAEBBD0"
+  },
+  {
+    "path": "src\\styles\\simulation.css",
+    "sha256": "D6C1E6995B56C27F27DFC374293FBF8ABD280F07A961330386692343A0E0F63D"
+  },
+  {
+    "path": "src\\styles\\study-calc.css",
+    "sha256": "A89E93C4703721D62A86CABA7E5FFE4978A0E3E2441630D5B8FE678AAB1855F2"
+  },
+  {
+    "path": "src\\styles\\study-final.css",
+    "sha256": "460B0F78F6F3599C3F7AB90A627F2F84477D3533B6F22D08D5421CFBC77A2E6A"
+  },
+  {
+    "path": "src\\styles\\study-focus.css",
+    "sha256": "CF53F72E8A677B10D4236D2C655E697C8AA5FEB8B6E3949EB35B78955DE37CC0"
+  },
+  {
+    "path": "src\\styles\\study-home.css",
+    "sha256": "DD0C1DA099D6E60E23E1581263F08E4A4C10C6BEF06B9A936C20B3DAFBDE0001"
+  },
+  {
+    "path": "src\\styles\\study-learning.css",
+    "sha256": "A7905C34A1B43EC3AB84BD8BE1E3CE826ED8FEC3BC8367AE7395EF4D98B4FCD9"
+  },
+  {
+    "path": "src\\styles\\study-lesson.css",
+    "sha256": "C8D30256CB9F3EC03F217DD195CF0687CF50516D53260640D2B8B6868C0F8E75"
+  },
+  {
+    "path": "src\\styles\\study-polish.css",
+    "sha256": "48CFD6052D313D578DA7CCBB8686A698EEA29C167FC0C610A75B362B38DC4798"
+  },
+  {
+    "path": "src\\styles\\study-professor.css",
+    "sha256": "FCEECF4C6AFF7C477B7B179E47201ABB425B4C82A242F4FB3C7456493217707D"
+  },
+  {
+    "path": "src\\styles\\study-v8.css",
+    "sha256": "69DADA2BF0752EF6AB7C88E78B22E6BC4572C4AA262C03BD1FF4E850E8FDFA80"
+  },
+  {
+    "path": "src\\styles\\study.css",
+    "sha256": "A5B374641CCBE8305C8320B0AEC7B35E0D1393FC0BF76E792A3181F3BAB11403"
+  }
+]

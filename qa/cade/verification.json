@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Original byte identical, SHA256, 79 records, all coordinates / IDs / references, 47 conductors and 19 symbols",
+    "Source duplicates preserved; conductor graph stops at 95/96 and A1/A2; source motor bridge retained",
+    "All 47 original conductors selected by physical mouse click",
+    "12 questions on actual source, error / correct feedback, repeat and progress retained while switching to bank",
+    "Zoom, reset and keyboard pan",
+    "Actual scheme readable and no page overflow in 1920/1440/768/390/360",
+    "Mobile real touch events: connect 95→96, erase connector, undo, select original CADe line 83"
+  ],
+  "errors": []
+}

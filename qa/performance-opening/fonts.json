@@ -1,0 +1,22 @@
+[
+  {
+    "file": "public\\fonts\\InterVariable.woff2",
+    "beforeBytes": 352240,
+    "afterBytes": 105968
+  },
+  {
+    "file": "public\\fonts\\SourceSans3-Bold.woff2",
+    "beforeBytes": 108640,
+    "afterBytes": 31120
+  },
+  {
+    "file": "public\\fonts\\SourceSans3-Regular.woff2",
+    "beforeBytes": 109632,
+    "afterBytes": 31264
+  },
+  {
+    "file": "public\\fonts\\SourceSans3-Semibold.woff2",
+    "beforeBytes": 108900,
+    "afterBytes": 31196
+  }
+]

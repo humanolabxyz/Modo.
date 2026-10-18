@@ -1,0 +1,54 @@
+.community-page,.community-page *{box-sizing:border-box}
+.community-page{margin:0;background:var(--modo-bg);color:var(--modo-ink);font:400 16px/1.6 var(--modo-font);-webkit-font-smoothing:antialiased}
+.community-page a{color:inherit;text-decoration:none}
+.community-page :focus-visible{outline:3px solid var(--modo-accent);outline-offset:5px}
+.community-skip{position:fixed;top:-100px;left:16px;z-index:100;padding:12px 18px;border:1px solid var(--modo-border);border-radius:10px;background:#fff}
+.community-skip:focus{top:12px}
+.community-header{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1200px;margin:auto;padding:25px 40px;border-bottom:1px solid var(--modo-border)}
+.community-brand{display:block;flex:none}.community-brand img{display:block;width:120px;height:auto}
+.community-header nav{display:flex;align-items:center;gap:10px}
+.community-header nav a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 15px;border:1px solid transparent;border-radius:11px;font-size:13px;font-weight:600}
+.community-header nav a:hover{background:#edf1f0}
+.community-header nav .community-panel-link{background:#fff;border-color:var(--modo-border)}
+.community-header nav .community-panel-link:hover{border-color:#abc3b5;background:#f4f8f5}
+.community-main{max-width:1200px;margin:auto;padding:62px 40px 30px}
+.community-intro{position:relative;max-width:760px;margin-bottom:54px}
+.community-eyebrow{display:flex;align-items:center;gap:9px;margin:0 0 16px;font-size:10px;font-weight:700;letter-spacing:2.3px;color:#5c7767}
+.community-eyebrow>span{width:7px;height:7px;border-radius:50%;background:var(--modo-accent)}
+.community-intro h1{margin:0 0 17px;font-size:clamp(48px,6.3vw,80px);font-weight:750;line-height:1.08;letter-spacing:-3.8px}
+.community-intro h1>span{color:var(--modo-accent)}
+.community-lead{margin:0 0 12px;color:#3d4b49;font-size:clamp(20px,2.1vw,26px);line-height:1.4;letter-spacing:-.5px}
+.community-description{max-width:610px;margin:0;font-size:15px;line-height:1.8;color:var(--modo-muted)}
+.community-mobile-break{display:none}
+.community-section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 17px}
+.community-section-heading h2{margin:0;font-size:16px;font-weight:650;letter-spacing:-.25px}
+.community-section-heading>span{font-size:12px;color:#7a8983}
+.recognition-card{display:grid;grid-template-columns:280px minmax(0,1fr);gap:42px;align-items:stretch;min-width:0;padding:22px;border:1px solid var(--modo-border);border-radius:22px;background:#fff;box-shadow:0 8px 28px #22382c03}
+.recognition-portrait{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:380px;padding:23px;overflow:hidden;border:1px solid #dbe7df;border-radius:14px;background:radial-gradient(ellipse at 20% 10%,#f4f8f2,transparent 65%),linear-gradient(145deg,#e8f0e8,#dce9e2);color:#3e806b}
+.recognition-portrait:before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#3e806b0b 1px,transparent 1px),linear-gradient(90deg,#3e806b0b 1px,transparent 1px);background-size:32px 32px}
+.recognition-portrait-label{position:relative;font-size:9px;font-weight:700;letter-spacing:1.5px;color:#638071}
+.recognition-initial{position:relative;align-self:center;padding:8px 0;font-size:158px;font-weight:650;line-height:1;letter-spacing:-10px;color:#3e806b}
+.recognition-portrait-foot{position:relative;display:flex;align-items:center;gap:10px;padding-top:16px;border-top:1px solid #3e806b26;font-size:11px;line-height:1.6;color:#5a7869}
+.recognition-portrait-foot svg{flex:none}
+.recognition-content{min-width:0;padding:20px 18px 14px 0}
+.recognition-category{display:flex;align-items:center;gap:7px;margin:0 0 12px;font-size:11px;font-weight:600;color:var(--modo-accent)}
+.recognition-content h3{margin:0 0 10px;font-size:clamp(38px,4.5vw,54px);font-weight:700;line-height:1.1;letter-spacing:-2px}
+.recognition-title{margin:0 0 14px;font-size:21px;font-weight:500;line-height:1.45;letter-spacing:-.45px;color:#35483e}
+.recognition-description{max-width:610px;margin:0 0 20px;font-size:15px;line-height:1.85;color:var(--modo-muted)}
+.recognition-contributions{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.recognition-contributions li{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid #dce8e0;border-radius:8px;background:#f6faf7;color:#537361;font-size:11px;font-weight:500}
+.recognition-contributions svg{flex:none}
+.recognition-thanks{padding:17px 0 0;border-top:1px solid #e6ece8}
+.recognition-thanks strong{display:block;margin-bottom:4px;font-size:14px;font-weight:650;color:#365c46}
+.recognition-thanks p{max-width:540px;margin:0;font-size:13px;line-height:1.8;color:#7a8781}
+.community-closing{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:35px 4px}
+.community-closing p{margin:0;font-size:14px;line-height:1.7;color:#748078}
+.community-closing strong{font-weight:500;color:#3e5548}
+.community-closing a{display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:10px 0 10px 10px;font-size:13px;font-weight:600;color:#3e806b}
+.community-closing a:hover{color:#245d46}
+.community-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1120px;margin:0 auto;padding:22px 0 26px;border-top:1px solid var(--modo-border);font-size:11px;color:#87918d}
+.community-footer strong{font-weight:600;color:#63776b}
+.community-footer a{display:inline-flex;align-items:center;gap:5px;min-height:44px}
+@media(max-width:800px){.community-header{padding:20px 24px}.community-main{padding:44px 24px 18px}.community-intro{margin-bottom:36px}.recognition-card{grid-template-columns:210px minmax(0,1fr);gap:25px;padding:18px}.recognition-portrait{min-height:350px;padding:18px}.recognition-initial{font-size:132px}.recognition-content{padding:10px 4px 8px 0}.recognition-title{font-size:18px}.community-footer{margin:0 24px}}
+@media(max-width:600px){.community-header{gap:12px;padding:17px 20px}.community-brand img{width:99px}.community-header nav{gap:3px}.community-header nav a{gap:5px;padding:8px 10px;font-size:12px}.community-main{padding:35px 20px 12px}.community-intro{margin-bottom:30px}.community-eyebrow{font-size:9px;letter-spacing:1.8px;margin-bottom:14px}.community-intro h1{font-size:50px;letter-spacing:-2.6px;margin-bottom:17px}.community-lead{font-size:22px;line-height:1.45;margin-bottom:12px}.community-mobile-break{display:block}.community-description{font-size:14px;line-height:1.8}.community-section-heading{gap:12px;margin-bottom:13px}.community-section-heading h2{font-size:14px}.community-section-heading>span{font-size:10px}.recognition-card{grid-template-columns:minmax(0,1fr);gap:22px;padding:14px;border-radius:18px}.recognition-portrait{min-height:0;height:190px;padding:17px}.recognition-portrait-label{font-size:8px}.recognition-initial{position:absolute;right:25px;top:18px;font-size:144px;letter-spacing:-8px;opacity:.9}.recognition-portrait-foot{align-self:flex-start;margin-top:auto;padding-top:12px;font-size:10px;max-width:165px}.recognition-content{padding:0 6px 9px}.recognition-content h3{font-size:43px;letter-spacing:-1.6px}.recognition-category{font-size:11px;margin-bottom:11px}.recognition-title{font-size:20px;line-height:1.4;margin-bottom:13px}.recognition-description{font-size:14px;line-height:1.85;margin-bottom:18px}.recognition-contributions{gap:7px;margin-bottom:20px}.recognition-contributions li{font-size:10px;padding:6px 8px}.recognition-thanks p{font-size:13px}.community-closing{align-items:flex-start;flex-direction:column;gap:13px;padding:27px 4px}.community-closing a{padding-left:0}.community-footer{margin:0 20px;padding:18px 0;align-items:flex-start;gap:10px;font-size:10px}.community-footer>span{padding-top:11px}}
+@media(max-width:360px){.community-header{padding-inline:15px}.community-brand img{width:88px}.community-header nav a{padding-inline:8px}.community-main{padding-inline:15px}.community-intro h1{font-size:45px}.community-footer{margin-inline:15px}}

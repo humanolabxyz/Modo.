@@ -1,0 +1,518 @@
+[
+  {
+    "Path": "src\\components\\App.tsx",
+    "Hash": "42B2C4C1208EE0FB20F6D857204B75A0816F23B15389FB3F0E64F2A19DDF5691"
+  },
+  {
+    "Path": "src\\components\\BananaCable.tsx",
+    "Hash": "2619B93ED8D155D9900C2D6235E6ECF91F9C8B26620EBAFAE6126C71371616D3"
+  },
+  {
+    "Path": "src\\components\\Board.tsx",
+    "Hash": "80AD2FCDFAC3E000766D24EDC83EA5E151B4DCF3945F741BD26A0B432F99CCE9"
+  },
+  {
+    "Path": "src\\components\\CableColorPicker.tsx",
+    "Hash": "CA54C9D62B30DC5A6124C5D200921602365F3038E48366E5123BB70F11233E22"
+  },
+  {
+    "Path": "src\\components\\CablesMenu.tsx",
+    "Hash": "021971D9673FDA9896FD4896C4EE76B365E221D875FB3178684CBE3A414344C9"
+  },
+  {
+    "Path": "src\\components\\CadeDiagram.tsx",
+    "Hash": "B6FB74F37BEEBB5BA9AD52AFBCDA8ED5B40878A138CE844C85F4F2BC6F1E86F4"
+  },
+  {
+    "Path": "src\\components\\CadeNames.tsx",
+    "Hash": "528ADAAB1BCFC1E658227F8B208A3B6D0DAC4C5CD325D3BFD73635ADD6EE22D2"
+  },
+  {
+    "Path": "src\\components\\CadeRoute.tsx",
+    "Hash": "19E4E6AC29C90A8A97ACF00A312297D05275E67B5C3256170A1B30F5BEADF2C0"
+  },
+  {
+    "Path": "src\\components\\CadeSheet.tsx",
+    "Hash": "6F669B3DB690302F62A76997B91EFC70DA6222306D50517179E11996C76A571D"
+  },
+  {
+    "Path": "src\\components\\CompactBar.tsx",
+    "Hash": "C406A862E48B3AB00D2BF81E493CCAFFBA941D0C6763D86C7B24E4BA8094AEA0"
+  },
+  {
+    "Path": "src\\components\\ConnectionLesson.tsx",
+    "Hash": "D84E1F105C96CF841AB6B7E21A46474DB24688DF78A23E3EE9B9D757B790165E"
+  },
+  {
+    "Path": "src\\components\\DiagramPane.tsx",
+    "Hash": "42716975E3FACAB9475D223DFF2C7C6B2C72F456484DF07F2FBC89F196EF7E1D"
+  },
+  {
+    "Path": "src\\components\\DiagramReader.tsx",
+    "Hash": "E04096BEA0C2B84CC735D33E882A4716A3BAD97D4BA96831EE48E2A33E91BF1E"
+  },
+  {
+    "Path": "src\\components\\DiagramWindow.tsx",
+    "Hash": "BB8360C48746AD756C6B76BE2FEF148831FEA93A835E02487C8CDBE6B30C0B3A"
+  },
+  {
+    "Path": "src\\components\\ExamReference.tsx",
+    "Hash": "97FDC99848EDA0D975D4FB1176DF070744FB67A53C89871E3B4C5EEDF1BCA356"
+  },
+  {
+    "Path": "src\\components\\Home.tsx",
+    "Hash": "FB11554C62A926F3E65FB16C391D146FC431091195C3735640924196668AF79C"
+  },
+  {
+    "Path": "src\\components\\PowerStatus.tsx",
+    "Hash": "A76CD81EE6DD795B1E1BC5274FF1EC2A7A2FFBBBA33A584E133CB333CF25734D"
+  },
+  {
+    "Path": "src\\components\\SearchBox.tsx",
+    "Hash": "29AB32D4154796FC8EA0C8DF84B5058CB639363117E593C3B37E9BB34B691D42"
+  },
+  {
+    "Path": "src\\components\\SimulationControls.tsx",
+    "Hash": "1FF0C0360247EA9D4E8A45BDAA389BC36919D57C824D8B69FC594ECB38D57AAA"
+  },
+  {
+    "Path": "src\\components\\SimulatorInspector.tsx",
+    "Hash": "BDDD7CEC1760D875C9BFB5A4802AA19CB8B525FCE9C72F6C4465F7D808628044"
+  },
+  {
+    "Path": "src\\components\\StudyGuide.tsx",
+    "Hash": "C3E74C8EE301237368F0FA640DD5B365D812ECB98C2F403E75BE2452B3DD1D73"
+  },
+  {
+    "Path": "src\\components\\TeacherMaterial.tsx",
+    "Hash": "471F7C6752C01BC29C372B3E34F2F6EA221C6D3A5AD0F2C0CE409074A4A578D7"
+  },
+  {
+    "Path": "src\\components\\ToolDock.tsx",
+    "Hash": "2A9E323A10DC2F12E3EB0F582C77C9E854430F98E6CA6D625178642429F1928C"
+  },
+  {
+    "Path": "src\\components\\WireInspector.tsx",
+    "Hash": "A078E9AD1B57D6A2DF883AE2CBC01FB812E11E18EFFC037C829C88196E419E85"
+  },
+  {
+    "Path": "src\\components\\WireLayer.tsx",
+    "Hash": "5D91699A9CED24B449EEEDDD51DC0D53C66B4E62D4204C7605B59FC98F46BE06"
+  },
+  {
+    "Path": "src\\data\\cade.ts",
+    "Hash": "D6F39EF62AC1C39E426BC6BCB6BAE5552CEBF6DBFFCEB6829804725633C85A3B"
+  },
+  {
+    "Path": "src\\data\\cadeComponents.ts",
+    "Hash": "31B02454B97DD636FA3F750E2FA968C8E0FBA8479C5BFF9E1D555C53169A84B6"
+  },
+  {
+    "Path": "src\\data\\cadeEstrellaTriangulo.json",
+    "Hash": "10FB7EE17187A615E9EA1EBEE317B8295B0978B9A78C58DF9273789405D3D3D2"
+  },
+  {
+    "Path": "src\\data\\cadePerfecto.json",
+    "Hash": "702E0908D6568FA232D1671A23FA188757E217875FC0C9DD5AE8C3A9DBAFA2C6"
+  },
+  {
+    "Path": "src\\data\\diagramReading.ts",
+    "Hash": "2E95182878D80DD5BC5EB259A39E2BF4E2AFC142EAE41FE5529913F447E2826A"
+  },
+  {
+    "Path": "src\\data\\examReference.ts",
+    "Hash": "6C5A05C37C6C16392C50B6BE32A0553AA935BAB33224AD7F6D177CFE1F276618"
+  },
+  {
+    "Path": "src\\data\\layout.ts",
+    "Hash": "66ED174BD118C66D82BE13091FC485B83313CCB9134E62824BDEDBE407BEE3DC"
+  },
+  {
+    "Path": "src\\data\\learning.ts",
+    "Hash": "D7773F1F54B596AE1D055FA5DC486FBEAB8EE4562D96AB6E52693D1C67457545"
+  },
+  {
+    "Path": "src\\data\\panel.ts",
+    "Hash": "DEBAA5915007206D113E487ECA8B2D4537AAC0DA1962CE7290FF8A366AEE2B2F"
+  },
+  {
+    "Path": "src\\data\\panelCorrespondence.ts",
+    "Hash": "859DBD78F1F37223EADFB994269C9FD640D2B777497427112535BE992D27596F"
+  },
+  {
+    "Path": "src\\data\\practice.ts",
+    "Hash": "EF23E8A99A0B367DED728263A9B486E9423176770DFE8E5F949792AF23473C15"
+  },
+  {
+    "Path": "src\\data\\simulation.ts",
+    "Hash": "7EC5CB0EAC059C23291C822BB90869B9FA6241EB2D3F0D539ADC6C81F89D1241"
+  },
+  {
+    "Path": "src\\data\\wiring.ts",
+    "Hash": "DAEE8570F8257A7A90ED01F8AAC50B4416A789606E5C22E798A75A7AC1F8F451"
+  },
+  {
+    "Path": "src\\hooks\\useCompactLayout.ts",
+    "Hash": "ED458E773446430987F1EB37376E59DD17D6760B64FF62AAC79A3DBDD0F6A8CC"
+  },
+  {
+    "Path": "src\\hooks\\usePractice.ts",
+    "Hash": "4FE0ECF4DCC09A3DDEC6D72CB35157FD75D50E3C763125DBD22E4F5E98673658"
+  },
+  {
+    "Path": "src\\hooks\\useSimulation.ts",
+    "Hash": "34D0A762797EE33015BB982324138FF23AD680F1F100F60CC89F2C8F95A61D27"
+  },
+  {
+    "Path": "src\\hooks\\useSvgNavigation.ts",
+    "Hash": "5F30A337A1C80685EEFF79E10BB37F9FCECE12A031DAB93A275D9D17CE312A0F"
+  },
+  {
+    "Path": "src\\lab\\BreadboardParts.tsx",
+    "Hash": "05A95BDEBB61BF5351C830506A13EB559F6E7BA952FA42DC497F0F823444079B"
+  },
+  {
+    "Path": "src\\lab\\BreadboardView.tsx",
+    "Hash": "0B159E06DC792EB0EA9649E0C8B9F05946C7917CEE85230D5667BBA769841BA2"
+  },
+  {
+    "Path": "src\\lab\\CanvasControls.tsx",
+    "Hash": "A0E5C5A5A3CE9A778FA454F5780EF1C4400CCB80B8BBC539FBB82608F97CA034"
+  },
+  {
+    "Path": "src\\lab\\cords.ts",
+    "Hash": "413443F936BB3F6B9DCC7C48A079B12A2DB293259D2D0E829C739401C83E1D56"
+  },
+  {
+    "Path": "src\\lab\\dc.ts",
+    "Hash": "B8E0146C66493239E7384807D8951F521DC33E5A5EEE4052CB2EA228ED0C4A36"
+  },
+  {
+    "Path": "src\\lab\\DeviceIcons.tsx",
+    "Hash": "763A52B1AB0B0434EC8B89E7A6BF74403F6EB1E80C065A993BC0F5E76EF91B25"
+  },
+  {
+    "Path": "src\\lab\\DiagramViewer.tsx",
+    "Hash": "BBD2ECCD3839D42875865C06268B7714EBF9C9953C11E2C36C347BC73013729E"
+  },
+  {
+    "Path": "src\\lab\\engine.ts",
+    "Hash": "7CE266730156A09530B81E4C02E5BEF8ED095609DE5F6A6F878D2CAA22BE2533"
+  },
+  {
+    "Path": "src\\lab\\HMIView.tsx",
+    "Hash": "E22E6EF897E494588375EAFDB5BE6BE9B544079717DF63DE15683B62D8A81BF2"
+  },
+  {
+    "Path": "src\\lab\\HomeTools.tsx",
+    "Hash": "57625E1583BA639411EC5D8F066CCE61ED4305996C6B7E8D2478492CAF84FA70"
+  },
+  {
+    "Path": "src\\lab\\InspectorSheet.tsx",
+    "Hash": "96037C04ACFC3DE986F7C29D5ABBB6E917DD0C5C4449AE4F3F1E2A51CB33B126"
+  },
+  {
+    "Path": "src\\lab\\labels.ts",
+    "Hash": "557AAE64204286EFC225234B4D5FAB1803A36B71CFF485112B100E677009FC00"
+  },
+  {
+    "Path": "src\\lab\\LaboratoryApp.tsx",
+    "Hash": "8E02B0AC24B54E2267635938ACAFE5BE13357B1D170CF9DDACA0568654C1BA47"
+  },
+  {
+    "Path": "src\\lab\\MeterInstrument.tsx",
+    "Hash": "19260198CDF65EA27C116B2CA1FCA8423F6F5EE3CF52D09674E484ABE53341C9"
+  },
+  {
+    "Path": "src\\lab\\MeterPanel.tsx",
+    "Hash": "8CEC39A9DAAF9B2A3590C2316A8EAE78CF788E3B39899583F7F93E1A7439977B"
+  },
+  {
+    "Path": "src\\lab\\model.ts",
+    "Hash": "2DDF81F67DAA1F2A09F9659A9572166F27685A7BB9972319B735CC8F4FC9CC5D"
+  },
+  {
+    "Path": "src\\lab\\PanStage.tsx",
+    "Hash": "826AB8CE1D90E5A479378992B59D3DEA1267C4B1D3F343ED786F2D0408ECE8DF"
+  },
+  {
+    "Path": "src\\lab\\PLCView.tsx",
+    "Hash": "A5B6E8C76480500F1C78823FB64BB60FBF6EF419B45941116079C9B832349493"
+  },
+  {
+    "Path": "src\\lab\\ProcessView.tsx",
+    "Hash": "1CAA5802A4CAA6931D719628DE2EA794F162DB88DB175C7A5A2F0C76B4DCBB9A"
+  },
+  {
+    "Path": "src\\lab\\SchematicView.tsx",
+    "Hash": "E083FD4BDAD3BC7F5B2FB8910B3B8E00F51E701B16C6B7BF84D3F90D9964EECF"
+  },
+  {
+    "Path": "src\\lab\\st.ts",
+    "Hash": "A024B3850E88696FD7CAA8AFC6BAA55FEA546B417C6EA63175BDF795AABDEA63"
+  },
+  {
+    "Path": "src\\lab\\SurfaceDock.tsx",
+    "Hash": "9207A996F5D24E38B8D350C6B44B8FF8AD93A00DFB81EA68D0F44A29A4568441"
+  },
+  {
+    "Path": "src\\lab\\units.ts",
+    "Hash": "3A86BE23345AAD39508724183037CB02019216C79576F6487D58F702751BA665"
+  },
+  {
+    "Path": "src\\lab\\useLaboratory.ts",
+    "Hash": "4CBE0E9CB79C3CC5A07189903201A5E54FB7D2EEA7DE05426A319D977D500574"
+  },
+  {
+    "Path": "src\\lab\\validation.ts",
+    "Hash": "65760B81FC144B516E2C9D0BB83EAE09B74877308231EDD647FC5F1F507964ED"
+  },
+  {
+    "Path": "src\\lab\\ValueEditor.tsx",
+    "Hash": "11F2E1CB05BE5887C7382C13AC7CBF07F57BB4DE8174213ED76E1109903F6F96"
+  },
+  {
+    "Path": "src\\layout\\floatRect.ts",
+    "Hash": "5ADD6F72A26D2B33E48605839CC1A72334004A5E9280D28A453FAB53818650F3"
+  },
+  {
+    "Path": "src\\layout\\focusView.ts",
+    "Hash": "89CA03BBDB9446B96E1E73F0EF1096D1D93909EDFB161A62B7A39BCD5416A893"
+  },
+  {
+    "Path": "src\\pages\\estudio.astro",
+    "Hash": "FDC392FBFAF7F059CE77FEC23810355E96A30734BBC5E54596640CB0851EE1AF"
+  },
+  {
+    "Path": "src\\pages\\index.astro",
+    "Hash": "24F3E59E11370417E1DE39D3AB356332A44B5C64ECF6F0AE51239827A3CAB12C"
+  },
+  {
+    "Path": "src\\pages\\laboratorio.astro",
+    "Hash": "075F2461E0513F5989726A0510A9ABB0491F2484439C32C75575F3E56AB51837"
+  },
+  {
+    "Path": "src\\study\\Activity.tsx",
+    "Hash": "ACF66396EA45A22D09638D4A7521300697A6FEEF3240AAA1FD09E274E5BCB1A0"
+  },
+  {
+    "Path": "src\\study\\calcEngine.ts",
+    "Hash": "361079B2633819E51FE8F7BB91FF3EF76E014678355445F541B557472D0EB723"
+  },
+  {
+    "Path": "src\\study\\CalcModule.tsx",
+    "Hash": "76465FA48C71D4BE3A1DC41DD63512686F998DB1F646BA6D3B12FDD8AFB2AD63"
+  },
+  {
+    "Path": "src\\study\\CalculationSteps.tsx",
+    "Hash": "923DB8C9C2C21E206900109A7F0C54D08D3A91A236B7A83CE04134195D8C0FC6"
+  },
+  {
+    "Path": "src\\study\\Calculator.tsx",
+    "Hash": "A1BF2C20BCFD1E70ABC4930EDBA38377D5B7C4DFD6BC45229EBAB2D68ED1C81D"
+  },
+  {
+    "Path": "src\\study\\CalculatorDock.tsx",
+    "Hash": "F64C61167E9838BD210A2477BBB328661A6D1F40BB406110CF9646C43839CFCB"
+  },
+  {
+    "Path": "src\\study\\dialog.ts",
+    "Hash": "3E55C9EF26D32F78F041D15B08BC39AA86F9ADA10586F73834719B9365D9FBE4"
+  },
+  {
+    "Path": "src\\study\\ExamView.tsx",
+    "Hash": "83DB5B2F8593A9C46E2A5BAB8D0F92C54067F3B2EBCCD5CA0B36D17D179E2B98"
+  },
+  {
+    "Path": "src\\study\\FormulaSheet.tsx",
+    "Hash": "25BF3A1D47D9D287694360BF8D5AC72D957E59FABA68184695B3DC4B20E4E5A8"
+  },
+  {
+    "Path": "src\\study\\grading.ts",
+    "Hash": "67BB4194A2524D9187C79E25A6CA3AE6973B7946F2CA8599CCF6B48503154EA5"
+  },
+  {
+    "Path": "src\\study\\GuidedLesson.tsx",
+    "Hash": "09E48922DA5964F252FFBBDFEA9289BAAC1E806E3D55EAB8DC2457FEAEE44CB1"
+  },
+  {
+    "Path": "src\\study\\journeyContent.ts",
+    "Hash": "FA50A3D9B17DA8FD775B4726BD60DCA57A1BB913AEAEA3A34A47662E58CFDB19"
+  },
+  {
+    "Path": "src\\study\\lessonCards.ts",
+    "Hash": "6DB88BDEA9CC74959D1D99C50E234D43401E8E05AFBF0BB5225613667C7206B0"
+  },
+  {
+    "Path": "src\\study\\lessonContent.ts",
+    "Hash": "9B420E882E698BE5E2482C6D1331451B758058BBBB4C617323E238A782C0D773"
+  },
+  {
+    "Path": "src\\study\\LessonGuide.tsx",
+    "Hash": "3C8922442E30DE34F17C346F3933D78198A2407A5781630CCFEBD0227EA256FE"
+  },
+  {
+    "Path": "src\\study\\LessonJourney.tsx",
+    "Hash": "8366CC0D8522DA4529840CFD1628824CC85756F7351F36F98870632DF708D718"
+  },
+  {
+    "Path": "src\\study\\LessonMedia.tsx",
+    "Hash": "35680224AAD8D9E42F9E52346A83E3661225072FA3F79ED1426ABDB6618FD8C1"
+  },
+  {
+    "Path": "src\\study\\model.ts",
+    "Hash": "74D454DF487C75A3743A420881BD05FAE6FE356370E79D74FF118F534AA55E63"
+  },
+  {
+    "Path": "src\\study\\Practice.tsx",
+    "Hash": "5F138DA11905F3B7A64EA8A52FBFBDE83BC954CC25D4C5A730C3C26DAABFD70D"
+  },
+  {
+    "Path": "src\\study\\ProfessorFaultView.tsx",
+    "Hash": "6FCAEC073552D20C04EB3BFBC2A919FE34CD5D89CC3786DDE223B436C91F103D"
+  },
+  {
+    "Path": "src\\study\\QuickExperiment.tsx",
+    "Hash": "8D9515317A329457BC9FF4B11E6F9D97F20F28B3D089AC0D018E0136873A6AB0"
+  },
+  {
+    "Path": "src\\study\\RememberCard.tsx",
+    "Hash": "30DDCD32DCA3739F3A56160C7D550CD03A70352CCAACED7C03D5C3589A121BD6"
+  },
+  {
+    "Path": "src\\study\\rememberContent.ts",
+    "Hash": "91619E491E101A5C95BE8684A32997F4D64E864973A8FEEF8EE0BF7331BC8247"
+  },
+  {
+    "Path": "src\\study\\Rich.tsx",
+    "Hash": "E1BC44AC926A8302E426128A6E8D8A01CC41AA9C49D7F54AEE13D9F7CBAE8F5C"
+  },
+  {
+    "Path": "src\\study\\StudyApp.tsx",
+    "Hash": "E2E6E2796283A0F2E5E676F20971D5B80EE5ACF48A66B1A24551B2BB57BE01CA"
+  },
+  {
+    "Path": "src\\study\\StudyNavigation.tsx",
+    "Hash": "FE25BA49AC7A6E5540C967702E382175DD2C6DCE5CFC38A65645CCB9378D8437"
+  },
+  {
+    "Path": "src\\study\\teachingContent.ts",
+    "Hash": "7D2B7212064DF4555A010EB59649942DA59A95C13AB53C568F5A9B6BB9C8F704"
+  },
+  {
+    "Path": "src\\study\\TermExplorer.tsx",
+    "Hash": "11B601C4B0040C5077E9628E8FCCBA6DDE4BA52D32D769A5084A2B538872332B"
+  },
+  {
+    "Path": "src\\study\\TopicDone.tsx",
+    "Hash": "C10782EBEEF83EC1D15A55C9FC6F44AE642598FCF4C1AA3BA3DBE2CE15C88723"
+  },
+  {
+    "Path": "src\\study\\content\\casos_interactivos_7.json",
+    "Hash": "5FA85A6060600C775BA78C23A9BD0BCA88643CE121970ACB513EAE1BE7238C4A"
+  },
+  {
+    "Path": "src\\study\\content\\lecciones.json",
+    "Hash": "036E4AB2E0D87955639555945C30FF1BD58AC23FF7D17175F18C5A883A7211C4"
+  },
+  {
+    "Path": "src\\study\\content\\preguntas_alternativas_32.json",
+    "Hash": "6EA313950E77D7643093EDB5F5BC82D9B2C22407ECAD12CE62B5B21639A7D018"
+  },
+  {
+    "Path": "src\\study\\content\\preguntas_desarrollo_12.json",
+    "Hash": "DD3E606893101D46E5E0E778ACE3D80274BC4D783314174B4115874BF5EC4734"
+  },
+  {
+    "Path": "src\\study\\content\\preguntas-publicas.json",
+    "Hash": "67B710B321E63F98F77BF1DB6F4C22C523C7D7F843E9564FF11647B8E9588217"
+  },
+  {
+    "Path": "src\\styles\\board-layout.css",
+    "Hash": "8D29DF651D712CEE64EAB9D569493DF85D7D5A15EDCE8DBB78523F454CC80525"
+  },
+  {
+    "Path": "src\\styles\\cable-color.css",
+    "Hash": "5DBDF8C45629F38DBC8953821A9AEBCB6C8F3331477B43B56E95D9EDC1D44F5B"
+  },
+  {
+    "Path": "src\\styles\\canvas.css",
+    "Hash": "03FB453D98160F0FFC64A9D10F31F83D476BCB5187F3B9A4EDA8069B77C8CEB1"
+  },
+  {
+    "Path": "src\\styles\\diagram-layout.css",
+    "Hash": "444E8C9439E04FE864EACA94CED690F555BA052654098EEEF52BB3DF44DCA1F0"
+  },
+  {
+    "Path": "src\\styles\\global.css",
+    "Hash": "E5693676BE3B09AF0B2DA2559BBF41C66747D3C5C5C84F4DA0908E52FB6E2D19"
+  },
+  {
+    "Path": "src\\styles\\home-laboratory.css",
+    "Hash": "4781940B7DFE4CD37C2B98F9242B33B242E816E8ECE09396F43E9EEDB97BD661"
+  },
+  {
+    "Path": "src\\styles\\laboratory-canvas.css",
+    "Hash": "D0B578D2702C56E443D50181A507B229159A8E3CABD3FE22E3CCDC327AFB4B44"
+  },
+  {
+    "Path": "src\\styles\\laboratory.css",
+    "Hash": "6EC968FB934211D0CA02A3264864CBFF973561B8276A9DD18774D164714B2AD7"
+  },
+  {
+    "Path": "src\\styles\\learning.css",
+    "Hash": "2B61D4E51C33C29BA246B6D85D70474B4B2EDC84F96D2C012E53361642754280"
+  },
+  {
+    "Path": "src\\styles\\mobile.css",
+    "Hash": "1F5A3D60D78BCB938F3F0B028597B00AFBABA2439DE64BA157E920947EAEBBD0"
+  },
+  {
+    "Path": "src\\styles\\modo-tokens.css",
+    "Hash": "C9864E4063FA97DA34CF0D267A518760037754881E822E92597A1590542AE779"
+  },
+  {
+    "Path": "src\\styles\\simulation.css",
+    "Hash": "D6C1E6995B56C27F27DFC374293FBF8ABD280F07A961330386692343A0E0F63D"
+  },
+  {
+    "Path": "src\\styles\\study-calc.css",
+    "Hash": "13CC2D6831B716FEB5B274F36C5507EE428B7DA3EC2B4B2A385CD6DACD27BCC1"
+  },
+  {
+    "Path": "src\\styles\\study-final.css",
+    "Hash": "460B0F78F6F3599C3F7AB90A627F2F84477D3533B6F22D08D5421CFBC77A2E6A"
+  },
+  {
+    "Path": "src\\styles\\study-focus.css",
+    "Hash": "CF53F72E8A677B10D4236D2C655E697C8AA5FEB8B6E3949EB35B78955DE37CC0"
+  },
+  {
+    "Path": "src\\styles\\study-home.css",
+    "Hash": "DD0C1DA099D6E60E23E1581263F08E4A4C10C6BEF06B9A936C20B3DAFBDE0001"
+  },
+  {
+    "Path": "src\\styles\\study-learning.css",
+    "Hash": "A7905C34A1B43EC3AB84BD8BE1E3CE826ED8FEC3BC8367AE7395EF4D98B4FCD9"
+  },
+  {
+    "Path": "src\\styles\\study-lesson.css",
+    "Hash": "C8D30256CB9F3EC03F217DD195CF0687CF50516D53260640D2B8B6868C0F8E75"
+  },
+  {
+    "Path": "src\\styles\\study-polish.css",
+    "Hash": "48CFD6052D313D578DA7CCBB8686A698EEA29C167FC0C610A75B362B38DC4798"
+  },
+  {
+    "Path": "src\\styles\\study-professor.css",
+    "Hash": "FCEECF4C6AFF7C477B7B179E47201ABB425B4C82A242F4FB3C7456493217707D"
+  },
+  {
+    "Path": "src\\styles\\study-v8.css",
+    "Hash": "69DADA2BF0752EF6AB7C88E78B22E6BC4572C4AA262C03BD1FF4E850E8FDFA80"
+  },
+  {
+    "Path": "src\\styles\\study.css",
+    "Hash": "A5B374641CCBE8305C8320B0AEC7B35E0D1393FC0BF76E792A3181F3BAB11403"
+  }
+]

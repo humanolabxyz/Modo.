@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "Three aid levels, ghost never installed and ignores pointer events",
+    "Other study materials suspend PERFECTO help and return restores it without resetting",
+    "Ghost stays aligned with real sockets after zoom and pan",
+    "Alternative physical bridge topology accepted and original diagram turns green",
+    "Open, close, fullscreen and return preserve installed cables",
+    "Review and assistance retain progress; removing a bridge invalidates it and undo restores it",
+    "Incorrect cable remains installed, gets temporary red feedback, can be corrected without resetting"
+  ],
+  "errors": [
+    "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Mando', exact: true })\u001b[22m\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-learning-ui.cjs:37:164"
+  ]
+}

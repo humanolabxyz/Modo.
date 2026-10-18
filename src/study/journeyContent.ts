@@ -1,0 +1,78 @@
+export const journeys: Record<string, {
+  title: string; hook: string; idea: string; experiment: string;
+  question: string; given: string; options?: string[]; correct: string;
+  explanation: string; unit?: string;
+}> = {
+  "objetivos-fallas": {
+    title: "¿Sobrecarga o cortocircuito?",
+    hook: "El cable se calienta en ambos casos. La pista está en qué provocó la corriente.",
+    idea: "Sobrecarga: la carga exige más corriente de la normal. Cortocircuito: aparece un camino de muy baja impedancia, por ejemplo al perderse la aislación.",
+    experiment: "Compara la corriente en sobrecarga y cortocircuito, como en la lámina 3 del profesor.",
+    question: "Se pierde la aislación del motor. ¿Qué falla describe un camino de muy baja impedancia?",
+    given: "Caso conceptual del material docente.", options: ["Sobrecarga", "Cortocircuito", "Sobretensión"], correct: "1",
+    explanation: "Es cortocircuito: la pista es el camino de muy baja impedancia. El calor puede aparecer también en una sobrecarga, así que no basta para distinguirlos.",
+  },
+  coordinacion: {
+    title: "¿Este interruptor cuida el cable?",
+    hook: "Subir los amperes del interruptor puede resolver una condición y romper otra.",
+    idea: "La nominal debe admitir la carga sin superar la capacidad corregida del cable: In ≤ Ip ≤ Iz. En la guía, In es la corriente de carga.",
+    experiment: "Cambia solo la nominal de la protección. La carga y el cable permanecen iguales.",
+    question: "Con estos valores, ¿qué condición falla?", given: "Carga 18 A · Protección 32 A · Cable corregido 25 A. Variante didáctica.",
+    options: ["La protección es menor que la carga", "La protección supera la capacidad del cable", "Las dos condiciones se cumplen"], correct: "1",
+    explanation: "18 ≤ 32 se cumple, pero 32 ≤ 25 es falso. La protección supera la capacidad corregida del conductor. Cumplir la regla tampoco sustituye las verificaciones de corte y energía pasante.",
+  },
+  termomagnetico: {
+    title: "¿Qué cambia al elegir B, C o D?",
+    hook: "La letra cambia la banda magnética. No indica que un interruptor sea mejor para todo.",
+    idea: "El térmico responde a sobrecarga; el magnético, a cortocircuito suficientemente elevado. Las bandas B/C/D son múltiplos de la nominal, no tiempos de disparo.",
+    experiment: "Elige una curva y mueve la corriente nominal. Observa los dos extremos de la banda.",
+    question: "Un ejemplo C de 16 A: ¿qué banda magnética obtienes?", given: "Curva C = 5–10 × nominal, según lámina 8. Nominal supuesta: 16 A.",
+    options: ["80–160 A", "48–80 A", "160–320 A"], correct: "0",
+    explanation: "5 × 16 = 80 A y 10 × 16 = 160 A. Es una banda magnética. Para tiempos, arranque y selección necesitas la curva completa y las condiciones del fabricante.",
+  },
+  fusibles: {
+    title: "¿Qué significa 200 kA en un fusible?",
+    hook: "Tres cifras de la placa responden a tres preguntas diferentes.",
+    idea: "Nominal, tensión y ruptura no son intercambiables. La forma del cartucho tampoco determina su clase ni su rapidez: eso se confirma en ficha.",
+    experiment: "Toca cada dato de la placa didáctica y descubre qué debes comparar.",
+    question: "¿Qué representa 200 kA en este ejemplo?", given: "Placa textual de la lámina 10: 50 A · 700 V CA/CC · 200 kA. No identifica los objetos fotografiados.",
+    options: ["La corriente continua de funcionamiento", "La tensión máxima", "La capacidad de ruptura"], correct: "2",
+    explanation: "200 kA es capacidad de ruptura: se compara con la corriente de falla prevista y las capacidades específicas aplicables. La nominal del ejemplo es 50 A; la tensión se expresa en V.",
+  },
+  conductores: {
+    title: "¿Por qué un cable de 30 A queda en 21,6 A?",
+    hook: "La temperatura y el agrupamiento cambian la capacidad disponible.",
+    idea: "La coordinación usa la capacidad corregida: Iz = Itabla × fT × fG. Los factores se multiplican; no se suman ni son corrientes en amperes.",
+    experiment: "Mueve el factor de temperatura. Comprueba cuánto cambia la capacidad del mismo cable.",
+    question: "Calcula la capacidad corregida Iz.", given: "Ejemplo de la lámina 12: Itabla = 30 A · fT = 0,9 · fG = 0,8.",
+    correct: "21.6", unit: "A",
+    explanation: "0,9 × 0,8 = 0,72; después 30 × 0,72 = 21,6 A. Es la capacidad corregida. Caída de tensión y resistencia al cortocircuito siguen siendo comprobaciones separadas.",
+  },
+  guardamotor: {
+    title: "¿Qué rango necesita este motor?",
+    hook: "Elegir el rango y ajustar el térmico son dos decisiones diferentes.",
+    idea: "Lee la corriente de placa, elige un rango que la incluya y ajusta según fabricante. Después comprueba arranque, magnético y poder de corte.",
+    experiment: "Alterna los dos rangos y compara sus límites con la placa ficticia de 6,3 A.",
+    question: "¿Qué rango incluye los 6,3 A de placa?", given: "Motor y rangos ficticios. Método de selección de la lámina 13.",
+    options: ["6–10 A", "4–6 A", "10–16 A"], correct: "0",
+    explanation: "6 ≤ 6,3 ≤ 10. El rango 4–6 A no llega a 6,3 A y el 10–16 A empieza por encima. En el ejemplo se ajusta a 6,3 A, no al máximo del rango. El dial térmico no representa un magnético ajustable universal.",
+  },
+  "tierra-sobretension": {
+    title: "¿Pico de tensión o corriente de fuga?",
+    hook: "SPD y diferencial están en el tablero, pero responden a fenómenos distintos.",
+    idea: "El SPD limita sobretensiones transitorias. El diferencial detecta desequilibrio por fuga; no sustituye la protección contra sobrecorriente.",
+    experiment: "Elige fuga y cambia la corriente de vuelta. Compara la diferencia con la corriente de ida.",
+    question: "Si salen 10 A y vuelven 9,97 A, ¿cuántos mA de desequilibrio hay?", given: "Datos supuestos para comprender la función de la lámina 14.",
+    correct: "30", unit: "mA",
+    explanation: "|10 − 9,97| = 0,03 A. Multiplica por 1000: 30 mA. Es un cálculo conceptual; no determina tiempo ni garantiza actuación de un equipo real.",
+  },
+  "motor-trifasico": {
+    title: "De 5,5 kW a la corriente del motor",
+    hook: "No basta dividir potencia por tensión. Primero identifica qué potencia tienes.",
+    idea: "Para potencia mecánica de salida: In = Psalida / (√3 VLL η cosφ). La potencia va en W; rendimiento y factor de potencia, como fracciones.",
+    experiment: "Cambia solo el rendimiento. Predice si la corriente sube o baja y compruébalo.",
+    question: "Calcula la corriente de este motor supuesto.", given: "5,5 kW de salida · 400 V entre líneas · η = 0,88 · cosφ = 0,83. La lámina 15 deja los valores por completar.",
+    correct: "10.87", unit: "A",
+    explanation: "5,5 kW = 5500 W. √3 × 400 × 0,88 × 0,83 ≈ 506,04; 5500 / 506,04 ≈ 10,87 A. Compara con placa; todavía faltan arranque, Icc y datos del conductor.",
+  },
+};

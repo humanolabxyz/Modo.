@@ -1,0 +1,559 @@
+{
+  "alternatives": [
+    {
+      "id": "ALT-01",
+      "theme": "fallas",
+      "slides": [
+        3
+      ],
+      "question": "¿Cuál es una característica de la sobrecarga?",
+      "options": [
+        "Es siempre una fuga a tierra.",
+        "La corriente supera lo normal y puede recalentar el conductor.",
+        "Es un transitorio de tensión.",
+        "Solo ocurre en fusibles."
+      ]
+    },
+    {
+      "id": "ALT-02",
+      "theme": "fallas",
+      "slides": [
+        3
+      ],
+      "question": "¿Qué caracteriza a un cortocircuito?",
+      "options": [
+        "Conexión de muy baja impedancia con corriente potencialmente elevada.",
+        "Pérdida exclusiva de rendimiento mecánico.",
+        "Una caída de tensión pequeña sin corriente.",
+        "Un contactor que abre por orden normal."
+      ]
+    },
+    {
+      "id": "ALT-03",
+      "theme": "fallas",
+      "slides": [
+        4
+      ],
+      "question": "¿Qué efectos menciona la presentación para un cortocircuito?",
+      "options": [
+        "Vibración, humedad y oxidación.",
+        "Reducción de consumo y enfriamiento.",
+        "Arco eléctrico, calor y esfuerzos magnéticos.",
+        "Solo daño acústico."
+      ]
+    },
+    {
+      "id": "ALT-04",
+      "theme": "fallas",
+      "slides": [
+        2
+      ],
+      "question": "¿Cuáles son objetivos de las protecciones eléctricas?",
+      "options": [
+        "Solo reducir el costo energético.",
+        "Solo hacer partir un motor.",
+        "Solo conservar la señalización.",
+        "Proteger personas e instalaciones y mantener el servicio cuando sea posible."
+      ]
+    },
+    {
+      "id": "ALT-05",
+      "theme": "coordinacion",
+      "slides": [
+        5
+      ],
+      "question": "¿Cuál de estos datos es necesario antes de seleccionar protección?",
+      "options": [
+        "Color de la pintura del tablero.",
+        "Corriente de carga, tensión, tipo de carga y cortocircuito previsto.",
+        "Marca del celular del técnico.",
+        "Tipo de etiqueta impresa."
+      ]
+    },
+    {
+      "id": "ALT-06",
+      "theme": "coordinacion",
+      "slides": [
+        6
+      ],
+      "question": "Si In=18 A, Ip=20 A e Iz=25 A, ¿qué ocurre con la regla básica de coordinación?",
+      "options": [
+        "No cumple porque 18 < 20.",
+        "No cumple porque 25 > 20.",
+        "Cumple In ≤ Ip ≤ Iz.",
+        "La corriente nominal del motor es 25 A."
+      ]
+    },
+    {
+      "id": "ALT-07",
+      "theme": "coordinacion",
+      "slides": [
+        6
+      ],
+      "question": "Si In=22 A, Ip=20 A e Iz=25 A, ¿qué falla?",
+      "options": [
+        "La protección tiene corriente nominal inferior a la carga.",
+        "El cable siempre es demasiado pequeño.",
+        "El cortocircuito previsto es 25 kA.",
+        "No falla ninguna condición."
+      ]
+    },
+    {
+      "id": "ALT-08",
+      "theme": "coordinacion",
+      "slides": [
+        6
+      ],
+      "question": "Además de la desigualdad de corriente, ¿qué debe cubrir el poder de corte?",
+      "options": [
+        "La temperatura ambiente.",
+        "La cantidad de etiquetas.",
+        "La potencia luminosa.",
+        "La corriente de cortocircuito prevista en el punto."
+      ]
+    },
+    {
+      "id": "ALT-09",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué elemento del termomagnético responde a sobrecargas?",
+      "options": [
+        "Magnético.",
+        "Térmico.",
+        "SPD.",
+        "Diferencial."
+      ]
+    },
+    {
+      "id": "ALT-10",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué elemento responde a un cortocircuito suficientemente elevado?",
+      "options": [
+        "Magnético.",
+        "Indicador de energía.",
+        "Contactores auxiliares.",
+        "Aislación externa."
+      ]
+    },
+    {
+      "id": "ALT-11",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué rango de disparo magnético se indica para curva B?",
+      "options": [
+        "10–20 veces nominal.",
+        "1–2 veces nominal.",
+        "3–5 veces nominal.",
+        "40–50 veces nominal."
+      ]
+    },
+    {
+      "id": "ALT-12",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué curva se asocia con arranques de corriente elevados?",
+      "options": [
+        "B.",
+        "C exclusivamente.",
+        "No se consideran curvas.",
+        "D."
+      ]
+    },
+    {
+      "id": "ALT-13",
+      "theme": "fusibles",
+      "slides": [
+        10
+      ],
+      "question": "¿Qué datos deben verificarse al seleccionar un fusible?",
+      "options": [
+        "Solo color y longitud.",
+        "Clase de uso, corriente, tensión y capacidad de ruptura.",
+        "Solo formato exterior.",
+        "Únicamente el material de la carcasa."
+      ]
+    },
+    {
+      "id": "ALT-14",
+      "theme": "fusibles",
+      "slides": [
+        10
+      ],
+      "question": "¿Qué clases se mencionan para semiconductores?",
+      "options": [
+        "gG solamente.",
+        "Curvas B y C.",
+        "aR o gR.",
+        "RCD tipo AC únicamente."
+      ]
+    },
+    {
+      "id": "ALT-15",
+      "theme": "fusibles",
+      "slides": [
+        9,
+        10
+      ],
+      "question": "¿Por qué no basta con la forma exterior del fusible?",
+      "options": [
+        "Porque la forma no indica por sí sola la función de protección.",
+        "Porque todos tienen exactamente la misma corriente.",
+        "Porque nunca existe una ficha técnica.",
+        "Porque todos sirven solo para motores."
+      ]
+    },
+    {
+      "id": "ALT-16",
+      "theme": "fusibles",
+      "slides": [
+        10
+      ],
+      "question": "En la diapositiva 10, ¿qué representa 200 kA en el ejemplo de placa?",
+      "options": [
+        "Temperatura.",
+        "Tiempo de actuación.",
+        "Corriente nominal.",
+        "Capacidad de ruptura máxima."
+      ]
+    },
+    {
+      "id": "ALT-17",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "¿Cómo se calcula la capacidad corregida Iz?",
+      "options": [
+        "Iz = P/V.",
+        "Iz = Itabla × fT × fG.",
+        "Iz = In + cosφ.",
+        "Iz = k/S."
+      ]
+    },
+    {
+      "id": "ALT-18",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "Si Itabla=30 A, fT=0,9 y fG=0,8, ¿cuál es Iz?",
+      "options": [
+        "30 A.",
+        "27 A.",
+        "21,6 A.",
+        "20 A."
+      ]
+    },
+    {
+      "id": "ALT-19",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "Además de la corriente, ¿qué otras comprobaciones del cable aparecen?",
+      "options": [
+        "Caída de tensión y soportar energía de cortocircuito.",
+        "Color de aislación y fotografía.",
+        "Potencia de luz y distancia visual.",
+        "Marca del interruptor y tipo de logo."
+      ]
+    },
+    {
+      "id": "ALT-20",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "¿Qué representa la expresión I²t ≤ k²S²?",
+      "options": [
+        "La pérdida por ventilación.",
+        "El disparo diferencial.",
+        "La sensibilidad de un SPD.",
+        "Comprobación térmica del conductor ante energía de cortocircuito."
+      ]
+    },
+    {
+      "id": "ALT-21",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "¿Qué dato de placa sirve para ajustar el térmico del guardamotor?",
+      "options": [
+        "Color del eje.",
+        "Corriente nominal del motor.",
+        "Cantidad de tornillos.",
+        "Año de fabricación únicamente."
+      ]
+    },
+    {
+      "id": "ALT-22",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "¿Qué se verifica después de seleccionar el rango térmico?",
+      "options": [
+        "El color de la señalética.",
+        "La forma del tablero.",
+        "El arranque, umbral magnético y poder de corte.",
+        "El tamaño de tipografía."
+      ]
+    },
+    {
+      "id": "ALT-23",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "Para control remoto, ¿con qué suele combinarse el guardamotor?",
+      "options": [
+        "Contactor.",
+        "Solo fusible de vidrio.",
+        "Solo SPD.",
+        "Solo cable neutro."
+      ]
+    },
+    {
+      "id": "ALT-24",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "El disparo magnético del guardamotor...",
+      "options": [
+        "Se regula siempre en cualquier modelo.",
+        "Nunca existe.",
+        "Depende solo del color.",
+        "Puede ser fijo según el modelo."
+      ]
+    },
+    {
+      "id": "ALT-25",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿Qué dispositivo limita sobretensiones transitorias?",
+      "options": [
+        "Relé térmico exclusivamente.",
+        "SPD.",
+        "Contactor de mando.",
+        "Un cable más grueso por sí solo."
+      ]
+    },
+    {
+      "id": "ALT-26",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿Qué detecta un RCD diferencial?",
+      "options": [
+        "Solo falta de torque.",
+        "Solo temperatura de un conductor.",
+        "Desequilibrio de corriente por fuga.",
+        "Solo sobrevoltaje transitorio."
+      ]
+    },
+    {
+      "id": "ALT-27",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿Qué sensibilidad habitual menciona la presentación para protección adicional de personas?",
+      "options": [
+        "≤ 30 mA (según condiciones y normativa).",
+        "200 kA.",
+        "700 V.",
+        "20 A siempre."
+      ]
+    },
+    {
+      "id": "ALT-28",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿El diferencial sustituye la protección de sobrecorriente?",
+      "options": [
+        "Sí, en todas las instalaciones.",
+        "Solo con variadores.",
+        "Sí, si es de 30 mA.",
+        "No, cumple una función distinta."
+      ]
+    },
+    {
+      "id": "ALT-29",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "question": "Si P es potencia mecánica de salida, ¿qué fórmula utiliza el ejercicio?",
+      "options": [
+        "I=P·√3·V.",
+        "I=Psalida /(√3 · VLL · η · cosφ).",
+        "I=Iz−Ip.",
+        "I=I²t/k²."
+      ]
+    },
+    {
+      "id": "ALT-30",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "question": "¿Qué combinación de datos aparece para completar el cálculo de motor trifásico?",
+      "options": [
+        "Solo fase y neutro.",
+        "Solo longitud de cable.",
+        "Potencia, tensión, rendimiento y factor de potencia.",
+        "Solo potencia y cantidad de bornes."
+      ]
+    },
+    {
+      "id": "ALT-31",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "question": "Después del cálculo de corriente, ¿qué indica hacer el profesor?",
+      "options": [
+        "Comparar con corriente de placa y justificar selección.",
+        "Ignorar la placa del motor.",
+        "Elegir fusible solo por color.",
+        "Omitir verificación del conductor."
+      ]
+    },
+    {
+      "id": "ALT-32",
+      "theme": "motor-trifasico",
+      "slides": [
+        16
+      ],
+      "question": "¿Qué incluye la lista final de verificación?",
+      "options": [
+        "Solo cable coloreado.",
+        "Únicamente pulsadores.",
+        "Solo el cálculo de potencia.",
+        "Tensión, polos, curva, poder de corte, coordinación, cable, arranque y riesgos."
+      ]
+    }
+  ],
+  "developments": [
+    {
+      "id": "DES-01",
+      "theme": "fallas",
+      "slides": [
+        3,
+        4
+      ],
+      "prompt": "Explica la diferencia entre una sobrecarga y un cortocircuito y menciona sus consecuencias."
+    },
+    {
+      "id": "DES-02",
+      "theme": "coordinacion",
+      "slides": [
+        5,
+        6
+      ],
+      "prompt": "Describe qué datos revisarías antes de seleccionar una protección e interpreta In ≤ Ip ≤ Iz."
+    },
+    {
+      "id": "DES-03",
+      "theme": "termomagnetico",
+      "slides": [
+        7,
+        8
+      ],
+      "prompt": "Explica cómo funciona un interruptor termomagnético y los criterios de selección."
+    },
+    {
+      "id": "DES-04",
+      "theme": "fusibles",
+      "slides": [
+        9,
+        10
+      ],
+      "prompt": "¿Cómo eliges un fusible y por qué no basta con su apariencia?"
+    },
+    {
+      "id": "DES-05",
+      "theme": "conductores",
+      "slides": [
+        11,
+        12
+      ],
+      "prompt": "Calcula Iz con Itabla=30 A, fT=0,9 y fG=0,8; explica qué verificaciones faltan."
+    },
+    {
+      "id": "DES-06",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "prompt": "Describe cómo seleccionas y ajustas un guardamotor para un motor."
+    },
+    {
+      "id": "DES-07",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "prompt": "Compara las funciones de SPD y diferencial."
+    },
+    {
+      "id": "DES-08",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "prompt": "Escribe y explica la fórmula de corriente de un motor trifásico cuando P es potencia mecánica de salida."
+    },
+    {
+      "id": "DES-09",
+      "theme": "coordinacion",
+      "slides": [
+        6,
+        12
+      ],
+      "prompt": "Para In=18 A, Ip=20 A, Iz=21,6 A, comprueba coordinación y explica qué no valida todavía."
+    },
+    {
+      "id": "DES-10",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "prompt": "Compara las curvas B, C y D y explica por qué importa la corriente de arranque."
+    },
+    {
+      "id": "DES-11",
+      "theme": "conductores",
+      "slides": [
+        11,
+        12
+      ],
+      "prompt": "Explica qué factores influyen en elegir la sección de un cable."
+    },
+    {
+      "id": "DES-12",
+      "theme": "objetivos",
+      "slides": [
+        2,
+        16
+      ],
+      "prompt": "Resume los criterios que seguirías al revisar una selección final de protecciones."
+    }
+  ]
+}

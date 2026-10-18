@@ -1,0 +1,52 @@
+import {useCompactLayout} from '../hooks/useCompactLayout';
+import {LAB_COMPACT_QUERY} from './workspaceLayout';
+import {LaboratoryBar} from './LaboratoryBar';
+import {LogoModo} from '../components/LogoModo';
+import {LegalLink} from '../components/LegalLink';
+import {TutorialHelp} from '../components/TutorialHelp';
+import {lazy,Suspense,useEffect,useRef,useState} from 'react';
+import {ArrowLeft,BookOpen,Check,ChevronDown,CircuitBoard,Copy,Cpu,Download,Droplets,FilePlus2,FolderOpen,Layers,Pause,Play,Plus,Redo2,Undo2,X,Zap} from 'lucide-react';
+import {TOOLS,type Tool} from './model';
+import {useLaboratory} from './useLaboratory';
+import {direction,motion} from '../motion/transition';
+const LOADERS={schematic:()=>import('./SchematicView'),plc:()=>import('./PLCView'),hmi:()=>import('./HMIView'),process:()=>import('./ProcessView'),breadboard:()=>import('./BreadboardView')};
+const SchematicView=lazy(()=>LOADERS.schematic().then(m=>({default:m.SchematicView})));
+const PLCView=lazy(()=>LOADERS.plc().then(m=>({default:m.PLCView})));
+const HMIView=lazy(()=>LOADERS.hmi().then(m=>({default:m.HMIView})));
+const ProcessView=lazy(()=>LOADERS.process().then(m=>({default:m.ProcessView})));
+const BreadboardView=lazy(()=>LOADERS.breadboard().then(m=>({default:m.BreadboardView})));
+const VIEWS={schematic:SchematicView,plc:PLCView,hmi:HMIView,process:ProcessView};
+export default function LaboratoryApp(){
+  const {compact}=useCompactLayout(LAB_COMPACT_QUERY);
+  const lab=useLaboratory(),[tool,setTool]=useState<Tool>('schematic'),[help,setHelp]=useState(false);const menu=useRef<HTMLDetailsElement>(null);
+  useEffect(()=>{const requested=new URLSearchParams(location.search).get('tool');if(TOOLS.some(t=>t.id===requested))setTool(requested as Tool);},[]);
+  /* Ctrl+Z / Ctrl+Y en las superficies de trabajo; la protoboard escucha sus propios atajos. */
+  useEffect(()=>{
+    if(tool==='breadboard')return;
+    const keys=(e:KeyboardEvent)=>{if(!(e.ctrlKey||e.metaKey)||!['z','y'].includes(e.key.toLowerCase())||(e.target as Element)?.closest('input,textarea,select,[contenteditable]'))return;e.preventDefault();if(e.key.toLowerCase()==='y'||e.shiftKey)lab.redo();else lab.undo();};
+    window.addEventListener('keydown',keys);return()=>window.removeEventListener('keydown',keys);
+  });
+  const changeTool=(id:Tool)=>{setTool(id);const url=new URL(location.href);url.searchParams.set('tool',id);history.replaceState(null,'',url);};
+  const toolRequest=useRef(0);
+  const openTool=async(id:Tool,index:number)=>{
+    const request=++toolRequest.current;
+    if(id===tool)return;
+    try{await LOADERS[id]();if(request===toolRequest.current)motion(()=>changeTool(id),'stage',direction(TOOLS.findIndex(x=>x.id===tool),index))}
+    catch{lab.setMessage('No se pudo abrir la herramienta. Vuelve a intentarlo.')}
+  };
+  const View=tool==='breadboard'?null:VIEWS[tool];
+  return <div data-lab-ready={lab.ready} className={`lab-page ${tool==='breadboard'?'lab-canvas-mode':'lab-surface-mode'} ${compact?'lab-compact':''}`}>{compact?<LaboratoryBar lab={lab} tool={tool} onTool={id=>{void openTool(id,TOOLS.findIndex(t=>t.id===id))}} onHelp={()=>setHelp(h=>!h)}/>:<><header className="lab-topbar"><a href="/" className="lab-brand" aria-label="modo. · inicio"><LogoModo/></a><span className="lab-header-divider"/><div className="lab-heading"><span>LABORATORIO DE DISEÑO</span><label className="lab-project-name"><span className="lab-sr-only">Nombre del proyecto</span><input disabled={lab.running||!lab.ready} aria-label="Nombre del proyecto" value={lab.project.name} maxLength={100} onChange={e=>lab.update(p=>({...p,name:e.target.value}))}/></label></div><div className="lab-header-links"><a href="/?view=simulator">Panel de práctica</a><a href="/estudio"><BookOpen size={15}/>Estudio</a></div><LegalLink/><TutorialHelp context="laboratory"/><a className="lab-back" href="/" aria-label="Inicio"><ArrowLeft size={16}/><span>Inicio</span></a></header>
+    <div className="lab-projectbar"><div className="lab-project-picker"><FolderOpen size={17}/><select aria-label="Proyecto activo" disabled={!lab.ready||lab.running} value={lab.project.id} onChange={e=>lab.select(e.target.value)}>{lab.projects.map(p=><option key={p.id} value={p.id}>{p.name||'Sin nombre'}</option>)}</select></div>
+      <details ref={menu} className="lab-project-menu"><summary><Plus size={16}/>Proyecto<ChevronDown size={13}/></summary><div><button disabled={lab.running||!lab.ready} onClick={()=>{lab.add('blank');if(menu.current)menu.current.open=false;}}><FilePlus2 size={16}/>Nuevo proyecto vacío</button><button disabled={lab.running||!lab.ready} onClick={()=>{lab.add('motor');if(menu.current)menu.current.open=false;}}><Zap size={16}/>Ejemplo · marcha y retención</button><button disabled={lab.running||!lab.ready} onClick={()=>{lab.add('tank');changeTool('process');if(menu.current)menu.current.open=false;}}><Droplets size={16}/>Ejemplo · llenado automático</button><button disabled={lab.running||!lab.ready} onClick={()=>{lab.add('hbridge');changeTool('breadboard');if(menu.current)menu.current.open=false;}}><Cpu size={16}/>Ejemplo · puente H con L293D</button><button disabled={lab.running||!lab.ready} onClick={()=>{lab.add('hbridge-bjt');changeTool('breadboard');if(menu.current)menu.current.open=false;}}><CircuitBoard size={16}/>Ejemplo · puente H con transistores</button><button disabled={lab.running||!lab.ready||lab.projects.length>=30} onClick={()=>{lab.duplicate();if(menu.current)menu.current.open=false;}}><Copy size={16}/>Duplicar proyecto</button><button onClick={lab.exportProject}><Download size={15}/>Exportar proyecto</button><a className="lab-menu-nav" href="/?view=simulator">Panel de práctica</a><a className="lab-menu-nav" href="/estudio"><BookOpen size={15}/>Estudio</a><label className={lab.running?'disabled':''}><FolderOpen size={15}/>Importar proyecto<input type="file" accept=".json,application/json" disabled={lab.running} onChange={e=>{const file=e.target.files?.[0];if(file)void lab.importProject(file);e.target.value='';if(menu.current)menu.current.open=false;}}/></label></div></details>
+      <div className="lab-history"><button title="Deshacer" aria-label="Deshacer" disabled={!lab.canUndo||lab.running} onClick={lab.undo}><Undo2 size={17}/></button><button title="Rehacer" aria-label="Rehacer" disabled={!lab.canRedo||lab.running} onClick={lab.redo}><Redo2 size={17}/></button></div><span className="lab-save-state" role="status">{lab.saved?<Check size={13}/>:null}{!lab.ready?'Abriendo biblioteca…':lab.storageBlocked?'Guardado desactivado':lab.saved?'Guardado en este navegador':'Guardando…'}</span>
+      <div className="lab-run-controls"><label><span className="lab-sr-only">Velocidad de simulación</span><select aria-label="Velocidad de simulación" value={lab.speed} onChange={e=>lab.setSpeed(Number(e.target.value))}>{[.2,.5,1,2,5].map(s=><option key={s} value={s}>×{s}</option>)}</select></label><button className={`lab-run ${lab.running?'running':''}`} disabled={!lab.ready} onClick={()=>{if(lab.running)lab.stop();else if(!lab.start())changeTool('plc');}}>{lab.running?<Pause size={16}/>:<Play size={16}/>}<span>{lab.running?'Detener':'Simular proyecto'}</span></button></div>
+    </div>
+    </>}<div className="lab-workspace">{!compact&&<nav className="lab-tool-nav" aria-label="Herramientas del laboratorio">{TOOLS.map((t,i)=><button key={t.id} className={tool===t.id?'current':''} aria-current={tool===t.id?'page':undefined} onClick={()=>{void openTool(t.id,i)}}><span className="lab-tool-number">0{i+1}</span><strong>{t.name}</strong><span className="lab-tool-description">{t.description}</span>{t.id==='plc'&&lab.compiled.diagnostics.length?<b className="lab-error-count">{lab.compiled.diagnostics.length}</b>:null}</button>)}<button className="lab-help-toggle" aria-label="Cómo se conectan" aria-expanded={help} onClick={()=>setHelp(!help)}><Layers size={17}/><strong>Cómo se conectan</strong></button></nav>}
+      <div className="lab-editor"><div className="lab-editor-title"><div><span className="lab-eyebrow">TU ESPACIO DE TRABAJO</span><h1>{TOOLS.find(t=>t.id===tool)!.name}</h1></div><div className={`lab-state ${lab.running?'is-on':''}`}><i/>{lab.running?'Simulación activa':'Modo diseño'}{lab.running?<small>{lab.runtime.seconds.toFixed(1)} s</small>:null}</div></div>
+        {lab.message?<div className="lab-notice" role="status"><span>{lab.message}</span><button aria-label="Cerrar aviso" onClick={()=>lab.setMessage('')}><X size={16}/></button></div>:null}
+        {help?<section className="lab-explanation"><button aria-label="Cerrar explicación" onClick={()=>setHelp(false)}><X size={16}/></button><h2>Un proyecto, varias herramientas</h2><p>El esquema prueba la maniobra de relés. El PLC controla la bomba; la planta devuelve el nivel y la HMI permite operar las mismas señales. La protoboard utiliza un modelo DC separado y se guarda en el mismo proyecto.</p><p>Tu panel de práctica y el material de estudio conservan sus recorridos. Puedes volver a ellos desde la barra superior.</p></section>:null}
+        <Suspense fallback={<div className="lab-loading" role="status">Abriendo herramienta…</div>}>{View?<View key={`${lab.project.id}:${tool}`} lab={lab}/>:<BreadboardView key={`${lab.project.id}:breadboard`} lab={lab.board}/>}</Suspense>
+      </div>
+    </div>
+  </div>;
+}

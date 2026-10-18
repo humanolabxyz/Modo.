@@ -1,0 +1,181 @@
+{
+  "url": "https://panellab-inacap.vercel.app",
+  "result": "PASS",
+  "deploymentId": "dpl_EUtLdETQYke8TcZ2hAhK3m5tdrpF",
+  "assets": [
+    {
+      "file": "manifest.webmanifest",
+      "url": "https://panellab-inacap.vercel.app/manifest.webmanifest",
+      "status": 200,
+      "sha256": "c3af9d205104d301ad3aa319908226840971844c8df07c121f3decf3dd12d28b"
+    },
+    {
+      "file": "panel-model.json",
+      "url": "https://panellab-inacap.vercel.app/panel-model.json",
+      "status": 200,
+      "sha256": "45f0b82d4e23a291a9328a3769e0de18cb778f1d67a8d9fc501bb50b71efcff5"
+    },
+    {
+      "file": "sw.js",
+      "url": "https://panellab-inacap.vercel.app/sw.js",
+      "status": 200,
+      "sha256": "sellado en build"
+    },
+    {
+      "file": "diagrams\\clase-1.jpg",
+      "url": "https://panellab-inacap.vercel.app/diagrams/clase-1.jpg",
+      "status": 200,
+      "sha256": "792be587a77683a8ec697a4ad1ce16f19f18dbde2e4a62980dffd671696b6df1"
+    },
+    {
+      "file": "diagrams\\clase-2.jpg",
+      "url": "https://panellab-inacap.vercel.app/diagrams/clase-2.jpg",
+      "status": 200,
+      "sha256": "f7ff2c0a24348d815395f66f18bd61ecc6d70a6e24b7717e4a13fc80ddb9a802"
+    },
+    {
+      "file": "diagrams\\clase-3.jpg",
+      "url": "https://panellab-inacap.vercel.app/diagrams/clase-3.jpg",
+      "status": 200,
+      "sha256": "afcf74a2480881007c6c60cddbaaacd4016417e6c3972ca713b7fdac56e6c478"
+    },
+    {
+      "file": "diagrams\\PERFECTO.cad",
+      "url": "https://panellab-inacap.vercel.app/diagrams/PERFECTO.cad",
+      "status": 200,
+      "sha256": "c4dcaa7aebe40e500fb94529fc4dd9d47a279ef32689d73a2bb604a5c8b0a138"
+    },
+    {
+      "file": "fonts\\SOURCE-SANS-LICENSE.md",
+      "url": "https://panellab-inacap.vercel.app/fonts/SOURCE-SANS-LICENSE.md",
+      "status": 200,
+      "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328"
+    },
+    {
+      "file": "fonts\\SourceSans3-Bold.woff2",
+      "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Bold.woff2",
+      "status": 200,
+      "sha256": "8d35c6d40e750a4ee23bbbba2bd604ad098d172907369b43281507e16b8e2e7a"
+    },
+    {
+      "file": "fonts\\SourceSans3-Regular.woff2",
+      "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Regular.woff2",
+      "status": 200,
+      "sha256": "53492fb3a0def77354f166a55d09b63a10855e91c206c7620a81cf56e97f8ec3"
+    },
+    {
+      "file": "fonts\\SourceSans3-Semibold.woff2",
+      "url": "https://panellab-inacap.vercel.app/fonts/SourceSans3-Semibold.woff2",
+      "status": 200,
+      "sha256": "47b9b661b9f395fe7f0d0e119637fba5c8dad97bde3df60066fd24229c0792f4"
+    },
+    {
+      "file": "icons\\apple-touch-icon.png",
+      "url": "https://panellab-inacap.vercel.app/icons/apple-touch-icon.png",
+      "status": 200,
+      "sha256": "2c167a024f70f9a57a884d85ecf5552a0c297d9d85ac22841728b7dd5e2d4c56"
+    },
+    {
+      "file": "icons\\icon-192.png",
+      "url": "https://panellab-inacap.vercel.app/icons/icon-192.png",
+      "status": 200,
+      "sha256": "c5d6eb171c9ae428b8baff5096679caafd9167fadb70771b94ddac2de90b1c12"
+    },
+    {
+      "file": "icons\\icon-512.png",
+      "url": "https://panellab-inacap.vercel.app/icons/icon-512.png",
+      "status": 200,
+      "sha256": "4d0e88d57ea1f7963611ef76c6eb956362b52f040a47d29d687d8b4d26324593"
+    },
+    {
+      "file": "icons\\icon-maskable-512.png",
+      "url": "https://panellab-inacap.vercel.app/icons/icon-maskable-512.png",
+      "status": 200,
+      "sha256": "236c044b53dd92b75ede765aeda120b28eee42525df164c2875d9f842c5afacc"
+    },
+    {
+      "file": "icons\\icon.svg",
+      "url": "https://panellab-inacap.vercel.app/icons/icon.svg",
+      "status": 200,
+      "sha256": "eaca965113db43c41685acc235431ba573dba3ff91b0508d416e9264c7202398"
+    },
+    {
+      "file": "materiales\\actividad-1-u2.pdf",
+      "url": "https://panellab-inacap.vercel.app/materiales/actividad-1-u2.pdf",
+      "status": 200,
+      "sha256": "2f66c9f2503865c2bdc04b0a34d0049e998a815d0d00db8c9a88ddf76ce0499b"
+    },
+    {
+      "file": "materiales\\bornes-estrella.png",
+      "url": "https://panellab-inacap.vercel.app/materiales/bornes-estrella.png",
+      "status": 200,
+      "sha256": "03c75c0bb0fb7c390e987e50d5e0a61b570b6b987e52ec9822c77397a718886f"
+    },
+    {
+      "file": "materiales\\bornes-triangulo.png",
+      "url": "https://panellab-inacap.vercel.app/materiales/bornes-triangulo.png",
+      "status": 200,
+      "sha256": "6136e7081b5e836a463f952681213d2a445b9ba4f06eaf4b770eea99b3b69c8a"
+    },
+    {
+      "file": "materiales\\circuito-fuerza.png",
+      "url": "https://panellab-inacap.vercel.app/materiales/circuito-fuerza.png",
+      "status": 200,
+      "sha256": "61cd00af3532089459a248abec6896b6cbb54f846a96ce0699ce5bd79568f2a6"
+    },
+    {
+      "file": "materiales\\circuito-mando.png",
+      "url": "https://panellab-inacap.vercel.app/materiales/circuito-mando.png",
+      "status": 200,
+      "sha256": "07df6b465143fd0b67bd8777d6632c6c9cc1bddcec00137f5c0ce5b6b130b249"
+    },
+    {
+      "file": "materiales\\prueba-partida-directa.png",
+      "url": "https://panellab-inacap.vercel.app/materiales/prueba-partida-directa.png",
+      "status": 200,
+      "sha256": "6b6af8b37cdfb65a28da512e330ce47b4dce0761288bd0aab96b9636d2ae8104"
+    },
+    {
+      "file": "references\\botoneras.jpg",
+      "url": "https://panellab-inacap.vercel.app/references/botoneras.jpg",
+      "status": 200,
+      "sha256": "be01c325aa43bbad3e0e1e09b37b374957fe7a5d3517c567000bb0aba71e9316"
+    },
+    {
+      "file": "references\\contactor-termico.jpg",
+      "url": "https://panellab-inacap.vercel.app/references/contactor-termico.jpg",
+      "status": 200,
+      "sha256": "a4ae7b06134f0b9737f759d2332a06bacec14c32ce3dd2fdd68411a0b24f8872"
+    },
+    {
+      "file": "references\\contactor-trifasico.jpg",
+      "url": "https://panellab-inacap.vercel.app/references/contactor-trifasico.jpg",
+      "status": 200,
+      "sha256": "d84ec768f7eae81338d8917e099297ccf5a132c366bad31b01cce5fdb24a0597"
+    },
+    {
+      "file": "references\\motor.jpg",
+      "url": "https://panellab-inacap.vercel.app/references/motor.jpg",
+      "status": 200,
+      "sha256": "570721bdfbed447fa34acf3c8b80296085b7e97eeb2e93d846185b005a0cf864"
+    },
+    {
+      "file": "references\\suministro.jpg",
+      "url": "https://panellab-inacap.vercel.app/references/suministro.jpg",
+      "status": 200,
+      "sha256": "56192022ed25b3b71426108c4b05ac121494e77cbe73f61caca690eeaf66eb8c"
+    },
+    {
+      "file": "references\\temporizador-1.jpg",
+      "url": "https://panellab-inacap.vercel.app/references/temporizador-1.jpg",
+      "status": 200,
+      "sha256": "f8e0b8f90e214f796fb9952a10c15d08977272c21e7a8c1c9a13c140720408d1"
+    },
+    {
+      "file": "references\\temporizador-2.jpg",
+      "url": "https://panellab-inacap.vercel.app/references/temporizador-2.jpg",
+      "status": 200,
+      "sha256": "f4ef9b04675b65e25a981508b28fe326917dd8bc202e2a631275ddf572ca487f"
+    }
+  ]
+}

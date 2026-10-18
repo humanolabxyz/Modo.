@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Sin FUERZA, sin enchufe o sin cables el motor permanece detenido",
+    "Estrella y triángulo giran; el triángulo a mayor velocidad",
+    "Permutar dos fases invierte el sentido; la rotación cíclica lo conserva",
+    "Falta de fase, bobinas abiertas, fases repetidas y cortocircuito se detectan sin girar",
+    "El ejemplo arranca el motor con KM1, se mantiene y se detiene al disparar el térmico",
+    "Los ejemplos de estrella, giro invertido y triángulo dan el sentido y la conexión esperados",
+    "Acoplamiento: se pega a bordes y riel; al soltar sobre otro módulo lo coloca en el hueco libre más cercano"
+  ]
+}

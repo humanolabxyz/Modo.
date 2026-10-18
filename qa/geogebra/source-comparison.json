@@ -1,0 +1,74 @@
+{
+  "comparison": [
+    {
+      "file": "src/lab/model.ts",
+      "changed": true
+    },
+    {
+      "file": "src/lab/LaboratoryApp.tsx",
+      "changed": true
+    },
+    {
+      "file": "src/lab/LaboratoryBar.tsx",
+      "changed": true
+    },
+    {
+      "file": "src/lab/HomeTools.tsx",
+      "changed": true
+    },
+    {
+      "file": "src/study/StudyHub.tsx",
+      "changed": true
+    },
+    {
+      "file": "src/study/CourseOutline.tsx",
+      "changed": true
+    },
+    {
+      "file": "src/study/classCatalog.ts",
+      "changed": true
+    },
+    {
+      "file": "src/study/courseCatalog.ts",
+      "changed": true
+    },
+    {
+      "file": "package-lock.json",
+      "changed": false
+    },
+    {
+      "file": "astro.config.mjs",
+      "changed": true
+    },
+    {
+      "file": "vercel.json",
+      "changed": true
+    }
+  ],
+  "pdf": [
+    {
+      "file": "funciones-lineales.pdf",
+      "originalIdentical": true
+    },
+    {
+      "file": "funciones-cuadraticas.pdf",
+      "originalIdentical": true
+    },
+    {
+      "file": "funciones-logaritmicas.pdf",
+      "originalIdentical": true
+    }
+  ],
+  "newFiles": [
+    "src/learning/geogebraLessons.ts",
+    "src/lab/GeoGebraView.tsx",
+    "src/lab/geogebra/api.ts",
+    "src/study/ToolLessonStudy.tsx",
+    "src/styles/geogebra.css",
+    "src/styles/tool-lessons.css",
+    "src/styles/home-tools.css",
+    "qa/verify-geogebra.cjs",
+    "public/geogebra-frame.html",
+    "qa/verify-geogebra-security.cjs"
+  ]
+}

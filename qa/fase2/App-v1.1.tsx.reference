@@ -1,0 +1,151 @@
+import React, {useEffect,useMemo,useState} from 'react';
+import { ArrowRight, CheckCircle2, CircleHelp, ExternalLink, Eye, FileImage, Focus, Info, Maximize2, Minus, MousePointerClick, Plus, Search, ShieldAlert, SlidersHorizontal, X, Zap } from 'lucide-react';
+import {Board, FULL} from './Board';
+import {CablePreview} from './BananaCable';
+import {MODULES,PORT_COUNT,COLOR_HEX,VERIFICATION_INFO,TERMINALS,matchesTerminal,type PanelModule} from '../data/panel';
+
+type View={x:number;y:number;w:number;h:number};
+const GROUPS=[['todos','Todos'],['alimentacion','Alimentación'],['botoneras','Botoneras'],['contactores','Contactores'],['temporizadores','Temporizadores'],['motor','Motor']];
+const goodLocalKey='panellab-fase1-v1';
+
+function minZoom(view:View){return Math.round(1400/view.w*100)}
+function App(){
+ const [selected,setSelected]=useState<string|null>('BOTONERAS:S1:1');
+ const [filter,setFilter]=useState('todos');
+ const [query,setQuery]=useState('');
+ const [view,setView]=useState<View>({...FULL});
+ const [aliases,setAliases]=useState<Record<string,string>>({});
+ const [draftAlias,setDraftAlias]=useState('');
+ const [modal,setModal]=useState<'help'|'photo'|null>(null);
+ const [detailsTab,setDetailsTab]=useState<'terminal'|'module'>('terminal');
+ const [isIntro,setIsIntro]=useState(false);
+ const [storageReady,setStorageReady]=useState(false);
+ const [showCable,setShowCable]=useState(false);
+ const [showDiagram,setShowDiagram]=useState(false);
+ useEffect(()=>{
+  try{const s=localStorage.getItem(goodLocalKey);if(s){const x=JSON.parse(s);
+   if(x.aliases&&typeof x.aliases==='object')setAliases(Object.fromEntries(Object.entries(x.aliases).filter(([key,value])=>MODULES.some(m=>m.id===key)&&typeof value==='string').map(([key,value])=>[key,String(value).replace(/[^A-Z0-9_-]/gi,'').slice(0,14)])));
+   if(TERMINALS.some(t=>t.key===x.selected))setSelected(x.selected);
+  }}catch{}finally{setStorageReady(true)}
+ },[]);
+ useEffect(()=>{if(storageReady)try{localStorage.setItem(goodLocalKey,JSON.stringify({aliases,selected}))}catch{}},[aliases,selected,storageReady]);
+ useEffect(()=>{
+  if(!modal)return;
+  const previous=document.activeElement as HTMLElement|null;
+  const dialog=document.querySelector<HTMLElement>('[role="dialog"]');
+  dialog?.querySelector<HTMLButtonElement>('button')?.focus();
+  const onKey=(event:KeyboardEvent)=>{
+   if(event.key==='Escape'){setModal(null);return;}
+   if(event.key==='Tab'&&dialog){
+    const controls=Array.from(dialog.querySelectorAll<HTMLElement>('button,[href],input,[tabindex="0"]'));
+    const first=controls[0],last=controls.at(-1);
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
+   }
+  };
+  document.addEventListener('keydown',onKey);
+  return ()=>{document.removeEventListener('keydown',onKey);previous?.focus();};
+ },[modal]);
+ const record=useMemo(()=>{
+  if(!selected)return null;
+  return TERMINALS.find(t=>t.key===selected)||null;
+ },[selected]);
+ const currentModule=record?.module||MODULES.find(m=>m.id==='BOTONERAS')!;
+ useEffect(()=>setDraftAlias(aliases[currentModule.id]||''),[currentModule.id,aliases]);
+ const matches=useMemo(()=>{
+  const q=query.trim().toLocaleLowerCase('es');if(!q)return [];
+  return MODULES.flatMap(m=>m.terminals.filter(t=>matchesTerminal(m,t,q,aliases[m.id])).map(t=>({m,t})));
+ },[query,aliases]);
+ const pick=(id:string)=>{setSelected(id);setDetailsTab('terminal');setFilter('todos')};
+ const focus=(m:PanelModule)=>{
+  const width=Math.max(m.w+155,465);const ratio=1400/1100;const height=width/ratio;
+  setView({x:m.x+m.w/2-width/2,y:m.y+m.h/2-height/2,w:width,h:height});
+  setFilter('todos');
+ };
+ const zoom=(factor:number)=>{
+  const nw=Math.min(1400,Math.max(340,view.w*factor));const nh=nw*1100/1400;
+  setView({x:view.x+(view.w-nw)/2,y:view.y+(view.h-nh)/2,w:nw,h:nh});
+ };
+ return <div className="app-shell">
+  <header className="topbar">
+   <div className="brand-wrap"><div className="brand-icon"><Zap size={20} fill="currentColor" strokeWidth={1.8}/></div><div className="brand-caption"><strong>panel<span>lab</span></strong><small>LABORATORIO DE CONTROL</small></div></div>
+   <div className="header-separator"/><div className="header-context"><span>Banco de control</span><ArrowRight size={13}/><b>INACAP</b></div>
+   <div className="top-spacer"/>
+   <button className="home-link" onClick={()=>setIsIntro(!isIntro)}>{isIntro?'Simulador':'Inicio'}</button>
+   <div className="phase-tag"><span className="phase-dot"/> V1.1 · IDENTIFICACIÓN</div>
+   <button className="icon-button help-btn" onClick={()=>setModal('help')} aria-label="Cómo usar el panel" title="Cómo utilizar este prototipo"><CircleHelp size={20}/></button>
+  </header>
+  <main>
+   {isIntro?<section className="home-view" aria-label="Inicio de PanelLab">
+    <div className="eyebrow">MÁQUINAS ROTATORIAS · INACAP</div>
+    <h1>Tu laboratorio, a mano<span className="header-period">.</span></h1>
+    <p>Reconoce los componentes y sus bornes antes de tu próxima clase.</p>
+    <div className="home-options">
+     <label htmlFor="circuit">Circuito o material de estudio</label>
+     <select id="circuit" defaultValue="recognition"><option value="recognition">Banco INACAP · reconocimiento sin circuito</option><option disabled>Circuitos: pendientes de un diagrama validado</option></select>
+     <label htmlFor="learning-mode">Modo de aprendizaje</label>
+     <select id="learning-mode" defaultValue="explore"><option value="explore">Explorar componentes</option><option disabled>Guiado · próxima fase</option><option disabled>Práctica de conexiones · próxima fase</option><option disabled>Examen · próxima fase</option></select>
+     <button className="primary-action" onClick={()=>{setIsIntro(false);setView({...FULL});}}>Explorar tablero <ArrowRight size={17}/></button>
+     <button className="outline-full" onClick={()=>{setIsIntro(false);focus(currentModule)}}>Continuar reconocimiento</button>
+     <small>Se conserva el último borne y tus etiquetas en este navegador. Entorno virtual desenergizado.</small>
+    </div>
+   </section>:<>
+   <div className="content-header">
+    <div><div className="eyebrow">SIMULADOR ELÉCTRICO / PANEL REAL</div><h1>Conoce tu tablero<span className="header-period">.</span></h1><p>Explora cada componente y selecciona sus bornes tal como aparecen en el laboratorio.</p></div>
+    <div className="header-metrics"><div className="metric-number">{PORT_COUNT}</div><div>bornes identificados<br/><span>en 7 módulos</span></div></div>
+   </div>
+   <div className="work-card">
+    <div className="work-toolbar">
+     <div className="toolbar-label"><span className="toolbar-indicator"/><b>Panel interactivo</b><span className="small-sep">/</span><span>Vista frontal reconstruida</span></div>
+     <div className="mode-pills"><span className="mode-pill is-active"><Eye size={15}/> Explorar</span><button className={`mode-pill cable-toggle ${showCable?'is-active':''}`} aria-pressed={showCable} onClick={()=>setShowCable(!showCable)}>Muestra de cable</button></div>
+    </div>
+    <div className="filterbar">
+     <div className="filters-scroll" role="tablist" aria-label="Filtrar módulos">{GROUPS.map(([key,title])=><button key={key} type="button" role="tab" aria-selected={filter===key} className={`filter-pill ${filter===key?'current':''}`} onClick={()=>setFilter(key)}>{title}</button>)}</div>
+     <div className="searchbox-wrap">
+      <Search size={16}/><input aria-label="Buscar un borne o componente" value={query} onChange={e=>setQuery(e.target.value)} onKeyDown={e=>{if(e.key==='Escape')setQuery('');if(e.key==='Enter'&&matches.length){pick(`${matches[0].m.id}:${matches[0].t.id}`);focus(matches[0].m);setQuery('')}}} placeholder="Buscar borne: A1, 13, S2:3…" />
+      {query&&<button type="button" aria-label="Borrar búsqueda" onClick={()=>setQuery('')}><X size={14}/></button>}
+      {query.trim()&&<div className="search-results">
+       {matches.length?matches.map(({m,t})=><button key={`${m.id}:${t.id}`} onClick={()=>{pick(`${m.id}:${t.id}`);focus(m);setQuery('')}}><span className="search-socket" style={{background:COLOR_HEX[t.color]}}/><div><strong>{t.id}</strong><small>{m.id}:{t.id}</small></div><ArrowRight size={14}/></button>):<div className="search-empty">Sin bornes que coincidan.</div>}
+      </div>}
+     </div>
+    </div>
+    <div className="workspace">
+     <div className="stage-wrap">
+      <div className="stage-topline"><span><span className="live-dot"/> Virtual desenergizado</span><select aria-label="Enfocar un módulo" value="" onChange={e=>{const m=MODULES.find(m=>m.id===e.target.value);if(m){pick(`${m.id}:${m.terminals[0].id}`);focus(m);setDetailsTab('module')}}}><option value="" disabled>Ver módulo de cerca…</option>{MODULES.map(m=><option key={m.id} value={m.id}>{m.title}{m.category==='temporizadores'?' '+m.id.slice(-1):''}</option>)}</select></div>
+      <div className="svg-surface"><Board selected={selected} onSelect={pick} group={filter} query={query} view={view} setView={setView} aliases={aliases}/>
+       <div className="canvas-watermark">RECONSTRUCCIÓN DIDÁCTICA · NO ENERGIZAR</div>
+       <div className="zoom-toolbar"><button aria-label="Alejar" title="Alejar" onClick={()=>zoom(1.3)}><Minus size={18}/></button><span>{minZoom(view)}%</span><button aria-label="Acercar" title="Acercar" onClick={()=>zoom(1/1.3)}><Plus size={18}/></button><i/><button aria-label="Ajustar al tablero" title="Ver tablero completo" onClick={()=>setView({...FULL})}><Focus size={18}/></button></div>
+       <div className="stage-hint"><MousePointerClick size={15}/> Clic en un borne · Arrastra el fondo para moverte</div>
+      </div>
+      <div className="stage-footer"><span><Info size={15}/> Los colores reproducen los conectores visibles; las funciones eléctricas no verificadas están señaladas.</span><span>Motor incluido</span></div>
+     </div>
+     <aside className="inspector" aria-label="Inspector de bornes">
+      <div className="inspector-top"><div><div className="eyebrow">IDENTIFICACIÓN</div><h2>Inspector</h2></div><span className="inspector-icon"><SlidersHorizontal size={18}/></span></div>
+      <div className="inspector-tabs"><button onClick={()=>setDetailsTab('terminal')} className={detailsTab==='terminal'?'active':''}>Borne</button><button onClick={()=>setDetailsTab('module')} className={detailsTab==='module'?'active':''}>Módulo</button></div>
+      <label className="terminal-picker">Borne del módulo<select aria-label="Seleccionar borne del módulo" value={selected||''} onChange={e=>pick(e.target.value)}>{currentModule.terminals.map(t=><option key={t.id} value={`${currentModule.id}:${t.id}`}>{t.id}</option>)}</select></label>
+      {detailsTab==='terminal'&&record?<>
+       <div className="terminal-feature"><div className="feature-topline"><span>SELECCIONADO</span><CheckCircle2 size={15}/></div><div className="feature-socket" style={{borderColor:COLOR_HEX[record.terminal.color]}}><span/></div><span className="feature-id">{record.terminal.id.match(/^S[123]:([1234])$/)?.[1]||record.terminal.id.replace('PILOTO_','P')}</span><span className="feature-module">{record.module.title}</span></div>
+       <div className="info-lines" aria-live="polite"><div><span>Identificador completo</span><strong>{record.module.id}:{record.terminal.id}</strong></div><div><span>Referencia del componente</span><strong>{aliases[record.module.id]?`${aliases[record.module.id]} · etiqueta personal por confirmar`:record.terminal.id.startsWith('S')&&record.module.id==='BOTONERAS'?'Pulsador '+record.terminal.id.slice(1,2)+' · referencia docente por confirmar':'Referencia en diagrama por confirmar'}</strong></div><div><span>Color del borne</span><strong><i className="color-dot" style={{background:COLOR_HEX[record.terminal.color]}}/>{record.terminal.color==='white'?'Crema / blanco':record.terminal.color==='red'?'Rojo':record.terminal.color==='blue'?'Azul':record.terminal.color==='green'?'Verde':'Negro'}</strong></div><div><span>Función conocida / interpretación</span><strong>{record.terminal.note||'Consultar el módulo'}</strong>{record.terminal.state&&<strong>{record.terminal.state.includes('por confirmar')?record.terminal.state:`${record.terminal.state} · por confirmar en el equipo`}</strong>}</div></div>
+       <div className={`verification ${record.terminal.verification==='foto'?'confirmed':'pending'}`}><span>{record.terminal.verification==='foto'?<CheckCircle2 size={16}/>:<ShieldAlert size={16}/>}</span><div><strong>{record.terminal.verification==='foto'?'Identificación visual':record.terminal.verification==='no_verificado'?'Pendiente de confirmar':'Convención por confirmar'}</strong><p>{VERIFICATION_INFO[record.terminal.verification||'foto']}</p></div></div>
+       <button className="outline-full" onClick={()=>{focus(record.module);setDetailsTab('module')}}><Maximize2 size={15}/> Enfocar módulo</button>
+      </>:<div className="module-detail"><div className="module-tag">MÓDULO DEL PANEL</div><h3>{currentModule.title}</h3>{currentModule.subtitle&&<p className="module-subtitle">{currentModule.subtitle}</p>}<p className="module-summary">{currentModule.summary}</p>
+       <div className="module-count"><strong>{currentModule.terminals.length}</strong><span>bornes documentados</span></div>
+       {currentModule.aliasEditable&&<div className="alias-area"><label htmlFor="alias-input">Código en diagrama (p. ej., KM1)</label><div><input id="alias-input" value={draftAlias} onChange={e=>setDraftAlias(e.target.value.toUpperCase().replace(/[^A-Z0-9_-]/g,'').slice(0,14))} placeholder="Por confirmar"/><button onClick={()=>setAliases(a=>({...a,[currentModule.id]:draftAlias}))}>Guardar</button></div><small>Solo una etiqueta de estudio personal, no una identificación eléctrica verificada.</small></div>}
+       <button className="outline-full" onClick={()=>focus(currentModule)}><Focus size={15}/> Ver de cerca</button>
+      </div>}
+      <div className="photo-reference"><div className="photo-header"><div><strong>Referencia fotográfica</strong><small>Imagen original del laboratorio</small></div><button aria-label="Ampliar fotografía" title="Ampliar foto" onClick={()=>setModal('photo')}><ExternalLink size={17}/></button></div><button type="button" className="photo-preview" onClick={()=>setModal('photo')}><img src={currentModule.image} alt={`Fotografía del módulo ${currentModule.title}`} /><span><FileImage size={14}/> Ampliar foto</span></button></div>
+      <div className="inspector-bottom"><span className="round-info">i</span> Reconocimiento de bornes. La muestra de cable es solo visual; el cableado interactivo queda para la siguiente fase.</div>
+     </aside>
+    </div>
+   </div>
+   {showCable&&<CablePreview/>}
+   <div className="diagram-section"><button className="diagram-toggle" aria-expanded={showDiagram} onClick={()=>setShowDiagram(!showDiagram)}><FileImage size={16}/> Diagrama eléctrico <span>{showDiagram?'Ocultar':'Ver espacio de estudio'}</span></button>
+    {showDiagram&&<div className="diagram-placeholder"><strong>Diagrama pendiente de revisión docente</strong><p>Las tres fotografías de clase se conservan en el proyecto. Sus etiquetas no permiten validar todas las conexiones.</p><p>La siguiente fase integrará panel y diagrama lado a lado, con tres niveles de ayuda.</p></div>}
+   </div>
+   <div className="bottom-note"><span className="bottom-note-chip">PANELLAB · V1.1</span><span>Reconstrucción visual basada en fotografías · No sustituye las instrucciones del docente ni un montaje eléctrico certificado.</span></div>
+   </>}
+  </main>
+  {modal&&<div className="modal-backdrop" role="presentation" onMouseDown={()=>setModal(null)}><div className={`dialog ${modal==='photo'?'dialog-image':''}`} role="dialog" aria-modal="true" aria-label={modal==='photo'?'Fotografía original':'Uso del panel'} onMouseDown={e=>e.stopPropagation()}><div className="dialog-top"><strong>{modal==='photo'?currentModule.title:'Cómo usar el PanelLab'}</strong><button onClick={()=>setModal(null)} aria-label="Cerrar"><X size={20}/></button></div>{modal==='photo'?<><img src={currentModule.image} alt={`Fotografía ampliada: ${currentModule.title}`}/><p>Fotografía aportada por ti. Revisa aquí las etiquetas reales y compáralas con la representación digital.</p></>:<div className="help-text"><p>Esta primera fase sirve para memorizar la posición de cada módulo y reconocer los bornes, todavía sin simular conexiones.</p><ol><li>Selecciona un terminal circular en el panel.</li><li>Revisa su nombre, color y función en el inspector.</li><li>Usa + y − para ampliar, o arrastra un espacio libre para moverte.</li><li>Haz clic en «Módulo» para consultar la fotografía original.</li><li>Si confirmas con el profesor el código KM, puedes registrarlo como etiqueta personal.</li></ol><p><b>Advertencia:</b> no energices ni reproduzcas físicamente conexiones basándote solo en esta aplicación.</p></div>}</div></div>}
+ </div>;
+}
+export default App;

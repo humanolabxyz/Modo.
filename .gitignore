@@ -1,0 +1,37 @@
+node_modules/
+dist/
+.astro/
+*.log
+.vercel/
+
+.env*
+.vercel
+
+# --- Repositorio privado: lo que no se sube ---
+.cache/
+video-tutorial/
+*.zip
+*.rar
+# Evidencia pesada de las pruebas (se regenera ejecutando los scripts de qa/)
+qa/**/*.png
+qa/**/*.jpg
+qa/**/*.jpeg
+qa/**/*.webp
+qa/**/*.gif
+qa/**/*.mp4
+qa/**/*.webm
+qa/backups*/
+qa/release-*/
+qa/before/
+# Material docente recibido (PDF, DOCX, PPTX, XLSX, capturas del aula): se queda en el computador
+analisis-materias-2026-10-17/fuentes/
+analisis-materias-2026-10-17/revision-visual/
+analisis-materias-2026-10-17/texto/
+analisis-materias-2026-10-17/instrumentacion/fuentes/
+analisis-materias-2026-10-17/instrumentacion/revision-visual/
+analisis-materias-2026-10-17/instrumentacion/texto/
+analisis-materias-2026-10-17/guias-instrumentacion/G0*/
+analisis-materias-2026-10-17/**/*.docx
+analisis-materias-2026-10-17/**/*.pdf
+analisis-materias-2026-10-17/**/*.pptx
+analisis-materias-2026-10-17/**/*.xlsx

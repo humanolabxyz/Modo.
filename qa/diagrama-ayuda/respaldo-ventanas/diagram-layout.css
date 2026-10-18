@@ -1,0 +1,314 @@
+@font-face{font-family:'Source Sans 3';src:url('/fonts/SourceSans3-Regular.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap}
+@font-face{font-family:'Source Sans 3';src:url('/fonts/SourceSans3-Semibold.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Source Sans 3';src:url('/fonts/SourceSans3-Bold.woff2') format('woff2');font-style:normal;font-weight:700 900;font-display:swap}
+:root{--ui-font:'Source Sans 3','Segoe UI',sans-serif;--diagram-width:420px}
+button,input,select,textarea,summary{font-family:var(--ui-font)}
+@media(min-width:600px) and (max-width:900px) and (max-height:600px){
+ .editor-workbench:not(.editor-reading):has(.diagram-pane:not([hidden])) .tool-dock{left:auto;right:16px;transform:none}
+ .editor-workbench:not(.editor-reading) .diagram-pane-actions button{min-height:30px;padding:5px 8px}
+ .editor-workbench:not(.editor-reading) .practice-workspace .diagram-pane .diagram-tabs button{min-height:28px;padding:5px}
+}
+.cade-route-toolbar{grid-row:3;padding:9px 12px;background:#edf7fa;border-block:1px solid #d2e5ed;color:#335e73;font-family:var(--ui-font);min-width:0}
+.cade-route-toolbar>div:first-child{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.cade-route-toolbar strong{font-size:14px}.cade-route-toolbar span{font-size:12px}
+.cade-route-actions{display:flex;gap:5px;margin-top:6px}
+.cade-route-actions button{min-height:32px;min-width:0;flex:1;font-size:12px;font-weight:600;line-height:1.15;border:1px solid #bdd6e2;background:#fff;border-radius:6px;padding:5px;color:#36677f}
+.cade-route-actions button:first-child{flex:2;background:#237d99;color:white;border-color:#237d99}
+.cade-route-actions button[aria-pressed=true]{background:#d1e9f1;border-color:#499cbb}
+.cade-route-details{margin:14px 0;border:1px solid #cddfe8;border-radius:9px;font-family:var(--ui-font);font-size:14px;color:#416375}
+.cade-route-details>summary{padding:10px;font-weight:600}.cade-route-details>div{padding:0 10px 12px}
+.cade-route-details p{font-size:13px;line-height:1.5}.cade-route-details section{padding:9px 0;border-bottom:1px solid #dbe7ec}
+.cade-route-details section>strong{display:block;font-size:12px}.cade-route-details h3{font-size:15px}
+.cade-route-pair{margin:6px 0;display:flex;flex-wrap:wrap;gap:5px;padding:7px;border-radius:5px;background:#eff7fa;font-size:13px;overflow-wrap:anywhere}
+.cade-route-pair small{color:#267691;margin-left:auto}.cade-route-binding{display:grid;gap:5px;margin:12px 0;font-size:13px}
+.cade-route-binding select{width:100%;min-width:0;font:inherit;padding:8px;border:1px solid #c9dce5;background:white;border-radius:6px}
+.cade-route-binding button{font:inherit;padding:7px;border:1px solid #c9dce5;background:#f4f9fb;border-radius:6px;color:#426b80;text-align:left}
+@media(max-width:900px){.cade-route-toolbar{padding:5px 8px}.cade-route-actions{margin-top:4px}.cade-route-toolbar strong{font-size:12px}.cade-route-toolbar span{font-size:11px}.cade-route-actions button{font-size:11px;min-height:28px;padding:3px}}
+button:focus-visible,summary:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #d49b2f;outline-offset:2px}
+.editor-workbench .workspace-views button{font-size:14px;font-weight:600;letter-spacing:0;line-height:1.25}
+.editor-workbench .topbar .home-link,.editor-workbench .practice-menu>summary{font-size:13px}
+.editor-workbench .searchbox-wrap input,.editor-workbench .stage-topline select{font-family:var(--ui-font);font-size:14px;font-weight:400}
+.editor-workbench .cables-menu>summary{font-size:13px}
+.editor-workbench .connection-message{font-size:12px;color:#566e7b}
+.editor-workbench .zoom-toolbar span{font-size:12px}
+
+/* A stable header and one scroll owner. Expanded tools never displace the frame. */
+.editor-workbench .practice-workspace .diagram-pane,
+.editor-workbench:not(.editor-reading) .practice-workspace .diagram-pane{
+ position:fixed;left:14px;top:196px;bottom:84px;right:auto;width:var(--diagram-width);height:calc(100dvh - 280px);align-self:stretch;
+ max-width:calc(100vw - 28px);max-height:none;display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:0;
+ min-width:0;min-height:0;padding:0;overflow:clip;border:1px solid var(--float-border);
+ border-radius:15px;background:var(--float-bg);box-shadow:var(--float-shadow);z-index:26;
+}
+.editor-workbench .diagram-pane-actions{position:static;inset:auto;transform:none;display:flex;align-items:center;gap:8px;flex:none;margin:0;padding:12px 14px;border:0;border-bottom:1px solid #e5ecef;border-radius:0;background:transparent;box-shadow:none;min-width:0}
+.editor-workbench .diagram-pane-actions strong{display:block;margin-right:auto;font-size:15px;color:#354f60}
+.diagram-pane-actions button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:38px;min-width:38px;padding:8px 10px;border:1px solid #d7e5ea;border-radius:8px;background:#f5fafb;color:#386477;font-size:13px;font-weight:600;line-height:1.25}
+.editor-workbench .practice-workspace .diagram-pane .diagram-tabs{position:static;inset:auto;transform:none;width:auto;display:flex;flex-wrap:wrap;gap:4px;flex:none;margin:0;padding:8px 12px;border:0;border-bottom:1px solid #e5ecef;border-radius:0;box-shadow:none;background:transparent}
+.editor-workbench .practice-workspace .diagram-pane .diagram-tabs button{flex:1;min-width:0;min-height:36px;padding:7px 6px;font-size:13px;font-weight:600;line-height:1.25;white-space:normal}
+.diagram-pane-body{grid-row:3;flex:1;min-height:0;min-width:0;padding:14px;overflow:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-gutter:stable;touch-action:pan-y}
+.diagram-pane-body>*{min-width:0;max-width:100%}
+.editor-workbench .practice-workspace .diagram-pane>.diagram-pane-actions{grid-row:1}
+.editor-workbench .practice-workspace .diagram-pane>.diagram-tabs{grid-row:2}
+.editor-reading .work-card>.work-tools{display:none}
+.editor-reading .practice-workspace .diagram-pane .diagram-tabs button{flex:none;min-width:120px;padding:8px 14px}
+.editor-reading .practice-workspace .diagram-pane-body .learning-entry>button{width:auto;flex:0 1 auto}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-reader,
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-reader{position:static;inset:auto;display:block;overflow:visible;min-height:0;color:#405d6e}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-workspace{display:block;min-width:0}
+.editor-workbench .practice-workspace .diagram-pane-body .learning-entry{position:static;inset:auto;transform:none;width:auto;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.editor-workbench .practice-workspace .diagram-pane-body .learning-entry>button{flex:1 1 150px;font-size:13px;min-height:40px;height:auto;padding:9px;line-height:1.25;font-weight:600}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-controls{position:static;inset:auto;width:auto;max-height:none;overflow:visible;margin:0 0 12px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-controls>summary{font-size:14px;min-height:36px;gap:8px;color:#3e5d70}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-controls>summary span{font-size:12px;color:#687f8d}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-heading{position:static;inset:auto;width:auto;display:flex;flex-direction:column;align-items:stretch;gap:10px;margin:10px 0 12px;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-heading>div{display:block}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-controls .reader-heading>div{display:none}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-heading h2{display:block;font-size:20px;margin:4px 0 6px}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-heading p{display:block;font-size:14px;line-height:1.6;margin:0;color:#607787}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-heading .eyebrow{font-size:10px;letter-spacing:.7px;display:block}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-practice-button,.editor-workbench .practice-workspace .diagram-pane-body .reader-mode button{font-size:13px;min-height:40px;white-space:normal;font-weight:600}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-mode{display:flex;flex-wrap:wrap;gap:8px}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-heading>.reader-mode{display:flex}
+.editor-workbench .practice-workspace .diagram-pane-body .reader-mode button{flex:1}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-view-options{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:10px;padding:8px 0;margin:0;border:0}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-view-options button{font-size:13px;min-height:36px}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-view-options label{font-size:13px;color:#566f7f}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-challenge{position:static;inset:auto;transform:none;width:auto;max-width:none;max-height:none;overflow:visible;margin:12px 0;padding:12px;display:flex;flex-wrap:wrap;border-radius:10px;box-shadow:none}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-challenge h3{font-size:15px;line-height:1.5}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-challenge p{font-size:14px;line-height:1.6}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-check{flex-wrap:wrap;gap:8px}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-check .primary-action{font-size:13px;min-height:38px;white-space:normal}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-artboard,
+.editor-workbench .practice-workspace .diagram-pane-body .reading-artboard{position:relative;inset:auto;display:block;border:1px solid #dde7ec;border-radius:10px;overflow:hidden;background:white}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-artboard>svg,
+.editor-workbench .practice-workspace .diagram-pane-body .reading-artboard>svg{position:static;inset:auto;display:block;width:100%;height:300px;min-height:0;max-height:none;touch-action:none}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-zoom{position:absolute;inset:auto;bottom:10px;right:10px;left:auto;top:auto;z-index:2;transform:none;background:#fffffff2;padding:3px;border:1px solid #dce4e3;border-radius:9px;box-shadow:none}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-zoom button{width:32px;height:32px;min-height:0;padding:0}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-zoom svg{position:static;width:15px;height:15px;min-height:0}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-drawing-caption,
+.editor-workbench .practice-workspace .diagram-pane-body .reading-legend{display:none}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-explanation{position:static;inset:auto;width:auto;max-height:none;overflow:visible;padding:16px 0 4px;margin:0;box-shadow:none;border:0;border-radius:0;background:transparent;font-size:14px;line-height:1.6}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-reader .reading-explanation:not(.is-open),
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-reader:not(.has-selection) .reading-explanation{display:none}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-explanation h3{font-size:17px;margin:8px 0}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-explanation p{font-size:14px;line-height:1.6;margin:10px 0}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-explanation .eyebrow{font-size:11px;letter-spacing:.6px}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-bank-links .outline-full{font-size:13px;height:auto;min-height:40px}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-port-list>span{font-size:13px;padding:8px 10px}
+.editor-workbench .practice-workspace .diagram-pane-body .reading-bank-links small{font-size:12px;color:#627a88}
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-shell{position:static;inset:auto;transform:none;width:auto;max-height:none;margin:16px 0 0;border-radius:10px;box-shadow:none}
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-shell>summary{font-size:14px;min-height:40px;padding:10px 12px}
+.editor-workbench .practice-workspace .diagram-pane-body .connection-lesson{font-size:14px;line-height:1.6;max-height:none;overflow:visible;padding:0 12px 14px}
+.editor-workbench .practice-workspace .diagram-pane-body .connection-lesson h3{font-size:15px;line-height:1.5}
+.editor-workbench .practice-workspace .diagram-pane-body .connection-lesson label{font-size:14px;margin:12px 0;gap:6px}
+.editor-workbench .practice-workspace .diagram-pane-body .connection-lesson select,
+.editor-workbench .practice-workspace .diagram-pane-body .connection-lesson textarea{font:inherit;min-width:0;width:100%;padding:9px;min-height:40px}
+.editor-workbench .practice-workspace .diagram-pane-body .connection-lesson small,
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-note,
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-mappings p,
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-mappings summary,
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-report summary,
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-progress{font-size:13px;line-height:1.6}
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-actions{flex-wrap:wrap;gap:8px}
+.lesson-actions button,.connection-lesson>button{min-height:40px;font-size:14px;line-height:1.25;padding:9px;border:1px solid #d7e5ea;border-radius:8px;background:#f5fafb;color:#386477;font-weight:600}
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-actions button{flex:1 1 120px;min-width:0}
+.editor-workbench .practice-workspace .diagram-pane-body .lesson-mappings select{font-size:13px}
+.editor-workbench .practice-workspace .diagram-pane-body .pane-heading{display:flex;margin-bottom:12px;font-size:15px}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-source-options{position:static;inset:auto;width:auto;margin:0 0 12px;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-source-options>summary{font-size:14px;min-height:36px}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-source select{font-size:13px;min-height:40px}
+.editor-workbench .practice-workspace .diagram-pane-body .upload-button{font-size:13px;min-height:40px;display:flex;align-items:center;gap:7px}
+.editor-workbench .practice-workspace .diagram-pane-body .upload-button span{display:inline;font-size:13px}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-canvas{position:relative;inset:auto;height:300px!important;width:100%;border:1px solid #dde7ec;border-radius:10px;overflow:hidden}
+.editor-workbench .practice-workspace .diagram-pane-body .diagram-svg{height:100%;width:100%;display:block}
+.editor-workbench .practice-workspace .diagram-pane-body>.outline-full{position:static;inset:auto;width:100%;height:auto;min-height:40px;margin:10px 0;font-size:14px;box-shadow:none}
+.editor-workbench .practice-workspace .diagram-pane-body .image-tool-dock{position:absolute;inset:auto;top:8px;left:8px;bottom:auto;transform:none;max-width:calc(100% - 16px);padding:4px;gap:2px;box-shadow:none}
+.editor-workbench .practice-workspace .diagram-pane-body .image-tool-dock button{min-width:30px;font-size:12px}
+.editor-workbench .practice-workspace .diagram-pane-body .image-tool-dock button span{display:inline}
+.editor-workbench .practice-workspace .diagram-pane-body .step-editor,
+.editor-workbench .practice-workspace .diagram-pane-body .trace-instruction,
+.editor-workbench .practice-workspace .diagram-pane-body .image-reading-list{position:static;inset:auto;width:auto;max-width:none;max-height:none;overflow:visible;transform:none;margin:12px 0;padding:12px;border:1px solid #dbe6eb;border-radius:10px;background:white;box-shadow:none;font-size:14px}
+.editor-workbench .practice-workspace .diagram-pane-body .step-editor label,.editor-workbench .practice-workspace .diagram-pane-body .step-editor input,.editor-workbench .practice-workspace .diagram-pane-body .step-editor select,.editor-workbench .practice-workspace .diagram-pane-body .step-editor textarea{font-size:14px;line-height:1.5}
+.editor-workbench .practice-workspace .diagram-pane-body .reference-caption{position:static;inset:auto;display:block;max-width:none;font-size:12px;line-height:1.6;margin:10px 0;color:#617987}
+.editor-workbench .practice-workspace .diagram-pane-body .empty-diagram{position:static;inset:auto;height:auto;min-height:200px;padding:20px}
+.editor-workbench .practice-workspace .diagram-pane-body button,.editor-workbench .practice-workspace .diagram-pane-body select,.editor-workbench .practice-workspace .diagram-pane-body a{max-width:100%}
+.editor-workbench .practice-workspace .diagram-pane-body button,.editor-workbench .practice-workspace .diagram-pane-body p,.editor-workbench .practice-workspace .diagram-pane-body summary{overflow-wrap:anywhere}
+.editor-workbench .practice-workspace .diagram-pane-body details>summary{cursor:pointer}
+
+/* Ampliar is the same bounded panel, with a bigger drawing and all tools in flow. */
+.editor-reading .practice-workspace .diagram-pane,
+.editor-reading .practice-workspace.reading-only .diagram-pane{position:fixed;inset:80px 14px 60px;width:auto;height:calc(100dvh - 140px);align-self:stretch;max-width:none;display:grid;grid-template-rows:auto auto minmax(0,1fr);border:1px solid var(--float-border);border-radius:15px;background:var(--float-bg);overflow:clip;padding:0}
+.editor-reading .diagram-pane .diagram-tabs{justify-content:flex-start}
+.editor-reading .diagram-pane .diagram-tabs button{flex:none;min-width:120px;padding:8px 14px}
+.editor-reading .practice-workspace .diagram-pane-body{padding:18px 22px}
+.editor-reading .practice-workspace .diagram-pane-body .cade-artboard>svg,
+.editor-reading .practice-workspace .diagram-pane-body .reading-artboard>svg{height:max(360px,calc(100dvh - 340px))}
+.editor-reading .practice-workspace .diagram-pane-body .diagram-canvas{height:max(360px,calc(100dvh - 340px))!important}
+.editor-reading .practice-workspace .diagram-pane-body .connection-lesson{max-width:900px}
+.editor-reading .practice-workspace .diagram-pane-body .connection-lesson select{max-width:600px}
+.editor-reading .practice-workspace .diagram-pane-body .step-editor{max-width:680px}
+.editor-reading .practice-workspace .diagram-pane-body .cade-controls .reader-heading{max-width:400px}
+.editor-reading .practice-workspace .diagram-pane-body .learning-entry>button{flex:none;min-width:180px}
+.editor-reading .practice-workspace .diagram-pane-body .teacher-material{max-width:920px}
+
+.teacher-material{margin:12px 0 16px;border:1px solid #d5e3e9;border-radius:10px;background:#f8fbfd}
+.teacher-material>summary{padding:11px 12px;font-size:14px;font-weight:600;color:#3f677d}
+.teacher-material-body{padding:0 12px 14px;font-size:14px;line-height:1.6;color:#456577}
+.teacher-material-body h3{font-size:17px;margin:8px 0}.teacher-material-body p{margin:10px 0}
+.teacher-scope{padding:10px;background:#fff6e5;border-radius:8px;color:#816630}
+.teacher-figures{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.teacher-figures button{padding:8px 10px;font-size:13px;font-weight:600;min-height:36px;border:1px solid #d1e0e8;border-radius:7px;background:white;color:#436a81}
+.teacher-figures button[aria-pressed=true]{background:#e5f2f9;border-color:#a4c9df;color:#235b7c}
+.teacher-material figure{margin:12px 0;padding:8px;background:white;border:1px solid #e1e8ed;border-radius:8px}
+.teacher-material img{max-width:100%;max-height:580px;width:auto;display:block;margin:auto;height:auto}
+.teacher-material figcaption{font-size:12px;color:#657e8d;line-height:1.5;margin-top:8px}
+.teacher-material-body>details{border-top:1px solid #dde8ef;padding:10px 0}
+.teacher-material-body ol,.teacher-material-body ul{padding-left:22px;margin:10px 0}.teacher-material-body li{padding:4px 0}
+.teacher-material .outline-full{height:auto;min-height:40px;font-size:14px;margin-top:10px;text-decoration:none;padding:8px}
+.connector-reference-table{margin:14px 0;min-width:0}
+.connector-reference-table table{width:100%;table-layout:fixed;border-collapse:collapse;background:white;font-size:13px}
+.connector-reference-table caption{text-align:left;font-weight:600;margin-bottom:8px}
+.connector-reference-table th,.connector-reference-table td{padding:10px 8px;text-align:left;vertical-align:top;border-bottom:1px solid #dce7ec;overflow-wrap:anywhere}
+.connector-reference-table th:first-child{width:39%}.connector-reference-table th{background:#edf4f7;font-weight:600}
+.connector-reference-table td strong,.connector-reference-table td span{display:block}.connector-reference-table td span{margin-top:6px}
+.connector-reference-table td p{font-size:13px;line-height:1.5;margin:8px 0 0}.connector-pending{font-size:13px;color:#8a6a29;font-weight:600}
+.connector-bank-links{display:flex;flex-wrap:wrap;gap:5px}.connector-bank-links button{width:100%;font-size:12px;text-align:left;padding:7px;border:1px solid #d3e3eb;border-radius:6px;background:#f6fbfd;color:#39667e;min-height:34px;overflow-wrap:anywhere}
+.exam-networks section{padding:10px 0;border-bottom:1px solid #dbe7ed}.exam-networks h4{margin:4px 0;font-size:14px}.exam-networks .exam-port-chain{font-weight:600;color:#345e75}
+
+@media(min-width:901px){.editor-workbench:not(.editor-reading):has(.diagram-pane:not([hidden])) .stage-wrap{left:calc(var(--diagram-width) + 28px);width:calc(100% - var(--diagram-width) - 28px)}}
+@media(min-width:901px) and (max-width:1100px){:root{--diagram-width:350px}}
+@media(max-width:900px){
+ .editor-workbench .workspace-views button{font-size:13px;padding:8px 10px}
+ .editor-workbench .topbar .home-link{font-size:0}.editor-workbench .practice-menu>summary{font-size:0}
+ .editor-workbench .cables-menu>summary{font-size:12px}.editor-workbench .connection-message{font-size:11px}
+ .editor-workbench .searchbox-wrap input,.editor-workbench .stage-topline select{font-size:13px}
+ .editor-workbench:not(.editor-reading) .practice-workspace .diagram-pane{left:12px;top:180px;bottom:auto;width:calc(100vw - 24px);max-width:none;height:min(38dvh,340px);display:grid;border-radius:12px}
+ .editor-workbench:not(.editor-reading) .practice-workspace.mobile-panel .diagram-pane:not([hidden]),.editor-workbench:not(.editor-reading) .practice-workspace.mobile-diagram .diagram-pane:not([hidden]){display:grid}
+ .editor-workbench:not(.editor-reading):has(.diagram-pane:not([hidden])) .stage-wrap{top:calc(192px + min(38dvh,340px));height:calc(100dvh - 322px - min(38dvh,340px))}
+ .editor-workbench .diagram-pane-actions{padding:8px 10px;gap:6px}.editor-workbench .diagram-pane-actions strong{font-size:14px}
+ .editor-workbench .practice-workspace .diagram-pane .diagram-tabs{padding:6px 8px;gap:2px}.editor-workbench .practice-workspace .diagram-pane .diagram-tabs button{font-size:12px;min-height:34px;padding:6px 5px}
+ .diagram-pane-body{padding:10px}.editor-workbench .practice-workspace .diagram-pane-body .learning-entry>button{font-size:13px;flex:1 1 120px}
+ .editor-workbench .practice-workspace .diagram-pane-body .cade-artboard>svg,.editor-workbench .practice-workspace .diagram-pane-body .reading-artboard>svg{height:220px}
+ .editor-workbench .practice-workspace .diagram-pane-body .diagram-canvas{height:260px!important}
+ .editor-workbench .practice-workspace .diagram-pane-body .image-tool-dock button span{display:none}
+ .editor-reading .practice-workspace .diagram-pane,.editor-reading .practice-workspace.reading-only .diagram-pane{inset:72px 12px 54px;max-width:none;height:calc(100dvh - 126px);display:grid}
+ .editor-reading .practice-workspace .diagram-pane-body{padding:12px}
+ .editor-reading .practice-workspace .diagram-pane-body .cade-artboard>svg,.editor-reading .practice-workspace .diagram-pane-body .reading-artboard>svg{height:max(320px,calc(100dvh - 320px))}
+ .editor-reading .practice-workspace .diagram-pane-body .diagram-canvas{height:max(320px,calc(100dvh - 320px))!important}
+ .editor-reading .practice-workspace .diagram-pane .diagram-tabs button{flex:1;min-width:0;padding:6px 5px}
+}
+@media(max-height:650px) and (min-width:901px){
+ .editor-workbench:not(.editor-reading) .practice-workspace .diagram-pane{top:138px;bottom:70px;left:14px;height:calc(100dvh - 208px)}
+ .editor-workbench:not(.editor-reading):has(.diagram-pane:not([hidden])) .stage-topline{left:calc(var(--diagram-width) + 42px);top:84px}
+ .editor-reading .practice-workspace .diagram-pane,.editor-reading .practice-workspace.reading-only .diagram-pane{inset:76px 14px 44px;height:calc(100dvh - 120px)}
+}
+@media(min-width:600px) and (max-width:900px) and (max-height:600px){
+ .editor-workbench:not(.editor-reading) .practice-workspace .diagram-pane{width:320px;top:172px;bottom:16px;height:calc(100dvh - 188px)}
+ .editor-workbench:not(.editor-reading) .diagram-pane-actions{padding:4px 8px}
+ .editor-workbench:not(.editor-reading) .practice-workspace .diagram-pane .diagram-tabs{padding:4px 6px}
+ .editor-workbench:not(.editor-reading) .diagram-pane-body{padding:6px}
+ .editor-workbench:not(.editor-reading):has(.diagram-pane:not([hidden])) .stage-wrap{inset:0 0 0 344px;width:calc(100% - 344px);height:100%}
+}
+.editor-workbench .practice-workspace .diagram-pane.has-route-toolbar{grid-template-rows:auto auto auto minmax(0,1fr)}
+.editor-workbench .practice-workspace .diagram-pane.has-route-toolbar>.diagram-pane-body{grid-row:4}
+
+.cade-route-actions button.route-learn{font-size:13px}
+
+.cade-route-actions button:disabled{opacity:.5;cursor:default}
+/* A circuit first; optional study and configuration stay inside the scroll area. */
+.editor-workbench .practice-workspace .diagram-pane.diagram-simple{grid-template-rows:auto minmax(0,1fr)}
+.editor-workbench .practice-workspace .diagram-pane.diagram-simple>.diagram-pane-body{grid-row:2}
+.editor-workbench .practice-workspace .diagram-pane.diagram-simple.has-route-toolbar{grid-template-rows:auto auto minmax(0,1fr)}
+.editor-workbench .practice-workspace .diagram-pane.diagram-simple.has-route-toolbar>.diagram-pane-body{grid-row:3}
+.diagram-simple>.cade-route-toolbar{grid-row:2;padding:10px 12px}
+.diagram-simple .cade-route-toolbar>div:first-child{display:grid;gap:3px}
+.diagram-simple .cade-route-toolbar strong{font-size:14px}
+.diagram-simple .cade-route-toolbar span{font-size:13px;line-height:1.35}
+.diagram-simple .cade-route-actions button{font-size:13px;min-height:38px;padding:7px}
+.diagram-simple .cade-route-actions button:last-child:not(:first-child){flex:1;background:transparent;color:#36677f;border-color:transparent}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-scope{margin:0 0 10px}
+.cade-scope>div{display:flex;gap:4px;background:#edf3f6;border-radius:8px;padding:3px}
+.cade-scope button{flex:1;min-height:34px;border:0;border-radius:6px;font:600 13px var(--ui-font);color:#526d7d;background:transparent}
+.cade-scope button[aria-pressed=true]{background:white;color:#226e91;box-shadow:0 1px 3px #25405a12}
+.editor-workbench .practice-workspace .diagram-pane-body .cade-controls{margin:12px 0 0;border-top:1px solid #e1e9ed;padding-top:7px}
+.cade-explanation,.diagram-more{margin:12px 0;border-top:1px solid #e1e9ed;padding-top:8px;font:400 14px/1.5 var(--ui-font);color:#486a7c}
+.cade-explanation>summary,.diagram-more>summary,.lesson-settings>summary{min-height:36px;padding:7px 0;font-weight:600;cursor:pointer}
+.diagram-more>p,.diagram-practice-entry>p,.cade-route-options>p{font-size:13px;line-height:1.5;color:#637d8c;margin:8px 0}
+.editor-workbench .practice-workspace .diagram-simple .diagram-more .diagram-tabs{display:grid;padding:0;margin:12px 0;border:0;gap:7px;background:transparent}
+.editor-workbench .practice-workspace .diagram-simple .diagram-more .diagram-tabs button{width:100%;max-width:none;min-width:0;text-align:left;padding:10px 12px;background:#f5f9fb;border:1px solid #dce6ec;border-radius:8px;font-size:14px;line-height:1.4}
+.diagram-tabs button small{display:block;font-size:12px;font-weight:400;color:#637d8c}
+.diagram-simple .diagram-tabs button[aria-pressed=true]{border-color:#81b4ce!important;background:#eaf5fa!important}
+.diagram-practice-entry{margin:16px 0;padding:12px;border-radius:9px;background:#f2f8fb}
+.diagram-practice-entry>button,.cade-route-options>button{min-height:40px;width:100%;border:1px solid #bcd8e7;border-radius:7px;background:white;color:#286b8c;font:600 14px var(--ui-font);padding:9px}
+.cade-route-options>button[aria-pressed=true]{background:#dbf0f7}
+.lesson-settings{margin:10px 0;border-block:1px solid #dce6ec;padding:5px 0}
+.lesson-settings>p{font-size:13px;color:#637d8c}
+@media(max-width:900px){.diagram-simple>.cade-route-toolbar{padding:6px 10px}.diagram-simple .cade-route-toolbar span{font-size:12px}.diagram-simple .cade-route-actions button{font-size:12px;min-height:34px}}
+/* Leyenda de componentes del esquema CADe */
+.cade-legend{margin:12px 0;border-top:1px solid #e1e9ed;padding-top:8px;font:400 13px/1.45 var(--ui-font);color:#486a7c}
+.cade-legend>summary{min-height:36px;padding:7px 0;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px}
+.cade-legend>summary span{font-size:11px;font-weight:600;color:#0b6f8f;background:#e6f4f9;border-radius:99px;padding:1px 8px}
+.cade-legend-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;padding-bottom:6px}
+.cade-legend-group{border:1px solid #dce9f0;border-radius:10px;background:#f8fcfd;padding:9px 11px}
+.cade-legend-group h4{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:14px;color:#1f4a60}
+.cade-legend-group h4 b{font-weight:700;color:#0b6f8f}
+.cade-legend-group p{margin:3px 0 7px;font-size:12px;line-height:1.5;color:#6a8493}
+.cade-legend-group div{display:flex;flex-wrap:wrap;gap:6px}
+.cade-legend-group button{display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-height:34px;padding:6px 10px;border:1px solid #cfe1ea;border-radius:8px;background:#fff;color:#2c627c;font:600 12px/1.3 var(--ui-font);text-align:left}
+.cade-legend-group button small{font:500 11px var(--ui-font);color:#7f98a6}
+.cade-legend-group button:hover{border-color:#7dcce4}
+.cade-legend-group button.is-active{border-color:#1098c6;background:#e3f4fa;color:#0b5f7e}
+.cade-part-info{font-size:13px;line-height:1.6;color:#3c6176}
+.cade-name-tag{user-select:none}
+/* Ficha de detalle del componente: símbolo + foto + explicación */
+.cade-sheet{position:fixed;z-index:80;right:16px;bottom:16px;width:min(420px,calc(100vw - 32px));max-height:min(78dvh,640px);overflow:auto;scrollbar-width:thin;padding:14px 16px 16px;border:1px solid #cfe1ea;border-radius:16px;background:#fff;box-shadow:0 18px 50px #1c354530,0 2px 8px #1c35450f;color:#3c6176;font:400 13px/1.55 var(--ui-font);animation:float-panel-in .2s var(--motion-ease,ease) both}
+.cade-sheet header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.cade-sheet header small{font:700 11px/1.3 var(--ui-font);letter-spacing:.4px;color:#0b6f8f;text-transform:uppercase}
+.cade-sheet h3{margin:2px 0 0;font:700 17px/1.3 var(--ui-font);color:#1f4a60}
+.cade-sheet header button{flex:none;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:0;border-radius:9px;background:#f1f5f7;color:#5d7484}
+.cade-sheet header button:hover{background:#e4edf1}
+.cade-sheet-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:10px;margin-bottom:10px}
+.cade-sheet-media:has(figure:only-child){grid-template-columns:1fr}
+.cade-sheet figure{margin:0;display:flex;flex-direction:column;min-width:0;border:1px solid #dce9f0;border-radius:11px;overflow:hidden;background:#f8fcfd}
+.cade-sheet figure svg,.cade-sheet figure img{display:block;width:100%;height:150px;object-fit:cover;background:#fff}
+.cade-sheet figure svg{object-fit:contain;padding:6px}
+.cade-sheet figcaption{padding:6px 9px 8px;font-size:11px;line-height:1.4;color:#6a8493}
+.cade-sheet p{margin:0 0 8px}
+.cade-sheet .cade-sheet-device{font-size:12px;color:#6a8493;margin:0}
+.cade-sheet .cade-sheet-device b{color:#2c627c}
+@media(max-width:600px){.cade-sheet{right:12px;left:12px;bottom:12px;width:auto;max-height:70dvh}.cade-sheet figure svg,.cade-sheet figure img{height:120px}}
+/* Selectores del diagrama (esquema y zona) plegables */
+.cade-bars-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:36px;margin:0 0 8px;padding:6px 12px;border:1px solid #dce9f0;border-radius:9px;background:#f4f9fb;color:#3e5d70;font:600 13px var(--ui-font)}
+.cade-bars-toggle:hover{background:#e9f3f8}
+.cade-bars-toggle svg{flex:none;transition:transform .18s ease}
+.cade-bars-toggle[aria-expanded=true] svg{transform:rotate(180deg)}
+.diagram-pane-body[data-bars=closed] .cade-scope{display:none}
+/* Franja de contexto del diagrama: tarjeta limpia en lugar de banda azul */
+.cade-route-toolbar,.diagram-simple>.cade-route-toolbar{padding:12px 16px;background:linear-gradient(180deg,#fff,#f7fbfc);border-block:0;border-bottom:1px solid #e4edf1;color:#35596d}
+.cade-route-toolbar .cade-route-head,.diagram-simple .cade-route-toolbar>.cade-route-head{display:flex;align-items:center;gap:12px}
+.cade-route-head>i{flex:none;width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#e3f3f8,#cfe9f1);color:#1e7f9d;box-shadow:inset 0 0 0 1px #bfe0eb}
+.cade-route-head>div{min-width:0;display:grid;gap:1px}
+.cade-route-head small{font:700 10px/1.3 var(--ui-font);letter-spacing:1px;text-transform:uppercase;color:#7c97a6}
+.cade-route-toolbar .cade-route-head strong{font:700 17px/1.25 var(--ui-font);letter-spacing:-.2px;color:#1b475c}
+.cade-route-head p{margin:2px 0 0;font:400 12.5px/1.45 var(--ui-font);color:#6f8999}
+.cade-route-toolbar .cade-route-actions{margin-top:10px}
+.cade-route-toolbar .cade-route-actions button{border-radius:9px;border-color:#cfe1ea;box-shadow:0 1px 0 #fff inset}
+.cade-route-toolbar .cade-route-actions button:first-child{background:linear-gradient(180deg,#2a8aa8,#207b97);border-color:#207b97;box-shadow:0 2px 8px #207b9733}
+@media(max-width:900px){.cade-route-toolbar,.diagram-simple>.cade-route-toolbar{padding:9px 12px}.cade-route-head>i{width:32px;height:32px;border-radius:9px}.cade-route-toolbar .cade-route-head strong{font-size:15px}.cade-route-head p{font-size:12px}}
+/* Clave de colores de los conductores */
+.cade-wire-key{position:absolute;z-index:2;left:10px;top:10px;display:flex;flex-wrap:wrap;gap:6px;max-width:calc(100% - 20px)}
+.cade-wire-key button{display:flex;align-items:center;gap:7px;min-height:30px;padding:4px 11px 4px 9px;border:1px solid #d5e4eb;border-radius:99px;background:#ffffffee;color:#35596d;font:600 12px/1 var(--ui-font);box-shadow:0 1px 4px #1c35450f;backdrop-filter:blur(4px)}
+.cade-wire-key button i{width:18px;height:4px;border-radius:3px;flex:none}
+.cade-wire-key button small{font:500 11px var(--ui-font);color:#8aa0ad}
+.cade-wire-key button:hover{border-color:#8cc9de}
+.cade-wire-key button[aria-pressed=true]{border-color:#1e87a8;background:#e8f5fa;color:#14607a}
+.cade-role{display:flex;align-items:flex-start;gap:9px;margin:10px 0;padding:10px 12px;border-radius:10px;background:#f6fafc;border:1px solid #dce9f0;font-size:13px;line-height:1.55;color:#3c6176}
+.cade-role i{flex:none;width:4px;align-self:stretch;border-radius:3px}
+@media(max-width:600px){.cade-wire-key button{min-height:26px;font-size:11px;padding:3px 9px 3px 7px}.cade-wire-key button small{display:none}}
+.editor-workbench:not(.editor-reading) .cade-wire-key{left:6px;top:6px;gap:4px}
+.editor-workbench:not(.editor-reading) .cade-wire-key button{min-height:24px;padding:2px 8px 2px 6px;font-size:11px;gap:5px}
+.editor-workbench:not(.editor-reading) .cade-wire-key button i{width:12px}
+.editor-workbench:not(.editor-reading) .cade-wire-key button small{display:none}
+/* El esquema no selecciona texto al tocar o hacer doble clic */
+.cade-artboard,.cade-artboard svg,.cade-artboard svg *{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+.cade-artboard svg ::selection{background:transparent}

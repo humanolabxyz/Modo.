@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Tu primer cable",
+    "duration": 84.3,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.027978
+  },
+  {
+    "title": "Del diagrama al circuito",
+    "duration": 95.479979,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.012068
+  },
+  {
+    "title": "Empieza en la protoboard",
+    "duration": 111.200021,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.016383
+  },
+  {
+    "title": "Simula y mide",
+    "duration": 87.080021,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.003758
+  }
+]

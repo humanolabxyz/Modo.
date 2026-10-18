@@ -1,0 +1,12 @@
+{
+  "project": "PanelLab INACAP",
+  "package_version": "kit_correcciones_v1.1",
+  "implemented_version": "v2.0 - cableado virtual y estudio revisable",
+  "target_version": "fase2 y guia manual",
+  "modules": 7,
+  "modeled_terminals": 108,
+  "new_photo_count": 5,
+  "notes": "El usuario solicito continuar con flujo de estudio y cables conectables. Extremos, nodos, historial, persistencia, diagrama y pasos manuales implementados. Comportamiento electrico pendiente. HTML aprobado y fotos conservados.",
+  "source": "src/ Astro + React + TS",
+  "offline_prototype": "PANEL_LAB_INACAP.html"
+}

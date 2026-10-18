@@ -1,0 +1,13 @@
+{
+  "new_pdfs": 8,
+  "new_pdf_pages": 206,
+  "all_new_pages_rendered": 206,
+  "sources_match_originals": true,
+  "combined_source_files": 44,
+  "combined_pdfs": 32,
+  "combined_pdf_pages": 440,
+  "artifact_links_valid": true,
+  "issues": [],
+  "application_source_changes": "none",
+  "application_tests": "not run; documentation and planning only"
+}

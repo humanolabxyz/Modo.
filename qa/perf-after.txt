@@ -1,0 +1,7 @@
+
+> panellab-inacap-fase1@2.0.0 perf:mobile
+> node qa/perf-mobile.cjs
+
+{"name":"pan 60 moves","appRenders":1,"frames":151,"p95":17,"max":150,"longTasks":1,"longTotal":155}
+{"name":"ctrl+wheel 30 ticks","appRenders":2,"frames":80,"p95":33,"max":150,"longTasks":2,"longTotal":181}
+PASS perf-mobile

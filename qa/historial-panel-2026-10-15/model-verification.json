@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Altas, bajas, color y recorrido con valores anteriores/posteriores; no se registran cambios inexistentes.",
+    "Panel JSON conserva circuito, seis pasos y operaciones Deshacer/Rehacer; el lector de práctica antiguo conserva compatibilidad.",
+    "Metadatos de cambios alterados, estado final incompatible y bornes inventados rechazados antes de importar.",
+    "Grabaciones anteriores se migran comparando sus estados; JSON de montaje sin historial no inventa pasos.",
+    "Cambios de extremos detectados; historial de 200 pasos acotado y tramo restante coherente."
+  ]
+}

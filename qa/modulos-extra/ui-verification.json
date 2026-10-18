@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "En el contactor + relé térmico A2 queda sobre A1",
+    "«Añadir panel» agrega el contactor KM3 en un hueco libre, con su botón para quitarlo",
+    "Arrastrar un panel desde su cara muestra el hueco de acople, lo resalta y al soltar lo deja junto al vecino sin superponerse",
+    "Soltar la alimentación sobre las botoneras las intercambia de lugar (con vista previa) y sus anchos distintos no se superponen",
+    "El asa también mueve el panel; paneles y posiciones se recuperan al recargar",
+    "Un cable conectado a KM3 se conserva al recargar",
+    "Al mover un panel sus cables se balancean como los del multímetro y se asientan solos",
+    "Un panel con cables no se quita; sin cables se quita y no reaparece al recargar",
+    "Acomodar módulos devuelve la disposición base y conserva los paneles añadidos"
+  ],
+  "errors": []
+}

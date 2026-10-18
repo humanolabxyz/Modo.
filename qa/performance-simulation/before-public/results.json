@@ -1,0 +1,53 @@
+{
+  "base": "https://modo-lab.vercel.app/",
+  "cpuThrottle": 4,
+  "duration": 4000,
+  "results": [
+    {
+      "name": "panel-idle-820",
+      "frames": 241,
+      "frameP95": 16.700000000000728,
+      "slowFrames": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "leadAttributeWrites": 0,
+      "TaskDuration": 0.0712,
+      "ScriptDuration": 0.0097,
+      "LayoutDuration": 0,
+      "RecalcStyleDuration": 0,
+      "LayoutCount": 0,
+      "RecalcStyleCount": 0
+    },
+    {
+      "name": "panel-running-820",
+      "frames": 241,
+      "frameP95": 16.700000000000728,
+      "slowFrames": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "leadAttributeWrites": 0,
+      "TaskDuration": 3.5334,
+      "ScriptDuration": 0.018,
+      "LayoutDuration": 0.0335,
+      "RecalcStyleDuration": 0.163,
+      "LayoutCount": 240,
+      "RecalcStyleCount": 240
+    },
+    {
+      "name": "panel-pan-running-820",
+      "frames": 192,
+      "frameP95": 33.39999999999782,
+      "slowFrames": 3,
+      "longTasks": 3,
+      "longMs": 391,
+      "leadAttributeWrites": 0,
+      "TaskDuration": 3.2012,
+      "ScriptDuration": 0.0567,
+      "LayoutDuration": 0.2912,
+      "RecalcStyleDuration": 0.3509,
+      "LayoutCount": 138,
+      "RecalcStyleCount": 104
+    }
+  ],
+  "errors": []
+}

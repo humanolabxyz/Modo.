@@ -1,0 +1,551 @@
+{
+  "description": "32 preguntas originales de práctica, rotación sugerida por tema y dificultad; no corresponden a la prueba oficial.",
+  "count": 32,
+  "questions": [
+    {
+      "id": "ALT-01",
+      "theme": "fallas",
+      "slides": [
+        3
+      ],
+      "question": "¿Cuál es una característica de la sobrecarga?",
+      "options": [
+        "Es siempre una fuga a tierra.",
+        "La corriente supera lo normal y puede recalentar el conductor.",
+        "Es un transitorio de tensión.",
+        "Solo ocurre en fusibles."
+      ],
+      "correct_index": 1,
+      "explanation": "La diapositiva 3 diferencia sobrecarga de cortocircuito por la corriente y el calentamiento.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-02",
+      "theme": "fallas",
+      "slides": [
+        3
+      ],
+      "question": "¿Qué caracteriza a un cortocircuito?",
+      "options": [
+        "Conexión de muy baja impedancia con corriente potencialmente elevada.",
+        "Pérdida exclusiva de rendimiento mecánico.",
+        "Una caída de tensión pequeña sin corriente.",
+        "Un contactor que abre por orden normal."
+      ],
+      "correct_index": 0,
+      "explanation": "El cortocircuito crea un camino de baja impedancia, según la diapositiva 3.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-03",
+      "theme": "fallas",
+      "slides": [
+        4
+      ],
+      "question": "¿Qué efectos menciona la presentación para un cortocircuito?",
+      "options": [
+        "Vibración, humedad y oxidación.",
+        "Reducción de consumo y enfriamiento.",
+        "Arco eléctrico, calor y esfuerzos magnéticos.",
+        "Solo daño acústico."
+      ],
+      "correct_index": 2,
+      "explanation": "En la diapositiva 4 se explican estos tres efectos.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-04",
+      "theme": "fallas",
+      "slides": [
+        2
+      ],
+      "question": "¿Cuáles son objetivos de las protecciones eléctricas?",
+      "options": [
+        "Solo reducir el costo energético.",
+        "Solo hacer partir un motor.",
+        "Solo conservar la señalización.",
+        "Proteger personas e instalaciones y mantener el servicio cuando sea posible."
+      ],
+      "correct_index": 3,
+      "explanation": "La diapositiva 2 divide objetivos en personas, instalaciones y continuidad.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-05",
+      "theme": "coordinacion",
+      "slides": [
+        5
+      ],
+      "question": "¿Cuál de estos datos es necesario antes de seleccionar protección?",
+      "options": [
+        "Color de la pintura del tablero.",
+        "Corriente de carga, tensión, tipo de carga y cortocircuito previsto.",
+        "Marca del celular del técnico.",
+        "Tipo de etiqueta impresa."
+      ],
+      "correct_index": 1,
+      "explanation": "La diapositiva 5 enumera datos de carga, red, conductor y condiciones.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-06",
+      "theme": "coordinacion",
+      "slides": [
+        6
+      ],
+      "question": "Si In=18 A, Ip=20 A e Iz=25 A, ¿qué ocurre con la regla básica de coordinación?",
+      "options": [
+        "No cumple porque 18 < 20.",
+        "No cumple porque 25 > 20.",
+        "Cumple In ≤ Ip ≤ Iz.",
+        "La corriente nominal del motor es 25 A."
+      ],
+      "correct_index": 2,
+      "explanation": "18 ≤ 20 ≤ 25 satisface la desigualdad didáctica. No verifica por sí sola poder de corte.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-07",
+      "theme": "coordinacion",
+      "slides": [
+        6
+      ],
+      "question": "Si In=22 A, Ip=20 A e Iz=25 A, ¿qué falla?",
+      "options": [
+        "La protección tiene corriente nominal inferior a la carga.",
+        "El cable siempre es demasiado pequeño.",
+        "El cortocircuito previsto es 25 kA.",
+        "No falla ninguna condición."
+      ],
+      "correct_index": 0,
+      "explanation": "Debe cumplirse In ≤ Ip. Aquí 22 > 20.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-08",
+      "theme": "coordinacion",
+      "slides": [
+        6
+      ],
+      "question": "Además de la desigualdad de corriente, ¿qué debe cubrir el poder de corte?",
+      "options": [
+        "La temperatura ambiente.",
+        "La cantidad de etiquetas.",
+        "La potencia luminosa.",
+        "La corriente de cortocircuito prevista en el punto."
+      ],
+      "correct_index": 3,
+      "explanation": "La diapositiva 6 exige poder de corte adecuado.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-09",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué elemento del termomagnético responde a sobrecargas?",
+      "options": [
+        "Magnético.",
+        "Térmico.",
+        "SPD.",
+        "Diferencial."
+      ],
+      "correct_index": 1,
+      "explanation": "La diapositiva 8 indica térmico para sobrecarga.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-10",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué elemento responde a un cortocircuito suficientemente elevado?",
+      "options": [
+        "Magnético.",
+        "Indicador de energía.",
+        "Contactores auxiliares.",
+        "Aislación externa."
+      ],
+      "correct_index": 0,
+      "explanation": "El mecanismo magnético responde a corrientes elevadas.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-11",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué rango de disparo magnético se indica para curva B?",
+      "options": [
+        "10–20 veces nominal.",
+        "1–2 veces nominal.",
+        "3–5 veces nominal.",
+        "40–50 veces nominal."
+      ],
+      "correct_index": 2,
+      "explanation": "Rango indicado en la diapositiva 8 para curva B.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-12",
+      "theme": "termomagnetico",
+      "slides": [
+        8
+      ],
+      "question": "¿Qué curva se asocia con arranques de corriente elevados?",
+      "options": [
+        "B.",
+        "C exclusivamente.",
+        "No se consideran curvas.",
+        "D."
+      ],
+      "correct_index": 3,
+      "explanation": "La curva D aparece para altos arranques (10–20×), sin reemplazar análisis del fabricante.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-13",
+      "theme": "fusibles",
+      "slides": [
+        10
+      ],
+      "question": "¿Qué datos deben verificarse al seleccionar un fusible?",
+      "options": [
+        "Solo color y longitud.",
+        "Clase de uso, corriente, tensión y capacidad de ruptura.",
+        "Solo formato exterior.",
+        "Únicamente el material de la carcasa."
+      ],
+      "correct_index": 1,
+      "explanation": "La diapositiva 10 recomienda tipo, corriente, tensión, ruptura y condiciones de uso.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-14",
+      "theme": "fusibles",
+      "slides": [
+        10
+      ],
+      "question": "¿Qué clases se mencionan para semiconductores?",
+      "options": [
+        "gG solamente.",
+        "Curvas B y C.",
+        "aR o gR.",
+        "RCD tipo AC únicamente."
+      ],
+      "correct_index": 2,
+      "explanation": "La diapositiva 10 distingue gG (conductores) de aR/gR (semiconductores).",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-15",
+      "theme": "fusibles",
+      "slides": [
+        9,
+        10
+      ],
+      "question": "¿Por qué no basta con la forma exterior del fusible?",
+      "options": [
+        "Porque la forma no indica por sí sola la función de protección.",
+        "Porque todos tienen exactamente la misma corriente.",
+        "Porque nunca existe una ficha técnica.",
+        "Porque todos sirven solo para motores."
+      ],
+      "correct_index": 0,
+      "explanation": "La diapositiva 9 advierte que la forma exterior no define la función.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-16",
+      "theme": "fusibles",
+      "slides": [
+        10
+      ],
+      "question": "En la diapositiva 10, ¿qué representa 200 kA en el ejemplo de placa?",
+      "options": [
+        "Temperatura.",
+        "Tiempo de actuación.",
+        "Corriente nominal.",
+        "Capacidad de ruptura máxima."
+      ],
+      "correct_index": 3,
+      "explanation": "La lámina rotula explícitamente 200 kA como ruptura máxima del ejemplo de placa.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-17",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "¿Cómo se calcula la capacidad corregida Iz?",
+      "options": [
+        "Iz = P/V.",
+        "Iz = Itabla × fT × fG.",
+        "Iz = In + cosφ.",
+        "Iz = k/S."
+      ],
+      "correct_index": 1,
+      "explanation": "Fórmula de la diapositiva 12.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-18",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "Si Itabla=30 A, fT=0,9 y fG=0,8, ¿cuál es Iz?",
+      "options": [
+        "30 A.",
+        "27 A.",
+        "21,6 A.",
+        "20 A."
+      ],
+      "correct_index": 2,
+      "explanation": "30 × 0,9 × 0,8 = 21,6 A.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-19",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "Además de la corriente, ¿qué otras comprobaciones del cable aparecen?",
+      "options": [
+        "Caída de tensión y soportar energía de cortocircuito.",
+        "Color de aislación y fotografía.",
+        "Potencia de luz y distancia visual.",
+        "Marca del interruptor y tipo de logo."
+      ],
+      "correct_index": 0,
+      "explanation": "La diapositiva 12 muestra verificaciones de corriente, caída de tensión y cortocircuito.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-20",
+      "theme": "conductores",
+      "slides": [
+        12
+      ],
+      "question": "¿Qué representa la expresión I²t ≤ k²S²?",
+      "options": [
+        "La pérdida por ventilación.",
+        "El disparo diferencial.",
+        "La sensibilidad de un SPD.",
+        "Comprobación térmica del conductor ante energía de cortocircuito."
+      ],
+      "correct_index": 3,
+      "explanation": "Se trata de modelo adiabático bajo condiciones señaladas, diapositiva 12.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-21",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "¿Qué dato de placa sirve para ajustar el térmico del guardamotor?",
+      "options": [
+        "Color del eje.",
+        "Corriente nominal del motor.",
+        "Cantidad de tornillos.",
+        "Año de fabricación únicamente."
+      ],
+      "correct_index": 1,
+      "explanation": "Se elige rango que incluya corriente de placa y se ajusta según fabricante.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-22",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "¿Qué se verifica después de seleccionar el rango térmico?",
+      "options": [
+        "El color de la señalética.",
+        "La forma del tablero.",
+        "El arranque, umbral magnético y poder de corte.",
+        "El tamaño de tipografía."
+      ],
+      "correct_index": 2,
+      "explanation": "Es la tercera etapa indicada por el profesor.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-23",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "Para control remoto, ¿con qué suele combinarse el guardamotor?",
+      "options": [
+        "Contactor.",
+        "Solo fusible de vidrio.",
+        "Solo SPD.",
+        "Solo cable neutro."
+      ],
+      "correct_index": 0,
+      "explanation": "El guardamotor normalmente se combina con contactor para mando remoto.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-24",
+      "theme": "guardamotor",
+      "slides": [
+        13
+      ],
+      "question": "El disparo magnético del guardamotor...",
+      "options": [
+        "Se regula siempre en cualquier modelo.",
+        "Nunca existe.",
+        "Depende solo del color.",
+        "Puede ser fijo según el modelo."
+      ],
+      "correct_index": 3,
+      "explanation": "La diapositiva 13 lo advierte expresamente.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-25",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿Qué dispositivo limita sobretensiones transitorias?",
+      "options": [
+        "Relé térmico exclusivamente.",
+        "SPD.",
+        "Contactor de mando.",
+        "Un cable más grueso por sí solo."
+      ],
+      "correct_index": 1,
+      "explanation": "La diapositiva 14 identifica los SPD para sobretensiones.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-26",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿Qué detecta un RCD diferencial?",
+      "options": [
+        "Solo falta de torque.",
+        "Solo temperatura de un conductor.",
+        "Desequilibrio de corriente por fuga.",
+        "Solo sobrevoltaje transitorio."
+      ],
+      "correct_index": 2,
+      "explanation": "Los diferenciales responden a desequilibrios por fuga.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-27",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿Qué sensibilidad habitual menciona la presentación para protección adicional de personas?",
+      "options": [
+        "≤ 30 mA (según condiciones y normativa).",
+        "200 kA.",
+        "700 V.",
+        "20 A siempre."
+      ],
+      "correct_index": 0,
+      "explanation": "Se menciona ≤30 mA de forma habitual bajo IEC, no como regla universal de todas las instalaciones.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-28",
+      "theme": "tierra-sobretension",
+      "slides": [
+        14
+      ],
+      "question": "¿El diferencial sustituye la protección de sobrecorriente?",
+      "options": [
+        "Sí, en todas las instalaciones.",
+        "Solo con variadores.",
+        "Sí, si es de 30 mA.",
+        "No, cumple una función distinta."
+      ],
+      "correct_index": 3,
+      "explanation": "La diapositiva 14 lo establece.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-29",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "question": "Si P es potencia mecánica de salida, ¿qué fórmula utiliza el ejercicio?",
+      "options": [
+        "I=P·√3·V.",
+        "I=Psalida /(√3 · VLL · η · cosφ).",
+        "I=Iz−Ip.",
+        "I=I²t/k²."
+      ],
+      "correct_index": 1,
+      "explanation": "La diapositiva 15 presenta esta relación para potencia mecánica de salida.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-30",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "question": "¿Qué combinación de datos aparece para completar el cálculo de motor trifásico?",
+      "options": [
+        "Solo fase y neutro.",
+        "Solo longitud de cable.",
+        "Potencia, tensión, rendimiento y factor de potencia.",
+        "Solo potencia y cantidad de bornes."
+      ],
+      "correct_index": 2,
+      "explanation": "La tabla de la diapositiva 15 enumera esos cuatro datos.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-31",
+      "theme": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "question": "Después del cálculo de corriente, ¿qué indica hacer el profesor?",
+      "options": [
+        "Comparar con corriente de placa y justificar selección.",
+        "Ignorar la placa del motor.",
+        "Elegir fusible solo por color.",
+        "Omitir verificación del conductor."
+      ],
+      "correct_index": 0,
+      "explanation": "La diapositiva 15 pide comparar la corriente calculada con la de placa y justificar.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    },
+    {
+      "id": "ALT-32",
+      "theme": "motor-trifasico",
+      "slides": [
+        16
+      ],
+      "question": "¿Qué incluye la lista final de verificación?",
+      "options": [
+        "Solo cable coloreado.",
+        "Únicamente pulsadores.",
+        "Solo el cálculo de potencia.",
+        "Tensión, polos, curva, poder de corte, coordinación, cable, arranque y riesgos."
+      ],
+      "correct_index": 3,
+      "explanation": "La diapositiva 16 resume las verificaciones de selección.",
+      "origin": "Ejercicio elaborado para estudiar; NO es pregunta oficial"
+    }
+  ]
+}

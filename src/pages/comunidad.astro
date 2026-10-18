@@ -1,0 +1,56 @@
+---
+import {ArrowLeft,ArrowUpRight,HeartHandshake,Check} from 'lucide-react';
+import MotionHead from '../components/motion/MotionHead.astro';
+import ModoSplash from '../components/motion/ModoSplash.astro';
+import {COMMUNITY_RECOGNITIONS} from '../data/community';
+import '../styles/modo-brand.css';
+import '../styles/community.css';
+---
+<!doctype html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#F7F8FA"/>
+  <meta name="description" content="La comunidad de modo. Reconocemos a quienes comparten su conocimiento y ayudan a mejorar esta forma de aprender y practicar."/>
+  <meta name="author" content="Humano Lab · Félix Levancini"/>
+  <meta name="robots" content="noindex, nofollow, noarchive"/>
+  <link rel="icon" href="/brand/modo-app-oscuro.svg" type="image/svg+xml"/>
+  <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png"/>
+  <link rel="manifest" href="/manifest.webmanifest"/>
+  <title>Comunidad · modo.</title>
+  <MotionHead/>
+ </head>
+ <body class="community-page">
+  <ModoSplash/>
+  <a class="community-skip" href="#comunidad">Ir al contenido</a>
+  <header class="community-header">
+   <a href="/" class="community-brand" aria-label="modo. · inicio"><img src="/brand/modo-logo-horizontal-color.svg" alt="modo." width="137" height="40"/></a>
+   <nav aria-label="Navegación principal"><a href="/" aria-label="Volver al inicio"><ArrowLeft size={16} aria-hidden="true"/>Inicio</a><a class="community-panel-link" href="/?view=simulator">Ir al panel<ArrowUpRight size={16} aria-hidden="true"/></a></nav>
+  </header>
+  <main id="comunidad" class="community-main">
+   <section class="community-intro" aria-labelledby="community-title">
+    <p class="community-eyebrow"><span aria-hidden="true"></span>PERSONAS QUE SUMAN</p>
+    <h1 id="community-title">Comunidad<span>.</span></h1>
+    <p class="community-lead">Detrás de cada mejora,<br class="community-mobile-break"/> hay alguien que aporta.</p>
+    <p class="community-description">Un espacio para reconocer a quienes comparten su conocimiento, su tiempo y sus ideas para hacer crecer modo.</p>
+   </section>
+   <section class="community-recognitions" aria-labelledby="recognitions-title">
+    <div class="community-section-heading"><h2 id="recognitions-title">Reconocimientos</h2><span>Construimos juntos</span></div>
+    {COMMUNITY_RECOGNITIONS.map(person=><article class="recognition-card" aria-labelledby={`recognition-${person.id}`}>
+     <div class="recognition-portrait" aria-hidden="true"><span class="recognition-portrait-label">COMUNIDAD · MODO.</span><span class="recognition-initial">{person.initial}</span><span class="recognition-portrait-foot"><HeartHandshake size={22}/><span>El conocimiento crece<br/>cuando se comparte.</span></span></div>
+     <div class="recognition-content">
+      <p class="recognition-category"><HeartHandshake size={17} aria-hidden="true"/>{person.category}</p>
+      <h3 id={`recognition-${person.id}`}>{person.name}</h3>
+      <p class="recognition-title">{person.title}</p>
+      <p class="recognition-description">{person.description}</p>
+      <ul class="recognition-contributions" aria-label={`Aportes de ${person.name}`}>{person.contributions.map(contribution=><li><Check size={15} aria-hidden="true"/>{contribution}</li>)}</ul>
+      <div class="recognition-thanks"><strong>Gracias, {person.name}.</strong><p>{person.thanks}</p></div>
+     </div>
+    </article>)}
+   </section>
+   <div class="community-closing"><p>Las ideas se convierten en mejoras<br/><strong>cuando las construimos juntos.</strong></p><a href="/">Volver al inicio<ArrowUpRight size={18} aria-hidden="true"/></a></div>
+  </main>
+  <footer class="community-footer"><span>Una iniciativa de <strong>Humano Lab.</strong></span><a href="/legal/">Créditos y políticas<ArrowUpRight size={14} aria-hidden="true"/></a></footer>
+ </body>
+</html>

@@ -1,0 +1,281 @@
+LAMINA 1
+AUTOMATIZACIÓN Y CONTROL INDUSTRIAL
+PROTECCIONES 
+ELÉCTRICAS: CÓMO 
+SELECCIONARLAS
+Criterios para coordinar carga, 
+protección y conductor.
+José Alfredo Lepin Quezada
+7 DE OCTUBRE DE 2026
+
+LAMINA 2
+OBJETIVO DE SELECCIÓN
+UNA PROTECCIÓN BIEN ELEGIDA MANTIENE EL SERVICIO Y CUIDA A 
+LAS PERSONAS
+Personas
+Reducir el riesgo de choque 
+eléctrico y de lesiones 
+asociadas a una falla.
+Instalaciones
+Evitar daños térmicos y 
+mecánicos en cables, equipos 
+y tableros.
+Servicio
+Aislar la falla y conservar el 
+suministro donde sea posible.
+SOBRECARGA
+CORTOCIRCUITO
+SOBRETENSIÓN
+FALLA A TIERRA
+Método de trabajo: una pregunta guía de selección y su respuesta en la diapositiva siguiente.
+
+LAMINA 3
+RECONOCER LA FALLA
+SOBRECARGA Y CORTOCIRCUITO SE DISTINGUEN POR LA MAGNITUD 
+DE LA CORRIENTE
+La sobrecarga supera la corriente normal y recalienta el conductor. El 
+cortocircuito establece un camino de muy baja impedancia; puede 
+originarse por pérdida de aislación en un motor.
+Comparación conceptual, sin escala. La magnitud real depende de la carga y de la red.
+La aislación del motor es una barrera 
+frente a la falla.
+
+LAMINA 4
+CONSECUENCIAS DE LA FALLA
+EL CORTOCIRCUITO DESTRUYE POR ARCO, CALOR Y FUERZA 
+MAGNÉTICA
+Representación de un ensayo 
+controlado. No reproducir en clase.
+Arco eléctrico
+Miles de amperes pueden quemar los materiales en su trayectoria.
+Calentamiento
+Según la guía, 15 kA en cobre 6 AWG producen un aumento de 205 °C 
+en menos de un ciclo.
+Esfuerzos magnéticos
+Crecen fuertemente con la corriente y pueden deformar conductores y 
+barras.
+
+LAMINA 5
+PREGUNTA GUÍA · DATOS DE ENTRADA
+¿QUÉ DATOS NECESITO ANTES DE ELEGIR CUALQUIER 
+PROTECCIÓN?
+•
+Corriente de carga, tensión y tipo de carga.
+•
+Corriente de cortocircuito prevista en el punto de instalación.
+•
+Material, sección y capacidad de corriente del conductor.
+•
+Ambiente, temperatura y tipo de arranque del motor.
+Primero caracterizar el circuito; después consultar el catálogo.
+
+LAMINA 6
+RESPUESTA · COORDINACIÓN
+RESPUESTA: LA REGLA DE COORDINACIÓN IN 
+ IP 
+ IZ
+≤
+≤
+En esta presentación,   es la corriente de carga;   , la nominal de la protección;   , la capacidad corregida del cable
+CARGA · IN
+18 A
+PROTECCIÓN · IP
+20 A
+CABLE · IZ
+25 A
+Ejemplo didáctico. En notación IEC suele escribirse             : cambia el símbolo, no el criterio.
+El poder de corte debe cubrir la corriente de cortocircuito prevista. Esta regla no sustituye las verificaciones de 
+disparo y energía pasante.
+
+LAMINA 7
+PREGUNTA GUÍA · TERMOMAGNÉTICO
+¿CÓMO SELECCIONO UN DISYUNTOR 
+TERMOMAGNÉTICO?
+•
+¿Qué corriente nominal y cuántos polos necesita el circuito?
+•
+¿Qué curva, B, C o D, corresponde a la carga?
+•
+¿Qué poder de corte exige el punto de instalación?
+Considerar la corriente de arranque sin perder la protección del conductor.
+
+LAMINA 8
+RESPUESTA · TERMOMAGNÉTICO
+RESPUESTA: CORRIENTE NOMINAL, CURVA DE DISPARO Y PODER DE 
+CORTE
+El elemento térmico responde a sobrecarga; el magnético, a cortocircuito. Elegir también tensión y polos adecuados
+Esquema cualitativo, sin escala ni tolerancias; símbolo funcional simplificado. Usar la 
+curva del fabricante para verificar tiempos.
+B: resistivas, disparo magnético 3–5 veces la nominal. C: uso general, 5–10 veces. 
+D: arranques altos, 10–20 veces, según IEC 60898-1.
+Poder de corte 
+ corriente de falla 
+≥
+prevista.
+
+LAMINA 9
+PREGUNTA GUÍA · FUSIBLE
+¿CUÁNDO USO UN FUSIBLE Y CÓMO LO ELIJO?
+•
+¿Se requiere acción rápida o retardada?
+•
+¿Qué tensión máxima y poder de ruptura necesito?
+•
+¿Protege semiconductores o conductores?
+La forma exterior no determina por sí sola la función de protección.
+
+LAMINA 10
+RESPUESTA · FUSIBLE
+RESPUESTA: EL FUSIBLE SE ELIGE POR TIPO, TENSIÓN Y CAPACIDAD DE 
+RUPTURA
+Identificar el cartucho y confirmar sus datos 
+en placa y ficha técnica.
+Hay fusibles de vidrio y cerámicos, rápidos o lentos. Seleccionar 
+la clase de uso y la corriente nominal, además del formato.
+50 A
+Corriente nominal
+700 V
+CA/CC
+200 KA
+Ruptura máxima
+Ejemplo de placa de la guía; no corresponde a una identificación de la imagen.
+Para conductores, revisar clases como gG; para 
+semiconductores, aR o gR. Confirmar cobertura, energía 
+pasante y capacidades específicas en CA y CC.
+
+LAMINA 11
+PREGUNTA GUÍA · CONDUCTOR
+¿QUÉ SECCIÓN DE CABLE RESISTE LA CORRIENTE Y LA 
+FALLA?
+•
+¿Cuál es la capacidad de corriente según el método de instalación?
+•
+¿Qué correcciones aplican por temperatura y agrupamiento?
+•
+¿Soporta el cortocircuito hasta que actúe la protección?
+Una sección adecuada en régimen permanente puede fallar durante el cortocircuito.
+
+LAMINA 12
+RESPUESTA · CONDUCTOR
+RESPUESTA: EL CABLE SE VERIFICA POR CORRIENTE, CAÍDA DE 
+TENSIÓN Y CORTOCIRCUITO
+Ejemplo didáctico con datos supuestos. La capacidad tabulada debe corresponder al material, aislación y 
+método de instalación reales.
+VERIFICACIÓN
+CRITERIO
+EJEMPLO
+Corriente
+I_z=I_{\mathrm{tabla}}f_Tf_G
+30 \times 0{,}9 \times 0{,}8=21{,}6\,A
+Coordinación
+I_n \leq I_p \leq I_z
+18 \leq 20 \leq 21{,}6\,A
+Caída de tensión
+Calcular para longitud y carga; comparar 
+con el límite aplicable.
+2 % calculado frente a 3 % adoptado 
+en el ejercicio.
+Cortocircuito
+I^2t \leq k^2S^2
+Comparar energía pasante con 
+capacidad térmica del cable.
+Modelo adiabático bajo sus condiciones de aplicación. Elegir k según conductor y aislación; consultar IEC 60364 y normativa local vigente.
+
+LAMINA 13
+SELECCIÓN ESPECÍFICA · MOTOR
+GUARDAMOTOR: PROTEGE EL MOTOR A PARTIR DE SU CORRIENTE 
+NOMINAL
+Es un aparato de maniobra y protección sin control a distancia propio. Para mando remoto se combina, 
+normalmente, con un contactor.
+01
+Leer la placa
+Identificar corriente nominal, 
+tensión y conexión del motor.
+02
+Ajustar el térmico
+Elegir un rango que incluya la 
+corriente de placa y ajustar según 
+el fabricante.
+03
+Verificar el arranque
+Comprobar el umbral magnético, 
+el tiempo de arranque y el poder 
+de corte.
+¿Cómo ajusto el rango térmico y el disparo magnético?
+A la corriente nominal de placa, verificando que el arranque sea compatible. El magnético puede ser fijo 
+según el modelo.
+
+LAMINA 14
+DOS FENÓMENOS · DOS FUNCIONES
+SOBRETENSIÓN Y FALLA A TIERRA REQUIEREN PROTECCIONES 
+DISTINTAS
+Sobretensión
+Descargas atmosféricas o maniobras generan 
+transitorios. Los supresores de sobretensión, SPD, 
+limitan la tensión y derivan la corriente.
+Falla a tierra
+Los diferenciales RCD y dispositivos GFCI detectan 
+desequilibrio por fuga. No sustituyen la protección 
+contra sobrecorriente.
+¿Qué sensibilidad diferencial uso?
+Para protección adicional de personas, habitualmente 
+30 mA 
+≤
+bajo IEC. Para equipos, evaluar fugas, selectividad y normativa; 
+GFCI sigue criterios propios de su jurisdicción.
+Confirmar tipo de diferencial compatible con variadores y electrónica de potencia.
+
+LAMINA 15
+APLICACIÓN · COMPLETAR CON EL CURSO
+EJERCICIO: CALCULAR LA PROTECCIÓN DE UN MOTOR TRIFÁSICO
+Si la potencia indicada es mecánica de salida:                          
+DATO DEL MOTOR
+COMPLETAR
+Potencia de salida
+_____ kW
+Tensión entre líneas
+_____ V
+Rendimiento / factor de potencia
+_____ / _____
+Arranque / corriente de falla
+_____ / _____ kA
+Calcular la corriente; elegir guardamotor, termomagnético y sección de cable. 
+Añadir longitud, instalación y temperatura para verificar el conductor.
+Comparar el cálculo con la corriente de placa y justificar cada selección.
+Trabajar con datos de placa y fichas 
+técnicas reales.
+
+LAMINA 16
+REGISTRO DE SELECCIÓN
+LISTA DE VERIFICACIÓN PARA SELECCIONAR UNA PROTECCIÓN
+​
+Corriente nominal, tensión, polos, curva y poder de corte definidos.
+​
+Carga, protección y cable coordinados.
+​
+Cable verificado por corriente, caída de tensión y energía de falla.
+​
+Arranque del motor y ajustes del guardamotor comprobados.
+​
+Protección contra sobretensión y falla a tierra incluida según el riesgo.
+​
+Normativa aplicable y fichas del fabricante consultadas.
+Registrar valores, supuestos y referencias antes de aprobar la selección.
+
+PPTX
+AUTOMATIZACIÓN Y CONTROL INDUSTRIAL PROTECCIONES ELÉCTRICAS:  CÓMO SELECCIONARLAS Criterios para coordinar carga, protección y conductor. José Alfredo Lepin Quezada 7 DE OCTUBRE DE 2026
+OBJETIVO DE SELECCIÓN UNA PROTECCIÓN BIEN ELEGIDA MANTIENE EL SERVICIO Y CUIDA A LAS PERSONAS Personas Reducir el riesgo de choque eléctrico y de lesiones asociadas a una falla. Instalaciones Evitar daños térmicos y mecánicos en cables, equipos y tableros. Servicio Aislar la falla y conservar el suministro donde sea posible. SOBRECARGA CORTOCIRCUITO SOBRETENSIÓN FALLA A TIERRA Método de trabajo: una pregunta guía de selección y su respuesta en la diapositiva siguiente.
+RECONOCER LA FALLA SOBRECARGA Y CORTOCIRCUITO SE DISTINGUEN POR LA MAGNITUD DE LA CORRIENTE La sobrecarga supera la corriente normal y recalienta el conductor. El cortocircuito establece un camino de muy baja impedancia; puede originarse por pérdida de aislación en un motor. Comparación conceptual, sin escala. La magnitud real depende de la carga y de la red. La aislación del motor es una barrera frente a la falla.
+CONSECUENCIAS DE LA FALLA EL CORTOCIRCUITO DESTRUYE POR ARCO, CALOR Y FUERZA MAGNÉTICA Representación de un ensayo controlado. No reproducir en clase. Arco eléctrico Miles de amperes pueden quemar los materiales en su trayectoria. Calentamiento Según la guía, 15 kA en cobre 6 AWG producen un aumento de 205 °C en menos de un ciclo. Esfuerzos magnéticos Crecen fuertemente con la corriente y pueden deformar conductores y barras.
+PREGUNTA GUÍA · DATOS DE ENTRADA ¿QUÉ DATOS NECESITO ANTES DE ELEGIR  CUALQUIER PROTECCIÓN? Corriente de carga, tensión y tipo de carga. Corriente de cortocircuito prevista en el punto de instalación. Material, sección y capacidad de corriente del conductor. Ambiente, temperatura y tipo de arranque del motor. Primero caracterizar el circuito; después consultar el catálogo.
+RESPUESTA · COORDINACIÓN RESPUESTA: LA REGLA DE COORDINACIÓN IN ≤ IP ≤ IZ En esta presentación,     es la corriente de carga;    , la nominal de la protección;    , la capacidad corregida del cable. CARGA · IN 18 A PROTECCIÓN · IP 20 A CABLE · IZ 25 A Ejemplo didáctico. En notación IEC suele escribirse         : cambia el símbolo, no el criterio. El poder de corte debe cubrir la corriente de cortocircuito prevista. Esta regla no sustituye las verificaciones de disparo y energía pasante.
+PREGUNTA GUÍA · TERMOMAGNÉTICO ¿CÓMO SELECCIONO UN  DISYUNTOR TERMOMAGNÉTICO? ¿Qué corriente nominal y cuántos polos necesita el circuito? ¿Qué curva, B, C o D, corresponde a la carga? ¿Qué poder de corte exige el punto de instalación? Considerar la corriente de arranque sin perder la protección del conductor.
+RESPUESTA · TERMOMAGNÉTICO RESPUESTA: CORRIENTE NOMINAL, CURVA DE DISPARO Y PODER DE CORTE El elemento térmico responde a sobrecarga; el magnético, a cortocircuito. Elegir también tensión y polos adecuados. Esquema cualitativo, sin escala ni tolerancias; símbolo funcional simplificado. Usar la curva del fabricante para verificar tiempos. B: resistivas, disparo magnético 3–5 veces la nominal. C: uso general, 5–10 veces. D: arranques altos, 10–20 veces, según IEC 60898-1. Poder de corte ≥ corriente de falla prevista.
+PREGUNTA GUÍA · FUSIBLE ¿CUÁNDO USO UN FUSIBLE  Y CÓMO LO ELIJO? ¿Se requiere acción rápida o retardada? ¿Qué tensión máxima y poder de ruptura necesito? ¿Protege semiconductores o conductores? La forma exterior no determina por sí sola la función de protección.
+RESPUESTA · FUSIBLE RESPUESTA: EL FUSIBLE SE ELIGE POR TIPO, TENSIÓN Y CAPACIDAD DE RUPTURA Identificar el cartucho y confirmar sus datos en placa y ficha técnica. Hay fusibles de vidrio y cerámicos, rápidos o lentos. Seleccionar la clase de uso y la corriente nominal, además del formato. 50 A Corriente nominal 700 V CA/CC 200 KA Ruptura máxima Ejemplo de placa de la guía; no corresponde a una identificación de la imagen. Para conductores, revisar clases como gG; para semiconductores, aR o gR. Confirmar cobertura, energía pasante y capacidades específicas en CA y CC.
+PREGUNTA GUÍA · CONDUCTOR ¿QUÉ SECCIÓN DE CABLE RESISTE  LA CORRIENTE Y LA FALLA? ¿Cuál es la capacidad de corriente según el método de instalación? ¿Qué correcciones aplican por temperatura y agrupamiento? ¿Soporta el cortocircuito hasta que actúe la protección? Una sección adecuada en régimen permanente puede fallar durante el cortocircuito.
+RESPUESTA · CONDUCTOR RESPUESTA: EL CABLE SE VERIFICA POR CORRIENTE, CAÍDA DE TENSIÓN Y CORTOCIRCUITO Ejemplo didáctico con datos supuestos. La capacidad tabulada debe corresponder al material, aislación y método de instalación reales. VERIFICACIÓN CRITERIO EJEMPLO Corriente I_z=I_{\mathrm{tabla}}f_Tf_G 30 \times 0{,}9 \times 0{,}8=21{,}6\,A Coordinación I_n \leq I_p \leq I_z 18 \leq 20 \leq 21{,}6\,A Caída de tensión Calcular para longitud y carga; comparar con el límite aplicable. 2 % calculado frente a 3 % adoptado en el ejercicio. Cortocircuito I^2t \leq k^2S^2 Comparar energía pasante con capacidad térmica del cable. Modelo adiabático bajo sus condiciones de aplicación. Elegir k según conductor y aislación; consultar IEC 60364 y normativa local vigente.
+SELECCIÓN ESPECÍFICA · MOTOR GUARDAMOTOR: PROTEGE EL MOTOR A PARTIR DE SU CORRIENTE NOMINAL Es un aparato de maniobra y protección sin control a distancia propio. Para mando remoto se combina, normalmente, con un contactor. 01 Leer la placa Identificar corriente nominal, tensión y conexión del motor. 02 Ajustar el térmico Elegir un rango que incluya la corriente de placa y ajustar según el fabricante. 03 Verificar el arranque Comprobar el umbral magnético, el tiempo de arranque y el poder de corte. ¿Cómo ajusto el rango térmico y el disparo magnético? A la corriente nominal de placa, verificando que el arranque sea compatible. El magnético puede ser fijo según el modelo.
+DOS FENÓMENOS · DOS FUNCIONES SOBRETENSIÓN Y FALLA A TIERRA REQUIEREN PROTECCIONES DISTINTAS Sobretensión Descargas atmosféricas o maniobras generan transitorios. Los supresores de sobretensión, SPD, limitan la tensión y derivan la corriente. Falla a tierra Los diferenciales RCD y dispositivos GFCI detectan desequilibrio por fuga. No sustituyen la protección contra sobrecorriente. ¿Qué sensibilidad diferencial uso? Para protección adicional de personas, habitualmente ≤30 mA bajo IEC. Para equipos, evaluar fugas, selectividad y normativa; GFCI sigue criterios propios de su jurisdicción. Confirmar tipo de diferencial compatible con variadores y electrónica de potencia.
+APLICACIÓN · COMPLETAR CON EL CURSO EJERCICIO: CALCULAR LA PROTECCIÓN DE UN MOTOR TRIFÁSICO Si la potencia indicada es mecánica de salida:                DATO DEL MOTOR COMPLETAR Potencia de salida _____ kW Tensión entre líneas _____ V Rendimiento / factor de potencia _____ / _____ Arranque / corriente de falla _____ / _____ kA Calcular la corriente; elegir guardamotor, termomagnético y sección de cable. Añadir longitud, instalación y temperatura para verificar el conductor. Comparar el cálculo con la corriente de placa y justificar cada selección. Trabajar con datos de placa y fichas técnicas reales.
+REGISTRO DE SELECCIÓN LISTA DE VERIFICACIÓN PARA SELECCIONAR UNA PROTECCIÓN Corriente nominal, tensión, polos, curva y poder de corte definidos. Carga, protección y cable coordinados. Cable verificado por corriente, caída de tensión y energía de falla. Arranque del motor y ajustes del guardamotor comprobados. Protección contra sobretensión y falla a tierra incluida según el riesgo. Normativa aplicable y fichas del fabricante consultadas. Registrar valores, supuestos y referencias antes de aprobar la selección.

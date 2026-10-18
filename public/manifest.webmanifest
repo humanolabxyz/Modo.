@@ -1,0 +1,18 @@
+{
+  "id": "/",
+  "name": "modo. — Tu espacio de trabajo",
+  "short_name": "modo.",
+  "description": "Práctica virtual de cableado con banco, diagrama y simulación de mando de 24 V.",
+  "lang": "es",
+  "start_url": "/?view=simulator",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F7F8FA",
+  "theme_color": "#f6f7f7",
+  "icons": [
+    {"src": "/brand/icono-app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/brand/icono-app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/brand/icono-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

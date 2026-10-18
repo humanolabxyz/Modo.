@@ -1,0 +1,203 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const crypto = require('node:crypto');
+const { build } = require('esbuild');
+const { chromium } = require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const base = process.env.PANELLAB_URL || 'http://127.0.0.1:4341';
+const out = 'qa/estudio-campus';
+const report = { checks: [], errors: [], captures: [] };
+const pass = text => { report.checks.push(text); console.log('PASS', text); };
+(async () => {
+  await build({ entryPoints: ['src/study/model.ts', 'src/study/journeyContent.ts', 'src/study/courseCatalog.ts'], bundle: true, platform: 'node', format: 'cjs', outdir: `${out}/model`, outExtension: { '.js': '.cjs' }, logLevel: 'silent' });
+  const m = require('./estudio-campus/model/model.cjs');
+  const { journeys } = require('./estudio-campus/model/journeyContent.cjs');
+  const { courses } = require('./estudio-campus/model/courseCatalog.cjs');
+  assert.equal(courses.length, 48);
+  assert.equal(courses.filter(c => c.available).length, 1);
+  const allowed = new Set(['src/study/StudyApp.tsx', 'src/study/GuidedLesson.tsx', 'src/pages/estudio.astro']);
+  const hashes = JSON.parse(fs.readFileSync(`${out}/before-hashes.json`, 'utf8').replace(/^\uFEFF/, ''));
+  for (const item of hashes) {
+    const file = path.relative(process.cwd(), item.Path).replaceAll('\\', '/');
+    if (!allowed.has(file)) assert.equal(crypto.createHash('sha256').update(fs.readFileSync(item.Path)).digest('hex').toUpperCase(), item.Hash, `Cambio fuera de estudio: ${file}`);
+  }
+  pass('Contenido, modelos, simulador y páginas ajenas a Estudio conservan sus hashes');
+  const browser = await chromium.launch();
+  try {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce', serviceWorkers: 'block' });
+    const p = await context.newPage();
+    p.on('pageerror', error => report.errors.push(error.message));
+    p.on('response', response => { if (response.status() >= 400) report.errors.push(`${response.status()} ${response.url()}`); });
+    await context.addInitScript(() => { localStorage.setItem('modo-tutoriales-bienvenida-v1', '1'); });
+    const stable = async () => {
+      await p.evaluate(async () => { await document.fonts.ready; await Promise.all(document.getAnimations().filter(a => a.effect?.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))); });
+      await p.locator('.modo-splash').waitFor({ state: 'hidden', timeout: 8000 }).catch(() => {});
+    };
+    const fits = async name => assert.ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${name}: desborde horizontal`);
+    const capture = async name => { await stable(); await p.screenshot({ path: `${out}/${name}.png`, fullPage: true, animations: 'disabled' }); report.captures.push(name); };
+    const state = () => p.evaluate(key => JSON.parse(localStorage.getItem(key)), m.STORAGE_KEY);
+    const modules = () => p.getByRole('navigation', { name: 'Módulos', exact: true });
+    const selectScope = async scope => {
+      if (!(await p.locator('.campus-options').evaluate(element => element.open))) await p.getByText('Más opciones', { exact: true }).click();
+      await p.getByLabel('Mostrar ramos', { exact: true }).selectOption(scope);
+    };
+    await p.goto(`${base}/estudio/`);
+    await p.locator('.study-hub').waitFor();
+    assert.equal(await p.locator('.campus-course').count(), 6);
+    assert.match(await p.locator('.campus-course-grid').innerText(), /AREA02/);
+    assert.deepEqual((await state()).progress, {});
+    assert.equal(await p.locator('.campus-resume').count(), 0);
+    await capture('after-desktop');
+    assert.equal(await p.locator('.campus-options').evaluate(element => element.open), false);
+    assert.equal(await p.locator('.campus-scope').count(), 0);
+    assert.ok(await p.locator('.campus-course').last().evaluate(element => element.getBoundingClientRect().bottom < innerHeight));
+    await selectScope('all');
+    assert.equal(await p.locator('.campus-course').count(), 48);
+    await p.getByLabel('Filtrar por semestre').selectOption('5');
+    assert.equal(await p.locator('.campus-course').count(), 6);
+    assert.match(await p.locator('.campus-course-grid').innerText(), /Programación Avanzada de Controladores/);
+    assert.equal(await p.locator('.is-available').count(), 0);
+    await p.getByLabel('Filtrar por semestre').selectOption('all');
+    await p.getByLabel('Buscar ramo o tema').fill('robotica');
+    assert.ok((await p.locator('.campus-course').count()) > 0);
+    await p.getByLabel('Buscar ramo o tema').fill('ARCM02');
+    assert.equal(await p.locator('.campus-course').count(), 1);
+    await p.getByLabel('Buscar ramo o tema').fill('zzzz-no-existe');
+    await p.locator('.campus-empty').waitFor();
+    await p.getByRole('button', { name: 'Ver todos los ramos', exact: true }).click();
+    await selectScope('available');
+    await p.getByLabel('Buscar ramo o tema').fill('fusible');
+    assert.equal(await p.locator('.campus-course').count(), 1);
+    await p.getByLabel('Buscar ramo o tema').fill('');
+    await p.locator('.campus-course.is-available').click();
+    assert.equal(await p.locator('.campus-topic').count(), 0);
+    await p.locator('button.class-material-row').click();
+    assert.equal(await p.locator('.campus-topic').count(), 8);
+    assert.equal(await p.locator('.campus-course').count(), 0);
+    await p.getByRole('button', { name: 'Volver al ramo', exact: true }).click();
+    await p.getByRole('button', { name: 'Mis ramos', exact: true }).click();
+    await p.locator('.campus-course.is-available').click();
+    await p.locator('button.class-material-row').click();
+    await capture('topics-desktop');
+    pass('Catálogo de 48 ramos, filtros, acentos, búsquedas por tema y estados sin material');
+    await p.locator('.campus-topic').first().click();
+    await p.locator('.lesson-journey').waitFor();
+    await p.getByRole('button', { name: 'Empezar la lección' }).click();
+    await p.locator('.campus-visual-lesson').waitFor();
+    assert.ok(await p.getByRole('button', { name: 'Siguiente', exact: true }).isDisabled());
+    await p.locator('.gl-reveal-item > button').nth(0).click();
+    await p.locator('.gl-reveal-item > button').nth(1).click();
+    await p.waitForFunction(() => !document.querySelector('.gl-next')?.disabled);
+    assert.ok(await p.getByRole('button', { name: 'Siguiente', exact: true }).isEnabled());
+    await capture('lesson-desktop');
+    await p.getByRole('button', { name: 'Siguiente', exact: true }).click();
+    await p.locator('.gl-sort').waitFor();
+    for (const row of await p.locator('.gl-sort li').all()) await row.getByRole('button', { name: 'Sobrecarga', exact: true }).click();
+    await p.getByRole('button', { name: 'Comprobar', exact: true }).click();
+    assert.match(await p.locator('.gl-feedback').innerText(), /Revisa/);
+    for (const index of [1, 3]) await p.locator('.gl-sort li').nth(index).getByRole('button', { name: 'Cortocircuito', exact: true }).click();
+    await p.getByRole('button', { name: 'Comprobar', exact: true }).click();
+    assert.match(await p.locator('.gl-feedback').innerText(), /Correcto/);
+    await p.waitForFunction(key => JSON.parse(localStorage.getItem(key)).drafts['objetivos-fallas'].lessonDone.includes('2'), m.STORAGE_KEY);
+    await p.reload();
+    await p.locator('.gl-sort').waitFor();
+    assert.equal((await state()).drafts['objetivos-fallas'].lessonCard, '2');
+    assert.ok((await state()).drafts['objetivos-fallas'].lessonDone.includes('2'));
+    await p.getByRole('button', { name: 'Materias', exact: true }).click();
+    await p.locator('.campus-resume').waitFor();
+    await p.getByRole('button', { name: 'Continuar', exact: true }).click();
+    await p.locator('.gl-sort').waitFor();
+    await p.goBack();
+    await p.locator('.study-hub').waitFor();
+    await p.goForward();
+    await p.locator('.gl-sort').waitFor();
+    pass('Lección visual, revelado, clasificación, corrección, guardado y navegación Atrás/Adelante');
+    for (const lesson of m.lessons) {
+      await p.getByRole('button', { name: 'Abrir menú de temas' }).click();
+      await p.locator('.study-topic-dialog nav > button').filter({ hasText: lesson.title }).click();
+      await p.locator('.journey-steps button').nth(1).click();
+      await p.locator('.quick-experiment').waitFor();
+      if (lesson.id === 'objetivos-fallas') {
+        await p.getByRole('button', { name: 'Cortocircuito', exact: true }).click();
+        assert.match(await p.locator('.quick-result').innerText(), /Baja impedancia/);
+      }
+      if (lesson.id === 'coordinacion') {
+        await p.getByRole('slider', { name: 'Nominal de la protección', exact: true }).focus();
+        await p.keyboard.press('End');
+        assert.match(await p.locator('.quick-result').innerText(), /18 ≤ 40 ≤ 25/);
+      }
+      await p.getByRole('button', { name: 'Resolver el reto' }).click();
+      await p.getByRole('button', { name: 'Comprobar respuesta', exact: true }).click();
+      assert.match(await p.locator('.journey-feedback').innerText(), /Falta tu respuesta/);
+      const j = journeys[lesson.id];
+      if (j.options) await p.getByLabel(j.options[(Number(j.correct) + 1) % j.options.length], { exact: true }).check();
+      else await p.getByLabel('Tu resultado', { exact: true }).fill('999');
+      await p.getByRole('button', { name: 'Comprobar respuesta', exact: true }).click();
+      assert.match(await p.locator('.journey-feedback').innerText(), /Vamos a corregirlo/);
+      if (j.options) await p.getByLabel(j.options[Number(j.correct)], { exact: true }).check();
+      else await p.getByLabel('Tu resultado', { exact: true }).fill(j.correct.replace('.', ','));
+      await p.getByRole('button', { name: 'Comprobar respuesta', exact: true }).click();
+      assert.match(await p.locator('.journey-feedback').innerText(), /Lo entendiste/);
+      await p.getByRole('button', { name: lesson.id === 'motor-trifasico' ? /^Ir a la evaluación/ : /^Siguiente tema/ }).click();
+      assert.equal((await state()).progress[lesson.id].reviewed, true);
+    }
+    pass('Ocho experimentos y retos: respuestas faltantes, incorrectas y correctas; avance registrado');
+    await modules().getByRole('button', { name: 'Aprender', exact: true }).click();
+    await modules().getByRole('button', { name: 'Practicar', exact: true }).click();
+    await p.locator('.study-screen-practice').waitFor();
+    assert.equal(await modules().locator('[aria-current="page"]').count(), 1);
+    await modules().getByRole('button', { name: 'Cálculos', exact: true }).click();
+    await p.locator('.study-screen-calc').waitFor();
+    await modules().getByRole('button', { name: 'Evaluarme', exact: true }).click();
+    await p.locator('.study-screen-exam').waitFor();
+    await p.getByRole('button', { name: /Comenzar simulacro/ }).click();
+    await p.locator('.study-options input').first().check();
+    await p.waitForFunction(key => Object.keys(JSON.parse(localStorage.getItem(key)).exams[0].answers).length === 1, m.STORAGE_KEY);
+    await p.reload();
+    await p.locator('.study-screen-exam').waitFor();
+    assert.equal(await p.locator('.study-options input:checked').count(), 1);
+    await modules().getByRole('button', { name: 'Progreso', exact: true }).click();
+    await p.locator('.study-screen-progress').waitFor();
+    assert.equal((await state()).progress['objetivos-fallas'].reviewed, true);
+    pass('Accesos a práctica, cálculos, evaluación y progreso conservados');
+    for (const width of [320, 390, 768, 1440]) {
+      await p.setViewportSize({ width, height: width < 700 ? 844 : 1000 });
+      await p.getByRole('button', { name: 'Materias', exact: true }).click();
+      await p.locator('.study-hub').waitFor();
+      await fits(`Materias ${width}`);
+      await capture(`catalog-${width}`);
+      await p.getByRole('button', { name: 'Continuar', exact: true }).click();
+      await modules().getByRole('button', { name: 'Aprender', exact: true }).click();
+      await p.locator('.journey-steps button').first().click();
+      await fits(`Lección ${width}`);
+      await capture(`learning-${width}`);
+      await p.getByRole('button', { name: 'Abrir menú de temas' }).click();
+      await p.getByRole('dialog', { name: 'Elige qué estudiar' }).waitFor();
+      await p.keyboard.press('Escape');
+      assert.equal(await p.locator('.study-topic-dialog[open]').count(), 0);
+      if (width === 320 || width === 390) {
+        for (const [label, screen] of [['Practicar', 'practice'], ['Cálculos', 'calc'], ['Evaluarme', 'exam'], ['Progreso', 'progress']]) {
+          await modules().getByRole('button', { name: label, exact: true }).click();
+          await p.locator(`.study-screen-${screen}`).waitFor();
+          await fits(`${label} ${width}`);
+        }
+      }
+    }
+    pass('Escritorio y móvil emulado: 320/390/768/1440 px, sin desbordes y menú accesible');
+    assert.deepEqual(report.errors, []);
+    pass('Sin errores de JavaScript ni recursos fallidos');
+    const normal = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'no-preference', serviceWorkers: 'block' });
+    await normal.goto(`${base}/estudio/`);
+    await normal.locator('.study-hub').waitFor();
+    await normal.locator('#modo-splash').waitFor({ state: 'hidden' });
+    await normal.locator('.campus-course.is-available').click();
+    await normal.locator('button.class-material-row').click();
+    await normal.locator('.campus-topic').first().click();
+    await normal.locator('.lesson-journey').waitFor();
+    await normal.evaluate(() => Promise.all(document.getAnimations().filter(a => a.effect?.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))));
+    assert.ok(await normal.locator('.journey-intro').isVisible());
+    await normal.screenshot({ path: `${out}/normal-motion.png`, fullPage: true, animations: 'disabled' });
+    await normal.close();
+    pass('Apertura y navegación con animaciones normales, además de movimiento reducido');
+  } finally { await browser.close(); fs.writeFileSync(`${out}/report.json`, JSON.stringify(report, null, 2)); }
+})().catch(error => { console.error(error); process.exitCode = 1; });

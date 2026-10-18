@@ -1,0 +1,35 @@
+{
+  "checks": [
+    "GeoGebra real: matrices libres A·A = {{7,10},{15,22}} y archivo propio guardado",
+    "Cambiar de herramienta conserva la construcción de GeoGebra",
+    "Estudio: ramo, unidad, clase y URL recuperable al recargar",
+    "Estudio llama la lección dentro de GeoGebra sin cargar el archivo libre",
+    "Un trabajo incorrecto no completa el paso",
+    "Funciones constantes y lineales: 8 actividades reales, avance, notas, retorno y comprobación en Estudio",
+    "Funciones polinómicas de grado 2: 7 actividades reales, avance, notas, retorno y comprobación en Estudio",
+    "Funciones logarítmicas: 6 actividades reales, avance, notas, retorno y comprobación en Estudio",
+    "Biblioteca eléctrica y progreso anterior de Protecciones conservados",
+    "Después de las tres lecciones, el archivo libre mantiene sus objetos",
+    "Descarga .ggb válida y reutilizable",
+    "Protecciones mantiene la lección y su experimento",
+    "El panel de práctica abre con su lienzo",
+    "La protoboard sigue disponible",
+    "Móvil 390 px: GeoGebra, entrada, comprobación, guía reabrible y sin desbordamiento",
+    "Fallo de red explícito y reintento recupera GeoGebra real",
+    "Un guardado incompatible se conserva sin sobrescritura",
+    "Archivos del panel, motores eléctricos, almacenamiento y Protecciones sin modificaciones"
+  ],
+  "errors": [],
+  "expectedNetworkErrors": [
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "captures": [
+    "estudio-clase-desktop",
+    "geogebra-leccion-desktop",
+    "geogebra-libre-desktop",
+    "geogebra-leccion-mobile",
+    "inicio-mobile"
+  ],
+  "motion": "reduced for deterministic functional checks",
+  "status": "PASS"
+}

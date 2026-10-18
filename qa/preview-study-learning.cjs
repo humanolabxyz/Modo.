@@ -1,0 +1,21 @@
+const { chromium } = require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, serviceWorkers: 'block' });
+  await page.goto('http://127.0.0.1:4330/estudio/');
+  await page.locator('.lesson-guide').waitFor();
+  await page.screenshot({ path: 'qa/estudio-v3/desktop-top.png', animations: 'disabled' });
+  await page.locator('#lesson-reading').scrollIntoViewIfNeeded();
+  await page.evaluate(() => document.querySelector('#lesson-reading').scrollIntoView({block:'start'}));
+  await page.screenshot({ path: 'qa/estudio-v3/desktop-reading.png', animations: 'disabled' });
+  await page.locator('.study-sidebar nav>button').filter({hasText:'Motor trifásico'}).click();
+  await page.evaluate(() => document.querySelector('#lesson-lab').scrollIntoView({block:'start'}));
+  await page.screenshot({ path: 'qa/estudio-v3/desktop-lab.png', animations: 'disabled' });
+  await page.setViewportSize({width:390,height:844});
+  await page.evaluate(() => document.querySelector('#lesson-lab').scrollIntoView({block:'start'}));
+  await page.screenshot({ path: 'qa/estudio-v3/mobile-lab.png', animations: 'disabled' });
+  await page.locator('[role="tab"]').filter({hasText:'Ejemplo resuelto'}).click();
+  await page.evaluate(() => document.querySelector('#lesson-reading').scrollIntoView({block:'start'}));
+  await page.screenshot({ path: 'qa/estudio-v3/mobile-example.png', animations: 'disabled' });
+  await browser.close();
+})();

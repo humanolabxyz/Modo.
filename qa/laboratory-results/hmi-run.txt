@@ -1,0 +1,105 @@
+- banner:
+  - link "PanelLab":
+    - /url: /
+    - strong: PanelLab
+  - text: LABORATORIO DE DISEÑO
+  - generic: Nombre del proyecto
+  - textbox "Nombre del proyecto" [disabled]: Marcha y retención
+  - link "Panel de práctica":
+    - /url: /?view=simulator
+  - link "Estudio":
+    - /url: /estudio
+    - text: Estudio
+  - link "Inicio":
+    - /url: /
+    - generic: Inicio
+- combobox "Proyecto activo" [disabled]:
+  - option "Marcha y retención" [selected]
+- generic "Proyecto":
+  - text: Proyecto
+- button "Deshacer" [disabled]:
+- button "Rehacer" [disabled]:
+- status:
+  - text: Guardado en este navegador
+- generic: Velocidad de simulación
+- combobox "Velocidad de simulación":
+  - option "×0.2"
+  - option "×0.5"
+  - option "×1" [selected]
+  - option "×2"
+  - option "×5"
+- button "Detener":
+  - generic: Detener
+- navigation "Herramientas del laboratorio":
+  - button "01 Esquemas Dibuja y prueba circuitos de mando.":
+    - generic: "01"
+    - strong: Esquemas
+    - generic: Dibuja y prueba circuitos de mando.
+  - button "02 PLC Programa contactos, bobinas y temporizadores.":
+    - generic: "02"
+    - strong: PLC
+    - generic: Programa contactos, bobinas y temporizadores.
+  - button "03 HMI Crea una pantalla para operar tus señales." [active]:
+    - generic: "03"
+    - strong: HMI
+    - generic: Crea una pantalla para operar tus señales.
+  - button "04 Procesos Controla el llenado de un tanque.":
+    - generic: "04"
+    - strong: Procesos
+    - generic: Controla el llenado de un tanque.
+  - button "05 Protoboard Monta un circuito y mide tensión y corriente.":
+    - generic: "05"
+    - strong: Protoboard
+    - generic: Monta un circuito y mide tensión y corriente.
+  - button "Cómo se conectan":
+    - strong: Cómo se conectan
+- text: TU ESPACIO DE TRABAJO
+- heading "HMI" [level=1]
+- text: Simulación activa
+- generic: 80.5 s
+- generic: Pantalla de operador · en línea con el PLC virtual
+- generic: HMI 01
+- region "Pantalla de operador":
+  - generic: PANEL LAB
+  - strong: Marcha y retención
+  - generic: EN OPERACIÓN
+  - group "Marcha · I0.0":
+    - strong: Marcha
+    - switch "HMI Marcha": INACTIVO
+    - generic: I0.0
+  - group "Paro · I0.1":
+    - strong: Paro
+    - switch "HMI Paro": INACTIVO
+    - generic: I0.1
+  - group "Bomba en marcha · Q0.0":
+    - strong: Bomba en marcha
+    - 'img "Bomba en marcha: encendido"'
+    - generic: Q0.0
+  - group "Nivel del tanque · AI0":
+    - strong: Nivel del tanque
+    - meter "Nivel del tanque":
+      - generic: 100.0 / 100
+    - generic: AI0
+  - group "Nivel (%) · AI0":
+    - strong: Nivel (%)
+    - status: "100.0"
+    - generic: AI0
+- generic: 5 elementos · señales compartidas
+- generic: Diseño y operación en el mismo proyecto
+- complementary:
+  - heading "Pantalla de operador" [level=2]
+  - paragraph: Los interruptores escriben entradas o marcas. Los indicadores leen la memoria del PLC y de la planta.
+  - button "+ Interruptor" [disabled]:
+    - generic: +
+    - text: Interruptor
+  - button "+ Piloto" [disabled]:
+    - generic: +
+    - text: Piloto
+  - button "+ Valor numérico" [disabled]:
+    - generic: +
+    - text: Valor numérico
+  - button "+ Barra de nivel" [disabled]:
+    - generic: +
+    - text: Barra de nivel
+  - paragraph: Selecciona un elemento de la pantalla para editar su etiqueta y su señal.
+  - generic "Probar una pantalla"

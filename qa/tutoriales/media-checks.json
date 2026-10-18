@@ -1,0 +1,34 @@
+[
+  {
+    "Video": "practica-1",
+    "Identical": true,
+    "Status": 206,
+    "Range": [
+      "bytes 0-1023/10709112"
+    ]
+  },
+  {
+    "Video": "practica-2",
+    "Identical": true,
+    "Status": 206,
+    "Range": [
+      "bytes 0-1023/9082876"
+    ]
+  },
+  {
+    "Video": "laboratorio-1",
+    "Identical": true,
+    "Status": 206,
+    "Range": [
+      "bytes 0-1023/11993909"
+    ]
+  },
+  {
+    "Video": "laboratorio-2",
+    "Identical": true,
+    "Status": 206,
+    "Range": [
+      "bytes 0-1023/10577048"
+    ]
+  }
+]

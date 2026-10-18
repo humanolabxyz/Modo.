@@ -1,0 +1,1345 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PanelLab — Panel de control INACAP</title><meta name="theme-color" content="#f6f7f8"><style>:root{font-family:'Manrope','DM Sans',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#181f25;background:#f6f7f8;font-synthesis:none;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,input:focus-visible{outline:3px solid #f2b952;outline-offset:2px}button:disabled{cursor:not-allowed}.app-shell{min-height:100vh}
+.topbar{height:78px;background:#fff;border-bottom:1px solid #e3e7eb;display:flex;align-items:center;gap:24px;padding:0 max(34px,calc((100vw - 1680px)/2 + 36px))}.brand-wrap{display:flex;align-items:center;gap:10px}.brand-icon{width:40px;height:40px;background:#15191e;color:#fff;display:flex;align-items:center;justify-content:center;border-radius:12px;box-shadow:3px 4px 6px #00000013}.brand-caption{display:flex;flex-direction:column;gap:0}.brand-caption strong{font-size:22px;letter-spacing:-1.5px;line-height:24px}.brand-caption strong span{font-weight:400}.brand-caption small{color:#969da6;font-size:7px;letter-spacing:1.35px;font-weight:800;line-height:14px}.header-separator{width:1px;height:27px;background:#e4e7e9}.header-context{display:flex;align-items:center;gap:13px;color:#9299a3;font-size:12px;font-weight:600}.header-context b{font-weight:800;color:#3b434b}.top-spacer{flex:1}.phase-tag{font-size:10px;font-weight:800;letter-spacing:.6px;color:#47515a;background:#f6f7f8;border:1px solid #e8ecee;border-radius:50px;padding:10px 15px;display:flex;align-items:center;gap:8px}.phase-dot{width:7px;height:7px;border-radius:50%;background:#32ae76;box-shadow:0 0 0 3px #d5f2e5}.icon-button{border:1px solid #e5e7e9;background:#fff;display:flex;align-items:center;justify-content:center;width:39px;height:39px;border-radius:12px}
+main{max-width:1700px;padding:35px 40px 28px;margin:auto}.content-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}.eyebrow{font-size:10px;letter-spacing:1.8px;color:#959da6;font-weight:800}.content-header h1{font-weight:800;font-size:clamp(30px,2.55vw,43px);letter-spacing:-1.65px;line-height:1.2;margin:8px 0 8px}.header-period{color:#b98542}.content-header p{color:#88909a;font-weight:550;font-size:13px;margin:0}.header-metrics{display:flex;align-items:center;gap:16px;color:#414b56;font-size:12px;font-weight:750;line-height:1.7;border-left:1px solid #e0e4e8;padding-left:26px}.header-metrics span{font-weight:550;color:#98a0a9}.metric-number{font-size:37px;color:#151b20;font-weight:800;letter-spacing:-2.6px;line-height:1}
+.work-card{background:#fff;border:1px solid #e7e9ec;border-radius:20px;box-shadow:0 18px 60px #38495808,0 2px 7px #38495805;overflow:hidden}.work-toolbar{height:67px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 24px;border-bottom:1px solid #ebedf0}.toolbar-label{display:flex;align-items:center;gap:10px;font-size:13px;color:#89919a;font-weight:600}.toolbar-label b{color:#27313a;font-size:14px}.toolbar-indicator{width:9px;height:9px;border-radius:4px;background:#d0a064}.small-sep{color:#d4d8db}.mode-pills{display:flex;align-items:center;gap:8px}.mode-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:750;padding:9px 12px;border-radius:8px;color:#a1a6ac}.mode-pill.is-active{color:#151d24;background:#f5f5f3;border:1px solid #ececea}.mode-pill.is-locked{border:1px dashed #e3e5e7;background:#fff;color:#a7adb4}.soon{font-weight:650;font-size:8px;color:#a5abb2}
+.filterbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 21px;border-bottom:1px solid #eceef0;min-height:74px}.filters-scroll{display:flex;align-items:center;gap:6px;overflow:auto;min-width:0;scrollbar-width:none}.filters-scroll::-webkit-scrollbar{display:none}.filter-pill{white-space:nowrap;background:transparent;border:0;border-radius:9px;padding:11px 14px;color:#89919b;font-weight:700;font-size:12px}.filter-pill.current{background:#22272e;color:#fff;box-shadow:0 4px 10px #12182024}.filter-pill:hover:not(.current){background:#f6f7f8}.searchbox-wrap{width:296px;min-width:246px;display:flex;align-items:center;gap:9px;padding:0 12px;position:relative;border:1px solid #e6e8ec;border-radius:10px;background:#f8f9fa;color:#9ca4ad;height:42px}.searchbox-wrap input{font-size:11px;font-weight:650;outline:0;border:0;background:transparent;flex:1;min-width:0;color:#2c343d}.searchbox-wrap input::placeholder{color:#a7aeb5}.searchbox-wrap button{border:0;background:transparent;display:flex;padding:4px}.search-results{position:absolute;right:0;top:47px;width:355px;background:#fff;box-shadow:0 12px 55px #18202d20;border:1px solid #e6e9eb;border-radius:12px;max-height:320px;overflow:auto;z-index:10;padding:5px}.search-results button{display:flex;width:100%;align-items:center;gap:10px;padding:11px 12px;text-align:left;border-radius:8px}.search-results button:hover{background:#f6f7f7}.search-results button>div{display:flex;flex-direction:column;flex:1;gap:2px}.search-results strong{font-size:12px}.search-results small{font-size:10px;color:#929ba5}.search-socket{height:12px;width:12px;border:2px solid #ddd;border-radius:50%}.search-empty{padding:18px;color:#87919b;font-size:12px}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 342px;min-height:655px}.stage-wrap{min-width:0;display:flex;flex-direction:column;background:#f9fafb}.stage-topline{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 19px;font-size:10px;font-weight:700;color:#737d87;border-bottom:1px solid #ebeef0;background:#fbfcfc}.stage-topline span{display:flex;align-items:center;gap:7px}.live-dot{width:6px;height:6px;background:#9eb6be;border-radius:50%}.svg-surface{position:relative;flex:1;min-height:450px;overflow:hidden;background:linear-gradient(140deg,#f0f2f4,#fafbfc)}.board-svg{display:block;width:100%;height:100%;max-height:750px;min-height:480px;touch-action:none;cursor:grab}.board-svg:active{cursor:grabbing}.terminal{cursor:pointer}.terminal:focus-visible .terminal-hit{stroke:#f4aa27;stroke-width:3}.terminal:hover>.terminal-hit{stroke:#d7a361;stroke-width:2}.selected-ring{pointer-events:none}.canvas-watermark{position:absolute;left:20px;top:16px;font-size:9px;letter-spacing:.95px;color:#9ea6af;font-weight:800;pointer-events:none;background:#ffffffbd;padding:9px 11px;border-radius:5px;box-shadow:0 1px 3px #00000008}.zoom-toolbar{position:absolute;bottom:23px;right:22px;display:flex;align-items:center;gap:1px;padding:5px;background:#fff;border-radius:12px;box-shadow:0 6px 24px #22354522;border:1px solid #e5e9ec}.zoom-toolbar button{background:#fff;border:0;width:35px;height:35px;border-radius:7px;display:flex;align-items:center;justify-content:center}.zoom-toolbar button:hover{background:#f2f4f5}.zoom-toolbar span{min-width:44px;text-align:center;font-size:11px;color:#737e8b;font-weight:800}.zoom-toolbar i{height:25px;background:#e8e9eb;width:1px;margin:0 4px}.stage-hint{position:absolute;left:20px;bottom:21px;color:#667481;display:flex;align-items:center;gap:7px;font-size:10px;font-weight:750;background:#ffffffed;padding:12px 14px;border-radius:8px;box-shadow:0 2px 9px #25314012}.stage-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 20px;background:#fff;border-top:1px solid #eceff0;font-weight:650;color:#929ca5;font-size:10px}.stage-footer span{display:flex;align-items:center;gap:7px}
+.inspector{padding:23px 21px 17px;background:#fff;border-left:1px solid #e8eaed;display:flex;flex-direction:column;gap:0;min-width:0}.inspector-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.inspector-top h2{font-size:21px;font-weight:800;letter-spacing:-.7px;margin:3px 0 0}.inspector-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:#f5f6f7;color:#86919c}.inspector-tabs{display:flex;padding:4px;background:#f4f5f6;border-radius:10px;margin-bottom:17px;gap:3px}.inspector-tabs button{width:50%;border:0;background:transparent;color:#96a0a9;font-size:11px;font-weight:800;padding:10px 4px;border-radius:7px}.inspector-tabs button.active{background:#fff;box-shadow:0 1px 4px #181b1f10;color:#202831}.terminal-feature{background:#f8f9f9;border:1px solid #edf0f1;border-radius:14px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:13px 12px 17px}.feature-topline{width:100%;display:flex;justify-content:space-between;color:#a9b0b6;font-size:8px;letter-spacing:1px;font-weight:800}.feature-topline svg{color:#adb2b8}.feature-socket{height:60px;width:60px;border-radius:50%;border:9px solid #bd142a;box-shadow:0 0 0 4px #b8bfc4,0 3px 7px #00000013;display:flex;align-items:center;justify-content:center;background:#262c34;margin:6px 0 3px}.feature-socket span{height:26px;width:26px;border-radius:50%;border:5px solid #555f67;background:#121a22}.feature-id{font-size:28px;font-weight:800;letter-spacing:-.9px}.feature-module{font-size:10px;font-weight:800;color:#85909a;text-transform:uppercase;text-align:center}.info-lines{margin-top:8px}.info-lines>div{padding:13px 0;border-bottom:1px solid #f0f1f2;display:flex;flex-direction:column;gap:5px}.info-lines span{font-size:9px;color:#9ba3ac;font-weight:700}.info-lines strong{font-size:11px;font-weight:750;color:#29333c;overflow-wrap:anywhere;line-height:1.4}.color-dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:-1px;margin-right:8px;box-shadow:0 0 0 1px #a1a1a1}.verification{display:flex;gap:10px;padding:12px;border-radius:9px;margin:16px 0}.verification.confirmed{background:#f2f8f4;color:#37835d}.verification.pending{background:#fcf7ed;color:#9a742f}.verification strong{font-size:10px;font-weight:850}.verification p{font-size:10px;line-height:1.55;color:#7c858e;margin:4px 0 0}.verification span{padding-top:2px}.outline-full{height:38px;border:1px solid #e2e6e9;background:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:11px;font-weight:800;width:100%;color:#414a53}.outline-full:hover{background:#f6f7f7}.module-detail{display:flex;flex-direction:column;gap:10px}.module-tag{font-size:9px;font-weight:800;color:#b0a078;letter-spacing:1px}.module-detail h3{font-size:17px;line-height:1.3;margin:0}.module-subtitle,.module-summary{font-size:11px;line-height:1.65;color:#828b95;margin:0}.module-count{border-top:1px solid #e8ebee;border-bottom:1px solid #e8ebee;padding:11px 0;display:flex;align-items:center;gap:11px;margin:6px 0}.module-count strong{font-size:24px}.module-count span{font-size:10px;color:#88949f}.alias-area{display:flex;flex-direction:column;gap:8px}.alias-area label{font-size:11px;font-weight:800}.alias-area div{display:flex;gap:4px}.alias-area input{min-width:0;flex:1;border:1px solid #dfe4e7;border-radius:8px;padding:9px;font-size:12px}.alias-area button{border:0;background:#242b33;color:#fff;border-radius:8px;padding:0 12px;font-weight:800;font-size:10px}.alias-area small{font-size:9px;color:#909ca6;line-height:1.5}.photo-reference{margin-top:auto;padding-top:20px}.photo-header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:9px}.photo-header div{display:flex;flex-direction:column;gap:3px}.photo-header strong{font-size:11px}.photo-header small{color:#9da6ae;font-size:9px}.photo-header button{border:0;background:#f7f8f8;border-radius:7px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:#8a949e}.photo-preview{padding:0;width:100%;height:132px;border-radius:10px;overflow:hidden;border:1px solid #e1e4e7;background:#dfe4e6;position:relative}.photo-preview img{width:100%;height:100%;object-fit:cover}.photo-preview>span{position:absolute;bottom:8px;right:8px;background:#ffffffef;color:#444e58;font-size:9px;font-weight:800;border-radius:6px;padding:7px 9px;display:flex;align-items:center;gap:6px}.inspector-bottom{display:flex;align-items:flex-start;gap:8px;padding-top:15px;font-size:9px;color:#9aa3ab;line-height:1.55;font-weight:600}.round-info{font-size:10px;background:#f2f4f5;border:1px solid #dce1e4;width:17px;height:17px;flex:0 0 17px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:850}.bottom-note{display:flex;align-items:center;gap:15px;color:#919ba5;font-weight:650;font-size:10px;padding:20px 4px}.bottom-note-chip{color:#767f88;font-weight:900;font-size:9px;letter-spacing:1px;background:#ebedef;border-radius:5px;padding:7px 9px;white-space:nowrap}
+.modal-backdrop{position:fixed;inset:0;z-index:30;background:#131b25a8;display:flex;justify-content:center;align-items:center;padding:24px}.dialog{background:#fff;border-radius:18px;width:min(560px,100%);max-height:90vh;overflow:auto;box-shadow:0 28px 95px #070e18a0;padding:20px}.dialog-image{width:min(760px,100%)}.dialog-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px}.dialog-top strong{font-size:18px}.dialog-top button{background:#f3f5f6;border:0;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center}.dialog img{width:100%;max-height:70vh;object-fit:contain;background:#f0f1f2;border-radius:9px}.dialog p,.help-text{color:#626e78;font-size:13px;line-height:1.8}.help-text ol{padding-left:22px}.help-text li{padding:4px 0}
+@media(max-width:1200px){main{padding:28px 22px}.workspace{grid-template-columns:minmax(0,1fr) 302px}.inspector{padding:21px 17px}.topbar{padding:0 23px}.filter-pill{padding:10px 9px}.searchbox-wrap{min-width:210px;width:250px}}
+@media(max-width:900px){.workspace{grid-template-columns:1fr}.inspector{border-left:0;border-top:1px solid #e4e9eb;display:grid;grid-template-columns:1fr 1fr;gap:14px}.inspector-top,.inspector-tabs{grid-column:1/-1;margin:0}.terminal-feature,.info-lines,.verification,.module-detail{grid-column:1}.photo-reference,.inspector-bottom{grid-column:2;align-self:start;margin-top:0;padding-top:0}.outline-full{grid-column:1}.board-svg{min-height:440px}.svg-surface{min-height:440px}.stage-footer{display:none}.filterbar{flex-wrap:wrap}.searchbox-wrap{width:100%;flex:1}.header-metrics{display:none}}
+@media(max-width:560px){.topbar{height:66px;padding:0 15px;gap:12px}.brand-icon{height:34px;width:34px}.brand-caption strong{font-size:19px}.header-context,.header-separator{display:none}.phase-tag{font-size:8px;padding:8px}.help-btn{width:34px;height:34px}.content-header{margin-bottom:20px}main{padding:20px 12px}.content-header h1{font-size:30px}.content-header p{font-size:11px;line-height:1.6}.work-card{border-radius:14px}.work-toolbar{padding:0 15px;height:54px}.toolbar-label>span:not(.toolbar-indicator),.mode-pill.is-locked{display:none}.mode-pill{font-size:10px}.filterbar{padding:12px;gap:10px}.filters-scroll{width:100%}.searchbox-wrap{height:40px}.stage-topline{font-size:9px;padding:0 10px}.stage-topline>span:last-child{display:none}.svg-surface{min-height:320px}.board-svg{height:350px;min-height:350px}.canvas-watermark{font-size:7px;left:8px;top:8px}.stage-hint{font-size:8px;left:8px;bottom:8px;padding:7px}.zoom-toolbar{bottom:8px;right:8px;padding:2px;gap:0}.zoom-toolbar button{height:29px;width:29px}.zoom-toolbar span{font-size:9px;min-width:32px}.inspector{grid-template-columns:1fr;gap:12px;padding:16px}.inspector-top,.inspector-tabs,.terminal-feature,.info-lines,.verification,.outline-full,.photo-reference,.inspector-bottom,.module-detail{grid-column:1}.photo-preview{height:200px}.bottom-note{align-items:flex-start;line-height:1.5}}
+
+#board-root{height:100%}#board-root svg{height:min(65vw,710px)}.socket-interactive{cursor:pointer}.socket-interactive:hover>circle:nth-of-type(3){stroke:#f1ac44;stroke-width:4} .photo-reference .photo-preview img{object-position:center} .topbar .help-btn{font-size:19px;font-weight:800} .svg-surface{flex:1} .module-subtitle{min-height:12px} @media(max-width:560px){#board-root svg{height:350px}}
+</style></head><body><div id="offline-app"></div><script id="panel-model" type="application/json">{
+  "modules": [
+    {
+      "id": "FUENTE",
+      "title": "ALIMENTACIÓN Y TRANSFORMADOR",
+      "subtitle": "Transformador 220 / 24 V · 3 A",
+      "x": 65,
+      "y": 82,
+      "w": 585,
+      "h": 271,
+      "image": "/references/suministro.jpg",
+      "category": "alimentacion",
+      "summary": "Fuentes y puntos de alimentación visibles. No energizar equipos reales sin autorización docente.",
+      "terminals": [
+        {
+          "id": "R",
+          "label": "R",
+          "x": 110,
+          "y": 234,
+          "color": "blue",
+          "note": "Fase R",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "S",
+          "label": "S",
+          "x": 187,
+          "y": 234,
+          "color": "black",
+          "note": "Fase S",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T",
+          "label": "T",
+          "x": 265,
+          "y": 234,
+          "color": "red",
+          "note": "Fase T",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "N",
+          "label": "N",
+          "x": 414,
+          "y": 234,
+          "color": "white",
+          "note": "Neutro / referencia: conexión interna por confirmar",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "F",
+          "label": "F",
+          "x": 500,
+          "y": 234,
+          "color": "red",
+          "note": "Borne marcado F: función interna por confirmar",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "TP",
+          "label": "TP",
+          "x": 550,
+          "y": 247,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "BOTONERAS",
+      "title": "LUCES PILOTO 24 V A.C. / BOTONERAS",
+      "x": 712,
+      "y": 82,
+      "w": 615,
+      "h": 271,
+      "image": "/references/botoneras.jpg",
+      "category": "botoneras",
+      "summary": "Cuatro pilotos y tres pulsadores. Pares rojos 1–2; pares claros 3–4. NA/NC inferido por numeración y por confirmar.",
+      "terminals": [
+        {
+          "id": "PILOTO_1",
+          "label": "PILOTO_1",
+          "x": 78,
+          "y": 89,
+          "color": "red",
+          "note": "Conector visible bajo piloto 1; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "PILOTO_2",
+          "label": "PILOTO_2",
+          "x": 228,
+          "y": 89,
+          "color": "red",
+          "note": "Conector visible bajo piloto 2; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "PILOTO_3",
+          "label": "PILOTO_3",
+          "x": 378,
+          "y": 89,
+          "color": "red",
+          "note": "Conector visible bajo piloto 3; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "PILOTO_4",
+          "label": "PILOTO_4",
+          "x": 530,
+          "y": 89,
+          "color": "red",
+          "note": "Conector visible bajo piloto 4; retorno aún no verificado",
+          "labelSide": "bottom",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "S1:1",
+          "label": "S1:1",
+          "x": 86,
+          "y": 217,
+          "color": "red",
+          "note": "Pulsador 1 · contacto 1–2",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S1:2",
+          "label": "S1:2",
+          "x": 86,
+          "y": 253,
+          "color": "red",
+          "note": "Pulsador 1 · contacto 1–2",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S1:3",
+          "label": "S1:3",
+          "x": 144,
+          "y": 217,
+          "color": "white",
+          "note": "Pulsador 1 · contacto 3–4",
+          "state": "NA probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S1:4",
+          "label": "S1:4",
+          "x": 144,
+          "y": 253,
+          "color": "white",
+          "note": "Pulsador 1 · contacto 3–4",
+          "state": "NA probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:1",
+          "label": "S2:1",
+          "x": 274,
+          "y": 217,
+          "color": "red",
+          "note": "Pulsador 2 · contacto 1–2",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:2",
+          "label": "S2:2",
+          "x": 274,
+          "y": 253,
+          "color": "red",
+          "note": "Pulsador 2 · contacto 1–2",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:3",
+          "label": "S2:3",
+          "x": 332,
+          "y": 217,
+          "color": "white",
+          "note": "Pulsador 2 · contacto 3–4",
+          "state": "NA probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S2:4",
+          "label": "S2:4",
+          "x": 332,
+          "y": 253,
+          "color": "white",
+          "note": "Pulsador 2 · contacto 3–4",
+          "state": "NA probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:1",
+          "label": "S3:1",
+          "x": 459,
+          "y": 217,
+          "color": "red",
+          "note": "Pulsador 3 · contacto 1–2",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:2",
+          "label": "S3:2",
+          "x": 459,
+          "y": 253,
+          "color": "red",
+          "note": "Pulsador 3 · contacto 1–2",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:3",
+          "label": "S3:3",
+          "x": 517,
+          "y": 217,
+          "color": "white",
+          "note": "Pulsador 3 · contacto 3–4",
+          "state": "NA probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "S3:4",
+          "label": "S3:4",
+          "x": 517,
+          "y": 253,
+          "color": "white",
+          "note": "Pulsador 3 · contacto 3–4",
+          "state": "NA probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "N",
+          "label": "N",
+          "x": 571,
+          "y": 173,
+          "color": "white",
+          "note": "Borne N visible del módulo; conexión interna no verificada",
+          "labelSide": "right",
+          "verification": "no_verificado"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 40,
+          "y": 247,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 579,
+          "y": 247,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "CONTACTOR_TERMICO",
+      "title": "CONTACTOR + RELÉ TÉRMICO",
+      "subtitle": "Contactor y protección de sobrecarga",
+      "x": 65,
+      "y": 408,
+      "w": 585,
+      "h": 315,
+      "image": "/references/contactor-termico.jpg",
+      "category": "contactores",
+      "summary": "Contactor con relé térmico. Los números de bornes están identificados; referencia KM escrita a mano sin confirmar.",
+      "aliasEditable": true,
+      "terminals": [
+        {
+          "id": "A2",
+          "label": "A2",
+          "x": 176,
+          "y": 64,
+          "color": "red",
+          "note": "Bobina, borne A2",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "A1",
+          "label": "A1",
+          "x": 176,
+          "y": 113,
+          "color": "white",
+          "note": "Bobina, borne A1",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "L1",
+          "label": "L1",
+          "x": 264,
+          "y": 70,
+          "color": "blue",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L2",
+          "label": "L2",
+          "x": 341,
+          "y": 70,
+          "color": "black",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L3",
+          "label": "L3",
+          "x": 418,
+          "y": 70,
+          "color": "red",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T1",
+          "label": "T1",
+          "x": 264,
+          "y": 282,
+          "color": "blue",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T2",
+          "label": "T2",
+          "x": 341,
+          "y": 282,
+          "color": "black",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T3",
+          "label": "T3",
+          "x": 418,
+          "y": 282,
+          "color": "red",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "71",
+          "label": "71",
+          "x": 178,
+          "y": 158,
+          "color": "black",
+          "note": "Contacto 71–72",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "72",
+          "label": "72",
+          "x": 252,
+          "y": 158,
+          "color": "black",
+          "note": "Contacto 71–72",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "81",
+          "label": "81",
+          "x": 178,
+          "y": 207,
+          "color": "black",
+          "note": "Contacto 81–82",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "82",
+          "label": "82",
+          "x": 252,
+          "y": 207,
+          "color": "black",
+          "note": "Contacto 81–82",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "95",
+          "label": "95",
+          "x": 178,
+          "y": 256,
+          "color": "black",
+          "note": "Contacto 95–96",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "96",
+          "label": "96",
+          "x": 252,
+          "y": 256,
+          "color": "black",
+          "note": "Contacto 95–96",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "label": "13",
+          "x": 449,
+          "y": 133,
+          "color": "blue",
+          "note": "Contacto 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "label": "14",
+          "x": 519,
+          "y": 133,
+          "color": "blue",
+          "note": "Contacto 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "63",
+          "label": "63",
+          "x": 449,
+          "y": 177,
+          "color": "blue",
+          "note": "Contacto 63–64",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "64",
+          "label": "64",
+          "x": 519,
+          "y": 177,
+          "color": "blue",
+          "note": "Contacto 63–64",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "93",
+          "label": "93",
+          "x": 449,
+          "y": 221,
+          "color": "blue",
+          "note": "Contacto 93–94",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "94",
+          "label": "94",
+          "x": 519,
+          "y": 221,
+          "color": "blue",
+          "note": "Contacto 93–94",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "97",
+          "label": "97",
+          "x": 449,
+          "y": 265,
+          "color": "blue",
+          "note": "Contacto 97–98",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "98",
+          "label": "98",
+          "x": 519,
+          "y": 265,
+          "color": "blue",
+          "note": "Contacto 97–98",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 170,
+          "y": 287,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 551,
+          "y": 287,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "CONTACTOR_TRIFASICO",
+      "title": "CONTACTOR TRIFÁSICO",
+      "subtitle": "Referencia escrita KM… por confirmar",
+      "x": 712,
+      "y": 408,
+      "w": 615,
+      "h": 315,
+      "image": "/references/contactor-trifasico.jpg",
+      "category": "contactores",
+      "summary": "Contactor trifásico con bobina, bornes de potencia y contactos auxiliares. Etiqueta KM manuscrita aún no legible por completo.",
+      "aliasEditable": true,
+      "terminals": [
+        {
+          "id": "A2",
+          "label": "A2",
+          "x": 52,
+          "y": 65,
+          "color": "red",
+          "note": "Bobina, borne A2",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "A1",
+          "label": "A1",
+          "x": 52,
+          "y": 112,
+          "color": "white",
+          "note": "Bobina, borne A1",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "L1",
+          "label": "L1",
+          "x": 184,
+          "y": 71,
+          "color": "blue",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L2",
+          "label": "L2",
+          "x": 262,
+          "y": 71,
+          "color": "black",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L3",
+          "label": "L3",
+          "x": 340,
+          "y": 71,
+          "color": "red",
+          "note": "Entrada de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T1",
+          "label": "T1",
+          "x": 184,
+          "y": 282,
+          "color": "blue",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T2",
+          "label": "T2",
+          "x": 262,
+          "y": 282,
+          "color": "black",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T3",
+          "label": "T3",
+          "x": 340,
+          "y": 282,
+          "color": "red",
+          "note": "Salida de potencia",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "71",
+          "label": "71",
+          "x": 72,
+          "y": 157,
+          "color": "black",
+          "note": "Contacto 71–72",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "72",
+          "label": "72",
+          "x": 137,
+          "y": 157,
+          "color": "black",
+          "note": "Contacto 71–72",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "81",
+          "label": "81",
+          "x": 72,
+          "y": 217,
+          "color": "black",
+          "note": "Contacto 81–82",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "82",
+          "label": "82",
+          "x": 137,
+          "y": 217,
+          "color": "black",
+          "note": "Contacto 81–82",
+          "state": "NC probable",
+          "labelSide": "bottom",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "label": "13",
+          "x": 473,
+          "y": 149,
+          "color": "blue",
+          "note": "Contacto 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "label": "14",
+          "x": 538,
+          "y": 149,
+          "color": "blue",
+          "note": "Contacto 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "63",
+          "label": "63",
+          "x": 473,
+          "y": 199,
+          "color": "blue",
+          "note": "Contacto 63–64",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "64",
+          "label": "64",
+          "x": 538,
+          "y": 199,
+          "color": "blue",
+          "note": "Contacto 63–64",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "93",
+          "label": "93",
+          "x": 473,
+          "y": 249,
+          "color": "blue",
+          "note": "Contacto 93–94",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "94",
+          "label": "94",
+          "x": 538,
+          "y": 249,
+          "color": "blue",
+          "note": "Contacto 93–94",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 55,
+          "y": 285,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 580,
+          "y": 285,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "BORNERA_MOTOR",
+      "title": "BORNERA MOTOR",
+      "x": 68,
+      "y": 787,
+      "w": 217,
+      "h": 254,
+      "image": "/references/motor.jpg",
+      "category": "motor",
+      "summary": "Módulo independiente con seis extremos de bobinados y tierra de protección.",
+      "terminals": [
+        {
+          "id": "U1",
+          "label": "U1",
+          "x": 56,
+          "y": 95,
+          "color": "blue",
+          "note": "Terminal de motor U1",
+          "labelSide": "top",
+          "verification": "foto"
+        },
+        {
+          "id": "V1",
+          "label": "V1",
+          "x": 111,
+          "y": 95,
+          "color": "black",
+          "note": "Terminal de motor V1",
+          "labelSide": "top",
+          "verification": "foto"
+        },
+        {
+          "id": "W1",
+          "label": "W1",
+          "x": 166,
+          "y": 95,
+          "color": "red",
+          "note": "Terminal de motor W1",
+          "labelSide": "top",
+          "verification": "foto"
+        },
+        {
+          "id": "W2",
+          "label": "W2",
+          "x": 56,
+          "y": 173,
+          "color": "red",
+          "note": "Terminal de motor W2",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "U2",
+          "label": "U2",
+          "x": 111,
+          "y": 173,
+          "color": "blue",
+          "note": "Terminal de motor U2",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "V2",
+          "label": "V2",
+          "x": 166,
+          "y": 173,
+          "color": "black",
+          "note": "Terminal de motor V2",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP",
+          "label": "TP",
+          "x": 28,
+          "y": 134,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "left",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "TEMPORIZADOR_1",
+      "title": "TEMPORIZADOR NEUMÁTICO",
+      "subtitle": "BOBINA 24 V A.C.",
+      "x": 311,
+      "y": 787,
+      "w": 485,
+      "h": 254,
+      "image": "/references/temporizador-1.jpg",
+      "category": "temporizadores",
+      "aliasEditable": true,
+      "summary": "Temporizador neumático de 24 V CA. Antes de simularlo hay que confirmar el modo de retardo y su referencia.",
+      "terminals": [
+        {
+          "id": "A2",
+          "label": "A2",
+          "x": 33,
+          "y": 59,
+          "color": "red",
+          "note": "Bobina A2",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "A1",
+          "label": "A1",
+          "x": 33,
+          "y": 102,
+          "color": "white",
+          "note": "Bobina A1",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "L1",
+          "label": "L1",
+          "x": 152,
+          "y": 58,
+          "color": "blue",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L2",
+          "label": "L2",
+          "x": 215,
+          "y": 58,
+          "color": "black",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L3",
+          "label": "L3",
+          "x": 278,
+          "y": 58,
+          "color": "red",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T1",
+          "label": "T1",
+          "x": 152,
+          "y": 222,
+          "color": "blue",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T2",
+          "label": "T2",
+          "x": 215,
+          "y": 222,
+          "color": "black",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T3",
+          "label": "T3",
+          "x": 278,
+          "y": 222,
+          "color": "red",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "55",
+          "label": "55",
+          "x": 45,
+          "y": 169,
+          "color": "black",
+          "note": "Contacto 55–56, retardo no verificado",
+          "state": "NC probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "56",
+          "label": "56",
+          "x": 96,
+          "y": 169,
+          "color": "black",
+          "note": "Contacto 55–56, retardo no verificado",
+          "state": "NC probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "label": "13",
+          "x": 365,
+          "y": 135,
+          "color": "blue",
+          "note": "Auxiliar 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "label": "14",
+          "x": 427,
+          "y": 135,
+          "color": "blue",
+          "note": "Auxiliar 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "67",
+          "label": "67",
+          "x": 365,
+          "y": 185,
+          "color": "blue",
+          "note": "Contacto 67–68, retardo no verificado",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "68",
+          "label": "68",
+          "x": 427,
+          "y": 185,
+          "color": "blue",
+          "note": "Contacto 67–68, retardo no verificado",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 49,
+          "y": 224,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 452,
+          "y": 224,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    },
+    {
+      "id": "TEMPORIZADOR_2",
+      "title": "TEMPORIZADOR NEUMÁTICO",
+      "subtitle": "BOBINA 24 V A.C.",
+      "x": 831,
+      "y": 787,
+      "w": 485,
+      "h": 254,
+      "image": "/references/temporizador-2.jpg",
+      "category": "temporizadores",
+      "aliasEditable": true,
+      "summary": "Temporizador neumático de 24 V CA. Antes de simularlo hay que confirmar el modo de retardo y su referencia.",
+      "terminals": [
+        {
+          "id": "A2",
+          "label": "A2",
+          "x": 33,
+          "y": 59,
+          "color": "red",
+          "note": "Bobina A2",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "A1",
+          "label": "A1",
+          "x": 33,
+          "y": 102,
+          "color": "white",
+          "note": "Bobina A1",
+          "labelSide": "right",
+          "verification": "foto"
+        },
+        {
+          "id": "L1",
+          "label": "L1",
+          "x": 152,
+          "y": 58,
+          "color": "blue",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L2",
+          "label": "L2",
+          "x": 215,
+          "y": 58,
+          "color": "black",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "L3",
+          "label": "L3",
+          "x": 278,
+          "y": 58,
+          "color": "red",
+          "note": "Bornes superiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T1",
+          "label": "T1",
+          "x": 152,
+          "y": 222,
+          "color": "blue",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T2",
+          "label": "T2",
+          "x": 215,
+          "y": 222,
+          "color": "black",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "T3",
+          "label": "T3",
+          "x": 278,
+          "y": 222,
+          "color": "red",
+          "note": "Bornes inferiores",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "55",
+          "label": "55",
+          "x": 45,
+          "y": 169,
+          "color": "black",
+          "note": "Contacto 55–56, retardo no verificado",
+          "state": "NC probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "56",
+          "label": "56",
+          "x": 96,
+          "y": 169,
+          "color": "black",
+          "note": "Contacto 55–56, retardo no verificado",
+          "state": "NC probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "13",
+          "label": "13",
+          "x": 365,
+          "y": 135,
+          "color": "blue",
+          "note": "Auxiliar 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "14",
+          "label": "14",
+          "x": 427,
+          "y": 135,
+          "color": "blue",
+          "note": "Auxiliar 13–14",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "67",
+          "label": "67",
+          "x": 365,
+          "y": 185,
+          "color": "blue",
+          "note": "Contacto 67–68, retardo no verificado",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "68",
+          "label": "68",
+          "x": 427,
+          "y": 185,
+          "color": "blue",
+          "note": "Contacto 67–68, retardo no verificado",
+          "state": "NA probable",
+          "labelSide": "top",
+          "verification": "convencion_por_confirmar"
+        },
+        {
+          "id": "TP_IZQ",
+          "label": "TP_IZQ",
+          "x": 49,
+          "y": 224,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        },
+        {
+          "id": "TP_DER",
+          "label": "TP_DER",
+          "x": 452,
+          "y": 224,
+          "color": "green",
+          "note": "Tierra de protección",
+          "labelSide": "bottom",
+          "verification": "foto"
+        }
+      ]
+    }
+  ],
+  "count": 108
+}</script><script>(()=>{
+const model=JSON.parse(document.getElementById('panel-model').textContent), MODULES=model.modules;
+const colors={red:'#bd142a',blue:'#17509a',black:'#24272c',white:'#f5f1e7',green:'#00865b'};
+const colorNames={red:'Rojo',blue:'Azul',black:'Negro',white:'Crema',green:'Verde'};
+const groups=[['todos','Todos'],['alimentacion','Alimentación'],['botoneras','Botoneras'],['contactores','Contactores'],['temporizadores','Temporizadores'],['motor','Motor']];
+const info={foto:'Etiqueta o color visible en tus fotografías.',convencion_por_confirmar:'El estado NA/NC se infiere por numeración y está pendiente de confirmar con el equipo real.',no_verificado:'Su función eléctrica exacta no se puede confirmar solo por la fotografía.'};
+const initial={x:0,y:0,w:1400,h:1100};let view={...initial};let selected='BOTONERAS:S1:1';let group='todos';let query='';let tab='terminal';let aliases={};let drag=null;
+try{let saved=JSON.parse(localStorage.getItem('panellab-offline')||'{}');selected=saved.selected||selected;aliases=saved.aliases||{}}catch{}
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const save=()=>{try{localStorage.setItem('panellab-offline',JSON.stringify({selected,aliases}))}catch{}};
+const getRecord=()=>{for(const m of MODULES){let t=m.terminals.find(t=>m.id+':'+t.id===selected);if(t)return {m,t}}return null};
+const icon=(name)=>({search:'⌕',plus:'+',minus:'−',zoom:'⊞',photo:'↗',help:'?',arrow:'→',back:'←'}[name]||'');
+const out=(s)=>document.getElementById('offline-app').innerHTML=s;
+const appHeader=()=>`<header class="topbar"><div class="brand-wrap"><div class="brand-icon"><svg width="21" height="22" viewBox="0 0 24 24" fill="white"><path d="M13.6 1 4.9 13h6.6l-1 10L19.2 10h-6.6z"/></svg></div><div class="brand-caption"><strong>panel<span>lab</span></strong><small>LABORATORIO DE CONTROL</small></div></div><div class="header-separator"></div><div class="header-context"><span>Banco de control</span><span>›</span><b>INACAP</b></div><div class="top-spacer"></div><div class="phase-tag"><span class="phase-dot"></span> FASE 01 · IDENTIFICACIÓN</div><button class="icon-button help-btn" id="help-button" title="Cómo usar">?</button></header>`;
+const appBody=()=>`<main><div class="content-header"><div><div class="eyebrow">SIMULADOR ELÉCTRICO / PANEL REAL</div><h1>Conoce tu tablero<span class="header-period">.</span></h1><p>Explora cada componente y selecciona sus bornes tal como aparecen en el laboratorio.</p></div><div class="header-metrics"><div class="metric-number">${model.count}</div><div>bornes identificados<br/><span>en 7 módulos</span></div></div></div>
+<div class="work-card"><div class="work-toolbar"><div class="toolbar-label"><span class="toolbar-indicator"></span><b>Panel interactivo</b><span class="small-sep">/</span><span>Vista frontal reconstruida</span></div><div class="mode-pills"><span class="mode-pill is-active">◉ Explorar</span><span class="mode-pill is-locked">Conectar <span class="soon">próximo</span></span></div></div>
+<div class="filterbar"><div class="filters-scroll" id="filters"></div><div class="searchbox-wrap"><span style="font-size:22px;line-height:1">⌕</span><input id="search" autocomplete="off" placeholder="Buscar borne: A1, 13, KM…" aria-label="Buscar borne"/><button id="clear-search" aria-label="Limpiar búsqueda">×</button><div id="search-results" class="search-results" style="display:none"></div></div></div>
+<div class="workspace"><div class="stage-wrap"><div class="stage-topline"><span><span class="live-dot"></span>Banco INACAP · vista esquemática</span><span>Selecciona un conector para inspeccionarlo</span></div><div class="svg-surface"><div id="board-root"></div><div class="canvas-watermark">RECONSTRUCCIÓN DIDÁCTICA · NO ENERGIZAR</div><div class="zoom-toolbar"><button id="zoom-out" title="Alejar">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Acercar">+</button><i></i><button id="zoom-fit" title="Ver tablero completo">⊞</button></div><div class="stage-hint">☞ Clic en un borne · Arrastra el fondo para moverte</div></div><div class="stage-footer"><span>ⓘ Los colores reproducen los conectores visibles; las funciones no verificadas están señaladas.</span><span>Motor incluido</span></div></div><aside class="inspector" id="inspector"></aside></div></div>
+<div class="bottom-note"><span class="bottom-note-chip">PANELLAB · V0.1</span><span>Reconstrucción didáctica basada en fotografías · No sustituye las instrucciones del docente.</span></div></main><div id="overlay-root"></div>`;
+const svgDefs=`<defs>
+ <linearGradient id="panelFace" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff"/><stop offset=".63" stop-color="#f3f4f3"/><stop offset="1" stop-color="#e7e9e7"/></linearGradient>
+ <linearGradient id="railMetal" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#e0e4e5"/><stop offset=".18" stop-color="#aeb5bd"/><stop offset=".5" stop-color="#78828c"/><stop offset=".78" stop-color="#afb6bd"/><stop offset="1" stop-color="#626c76"/></linearGradient>
+ <linearGradient id="socketMetal" x1="0" x2="1"><stop stop-color="#c2c8cd"/><stop offset=".48" stop-color="#f3f4f4"/><stop offset="1" stop-color="#68717c"/></linearGradient>
+ <filter id="moduleShadow" x="-12%" width="128%" y="-12%" height="140%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#263746" flood-opacity=".21"/></filter>
+ <pattern id="vent" width="13" height="15" patternUnits="userSpaceOnUse"><rect width="3" height="12" x="4" rx="1" fill="#bbc2c8"/></pattern>
+ </defs>`;
+const rect=(x,y,w,h,fill,rx=3,extra='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" ${extra}/>`;
+const cir=(x,y,r,fill,extra='')=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" ${extra}/>`;
+const txt=(x,y,s,size=12,weight=700,fill='#343940',extra='')=>`<text x="${x}" y="${y}" font-family="Arial, Helvetica, sans-serif" font-size="${size}" font-weight="${weight}" fill="${fill}" text-anchor="middle" ${extra}>${esc(s)}</text>`;
+const tag=(x,y,s)=>{let w=Math.max(28,String(s).length*7+18);return rect(x-w/2,y-13,w,22,'#f5f3ed',2,'stroke="#bec4c7"')+txt(x,y+3,s,11,700)};
+const socket=(t,m)=>{const k=m.id+':'+t.id;const active=k===selected;const hit=query&&`${m.id} ${m.title} ${t.id}`.toLowerCase().includes(query.toLowerCase());const color=colors[t.color];const label=t.id.match(/^S\d:([1-4])$/)?.[1]||t.id.replace('PILOTO_','P');let lx=t.x,ly=t.labelSide==='top'?t.y-23:t.y+29;if(t.labelSide==='left')lx-=30;if(t.labelSide==='right')lx+=31;
+return `<g class="socket-interactive" tabindex="0" role="button" aria-label="${esc(m.title)} · ${esc(t.id)}" data-port="${esc(k)}">${(active||hit)?cir(t.x,t.y,25,'none',`stroke="${active?'#eca83d':'#408ede'}" stroke-width="5"`):''}${cir(t.x,t.y,23,'transparent')}${cir(t.x+1,t.y+2,17,'#717982','opacity=".27"')}${cir(t.x,t.y,15,'url(#socketMetal)','stroke="#899099"')}${cir(t.x,t.y,12,color,`stroke="${t.color==='white'?'#a9a69e':'#24272d'}" stroke-width="1.5"`)}${cir(t.x,t.y,6.5,'#141a21','stroke="#66717b" stroke-width="1.2"')}${txt(lx,ly,label,12,750)}<title>${esc(t.id)} · ${esc(t.note||'')}</title></g>`};
+const pilot=(x,y,c)=>cir(x,y,31,'#79818a','stroke="#505863" stroke-width="6"')+cir(x,y,25,c,'stroke="#202830" stroke-width="4"')+`<path d="M${x-14} ${y-8} Q${x-2} ${y-19} ${x+13} ${y-9}" stroke="#fff" fill="none" stroke-width="3" opacity=".28"/>`;
+const press=(x,y,c)=>cir(x,y,34,'#acb4ba','stroke="#737c85" stroke-width="4"')+cir(x,y,29,c,'stroke="#313a42" stroke-width="4"')+`<path d="M${x-17} ${y-9} Q${x} ${y-22} ${x+16} ${y-8}" stroke="#fff" opacity=".18" fill="none" stroke-width="3"/>`;
+const device=(x,y,w,h,kind='contactor')=>`${rect(x+3,y+6,w,h,'#2d343b',7,'opacity=".27"')}${rect(x,y,w,h,'#48515a',6,'stroke="#303840" stroke-width="3"')}${rect(x+13,y+34,w-26,h-61,'#eaedea',4,'stroke="#a7afb0" stroke-width="3"')}${Array.from({length:4},(_,i)=>rect(x+9+i*(w-16)/4,y+7,(w-29)/4,22,'#ebedeb',2,'stroke="#7b8588"')+cir(x+18+i*(w-16)/4,y+17,4,'#333942')).join('')}${Array.from({length:4},(_,i)=>rect(x+9+i*(w-16)/4,y+h-25,(w-29)/4,17,'#ebedeb',2,'stroke="#7b8588"')).join('')}${kind==='timer'?cir(x+w/2,y+h/2+9,35,'#d7c9ae','stroke="#765d4b" stroke-width="7"')+cir(x+w/2,y+h/2+9,25,'#eae7e1','stroke="#ac8261" stroke-width="2"')+`<path d="M${x+w/2} ${y+h/2+9} l16 -13" stroke="#836047" stroke-width="3"/>`:txt(x+w/2,y+72,kind==='thermal'?'RELÉ TÉRMICO':'CONTACTOR',12,700,'#4a535c')}`;
+const face=(m)=>{
+ let s=rect(0,0,m.w,m.h,'url(#panelFace)',3,'stroke="#969ba1" stroke-width="2" filter="url(#moduleShadow)"')+rect(9,8,m.w-18,m.h-16,'none',2,'stroke="#fff" stroke-width="1.5" opacity=".6"');
+ [18,m.w-18].forEach(x=>[19,m.h-18].forEach(y=>{s+=cir(x,y,4,'#8a939a','stroke="#eee" stroke-width="1.5"')}));
+ if(m.category!=='motor')s+=tag(m.w/2,27,m.category==='alimentacion'?'ALIMENTACIÓN · 24 V A.C.':m.category==='botoneras'?'LUCES PILOTO 24 V A.C.':m.title);
+ if(m.category==='alimentacion'){
+  s+=rect(18,45,183,151,'#f2f3f3',10,'stroke="#adb4ba" stroke-width="3"')+rect(35,60,151,99,'#22282f',2)+rect(88,162,40,18,'#e2e3e2')+rect(221,49,111,89,'#b1b9be',5,'stroke="#77838a" stroke-width="2"')+rect(230,63,93,52,'#e2e0d9')+txt(277,79,'220 V',12)+txt(277,95,'0 – 24 V',12)+txt(277,112,'3 A',12);
+  s+=rect(352,53,201,81,'#edece4',8,'stroke="#aeb2b7" stroke-width="3"')+[395,491].map(x=>rect(x-17,63,34,61,'#fafafa',2,'stroke="#b6babd"')+cir(x,78,4,'#161f24')+cir(x,96,4,'#161f24')).join('');
+  [57,120,183,246,309].forEach((x,i)=>s+=pilot(x,181,['#b42836','#bd3446','#a7202f','#1c2128','#d7a63b'][i]));s+=tag(278,210,'FUS 3A');
+ }
+ if(m.category==='botoneras'){[78,228,378,530].forEach((x,i)=>s+=pilot(x,57,['#18744f','#a22e3a','#dfaa2a','#18744f'][i]));s+=tag(300,133,'BOTONERAS');[115,303,488].forEach((x,i)=>s+=press(x,168,i===1?'#8f2c36':'#17674f'));}
+ if(m.category==='contactores'){
+ s+=m.id==='CONTACTOR_TERMICO'?device(18,114,127,154,'thermal'):device(234,122,143,148);
+ s+=rect(m.w-112,43,82,28,'#f4f1e8',2,'stroke="#d1d3d0"')+txt(m.w-71,61,aliases[m.id]||'KM ?',13,800,'#555b60');
+ }
+ if(m.category==='temporizadores'){s+=tag(m.w/2,44,'BOBINA 24 V A.C.');s+=device(189,99,126,124,'timer');}
+ if(m.category==='motor'){s+=rect(12,44,m.w-24,185,'#f1f1ed',10,'stroke="#cdd3d4" stroke-width="2"')+rect(175,44,26,185,'#e9c932')+`<text x="190" y="130" transform="rotate(90 190 130)" text-anchor="middle" font-family="Arial" font-weight="800" font-size="13">BORNE MOTOR</text>`+tag(m.w/2,43,'MOTOR');}
+ if(m.category!=='motor')s+=`<g transform="translate(${m.w/2-20} ${m.h-20})">${rect(0,0,10,10,'#d42c38',0)}${txt(41,10,'inacap',14,800,'#3b4147')}</g>`;
+ return s;
+};
+function boardMarkup(){let s=`<svg id="board-svg" xmlns="http://www.w3.org/2000/svg" class="board-svg" viewBox="${view.x} ${view.y} ${view.w} ${view.h}" aria-label="Panel interactivo de INACAP">${svgDefs}${rect(0,0,1400,1100,'#f3f5f6',0)}${rect(27,27,1349,1045,'#e5e9ec',10,'stroke="#969fa8" stroke-width="4"')}`;
+ [42,378,765,1064].forEach(y=>{s+=rect(28,y,1347,29,'url(#railMetal)',5)+`<path d="M36 ${y+4} H1367" stroke="#e9edef" stroke-width="2"/>`});[0,1,2].forEach(i=>s+=rect(36,i*355+102,1330,80,'url(#vent)',0,'opacity=".55"'));
+ MODULES.forEach(m=>{const faded=group!=='todos'&&m.category!==group;const high=query&&`${m.title} ${m.id} ${aliases[m.id]||''} ${m.terminals.map(t=>t.id).join(' ')}`.toLowerCase().includes(query.toLowerCase());s+=`<g transform="translate(${m.x} ${m.y})" opacity="${faded?.2:1}">${face(m)}${high?rect(-4,-4,m.w+8,m.h+8,'none',6,'stroke="#e7a346" stroke-width="4"'):''}${m.terminals.map(t=>socket(t,m)).join('')}</g>`});s+=txt(700,1093,'PANEL DIDÁCTICO · REFERENCIA GRÁFICA DESENERGIZADA',15,750,'#7c8791')+'</svg>';return s}
+function renderBoard(){document.getElementById('board-root').innerHTML=boardMarkup();document.getElementById('zoom-label').textContent=Math.round(1400/view.w*100)+'%';}
+function renderFilters(){document.getElementById('filters').innerHTML=groups.map(([k,t])=>`<button data-filter="${k}" class="filter-pill ${group===k?'current':''}" role="tab" aria-selected="${group===k}">${t}</button>`).join('')}
+function renderSearch(){let el=document.getElementById('search-results');if(!query.trim()){el.style.display='none';return}let q=query.toLowerCase();let a=MODULES.flatMap(m=>m.terminals.filter(t=>`${m.title} ${m.id} ${aliases[m.id]||''} ${t.id}`.toLowerCase().includes(q)).map(t=>({m,t}))).slice(0,8);el.style.display='block';el.innerHTML=a.length?a.map(({m,t})=>`<button data-search-id="${m.id}:${t.id}"><span class="search-socket" style="background:${colors[t.color]}"></span><div><strong>${esc(t.id)}</strong><small>${esc(m.title)}</small></div><span>→</span></button>`).join(''):'<div class="search-empty">No hay coincidencias.</div>'}
+function renderInspector(){const r=getRecord(),m=r?.m||MODULES[1],t=r?.t||null;let head=`<div class="inspector-top"><div><div class="eyebrow">IDENTIFICACIÓN</div><h2>Inspector</h2></div><span class="inspector-icon">⚙</span></div><div class="inspector-tabs"><button data-tab="terminal" class="${tab==='terminal'?'active':''}">Borne</button><button data-tab="module" class="${tab==='module'?'active':''}">Módulo</button></div>`;
+ if(tab==='terminal'&&t){let typ=t.verification==='foto'?'Identificación visual':t.verification==='no_verificado'?'Pendiente de confirmar':'Convención por confirmar';head+=`<div class="terminal-feature"><div class="feature-topline"><span>SELECCIONADO</span><span>✓</span></div><div class="feature-socket" style="border-color:${colors[t.color]}"><span></span></div><span class="feature-id">${esc(t.id.match(/^S\d:([1-4])$/)?.[1]||t.id.replace('PILOTO_','P'))}</span><span class="feature-module">${esc(m.title)}</span></div><div class="info-lines"><div><span>Identificador completo</span><strong>${esc(m.id+':'+t.id)}</strong></div><div><span>Color del borne</span><strong><i class="color-dot" style="background:${colors[t.color]}"></i>${colorNames[t.color]}</strong></div><div><span>Función / contacto</span><strong>${esc(t.state||t.note||'—')}</strong></div></div><div class="verification ${t.verification==='foto'?'confirmed':'pending'}"><span>${t.verification==='foto'?'✓':'!'}</span><div><strong>${typ}</strong><p>${info[t.verification||'foto']}</p></div></div><button class="outline-full" data-focus="${m.id}">⊞ Enfocar módulo</button>`;
+ }else{head+=`<div class="module-detail"><div class="module-tag">MÓDULO DEL PANEL</div><h3>${esc(m.title)}</h3><p class="module-subtitle">${esc(m.subtitle||'')}</p><p class="module-summary">${esc(m.summary)}</p><div class="module-count"><strong>${m.terminals.length}</strong><span>bornes documentados</span></div>${m.aliasEditable?`<div class="alias-area"><label for="alias-input">Código en diagrama (KM...)</label><div><input id="alias-input" placeholder="Por confirmar" value="${esc(aliases[m.id]||'')}" maxlength="14"/><button data-save-alias="${m.id}">Guardar</button></div><small>Etiqueta personal sin validación del esquema original.</small></div>`:''}<button class="outline-full" data-focus="${m.id}">⊞ Ver de cerca</button></div>`;}
+ head+=`<div class="photo-reference"><div class="photo-header"><div><strong>Referencia fotográfica</strong><small>Imagen original del laboratorio</small></div><button data-photo="1" title="Ampliar">↗</button></div><button class="photo-preview" data-photo="1"><img src="${esc('public'+m.image)}" alt="Fotografía: ${esc(m.title)}"/><span>↗ Ampliar foto</span></button></div><div class="inspector-bottom"><span class="round-info">i</span> Fase 1: reconocimiento. Los cables banana llegarán en la siguiente etapa.</div>`;
+ document.getElementById('inspector').innerHTML=head;
+}
+const focus=m=>{let w=Math.max(m.w+165,480),h=w*1100/1400;view={x:m.x+m.w/2-w/2,y:m.y+m.h/2-h/2,w,h};group='todos';renderFilters();renderBoard()};
+const zoom=f=>{let w=Math.max(340,Math.min(1400,view.w*f)),h=w*1100/1400;view={x:view.x+(view.w-w)/2,y:view.y+(view.h-h)/2,w,h};renderBoard()};
+const pick=id=>{selected=id;tab='terminal';save();renderBoard();renderInspector()};
+const showModal=(type)=>{let m=getRecord()?.m||MODULES[1];let body=type==='photo'?`<img src="public${m.image}" alt="${esc(m.title)}"/><p>Fotografía del laboratorio para comparar los detalles reales del módulo.</p>`:`<div class="help-text"><p>Esta primera fase sirve para reconocer componentes y bornes. Todavía no se conectan cables ni se simula energía.</p><ol><li>Selecciona cualquier borne circular en el tablero.</li><li>Mira su identificación y color en el inspector.</li><li>Utiliza + y − para hacer zoom, o arrastra los espacios vacíos del tablero.</li><li>Amplía la fotografía real en la parte inferior del inspector.</li><li>Las referencias KM y los contactos NA/NC pendientes se deben confirmar con el profesor.</li></ol><p><b>Seguridad:</b> solo práctica virtual. Nunca energices el banco sin el docente.</p></div>`;
+ document.getElementById('overlay-root').innerHTML=`<div class="modal-backdrop" id="modal-backdrop"><div class="dialog ${type==='photo'?'dialog-image':''}" role="dialog" aria-modal="true"><div class="dialog-top"><strong>${type==='photo'?esc(m.title):'Cómo utilizar PanelLab'}</strong><button id="close-dialog">×</button></div>${body}</div></div>`};
+function mount(){out(appHeader()+appBody());renderFilters();renderBoard();renderInspector();
+ document.getElementById('help-button').onclick=()=>showModal('help');
+ document.getElementById('zoom-out').onclick=()=>zoom(1.3);
+ document.getElementById('zoom-in').onclick=()=>zoom(1/1.3);
+ document.getElementById('zoom-fit').onclick=()=>{view={...initial};renderBoard()};
+ document.getElementById('clear-search').onclick=()=>{query='';document.getElementById('search').value='';renderSearch();renderBoard()};
+ document.getElementById('search').addEventListener('input',e=>{query=e.target.value;renderSearch();renderBoard()});
+ document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter'){let b=document.querySelector('[data-search-id]');if(b)b.click()}});
+ document.addEventListener('click',e=>{let target=e.target.closest('[data-port],[data-filter],[data-tab],[data-focus],[data-photo],[data-save-alias],[data-search-id],#close-dialog,#modal-backdrop');if(!target)return;
+  if(target.id==='modal-backdrop'&&e.target===target||target.id==='close-dialog'){document.getElementById('overlay-root').innerHTML='';return}
+  if(target.dataset.port)pick(target.dataset.port);
+  else if(target.dataset.filter){group=target.dataset.filter;renderFilters();renderBoard()}
+  else if(target.dataset.tab){tab=target.dataset.tab;renderInspector()}
+  else if(target.dataset.focus){let m=MODULES.find(m=>m.id===target.dataset.focus);if(m)focus(m)}
+  else if(target.dataset.photo)showModal('photo');
+  else if(target.dataset.saveAlias){let m=target.dataset.saveAlias;aliases[m]=(document.getElementById('alias-input')?.value||'').toUpperCase().replace(/[^A-Z0-9_-]/g,'').slice(0,14);save();renderBoard();renderInspector()}
+  else if(target.dataset.searchId){pick(target.dataset.searchId);let m=MODULES.find(m=>m.id===target.dataset.searchId.split(':')[0]);if(m)focus(m);query='';document.getElementById('search').value='';renderSearch();}
+ });
+ const surface=document.getElementById('board-root');
+ surface.addEventListener('pointerdown',e=>{if(e.target.closest('[data-port]')||e.button!==0)return;drag={px:e.clientX,py:e.clientY,view:{...view}};surface.setPointerCapture(e.pointerId)});
+ surface.addEventListener('pointermove',e=>{if(!drag)return;let rect=surface.getBoundingClientRect();view={...drag.view,x:drag.view.x-(e.clientX-drag.px)*drag.view.w/rect.width,y:drag.view.y-(e.clientY-drag.py)*drag.view.h/rect.height};let svg=document.getElementById('board-svg');if(svg)svg.setAttribute('viewBox',`${view.x} ${view.y} ${view.w} ${view.h}`)});
+ surface.addEventListener('pointerup',()=>drag=null);surface.addEventListener('pointercancel',()=>drag=null);
+ surface.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();zoom(e.deltaY<0?1/1.1:1.1)},{passive:false});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('overlay-root').innerHTML='';if(e.target.tagName==='INPUT')return;if(e.key==='+'||e.key==='=')zoom(1/1.2);if(e.key==='-')zoom(1.2);if(e.key.toLowerCase()==='f'){view={...initial};renderBoard()}});
+}
+mount();
+})();
+</script></body></html>

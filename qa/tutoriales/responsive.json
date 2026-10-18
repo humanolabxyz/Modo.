@@ -1,0 +1,92 @@
+[
+  {
+    "size": {
+      "width": 360,
+      "height": 780
+    },
+    "path": "/",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 360,
+      "height": 780
+    },
+    "path": "/laboratorio?tool=breadboard",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 360,
+      "height": 780
+    },
+    "path": "/estudio/",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 768,
+      "height": 1024
+    },
+    "path": "/",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 768,
+      "height": 1024
+    },
+    "path": "/laboratorio?tool=breadboard",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 768,
+      "height": 1024
+    },
+    "path": "/estudio/",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 844,
+      "height": 390
+    },
+    "path": "/",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 844,
+      "height": 390
+    },
+    "path": "/laboratorio?tool=breadboard",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  },
+  {
+    "size": {
+      "width": 844,
+      "height": 390
+    },
+    "path": "/estudio/",
+    "dialogOverflow": false,
+    "pageOverflow": false,
+    "withinViewport": true
+  }
+]

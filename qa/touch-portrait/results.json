@@ -1,0 +1,23 @@
+{
+  "results": [
+    "PASS 320×740: ventanas, scroll táctil, ayudas, bloqueo/paneo, movimiento, añadir módulo",
+    "PASS 360×780: ventanas, scroll táctil, ayudas, bloqueo/paneo, movimiento, añadir módulo",
+    "PASS 390×844: ventanas, scroll táctil, ayudas, bloqueo/paneo, movimiento, añadir módulo",
+    "PASS 430×932: ventanas, scroll táctil, ayudas, bloqueo/paneo, movimiento, añadir módulo",
+    "PASS 844×390: ventanas, scroll táctil, ayudas, bloqueo/paneo, movimiento, añadir módulo",
+    "PASS 1440×900: ventanas, scroll táctil, ayudas, bloqueo/paneo, movimiento, añadir módulo",
+    "PASS home 320px",
+    "PASS study 320px",
+    "PASS lab 320px",
+    "PASS home 390px",
+    "PASS study 390px",
+    "PASS lab 390px",
+    "PASS home 430px",
+    "PASS study 430px",
+    "PASS lab 430px",
+    "PASS home 1440px",
+    "PASS study 1440px",
+    "PASS lab 1440px"
+  ],
+  "errors": []
+}

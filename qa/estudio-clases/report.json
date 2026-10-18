@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Solo cambia la navegación de estudio; fuentes, actividades, preguntas, guardado y simulador conservados",
+    "Electrónica conserva tres unidades, cinco clases, ejercicio y guía separados; no copia el Hecho ni inventa PDFs",
+    "Un PDF de Protecciones conserva sus ocho temas dentro de una sola clase, fuente original, avance y entrada en orden",
+    "Unidades y clases funcionan a 320/390/768/1440 px sin desbordes ni errores de JavaScript"
+  ],
+  "errors": [],
+  "captures": [
+    "unidades-320",
+    "unidades-390",
+    "unidades-768",
+    "unidades-1440"
+  ]
+}

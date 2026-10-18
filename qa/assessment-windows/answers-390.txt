@@ -1,0 +1,13 @@
+Armar y explicar · Marcha y paro con retención
+
+Montaje: requiere revisión
+
+1 respuestas guardadas; pendientes de revisión.
+
+1. FUENTE:F ↔ CONTACTOR_TERMICO:95
+
+Explica cómo interviene esta conexión si dispara el relé térmico y qué elementos deberían dejar de funcionar.
+
+Borrador pendiente de revisión.
+
+Explicación final: La orden de marcha activa la bobina, la retención mantiene la marcha y el paro o el térmico interrumpen el mando.

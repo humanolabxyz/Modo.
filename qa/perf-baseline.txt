@@ -1,0 +1,15 @@
+
+> panellab-inacap-fase1@2.0.0 perf:mobile
+> node qa/perf-mobile.cjs
+
+{"name":"pan 60 moves","appRenders":60,"frames":226,"p95":150,"max":167,"longTasks":60,"longTotal":8276}
+{"name":"ctrl+wheel 30 ticks","appRenders":30,"frames":79,"p95":217,"max":350,"longTasks":68,"longTotal":6614}
+AssertionError [ERR_ASSERTION]: pan: 60 renders de App (máx. 3)
+    at C:\Users\HUMANO LAB\Desktop\proyectos2026\paneldecontrol\PanelLab-INACAP\qa\perf-mobile.cjs:25:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

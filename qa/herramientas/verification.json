@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "Barra explícita, selección sin conectar y cable con vista previa",
+    "Borrador retira por conector, Deshacer recupera",
+    "Seleccionar cable y eliminar desde barra o Supr"
+  ],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: Expected \"actual\" to be strictly unequal to:\n\n'-138.58904109589037 -122 1643.1780821917807 1428'\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-tools-reading.cjs:17:360"
+  ]
+}

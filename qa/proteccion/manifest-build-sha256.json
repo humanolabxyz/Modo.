@@ -1,0 +1,738 @@
+{
+  "createdAt": "2026-10-17T02:51:18.869Z",
+  "purpose": "Huella local de los archivos públicos; no es un registro de propiedad intelectual.",
+  "files": [
+    {
+      "file": "brand/apple-touch-icon.png",
+      "sha256": "879f34b15fe5689e92aca3f0c5985d7e42ba51c9dd4b4d3175a78b1ee9653a03"
+    },
+    {
+      "file": "brand/favicon.ico",
+      "sha256": "c1452ad3fec9063ae555d5490f7d40689c9f299faee494f7932f9c8b12371139"
+    },
+    {
+      "file": "brand/icono-app-128.png",
+      "sha256": "71a59c8b4b9837aa78f042f6f28e20f6fae014f8fbfaf78397061080ad490da6"
+    },
+    {
+      "file": "brand/icono-app-16.png",
+      "sha256": "916669175a4267a70f79d431fd345afd6e449a455562e2a000fff96104f0deaf"
+    },
+    {
+      "file": "brand/icono-app-180.png",
+      "sha256": "879f34b15fe5689e92aca3f0c5985d7e42ba51c9dd4b4d3175a78b1ee9653a03"
+    },
+    {
+      "file": "brand/icono-app-192.png",
+      "sha256": "2919bce0b01409628a4ba848e837ba21d326e9596b683771c4b3cd2115556406"
+    },
+    {
+      "file": "brand/icono-app-256.png",
+      "sha256": "fc441483ac04dbee182235c9f2223873ae8c5efcfe274a61a6e89e970fb7e209"
+    },
+    {
+      "file": "brand/icono-app-32.png",
+      "sha256": "a4cf5f336667575315d6156e365d5a813f15d6cceb0afcf2064e104451030919"
+    },
+    {
+      "file": "brand/icono-app-48.png",
+      "sha256": "1d1e163be1715eaaa08e67095052b7bd22f9569b57d99383f41aac4ed020ee70"
+    },
+    {
+      "file": "brand/icono-app-512.png",
+      "sha256": "285e439ef9b7bda476d857bbfde989ea055d7e1d8d077c34d1ccdc5b4abcfc8b"
+    },
+    {
+      "file": "brand/icono-app-64.png",
+      "sha256": "ef2a400a1edd5af0a5678ca1244b4a83320a5a7b39b05054e4f517ed209f4c3a"
+    },
+    {
+      "file": "brand/icono-app-96.png",
+      "sha256": "67c4bf46495dc7f847bc4688b060b94892d3cb7463eee4ff26a7b9151d60f6ba"
+    },
+    {
+      "file": "brand/icono-app-claro-512.png",
+      "sha256": "3b97441ce1035c76fe893151a95aa49ff6da610dc4cd187b3658e33ca63c0611"
+    },
+    {
+      "file": "brand/icono-app-verde-512.png",
+      "sha256": "c89de3f93d56f5e20e5d20b3db7ef14883667241f15440ef788e63b691ccb668"
+    },
+    {
+      "file": "brand/icono-maskable-192.png",
+      "sha256": "1b0778a5035dc0b7e2ef1706230332245323e303a8c6c0ec5b16a8047f95bca7"
+    },
+    {
+      "file": "brand/icono-maskable-512.png",
+      "sha256": "ff460a239e24a9c167ed801fa1e5d3b56a88948dd9c0d604f2de468bdb4be501"
+    },
+    {
+      "file": "brand/modo-app-claro.svg",
+      "sha256": "dca71146d8e0694eef155a11bf1929105ecce7c2127bffa9e108768cf54eb03f"
+    },
+    {
+      "file": "brand/modo-app-oscuro.svg",
+      "sha256": "628fccaea2a49fb7c57e68c1a93b918708caa6638866f75f2ac476a4693135e6"
+    },
+    {
+      "file": "brand/modo-app-verde.svg",
+      "sha256": "faa3bc0620d6e3a50f4a7b0deaecd51f0a8b5df67df92cff324cfa70a5a74df8"
+    },
+    {
+      "file": "brand/modo-logo-horizontal-blanco-mono.svg",
+      "sha256": "15ffc4fa1aa5371f6d8529887e52d4a89f4f226864a1cfaf0c2bb23d276bdbd7"
+    },
+    {
+      "file": "brand/modo-logo-horizontal-blanco.svg",
+      "sha256": "0cf27fafb46b6c57ae2aacbf9ccfe87e61467b9968716f3a36d33884583fdab6"
+    },
+    {
+      "file": "brand/modo-logo-horizontal-color.svg",
+      "sha256": "5f473a0b377874737d643627716574c01af25530f48e1d61b85122752883d96c"
+    },
+    {
+      "file": "brand/modo-logo-horizontal-negro.svg",
+      "sha256": "92c6604ac3cc06f4c18f007f3a9b0100392098a7adf3124725dcd17eb5f15191"
+    },
+    {
+      "file": "brand/modo-logo-vertical-blanco.svg",
+      "sha256": "0777c6cd042db9114964e5de75862eccd038fc3bca0bb3a1eb43d4af8cdb1012"
+    },
+    {
+      "file": "brand/modo-logo-vertical-color.svg",
+      "sha256": "a0ce8a028f8fedbd6c898744d71b4424947a0721241b4c8987523c4697f1b79a"
+    },
+    {
+      "file": "brand/modo-logotipo-blanco.svg",
+      "sha256": "f0d183c66f46984c410f57aa971880399d49ecc862acc4d8d022465e429f73cb"
+    },
+    {
+      "file": "brand/modo-logotipo-color.svg",
+      "sha256": "397a7e636d902415ab16553d98b643b4ee83d6bea84938796e0b3f09dfa03ba0"
+    },
+    {
+      "file": "brand/modo-logotipo-negro.svg",
+      "sha256": "b299ef95c7617c8d1eb63093ec26f56a0369e55cc379d37d9a5d4bf73448e1c2"
+    },
+    {
+      "file": "brand/modo-maskable-oscuro.svg",
+      "sha256": "a874fd9fb5c596be193f94014c4b11291ebd2a54bcd3e385c6fca63abd2603fa"
+    },
+    {
+      "file": "brand/modo-simbolo-blanco.svg",
+      "sha256": "79720bd905ef8035b2c46044cefe9ff17b6e6fc37e41afa1d1e37cd8a04e2d19"
+    },
+    {
+      "file": "brand/modo-simbolo-negro.svg",
+      "sha256": "dcba290b4e7a3af13b8589ad9f746c3b0db48fa7d1fb477bd2c380d9cc7e7552"
+    },
+    {
+      "file": "brand/modo-simbolo-verde.svg",
+      "sha256": "e85dd9189d8cd3a25f2baeedc1fbf64510c5e466986e2a5435f8fb41ee28b47c"
+    },
+    {
+      "file": "brand/og-modo.jpg",
+      "sha256": "acd5344b74c8895d2d6ea8df5574dd2712c23a9ba2c33444aa745a6b426a6efa"
+    },
+    {
+      "file": "comunidad/index.html",
+      "sha256": "34cb4b081b8cd9a3fffea5ea1135986d512585fd3e9d379c4d6f228268e1aecd"
+    },
+    {
+      "file": "diagrams/clase-1.jpg",
+      "sha256": "792be587a77683a8ec697a4ad1ce16f19f18dbde2e4a62980dffd671696b6df1"
+    },
+    {
+      "file": "diagrams/clase-2.jpg",
+      "sha256": "f7ff2c0a24348d815395f66f18bd61ecc6d70a6e24b7717e4a13fc80ddb9a802"
+    },
+    {
+      "file": "diagrams/clase-3.jpg",
+      "sha256": "afcf74a2480881007c6c60cddbaaacd4016417e6c3972ca713b7fdac56e6c478"
+    },
+    {
+      "file": "diagrams/clase-4-l293d-pines.webp",
+      "sha256": "8e5e26a35003180e2eea78286e15c1dfb268c0b7beb1019dfabf35d8574de52f"
+    },
+    {
+      "file": "diagrams/clase-4-practica-1-transistores.webp",
+      "sha256": "a8e50fb57a6ef3cca32d5e0d4cd4f5c2c1540d0e9259a5f24860729654d20dbf"
+    },
+    {
+      "file": "diagrams/clase-4-practica-2-l293d.webp",
+      "sha256": "a19cdc3b2253a86acf7ea149c497c53fd2b11cd8eb03cf84a46d7b62507157f5"
+    },
+    {
+      "file": "diagrams/leccion-estrella-manual.png",
+      "sha256": "e45bb76d9611eefb83281cdbdc2beb163653a856a50066e559328acfeef644ab"
+    },
+    {
+      "file": "diagrams/leccion-estrella-temporizador.png",
+      "sha256": "e45bb76d9611eefb83281cdbdc2beb163653a856a50066e559328acfeef644ab"
+    },
+    {
+      "file": "diagrams/leccion-inversion-giro.png",
+      "sha256": "728d4f3ae23183ef2c2b94d4d646dfc394a3bb8a2de5320f08b4fa640d9efe25"
+    },
+    {
+      "file": "diagrams/leccion-marcha-paro.png",
+      "sha256": "709d61b7021b0bf216dd5d8a8cdbb532628de5d6fe683ae38cf603dd0d095bc5"
+    },
+    {
+      "file": "diagrams/PERFECTO.cad",
+      "sha256": "c4dcaa7aebe40e500fb94529fc4dd9d47a279ef32689d73a2bb604a5c8b0a138"
+    },
+    {
+      "file": "estudio/assets/fusibles-v2.webp",
+      "sha256": "a34f2a8008c5ca0377cb904e9a13efef3a029e5502521433d582c66d4c0be8f9"
+    },
+    {
+      "file": "estudio/assets/lamina-04.png",
+      "sha256": "0e22c8624c1f1b2d3becde44082d31678aeb0bf6084b90f50f138d09a766a64a"
+    },
+    {
+      "file": "estudio/assets/lamina-06.png",
+      "sha256": "6e2636c69ebf76bedc1d20fe5d613e9a5db487977669c9279bb049c52b52a9ba"
+    },
+    {
+      "file": "estudio/assets/lamina-08.png",
+      "sha256": "6ff31afeec8a515bcff957507f310917d4b1ffbffb9c30e9d53b4d955977faca"
+    },
+    {
+      "file": "estudio/assets/lamina-10.png",
+      "sha256": "4de8c754e732a411b42be5602946cac7a2f6904a35acc931faeb4efaebdd1245"
+    },
+    {
+      "file": "estudio/assets/lamina-12.png",
+      "sha256": "14434c67a34ac7ff716414c40e090909815b9fe1bfb7bf636642ccea4d2fda9b"
+    },
+    {
+      "file": "estudio/assets/lamina-13.png",
+      "sha256": "ae79f6d4a5f3dbef1bde5079a3b47f14b6a31b543fe1ccb4448394df7d254941"
+    },
+    {
+      "file": "estudio/assets/lamina-14.png",
+      "sha256": "e08ef5a70d2c74ccd137bf74931c53c5caa99eaa81b7b18779db3118f98cd619"
+    },
+    {
+      "file": "estudio/assets/lamina-15.png",
+      "sha256": "9a91bcdf617704da5979bd0da83f720b8b1bbdb19db1b7edbf762e8c54606221"
+    },
+    {
+      "file": "estudio/assets/motor-v2.webp",
+      "sha256": "b710b0d940726f0ad02e1d1f59d7edcc33a3ca0f7546fc07fa2feddf8b19ae7c"
+    },
+    {
+      "file": "estudio/assets/spd-diferencial-v2.webp",
+      "sha256": "8ea43aae23e8e4f284b4001c2d5b119a881788693e01ffcc301e813958fbca75"
+    },
+    {
+      "file": "estudio/assets/termomagnetico-v2.webp",
+      "sha256": "6ff2973772f37421d1b0e2e82c249f7564558eac8dfe44ce042a51596a9f0ac0"
+    },
+    {
+      "file": "estudio/fotos/01_tablero_electrico.jpg",
+      "sha256": "e0a8b7f578cea6ba0428934bb96ad8e645c0882c5c5738c8d8114a1a67a1fe60"
+    },
+    {
+      "file": "estudio/fotos/02_motor_electrico.jpg",
+      "sha256": "2044272ec1b2494fb4a287f4e8b52d44cf06e8ea2883c34086f2de12f7aea8b2"
+    },
+    {
+      "file": "estudio/fotos/03_arco_electrico.jpg",
+      "sha256": "80e3259a08700129ecb089fc35af93c8b1c51460487179b9628cf0cf4b73284c"
+    },
+    {
+      "file": "estudio/fotos/04_interruptor_termomagnetico.jpg",
+      "sha256": "8f89edcdd85f0a49a19e329035d06a8d57984c43beb617f1733fc485dd8faefc"
+    },
+    {
+      "file": "estudio/fotos/05_fusibles.jpg",
+      "sha256": "92c31a44645978f81cdc498a0c3bc2a9576fc306c70a33a7a6bb15cdc94d6ce1"
+    },
+    {
+      "file": "estudio/fotos/06_spd_y_diferencial.jpg",
+      "sha256": "81c7a784be572a6b3caadfa7e31ccc5c1c00817b7c55e9f98357bb85f3ef5911"
+    },
+    {
+      "file": "estudio/fotos/07_motor_trifasico.jpg",
+      "sha256": "8323be8dbfd5207caa123e7ddbff61cf7bc2924a1ddbc59c15ffd25bd37e6801"
+    },
+    {
+      "file": "estudio/index.html",
+      "sha256": "29483b9eaf919f6458ae1014be00ded939371e9e03f979bfb349da462e562410"
+    },
+    {
+      "file": "estudio/profesor.pdf",
+      "sha256": "d5f8a6ef9bbf28d56b7c13dd7c823f236baf150b2dc86836c683a1e838092aba"
+    },
+    {
+      "file": "fonts/INTER-LICENSE.txt",
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    {
+      "file": "fonts/InterVariable.woff2",
+      "sha256": "7f21d2ce52f77e7b7bd8c297486a27b5c5f40b61167682d5cc6972ecf9c9317e"
+    },
+    {
+      "file": "fonts/SOURCE-SANS-LICENSE.md",
+      "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328"
+    },
+    {
+      "file": "fonts/SourceSans3-Bold.woff2",
+      "sha256": "0e8e87c8cfecd09c1a803ddc0f10654e89d84acbcfe740133170192c0c84f4e2"
+    },
+    {
+      "file": "fonts/SourceSans3-Regular.woff2",
+      "sha256": "37115d6bbe374cd2c8a9d44de4f78f7bc1d7ca6a14a45eb2b38cb2764363d4fc"
+    },
+    {
+      "file": "fonts/SourceSans3-Semibold.woff2",
+      "sha256": "6a5b865a912fdbb071005c9111c04d69914e746721afa36bb34a43cc6915172f"
+    },
+    {
+      "file": "icons/apple-touch-icon.png",
+      "sha256": "879f34b15fe5689e92aca3f0c5985d7e42ba51c9dd4b4d3175a78b1ee9653a03"
+    },
+    {
+      "file": "icons/icon-192.png",
+      "sha256": "2919bce0b01409628a4ba848e837ba21d326e9596b683771c4b3cd2115556406"
+    },
+    {
+      "file": "icons/icon-512.png",
+      "sha256": "285e439ef9b7bda476d857bbfde989ea055d7e1d8d077c34d1ccdc5b4abcfc8b"
+    },
+    {
+      "file": "icons/icon-maskable-512.png",
+      "sha256": "ff460a239e24a9c167ed801fa1e5d3b56a88948dd9c0d604f2de468bdb4be501"
+    },
+    {
+      "file": "icons/icon.svg",
+      "sha256": "628fccaea2a49fb7c57e68c1a93b918708caa6638866f75f2ac476a4693135e6"
+    },
+    {
+      "file": "images/modo/bornes-1024.webp",
+      "sha256": "39eedbf387b50e33b841a9b0372a7779f7fe93a77516e65fa8eda8241b2aa745"
+    },
+    {
+      "file": "images/modo/bornes-640.webp",
+      "sha256": "72f920ae72cd258dcf3eea497039f1b6d40e5d3b009aca83358722c32b87bf0c"
+    },
+    {
+      "file": "images/modo/bornes.webp",
+      "sha256": "888428b2ecdc95c50fb6f2ab9b20d1ad2505400334822e6cba1955fa22832304"
+    },
+    {
+      "file": "images/modo/laboratorio-1024.webp",
+      "sha256": "90283a25d652ba7d25b603695d84843f4813d4d1d71598e8ef77b7e482c9f4e3"
+    },
+    {
+      "file": "images/modo/laboratorio-640.webp",
+      "sha256": "fd2a17ae1fd4591a3e9a794d3f13980b0bdf09f4687c133d1232836189bbb2e8"
+    },
+    {
+      "file": "images/modo/laboratorio.webp",
+      "sha256": "36b10d45a62e06b620ca4b39b977aa41b37876929310de8c2a1571286b2a4952"
+    },
+    {
+      "file": "images/modo/protecciones-1024.webp",
+      "sha256": "4c8d85d3783365b49570f32c53cc80ea24d3e375377521b13c3a880985945a75"
+    },
+    {
+      "file": "images/modo/protecciones-640.webp",
+      "sha256": "7588fbd23690e4f74fb107c286e5ed02c5b442d4e735aba1a4ff587ce3ba0e0d"
+    },
+    {
+      "file": "images/modo/protecciones.webp",
+      "sha256": "be46a10e530c558edc328c60ee9f0b356f4b7f8ee21d7587b639afa880b96e5c"
+    },
+    {
+      "file": "index.html",
+      "sha256": "1fba176c05d20c3d02dc1d2fb37134c59f737cb5be763304a9916e00aebdc473"
+    },
+    {
+      "file": "laboratorio/index.html",
+      "sha256": "8627dafcfe7efc62d84f0966cc15e0b78d73ec326ceed03d10c65c29b13cb19d"
+    },
+    {
+      "file": "legal/index.html",
+      "sha256": "ef8455d77587657784a180609727a8d0fab2981f668ae139389b1c1f07af7387"
+    },
+    {
+      "file": "manifest.webmanifest",
+      "sha256": "9bb70c4f223c36e62e4af8c69812ba4681d91c44b9de7c40cc04fa9f3c0d8ebf"
+    },
+    {
+      "file": "materiales/actividad-1-u2.pdf",
+      "sha256": "2f66c9f2503865c2bdc04b0a34d0049e998a815d0d00db8c9a88ddf76ce0499b"
+    },
+    {
+      "file": "materiales/bornes-estrella.png",
+      "sha256": "03c75c0bb0fb7c390e987e50d5e0a61b570b6b987e52ec9822c77397a718886f"
+    },
+    {
+      "file": "materiales/bornes-triangulo.png",
+      "sha256": "6136e7081b5e836a463f952681213d2a445b9ba4f06eaf4b770eea99b3b69c8a"
+    },
+    {
+      "file": "materiales/circuito-fuerza.png",
+      "sha256": "61cd00af3532089459a248abec6896b6cbb54f846a96ce0699ce5bd79568f2a6"
+    },
+    {
+      "file": "materiales/circuito-mando.png",
+      "sha256": "07df6b465143fd0b67bd8777d6632c6c9cc1bddcec00137f5c0ce5b6b130b249"
+    },
+    {
+      "file": "materiales/prueba-partida-directa.png",
+      "sha256": "6b6af8b37cdfb65a28da512e330ce47b4dce0761288bd0aab96b9636d2ae8104"
+    },
+    {
+      "file": "panel-model.json",
+      "sha256": "41ee0aae303191030e60ea328d16509c501de63fe3da7018a98dd8ec5ce877ae"
+    },
+    {
+      "file": "photos-2026-10-15/foto-1.jpg",
+      "sha256": "1e923b6172cccaf045c238b6a7fc0dafc8dd7d924626c6cb722fdbac92bae4fc"
+    },
+    {
+      "file": "photos-2026-10-15/foto-2.jpg",
+      "sha256": "45ae29bdccea4d736a1b9a182c823c15f3fb861b39d58b351b81dc9d62b305e3"
+    },
+    {
+      "file": "photos-2026-10-15/foto-3.jpg",
+      "sha256": "6676844432aaa061705d7e4008d9358175e132ee0966b8683b8d12e28e7790b7"
+    },
+    {
+      "file": "photos-2026-10-15/foto-4.jpg",
+      "sha256": "10e34b70b6b81d3eed21e2ca9062acba9bbdb2dfe8202de348d59530ea7b1b72"
+    },
+    {
+      "file": "photos-2026-10-15/foto-5.jpg",
+      "sha256": "c1299a9282ea87ff63cb53c7c7d6697a5eb9c654c5456cbb46345d79092b0427"
+    },
+    {
+      "file": "photos-2026-10-15/foto-6.jpg",
+      "sha256": "84b6f0433931b899d6e3e20ada2ad7ef31912867fbdc34ca1183a1ee0063fde8"
+    },
+    {
+      "file": "references/botoneras.jpg",
+      "sha256": "be01c325aa43bbad3e0e1e09b37b374957fe7a5d3517c567000bb0aba71e9316"
+    },
+    {
+      "file": "references/contactor-termico.jpg",
+      "sha256": "a4ae7b06134f0b9737f759d2332a06bacec14c32ce3dd2fdd68411a0b24f8872"
+    },
+    {
+      "file": "references/contactor-trifasico.jpg",
+      "sha256": "d84ec768f7eae81338d8917e099297ccf5a132c366bad31b01cce5fdb24a0597"
+    },
+    {
+      "file": "references/motor.jpg",
+      "sha256": "570721bdfbed447fa34acf3c8b80296085b7e97eeb2e93d846185b005a0cf864"
+    },
+    {
+      "file": "references/suministro.jpg",
+      "sha256": "56192022ed25b3b71426108c4b05ac121494e77cbe73f61caca690eeaf66eb8c"
+    },
+    {
+      "file": "references/temporizador-1.jpg",
+      "sha256": "f8e0b8f90e214f796fb9952a10c15d08977272c21e7a8c1c9a13c140720408d1"
+    },
+    {
+      "file": "references/temporizador-2.jpg",
+      "sha256": "f4ef9b04675b65e25a981508b28fe326917dd8bc202e2a631275ddf572ca487f"
+    },
+    {
+      "file": "robots.txt",
+      "sha256": "fa0e3c386a8fcbad038dde7d5faf7286c62340cbd20bca9cc863e67dd3b8472b"
+    },
+    {
+      "file": "sw.js",
+      "sha256": "23cff4e4c2dab0d91567bb8f789caf927a515d8f37219106612988c7e1244546"
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "14f32132a4e83455bb133f8220a503f89250655c56ce5c2889f550f7b238a295"
+    },
+    {
+      "file": "tutoriales/laboratorio-1.webp",
+      "sha256": "777a6bdc571219ec35d8456ab9d398c29cded133969b667346c9007753373a3b"
+    },
+    {
+      "file": "tutoriales/laboratorio-2.webp",
+      "sha256": "63da23e2d41684c8cb9958b017483d694aaa0a13eb10f9d4eaf77409a36d83b3"
+    },
+    {
+      "file": "tutoriales/modo-v3-laboratorio-1.mp4",
+      "sha256": "2c88e50825f4a7176c4ce3bbf6ee2020267b4512a96b983f48ffe73e1f799a55"
+    },
+    {
+      "file": "tutoriales/modo-v3-laboratorio-2.mp4",
+      "sha256": "dd4af28c22e0b37300924cd35d0564a6c35104a2f422c7e1c9595b1cec92ac6c"
+    },
+    {
+      "file": "tutoriales/modo-v3-practica-1.mp4",
+      "sha256": "b4ee28769d27ab0aeb02e423dfb448a4a935e34c4c0d051823d084af2a7f9b72"
+    },
+    {
+      "file": "tutoriales/modo-v3-practica-2.mp4",
+      "sha256": "699838e98fdac62c14465a7590c33d84a1188e9d7b3d059a23b0adb98a02e2a8"
+    },
+    {
+      "file": "tutoriales/practica-1.webp",
+      "sha256": "d0665d6b13893073d87edaf54d3391f6e39392e81bde0a5a0c168607604fbde1"
+    },
+    {
+      "file": "tutoriales/practica-2.webp",
+      "sha256": "434eb3c400cee08c6a25a3c989d70ec599c20e980807c6f6b27bb43639935b48"
+    },
+    {
+      "file": "_astro/App.C9FFfuXJ.js",
+      "sha256": "5d77baef82faef2af4b531ec1cdc9883c4723820001e5c7791516fe4b1a63625"
+    },
+    {
+      "file": "_astro/Board.C3D9F_bW.js",
+      "sha256": "557cf72df12e889bd0da0d16256c1692f0691909047ab7447385a78bb93690a6"
+    },
+    {
+      "file": "_astro/boardViewport.D40Hcg0P.js",
+      "sha256": "f841522a680de0e3376b76cd750a111ca8d35a2dcbabc3ba01a4775e99d8d20e"
+    },
+    {
+      "file": "_astro/BreadboardView.QXVRQ7sN.js",
+      "sha256": "eabd4e6498d15dae7e6fc9c48f4a50512f764399bfb121d82a03c667e3f39817"
+    },
+    {
+      "file": "_astro/cable.Cn4FPeUA.js",
+      "sha256": "2ca5455411ac55570b171420dc59bb32103864614e1164a6bdd8d3cc7ee95ed0"
+    },
+    {
+      "file": "_astro/CadeSheet.DW44u-IA.js",
+      "sha256": "f4c6fab25eb4d6e6d95e6becef385df966cb664c2ec05e34e4683d7592e850a5"
+    },
+    {
+      "file": "_astro/CanvasControls.rsjVkrEw.js",
+      "sha256": "214844597ab84f06d73090734aab7e22323a735bd48d34dee6d50f4efb83b443"
+    },
+    {
+      "file": "_astro/chevron-right.-0ompgoQ.js",
+      "sha256": "6dabbc02c77c8244d3f0b8049fd17c636c665b45c8dfff39f07dd3e679e1ce73"
+    },
+    {
+      "file": "_astro/client.B5Qcf2iV.js",
+      "sha256": "69f6d82ee2a7d30e999600b3a7104d5c1cd8676b535f31c932c03030f10be8ee"
+    },
+    {
+      "file": "_astro/clipboard-list.Pqoviq1W.js",
+      "sha256": "55d78e05afb300ec2331020dfbdc9edde805b07ef46c20f11c246b519aeee344"
+    },
+    {
+      "file": "_astro/comunidad.0iXbGTJP.css",
+      "sha256": "4732be148458321cd99b5bef897fa5ffa3d0cb9ba5b63007396a287154eaeba3"
+    },
+    {
+      "file": "_astro/createLucideIcon.DbTJGzay.js",
+      "sha256": "30a1ebc235f2b6c766171c225f86023b31a0809e97cc96c7377bf8f08559a1bb"
+    },
+    {
+      "file": "_astro/dc.C0XN4JWl.js",
+      "sha256": "6f49b0a6a063f7303840b04a161b8be2b04d1d9509419c25ce13e1422b22371b"
+    },
+    {
+      "file": "_astro/DeviceIcons.BIqlmyZy.js",
+      "sha256": "bc5509cbd2c88288654925118ff39c422927e76e5a3496fbfc5092c7c063ee79"
+    },
+    {
+      "file": "_astro/DiagramPane.BtVsFGPC.js",
+      "sha256": "806bc0b6ca9668fe93727d54e92d1ede870b7cbf4c64c4cc9e646cc11b12edfb"
+    },
+    {
+      "file": "_astro/DiagramPane.CSJZoZi1.css",
+      "sha256": "4cbdb2143db4ec7f63b002059c0d712fa7a1437f9c471ec24603784c92463db0"
+    },
+    {
+      "file": "_astro/droplets.D_saf05m.js",
+      "sha256": "6fcbd90c9493fd9f29658890e9d0654f7cc0aa000ad6fab22d0ea34482d92ac5"
+    },
+    {
+      "file": "_astro/estudio.BS7_iznJ.css",
+      "sha256": "0ab3acabbb629f1ff8d4c6f0a77de58e49b3a88e3765a1fbdc604c3ff607e1ae"
+    },
+    {
+      "file": "_astro/global.CBhE7ljh.css",
+      "sha256": "dd6049f2c5f4e1d588d082b2f3964ae49e5bc3ce63dde35a54f1d695e4c8d4da"
+    },
+    {
+      "file": "_astro/grading.CH53i8T4.js",
+      "sha256": "68ac66b36f77b239de10f5af6db64c5e62e4a11bd5e596dbf20fba08de087e32"
+    },
+    {
+      "file": "_astro/hand.BDUGfDWZ.js",
+      "sha256": "f6b3a3f4bf4942fc876ca8c5937fc8f94d642718dc749969009f2690c39e152a"
+    },
+    {
+      "file": "_astro/HMIView.C6ZReIqG.js",
+      "sha256": "e18953c1fe8125d076b173621d295c3f8b7698b8f3a3b43114c178de43e9d554"
+    },
+    {
+      "file": "_astro/index.B3H5taBC.css",
+      "sha256": "ab15b081d893a2456eb604d9d3a08a112929bb9ad8bf59e37391e77d5527696a"
+    },
+    {
+      "file": "_astro/laboratorio.DdXyyBJF.css",
+      "sha256": "2f442afd27aabfd8c627b7ff2b5fe5913c0ecd12d766a675cd11453aa7e84e3b"
+    },
+    {
+      "file": "_astro/LaboratoryApp.a2EpaJzb.js",
+      "sha256": "9aafb0afe1bee3d2d6442bed22b7269ec933001c638d848b4b2d51e0f7bef12d"
+    },
+    {
+      "file": "_astro/layers.Dn1RhqcT.js",
+      "sha256": "82e7475c28dcc4a880dcfd94180a0b96f85b4e0ee66c9e54107b6b66476db199"
+    },
+    {
+      "file": "_astro/LessonAssessment.BS-NQ2Cf.js",
+      "sha256": "541a018259073c1aeafdd3abff9c220f8be8495cbbf7aa3046c32a6503b61b8c"
+    },
+    {
+      "file": "_astro/lessonAssessment.Cg-5Kt-o.css",
+      "sha256": "c85de088551d83fca0b89837d151bd638cfb04ebae629636f709dcc1b6f7957a"
+    },
+    {
+      "file": "_astro/lessonAssessment.Dv7mrwjM.js",
+      "sha256": "6d8a392495fce9d8a1dd7b45bf44f2a8c6c04d40aaa3b8164b065b0646639406"
+    },
+    {
+      "file": "_astro/lessons.7I6TmsT5.js",
+      "sha256": "b233673887ff2df9a6be2cf7480325f8bd2a11b2844288e22692553a1ee43484"
+    },
+    {
+      "file": "_astro/lessonSchematics.C6pI4rnr.js",
+      "sha256": "f807eb8f76c5cba3d343d9b57b42e29e480c659a92041c946c0bfcfd91d6ee6c"
+    },
+    {
+      "file": "_astro/list-checks.juSZXipN.js",
+      "sha256": "c104c6d580dee493e5dd91f9fc7f714542a0e79d44f898852a30661033593a77"
+    },
+    {
+      "file": "_astro/maximize-2.ebHzuGIE.js",
+      "sha256": "946a27826788031efc7c1b48c61376fe9ab7be14b74d43c99a6a7aa75c23cb15"
+    },
+    {
+      "file": "_astro/minimize-2.DICFo0ln.js",
+      "sha256": "1a2fa75d9776714ee73edc34496177cc26721de1a57cf4b8a5c32811d7671b0a"
+    },
+    {
+      "file": "_astro/minus.CicTAaB0.js",
+      "sha256": "c902847288801a51699a615d234456bc83092bad250ddd74383a258de8ec1dd8"
+    },
+    {
+      "file": "_astro/model.DoicTR2N.js",
+      "sha256": "439be47a9d245f1188ba14036366035166c1ba36c677470bc98d476050bae35d"
+    },
+    {
+      "file": "_astro/modo-brand.DHDZTQN6.css",
+      "sha256": "ac898080804657a24958e6a3292900e90da8b55268d5f5baed58f69982ac4483"
+    },
+    {
+      "file": "_astro/MotionHead.astro_astro_type_script_index_0_lang.LAQjBJfz.js",
+      "sha256": "fbe20ce75d395569fe35a04699347b311d178ba9ad05132b31a01b08b5cff759"
+    },
+    {
+      "file": "_astro/mouse-pointer-2.BQN-zBr6.js",
+      "sha256": "9e3ba2987cbb54fd18b12f77aca49e59f4dc931a7d1d4457575cd07294cd6329"
+    },
+    {
+      "file": "_astro/PanStage.DCbRt1JI.js",
+      "sha256": "28e85e70cbca2880764b8fe8e477592938320ee6856d8a65e9d9466b682ac38e"
+    },
+    {
+      "file": "_astro/PLCView.etQxsdEG.js",
+      "sha256": "2c4df977e6959ac713b9466d073936682321b71f4a4e9feef818e1b2ff31d654"
+    },
+    {
+      "file": "_astro/preload-helper.BFB2Nm36.css",
+      "sha256": "a861150dcee37b3a6613f8ba62aaa143940b28fb144a88f98dbfbd828705da32"
+    },
+    {
+      "file": "_astro/preload-helper.D4LHUhZY.js",
+      "sha256": "09aa08713f4205d0a89f114e7e1396ad4b054043f342b679249e80d778dc2265"
+    },
+    {
+      "file": "_astro/ProcedureTools.DlYhqDKt.js",
+      "sha256": "3aa4c3f95598aa7892968f5341de929483129ac610cb3ee4a4404aff4bdeaff8"
+    },
+    {
+      "file": "_astro/ProcessView.D857fBbl.js",
+      "sha256": "24f1a45d1bd12a0bde13e2a255d36eaf7135117ab5f9f822d51cb7c704db03d4"
+    },
+    {
+      "file": "_astro/react-dom.C9q5-S8s.js",
+      "sha256": "40f8497c17e8d0fa19c6a9fdd972ea6357145150f86edca8e9d3e936ef482c8a"
+    },
+    {
+      "file": "_astro/route.CqP94DZD.js",
+      "sha256": "e61d1440fe268e5cbc4b832939b9697235142047b69979463e6ddd3c2848b4f8"
+    },
+    {
+      "file": "_astro/SchematicView.C2hduWLM.js",
+      "sha256": "d6f335d0e046c046ca6016e9fb6cf64a45ebdd00265a7314a2fa3a0e3248d94c"
+    },
+    {
+      "file": "_astro/search.DY9wYUr0.js",
+      "sha256": "7d3730e69401f1694026c1e89da71e6e47669f176c52d8457738b05a57956c7b"
+    },
+    {
+      "file": "_astro/SimulatorInspector.CI4_QboW.js",
+      "sha256": "49a5fa573e35491f9dffd6dc82e4072cfd1552e099c76e213a2bd5150e4752d4"
+    },
+    {
+      "file": "_astro/sliders-horizontal.D1tbOt3Q.js",
+      "sha256": "f941ca6f556dc6a576c19f55c13e12288930dafeaed6d494b5a00926454f00db"
+    },
+    {
+      "file": "_astro/StudyApp.BsAIX36A.js",
+      "sha256": "01247e66bc51fc5aed6470ca4fd34a27ca9ab1541d8ce0b90906bb621afcbbd7"
+    },
+    {
+      "file": "_astro/StudyGuide.BhFyISSA.js",
+      "sha256": "7b5639f54f97956bd63089c84fa3097fbc6e9506a1a594878b04f2c909a55d21"
+    },
+    {
+      "file": "_astro/surface.dEOTHXW_.js",
+      "sha256": "adc0dadee987e42307b29426b046035dccd98b5cbc42a519f838ebf32fd37b35"
+    },
+    {
+      "file": "_astro/SurfaceDock.BZeeUf04.js",
+      "sha256": "1b062e4cbd4ce0c480c22764fb4493b1d9e3c85a818c388523c953e60b261318"
+    },
+    {
+      "file": "_astro/touch-portrait.DyEbLkm5.css",
+      "sha256": "858b74fa18d710a7e864175e188da904ece1337fe13f3f3a841277ae2540d7fa"
+    },
+    {
+      "file": "_astro/trash-2.NyM9brMO.js",
+      "sha256": "899fd6cf45d8478878e795584163f60f96b67e666384a5660d1fc576476370ef"
+    },
+    {
+      "file": "_astro/useCompactLayout.DDXxcfRq.css",
+      "sha256": "16b195252f450413c7f79e9dfc008bf9c25cd70697d7e2a835a3769a1786335f"
+    },
+    {
+      "file": "_astro/useCompactLayout.Kt4FjIVW.js",
+      "sha256": "7a6943c6eee3ba4d2b8febff1a81271dac30cd0ee52e72f106604e6b67a299b0"
+    },
+    {
+      "file": "_astro/useSvgNavigation.9KYJkwCV.js",
+      "sha256": "91401b36ad5d14ba613aaf22bf039af88688f5b67d254175d28010bbd4872b9a"
+    },
+    {
+      "file": "_astro/wiring.CxTMdTE5.js",
+      "sha256": "890a409be69b4adc218631d739899e30751e25ed1ba03c43726c98d9b8b9f0f2"
+    },
+    {
+      "file": "_astro/workspaceLayout.CeqAAUEC.js",
+      "sha256": "36c8cc272f6c71db9b0c6ffa761e272f7490531ca98f83ff6c0b90dee235eb08"
+    }
+  ]
+}

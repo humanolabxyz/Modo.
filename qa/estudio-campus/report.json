@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "Contenido, modelos, simulador y páginas ajenas a Estudio conservan sus hashes",
+    "Catálogo de 48 ramos, filtros, acentos, búsquedas por tema y estados sin material",
+    "Lección visual, revelado, clasificación, corrección, guardado y navegación Atrás/Adelante",
+    "Ocho experimentos y retos: respuestas faltantes, incorrectas y correctas; avance registrado",
+    "Accesos a práctica, cálculos, evaluación y progreso conservados",
+    "Escritorio y móvil emulado: 320/390/768/1440 px, sin desbordes y menú accesible",
+    "Sin errores de JavaScript ni recursos fallidos",
+    "Apertura y navegación con animaciones normales, además de movimiento reducido"
+  ],
+  "errors": [],
+  "captures": [
+    "after-desktop",
+    "topics-desktop",
+    "lesson-desktop",
+    "catalog-320",
+    "learning-320",
+    "catalog-390",
+    "learning-390",
+    "catalog-768",
+    "learning-768",
+    "catalog-1440",
+    "learning-1440"
+  ]
+}

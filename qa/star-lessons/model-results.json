@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "estrellaManual: 46 cables exactos, diagrama original intacto, enseñanza, evaluación y JSON/historial",
+    "estrellaManual: el modelo arranca en estrella, retiene, cambia a triángulo y para con los papeles indicados",
+    "estrellaTimer: 42 cables exactos, diagrama original intacto, enseñanza, evaluación y JSON/historial",
+    "estrellaTimer: el modelo arranca en estrella, retiene, cambia a triángulo y para con los papeles indicados"
+  ]
+}

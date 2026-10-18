@@ -1,0 +1,137 @@
+{
+  "cases": [
+    {
+      "id": "COORD-01",
+      "topic": "coordinacion",
+      "slides": [
+        6
+      ],
+      "given": {
+        "In_A": 18,
+        "Ip_A": 20,
+        "Iz_A": 25
+      },
+      "formula": "In ≤ Ip ≤ Iz",
+      "expected": {
+        "basic_coordination": true
+      },
+      "missing": [
+        "Icc",
+        "poder de corte",
+        "desconexión",
+        "energía pasante"
+      ],
+      "explanation": "18≤20≤25; otros criterios pendientes."
+    },
+    {
+      "id": "COORD-02",
+      "topic": "coordinacion",
+      "slides": [
+        6
+      ],
+      "given": {
+        "In_A": 18,
+        "Ip_A": 32,
+        "Iz_A": 25
+      },
+      "formula": "In ≤ Ip ≤ Iz",
+      "expected": {
+        "basic_coordination": false,
+        "reason": "Ip supera Iz"
+      },
+      "explanation": "32 A > 25 A, riesgo de dejar el cable sin protección adecuada ante sobrecorrientes."
+    },
+    {
+      "id": "COORD-03",
+      "topic": "coordinacion",
+      "slides": [
+        6
+      ],
+      "given": {
+        "In_A": 22,
+        "Ip_A": 20,
+        "Iz_A": 25
+      },
+      "formula": "In ≤ Ip ≤ Iz",
+      "expected": {
+        "basic_coordination": false,
+        "reason": "Ip inferior a In"
+      },
+      "explanation": "La protección tiene corriente nominal inferior a la corriente de carga."
+    },
+    {
+      "id": "CABLE-01",
+      "topic": "conductores",
+      "slides": [
+        12
+      ],
+      "given": {
+        "Itabla_A": 30,
+        "fT": 0.9,
+        "fG": 0.8
+      },
+      "formula": "Iz=Itabla·fT·fG",
+      "expected": {
+        "Iz_A": 21.6
+      },
+      "explanation": "Se aplica la corrección por temperatura y agrupamiento."
+    },
+    {
+      "id": "CABLE-02",
+      "topic": "conductores",
+      "slides": [
+        12
+      ],
+      "given": {
+        "Itabla_A": 40,
+        "fT": 0.85,
+        "fG": 0.75
+      },
+      "formula": "Iz=Itabla·fT·fG",
+      "expected": {
+        "Iz_A": 25.5
+      },
+      "origin": "Supuesto didáctico adicional",
+      "explanation": "40×0,85×0,75=25,5 A; quedan otras verificaciones."
+    },
+    {
+      "id": "MOTOR-01",
+      "topic": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "given": {
+        "Pout_kW": 5.5,
+        "VLL_V": 400,
+        "eta": 0.88,
+        "cosphi": 0.83
+      },
+      "formula": "I=Pout/(sqrt(3)·VLL·eta·cosphi)",
+      "expected": {
+        "In_A_rounded_2dec": 10.87
+      },
+      "origin": "Supuesto didáctico adicional; datos no provienen de la diapositiva 15",
+      "explanation": "Usar 5500 W, 400 V, 0,88 y 0,83. Comparar con placa del motor real, no inferir protección final sin demás datos."
+    },
+    {
+      "id": "MOTOR-02",
+      "topic": "motor-trifasico",
+      "slides": [
+        15
+      ],
+      "given": {
+        "Pout_kW": 2.2,
+        "VLL_V": 380,
+        "eta": 0.85,
+        "cosphi": 0.8
+      },
+      "formula": "I=Pout/(sqrt(3)·VLL·eta·cosphi)",
+      "expected": {
+        "In_A_rounded_2dec": 4.92
+      },
+      "origin": "Supuesto didáctico adicional",
+      "explanation": "Potencia mecánica de salida 2200 W; faltan placa, condiciones de instalación y corto previsto."
+    }
+  ],
+  "safety": "Cálculos solo educativos; no usar para especificar protecciones de instalaciones energizadas sin evaluación profesional."
+}
