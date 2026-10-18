@@ -7,18 +7,14 @@
     "Recarga sin perder el montaje",
     "Pulsación real mantiene la bobina por retención",
     "Parada enclavada operable desde teclado",
+    "Importación aditiva conserva el montaje y separa las asociaciones de contactores",
     "Botón del frontal del variador y motor cableado en estrella",
     "Solar móvil: carga de batería y ausencia de desbordamiento",
-    "Selector de borne accesible para cablear en móvil"
+    "Selector de borne accesible para cablear en móvil",
+    "Dibujos completos: mando",
+    "Dibujos completos: automatizacion",
+    "Dibujos completos: energia",
+    "Sin errores de navegador"
   ],
-  "errors": [],
-  "geometry": [
-    {
-      "class": "lab-stagebar",
-      "box": "{\"x\":14,\"y\":132,\"width\":520.125,\"height\":41.390625,\"top\":132,\"right\":534.125,\"bottom\":173.390625,\"left\":14}",
-      "top": "132px",
-      "bar": ""
-    }
-  ],
-  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 22\n\n    at file:///C:/Users/HUMANO%20LAB/Desktop/proyectos2026/paneldecontrol/PanelLab-INACAP/qa/verify-equipment-ui.mjs:48:299\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:472:9)"
+  "errors": []
 }

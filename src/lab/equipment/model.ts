@@ -109,6 +109,20 @@ export function parseBoard(raw:unknown):Board{
  const pairs=wires.map(w=>[key(w.from),key(w.to)].sort().join('|'));if(new Set(wires.map(w=>w.id)).size!==wires.length||new Set(pairs).size!==pairs.length||wires.some(w=>key(w.from)===key(w.to)))throw new Error('Cables de equipo duplicados.');
  return {version:1,parts,wires};
 }
+export function appendBoard(current:Board,incoming:Board):Board{
+ const next=parseBoard(incoming);
+ if(current.parts.length+next.parts.length>80||current.wires.length+next.wires.length>400)throw new Error('El montaje combinado supera la capacidad.');
+ const offset=current.parts.length&&next.parts.length?Math.max(...current.parts.map(p=>p.y+dimensions(p.kind).h))+90-Math.min(...next.parts.map(p=>p.y)):0;
+ if(next.parts.some(p=>p.y+offset>1400))throw new Error('El montaje no cabe debajo de las piezas actuales. Ábrelo en un proyecto vacío.');
+ const used=new Set(current.parts.map(p=>p.tag)),tags=new Map<string,string>(),ids=new Map(next.parts.map(p=>[p.id,crypto.randomUUID()]));
+ const parts=next.parts.map(p=>{
+  let tag=tags.get(p.tag);
+  if(tag===undefined){tag=p.tag;let n=1;while(used.has(tag)){const suffix='_'+n++;tag=p.tag.slice(0,32-suffix.length)+suffix;}used.add(tag);tags.set(p.tag,tag);}
+  return {...p,id:ids.get(p.id)!,tag,y:p.y+offset};
+ });
+ const wires=next.wires.map(w=>({...w,id:crypto.randomUUID(),from:{...w.from,part:ids.get(w.from.part)!},to:{...w.to,part:ids.get(w.to.part)!}}));
+ return parseBoard({version:1,parts:[...current.parts,...parts],wires:[...current.wires,...wires]});
+}
 export function exampleBoard(kind:'control'|'drive'|'solar'):Board{
  const board=emptyBoard();const add=(type:Kind,x:number,y:number)=>{const p=makePart(type,board.parts,x,y);board.parts.push(p);return p;};
  const wire=(a:Part,pa:string,b:Part,pb:string)=>board.wires.push({id:crypto.randomUUID(),from:{part:a.id,port:pa},to:{part:b.id,port:pb}});

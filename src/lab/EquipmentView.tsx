@@ -6,7 +6,7 @@ import {FloatingDock,type DockItem} from './CanvasControls';
 import {InspectorSheet} from './InspectorSheet';
 import {historyDock} from './SurfaceDock';
 import {EquipmentBody,EquipmentDefs} from './equipment/Art';
-import {CATALOG,definition,dimensions,emptyBoard,exampleBoard,key,maintained,makePart,momentary,parseBoard,ports,type Board,type End,type Family,type Kind,type Part,type Params} from './equipment/model';
+import {CATALOG,appendBoard,definition,dimensions,emptyBoard,exampleBoard,key,maintained,makePart,momentary,parseBoard,ports,type Board,type End,type Family,type Kind,type Part,type Params} from './equipment/model';
 import '../styles/equipment.css';
 
 const EMPTY=emptyBoard(),WORLD={w:2400,h:1650};
@@ -37,15 +37,10 @@ export function EquipmentView({lab}:{lab:Laboratory}){
     const mid=(sa.x+sb.x)/2+lane*7;return `M${a.x} ${a.y}L${sa.x} ${sa.y}H${mid}V${sb.y}H${sb.x}L${b.x} ${b.y}`;};
  const operate=(p:Part)=>{if(!running)return;if(maintained(p.kind))lab.setControl(p.id,!(lab.controls[p.id]??p.closed));else if(momentary(p.kind))lab.actuate(p.id,true);};
  const select=(p:Part)=>{setSelected(p.id);setSelectedWire(null);setSelectedPort(ports(p.kind)[0]?.id??'');};
- const example=(name:'control'|'drive'|'solar')=>{const next=exampleBoard(name);if(board.parts.length+next.parts.length>80){setNotice('No hay espacio para añadir este ejemplo. Crea otro proyecto.');return;}
-  // Add to the current project instead of silently replacing the student's work.
-  const offset=board.parts.length?Math.min(700,Math.max(...board.parts.map(p=>p.y+dimensions(p.kind).h))+90):0;
-  if(next.parts.some(p=>p.y+offset>1400)){setNotice('El ejemplo no cabe debajo del montaje. Crea un proyecto vacío para abrirlo.');return;}
-  const used=new Set(board.parts.map(p=>p.tag)),renames=new Map<string,string>();for(const p of next.parts){if(renames.has(p.tag)){p.tag=renames.get(p.tag)!;continue;}const old=p.tag;let n=1;while(used.has(p.tag))p.tag=old+'_'+n++;used.add(p.tag);renames.set(old,p.tag);p.y+=offset;}
-  update(b=>({...b,parts:[...b.parts,...next.parts],wires:[...b.wires,...next.wires]}));setNotice('Ejemplo añadido al proyecto. Tu montaje anterior se conserva.');setTimeout(()=>stage.current?.fit(),100);
- };
+ const append=(next:Board)=>{const combined=appendBoard(board,next);update(()=>combined);setTimeout(()=>stage.current?.fit(),100);};
+ const example=(name:'control'|'drive'|'solar')=>{try{append(exampleBoard(name));setNotice('Ejemplo añadido al proyecto. Tu montaje anterior se conserva.');}catch(error){setNotice(error instanceof Error?error.message:'No se pudo añadir el ejemplo.');}};
  const exportBoard=()=>{const blob=new Blob([JSON.stringify({format:'modo-equipment',board},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='montaje-equipos.modo.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
- const importBoard=async(file:File)=>{if(running)return;try{if(file.size>2*1024*1024)throw new Error('El montaje supera 2 MB.');const value=JSON.parse(await file.text());if(value.format!=='modo-equipment')throw new Error('Abre un archivo de montaje de equipos modo.');const next=parseBoard(value.board);if(board.parts.length+next.parts.length>80||board.wires.length+next.wires.length>400)throw new Error('El montaje combinado supera la capacidad.');const ids=new Map(next.parts.map(p=>[p.id,crypto.randomUUID()]));update(b=>({...b,parts:[...b.parts,...next.parts.map(p=>({...p,id:ids.get(p.id)!}))],wires:[...b.wires,...next.wires.map(w=>({...w,id:crypto.randomUUID(),from:{...w.from,part:ids.get(w.from.part)!},to:{...w.to,part:ids.get(w.to.part)!}}))]}));setNotice('Montaje importado como piezas nuevas. Puedes deshacer.');}catch(error){setNotice(error instanceof Error?error.message:'No se pudo importar.');}};
+ const importBoard=async(file:File)=>{if(running)return;try{if(file.size>2*1024*1024)throw new Error('El montaje supera 2 MB.');const value=JSON.parse(await file.text());if(value.format!=='modo-equipment')throw new Error('Abre un archivo de montaje de equipos modo.');append(parseBoard(value.board));setNotice('Montaje importado como piezas nuevas. Puedes deshacer.');}catch(error){setNotice(error instanceof Error?error.message:'No se pudo importar.');}};
  const dock:DockItem[]=[{id:'select',label:'Seleccionar y mover equipos',icon:<MousePointer2 size={20}/>,pressed:!pending,onClick:()=>setPending(null)},'separator',...FAMILIES.map(f=>({id:f.id,label:f.name,icon:f.id==='mando'?<Shapes size={20}/>:f.id==='automatizacion'?<CircuitBoard size={20}/>:<Layers3 size={20}/>,disabled:running,menu:CATALOG.filter(d=>d.family===f.id).map(d=>({id:d.kind,label:d.name,note:d.detail,icon:<svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><rect x="7" y="5" width="26" height="30" rx="4" fill={f.id==='energia'?'#809b79':f.id==='automatizacion'?'#638e9b':'#7b8b90'}/><path d="M11 2v8m9-8v8m9-8v8M11 31v8m9-8v8m9-8v8" stroke="#b7cbd0" strokeWidth="3"/><text x="20" y="25" fontSize="11" fill="white" textAnchor="middle">{d.prefix}</text></svg>,onClick:()=>{setFamily(f.id);add(d.kind)}}))})),
   {id:'view',label:'Vista simbólica de equipos',icon:<Layers3 size={20}/>,pressed:symbolic,onClick:()=>setSymbolic(s=>!s)},
   {id:'remove',label:'Retirar equipo o cable seleccionado',icon:<Trash2 size={20}/>,disabled:running||(!selected&&!selectedWire),onClick:remove},'separator',...historyDock(lab),

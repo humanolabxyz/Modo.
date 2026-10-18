@@ -13,6 +13,10 @@
       "passed": true
     },
     {
+      "name": "Appending a montage remaps identities and tags together, preserves geometry and isolates contactors",
+      "passed": true
+    },
+    {
       "name": "Circuit retains after release and emergency stays latched until explicit rearm",
       "passed": true
     },
@@ -65,6 +69,6 @@
       "passed": true
     }
   ],
-  "passed": 16,
-  "total": 16
+  "passed": 17,
+  "total": 17
 }
