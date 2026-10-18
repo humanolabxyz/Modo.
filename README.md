@@ -1,5 +1,9 @@
 # PanelLab INACAP v2
 
+> Pendientes de la investigación: [traspaso a Claude](CONTINUAR_ELECTRODESK_CON_CLAUDE.md), con estado por oportunidad y variantes de componentes.
+
+> Ampliación local: [Equipos eléctricos adaptados](EQUIPOS_ELECTRICOS_ADAPTADOS.md), con 41 tipos de mando, automatización y energía, ejemplos e integración con el PLC del proyecto.
+
 > Interfaz vigente: [lienzo a pantalla completa y movimiento](LIENZO_Y_MOVIMIENTO.md). Herramientas y fichas flotantes, rueda, zoom al cursor, Espacio + arrastrar y pinza táctil.
 
 > Actualización vigente: [barra de herramientas y lector de PERFECTO / CADe SIMU](HERRAMIENTAS_Y_CADE.md). Para abrir tu esquema: **Leer diagrama → PERFECTO · CADe**.

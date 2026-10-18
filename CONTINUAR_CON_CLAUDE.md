@@ -1,5 +1,7 @@
 # Continuación con Claude: laboratorio con el estilo de pizarrón del panel
 
+> Traspaso posterior de Electrodesk: ver [CONTINUAR_ELECTRODESK_CON_CLAUDE.md](CONTINUAR_ELECTRODESK_CON_CLAUDE.md). Incluye la matriz pendiente, variantes visuales y el avance PLC separado del producto.
+
 Preparado el 15 de octubre de 2026. Este documento especifica la próxima mejora; no afirma que ya esté implementada.
 
 ## Pedido del usuario

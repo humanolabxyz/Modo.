@@ -7,7 +7,7 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import ts from 'typescript';
 const require=createRequire(import.meta.url),{chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),temp=await fs.mkdtemp(path.join(os.tmpdir(),'modo-eq-ui-')),out=path.join(root,'qa/equipment');await fs.mkdir(out,{recursive:true});
-const base=(process.env.PANELLAB_URL||'http://127.0.0.1:4341/').replace(/\/?$/,'/'),report={checks:[],errors:[]};
+const base=(process.env.PANELLAB_URL||'http://127.0.0.1:4341/').replace(/\/?$/,'/'),report={base,generatedAt:new Date().toISOString(),checks:[],errors:[]};
 const pass=name=>{report.checks.push(name);console.log('PASS '+name);};
 let browser,lastPage;
 try{

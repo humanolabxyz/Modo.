@@ -14,15 +14,38 @@ function Screw({x,y}:{x:number;y:number}){return <g>{<circle cx={x} cy={y} r="6.
 function Text({x,y,children,size=9,color='#566a73',anchor='middle'}:{x:number;y:number;children:ReactNode;size?:number;color?:string;anchor?:'middle'|'start'|'end'}){return <text x={x} y={y} textAnchor={anchor} style={{fill:color,stroke:'none',fontFamily:'LabSource, sans-serif',fontSize:size,fontWeight:600}}>{children}</text>;}
 function Display({x,y,w,h,main,unit,on}:{x:number;y:number;w:number;h:number;main:string;unit:string;on:boolean}){return <g>{rect(x-3,y-3,w+6,h+6,'#34434a',5)}{rect(x,y,w,h,on?'#d7e8c9':'#bbc4b5',2,'#697c72')}<text x={x+w-7} y={y+h*.61} textAnchor="end" style={{fill:on?'#203b32':'#778171',stroke:'none',fontFamily:'Consolas,monospace',fontSize:Math.min(h*.37,(w-13)/Math.max(1,main.length*.62)),fontWeight:700}}>{main}</text><Text x={x+w-7} y={y+h-6} anchor="end" size={8} color={on?'#344d43':'#778171'}>{unit}</Text></g>;}
 
+/** Recognizable protective devices, drawn in modo's materials; their model remains manual. */
+function ProtectionArt({part,closed}:{part:Part;closed:boolean}){
+ const {w,h}=dimensions(part.kind),k=part.kind,n=k==='breaker3'||k==='guard'?3:k==='breaker2'||k==='differential'?2:1;
+ const label=k==='differential'?'DIFERENCIAL':k==='guard'?'GUARDAMOTOR':k==='fuse'?'PORTAFUSIBLE':`DISYUNTOR ${n}P`;
+ if(k==='fuse')return <g data-protection-art="fuse">{rect(22,14,w-44,h-28,'url(#eq-shell)',5)}{rect(34,39,w-68,53,'#c1cccb',3)}{rect(42,45,w-84,40,closed?'#e1e6db':'#53666c',3)}{closed?<><path d={`M${w/2} 49v31`} stroke="#7b8686" strokeWidth="3"/>{rect(40,45,w-80,6,'url(#eq-metal)',1)}{rect(40,79,w-80,6,'url(#eq-metal)',1)}</>:null}<Text x={w/2} y={31} size={7}>PORTAFUSIBLE</Text><Text x={w/2} y={104} size={8}>{closed?'CARTUCHO':'EXTRAÍDO'}</Text></g>;
+ return <g data-protection-art={k}>{rect(12,13,w-24,h-26,'url(#eq-shell)',4)}{Array.from({length:n-1},(_,i)=><path key={i} d={`M${12+(w-24)*(i+1)/n} 15v${h-30}`} stroke="#adbbbb" strokeWidth=".8"/>)}
+  <path d={`M17 36h${w-34}M17 99h${w-34}`} stroke="#9eafad" strokeWidth="1"/>
+  <Text x={w/2} y={29} size={k==='differential'?7:8}>{label}</Text>
+  <Text x={w/2} y={47} size={7}>modo. · MANIOBRA</Text>
+  {k==='guard'?<><circle cx={w/2-13} cy="70" r="16" fill="url(#eq-metal)" stroke="#667c80"/><path d={`M${w/2-13} 70l8-8`} stroke="#36595c" strokeWidth="3"/>{rect(w/2+8,57,18,12,'#6d9d89',2)}{rect(w/2+8,75,18,12,'#bf6c60',2)}</>:<>
+   {Array.from({length:n},(_,i)=>{const x=20+i*(w-40)/n,cw=(w-40)/n-4;return <g key={i}>{rect(x,55,cw,37,'#73878a',2)}{rect(x+2,closed?57:75,cw-4,14,closed?'#347d72':'#526b72',2)}</g>;})}
+   {n>1?<path d={`M24 ${closed?64:82}H${w-28}`} stroke="#d1e6de" strokeWidth="4" strokeLinecap="round"/>:null}
+   {k==='differential'?<g><circle cx={w-26} cy="47" r="5" fill="#d8bd6b" stroke="#947b46"/><Text x={w-26} y={49} size={6}>T</Text></g>:null}
+  </>}
+  <Text x={w/2} y={110} size={8} color={closed?'#287463':'#5c6f75'}>{closed?'I · CERRADO':'O · ABIERTO'}</Text>
+ </g>;
+}
+
 /** Original SVG equipment artwork; runtime data and interactive terminal targets are separate layers. */
-export function EquipmentBody({part,reading,operated=false,symbolic=false}:{part:Part;reading?:Reading;operated?:boolean;symbolic?:boolean}){
+export function EquipmentBody({part,reading,operated=false,symbolic=false,compact=false}:{part:Part;reading?:Reading;operated?:boolean;symbolic?:boolean;compact?:boolean}){
  const {w,h}=dimensions(part.kind),cx=w/2,cy=h/2,k=part.kind,on=reading?.active??false,closed=reading?.closed??part.closed;
+ if(symbolic&&['breaker','breaker2','breaker3','differential','guard','fuse'].includes(k)){
+  const n=k==='breaker3'||k==='guard'?3:k==='breaker2'||k==='differential'?2:1;
+  return <g className="eq-symbolic" data-protection-symbol={k} style={{stroke:'#536e73',strokeWidth:2,fill:'none'}}>{Array.from({length:n},(_,i)=>{const x=(i+1)*w/(n+1);return <g key={i}><path d={`M${x} 0v43M${x} 83V${h}M${x} 83l${closed?0:13} -40`}/>{k==='fuse'?<rect x={x-8} y="43" width="16" height="40"/>:<><circle cx={x} cy="43" r="2.5"/><path d={`M${x-6} 53h12m-6-6v12`}/></>}</g>;})}{n>1?<path d={`M${w/(n+1)-5} 64H${n*w/(n+1)+5}`} strokeDasharray="4 3"/>:null}<Text x={w/2} y={h+30} size={9}>{k==='differential'?'ΔI · maniobra':k==='fuse'?'FUSIBLE':`${n}P · maniobra`}</Text></g>;
+ }
  if(symbolic)return <g className="eq-symbolic" style={{stroke:'#536e73',strokeWidth:2,fill:'none'}}>{rect(8,12,w-16,h-24,'#fff',3,'#809699')}<Text x={cx} y={cy+5} size={k==='text'?12:19}>{k==='text'?part.params.text:k==='motor3'?'M 3~':k==='vfd'||k==='vfd3'?'~ / ~':k==='pv'?'PV':k==='battery'?'+ | −':k==='plc'?'PLC':k==='energy'?'kWh':k==='wattmeter'?'W':k==='voltmeter'?'V':k==='ammeter'?'A':k==='contactor'?'( K )':part.tag}</Text></g>;
  if(k==='text')return <g><Text x={cx} y={cy+5} size={16}>{part.params.text}</Text></g>;
  if(k==='rail')return <g>{rect(0,7,w,30,'url(#eq-metal)',1)}<path d={`M0 12H${w}M0 33H${w}`} stroke="#667e87" strokeWidth="2"/>{[20,w-20].map(x=><g key={x}>{rect(x,18,18,7,'#b3c1c4',3)}<Screw x={x+9} y={21.5}/></g>)}</g>;
  if(k==='earth')return <g>{rect(20,10,w-40,h-20,'#e4cf64',5)}{rect(26,15,w-52,h-30,'#73a786',3)}<Screw x={cx} y={30}/><path d={`M${cx} 45v24m-20 0h40m-32 8h24m-17 8h10`} stroke="#24483a" strokeWidth="3"/></g>;
  let art:ReactNode;
- if(k==='pv')art=<g>{rect(6,12,w-12,h-24,'url(#eq-metal)',2)}{rect(12,18,w-24,h-36,'#173c61',1,'#1c4668')}{Array.from({length:5},(_,col)=>Array.from({length:4},(_,row)=><g key={`${col}:${row}`}>{rect(15+col*(w-30)/5,21+row*(h-42)/4,(w-36)/5-2,(h-46)/4-2,'#28577a',1,'#8da8b6')}<path d={`M${21+col*(w-30)/5} ${22+row*(h-42)/4}v${(h-46)/4-3}`} stroke="#a2b6c5" strokeWidth=".6"/></g>))}<path d={`M15 20L${w-15} ${h-20}H15z`} fill="#fff" opacity=".06"/></g>;
+ if(['breaker','breaker2','breaker3','differential','guard','fuse'].includes(k))art=<ProtectionArt part={part} closed={closed}/>;
+ else if(k==='pv')art=<g>{rect(6,12,w-12,h-24,'url(#eq-metal)',2)}{rect(12,18,w-24,h-36,'#173c61',1,'#1c4668')}{Array.from({length:5},(_,col)=>Array.from({length:4},(_,row)=><g key={`${col}:${row}`}>{rect(15+col*(w-30)/5,21+row*(h-42)/4,(w-36)/5-2,(h-46)/4-2,'#28577a',1,'#8da8b6')}<path d={`M${21+col*(w-30)/5} ${22+row*(h-42)/4}v${(h-46)/4-3}`} stroke="#a2b6c5" strokeWidth=".6"/></g>))}<path d={`M15 20L${w-15} ${h-20}H15z`} fill="#fff" opacity=".06"/></g>;
  else if(k==='lamp'||k==='buzzer'||k==='push-no'||k==='push-nc'||k==='emergency'||k==='selector'){
   const color=k==='push-nc'||k==='emergency'?'#d85448':k==='selector'?'#34484c':'#3b967b';
   art=<g>{rect(19,12,w-38,h-24,'url(#eq-dark)',7)}<circle cx={cx} cy={cy} r={k==='emergency'?34:30} style={{fill:k==='emergency'?'#efd260':'url(#eq-metal)',stroke:'#61737b',strokeWidth:1.4}}/>
@@ -42,5 +65,5 @@ export function EquipmentBody({part,reading,operated=false,symbolic=false}:{part
  else if(k==='terminal'||k==='busbar')art=<g>{rect(13,20,w-26,h-40,'#a9b5b7',3)}{rect(23,22,w-46,h-44,'url(#eq-metal)',1)}{[40,h-40].map(y=><Screw key={y} x={cx} y={y}/>)}<Text x={cx} y={cy+3} size={10}>PASO</Text></g>;
  else if(k==='aux-no'||k==='aux-nc')art=<g>{rect(16,17,w-32,h-34,'url(#eq-shell)',4)}{rect(28,48,w-56,32,closed?'#7cab94':'#65777d',2)}<Text x={cx} y={68} color="#fff" size={12}>{k==='aux-no'?'NA':'NC'}</Text></g>;
  else art=<g>{rect(19,14,w-38,h-28,'url(#eq-shell)',4)}<path d={`M24 30h${w-48}m-${w-48} 66h${w-48}`} stroke="#9aabab" strokeWidth="2"/><Text x={cx} y={46} size={9}>{k==='fuse'?'FUSIBLE':k==='differential'?'PRUEBA ID':k==='guard'?'GUARDAMOTOR':'MANIOBRA'}</Text>{rect(34,55,w-68,35,'#455c63',3)}{rect(38,closed?58:72,w-76,14,closed?'#39866e':'#677b82',2)}<Text x={cx} y={closed?68:82} size={9} color="#fff">{closed?'I':'O'}</Text></g>;
- return <g className={`eq-art ${on?'is-active':''}`} filter="url(#eq-shadow)">{art}{ports(k).map(port=>{const innerX=port.x===0?10:port.x===w?w-10:port.x,innerY=port.y===0?17:port.y===h?h-17:port.y;return <g key={port.id}><line x1={port.x} y1={port.y} x2={innerX} y2={innerY} stroke="#748b94" strokeWidth="2"/><Screw x={innerX} y={innerY}/><Text x={port.x===0?22:port.x===w?w-22:port.x} y={port.y===0?-7:port.y===h?h+14:port.y+3} size={k==='plc'?7:8} anchor={port.x===0?'start':port.x===w?'end':'middle'}>{port.id}</Text></g>;})}</g>;
+ return <g className={`eq-art ${on?'is-active':''}`} filter="url(#eq-shadow)">{art}{!compact&&ports(k).map(port=>{const innerX=port.x===0?10:port.x===w?w-10:port.x,innerY=port.y===0?17:port.y===h?h-17:port.y;return <g key={port.id}><line x1={port.x} y1={port.y} x2={innerX} y2={innerY} stroke="#748b94" strokeWidth="2"/><Screw x={innerX} y={innerY}/><Text x={port.x===0?22:port.x===w?w-22:port.x} y={port.y===0?-7:port.y===h?h+14:port.y+3} size={k==='plc'?7:8} anchor={port.x===0?'start':port.x===w?'end':'middle'}>{port.id}</Text></g>;})}</g>;
 }
