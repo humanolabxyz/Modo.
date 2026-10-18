@@ -1,4 +1,6 @@
 {
+  "base": "https://modo-lab.vercel.app/",
+  "generatedAt": "2026-10-18T03:47:54.022Z",
   "checks": [
     "Añadir equipo real desde el dock y guardar en el proyecto",
     "Los tres grupos comparten biblioteca, lienzo y guardado",

@@ -1,0 +1,42 @@
+{
+  "base": "https://modo-lab.vercel.app",
+  "deployment": "dpl_EsobYegD3duwH61RV2emn1ygE3kx",
+  "commit": "b71be29bd8d355b94d856c4ef1451147bcf0c05a",
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "nosniff": "nosniff"
+    },
+    {
+      "route": "/laboratorio/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "nosniff": "nosniff"
+    },
+    {
+      "route": "/estudio/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "nosniff": "nosniff"
+    },
+    {
+      "route": "/legal/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "nosniff": "nosniff"
+    },
+    {
+      "route": "/comunidad/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "nosniff": "nosniff"
+    },
+    {
+      "asset": "EquipmentView.BKNEstVJ.js",
+      "status": 200,
+      "sha256Matches": true
+    }
+  ]
+}

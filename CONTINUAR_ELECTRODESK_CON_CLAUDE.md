@@ -4,6 +4,10 @@
 
 El usuario pidió detener las ampliaciones funcionales nuevas, dejarlas para Claude y publicar lo terminado. Indicó que faltaban iconos/diseños, especialmente disyuntores. Se completaron las miniaturas de los 41 tipos actuales y el dibujo propio de disyuntores 1P/2P/3P, diferencial, guardamotor y portafusible. No interpretar este documento como aprobación para cambiar el diseño general o publicar futuras funciones sin petición del usuario.
 
+## Publicación verificada
+
+Producción: https://modo-lab.vercel.app/laboratorio?tool=equipment. Git correcto: `humanolabxyz/panellab-inacap`; configuración local de autor corregida a `humanolabxyz`. Código publicado en commit `b71be29`, despliegue `dpl_EsobYegD3duwH61RV2emn1ygE3kx` READY. Ver `PUBLICACION_EQUIPOS_ELECTRICOS.md` para pruebas y límites.
+
 ## Proyecto y estado entregado
 
 Proyecto existente: `C:/Users/HUMANO LAB/Desktop/proyectos2026/paneldecontrol/PanelLab-INACAP`.

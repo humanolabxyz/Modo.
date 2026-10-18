@@ -61,7 +61,7 @@ Integración: `src/lab/LaboratoryApp.tsx`, `model.ts`, `engine.ts`, `validation.
 - `npm run verify:equipment`: 17/17, incluyendo importación sin asociaciones cruzadas, retención, parada, cortocircuito, variador, medidas, batería, solar, PLC y límites de conversión.
 - `npm run verify:equipment-ui`: 15 comprobaciones de navegador, sobre el build servido en `http://127.0.0.1:4342/`. Incluye ratón, teclado, importación, recarga, historial y viewport móvil 390 × 844; sin errores de navegador.
 - `npm run verify:lab`: 38/38; `npm run verify:detectors`: 44/44; `npm run verify:simulation`: correcto, seis comprobaciones.
-- Banco original: capturas antes/después idénticas píxel a píxel a 1440 × 1000 y 390 × 844. Esquemas y banco respondieron HTTP 200, sin errores de JavaScript ni desbordamiento horizontal en esos tamaños.
+- Banco original: captura completa idéntica en escritorio; contenido del banco idéntico en móvil, con diferencias limitadas a la barra superior. Esquemas y banco respondieron HTTP 200, sin errores de JavaScript ni desbordamiento horizontal en esos tamaños.
 
 No se probaron equipos físicos. La comprobación móvil es una emulación de navegador. La publicación autorizada después de esta entrega se registra en `PUBLICACION_EQUIPOS_ELECTRICOS.md`.
 
