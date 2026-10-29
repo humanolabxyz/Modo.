@@ -207,3 +207,28 @@ export function setFirmwareArtifact(p: RobotProject, targetId: string, artifact:
   const base = ensureFirmware(p, targetId);
   return {...base, firmware: base.firmware.map(f => (f.targetInstanceId === targetId ? {...f, artifact} : f))};
 }
+
+// ───── Etapa 5: escenario (obstáculos y fricción). El robot y los obstáculos se editan con el proyecto detenido.
+export const OBSTACLE_LIMITS = {size: {min: 0.02, max: 2}, room: 2} as const;
+const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, Number.isFinite(v) ? v : lo));
+
+/** Agrega una caja o un cilindro a 0,75 m por delante del inicio del robot (si ya hay otro ahí, lo corre a un lado). */
+export function addObstacle(p: RobotProject, shape: 'box' | 'cylinder'): CommandResult | CommandError {
+  if (p.scene.obstacles.length >= LIMITS.obstacles) return {error: `Una escena admite hasta ${LIMITS.obstacles} obstáculos.`};
+  const size: Vec3 = shape === 'box' ? [0.3, 0.2, 0.1] : [0.2, 0.2, 0.2], n = p.scene.obstacles.length;
+  const o = {id: newId(), shape, transform: {position: [((n % 5) - 2) * 0.35, size[1] / 2, 0.75 + Math.floor(n / 5) * 0.4] as Vec3, rotation: [0, 0, 0, 1] as Quat}, size};
+  return {project: {...p, scene: {...p.scene, obstacles: [...p.scene.obstacles, o]}}, notes: []};
+}
+/** Cambia medidas, posición (x, z en metros, dentro del cuarto de 4 × 4 m) o giro (grados sobre el eje vertical). El obstáculo siempre apoya en el suelo. */
+export function updateObstacle(p: RobotProject, id: string, patch: {size?: Vec3; x?: number; z?: number; yawDeg?: number}): RobotProject {
+  const lim = OBSTACLE_LIMITS;
+  return {...p, scene: {...p.scene, obstacles: p.scene.obstacles.map(o => {
+    if (o.id !== id) return o;
+    const size = (patch.size ?? o.size).map(v => clamp(v, lim.size.min, lim.size.max)) as Vec3, pos = o.transform.position;
+    const yaw = patch.yawDeg === undefined ? o.transform.rotation : qFromEuler([0, patch.yawDeg * Math.PI / 180, 0]);
+    return {...o, size, transform: {...o.transform, position: [clamp(patch.x ?? pos[0], -lim.room, lim.room), size[1] / 2, clamp(patch.z ?? pos[2], -lim.room, lim.room)] as Vec3, rotation: yaw}};
+  })}};
+}
+export const removeObstacle = (p: RobotProject, id: string): RobotProject => ({...p, scene: {...p.scene, obstacles: p.scene.obstacles.filter(o => o.id !== id)}});
+/** Fricción del suelo, las paredes y los obstáculos (0,1–1,5); las ruedas agarran 1,5 veces más. */
+export const setFriction = (p: RobotProject, friction: number): RobotProject => ({...p, scene: {...p.scene, physics: {...p.scene.physics, friction: clamp(friction, 0.1, 1.5)}}});

@@ -45,7 +45,7 @@ function Body({id, color, glow}: {id: string; color?: unknown; glow?: number}) {
       <Cyl at={[0, 0, 0]} r={mm(20)} h={mm(27)} color="#e8e4da" axis="x" rough={0.5} />
       <Cyl at={[0, 0, 0]} r={mm(4)} h={mm(28)} color="#9aa3ab" axis="x" metal={0.7} />
     </>;
-    case 'caster-ball': return <><mesh position={[0, 0, 0]}><sphereGeometry args={[mm(10.5), 24, 16]} /><meshStandardMaterial color="#c9ced3" metalness={0.85} roughness={0.25} /></mesh><B at={[0, mm(8), 0]} size={[mm(18), mm(8), mm(18)]} color="#8794a0" /></>;
+    case 'caster-ball': return <><mesh position={[0, -mm(9), 0]}><sphereGeometry args={[mm(12.5), 24, 16]} /><meshStandardMaterial color="#c9ced3" metalness={0.85} roughness={0.25} /></mesh><B at={[0, mm(10), 0]} size={[mm(18), mm(23), mm(18)]} color="#8794a0" /></>;
     case 'arduino-uno-r3': return <>
       <B at={[0, 0, 0]} size={[mm(53.4), mm(1.6), mm(68.6)]} color="#13787a" rough={0.5} />
       <B at={[mm(-14), mm(-1), mm(-30)]} size={[mm(12), mm(11), mm(16)]} color="#c9ced3" metal={0.8} rough={0.3} />

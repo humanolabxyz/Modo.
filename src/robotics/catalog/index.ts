@@ -78,9 +78,9 @@ const wheel: ComponentDefinition = {
 };
 
 const caster: ComponentDefinition = {
-  id: 'caster-ball', name: 'Rueda loca', category: 'structure', dimensions: [mm(25), mm(25), mm(25)], dimensionsSource: 'approximate', massKg: 0.01,
-  pins: [], anchors: [anchor('base', 'Base', [0, mm(12.5), 0], UP, 'caster-mount')],
-  scalable: false, model: 'procedural', summary: 'Esfera de apoyo libre, sin motor.', keywords: ['rueda loca', 'caster', 'bola', 'apoyo'],
+  id: 'caster-ball', name: 'Rueda loca', category: 'structure', dimensions: [mm(25), mm(43), mm(25)], dimensionsSource: 'approximate', massKg: 0.01,
+  pins: [], anchors: [anchor('base', 'Base', [0, mm(21.5), 0], UP, 'caster-mount')],
+  scalable: false, model: 'procedural', summary: 'Esfera de apoyo libre, sin motor (con separador: su base toca el suelo con las ruedas de 65 mm).', keywords: ['rueda loca', 'caster', 'bola', 'apoyo'],
 };
 
 // ───── Chasis acrílico 2WD (aprox. 140 × 210 mm, 4 mm).
@@ -89,7 +89,7 @@ const chassis: ComponentDefinition = {
   pins: [],
   anchors: [
     anchor('motor-l', 'Motor izquierdo', [-mm(62), -mm(2), -mm(20)], DOWN, 'slot-motor', ['motor-mount']), anchor('motor-r', 'Motor derecho', [mm(62), -mm(2), -mm(20)], DOWN, 'slot-motor', ['motor-mount']),
-    anchor('caster', 'Rueda loca', [0, -mm(2), -mm(85)], DOWN, 'slot-caster', ['caster-mount']),
+    anchor('caster', 'Rueda loca', [0, -mm(2), mm(85)], DOWN, 'slot-caster', ['caster-mount']),
     anchor('board', 'Placa', [0, mm(2), mm(40)], UP, 'slot-board', ['board-mount']), anchor('driver', 'Driver', [0, mm(2), -mm(45)], UP, 'slot-driver', ['driver-mount']),
     anchor('battery', 'Portapilas', [0, -mm(2), mm(30)], DOWN, 'slot-battery', ['battery-mount']), anchor('front', 'Soporte frontal', [0, mm(2), mm(100)], UP, 'slot-front', ['bracket-mount']),
   ],

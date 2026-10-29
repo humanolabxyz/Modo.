@@ -9,13 +9,28 @@ import {AvrRuntime} from '../mcu/avr/runtime.ts';
 import {UNO_PINS} from '../mcu/avr/pins.ts';
 import type {PinBus, PinMode} from '../mcu/types.ts';
 import type {RobotProject} from '../project/types.ts';
+import type {PhysicsFrame} from './physics.ts';
 
 export const STEP_US = 2000;          // el circuito se resuelve cada 2 ms virtuales
 export const ECHO_LATENCY_US = 450;   // el HC-SR04 tarda ~450 µs en emitir y empezar a escuchar
 export const SPEED_OF_SOUND = 343;    // m/s
 export const SENSOR_MAX_M = 4, SENSOR_MIN_M = 0.02;
 
-export type SimModel = {project: RobotProject; targetId: string; hex: string};
+export type SimModel = {project: RobotProject; targetId: string; hex: string; /** Con física (Rapier): ruedas, obstáculos y rayos del HC-SR04. */ physics?: boolean};
+/** Lo que el coordinador necesita de la física (la implementa `RobotPhysics`; en las pruebas de solo emulación no hay). */
+export interface PhysicsPort {
+  step(motorVolts: ReadonlyMap<string, number>): void;
+  /** Distancia (m) que ve un HC-SR04; `null` fuera de alcance; `undefined` si ese sensor no está sobre un cuerpo simulado. */
+  distance(sensorId: string): number | null | undefined;
+  frame(): PhysicsFrame;
+}
+/** Lo que el coordinador necesita de la física (la implementa `RobotPhysics`; en las pruebas de solo emulación no hay). */
+export interface PhysicsPort {
+  step(motorVolts: ReadonlyMap<string, number>): void;
+  /** Distancia (m) que ve un HC-SR04; `null` fuera de alcance; `undefined` si ese sensor no está sobre un cuerpo simulado. */
+  distance(sensorId: string): number | null | undefined;
+  frame(): PhysicsFrame;
+}
 export type SensorState = {powered: boolean; linked: boolean; distance: number; echoes: number; lastEchoUs: number | null; reason?: string};
 export type Snapshot = {
   simTimeUs: number;
@@ -29,10 +44,12 @@ export type Snapshot = {
   sensors: Record<string, SensorState>;
   /** Texto nuevo del puerto serie desde la última vez que se pidió. */
   serial: string;
+  /** Poses, ruedas y rayos de la física (solo si hay física). */
+  physics?: PhysicsFrame;
 };
 
 type Stat = {mode: PinMode; level: 0 | 1; since: number; highUs: number; avg: number};
-type Sensor = {id: string; trig: string; echo: string; distance: number; powered: boolean; gndShared: boolean; t0: number | null; busyUntil: number; state: SensorState};
+type Sensor = {id: string; trig: string; echo: string; distance: number; fromPhysics: boolean; powered: boolean; gndShared: boolean; t0: number | null; busyUntil: number; state: SensorState};
 
 export class Coordinator {
   readonly solution: Solution;
@@ -51,9 +68,10 @@ export class Coordinator {
   trace?: (pin: string, level: 0 | 1, atUs: number) => void;
 
   readonly model: SimModel;
+  private readonly physics: PhysicsPort | undefined;
 
-  constructor(model: SimModel) {
-    this.model = model;
+  constructor(model: SimModel, physics?: PhysicsPort) {
+    this.model = model; this.physics = physics;
     this.solution = solve(model.project);
     const uno = this.uno();
     const st = uno && this.solution.devices.get(uno.instanceId);
@@ -88,10 +106,10 @@ export class Coordinator {
     const pinsOn = (net: string | undefined) => (graph.nets.get(net ?? '') ?? []).filter(r => r.instanceId === uno.instanceId && r.pinId in UNO_PINS).map(r => r.pinId);
     for (const part of project.parts.filter(p => p.definitionId === 'hc-sr04')) {
       const st = this.solution.devices.get(part.instanceId), trig = pinsOn(netOfPin(graph, part.instanceId, 'TRIG'))[0], echo = pinsOn(netOfPin(graph, part.instanceId, 'ECHO'))[0];
-      const d = typeof part.props?.testDistance === 'number' ? part.props.testDistance : 0.3;
+      const measured = this.physics?.distance(part.instanceId), d = measured !== undefined ? (measured ?? Infinity) : typeof part.props?.testDistance === 'number' ? part.props.testDistance : 0.3;
       const powered = st?.kind === 'hc-sr04' && st.powered, gndShared = netOfPin(graph, part.instanceId, 'GND') === unoGnd;
       const linked = !!trig && !!echo, reason = !linked ? 'TRIG o ECHO no llegan a un pin de la placa.' : !powered ? 'Sin 5 V entre VCC y GND.' : !gndShared ? 'El GND del sensor no está unido al de la placa.' : undefined;
-      this.sensors.push({id: part.instanceId, trig, echo, distance: d, powered, gndShared, t0: null, busyUntil: 0, state: {powered, linked, distance: d, echoes: 0, lastEchoUs: null, reason}});
+      this.sensors.push({id: part.instanceId, trig, echo, distance: d, fromPhysics: measured !== undefined, powered, gndShared, t0: null, busyUntil: 0, state: {powered, linked, distance: d, echoes: 0, lastEchoUs: null, reason}});
       if (echo) this.echoPins.add(echo);
     }
   }
@@ -102,6 +120,7 @@ export class Coordinator {
     if (s.t0 === null) return;
     const width = at - s.t0; s.t0 = null;
     if (width < 10 || !s.powered || !s.gndShared || !s.echo || at < s.busyUntil) return;
+    if (s.fromPhysics) { const m = this.physics?.distance(s.id); s.distance = m ?? Infinity; s.state.distance = s.distance; } // mide ahora, con el robot donde está
     const d = Math.max(SENSOR_MIN_M, s.distance);
     if (d > SENSOR_MAX_M) return; // fuera de alcance: ECHO no sube y pulseIn agota su tiempo
     const echoUs = (2 * d / SPEED_OF_SOUND) * 1e6, start = at + ECHO_LATENCY_US;
@@ -120,6 +139,10 @@ export class Coordinator {
     }
     drive.set(uno.instanceId, pins);
     this.dynamic = solveDynamic(this.model.project, drive, this.dynamic ?? undefined, this.solution);
+    if (this.physics) {
+      const volts = new Map<string, number>(); for (const [id, m] of this.dynamic.motors) volts.set(id, m.volts);
+      this.physics.step(volts);
+    }
     if (this.status !== 'running') return;
     for (const [id, s] of this.stats) {
       const volts = this.dynamic.pinVolts(uno.instanceId, {instanceId: uno.instanceId, pinId: id}) ?? 0;
@@ -155,7 +178,7 @@ export class Coordinator {
     return {
       simTimeUs: this.time, status: this.status, message: this.message, uno: {powered: st?.kind === 'uno' && st.powered, via: st?.kind === 'uno' ? st.via : null}, pins: out,
       leds: Object.fromEntries(this.dynamic?.leds ?? []), motors: Object.fromEntries(this.dynamic?.motors ?? []), bridges: Object.fromEntries(this.dynamic?.bridges ?? []),
-      sensors: Object.fromEntries(this.sensors.map(s => [s.id, {...s.state}])), serial,
+      sensors: Object.fromEntries(this.sensors.map(s => [s.id, {...s.state}])), serial, physics: this.physics?.frame(),
     };
   }
 }

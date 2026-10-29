@@ -6,7 +6,9 @@ export type ToWorker =
   | {t: 'start'}
   | {t: 'pause'}
   | {t: 'speed'; factor: number}
-  | {t: 'ping'; n: number};
+  | {t: 'ping'; n: number}
+  /** Descarga (sin iniciar) el motor de física, para que quede en la caché y funcione sin conexión. */
+  | {t: 'warm'};
 
 export type FromWorker =
   | {t: 'ready'}
@@ -14,6 +16,7 @@ export type FromWorker =
   /** `ratio`: tiempo virtual / tiempo real logrado; `lag`: no alcanza la velocidad pedida. */
   | {t: 'snapshot'; snapshot: Snapshot; ratio: number; lag: boolean}
   | {t: 'pong'; n: number}
+  | {t: 'warmed'}
   | {t: 'error'; message: string};
 
 export const SPEEDS = [0.25, 0.5, 1, 2, 4] as const;

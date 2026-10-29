@@ -4,50 +4,54 @@
   "files": {
     "analog_a0": {
       "flashBytes": 1890,
-      "ms": 3400
+      "ms": 5524
+    },
+    "avoid_obstacle": {
+      "flashBytes": 1548,
+      "ms": 3723
     },
     "bad_syntax": {
       "errors": 2
     },
     "blink_1000": {
       "flashBytes": 924,
-      "ms": 3417
+      "ms": 3748
     },
     "blink_200": {
       "flashBytes": 922,
-      "ms": 3446
+      "ms": 3740
     },
     "hcsr04_read": {
       "flashBytes": 2390,
-      "ms": 3445
+      "ms": 3551
     },
     "motors_fwd": {
       "flashBytes": 968,
-      "ms": 3466
+      "ms": 3589
     },
     "motors_off": {
       "flashBytes": 786,
-      "ms": 3407
+      "ms": 3364
     },
     "motors_pwm64": {
       "flashBytes": 968,
-      "ms": 3362
+      "ms": 3366
     },
     "motors_rev": {
       "flashBytes": 968,
-      "ms": 3478
+      "ms": 3449
     },
     "pwm9_128": {
       "flashBytes": 868,
-      "ms": 3413
+      "ms": 3404
     },
     "serial_count": {
       "flashBytes": 1902,
-      "ms": 3453
+      "ms": 3344
     },
     "stuck_while1": {
       "flashBytes": 700,
-      "ms": 3501
+      "ms": 3365
     }
   }
 }
