@@ -1,6 +1,6 @@
 # Historial de versiones · modo. / PanelLab
 
-Versión actual: 2.4.1. Registro público: /versiones/.
+Versión actual: 2.6.0 Beta. Registro público: /versiones/.
 
 Las versiones antiguas se resumen a partir de sus entregas documentadas; no se inventan versiones intermedias ni fechas de publicación. La publicación de esta entrega se registra por separado en qa/release-2.1.0/.
 
