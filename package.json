@@ -38,6 +38,10 @@
     "verify:diagram-simple": "node qa/verify-diagram-simple.cjs",
     "verify:cable-color": "node qa/verify-cable-color.cjs",
     "verify:float": "node qa/verify-float.mjs",
+    "verify:robotics-project": "node qa/verify-robotics-project.mjs",
+    "verify:robotics-interaction": "node qa/verify-robotics-interaction.mjs",
+    "verify:robotics-ui": "node qa/verify-robotics-ui.cjs",
+    "verify:robotics": "npm run verify:robotics-project && npm run verify:robotics-interaction && npm run verify:robotics-ui",
     "verify:estrella": "node qa/verify-estrella.mjs",
     "verify:focus": "node qa/verify-focus.mjs",
     "verify:mobile": "node qa/verify-mobile.cjs",
@@ -85,14 +89,20 @@
   },
   "dependencies": {
     "@astrojs/react": "^7.1.0",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
     "astro": "^7.4.0",
     "lucide-react": "^0.468.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "three": "0.186.1"
   },
   "devDependencies": {
+    "@dimforge/rapier3d-compat": "0.21.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@types/three": "0.186.0",
+    "avr8js": "0.21.1",
     "typescript": "^5.9.3"
   }
 }
