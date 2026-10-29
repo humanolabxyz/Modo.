@@ -1,10 +1,12 @@
 import {useEffect, useRef, useState, type PointerEvent as ReactPointerEvent} from 'react';
-import {Link2Off, Lock, LockOpen, Pencil, Plus, Search, TriangleAlert} from 'lucide-react';
+import {CircleAlert, CircleCheck, Info, Link2Off, Lock, LockOpen, Pencil, Plus, Search, Trash2, TriangleAlert} from 'lucide-react';
 import {CATALOG, CATEGORY_LABELS, getDefinition, searchCatalog} from '../catalog/index.ts';
 import type {ComponentDefinition} from '../catalog/types.ts';
 import {DEG, qFromEuler, qToEuler} from '../project/math.ts';
 import {childAttachments, parentAttachment} from '../project/commands.ts';
-import type {PartInstance, RobotProject, Transform, Vec3} from '../project/types.ts';
+import type {PartInstance, PinRef, RobotProject, Transform, Vec3} from '../project/types.ts';
+import type {Diagnostic} from '../circuit/diagnostics.ts';
+import type {Reading} from '../circuit/solve.ts';
 
 /** Todo lo que las ventanas de construcción necesitan del shell (RoboticsApp); así no conocen el estado del lienzo. */
 export type BuildContext = {
@@ -22,7 +24,23 @@ export type BuildContext = {
   setGroup(ids: string[], grouped: boolean): void;
   remove(ids: string[]): void;
   snap: {on: boolean; stepMm: number; setOn(on: boolean): void; setStepMm(mm: number): void};
+  // ───── etapa 3: cables, diagnóstico y medición
+  diagnostics: Diagnostic[];
+  wires: {id: string; label: string; color: string; a: PinRef; b: PinRef; route: Vec3[]}[];
+  selectedWire: string | null;
+  selectWire(id: string | null): void;
+  deleteWire(id: string): void;
+  setWireColor(id: string, color: string): void;
+  setWireRoute(id: string, route: Vec3[]): void;
+  /** Resalta en el lienzo los pines de un diagnóstico y encuadra. */
+  showPins(refs: PinRef[]): void;
+  clearHighlight(): void;
+  highlighted: boolean;
+  reading: {labelA: string; labelB: string; reading: Reading} | null;
+  clearProbe(): void;
+  tool: string;
 };
+export const WIRE_COLORS: {name: string; value: string}[] = [{name: 'Rojo', value: '#d64545'}, {name: 'Negro', value: '#222222'}, {name: 'Azul', value: '#2a67a3'}, {name: 'Amarillo', value: '#e0a52a'}, {name: 'Verde', value: '#2a8f4f'}, {name: 'Blanco', value: '#e8e8e8'}];
 
 const SOURCE_LABEL = {datasheet: 'ficha técnica', measured: 'medida del kit', approximate: 'aproximadas'} as const;
 const mm = (m: number) => Math.round(m * 10000) / 10; // metros → mm con 0,1 mm de resolución
@@ -95,6 +113,8 @@ function NumberField({label, value, step, unit, disabled, onCommit}: {label: str
 }
 
 export function PropertiesPanel({ctx}: {ctx: BuildContext}) {
+  const wire = ctx.selectedWire ? ctx.wires.find(w => w.id === ctx.selectedWire) : undefined;
+  if (wire) return <WirePanel ctx={ctx} wire={wire} />;
   const chosen = ctx.project.parts.filter(x => ctx.selection.includes(x.instanceId));
   const snap = <fieldset className="rb-snap"><legend>Imán (snapping)</legend>
     <label><input type="checkbox" checked={ctx.snap.on} onChange={e => ctx.snap.setOn(e.target.checked)} /> Activado</label>
@@ -119,9 +139,55 @@ export function PropertiesPanel({ctx}: {ctx: BuildContext}) {
     <fieldset className="rb-xyz"><legend>Rotación (grados)</legend>
       {(['X', 'Y', 'Z'] as const).map((a, i) => <NumberField key={a} label={a} unit="°" step={ctx.snap.on ? 15 : 1} value={Math.round((euler[i] / DEG) * 100) / 100} disabled={!!part.locked} onCommit={v => setRot(i as 0 | 1 | 2, v)} />)}</fieldset>
     <label className="rb-check"><input type="checkbox" checked={!!part.locked} onChange={e => ctx.setLocked([part.instanceId], e.target.checked)} /> Bloqueada (no se mueve ni se borra)</label>
+    {def?.props?.map(prop => prop.type === 'number' && <div key={prop.id} className="rb-prop-number"><NumberField label={prop.id === 'voltage' ? 'Voltaje' : prop.label} unit={prop.id === 'voltage' ? 'V' : ''} step={0.5} value={Number(part.props?.[prop.id] ?? prop.default)} onCommit={v => ctx.setProp(part.instanceId, prop.id, Math.min(prop.max ?? v, Math.max(prop.min ?? v, v)))} />{prop.id === 'voltage' && <small>Supuesto: 4×AA ≈ 6 V. Compruébalo con el kit del aula (D-11). El Arduino por VIN necesita ≥ 7 V.</small>}</div>)}
     {def?.props?.map(prop => prop.type === 'boolean' && <label className="rb-check" key={prop.id}><input type="checkbox" checked={Boolean(part.props?.[prop.id] ?? prop.default)} onChange={e => ctx.setProp(part.instanceId, prop.id, e.target.checked)} /> {prop.label}</label>)}
     {parent && parentPart && <p className="rb-attached">Unida a <b>{parentPart.label}</b> ({parent.kind === 'wheel-hinge' ? 'eje de rueda' : 'rígida'}). <button data-inline-action="" type="button" onClick={() => ctx.detach(parent.id)}>Separar</button></p>}
     {ctx.interfering.has(part.instanceId) && <p className="rb-warn"><TriangleAlert size={14} /> Se superpone con otra pieza. Es solo un aviso: puedes dejarla así.</p>}
     {snap}
+  </div>;
+}
+
+// ───────────── Cable seleccionado ─────────────
+function WirePanel({ctx, wire}: {ctx: BuildContext; wire: BuildContext['wires'][number]}) {
+  const set = (i: number, axis: 0 | 1 | 2, millimetres: number) => { const next = wire.route.map(q => [...q] as Vec3); next[i][axis] = millimetres / 1000; ctx.setWireRoute(wire.id, next); };
+  return <div className="rb-props-panel">
+    <p className="rb-wire-label" data-testid="wire-label"><b>Cable</b><span>{wire.label}</span></p>
+    <fieldset className="rb-swatches"><legend>Color (solo estético: no cambia el circuito)</legend>
+      {WIRE_COLORS.map(c => <button data-inline-action="" type="button" key={c.value} className="rb-swatch" style={{background: c.value}} aria-label={`Color ${c.name}`} aria-pressed={wire.color === c.value} title={c.name} onClick={() => ctx.setWireColor(wire.id, c.value)} />)}</fieldset>
+    <fieldset className="rb-xyz"><legend>Puntos de control (mm, mundo)</legend>
+      {wire.route.length === 0 && <small className="rb-hint-line">Sin puntos: el cable hace una curva suave entre sus pines.</small>}
+      {wire.route.map((q, i) => <div className="rb-route-row" key={i}>{([0, 1, 2] as const).map(a => <NumberField key={a} label={['X', 'Y', 'Z'][a]} unit={`mm p${i + 1}`} step={1} value={mm(q[a])} onCommit={v => set(i, a, v)} />)}
+        <button data-inline-action="" type="button" className="rb-tree-btn" aria-label={`Quitar punto ${i + 1}`} onClick={() => ctx.setWireRoute(wire.id, wire.route.filter((_, k) => k !== i))}><Trash2 size={14} /></button></div>)}
+      <button data-inline-action="" type="button" className="rb-add-point" onClick={() => ctx.setWireRoute(wire.id, [...wire.route, wire.route.at(-1) ?? [0, 0.05, 0]])}><Plus size={14} /> Agregar punto</button>
+    </fieldset>
+    <div className="rb-props-actions"><button type="button" className="is-danger" onClick={() => ctx.deleteWire(wire.id)}>Borrar cable</button><button type="button" onClick={() => ctx.selectWire(null)}>Listo</button></div>
+  </div>;
+}
+
+// ───────────── Consola: diagnóstico, cables y medición ─────────────
+const SEVERITY = {error: {icon: CircleAlert, label: 'Error'}, warning: {icon: TriangleAlert, label: 'Aviso'}, info: {icon: Info, label: 'Info'}} as const;
+export function ConsolePanel({ctx}: {ctx: BuildContext}) {
+  const [tab, setTab] = useState<'diag' | 'serial'>('diag');
+  const errors = ctx.diagnostics.filter(d => d.severity === 'error').length, warnings = ctx.diagnostics.filter(d => d.severity === 'warning').length;
+  return <div className="rb-console">
+    <div className="rb-tabs" role="tablist" aria-label="Consola">
+      <button data-inline-action="" type="button" role="tab" aria-selected={tab === 'diag'} onClick={() => setTab('diag')}>Diagnóstico{errors + warnings > 0 && <i>{errors + warnings}</i>}</button>
+      <button data-inline-action="" type="button" role="tab" aria-selected={tab === 'serial'} onClick={() => setTab('serial')}>Serie</button>
+    </div>
+    {tab === 'serial' ? <div className="rb-window-empty"><strong>Sin salida todavía</strong><p>Aquí verás lo que tu programa escriba por Serial.</p><span className="rb-window-stage">Disponible en la etapa 4</span></div> : <>
+      {ctx.reading && <div className="rb-reading-card" role="status" aria-label="Medición"><b>Medición</b><span>{ctx.reading.labelA} <em>(rojo)</em></span><span>{ctx.reading.labelB} <em>(negro)</em></span>
+        <strong>{ctx.reading.reading.volts === null ? '— V' : `${ctx.reading.reading.volts.toFixed(2).replace('.', ',')} V`}<small>{ctx.reading.reading.continuity ? ' · continuidad ✔' : ' · sin continuidad'}</small></strong><small>{ctx.reading.reading.note}</small>
+        <button data-inline-action="" type="button" onClick={ctx.clearProbe}>Nueva medición</button></div>}
+      {ctx.project.parts.length === 0 ? <div className="rb-window-empty"><strong>Nada que revisar</strong><p>Agrega piezas y únelas con cables (herramienta Cable, tecla W).</p></div>
+        : ctx.diagnostics.length === 0 ? <p className="rb-diag-ok"><CircleCheck size={16} /> Sin errores ni avisos en el circuito{ctx.wires.length === 0 ? ' (todavía no hay cables)' : ''}.</p>
+        : <>
+          <p className="rb-hint-line">{errors} error(es) · {warnings} aviso(s). Pulsa uno para ver los pines implicados.</p>
+          <ul className="rb-diag-list" aria-label="Diagnósticos">{ctx.diagnostics.map((d, i) => { const Icon = SEVERITY[d.severity].icon; return <li key={i}><button data-inline-action="" type="button" className={`rb-diag is-${d.severity}`} data-code={d.code} onClick={() => ctx.showPins(d.refs)}><Icon size={16} aria-label={SEVERITY[d.severity].label} /><span>{d.message}</span></button></li>; })}</ul>
+          {ctx.highlighted && <button data-inline-action="" type="button" className="rb-clear-highlight" onClick={ctx.clearHighlight}>Quitar resaltado</button>}</>}
+      {ctx.wires.length > 0 && <><h4 className="rb-subhead">Cables ({ctx.wires.length})</h4>
+        <ul className="rb-wire-list" aria-label="Cables">{ctx.wires.map(w => <li key={w.id} className={w.id === ctx.selectedWire ? 'is-selected' : undefined}>
+          <button data-inline-action="" type="button" className="rb-wire-pick" onClick={() => ctx.selectWire(w.id)}><i style={{background: w.color}} aria-hidden="true" /><span>{w.label}</span></button>
+          <button data-inline-action="" type="button" className="rb-tree-btn" aria-label={`Borrar cable ${w.label}`} onClick={() => ctx.deleteWire(w.id)}><Trash2 size={14} /></button></li>)}</ul></>}
+    </>}
   </div>;
 }

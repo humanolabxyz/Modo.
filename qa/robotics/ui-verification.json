@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4330",
+  "url": "http://127.0.0.1:4344",
   "checks": [
     "[escritorio] entra a /robotica/ desde la quinta tarjeta",
     "[escritorio] ventanas cerradas al empezar; WebGL activo",

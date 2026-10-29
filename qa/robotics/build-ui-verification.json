@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4330",
+  "url": "http://127.0.0.1:4344",
   "checks": [
     "[escritorio] catálogo con 10 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas",
     "[escritorio] arrastrar al lienzo: fantasma con aviso, Esc cancela, soltar sobre la pizarra agrega apoyada en el suelo, fuera no agrega",

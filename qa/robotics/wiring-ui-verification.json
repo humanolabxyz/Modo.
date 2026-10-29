@@ -1,0 +1,30 @@
+{
+  "url": "http://127.0.0.1:4344",
+  "checks": [
+    "[escritorio] herramienta Cable (W): pines visibles con etiqueta al pasar, previsualización, Esc cancela el cable y luego la herramienta",
+    "[escritorio] cablear D5 → ENA: el cable existe y su etiqueta es «Arduino UNO R3 1 · D5 → Driver L298N 1 · ENA»",
+    "[escritorio] mover el UNO 50 mm: el extremo del cable en D5 se movió exactamente 50 mm y el de ENA no",
+    "[escritorio] color y puntos de control del cable; borrar el cable y deshacerlo lo devuelve con el mismo id",
+    "[escritorio] borrar el driver elimina sus cables con aviso; deshacer los devuelve",
+    "[escritorio] unir GND con +12V muestra un aviso pero crea el cable (errores didácticos permitidos)",
+    "[escritorio] recargar conserva los cables (deep equal) y los vuelve a dibujar",
+    "[tablet] herramienta Cable (W): pines visibles con etiqueta al pasar, previsualización, Esc cancela el cable y luego la herramienta",
+    "[tablet] cablear D5 → ENA: el cable existe y su etiqueta es «Arduino UNO R3 1 · D5 → Driver L298N 1 · ENA»",
+    "[tablet] mover el UNO 50 mm: el extremo del cable en D5 se movió exactamente 50 mm y el de ENA no",
+    "[tablet] color y puntos de control del cable; borrar el cable y deshacerlo lo devuelve con el mismo id",
+    "[tablet] borrar el driver elimina sus cables con aviso; deshacer los devuelve",
+    "[tablet] unir GND con +12V muestra un aviso pero crea el cable (errores didácticos permitidos)",
+    "[tablet] recargar conserva los cables (deep equal) y los vuelve a dibujar",
+    "[telefono] herramienta Cable (W): pines visibles con etiqueta al pasar, previsualización, Esc cancela el cable y luego la herramienta",
+    "[telefono] cablear D5 → ENA: el cable existe y su etiqueta es «Arduino UNO R3 1 · D5 → Driver L298N 1 · ENA»",
+    "[telefono] mover el UNO 50 mm: el extremo del cable en D5 se movió exactamente 50 mm y el de ENA no",
+    "[telefono] color y puntos de control del cable; borrar el cable y deshacerlo lo devuelve con el mismo id",
+    "[telefono] borrar el driver elimina sus cables con aviso; deshacer los devuelve",
+    "[telefono] unir GND con +12V muestra un aviso pero crea el cable (errores didácticos permitidos)",
+    "[telefono] recargar conserva los cables (deep equal) y los vuelve a dibujar",
+    "[escritorio] robot cableado: 3 avisos con 6 V (VIN necesita ≥ 7 V), se resaltan sus pines, y con 9 V editado en Propiedades el diagnóstico queda limpio",
+    "[escritorio] multímetro: batería 9,00 V, continuidad B+↔+12V (0,00 V ✔) y +12V↔GND = 9,00 V sin continuidad; Esc suelta la herramienta",
+    "sin errores de consola ni de página"
+  ],
+  "errors": []
+}

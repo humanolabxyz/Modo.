@@ -1,11 +1,11 @@
-import {Component, useEffect, useImperativeHandle, useRef, useState, type MutableRefObject, type ReactNode, type Ref} from 'react';
+import {Component, useEffect, useImperativeHandle, useMemo, useRef, useState, type MutableRefObject, type ReactNode, type Ref} from 'react';
 import {Canvas, useFrame, useThree} from '@react-three/fiber';
-import {CameraControls, Grid, TransformControls} from '@react-three/drei';
-import {Box3, Matrix4, Plane, Quaternion, Raycaster, Sphere, Vector2, Vector3, type Group, type Object3D, type PerspectiveCamera} from 'three';
+import {CameraControls, Grid, Line, TransformControls} from '@react-three/drei';
+import {Box3, CanvasTexture, CatmullRomCurve3, Float32BufferAttribute, Matrix4, Plane, Quaternion, Raycaster, Sphere, Vector2, Vector3, type BufferGeometry, type Group, type Object3D, type PerspectiveCamera} from 'three';
 import type CameraControlsImpl from 'camera-controls';
 import {classifyRelease, LONG_PRESS_MS, MOVE_THRESHOLD_PX, nextSelection, rectFromPoints, rectsIntersect, startGesture, type Gesture, type Rect2, type ToolId} from '../interaction/tools.ts';
 import {getDefinition} from '../catalog/index.ts';
-import type {PartInstance, Transform, Vec3} from '../project/types.ts';
+import type {PartInstance, PinRef, Transform, Vec3} from '../project/types.ts';
 import {PartMesh, GhostMesh} from './PartMesh';
 import {ViewCube} from './ViewCube';
 
@@ -13,6 +13,10 @@ export type ViewName = 'front' | 'back' | 'side' | 'left' | 'top' | 'bottom' | '
 export type CameraState = {position: Vec3; target: Vec3};
 export type GizmoState = {pivot: Vec3; mode: 'translate' | 'rotate'; snapM: number | null; snapRad: number | null; key: number};
 export type Ghost = {definitionId: string; position: Vec3; valid: boolean};
+/** Un pin dibujable/seleccionable: posición en el mundo, función y si ya tiene cable. */
+export type PinMarker = {ref: PinRef; pos: Vec3; role: string; connected: boolean};
+export type WireView = {id: string; color: string; points: Vec3[]; selected: boolean};
+export const pinColor = (role: string) => ({'power-in': '#d94b4b', 'power-out': '#e08a3c', ground: '#3b3f45', digital: '#c9a83a', pwm: '#2f8fd0', analog: '#2fb07f', motor: '#9b5fd0', signal: '#c9a83a'} as Record<string, string>)[role] ?? '#888888';
 export type CanvasHandle = {
   frameSelection(): void;
   frameAll(): void;
@@ -22,6 +26,8 @@ export type CanvasHandle = {
   gesture(): Gesture;
   /** Punto del plano del suelo (y = 0) bajo una posición de pantalla, o null si el rayo no lo toca. */
   groundPoint(clientX: number, clientY: number): Vec3 | null;
+  /** Encuadra un conjunto de puntos del mundo (p. ej. los pines de un diagnóstico). */
+  framePoints(points: Vec3[]): void;
 };
 
 const DEFAULT_CAMERA: CameraState = {position: [0.9, 0.75, 0.9], target: [0, 0.05, 0]};
@@ -34,6 +40,8 @@ type SceneApi = {
   configure(gesture: Gesture, button: number, pointerType: string): void;
   cancel(): void;
   ground(clientX: number, clientY: number): Vec3 | null;
+  pickPin(x: number, y: number): PinRef | null;
+  cursorOn(clientX: number, clientY: number, through: Vec3): Vec3 | null;
 };
 
 type Props = {
@@ -46,6 +54,15 @@ type Props = {
   gizmo: GizmoState | null;
   onGizmoDrag(m: Transform): void;
   onGizmoCommit(m: Transform): void;
+  /** Cables y pines: los pines solo se dibujan con la herramienta Cable/Medir (o si hay diagnósticos resaltados). */
+  wires: WireView[];
+  pins: PinMarker[];
+  highlight: ReadonlySet<string>;
+  pending: Vec3 | null;
+  probes: {a: Vec3 | null; b: Vec3 | null};
+  onPinClick(ref: PinRef): void;
+  onPinHover(ref: PinRef | null, at: {x: number; y: number}): void;
+  onSelectWire(id: string): void;
   onSelect(ids: string[]): void;
   onMenu(at: {x: number; y: number}, targetId: string | null): void;
   onAnchor(point: {x: number; y: number} | null): void;
@@ -79,8 +96,9 @@ export function BuildCanvas(props: Props) {
   const longPress = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [marquee, setMarquee] = useState<Rect2 | null>(null);
   const [failure, setFailure] = useState('');
-  const latest = useRef({tool, selection, onSelect, onMenu});
-  latest.current = {tool, selection, onSelect, onMenu};
+  const [cursor, setCursor] = useState<Vec3 | null>(null);
+  const latest = useRef({tool, selection, onSelect, onMenu, props});
+  latest.current = {tool, selection, onSelect, onMenu, props};
   const partsRef = useRef(parts);
   partsRef.current = parts;
 
@@ -130,6 +148,7 @@ export function BuildCanvas(props: Props) {
     cancelGesture,
     gesture: () => gesture.current,
     groundPoint: (cx, cy) => scene.current?.ground(cx, cy) ?? null,
+    framePoints: points => { const box = new Box3(); for (const q of points) box.expandByPoint(new Vector3(...q)); box.expandByScalar(0.03); framing(box); },
   }), [reducedMotion]);
 
   // Espacio mantenido = desplazar (como Figma). Solo fuera de campos y ventanas.
@@ -154,7 +173,10 @@ export function BuildCanvas(props: Props) {
     if (g === 'marquee' && release === 'drag') {
       const ids = api.boxSelect(rectFromPoints(start.x, start.y, x, y));
       cur.onSelect(start.shift ? Array.from(new Set([...cur.selection, ...ids])) : ids);
-    } else if (release === 'click' && start.button === 0 && g !== 'panning') cur.onSelect(nextSelection(cur.selection, start.id, start.shift));
+    } else if (release === 'click' && start.button === 0 && g !== 'panning') {
+      if (start.id?.startsWith('wire:')) cur.props.onSelectWire(start.id.slice(5));
+      else cur.onSelect(nextSelection(cur.selection, start.id, start.shift));
+    }
   };
   const move = (e: PointerEvent) => {
     const start = press.current;
@@ -163,6 +185,21 @@ export function BuildCanvas(props: Props) {
     const x = e.clientX - box.left, y = e.clientY - box.top;
     if (longPress.current && Math.hypot(x - start.x, y - start.y) > 8) { clearTimeout(longPress.current); longPress.current = null; }
     if (gesture.current === 'marquee' && Math.hypot(x - start.x, y - start.y) > MOVE_THRESHOLD_PX) setMarquee(rectFromPoints(start.x, start.y, x, y));
+  };
+  // Con la herramienta Cable/Medir: pin bajo el puntero (etiqueta) y extremo suelto del cable a medio hacer.
+  const hover = useRef({frame: 0, x: 0, y: 0});
+  const onWrapMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const t = latest.current.tool, api = scene.current, el = wrap.current;
+    if (!api || !el || (t !== 'wire' && t !== 'measure')) return;
+    hover.current.x = e.clientX; hover.current.y = e.clientY;
+    if (hover.current.frame) return;
+    hover.current.frame = requestAnimationFrame(() => {
+      hover.current.frame = 0;
+      const box = el.getBoundingClientRect(), {x, y} = hover.current, pin = api.pickPin(x - box.left, y - box.top);
+      latest.current.props.onPinHover(pin, {x, y});
+      const pend = latest.current.props.pending;
+      setCursor(pend && !pin ? api.cursorOn(x, y, pend) : pend && pin ? (latest.current.props.pins.find(m => m.ref.instanceId === pin.instanceId && m.ref.pinId === pin.pinId)?.pos ?? null) : null);
+    });
   };
   useEffect(() => {
     addEventListener('pointerup', finish); addEventListener('pointercancel', cancelGesture); addEventListener('pointermove', move);
@@ -173,6 +210,7 @@ export function BuildCanvas(props: Props) {
     const api = scene.current, el = wrap.current;
     if (!api || !el || (e.target as Element).closest('.rb-canvas-overlay')) return;
     const box = el.getBoundingClientRect(), x = e.clientX - box.left, y = e.clientY - box.top;
+    if (e.button === 0 && (latest.current.tool === 'wire' || latest.current.tool === 'measure')) { const pin = api.pickPin(x, y); if (pin) { latest.current.props.onPinClick(pin); return; } }
     if (e.button === 0 && api.gizmoHot(x, y)) return; // el gizmo se queda con el gesto: la cámara y la selección no intervienen
     const id = api.pick(x, y);
     const pointerType = e.pointerType === 'touch' ? 'touch' : e.pointerType === 'pen' ? 'pen' : 'mouse';
@@ -192,7 +230,7 @@ export function BuildCanvas(props: Props) {
   };
 
   if (failure) return <div className="rb-gl-error" role="alert"><strong>No se pudo mostrar la pizarra 3D</strong><p>{failure}</p><button type="button" onClick={() => { setFailure(''); onContextLost(); }}>Reintentar</button></div>;
-  return <div ref={wrap} className={`rb-canvas${tool === 'hand' ? ' is-hand' : ''}`} data-gesture-state="idle" onPointerDownCapture={down} onContextMenu={e => e.preventDefault()}>
+  return <div ref={wrap} className={`rb-canvas${tool === 'hand' ? ' is-hand' : ''}`} data-gesture-state="idle" onPointerDownCapture={down} onPointerMove={onWrapMove} onPointerLeave={() => props.onPinHover(null, {x: 0, y: 0})} onContextMenu={e => e.preventDefault()}>
     <Boundary onError={setFailure}>
       <Canvas
         dpr={lowQuality ? 1 : [1, 1.75]}
@@ -201,7 +239,7 @@ export function BuildCanvas(props: Props) {
         onCreated={({gl}) => { gl.domElement.addEventListener('webglcontextlost', ev => { ev.preventDefault(); setFailure('El navegador perdió el contexto gráfico (WebGL). Pasa a veces con poca memoria de video.'); }); }}
         onError={() => setFailure('Falló el motor gráfico.')}>
         <color attach="background" args={['#eef1f4']} />
-        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit}} />
+        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool}} />
       </Canvas>
     </Boundary>
     {marquee && <div className="rb-marquee" style={{left: marquee.x, top: marquee.y, width: marquee.w, height: marquee.h}} />}
@@ -211,13 +249,16 @@ export function BuildCanvas(props: Props) {
 
 type TransformControlsLike = {object?: Object3D; axis: string | null; dragging: boolean; pointerHover(p: {x: number; y: number; button: number}): void};
 
-function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit}: {
+function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool}: {
   parts: PartInstance[]; selection: string[]; sceneRef: MutableRefObject<SceneApi | null>; controlsRef: MutableRefObject<CameraControlsImpl | null>; cube: MutableRefObject<HTMLDivElement | null>;
   onAnchor(p: {x: number; y: number} | null): void; onCameraRest(c: CameraState): void; initialCamera?: CameraState; debug: boolean; wrap: MutableRefObject<HTMLDivElement | null>;
   interfering: ReadonlySet<string>; joinPoints: Vec3[]; ghost: Ghost | null; gizmo: GizmoState | null; onGizmoDrag(m: Transform): void; onGizmoCommit(m: Transform): void;
+  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId;
 }) {
   const {camera, gl, scene} = useThree();
   const group = useRef<Group>(null);
+  const wiresGroup = useRef<Group>(null);
+  const pinsRef = useRef(pins); pinsRef.current = pins;
   const pivot = useRef<Group>(null);
   const tc = useRef<TransformControlsLike | null>(null);
   const last = useRef<{x: number; y: number} | null>(null);
@@ -246,13 +287,13 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
   useEffect(() => {
     const dom = gl.domElement;
     const ndc = (x: number, y: number) => { const r = dom.getBoundingClientRect(); return new Vector2((x / r.width) * 2 - 1, -(y / r.height) * 2 + 1); };
-    const idOf = (o: Object3D | null): string | null => { for (let n = o; n; n = n.parent) if (n.userData.partId) return n.userData.partId as string; return null; };
+    const idOf = (o: Object3D | null): string | null => { for (let n = o; n; n = n.parent) { if (n.userData.partId) return n.userData.partId as string; if (n.userData.wireId) return `wire:${n.userData.wireId as string}`; } return null; };
     const floor = new Plane(new Vector3(0, 1, 0), 0);
     sceneRef.current = {
       pick: (x, y) => {
         if (!group.current) return null;
         raycaster.current.setFromCamera(ndc(x, y), camera);
-        const hit = raycaster.current.intersectObjects(group.current.children, true)[0];
+        const hit = raycaster.current.intersectObjects([...group.current.children, ...(wiresGroup.current?.children ?? [])], true)[0];
         return hit ? idOf(hit.object) : null;
       },
       boxSelect: rect => {
@@ -287,6 +328,25 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
         const controls = controlsRef.current;
         if (controls && !tc.current?.dragging) { controls.enabled = false; controls.enabled = true; }
         wrap.current?.setAttribute('data-gesture-state', 'idle');
+      },
+      // Pin más cercano al puntero en pantalla (radio 15 px → blanco de ≥ 30 px, por encima de los 24 px pedidos).
+      pickPin: (x, y) => {
+        const r = dom.getBoundingClientRect(); let best: PinRef | null = null, bestD = 15;
+        const v = new Vector3();
+        for (const m of pinsRef.current) {
+          v.set(...m.pos).project(camera);
+          if (v.z > 1) continue;
+          const d = Math.hypot(((v.x + 1) / 2) * r.width - x, ((1 - v.y) / 2) * r.height - y);
+          if (d < bestD) { bestD = d; best = m.ref; }
+        }
+        return best;
+      },
+      // Punto del espacio bajo el puntero, en el plano que mira a la cámara y pasa por `through` (extremo suelto del cable).
+      cursorOn: (cx, cy, through) => {
+        const r = dom.getBoundingClientRect();
+        raycaster.current.setFromCamera(new Vector2(((cx - r.left) / r.width) * 2 - 1, -((cy - r.top) / r.height) * 2 + 1), camera);
+        const normal = camera.getWorldDirection(new Vector3()), plane = new Plane().setFromNormalAndCoplanarPoint(normal, new Vector3(...through)), out = new Vector3();
+        return raycaster.current.ray.intersectPlane(plane, out) ? [out.x, out.y, out.z] : null;
       },
       ground: (cx, cy) => {
         const r = dom.getBoundingClientRect();
@@ -328,6 +388,9 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
       gizmoRaw: () => tc.current,
       gizmoState: () => { const t = tc.current; return t ? {dragging: t.dragging, axis: t.axis, hasObject: !!t.object, pivot: pivot.current?.position.toArray(), drag: !!drag.current, camEnabled: controlsRef.current?.enabled} : null; },
       partIds: () => (group.current?.children ?? []).map(c => c.userData.partId as string),
+      pinScreen: (instanceId: string, pinId: string) => { const m = pinsRef.current.find(q => q.ref.instanceId === instanceId && q.ref.pinId === pinId); if (!m) return null; const v = new Vector3(...m.pos).project(camera), r = gl.domElement.getBoundingClientRect(); return {x: r.left + ((v.x + 1) / 2) * r.width, y: r.top + ((1 - v.y) / 2) * r.height}; },
+      wireCount: () => wiresGroup.current?.children.length ?? 0,
+      wires: () => (wiresGroup.current?.children ?? []).map(c => ({id: c.userData.wireId as string, points: c.userData.points as number[][]})),
       /** Busca en pantalla un punto sobre un asa del gizmo (X, Y, Z, XY…), para poder arrastrarla en las pruebas. */
       findGizmoPoint: (axis: string) => {
         const t = tc.current, o = pivot.current;
@@ -365,6 +428,9 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
     <group ref={group}>
       {parts.map(p => <PartMesh key={p.instanceId} part={p} selected={selection.includes(p.instanceId)} interfering={interfering.has(p.instanceId)} />)}
     </group>
+    <group ref={wiresGroup}>{wires.map(w => <WireTube key={w.id} wire={w} />)}</group>
+    {(tool === 'wire' || tool === 'measure' || highlight.size > 0) && <PinPoints pins={tool === 'wire' || tool === 'measure' ? pins : pins.filter(m => highlight.has(`${m.ref.instanceId}:${m.ref.pinId}`))} highlight={highlight} pending={pending} probes={probes} />}
+    {pending && cursor && <Line points={[pending, cursor]} color="#27ae60" lineWidth={2} dashed dashSize={0.008} gapSize={0.005} depthTest={false} />}
     {ghost && <GhostMesh definitionId={ghost.definitionId} position={ghost.position} valid={ghost.valid} />}
     {joinPoints.map((p, i) => <mesh key={i} position={p} raycast={() => null}><sphereGeometry args={[0.006, 16, 12]} /><meshBasicMaterial color="#27ae60" transparent opacity={0.85} depthTest={false} /></mesh>)}
     {gizmo && <>
@@ -375,5 +441,47 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
         onObjectChange={() => { const m = motionOf(); if (m && drag.current) { drag.current.motion = m; latest.current.onGizmoDrag(m); } }}
         onMouseUp={() => { const m = drag.current?.motion ?? null; drag.current = null; if (m && (Math.hypot(...m.position) > 1e-9 || Math.abs(m.rotation[3]) < 1 - 1e-9)) latest.current.onGizmoCommit(m); else latest.current.onGizmoDrag({position: ZERO, rotation: [0, 0, 0, 1]}); }} />
     </>}
+  </>;
+}
+
+/** Cable: tubo que pasa por las posiciones mundiales de sus pines y por los puntos de control; sin puntos, hace una curva suave hacia arriba. */
+function WireTube({wire}: {wire: WireView}) {
+  const key = JSON.stringify(wire.points), curve = useMemo(() => {
+    const pts = wire.points.map(q => new Vector3(...q));
+    if (pts.length === 2) { const mid = pts[0].clone().add(pts[1]).multiplyScalar(0.5); mid.y += 0.02 + 0.18 * pts[0].distanceTo(pts[1]); pts.splice(1, 0, mid); }
+    return new CatmullRomCurve3(pts, false, 'catmullrom', 0.5);
+  }, [key]);
+  return <group userData={{wireId: wire.id, points: wire.points}}>
+    <mesh><tubeGeometry args={[curve, 32, wire.selected ? 0.0017 : 0.0011, 8, false]} /><meshStandardMaterial color={wire.color} roughness={0.5} emissive={wire.selected ? wire.color : '#000000'} emissiveIntensity={wire.selected ? 0.5 : 0} /></mesh>
+    <mesh><tubeGeometry args={[curve, 24, 0.004, 5, false]} /><meshBasicMaterial transparent opacity={0} depthWrite={false} /></mesh>
+  </group>;
+}
+
+let dotTexture: CanvasTexture | null = null;
+const dot = () => {
+  if (dotTexture) return dotTexture;
+  const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d')!;
+  g.beginPath(); g.arc(32, 32, 28, 0, Math.PI * 2); g.fillStyle = '#ffffff'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#1f3b4c'; g.stroke();
+  dotTexture = new CanvasTexture(c); return dotTexture;
+};
+function Points2({positions, colors, size}: {positions: number[]; colors: number[]; size: number}) {
+  const geo = useRef<BufferGeometry>(null);
+  useEffect(() => { const g = geo.current; if (!g) return; g.setAttribute('position', new Float32BufferAttribute(positions, 3)); g.setAttribute('color', new Float32BufferAttribute(colors, 3)); g.computeBoundingSphere(); }, [positions, colors]);
+  return <points frustumCulled={false} renderOrder={20} raycast={() => null}><bufferGeometry ref={geo} /><pointsMaterial size={size} sizeAttenuation={false} vertexColors map={dot()} alphaTest={0.4} transparent depthTest={false} /></points>;
+}
+const rgb = (hex: string): [number, number, number] => { const n = parseInt(hex.slice(1), 16); return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255]; };
+
+/** Pines como puntos de tamaño constante en pantalla (11–14 px; el blanco de toque es el radio de 15 px de `pickPin`). */
+function PinPoints({pins, highlight, pending, probes}: {pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}}) {
+  const isHi = (m: PinMarker) => highlight.has(`${m.ref.instanceId}:${m.ref.pinId}`);
+  const plain = useMemo(() => { const list = pins.filter(m => !m.connected && !isHi(m)); return {pos: list.flatMap(m => m.pos), col: list.flatMap(m => rgb(pinColor(m.role)))}; }, [pins, highlight]);
+  const linked = useMemo(() => { const list = pins.filter(m => m.connected && !isHi(m)); return {pos: list.flatMap(m => m.pos), col: list.flatMap(m => rgb(pinColor(m.role)))}; }, [pins, highlight]);
+  const hi = useMemo(() => { const list = pins.filter(isHi); return {pos: list.flatMap(m => m.pos), col: list.flatMap(() => rgb('#ff8a00'))}; }, [pins, highlight]);
+  const special = useMemo(() => { const items: {p: Vec3; c: string}[] = []; if (pending) items.push({p: pending, c: '#27ae60'}); if (probes.a) items.push({p: probes.a, c: '#d64545'}); if (probes.b) items.push({p: probes.b, c: '#111111'}); return {pos: items.flatMap(i => i.p), col: items.flatMap(i => rgb(i.c))}; }, [pending, probes]);
+  return <>
+    {plain.pos.length > 0 && <Points2 positions={plain.pos} colors={plain.col} size={11} />}
+    {linked.pos.length > 0 && <Points2 positions={linked.pos} colors={linked.col} size={14} />}
+    {hi.pos.length > 0 && <Points2 positions={hi.pos} colors={hi.col} size={20} />}
+    {special.pos.length > 0 && <Points2 positions={special.pos} colors={special.col} size={22} />}
   </>;
 }

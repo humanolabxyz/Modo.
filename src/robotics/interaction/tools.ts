@@ -2,8 +2,8 @@
 // Regla central: mientras haya un gesto activo, ningún otro gesto puede empezar.
 export type Gesture = 'idle' | 'selecting' | 'marquee' | 'panning' | 'orbiting';
 // El arrastre del gizmo lo gobierna TransformControls (apaga la cámara mientras dura); la etapa 3 añadirá 'wiring'.
-/** `move` y `rotate` muestran el gizmo de la selección; para los gestos del lienzo se comportan como `select`. */
-export type ToolId = 'select' | 'hand' | 'move' | 'rotate';
+/** `move` y `rotate` muestran el gizmo de la selección; `wire` y `measure` reparten los clics sobre pines. Para los gestos del lienzo todos se comportan como `select`. */
+export type ToolId = 'select' | 'hand' | 'move' | 'rotate' | 'wire' | 'measure';
 export type PointerTarget = 'object' | 'empty';
 
 export type PointerStart = {
@@ -30,13 +30,15 @@ export function startGesture(current: Gesture, e: PointerStart): Gesture {
 
 export const endGesture = (_current: Gesture): Gesture => 'idle';
 
-export type EditorState = {gesture: Gesture; tool: ToolId; selection: number; menuOpen: boolean};
-export type EscapeAction = 'cancel-gesture' | 'close-menu' | 'reset-tool' | 'clear-selection' | 'none';
+/** `pending`: hay un cable a medio hacer o una medición con un solo pin elegido. */
+export type EditorState = {gesture: Gesture; tool: ToolId; selection: number; menuOpen: boolean; pending?: boolean};
+export type EscapeAction = 'cancel-gesture' | 'close-menu' | 'cancel-pending' | 'reset-tool' | 'clear-selection' | 'none';
 
 /** Esc deshace lo más reciente primero y nunca cierra ventanas (las ventanas son `passive`). */
 export function escapeAction(s: EditorState): EscapeAction {
   if (s.gesture !== 'idle') return 'cancel-gesture';
   if (s.menuOpen) return 'close-menu';
+  if (s.pending) return 'cancel-pending';
   if (s.tool !== 'select') return 'reset-tool';
   if (s.selection > 0) return 'clear-selection';
   return 'none';

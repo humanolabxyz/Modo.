@@ -1,19 +1,21 @@
 import {useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent} from 'react';
-import {Boxes, Check, Code2, Copy, Eye, Focus, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Redo2, Rotate3d, SlidersHorizontal, Terminal, Trash2, Undo2, Ungroup, X} from 'lucide-react';
-import {BuildCanvas, type CameraState, type CanvasHandle, type Ghost, type GizmoState} from './build/BuildCanvas';
+import {Boxes, Cable, Check, Code2, Copy, Eye, Focus, Gauge, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Redo2, Rotate3d, SlidersHorizontal, Terminal, Trash2, Undo2, Ungroup, X} from 'lucide-react';
+import {BuildCanvas, type CameraState, type CanvasHandle, type Ghost, type GizmoState, type PinMarker, type WireView} from './build/BuildCanvas';
 import {findInterferences, findJoinCandidates, placementCheck} from './build/interference.ts';
 import {ContextToolbar, type ContextAction} from './interaction/ContextToolbar';
 import {ContextMenu, type MenuItem} from './interaction/ContextMenu';
 import {escapeAction, type ToolId} from './interaction/tools.ts';
 import {describeTarget, resolveShortcut, type ShortcutCommand} from './interaction/shortcuts.ts';
 import {getDefinition} from './catalog/index.ts';
-import {addPart, attach, centroid, detach, duplicateParts, expandGroups, moveParts, parentAttachment, removeParts, renamePart, setGroup, setLocked, setPartProp, setPartTransform, type CommandError, type CommandResult} from './project/commands.ts';
+import {connectionLabel, connectionWarning, diagnose} from './circuit/diagnostics.ts';
+import {measure, solve} from './circuit/solve.ts';
+import {addPart, attach, centroid, connect, detach, disconnect, duplicateParts, expandGroups, moveParts, parentAttachment, pinWorld, removeParts, renamePart, setConnectionColor, setConnectionRoute, setGroup, setLocked, setPartProp, setPartTransform, type CommandError, type CommandResult} from './project/commands.ts';
 import {DEG} from './project/math.ts';
-import type {RobotProject, Transform, Vec3} from './project/types.ts';
+import type {PinRef, RobotProject, Transform, Vec3} from './project/types.ts';
 import {useRoboticsProjects} from './project/useRoboticsProjects';
 import {useRoboticsWindows, WINDOW_IDS, type RoboticsWindowId} from './windows/useRoboticsWindows';
 import {ProjectOptionsWindow, ProjectsWindow, RoboticsToolWindows, WINDOW_LABELS} from './windows/RoboticsWindows';
-import type {BuildContext} from './windows/BuildWindows';
+import {WIRE_COLORS, type BuildContext} from './windows/BuildWindows';
 import '../styles/robotics.css';
 
 const DOCK_ICONS: Record<RoboticsWindowId, typeof Boxes> = {parts: Boxes, structure: ListTree, properties: SlidersHorizontal, code: Code2, console: Terminal};
@@ -49,6 +51,12 @@ export default function RoboticsApp() {
   const [ghost, setGhost] = useState<Ghost | null>(null);
   const [ghostNote, setGhostNote] = useState<{x: number; y: number; text: string; bad: boolean} | null>(null);
   const [gizmoKey, setGizmoKey] = useState(0);
+  const [wireSel, setWireSel] = useState<string | null>(null);
+  const [wireColor, setWireColor] = useState(WIRE_COLORS[0].value);
+  const [pendingPin, setPendingPin] = useState<PinRef | null>(null);
+  const [probe, setProbe] = useState<{a: PinRef | null; b: PinRef | null}>({a: null, b: null});
+  const [highlight, setHighlight] = useState<ReadonlySet<string>>(new Set());
+  const [pinTip, setPinTip] = useState<{text: string; x: number; y: number} | null>(null);
   const [anchor, setAnchor] = useState<{x: number; y: number} | null>(null);
   const [menu, setMenu] = useState<{at: {x: number; y: number}; targetId: string | null} | null>(null);
   const [optionsOpen, setOptionsOpen] = useState(false);
@@ -65,12 +73,21 @@ export default function RoboticsApp() {
   const selected = proj.parts.filter(x => selection.includes(x.instanceId));
   const interfering = useMemo(() => new Set(findInterferences(shown).flat()), [shown]);
   const candidates = useMemo(() => (selection.length ? findJoinCandidates(proj, selection) : []), [proj.parts, proj.attachments, selection]);
-  const live = useRef({tool, selection, menu, proj, snapOn, snapMm, candidates});
-  live.current = {tool, selection, menu, proj, snapOn, snapMm, candidates};
+  const solution = useMemo(() => solve(proj), [proj.parts, proj.connections]);
+  const diagnostics = useMemo(() => diagnose(proj, solution), [proj.parts, proj.connections, solution]);
+  const wiring = tool === 'wire' || tool === 'measure';
+  const pinList = useMemo<PinMarker[]>(() => (wiring || highlight.size ? shown.parts.flatMap(part => (getDefinition(part.definitionId)?.pins ?? []).map(pin => ({ref: {instanceId: part.instanceId, pinId: pin.id}, pos: pinWorld(shown, {instanceId: part.instanceId, pinId: pin.id})!, role: pin.role, connected: shown.connections.some(c => (c.a.instanceId === part.instanceId && c.a.pinId === pin.id) || (c.b.instanceId === part.instanceId && c.b.pinId === pin.id))}))) : []), [shown.parts, shown.connections, wiring, highlight]);
+  const wireViews = useMemo<WireView[]>(() => shown.connections.flatMap(c => { const a = pinWorld(shown, c.a), b = pinWorld(shown, c.b); return a && b ? [{id: c.id, color: c.color, points: [a, ...(c.route ?? []), b], selected: c.id === wireSel}] : []; }), [shown.parts, shown.connections, wireSel]);
+  const posOf = (r: PinRef | null) => (r ? pinWorld(shown, r) ?? null : null);
+  const live = useRef({tool, selection, menu, proj, snapOn, snapMm, candidates, pendingPin, probe, wireColor, wireSel, solution});
+  live.current = {tool, selection, menu, proj, snapOn, snapMm, candidates, pendingPin, probe, wireColor, wireSel, solution};
 
   // La selección nunca apunta a piezas que ya no existen (deshacer, borrar, importar).
   useEffect(() => { setSelection(s => (s.every(id => proj.parts.some(x => x.instanceId === id)) ? s : s.filter(id => proj.parts.some(x => x.instanceId === id)))); }, [proj.parts]);
   useEffect(() => { setGizmoKey(k => k + 1); setPreview(null); }, [proj.parts, selection.join('|')]);
+  useEffect(() => { setPendingPin(null); setProbe({a: null, b: null}); setPinTip(null); }, [tool]);
+  useEffect(() => { setWireSel(s => (s && proj.connections.some(c => c.id === s) ? s : null)); }, [proj.connections]);
+  useEffect(() => { if (selection.length) setWireSel(null); }, [selection.join('|')]);
 
   const apply = (r: CommandResult | CommandError): boolean => {
     if ('error' in r) { setNotice(r.error); return false; }
@@ -112,6 +129,20 @@ export default function RoboticsApp() {
     addEventListener('pointermove', move); addEventListener('pointerup', up); addEventListener('pointercancel', cancel); addEventListener('keydown', key, true);
   };
 
+  const pinLabel = (r: PinRef) => { const part = live.current.proj.parts.find(x => x.instanceId === r.instanceId), pin = part && getDefinition(part.definitionId)?.pins.find(x => x.id === r.pinId); return part && pin ? `${part.label} · ${pin.label}` : r.pinId; };
+  const onPinClick = (ref: PinRef) => {
+    const cur = live.current;
+    if (cur.tool === 'wire') {
+      const from = cur.pendingPin;
+      if (!from) { setPendingPin(ref); return; }
+      if (from.instanceId === ref.instanceId && from.pinId === ref.pinId) { setNotice('Elige otro pin para terminar el cable (Esc cancela).'); return; }
+      const warn = connectionWarning(cur.proj, from, ref), r = connect(cur.proj, from, ref, cur.wireColor);
+      if ('error' in r) { setNotice(r.error); setPendingPin(null); return; }
+      projects.update(() => r.project); setWireSel(r.project.connections.at(-1)!.id); setSelection([]); setPendingPin(null);
+      setNotice(warn ?? '');
+    } else if (cur.tool === 'measure') setProbe(p => (!p.a || (p.a && p.b) ? {a: ref, b: null} : {a: p.a, b: ref}));
+  };
+  const onPinHover = (ref: PinRef | null, at: {x: number; y: number}) => setPinTip(ref ? {text: `${pinLabel(ref)}`, x: at.x, y: at.y} : null);
   const act = (action: ContextAction | 'frame-all' | 'reset-camera' | 'view-front' | 'view-side' | 'view-top' | 'view-iso' | 'group' | 'ungroup' | 'detach-parent') => {
     const {selection: sel, proj: p, candidates: cands, tool: t} = live.current;
     if (action === 'move') setTool(t === 'move' ? 'select' : 'move');
@@ -119,7 +150,7 @@ export default function RoboticsApp() {
     else if (action === 'join') { const c = cands[0]; if (!c) setNotice('No hay un anclaje compatible a menos de 15 mm.'); else apply(attach(p, c.parent, c.child)); }
     else if (action === 'duplicate') { const r = duplicateParts(p, sel); if (apply(r) && !('error' in r)) setSelection(r.project.parts.slice(p.parts.length).map(x => x.instanceId)); }
     else if (action === 'lock') { const all = p.parts.filter(x => sel.includes(x.instanceId)).every(x => x.locked); projects.update(q => setLocked(q, sel, !all)); }
-    else if (action === 'delete') { if (sel.length) { apply(removeParts(p, sel)); setSelection([]); } }
+    else if (action === 'delete') { if (live.current.wireSel && !sel.length) { projects.update(q => disconnect(q, live.current.wireSel!)); setWireSel(null); } else if (sel.length) { apply(removeParts(p, sel)); setSelection([]); } }
     else if (action === 'group') projects.update(q => setGroup(q, sel, true));
     else if (action === 'ungroup') projects.update(q => setGroup(q, sel, false));
     else if (action === 'detach-parent') { const a = sel.map(id => parentAttachment(p, id)).find(Boolean); if (a) projects.update(q => detach(q, a.id)); }
@@ -133,6 +164,8 @@ export default function RoboticsApp() {
     const command = (c: ShortcutCommand) => {
       if (c === 'tool-select') setTool('select');
       else if (c === 'tool-hand') setTool('hand');
+      else if (c === 'tool-wire') setTool(live.current.tool === 'wire' ? 'select' : 'wire');
+      else if (c === 'tool-measure') setTool(live.current.tool === 'measure' ? 'select' : 'measure');
       else if (c === 'tool-move') { if (live.current.selection.length) act('move'); else setTool('move'); }
       else if (c === 'tool-rotate') { if (live.current.selection.length) act('rotate'); else setTool('rotate'); }
       else if (c === 'frame-selection') act('frame');
@@ -150,18 +183,19 @@ export default function RoboticsApp() {
       const cur = live.current;
       if (e.key === 'Escape') {
         if (document.querySelector('dialog[open]')) return;
-        const todo = escapeAction({gesture: handle.current?.gesture() ?? 'idle', tool: cur.tool, selection: cur.selection.length, menuOpen: !!cur.menu});
+        const todo = escapeAction({gesture: handle.current?.gesture() ?? 'idle', tool: cur.tool, selection: cur.selection.length + (cur.wireSel ? 1 : 0), menuOpen: !!cur.menu, pending: !!cur.pendingPin || !!cur.probe.a});
         if (todo === 'none') return;
         e.preventDefault();
         if (todo === 'cancel-gesture') handle.current?.cancelGesture();
         else if (todo === 'close-menu') setMenu(null);
+        else if (todo === 'cancel-pending') { setPendingPin(null); setProbe({a: null, b: null}); }
         else if (todo === 'reset-tool') setTool('select');
-        else setSelection([]);
+        else { setSelection([]); setWireSel(null); }
         return;
       }
       const c = resolveShortcut({key: e.key, code: e.code, ctrl: e.ctrlKey, meta: e.metaKey, shift: e.shiftKey, alt: e.altKey, target: describeTarget(e.target as Element)});
       if (!c) return;
-      if (['undo', 'redo', 'duplicate', 'delete', 'group', 'ungroup'].includes(c)) e.preventDefault();
+      if (['undo', 'redo', 'duplicate', 'delete', 'group', 'ungroup', 'tool-wire', 'tool-measure'].includes(c)) e.preventDefault();
       command(c);
     };
     addEventListener('keydown', onKey);
@@ -187,6 +221,19 @@ export default function RoboticsApp() {
     setGroup: (ids, grouped) => projects.update(p => setGroup(p, ids, grouped)),
     remove: ids => { apply(removeParts(live.current.proj, ids)); setSelection([]); },
     snap: {on: snapOn, stepMm: snapMm, setOn: setSnapOn, setStepMm: setSnapMm},
+    diagnostics,
+    wires: proj.connections.map(c => ({id: c.id, label: connectionLabel(proj, c.a, c.b), color: c.color, a: c.a, b: c.b, route: c.route ?? []})),
+    selectedWire: wireSel,
+    selectWire: id => { setWireSel(id); if (id) { setSelection([]); windows.open('properties'); } },
+    deleteWire: id => { projects.update(p => disconnect(p, id)); setWireSel(null); },
+    setWireColor: (id, color) => projects.update(p => setConnectionColor(p, id, color)),
+    setWireRoute: (id, route) => projects.update(p => setConnectionRoute(p, id, route)),
+    showPins: refs => { setHighlight(new Set(refs.map(r => `${r.instanceId}:${r.pinId}`))); const pts = refs.map(r => pinWorld(live.current.proj, r)).filter(Boolean) as Vec3[]; if (pts.length) handle.current?.framePoints(pts); },
+    clearHighlight: () => setHighlight(new Set()),
+    highlighted: highlight.size > 0,
+    reading: probe.a && probe.b ? {labelA: pinLabel(probe.a), labelB: pinLabel(probe.b), reading: measure(solution, probe.a, probe.b)} : null,
+    clearProbe: () => setProbe({a: null, b: null}),
+    tool,
   };
 
   const target = menu?.targetId ? proj.parts.find(x => x.instanceId === menu.targetId) : undefined;
@@ -228,12 +275,17 @@ export default function RoboticsApp() {
     <main className="rb-stage" aria-label="Pizarra 3D">
       {supported
         ? <BuildCanvas key={`${proj.id}-${glKey}`} handleRef={handle} tool={tool} parts={shown.parts} selection={selection} interfering={interfering} joinPoints={joinPoints} ghost={ghost} gizmo={gizmo} onGizmoDrag={onGizmoDrag} onGizmoCommit={onGizmoCommit}
+            wires={wireViews} pins={pinList} highlight={highlight} pending={posOf(pendingPin)} probes={{a: posOf(probe.a), b: posOf(probe.b)}} onPinClick={onPinClick} onPinHover={onPinHover} onSelectWire={id => { setWireSel(id); setSelection([]); }}
             debug={debug} reducedMotion={reducedMotion} lowQuality={lowQuality} initialCamera={proj.workspace.camera} onCameraRest={onCameraRest} onAnchor={setAnchor} onContextLost={() => setGlKey(k => k + 1)}
             onSelect={selectIds} onMenu={(at, targetId) => { if (targetId && !live.current.selection.includes(targetId)) selectIds([targetId]); setMenu({at, targetId}); }} />
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Robótica necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>}
       {anchor && selection.length > 0 && !preview && <ContextToolbar at={anchor} count={selection.length} locked={allLocked} tool={tool} canJoin={candidates.length > 0} onAction={act} />}
       {empty && supported && <div className="rb-empty rb-canvas-overlay"><strong>Tu robot empieza aquí</strong><p>Abre <b>Piezas</b> para empezar.</p><button type="button" onClick={() => windows.open('parts')}><Boxes size={16} /> Abrir Piezas</button></div>}
       {mode === 'simulate' && <div className="rb-sim-note rb-canvas-overlay" role="status"><strong>Simulación</strong> disponible en una próxima etapa. Por ahora puedes seguir construyendo.</div>}
+      {tool === 'wire' && <div className="rb-tool-bar rb-canvas-overlay" role="group" aria-label="Cable"><span>{pendingPin ? `Desde ${pinLabel(pendingPin)}: elige el pin de destino` : 'Pulsa un pin para empezar el cable'}</span>
+        <span className="rb-swatches-inline" role="group" aria-label="Color del cable nuevo">{WIRE_COLORS.map(c => <button type="button" key={c.value} className="rb-swatch" style={{background: c.value}} aria-label={`Nuevo cable ${c.name}`} aria-pressed={wireColor === c.value} onClick={() => setWireColor(c.value)} />)}</span></div>}
+      {tool === 'measure' && <div className="rb-tool-bar rb-canvas-overlay" role="status">{ctx.reading ? <><b>{ctx.reading.reading.volts === null ? '— V' : `${ctx.reading.reading.volts.toFixed(2).replace('.', ',')} V`}</b><span>{ctx.reading.reading.continuity ? 'continuidad ✔' : 'sin continuidad'} · {ctx.reading.labelA} ↔ {ctx.reading.labelB}</span></> : <span>{probe.a ? `Punta roja en ${pinLabel(probe.a)}: elige el segundo pin` : 'Pulsa un pin para la punta roja y otro para la negra'}</span>}</div>}
+      {pinTip && wiring && <div className="rb-pin-tip" style={{left: pinTip.x + 14, top: pinTip.y + 16}} role="tooltip">{pinTip.text}</div>}
       {debug && <div className="rb-debug-tag rb-canvas-overlay" aria-hidden="true">depuración</div>}
     </main>
 
@@ -241,13 +293,16 @@ export default function RoboticsApp() {
       <button type="button" aria-label="Seleccionar" title="Seleccionar (V)" aria-pressed={tool === 'select'} onClick={() => setTool('select')}><MousePointer2 size={20} /></button>
       <button type="button" aria-label="Mover" title="Mover: gizmo de la selección (G)" aria-pressed={tool === 'move'} onClick={() => setTool(tool === 'move' ? 'select' : 'move')}><Move3d size={20} /></button>
       <button type="button" aria-label="Rotar" title="Rotar: gizmo de la selección (R)" aria-pressed={tool === 'rotate'} onClick={() => setTool(tool === 'rotate' ? 'select' : 'rotate')}><Rotate3d size={20} /></button>
+      <button type="button" aria-label="Cable" title="Cable: une dos pines (W)" aria-pressed={tool === 'wire'} onClick={() => setTool(tool === 'wire' ? 'select' : 'wire')}><Cable size={20} /></button>
+      <button type="button" aria-label="Medir" title="Medir: tensión y continuidad entre dos pines (M)" aria-pressed={tool === 'measure'} onClick={() => setTool(tool === 'measure' ? 'select' : 'measure')}><Gauge size={20} /></button>
       <button type="button" aria-label="Mano" title="Mano: desplazar (H)" aria-pressed={tool === 'hand'} onClick={() => setTool('hand')}><Hand size={20} /></button>
       <button type="button" aria-label="Encuadrar" title="Encuadrar selección o todo (F)" onClick={() => (selection.length ? act('frame') : act('frame-all'))}><Focus size={20} /></button>
       <button type="button" aria-label="Imán" title={`Imán: pasos de ${snapMm} mm y 15° (se cambia en Propiedades)`} aria-pressed={snapOn} onClick={() => setSnapOn(v => !v)}><Magnet size={20} /></button>
       <i aria-hidden="true" />
       {WINDOW_IDS.map(id => {
         const Icon = DOCK_ICONS[id], w = windows.state[id], label = WINDOW_LABELS[id].title;
-        return <button key={id} type="button" aria-label={w.open && !w.visible ? `Restaurar ${label}` : label} title={label} aria-pressed={w.open && w.visible} data-minimized={w.open && !w.visible} onClick={() => windows.toggle(id)}><Icon size={20} /><span>{label}</span></button>;
+        const issues = id === 'console' ? diagnostics.filter(d => d.severity !== 'info').length : 0;
+        return <button key={id} type="button" aria-label={w.open && !w.visible ? `Restaurar ${label}` : label} title={label} aria-pressed={w.open && w.visible} data-minimized={w.open && !w.visible} data-badge={issues || undefined} onClick={() => windows.toggle(id)}><Icon size={20} /><span>{label}</span></button>;
       })}
     </nav>
 
