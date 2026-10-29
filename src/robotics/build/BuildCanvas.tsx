@@ -71,6 +71,8 @@ type Props = {
   onCameraRest(camera: CameraState): void;
   /** Cámara en primera persona: WASD mueve, Q/E baja/sube y el botón derecho (o un dedo) mira. */
   flying: boolean;
+  /** Estado vivo de la simulación (brillo de los LED, 0–1). */
+  live?: {leds: Record<string, number>};
   initialCamera?: CameraState;
   reducedMotion: boolean;
   lowQuality: boolean;
@@ -244,7 +246,7 @@ export function BuildCanvas(props: Props) {
         onCreated={({gl}) => { gl.domElement.addEventListener('webglcontextlost', ev => { ev.preventDefault(); setFailure('El navegador perdió el contexto gráfico (WebGL). Pasa a veces con poca memoria de video.'); }); }}
         onError={() => setFailure('Falló el motor gráfico.')}>
         <color attach="background" args={['#eef1f4']} />
-        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput}} />
+        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput, live: props.live}} />
       </Canvas>
     </Boundary>
     {marquee && <div className="rb-marquee" style={{left: marquee.x, top: marquee.y, width: marquee.w, height: marquee.h}} />}
@@ -255,11 +257,11 @@ export function BuildCanvas(props: Props) {
 
 type TransformControlsLike = {object?: Object3D; axis: string | null; dragging: boolean; pointerHover(p: {x: number; y: number; button: number}): void};
 
-function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool, flying, flyInput}: {
+function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool, flying, flyInput, live}: {
   parts: PartInstance[]; selection: string[]; sceneRef: MutableRefObject<SceneApi | null>; controlsRef: MutableRefObject<CameraControlsImpl | null>; cube: MutableRefObject<HTMLDivElement | null>;
   onAnchor(p: {x: number; y: number} | null): void; onCameraRest(c: CameraState): void; initialCamera?: CameraState; debug: boolean; wrap: MutableRefObject<HTMLDivElement | null>;
   interfering: ReadonlySet<string>; joinPoints: Vec3[]; ghost: Ghost | null; gizmo: GizmoState | null; onGizmoDrag(m: Transform): void; onGizmoCommit(m: Transform): void;
-  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId; flying: boolean; flyInput: MutableRefObject<Set<string>>;
+  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId; flying: boolean; flyInput: MutableRefObject<Set<string>>; live?: {leds: Record<string, number>};
 }) {
   const flyingRef = useRef(flying); flyingRef.current = flying;
   const eye = useRef(new Vector3());
@@ -398,6 +400,8 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
       partIds: () => (group.current?.children ?? []).map(c => c.userData.partId as string),
       pinScreen: (instanceId: string, pinId: string) => { const m = pinsRef.current.find(q => q.ref.instanceId === instanceId && q.ref.pinId === pinId); if (!m) return null; const v = new Vector3(...m.pos).project(camera), r = gl.domElement.getBoundingClientRect(); return {x: r.left + ((v.x + 1) / 2) * r.width, y: r.top + ((1 - v.y) / 2) * r.height}; },
       wireCount: () => wiresGroup.current?.children.length ?? 0,
+      /** Intensidad emisiva real del LED dibujado (para comprobar que el 3D refleja el modelo). */
+      ledGlow: (id: string) => { const g = group.current?.children.find(c => c.userData.partId === id); let v: number | null = null; g?.traverse(o => { if (o.userData.glowMesh) v = ((o as unknown as {material: {emissiveIntensity: number}}).material.emissiveIntensity); }); return v; },
       wires: () => (wiresGroup.current?.children ?? []).map(c => ({id: c.userData.wireId as string, points: c.userData.points as number[][]})),
       /** Busca en pantalla un punto sobre un asa del gizmo (X, Y, Z, XY…), para poder arrastrarla en las pruebas. */
       findGizmoPoint: (axis: string) => {
@@ -490,7 +494,7 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
     <Grid position={[0, 0, 0]} args={[10, 10]} cellSize={0.1} cellThickness={0.6} cellColor="#c9d1d8" sectionSize={0.5} sectionThickness={1} sectionColor="#9fb0bc" fadeDistance={6} fadeStrength={1.5} infiniteGrid />
     <CameraControls ref={controlsRef as never} makeDefault />
     <group ref={group}>
-      {parts.map(p => <PartMesh key={p.instanceId} part={p} selected={selection.includes(p.instanceId)} interfering={interfering.has(p.instanceId)} />)}
+      {parts.map(p => <PartMesh key={p.instanceId} part={p} selected={selection.includes(p.instanceId)} interfering={interfering.has(p.instanceId)} glow={live?.leds[p.instanceId]} />)}
     </group>
     <group ref={wiresGroup}>{wires.map(w => <WireTube key={w.id} wire={w} />)}</group>
     {(tool === 'wire' || tool === 'measure' || highlight.size > 0) && <PinPoints pins={tool === 'wire' || tool === 'measure' ? pins : pins.filter(m => highlight.has(`${m.ref.instanceId}:${m.ref.pinId}`))} highlight={highlight} pending={pending} probes={probes} />}

@@ -1,8 +1,8 @@
 {
-  "url": "http://127.0.0.1:4330",
+  "url": "http://127.0.0.1:4344",
   "checks": [
-    "precache: 209 archivos; excluye RoboticsApp.BoyCEMG0.js (1.10 MB)",
-    "tras instalar la PWA (210 recursos): el HTML de Robótica está en caché y su chunk de ~1 MB no",
+    "precache: 213 archivos; excluye RoboticsApp.CTB006J6.js (1.16 MB)",
+    "tras instalar la PWA (214 recursos): el HTML de Robótica está en caché y su chunk de ~1 MB no",
     "PWA instalada, sin conexión y sin haber abierto nunca Robótica: aparece el aviso «necesita cargarse una vez con conexión»",
     "al visitar /robotica/ se guardan la página y el chunk (+3 recursos)",
     "SIN CONEXIÓN: /robotica/ abre, la pizarra 3D se dibuja y el proyecto guardado se conserva"

@@ -1,0 +1,10 @@
+{
+  "url": "http://127.0.0.1:4344",
+  "checks": [
+    "tras una visita, el worker de la simulación y el editor quedan en la caché del navegador",
+    "SIN CONEXIÓN: el proyecto se abre y el programa importado se ejecuta: el LED parpadea (11 cambios en 3 s)",
+    "sin conexión el editor abre, «Compilar» queda desactivado y el programa importado sigue disponible",
+    "sin errores de consola ni de página"
+  ],
+  "errors": []
+}

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Copy, Download, FilePlus2, LayoutGrid, Trash2, Upload} from 'lucide-react';
 import {FloatingWindow} from '../../components/FloatingWindow';
 import type {RoboticsProjects} from '../project/useRoboticsProjects';
+import {CodePanel} from './CodePanel';
 import {ConsolePanel, PartsPanel, PropertiesPanel, StructurePanel, type BuildContext} from './BuildWindows';
 import {storageIdOf, WINDOW_IDS, type RoboticsWindowId, type RoboticsWindows} from './useRoboticsWindows';
 
@@ -30,8 +31,8 @@ export function RoboticsToolWindows({windows, ctx}: Props) {
       const w = windows.state[id];
       if (!w.open) return null;
       const label = WINDOW_LABELS[id], empty = EMPTY[id];
-      return <FloatingWindow key={`${id}-${windows.epoch}`} passive storageId={storageIdOf(id)} title={label.title} eyebrow={label.eyebrow} width={id === 'code' ? 440 : id === 'parts' ? 340 : 320} side={id === 'parts' || id === 'structure' ? 'left' : 'right'} top={id === 'console' ? 120 : 0} visible={w.visible} activation={w.activation} onClose={() => windows.close(id)} onMinimize={() => windows.minimize(id)} closeLabel={`Cerrar ${label.title}`} className={`rb-window rb-window-${id}`}>
-        {id === 'parts' ? <PartsPanel ctx={ctx} /> : id === 'structure' ? <StructurePanel ctx={ctx} /> : id === 'properties' ? <PropertiesPanel ctx={ctx} /> : id === 'console' ? <ConsolePanel ctx={ctx} />
+      return <FloatingWindow key={`${id}-${windows.epoch}`} passive storageId={storageIdOf(id)} title={label.title} eyebrow={label.eyebrow} width={id === 'code' ? 480 : id === 'parts' ? 340 : 320} side={id === 'parts' || id === 'structure' ? 'left' : 'right'} top={id === 'console' ? 120 : 0} visible={w.visible} activation={w.activation} onClose={() => windows.close(id)} onMinimize={() => windows.minimize(id)} closeLabel={`Cerrar ${label.title}`} className={`rb-window rb-window-${id}`}>
+        {id === 'parts' ? <PartsPanel ctx={ctx} /> : id === 'structure' ? <StructurePanel ctx={ctx} /> : id === 'properties' ? <PropertiesPanel ctx={ctx} /> : id === 'console' ? <ConsolePanel ctx={ctx} /> : id === 'code' ? <CodePanel ctx={ctx} />
           : <div className="rb-window-empty"><strong>{empty.headline}</strong><p>{empty.body}</p><span className="rb-window-stage">Disponible en la {empty.stage.toLowerCase()}</span></div>}
       </FloatingWindow>;
     })}

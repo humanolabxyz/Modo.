@@ -187,3 +187,35 @@ body.rb-dragging,body.rb-dragging *{cursor:grabbing!important;user-select:none!i
 .rb-fly-bar{left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;max-width:calc(100% - 24px);padding:8px 12px;border:1px solid #bcd7c9;border-radius:12px;background:#f1f8f4;box-shadow:var(--rb-shadow);font-size:13px;color:#35566a;z-index:30}
 .rb-fly-bar b{color:#1d7a46}
 .rb-fly-bar button{min-height:32px;padding:0 12px;border:1px solid #bcd7c9;border-radius:9px;background:#fff;color:#1d7a46;font-weight:700;cursor:pointer}
+
+/* ───── Etapa 4: programa y simulación ───── */
+.rb-sim{display:flex;align-items:center;gap:3px;padding:2px;border-radius:12px;background:#edf1f4}
+.rb-sim>button,.rb-sim>select{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 8px;border:0;border-radius:10px;background:transparent;color:#35566a;font:inherit;font-size:13px;cursor:pointer}
+.rb-sim>.rb-run{background:#fff;color:#1d7a46;box-shadow:0 1px 3px #25405a24}
+.rb-sim>button:disabled{opacity:.35;cursor:default}
+.rb-sim>select{min-width:0;padding:0 4px;font-weight:600}
+.rb-sim-chip{padding:0 8px;font:700 10px/1 var(--ui-font,system-ui);letter-spacing:.05em;color:#718894}
+.rb-sim-chip[data-sim=running]{color:#1d7a46}.rb-sim-chip[data-sim=paused]{color:#c98a1d}.rb-sim-chip[data-lag=true]{color:#c98a1d}
+@media (max-width:900px){.rb-sim select,.rb-sim-chip{display:none}}
+.rb-code{display:flex;flex-direction:column;gap:8px;min-height:0;height:100%}
+.rb-code-top{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.rb-code-top label{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:600;color:#56717f}
+.rb-code-top select{min-height:34px;padding:0 8px;border:1px solid var(--rb-line);border-radius:9px;font:inherit;font-size:13px;color:#1f3b4c;background:#fff}
+.rb-code-status{padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;background:#eef2f5;color:#47657a}
+.rb-code-status.is-fresh,.rb-code-status.is-imported{background:#e3f4ea;color:#1d7a46}.rb-code-status.is-stale{background:#fff3df;color:#a8650a}
+.rb-code-editor{flex:1;min-height:230px;height:300px}
+.rb-code-host,.rb-code-host .cm-editor{height:100%}
+.rb-code-actions{display:flex;flex-wrap:wrap;gap:6px}
+.rb-code-actions .rb-primary,.rb-file-button{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border:1px solid var(--rb-line);border-radius:10px;background:#fff;color:#35566a;font-size:13px;font-weight:700;cursor:pointer;position:relative}
+.rb-code-actions .rb-primary{background:#101215;border-color:#101215;color:#fff}.rb-code-actions .rb-primary:disabled{opacity:.4;cursor:not-allowed}
+.rb-file-button input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.rb-code-advice{margin:0;padding:7px 10px;border-radius:9px;background:#f4f7f9;color:#47657a;font-size:12.5px;line-height:1.4}.rb-code-advice.is-recompile,.rb-code-advice.is-compile{background:#fff8ec;color:#8a5a12}
+.rb-code-info{margin:0;font-size:12.5px;color:#1d7a46}
+.rb-code-errors{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.rb-code-errors button{display:flex;gap:8px;width:100%;padding:7px 10px;border:1px solid #e8b9b9;border-radius:9px;background:#fdf4f4;color:#7a2f2f;font-size:12.5px;text-align:left;cursor:pointer}
+.rb-code-errors b{flex:none;color:#a93b3b}
+.rb-support{font-size:12px;color:#56717f}.rb-support summary{cursor:pointer;font-weight:600}.rb-support ul{margin:6px 0 0;padding-left:16px}.rb-support li[data-status=soportado] b{color:#1d7a46}.rb-support li[data-status="no soportado"] b{color:#a93b3b}
+.rb-serial{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#35566a}
+.rb-sim-state{margin:0;padding:6px 10px;border-radius:9px;background:#f4f7f9;font-size:12.5px}.rb-sim-state[data-sim=running]{background:#e3f4ea;color:#1d7a46}
+.rb-serial-out{min-height:110px;max-height:220px;margin:0;padding:8px 10px;overflow:auto;border:1px solid var(--rb-line);border-radius:10px;background:#101215;color:#d6f5e0;font:12.5px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;word-break:break-all}
+.rb-state-list{margin:0;padding-left:16px;font-size:12.5px;line-height:1.55}

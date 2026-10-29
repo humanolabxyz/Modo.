@@ -1,6 +1,6 @@
 {
-  "url": "http://127.0.0.1:4330",
-  "date": "2026-10-29T04:27:29.008Z",
+  "url": "http://127.0.0.1:4344",
+  "date": "2026-10-29T12:42:51.052Z",
   "runs": [
     {
       "label": "robotica · escritorio",
@@ -19,8 +19,8 @@
           ],
           "maxDeviationMs": 0.014,
           "virtualS": 5,
-          "wallMs": 2788.4,
-          "speed": 1.8
+          "wallMs": 2671.1,
+          "speed": 1.9
         },
         "pwm": {
           "64": {
@@ -125,15 +125,15 @@
             }
           ],
           "expectedDutyAvanzar": 70.6,
-          "wallMs": 1213.5,
-          "speed": 1.7
+          "wallMs": 1293.3,
+          "speed": 1.6
         }
       },
-      "workerStartAndE1Ms": 4605,
+      "workerStartAndE1Ms": 4639,
       "e3": {
         "version": "0.21.0",
-        "initMs": 50.3,
-        "buildWorldMs": 4.9,
+        "initMs": 56.4,
+        "buildWorldMs": 10.5,
         "bodies": 10,
         "joints": 9,
         "obstacles": 5,
@@ -144,16 +144,16 @@
           "steps": 14400,
           "bad": null,
           "stepMs": {
-            "mean": 0.1397,
+            "mean": 0.1563,
             "p50": 0.1,
             "p95": 0.2,
-            "p99": 0.3,
-            "max": 96.1,
+            "p99": 0.6,
+            "max": 93.5,
             "warmP95": 0.2,
-            "warmMax": 7.6,
+            "warmMax": 9.1,
             "maxAtStep": 0
           },
-          "realtimeFactor": 29.8,
+          "realtimeFactor": 26.7,
           "final": {
             "x": -0.0525,
             "y": 0.0324,
@@ -180,7 +180,7 @@
         },
         "traceSeconds": 60
       },
-      "e3TotalMs": 3821,
+      "e3TotalMs": 4207,
       "throttleLabel": "robotica · escritorio",
       "cspConsole": []
     },
@@ -201,7 +201,7 @@
           ],
           "maxDeviationMs": 0.014,
           "virtualS": 5,
-          "wallMs": 2423.1,
+          "wallMs": 2395.6,
           "speed": 2.1
         },
         "pwm": {
@@ -307,15 +307,15 @@
             }
           ],
           "expectedDutyAvanzar": 70.6,
-          "wallMs": 1176.9,
-          "speed": 1.8
+          "wallMs": 1227.5,
+          "speed": 1.7
         }
       },
-      "workerStartAndE1Ms": 4228,
+      "workerStartAndE1Ms": 4299,
       "e3": {
         "version": "0.21.0",
-        "initMs": 40.1,
-        "buildWorldMs": 4.1,
+        "initMs": 41.3,
+        "buildWorldMs": 4.8,
         "bodies": 10,
         "joints": 9,
         "obstacles": 5,
@@ -326,16 +326,16 @@
           "steps": 14400,
           "bad": null,
           "stepMs": {
-            "mean": 0.1338,
+            "mean": 0.1453,
             "p50": 0.1,
             "p95": 0.2,
-            "p99": 0.3,
-            "max": 97.1,
+            "p99": 0.5,
+            "max": 96.5,
             "warmP95": 0.2,
-            "warmMax": 8.4,
+            "warmMax": 7.9,
             "maxAtStep": 0
           },
-          "realtimeFactor": 31.1,
+          "realtimeFactor": 28.7,
           "final": {
             "x": -0.0525,
             "y": 0.0324,
@@ -362,7 +362,7 @@
         },
         "traceSeconds": 60
       },
-      "e3TotalMs": 3610,
+      "e3TotalMs": 3936,
       "throttleLabel": "robotica · tablet (CPU ×4, proxy)",
       "cspConsole": []
     },
@@ -383,8 +383,8 @@
           ],
           "maxDeviationMs": 0.014,
           "virtualS": 5,
-          "wallMs": 1663.8,
-          "speed": 3
+          "wallMs": 1697.1,
+          "speed": 2.9
         },
         "pwm": {
           "64": {
@@ -489,12 +489,12 @@
             }
           ],
           "expectedDutyAvanzar": 70.6,
-          "wallMs": 840.9,
-          "speed": 2.5
+          "wallMs": 804.6,
+          "speed": 2.6
         }
       },
-      "workerStartAndE1Ms": 2887,
-      "e3Error": "CompileError: WebAssembly.instantiate(): Compiling or instantiating WebAssembly module violates the following Content Security policy directive because 'unsafe-eval' is not an allowed source of script in the following Content Security Policy directive: \"script-src 'self' 'sha256-uaMFX4nW2dTRWH3P5Ch4C6xdfLx7REF970QbQKldwhs=' 'sha256-0O8HSzo4N22+aixqZzK8DrCr5DoRZVViKridqyqRAJs=' 'sha256-C+pa/uIitXOp2U6w7JcwP6ufnjNFVhGvSYRLgotDGHQ=' 'sha256-jb6eukrnid8pvOZfbjOilRJMGq2BrKYHKuPgK1BCuls=' 'sha256-fsmN+MSpuJYBeJoPbgHCCu1tyVfzQGBamhIjeVaQsQk=' 'sha256-6Z/skjNDBc+hd+lfcdJxz0nHNFtlV8ZvaYHqY9M0+SY=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='\".\n    at blob:http://127.0.0.1:4330/739040ef-fb6e-4551-a26e-ca732c5ed262:3:124626\n    at _B (blob:http://127.0.0.1:4330/739040ef-fb6e-4551-a26e-ca732c5ed262:3:124710)",
+      "workerStartAndE1Ms": 2893,
+      "e3Error": "CompileError: WebAssembly.instantiate(): Compiling or instantiating WebAssembly module violates the following Content Security policy directive because 'unsafe-eval' is not an allowed source of script in the following Content Security Policy directive: \"script-src 'self' 'sha256-uaMFX4nW2dTRWH3P5Ch4C6xdfLx7REF970QbQKldwhs=' 'sha256-0O8HSzo4N22+aixqZzK8DrCr5DoRZVViKridqyqRAJs=' 'sha256-C+pa/uIitXOp2U6w7JcwP6ufnjNFVhGvSYRLgotDGHQ=' 'sha256-jb6eukrnid8pvOZfbjOilRJMGq2BrKYHKuPgK1BCuls=' 'sha256-fsmN+MSpuJYBeJoPbgHCCu1tyVfzQGBamhIjeVaQsQk=' 'sha256-6Z/skjNDBc+hd+lfcdJxz0nHNFtlV8ZvaYHqY9M0+SY=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='\".\n    at blob:http://127.0.0.1:4344/6e3083b9-7179-4ba1-af65-0965a020b642:3:124626\n    at _B (blob:http://127.0.0.1:4344/6e3083b9-7179-4ba1-af65-0965a020b642:3:124710)",
       "throttleLabel": "laboratorio · control negativo (sin wasm-unsafe-eval)",
       "cspConsole": []
     }

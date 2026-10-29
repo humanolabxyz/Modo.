@@ -1,7 +1,7 @@
 {
-  "url": "http://127.0.0.1:4326",
+  "url": "http://127.0.0.1:4344",
   "checks": [
-    "[escritorio] catálogo con 10 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas",
+    "[escritorio] catálogo con 12 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas",
     "[escritorio] arrastrar al lienzo: fantasma con aviso, Esc cancela, soltar sobre la pizarra agrega apoyada en el suelo, fuera no agrega",
     "[escritorio] editar posición (mm→m) y rotación (grados→cuaternión) desde Propiedades; deshacer y rehacer paso a paso",
     "[escritorio] un motor a 6 mm del anclaje ofrece «Unir» y queda fijo en él (anclajes coincidentes, 1e-6)",
@@ -14,7 +14,7 @@
     "[escritorio] agrupar desde Propiedades: elegir una pieza del grupo selecciona el grupo completo",
     "[escritorio] borrar el motor unido elimina su unión y avisa («se rompieron … uniones»)",
     "[escritorio] recargar conserva 2 piezas con las mismas posiciones y rotaciones (deep equal)",
-    "[tablet] catálogo con 10 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas",
+    "[tablet] catálogo con 12 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas",
     "[tablet] arrastrar al lienzo: fantasma con aviso, Esc cancela, soltar sobre la pizarra agrega apoyada en el suelo, fuera no agrega",
     "[tablet] editar posición (mm→m) y rotación (grados→cuaternión) desde Propiedades; deshacer y rehacer paso a paso",
     "[tablet] un motor a 6 mm del anclaje ofrece «Unir» y queda fijo en él (anclajes coincidentes, 1e-6)",
@@ -27,7 +27,7 @@
     "[tablet] agrupar desde Propiedades: elegir una pieza del grupo selecciona el grupo completo",
     "[tablet] borrar el motor unido elimina su unión y avisa («se rompieron … uniones»)",
     "[tablet] recargar conserva 2 piezas con las mismas posiciones y rotaciones (deep equal)",
-    "[telefono] catálogo con 10 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas",
+    "[telefono] catálogo con 12 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas",
     "[telefono] editar posición (mm→m) y rotación (grados→cuaternión) desde Propiedades; deshacer y rehacer paso a paso",
     "[telefono] un motor a 6 mm del anclaje ofrece «Unir» y queda fijo en él (anclajes coincidentes, 1e-6)",
     "[telefono] mover el chasis arrastra al motor unido y conserva la unión; Estructura lo muestra como hijo",

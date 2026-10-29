@@ -7,6 +7,9 @@ import {childAttachments, parentAttachment} from '../project/commands.ts';
 import type {PartInstance, PinRef, RobotProject, Transform, Vec3} from '../project/types.ts';
 import type {Diagnostic} from '../circuit/diagnostics.ts';
 import type {Reading} from '../circuit/solve.ts';
+import type {CompileResult} from '../mcu/types.ts';
+import type {Snapshot} from '../sim/coordinator.ts';
+import type {SimStatus} from '../sim/useRobotSim.ts';
 
 /** Todo lo que las ventanas de construcción necesitan del shell (RoboticsApp); así no conocen el estado del lienzo. */
 export type BuildContext = {
@@ -39,6 +42,21 @@ export type BuildContext = {
   reading: {labelA: string; labelB: string; reading: Reading} | null;
   clearProbe(): void;
   tool: string;
+  // ───── etapa 4: programa y simulación
+  code: {
+    boards: {id: string; label: string}[];
+    target: string | null;
+    setTarget(id: string): void;
+    /** Texto actual del editor (el que se ve, aunque aún no se haya guardado en el proyecto). */
+    source: string;
+    setSource(text: string): void;
+    artifact: NonNullable<RobotProject['firmware'][number]['artifact']> | undefined;
+    /** null mientras se comprueba; false sin servicio (sin conexión o sitio sin compilador). */
+    compilerAvailable: boolean | null;
+    compile(text: string): Promise<CompileResult>;
+    importHex(file: File): Promise<{ok: boolean; error?: string}>;
+  };
+  sim: {status: SimStatus; snapshot: Snapshot | null; serial: string; message: string; ratio: number; lag: boolean; clearSerial(): void; labelOf(id: string): string};
 };
 export const WIRE_COLORS: {name: string; value: string}[] = [{name: 'Rojo', value: '#d64545'}, {name: 'Negro', value: '#222222'}, {name: 'Azul', value: '#2a67a3'}, {name: 'Amarillo', value: '#e0a52a'}, {name: 'Verde', value: '#2a8f4f'}, {name: 'Blanco', value: '#e8e8e8'}];
 
@@ -139,7 +157,8 @@ export function PropertiesPanel({ctx}: {ctx: BuildContext}) {
     <fieldset className="rb-xyz"><legend>Rotación (grados)</legend>
       {(['X', 'Y', 'Z'] as const).map((a, i) => <NumberField key={a} label={a} unit="°" step={ctx.snap.on ? 15 : 1} value={Math.round((euler[i] / DEG) * 100) / 100} disabled={!!part.locked} onCommit={v => setRot(i as 0 | 1 | 2, v)} />)}</fieldset>
     <label className="rb-check"><input type="checkbox" checked={!!part.locked} onChange={e => ctx.setLocked([part.instanceId], e.target.checked)} /> Bloqueada (no se mueve ni se borra)</label>
-    {def?.props?.map(prop => prop.type === 'number' && <div key={prop.id} className="rb-prop-number"><NumberField label={prop.id === 'voltage' ? 'Voltaje' : prop.label} unit={prop.id === 'voltage' ? 'V' : ''} step={0.5} value={Number(part.props?.[prop.id] ?? prop.default)} onCommit={v => ctx.setProp(part.instanceId, prop.id, Math.min(prop.max ?? v, Math.max(prop.min ?? v, v)))} />{prop.id === 'voltage' && <small>Supuesto: 4×AA ≈ 6 V. Compruébalo con el kit del aula (D-11). El Arduino por VIN necesita ≥ 7 V.</small>}</div>)}
+    {def?.props?.map(prop => prop.type === 'number' && <div key={prop.id} className="rb-prop-number"><NumberField label={prop.id === 'voltage' ? 'Voltaje' : prop.id === 'ohms' ? 'Resistencia' : prop.id === 'testDistance' ? 'Distancia de prueba' : prop.label} unit={prop.id === 'voltage' ? 'V' : prop.id === 'ohms' ? 'Ω' : prop.id === 'testDistance' ? 'm' : ''} step={0.5} value={Number(part.props?.[prop.id] ?? prop.default)} onCommit={v => ctx.setProp(part.instanceId, prop.id, Math.min(prop.max ?? v, Math.max(prop.min ?? v, v)))} />{prop.id === 'voltage' && <small>Supuesto: 4×AA ≈ 6 V. Compruébalo con el kit del aula (D-11). El Arduino por VIN necesita ≥ 7 V.</small>}</div>)}
+    {def?.props?.map(prop => prop.type === 'enum' && <label className="rb-field" key={prop.id}><span>{prop.label}</span><select aria-label={prop.label} value={String(part.props?.[prop.id] ?? prop.default)} onChange={e => ctx.setProp(part.instanceId, prop.id, e.target.value)}>{prop.options?.map(o => <option key={o} value={o}>{o}</option>)}</select></label>)}
     {def?.props?.map(prop => prop.type === 'boolean' && <label className="rb-check" key={prop.id}><input type="checkbox" checked={Boolean(part.props?.[prop.id] ?? prop.default)} onChange={e => ctx.setProp(part.instanceId, prop.id, e.target.checked)} /> {prop.label}</label>)}
     {parent && parentPart && <p className="rb-attached">Unida a <b>{parentPart.label}</b> ({parent.kind === 'wheel-hinge' ? 'eje de rueda' : 'rígida'}). <button data-inline-action="" type="button" onClick={() => ctx.detach(parent.id)}>Separar</button></p>}
     {ctx.interfering.has(part.instanceId) && <p className="rb-warn"><TriangleAlert size={14} /> Se superpone con otra pieza. Es solo un aviso: puedes dejarla así.</p>}
@@ -172,9 +191,9 @@ export function ConsolePanel({ctx}: {ctx: BuildContext}) {
   return <div className="rb-console">
     <div className="rb-tabs" role="tablist" aria-label="Consola">
       <button data-inline-action="" type="button" role="tab" aria-selected={tab === 'diag'} onClick={() => setTab('diag')}>Diagnóstico{errors + warnings > 0 && <i>{errors + warnings}</i>}</button>
-      <button data-inline-action="" type="button" role="tab" aria-selected={tab === 'serial'} onClick={() => setTab('serial')}>Serie</button>
+      <button data-inline-action="" type="button" role="tab" aria-selected={tab === 'serial'} onClick={() => setTab('serial')}>Serie y estado</button>
     </div>
-    {tab === 'serial' ? <div className="rb-window-empty"><strong>Sin salida todavía</strong><p>Aquí verás lo que tu programa escriba por Serial.</p><span className="rb-window-stage">Disponible en la etapa 4</span></div> : <>
+    {tab === 'serial' ? <SerialPanel ctx={ctx} /> : <>
       {ctx.reading && <div className="rb-reading-card" role="status" aria-label="Medición"><b>Medición</b><span>{ctx.reading.labelA} <em>(rojo)</em></span><span>{ctx.reading.labelB} <em>(negro)</em></span>
         <strong>{ctx.reading.reading.volts === null ? '— V' : `${ctx.reading.reading.volts.toFixed(2).replace('.', ',')} V`}<small>{ctx.reading.reading.continuity ? ' · continuidad ✔' : ' · sin continuidad'}</small></strong><small>{ctx.reading.reading.note}</small>
         <button data-inline-action="" type="button" onClick={ctx.clearProbe}>Nueva medición</button></div>}
@@ -189,5 +208,27 @@ export function ConsolePanel({ctx}: {ctx: BuildContext}) {
           <button data-inline-action="" type="button" className="rb-wire-pick" onClick={() => ctx.selectWire(w.id)}><i style={{background: w.color}} aria-hidden="true" /><span>{w.label}</span></button>
           <button data-inline-action="" type="button" className="rb-tree-btn" aria-label={`Borrar cable ${w.label}`} onClick={() => ctx.deleteWire(w.id)}><Trash2 size={14} /></button></li>)}</ul></>}
     </>}
+  </div>;
+}
+
+const fmt = (v: number, d = 2) => v.toFixed(d).replace('.', ',');
+/** Monitor serie mínimo (4.3) y estado del circuito simulado: todo sale del modelo, no de animaciones. */
+function SerialPanel({ctx}: {ctx: BuildContext}) {
+  const {sim} = ctx, snap = sim.snapshot, off = sim.status === 'stopped';
+  const pins = snap ? Object.entries(snap.pins).filter(([, p]) => p.mode === 'out').sort((a, b) => Number(a[0].slice(1)) - Number(b[0].slice(1)) || a[0].localeCompare(b[0])) : [];
+  return <div className="rb-serial">
+    <p className="rb-sim-state" role="status" data-sim={sim.status}>{off ? 'Detenida. Pulsa ▶ en la barra para ejecutar el programa.' : sim.status === 'paused' ? 'En pausa.' : `En marcha · tiempo virtual ${snap ? fmt(snap.simTimeUs / 1e6, 1) : '0,0'} s${sim.lag ? ` · va lenta (×${fmt(sim.ratio)} del tiempo real)` : ''}`}</p>
+    {sim.message && <p className="rb-warn"><TriangleAlert size={14} /> {sim.message}</p>}
+    <h4 className="rb-subhead">Monitor serie</h4>
+    <pre className="rb-serial-out" aria-label="Salida serie" tabIndex={0}>{sim.serial || (off ? '' : '(sin salida todavía)')}</pre>
+    <button data-inline-action="" type="button" className="rb-clear-highlight" onClick={sim.clearSerial}>Limpiar</button>
+    {snap && <><h4 className="rb-subhead">Estado</h4>
+      <ul className="rb-state-list">
+        <li>Placa: {snap.uno.powered ? `alimentada (${snap.uno.via === 'vin' ? 'por VIN' : snap.uno.via === 'usb' ? 'por USB virtual' : 'por el pin 5V'})` : 'SIN alimentación'}</li>
+        {pins.map(([id, p]) => <li key={id}>{id}: {p.level > 0.99 ? 'ALTO' : p.level < 0.01 ? 'BAJO' : `PWM ${fmt(p.level * 100, 0)} %`}</li>)}
+        {Object.entries(snap.leds).map(([id, l]) => <li key={id}>{sim.labelOf(id)}: {l.on ? `encendido (${fmt(l.amps * 1000, 1)} mA)` : 'apagado'}{l.overcurrent ? ' · ¡sobrecorriente!' : ''}</li>)}
+        {Object.entries(snap.motors).map(([id, m]) => <li key={id}>{sim.labelOf(id)}: {fmt(m.volts)} V {Math.abs(m.volts) < 0.05 ? '(parado)' : m.volts > 0 ? '(adelante)' : '(atrás)'}</li>)}
+        {Object.entries(snap.sensors).map(([id, s]) => <li key={id}>{sim.labelOf(id)}: {s.linked && s.powered ? `distancia de prueba ${fmt(s.distance)} m · ecos ${s.echoes}${s.lastEchoUs ? ` · último ${Math.round(s.lastEchoUs)} µs` : ''}` : `no responde — ${s.reason ?? 'sin conexión'}`}</li>)}
+      </ul></>}
   </div>;
 }

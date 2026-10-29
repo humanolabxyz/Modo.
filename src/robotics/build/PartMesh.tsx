@@ -18,7 +18,17 @@ function Pins({pins}: {pins: PinDefinition[]}) {
 }
 
 /** Geometría procedural de cada pieza (D-07). Las medidas vienen del catálogo; los detalles son solo visuales. */
-function Body({id}: {id: string}) {
+const LED_COLORS: Record<string, string> = {rojo: '#e53935', verde: '#2fbf5a', amarillo: '#f2c230', azul: '#2f7de1'};
+function LedBody({color, glow}: {color: string; glow?: number}) {
+  const base = LED_COLORS[color] ?? LED_COLORS.rojo, on = glow ?? 0;
+  return <>
+    <Cyl at={[0, mm(-1.2), 0]} r={mm(2.9)} h={mm(5.4)} color={base} rough={0.25} />
+    <mesh position={[0, mm(1.5), 0]} userData={{glowMesh: true}}><sphereGeometry args={[mm(2.9), 24, 16, 0, Math.PI * 2, 0, Math.PI / 2]} /><meshStandardMaterial color={base} emissive={base} emissiveIntensity={on * 2.2} transparent opacity={0.88} roughness={0.2} /></mesh>
+    <B at={[mm(-1.27), mm(-3.6), 0]} size={[mm(0.5), mm(2.2), mm(0.5)]} color="#b9c0c6" metal={0.8} /><B at={[mm(1.27), mm(-3.4), 0]} size={[mm(0.5), mm(1.8), mm(0.5)]} color="#b9c0c6" metal={0.8} />
+    {on > 0.02 && <pointLight position={[0, mm(2), 0]} color={base} intensity={on * 0.05} distance={0.15} />}
+  </>;
+}
+function Body({id, color, glow}: {id: string; color?: unknown; glow?: number}) {
   switch (id) {
     case 'chassis-2wd': return <>
       <B at={[0, 0, 0]} size={[mm(140), mm(4), mm(210)]} color="#b9c6d0" opacity={0.78} rough={0.2} />
@@ -61,17 +71,23 @@ function Body({id}: {id: string}) {
       {[-18, -6, 6, 18].map(x => <B key={x} at={[mm(x), mm(8.2), 0]} size={[mm(2), mm(1), mm(48)]} color="#3a3f45" />)}
     </>;
     case 'sensor-bracket': return <><B at={[0, mm(-13), 0]} size={[mm(50), mm(4), mm(12)]} color="#e8e4da" rough={0.7} /><B at={[0, 0, mm(4)]} size={[mm(50), mm(30), mm(4)]} color="#e8e4da" rough={0.7} /></>;
+    case 'led-5mm': return <LedBody color={String(color)} glow={glow} />;
+    case 'resistor': return <>
+      <B at={[0, 0, 0]} size={[mm(6.3), mm(2.4), mm(2.4)]} color="#d9c9a0" rough={0.8} />
+      {[-2, -0.6, 0.8].map((x, i) => <B key={x} at={[mm(x), 0, 0]} size={[mm(0.7), mm(2.5), mm(2.5)]} color={['#b8332b', '#b8332b', '#7a4a1d'][i]} />)}
+      <B at={[0, 0, 0]} size={[mm(9), mm(0.5), mm(0.5)]} color="#b9c0c6" metal={0.8} />
+    </>;
     case 'bracket-generic': return <B at={[0, 0, 0]} size={[mm(40), mm(20), mm(20)]} color="#9aa7b2" rough={0.7} />;
     default: return null;
   }
 }
 
 /** Una pieza del proyecto. `tone` marca el estado (seleccionada, interferencia) con un contorno que no tapa los pines. */
-export function PartMesh({part, selected, interfering, showPins = true}: {part: PartInstance; selected: boolean; interfering: boolean; showPins?: boolean}) {
+export function PartMesh({part, selected, interfering, glow, showPins = true}: {part: PartInstance; selected: boolean; interfering: boolean; glow?: number; showPins?: boolean}) {
   const def = getDefinition(part.definitionId);
   if (!def) return null;
   return <group userData={{partId: part.instanceId}} position={part.transform.position} quaternion={part.transform.rotation}>
-    <Body id={def.id} />
+    <Body id={def.id} color={part.props?.color} glow={glow} />
     {showPins && <Pins pins={def.pins} />}
     {(selected || interfering) && <mesh raycast={() => null}><boxGeometry args={def.dimensions} /><meshBasicMaterial transparent opacity={0} depthWrite={false} /><Edges color={interfering ? '#d64545' : '#3E806B'} threshold={15} /></mesh>}
   </group>;

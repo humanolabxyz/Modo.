@@ -1,0 +1,23 @@
+{
+  "url": "http://127.0.0.1:4326",
+  "checks": [
+    "la ventana Programación muestra la placa de destino, la plantilla setup()/loop() con números de línea y «Sin compilar»; el compilador local está disponible",
+    "Ctrl+Z dentro del editor deshace el texto, no el proyecto; la rueda sobre el código no mueve la cámara",
+    "con el programa sin compilar, ▶ no ejecuta y explica qué falta",
+    "un error de sintaxis se traduce a español y marca la línea (3 y 5, con marcas en el editor); el sketch correcto se compila (estado «Compilado»)",
+    "al ejecutar, el LED del lienzo 3D se enciende y apaga siguiendo D13 (brillo real del material); el monitor serie muestra «hola desde el programa»",
+    "cambiar delay(1000) por delay(200) cambia la señal (4 → 18 cambios en 3,6 s); con código distinto del compilado ▶ pide recompilar",
+    "pausa congela el LED, reanudar sigue y la velocidad ×4 acelera el reloj virtual (2.4 s frente a 2.0 s en 2 s reales)",
+    "al cambiar el proyecto la simulación se detiene con aviso; sin el cable del cátodo el programa corre pero el LED no enciende",
+    "sin alimentación (VIN y +12 V desconectados) el UNO no corre: sin salida serie y el estado dice «SIN alimentación»",
+    "recargar conserva el sketch y el programa compilado (sourceHash SHA-256 coincide: «Compilado», sin recompilar)",
+    "importar un .hex lo deja como «Programa importado»; un .hex dañado se rechaza (suma de control) sin pisar el anterior",
+    "sin errores de consola ni de página"
+  ],
+  "errors": [],
+  "speed": {
+    "x1": 2,
+    "x4": 2.4,
+    "lenta": true
+  }
+}
