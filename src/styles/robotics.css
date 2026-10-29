@@ -62,7 +62,7 @@
 .rb-toast button{display:grid;place-items:center;width:26px;height:26px;border:0;border-radius:7px;background:transparent;color:inherit;cursor:pointer}
 
 /* Dock inferior: lleva la clase tool-dock para que FloatingWindow no la tape. */
-.rb-dock{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:3px;padding:6px 8px;max-width:calc(100vw - 16px);border:1px solid var(--rb-line);border-radius:16px;background:#fffffff5;box-shadow:var(--rb-shadow);box-sizing:border-box}
+.rb-dock{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:100;display:flex;align-items:center;justify-content:center;width:max-content;gap:3px;padding:6px 8px;max-width:calc(100vw - 16px);border:1px solid var(--rb-line);border-radius:16px;background:#fffffff5;box-shadow:var(--rb-shadow);box-sizing:border-box}
 .rb-dock button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;height:44px;padding:0 10px;border:0;border-radius:11px;background:transparent;color:#47657a;font-size:13px;font-weight:600;cursor:pointer}
 .rb-dock button:hover{background:#eef2f5}
 .rb-dock button[aria-pressed=true]{background:#e8f1ee;color:#2c6554}
@@ -101,3 +101,56 @@
 }
 @media (max-width:480px){.rb-beta{display:none}.rb-bar>button[aria-label=Rehacer]{display:none}}
 @media (prefers-reduced-motion:reduce){.rb-app *{transition:none!important;animation:none!important}}
+
+/* ───── Etapa 2: constructor ───── */
+.rb-context-toolbar .is-join{width:auto;padding:0 10px;gap:5px;background:#e3f4ea;color:#1d7a46;font-weight:700;font-size:13px}
+.rb-context-toolbar .is-join:hover{background:#d2eddc}
+.rb-ghost-note{position:fixed;z-index:960;pointer-events:none;max-width:260px;padding:6px 10px;border-radius:9px;background:#1f3b4c;color:#fff;font-size:12px;box-shadow:var(--rb-shadow)}
+.rb-ghost-note.is-bad{background:#a93b3b}
+body.rb-dragging,body.rb-dragging *{cursor:grabbing!important;user-select:none!important}
+.rb-search{display:flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid var(--rb-line);border-radius:10px;background:#fff;color:#718894}
+.rb-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:14px;color:#1f3b4c}
+.rb-search:focus-within{border-color:var(--rb-accent);box-shadow:0 0 0 3px #3e806b22}
+.rb-chips{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px}
+.rb-chips button{min-height:30px;padding:0 11px;border:1px solid var(--rb-line);border-radius:999px;background:#fff;color:#47657a;font-size:12px;font-weight:600;cursor:pointer}
+.rb-chips button[aria-pressed=true]{background:#101215;border-color:#101215;color:#fff}
+.rb-hint-line{margin:6px 0 8px;font-size:12px;color:#718894}
+.rb-part-list{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.rb-part-card{display:flex;align-items:center;gap:10px;padding:8px;border:1px solid var(--rb-line);border-radius:12px;background:#fff;cursor:grab;touch-action:pan-y}
+.rb-part-card:hover{border-color:#b9c9d3;background:#fafcfd}
+.rb-part-swatch{flex:none;width:34px;height:34px;border-radius:9px;background:#dfe6eb}
+.rb-part-swatch[data-category=control]{background:#13787a}.rb-part-swatch[data-category=driver]{background:#b3322f}.rb-part-swatch[data-category=sensor]{background:#1f5fa8}.rb-part-swatch[data-category=actuator]{background:#e8c53a}.rb-part-swatch[data-category=power]{background:#23272b}.rb-part-swatch[data-category=structure]{background:#9fb0bc}
+.rb-part-text{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.25}.rb-part-text strong{font-size:14px;color:#1f3b4c}.rb-part-text small{font-size:11.5px;color:#718894}.rb-part-dim{opacity:.85}
+.rb-part-add{flex:none;display:inline-flex;align-items:center;gap:4px;min-height:34px;padding:0 10px;border:1px solid var(--rb-line);border-radius:9px;background:#fff;color:#2c6554;font-size:12px;font-weight:700;cursor:pointer}
+.rb-part-add:hover:not(:disabled){background:#e8f1ee}.rb-part-add:disabled{opacity:.4;cursor:not-allowed}
+.rb-part-none{padding:14px 4px;color:#718894;font-size:13px}
+.rb-tree,.rb-tree ul{margin:0;padding:0;list-style:none}
+.rb-tree-row{display:flex;align-items:center;gap:2px;min-height:36px;padding-right:4px;border-radius:9px}
+.rb-tree-row.is-selected{background:#e8f1ee}
+.rb-tree-name{flex:1;min-width:0;display:flex;align-items:center;gap:6px;min-height:34px;padding:0 6px;border:0;background:transparent;color:#1f3b4c;font-size:13.5px;text-align:left;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rb-tree-group{padding:0 6px;border-radius:999px;background:#e5e8ec;color:#56717f;font-size:10px;font-style:normal;font-weight:700}
+.rb-tree-btn{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:8px;background:transparent;color:#718894;cursor:pointer}
+.rb-tree-btn:hover{background:#eef2f5;color:#1f3b4c}
+.rb-tree-warn{display:grid;place-items:center;width:24px;color:#d64545}
+.rb-tree-row input{flex:1;min-width:0;min-height:30px;padding:0 8px;border:1px solid var(--rb-accent);border-radius:8px;font:inherit;font-size:13.5px}
+.rb-props-panel{display:flex;flex-direction:column;gap:10px;font-size:13.5px;color:#35566a}
+.rb-field{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:#56717f}
+.rb-field input,.rb-snap select{min-height:36px;padding:0 10px;border:1px solid var(--rb-line);border-radius:9px;font:inherit;font-size:14px;color:#1f3b4c;background:#fff}
+.rb-def{margin:0;font-size:12px;color:#718894}
+.rb-xyz,.rb-snap{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:8px 10px 10px;border:1px solid var(--rb-line);border-radius:11px;min-width:0}
+.rb-xyz legend,.rb-snap legend{padding:0 4px;font-size:12px;font-weight:700;color:#56717f}
+.rb-num{display:flex;align-items:center;gap:4px;flex:1 1 84px;min-width:0}
+.rb-num span{font-size:12px;font-weight:700;color:#56717f;width:12px}.rb-num em{font-style:normal;font-size:11px;color:#8a9ba6}
+.rb-num input{flex:1;min-width:0;width:100%;min-height:34px;padding:0 6px;border:1px solid var(--rb-line);border-radius:8px;font:inherit;font-size:13.5px;color:#1f3b4c;background:#fff}
+.rb-num input:disabled{background:#f1f3f5;color:#8a9ba6}
+.rb-check{display:flex;align-items:flex-start;gap:8px;font-size:13px}.rb-check input{margin-top:3px}
+.rb-snap label{display:flex;align-items:center;gap:6px;font-size:13px}.rb-snap small{flex-basis:100%;color:#8a9ba6;font-size:11.5px}
+.rb-attached{margin:0;padding:8px 10px;border-radius:10px;background:#f1f7f5;font-size:13px}.rb-attached button{margin-left:6px;min-height:28px;padding:0 10px;border:1px solid var(--rb-line);border-radius:8px;background:#fff;cursor:pointer;font-size:12px;font-weight:600}
+.rb-warn{display:flex;align-items:center;gap:6px;margin:0;padding:8px 10px;border-radius:10px;background:#fdf1f1;color:#a93b3b;font-size:12.5px}
+.rb-props-actions{display:flex;flex-wrap:wrap;gap:6px}.rb-props-actions button{min-height:36px;padding:0 14px;border:1px solid var(--rb-line);border-radius:9px;background:#fff;color:#35566a;font-weight:600;cursor:pointer}.rb-props-actions .is-danger{background:#fbeaea;border-color:#e8b9b9;color:#a93b3b}
+@media (max-width:480px){.rb-dock{width:calc(100vw - 16px);padding:5px}.rb-dock i{display:none}.rb-dock button{min-width:36px;height:40px}}
+
+/* Los botones de las ventanas no heredan el ancho completo de los estilos globales de botón. */
+.rb-window .rb-part-add,.rb-window .rb-chips button,.rb-window .rb-props-actions button,.rb-window .rb-attached button{width:auto;min-width:0}
+@media (max-width:1100px){.rb-dock button span{display:none}}
+@media (max-width:480px){.rb-dock{flex-wrap:wrap}}

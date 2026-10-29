@@ -55,6 +55,10 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
       assert.equal(await p.locator('.floating-window-header').count(), 0, 'todas las ventanas empiezan cerradas');
       assert.ok(await p.locator('.rb-context-toolbar').count() === 0);
       step('ventanas cerradas al empezar; WebGL activo');
+      // Tres piezas reales del catálogo (etapa 2) sirven de objetos para probar selección, menús y zoom.
+      await openWindow(p, 'Piezas'); for (const n of ['Arduino UNO R3', 'Driver L298N', 'Portapilas 4×AA']) await p.locator(`button[aria-label="Agregar ${n}"]`).click();
+      await p.locator('button[aria-label="Cerrar Piezas"]').click(); await p.keyboard.press('Escape'); await p.locator('.rb-dock button[aria-label="Encuadrar"]').click(); await p.waitForTimeout(900);
+      const ids = await p.evaluate(() => window.__modoRobotics.partIds()); assert.equal(ids.length, 3); const [PA, PB, PC] = ids;
       report.viewports[name + '-renderer'] = await p.evaluate(() => window.__modoRobotics.renderer());
 
       // 2) Cada ventana: abrir, minimizar, restaurar, Esc no la cierra, cerrar
@@ -102,17 +106,18 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
       }
 
       // 4) Pizarra: zoom hacia el cursor
+      await p.keyboard.press('Escape'); // sin selección: la barra contextual no tapa el punto del zoom
       await p.mouse.move(w / 2, h / 2); await settle(p);
-      const a0 = await screenOf(p, 'dbg-b'), d0 = (await cam(p)).distance;
+      const a0 = await screenOf(p, PB), d0 = (await cam(p)).distance;
       await p.mouse.move(a0.x, a0.y); await p.mouse.wheel(0, -500); await p.waitForTimeout(900);
-      const a1 = await screenOf(p, 'dbg-b'), d1 = (await cam(p)).distance;
+      const a1 = await screenOf(p, PB), d1 = (await cam(p)).distance;
       assert.ok(d1 < d0 - 0.05, `el zoom acerca la cámara (${d0.toFixed(2)} → ${d1.toFixed(2)})`);
       near(a1.x, a0.x, 40, 'el objeto bajo el cursor se mantiene (x)'); near(a1.y, a0.y, 40, 'el objeto bajo el cursor se mantiene (y)');
       step(`zoom hacia el cursor (distancia ${d0.toFixed(2)}→${d1.toFixed(2)} m, el objeto bajo el cursor se desvía ${Math.hypot(a1.x - a0.x, a1.y - a0.y).toFixed(1)} px)`);
       await p.keyboard.press('Shift+Digit1'); await p.waitForTimeout(500);
 
       // 5) Selección, barra contextual, múltiple, rectángulo, menú contextual, Esc
-      const A = await screenOf(p, 'dbg-a'), B = await screenOf(p, 'dbg-b'), C = await screenOf(p, 'dbg-c');
+      const A = await screenOf(p, PA), B = await screenOf(p, PB), C = await screenOf(p, PC);
       await p.mouse.click(A.x, A.y);
       await p.locator('.rb-context-toolbar').waitFor();
       assert.equal(await p.locator('.rb-context-toolbar').getAttribute('aria-label'), 'Acciones del objeto');
@@ -141,11 +146,11 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
       const vistas = await p.locator('.rb-context-menu').waitFor().then(() => p.locator('.rb-context-menu button').allTextContents());
       assert.ok(vistas.some(t => /Vista frontal/.test(t)) && vistas.some(t => /Encuadrar todo/.test(t)) && vistas.some(t => /Restablecer cámara/.test(t)));
       await p.locator('.rb-context-menu button', {hasText: 'Vista superior'}).click(); await settle(p);
-      const top = await cam(p); assert.ok(top.position[1] > Math.abs(top.position[0]) * 20 && top.position[1] > 0.3, 'la vista superior mira desde arriba');
+      const top = await cam(p); const off = top.position.map((v, i) => v - top.target[i]); assert.ok(off[1] > 0.3 && Math.abs(off[0]) < 0.01 && Math.abs(off[2]) < 0.01, `la vista superior mira desde arriba (${off})`);
       step('menú contextual del lienzo: vista superior');
       // Duplicar y borrar desde la barra
       await p.mouse.click(w * .08, h * .75); await p.keyboard.press('Shift+Digit1'); await p.waitForTimeout(600);
-      const A2 = await screenOf(p, 'dbg-a'); await p.mouse.click(A2.x, A2.y); await p.locator('.rb-context-toolbar').waitFor();
+      const A2 = await screenOf(p, PA); await p.mouse.click(A2.x, A2.y); await p.locator('.rb-context-toolbar').waitFor();
       await p.locator('.rb-context-toolbar button[aria-label="Duplicar"]').click(); await p.waitForTimeout(200);
       assert.equal(await p.evaluate(() => window.__modoRobotics.objects()) > 0, true);
       await p.locator('.rb-context-toolbar button[aria-label="Borrar"]').click(); await p.waitForTimeout(200);

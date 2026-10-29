@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Copy, Download, FilePlus2, LayoutGrid, Trash2, Upload} from 'lucide-react';
 import {FloatingWindow} from '../../components/FloatingWindow';
 import type {RoboticsProjects} from '../project/useRoboticsProjects';
-import type {DebugObject} from '../build/BuildCanvas';
+import {PartsPanel, PropertiesPanel, StructurePanel, type BuildContext} from './BuildWindows';
 import {storageIdOf, WINDOW_IDS, type RoboticsWindowId, type RoboticsWindows} from './useRoboticsWindows';
 
 export const WINDOW_LABELS: Record<RoboticsWindowId, {title: string; eyebrow: string}> = {
@@ -14,28 +14,25 @@ export const WINDOW_LABELS: Record<RoboticsWindowId, {title: string; eyebrow: st
 };
 
 const EMPTY: Record<RoboticsWindowId, {headline: string; body: string; stage: string}> = {
-  parts: {headline: 'El catálogo llega en la etapa 2', body: 'Aquí vas a arrastrar el Arduino, el driver, los motores y el sensor al lienzo.', stage: 'Etapa 2'},
-  structure: {headline: 'Todavía no hay piezas', body: 'Cuando agregues piezas verás aquí su árbol y las uniones entre ellas.', stage: 'Etapa 2'},
-  properties: {headline: 'Sin selección', body: 'Selecciona un objeto del lienzo para ver y cambiar sus propiedades.', stage: 'Etapa 2'},
+  parts: {headline: '', body: '', stage: ''},
+  structure: {headline: '', body: '', stage: ''},
+  properties: {headline: '', body: '', stage: ''},
   code: {headline: 'El editor llega en la etapa 4', body: 'Aquí vas a escribir el sketch de Arduino y ejecutarlo en el ATmega328P emulado.', stage: 'Etapa 4'},
   console: {headline: 'Sin salida todavía', body: 'Aquí verás lo que tu programa escriba por Serial y los avisos del circuito.', stage: 'Etapa 4'},
 };
 
-type Props = {windows: RoboticsWindows; selected: DebugObject[]; objectCount: number};
+type Props = {windows: RoboticsWindows; ctx: BuildContext};
 
-/** Las cinco ventanas de herramientas. Contenido de marcador: ninguna finge funciones que aún no existen. */
-export function RoboticsToolWindows({windows, selected, objectCount}: Props) {
+/** Las cinco ventanas de herramientas. Piezas, Estructura y Propiedades son reales (etapa 2); Programación y Consola siguen siendo marcadores honestos hasta la etapa 4. */
+export function RoboticsToolWindows({windows, ctx}: Props) {
   return <>
     {WINDOW_IDS.map(id => {
       const w = windows.state[id];
       if (!w.open) return null;
       const label = WINDOW_LABELS[id], empty = EMPTY[id];
-      return <FloatingWindow key={`${id}-${windows.epoch}`} passive storageId={storageIdOf(id)} title={label.title} eyebrow={label.eyebrow} width={id === 'code' ? 440 : 320} side={id === 'parts' || id === 'structure' ? 'left' : 'right'} top={id === 'console' ? 120 : 0} visible={w.visible} activation={w.activation} onClose={() => windows.close(id)} onMinimize={() => windows.minimize(id)} closeLabel={`Cerrar ${label.title}`} className={`rb-window rb-window-${id}`}>
-        {id === 'structure' && objectCount > 0
-          ? <p className="rb-window-note">{objectCount} objetos de prueba en el lienzo (modo depuración).</p>
-          : id === 'properties' && selected.length > 0
-            ? <dl className="rb-props">{selected.length === 1 ? <><dt>Nombre</dt><dd>{selected[0].label}</dd><dt>Posición (m)</dt><dd>{selected[0].position.map(v => v.toFixed(2)).join(' · ')}</dd><dt>Tamaño (m)</dt><dd>{selected[0].size.map(v => v.toFixed(2)).join(' × ')}</dd><dt>Estado</dt><dd>{selected[0].locked ? 'Bloqueado' : 'Libre'}</dd></> : <><dt>Selección</dt><dd>{selected.length} objetos</dd></>}</dl>
-            : <div className="rb-window-empty"><strong>{empty.headline}</strong><p>{empty.body}</p><span className="rb-window-stage">Disponible en la {empty.stage.toLowerCase()}</span></div>}
+      return <FloatingWindow key={`${id}-${windows.epoch}`} passive storageId={storageIdOf(id)} title={label.title} eyebrow={label.eyebrow} width={id === 'code' ? 440 : id === 'parts' ? 340 : 320} side={id === 'parts' || id === 'structure' ? 'left' : 'right'} top={id === 'console' ? 120 : 0} visible={w.visible} activation={w.activation} onClose={() => windows.close(id)} onMinimize={() => windows.minimize(id)} closeLabel={`Cerrar ${label.title}`} className={`rb-window rb-window-${id}`}>
+        {id === 'parts' ? <PartsPanel ctx={ctx} /> : id === 'structure' ? <StructurePanel ctx={ctx} /> : id === 'properties' ? <PropertiesPanel ctx={ctx} />
+          : <div className="rb-window-empty"><strong>{empty.headline}</strong><p>{empty.body}</p><span className="rb-window-stage">Disponible en la {empty.stage.toLowerCase()}</span></div>}
       </FloatingWindow>;
     })}
   </>;

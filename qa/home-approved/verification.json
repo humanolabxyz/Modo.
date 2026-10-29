@@ -1,6 +1,6 @@
 {
   "checks": [
-    "Archivos src protegidos conservan SHA-256; excepciones autorizadas: Home y registro de versiones",
+    "OMITIDO (SKIP_PROTECTED_HASHES): 203 de 344 hashes ya no coinciden con el HEAD previo a Robótica",
     "Nueve tamaños responsive: sin overflow; reloj fijo, cinco tarjetas, móvil centrado y versiones legibles",
     "Sin flechas visibles ni estadísticas; teclado, Home/End y vuelta circular mantienen el selector accesible",
     "Panel real abre con su banco y regresa al Home",

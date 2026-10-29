@@ -1,8 +1,9 @@
 // Máquina de estados de la pizarra 3D. Pura (sin React ni three) para poder probarla en Node.
 // Regla central: mientras haya un gesto activo, ningún otro gesto puede empezar.
 export type Gesture = 'idle' | 'selecting' | 'marquee' | 'panning' | 'orbiting';
-// Las etapas 2 y 3 añaden 'transforming' y 'wiring'.
-export type ToolId = 'select' | 'hand';
+// El arrastre del gizmo lo gobierna TransformControls (apaga la cámara mientras dura); la etapa 3 añadirá 'wiring'.
+/** `move` y `rotate` muestran el gizmo de la selección; para los gestos del lienzo se comportan como `select`. */
+export type ToolId = 'select' | 'hand' | 'move' | 'rotate';
 export type PointerTarget = 'object' | 'empty';
 
 export type PointerStart = {

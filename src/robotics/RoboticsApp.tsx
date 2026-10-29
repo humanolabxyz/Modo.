@@ -1,21 +1,23 @@
-import {useEffect, useMemo, useRef, useState} from 'react';
-import {Boxes, Check, Code2, Copy, Eye, Focus, Hammer, Hand, Home, ListTree, Lock, LockOpen, MousePointer2, MoreHorizontal, Redo2, SlidersHorizontal, Terminal, Trash2, Undo2, X} from 'lucide-react';
-import {BuildCanvas, type CameraState, type CanvasHandle, type DebugObject} from './build/BuildCanvas';
+import {useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent} from 'react';
+import {Boxes, Check, Code2, Copy, Eye, Focus, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Redo2, Rotate3d, SlidersHorizontal, Terminal, Trash2, Undo2, Ungroup, X} from 'lucide-react';
+import {BuildCanvas, type CameraState, type CanvasHandle, type Ghost, type GizmoState} from './build/BuildCanvas';
+import {findInterferences, findJoinCandidates, placementCheck} from './build/interference.ts';
 import {ContextToolbar, type ContextAction} from './interaction/ContextToolbar';
 import {ContextMenu, type MenuItem} from './interaction/ContextMenu';
 import {escapeAction, type ToolId} from './interaction/tools.ts';
 import {describeTarget, resolveShortcut, type ShortcutCommand} from './interaction/shortcuts.ts';
+import {getDefinition} from './catalog/index.ts';
+import {addPart, attach, centroid, detach, duplicateParts, expandGroups, moveParts, parentAttachment, removeParts, renamePart, setGroup, setLocked, setPartProp, setPartTransform, type CommandError, type CommandResult} from './project/commands.ts';
+import {DEG} from './project/math.ts';
+import type {RobotProject, Transform, Vec3} from './project/types.ts';
 import {useRoboticsProjects} from './project/useRoboticsProjects';
 import {useRoboticsWindows, WINDOW_IDS, type RoboticsWindowId} from './windows/useRoboticsWindows';
 import {ProjectOptionsWindow, ProjectsWindow, RoboticsToolWindows, WINDOW_LABELS} from './windows/RoboticsWindows';
+import type {BuildContext} from './windows/BuildWindows';
 import '../styles/robotics.css';
 
 const DOCK_ICONS: Record<RoboticsWindowId, typeof Boxes> = {parts: Boxes, structure: ListTree, properties: SlidersHorizontal, code: Code2, console: Terminal};
-const DEBUG_OBJECTS = (): DebugObject[] => [
-  {id: 'dbg-a', label: 'Cubo A', position: [-0.18, 0.06, 0], size: [0.12, 0.12, 0.12], color: '#3E806B', locked: false},
-  {id: 'dbg-b', label: 'Cubo B', position: [0.05, 0.05, 0.08], size: [0.1, 0.1, 0.1], color: '#4a7fb0', locked: false},
-  {id: 'dbg-c', label: 'Cubo C', position: [0.2, 0.04, -0.1], size: [0.08, 0.08, 0.08], color: '#c98a3d', locked: false},
-];
+const IDENTITY: Transform = {position: [0, 0, 0], rotation: [0, 0, 0, 1]};
 
 function webglAvailable() {
   try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; }
@@ -24,14 +26,29 @@ function prefersReducedMotion() {
   const root = document.documentElement.classList;
   return !root.contains('modo-motion-full') && (matchMedia('(prefers-reduced-motion: reduce)').matches || root.contains('modo-reduced'));
 }
+/** Primer hueco libre alrededor del origen, en el suelo, para «Agregar» sin arrastrar. */
+function freeSpot(p: RobotProject, definitionId: string): Vec3 {
+  const h = (getDefinition(definitionId)?.dimensions[1] ?? 0.02) / 2;
+  for (let r = 0; r < 12; r++) for (let dx = -r; dx <= r; dx++) for (let dz = -r; dz <= r; dz++) {
+    if (Math.max(Math.abs(dx), Math.abs(dz)) !== r) continue;
+    const pos: Vec3 = [dx * 0.12, h, dz * 0.12];
+    if (placementCheck(p, definitionId, pos).overlaps.length === 0) return pos;
+  }
+  return [0, h, 0];
+}
 
 export default function RoboticsApp() {
   const projects = useRoboticsProjects();
   const windows = useRoboticsWindows();
   const debug = useMemo(() => new URLSearchParams(location.search).get('debug') === '1', []);
   const [tool, setTool] = useState<ToolId>('select');
-  const [objects, setObjects] = useState<DebugObject[]>(() => (debug ? DEBUG_OBJECTS() : []));
   const [selection, setSelection] = useState<string[]>([]);
+  const [preview, setPreview] = useState<RobotProject | null>(null);
+  const [snapOn, setSnapOn] = useState(false);
+  const [snapMm, setSnapMm] = useState(5);
+  const [ghost, setGhost] = useState<Ghost | null>(null);
+  const [ghostNote, setGhostNote] = useState<{x: number; y: number; text: string; bad: boolean} | null>(null);
+  const [gizmoKey, setGizmoKey] = useState(0);
   const [anchor, setAnchor] = useState<{x: number; y: number} | null>(null);
   const [menu, setMenu] = useState<{at: {x: number; y: number}; targetId: string | null} | null>(null);
   const [optionsOpen, setOptionsOpen] = useState(false);
@@ -42,26 +59,71 @@ export default function RoboticsApp() {
   const supported = useMemo(webglAvailable, [glKey]);
   const reducedMotion = useMemo(prefersReducedMotion, []);
   const lowQuality = useMemo(() => (navigator.hardwareConcurrency || 4) <= 2 || ((navigator as Navigator & {deviceMemory?: number}).deviceMemory ?? 4) <= 2, []);
-  const mode = projects.project.workspace.mode ?? 'build';
-  const selected = objects.filter(o => selection.includes(o.id));
-  const live = useRef({tool, selection, menu, objects});
-  live.current = {tool, selection, menu, objects};
+  const proj = projects.project;
+  const shown = preview ?? proj;
+  const mode = proj.workspace.mode ?? 'build';
+  const selected = proj.parts.filter(x => selection.includes(x.instanceId));
+  const interfering = useMemo(() => new Set(findInterferences(shown).flat()), [shown]);
+  const candidates = useMemo(() => (selection.length ? findJoinCandidates(proj, selection) : []), [proj.parts, proj.attachments, selection]);
+  const live = useRef({tool, selection, menu, proj, snapOn, snapMm, candidates});
+  live.current = {tool, selection, menu, proj, snapOn, snapMm, candidates};
 
-  const act = (action: ContextAction | 'frame-all' | 'reset-camera' | 'view-front' | 'view-side' | 'view-top' | 'view-iso') => {
-    const { selection: sel } = live.current;
-    if (action === 'duplicate') {
-      setObjects(list => {
-        const copies = list.filter(o => sel.includes(o.id)).map(o => ({...o, id: `dbg-${crypto.randomUUID().slice(0, 8)}`, label: `${o.label} copia`, position: [o.position[0] + 0.05, o.position[1], o.position[2] + 0.05] as DebugObject['position'], locked: false}));
-        queueMicrotask(() => setSelection(copies.map(c => c.id)));
-        return [...list, ...copies];
-      });
-    } else if (action === 'lock') setObjects(list => { const lock = !list.filter(o => sel.includes(o.id)).every(o => o.locked); return list.map(o => (sel.includes(o.id) ? {...o, locked: lock} : o)); });
-    else if (action === 'delete') {
-      const locked = live.current.objects.filter(o => sel.includes(o.id) && o.locked).map(o => o.id);
-      setObjects(list => list.filter(o => !(sel.includes(o.id) && !o.locked)));
-      setSelection(locked);
-      if (locked.length) setNotice('Los objetos bloqueados no se borran. Desbloquéalos primero.');
-    } else if (action === 'frame') handle.current?.frameSelection();
+  // La selección nunca apunta a piezas que ya no existen (deshacer, borrar, importar).
+  useEffect(() => { setSelection(s => (s.every(id => proj.parts.some(x => x.instanceId === id)) ? s : s.filter(id => proj.parts.some(x => x.instanceId === id)))); }, [proj.parts]);
+  useEffect(() => { setGizmoKey(k => k + 1); setPreview(null); }, [proj.parts, selection.join('|')]);
+
+  const apply = (r: CommandResult | CommandError): boolean => {
+    if ('error' in r) { setNotice(r.error); return false; }
+    projects.update(() => r.project);
+    if (r.notes.length) setNotice(r.notes.join(' '));
+    return true;
+  };
+  const selectIds = (ids: string[]) => setSelection(expandGroups(live.current.proj, ids));
+  const addAt = (definitionId: string, position?: Vec3) => {
+    const p = live.current.proj, r = addPart(p, definitionId, position ?? freeSpot(p, definitionId));
+    if (apply(r) && !('error' in r)) setSelection([r.project.parts.at(-1)!.instanceId]);
+  };
+
+  // Arrastrar una pieza desde la ventana Piezas hasta la pizarra, con fantasma sobre el plano.
+  const startDrag = (definitionId: string, e: ReactPointerEvent) => {
+    if (e.pointerType === 'touch' || e.button !== 0) return;
+    const start = {x: e.clientX, y: e.clientY};
+    let moving = false, dropAt: Vec3 | null = null, dropOk = false, why = '';
+    const place = (cx: number, cy: number) => {
+      const over = document.elementFromPoint(cx, cy);
+      const g = over?.closest('[role="dialog"],.rb-dock,.rb-bar') ? null : handle.current?.groundPoint(cx, cy);
+      if (!g) { dropAt = null; setGhost(null); setGhostNote({x: cx, y: cy, text: 'Suéltala sobre la pizarra', bad: true}); return; }
+      const step = live.current.snapOn ? live.current.snapMm / 1000 : 0, h = (getDefinition(definitionId)?.dimensions[1] ?? 0.02) / 2;
+      const snap = (v: number) => (step ? Math.round(v / step) * step : v);
+      dropAt = [snap(g[0]), h, snap(g[2])];
+      const check = placementCheck(live.current.proj, definitionId, dropAt);
+      dropOk = check.ok; why = check.reason ?? '';
+      setGhost({definitionId, position: dropAt, valid: check.ok});
+      setGhostNote({x: cx, y: cy, text: check.ok ? (check.overlaps.length ? 'Se superpone con otra pieza: se agrega igual, con aviso' : 'Suelta para agregar') : check.reason ?? 'No se puede colocar aquí', bad: !check.ok});
+    };
+    const move = (ev: PointerEvent) => {
+      if (!moving && Math.hypot(ev.clientX - start.x, ev.clientY - start.y) < 6) return;
+      moving = true; document.body.classList.add('rb-dragging'); place(ev.clientX, ev.clientY);
+    };
+    const end = () => { removeEventListener('pointermove', move); removeEventListener('pointerup', up); removeEventListener('pointercancel', cancel); removeEventListener('keydown', key, true); document.body.classList.remove('rb-dragging'); setGhost(null); setGhostNote(null); };
+    const up = () => { const ok = moving && dropAt && dropOk, at = dropAt, reason = why; end(); if (ok && at) addAt(definitionId, at); else if (moving && at && reason) setNotice(reason); };
+    const cancel = () => end();
+    const key = (ev: KeyboardEvent) => { if (ev.key === 'Escape') { ev.preventDefault(); ev.stopPropagation(); end(); } };
+    addEventListener('pointermove', move); addEventListener('pointerup', up); addEventListener('pointercancel', cancel); addEventListener('keydown', key, true);
+  };
+
+  const act = (action: ContextAction | 'frame-all' | 'reset-camera' | 'view-front' | 'view-side' | 'view-top' | 'view-iso' | 'group' | 'ungroup' | 'detach-parent') => {
+    const {selection: sel, proj: p, candidates: cands, tool: t} = live.current;
+    if (action === 'move') setTool(t === 'move' ? 'select' : 'move');
+    else if (action === 'rotate') setTool(t === 'rotate' ? 'select' : 'rotate');
+    else if (action === 'join') { const c = cands[0]; if (!c) setNotice('No hay un anclaje compatible a menos de 15 mm.'); else apply(attach(p, c.parent, c.child)); }
+    else if (action === 'duplicate') { const r = duplicateParts(p, sel); if (apply(r) && !('error' in r)) setSelection(r.project.parts.slice(p.parts.length).map(x => x.instanceId)); }
+    else if (action === 'lock') { const all = p.parts.filter(x => sel.includes(x.instanceId)).every(x => x.locked); projects.update(q => setLocked(q, sel, !all)); }
+    else if (action === 'delete') { if (sel.length) { apply(removeParts(p, sel)); setSelection([]); } }
+    else if (action === 'group') projects.update(q => setGroup(q, sel, true));
+    else if (action === 'ungroup') projects.update(q => setGroup(q, sel, false));
+    else if (action === 'detach-parent') { const a = sel.map(id => parentAttachment(p, id)).find(Boolean); if (a) projects.update(q => detach(q, a.id)); }
+    else if (action === 'frame') handle.current?.frameSelection();
     else if (action === 'frame-all') handle.current?.frameAll();
     else if (action === 'reset-camera') handle.current?.resetCamera();
     else if (action.startsWith('view-')) handle.current?.setView(action.slice(5) as 'front' | 'side' | 'top' | 'iso');
@@ -71,12 +133,17 @@ export default function RoboticsApp() {
     const command = (c: ShortcutCommand) => {
       if (c === 'tool-select') setTool('select');
       else if (c === 'tool-hand') setTool('hand');
+      else if (c === 'tool-move') { if (live.current.selection.length) act('move'); else setTool('move'); }
+      else if (c === 'tool-rotate') { if (live.current.selection.length) act('rotate'); else setTool('rotate'); }
       else if (c === 'frame-selection') act('frame');
       else if (c === 'frame-all') act('frame-all');
       else if (c === 'undo') projects.undo();
       else if (c === 'redo') projects.redo();
       else if (c === 'delete') act('delete');
       else if (c === 'duplicate') act('duplicate');
+      else if (c === 'join') act('join');
+      else if (c === 'group') act('group');
+      else if (c === 'ungroup') act('ungroup');
       else act(c as 'view-front' | 'view-side' | 'view-top' | 'view-iso');
     };
     const onKey = (e: KeyboardEvent) => {
@@ -94,7 +161,7 @@ export default function RoboticsApp() {
       }
       const c = resolveShortcut({key: e.key, code: e.code, ctrl: e.ctrlKey, meta: e.metaKey, shift: e.shiftKey, alt: e.altKey, target: describeTarget(e.target as Element)});
       if (!c) return;
-      if (c === 'undo' || c === 'redo' || c === 'duplicate' || c === 'delete') e.preventDefault();
+      if (['undo', 'redo', 'duplicate', 'delete', 'group', 'ungroup'].includes(c)) e.preventDefault();
       command(c);
     };
     addEventListener('keydown', onKey);
@@ -104,17 +171,46 @@ export default function RoboticsApp() {
   const setMode = (next: 'build' | 'simulate') => projects.update(p => ({...p, workspace: {...p.workspace, mode: next}}), {history: false, touch: false});
   const onCameraRest = (camera: CameraState) => projects.update(p => ({...p, workspace: {...p.workspace, camera}}), {history: false, touch: false});
 
+  const movable = selection.filter(id => !proj.parts.find(x => x.instanceId === id)?.locked);
+  const gizmo: GizmoState | null = (tool === 'move' || tool === 'rotate') && movable.length > 0
+    ? {pivot: centroid(proj, movable)!, mode: tool === 'move' ? 'translate' : 'rotate', snapM: snapOn ? snapMm / 1000 : null, snapRad: snapOn ? 15 * DEG : null, key: gizmoKey} : null;
+  const onGizmoDrag = (m: Transform) => setPreview(Math.hypot(...m.position) < 1e-9 && Math.abs(m.rotation[3]) > 1 - 1e-9 ? null : moveParts(live.current.proj, live.current.selection, m).project);
+  const onGizmoCommit = (m: Transform) => { setPreview(null); apply(moveParts(live.current.proj, live.current.selection, m)); };
+
+  const ctx: BuildContext = {
+    project: proj, selection, interfering, select: selectIds, add: id => addAt(id), startDrag,
+    rename: (id, label) => projects.update(p => renamePart(p, id, label)),
+    setLocked: (ids, locked) => projects.update(p => setLocked(p, ids, locked)),
+    setTransform: (id, t) => apply(setPartTransform(live.current.proj, id, t)),
+    setProp: (id, key, value) => projects.update(p => setPartProp(p, id, key, value)),
+    detach: id => projects.update(p => detach(p, id)),
+    setGroup: (ids, grouped) => projects.update(p => setGroup(p, ids, grouped)),
+    remove: ids => { apply(removeParts(live.current.proj, ids)); setSelection([]); },
+    snap: {on: snapOn, stepMm: snapMm, setOn: setSnapOn, setStepMm: setSnapMm},
+  };
+
+  const target = menu?.targetId ? proj.parts.find(x => x.instanceId === menu.targetId) : undefined;
+  const allLocked = selected.length > 0 && selected.every(o => o.locked);
   const menuItems: MenuItem[] = menu?.targetId
-    ? [{id: 'duplicate', label: 'Duplicar', hint: 'Ctrl+D', icon: <Copy size={15} />}, {id: 'lock', label: selected.every(o => o.locked) ? 'Desbloquear' : 'Bloquear', icon: selected.every(o => o.locked) ? <LockOpen size={15} /> : <Lock size={15} />}, {id: 'frame', label: 'Encuadrar', hint: 'F', icon: <Focus size={15} />}, {id: 'delete', label: 'Borrar', hint: 'Supr', icon: <Trash2 size={15} />, danger: true, separatorBefore: true}]
+    ? [
+      {id: 'move', label: 'Mover', hint: 'G', icon: <Move3d size={15} />}, {id: 'rotate', label: 'Rotar', hint: 'R', icon: <Rotate3d size={15} />},
+      ...(candidates.length ? [{id: 'join', label: 'Unir a la pieza cercana', hint: 'U', icon: <Link size={15} />}] : []),
+      ...(target && parentAttachment(proj, target.instanceId) ? [{id: 'detach-parent', label: 'Separar de su padre', icon: <Link2Off size={15} />}] : []),
+      ...(selected.length > 1 ? [{id: 'group', label: 'Agrupar', hint: 'Ctrl+G', icon: <Group size={15} />}] : []),
+      ...(selected.some(x => x.groupId) ? [{id: 'ungroup', label: 'Desagrupar', hint: 'Ctrl+Mayús+G', icon: <Ungroup size={15} />}] : []),
+      {id: 'duplicate', label: 'Duplicar', hint: 'Ctrl+D', icon: <Copy size={15} />, separatorBefore: true}, {id: 'lock', label: allLocked ? 'Desbloquear' : 'Bloquear', icon: allLocked ? <LockOpen size={15} /> : <Lock size={15} />},
+      {id: 'frame', label: 'Encuadrar', hint: 'F', icon: <Focus size={15} />}, {id: 'delete', label: 'Borrar', hint: 'Supr', icon: <Trash2 size={15} />, danger: true, separatorBefore: true},
+    ]
     : [{id: 'frame-all', label: 'Encuadrar todo', hint: 'Shift+1'}, {id: 'view-front', label: 'Vista frontal', hint: '1', separatorBefore: true}, {id: 'view-side', label: 'Vista lateral', hint: '3'}, {id: 'view-top', label: 'Vista superior', hint: '7'}, {id: 'view-iso', label: 'Vista isométrica', hint: '0'}, {id: 'reset-camera', label: 'Restablecer cámara', separatorBefore: true}];
   const minimized = WINDOW_IDS.filter(id => windows.state[id].open && !windows.state[id].visible);
-  const empty = projects.project.parts.length === 0 && objects.length === 0 && !windows.state.parts.open;
+  const empty = proj.parts.length === 0 && !windows.state.parts.open;
+  const joinPoints = candidates.map(c => c.point);
 
-  return <div className="rb-app" data-mode={mode} data-ready={projects.ready}>
+  return <div className="rb-app" data-mode={mode} data-ready={projects.ready} data-tool={tool}>
     <header className="compact-bar rb-bar" aria-label="Robótica">
       <a href="/" aria-label="Inicio" title="Volver al inicio"><Home size={20} /></a>
       <button type="button" className="rb-name" title="Opciones del proyecto" onClick={() => setOptionsOpen(true)}>
-        <strong>{projects.project.name}</strong>
+        <strong>{proj.name}</strong>
         <small role="status">{!projects.ready ? 'Abriendo…' : projects.storageBlocked ? 'Guardado desactivado' : projects.saved ? <><Check size={11} /> Guardado</> : 'Guardando…'}</small>
       </button>
       <span className="rb-beta" aria-label="Versión Beta">Beta</span>
@@ -131,10 +227,11 @@ export default function RoboticsApp() {
 
     <main className="rb-stage" aria-label="Pizarra 3D">
       {supported
-        ? <BuildCanvas key={`${projects.project.id}-${glKey}`} handleRef={handle} tool={tool} objects={objects} selection={selection} debug={debug} reducedMotion={reducedMotion} lowQuality={lowQuality} initialCamera={projects.project.workspace.camera} onCameraRest={onCameraRest} onAnchor={setAnchor} onContextLost={() => setGlKey(k => k + 1)}
-            onSelect={setSelection} onMenu={(at, targetId) => { if (targetId && !live.current.selection.includes(targetId)) setSelection([targetId]); setMenu({at, targetId}); }} />
+        ? <BuildCanvas key={`${proj.id}-${glKey}`} handleRef={handle} tool={tool} parts={shown.parts} selection={selection} interfering={interfering} joinPoints={joinPoints} ghost={ghost} gizmo={gizmo} onGizmoDrag={onGizmoDrag} onGizmoCommit={onGizmoCommit}
+            debug={debug} reducedMotion={reducedMotion} lowQuality={lowQuality} initialCamera={proj.workspace.camera} onCameraRest={onCameraRest} onAnchor={setAnchor} onContextLost={() => setGlKey(k => k + 1)}
+            onSelect={selectIds} onMenu={(at, targetId) => { if (targetId && !live.current.selection.includes(targetId)) selectIds([targetId]); setMenu({at, targetId}); }} />
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Robótica necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>}
-      {anchor && selection.length > 0 && <ContextToolbar at={anchor} count={selection.length} locked={selected.length > 0 && selected.every(o => o.locked)} onAction={act} />}
+      {anchor && selection.length > 0 && !preview && <ContextToolbar at={anchor} count={selection.length} locked={allLocked} tool={tool} canJoin={candidates.length > 0} onAction={act} />}
       {empty && supported && <div className="rb-empty rb-canvas-overlay"><strong>Tu robot empieza aquí</strong><p>Abre <b>Piezas</b> para empezar.</p><button type="button" onClick={() => windows.open('parts')}><Boxes size={16} /> Abrir Piezas</button></div>}
       {mode === 'simulate' && <div className="rb-sim-note rb-canvas-overlay" role="status"><strong>Simulación</strong> disponible en una próxima etapa. Por ahora puedes seguir construyendo.</div>}
       {debug && <div className="rb-debug-tag rb-canvas-overlay" aria-hidden="true">depuración</div>}
@@ -142,8 +239,11 @@ export default function RoboticsApp() {
 
     <nav className="tool-dock rb-dock" aria-label="Herramientas">
       <button type="button" aria-label="Seleccionar" title="Seleccionar (V)" aria-pressed={tool === 'select'} onClick={() => setTool('select')}><MousePointer2 size={20} /></button>
+      <button type="button" aria-label="Mover" title="Mover: gizmo de la selección (G)" aria-pressed={tool === 'move'} onClick={() => setTool(tool === 'move' ? 'select' : 'move')}><Move3d size={20} /></button>
+      <button type="button" aria-label="Rotar" title="Rotar: gizmo de la selección (R)" aria-pressed={tool === 'rotate'} onClick={() => setTool(tool === 'rotate' ? 'select' : 'rotate')}><Rotate3d size={20} /></button>
       <button type="button" aria-label="Mano" title="Mano: desplazar (H)" aria-pressed={tool === 'hand'} onClick={() => setTool('hand')}><Hand size={20} /></button>
       <button type="button" aria-label="Encuadrar" title="Encuadrar selección o todo (F)" onClick={() => (selection.length ? act('frame') : act('frame-all'))}><Focus size={20} /></button>
+      <button type="button" aria-label="Imán" title={`Imán: pasos de ${snapMm} mm y 15° (se cambia en Propiedades)`} aria-pressed={snapOn} onClick={() => setSnapOn(v => !v)}><Magnet size={20} /></button>
       <i aria-hidden="true" />
       {WINDOW_IDS.map(id => {
         const Icon = DOCK_ICONS[id], w = windows.state[id], label = WINDOW_LABELS[id].title;
@@ -151,10 +251,11 @@ export default function RoboticsApp() {
       })}
     </nav>
 
-    <RoboticsToolWindows windows={windows} selected={selected} objectCount={objects.length} />
+    <RoboticsToolWindows windows={windows} ctx={ctx} />
     {optionsOpen && <ProjectOptionsWindow projects={projects} windows={windows} onClose={() => setOptionsOpen(false)} onOpenProjects={() => setProjectsOpen(true)} />}
     {projectsOpen && <ProjectsWindow projects={projects} onClose={() => setProjectsOpen(false)} />}
-    {menu && <ContextMenu at={menu.at} title={menu.targetId ? 'Acciones del objeto' : 'Acciones del lienzo'} items={menuItems} onClose={() => setMenu(null)} onChoose={id => { setMenu(null); act(id as ContextAction); }} />}
+    {menu && <ContextMenu at={menu.at} title={menu.targetId ? 'Acciones de la pieza' : 'Acciones del lienzo'} items={menuItems} onClose={() => setMenu(null)} onChoose={id => { setMenu(null); act(id as ContextAction); }} />}
+    {ghostNote && <div className={`rb-ghost-note${ghostNote.bad ? ' is-bad' : ''}`} role="status" style={{left: ghostNote.x + 14, top: ghostNote.y + 14}}>{ghostNote.text}</div>}
     {(projects.message || notice) && <div className="rb-toast" role="status"><span>{projects.message || notice}</span><button type="button" aria-label="Cerrar aviso" onClick={() => { projects.setMessage(''); setNotice(''); }}><X size={14} /></button></div>}
   </div>;
 }

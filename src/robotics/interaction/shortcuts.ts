@@ -1,6 +1,6 @@
 // Atajos de la pizarra. Puros: reciben un resumen del evento y devuelven una orden o null.
 export type ShortcutCommand =
-  | 'tool-select' | 'tool-hand' | 'frame-selection' | 'frame-all'
+  | 'tool-select' | 'tool-hand' | 'tool-move' | 'tool-rotate' | 'join' | 'group' | 'ungroup' | 'frame-selection' | 'frame-all'
   | 'view-front' | 'view-side' | 'view-top' | 'view-iso'
   | 'undo' | 'redo' | 'delete' | 'duplicate';
 
@@ -32,6 +32,7 @@ export function resolveShortcut(e: ShortcutEvent): ShortcutCommand | null {
     if (key === 'z') return e.shift ? 'redo' : 'undo';
     if (key === 'y') return 'redo';
     if (key === 'd' && !e.shift) return 'duplicate';
+    if (key === 'g') return e.shift ? 'ungroup' : 'group';
     return null;
   }
   if (e.alt) return null;
@@ -40,6 +41,9 @@ export function resolveShortcut(e: ShortcutEvent): ShortcutCommand | null {
   if (VIEWS[e.code]) return VIEWS[e.code];
   if (key === 'v') return 'tool-select';
   if (key === 'h') return 'tool-hand';
+  if (key === 'g') return 'tool-move';
+  if (key === 'r') return 'tool-rotate';
+  if (key === 'u') return 'join';
   if (key === 'f') return 'frame-selection';
   if (e.key === 'Delete' || e.key === 'Backspace') return 'delete';
   return null;

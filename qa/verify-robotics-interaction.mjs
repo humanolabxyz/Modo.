@@ -11,6 +11,7 @@ assert.equal(g({}), 'marquee');
 assert.equal(g({button: 1}), 'panning');
 assert.equal(g({space: true}), 'panning');
 assert.equal(g({tool: 'hand'}), 'panning');
+assert.equal(g({tool: 'move'}), 'marquee', 'con mover/rotar activos el vacío sigue siendo un rectángulo'); assert.equal(g({tool: 'rotate', target: 'object'}), 'selecting');
 assert.equal(g({button: 2}), 'orbiting');
 assert.equal(g({alt: true}), 'orbiting');
 assert.equal(g({pointerType: 'touch'}), 'orbiting', 'un dedo en vacío orbita');
@@ -24,7 +25,7 @@ assert.equal(endGesture('panning'), 'idle');
 const st = o => ({gesture: 'idle', tool: 'select', selection: 0, menuOpen: false, ...o});
 assert.equal(escapeAction(st({gesture: 'marquee', menuOpen: true, selection: 2})), 'cancel-gesture');
 assert.equal(escapeAction(st({menuOpen: true, selection: 2})), 'close-menu');
-assert.equal(escapeAction(st({tool: 'hand', selection: 2})), 'reset-tool');
+assert.equal(escapeAction(st({tool: 'hand', selection: 2})), 'reset-tool'); assert.equal(escapeAction(st({tool: 'move', selection: 2})), 'reset-tool');
 assert.equal(escapeAction(st({selection: 2})), 'clear-selection');
 assert.equal(escapeAction(st()), 'none');
 // Clic derecho sin mover = menú; moviéndolo = órbita
@@ -40,6 +41,7 @@ assert.equal(k('v'), 'tool-select'); assert.equal(k('h'), 'tool-hand'); assert.e
 assert.equal(k('1'), 'view-front'); assert.equal(k('3'), 'view-side'); assert.equal(k('7'), 'view-top'); assert.equal(k('0'), 'view-iso');
 assert.equal(k('!', {code: 'Digit1', shift: true}), 'frame-all');
 assert.equal(k('z', {ctrl: true}), 'undo'); assert.equal(k('z', {ctrl: true, shift: true}), 'redo'); assert.equal(k('z', {meta: true}), 'undo'); assert.equal(k('d', {ctrl: true}), 'duplicate');
+assert.equal(k('g'), 'tool-move'); assert.equal(k('r'), 'tool-rotate'); assert.equal(k('u'), 'join'); assert.equal(k('g', {ctrl: true}), 'group'); assert.equal(k('g', {ctrl: true, shift: true}), 'ungroup'); assert.equal(k('r', {ctrl: true}), null, 'Ctrl+R no se intercepta');
 assert.equal(k('Delete', {code: 'Delete'}), 'delete'); assert.equal(k('q'), null); assert.equal(k('v', {alt: true}), null);
 for (const target of [{...body, tag: 'INPUT'}, {...body, tag: 'TEXTAREA'}, {...body, tag: 'SELECT'}, {...body, editable: true}, {...body, insideWindow: true}, {...body, insideEditor: true}]) {
   assert.equal(k('v', {target}), null, `ignorado con foco en ${JSON.stringify(target)}`); assert.equal(k('z', {ctrl: true, target}), null);
