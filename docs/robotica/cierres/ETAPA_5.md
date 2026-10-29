@@ -71,3 +71,6 @@ El mismo proyecto que se construyó (etapa 2), cableó (3) y programó (4) se mu
 
 ## Próxima etapa sugerida (sin iniciarla)
 No hay una etapa 6 definida en `docs/robotica/`. Candidatas, a tu decisión: (a) medir y optimizar en tablet real; (b) gizmo y pausa para editar obstáculos; (c) sensores/actuadores extra (servo, seguidor de línea); (d) desplegar el compilador. Antes: validar las etapas 1–5 y decidir si se publica la 2.6.1 Beta.
+
+## Commits
+`631d461` física y catálogo · `a436adb` interfaz y pruebas · `ec597bc` informe, guía y versión 2.6.1 (sin publicar).
