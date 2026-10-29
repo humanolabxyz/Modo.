@@ -6,7 +6,8 @@ import type CameraControlsImpl from 'camera-controls';
 import {describeTarget, shortcutsDisabled} from '../interaction/shortcuts.ts';
 import {classifyRelease, LONG_PRESS_MS, MOVE_THRESHOLD_PX, nextSelection, rectFromPoints, rectsIntersect, startGesture, type Gesture, type Rect2, type ToolId} from '../interaction/tools.ts';
 import {getDefinition} from '../catalog/index.ts';
-import type {PartInstance, PinRef, Transform, Vec3} from '../project/types.ts';
+import type {Obstacle, PartInstance, PinRef, Transform, Vec3} from '../project/types.ts';
+import {ROOM_HALF, WALL_H} from '../sim/physics.ts';
 import {PartMesh, GhostMesh} from './PartMesh';
 import {ViewCube} from './ViewCube';
 
@@ -16,6 +17,8 @@ export type GizmoState = {pivot: Vec3; mode: 'translate' | 'rotate'; snapM: numb
 export type Ghost = {definitionId: string; position: Vec3; valid: boolean};
 /** Un pin dibujable/seleccionable: posición en el mundo, función y si ya tiene cable. */
 export type PinMarker = {ref: PinRef; pos: Vec3; role: string; connected: boolean};
+/** El cubo blanco de la simulación: obstáculos del proyecto y el haz del sensor de distancia. */
+export type RoomView = {obstacles: Obstacle[]; beams: {origin: Vec3; dir: Vec3; distance: number | null}[]; selected: string | null};
 export type WireView = {id: string; color: string; points: Vec3[]; selected: boolean};
 export const pinColor = (role: string) => ({'power-in': '#d94b4b', 'power-out': '#e08a3c', ground: '#3b3f45', digital: '#c9a83a', pwm: '#2f8fd0', analog: '#2fb07f', motor: '#9b5fd0', signal: '#c9a83a'} as Record<string, string>)[role] ?? '#888888';
 export type CanvasHandle = {
@@ -29,6 +32,10 @@ export type CanvasHandle = {
   groundPoint(clientX: number, clientY: number): Vec3 | null;
   /** Encuadra un conjunto de puntos del mundo (p. ej. los pines de un diagnóstico). */
   framePoints(points: Vec3[]): void;
+  /** Cámara de seguimiento: desplaza la vista (sin cambiar el ángulo ni la distancia) para que el punto quede al centro. */
+  follow(point: Vec3): void;
+  /** Encuadra el robot y un poco del cuarto, mirando desde atrás y arriba (al iniciar la simulación). */
+  frameRobot(points: Vec3[]): void;
 };
 
 const DEFAULT_CAMERA: CameraState = {position: [0.9, 0.75, 0.9], target: [0, 0.05, 0]};
@@ -73,6 +80,8 @@ type Props = {
   flying: boolean;
   /** Estado vivo de la simulación (brillo de los LED, 0–1). */
   live?: {leds: Record<string, number>};
+  /** Escenario de la simulación (se dibuja en el modo Simular). */
+  room?: RoomView;
   initialCamera?: CameraState;
   reducedMotion: boolean;
   lowQuality: boolean;
@@ -155,6 +164,18 @@ export function BuildCanvas(props: Props) {
     cancelGesture,
     gesture: () => gesture.current,
     groundPoint: (cx, cy) => scene.current?.ground(cx, cy) ?? null,
+    follow: point => {
+      const c = controlsRef.current; if (!c) return;
+      const p = new Vector3(), t = new Vector3(); c.getPosition(p); c.getTarget(t);
+      const d = new Vector3(...point).sub(t).multiplyScalar(0.35); // suaviza: la cámara alcanza al robot en unos pocos cuadros
+      void c.setLookAt(p.x + d.x, p.y + d.y, p.z + d.z, t.x + d.x, t.y + d.y, t.z + d.z, false);
+    },
+    frameRobot: points => {
+      const c = controlsRef.current; if (!c || !points.length) return;
+      const box = new Box3(); for (const q of points) box.expandByPoint(new Vector3(...q)); const ctr = box.getCenter(new Vector3()), r = Math.max(0.2, box.getSize(new Vector3()).length() / 2);
+      const back = new Vector3(0.35, 0.55, -1).normalize().multiplyScalar(r * 3.4);
+      void c.setLookAt(ctr.x + back.x, ctr.y + back.y, ctr.z + back.z, ctr.x, ctr.y, ctr.z, !reducedMotion);
+    },
     framePoints: points => { const box = new Box3(); for (const q of points) box.expandByPoint(new Vector3(...q)); box.expandByScalar(0.03); framing(box); },
   }), [reducedMotion]);
 
@@ -246,7 +267,7 @@ export function BuildCanvas(props: Props) {
         onCreated={({gl}) => { gl.domElement.addEventListener('webglcontextlost', ev => { ev.preventDefault(); setFailure('El navegador perdió el contexto gráfico (WebGL). Pasa a veces con poca memoria de video.'); }); }}
         onError={() => setFailure('Falló el motor gráfico.')}>
         <color attach="background" args={['#eef1f4']} />
-        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput, live: props.live}} />
+        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput, live: props.live, room: props.room}} />
       </Canvas>
     </Boundary>
     {marquee && <div className="rb-marquee" style={{left: marquee.x, top: marquee.y, width: marquee.w, height: marquee.h}} />}
@@ -257,11 +278,11 @@ export function BuildCanvas(props: Props) {
 
 type TransformControlsLike = {object?: Object3D; axis: string | null; dragging: boolean; pointerHover(p: {x: number; y: number; button: number}): void};
 
-function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool, flying, flyInput, live}: {
+function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool, flying, flyInput, live, room}: {
   parts: PartInstance[]; selection: string[]; sceneRef: MutableRefObject<SceneApi | null>; controlsRef: MutableRefObject<CameraControlsImpl | null>; cube: MutableRefObject<HTMLDivElement | null>;
   onAnchor(p: {x: number; y: number} | null): void; onCameraRest(c: CameraState): void; initialCamera?: CameraState; debug: boolean; wrap: MutableRefObject<HTMLDivElement | null>;
   interfering: ReadonlySet<string>; joinPoints: Vec3[]; ghost: Ghost | null; gizmo: GizmoState | null; onGizmoDrag(m: Transform): void; onGizmoCommit(m: Transform): void;
-  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId; flying: boolean; flyInput: MutableRefObject<Set<string>>; live?: {leds: Record<string, number>};
+  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId; flying: boolean; flyInput: MutableRefObject<Set<string>>; live?: {leds: Record<string, number>}; room?: RoomView;
 }) {
   const flyingRef = useRef(flying); flyingRef.current = flying;
   const eye = useRef(new Vector3());
@@ -398,6 +419,8 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
       gizmoRaw: () => tc.current,
       gizmoState: () => { const t = tc.current; return t ? {dragging: t.dragging, axis: t.axis, hasObject: !!t.object, pivot: pivot.current?.position.toArray(), drag: !!drag.current, camEnabled: controlsRef.current?.enabled} : null; },
       partIds: () => (group.current?.children ?? []).map(c => c.userData.partId as string),
+      /** Posición mundial real de la pieza dibujada (para comprobar que el 3D sigue a la física). */
+      partWorld: (id: string) => { const o = group.current?.children.find(c => c.userData.partId === id); return o ? o.getWorldPosition(new Vector3()).toArray() : null; },
       pinScreen: (instanceId: string, pinId: string) => { const m = pinsRef.current.find(q => q.ref.instanceId === instanceId && q.ref.pinId === pinId); if (!m) return null; const v = new Vector3(...m.pos).project(camera), r = gl.domElement.getBoundingClientRect(); return {x: r.left + ((v.x + 1) / 2) * r.width, y: r.top + ((1 - v.y) / 2) * r.height}; },
       wireCount: () => wiresGroup.current?.children.length ?? 0,
       /** Intensidad emisiva real del LED dibujado (para comprobar que el 3D refleja el modelo). */
@@ -492,6 +515,7 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
     <directionalLight position={[2, 4, 3]} intensity={1.4} />
     <directionalLight position={[-2, 2, -1]} intensity={0.35} />
     <Grid position={[0, 0, 0]} args={[10, 10]} cellSize={0.1} cellThickness={0.6} cellColor="#c9d1d8" sectionSize={0.5} sectionThickness={1} sectionColor="#9fb0bc" fadeDistance={6} fadeStrength={1.5} infiniteGrid />
+    {room && <RoomLayer room={room} />}
     <CameraControls ref={controlsRef as never} makeDefault />
     <group ref={group}>
       {parts.map(p => <PartMesh key={p.instanceId} part={p} selected={selection.includes(p.instanceId)} interfering={interfering.has(p.instanceId)} glow={live?.leds[p.instanceId]} />)}
@@ -509,6 +533,21 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
         onObjectChange={() => { const m = motionOf(); if (m && drag.current) { drag.current.motion = m; latest.current.onGizmoDrag(m); } }}
         onMouseUp={() => { const m = drag.current?.motion ?? null; drag.current = null; if (m && (Math.hypot(...m.position) > 1e-9 || Math.abs(m.rotation[3]) < 1 - 1e-9)) latest.current.onGizmoCommit(m); else latest.current.onGizmoDrag({position: ZERO, rotation: [0, 0, 0, 1]}); }} />
     </>}
+  </>;
+}
+
+/** Cubo blanco: suelo claro, paredes translúcidas, obstáculos y el haz del HC-SR04 (todo sale del proyecto y de la física, nada decorativo). */
+function RoomLayer({room}: {room: RoomView}) {
+  const wall = (key: string, at: Vec3, size: Vec3) => <mesh key={key} position={at} raycast={() => null}><boxGeometry args={size} /><meshStandardMaterial color="#ffffff" transparent opacity={0.28} roughness={0.9} depthWrite={false} /></mesh>;
+  const h = ROOM_HALF, t = 0.1, w = WALL_H;
+  return <>
+    <mesh position={[0, -0.002, 0]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => null}><planeGeometry args={[h * 2, h * 2]} /><meshStandardMaterial color="#ffffff" roughness={0.95} /></mesh>
+    {wall('n', [0, w / 2, h + t / 2], [h * 2 + t * 2, w, t])}{wall('s', [0, w / 2, -h - t / 2], [h * 2 + t * 2, w, t])}{wall('e', [h + t / 2, w / 2, 0], [t, w, h * 2])}{wall('w', [-h - t / 2, w / 2, 0], [t, w, h * 2])}
+    {room.obstacles.map(o => <mesh key={o.id} position={o.transform.position} quaternion={o.transform.rotation} raycast={() => null}>
+      {o.shape === 'cylinder' ? <cylinderGeometry args={[o.size[0] / 2, o.size[0] / 2, o.size[1], 32]} /> : <boxGeometry args={o.size} />}
+      <meshStandardMaterial color={o.id === room.selected ? '#2f8fd0' : '#e6a23c'} roughness={0.7} /></mesh>)}
+    {room.beams.map((b, i) => { const d = b.distance ?? 4, end: Vec3 = [b.origin[0] + b.dir[0] * d, b.origin[1] + b.dir[1] * d, b.origin[2] + b.dir[2] * d];
+      return <Line key={i} points={[b.origin, end]} color={b.distance === null ? '#9aa4ad' : '#e0453a'} lineWidth={1.5} transparent opacity={0.7} depthTest={false} />; })}
   </>;
 }
 

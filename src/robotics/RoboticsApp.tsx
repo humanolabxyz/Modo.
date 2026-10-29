@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent} from 'react';
-import {Boxes, Cable, Check, Code2, Copy, Eye, Focus, Footprints, Gauge, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Pause, Play, Redo2, Rotate3d, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Ungroup, X} from 'lucide-react';
-import {BuildCanvas, type CameraState, type CanvasHandle, type Ghost, type GizmoState, type PinMarker, type WireView} from './build/BuildCanvas';
+import {Boxes, Cable, Check, Code2, Copy, Eye, Focus, Footprints, Gauge, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Pause, Play, Redo2, Rotate3d, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Ungroup, X, Box} from 'lucide-react';
+import {BuildCanvas, type CameraState, type CanvasHandle, type Ghost, type GizmoState, type PinMarker, type RoomView, type WireView} from './build/BuildCanvas';
 import {findInterferences, findJoinCandidates, placementCheck} from './build/interference.ts';
 import {ContextToolbar, type ContextAction} from './interaction/ContextToolbar';
 import {ContextMenu, type MenuItem} from './interaction/ContextMenu';
@@ -15,7 +15,8 @@ import {readHexFile} from './mcu/compiler/hexImport.ts';
 import type {CompileResult} from './mcu/types.ts';
 import {useRobotSim} from './sim/useRobotSim.ts';
 import {SPEEDS} from './sim/protocol.ts';
-import {SKETCH_TEMPLATE, firmwareOf, setFirmwareArtifact, setFirmwareSource, ensureFirmware, addPart, attach, centroid, connect, detach, disconnect, duplicateParts, expandGroups, moveParts, parentAttachment, pinWorld, removeParts, renamePart, setConnectionColor, setConnectionRoute, setGroup, setLocked, setPartProp, setPartTransform, type CommandError, type CommandResult} from './project/commands.ts';
+import {applyPoses} from './sim/poses.ts';
+import {SKETCH_TEMPLATE, addObstacle, removeObstacle, setFriction, updateObstacle, firmwareOf, setFirmwareArtifact, setFirmwareSource, ensureFirmware, addPart, attach, centroid, connect, detach, disconnect, duplicateParts, expandGroups, moveParts, parentAttachment, pinWorld, removeParts, renamePart, setConnectionColor, setConnectionRoute, setGroup, setLocked, setPartProp, setPartTransform, type CommandError, type CommandResult} from './project/commands.ts';
 import {DEG} from './project/math.ts';
 import type {PinRef, RobotProject, Transform, Vec3} from './project/types.ts';
 import {useRoboticsProjects} from './project/useRoboticsProjects';
@@ -24,7 +25,8 @@ import {ProjectOptionsWindow, ProjectsWindow, RoboticsToolWindows, WINDOW_LABELS
 import {WIRE_COLORS, type BuildContext} from './windows/BuildWindows';
 import '../styles/robotics.css';
 
-const DOCK_ICONS: Record<RoboticsWindowId, typeof Boxes> = {parts: Boxes, structure: ListTree, properties: SlidersHorizontal, code: Code2, console: Terminal};
+const DOCK_ICONS: Record<RoboticsWindowId, typeof Boxes> = {parts: Boxes, structure: ListTree, properties: SlidersHorizontal, scene: Box, code: Code2, console: Terminal};
+const fmtM = (v: number) => v.toFixed(2).replace('.', ',');
 const IDENTITY: Transform = {position: [0, 0, 0], rotation: [0, 0, 0, 1]};
 
 function webglAvailable() {
@@ -52,6 +54,8 @@ export default function RoboticsApp() {
   const [tool, setTool] = useState<ToolId>('select');
   const [selection, setSelection] = useState<string[]>([]);
   const [preview, setPreview] = useState<RobotProject | null>(null);
+  const [sceneSel, setSceneSel] = useState<string | null>(null);
+  const [follow, setFollow] = useState(true);
   const [snapOn, setSnapOn] = useState(false);
   const [snapMm, setSnapMm] = useState(5);
   const [ghost, setGhost] = useState<Ghost | null>(null);
@@ -86,10 +90,13 @@ export default function RoboticsApp() {
   const persistedSource = fwTarget ? firmwareOf(proj, fwTarget)?.source ?? SKETCH_TEMPLATE : '';
   const source = draft && draft.target === fwTarget ? draft.text : persistedSource;
   const firmware = fwTarget ? firmwareOf(proj, fwTarget) : undefined;
-  const shown = preview ?? proj;
+  const framePhysics = sim.snapshot?.physics;
+  const shown = useMemo(() => preview ?? (framePhysics ? applyPoses(proj, framePhysics.poses) : proj), [preview, proj, framePhysics]);
   const mode = proj.workspace.mode ?? 'build';
   const selected = proj.parts.filter(x => selection.includes(x.instanceId));
-  const interfering = useMemo(() => new Set(findInterferences(shown).flat()), [shown]);
+  // Las interferencias son del montaje (no de las poses que va dando la física): calcularlas 30 veces por segundo sería trabajo perdido.
+  const editing = preview ?? proj;
+  const interfering = useMemo(() => (sim.status === 'stopped' ? new Set(findInterferences(editing).flat()) : new Set<string>()), [editing, sim.status === 'stopped']);
   const candidates = useMemo(() => (selection.length ? findJoinCandidates(proj, selection) : []), [proj.parts, proj.attachments, selection]);
   const solution = useMemo(() => solve(proj), [proj.parts, proj.connections]);
   const diagnostics = useMemo(() => diagnose(proj, solution), [proj.parts, proj.connections, solution]);
@@ -110,7 +117,7 @@ export default function RoboticsApp() {
   // visita, ambos ya están en la caché del service worker y un proyecto compilado se puede ejecutar sin conexión.
   useEffect(() => {
     const t = setTimeout(() => {
-      try { const w = new Worker(new URL('./sim/sim.worker.ts', import.meta.url), {type: 'module'}); w.onmessage = () => w.terminate(); w.onerror = () => w.terminate(); setTimeout(() => w.terminate(), 5000); } catch { /* sin worker: no hay nada que precalentar */ }
+      try { const w = new Worker(new URL('./sim/sim.worker.ts', import.meta.url), {type: 'module'}); w.onmessage = e => { if (e.data?.t === 'ready') w.postMessage({t: 'warm'}); else w.terminate(); }; w.onerror = () => w.terminate(); setTimeout(() => w.terminate(), 12000); } catch { /* sin worker: no hay nada que precalentar */ }
       void import('./windows/CodeEditor').catch(() => {});
     }, 1500);
     return () => clearTimeout(t);
@@ -129,7 +136,7 @@ export default function RoboticsApp() {
   // La placa de destino tiene siempre un programa (plantilla) en cuanto se abre la ventana Programación
   useEffect(() => { if (fwTarget && windows.state.code.open && !firmwareOf(proj, fwTarget)) projects.update(p => ensureFirmware(p, fwTarget), {history: false, touch: false}); }, [fwTarget, windows.state.code.open, proj.firmware]);
   // Cambiar las piezas o los cables mientras corre el programa invalida lo simulado: se detiene con aviso
-  useEffect(() => { if (sim.status !== 'stopped') sim.stop('El proyecto cambió: la simulación se detuvo. Pulsa ▶ para ejecutarla de nuevo.'); }, [proj.parts, proj.connections]);
+  useEffect(() => { if (sim.status !== 'stopped') sim.stop('El proyecto cambió: la simulación se detuvo. Pulsa ▶ para ejecutarla de nuevo.'); }, [proj.parts, proj.connections, proj.scene]);
   useEffect(() => { if (sim.message) setNotice(sim.message); }, [sim.message]);
 
   const setSource = (text: string) => {
@@ -156,9 +163,20 @@ export default function RoboticsApp() {
     if (!fwTarget) { setNotice('Agrega un Arduino UNO R3 para ejecutar un programa.'); windows.open('parts'); return; }
     const status = artifactStatus(firmware?.artifact, hashSource(source));
     if (!canRun(status) || !firmware?.artifact) { setNotice(advice(status, compilerAvailable === true).message); windows.open('code'); return; }
-    sim.start({project: structuredClone(proj), targetId: fwTarget, hex: firmware.artifact.hex});
+    if (mode !== 'simulate') projects.update(p => ({...p, workspace: {...p.workspace, mode: 'simulate'}}), {history: false, touch: false});
+    sim.start({project: structuredClone(proj), targetId: fwTarget, hex: firmware.artifact.hex, physics: true});
   };
   const liveView = useMemo(() => (sim.snapshot ? {leds: Object.fromEntries(Object.entries(sim.snapshot.leds).map(([k, v]) => [k, v.brightness]))} : undefined), [sim.snapshot]);
+  // Al iniciar la simulación se encuadra el robot; mientras corre, la cámara lo sigue (se puede apagar con «Seguir»).
+  const startedRef = useRef(false);
+  useEffect(() => {
+    if (sim.status === 'stopped') { startedRef.current = false; return; }
+    if (!framePhysics) return;
+    const main = framePhysics.main?.p; if (!main) return;
+    if (!startedRef.current) { startedRef.current = true; handle.current?.frameRobot([main, [main[0], main[1] + 0.1, main[2] + 0.12]]); }
+    else if (follow && sim.status === 'running') handle.current?.follow(main);
+  }, [framePhysics, sim.status, follow]);
+  const roomView = useMemo<RoomView | undefined>(() => (mode === 'simulate' ? {obstacles: proj.scene.obstacles, beams: framePhysics ? Object.values(framePhysics.sensors) : [], selected: sceneSel} : undefined), [mode, proj.scene.obstacles, framePhysics, sceneSel]);
   const apply = (r: CommandResult | CommandError): boolean => {
     if ('error' in r) { setNotice(r.error); return false; }
     projects.update(() => r.project);
@@ -274,7 +292,10 @@ export default function RoboticsApp() {
     return () => removeEventListener('keydown', onKey);
   }, [projects.undo, projects.redo]);
 
-  const setMode = (next: 'build' | 'simulate') => projects.update(p => ({...p, workspace: {...p.workspace, mode: next}}), {history: false, touch: false});
+  const setMode = (next: 'build' | 'simulate') => {
+    if (next === 'build' && sim.status !== 'stopped') sim.stop();
+    projects.update(p => ({...p, workspace: {...p.workspace, mode: next}}), {history: false, touch: false});
+  };
   const onCameraRest = (camera: CameraState) => projects.update(p => ({...p, workspace: {...p.workspace, camera}}), {history: false, touch: false});
 
   const movable = selection.filter(id => !proj.parts.find(x => x.instanceId === id)?.locked);
@@ -307,6 +328,13 @@ export default function RoboticsApp() {
     clearProbe: () => setProbe({a: null, b: null}),
     tool,
     code: {boards, target: fwTarget, setTarget: id => { setTargetId(id); setDraft(null); }, source, setSource, artifact: firmware?.artifact, compilerAvailable, compile, importHex},
+    scene: {
+      obstacles: proj.scene.obstacles, friction: proj.scene.physics.friction, selected: sceneSel, editable: sim.status === 'stopped', select: setSceneSel,
+      add: shape => { const r = addObstacle(live.current.proj, shape); if (apply(r) && !('error' in r)) setSceneSel(r.project.scene.obstacles.at(-1)!.id); if (mode !== 'simulate') setMode('simulate'); },
+      update: (id, patch) => projects.update(p => updateObstacle(p, id, patch)),
+      remove: id => { projects.update(p => removeObstacle(p, id)); setSceneSel(null); },
+      setFriction: v => projects.update(p => setFriction(p, v)),
+    },
     sim: {status: sim.status, snapshot: sim.snapshot, serial: sim.serial, message: sim.message, ratio: sim.ratio, lag: sim.lag, clearSerial: sim.clearSerial, labelOf: id => proj.parts.find(x => x.instanceId === id)?.label ?? id},
   };
 
@@ -341,7 +369,7 @@ export default function RoboticsApp() {
         <button type="button" className="rb-run" aria-label={sim.status === 'running' ? 'Pausar' : sim.status === 'paused' ? 'Reanudar' : 'Ejecutar'} title={sim.status === 'running' ? 'Pausar' : 'Ejecutar el programa de la placa'} onClick={sim.status === 'running' ? sim.pause : run}>{sim.status === 'running' ? <Pause size={17} /> : <Play size={17} />}</button>
         <button type="button" aria-label="Detener" title="Detener y volver al principio" disabled={sim.status === 'stopped'} onClick={() => sim.stop()}><Square size={15} /></button>
         <select aria-label="Velocidad de simulación" value={sim.speed} onChange={e => sim.setSpeed(Number(e.target.value))}>{SPEEDS.map(s => <option key={s} value={s}>×{String(s).replace('.', ',')}</option>)}</select>
-        <span className="rb-sim-chip" role="status" data-sim={sim.status} data-lag={sim.lag || undefined}>{sim.status === 'stopped' ? 'DETENIDO' : sim.status === 'paused' ? 'PAUSA' : sim.lag ? 'LENTA' : 'EN MARCHA'}</span>
+        <span className="rb-sim-chip" role="status" data-sim={sim.status} data-lag={sim.lag || undefined}>{sim.status === 'stopped' ? 'DETENIDO' : sim.status === 'paused' ? 'PAUSA' : !sim.snapshot ? 'CARGANDO' : sim.lag ? 'LENTA' : 'EN MARCHA'}</span>
       </div>
       <button type="button" aria-label="Deshacer" title="Deshacer (Ctrl+Z)" disabled={!projects.canUndo} onClick={projects.undo}><Undo2 size={18} /></button>
       <button type="button" aria-label="Rehacer" title="Rehacer (Ctrl+Shift+Z)" disabled={!projects.canRedo} onClick={projects.redo}><Redo2 size={18} /></button>
@@ -356,12 +384,14 @@ export default function RoboticsApp() {
       {supported
         ? <BuildCanvas key={`${proj.id}-${glKey}`} handleRef={handle} tool={tool} parts={shown.parts} selection={selection} interfering={interfering} joinPoints={joinPoints} ghost={ghost} gizmo={gizmo} onGizmoDrag={onGizmoDrag} onGizmoCommit={onGizmoCommit}
             wires={wireViews} pins={pinList} highlight={highlight} pending={posOf(pendingPin)} probes={{a: posOf(probe.a), b: posOf(probe.b)}} onPinClick={onPinClick} onPinHover={onPinHover} onSelectWire={id => { setWireSel(id); setSelection([]); }}
-            flying={flying} live={liveView} debug={debug} reducedMotion={reducedMotion} lowQuality={lowQuality} initialCamera={proj.workspace.camera} onCameraRest={onCameraRest} onAnchor={setAnchor} onContextLost={() => setGlKey(k => k + 1)}
+            flying={flying} live={liveView} room={roomView} debug={debug} reducedMotion={reducedMotion} lowQuality={lowQuality} initialCamera={proj.workspace.camera} onCameraRest={onCameraRest} onAnchor={setAnchor} onContextLost={() => setGlKey(k => k + 1)}
             onSelect={selectIds} onMenu={(at, targetId) => { if (targetId && !live.current.selection.includes(targetId)) selectIds([targetId]); setMenu({at, targetId}); }} />
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Robótica necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>}
       {anchor && selection.length > 0 && !preview && <ContextToolbar at={anchor} count={selection.length} locked={allLocked} tool={tool} canJoin={candidates.length > 0} onAction={act} />}
       {empty && supported && <div className="rb-empty rb-canvas-overlay"><strong>Tu robot empieza aquí</strong><p>Abre <b>Piezas</b> para empezar.</p><button type="button" onClick={() => windows.open('parts')}><Boxes size={16} /> Abrir Piezas</button></div>}
-      {mode === 'simulate' && <div className="rb-sim-note rb-canvas-overlay" role="status"><strong>Simulación del robot</strong>: el movimiento y la física llegan en una próxima etapa. El programa y el circuito ya se ejecutan con ▶.</div>}
+      {mode === 'simulate' && <div className="rb-sim-note rb-canvas-overlay" role="status" aria-label="Estado de la simulación">{framePhysics
+        ? <><button type="button" className="rb-follow" aria-pressed={follow} onClick={() => setFollow(f => !f)}>Seguir</button><strong>{fmtM(framePhysics.main?.speed ?? 0)} m/s</strong>{Object.keys(framePhysics.sensors).map(id => { const d = framePhysics.sensors[id].distance; return <span key={id}>{ctx.sim.labelOf(id)}: {d === null ? 'sin obstáculo (≥ 4 m)' : `${fmtM(d)} m`}</span>; })}</>
+        : <><strong>Escenario</strong>: cuarto blanco de 4 × 4 m. Agrega obstáculos en <b>Escenario</b> y pulsa ▶: el robot se mueve solo por lo que armaste, cableaste y programaste.</>}</div>}
       {flying && <div className="rb-fly-bar rb-canvas-overlay" role="status"><b>Primera persona</b><span>W A S D mover · Q bajar · E subir · Mayús correr · clic derecho mirar · rueda avanzar</span><button type="button" onClick={() => setFlying(false)}>Salir (C)</button></div>}
       {tool === 'wire' && <div className="rb-tool-bar rb-canvas-overlay" role="group" aria-label="Cable"><span>{pendingPin ? `Desde ${pinLabel(pendingPin)}: elige el pin de destino` : 'Pulsa un pin para empezar el cable'}</span>
         <span className="rb-swatches-inline" role="group" aria-label="Color del cable nuevo">{WIRE_COLORS.map(c => <button type="button" key={c.value} className="rb-swatch" style={{background: c.value}} aria-label={`Nuevo cable ${c.name}`} aria-pressed={wireColor === c.value} onClick={() => setWireColor(c.value)} />)}</span></div>}

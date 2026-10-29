@@ -7,7 +7,7 @@ fs.mkdirSync(out, {recursive: true});
 const report = {url: base, checks: [], errors: [], viewports: {}};
 const pass = s => { report.checks.push(s); console.log('PASS', s); };
 const VIEWPORTS = [['escritorio', 1440, 900, false], ['tablet', 1024, 768, true], ['telefono', 390, 844, true]];
-const WINDOWS = [['parts', 'Piezas'], ['structure', 'Estructura'], ['properties', 'Propiedades'], ['code', 'Programación'], ['console', 'Consola']];
+const WINDOWS = [['parts', 'Piezas'], ['structure', 'Estructura'], ['properties', 'Propiedades'], ['scene', 'Escenario'], ['code', 'Programación'], ['console', 'Consola']];
 
 async function open(browser, name, w, h, touch, url) {
   const c = await browser.newContext({viewport: {width: w, height: h}, hasTouch: touch, isMobile: w < 600, serviceWorkers: 'block', reducedMotion: 'reduce'});
@@ -73,7 +73,7 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
         await chip.click(); assert.ok(await win.isVisible(), `«${label}» restaurada desde el chip`);
         await win.locator(`button[aria-label="Cerrar ${label}"]`).click(); assert.equal(await p.locator(winSel(id)).count(), 0);
       }
-      step('las 5 ventanas: abrir, minimizar con chip, restaurar, Esc no cierra, cerrar');
+      step('las 6 ventanas: abrir, minimizar con chip, restaurar, Esc no cierra, cerrar');
 
       // 3) Mover y redimensionar (solo escritorio y tablet) sin mover la cámara
       if (!phone) {
@@ -194,9 +194,9 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
       // 8) Modo Simular honesto
       await p.locator('button[aria-label="Cerrar opciones del proyecto"]').click();
       await p.locator('.rb-mode button[aria-pressed=false]').click();
-      assert.match(await p.locator('.rb-sim-note').textContent(), /próxima etapa/);
+      assert.match(await p.locator('.rb-sim-note').textContent(), /Escenario/);
       await p.locator('.rb-mode button[aria-pressed=false]').click(); await p.locator('.rb-sim-note').waitFor({state: 'detached'});
-      step('Simular avisa «disponible en una próxima etapa» sin simular nada');
+      step('Simular muestra el escenario y explica cómo ejecutar');
 
       // 9) Pulsación larga táctil → menú contextual
       await p.keyboard.press('Escape');

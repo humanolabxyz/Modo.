@@ -14,6 +14,7 @@ async function openWin(p, id) { if (!(await p.locator(win(id)).count())) await d
 const closeWin = async (p, id) => { if (await p.locator(win(id)).count()) await p.locator(`${win(id)} button[aria-label="Cerrar ${TITLES[id]}"]`).dispatchEvent('click'); };
 const saved = async p => { await p.waitForTimeout(250); await p.waitForFunction(() => /Guardado/.test(document.querySelector('.rb-name small')?.textContent || '') && localStorage.getItem('modo-robotica-v1') !== null, null, {timeout: 15000}); await p.waitForTimeout(150); return p.evaluate(() => { const lib = JSON.parse(localStorage.getItem('modo-robotica-v1')); return lib.projects.find(x => x.id === lib.active); }); };
 const chip = p => p.locator('.rb-sim-chip');
+const marchando = p => p.waitForFunction(() => document.querySelector('.rb-sim-chip')?.textContent === 'EN MARCHA', null, {timeout: 20000}); // la física tarda un instante en cargar (CARGANDO)
 const SKETCH = ms => `void setup() {\n  pinMode(13, OUTPUT);\n  Serial.begin(9600);\n  Serial.println("hola desde el programa");\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(${ms});\n  digitalWrite(13, LOW);\n  delay(${ms});\n}\n`;
 async function setCode(p, text) { await openWin(p, 'code'); await p.locator('.cm-content').click(); await p.keyboard.press('Control+a'); await p.keyboard.insertText(text); }
 /** Muestrea el brillo REAL del LED dibujado (material de la malla 3D) durante `ms` y cuenta los cambios de apagado↔encendido. */
@@ -60,7 +61,7 @@ async function sampleLed(p, led, ms) { return p.evaluate(async ({led, ms}) => { 
     pass('un error de sintaxis se traduce a español y marca la línea (3 y 5, con marcas en el editor); el sketch correcto se compila (estado «Compilado»)');
 
     // 5) Ejecutar: el LED parpadea en 3D con el programa; Serie muestra el texto
-    await closeWin(p, 'code'); await p.locator('.rb-sim button[aria-label="Ejecutar"]').click(); assert.equal(await chip(p).textContent(), 'EN MARCHA');
+    await closeWin(p, 'code'); await p.locator('.rb-sim button[aria-label="Ejecutar"]').click(); await marchando(p);
     const slow = await sampleLed(p, led, 3600); assert.ok(slow.max > 0.5 && slow.min < 0.05, `el LED se enciende y se apaga en el 3D (${slow.min}…${slow.max})`); assert.ok(slow.toggles >= 2 && slow.toggles <= 5, `delay(1000): ${slow.toggles} cambios en 3,6 s`);
     await openWin(p, 'console'); await p.locator('button[role=tab]', {hasText: 'Serie y estado'}).click(); await p.locator('.rb-serial-out').waitFor(); assert.match(await p.locator('.rb-serial-out').textContent(), /hola desde el programa/);
     assert.match(await p.locator('.rb-state-list').textContent(), /LED 5 mm 1: (encendido|apagado)/); assert.match(await p.locator('.rb-state-list').textContent(), /Placa: alimentada \(por VIN\)/);
@@ -77,7 +78,7 @@ async function sampleLed(p, led, ms) { return p.evaluate(async ({led, ms}) => { 
 
     // 7) Pausa, velocidad y detener
     await p.locator('.rb-sim button[aria-label="Pausar"]').click(); assert.equal(await chip(p).textContent(), 'PAUSA'); await p.waitForTimeout(300); /* deja llegar el último cuadro en vuelo */ const frozen = await sampleLed(p, led, 900); assert.equal(frozen.toggles, 0, 'en pausa el LED no cambia');
-    await p.locator('.rb-sim button[aria-label="Reanudar"]').click(); assert.equal(await chip(p).textContent(), 'EN MARCHA');
+    await p.locator('.rb-sim button[aria-label="Reanudar"]').click(); await marchando(p);
     // El tiempo virtual (monitor de estado) avanza al ritmo pedido: ×1 ≈ 1 s por segundo real; ×4 bastante más rápido (el LED parpadea más deprisa de lo que se repinta, por eso se mide el reloj)
     await openWin(p, 'console'); await p.locator('button[role=tab]', {hasText: 'Serie y estado'}).click();
     const vt = async () => Number((await p.locator('.rb-sim-state').textContent()).match(/tiempo virtual ([\d,]+) s/)[1].replace(',', '.'));

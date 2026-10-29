@@ -3,13 +3,14 @@ import {Copy, Download, FilePlus2, LayoutGrid, Trash2, Upload} from 'lucide-reac
 import {FloatingWindow} from '../../components/FloatingWindow';
 import type {RoboticsProjects} from '../project/useRoboticsProjects';
 import {CodePanel} from './CodePanel';
-import {ConsolePanel, PartsPanel, PropertiesPanel, StructurePanel, type BuildContext} from './BuildWindows';
+import {ConsolePanel, PartsPanel, PropertiesPanel, ScenePanel, StructurePanel, type BuildContext} from './BuildWindows';
 import {storageIdOf, WINDOW_IDS, type RoboticsWindowId, type RoboticsWindows} from './useRoboticsWindows';
 
 export const WINDOW_LABELS: Record<RoboticsWindowId, {title: string; eyebrow: string}> = {
   parts: {title: 'Piezas', eyebrow: 'Catálogo'},
   structure: {title: 'Estructura', eyebrow: 'Proyecto'},
   properties: {title: 'Propiedades', eyebrow: 'Selección'},
+  scene: {title: 'Escenario', eyebrow: 'Obstáculos'},
   code: {title: 'Programación', eyebrow: 'Sketch'},
   console: {title: 'Consola', eyebrow: 'Diagnóstico'},
 };
@@ -18,6 +19,7 @@ const EMPTY: Record<RoboticsWindowId, {headline: string; body: string; stage: st
   parts: {headline: '', body: '', stage: ''},
   structure: {headline: '', body: '', stage: ''},
   properties: {headline: '', body: '', stage: ''},
+  scene: {headline: '', body: '', stage: ''},
   code: {headline: 'El editor llega en la etapa 4', body: 'Aquí vas a escribir el sketch de Arduino y ejecutarlo en el ATmega328P emulado.', stage: 'Etapa 4'},
   console: {headline: 'Sin salida todavía', body: 'Aquí verás lo que tu programa escriba por Serial y los avisos del circuito.', stage: 'Etapa 4'},
 };
@@ -32,7 +34,7 @@ export function RoboticsToolWindows({windows, ctx}: Props) {
       if (!w.open) return null;
       const label = WINDOW_LABELS[id], empty = EMPTY[id];
       return <FloatingWindow key={`${id}-${windows.epoch}`} passive storageId={storageIdOf(id)} title={label.title} eyebrow={label.eyebrow} width={id === 'code' ? 480 : id === 'parts' ? 340 : 320} side={id === 'parts' || id === 'structure' ? 'left' : 'right'} top={id === 'console' ? 120 : 0} visible={w.visible} activation={w.activation} onClose={() => windows.close(id)} onMinimize={() => windows.minimize(id)} closeLabel={`Cerrar ${label.title}`} className={`rb-window rb-window-${id}`}>
-        {id === 'parts' ? <PartsPanel ctx={ctx} /> : id === 'structure' ? <StructurePanel ctx={ctx} /> : id === 'properties' ? <PropertiesPanel ctx={ctx} /> : id === 'console' ? <ConsolePanel ctx={ctx} /> : id === 'code' ? <CodePanel ctx={ctx} />
+        {id === 'parts' ? <PartsPanel ctx={ctx} /> : id === 'structure' ? <StructurePanel ctx={ctx} /> : id === 'properties' ? <PropertiesPanel ctx={ctx} /> : id === 'scene' ? <ScenePanel ctx={ctx} /> : id === 'console' ? <ConsolePanel ctx={ctx} /> : id === 'code' ? <CodePanel ctx={ctx} />
           : <div className="rb-window-empty"><strong>{empty.headline}</strong><p>{empty.body}</p><span className="rb-window-stage">Disponible en la {empty.stage.toLowerCase()}</span></div>}
       </FloatingWindow>;
     })}

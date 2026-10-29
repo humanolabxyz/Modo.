@@ -23,7 +23,7 @@ const pass = s => { report.checks.push(s); console.log('PASS', s); };
     pass('tras una visita, el worker de la simulación y el editor quedan en la caché del navegador');
 
     await ctx.setOffline(true); await p.reload(); await p.locator('.rb-app[data-ready=true]').waitFor({timeout: 20000}); await p.waitForFunction(() => window.__modoRobotics?.partIds?.().length === 13, null, {timeout: 20000});
-    await p.locator('.rb-sim button[aria-label="Ejecutar"]').click(); assert.equal(await p.locator('.rb-sim-chip').textContent(), 'EN MARCHA');
+    await p.locator('.rb-sim button[aria-label="Ejecutar"]').click(); await p.waitForFunction(() => /EN MARCHA|LENTA/.test(document.querySelector('.rb-sim-chip')?.textContent ?? ''), null, {timeout: 20000}); await p.waitForTimeout(1500); // la física (Rapier) se carga al pulsar ▶, también sin conexión
     const r = await p.evaluate(async id => { const v = []; const end = performance.now() + 3000; while (performance.now() < end) { v.push(window.__modoRobotics.ledGlow(id)); await new Promise(r => setTimeout(r, 25)); } let t = 0; for (let i = 1; i < v.length; i++) if ((v[i] > 0.3) !== (v[i - 1] > 0.3)) t++; return {t, max: Math.max(...v), min: Math.min(...v)}; }, led);
     assert.ok(r.max > 0.5 && r.min < 0.05 && r.t >= 6, `sin conexión el programa importado hace parpadear el LED (${r.t} cambios en 3 s)`);
     pass(`SIN CONEXIÓN: el proyecto se abre y el programa importado se ejecuta: el LED parpadea (${r.t} cambios en 3 s)`);

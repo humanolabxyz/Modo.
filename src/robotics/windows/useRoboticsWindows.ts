@@ -2,7 +2,7 @@ import {useCallback, useState} from 'react';
 import {forgetWindowLayout} from '../../components/FloatingWindow';
 
 /** Ventanas de herramientas de Robótica. Cada una es un `FloatingWindow` (el gestor existente); este hook solo recuerda cuáles están abiertas o minimizadas. */
-export const WINDOW_IDS = ['parts', 'structure', 'properties', 'code', 'console'] as const;
+export const WINDOW_IDS = ['parts', 'structure', 'properties', 'scene', 'code', 'console'] as const;
 export type RoboticsWindowId = (typeof WINDOW_IDS)[number];
 export const storageIdOf = (id: RoboticsWindowId | 'projects' | 'options') => `robotica:${id}`;
 
@@ -11,6 +11,7 @@ const closedAll = (): Record<RoboticsWindowId, WindowState> => ({
   parts: {open: false, visible: true, activation: 0},
   structure: {open: false, visible: true, activation: 0},
   properties: {open: false, visible: true, activation: 0},
+  scene: {open: false, visible: true, activation: 0},
   code: {open: false, visible: true, activation: 0},
   console: {open: false, visible: true, activation: 0},
 });

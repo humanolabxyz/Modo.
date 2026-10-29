@@ -4,7 +4,7 @@ import {CATALOG, CATEGORY_LABELS, getDefinition, searchCatalog} from '../catalog
 import type {ComponentDefinition} from '../catalog/types.ts';
 import {DEG, qFromEuler, qToEuler} from '../project/math.ts';
 import {childAttachments, parentAttachment} from '../project/commands.ts';
-import type {PartInstance, PinRef, RobotProject, Transform, Vec3} from '../project/types.ts';
+import type {Obstacle, PartInstance, PinRef, RobotProject, Transform, Vec3} from '../project/types.ts';
 import type {Diagnostic} from '../circuit/diagnostics.ts';
 import type {Reading} from '../circuit/solve.ts';
 import type {CompileResult} from '../mcu/types.ts';
@@ -55,6 +55,17 @@ export type BuildContext = {
     compilerAvailable: boolean | null;
     compile(text: string): Promise<CompileResult>;
     importHex(file: File): Promise<{ok: boolean; error?: string}>;
+  };
+  // ───── etapa 5: escenario de la simulación
+  scene: {
+    obstacles: Obstacle[]; friction: number; selected: string | null;
+    /** Solo se edita con la simulación detenida. */
+    editable: boolean;
+    select(id: string | null): void;
+    add(shape: 'box' | 'cylinder'): void;
+    update(id: string, patch: {size?: Vec3; x?: number; z?: number; yawDeg?: number}): void;
+    remove(id: string): void;
+    setFriction(value: number): void;
   };
   sim: {status: SimStatus; snapshot: Snapshot | null; serial: string; message: string; ratio: number; lag: boolean; clearSerial(): void; labelOf(id: string): string};
 };
@@ -211,7 +222,36 @@ export function ConsolePanel({ctx}: {ctx: BuildContext}) {
   </div>;
 }
 
-const fmt = (v: number, d = 2) => v.toFixed(d).replace('.', ',');
+const fmt = (v: number, d = 2) => (Number.isFinite(v) ? v.toFixed(d).replace('.', ',') : '∞');
+
+// ───────────── Escenario: obstáculos y fricción ─────────────
+const yawOf = (o: Obstacle) => { const [, y, , w] = o.transform.rotation; return Math.round(2 * Math.atan2(y, w) * 180 / Math.PI * 10) / 10; };
+export function ScenePanel({ctx}: {ctx: BuildContext}) {
+  const sc = ctx.scene, sel = sc.obstacles.find(o => o.id === sc.selected) ?? null, cm = (m: number) => Math.round(m * 1000) / 10;
+  return <div className="rb-scene">
+    <p className="rb-hint-line">Cuarto blanco de 4 × 4 m. El robot sale de donde lo armaste{sc.editable ? '.' : '; detén la simulación (■) para cambiar el escenario.'}</p>
+    <div className="rb-scene-add">
+      <button data-inline-action="" type="button" disabled={!sc.editable} onClick={() => sc.add('box')}><Plus size={14} /> Caja</button>
+      <button data-inline-action="" type="button" disabled={!sc.editable} onClick={() => sc.add('cylinder')}><Plus size={14} /> Cilindro</button>
+    </div>
+    {sc.obstacles.length === 0 ? <div className="rb-window-empty"><strong>Sin obstáculos</strong><p>Agrega una caja delante del robot para probar un programa que la evite.</p></div>
+      : <ul className="rb-wire-list" aria-label="Obstáculos">{sc.obstacles.map((o, i) => <li key={o.id} className={o.id === sc.selected ? 'is-selected' : undefined}>
+        <button data-inline-action="" type="button" className="rb-wire-pick" onClick={() => sc.select(o.id === sc.selected ? null : o.id)}><span>{o.shape === 'box' ? 'Caja' : 'Cilindro'} {i + 1}</span></button>
+        <button data-inline-action="" type="button" className="rb-tree-btn" aria-label={`Borrar obstáculo ${i + 1}`} disabled={!sc.editable} onClick={() => sc.remove(o.id)}><Trash2 size={14} /></button></li>)}</ul>}
+    {sel && <fieldset className="rb-fields" disabled={!sc.editable}><legend>Posición y tamaño</legend>
+      <NumberField label="X" unit="cm" step={1} value={cm(sel.transform.position[0])} disabled={!sc.editable} onCommit={v => sc.update(sel.id, {x: v / 100})} />
+      <NumberField label="Z" unit="cm" step={1} value={cm(sel.transform.position[2])} disabled={!sc.editable} onCommit={v => sc.update(sel.id, {z: v / 100})} />
+      <NumberField label={sel.shape === 'box' ? 'Ancho' : 'Diámetro'} unit="cm" step={1} value={cm(sel.size[0])} disabled={!sc.editable} onCommit={v => sc.update(sel.id, {size: sel.shape === 'box' ? [v / 100, sel.size[1], sel.size[2]] : [v / 100, sel.size[1], v / 100]})} />
+      {sel.shape === 'box' && <NumberField label="Fondo" unit="cm" step={1} value={cm(sel.size[2])} disabled={!sc.editable} onCommit={v => sc.update(sel.id, {size: [sel.size[0], sel.size[1], v / 100]})} />}
+      <NumberField label="Alto" unit="cm" step={1} value={cm(sel.size[1])} disabled={!sc.editable} onCommit={v => sc.update(sel.id, {size: [sel.size[0], v / 100, sel.size[2]]})} />
+      {sel.shape === 'box' && <NumberField label="Giro" unit="°" step={5} value={yawOf(sel)} disabled={!sc.editable} onCommit={v => sc.update(sel.id, {yawDeg: v})} />}
+    </fieldset>}
+    <fieldset className="rb-fields" disabled={!sc.editable}><legend>Suelo</legend>
+      <NumberField label="Fricción" unit="" step={0.05} value={Math.round(sc.friction * 100) / 100} disabled={!sc.editable} onCommit={sc.setFriction} />
+    </fieldset>
+    <p className="rb-hint-line">La física es aproximada (motores TT, 4 pilas): sirve para entender causas y efectos, no para predecir un robot real al milímetro.</p>
+  </div>;
+}
 /** Monitor serie mínimo (4.3) y estado del circuito simulado: todo sale del modelo, no de animaciones. */
 function SerialPanel({ctx}: {ctx: BuildContext}) {
   const {sim} = ctx, snap = sim.snapshot, off = sim.status === 'stopped';
@@ -227,8 +267,9 @@ function SerialPanel({ctx}: {ctx: BuildContext}) {
         <li>Placa: {snap.uno.powered ? `alimentada (${snap.uno.via === 'vin' ? 'por VIN' : snap.uno.via === 'usb' ? 'por USB virtual' : 'por el pin 5V'})` : 'SIN alimentación'}</li>
         {pins.map(([id, p]) => <li key={id}>{id}: {p.level > 0.99 ? 'ALTO' : p.level < 0.01 ? 'BAJO' : `PWM ${fmt(p.level * 100, 0)} %`}</li>)}
         {Object.entries(snap.leds).map(([id, l]) => <li key={id}>{sim.labelOf(id)}: {l.on ? `encendido (${fmt(l.amps * 1000, 1)} mA)` : 'apagado'}{l.overcurrent ? ' · ¡sobrecorriente!' : ''}</li>)}
+        {snap.physics?.wheels.map(w => <li key={w.wheelId}>{sim.labelOf(w.wheelId)}: {fmt(w.omega, 1)} rad/s · par {fmt(w.torque * 1000, 0)} mN·m</li>)}
         {Object.entries(snap.motors).map(([id, m]) => <li key={id}>{sim.labelOf(id)}: {fmt(m.volts)} V {Math.abs(m.volts) < 0.05 ? '(parado)' : m.volts > 0 ? '(adelante)' : '(atrás)'}</li>)}
-        {Object.entries(snap.sensors).map(([id, s]) => <li key={id}>{sim.labelOf(id)}: {s.linked && s.powered ? `distancia de prueba ${fmt(s.distance)} m · ecos ${s.echoes}${s.lastEchoUs ? ` · último ${Math.round(s.lastEchoUs)} µs` : ''}` : `no responde — ${s.reason ?? 'sin conexión'}`}</li>)}
+        {Object.entries(snap.sensors).map(([id, s]) => <li key={id}>{sim.labelOf(id)}: {s.linked && s.powered ? `distancia ${snap.physics?.sensors[id] ? 'medida' : 'de prueba'} ${Number.isFinite(s.distance) ? `${fmt(s.distance)} m` : '(sin obstáculo a la vista)'} · ecos ${s.echoes}${s.lastEchoUs ? ` · último ${Math.round(s.lastEchoUs)} µs` : ''}` : `no responde — ${s.reason ?? 'sin conexión'}`}</li>)}
       </ul></>}
   </div>;
 }
