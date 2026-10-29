@@ -1,0 +1,14 @@
+{
+  "base": "http://127.0.0.1:4326/",
+  "status": "PASS",
+  "checks": [
+    "12 colores y persistencia por conductor",
+    "No une aislamiento al pin",
+    "Pelado, tubo y cobre colocados con arrastres reales",
+    "Mango y punta conservan distancia al agarrar",
+    "Estaño, enfriado y aire caliente manuales",
+    "Color coincide en conductor terminado y banco de medición",
+    "Acceso táctil a colores en ambas orientaciones"
+  ],
+  "errors": []
+}

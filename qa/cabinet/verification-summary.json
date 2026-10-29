@@ -1,0 +1,28 @@
+{
+  "status": "verified_local",
+  "source_files_preserved": 351,
+  "modified_existing_source": [
+    "src/components/Home.tsx",
+    "src/lab/engine.ts",
+    "src/lab/EquipmentView.tsx",
+    "src/lab/model.ts",
+    "src/lab/useLaboratory.ts",
+    "src/styles/modo-home-approved.css",
+    "src/lab/equipment/model.ts"
+  ],
+  "model_checks": 24,
+  "direct_browser_checks": 16,
+  "object_and_cable_checks": 14,
+  "plc_browser_checks": 14,
+  "general_offline_checks": 22,
+  "final_build": {
+    "build": "81959a6bc44599a1",
+    "assets": 510,
+    "bytes": 163261692,
+    "offlinePLC": "Motor accionado sin red en el último build",
+    "passiveTerminals": "Borneras y PE no muestran una falsa falta de alimentación",
+    "screenshot": "qa/cabinet/tablero-plc-final.png",
+    "source": "ee944a0a37c1e8a7cc6ac8825407e9f4e41e3f10ef70567eab5e634ab0bba86b"
+  },
+  "production_deployment": "No realizado en esta implementación local."
+}

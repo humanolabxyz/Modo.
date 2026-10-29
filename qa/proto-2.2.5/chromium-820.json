@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Sin energía no gira; enchufe, cables y OUTPUT permiten ambos sentidos y liberación momentánea",
+    "Pulsador mantenido con el dedo activa el motor sin desplazar el banco",
+    "Catálogo solo al pedirlo desde la barra; diagrama vectorial, recorridos, patillaje y original disponibles sin desborde"
+  ],
+  "errors": []
+}

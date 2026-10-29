@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-27T23:06:25.989Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+  "viewport": {
+    "width": 820,
+    "height": 1180,
+    "visualHeight": 1180,
+    "pixelRatio": 1
+  },
+  "touchPoints": 1,
+  "events": {
+    "touch": false,
+    "scroll": false,
+    "portrait": true,
+    "landscape": false,
+    "probes": false,
+    "keyboard": false,
+    "moved": false,
+    "resized": false
+  },
+  "notes": "Comprobación automatizada en navegador emulado; dispositivo físico pendiente.",
+  "notice": "Comprobación del navegador actual; no certifica equipos físicos ni otro dispositivo."
+}

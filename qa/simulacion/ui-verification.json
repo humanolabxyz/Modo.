@@ -6,7 +6,10 @@
     "KM1 starts and holds after release; red stop drops it, stays stopped and does not actuate KM2",
     "Thermal trip drops coil and lights fault pilot through real cables; reset does not restart",
     "Short-circuit latches off both breakers and outputs; correction plus explicit reset clears protection",
-    "Reload preserves the wired practice and always returns simulation to OFF"
+    "Reload preserves the wired practice and always returns simulation to OFF",
+    "Seven desktop/tablet/mobile/landscape sizes keep simulation controls and model menu within the viewport",
+    "Real touch hold and release actuate the green pushbutton and lamp",
+    "Browser restores and re-saves old timer practice without null endpoints or data loss; backup is visible in practice options"
   ],
   "errors": [],
   "viewports": [
@@ -17,6 +20,27 @@
     {
       "width": 1440,
       "height": 900
+    },
+    {
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 844,
+      "height": 390
     }
-  ]
+  ],
+  "result": "PASS"
 }

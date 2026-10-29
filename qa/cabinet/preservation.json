@@ -1,0 +1,20 @@
+{
+  "changed_existing": [
+    "src/components/Home.tsx",
+    "src/lab/engine.ts",
+    "src/lab/EquipmentView.tsx",
+    "src/lab/model.ts",
+    "src/lab/useLaboratory.ts",
+    "src/styles/modo-home-approved.css",
+    "src/lab/equipment/model.ts"
+  ],
+  "new_source": [
+    "src/styles/cabinet.css",
+    "src/lab/equipment/cabinet.ts",
+    "src/lab/equipment/CabinetScene.tsx",
+    "src/lab/equipment/CabinetWorkshop.tsx",
+    "src/lab/equipment/IndustrialArt.tsx"
+  ],
+  "unexpected_changes": [],
+  "preserved_source_files": 351
+}

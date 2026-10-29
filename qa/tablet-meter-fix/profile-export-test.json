@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "name": "Banco didáctico · parámetros de ejemplo",
+  "reference": "Sin datos físicos del laboratorio",
+  "model": {
+    "nameplate": {
+      "deltaVolts": 380,
+      "starVolts": 660,
+      "lineAmps": 10,
+      "source": "Ejemplo didáctico; no corresponde a la placa del laboratorio"
+    },
+    "lineVolts": 380,
+    "coilOhms": 240,
+    "pilotOhms": 480,
+    "windingOhms": 100,
+    "motorMode": "induction",
+    "frequencyHz": 50,
+    "loadTorqueNm": 30,
+    "lineOhms": 0.15,
+    "motorParameters": {
+      "statorOhms": 4,
+      "rotorOhms": 3,
+      "statorX50": 7,
+      "rotorX50": 7,
+      "magnetizingX50": 180,
+      "poles": 4,
+      "inertia": 0.18,
+      "friction": 0.005
+    }
+  },
+  "thermal": {
+    "enabled": true,
+    "amps": 2,
+    "tripClass": 5,
+    "coolingSeconds": 180,
+    "resetLevel": 0.65
+  },
+  "contacts": {
+    "pickupMs": 40,
+    "dropMs": 25,
+    "gapMs": 80
+  },
+  "resistanceMode": "model",
+  "resistances": {}
+}

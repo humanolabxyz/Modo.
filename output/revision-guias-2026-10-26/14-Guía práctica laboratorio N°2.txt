@@ -1,0 +1,81 @@
+Guía Práctica de Laboratorio  | 2 |  
+Sensores  | continuos | :  | Sensor de temperatura 
+INFORMACI | Ó | N  | GENERAL  | DE LABORATORIOS
+DE LAS EXIGENCIAS DE LABORATORIOS
+
+El Docente |  de laboratorio  | a la v | e | z indicará |  las  | normativas |  de seguridad y las salidas |  de emergencia en caso de necesitar evacuar las instalaciones. |  El docente informara el método y valor de la evaluación si esta correspondiera. El uso de cotona es obligatorio y el estudiante que no cumpla con este requisito no podrá realizar la experiencia.
+PAUTA GENERAL DE INFORMES
+               | Para la confección de informes después de realizada la experiencia de la | boratorio este debe constar de:
+Portada (Membrete Universidad, Título de  | la Experiencia | , Nombre del profesor, |   | nombre del alumno)
+Resumen del contenido del informe
+Índice
+Objetivo de la experiencia
+Instrumentos utilizados
+Presentación de resultados. Incluye circuitos, tablas, gráficos |  y  | si  | los |  hubiere cálculos  | c | orrespondientes.
+Discusión de resultados, conclusiones y observaciones personales. 
+Percepción del alumno. Incluye si le satisfizo los objetivos  | planteados, con |   | los logrados en el laboratorio.
+Bibliografía.   Si procede en la confección del informe.
+
+
+EXPERIENCIAS  1 | , 2 |  y  | 3
+A.        TITULO | : |  “ | Introducción a la Instrumentación Industrial | ”
+B.       OBJETIVOS:  | Al término de la sesión el alumno estará en condiciones de:
+Reconocer  | sensores de temperatura | , tipos y principios de funcionamiento. 
+Instalar |   | sensores de temperatura |  en sistemas de control automáticos. 
+
+C. | ELE | M | ENTOS A E | M | PLEAR
+Experiencia 1
+Computadora o algún otro elemento para realizar una búsqueda en la WEB y bibliografía recomendada | .
+Proyector.
+Se sugiere uso de presentación de Power Point o Similar.
+
+Experiencia 2
+Baño |  u Horno |  de pozo seco | .
+Termocupla tipo K o J.
+RTD (PT-100).
+Transmisor de temperatura. 
+Fuente de alimentación (de poder). 
+Multímetro digital de 3 dígitos.
+Cotona o delantal
+
+D. | DESARROLLO  | PRÁCTICO
+Experiencia 1
+Búsqueda de información en la WEB.
+
+Comparar los tipos de señales digitales (discretas) y analógicas (continuas) | . |  
+Definir la naturaleza (discreta o continua) de l | as  | Termocupla | s y las Termorresistencias (RTD). 
+Definir el principio de funcionamiento de una  | Termocupla | . 
+Definir el principio de funcionamiento de una  | RTD (PT-100) | . 
+Definir  | el tipo de salida de una  | Termocupla | . 
+Definir  | el tipo de salida de una  | RTD (PT-100) | . 
+Diseñar una presentación con las conclusiones y observaciones del grupo de trabajo. 
+
+
+Presentación grupal.
+
+Presentar al conjunto de la clase a modo de debate y con soporte audiovisual, las observaciones y conclusiones del debate generado al interior del grupo. El grupo en su conjunto realiza la exposición generando un debate entre sus compañeros de trabajo y el resto de los grupos de trabajo.
+
+
+Experiencia 2
+El equipo de trabajo deberá montar el circuito  | presente en la guía práctica de laboratorio 1 | ,  | de acuerdo con |  las normas de seguridad de INACAP, incluidas en el |  Manual de Operación de Seguridad de Laboratorio INACAP |  y las instrucciones dadas por el docente.
+
+Deberán confeccionar una curva del comportamiento de una Termocupla y una RTD, con el fin de graficar y comparar las características de estos sensores, su comportamiento físico de acuerdo con los distintos puntos de temperatura definidos: ambiente, 50, 7 | 5 | , 100 | °C | .
+
+
+Verificar estos resultados con alguna  | app |  de sensores de temperatura o con tablas de comportamiento de TC y RTD.
+
+Temperatura grados Celsius | Termocupla Tipo: | RTD Tipo: | Ambiental | 50 | 7 | 5 | 100
+
+De acuerdo con |  los valores obtenidos durante el proceso de trabajo de laboratorio las curvas generadas deberán ser presentadas en formato Excel u otra planilla de cálculo similar, se comparará el comportamiento de estas.
+De acuerdo con los  | resultados obtenidos del experimento, deberá comentarlos con sus compañeros | .
+
+Experiencia  | 3
+El equipo de trabajo deberá montar el circuito  | presente en la guía práctica de laboratorio 1 | , de acuerdo con las normas de seguridad de INACAP, incluidas en el |  Manual de Operación de Seguridad de Laboratorio INACAP |  y las instrucciones dadas por el docente.
+
+Deberán conectar la termocupla de la experiencia anterior a un transmisor de temperatura. 
+Configurar el transmisor para salida en tensión (voltaje), por ejemplo, de 0 a 10V. 
+C | onfeccionar una curva del comportamiento | . 
+
+Temperatura grados Celsius | Salida de la  | Termocupla: | Salida del transmisor:  | Ambiental | 50 | 7 | 5 | 100
+
+

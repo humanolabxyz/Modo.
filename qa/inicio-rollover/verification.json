@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "1024: three cards expand with matching shape and real interface images; leave and Escape close",
+    "1440: three cards expand with matching shape and real interface images; leave and Escape close",
+    "1920: three cards expand with matching shape and real interface images; leave and Escape close",
+    "390x844: tap expands same card; explicit action opens setup",
+    "820x1180: tap expands same card; explicit action opens setup",
+    "1180x820: tap expands same card; explicit action opens setup",
+    "Expansion animation enabled normally; manual close does not reopen beneath cursor"
+  ],
+  "errors": []
+}

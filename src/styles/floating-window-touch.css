@@ -1,0 +1,43 @@
+/* Ventanas flotantes en pantallas pequeñas.
+   Arrastrar y cambiar el tamaño son gestos de ratón: en tacto la ventana se ancla a un lado y se desplaza por dentro. */
+@media (pointer:coarse){
+ .mobile-floating-window:not(.fw-free-touch) .fw-edge{display:none}
+ .mobile-floating-window:not(.fw-free-touch) .floating-window-header{cursor:default}
+ .mobile-floating-window:not(.fw-free-touch) .fw-controls-hint{display:none}
+}
+/* Teléfono horizontal y pantallas bajas: panel lateral de alto completo, para que quepa más que dos filas. */
+@media (orientation:landscape) and (max-height:560px){
+ .mobile-floating-window:not(.fw-free-touch){top:58px!important;bottom:8px!important;right:8px!important;left:auto!important;width:min(460px,56vw)!important;height:auto!important;max-height:none!important;transform:none!important}
+ .mobile-floating-window:not(.fw-free-touch) .floating-window-footer{display:none}
+}
+/* Teléfono vertical: la ventana deja libre la barra superior y usa el ancho completo. */
+@media (max-width:520px) and (orientation:portrait){
+ .mobile-floating-window:not(.fw-free-touch){left:8px!important;right:8px!important;width:auto!important}
+}
+/* Tableta, vertical y horizontal: el mismo panel lateral del teléfono horizontal. Deja libre la barra superior (Simular)
+   y la barra de acciones de abajo. Solo en el laboratorio y solo con puntero táctil; con ratón la ventana sigue siendo movible. */
+@media (pointer:coarse) and (min-width:701px) and (max-width:1366px){
+ body:has(.lab-page) .mobile-floating-window:not(.fw-free-touch){top:58px!important;bottom:148px!important;right:8px!important;left:auto!important;width:min(460px,52vw)!important;height:auto!important;max-height:none!important;transform:none!important}
+ body:has(.lab-page) .mobile-floating-window:not(.fw-free-touch) .floating-window-footer{display:none}
+}
+
+/* La pizarra comparte ventanas libres en escritorio y tacto. El tamaño y la posición
+   los controla FloatingWindow; los gestos no se sustituyen por un panel acoplado. */
+.mobile-floating-window.fw-free-touch .floating-window-header{cursor:grab;touch-action:none}
+.mobile-floating-window.fw-free-touch .fw-edge{display:block}
+.mobile-floating-window.fw-free-touch .floating-window-footer{display:flex}
+.mobile-floating-window.fw-free-touch .floating-window-max{display:grid}
+.mobile-floating-window.fw-free-touch .floating-window-header>button{position:relative;z-index:8}
+body.modo-soft-ui.modo-identity .mobile-floating-window.fw-free-touch{border:1px solid #d2dbd5;border-radius:10px;box-shadow:0 8px 24px #20362a26;background:#fff}
+body.modo-soft-ui.modo-identity .mobile-floating-window.fw-free-touch .floating-window-header{background:#fff;border-bottom:1px solid #e0e6e1;padding:6px 8px 6px 12px;gap:8px}
+body.modo-soft-ui.modo-identity .mobile-floating-window.fw-free-touch .floating-window-title h3{font-size:15px;font-weight:600;color:#264b38}
+body.modo-soft-ui.modo-identity .mobile-floating-window.fw-free-touch .floating-window-content button{border-radius:7px;box-shadow:none}
+body.modo-soft-ui.modo-identity .mobile-floating-window.fw-free-touch .floating-window-header>button{border-radius:7px;box-shadow:none;background:#f4f6f4}
+.automation-window .cab-welcome{padding:0;border:0;background:transparent}
+.automation-window .cab-guide-body .cab-panel{background:transparent}
+.automation-window .cab-profile-list>div{background:#fff;border:1px solid #d5e0d7;border-radius:7px}
+@media(pointer:coarse){
+ .mobile-floating-window.fw-free-touch .floating-window-footer{height:38px;min-height:38px}
+ .mobile-floating-window.fw-free-touch .floating-window-footer>button{min-width:42px;min-height:36px}
+ .mobile-floating-window.fw-free-touch .fw-controls-hint{display:block;font-size:10px}
+}

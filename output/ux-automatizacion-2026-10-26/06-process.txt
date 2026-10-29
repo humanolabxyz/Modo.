@@ -1,0 +1,90 @@
+Nombre del proyecto
+Inicio
+Marcha y retención
+Tablero · PLC industrial
+Proyecto
+Guardado en este navegador
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+Procesos
+BANCO DE PROCESO 01
+Tanque · bomba · sensores de nivel · válvula
+SUMINISTRO
+SRC-101
+P-101
+Q0.0 · PARADA
+0
+25
+50
+75
+100
+I0.3 · ALTO
+I0.2 · BAJO
+20.0 %
+20.0 / 100 L
+TK-101 · AI0
+HV-101 · DESCARGA
+115%
+0 L/s
+Entrada por bomba
+0 L/s
+Salida por descarga
+Abrir descarga
+Tanque y señales
+
+El PLC controla la bomba. Los sensores devuelven el nivel al mismo proyecto.
+
+Parámetros
+Capacidad (L)
+Nivel inicial (%)
+Entrada de bomba (L/s)
+Descarga (L/s)
+Umbral bajo (%)
+Umbral alto (%)
+Vínculos con el PLC
+Mando de bomba
+Q0.0 · Bomba / marcha
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+Sensor de nivel bajo
+I0.0 · Marcha
+I0.1 · Paro pulsado
+I0.2 · Nivel bajo
+I0.3 · Nivel alto
+Q0.0 · Bomba / marcha
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+Sensor de nivel alto
+I0.0 · Marcha
+I0.1 · Paro pulsado
+I0.2 · Nivel bajo
+I0.3 · Nivel alto
+Q0.0 · Bomba / marcha
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+Nivel analógico (%)
+AI0 · Nivel del tanque (%)
+Llenado automático
+
+Abre el menú de proyectos y crea «Llenado automático». El PLC memoriza la marcha en el nivel bajo y detiene la bomba en el alto. Abre la descarga para repetir el ciclo.
+
+Alcance de este banco

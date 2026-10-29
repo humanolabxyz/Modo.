@@ -3,7 +3,7 @@ const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primar
 const base=process.env.PANELLAB_URL||'http://127.0.0.1:4326/';
 const out='qa/procedimientos-2026-10-15';fs.mkdirSync(out,{recursive:true});
 const report={checks:[],errors:[],viewports:[]};
-(async()=>{const browser=await chromium.launch();const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce',acceptDownloads:true});const page=await context.newPage();
+(async()=>{const browser=await chromium.launch();const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce',acceptDownloads:true});const page=await context.newPage();page.on('dialog',d=>d.accept());
 page.on('pageerror',e=>report.errors.push(e.message));
 page.on('response',r=>{if(r.status()>=400)report.errors.push(r.status()+' '+r.url());});
 const button=(name)=>page.getByRole('button',{name,exact:true}),drawer=()=>page.locator('.procedure-drawer'),stored=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('modo-action-sessions-v1'))),doc=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('panellab-practice-v2')));

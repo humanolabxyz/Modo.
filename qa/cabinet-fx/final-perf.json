@@ -1,0 +1,21 @@
+{
+ "cpu": {
+  "TaskDuration": "34.7% (de un núcleo, x4 más lento)",
+  "ScriptDuration": "14.9% (de un núcleo, x4 más lento)",
+  "LayoutDuration": "0% (de un núcleo, x4 más lento)",
+  "RecalcStyleDuration": "2.2% (de un núcleo, x4 más lento)"
+ },
+ "perf": {
+  "frames": 240,
+  "median": 16.7,
+  "p95": 33.4,
+  "max": 33.4,
+  "longTasks": 0,
+  "longTaskMs": 0
+ },
+ "nodes": {
+  "svgNodes": 2505,
+  "filters": 0
+ },
+ "errors": []
+}

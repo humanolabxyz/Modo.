@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "320×740: arrastre y tamaño con eventos táctiles, persistencia, maximizar/restaurar y zoom de la pizarra",
+    "320×740: el simulador comparte la misma ventana libre y admite arrastre táctil",
+    "390×844: arrastre y tamaño con eventos táctiles, persistencia, maximizar/restaurar y zoom de la pizarra",
+    "390×844: el simulador comparte la misma ventana libre y admite arrastre táctil",
+    "844×390: arrastre y tamaño con eventos táctiles, persistencia, maximizar/restaurar y zoom de la pizarra",
+    "844×390: el simulador comparte la misma ventana libre y admite arrastre táctil",
+    "1024×768: arrastre y tamaño con eventos táctiles, persistencia, maximizar/restaurar y zoom de la pizarra",
+    "1024×768: el simulador comparte la misma ventana libre y admite arrastre táctil"
+  ],
+  "errors": []
+}

@@ -1,0 +1,75 @@
+{
+  "checks": [
+    "Rechaza registrar sin medición y transcripciones inventadas",
+    "HOLD y REL bloquean el registro de lectura directa",
+    "No registra durante el calentamiento",
+    "12 mediciones transcritas: TC, Pt100 y transmisor en ambiente, 50, 75 y 100 °C; selector por arrastre",
+    "Recarga conserva las doce lecturas, origen, consigna, temperatura de sonda y pozo",
+    "CSV exporta temperatura medida, consigna y trazabilidad de transcripción",
+    "Sensor cableado, medido y transcrito desde el Fluke; rechazo de valor inventado; sin panel de menús",
+    "Protoboard y soldadura usan el mismo Fluke; sin selector de menús para puntas"
+  ],
+  "values": [
+    {
+      "target": 22,
+      "sensor": "pt",
+      "text": "108,6 Ω"
+    },
+    {
+      "target": 22,
+      "sensor": "tc",
+      "text": "0,0 mV"
+    },
+    {
+      "target": 22,
+      "sensor": "tx",
+      "text": "2,200 V"
+    },
+    {
+      "target": 50,
+      "sensor": "pt",
+      "text": "119,4 Ω"
+    },
+    {
+      "target": 50,
+      "sensor": "tc",
+      "text": "1,1 mV"
+    },
+    {
+      "target": 50,
+      "sensor": "tx",
+      "text": "5,000 V"
+    },
+    {
+      "target": 75,
+      "sensor": "pt",
+      "text": "129,0 Ω"
+    },
+    {
+      "target": 75,
+      "sensor": "tc",
+      "text": "2,2 mV"
+    },
+    {
+      "target": 75,
+      "sensor": "tx",
+      "text": "7,50 V"
+    },
+    {
+      "target": 100,
+      "sensor": "pt",
+      "text": "138,5 Ω"
+    },
+    {
+      "target": 100,
+      "sensor": "tc",
+      "text": "3,2 mV"
+    },
+    {
+      "target": 100,
+      "sensor": "tx",
+      "text": "10,00 V"
+    }
+  ],
+  "errors": []
+}

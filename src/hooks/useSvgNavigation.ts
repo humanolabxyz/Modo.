@@ -5,7 +5,7 @@ export type SvgNavigationApi={show:(v:CanvasView)=>void;commit:()=>void};
 export function currentSvgView(svg:SVGSVGElement,fallback:CanvasView):CanvasView{const b=svg.viewBox.baseVal;return b.width&&b.height?{x:b.x,y:b.y,w:b.width,h:b.height}:fallback}
 /** Animate viewBox without rerendering every terminal on each animation frame.
  *  Durante un gesto, `show` escribe el viewBox directo en el DOM; `commit` sincroniza el estado de React una sola vez. */
-export function useSvgNavigation(ref:RefObject<SVGSVGElement|null>,view:CanvasView,setView:(v:CanvasView)=>void,{min=240,max=3200,active=true,duration=210,interactive=true}={}):SvgNavigationApi{
+export function useSvgNavigation(ref:RefObject<SVGSVGElement|null>,view:CanvasView,setView:(v:CanvasView)=>void,{min=240,max=3200,active=true,duration=210,interactive=true,wheelPan=true}={}):SvgNavigationApi{
  const current=useRef(view),latest=useRef({view,setView,min,max}),frame=useRef(0);
  const api=useRef<SvgNavigationApi>({show:()=>{},commit:()=>{}}).current;
  latest.current={view,setView,min,max};
@@ -27,22 +27,24 @@ export function useSvgNavigation(ref:RefObject<SVGSVGElement|null>,view:CanvasVi
   const pointers=new Map<number,{x:number;y:number}>();
   let drag:{x:number;y:number;view:CanvasView;scale:number}|null=null;
   let pinch:{distance:number;center:{x:number;y:number};world:{x:number;y:number};view:CanvasView;scale:number}|null=null;
-  let pending:CanvasView|null=null,commitTimer=0,settle=0;
-  const read=()=>currentSvgView(svg,latest.current.view);
-  const show=(v:CanvasView)=>{cancelAnimationFrame(frame.current);svg.dataset.animating='false';pending=v;current.current=v;svg.dataset.gesture='true';svg.setAttribute('viewBox',`${v.x} ${v.y} ${v.w} ${v.h}`)};
-  const commit=()=>{clearTimeout(commitTimer);if(pending){const v=pending;pending=null;latest.current.setView(v)}cancelAnimationFrame(settle);settle=requestAnimationFrame(()=>{delete svg.dataset.gesture})};
+  let pending:CanvasView|null=null,commitTimer=0,settle=0,gestureFrame=0;
+  const read=()=>pending??currentSvgView(svg,latest.current.view);
+  const flush=()=>{gestureFrame=0;if(pending){const v=pending,value=`${v.x} ${v.y} ${v.w} ${v.h}`;if(svg.getAttribute('viewBox')!==value)svg.setAttribute('viewBox',value);}};
+  const show=(v:CanvasView)=>{cancelAnimationFrame(frame.current);cancelAnimationFrame(settle);if(svg.dataset.animating!=='false')svg.dataset.animating='false';pending=v;current.current=v;if(svg.dataset.gesture!=='true')svg.dataset.gesture='true';if(!gestureFrame)gestureFrame=requestAnimationFrame(flush);};
+  const commit=()=>{clearTimeout(commitTimer);cancelAnimationFrame(gestureFrame);flush();if(pending){const v=pending;pending=null;latest.current.setView(v)}cancelAnimationFrame(settle);settle=requestAnimationFrame(()=>{delete svg.dataset.gesture})};
   const commitSoon=()=>{clearTimeout(commitTimer);commitTimer=window.setTimeout(commit,140)};
   api.show=show;api.commit=commit;
-  const wheel=(e:WheelEvent)=>{e.preventDefault();const v=read(),scale=svg.getScreenCTM()?.a||1;
-   if(e.ctrlKey||e.metaKey){const matrix=svg.getScreenCTM();if(!matrix)return;const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(matrix.inverse()),w=Math.max(latest.current.min,Math.min(latest.current.max,v.w*Math.exp(e.deltaY*.002))),factor=w/v.w;show({x:p.x-(p.x-v.x)*factor,y:p.y-(p.y-v.y)*factor,w,h:v.h*factor})}
+  /* Diagramas dentro de un panel con scroll (wheelPan=false): la rueda sola desplaza el panel; con Ctrl/⌘ se hace zoom. */
+  const wheel=(e:WheelEvent)=>{if(!wheelPan&&!e.ctrlKey&&!e.metaKey)return;e.preventDefault();const v=read(),matrix=svg.getScreenCTM(),shown=currentSvgView(svg,v),scale=(matrix?.a||1)*shown.w/v.w;
+   if(e.ctrlKey||e.metaKey){if(!matrix)return;const q=new DOMPoint(e.clientX,e.clientY).matrixTransform(matrix.inverse()),p={x:v.x+(q.x-shown.x)*v.w/shown.w,y:v.y+(q.y-shown.y)*v.h/shown.h},w=Math.max(latest.current.min,Math.min(latest.current.max,v.w*Math.exp(e.deltaY*.002))),factor=w/v.w;show({x:p.x-(p.x-v.x)*factor,y:p.y-(p.y-v.y)*factor,w,h:v.h*factor})}
    else{const units=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1;show({...v,x:v.x+(e.shiftKey&&e.deltaX===0?e.deltaY:e.deltaX)*units/scale,y:v.y+(e.shiftKey?0:e.deltaY)*units/scale})}
    commitSoon();
   };
-  const keydown=(e:KeyboardEvent)=>{if(e.code!=='Space'||(e.target as Element)?.closest('input,textarea,select,button,summary,.simulation-control,[contenteditable]'))return;space=true;svg.dataset.spacePan='true';e.preventDefault()};
+  const keydown=(e:KeyboardEvent)=>{if(e.code!=='Space'||(e.target as Element)?.closest('input,textarea,select,button,summary,[role=button],[role=slider],.simulation-control,[contenteditable]'))return;space=true;svg.dataset.spacePan='true';e.preventDefault()};
   const release=()=>{space=false;delete svg.dataset.spacePan};
   const keyup=(e:KeyboardEvent)=>{if(e.code==='Space')release()};
   const down=(e:PointerEvent)=>{
-   if((e.target as Element)?.closest('.simulation-control'))return;
+   if((e.target as Element)?.closest('.simulation-control,[data-nopan]'))return;
    if(!pointers.size&&!drag)suppress=false;
    if(e.pointerType==='touch')pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
    if(pointers.size===2){const [a,b]=[...pointers.values()],center={x:(a.x+b.x)/2,y:(a.y+b.y)/2},matrix=svg.getScreenCTM();if(!matrix)return;const p=new DOMPoint(center.x,center.y).matrixTransform(matrix.inverse());pinch={distance:Math.hypot(a.x-b.x,a.y-b.y),center,world:{x:p.x,y:p.y},view:read(),scale:matrix.a};consumed=true;suppress=true;svg.dataset.dragging='true';for(const id of pointers.keys())try{svg.setPointerCapture(id)}catch{}e.stopPropagation();return;}
@@ -57,7 +59,7 @@ export function useSvgNavigation(ref:RefObject<SVGSVGElement|null>,view:CanvasVi
   const up=(e:PointerEvent)=>{pointers.delete(e.pointerId);if(consumed){pinch=null;if(!pointers.size){consumed=false;delete svg.dataset.dragging;commit()}}if(drag){drag=null;delete svg.dataset.dragging;commit()}};
   const click=(e:MouseEvent)=>{if(suppress){e.preventDefault();e.stopPropagation();suppress=false}};
   svg.addEventListener('wheel',wheel,{passive:false});svg.addEventListener('pointerdown',down,true);svg.addEventListener('pointermove',move,true);svg.addEventListener('pointerup',up,true);svg.addEventListener('pointercancel',up,true);svg.addEventListener('click',click,true);document.addEventListener('keydown',keydown);document.addEventListener('keyup',keyup);window.addEventListener('blur',release);
-  return ()=>{svg.removeEventListener('wheel',wheel);svg.removeEventListener('pointerdown',down,true);svg.removeEventListener('pointermove',move,true);svg.removeEventListener('pointerup',up,true);svg.removeEventListener('pointercancel',up,true);svg.removeEventListener('click',click,true);document.removeEventListener('keydown',keydown);document.removeEventListener('keyup',keyup);window.removeEventListener('blur',release);cancelAnimationFrame(frame.current);cancelAnimationFrame(settle);clearTimeout(commitTimer);api.show=()=>{};api.commit=()=>{}};
- },[ref,active,interactive]);
+  return ()=>{svg.removeEventListener('wheel',wheel);svg.removeEventListener('pointerdown',down,true);svg.removeEventListener('pointermove',move,true);svg.removeEventListener('pointerup',up,true);svg.removeEventListener('pointercancel',up,true);svg.removeEventListener('click',click,true);document.removeEventListener('keydown',keydown);document.removeEventListener('keyup',keyup);window.removeEventListener('blur',release);cancelAnimationFrame(frame.current);cancelAnimationFrame(settle);cancelAnimationFrame(gestureFrame);clearTimeout(commitTimer);api.show=()=>{};api.commit=()=>{}};
+ },[ref,active,interactive,wheelPan]);
  return api;
 }

@@ -1,0 +1,707 @@
+{
+  "screens": [
+    {
+      "name": "01-entrada-desktop",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Añade piezas desde el dock · arrastra para colocar · une dos bornes\n0 equipos · 0 cables\nTaller de tableros\nmodo. · MONT",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nTu montaje empieza con una pieza\nMando y protecciones · Automatización ·",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1944,
+          "clientWidth": 1440
+        },
+        {
+          "element": "cab-welcome cab-start",
+          "text": "TALLER DE TABLEROS DE CONTROL\nVoy a estudiar\nVoy a enseñar\nAprende a montar y hacer funcionar un tablero\n\nRecibes un gab",
+          "x": 1153,
+          "y": 130,
+          "w": 254,
+          "h": 1563,
+          "scrollWidth": 273,
+          "clientWidth": 252
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar con PLC",
+          "x": 1188,
+          "y": 1080,
+          "w": 184,
+          "h": 42,
+          "scrollWidth": 182,
+          "clientWidth": 182
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar mando cableado",
+          "x": 1188,
+          "y": 1336,
+          "w": 184,
+          "h": 52,
+          "scrollWidth": 182,
+          "clientWidth": 182
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar con relé programable",
+          "x": 1188,
+          "y": 1539,
+          "w": 184,
+          "h": 52,
+          "scrollWidth": 182,
+          "clientWidth": 182
+        }
+      ]
+    },
+    {
+      "name": "02-selector-taller",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Añade piezas desde el dock · arrastra para colocar · une dos bornes\n0 equipos · 0 cables\nTaller de tableros\nmodo. · MONT",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nTu montaje empieza con una pieza\nMando y protecciones · Automatización ·",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1944,
+          "clientWidth": 1440
+        },
+        {
+          "element": "cab-welcome cab-start",
+          "text": "TALLER DE TABLEROS DE CONTROL\nVoy a estudiar\nVoy a enseñar\nAprende a montar y hacer funcionar un tablero\n\nRecibes un gab",
+          "x": 425,
+          "y": 174,
+          "w": 580,
+          "h": 1113,
+          "scrollWidth": 578,
+          "clientWidth": 578
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar con PLC",
+          "x": 460,
+          "y": 817,
+          "w": 510,
+          "h": 44,
+          "scrollWidth": 508,
+          "clientWidth": 508
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar mando cableado",
+          "x": 460,
+          "y": 1017,
+          "w": 510,
+          "h": 44,
+          "scrollWidth": 508,
+          "clientWidth": 508
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar con relé programable",
+          "x": 460,
+          "y": 1174,
+          "w": 510,
+          "h": 44,
+          "scrollWidth": 508,
+          "clientWidth": 508
+        }
+      ]
+    },
+    {
+      "name": "03-inicio-plc-taller",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Taller de tableros · bombeo auxiliar\n16 equipos · 0 cables\nGuía del taller\nConjunto\nPlaca\nPuerta\nCampo\nmodo. · MONTAJE D",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "cab-stage-actions",
+          "text": "Guía del taller\nConjunto\nPlaca\nPuerta\nCampo",
+          "x": 233,
+          "y": 141,
+          "w": 408,
+          "h": 30,
+          "scrollWidth": 408,
+          "clientWidth": 408
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nGABINETE DE CONTROL\nPUERTA DE MANDO\nEQUIPO DE CAMPO\nESPACIO DE RESERVA ·",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "mobile-floating-window lab-property-window cab-guide-window fw-has-hint",
+          "text": "BOMBEO AUXILIAR · GUÍA Y COMPROBACIONES\nTaller de tableros\nTALLER · BOMBA AUXILIAR\nConstruye el control de una bomba\n\n16",
+          "x": 1012,
+          "y": 111,
+          "w": 420,
+          "h": 757,
+          "scrollWidth": 418,
+          "clientWidth": 418
+        },
+        {
+          "element": "cab-steps",
+          "text": "01\nComprender\n02\nMontar\n03\nCablear\n04\nProgramar\n05\nVerificar\n06\nProbar\n07\nDiagnosticar",
+          "x": 1027,
+          "y": 366,
+          "w": 380,
+          "h": 109,
+          "scrollWidth": 380,
+          "clientWidth": 380
+        },
+        {
+          "element": "cab-step-goal",
+          "text": "QUÉ HACER AHORA\nEntiende qué debe hacer la bomba\n\nLee el encargo y responde la pregunta de comprobación.\n\nResultado espe",
+          "x": 1027,
+          "y": 520,
+          "w": 380,
+          "h": 231,
+          "scrollWidth": 377,
+          "clientWidth": 377
+        }
+      ]
+    },
+    {
+      "name": "04-montar",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Taller de tableros · bombeo auxiliar\n16 equipos · 0 cables\nGuía del taller\nConjunto\nPlaca\nPuerta\nCampo\nmodo. · MONTAJE D",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "cab-stage-actions",
+          "text": "Guía del taller\nConjunto\nPlaca\nPuerta\nCampo",
+          "x": 233,
+          "y": 141,
+          "w": 408,
+          "h": 30,
+          "scrollWidth": 408,
+          "clientWidth": 408
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nGABINETE DE CONTROL\nPUERTA DE MANDO\nEQUIPO DE CAMPO\nESPACIO DE RESERVA ·",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "mobile-floating-window lab-property-window cab-guide-window fw-has-hint",
+          "text": "BOMBEO AUXILIAR · GUÍA Y COMPROBACIONES\nTaller de tableros\nTALLER · BOMBA AUXILIAR\nConstruye el control de una bomba\n\n16",
+          "x": 1012,
+          "y": 111,
+          "w": 420,
+          "h": 757,
+          "scrollWidth": 418,
+          "clientWidth": 418
+        },
+        {
+          "element": "cab-steps",
+          "text": "01\nComprender\n02\nMontar\n03\nCablear\n04\nProgramar\n05\nVerificar\n06\nProbar\n07\nDiagnosticar",
+          "x": 1027,
+          "y": 366,
+          "w": 380,
+          "h": 109,
+          "scrollWidth": 380,
+          "clientWidth": 380
+        },
+        {
+          "element": "cab-step-goal",
+          "text": "QUÉ HACER AHORA\nArma el interior del gabinete\n\nPrepara los soportes y coloca los equipos. Puedes usar la posición sugeri",
+          "x": 1027,
+          "y": 520,
+          "w": 380,
+          "h": 251,
+          "scrollWidth": 377,
+          "clientWidth": 377
+        }
+      ]
+    },
+    {
+      "name": "05-lienzo",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Taller de tableros · bombeo auxiliar\n16 equipos · 0 cables\nGuía del taller\nConjunto\nPlaca\nPuerta\nCampo\nmodo. · MONTAJE D",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "cab-stage-actions",
+          "text": "Guía del taller\nConjunto\nPlaca\nPuerta\nCampo",
+          "x": 233,
+          "y": 141,
+          "w": 408,
+          "h": 30,
+          "scrollWidth": 408,
+          "clientWidth": 408
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nGABINETE DE CONTROL\nPUERTA DE MANDO\nEQUIPO DE CAMPO\nESPACIO DE RESERVA ·",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        }
+      ]
+    },
+    {
+      "name": "06-plc",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=plc",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage lab-program",
+          "text": "PLC VIRTUAL · STOP\n0 segmentos · 9 variables\nTu primer segmento\n\nAñade contactos, una salida y una instrucción para empe",
+          "x": 14,
+          "y": 132,
+          "w": 1104,
+          "h": 810,
+          "scrollWidth": 1102,
+          "clientWidth": 1102
+        }
+      ]
+    },
+    {
+      "name": "06-hmi",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=hmi",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage",
+          "text": "Arrastra los elementos para diseñar la pantalla\nHMI 01\nmodo.\nTablero · PLC industrial\nDISEÑO DE PANTALLA\nUna pantalla pa",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo.\nTablero · PLC industrial\nDISEÑO DE PANTALLA\nUna pantalla para tu proyecto\n\nAñade controles e indicadores desde Ele",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        }
+      ]
+    },
+    {
+      "name": "06-process",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=process",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-tool-nav",
+          "text": "Esquemas\nTableros de control\nPLC\nHMI\nProcesos\nProtoboard\nSoldadura\nTemperatura\nDetectores\nGeoGebra",
+          "x": 14,
+          "y": 78,
+          "w": 1086,
+          "h": 53,
+          "scrollWidth": 1084,
+          "clientWidth": 1084
+        },
+        {
+          "element": "lab-stage",
+          "text": "BANCO DE PROCESO 01\nTanque · bomba · sensores de nivel · válvula\nSUMINISTRO\nSRC-101\nP-101\nQ0.0 · PARADA\n0\n25\n50\n75\n100\nI",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "SUMINISTRO\nSRC-101\nP-101\nQ0.0 · PARADA\n0\n25\n50\n75\n100\nI0.3 · ALTO\nI0.2 · BAJO\n20.0 %\n20.0 / 100 L\nTK-101 · AI0\nHV-101 · ",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 960,
+          "scrollWidth": 1440,
+          "clientWidth": 1440
+        }
+      ]
+    },
+    {
+      "name": "07-mobile-entrada",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Añade piezas desde el dock · arrastra para colocar · une dos bornes\nTaller de tableros\nmodo. · MONTAJE DE EQUIPOS · MODE",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 390,
+          "clientWidth": 390
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nTu montaje empieza con una pieza\nMando y protecciones · Automatización ·",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 671,
+          "clientWidth": 390
+        }
+      ]
+    },
+    {
+      "name": "08-mobile-selector",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Añade piezas desde el dock · arrastra para colocar · une dos bornes\nTaller de tableros\nmodo. · MONTAJE DE EQUIPOS · MODE",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 390,
+          "clientWidth": 390
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nTu montaje empieza con una pieza\nMando y protecciones · Automatización ·",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 671,
+          "clientWidth": 390
+        },
+        {
+          "element": "cab-welcome cab-start",
+          "text": "TALLER DE TABLEROS DE CONTROL\nVoy a estudiar\nVoy a enseñar\nAprende a montar y hacer funcionar un tablero\n\nRecibes un gab",
+          "x": 23,
+          "y": 214,
+          "w": 344,
+          "h": 1249,
+          "scrollWidth": 342,
+          "clientWidth": 342
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar con PLC",
+          "x": 58,
+          "y": 935,
+          "w": 274,
+          "h": 44,
+          "scrollWidth": 272,
+          "clientWidth": 272
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar mando cableado",
+          "x": 58,
+          "y": 1156,
+          "w": 274,
+          "h": 44,
+          "scrollWidth": 272,
+          "clientWidth": 272
+        },
+        {
+          "element": "cab-primary",
+          "text": "Comenzar con relé programable",
+          "x": 58,
+          "y": 1334,
+          "w": 274,
+          "h": 44,
+          "scrollWidth": 272,
+          "clientWidth": 272
+        }
+      ]
+    },
+    {
+      "name": "09-mobile-guia",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Guía del taller\nConjunto\nPlaca\nPuerta\nCampo\nmodo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nGABINETE DE CONTROL\nPUERTA D",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 390,
+          "clientWidth": 390
+        },
+        {
+          "element": "cab-stage-actions",
+          "text": "Guía del taller\nConjunto\nPlaca\nPuerta\nCampo",
+          "x": 23,
+          "y": 69,
+          "w": 352,
+          "h": 42,
+          "scrollWidth": 416,
+          "clientWidth": 352
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nGABINETE DE CONTROL\nPUERTA DE MANDO\nEQUIPO DE CAMPO\nESPACIO DE RESERVA ·",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 788,
+          "clientWidth": 390
+        },
+        {
+          "element": "mobile-floating-window lab-property-window cab-guide-window fw-has-hint",
+          "text": "BOMBEO AUXILIAR · GUÍA Y COMPROBACIONES\nTaller de tableros\nTALLER · BOMBA AUXILIAR\nConstruye el control de una bomba\n\n16",
+          "x": 8,
+          "y": 143,
+          "w": 374,
+          "h": 625,
+          "scrollWidth": 372,
+          "clientWidth": 372
+        },
+        {
+          "element": "cab-steps",
+          "text": "01\nComprender\n02\nMontar\n03\nCablear\n04\nProgramar\n05\nVerificar\n06\nProbar\n07\nDiagnosticar",
+          "x": 23,
+          "y": 393,
+          "w": 344,
+          "h": 163,
+          "scrollWidth": 344,
+          "clientWidth": 344
+        },
+        {
+          "element": "cab-step-goal",
+          "text": "QUÉ HACER AHORA\nEntiende qué debe hacer la bomba\n\nLee el encargo y responde la pregunta de comprobación.\n\nResultado espe",
+          "x": 23,
+          "y": 601,
+          "w": 344,
+          "h": 251,
+          "scrollWidth": 341,
+          "clientWidth": 341
+        }
+      ]
+    },
+    {
+      "name": "10-mobile-lienzo",
+      "url": "http://127.0.0.1:4327/laboratorio?tool=equipment",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "boxes": [
+        {
+          "element": "lab-stage eq-stage",
+          "text": "Guía del taller\nConjunto\nPlaca\nPuerta\nCampo\nmodo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nGABINETE DE CONTROL\nPUERTA D",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 390,
+          "clientWidth": 390
+        },
+        {
+          "element": "cab-stage-actions",
+          "text": "Guía del taller\nConjunto\nPlaca\nPuerta\nCampo",
+          "x": 23,
+          "y": 69,
+          "w": 352,
+          "h": 42,
+          "scrollWidth": 416,
+          "clientWidth": 352
+        },
+        {
+          "element": "lab-pan interaction-auto",
+          "text": "modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS\nGABINETE DE CONTROL\nPUERTA DE MANDO\nEQUIPO DE CAMPO\nESPACIO DE RESERVA ·",
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "scrollWidth": 788,
+          "clientWidth": 390
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

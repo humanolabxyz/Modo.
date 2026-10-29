@@ -1,21 +1,20 @@
+import {BenchMeter,ManualLeads,svgPoint} from '../ManualBench';
 import type {KeyboardEvent,MutableRefObject,ReactNode} from 'react';
-import {STABLE_BAND,TERMINALS,isStable,type MeterMode,type Reading,type Settings,type Temps,type Terminal} from './physics';
-import {BATH,JACKS,METER,PROBE_X,PSU,PSU_JACKS,STEM,TX,TX_IN,TX_PWR,WORLD,hangingCable,headTop,riseCable,termPos} from './geometry';
+import {STABLE_BAND,TERMINALS,isStable,type Reading,type Settings,type Temps,type Terminal} from './physics';
+import {BATH,METER,PROBE_X,PSU,PSU_JACKS,STEM,TX,TX_IN,TX_PWR,WORLD,headTop,riseCable,termPos} from './geometry';
 import {formatTemp,formatValue,type Unit} from './state';
 /** Escena del banco dibujada a partir de equipos reales: calibrador de bloque seco, sondas con cabezal de aluminio, transmisor azul de riel DIN,
  *  fuente de laboratorio y multímetro de mano. Son dibujos propios hechos con fotos comerciales como referencia. */
 export type Equipment='bath'|'tc'|'pt'|'tx'|'psu';
 export type Tool='select'|'pan'|'red'|'black';
-const DIAL:Record<MeterMode,{angle:number;label:string}>={off:{angle:-125,label:'OFF'},mV:{angle:-42,label:'mV'},ohm:{angle:42,label:'Ω'},V:{angle:125,label:'V⎓'}};
-const DECOR=[{angle:-85,label:'V~'},{angle:0,label:'Hz'},{angle:85,label:'A'}];
 export const displayText=(r:Reading)=>r.state==='off'?'':r.state==='open'?'OL':r.value===null?'':formatValue(r.value,r.unit as Unit);
 const onKey=(run:()=>void)=>(e:KeyboardEvent)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();run();}};
 const IEC_PLUS:Record<string,string>={K:'#2f9e44',J:'#2b2f33'};
 
-type Props={settings:Settings;temps:Temps;reading:Reading;tool:Tool;selected:Equipment|null;onSelect:(id:Equipment)=>void;onTerminal:(id:Terminal)=>void;refs:MutableRefObject<Partial<Record<Equipment,SVGGElement|null>>>};
-export function BenchScene({settings:s,temps:t,reading,tool,selected,onSelect,onTerminal,refs}:Props){
+type Props={settings:Settings;temps:Temps;reading:Reading;tool:Tool;selected:Equipment|null;onSelect:(id:Equipment)=>void;onTerminal:(id:Terminal)=>void;onChange:(patch:Partial<Settings>)=>void;onRecord:()=>void;onLog:()=>void;recordReady:boolean;onReadoutState:(state:string|null)=>void;refs:MutableRefObject<Partial<Record<Equipment,SVGGElement|null>>>};
+export function BenchScene({settings:s,temps:t,reading,tool,selected,onSelect,onTerminal,onChange,onRecord,onLog,recordReady,onReadoutState,refs}:Props){
   const heating=Math.abs(t.bath-s.setpoint)>=STABLE_BAND;
-  const equipment=(id:Equipment,label:string,children:ReactNode)=><g ref={el=>{refs.current[id]=el;}} className={`temp-equipment ${selected===id?'selected':''}`} role="button" tabIndex={0} aria-pressed={selected===id} aria-label={label} onClick={()=>{if(tool!=='pan')onSelect(id);}} onKeyDown={onKey(()=>onSelect(id))}>{children}</g>;
+  const equipment=(id:Equipment,label:string,children:ReactNode)=><g data-pan-surface ref={el=>{refs.current[id]=el;}} className={`temp-equipment ${selected===id?'selected':''}`} role="button" tabIndex={0} aria-pressed={selected===id} aria-label={label} onClick={()=>{if(tool!=='pan')onSelect(id);}} onKeyDown={onKey(()=>onSelect(id))}>{children}</g>;
   const terminal=(id:Terminal,text:string,light=false)=>{
     const pos=termPos(id,s),used=s.red===id?'red':s.black===id?'black':'';
     return <g key={id} className={`temp-terminal ${used} ${id.startsWith('tx')?'on-blue':''} ${light?'tip':''}`} role="button" tabIndex={0} aria-label={`${TERMINALS.find(x=>x.id===id)!.label}${used?` · punta ${used==='red'?'roja':'negra'} conectada`:''}`} onClick={e=>{e.stopPropagation();onTerminal(id);}} onKeyDown={onKey(()=>onTerminal(id))}>
@@ -39,12 +38,10 @@ export function BenchScene({settings:s,temps:t,reading,tool,selected,onSelect,on
       </>)}
       <text className="temp-tag" x={x} y={top-64} textAnchor="middle">{label}</text>
       {inWell?<g className={`temp-pill ${stable?'ok':'wait'}`}><rect x={x-48} y={top-98} width="96" height="18" rx="9"/><text x={x} y={top-85} textAnchor="middle">{stable?'estable':'estabilizando…'}</text></g>:null}
+      <g className="manual-action" role="button" tabIndex={0} aria-label={`${inWell?'Retirar':'Insertar'} ${label} en el pozo`} onClick={e=>{if(e.currentTarget.dataset.moved==='yes'){e.currentTarget.dataset.moved='';return;}onChange({inWell:{...s.inWell,[sensor]:!inWell}});}} onKeyDown={onKey(()=>onChange({inWell:{...s.inWell,[sensor]:!inWell}}))} onPointerDown={e=>{e.stopPropagation();e.currentTarget.setPointerCapture(e.pointerId);e.currentTarget.dataset.start=String(svgPoint(e).y);}} onPointerUp={e=>{const dy=svgPoint(e).y-Number(e.currentTarget.dataset.start);if(Math.abs(dy)>12){e.preventDefault();e.currentTarget.dataset.moved='yes';onChange({inWell:{...s.inWell,[sensor]:dy>0}});}}}><rect x={x-44} y={top+60} width="88" height="38" rx="8"/><text x={x} y={top+83} textAnchor="middle">{inWell?'↑ retirar':'↓ insertar'}</text></g>
       {ids.map((id,i)=>terminal(id,sensor==='tc'?(i?'−':'+'):String(i+1),true))}
     </g>;
   };
-  const dial=DIAL[s.mode],cx=METER.x+METER.w/2,dialY=METER.y+262;
-  const rad=(deg:number)=>(deg-90)*Math.PI/180;
-  const jack=(kind:'black'|'red'|'ampere',label:string)=><g key={kind}><text className="meter-jack-label" x={JACKS[kind].x} y={JACKS[kind].y-24} textAnchor="middle">{label}</text><circle className={`jack ${kind}`} cx={JACKS[kind].x} cy={JACKS[kind].y} r="15"/><circle className="jack-hole" cx={JACKS[kind].x} cy={JACKS[kind].y} r="8"/></g>;
   const bx=BATH.x,by=BATH.y,bw=BATH.w,bh=BATH.h;
   return <svg className="temp-bench" viewBox={`0 0 ${WORLD.w} ${WORLD.h}`} width={WORLD.w} height={WORLD.h} role="group" aria-label="Banco de temperatura: horno de pozo seco, sondas, multímetro, transmisor y fuente">
     <defs>
@@ -68,27 +65,16 @@ export function BenchScene({settings:s,temps:t,reading,tool,selected,onSelect,on
       <text className="bath-caption" x={bx+44} y={by+78}>TEMPERATURA</text>
       <text className="bath-value" x={bx+44} y={by+114}>{formatTemp(t.bath)}</text>
       <text className="bath-set" x={bx+44} y={by+130}>objetivo {formatTemp(s.setpoint)}</text>
-      {([[0,0,'▲'],[1,0,'▼'],[0,1,'◀'],[1,1,'▶']] as const).map(([c,r,g])=><g key={`${c}${r}`} className="bath-btn"><circle cx={bx+212+c*26} cy={by+76+r*28} r="10"/><text x={bx+212+c*26} y={by+80+r*28} textAnchor="middle">{g}</text></g>)}
+      {([[0,0,'▲'],[1,0,'▼'],[0,1,'◀'],[1,1,'▶']] as const).map(([c,r,g])=><g key={`${c}${r}`} className="bath-btn" role="button" tabIndex={0} aria-label={g==='▲'?'Subir consigna 5 °C':g==='▼'?'Bajar consigna 5 °C':g==='◀'?'Bajar consigna 1 °C':'Subir consigna 1 °C'} onClick={e=>{e.stopPropagation();onChange({setpoint:s.setpoint+(g==='▲'?5:g==='▼'?-5:g==='◀'?-1:1)});}} onKeyDown={onKey(()=>onChange({setpoint:s.setpoint+(g==='▲'?5:g==='▼'?-5:g==='◀'?-1:1)}))}><circle cx={bx+212+c*26} cy={by+76+r*28} r="12.5"/><text x={bx+212+c*26} y={by+80+r*28} textAnchor="middle">{g}</text></g>)}
       <circle className={`bath-led ${heating?'on':''}`} cx={bx+bw-50} cy={by+76} r="7"/><text className="bath-led-text" x={bx+bw-50} y={by+98} textAnchor="middle">{heating?'calienta':'estable'}</text>
       <rect className="bath-switch" x={bx+bw-84} y={by+128} width="50" height="24" rx="5"/><path className="bath-switch-mark" d={`M${bx+bw-70} ${by+134}V${by+146}`}/><circle className="bath-switch-mark ring" cx={bx+bw-48} cy={by+140} r="5"/>
     </>)}
     <text className="temp-name" x={bx+bw/2} y={by+bh+30} textAnchor="middle">HORNO DE POZO SECO</text>
     {probe('pt')}{probe('tc')}
 
-    <g className="temp-meter">
-      <rect className="meter-holster" x={METER.x} y={METER.y} width={METER.w} height={METER.h} rx="30"/>
-      <rect className="meter-body" x={METER.x+12} y={METER.y+12} width={METER.w-24} height={METER.h-24} rx="22"/>
-      <rect className="meter-screen" x={METER.x+26} y={METER.y+26} width={METER.w-52} height="92" rx="7"/>
-      <text className={`meter-text ${reading.state}`} x={METER.x+METER.w-36} y={METER.y+92} textAnchor="end">{displayText(reading)}</text>
-      <text className="meter-sub" x={METER.x+36} y={METER.y+50}>{s.mode==='off'?'':`DC ${s.mode==='ohm'?'Ω':s.mode}`}</text>
-      {[0,1,2].map(i=><rect key={i} className="meter-key" x={METER.x+34+i*52} y={METER.y+130} width="44" height="16" rx="5"/>)}
-      <circle className="meter-dial" cx={cx} cy={dialY} r="62"/>
-      {DECOR.map(d=>{const a=rad(d.angle);return <text key={d.label} className="meter-dial-label dim" x={cx+Math.cos(a)*76} y={dialY+Math.sin(a)*76+4} textAnchor="middle">{d.label}</text>;})}
-      {(Object.keys(DIAL) as MeterMode[]).map(k=>{const a=rad(DIAL[k].angle);return <text key={k} className={`meter-dial-label ${s.mode===k?'on':''}`} x={cx+Math.cos(a)*76} y={dialY+Math.sin(a)*76+4} textAnchor="middle">{DIAL[k].label}</text>;})}
-      <circle className="meter-knob" cx={cx} cy={dialY} r="38"/><line className="meter-pointer" x1={cx} y1={dialY} x2={cx+Math.cos(rad(dial.angle))*36} y2={dialY+Math.sin(rad(dial.angle))*36}/><circle className="meter-hub" cx={cx} cy={dialY} r="9"/>
-      {jack('ampere','10 A')}{jack('black','COM')}{jack('red','V Ω mV')}
-    </g>
-    <text className="temp-name" x={cx} y={METER.y+METER.h+30} textAnchor="middle">MULTÍMETRO DIGITAL</text>
+    <g className="manual-action" role="button" tabIndex={0} aria-label="Cambiar resistencia de hilos Pt100" onClick={()=>onChange({ptLeadOhms:((s.ptLeadOhms??0)+.25)%1.25})} onKeyDown={onKey(()=>onChange({ptLeadOhms:((s.ptLeadOhms??0)+.25)%1.25}))}><rect x="235" y="600" width="210" height="30" rx="5"/><text x="340" y="620" textAnchor="middle">Hilo Pt100: {(s.ptLeadOhms??0).toFixed(2)} Ω · cambiar</text></g>
+    <BenchMeter x={METER.x} y={METER.y} mode={s.mode==='off'?'OFF':s.mode==='ohm'?'R':s.mode==='mV'?'C':'V'} text={displayText(reading)} note={reading.note} onMode={m=>onChange({mode:m==='OFF'?'off':m==='R'?'ohm':m==='C'?'mV':'V'})} record={recordReady} onRecord={onRecord} onLog={onLog} onReadoutState={onReadoutState} millivolts/>
+
 
     <rect className="din-rail" x={TX.x-36} y={TX.y+TX.h/2-12} width={TX.w+72} height="24" rx="3"/>
     {equipment('tx',`Transmisor de temperatura, entrada tipo ${s.txType} de ${s.txMin} a ${s.txMax} grados Celsius, ${s.txPowered?'alimentado':'sin alimentación'}. Abre su edición.`,<>
@@ -117,13 +103,12 @@ export function BenchScene({settings:s,temps:t,reading,tool,selected,onSelect,on
     </>)}
     <text className="temp-name" x={PSU.x+PSU.w/2} y={PSU.y+PSU.h+30} textAnchor="middle">FUENTE</text>
 
+    <g className="manual-action" role="button" tabIndex={0} aria-label="Conectar o retirar termocupla del transmisor" onClick={()=>onChange({txConnected:!s.txConnected})} onKeyDown={onKey(()=>onChange({txConnected:!s.txConnected}))}><rect x={TX.x-8} y={TX.y-44} width="148" height="32" rx="6"/><text x={TX.x+66} y={TX.y-23} textAnchor="middle">{s.txConnected?'Retirar hilos TC':'Conectar hilos TC'}</text></g>
+    <g className="manual-action" role="button" tabIndex={0} aria-label="Interruptor de la fuente" onClick={()=>onChange({txPowered:!s.txPowered})} onKeyDown={onKey(()=>onChange({txPowered:!s.txPowered}))}><rect x={PSU.x+30} y={PSU.y+108} width="60" height="40" rx="6"/><text x={PSU.x+60} y={PSU.y+132} textAnchor="middle">{s.txPowered?'I · ON':'O · OFF'}</text></g>
     <g className="temp-wires" aria-hidden="true">
       {s.txConnected?<><path d={riseCable(termPos('tc+',s),TX_IN.plus,60)}/><path d={riseCable(termPos('tc-',s),TX_IN.minus,40)}/></>:null}
       {s.txPowered?<><path className="red" d={riseCable(PSU_JACKS.red,TX_PWR.plus,120)}/><path className="black" d={riseCable(PSU_JACKS.black,TX_PWR.minus,140)}/></>:null}
     </g>
-    <g className="temp-leads" aria-hidden="true">
-      {s.black?<path className="lead black" d={hangingCable(JACKS.black,termPos(s.black,s),90)}/>:null}
-      {s.red?<path className="lead red" d={hangingCable(JACKS.red,termPos(s.red,s),70)}/>:null}
-    </g>
+    <ManualLeads x={METER.x} y={METER.y} red={s.red} black={s.black} terminals={TERMINALS.filter(t=>t.id!=='pt4'||s.ptWires===4).map(t=>({...t,point:termPos(t.id,s)}))} onConnect={(color,id)=>onChange({[color]:id})}/>
   </svg>;
 }

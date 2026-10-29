@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Fuente íntegra y 37 cables exactos; 42 pasos heredados sustituidos; sin KM3",
+    "Diagrama original íntegro y misma imagen del archivo; 37 tramos relacionados en líneas originales, sin mover ni redibujar elementos; explicación y preguntas en 37 pasos",
+    "Evaluación reconoce el montaje y rechaza el vacío; práctica y exportación/historial conservan la nueva lección",
+    "S1: estrella KM2 + KT1, retención, cambio a triángulo KM1; S3 no da marcha; S2 y TEST detienen en ambas etapas y P3 avisa"
+  ]
+}

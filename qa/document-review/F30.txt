@@ -1,0 +1,87 @@
+ 
+ 
+ 
+ 
+SITUACIÓN DE MODELACIÓN 2
+SEGUIDORES EN 
+INSTAGRAM
+Instagram dejó de ser un medio únicamente para 
+compartir fotografías. En la actualidad, es un canal de 
+ventas poderoso. Por eso, una de las preocupaciones que 
+tienen las marcas es cómo conseguir seguidores en esta 
+red social. Esto se debe a que es una de las más populares 
+y utilizadas para la promoción de productos.
+ 
+ 
+SITUACIÓN DE MODELACIÓN 2 
+SEGUIDORES EN INSTAGRAM 
+ 
+En la era digital actual, Instagram se ha convertido en una potente plataforma para que las 
+personas y empresas conecten con su público, muestren su trabajo y hagan crecer sus marcas. 
+Ganar seguidores es clave para impulsar la llegada a este escenario de medios en línea. Entre las 
+estrategias para aumentar el número de seguidores en Instagram se encuentran la publicación 
+de contenido de calidad regularmente, la interacción con otras cuentas y publicaciones, el uso de 
+hashtags y geotags de forma efectiva y el compromiso con los seguidores, entre otras. 
+ 
+ACTIVIDAD 1 (actividad generadora)  
+Imagina que Antonio está trabajando en una empresa de marketing digital y desea analizar el 
+crecimiento de seguidores en la cuenta de Instagram de un influencer a lo largo del tiempo. La 
+información que ha recopilado durante los cinco primeros meses se sintetiza en la siguiente tabla: 
+ 
+Mes 
+Número de seguidores 
+1 
+485 
+2 
+1353 
+3 
+2307 
+4 
+2689 
+5 
+3005 
+ 
+En la tabla anterior, el primer mes indica el momento en que se comienza a analizar el 
+crecimiento de la cuenta. 
+ 
+Antonio ha observado que el número de seguidores siempre va en aumento, y este aumento es 
+constante, pero no de manera lineal. Comprueba esta afirmación. 
+ 
+ACTIVIDAD 2 
+Antonio desea utilizar un modelo logarítmico para predecir cuántos seguidores tendrá el 
+influencer en el futuro. 
+a. ¿Cuál es la expresión algebraica que permite realizar lo que se propone? 
+b. Analiza la gráfica de la función que entrega GeoGebra. 
+c. Si quisiera establecer el mes 0 como el mes de inicio, ¿sería factible hacerlo? De no ser 
+así, ¿cómo debería modificar la expresión algebraica de la pregunta a? 
+ 
+ 
+ 
+ 
+ACTIVIDAD 3 
+Considerando la función planteada en la pregunta a de la actividad anterior, responde las 
+siguientes preguntas: 
+a. ¿Cuántos seguidores se espera que tenga el influencer en el sexto mes? 
+b. ¿En qué mes aproximadamente el influencer alcanzará los 5000 seguidores? 
+c. ¿Aproximadamente qué tiempo debe esperar el influencer para pasar de 3500 a 4500 
+seguidores? 
+ 
+ACTIVIDAD 4 
+Richard, otro analista, plantea que tiene su propio modelo para incrementar el número de 
+seguidores de cualquier cuenta, a partir de una cantidad inicial de 600 personas en el primer mes. 
+La expresión algebraica que modela el número de seguidores en función de los meses es 
+ 
+𝑔(𝑥) = 600 + 1157.28 ln(2𝑥−1) 
+ 
+a. Representa gráficamente en GeoGebra este modelo junto al modelo de la actividad 2a.  
+b. ¿Cuál de los dos modelos es más conveniente para incrementar rápidamente el número 
+de seguidores? Argumenta. 
+ 
+ACTIVIDAD 5 (actividad de cierre) 
+Teniendo en cuenta el modelo 𝑔(𝑥) de la actividad anterior, responde: 
+a. ¿Cuál es la tasa promedio de crecimiento de seguidores entre el séptimo y el décimo mes? 
+¿Qué interpretación tiene? 
+b. ¿La tasa promedio de crecimiento de seguidores entre el décimo y el duodécimo mes es 
+la misma que la determinada en la pregunta anterior? ¿Por qué? 
+ 
+ 

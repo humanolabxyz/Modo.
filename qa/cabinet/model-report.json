@@ -1,0 +1,107 @@
+{
+  "results": [
+    {
+      "name": "El taller empieza sin montar ni conectar: 14 identidades y 29 conexiones documentadas",
+      "pass": true
+    },
+    {
+      "name": "Montaje completo: marcha, retención, paro, no rearranque, térmico y guardamotor calculados",
+      "pass": true
+    },
+    {
+      "name": "Proyecto y montaje exportado conservan gabinete, hilos, rutas y resultados",
+      "pass": true
+    },
+    {
+      "name": "Una ruta PE abierta impide la verificación aunque el motor funcione",
+      "pass": true
+    },
+    {
+      "name": "Montaje, identificación, rutas y nominales se comprueban por separado",
+      "pass": true
+    },
+    {
+      "name": "El orden de las listas no invalida una prueba; editar un conductor sí",
+      "pass": true
+    },
+    {
+      "name": "El recorrido físico se guarda sin cambiar bornes ni comportamiento eléctrico",
+      "pass": true
+    },
+    {
+      "name": "Diagnóstico return: evidencia, reparación y prueba posterior",
+      "pass": true
+    },
+    {
+      "name": "Diagnóstico holding: evidencia, reparación y prueba posterior",
+      "pass": true
+    },
+    {
+      "name": "Diagnóstico phase: evidencia, reparación y prueba posterior",
+      "pass": true
+    },
+    {
+      "name": "Diagnóstico earth: evidencia, reparación y prueba posterior",
+      "pass": true
+    },
+    {
+      "name": "Una respuesta correcta sin comprobación no cierra el diagnóstico",
+      "pass": true
+    },
+    {
+      "name": "No se inyecta una segunda falla ni se mezcla el taller con un montaje existente",
+      "pass": true
+    },
+    {
+      "name": "Un equipo retirado puede guardarse como trabajo incompleto",
+      "pass": true
+    },
+    {
+      "name": "Importación rechaza estados de taller desconocidos, rutas inválidas y bitácoras sin límite",
+      "pass": true
+    },
+    {
+      "name": "La comprobación y la prueba no alteran el diseño ni sus parámetros",
+      "pass": true
+    },
+    {
+      "name": "El alumno distribuye dentro del área: no se exige la posición sugerida",
+      "pass": true
+    },
+    {
+      "name": "Rieles y canaletas editables: detecta equipos sin apoyo y cuerpos invadiendo canaletas",
+      "pass": true
+    },
+    {
+      "name": "pump-plc ladder: señales físicas, programa y salida accionan el motor",
+      "pass": true
+    },
+    {
+      "name": "pump-plc st: señales físicas, programa y salida accionan el motor",
+      "pass": true
+    },
+    {
+      "name": "pump-relay ladder: señales físicas, programa y salida accionan el motor",
+      "pass": true
+    },
+    {
+      "name": "pump-relay st: señales físicas, programa y salida accionan el motor",
+      "pass": true
+    },
+    {
+      "name": "Un programa que compila puede fallar la retención; editarlo invalida la prueba",
+      "pass": true
+    },
+    {
+      "name": "Falla de programación: evidencia y corrección se prueban con el PLC cableado",
+      "pass": true
+    }
+  ],
+  "passed": 24,
+  "total": 24,
+  "functionalTestMs": {
+    "median": 25.91329999999971,
+    "max": 31.027600000000348
+  },
+  "scope": "Simulación equivalente y reglas del encargo; no certificación física."
+}

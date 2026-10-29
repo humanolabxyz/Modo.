@@ -1,0 +1,45 @@
+/* Inspector de equipos: tarjeta de presentación, ajustes con rango visible y acciones con una línea de ayuda. */
+.eq-pf{display:flex;flex-direction:column;gap:14px;min-width:0}
+.eq-pf-head{display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid #dbe8ee;border-radius:16px;background:linear-gradient(180deg,#fff,#f4f9f8)}
+.eq-pf-badge{flex:none;display:flex;align-items:center;justify-content:center;min-width:46px;height:46px;padding:0 8px;border-radius:14px;background:#e4f5ef;color:#127a62;font:700 14px/1 LabSource,system-ui,sans-serif;letter-spacing:.3px}
+.eq-pf-head strong{display:block;font:600 15px/1.3 LabSource,system-ui,sans-serif;color:#26485a}
+.eq-pf .eq-pf-card{display:flex;flex-direction:column;gap:10px;margin:0;padding:12px;border:1.5px solid #dbe8ee;border-radius:16px;background:#fff}
+.eq-pf .eq-settings{border-top:1.5px solid #dbe8ee}
+.eq-pf .eq-settings>summary{cursor:pointer;font:600 14px LabSource,system-ui,sans-serif;color:#2c5164;padding:2px 0 8px}
+.eq-pf fieldset{display:flex;flex-direction:column;gap:12px;min-width:0;margin:0;padding:0;border:0}
+.eq-pf legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.eq-pf h4{margin:0;font:600 14px LabSource,system-ui,sans-serif;color:#2c5164}
+.eq-pf .eq-pf-help{margin:0;font-size:12.5px;line-height:1.45;color:#5d7686}
+.eq-pf .eq-field{display:flex;flex-direction:column;gap:4px}
+.eq-pf .eq-field small{font-size:12px;color:#6d8594}
+.eq-pf label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#355b6e}
+.eq-pf input:not([type=checkbox]),.eq-pf select,.eq-pf textarea{box-sizing:border-box;width:100%;min-height:44px;padding:9px 13px;border:1.5px solid #cfdfe7;border-radius:13px;background:#fff;font-size:15px;color:#27495b;transition:border-color .2s,box-shadow .2s}
+.eq-pf textarea{min-height:84px;resize:vertical;font-family:inherit}
+.eq-pf input:focus,.eq-pf select:focus,.eq-pf textarea:focus{outline:none;border-color:#2fa88a;box-shadow:0 0 0 4px #3fd9b22e}
+.eq-pf input:disabled,.eq-pf select:disabled,.eq-pf textarea:disabled{background:#f2f6f8;color:#7b909c}
+.eq-pf .eq-checkbox{flex-direction:row;align-items:center;gap:10px;min-height:44px;padding:8px 12px;border:1.5px solid #dbe8ee;border-radius:13px;font-weight:500}
+.eq-pf .eq-checkbox input{width:20px;height:20px;min-height:0;accent-color:#168a6f}
+.eq-pf button{min-height:44px;padding:9px 14px;border:1.5px solid #cfe0e6;border-radius:13px;background:#fff;color:#27495b;font:600 14px LabSource,system-ui,sans-serif;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .15s}
+.eq-pf button:hover:not(:disabled){border-color:#8fd3c0;box-shadow:0 4px 14px #35c2a41f}
+.eq-pf button:active:not(:disabled){transform:scale(.98)}
+.eq-pf button:disabled{opacity:.5;cursor:default}
+.eq-pf .eq-pf-main{background:#168a6f;border-color:#168a6f;color:#fff}
+.eq-pf .eq-pf-main:hover:not(:disabled){background:#12775f;border-color:#12775f;box-shadow:0 6px 18px #168a6f40}
+.eq-pf .eq-drive-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.eq-pf .eq-drive-controls h4,.eq-pf .eq-drive-controls .eq-pf-help{grid-column:1/-1}
+.eq-pf .eq-drive-controls button[aria-pressed=true]{background:#e4f5ef;border-color:#7fcdb6;color:#12614d}
+.eq-pf .eq-operate{width:100%}
+.eq-pf .eq-readings{display:grid;gap:0;margin:0;font-size:13px}
+.eq-pf .eq-readings>div{display:flex;justify-content:space-between;gap:12px;padding:8px 2px;border-bottom:1px solid #e7eef1}
+.eq-pf .eq-readings>div:last-child{border-bottom:0}
+.eq-pf .eq-readings dt{color:#5d7686}
+.eq-pf .eq-readings dd{margin:0;font-weight:600;color:#1f5a6b;font-variant-numeric:tabular-nums;text-align:right}
+.eq-pf .eq-pf-danger{border-color:#f0c9c2;color:#a63b2b;background:#fff8f6}
+.eq-pf .eq-pf-danger:hover:not(:disabled){border-color:#e49a8d;box-shadow:0 4px 14px #c9503a22}
+.eq-pf .eq-program-link{display:block;padding:12px;border:1.5px solid #bfe0d2;border-radius:13px;background:#f1fbf7;color:#127a62;font-weight:600;text-decoration:none}
+@media(prefers-reduced-motion:reduce){.eq-pf *{transition:none!important}}
+.eq-pf .eq-pf-head{padding:10px 12px}
+.eq-pf .eq-pf-head strong{flex:1;min-width:0}
+.eq-pf .eq-pf-badge{min-width:42px;height:42px}
+.eq-pf .eq-drive-controls{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.eq-pf .eq-drive-controls button{width:100%}

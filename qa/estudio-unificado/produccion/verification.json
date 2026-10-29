@@ -1,0 +1,12 @@
+{
+  "base": "https://modo-lab.vercel.app",
+  "checks": [
+    "Cinco recorridos comparten controles, estilo y etapas; ejemplo de los bancos recuperable al recargar",
+    "Usar en clase conserva la práctica al avanzar; aprender y repasar abren la etapa correspondiente",
+    "Cambiar de clase, siguiente, atrás del navegador y volver al ramo mantienen un contexto coherente",
+    "Protecciones usa el mismo marco y regresa al ramo sin perder su progreso anterior",
+    "390 y 768 px: seis experiencias sin desborde y controles de al menos 44 px",
+    "Sin errores JavaScript ni de consola"
+  ],
+  "errors": []
+}

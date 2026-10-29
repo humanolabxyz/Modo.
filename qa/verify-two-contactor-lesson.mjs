@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {build} from 'esbuild';
+const out='qa/two-contactor-lesson';fs.mkdirSync(out,{recursive:true});
+await build({stdin:{resolveDir:process.cwd(),contents:"export * from './src/data/lessons';export * from './src/data/lessonTeaching';export * from './src/data/lessonSchematics';export * from './src/data/lessonAssessment';export * from './src/data/assessmentState';export * from './src/data/wiring';export * from './src/data/simulation';export * from './src/data/panel';export * from './src/data/practice';export * from './src/data/panelElectrical';export * from './src/data/panelHistory';"},bundle:true,platform:'node',format:'cjs',outfile:out+'/model.cjs',logLevel:'silent'});
+const m=await import('./two-contactor-lesson/model.cjs?'+Date.now()),checks=[];
+const source=JSON.parse(fs.readFileSync('src/data/twoContactorSource.json','utf8')),raw=fs.readFileSync('referencias/lecciones-estrella-triangulo/'+source.source),original=JSON.parse(raw),lesson=m.TWO_CONTACTOR_LESSON,cade=m.LESSON_SCHEMATICS.estrellaDosContactores;
+assert.equal(createHash('sha256').update(raw).digest('hex'),source.sha256);assert.equal(original.steps.length,42);assert.equal(lesson.steps.length,37);
+assert.deepEqual(lesson.pairs,original.wires.map(w=>[w.from.terminalId,w.to.terminalId].map(id=>id.replace('BOTONERAS:S3:','BOTONERAS:S1:'))),'37 cables del archivo recibido; único ajuste: la marcha pasa de S3 a S1');assert.equal(lesson.needs,undefined);assert.ok(!lesson.pairs.flat().some(id=>id.startsWith('CONTACTOR_TRIFASICO_3:')));
+checks.push('Fuente íntegra y 37 cables exactos; 42 pasos heredados sustituidos; sin KM3');
+const wires=lesson.pairs.map(([a,b])=>m.createCable(a,b,[])),nets=m.cableNodes(wires);
+const originalDrawing=JSON.parse(fs.readFileSync('src/data/cadeEstrellaTriangulo.json','utf8'));
+assert.deepEqual({...cade.drawing,objects:cade.drawing.objects.map(o=>({...o,...(o.ports?{ports:o.ports.map(({panel,anchor,...p})=>p)}:{})}))},originalDrawing,'La composición original se conserva íntegra salvo anclas de referencia invisibles');
+assert.equal(lesson.diagram.src,original.diagram.src);
+const traces=m.lessonTraces(lesson);for(let i=0;i<traces.length;i++)assert.ok(traces[i]?.wires.length,`Tramo de referencia para paso ${i+1}`);
+for(const t of traces)for(const id of t.wires)assert.ok(originalDrawing.objects.some(o=>o.id===id&&o.type===4000),'Solo se iluminan líneas originales');
+for(const s of lesson.steps){const t=m.teachingForStep(s,lesson.schematic);for(const k of ['why','behavior','without','question'])assert.ok(t[k].length>30);assert.ok(t.criteria.length>=2);assert.ok(t.components.length>0);}
+checks.push('Diagrama original íntegro y misma imagen del archivo; 37 tramos relacionados en líneas originales, sin mover ni redibujar elementos; explicación y preguntas en 37 pasos');
+const assessment=m.newAssessment('estrellaDosContactores');assert.ok(m.assessLesson(assessment,wires).complete);assert.equal(m.assessLesson(assessment,[]).complete,false);
+const practice={...m.emptyPractice(),title:lesson.title,mode:'guided',wires,steps:lesson.steps,diagram:lesson.diagram,stepIndex:5};assert.deepEqual(m.readPractice(practice),practice);assert.deepEqual(m.readPanelFile(m.panelExport(practice,m.newPanelHistory(practice))).practice,practice);
+checks.push('Evaluación reconoce el montaje y rechaza el vacío; práctica y exportación/historial conservan la nueva lección');
+const input={...m.emptySimulation(),enabled:true,plugged:true,forceBreaker:true,breakers:[true,true]};
+let sim=m.solveSimulation(wires,{...input,pressed:['S3']});assert.equal(sim.motor.status,'off','S3 no inicia este montaje');
+sim=m.solveSimulation(wires,{...input,pressed:['S1']});assert.equal(sim.fault,null);assert.equal(sim.motor.connection,'star');assert.ok(sim.relays.TEMPORIZADOR_1&&sim.relays.CONTACTOR_TRIFASICO);assert.equal(sim.relays.CONTACTOR_TERMICO,false);
+sim=m.solveSimulation(wires,input,sim.relays);assert.equal(sim.motor.connection,'star','Retiene al soltar S1');
+const delta=m.solveSimulation(wires,input,sim.relays,['TEMPORIZADOR_1']);assert.equal(delta.fault,null);assert.equal(delta.motor.connection,'delta');assert.equal(delta.relays.CONTACTOR_TRIFASICO,false);assert.equal(delta.relays.CONTACTOR_TERMICO,true);
+for(const state of [sim,delta]){const stop=m.solveSimulation(wires,{...input,pressed:['S2']},state.relays,['TEMPORIZADOR_1']);assert.equal(stop.motor.status,'off');const trip=m.solveSimulation(wires,{...input,thermalTripped:true},state.relays,['TEMPORIZADOR_1']);assert.equal(trip.motor.status,'off');assert.equal(trip.pilots[2],true);}
+checks.push('S1: estrella KM2 + KT1, retención, cambio a triángulo KM1; S3 no da marcha; S2 y TEST detienen en ambas etapas y P3 avisa');
+fs.writeFileSync(out+'/model-results.json',JSON.stringify({checks},null,2));console.log(checks);

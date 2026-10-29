@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "Fuentes: 47 originales íntegros, accesibles y sin duplicar identificadores",
+    "Catálogo: 5 ramos con contenido y Administración sin contenido inventado",
+    "Datos docentes: promedio, sesgo y desviación muestral de ambas tablas",
+    "Respuesta numérica: coma, signo, exponentes y rechazo de vacíos/texto/Infinity",
+    "Electrónica: directa/inversa, corte/activa/saturación y rieles AO",
+    "Matemáticas: ajuste afín, polinomial y máximo entre muestras",
+    "Redes: convenciones NRZ, Manchester, diferencial y CRC conocido",
+    "Cable: extremos aislados y sin soldar no conducen; cable correcto sí",
+    "Cable: hilo abierto, pin equivocado, puente y unión intermitente",
+    "Enlace lógico depende del cable, baud y dirección; reparar restablece compatibilidad",
+    "Mediciones ligadas a la revisión del cable: reparación exige comprobar otra vez",
+    "Persistencia: respaldo independiente, validación y rechazo de versiones desconocidas",
+    "Preservación: hashes del panel, solver, laboratorio y progreso antiguo"
+  ],
+  "lessons": 27,
+  "steps": 90
+}

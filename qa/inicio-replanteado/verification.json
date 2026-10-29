@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Simulador, herramientas, contenidos y datos conservan sus hashes",
+    "Nueve formatos: PC, móvil y tablet vertical/horizontal; sin recortes, tres espacios, configuración progresiva y foco de teclado",
+    "Los cuatro modos abren el panel y permiten volver al inicio",
+    "Estudio, Laboratorio y Comunidad conservan sus destinos",
+    "Importar una práctica JSON conserva sus cables",
+    "Continuar destaca una práctica existente y mantiene intacto el documento",
+    "Sin errores de JavaScript ni de consola"
+  ],
+  "errors": []
+}

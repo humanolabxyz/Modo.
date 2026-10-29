@@ -1,0 +1,313 @@
+{
+  "sources": 47,
+  "unit2Pdf": [
+    "F20",
+    "F30",
+    "F37",
+    "F38",
+    "F39"
+  ],
+  "lessons": [
+    {
+      "id": "funciones-lineales",
+      "results": [
+        {
+          "title": "Construye la constante",
+          "passed": true
+        },
+        {
+          "title": "Añade la función lineal",
+          "passed": true
+        },
+        {
+          "title": "Calcula y representa una imagen",
+          "passed": true
+        },
+        {
+          "title": "Encuentra una preimagen",
+          "passed": true
+        },
+        {
+          "title": "Obtén una recta a partir de puntos",
+          "passed": true
+        },
+        {
+          "title": "Ajusta la vista gráfica",
+          "passed": true
+        },
+        {
+          "title": "Interseca dos funciones",
+          "passed": true
+        },
+        {
+          "title": "Compara dos ajustes",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "funciones-cuadraticas",
+      "results": [
+        {
+          "title": "Construye la parábola",
+          "passed": true
+        },
+        {
+          "title": "Calcula una imagen",
+          "passed": true
+        },
+        {
+          "title": "Encuentra las preimágenes de 5",
+          "passed": true
+        },
+        {
+          "title": "Localiza los puntos especiales",
+          "passed": true
+        },
+        {
+          "title": "Ajusta tres puntos",
+          "passed": true
+        },
+        {
+          "title": "Cruza dos parábolas",
+          "passed": true
+        },
+        {
+          "title": "Ajusta un conjunto de datos",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "funciones-logaritmicas",
+      "results": [
+        {
+          "title": "Compara cuatro bases",
+          "passed": true
+        },
+        {
+          "title": "Representa una imagen",
+          "passed": true
+        },
+        {
+          "title": "Obtén una preimagen",
+          "passed": true
+        },
+        {
+          "title": "Interseca con una cuadrática",
+          "passed": true
+        },
+        {
+          "title": "Encuentra el corte horizontal",
+          "passed": true
+        },
+        {
+          "title": "Ajusta datos con un logaritmo",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "matrices-operaciones",
+      "results": [
+        {
+          "title": "Organiza las mediciones",
+          "passed": true
+        },
+        {
+          "title": "Suma dos registros",
+          "passed": true
+        },
+        {
+          "title": "Aplica un factor de escala",
+          "passed": true
+        },
+        {
+          "title": "Intercambia filas y columnas",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "matrices-producto",
+      "results": [
+        {
+          "title": "Define los factores",
+          "passed": true
+        },
+        {
+          "title": "Calcula A por B",
+          "passed": true
+        },
+        {
+          "title": "Invierte el orden",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "matrices-sistemas",
+      "results": [
+        {
+          "title": "Escribe el sistema matricial",
+          "passed": true
+        },
+        {
+          "title": "Comprueba el determinante",
+          "passed": true
+        },
+        {
+          "title": "Obtén la solución",
+          "passed": true
+        },
+        {
+          "title": "Verifica en las ecuaciones",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "problema-poblacion",
+      "results": [
+        {
+          "title": "Población inicial",
+          "passed": true
+        },
+        {
+          "title": "Población en 2015",
+          "passed": true
+        },
+        {
+          "title": "Encontrar el año",
+          "passed": true
+        },
+        {
+          "title": "Representar e interpretar",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "problema-estroncio",
+      "results": [
+        {
+          "title": "Masa inicial",
+          "passed": true
+        },
+        {
+          "title": "Tiempo hasta 12,36 g",
+          "passed": true
+        },
+        {
+          "title": "Masa a los 50 años",
+          "passed": true
+        },
+        {
+          "title": "Gráfica del decaimiento",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "problema-ahorro",
+      "results": [
+        {
+          "title": "Graficar ambos bancos",
+          "passed": true
+        },
+        {
+          "title": "Meses para superar $32.000",
+          "passed": true
+        },
+        {
+          "title": "Meses para superar $47.000",
+          "passed": true
+        },
+        {
+          "title": "Ganancia tras 42 meses",
+          "passed": true
+        },
+        {
+          "title": "Ganancia tras 43 meses",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "problema-planta",
+      "results": [
+        {
+          "title": "Altura inicial",
+          "passed": true
+        },
+        {
+          "title": "Altura a los 79 días",
+          "passed": true
+        },
+        {
+          "title": "Tiempo para medir 14,86 cm",
+          "passed": true
+        },
+        {
+          "title": "Gráfica y dominio del contexto",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "exponential": {
+    "commands": [
+      {
+        "command": "f(x)=2^x",
+        "accepted": true
+      },
+      {
+        "command": "a=f(2)",
+        "accepted": true
+      },
+      {
+        "command": "P=(2,a)",
+        "accepted": true
+      },
+      {
+        "command": "Solve(f(x)=5,x)",
+        "accepted": true
+      },
+      {
+        "command": "g(x)=x+2",
+        "accepted": true
+      },
+      {
+        "command": "Intersect(f,g,-2,0)",
+        "accepted": true
+      },
+      {
+        "command": "Intersect(f,g,1,3)",
+        "accepted": true
+      },
+      {
+        "command": "Y=Intersect(f,yAxis)",
+        "accepted": true
+      },
+      {
+        "command": "L={(1,1),(3,2),(5,4),(6,8)}",
+        "accepted": true
+      },
+      {
+        "command": "p=FitGrowth(L)",
+        "accepted": true
+      },
+      {
+        "command": "r=FitExp(L)",
+        "accepted": true
+      }
+    ],
+    "value": 4,
+    "point": 4,
+    "fitDifference": 4.440892098500626e-16
+  },
+  "notes": [
+    "F38 p3: the printed +1 does not give P(0)=P0; existing MathUnitReview resource note identifies this.",
+    "F30 p2: successive increments 868, 954, 382, 316 are not constant; the lesson already distinguishes sustained growth from a constant increment."
+  ]
+}

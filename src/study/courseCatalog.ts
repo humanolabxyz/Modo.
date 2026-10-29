@@ -28,6 +28,6 @@ export const semesters = [
 ];
 export const courses = semesters.flatMap((names, semester) => names.map((title, index) => ({
   id: `s${semester + 1}-${index + 1}`, title, semester: semester + 1,
-  available: [`${availableCourseId}`,'s2-5','s2-3'].includes(`s${semester + 1}-${index + 1}`),
+  available: ['s2-1','s2-2','s2-3','s2-4','s2-5'].includes(`s${semester + 1}-${index + 1}`),
 })));
 export const normalizeSearch = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim();

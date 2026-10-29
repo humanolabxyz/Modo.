@@ -1,0 +1,4 @@
+{
+  "passed": true,
+  "check": "Revisar una actividad completada abre resultados y no vuelve a montar ni energizar el banco"
+}

@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "Home retains six visible course cards without replacing them with a planner",
+    "Red errors and green correct feedback retain explicit text, aria-invalid and saved progress",
+    "390: clear study route and matrix unit fit viewport",
+    "820: clear study route and matrix unit fit viewport",
+    "1440: clear study route and matrix unit fit viewport",
+    "390x844: fold/unfold guide, commands and results above graph; same graph dimensions and live applet",
+    "820x1180: fold/unfold guide, commands and results above graph; same graph dimensions and live applet",
+    "1180x820: fold/unfold guide, commands and results above graph; same graph dimensions and live applet",
+    "844x390: fold/unfold guide, commands and results above graph; same graph dimensions and live applet"
+  ],
+  "errors": []
+}

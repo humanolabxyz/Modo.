@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-25",
+  "project": "modo-lab",
+  "production": "https://modo-lab.vercel.app",
+  "build": "f77951da4bee729e",
+  "assets": 506,
+  "bytes": 163165848,
+  "sha256": {
+    "/sw.js": "2592bb7fa6f3833eff69dbefce89f72bc34c82a20de03adc4b690780866d0a97",
+    "/offline-assets.json": "8262de067844b508eaca9d9ddafca861329d176b3413d2ca04962bceab609530",
+    "/vendor/geogebra/deployggb.js": "85f60b83bb8702f70443bd6462fdcbd855396b7c9ba23841a2fd28f94856e167",
+    "/vendor/geogebra/HTML5/5.0/web3d/web3d.nocache.js": "830f886885e9feaf1f8d2ac7381ed6df9cb71277a45bb049633f112327b8f452"
+  }
+}

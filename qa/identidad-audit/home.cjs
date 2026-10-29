@@ -1,0 +1,4 @@
+const { chromium } = require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const check=require('./check.cjs');
+(async()=>{const b=await chromium.launch();for(const [n,w,h] of [['d',1440,900],['m',390,844]]){const c=await b.newContext({viewport:{width:w,height:h},serviceWorkers:'block'});await c.addInitScript(()=>{localStorage.setItem('modo-tutoriales-bienvenida-v1','seen');sessionStorage.setItem('modo-opened-v2','1')});const p=await c.newPage();await p.goto('http://127.0.0.1:4460/');await p.waitForTimeout(2500);await p.screenshot({path:'qa/identidad-audit/final-home-'+n+'.png'});
+const r=await p.evaluate(check);console.log(n,r.length);r.slice(0,10).forEach(i=>console.log(' ',i.ratio,i.txt,i.cls,i.color,i.unknown?'(grad)':''));await c.close()}await b.close()})()

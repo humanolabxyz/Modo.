@@ -1,0 +1,70 @@
+{
+  "base": "http://127.0.0.1:4327",
+  "checks": [
+    {
+      "engine": "chromium",
+      "input": "native touch",
+      "width": 768,
+      "height": 1024,
+      "nativeScroll": 251,
+      "startAmps": 13.918,
+      "steadyStarAmps": 4.111,
+      "loadedDeltaAmps": 9.123,
+      "timerReprogrammed": true,
+      "coasting": [
+        1491,
+        1289
+      ],
+      "sampleRecorded": true
+    },
+    {
+      "engine": "chromium",
+      "input": "native touch",
+      "width": 820,
+      "height": 1180,
+      "nativeScroll": 122,
+      "startAmps": 13.892,
+      "steadyStarAmps": 4.065,
+      "loadedDeltaAmps": 9.123,
+      "timerReprogrammed": true,
+      "coasting": [
+        1491,
+        1319
+      ],
+      "sampleRecorded": true
+    },
+    {
+      "engine": "webkit",
+      "input": "wheel, desktop WebKit with touch CSS",
+      "width": 768,
+      "height": 1024,
+      "nativeScroll": 251,
+      "startAmps": 8.306,
+      "steadyStarAmps": 3.186,
+      "loadedDeltaAmps": 9.123,
+      "timerReprogrammed": true,
+      "coasting": [
+        1491,
+        1316
+      ],
+      "sampleRecorded": true
+    },
+    {
+      "engine": "chromium",
+      "input": "wheel",
+      "width": 1440,
+      "height": 900,
+      "nativeScroll": 300,
+      "startAmps": 13.816,
+      "steadyStarAmps": 2.747,
+      "loadedDeltaAmps": 9.123,
+      "timerReprogrammed": true,
+      "coasting": [
+        1491,
+        1297
+      ],
+      "sampleRecorded": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,19 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),{chromium,webkit}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const out='qa/multimeter-activity',report={checks:[],errors:[]};
+(async()=>{for(const [engine,width,touch] of [[chromium,1440,false],[chromium,390,true],[webkit,390,false]]){
+ const b=await engine.launch();try{const c=await b.newContext({viewport:{width,height:width===390?844:1000},hasTouch:width===390,isMobile:width===390,serviceWorkers:'block',reducedMotion:'reduce'});await c.addInitScript(()=>localStorage.setItem('modo-tutoriales-bienvenida-v1','seen'));const p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));
+ await p.goto('http://127.0.0.1:4336/?view=simulator');await p.locator('.board-svg').waitFor();await p.waitForFunction(()=>!document.getElementById('modo-splash'));await p.getByRole('button',{name:'Multímetro del panel',exact:true}).click();await p.getByRole('button',{name:'Lección · medir con el multímetro',exact:true}).click();await p.getByRole('button',{name:'Comenzar guía del profesor',exact:true}).click();await p.getByRole('button',{name:'Dónde poner las puntas',exact:true}).click();await p.getByRole('radio',{name:'Continuidad',exact:true}).click();await p.getByRole('button',{name:'Ocultar lección del multímetro',exact:true}).click();await p.waitForTimeout(250);
+ const cdp=touch?await c.newCDPSession(p):null;
+ for(const [color,id] of [['roja','CONTACTOR_TERMICO:95'],['negra','CONTACTOR_TERMICO:96']]){
+  const handle=p.getByRole('button',{name:`Punta ${color}: arrastra hasta un borne`,exact:true});await handle.waitFor();
+  const from=await handle.evaluate(el=>{const a=el.getPointAtLength(el.getTotalLength()*.5),q=new DOMPoint(a.x,a.y).matrixTransform(el.getScreenCTM());const tip=el.parentElement.querySelector('.pen-tip'),t=new DOMPoint(+tip.getAttribute('x1'),+tip.getAttribute('y1')).matrixTransform(tip.getScreenCTM());return {x:q.x,y:q.y,tipX:t.x,tipY:t.y}}),to=await p.locator(`[data-terminal-id="${id}"] .terminal-hit`).evaluate(el=>{const r=el.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}});
+  assert.ok(to.x>0&&to.x<width&&to.y>300&&to.y<790,'El borne solicitado queda visible fuera de las ventanas');to.x+=from.x-from.tipX;to.y+=from.y-from.tipY;
+  if(touch){await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{...from,id:1}]});for(let i=1;i<=14;i++){await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:from.x+(to.x-from.x)*i/14,y:from.y+(to.y-from.y)*i/14,id:1}]});await p.waitForTimeout(16)}await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]})}
+  else {await p.mouse.move(from.x,from.y);await p.mouse.down();await p.mouse.move(to.x,to.y,{steps:14});await p.mouse.up()}
+  await p.waitForFunction(({label,id})=>document.querySelector(`[aria-label="${label}"]`)?.dataset.probeConnected===id,{label:`Punta ${color}: arrastra hasta un borne`,id});
+ }
+ assert.match(await p.getByLabel('Lectura del multímetro',{exact:true}).innerText(),/0,4/);await p.screenshot({path:`${out}/${engine.name()}-${width}-drag-${touch?'touch':'mouse'}.png`});await p.getByRole('button',{name:'Lección · medir con el multímetro',exact:true}).click();await p.locator('.meter-lesson-state.is-ready').waitFor();
+ report.checks.push(`${engine.name()} ${width}: arrastre real ${touch?'táctil emulado':'con mouse'} de ambas puntas a 95–96, lectura 0,4 Ω y reapertura del mismo paso`);await c.close();
+ }finally{await b.close()}}
+ assert.deepEqual(report.errors,[]);fs.writeFileSync(out+'/drag-results.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+})().catch(e=>{fs.writeFileSync(out+'/drag-results.json',JSON.stringify({...report,failure:e.stack},null,2));console.error(e);process.exit(1)});

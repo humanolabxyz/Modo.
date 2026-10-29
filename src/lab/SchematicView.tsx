@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState,type PointerEvent,type ReactNode} from 'react';
-import {Cable,MousePointer2,Shapes,Trash2} from 'lucide-react';
+import {Cable,Hand,MousePointer2,Shapes,Trash2} from 'lucide-react';
 import {DEVICES,deviceClosed,devicePinOffset,isMaintainedControl,pinKey,uid,type Device,type DeviceKind,type End} from './model';
 import type {Laboratory} from './useLaboratory';
 import {InspectorSheet} from './InspectorSheet';
@@ -33,8 +33,9 @@ function Symbol({device,on,closed,pressed,running}:{device:Device;on:boolean;clo
 }
 export function SchematicView({lab}:{lab:Laboratory}){
   const {project,update,running,runtime}=lab;
-  const [tool,setTool]=useState<'select'|'wire'>('select'),[selected,setSelected]=useState<string|null>(null),[selectedWire,setSelectedWire]=useState<string|null>(null),[pending,setPending]=useState<End|null>(null),[drag,setDrag]=useState<{id:string;point:Point}|null>(null);
+  const [tool,setTool]=useState<'select'|'wire'|'pan'>('select'),[selected,setSelected]=useState<string|null>(null),[selectedWire,setSelectedWire]=useState<string|null>(null),[pending,setPending]=useState<End|null>(null),[drag,setDrag]=useState<{id:string;point:Point}|null>(null);
   const origin=useRef<{id:string;point:Point;device:Point;moved:boolean}|null>(null),latest=useRef<Point|null>(null),stage=useRef<StageApi|null>(null);
+  useEffect(()=>{if(running){setTool('select');setPending(null);}},[running]);
   const active=project.schematic.devices.find(d=>d.id===selected);
   const change=(id:string,patch:Partial<Device>)=>update(p=>({...p,schematic:{...p.schematic,devices:p.schematic.devices.map(d=>d.id===id?{...d,...patch}:d)}}));
   const free=(p:Point)=>{let q=p,tries=0;const taken=(c:Point)=>project.schematic.devices.some(d=>Math.abs(d.x-c.x)<90&&Math.abs(d.y-c.y)<80);while(taken(q)&&tries<40){tries++;q={x:p.x+(tries%6)*100-250+(Math.floor(tries/6)%2)*50,y:p.y+Math.floor(tries/6)*90};q={x:Math.max(55,Math.min(845,Math.round(q.x/10)*10)),y:Math.max(55,Math.min(575,Math.round(q.y/10)*10))};}return q;};
@@ -47,7 +48,7 @@ export function SchematicView({lab}:{lab:Laboratory}){
     const keys=(e:KeyboardEvent)=>{if((e.target as Element)?.closest('input,textarea,select,[contenteditable]')||e.ctrlKey||e.metaKey||e.altKey)return;
       if(e.key==='Delete'||e.key==='Backspace'){if(selected||selectedWire){e.preventDefault();remove();}}
       else if(e.key==='Escape'){setPending(null);setSelected(null);setSelectedWire(null);}
-      else if(e.key.toLowerCase()==='v'){setTool('select');setPending(null);}else if(e.key.toLowerCase()==='w'&&!running)setTool('wire');};
+      else if(e.key.toLowerCase()==='v'){setTool('select');setPending(null);}else if(e.key.toLowerCase()==='h')setTool('pan');else if(['w','c'].includes(e.key.toLowerCase())&&!running)setTool('wire');};
     window.addEventListener('keydown',keys);return()=>window.removeEventListener('keydown',keys);
   });
   const positions=new Map(project.schematic.devices.map(d=>[d.id,drag?.id===d.id?drag.point:d]));
@@ -56,6 +57,7 @@ export function SchematicView({lab}:{lab:Laboratory}){
   const hasSupply=project.schematic.devices.some(x=>x.kind==='supply');
   const dock:DockItem[]=[
     {id:'select',label:'Seleccionar y mover',shortcut:'V',icon:<MousePointer2 size={20}/>,pressed:tool==='select',onClick:()=>{setTool('select');setPending(null);}},
+    {id:'pan',label:'Desplazar pizarra',shortcut:'H',icon:<Hand size={20}/>,pressed:tool==='pan',onClick:()=>{setTool('pan');setPending(null);}},
     {id:'wire',label:'Cablear',shortcut:'W',icon:<Cable size={20}/>,pressed:tool==='wire',disabled:running,onClick:()=>setTool('wire')},
     'separator',
     {id:'components',label:'Componentes',icon:<Shapes size={20}/>,disabled:running,menu:DEVICES.map(d=>({id:d.kind,label:d.name,note:NOTES[d.kind],icon:iconTile(<DeviceIcon kind={d.kind}/>),disabled:d.kind==='supply'&&hasSupply,onClick:()=>add(d.kind)}))},
@@ -63,10 +65,10 @@ export function SchematicView({lab}:{lab:Laboratory}){
     'separator',
     ...historyDock(lab),
   ];
-  const hint=pending?'Elige el terminal de destino · Esc cancela':running?'Mantén pulsado S1 para arrancar; pulsa S0 para parar.':tool==='wire'?'Toca un terminal y luego otro para unirlos':'Arrastra un componente · fondo para mover la hoja';
+  const hint=pending?'Elige el terminal de destino · Esc cancela':running?'Mantén pulsado S1 para arrancar; pulsa S0 para parar.':tool==='wire'?'Toca un terminal y luego otro para unirlos':'Arrastra un componente · agrega o borra piezas para armar otro circuito';
   return <div className="lab-split"><section className="lab-stage" aria-label="Editor de esquemas">
     <div className="lab-stagebar"><span role="status">{hint}</span>{pending?<button onClick={()=>setPending(null)}>Cancelar cable</button>:null}<span className="lab-count-chip">{project.schematic.devices.length} componentes · {project.schematic.wires.length} cables</span></div>
-    <PanStage width={900} height={640} label="Hoja del esquema" fitLabel="Ajustar la hoja" apiRef={stage} onBackground={()=>{if(!pending){setSelected(null);setSelectedWire(null);}}} focus={()=>{const d=project.schematic.devices;if(!d.length)return null;const loops=project.schematic.wires.flatMap(w=>[...wirePath(w.from,w.to).matchAll(/V(-?\d+)/g)].map(m=>Number(m[1])));const x0=Math.min(...d.map(v=>v.x))-85,x1=Math.max(...d.map(v=>v.x))+85,y0=Math.min(...d.map(v=>v.y))-85,y1=Math.max(Math.max(...d.map(v=>v.y))+85,...loops.map(v=>v+30));return {x:x0,y:y0,w:x1-x0,h:y1-y0};}}>
+    <PanStage interaction={tool==='pan'?'pan':'auto'} width={900} height={640} label="Hoja del esquema" fitLabel="Ajustar la hoja" apiRef={stage} onBackground={()=>{if(!pending){setSelected(null);setSelectedWire(null);}}} focus={()=>{const d=project.schematic.devices;if(!d.length)return null;const loops=project.schematic.wires.flatMap(w=>[...wirePath(w.from,w.to).matchAll(/V(-?\d+)/g)].map(m=>Number(m[1])));const x0=Math.min(...d.map(v=>v.x))-85,x1=Math.max(...d.map(v=>v.x))+85,y0=Math.min(...d.map(v=>v.y))-85,y1=Math.max(Math.max(...d.map(v=>v.y))+85,...loops.map(v=>v+30));return {x:x0,y:y0,w:x1-x0,h:y1-y0};}}>
     <svg className={`lab-schematic ${tool==='wire'?'is-wiring':''}`} viewBox="0 0 900 640" width="900" height="640" aria-label="Circuito de mando editable de 24 V DC" onPointerMove={event=>{const start=origin.current;if(!start)return;const position=point(event);const p={x:Math.max(55,Math.min(845,start.device.x+position.x-start.point.x)),y:Math.max(55,Math.min(575,start.device.y+position.y-start.point.y))};if(p.x!==start.device.x||p.y!==start.device.y)start.moved=true;latest.current=p;setDrag({id:start.id,point:p});}} onPointerUp={()=>{const start=origin.current;if(start&&latest.current&&start.moved)change(start.id,latest.current);origin.current=null;latest.current=null;setDrag(null);}} onPointerCancel={()=>{origin.current=null;latest.current=null;setDrag(null);}}>
       <defs><pattern id="lab-schema-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#cbd5db"/></pattern></defs><rect width="900" height="640" rx="14" className="lab-sheet-paper"/><rect width="900" height="640" rx="14" fill="url(#lab-schema-grid)"/>
       <text x="28" y="35" className="lab-sheet-caption">modo. · MANDO DC</text><text x="28" y="610" className="lab-sheet-caption">HOJA 01 · {project.name}</text>
@@ -78,7 +80,7 @@ export function SchematicView({lab}:{lab:Laboratory}){
           onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setSelected(device.id);if(isButton&&running)lab.actuate(device.id,true);else if(running&&!e.repeat&&isMaintainedControl(device.kind))lab.setControl(device.id,!closed);}}} onKeyUp={e=>{if(e.key==='Enter'||e.key===' ')lab.actuate(device.id,false);}}/>
         <g pointerEvents="none"><text y="-45" textAnchor="middle" className="lab-device-tag">{device.tag}</text>
         <Symbol device={device} on={on} closed={closed} pressed={isButton&&!!lab.pressed[device.id]} running={running}/></g>
-        {([0,1] as const).map(pin=><g key={pin} role="button" tabIndex={running?-1:0} aria-label={`Terminal ${device.tag} ${DEVICES.find(d=>d.kind===device.kind)!.name} ${pin===0?'1':'2'}`} onClick={()=>connect({device:device.id,pin})} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();connect({device:device.id,pin});}}}><circle cx={devicePinOffset(device.kind,pin).x} cy={devicePinOffset(device.kind,pin).y} r="12" fill="transparent" stroke="none"/><circle className={`lab-terminal ${pending?.device===device.id&&pending.pin===pin?'pending':''}`} cx={devicePinOffset(device.kind,pin).x} cy={devicePinOffset(device.kind,pin).y} r="5" fill="#fff"/></g>)}
+        {([0,1] as const).map(pin=><g key={pin} role="button" tabIndex={running?-1:0} aria-label={`Terminal ${device.tag} ${DEVICES.find(d=>d.kind===device.kind)!.name} ${pin===0?'1':'2'}`} onClick={()=>connect({device:device.id,pin})} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();connect({device:device.id,pin});}}}><circle cx={devicePinOffset(device.kind,pin).x} cy={devicePinOffset(device.kind,pin).y} r="16" fill="transparent" stroke="none"/><circle className={`lab-terminal ${pending?.device===device.id&&pending.pin===pin?'pending':''}`} cx={devicePinOffset(device.kind,pin).x} cy={devicePinOffset(device.kind,pin).y} r="5" fill="#fff"/></g>)}
       </g>;})}
     </svg></PanStage>
     <FloatingDock label="Herramientas del esquema" items={dock}/>

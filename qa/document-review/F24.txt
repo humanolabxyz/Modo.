@@ -1,0 +1,25 @@
+ 
+ 
+ARPA 2 
+LANZAMIENTO DE UNA PIEDRA 
+EXTENSIÓN 
+ 
+Se lanza una segunda piedra de manera vertical (al mismo tiempo que la piedra anterior) cuya 
+expresión que modela la relación entre la altura y el tiempo es 
+ 
+ℎ(𝑡) = −5𝑡! + 30𝑡+ 40 
+ 
+¿Qué relaciones (diferencias y semejanzas) puedes establecer entre ambas trayectorias? Por 
+ejemplo, puedes tener en cuenta, entre otras, las siguientes preguntas: 
+§ 
+¿Ambas piedras se lanzan desde la misma altura? 
+§ 
+¿La altura máxima alcanzada por las dos piedras es la misma? 
+§ 
+¿Las piedras caen al piso en el mismo instante de tiempo? 
+§ 
+¿Cuál es la altura de ambas piedras en un instante específico de tiempo? 
+§ 
+¿En qué instante de tiempo ambas piedras tienen una altura determinada? 
+ 
+ 

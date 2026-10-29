@@ -1,0 +1,9 @@
+const { chromium } = require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{const b=await chromium.launch();const c=await b.newContext({viewport:{width:1440,height:900},serviceWorkers:'block'});await c.addInitScript(()=>{localStorage.setItem('modo-tutoriales-bienvenida-v1','seen');sessionStorage.setItem('modo-opened-v2','1')});const p=await c.newPage();
+await p.goto('http://127.0.0.1:4460/',{waitUntil:'load'});await p.waitForTimeout(5500);const card=p.locator('.home-module').first();await card.click({force:true});await p.waitForTimeout(600);await card.click({force:true}).catch(()=>{});await p.waitForTimeout(3000);
+const st=async(l)=>{const r=await p.evaluate(()=>{const g=s=>{const e=document.querySelector(s);if(!e)return null;const cs=getComputedStyle(e);return {p:e.getAttribute('aria-pressed'),bg:cs.backgroundImage!=='none'?'grad':cs.backgroundColor,col:cs.color}};return {rayo:g('.simulation-toggle'),candado:g('.module-lock-controls button[aria-label^="Bloquear"]'),mover:g('.module-lock-controls button[aria-label^="Desbloquear"]')}});console.log(l,JSON.stringify(r))};
+await st('inicial ');await p.screenshot({path:'qa/identidad-audit/est-1-inicial.png',clip:{x:0,y:0,width:520,height:130}});
+await p.locator('.simulation-toggle').click();await p.waitForTimeout(500);await st('rayo ON');await p.screenshot({path:'qa/identidad-audit/est-2-rayo.png',clip:{x:0,y:0,width:520,height:130}});
+await p.locator('.module-lock-controls button[aria-label^="Bloquear"]').click();await p.waitForTimeout(500);await st('bloqueado');await p.screenshot({path:'qa/identidad-audit/est-3-bloqueado.png',clip:{x:0,y:0,width:520,height:130}});
+await p.locator('.simulation-menu>summary').click();await p.waitForTimeout(700);await p.locator('.simulation-plug-action').click().catch(()=>{});await p.waitForTimeout(500);await p.screenshot({path:'qa/identidad-audit/est-4-menu.png'});
+await b.close()})()

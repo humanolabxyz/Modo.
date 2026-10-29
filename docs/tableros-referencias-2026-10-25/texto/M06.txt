@@ -1,0 +1,1938 @@
+
+=== PDF PAGE 1 ===
+VX SE free-standing 
+­enclosure system
+Because often, simple is best
+
+
+=== PDF PAGE 2 ===
+2
+Rittal VX SE
+Rittal and Eplan 
+Your benefits at a glance
+1. Engineering
+	
+◾
+Error-free, flexible processes throughout the entire 
+value chain with the digital twin
+	
+◾
+High-quality 3D data in the EPLAN Data Portal
+	
+◾
+3D-assisted design with EPLAN Pro Panel
+2. Sourcing
+	
+◾
+Error-free product configuration with 
+the Rittal Configuration System
+	
+◾
+Interfaces with EPLAN engineering tools
+	
+◾
+Simple ordering and fast delivery of 
+Rittal standard products
+Rittal is one of the world’s leading system 
+suppliers of enclosures, power distribution, 
+climate control, IT infrastructure, 
+automation solutions and software & services 
+
+
+=== PDF PAGE 3 ===
+Rittal VX SE
+3
+More productive – with digitalization and prototyping 
+Faster – with configuration aids and an online shop
+More reliable – with our smart, global service
+Better – with Industry 4.0 and automation
+3. Manufacturing
+	
+◾
+Rittal’s fully automated production processes 
+­guarantee ­precision machining, population 
+and wire assembly 
+	
+◾
+Straightforward wiring with EPLAN Smart Wiring
+	
+◾
+All work stations can be linked together with 
+the digital twin
+4. Operations
+	
+◾
+Minimised downtimes and efficient production 
+with the Rittal Global Service
+	
+◾
+Predictive maintenance via IoT linking of 
+Rittal cooling units
+	
+◾
+The cloud-based solution EPLAN eVIEW allows 
+a cross-locational overview of all project data
+Eplan delivers software and service 
+in all fields of electrical engineering, 
+automation and mechatronics.
+
+
+=== PDF PAGE 4 ===
+4
+Rittal VX SE
+AX too small?
+The VX SE free-standing enclosure system is an effective ­alternative 
+for situations where an AX compact enclosure is not big enough. 
+
+
+=== PDF PAGE 5 ===
+Rittal VX SE
+5
+Reap the benefits of the VX SE for your project:
+	
+◾
+Minimal ordering and assembly work, thanks to 
+the solid side panels and roof 
+	
+◾
+Body produced from a single piece for maximum stability 
+and ­torsional rigidity
+	
+◾
+High protection category up to IP 66/NEMA 4 or 4X
+	
+◾
+The smart enclosure design from a single piece ensures 
+good EMC properties
+	
+◾
+All engineering is fully transferable from VX to VX SE
+	
+◾
+Identical accessories platform as VX
+	
+◾
+Wide range of dimensions up to a width of 1800 mm, 
+may replace up to three bayed enclosures
+	
+◾
+Depths of 300 mm are ideally suited for applications 
+in confined spaces, such as building services
+VX SE –
+the solution
+VX25 too large?
+The VX SE free-standing enclosure system is an effective 
+­alternative for situations where VX25 baying is not required.
+
+
+=== PDF PAGE 6 ===
+6
+Rittal VX SE
+High level of protection
+Solid side panels and roof. Eliminating 
+the gaps between the roof, side panel 
+and frame helps to prevent dirt deposits.
+Ease of placement
+The printed pitch pattern allows components 
+to be easily and quickly positioned on the 
+mounting plate – no measuring required.
+Reliable pre-fixing 
+The clip at the top of the ­mounting 
+plate holds it in place during one-­
+person assembly until the plate can 
+be screwed into position. The 
+mounting plate is depth-adjustable 
+on a 25 mm pitch pattern without 
+the need for tools.
+Digitalization
+Fully automated 
+­incorporation into the 
+production workflow is 
+easy with the QR code, 
+for seamless digital 
+monitoring at every 
+stage, from incoming 
+materials right through to 
+the finished product.
+CUSTOMER BENEFITS
+
+
+=== PDF PAGE 7 ===
+Rittal VX SE
+7
+Compatible with VX25
+The VX SE adaptor rail is fully compatible 
+with the VX25 allowing for common interior 
+­assembly.
+Reliable engineering 
+Rittal’s customers are aided throughout 
+the automated production process 
+and when working with virtual prototypes, 
+by accessing a comprehensive selection 
+of conversion and planning tools:
+– EPLAN Pro Panel
+– 2D/3D CAD data
+– ecl@ss Advanced
+– Technical documentation
+–  Data for planners
+Flexible interior installation 
+Interior installation with regard 
+to depth couldn’t be simpler, thanks 
+to punched sections with mounting 
+flanges 17 x 73 mm.
+Installation options 
+The continuous pattern of square punchings 
+enables the use of M5/M6/M8 cage nuts 
+to create more mounting options at all levels.
+
+
+=== PDF PAGE 8 ===
+8
+Rittal VX SE
+Flexibility and potential savings
+With enclosures available in widths 
+of up to 1800 mm, a stand-alone 
+enclosure can replace bayed 
+suites of up to three enclosures. 
+Only one wide base/plinth 
+is needed. Sealing is likewise 
+unnecessary.
+Stainless steel
+The high-quality stainless steel 
+surface finish with a brushed grain 
+size of 400 and a depth of < 0.8 μm 
+prevents ­deposits of dirt and dust. 
+Sheet steel 
+The three-stage surface treatment 
+process guarantees maximum 
+protection against corrosion and is 
+resistant to mineral oils, lubricants, 
+machining emulsions and most 
+solvents.
+System platform
+The uniform system platforms in sheet steel 
+and stainless steel enclosures create a unique 
+variety of configurations with identical 
+­engineering.
+Reduce ordering 
+and assembly work
+No need to order side panels or 
+baying accessories separately. 
+What is more, mounting plate infills 
+are no longer required, thanks 
+to the seamless mounting plate.
+CUSTOMER BENEFITS
+
+
+=== PDF PAGE 9 ===
+Handling and ergonomics 
+Integral gland plates in the base allow 
+­exceptionally simple cable entry into the 
+super-airtight IP 66/NEMA 4 and 4X enclosures, 
+as an ergonomic preparation for cable entry.
+Rittal VX SE
+9
+300 mm
+180°
+Space-saving 
+Depths of 300 mm are ideally suited 
+for any applications in confined 
+spaces, such as building services.
+Enhanced safety
+The high protection category of up to IP 66/
+NEMA 4 or 4X and NEMA 3R supports 
+a wide range of applications for the VX SE. 
+It also offers IK 10 impact protection and 
+UL approval.
+
+
+=== PDF PAGE 10 ===
+10
+Rittal VX SE
+Versatile
+Flexible cable entry options with 
+a versatile range of accessories and 
+multi-piece gland pate design.
+Flexible
+Flexible positioning of the cable 
+clamp rail on a 25 mm pitch pattern 
+to fit the mounting plate.
+Safety 
+With this smart design, the side panels, roof 
+and enclosure frame are conductively 
+­connected, so that no additional earthing is 
+required. When using Rittal climate control 
+equipment and Rittal fan-and-filter units in the 
+rear panel, no additional earthing is required.
+Effective shielding
+Good EMC properties are 
+guaranteed thanks to the 
+smart enclosure construction 
+from one single piece. 
+CUSTOMER BENEFITS
+
+
+=== PDF PAGE 11 ===
+Rittal VX SE
+11
+Transparency 
+The identifying dimensions stamped 
+into the gland plates make it easier 
+to allocate gland plates the matching 
+enclosure. 
+Space for cables 
+The large opening in the 
+stable base frame makes it 
+much easier to install cables. 
+Time-saving 
+Simple screw fastening of the gland plates 
+is fast, and automatically creates potential 
+equalisation in a single step.
+Cable-friendly
+Rounded edges prevent cables routed 
+under the enclosure from being ­damaged. 
+Labour-saving
+The earthing points with standardised markings 
+provide helpful assists, enabling quicker work 
+flow.
+Rigidity 
+The double edge fold on 
+the gland plates prevents 
+bending even under heavy 
+loads and guarantees 
+­the required high degree
+of protection. 
+
+
+=== PDF PAGE 12 ===
+12
+Rittal VX SE
+Further technical information can be found on the Internet.
+VX SE free-standing enclosure system, sheet steel
+Basic enclosure, sheet steel
+IP 66/NEMA 4, sheet steel
+Material and surface finish:
+	– Enclosure: Sheet steel, 1.5 mm, dipcoat-primed, 
+powder-coated on the outside, textured paint
+	– Door: Sheet steel, 2 mm, dipcoat-primed, 
+­powder-coated on the outside, textured paint
+	– Rear panel: Sheet steel, 1.5 mm, dipcoat-primed, 
+powder-coated on the outside, textured paint
+	– Mounting plate: Sheet steel, 3 mm, zinc-plated, 
+passivated
+	– Gland plates: Sheet steel, 1.5 mm, zinc-plated, 
+passivated 
+Material and surface finish:
+	– Enclosure: Sheet steel, 1.5 mm, dipcoat-primed, 
+powder-coated on the outside, textured paint
+	– Door: Sheet steel, 2 mm, dipcoat-primed, 
+­powder-coated on the outside, textured paint
+	– Rear panel: Sheet steel, 1.5 mm, dipcoat-primed, 
+powder-coated on the outside, textured paint
+	– Mounting plate: Sheet steel, 3 mm, zinc-plated, 
+passivated
+	– Base: Sheet steel, 1.5 mm, dipcoat-primed and 
+powder-coated, textured paint
+Colour:
+	– RAL 7035
+	– RAL 7035
+Protection category IP to IEC 60 529:
+	– IP 55
+	– IP 66
+Protection category to UL 50E:
+	– Type 12 (NEMA 12), 3R
+	– Type 4 (NEMA 4), 3R
+Supply includes:
+	– Enclosure, solid top and sides
+	– Door(s)
+	– R/h door hinge with single-door enclosures, 
+may be swapped to opposite side
+	– Mounting plate
+	– Gland plates
+	– Rear panel, detachable
+	– Lock: 3 mm double-bit
+	– 2 punched rails 18 x 39 mm
+	– Enclosure, solid top and sides
+	– Door(s)
+	– R/h door hinge with single-door enclosures, 
+may be swapped to opposite side
+	– Mounting plate
+	– Base including gland plates
+	– Rear panel, detachable
+	– Lock: 3 mm double-bit
+	– 2 punched rails 18 x 39 mm
+Approvals:
+	– UL
+	– cUL
+	– UL
+	– cUL
+Width 
+mm
+Height 
+mm
+Depth 
+mm
+Doors
+Rear 
+panel
+Model No.
+Model No.
+600
+1600
+400
+1
+one-piece
+–
+–
+600
+1800
+300
+1
+one-piece
+5820.600
+–
+600
+1800
+400
+1
+one-piece
+5830.600
+5830.680*
+600
+1800
+500
+1
+one-piece
+–
+–
+600
+2000
+300
+1
+one-piece
+5821.600
+–
+800
+1800
+300
+1
+one-piece
+5822.600
+–
+800
+1800
+400
+1
+one-piece
+5831.600
+5831.680*
+800
+1800
+500
+1
+one-piece
+–
+–
+800
+2000
+300
+1
+one-piece
+5823.600
+–
+800
+2000
+400
+1
+one-piece
+5832.600
+–
+800
+2000
+500
+1
+one-piece
+5833.600
+–
+800
+2000
+600
+1
+one-piece
+5834.600
+5834.680**
+1000
+1800
+400
+2
+one-piece
+5840.600
+–
+1200
+1800
+300
+2
+one-piece
+5824.600
+–
+1200
+1800
+400
+2
+one-piece
+5841.600
+–
+1200
+2000
+300
+2
+one-piece
+5825.600
+–
+1200
+2000
+400
+2
+one-piece
+5843.600
+–
+1200
+2000
+500
+2
+one-piece
+5844.600
+–
+1200
+2000
+600
+2
+one-piece
+5845.600
+–
+1600
+1800
+400
+2
+two-piece
+5842.600
+–
+1800
+2000
+500
+2
+two-piece
+5846.600
+–
+1800
+2000
+600
+2
+two-piece
+5847.600
+–
+System Catalogue 36
+from page 142
+from page 147
+* Base including 1 gland plate   ** Base including 2 gland plates
+
+
+=== PDF PAGE 13 ===
+Rittal VX SE
+13
+Further technical information can be found on the Internet.
+VX SE free-standing enclosure system, stainless steel﻿
+Basic enclosure, stainless steel steel
+IP 66/NEMA 4X, stainless steel
+Material and surface finish:
+	– Enclosure: Stainless steel 1.4301 (AISI 304), 
+1.5 mm, exterior brushed, grain size 400
+	– Door: Stainless steel 1.4301 (AISI 304), 2 mm, 
+exterior brushed, grain size 400
+	– Rear panel: Stainless steel 1.4301 (AISI 304), 
+1.5 mm, exterior brushed, grain size 400
+	– Mounting plate: Sheet steel, 3 mm, zinc-plated, 
+passivated
+	– Gland plates: Stainless steel 1.4301 (AISI 304), 
+1.5 mm, uncoated
+	– Enclosure: Stainless steel 1.4301 (AISI 304), 
+1.5 mm, exterior brushed, grain size 400
+	– Door: Stainless steel 1.4301 (AISI 304), 2 mm, 
+exterior brushed, grain size 400
+	– Rear panel: Stainless steel 1.4301 (AISI 304), 
+1.5 mm, exterior brushed, grain size 400
+	– Mounting plate: Sheet steel, 3 mm, zinc-plated, 
+passivated
+	– Base: Stainless steel 1.4301 (AISI 304), 1.5 mm, 
+uncoated 
+Protection category IP to IEC 60 529:
+	– IP 55
+	– IP 66
+Protection category to UL 50E:
+	– Type 12 (NEMA 12), 3R
+	– Type 4 (NEMA 4X), 3R
+Supply includes:
+	– Enclosure, solid top and sides
+	– Door(s)
+	– R/h door hinge with single-door enclosures,  
+may be swapped to opposite side
+	– Mounting plate
+	– Gland plates
+	– Rear panel, detachable
+	– Lock: 3 mm double-bit
+	– 2 punched rails 18 x 39 mm
+	– Enclosure, solid top and sides
+	– Door(s)
+	– R/h door hinge with single-door enclosures, 
+may be swapped to opposite side
+	– Mounting plate
+	– Base including gland plates
+	– Rear panel, detachable
+	– Lock: 3 mm double-bit
+	– 2 punched rails 18 x 39 mm
+Approvals:
+	– UL
+	– cUL
+	– UL
+	– cUL
+Width 
+mm
+Height 
+mm
+Depth 
+mm
+Doors
+Rear panel
+Model No.
+Model No.
+600
+1200
+500
+1
+one-piece
+5856.600
+–
+800
+1200
+500
+1
+one-piece
+5857.600
+–
+1200
+1200
+500
+1
+one-piece
+5858.600
+–
+600
+1600
+400
+1
+one-piece
+5850.600
+5850.680*
+600
+1800
+300
+1
+one-piece
+–
+–
+600
+1800
+400
+1
+one-piece
+–
+–
+600
+1800
+500
+1
+one-piece
+5851.600
+–
+600
+2000
+300
+1
+one-piece
+–
+–
+800
+1800
+300
+1
+one-piece
+–
+–
+800
+1800
+400
+1
+one-piece
+–
+–
+800
+1800
+500
+1
+one-piece
+5852.600
+5852.680*
+800
+2000
+300
+1
+one-piece
+–
+–
+800
+2000
+400
+1
+one-piece
+–
+–
+800
+2000
+500
+1
+one-piece
+–
+–
+800
+2000
+600
+1
+one-piece
+5853.600
+5853.680**
+1000
+1800
+400
+1
+one-piece
+5854.600
+–
+1200
+1800
+300
+2
+one-piece
+–
+–
+1200
+1800
+400
+2
+one-piece
+–
+–
+1200
+2000
+300
+2
+one-piece
+–
+–
+1200
+2000
+400
+2
+one-piece
+–
+–
+1200
+2000
+500
+2
+one-piece
+5855.600
+–
+1200
+2000
+600
+2
+one-piece
+–
+–
+1600
+1800
+400
+2
+two-piece
+–
+–
+1800
+2000
+500
+2
+two-piece
+–
+–
+System Catalogue 36
+from page 248
+from page 250
+* Base including 1 gland plate   ** Base including 2 gland plates
+
+
+=== PDF PAGE 14 ===
+14
+Rittal VX SE
+VX adaptor rail
+Creates vertical compatibility 
+between VX SE and VX25 for interior 
+installation. The VX adaptor rail 
+can be cut to length to customise 
+configurations.
+Punched sections without 
+mounting flanges 23 x 64 mm and 
+mounting rails 23 x 23 mm
+For fixing at variable intervals and 
+individually to the inner mounting 
+surface of the enclosure frame. 
+When mounted, the punched ­sections 
+and rails sit flush to the enclosure 
+frame. Thanks to the additional mount­
+ing bracket, they can be used with 
+a pre-installed mounting plate and can 
+also be cut to any required length.
+Punched sections 
+with mounting flanges, 
+23 x 64 mm
+Flexible interior installation 
+on a 25 mm pitch pattern in 
+conjunction with the VX 
+­adaptor rail. With the system 
+punchings, cage nuts up to 
+M8 can be used across three 
+­levels. 
+This allows you to securely 
+fasten your own components 
+with metric screws.
+Punched sections with mounting 
+flanges, 17 x 73 mm
+Ideal for straightforward configuration 
+of the enclosure system or for cable 
+routing from the door to the mounting 
+plate. May be fitted directly to the 
+profile.
+Cage nut
+M5, M6 or M8 cage nuts are 
+quickly fitted anywhere in the 
+enclosure by simply pushing 
+into place, and which help to 
+ensure high levels of work 
+safety as well as the potential 
+for internal equalisation. They 
+may be used on the enclosure 
+section as well as on punched 
+sections and rails with square 
+12.5 x 11 mm punchings.
+Partial mounting plate
+The partial mounting plates 
+create additional mounting 
+­surfaces at all places in the 
+enclosure. Suitable for use as 
+a component shelf or hinged. 
+May even be used on the tubular 
+door frame.
+System accessories
+LED system light
+Connection is just as straightforward 
+as assembly. The rotating connectors 
+allow user-friendly connection, even 
+in tight spaces. The wide ranging 
+power supply unit means that the light 
+can be used anywhere in the world.
+Swing frame
+The ideal solution for 
+­configuration with 482.6 mm 
+(19˝) components in the 
+­vertically hinged version, 
+for full or partial installation. 
+Swing frames may be 
+­positioned anywhere on 
+the 25 mm pitch pattern. 
+
+
+=== PDF PAGE 15 ===
+Rittal VX SE
+15
+
+
+=== PDF PAGE 16 ===
+16
+Rittal VX SE
+Cable conduit and cable conduit 
+holder
+Allows crush-proof cable routing to 
+moving parts such as doors or swing 
+frames with minimal assembly work
+Cable ties
+Simple, super-fast attachment 
+of cables to all round holes 
+on the enclosure and punched 
+sections. Simply clip into 
+­position.
+Gland plates
+The modular base assembly 
+allows completely flexible cable 
+entry into the VX SE, matching 
+your individual requirements. 
+Essential cable clamping takes 
+place in the base/plinth area, 
+directly above the insertion 
+point, or on the mounting plate.
+Sealing frame, modular
+For universal use on all ­
+surfaces and walls, for inserting 
+pre-­assembled cables with 
+connectors. Can also be 
+mounted onto 24-pole or 
+16-pole connector cut-outs. 
+Cable clamping
+Various cable clamping options are 
+available and can be used identically 
+both inside the enclosure and in the 
+base/plinth. Relocating cable clamping 
+into the base/plinth area frees up more 
+mounting space inside the enclosure, 
+rather than being lost to allow for 
+­bending radii.
+Cable duct
+In addition to the DIN punchings, 
+the mounting holes of Rittal cable 
+ducts also have punchings on 
+a 25 mm pitch pattern, completely 
+eliminating the need for any 
+machining when fastening to the 
+frame. Components are simply 
+screw-fastened into the round 
+holes. The screw heads may be 
+securely covered with an isolator 
+cap for insulation purposes.
+System accessories
+
+
+=== PDF PAGE 17 ===
+Rittal VX SE
+17
+
+
+=== PDF PAGE 18 ===
+18
+Rittal VX SE
+Punched sections 
+with mounting flanges, 
+14 x 39 mm
+The punched section with 
+mounting flange, 14 x 39 mm, 
+allows completely flexible 
+installation on the tubular door 
+frame, no machining required. 
+Wiring plan lectern
+During maintenance work, the 
+wiring plan lectern folds out 
+easily to hold circuit diagrams 
+and documents. The integral 
+punchings provide temporary 
+accommodation for tools.
+Spacers
+Spacer bolts allow a mounting 
+level to be quickly and easily 
+created at the correct 
+­distance, onto which a top hat 
+rail or a contact hazard 
+­protection cover for built-in 
+components can be easily 
+installed in the door.
+Tubular door frame
+The all-round T-head 
+punchings allow simple, 
+fast attachment of cables 
+with standard commer­
+cially available cable ties.
+Climate control
+When using Rittal climate 
+control devices and Rittal 
+fan-and-filter units on the 
+rear panel, no additional 
+earthing is required. The 
+smart design means that the 
+side panels, roof and enclo­
+sure frame are conductively 
+connected to each other and 
+no additional earthing is 
+required.
+Door stay for escape routes
+The door stay for escape 
+routes guarantees conveni­
+ence and safety. The enclosure 
+door is securely locked into 
+position for assembly work. 
+In dangerous situations, the 
+stay is released automatically 
+under pressure, and by using 
+180° hinges, escape routes 
+can be kept clear in both 
+directions.
+Ride-up roller
+Even the heaviest populated 
+door is easily opened and 
+closed with the ride-up roller.
+Comfort handle
+For retro-fitting lock 
+­systems such as 
+semi-cylinders or lock 
+inserts. As the handle 
+does not take up any 
+swing space, due to its 
+folding action, the door 
+surface area available 
+for installed equipment 
+is maximised.
+System accessories
+
+
+=== PDF PAGE 19 ===
+Rittal VX SE
+19
+
+
+=== PDF PAGE 20 ===
+20
+Rittal VX SE
+Accessories
+﻿
+Further technical information can be found on the Internet.
+Base/plinth
+ Base/plinth corner piece with base/plinth trim panel, front and rear, 100 mm
+For enclosure width mm
+Model No.
+Catalogue 36, page
+600
+8640.002
+881
+800
+8640.003
+881
+1000
+8640.005
+881
+1200
+8640.007
+881
+1600
+8640.008
+881
+1800
+8640.009
+881
+ Base/plinth trim panels, side, 100 mm
+For enclosure depth mm
+Model No.
+Catalogue 36, page
+300
+8640.030
+882
+400
+8640.031
+882
+500
+8640.032
+882
+600
+8640.033
+882
+ Base/plinth corner piece with base/plinth trim panel, front and rear, 200 mm
+For enclosure width mm
+Model No.
+Catalogue 36, page
+600
+8640.022
+881
+800
+8640.023
+881
+1000
+8640.024
+881
+1200
+8640.025
+881
+1600
+8640.026
+881
+1800
+8640.027
+881
+ Base/plinth trim panels, side, 200 mm
+For enclosure depth mm
+Model No.
+Catalogue 36, page
+300
+8640.040
+882
+400
+8640.041
+882
+500
+8640.042
+882
+600
+8640.043
+882
+Doors/locks
+ Glazed door
+For enclosure width x enclosure height mm
+Model No.
+Catalogue 36, page
+600 x 1800
+8610.685
+918
+600 x 2000
+8610.605
+918
+800 x 1800
+8610.885
+918
+800 x 2000
+8610.805
+918
+ Comfort handle
+For
+Model No.
+Catalogue 36, page
+Lock inserts, RAL 7035
+8611.020
+938
+Lock inserts, matt, chrome-plated
+8611.330
+938
+Lock inserts and padlock, RAL 7035
+8611.290
+938
+Profile half-cylinders, RAL 7035
+8611.070
+938
+Profile half-cylinders, matt, chrome-plated
+8611.340
+938
+ 180° hinges
+Colour
+Model No.
+Catalogue 36, page
+RAL 7035
+8800.190
+951
+Matt, nickel-plated
+8701.180
+951
+180° hinge for doors with high dynamic loads
+Colour
+Model No.
+Catalogue 36, page
+RAL 7035
+8800.710
+951
+1
+1
+3
+3
+2
+2
+4
+
+
+=== PDF PAGE 21 ===
+Rittal VX SE
+21
+﻿
+Accessories
+Further technical information can be found on the Internet.
+Installation accessories for doors
+ Punched section with mounting flange, 14 x 39 mm
+For door width mm
+Model No.
+Catalogue 36, page
+500
+8619.710
+952
+600
+8619.720
+952
+800
+8619.730
+952
+900
+8619.740
+952
+ Sheet steel wiring plan pocket, depth 90 mm
+For door width mm
+Model No.
+Catalogue 36, page
+500
+4115.000
+955
+600
+4116.000
+955
+800
+4118.000
+955
+900
+4123.000
+955
+ Utility lectern
+For door width mm
+Model No.
+Catalogue 36, page
+600
+4638.600
+953
+800
+4638.800
+953
+ Door stay
+For all VX SE free-standing 
+enclosures
+Model No.
+Catalogue 36, page
+4583.000
+956
+ Door stay for escape routes
+For all VX SE free-standing 
+enclosures
+Model No.
+Catalogue 36, page
+4583.500
+956
+ Ride-up roller
+For all VX SE free-standing 
+enclosures
+Model No.
+Catalogue 36, page
+4538.000
+956
+ Wiring plan lectern
+For door width mm
+Model No.
+Catalogue 36, page
+500
+4120.000
+954
+6001)
+4120.000
+954
+8001)
+4120.000
+954
+1) At least two lecterns are required for a width of 600 and 800 mm.
+1
+3
+6
+2
+5
+4
+7
+
+
+=== PDF PAGE 22 ===
+22
+Rittal VX SE
+Accessories
+﻿
+Further technical information can be found on the Internet.
+ 
+Cable management
+ Section for cable entry, centre
+For enclosure width mm
+Model No.
+Catalogue 36, page
+600
+8618.800
+1045
+800
+8618.801
+1045
+1000
+8618.802
+1045
+1200
+8618.803
+1045
+1600
+8618.804
+1045
+ Section for cable entry, rear
+For enclosure width mm
+Model No.
+Catalogue 36, page
+600
+8618.810
+1045
+800
+8618.811
+1045
+1000
+8618.812
+1045
+1200
+8618.813
+1045
+1600
+8618.814
+1045
+ Cable clamp rail, right-angle section
+For enclosure width mm
+Model No.
+Catalogue 36, page
+600
+8619.410
+1059
+800
+8619.420
+1059
+1000
+8619.430
+1059
+1200
+8619.440
+1059
+1600
+8619.450
+1059
+1800
+8619.460
+1059
+ Sealing frame, modular1)
+For all VX SE free-standing 
+enclosures
+Model No.
+Catalogue 36, page
+2583.100 for 24-pole cut-out
+1048
+2583.080 for 16-pole cut-out
+1048
+1) Seal inserts and inlays, see Catalogue 36, page 1051
+1
+3
+4
+2
+Cable duct
+Catalogue 36, page 1058
+Cable conduit
+Catalogue 36, page 1060
+Cable conduit holder
+Catalogue 36, page 1060
+Cable entry plate
+Catalogue 36, page 1044
+
+
+=== PDF PAGE 23 ===
+Rittal VX SE
+23
+﻿
+Accessories
+Further technical information can be found on the Internet.
+Interior installation
+ VX adaptor rail for VX compatibility
+Model No.
+Catalogue 36, page
+Length 200 mm
+8617.760
+995
+For enclosure height mm
+1800
+8617.750
+995
+2000
+8617.751
+995
+ C-rail 30/15, for direct installation
+For enclosure width/depth mm
+Model No.
+Catalogue 36, page
+600
+4944.000
+996
+800
+4945.000
+996
+1000
+4946.000
+996
+1200
+4947.000
+996
+ Punched section with mounting flange 17 x 73 mm for the outer mounting level (for direct installation in the depth)
+For enclosure width/depth mm
+Model No.
+Catalogue 36, page
+300
+8612.130
+992
+400
+8612.140
+992
+500
+8612.150
+992
+600
+8612.160
+992
+ Punched section with mounting flange 17 x 73 mm for the inner mounting level (for direct installation in the depth)
+For enclosure width/depth mm
+Model No.
+Catalogue 36, page
+300
+8612.030
+992
+400
+8612.040
+992
+500
+8612.050
+992
+600
+8612.060
+992
+ Punched section with mounting flange, 23 x 64 mm, for installation with VX adaptor rail
+For enclosure width/height/depth mm
+Model No.
+Catalogue 36, page
+300
+8617.100
+991
+400
+8617.110
+991
+500
+8617.120
+991
+600
+8617.130
+991
+800
+8617.140
+991
+1000
+ 8617.150
+991
+1200
+8617.160
+991
+1400
+ 8617.170
+991
+1600
+8617.180
+991
+1800
+8617.190
+991
+2000
+8617.200
+991
+ Punched section without mounting flange 23 x 64 mm, for installation with VX adaptor rail
+For enclosure width/height/depth mm
+Model No.
+Catalogue 36, page
+400
+8100.740
+993
+500
+8100.741
+993
+600
+8100.742
+993
+800
+8100.743
+993
+1200
+8100.745
+993
+ Punched rail 23 x 23 mm for installation with VX adaptor rail1)
+For enclosure width/height/depth mm
+Model No.
+Catalogue 36, page
+400
+4169.000
+994
+500
+4170.000
+994
+600
+4171.000
+994
+800
+4172.000
+994
+1000
+4173.000
+994
+1200
+4174.000
+994
+1400
+4393.000
+994
+1600
+4175.000
+994
+1800
+4176.000
+994
+2000
+4177.000
+994
+1) Also required:
+Mounting bracket 4182.000, see Catalogue 36, page 1002. 
+U nut see Catalogue 36, page 1003
+1
+3
+6
+2
+5
+4
+7
+
+
+=== PDF PAGE 24 ===
+24
+Rittal VX SE
+Accessories
+﻿
+Further technical information can be found on the Internet.
+   
+Interior installation
+ Punched rail 18 x 39 mm for installation with VX adaptor rail
+For enclosure width/depth mm
+Model No.
+Catalogue 36, page
+400
+8617.700
+993
+500
+8617.710
+993
+600
+8617.720
+993
+800
+8617.730
+993
+ Support strip
+For enclosure width/depth mm
+Model No.
+Catalogue 36, page
+Inner level
+400
+4309.000
+994
+500
+4596.000
+994
+600
+8800.130
+994
+800
+4579.000
+994
+Outer level
+400
+4694.000
+994
+500
+4695.000
+994
+600
+4696.600
+994
+800
+4697.000
+994
+ Support rail 75 x 20 mm
+For enclosure width/depth mm
+Model No.
+Catalogue 36, page
+slotted
+400
+4394.000
+996
+500
+4395.000
+996
+600
+4396.000
+996
+800
+4398.000
+996
+unslotted
+600
+4396.500
+996
+800
+4398.500
+996
+ VX partial mounting plate for installation with VX adaptor rail
+For installation in
+Door width 
+mm
+Dimensions 
+mm
+Model 
+No.
+Cat. 36, 
+page
+Enclosure width mm
+Enclosure depth (side) mm
+400
+600
+800
+1000
+1200
+400
+500
+600
+800
+◾ 
+◾ 
+–
+–
+–
+◾ 
+–
+◾ 
+–
+600
+500 x 300
+8617.510
+975
+–
+◾ 
+–
+–
+–
+–
+◾ 
+◾ 
+–
+600
+500 x 400
+8617.520
+975
+–
+◾ 
+–
+–
+–
+–
+–
+◾ 
+–
+600
+500 x 500
+8617.530
+975
+–
+◾ 
+◾ 
+–
+–
+–
+–
+◾ 
+◾ 
+600
+500 x 700
+8617.540
+975
+–
+◾ 
+–
+–
+–
+–
+–
+◾ 
+–
+600
+500 x 775
+8617.550
+975
+◾ 
+–
+◾ 
+–
+–
+◾ 
+–
+–
+◾ 
+800
+700 x 300
+8617.560
+975
+–
+–
+◾ 
+–
+–
+–
+◾ 
+–
+◾ 
+800
+700 x 400
+8617.570
+975
+–
+–
+◾ 
+–
+–
+–
+–
+–
+◾ 
+800
+700 x 700
+8617.580
+975
+◾ 
+–
+–
+◾ 
+–
+◾ 
+–
+–
+–
+1000
+900 x 300
+8617.590
+975
+–
+–
+–
+◾ 
+–
+–
+◾ 
+–
+–
+1000
+900 x 400
+8617.600
+975
+–
+◾ 
+–
+◾ 
+–
+–
+–
+◾ 
+–
+1000
+900 x 500
+8617.610
+975
+◾ 
+–
+–
+–
+◾ 
+◾ 
+–
+–
+–
+–
+1100 x 300
+8617.620
+975
+–
+–
+–
+–
+◾ 
+–
+◾ 
+–
+–
+–
+1100 x 400
+8617.630
+975
+–
+◾ 
+–
+–
+◾ 
+–
+–
+◾
+–
+–
+1100 x 500
+8617.640
+975
+8
+10
+11
+9
+ Cage nut
+Thread
+Model No.
+Catalogue 36, page
+M5
+4166.500
+1002
+M6
+4164.500
+1002
+M8
+4165.500
+1002
+12
+
+
+=== PDF PAGE 25 ===
+Rittal VX SE
+25
+﻿
+Accessories
+Further technical information can be found on the Internet.
+LED system light
+ LED system light1)
+Lumen lm
+Version
+Model No.
+Catalogue 36, page
+900
+without socket
+2500.200
+1015
+900
+without socket, 24 V (DC)
+2500.220
+1016
+1200
+with motion detector
+2500.300
+1014
+1200
+with motion detector, 24 V (DC)
+2500.320
+1015
+1) Connection accessories, see Catalogue 36, page 1023
+Socket box
+ Socket box for LED system light1)
+Socket
+UL
+Model No.
+Catalogue 36, page
+D, earthing-pin
+–
+2500.710
+1022
+GB
+–
+2500.711
+1022
+F/B
+–
+2500.712
+1022
+CH
+–
+2500.713
+1022
+US
+◾
+2500.714
+1022
+CN
+–
+2500.715
+1022
+1) Connection accessories, see Catalogue 36, page 1023
+Spacers
+Catalogue 36, page 953
+Swing frame, large
+Catalogue 36, page 1077
+Swing frame, small
+Catalogue 36, page 1075
+Levelling feet
+Catalogue 36, page 892
+Climate control
+Catalogue 36, from page 449
+RiLine busbar systems
+Catalogue 36, from page 281
+
+
+=== PDF PAGE 26 ===
+26
+Rittal VX SE
+VX SE free-standing enclosure systems can be machined directly at the Rittal factory.
+Use your own engineering data and order the enclosures with cut-outs e.g. for cooling units, fan-and-filter units 
+or gland plates. In this way, you can boost the efficiency of your own manufacturing process.
+Flexible 
+manufacturing
+
+
+=== PDF PAGE 27 ===
+Rittal VX SE
+27
+The VX SE free-standing enclosure system is versatile, just like our clients. For your projects in different sectors, take 
+advantage of all the benefits of the VX SE such as high protection categories, a wide range of sizes from 300 mm 
+depth to 1800 mm width, different material options, simple and complete engineering and a comprehensive range 
+of accessories.
+Versatile 
+solutions
+Machine and plant engineering
+With its high level of torsional rigidity, the VX SE is 
+­particularly well-suited to cope with dynamic loads and 
+stresses when used with mobile lifting and ­operating 
+equipment in a production plant or warehouse.
+Food and beverage industry
+To meet the exacting standards of the hygiene sector. 
+Smooth stainless steel material (brushed, grain size 
+400) prevents bacteria from accumulating in surface 
+recesses. The high protection category of up to IP 66/
+NEMA 4X allows cleaning with high pressure water jets.
+Pharmaceuticals
+VX SE, stainless steel – Ideal for use in the pharma­
+ceutical industry. Because there are no gaps between 
+the sides, roof and frame, the build-up of dirt deposits 
+is prevented. Smooth surfaces allow easy cleaning.
+Building services (heating, climate control, 
+­ventilation)
+With depths of 300 mm, the VX SE is the tailor-made 
+solution where space is limited. Accessories such as 
+the 180° hinge and the door stay make it easy to keep 
+escape routes clear.
+
+
+=== PDF PAGE 28 ===
+	
+◾Enclosures
+	
+◾Power Distribution
+	
+◾Climate Control
+	
+◾IT Infrastructure
+	
+◾Software & Services
+www.rittal.com/contact
+You can find the contact details of all 
+Rittal companies throughout the world here.
+XWW00225EN2308

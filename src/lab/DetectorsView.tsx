@@ -1,3 +1,6 @@
+import {FileText as EquipmentFileIcon} from 'lucide-react';
+import {ProbeIcon} from './ToolbarIcons';
+import {instrumentSample} from './temperature/instrument';
 import {useCallback,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {ArrowLeft,ArrowRight,BookOpen,Cable,Check,ChevronDown,ChevronRight,Download,ExternalLink,Hand,MousePointer2,Trash2,Unplug,Eraser} from 'lucide-react';
 import {PanStage} from './PanStage';
@@ -28,8 +31,9 @@ export default function DetectorsView(){
   const [settings,setSettings]=useState<Settings>(defaultSettings),[records,setRecords]=useState<DetRecord[]>([]);
   const [ready,setReady]=useState(false),[saveNote,setSaveNote]=useState(''),[tool,setTool]=useState<Tool>('select'),[selected,setSelected]=useState<Equipment|null>(null),[notice,setNotice]=useState(''),[wireFrom,setWireFrom]=useState<Terminal|null>(null);
   const narrow=()=>typeof matchMedia==='function'&&matchMedia('(max-width:800px)').matches;
-  const [open,setOpen]=useState<Record<CardKey,boolean>>(()=>({guide:!!lesson,meter:!narrow(),log:!narrow(),chart:false,wires:false,sheets:false})),[tab,setTab]=useState<'simulada'|'real'>('simulada');
+  const [open,setOpen]=useState<Record<CardKey,boolean>>(()=>({guide:!!lesson,meter:!narrow(),log:false,chart:false,wires:false,sheets:false})),[tab,setTab]=useState<'simulada'|'real'>('simulada');
   const [chartSeries,setChartSeries]=useState(''),[chartRef,setChartRef]=useState<'0v'|'plus'>('0v');
+  const [readoutState,setReadoutState]=useState<string|null>(null),[captureOpen,setCaptureOpen]=useState(false),[entry,setEntry]=useState(''),[entryError,setEntryError]=useState('');
   const [real,setReal]=useState({model:'generic' as Settings['model'],kind:'inductive' as Kind,output:'pnp' as Output,object:'metal' as Material,detected:'yes',ref:'0v' as '0v'|'plus',value:'',error:''});
   const [progress,setProgress]=useState<DetProgress>(newDetProgress),[feedback,setFeedback]=useState(''),[passed,setPassed]=useState(false),[answer,setAnswer]=useState('');
   const blocked=useRef(false),progressBlocked=useRef(false),latest=useRef({settings,records,ready}),refs=useRef<Partial<Record<Equipment,SVGGElement|null>>>({}),wrap=useRef<HTMLDivElement>(null);
@@ -48,7 +52,7 @@ export default function DetectorsView(){
     try{localStorage.setItem(storageKey,serializeBench(s,r));setSaveNote('');}catch{setSaveNote('No se pudo guardar en este navegador. Descarga tus datos en CSV antes de salir.');}
   },[storageKey]);
   useEffect(()=>{if(!ready)return;const timer=setTimeout(save,300);return()=>clearTimeout(timer);},[settings,records,ready,save]);
-  useEffect(()=>()=>save(),[save]);
+  useEffect(()=>{window.addEventListener('pagehide',save);return()=>{window.removeEventListener('pagehide',save);save();};},[save]);
   useEffect(()=>{if(!notice)return;const id=setTimeout(()=>setNotice(''),5000);return()=>clearTimeout(id);},[notice]);
 
   const info=useMemo(()=>effectiveSpec(settings),[settings]),spec=info.spec;
@@ -88,11 +92,13 @@ export default function DetectorsView(){
   },[change]);
 
   /* Registro de una lectura de la salida con sentido físico. */
-  const why=reading.state==='off'?'Enciende el multímetro con la función V.':!spec?(info.pending||'El detector no tiene datos.'):!sol.powered?(sol.short?'Hay un cortocircuito en la fuente.':!settings.supplyOn?'Enciende la fuente (pulsa la fuente).':'Alimenta el detector: +V a +24 V y 0 V a 0 V, con la polaridad correcta.'):!reading.out?'Mide la salida: una punta en OUT y la otra en 0 V o en +V.':'';
-  const record=()=>{
+  const why=readoutState?`Suelta ${readoutState} para registrar una lectura directa.`:reading.state==='off'?'Enciende el multímetro con la función V.':!spec?(info.pending||'El detector no tiene datos.'):!sol.powered?(sol.short?'Hay un cortocircuito en la fuente.':!settings.supplyOn?'Enciende la fuente (pulsa la fuente).':'Alimenta el detector: +V a +24 V y 0 V a 0 V, con la polaridad correcta.'):!reading.out?'Mide la salida: una punta en OUT y la otra en 0 V o en +V.':'';
+  const record=()=>{setCaptureOpen(true);setEntry('');setEntryError('');setTab('simulada');setOpen(o=>({...o,log:true}));};
+  const capture=()=>{
     if(why||!spec||!reading.out||reading.value===null)return;
-    const item:DetRecord={id:newId(),source:'simulada',model:settings.model,kind:spec.kind,output:spec.output,object:settings.object,detected:sol.active,ref:reading.out.ref,value:Number(reading.value.toFixed(3)),at:Date.now()};
-    setRecords(list=>addRecord(list,item));setTab('simulada');
+    const typed=parseNumber(entry),sample=instrumentSample(reading.value,'V');if(typed===null||Math.abs(typed-sample.value)>sample.step*.49+1e-9){setEntryError('Transcribe la lectura de la pantalla, con su signo y decimal.');return;}
+    const item:DetRecord={id:newId(),source:'simulada',model:settings.model,kind:spec.kind,output:spec.output,object:settings.object,detected:sol.active,ref:reading.out.ref,value:sample.value,at:Date.now()};
+    setRecords(list=>addRecord(list,item));setTab('simulada');setCaptureOpen(false);
     setNotice(`Registrado: ${seriesName(item)} · ${MATERIAL_NAMES[item.object]} → ${formatVolts(item.value)}`);
   };
   const addReal=()=>{
@@ -125,13 +131,13 @@ export default function DetectorsView(){
     {id:'wire',label:'Cable',shortcut:'C',icon:<Cable size={20}/>,pressed:tool==='wire',onClick:()=>pickTool('wire')},
     {id:'unwire',label:'Quitar todos los cables',shortcut:'X',icon:<Eraser size={20}/>,disabled:!settings.wires.length,onClick:()=>{change({wires:[]});pickTool('select');}},
     'separator',
-    {id:'red',label:'Punta roja',shortcut:'R',icon:<span className="temp-dot red"/>,pressed:tool==='red',onClick:()=>pickTool('red')},
-    {id:'black',label:'Punta negra',shortcut:'N',icon:<span className="temp-dot black"/>,pressed:tool==='black',onClick:()=>pickTool('black')},
+    {id:'red',label:'Punta roja',shortcut:'R',icon:<ProbeIcon color="red"/>,pressed:tool==='red',onClick:()=>pickTool('red')},
+    {id:'black',label:'Punta negra',shortcut:'N',icon:<ProbeIcon color="black"/>,pressed:tool==='black',onClick:()=>pickTool('black')},
     {id:'unplug',label:'Quitar las puntas',shortcut:'Q',icon:<Unplug size={20}/>,disabled:!settings.red&&!settings.black,onClick:()=>{change({red:null,black:null});pickTool('select');}},
     'separator',
-    {id:'sheets',label:'Fichas de los equipos',shortcut:'F',icon:<BookOpen size={20}/>,pressed:!!sheet,onClick:()=>setSheet(sheet?null:{focus:null})},
+    {id:'sheets',label:'Fichas de los equipos',shortcut:'F',icon:<EquipmentFileIcon size={20}/>,pressed:!!sheet,onClick:()=>setSheet(sheet?null:{focus:null})},
   ];
-  const hint=tool==='wire'?(wireFrom?`Pulsa el segundo borne para unirlo con «${terminalLabel(wireFrom)}».`:'Pulsa un borne y luego otro para unirlos con un cable. Repetir un cable lo quita.'):tool==='red'?'Pulsa el borne donde va la punta roja.':tool==='black'?'Pulsa el borne donde va la punta negra.':tool==='pan'?'Arrastra para mover la vista; Ctrl y rueda para acercar.':'Pulsa un equipo para editarlo: fuente, detector u objeto.';
+  const hint=tool==='wire'?(wireFrom?`Pulsa el segundo borne para unirlo con «${terminalLabel(wireFrom)}».`:'Pulsa un borne y luego otro para unirlos con un cable. Repetir un cable lo quita.'):tool==='red'?'Pulsa el borne donde va la punta roja.':tool==='black'?'Pulsa el borne donde va la punta negra.':tool==='pan'?'Arrastra para mover la vista; Ctrl y rueda para acercar.':'Arrastra de un borne a otro para cablear. Mueve el objeto y lleva las puntas al montaje.';
   const shown=records.filter(r=>r.source===tab);
   const seriesList=[...new Map(records.map(r=>[seriesKey(r),seriesName(r)])).entries()];
   const activeSeries=seriesList.some(([k])=>k===chartSeries)?chartSeries:seriesList[0]?.[0]??'';
@@ -140,7 +146,7 @@ export default function DetectorsView(){
 
   return <section ref={wrap} className={`lab-canvas-workspace tool-temperature tool-detectors ${lesson?'has-guide':''}`} data-tool={tool} data-detectors-ready={ready} aria-label="Banco de detectores">
     <PanStage width={WORLD.w} height={WORLD.h} label="Banco de detectores" fitLabel="Ajustar el banco" focus={()=>innerWidth<700?{x:30,y:60,w:720,h:560}:null} onBackground={()=>{setSelected(null);setWireFrom(null);}}>
-      <BenchScene settings={settings} spec={spec} pending={info.pending} sol={sol} reading={reading} tool={tool} wireFrom={wireFrom} selected={selected} onSelect={id=>setSelected(prev=>prev===id?null:id)} onTerminal={onTerminal} refs={refs}/>
+      <BenchScene settings={settings} spec={spec} pending={info.pending} sol={sol} reading={reading} tool={tool} wireFrom={wireFrom} selected={selected} onSelect={id=>setSelected(prev=>prev===id?null:id)} onTerminal={onTerminal} refs={refs} onChange={change} onRecord={record} onLog={()=>toggle('log')} recordReady={!why} onReadoutState={setReadoutState}/>
     </PanStage>
 
     {lesson?<div className="temp-left"><Card className="temp-guide" title="Guía de la práctica" summary={<span className="lab-count">{progress.completed.length}/{lesson.steps.length}</span>} open={open.guide} onToggle={()=>toggle('guide')}>
@@ -159,17 +165,9 @@ export default function DetectorsView(){
     </Card></div>:null}
 
     <div className="temp-right">
-      <Card className="temp-meter-card" title="Multímetro" summary={<span className="lab-big temp-reading">{displayText(reading)||'apagado'}</span>} open={open.meter} onToggle={()=>toggle('meter')}>
-        <div className="temp-modes det-modes" role="group" aria-label="Función del multímetro">{([['off','OFF','Apagado'],['V','V','Voltios continuos']] as const).map(([id,label,name])=><button key={id} type="button" title={name} aria-pressed={settings.mode===id} onClick={()=>change({mode:id})}>{label}</button>)}</div>
-        <label className="temp-select">Punta roja<select aria-label="Borne de la punta roja" value={settings.red??''} onChange={e=>change({red:(e.target.value||null) as Terminal|null})}>{terminalOptions}</select></label>
-        <label className="temp-select">Punta negra<select aria-label="Borne de la punta negra" value={settings.black??''} onChange={e=>change({black:(e.target.value||null) as Terminal|null})}>{terminalOptions}</select></label>
-        <p className="temp-note" aria-live="polite">{reading.note}</p>
-        <p className="det-status" role="status">{status}{spec?` · ${spec.label}`:''}</p>
-        {sol.warnings.map(w=><p key={w} className="lab-field-error" role="alert">{w}</p>)}
-        <button type="button" className="lab-apply" disabled={!!why} onClick={record}><Check size={15}/>Registrar punto</button>
-        {why?<small className="temp-why">{why}</small>:<small className="temp-why ok">Lectura lista: {MATERIAL_NAMES[settings.object]}, {sol.active?'detectado':'sin detección'}.</small>}
-      </Card>
+      <div className="lab-float detector-bench-status"><p role="status">{status}</p>{sol.warnings.map(w=><p key={w} role="alert">{w}</p>)}</div>
       <Card className="temp-log-card" title="Registro" summary={<span className="lab-count">{shown.length}</span>} open={open.log} onToggle={()=>toggle('log')}>
+        {captureOpen&&tab==='simulada'?<form className="notebook-entry" onSubmit={e=>{e.preventDefault();capture();}}><strong>Anota la salida del detector</strong><label>Lectura del Fluke (V)<input aria-label="Transcribir lectura del detector" inputMode="decimal" value={entry} onChange={e=>{setEntry(e.target.value);setEntryError('');}}/></label><button type="submit">Guardar medición del detector</button><small role="status">{why||entryError||'Lee la pantalla y transcribe el valor medido.'}</small></form>:null}
         <div className="temp-tabs" role="tablist" aria-label="Origen de los datos">{(['simulada','real'] as const).map(k=><button key={k} role="tab" type="button" aria-selected={tab===k} onClick={()=>setTab(k)}>{k==='simulada'?'Preparación':'En clase'}</button>)}</div>
         {tab==='real'?<form className="temp-real" onSubmit={e=>{e.preventDefault();addReal();}}>
           <small>Escribe las mediciones que tomaste con tus equipos. Se guardan aparte de las simuladas.</small>

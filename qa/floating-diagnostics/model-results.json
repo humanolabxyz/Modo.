@@ -1,0 +1,308 @@
+{
+  "checks": [
+    "Los ocho grupos del puente H detenido se identifican como estados abiertos, sin inventar un cable faltante",
+    "Motor, patas E/B/C y orificios coinciden con las redes calculadas",
+    "Activar un sentido proporciona referencia al motor",
+    "Una resistencia aislada identifica sus dos patas y se distingue de un mando abierto",
+    "Conectar alimentación y retorno elimina el diagnóstico"
+  ],
+  "rest": [
+    {
+      "id": "upper:23",
+      "title": "Grupo sin referencia · c9",
+      "locations": [
+        {
+          "componentId": "bj-q2",
+          "label": "2N2222 · NPN",
+          "hole": "c:9",
+          "pin": "E"
+        },
+        {
+          "componentId": "bj-q3",
+          "label": "2N2222 · NPN",
+          "hole": "h:11",
+          "pin": "C"
+        },
+        {
+          "componentId": "bj-m",
+          "label": "Motor",
+          "hole": "c:23",
+          "pin": "borne 1"
+        }
+      ],
+      "holeIds": [
+        "c:9",
+        "h:11",
+        "c:23",
+        "a:9",
+        "f:11",
+        "g:11",
+        "a:23"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay transistores conectados a él que están en corte. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    },
+    {
+      "id": "upper:27",
+      "title": "Grupo sin referencia · c14",
+      "locations": [
+        {
+          "componentId": "bj-q1",
+          "label": "2N2222 · NPN",
+          "hole": "c:14",
+          "pin": "E"
+        },
+        {
+          "componentId": "bj-q4",
+          "label": "2N2222 · NPN",
+          "hole": "h:16",
+          "pin": "C"
+        },
+        {
+          "componentId": "bj-m",
+          "label": "Motor",
+          "hole": "c:27",
+          "pin": "borne 2"
+        }
+      ],
+      "holeIds": [
+        "c:14",
+        "h:16",
+        "c:27",
+        "a:14",
+        "f:16",
+        "g:16",
+        "a:27"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay transistores conectados a él que están en corte. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    },
+    {
+      "id": "lower:10",
+      "title": "Grupo sin referencia · h10",
+      "locations": [
+        {
+          "componentId": "bj-q3",
+          "label": "2N2222 · NPN",
+          "hole": "h:10",
+          "pin": "B"
+        },
+        {
+          "componentId": "bj-r2",
+          "label": "Resistencia",
+          "hole": "g:7",
+          "pin": "pata 2"
+        }
+      ],
+      "holeIds": [
+        "h:10",
+        "g:7",
+        "j:7",
+        "j:10"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay transistores conectados a él que están en corte. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    },
+    {
+      "id": "lower:15",
+      "title": "Grupo sin referencia · h15",
+      "locations": [
+        {
+          "componentId": "bj-q4",
+          "label": "2N2222 · NPN",
+          "hole": "h:15",
+          "pin": "B"
+        },
+        {
+          "componentId": "bj-r4",
+          "label": "Resistencia",
+          "hole": "g:15",
+          "pin": "pata 1"
+        }
+      ],
+      "holeIds": [
+        "h:15",
+        "g:15"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay transistores conectados a él que están en corte. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    },
+    {
+      "id": "upper:10",
+      "title": "Grupo sin referencia · c10",
+      "locations": [
+        {
+          "componentId": "bj-q2",
+          "label": "2N2222 · NPN",
+          "hole": "c:10",
+          "pin": "B"
+        },
+        {
+          "componentId": "bj-r1",
+          "label": "Resistencia",
+          "hole": "b:7",
+          "pin": "pata 2"
+        }
+      ],
+      "holeIds": [
+        "c:10",
+        "b:7",
+        "a:7",
+        "a:10"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay transistores conectados a él que están en corte. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    },
+    {
+      "id": "upper:15",
+      "title": "Grupo sin referencia · c15",
+      "locations": [
+        {
+          "componentId": "bj-q1",
+          "label": "2N2222 · NPN",
+          "hole": "c:15",
+          "pin": "B"
+        },
+        {
+          "componentId": "bj-r3",
+          "label": "Resistencia",
+          "hole": "b:15",
+          "pin": "pata 1"
+        }
+      ],
+      "holeIds": [
+        "c:15",
+        "b:15"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay transistores conectados a él que están en corte. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    },
+    {
+      "id": "upper:19",
+      "title": "Grupo sin referencia · g4",
+      "locations": [
+        {
+          "componentId": "bj-r2",
+          "label": "Resistencia",
+          "hole": "g:4",
+          "pin": "pata 1"
+        },
+        {
+          "componentId": "bj-r3",
+          "label": "Resistencia",
+          "hole": "b:19",
+          "pin": "pata 2"
+        },
+        {
+          "componentId": "bj-s2",
+          "label": "Pulsador",
+          "hole": "f:4",
+          "pin": "pata 3"
+        },
+        {
+          "componentId": "bj-s2",
+          "label": "Pulsador",
+          "hole": "i:4",
+          "pin": "pata 4"
+        }
+      ],
+      "holeIds": [
+        "g:4",
+        "b:19",
+        "f:4",
+        "i:4",
+        "j:4",
+        "a:19"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay pulsadores o interruptores conectados a él que están abiertos. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    },
+    {
+      "id": "lower:19",
+      "title": "Grupo sin referencia · b4",
+      "locations": [
+        {
+          "componentId": "bj-r1",
+          "label": "Resistencia",
+          "hole": "b:4",
+          "pin": "pata 1"
+        },
+        {
+          "componentId": "bj-r4",
+          "label": "Resistencia",
+          "hole": "g:19",
+          "pin": "pata 2"
+        },
+        {
+          "componentId": "bj-s1",
+          "label": "Pulsador",
+          "hole": "a:4",
+          "pin": "pata 3"
+        },
+        {
+          "componentId": "bj-s1",
+          "label": "Pulsador",
+          "hole": "d:4",
+          "pin": "pata 4"
+        }
+      ],
+      "holeIds": [
+        "b:4",
+        "g:19",
+        "a:4",
+        "d:4",
+        "e:4",
+        "j:19"
+      ],
+      "switchingState": true,
+      "cause": "Este grupo no tiene un camino conductor hacia una referencia de la fuente. Hay pulsadores o interruptores conectados a él que están abiertos. En una salida de puente H detenida puede ser un estado esperado; este aviso por sí solo no demuestra un cable faltante.",
+      "review": "Comprueba las patas indicadas y el mando que debe activar esta rama. En un puente H prueba un sentido a la vez y observa si el grupo adquiere referencia. No añadas un puente al negativo solo para quitar el aviso."
+    }
+  ],
+  "activeMotorAmps": 0.21344233733196663,
+  "isolated": [
+    {
+      "id": "upper:27",
+      "title": "Grupo sin referencia · a27",
+      "locations": [
+        {
+          "componentId": "isolated-r",
+          "label": "Resistencia",
+          "hole": "a:27",
+          "pin": "pata 1"
+        }
+      ],
+      "holeIds": [
+        "a:27"
+      ],
+      "switchingState": false,
+      "cause": "El cálculo no encuentra un camino conductor entre este grupo y una referencia de la fuente. Su tensión respecto al negativo no queda determinada.",
+      "review": "Con la fuente detenida, sigue los puentes de los puntos indicados y comprueba alimentación, retorno e interruptores según tu esquema. Revisa si el recorrido cruza el corte de los rieles entre 15 y 16."
+    },
+    {
+      "id": "upper:29",
+      "title": "Grupo sin referencia · a29",
+      "locations": [
+        {
+          "componentId": "isolated-r",
+          "label": "Resistencia",
+          "hole": "a:29",
+          "pin": "pata 2"
+        }
+      ],
+      "holeIds": [
+        "a:29"
+      ],
+      "switchingState": false,
+      "cause": "El cálculo no encuentra un camino conductor entre este grupo y una referencia de la fuente. Su tensión respecto al negativo no queda determinada.",
+      "review": "Con la fuente detenida, sigue los puentes de los puntos indicados y comprueba alimentación, retorno e interruptores según tu esquema. Revisa si el recorrido cruza el corte de los rieles entre 15 y 16."
+    }
+  ]
+}

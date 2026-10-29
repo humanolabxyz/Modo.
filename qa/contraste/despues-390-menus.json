@@ -1,0 +1,66 @@
+[
+  {
+    "url": "/",
+    "found": []
+  },
+  {
+    "url": "/?view=simulator",
+    "found": []
+  },
+  {
+    "url": "/estudio",
+    "found": []
+  },
+  {
+    "url": "/estudio?curso=s2-4&clase=ri-teoria",
+    "found": []
+  },
+  {
+    "url": "/estudio?curso=s2-5&clase=mtfm01-repaso-u2",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=schematic",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=plc",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=hmi",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=process",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=breadboard",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=temperature",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=detectors",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=equipment",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=geogebra",
+    "found": []
+  },
+  {
+    "url": "/comunidad/",
+    "found": []
+  },
+  {
+    "url": "/legal/",
+    "found": []
+  }
+]

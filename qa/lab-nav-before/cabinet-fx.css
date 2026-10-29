@@ -1,0 +1,82 @@
+/* Taller de tableros · iluminación, animaciones físicas e iconos.
+   Todo el movimiento va por CSS (sin estado de React por fotograma) y se apaga con prefers-reduced-motion. */
+
+/* ── Giro de rotores: arranque con inercia, régimen y frenado por inercia ── */
+@keyframes fx-turn{to{transform:rotate(360deg)}}
+@keyframes fx-turn-up{from{transform:rotate(0)}to{transform:rotate(560deg)}}
+@keyframes fx-turn-down{from{transform:rotate(0)}to{transform:rotate(1150deg)}}
+.fx-rotor{position:absolute;overflow:visible;pointer-events:none;will-change:transform}
+.fx-rotor.is-up{animation:fx-turn-up 1.25s cubic-bezier(.45,0,.95,.7) both}
+.fx-rotor.is-run{animation:fx-turn var(--fx-spin,.34s) linear infinite}
+.fx-rotor.is-run.is-reverse{animation-direction:reverse}
+.fx-rotor.is-down{animation:fx-turn-down 2.4s cubic-bezier(.15,.55,.35,1) both}
+.fx-rotor.is-down.is-reverse{animation-direction:reverse}
+.fx-blur{opacity:0;transition:opacity .7s ease}
+.is-run>.fx-blur,.is-up>.fx-blur{opacity:1}
+.fx-spokes{transition:opacity .6s ease}
+.is-run>.fx-spokes{opacity:.38}
+
+/* ── Luz: pilotos, LEDs y reflejos que "encienden" con retardo de filamento ── */
+.fx-halo{opacity:0;transition:opacity .55s cubic-bezier(.3,0,.5,1);pointer-events:none}
+.is-lit>.fx-halo,.fx-halo.is-lit{opacity:1;transition-duration:.22s}
+.fx-led{fill:var(--led-off,#4a5852);transition:fill .3s ease}
+.fx-led.is-lit{fill:var(--led-on,#6dff9b)}
+
+/* ── Mecánica: pulsadores, armadura del contactor, palancas y selector ── */
+.fx-cap{transition:transform .09s cubic-bezier(.3,0,.2,1)}
+.fx-cap.is-pressed{transform:translateY(3.2px)}
+.fx-armature{transition:transform .07s cubic-bezier(.3,0,.2,1),fill .2s}
+.fx-armature.is-on{transform:translateY(3px)}
+.fx-lever{transition:transform .26s cubic-bezier(.3,1.5,.5,1)}
+.fx-knob{transition:transform .32s cubic-bezier(.3,1.55,.45,1)}
+.fx-cartridge{transition:transform .38s cubic-bezier(.3,1.35,.5,1)}
+.fx-window{transition:fill .2s ease}
+.fx-coast{transition:opacity .35s ease}
+
+/* ── Corriente en los cables y agua en la tubería (el desplazamiento lo mueve CabinetFx a ~11 Hz) ── */
+.cab-cable-glow{fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:.0;animation:fx-cable-in .4s ease forwards}
+@keyframes fx-cable-in{to{opacity:.3}}
+.cab-cable-flow{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1.1 23;opacity:.9}
+.fx-water{fill:none;stroke:#8aeaff;stroke-width:5;stroke-linecap:round;stroke-dasharray:16 14}
+
+/* Capa de efectos: composición propia, así el movimiento no obliga a repintar el tablero */
+.cab-fx-layer{position:absolute;left:0;top:0;pointer-events:none}
+.cab-fx-flow{position:absolute;left:0;top:0;pointer-events:none;will-change:transform;overflow:visible}
+
+/* ── Escena ── */
+.cabinet-workspace .eq-canvas{text-rendering:geometricPrecision}
+.cabinet-workspace .eq-port-dot{fill:url(#cab-brass);stroke:#4d3a1b;stroke-width:1.1}
+.cabinet-workspace .eq-port.connected .eq-port-dot{fill:url(#cab-brass-hot)}
+.cabinet-workspace .eq-port:hover .eq-port-dot{fill:#ffe9a8;stroke:#a56a14;stroke-width:2;filter:drop-shadow(0 0 3px #ffd36a)}
+.cabinet-workspace .eq-port.pending .eq-port-dot{fill:#ffd45e;stroke:#a8680f;stroke-width:2.6;}
+.cabinet-workspace .eq-part.selected .eq-selection{stroke:#38d4ff;stroke-width:2;stroke-dasharray:6 4;fill:#38d4ff14}
+.cab-slot>rect{fill:#e4f2f0;stroke:#58a6a0}
+
+/* ── Barra de acciones: iconos con luz propia ── */
+.cab-ico{display:block;flex:none;overflow:visible;transition:filter .25s ease,transform .25s cubic-bezier(.3,1.4,.5,1)}
+.cab-ico-defs{position:absolute;width:0;height:0;overflow:hidden}
+.lab-page .cab-actionbar.lab-dock{background:linear-gradient(180deg,#ffffffee,#eef5f2ee);border-color:#cfe0da;box-shadow:0 10px 30px #12332a2b,0 1px 0 #fff inset;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.lab-page .cab-actionbar.lab-dock button{color:#3d5a52;transition:background .2s,box-shadow .25s,color .2s,transform .15s}
+.lab-page .cab-actionbar.lab-dock button .cab-ico{color:#2c8c78;filter:drop-shadow(0 1px 1.5px #1f8f7a40)}
+.lab-page .cab-actionbar.lab-dock button:not(:disabled):hover{background:linear-gradient(180deg,#f4fffb,#e3f5ef);box-shadow:0 0 0 1px #9fd8c8 inset,0 4px 14px #35c2a42e;transform:translateY(-1px)}
+.lab-page .cab-actionbar.lab-dock button:not(:disabled):hover .cab-ico{filter:drop-shadow(0 0 5px #39e0b9aa);transform:scale(1.1)}
+.lab-page .cab-actionbar.lab-dock button:not(:disabled):active{transform:translateY(1px) scale(.97)}
+.lab-page .cab-actionbar.lab-dock button[aria-pressed=true]{background:linear-gradient(180deg,#e9fff7,#d2f3e8)!important;border-color:#7fcdb6!important;color:#12614d!important;box-shadow:0 0 0 1px #b9eadb inset,0 0 16px #3fd9b238}
+.lab-page .cab-actionbar.lab-dock button[aria-pressed=true] .cab-ico{color:#0f9d7e;filter:drop-shadow(0 0 6px #2fe0b8cc)}
+.lab-page .cabinet-workspace .cab-actionbar.lab-dock .cab-actuate,.lab-page .cab-actionbar.lab-dock .cab-actuate{background:linear-gradient(180deg,#26413a,#10211c)!important;color:#e9fff6!important;border-color:#37695b!important;box-shadow:0 0 0 1px #4cd1a826 inset,0 6px 18px #0f3a2f55}
+.lab-page .cab-actionbar.lab-dock .cab-actuate .cab-ico{color:#6dffbf;filter:drop-shadow(0 0 6px #4dffb3cc)}
+.lab-page .cab-actionbar.lab-dock .cab-actuate.is-running{background:linear-gradient(180deg,#4a2a24,#241210)!important;border-color:#8c4a3c!important;box-shadow:0 0 0 1px #ff9c7a33 inset,0 6px 20px #ff6a3a47}
+.lab-page .cab-actionbar.lab-dock .cab-actuate.is-running .cab-ico{color:#ffb08c;filter:drop-shadow(0 0 6px #ff8a5ccc)}
+.cab-actionbar button:disabled{opacity:.4}
+.cab-actionbar button:disabled .cab-ico{filter:grayscale(1)}
+.lab-page .cab-stage-actions button{display:inline-flex;align-items:center;gap:5px;transition:background .2s,box-shadow .25s,border-color .2s}
+.lab-page .cab-stage-actions button .cab-ico{color:#3f9d8b}
+.lab-page .cab-stage-actions button[aria-pressed=true]{background:linear-gradient(180deg,#eafff8,#d4f4ea);border-color:#79cbb3;color:#12614d;box-shadow:0 0 12px #3fd9b230}
+.lab-page .cab-stage-actions button[aria-pressed=true] .cab-ico{color:#0f9d7e;filter:drop-shadow(0 0 4px #2fe0b8bb)}
+.lab-page .cab-stage-actions button:not([aria-pressed=true]):hover{border-color:#9fd8c8;box-shadow:0 0 10px #3fd9b224}
+
+@media(prefers-reduced-motion:reduce){
+ .fx-rotor,.fx-rotor.is-up,.fx-rotor.is-run,.fx-rotor.is-down,.cab-cable-glow{animation:none!important}
+ .cab-cable-glow{opacity:.3}.cab-cable-flow{stroke-dasharray:1.1 23}
+ .fx-cap,.fx-armature,.fx-lever,.fx-knob,.fx-cartridge,.fx-halo,.fx-blur,.fx-spokes{transition:none}
+}

@@ -1,0 +1,63 @@
+Guía Práctica de Laboratorio  | 2 |  
+Sensores discretos:  | Sensores  | d | e  | p | roximidad |  
+Integrantes del grupo de trabajo:
+
+
+
+INFORMACI | Ó | N  | GENERAL  | DE LABORATORIOS
+DE LAS EXIGENCIAS DE LABORATORIOS
+
+El Docente |  de laboratorio  | a la v | e | z indicará |  las  | normativas |  de seguridad y las salidas |  de emergencia en caso de necesitar evacuar las instalaciones. |  El docente informara el método y valor de la evaluación si esta correspondiera. El uso de cotona es obligatorio y el estudiante que no cumpla con este requisito no podrá realizar la experiencia.
+
+EXPERIENCIA 1
+A.        TITULO | : |  “ | Sensores  | d | e  | p | roximidad | : Funcionamiento y conexión al PLC | ”
+B.       OBJETIVOS:  | Al término de la sesión el alumno estará en condiciones de:
+Reconocer detectores de presencia, tipos y principios de funcionamiento. 
+Instalar |   | detectores de presencia |  en sistemas de control automáticos. 
+
+C. | ELE | M | ENTOS A E | M | PLEAR
+Detectores de presencia tipo inductivos, capacitivos y fotoeléctricos. 
+Maqueta PLC Delta. 
+Fuente de alimentación o de poder. 
+Multímetro digital.
+Cotona o delantal | . 
+
+D. | DESARROLLO  | PRÁCTICO
+Experiencia  | 1
+El equipo de trabajo deberá  | seleccionar |  los siguientes  | dispositivos |  y desarrollar las actividades que se indican posteriormente | :
+CR30-15DN
+CR30-15DP
+XS118BLPAL2
+BR100-DDT-P
+Con estos dispositivos deberá  | realizar las siguientes actividades,  | de acuerdo con |  las normas de seguridad de INACAP, incluidas en el |  Manual de Operación de Seguridad de Laboratorio INACAP |  y las instrucciones dadas por el docente.
+
+Buscar la siguiente información  | del dispositivo en |  los manuales | . 
+
+Modelo | Fabricante o marca | Forma de conexión (Cantidad de hilos) | Tipo de salida | Alimentación | Distancia de detección | CR30-15DN | CR30-15DP | XS118BLPAL2 | BR100-DDT-P
+
+Buscar y explicar el principio de funcionamiento e indicar tipos de objetos que puede detectar. 
+
+Modelo | Principio de funcionamiento |  y explicación | Objetos que puede detectar | Objetos que no puede detectar | CR30-15DN | CR30-15DP | XS118BLPAL2 | BR100-DDT-P
+
+Comprobar su funcionamiento mediante multímetro digital, medir la salida  | de acuerdo con conexión recomendada por el fabricante |  y  | l | lenar la siguiente tabla. 
+
+Modelo | Objeto | Estado de la salida |  (Alto (24V) o Bajo (0V)) | CR30-15DN | Con objeto.  | Sin objeto.  | CR30-15DP | Con objeto.  | Sin objeto.  | XS118BLPAL2 | BR100-DDT-P | Con objeto.  | Sin objeto. 
+
+A partir de la información del punto anterior, d | eberá graficar el  | comportamiento de la salida |   | para cada dispositivo | . 
+
+Modelo | Gráfico | CR30-15DN | CR30-15DP | XS118BLPAL2 | BR100-DDT-P
+
+Conecte |  el dispositivo asignado por el docente |  al PLC de forma tal que en presencia de un objeto la entrada digital del PLC pueda leer 24V | .  | Haga una  | demostración de funcionamiento al docente |  y  | presente  | el diagrama de conexión |  a continuación | .
+
+Modelo | Diagrama de conexión
+
+
+De acuerdo con |  los  | resultados obtenidos del experimento, deberá comentarlos |  con sus compañeros |  y redactar conclusiones individuales  | (una conclusión  | por cada miembro del grupo de trabajo | ) | . |  
+
+Nombre y apellidos | Conclusiones
+
+
+Entregar este documento con las respuestas.  |  
+
+
+

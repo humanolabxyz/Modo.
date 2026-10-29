@@ -1,0 +1,5327 @@
+
+=== PDF PAGE 1 ===
+Betriebsanleitung
+00809-0105-4007, Rev BF
+Februar 2024
+Rosemount
+™ 3051 Druckmessumformer
+mit 4-20 mA HART® Protokoll
+
+
+=== PDF PAGE 2 ===
+Rosemount™ 3051
+Sicherheitshinweise
+BEACHTEN
+Lesen Sie diese Betriebsanleitung, bevor Sie mit dem Produkt arbeiten. Bevor Sie das Produkt installieren, in Betrieb
+nehmen oder warten, sollten Sie über ein entsprechendes Produktwissen verfügen, um somit eine optimale
+Produktleistung zu erzielen sowie die Sicherheit von Personen und Anlagen zu gewährleisten.
+ WARNUNG
+Explosionen
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+Bei einer Installation mit Ex-Schutz/druckfester Kapselung die Messumformer-Gehäusedeckel nicht entfernen,
+wenn die Auswerteelektronik unter Spannung steht.
+Die Installation des Geräts in explosionsgefährdeten Atmosphären muss gemäß den lokalen, nationalen und
+internationalen Normen, Vorschriften und Empfehlungen erfolgen. Den Abschnitt Produktzertifizierungen in der
+Rosemount 3051 Kurzanleitung für alle Einschränkungen im Zusammenhang mit einer sicheren Installation lesen.
+Vor Anschluss eines Handterminals in einer explosionsgefährdeten Umgebung sicherstellen, dass die Geräte in
+Übereinstimmung mit den Vorschriften für eigensichere oder nicht funkenerzeugende Feldverdrahtung installiert
+sind.
+ WARNUNG
+Prozessleckagen
+Prozessleckagen können schwere oder tödliche Verletzungen verursachen.
+Vor Druckbeaufschlagung Prozessanschlüsse installieren und festziehen.
+Nicht versuchen, die Flanschschrauben zu lösen oder zu entfernen, während der Messumformer in Betrieb ist.
+ WARNUNG
+Stromschlag
+Stromschlag kann schwere oder tödliche Verletzungen verursachen.
+Kontakt mit Leitungsadern und Anschlussklemmen meiden. Eine möglicherweise vorhandene Hochspannung an den
+Leitungen kann einen elektrischen Schlag verursachen.
+ WARNUNG
+Physischer Zugriff
+Unbefugtes Personal kann möglicherweise erhebliche Schäden an den Geräten der Endverbraucher verursachen und/
+oder diese falsch konfigurieren. Dies kann vorsätzlich oder unbeabsichtigt geschehen und die Geräte sind
+entsprechend zu schützen.
+Die physische Sicherheit ist ein wichtiger Bestandteil jedes Sicherheitsprogramms und ein grundlegender Bestandteil
+beim Schutz Ihres Systems. Den physischen Zugriff durch unbefugte Personen beschränken, um die Assets der
+Endbenutzer zu schützen. Dies gilt für alle Systeme, die innerhalb der Anlage verwendet werden.
+BEACHTEN
+Austausch von Ausrüstungen
+Austausch-oder Ersatzteile, die nicht durch Emerson zugelassen sind, können die Druckfestigkeit des Messumformers
+reduzieren, sodass das Gerät ein Gefahrenpotenzial darstellt.
+Ausschließlich von Emerson gelieferte oder verkaufte Ersatzteile verwenden.
+2
+
+
+=== PDF PAGE 3 ===
+BEACHTEN
+Falscher Zusammenbau
+Eine unsachgemäße Montage von Ventilblöcken an Anpassungsflanschen kann das Sensormodul beschädigen.
+Für eine sichere Montage des Ventilblocks an einem herkömmlichen Flansch müssen die Schrauben die hintere Ebene
+des Flansches (auch Schraubenloch genannt) durchbrechen, dürfen aber das Gehäuse des Sensormoduls nicht
+berühren.
+Signifikante Änderungen im Mess-/Regelkreis können die HART® Kommunikation beeinträchtigen oder verhindern,
+dass die Alarmwerte erreicht werden. Aus diesem Grund kann Emerson keine absolute Gewähr oder Garantie dafür
+übernehmen, dass der korrekte Fehleralarm (Hoch oder Niedrig) vom Host-System zum Zeitpunkt der Meldung
+erkannt wird.
+BEACHTEN
+Nukleare Anwendungen
+Die in diesem Dokument beschriebenen Produkte sind nicht für nukleare Anwendungen qualifiziert und ausgelegt.
+Werden Produkte oder Hardware, die nicht für den nuklearen Bereich qualifiziert sind, im nuklearen Bereich
+eingesetzt, kann dies zu ungenauen Messungen führen.
+Informationen zu nuklear-qualifizierten Rosemount Produkten erhalten Sie von Emerson Process Management.
+BEACHTEN
+Hardware-Justierungen des Messumformers
+Alle Hardware-Einstellungen des Messumformers bereits vor der Installation in der Werkstatt vornehmen, um zu
+vermeiden, dass die Messumformerelektronik der Betriebsatmosphäre ausgesetzt wird.
+3
+
+
+=== PDF PAGE 4 ===
+4
+
+
+=== PDF PAGE 5 ===
+Inhalt
+Kapitel 1 
+Einführung................................................................................................................................. 7
+1.1 Modellpalette............................................................................................................................... 7
+1.2 Produkt-Recycling/-Entsorgung.................................................................................................7
+Kapitel 2 
+Konfiguration............................................................................................................................ 9
+2.1 Übersicht...................................................................................................................................... 9
+2.2 Sicherheitsmeldungen................................................................................................................9
+2.3 Systembereitschaft......................................................................................................................9
+2.4 Konfigurationshilfsmittel..........................................................................................................11
+2.5 Konfiguration.............................................................................................................................15
+2.6 Anwendungsspezifische Konfiguration..................................................................................22
+2.7 Detaillierte Einrichtung des Messumformers........................................................................30
+2.8 Über Bluetooth
+®-Wireless-Technologie konfigurieren.........................................................34
+2.9 Konfigurieren der Diagnosefunktion des Messumformers.................................................35
+2.10 Durchführen von Messumformertests.................................................................................41
+2.11 Konfigurieren der Burst-Betriebsart.....................................................................................43
+2.12 Herstellen einer Multidrop-Kommunikation....................................................................... 44
+Kapitel 3 
+Hardware-Installation............................................................................................................47
+3.1 Übersicht.................................................................................................................................... 47
+3.2 Sicherheitsmeldungen..............................................................................................................47
+3.3 Besondere Hinweise................................................................................................................. 47
+3.4 Installationsverfahren.............................................................................................................. 49
+Kapitel 4 
+Elektrische Installation.......................................................................................................... 71
+4.1 Übersicht.................................................................................................................................... 71
+4.2 Sicherheitsmeldungen..............................................................................................................71
+4.3 Installieren des LCD-Displays...................................................................................................71
+4.4 Sicherheitsfunktion des Messumformers konfigurieren..................................................... 73
+4.5 Verschieben des Alarmschalters............................................................................................. 74
+4.6 Elektrische Anforderungen...................................................................................................... 75
+Kapitel 5 
+Betrieb und Wartung..............................................................................................................83
+5.1 Übersicht.................................................................................................................................... 83
+5.2 Sicherheitsmeldungen..............................................................................................................83
+5.3 Empfohlene Kalibriervorgänge............................................................................................... 83
+5.4 Kalibrierübersicht......................................................................................................................84
+5.5 Abgleich des Drucksignals....................................................................................................... 88
+5.6 Abgleich des Analogausgangs.................................................................................................92
+Kapitel 6 
+Störungsanalyse und -beseitigung....................................................................................... 95
+6.1 Übersicht.................................................................................................................................... 95
+6.2 Sicherheitsmeldungen..............................................................................................................95
+6.3 Störungsanalyse und -beseitigung für den 4-20 mA-Ausgang........................................... 95
+6.4 Diagnosemeldungen................................................................................................................ 97
+Betriebsanleitung
+Inhalt
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+5
+
+
+=== PDF PAGE 6 ===
+6.5 Messumformer wieder auseinander bauen........................................................................ 103
+6.6 Messumformer wieder zusammenbauen............................................................................105
+Kapitel 7 
+Anforderungen an die sicherheitsgerichtete Systeminstrumentierung (SIS).............. 109
+7.1 Sicherheitszertifizierung des Rosemount 3051 identifizieren...........................................109
+7.2 Installation bei Anwendungen mit sicherheitsgerichteter Systeminstrumentierung
+(SIS).............................................................................................................................................109
+7.3 Konfiguration bei Anwendungen mit sicherheitsgerichteter
+Systeminstrumentierung (SIS)................................................................................................ 110
+7.4 Betrieb und Wartung der sicherheitsgerichteten Systeminstrumentierung (SIS)..........111
+7.5 Prüfung.....................................................................................................................................114
+Anhang A 
+Referenzdaten....................................................................................................................... 115
+A.1 Bestellinformationen, Technische Daten und Zeichnungen.............................................115
+A.2 Produkt-Zulassungen............................................................................................................. 115
+Anhang B 
+Gerätetreiber (DD) Menüstruktur.......................................................................................117
+Anhang C 
+Schnellservicetasten.............................................................................................................127
+Anhang D 
+Bedieninterface (LOI)........................................................................................................... 129
+D.1 Zahlen in das Bedieninterface (LOI) eingeben....................................................................129
+D.2 Text in das Bedieninterface (LOI) eingeben........................................................................130
+Inhalt
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+6
+Rosemount 3051
+
+
+=== PDF PAGE 7 ===
+1 
+Einführung
+1.1 
+Modellpalette
+In dieser Betriebsanleitung werden die folgenden Rosemount Messumformer der Serie
+3051 beschrieben:
+•
+Rosemount 3051C Coplanar™ Druckmessumformer
+— Zur Messung von Differenz- und Überdruck bis 2000 psi (137,9 bar).
+— Zur Messung von Absolutdruck bis 4000 psia (275,8 bar).
+•
+Rosemount 3051T Inline-Druckmessumformer
+— Zur Messung von Absolutdruck bis 20000 psi (1378,95 bar)
+•
+Rosemount 3051L Füllstandsmessumformer für Flüssigkeiten
+— Zur Messung von Füllstand und spezifischer Dichte bis 300 psi (20,7 bar).
+•
+Rosemount 3051CF Durchflussmessgerät
+— Zur Messung von Durchfluss in Leitungsnennweiten von ½ in. (15 mm) bis 96 in.
+(2400 mm).
+Anmerkung
+Für Messumformer mit FOUNDATION™ Feldbus siehe das Protokoll-
+Handbuch für Rosemount 3051 Druckmessumformer mit ™FOUNDATION Feldbus.
+Für Messumformer mit PROFIBUS® PA siehe das Protokoll-
+Handbuch für Rosemount 3051 Druckmessumformer mit ™PROFIBUS PA.
+1.2 
+Produkt-Recycling/-Entsorgung
+Erwägen Sie das Recycling von Geräten. Entsorgen Sie die Verpackung in
+Übereinstimmung mit den örtlichen und nationalen Gesetzen/Vorschriften.
+Betriebsanleitung
+Einführung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+7
+
+
+=== PDF PAGE 8 ===
+Einführung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+8
+Rosemount 3051
+
+
+=== PDF PAGE 9 ===
+2 
+Konfiguration
+2.1 
+Übersicht
+Dieser Abschnitt enthält Informationen zur Inbetriebnahme und zu Arbeiten, die vor der
+Installation vorgenommen werden sollten. Außerdem sind Informationen zu Arbeiten
+enthalten, die nach der Installation vorgenommen werden sollten.
+Dieser Abschnitt enthält auch Anweisungen zur Konfiguration unter Verwendung von
+Kommunikationsgeräten, einschließlich:
+•
+Feldkommunikator, z. B. AMS Trex
+•
+HART®-Host, wie AMS Device Manager
+•
+AMS Device Configurator Bluetooth®-App
+•
+Physische Tasten, wie z. B. die Schnellservice-Tasten oder das Bedieninterface (LOI)
+2.2 
+Sicherheitsmeldungen
+Die in diesem Abschnitt beschriebenen Anleitungen und Verfahren können besondere
+Vorsichtsmaßnahmen erforderlich machen, um die Sicherheit des Bedienpersonals zu
+gewährleisten. Siehe Sicherheitshinweise.
+2.3 
+Systembereitschaft
+Bei Verwendung von HART® basierten Leit- oder Asset-Management-Systemen die
+HART-Fähigkeiten dieser Systeme vor der Inbetriebnahme und Installation des Gerätes
+überprüfen. Nicht alle Systeme können mit Geräten der HART Version 7 kommunizieren.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+9
+
+
+=== PDF PAGE 10 ===
+2.3.1 
+Bestätigung des korrekten Gerätetreibers
+•
+Überprüfen, ob der neueste Gerätetreiber (DD/DTM™) auf den Systemen geladen ist,
+damit eine ordnungsgemäße Kommunikation sichergestellt ist.
+•
+Den neuesten DD von Emerson.com oder FieldCommGroup.org herunterladen
+•
+Im Dropdown-Menü Browse by Member (Nach Mitglieder sortieren) Rosemount
+Business Unit of Emerson (Rosemount Geschäftseinheit von Emerson) auswählen.
+•
+Das gewünschte Produkt auswählen.
+•
+Den korrekten DD anhand der Geräteversionsnummern suchen.
+Tabelle 2-1: Geräteversionen und -dateien des Rosemount 3051
+Freigabeda‐
+tum
+Gerätekennzeichnung
+Gerätetreiberkennzeich‐
+nung
+Anweisun‐
+gen lesen
+Funktionalität
+überprüfen
+NAMUR-
+Software‐
+version(1)
+HART® Hard‐
+wareversion(1)
+HART Soft‐
+wareversi‐
+on(2)
+HART Uni‐
+versalversi‐
+on
+Geräteversi‐
+on(3)
+Betriebsan‐
+leitungs-Do‐
+kument‐
+nummer
+Beschreibung
+der Änderung
+März 2023
+2.0.xx
+2.0.xx
+01
+7
+11
+00809-0100-
+4007
+(4)
+April 2012
+1.0xx
+1.0xx
+01
+7
+10
+00809-0100-
+4007
+(5)
+Januar 1998
+–
+–
+178
+5
+3
+00809-0100-
+4001
+–
+(1) Die NAMUR-Version ist auf dem Typenschild des Geräts angegeben. Unterschiede bei Änderungen der Stufe
+3, die oben als xx angegeben sind, sind geringfügige Produktänderungen, wie gemäß NE53 definiert.
+Kompatibilität und Funktionalität werden aufrechterhalten und die Produkte sind austauschbar.
+(2) Die HART Softwareversion kann mit einem HART-fähigen Konfigurationsgerät ausgelesen werden. Der
+angegebene Wert ist die niedrigste Version, die mit NAMUR-Versionen übereinstimmen kann.
+(3) Gerätetreiber-Namen verwenden Geräte- und Gerätetreiber-Version, z. B. 10_01. Das HART Protokoll ist so
+ausgelegt, dass ältere Gerätetreiber-Versionen weiterhin mit neuen HART Geräten kommunizieren können.
+Für den Zugriff auf neue Funktionen muss der neue Gerätetreiber heruntergeladen werden. Emerson
+empfiehlt, neue Gerätetreiber-Dateien herunterzuladen, damit der komplette Funktionsumfang genutzt
+werden kann.
+(4) Gültig für Betriebsanleitung Version BD oder neuer. Änderungen umfassen:
+•
+Bluetooth®-Verbindung
+•
+Anwendungsspezifische Konfiguration
+•
+Diagnosefunktionalitäten verstopfte Impulsleitung
+•
+Mehr Sicherheit
+•
+Schnellservicetasten
+•
+Grafisches Display
+(5) Gültig bis zu Betriebsanleitung Version BC. Änderungen umfassen:
+•
+HART-Version 5 und 7 auswählbar, Leistungsdiagnose
+•
+Sicherheitszertifiziert, Bedieninterface (LOI)
+•
+Prozesswarnungen
+•
+Skalierte Variable
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+10
+Rosemount 3051
+
+
+=== PDF PAGE 11 ===
+•
+Konfigurierbare Alarme
+•
+Erweiterte technische Einheiten
+2.4 
+Konfigurationshilfsmittel
+Der Messumformer kann vor oder nach der Installation konfiguriert werden. Um
+sicherzustellen, dass alle Komponenten des Messumformers vor der Installation
+ordnungsgemäß funktionieren, den Messumformer mit dem entsprechenden
+Kommunikationsgerät und der Spannungsversorgung in der Werkstatt konfigurieren.
+Weitere Informationen zur Verkabelung der Stromversorgung und dem Anschließen von
+Kabeln von einem Konfigurationsgerät finden Sie unter Abbildung 2-1.
+Abbildung 2-1: Spannungsversorgung und Kommunikatorverkabelung
+A. Spannungsversorgung
+B. Widerstand
+C. Erdung
+Anmerkung
+Sie benötigen den Widerstand nicht, wenn Sie auf eine der folgenden Arten angeschlossen
+sind:
+•
+AMS Trex (HART® + power (Spannungsversorgung))
+•
+AMS Device Configurator Bluetooth®-App
+•
+Schnellservicetasten
+•
+Bedieninterface (LOI)
+Tabelle 2-2: Spannungsversorgungs- und Widerstandsanforderungen nach
+Feldkommunikatortyp
+Handterminal
+Spannungsversorgung
+Widerstand
+AMS-Geräte-Manager
+≥ 16,6 VDC
+≥ 250 Ω
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+11
+
+
+=== PDF PAGE 12 ===
+Tabelle 2-2: Spannungsversorgungs- und Widerstandsanforderungen nach Feldkom‐
+munikatortyp (Fortsetzung)
+Handterminal
+Spannungsversorgung
+Widerstand
+AMS Trex (HART)
+≥ 16,6 VDC
+≥ 250 Ω
+AMS Trex (HART + pwr (Span‐
+nungsversorgung))
+Keine
+Keine
+AMS Device Configurator
+Bluetooth®-App
+≥ 10,5 VDC
+Keine
+Schnellservicetasten
+≥ 10,5 VDC
+Keine
+LOI
+≥ 10,5 VDC
+Keine
+2.4.1 
+Konfiguration mittels Feldkommunikator
+Weitere Informationen zu AMS Trex finden Sie unter AMS Trex Device Communicator.
+Wie in Systembereitschaft angegeben, ist es wichtig, dass die neuesten Gerätetreiber (DDs)
+in den Feldkommunikator geladen werden, damit die volle Funktionalität gewährleistet ist.
+Siehe Gerätetreiber (DD) Menüstruktur.
+Zugehörige Informationen
+Gerätetreiber (DD) Menüstruktur
+2.4.2 
+Konfiguration mittels AMS Device Manager
+Ausführlichere Informationen zum AMS Device Manager finden Sie auf der AMS Device
+Manager-Produktseite.
+Es ist wichtig, dass die neuesten Gerätetreiber (DDs) in den AMS Device Manager geladen
+werden, damit die volle Funktionalität gewährleistet ist. Siehe Systembereitschaft.
+2.4.3 
+Konfiguration mit der AMS Device Configurator Bluetooth-
+App
+Für weitere Informationen zur AMS Device Configurator Bluetooth®-App, siehe Über
+Bluetooth®-Wireless-Technologie konfigurieren.
+Zugehörige Informationen
+Gerätetreiber (DD) Menüstruktur
+2.4.4 
+Konfiguration mit den Schnellservicetasten
+Sie können die Schnellservicetasten für die folgenden Konfigurations- und
+Wartungsaufgaben verwenden:
+•
+Konfiguration anzeigen
+•
+Null
+•
+Neueinstellung/Messspanne
+•
+Messkreistest
+•
+Bildschirm umdrehen
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+12
+Rosemount 3051
+
+
+=== PDF PAGE 13 ===
+Abbildung 2-2: Position der Schnellservicetasten
+Tabelle 2-3: Bedienung der Schnellservicetasten
+Symbol
+Bedeutung
+1. Scrollen.
+2. Klicken Sie auf die Schaltfläche Links.
+3. Mit der nächsten Option fortfahren.
+1. Eingabe.
+2. Klicken Sie auf die rechte Schaltfläche.
+3. Gehen Sie zum nächsten Schritt oder Untermenü.
+BEACHTEN
+Die Tasten Scroll (Scrollen) und Enter (Eingabe) sind links bzw. rechts auf dem Display
+fixiert, unabhängig von der Ausrichtung der Anzeige. Bei Drehungen um 90, 80 und 270
+Grad das Symbol auf dem Kunststoffeinsatz in der Nähe der Taste überprüfen, um die
+ordnungsgemäße Funktion zu überprüfen.
+Zugehörige Informationen
+Schnellservicetasten
+2.4.5 
+Mit Bedieninterface (LOI) konfigurieren
+Bei Verwendung des Bedieninterface zur Konfiguration erfordern zahlreiche Funktionen
+das Durchlaufen mehrerer Bildschirmmenüs. Eingegebene Daten werden für jeden
+einzelnen Bildschirm gespeichert; das Bedieninterface zeigt dies jeweils durch die
+blinkende Meldung SAVED (GESPEICHERT) auf dem LCD-Display an.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+13
+
+
+=== PDF PAGE 14 ===
+Prozedur
+Zum Aktivieren des Bedieninterface eine der Konfigurationstasten drücken.
+Die Konfigurationstasten sind am LCD-Display.(1) oder unter dem oberen Etikett des
+Senders. Die Anordnung der Einstelltasten ist in Abbildung 2-3 beschrieben und die
+Funktionalität der Einstelltasten ist in Tabelle 2-4 dargestellt.
+Abbildung 2-3: Anordnung der Konfigurationstasten
+A. Interne Konfigurationstasten
+B. Externe Konfigurationstasten
+Tabelle 2-4: Bedienung der Konfigurationstasten
+Symbol
+Bedeutung
+Scrollen (links unten in der Anzeige). Klicken Sie
+auf die Schaltfläche Links. Mit der nächsten Opti‐
+on fortfahren.
+Eingabe (rechts unten in der Anzeige). Klicken Sie
+auf die rechte Schaltfläche. Gehen Sie zum nächs‐
+ten Schritt oder Untermenü.
+Fortschrittsleiste (am oberen Rand der Anzeige).
+Zeigt an, wie weit Sie sich im Menü befinden.
+Die letzten beiden Optionen sind Back to Menu
+(Zurück zum Menü) und Exit Menu (Menü verlas‐
+sen). Wenn Sie die Scroll-Taste nach Exit Menu
+(Zurück zum Menü) weiter drücken, wird das Me‐
+nü von Anfang an wiederholt.
+Anmerkung
+Bedieninterface-Menüstrukturen siehe Bedieninterface (LOI).
+(1) Entfernen Sie den Gehäusedeckel, um auf das LCD-Display zuzugreifen
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+14
+Rosemount 3051
+
+
+=== PDF PAGE 15 ===
+2.5 
+Konfiguration
+Jede einzelne Anwendung des Rosemount 3051 kann unterschiedliche Schritte zur
+Inbetriebnahme und Konfiguration des Messumformers erfordern. Dieser Abschnitt bietet
+eine Übersicht über die Verfahren zur Durchführung allgemeiner Konfigurationsaufgaben
+an Ihrem Messumformer.
+2.5.1 
+Einstellen des Messkreises auf „Manuell“
+Immer wenn Daten gesendet oder empfangen werden, die den Ausgang des
+Messumformers ändern oder den Messkreis stören können, muss der Messkreis auf
+Handbetrieb umgeschaltet werden.
+Das Konfigurationsgerät zeigt ggf. eine entsprechende Aufforderung an. Die Bestätigung
+dieser Aufforderung setzt den Messkreis nicht automatisch auf „Manuell“. Sie müssen den
+Messkreis auf manuelle Steuerung als separaten Vorgang einstellen.
+2.5.2 
+Konfigurationsparameter prüfen
+Emerson empfiehlt, die folgenden Konfigurationsparameter zu prüfen, bevor der
+Messumformer im Prozess installiert wird:
+•
+Alarm and Saturation Levels (Alarm- und Sättigungswerte)
+•
+Dämpfung
+•
+Prozessvariablen
+•
+Range Values (Messbereichswerte)
+•
+Messstellenkennzeichnung
+•
+Transfer Function (Übertragungsfunktion)
+•
+Einheiten
+Konfigurationsparameter mit einem Kommunikationsgerät
+prüfen
+Prozedur
+1. Zu Device Settings (Geräteeinstellungen) → Setup Overview (Setup-Übersicht) → 
+Alarm and Saturation Values (Alarm- und Sättigungswerte) gehen und die Alarm-
+und Sättigungswerte einstellen.
+2. Zu Device Settings (Geräteeinstellungen) → Setup Overview (Setup-Übersicht) → 
+Output (Ausgang) gehen, um Dämpfung einzustellen.
+3. Die Prozessvariablen einstellen:
+a) Um die Primärvariable einzustellen, zu Device Settings (Geräteeinstellungen) 
+→ Output (Ausgang) → Analog Output (Analogausgang) → PV Setup (PV-
+Einrichtung) gehen.
+b) Zum Einstellen der anderen Prozessvariablen, zu Device
+Settings (Geräteeinstellungen) → Communication (Kommunikation) → HART 
+→ Variable Mapping (Variablen-Zuordnung) gehen.
+4. Um die Messbereichswerte einzustellen, zu Device Settings (Geräteeinstellungen) → 
+Output (Ausgang) → Analog Output (Analogausgang) → PV Setup (PV-Einrichtung)
+gehen.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+15
+
+
+=== PDF PAGE 16 ===
+5. Um eine Messstellenkennzeichnung einzustellen, zu Device Settings
+(Geräteeinstellungen) → Setup Overview (Setup-Übersicht) → Device (Gerät) gehen.
+6. Um die (Übertragungsfunktion) einzustellen, zu Device Settings
+(Geräteeinstellungen) → Output (Ausgang) → Analog Output (Analogausgang) → PV
+Setup (PV-Einrichtung) gehen.
+7. Einheiten festlegen:
+a) Um die Druckeinheiten einzustellen, zu Device Settings (Geräteeinstellungen) 
+→ Output (Ausgang) → Pressure (Druck) → Setup (Einrichtung) gehen.
+b) Zum Einrichten anderer Einheiten, zu Device Settings
+(Geräteeinstellungen) → Output (Output) → Pressure/Flow/Totalizer/Level/
+Volume/Module Temperature (Druck/Durchfluss/Totalizer/Füllstand/
+Volumn/Modultemperatur) → Setup (Einrichtung) gehen.
+Konfigurationsparameter mit den Schnellservicetasten
+überprüfen
+Prozedur
+1. Die externen Schnellservicetasten suchen. Siehe Abbildung 2-2.
+2. Eine der beiden Tasten drücken, um das Menü zu aktivieren.
+3. Drücken Sie die andere Taste und folgen Sie den Anweisungen auf dem Bildschirm.
+4. Die Tasten Scroll (Blättern) und Enter (Eingabe) verwenden, um zum Bildschirm
+View Configuration (Konfiguration anzeigen) zu gelangen.
+Konfigurationsparameter mit dem Bedieninterface (LOI)
+überprüfen
+Prozedur
+1. Eine der Konfigurationstasten drücken, um das Bedieninterface zu aktivieren.
+2. View Config (Konfiguration anzeigen) auswählen.
+2.5.3 
+Einstellen von Druckeinheiten
+Der Befehl Druckeinheit setzt die Maßeinheit für den ausgegebenen Druck.
+Das Verfahren ist für andere Variablen identisch:
+•
+Durchfluss
+•
+Zähler
+•
+Ebene
+•
+Volumen
+•
+Modultemperatur
+Wählen Sie die gewünschte Variable aus und folgen Sie dann dem Verfahren unten unter
+Verwendung der gewünschten Variable anstelle von Pressure (Druck).
+Druckeinheiten mit einem Kommunikationsgerät einstellen
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Pressure (Druck) → Setup
+(Einrichtung) navigieren.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+16
+Rosemount 3051
+
+
+=== PDF PAGE 17 ===
+Druckeinheiten mit Bedieninterface (LOI) einstellen
+Prozedur
+1. Auf eine der Schaltflächen klicken, um das Bedieninterface zu aktivieren.
+2. Units (Einheiten) auswählen.
+2.5.4 
+Einstellen des Messumformerausgangs
+(Übertragungsfunktion)
+Der Messumformer verfügt über zwei Ausgangseinstellungen: Linear und Square root
+(Radiziert).
+Wie in Abbildung 2-4 dargestellt, verhält sich der Analogausgang bei Aktivierung
+der Radizierung proportional zum Durchfluss und verfügt über eine fest eingestellte
+Schleichmengenabschaltung bei vier Prozent und eine Schleichmengeneinschaltung von
+fünf Prozent des radizierten Analogausgangsbereichs.
+Emerson empfiehlt zur Konfiguration von Durchflussanwendungen für Differenzdruck
+(DP) die Verwendung einer anwendungsspezifischen Konfiguration. Die entsprechenden
+Einrichtungsanweisungen sind unter Anwendungsspezifische Konfiguration zu finden.
+Wenn der Durchfluss der Primärvariable zugeordnet ist, wird die Übertragungsfunktion im
+Kommunikationsgerät auf linear gesetzt und kann nicht auf radiziert geändert werden. Die
+Durchflussvariable wird in Bezug auf den Druck automatisch auf ein radiziertes Verhältnis
+gesetzt.
+Abbildung 2-4: Umschaltpunkt, radiziertes 4-20 mA HART® Ausgangssignal
+A
+B
+C
+0.5
+1
+% Pressure Input
+0
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+4 mA
+20mA
+% Pressure Input
+B
+A
+4 mA
+A. Radizierte Kennlinie
+B. Umschaltpunkt bei 5 %
+C. Umschaltpunkt bei 4 %
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+17
+
+
+=== PDF PAGE 18 ===
+Einstellen des Messumformerausgangs mit einem
+Kommunikationsgerät
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Analog
+Output (Analogausgang) → PV Setup (PV-Einrichtung) → Transfer Funktion
+(Übertragungsfunktion) navigieren.
+Einstellen des Messumformerausgangs über das
+Bedieninterface (LOI)
+Prozedur
+1. Auf eine der Schaltflächen auf dem Messumformer klicken, um das Bedieninterface
+zu aktivieren.
+2. Zu Extended Menu (Erweitertes Menü) → Transfer Funct (Übertragungsfunkt.)
+navigieren.
+2.5.5 
+Neueinstellen des Messumformers
+Der Befehl „Range Values“ (Messbereichswerte) ordnet dem analogen Messanfang und
+Messende (4 und 20 mA-Punkte) die entsprechenden Druckwerte zu. Der Messanfang
+entspricht 0 Prozent des Messbereichs und das Messende entspricht 100 Prozent des
+Messbereichs.
+In der Praxis können diese Werte, je nach Änderung der Prozessanforderungen, so
+oft wie nötig geändert werden. Eine komplette Auflistung der Messbereichs- und
+Sensorgrenzwerte ist im Abschnitt Technische Daten des Produktdatenblatt der Rosemount
+3051S enthalten.
+Eine der nachfolgenden Methoden zur Neueinstellung des Messumformers verwenden.
+Jede Methode kann für sich alleine angewandt werden. Alle Möglichkeiten genau prüfen,
+bevor Sie sich für die für Sie beste Methode entscheiden.
+•
+Neueinstellung durch manuelles Einstellen der Bereichspunkte.
+•
+Neueinstellung mit einem Drucknormal.
+Neueinrichtung des Messumformers mit einem
+Kommunikationsgerät
+Prozedur
+1. Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Analog Output
+(Analogausgang) → PV Setup (PV-Einrichtung) navigieren.
+2. Einen der folgenden Schritte durchführen:
+•
+Messbereichspunkte eingeben.
+•
+Range by Applying Pressure (Bereich durch Anlegen von Druck) auswählen und
+den Anweisungen folgen.
+Den Messumformer mit den Schnellservicetasten neu einstellen
+Prozedur
+1. Die externen Tasten lokalisieren. Siehe Abbildung 2-2.
+2. Eine der beiden Tasten drücken, um das Menü zu aktivieren.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+18
+Rosemount 3051
+
+
+=== PDF PAGE 19 ===
+3. Drücken Sie die andere Taste und folgen Sie den Anweisungen auf dem Bildschirm.
+4. Die Tasten Scroll (Blättern) und Enter (Eingabe) verwenden und Rerange
+(Neueinstellung) auswählen.
+Den Messumformer mit Bedieninterface (LOI) neu einstellen
+Prozedur
+1. Auf eine der Schaltflächen klicken, um das Bedieninterface zu aktivieren.
+2. Rerange (Neueinstellung) auswählen.
+3. Führen Sie einen der folgenden Vorgänge aus:
+•
+Wählen Sie Enter Values (Werte eingeben), um manuell Bereichspunkte
+einzugeben.
+•
+Wählen Sie Apply Values (Werte anwenden) und folgen Sie den Anweisungen zur
+Verwendung einer Druckeingangsquelle.
+Neueinstellung von Nullpunkt und Messtasten
+Prozedur
+1. Die externen Tasten Zero (Nullpunkt) und Span (Messspanne) lokalisieren.
+2. Den Messumformer mit dem entsprechenden Druck beaufschlagen.
+3. Den Messumformer neu einstellen.
+•
+Um den Nullpunkt (4 mA Punkt) unter Beibehaltung der Spanne zu ändern,
+halten Sie die Taste Zero (Nullpunkt) mindestens zwei Sekunden lang gedrückt
+und lassen Sie sie dann los.
+•
+Um die Messspanne (20 mA Punkt) unter Beibehaltung des Nullpunkts zu
+ändern, halten Sie die Taste Span (Messspanne) mindestens zwei Sekunden lang
+gedrückt und lassen Sie sie dann los.
+2.5.6 
+Dämpfung
+Der Befehl Damping (Dämpfung) dient zum Ändern der Ansprechzeit des
+Messumformers. Höhere Werte können Schwankungen der Ausgangswerte infolge von
+schnellen Änderungen des Eingangs glätten.
+Stellen Sie eine entsprechende Damping (Dämpfung) ein, die der geforderten
+Ansprechzeit, Signalstabilität sowie weiterer Anforderungen an die Messkreisdynamik
+gerecht wird. Der Dämpfungsbefehl verwendet eine Gleitkomma-Konfiguration, die Ihnen
+die Eingabe eines beliebigen Dämpfungswerts zwischen 0 - 60 Sekunden ermöglicht.
+Dämpfung mit Kommunikationsgerät
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → [pick the output you
+want to set damping for (such as Pressure or Level) (wählen Sie den Ausgang, für den
+Sie die Dämpfung einstellen möchten (z. B. Druck oder Füllstand))] → Setup (Einstellung) 
+→ Damping (Dämpfung) navigieren.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+19
+
+
+=== PDF PAGE 20 ===
+Dämpfung mit Bedieninterface (LOI)
+Prozedur
+1. Auf eine der Schaltflächen klicken, um das Bedieninterface zu aktivieren.
+2. Zu Extended Menu (Erweitertes Menü) → Damping (Dämpfung) navigieren.
+2.5.7 
+Konfiguration des Displays
+Konfigurieren des LCD-Displays
+Das LCD-Display an die Anwendungsanforderungen anpassen. Das LCD-Display alterniert
+zwischen den ausgewählten Optionen.
+•
+Druck
+•
+Modultemperatur
+•
+Prozent vom Messbereich
+•
+Analogausgang
+•
+Ebene
+•
+Volumen
+•
+Durchfluss
+•
+Summierter Durchfluss
+LCD-Display mit einem Kommunikationsgerät konfigurieren
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Display (Anzeige) → Display (Anzeige) → 
+Display Parameters (Anzeigeparameter) navigieren.
+Konfigurieren des LCD-Displays mittels Bedieninterface (LOI)
+Prozedur
+1. Auf eine der Schaltflächen klicken, um das Bedieninterface zu aktivieren.
+2. Display (Anzeige) auswählen.
+Konfigurieren des grafischen LCD-Displays
+Mit dem grafischen LCD-Display können Sie beim Anpassen des Anzeigers mehr Optionen
+wählen. Die Anzeige alterniert zwischen den ausgewählten Positionen:
+•
+Druck
+•
+Modultemperatur
+•
+Prozent vom Messbereich
+•
+Analogausgang
+•
+Ebene
+•
+Volumen
+•
+Durchfluss
+•
+Summierter Durchfluss
+•
+HART® Lange Messstellenkennzeichnung
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+20
+Rosemount 3051
+
+
+=== PDF PAGE 21 ===
+•
+Alarmschalter Status
+•
+Sicherheitsstatus
+Erweiterte Anzeigeeinstellungen
+Sie können auf der Registerkarte Advanced display settings (Erweiterte
+Anzeigeeinstellungen) zusätzliche Einstellungen für das grafische LCD-Display
+konfigurieren.
+•
+Wählen Sie aus acht verschiedenen Sprachen aus:
+— Englisch
+— Chinesisch
+— Französisch
+— Deutsch
+— Italienisch
+— Portugiesisch
+— Russisch
+— Spanisch
+•
+Den Typ des verwendeten Dezimaltrennzeichens definieren: Komma oder Punkt.
+•
+Für Über- und Absolutdruck-Messumformer kann ein Typenschild für die GP- oder AP-
+Einheit aktiviert werden. Wenn die Einheiten beispielsweise psi sind und das Etikett der
+GP/AP-Einheit aktiviert ist, werden die Einheiten auf dem grafischen Display als psi-g
+oder psi-a angezeigt.
+•
+Schalten Sie die Hintergrundbeleuchtung ein oder aus.
+•
+Die Anzahl der Dezimalstellen auf dem Display nach oben oder nach unten von der
+Standardeinstellung anpassen.
+Wenn der Messumformer um den Kopf nach unten montiert ist, kann mit Software
+das grafische LCD-Display um 180 Grad gedreht werden. Sie können den Anzeiger auch
+manuell in 90-Grad-Schritten drehen, um Installationen zu entsprechen, die eine 90-Grad-
+oder 270-Grad-Drehung erfordern.
+Konfigurieren des grafischen LCD-Displays mit einem
+Kommunikationsgerät
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Display (Anzeige) → Display (Anzeige) → 
+Display Parameters (Anzeigeparameter) navigieren.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+21
+
+
+=== PDF PAGE 22 ===
+2.6 
+Anwendungsspezifische Konfiguration
+2.6.1 
+Konfiguration für Durchflussrate
+Mit der Durchflusskonfiguration können Sie eine Beziehung zwischen den Druckeinheiten
+und den benutzerdefinierten Durchflusseinheiten herstellen. Durch Definieren eines
+Drucks bei einer bestimmten Durchflussrate führt der Messumformer eine radizierte
+Extraktion durch, um den Druckwert in einen linearen Durchflussausgang umzuwandeln.
+Die Konfiguration der Durchflussrate umfasst die folgenden Parameter:
+•
+Durchflusseinheiten: Anwenderspezifische Einheiten für die Durchflussrate
+•
+Eingegebene Durchflussrate Benutzerdefinierte Durchflussrate
+•
+Druck bei Durchfluss(2): Benutzerdefinierter Druck bei der eingegebenen
+Durchflussrate.
+Durchflussrate mit einem Kommunikationsgerät konfigurieren
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Flow (Durchfluss) → 
+Setup (Einrichtung) → Configure Flow (Durchfluss konfigurieren) navigieren.
+Konfiguration der Schleichmengenabschaltung
+Emerson empfiehlt dringend, die Schleichmengenabschaltung zu aktivieren, um einen
+stabilen Ausgang zu erhalten und Probleme aufgrund von Prozessrauschen bei geringem
+oder Null Durchfluss zu vermeiden.
+Es gibt zwei zentrale Definitionen, um die Schleichmengenabschaltung zu verstehen:
+Druckab‐
+schaltwert
+Der Druck, bei dem das Feldgerät die Messung des Durchflusses stoppt.
+Wenn der gemessene Druck kleiner ist als der Abschaltwert ist, berechnet
+das Gerät den Durchfluss mit null.
+Druckein‐
+schaltwert
+Der Druck, bei dem das Feldgerät die Messung des Durchflusses startet.
+Wenn der gemessene Druck größer ist als der Einschaltwert, beginnt das
+Gerät mit der Messung des Durchflusses.
+Schleichmengenabschaltung mit Kommunikationsgerät
+konfigurieren
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Flow (Durchfluss) → 
+Setup (Einrichtung) → Low Flow Cutoff (Schleichmengenabschaltung) navigieren.
+Beispiel für die Konfiguration der Durchflussrate
+Verwenden Sie einen Differenzdruck-Messumformer in Verbindung mit einer Messblende
+in einer Wasser-Durchflussanwendung, bei der die Durchflussrate bei voller Skalierung
+20 000 US-Gallonen pro Stunde mit einem Differenzdruck von 100 inH2O bei 68 °F beträgt.
+Die Werte für die Druckabschaltung und die Druckeinschaltung für die Abschaltung bei
+niedrigem Durchfluss werden auf 0,5 inH2O bei 68 °F eingestellt.
+Auf Grundlage dieser Informationen wäre die Konfiguration:
+(2) Sie können das Tool zur Größenbestimmung und Auswahl des Differenzdruck verwenden, um die Beziehung
+zwischen Druck und Fluss herzustellen.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+22
+Rosemount 3051
+
+
+=== PDF PAGE 23 ===
+Tabelle 2-5: Eingegebene Werte für ein Beispiel für die Durchflussratenkonfiguration
+Parameter
+Wert
+Durchflusseinheiten
+USGPH
+Eingegebener Durchfluss
+20 000 USGPH
+Druck bei Durchfluss
+100 inH2O bei 68 °F
+Abschaltung bei niedrigem Durchfluss
+Abschaltmodus: Ein
+Druckabschaltwert
+0,5 inH2O bei 68 °F
+Druckeinschaltwert
+0,5 inH2O bei 68 °F
+Abbildung 2-5: Bildschirm AMS-Konfiguration für Durchflussrate – Beispiel
+2.6.2 
+Konfigurieren für Gesamtdurchfluss
+Der Durchfluss-Totalisator verfolgt den Durchfluss, der Ihren Messpunkt im Laufe der
+Zeit überschritten hat. Der Gesamtdurchfluss verfolgt den konfigurierten Durchfluss und
+erfordert die folgenden Eingänge:
+Zählereinheiten
+Die mit der Masse- oder Volumenkomponente des Durchflusses ver‐
+bundene Maßeinheit. Max. 6 Zeichen.
+Durchflusseinheit
+der Zeit
+Die mit der Zeitkomponente des Durchflusses verbundene Maßein‐
+heit.
+Beispiel
+Bei einer Durchflussrate von USGPH wäre das Zählergerät USGAL, und die
+Durchflusseinheit der Zeit wäre Stunden.
+Die Durchflusseinheit wird auf dem Kommunikationsgerät angezeigt, wenn Sie den
+Gesamtdurchfluss auf einem Kommunikationsgerät konfigurieren.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+23
+
+
+=== PDF PAGE 24 ===
+Richtung
+Der Zähler kann so konfiguriert werden, dass er die folgenden Durchflussausrichtungen
+unterstützt:
+Vorwärtsdurchfluss
+Verfolgt den Durchfluss nur in Vorwärtsrichtung (positiver Differenz‐
+druck).
+Rückwärtsdurchfluss Verfolgt den Durchfluss nur in Rückwärtsrichtung (negativer Diffe‐
+renzdruck).
+Gesamtdurchfluss
+Bruttodurchfluss = Vorwärtsströmung + Rückwärtsströmung
+Nettodurchfluss
+Nettodurchfluss = Vorwärtsströmung - Rückwärtsströmung
+Maximalwert
+Der Maximalwert, den der Zähler messen kann, wird angezeigt.
+Einheitsumrechnungsfaktor
+Wird verwendet, um eine Zähler-spezifische Maßeinheit zu definieren.
+Bei‐
+spiel
+Wenn die von Ihnen eingegebene Einheit USGPH ist und Ihr gewünschter Zähle‐
+rwert Tausende von USGAL, MUSGAL, beträgt, würde ein Umrechnungsfaktor von
+0,001 USGAL in MUSGAL umwandeln. Wenn Ihr gewünschter Zählerwert USGAL
+ist, verwenden Sie den Umrechnungsfaktor für die Einheit 1.
+Konfigurieren für summierten Durchfluss mit einem
+Kommunikationsgerät
+Prozedur
+1. Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Totalizer (Zähler) 
+→ Setup (Einrichtung) gehen.
+Abbildung 2-6: Bildschirm AMS-Konfiguration für Durchflusszähler – Beispiel
+2. Nachdem der Zähler konfiguriert wurde und Sie mit dem Zähler beginnen können,
+gehen Sie folgendermaßen vor:
+a) Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Totalizer
+(Zähler) → Control (Zählersteuerung) gehen.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+24
+Rosemount 3051
+
+
+=== PDF PAGE 25 ===
+b) Den Wert des Totalizer Mode (Zählermodus) auf Stopped (Gestoppt)
+einstellen.
+c) Führen Sie die Methode Clear Totalizer (Zähler löschen) aus.
+d) Den Wert des Totalizer Mode (Zählermodus) auf Totalizing (Zähler)
+einstellen.
+Anmerkung
+Wenn entweder der Hardware-Schalter Security (Schreibschutz) oder die
+Sicherheitseinstellung der Software On (An) lautet, ist es nicht möglich, den Zähler
+zu löschen.
+2.6.3 
+Konfiguration für Füllstand
+Mit der Füllstandskonfiguration können Sie Ihren Druckmessumformer in
+Füllstandseinheiten konvertieren, indem eine Beziehung zwischen den gemessenen
+Druckeinheiten und den gewünschten Füllstandseinheiten erstellt wird.
+Um dieses Verhältnis direkt zu definieren, den maximalen Druck beim maximalen Füllstand
+und den Minimaldruck bei dem minimalen Füllstand eingeben.
+Um die Konfiguration zu vereinfachen und die einzigartigen Anwendungen zu erfassen,
+die mit der Füllstandsmessung verbunden sind, empfiehlt Emerson, den integrierten
+Füllstandskonfigurator zu verwenden, um den Messumformer schnell und einfach für die
+Füllstandsmessung zu konfigurieren.
+Füllstands-Konfigurationsparameter
+Der Füllstandskonfigurator berechnet das Verhältnis zwischen Druck und Füllstand unter
+Verwendung der folgenden Parameter:
+Füllstandseinheiten
+Die vom Anwender wählbaren Einheiten für die Füllstandsmes‐
+sung
+Tankkonfiguration
+Entlüfteter oder Drucktank
+Technologie
+Die Auswahl hängt von der Tankkonfiguration ab.
+•
+Kapillar-Druckmittler
+•
+Direktmontage
+•
+Impulsleitungen (befüllte oder trockene Impulsleitungen)
+Maximaler Füllstand
+Maximaler Füllstand, der gemessen werden kann
+Mindestfüllstand
+Minimaler Füllstand, der gemessen werden kann
+Relative Dichte der Pro‐
+zessflüssigkeit
+Spezifische Dichte des Prozessmediums
+Falls zutreffend:
+Konfiguration der Druck‐
+entnahme
+Vertikaler Abstand zwischen Prozessanschluss H-Seite und Mes‐
+sumformer
+Füllmedium
+Mit externem Druckmittler-Kapillarsystem verwendetes Füllme‐
+dium
+Befüllte Impulsleitungen
+Höhe der befüllten Niederdruck-Impulsleitungen
+Relative Dichte der be‐
+füllten Impulsleitungen
+Spezifische Dichte der befüllten Impulsleitungen
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+25
+
+
+=== PDF PAGE 26 ===
+Konfiguration für Füllstand
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Level (Füllstand) → Level
+Configurator (Füllstandskonfigurator) navigieren.
+Füllstandsmesswert einstellen
+Nach der Konfiguration des Füllstands können Sie die Füllstandsmessung verwenden,
+um die Messumformer-Füllstandsmessung an den gewünschten Füllstand anzupassen.
+Diese Einstellung kann verwendet werden, um Auswirkungen verschiedener
+Installationsvariablen, wie z. B. Einflüsse der Umgebungstemperatur oder Fehler der
+Wegmessung, zu eliminieren.
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Level (Füllstand) → 
+Calibration (Kalibrierung) → Adjust Level Reading (Füllstandsmesswert einstellen)
+navigieren.
+Beispiel für Konfiguration für Füllstand
+Einen Differenzdruck Rosemount 3051C mit zwei Druckmittlern bei Drucktankinstallation
+verwenden, wo der Füllstand gemessen wird.
+Der Tank verfügt über einen direkt montierten Druckmessumformer auf der
+Hochdruckseite und einen Druckmittler auf Niederdruckseite mit Kapillaranschluss mit
+Füllmedium Silikon 200. Das Prozessmedium ist Wasser mit einer spezifischen Dichte von
+1. Der Messumformer wird am unteren Druckentnahmepunkt montiert, der als Füllstands-
+Nullpunkt definiert ist. Die Niederdruckmittler sind 10 ft. darüber montiert. Der Level
+Configurator (Füllstandskonfigurator) führt Sie durch die Konfiguration, um den Druck
+sowohl bei dem minimalen als auch beim maximalen Füllstand festzulegen.
+Abbildung 2-7: Informationsbildschirm Füllstandskonfigurator-Einheit
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+26
+Rosemount 3051
+
+
+=== PDF PAGE 27 ===
+Abbildung 2-8: Bildschirm Configurator Tank Configuration (Füllstandskonfigurator
+Tankkonfiguration)
+Abbildung 2-9: Bildschirm Level Configurator Technology (Füllstandskonfigurator-
+Technologie)
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+27
+
+
+=== PDF PAGE 28 ===
+Abbildung 2-10: Bildschirm Level Configurator Water Return (Füllstandskonfigurator
+Wasserrücklauf)
+Nachdem Sie die Methode Level Configurator (Füllstandskonfigurator) abgeschlossen
+haben, können Sie den Bildschirm Level Output (Füllstandsausgabe) aufrufen, um zu
+bestätigen, dass die Werte wie erwartet eingestellt sind.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+28
+Rosemount 3051
+
+
+=== PDF PAGE 29 ===
+Abbildung 2-11: Bildschirm Level Output (Füllstandsausgang)
+Sie können die Methode für Adjust Level Reading (Anpassung der Füllstandsanzeige)
+verwenden, um die Füllstandsanzeige um bis zu (20,90 - (-24,61)) x 0,03 = 1,37 ft.
+anzupassen. In diesem Beispiel können Sie den Füllstand auf einen Höchstwert von bis zu
+11,14 ft. oder auf einen Mindestwert von 8,4 ft. vom aktuellen Wert von 9,77 ft. einstellen.
+Zur weiteren Anpassung müssen der Mindestfüllstand und/oder der maximale Füllstand
+manuell aktualisiert werden, um die Ausgabe auf den gewünschten Wert zu korrigieren.
+2.6.4 
+Konfiguration für Volumen
+Verwenden Sie die Methode Configure Tank (Tank konfigurieren), um Ihren
+Druckmessumformer für die Ausgabe in Volumeneinheiten zu konfigurieren.
+Mit dieser Methode können Sie aus einer von fünf Standardtankgeometrien auswählen
+oder das Gerät mit einer Vermessungstabelle konfigurieren, um eine Beziehung zwischen
+Füllstand und Volumen herzustellen.
+Volumen Konfigurationsparameter
+Das Volumen kann so konfiguriert werden, dass eine der fünf Standard-Tankgeometrien
+verwendet wird, um das Volumen als Funktion des Füllstands zu berechnen.
+Standard-Tankgeometrien setzen voraus, dass der Füllstands-Nullpunkt am geometrischen
+Boden des Tanks liegt, um das Volumen des gesamten Tanks genau zu berechnen. Wenn
+ihr Füllstands-Nullpunkt über dem geometrischen Boden des Tanks liegt, können Sie die
+Volumenanzeige auf eine der folgenden Arten korrigieren:
+•
+Passen Sie den Füllstandswert im Fenster Level Configuration (Füllstandskonfiguration)
+an.
+•
+Verwenden Sie eine Stützpunkttabelle, um die Beziehung von Füllstand und Volumen zu
+konfigurieren.
+Die Methode Configure Tank (Tank konfigurieren) erstellt eine Beziehung zwischen
+Füllstand und Volumen unter Verwendung der folgenden Parameter:
+Tanktyp
+Vom Anwender wählbare Tankgeometrie
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+29
+
+
+=== PDF PAGE 30 ===
+•
+Kugel
+•
+Vertikaler Zylindertank (Kugelenden)
+•
+Horizontaler Zylindertank (Kugelenden)
+•
+Vertikaler Zylinder
+•
+Horizontaler Zylinder
+•
+Kundenspezifisch
+Volumenein‐
+heiten
+Vom Anwender wählbare Einheiten für die Volumenmessung
+Füllstandsein‐
+heiten
+Die vom Anwender wählbaren Einheiten für die Füllstandsmessung.
+Durch Änderungen bei der Auswahl der Füllstandseinheit in dieser Me‐
+thode wird die Füllstandsausgabe aktualisiert.
+Tanklänge (L)
+Länge des Tanks, nicht für einen Kugel- oder benutzerspezifischen Tank‐
+typ erforderlich
+Tankradius (R)
+Radius des Tanks, nicht für kundenspezifischen Tanktyp erforderlich
+Parameter für kundenspezifische Tanktypen
+Anzahl der Stütz‐
+punkte
+Anzahl der vom Benutzer eingegebenen Punkte zur Beziehung des
+Füllstands mit dem Volumen. Mindestens 2 und maximal 50.
+Füllstand und Volu‐
+men
+Geben Sie für jeden Stützpunkt einen Füllstand und ein Volumen ein.
+Anmerkung
+Die Werte für Füllstand und Volumen müssen größer als Null sein. Die Einträge für
+jeden Stützpunkt müssen steigende Werte sowohl für Füllstand als auch für das Volumen
+aufweisen und dürfen den Höchstwert nicht überschreiten.
+Füllstände unter dem Füllstandseintrag am Stützpunkt 1 geben das Volumen bei
+Stützpunkt 1 aus. Bei Füllständen über dem höchsten in der Stützpunkttabelle
+angegebenen Füllstand wird das höchste eingegebene Volumen ausgegeben. In jedem
+Fall zeigt die Volumenmessung den Status Degraded (Verschlechtert) an, um Sie auf das
+Problem hinzuweisen.
+Konfiguration für Volumen mit einem Kommunikationsgerät
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Volume (Volumen) → 
+Setup (Einrichtung) → Configure Tank (Tank konfigurieren) navigieren.
+2.7 
+Detaillierte Einrichtung des Messumformers
+2.7.1 
+Konfiguration von Alarm- und Sättigungswerten
+Beim normalen Betrieb gibt der Messumformer den Ausgang in Abhängigkeit vom
+Druck zwischen dem unteren und oberen Sättigungswert aus. Wenn der Druck die
+Sensorgrenzwerte überschreitet oder wenn der Ausgang den unteren oder oberen
+Sättigungswert unter- bzw. überschreitet, wird der Ausgang auf den jeweiligen
+Sättigungswert beschränkt.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+30
+Rosemount 3051
+
+
+=== PDF PAGE 31 ===
+Der Rosemount 3051 Messumformer führt automatisch und fortlaufend Selbstdiagnose-
+Routinen durch. Wenn die Selbstdiagnose eine Störung entdeckt, wird der Ausgang vom
+Messumformer basierend auf der Position des Alarmschalters auf einen konfigurierten
+Alarm und Wert gesetzt. Siehe Verschieben des Alarmschalters.
+Tabelle 2-6: Rosemount 3051 Alarm- und Sättigungswerte
+Ebene
+4-20 mA-Sättigung
+4-20 mA-Alarm
+Niedrig
+3,9 mA
+≤3,75 mA
+Hoch
+20,8 mA
+≥21,75 mA
+Tabelle 2-7: NAMUR Alarm- und Sättigungswerte
+Ebene
+4-20 mA-Sättigung
+4-20 mA-Alarm
+Niedrig
+3,8 Ma
+≤3,6 mA
+Hoch
+20,5 mA
+≥22,5 mA
+Tabelle 2-8: Kundenspezifische Alarm- und Sättigungswerte
+Ebene
+4-20 mA-Sättigung
+4-20 mA-Alarm
+Niedrig
+3,7-3,9 mA
+3,6-3,8 mA
+Hoch
+20,1-22,9 mA
+20,2-23,0 mA
+•
+Der Wert für Niedrigalarm muss mindestens 0,1 mA unter dem Wert für niedrige
+Sättigung liegen.
+•
+Hochalarmwert muss min. 0,1 mA über dem hohen Sättigungswert liegen.
+Alarm- und Sättigungswerte mit einem Kommunikationsgerät
+konfigurieren
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Setup Overview (Setup-Übersicht) → Alarm
+and Saturation Values (Alarm- und Sättigungswerte) → Configure Alarm and Saturation
+Values (Alarm- und Sättigungswerte konfigurieren) navigieren.
+Konfigurieren der Alarm- und Sättigungswerte mit dem
+Bedieninterface (LOI)
+Prozedur
+1. Auf eine der Schaltflächen klicken, um das Bedieninterface zu aktivieren.
+2. Zu Extended Menu (Erweitertes Menü) → Alarm Sat Values (Alarm Sätt.-Werte)
+navigieren.
+2.7.2 
+Konfigurieren von Prozesswarnungen
+Es gibt zwei Prozesswarnungen, die für die Verwendung mit jeder dynamischen
+Prozessvariable konfiguriert werden können.
+Dynamische Prozessvariablen:
+•
+Druck
+•
+Durchfluss
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+31
+
+
+=== PDF PAGE 32 ===
+•
+Zähler
+•
+Ebene
+•
+Volumen
+•
+Modultemperatur
+Die Prozessalarme sind unabhängig voneinander. Diese Alarme können verwendet
+werden, um Benachrichtigungen über HART® Statusalarm oder Analogausgangs-Alarm
+zu erhalten. Prozesswarnungen können mit jeder dynamischen Variable ausgelöst
+werden, unabhängig von der Zuordnung der HART Variablen. Dies bedeutet, dass ein
+Analogausgangs-Alarm von jeder der oben aufgeführten dynamischen Prozessvariablen
+ausgelöst werden kann, auch wenn sie nicht als HART Primärvariable zugewiesen sind.
+Konfigurationsparameter für Prozesswarnung
+Verwenden Sie die Methode Configure Process Alert (Prozesswarnung konfigurieren),
+um die einzelnen Prozesswarnungen zu konfigurieren. Folgende Parameter sind
+konfigurierbar:
+Benachrichtigungsmodus
+Legt die Benachrichtigungsmethode fest oder deaktiviert die Prozesswarnung.
+•
+Alarm deaktivieren
+•
+HART® Statusalarm
+•
+Analogausgangs-Alarm
+Überwachte Gerätevariable
+Die dynamische Variable, die durch den Prozessalarm verfolgt wird.
+•
+Druck
+•
+Durchflussrate
+•
+Zähler
+•
+Ebene
+•
+Volumen
+•
+Modultemperatur
+Aktivierungsauslöser
+Aktiviert den Prozessalarm, wenn die dynamische Variable eine der folgenden ist:
+•
+Über H-Seite
+•
+Unterhalb L-Seite
+•
+Inneres Fenster
+•
+Äußeres Fenster
+Hochalarmwert
+Wenn die Überwachte Gerätevariable diesen hohen Schwellenwert überschreitet, führt
+die „Prozesswarnung“ die konfigurierte Aktion aus. (Wird nicht für den Aktivierungshebel
+Unterhalb L-Seite verwendet).
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+32
+Rosemount 3051
+
+
+=== PDF PAGE 33 ===
+Niedrigalarmwert
+Wenn der Wert der Überwachten Gerätevariable diesen niedrigen Schwellenwert
+überschreitet, führt die „Prozesswarnung“ die konfigurierte Aktion aus. (Wird nicht für den
+Aktivierungshebel Über H-Seite verwendet).
+Sporadische Alarmreduzierung
+Zwei Herangehensweisen sollen ein wiederholtes Aktivieren oder Deaktivieren der
+Prozesswarnung verhindern, wenn die dynamische Prozessvariable in der Nähe eines der
+Alarmschwellenwerte schwankt.
+Totzone
+Ein benutzerdefinierter Bereich, der in denselben Einheiten wie die Über‐
+wachte Gerätevariable eingegeben wird und über den Alarmwert hinaus‐
+geht, wenn eine Prozesswarnung ausgelöst wird, wird nicht gemeldet.
+Zeitverzöge‐
+rung
+Eine benutzerdefinierte Zeitspanne (maximal 30 Sekunden) nach der Alarm‐
+erkennung, in der der Prozessalarm nicht ausgegeben wird.
+Alarmname
+Der Name, der für den Alarm auf dem Gerätedisplay angezeigt wird.
+BEACHTEN
+Der Wert für den Hochalarm muss höher sein als der Wert für den Niedrigalarm. Beide
+Alarmwerte müssen innerhalb der Bereichsgrenzen der dynamischen Prozessvariable
+liegen.
+Prozesswarnungen mit einem Kommunikationsgerät
+konfigurieren
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (Ausgang) → Process Alert (1 or 2)
+[Prozesswarnung (1 oder 2)] → Alert Settings (Alarmeinstellungen) → Configure Process
+alert (1 or 2) [Prozesswarnung konfigurieren (1 oder 2)] navigieren.
+2.7.3 
+Neuzuordnen von Gerätevariablen
+Verwenden Sie die Funktion Neuzuordnung, um die primären, sekundären, tertiären und
+quartären Variablen des Messumformers (PV, SV, TV und QV) zu konfigurieren.
+Sie können das Bedieninterface (LOI) zur Auswahl der Primärvariable verwenden. Sie
+müssen jedoch einen Feldkommunikator, den AMS Device Manager oder die AMS Device
+Configurator Bluetooth®-App verwenden, um SV, TV und QV einzustellen.
+Anmerkung
+Die als Primärvariable zugeordnete Variable steuert den 4-20 mA Ausgang. Die möglichen
+Primärvariablen sind:
+•
+Druck
+•
+Ebene
+•
+Volumen
+•
+Durchfluss
+•
+Zähler
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+33
+
+
+=== PDF PAGE 34 ===
+Gerätevariablen mit einem Kommunikationsgerät neu
+zuordnen
+Prozedur
+1. Die Primärvariable auswählen, indem Sie zu Device Settings (Einstellungen) → 
+Output (Ausgang) → Analog Output (Analogausgang) → PV Setup (PV-Einrichtung) 
+→ Primary Variable (Primärvariable) navigieren.
+2. Ordnen Sie die sekundäre Variable, die tertiäre Variable und die quaternäre
+Variable zu, indem Sie zu Device Settings (Geräteeinstellungen) → Communication
+(Kommunikation) → HART → Variable Mapping (Variablen-Zuordnung) navigieren.
+Neuzuordnung der Primärvariable mit dem lokalen
+Bedieninterface (LOI)
+Prozedur
+1. Auf eine der Schaltflächen klicken, um das Bedieninterface zu aktivieren.
+2. Zu Extended Menu (Erweitertes Menü) → Assign PV (PV zuordnen) navigieren.
+2.8 
+Über Bluetooth®-Wireless-Technologie
+konfigurieren
+Prozedur
+1. Den AMS Device Configurator starten.
+Siehe AMS Device Configurator für Emerson Feldgeräte.
+2. Wählen Sie das Gerät aus, mit dem Sie eine Verbindung herstellen möchten.
+3. Geben Sie beim ersten Anschluss den Schlüssel für das ausgewählte Gerät ein.
+4. Wählen Sie links oben das Menüsymbol aus, um durch das gewünschte Gerätemenü
+zu navigieren.
+2.8.1 
+Bluetooth®-UID und -Schlüssel
+Sie finden die eindeutige Kennzeichnung (UID) und den Schlüssel auf dem Einweg-
+Papierschild:
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+34
+Rosemount 3051
+
+
+=== PDF PAGE 35 ===
+•
+Das Gerät
+•
+Abdeckung des Anschlussklemmenblocks
+•
+Die Anzeigeeinheit
+Abbildung 2-12: Bluetooth-Sicherheitsinformationen
+2.9 
+Konfigurieren der Diagnosefunktion des
+Messumformers
+Die in diesem Abschnitt aufgeführten Diagnose- und Servicefunktionen werden
+üblicherweise nach der Feldmontage durchgeführt.
+2.9.1 
+Konfiguration der Diagnose der Integrität des Messkreises
+Sie können die Diagnose der Integrität des Messkreises zur Erkennung von Störungen
+verwenden, die die Integrität des elektrischen Mess-/Regelkreises gefährden können.
+Hierzu gehören u. a.:
+•
+Wasser, das in das Kabelfach eindringt und mit den Anschlussklemmen in Kontakt
+kommt
+•
+Eine instabile Stromversorgung hat das Ende ihrer Lebendsauer erreicht
+•
+Starke Korrosion an den Anschlussklemmen
+Die Technologie basiert auf der Annahme, dass der Mess-/Regelkreis nach der
+Installation und nach dem Einschalten des Messumformers eine Baseline-Kennlinie
+aufweist, die auf eine ordnungsgemäße Installation hinweist. Wenn die Spannung an den
+Anschlussklemmen des Messumformers von dieser Baseline abweicht und außerhalb der
+von Anwender konfigurierten Schwellenwerte liegt, löst der Messumformer einen HART®
+oder Analogalarm aus.
+Um die Diagnose nutzen zu können, müssen Sie nach der Installation des Senders
+zunächst eine Baseline-Charakteristik für den elektrischen Stromkreis erstellen. Die
+Kennlinien des Mess-/Regelkreises werden automatisch durch Drücken einer Schaltfläche
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+35
+
+
+=== PDF PAGE 36 ===
+festgelegt. Dadurch wird ein lineares Verhältnis für die erwarteten Werte der Spannung an
+den Anschlussklemmen und den Betriebsbereich von 4-20 mA hergestellt. Siehe Abbildung
+2-13.
+Abbildung 2-13: Baseline-Betriebsbereich
+A. Klemmenspannung
+B. 4 mA
+C. Ausgangsstrom
+D. 20 mA
+Übersicht
+Emerson versendet den Messumformer standardmäßig mit deaktivierter Loop Integrity
+(Diagnose der Integrität des Messkreises) und ohne Charakterisierung des Mess-/
+Regelkreises. Nach der Installation und dem Einschalten des Messumformers muss eine
+Charakterisierung des Mess-/Regelkreises durchgeführt werden, um die Diagnose der
+Integrität des Messkreises zu aktivieren.
+Wenn Sie die Charakterisierung des Mess-/Regelkreises starten, überprüft der
+Messumformer, ob die Spannungsversorgung des Mess-/Regelkreises für den
+ordnungsgemäßen Betrieb ausreichend ist. Danach steuert der Messumformer den
+Analogausgang auf 4 mA und auf 20 mA, um so die Baseline festzulegen und die maximal
+zulässige Abweichung für die Spannung an den Anschlussklemmen zu ermitteln. Danach
+geben Sie einen Schwellenwert für die Empfindlichkeit ein, das sog. Terminal Voltage
+Deviation Limit (Klemmenspannungs-Abweichungsgrenze), und damit ist es möglich, zu
+überprüfen, ob dieser Schwellenwert ein gültiger Wert ist.
+Sobald Sie den Messkreis charakterisiert und die Klemmenspannungsabweichungsgrenze
+eingestellt haben, überwacht die Diagnose der Integrität des Messkreises den Messkreis
+aktiv auf Abweichungen von der Basislinie. Wenn sich die Klemmenspannung im
+Verhältnis zu dem erwarteten Baselinewert ändert und den konfigurierten Wert für
+die Klemmenspannungs-Abweichungsgrenze überschreitet, löst der Messumformer eine
+Warnmeldung oder einen Alarm aus.
+BEACHTEN
+Die Diagnose der Integrität des Messkreises im Rosemount 3051 Druckmessumformer mit
+erweiterter HART® Diagnose überwacht und erkennt Änderungen der Klemmenspannung
+im Vergleich zu den erwarteten Werten, um so häufig auftretende Störungen zu erkennen.
+Es ist nicht möglich, alle Arten der elektrischen Störungen des 4-20 mA-Ausgangs
+vorherzusehen und zu erkennen. Aus diesem Grund kann Emerson keine absolute Gewähr
+oder Garantie übernehmen, dass die Diagnose der Integrität des Messkreises akkurat
+Störungen unter allen Umständen erkennt.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+36
+Rosemount 3051
+
+
+=== PDF PAGE 37 ===
+Klemmenspannung
+Dieses Feld zeigt den aktuellen Wert der Klemmenspannung in Volt an. Die
+Klemmenspannung ist ein dynamischer Wert und steht in direktem Zusammenhang mit
+dem Wert für den mA-Ausgang.
+Klemmenspannungs-Abweichungsgrenze
+Die Klemmenspannungs-Abweichungsgrenze so hoch festsetzen, dass die „erwarteten“
+Spannungsänderungen keine falschen Störungsmeldungen auslösen.
+Abbildung 2-14: Spannungs-Abweichungsgrenze
+A. Spannungs-Abweichungsgrenze
+B. Klemmenspannung
+C. Meldung
+BEACHTEN
+Änderungen im Spannungsversorgungskreis
+Starke Veränderungen in der elektrischen Schleife können die HART® Kommunikation oder
+die Fähigkeit, Alarmwerte zu erreichen, beeinträchtigen. Aus diesem Grund kann Emerson
+keine absolute Gewähr oder Garantie dafür übernehmen, dass der korrekte Fehleralarm
+(hoch oder niedrig) vom Host-System zum Zeitpunkt der Ankündigung erkannt wird.
+Widerstand
+Dieser Wert ist der berechnete Widerstand des Mess-/Regelkreises (in Ω), der
+während des Verfahrens zur Charakterisierung des Mess-/Regelkreises gemessen wurde.
+Änderungen des Widerstands können durch Änderungen im physischen Zustand der
+Messkreisinstallation hervorgerufen werden. Sie können Baseline und frühere Baselines
+vergleichen, um zu sehen, wie stark sich der Widerstand im Laufe der Zeit geändert hat.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+37
+
+
+=== PDF PAGE 38 ===
+Spannungsversorgung
+Dieser Wert ist die berechnete Versorgungsspannung des Mess-/Regelkreises (in V),
+die während des Verfahrens zur Charakterisierung des Mess-/Regelkreises gemessen
+wurde. Änderungen dieses Wertes können aufgrund der reduzierten Leistung der
+Spannungsversorgung auftreten. Sie können Baseline und frühere Baselines vergleichen,
+um zu sehen, wie stark sich die Stromversorgung im Laufe der Zeit geändert hat.
+Charakterisierung des Mess-/Regelkreises
+Sie müssen die Messkreischarakterisierung nach der ersten Installation des
+Messumformers oder nach absichtlicher Änderung der Kennlinien des Messkreises
+einleiten.
+Hier einige Beispiele:
+•
+Ändern der Spannungsversorgungsstufe oder des Messkreiswiderstands des Systems
+•
+Anschlussklemmenblock am Messumformer wechseln
+•
+Wireless THUM™ Adapter zum Messumformer hinzufügen
+Anmerkung
+Emerson empfiehlt die Integritätsdiagnose des Messkreises für Messumformer, die im
+Multidrop-Modus betrieben werden.
+Maßnahme der Integrität des Messkreises
+Wenn die Spannungsabweichung den eingestellten Grenzwert überschreitet, können Sie
+drei mögliche Maßnahmen konfigurieren:
+•
+Diagnose deaktivieren
+•
+HART® Statusalarm
+•
+Analogausgangs-Alarm
+Die Warn- oder Alarmeinstellung wird aufgehoben. Wenn die Spannungsabweichung
+aufgrund von Änderungen der Messkreiskennlinien zum Bereich der zulässigen
+Spannungsabweichungsgrenze zurückkehrt, wird der Alarm von aktiven Alarmen gelöscht,
+erscheint aber weiterhin im Diagnoseprotokoll.
+Diagnose der Messkreisintegrität mit einem
+Kommunikationsgerät konfigurieren
+Prozedur
+Zu Diagnostics (Diagnosefunktionalitäten) → Alerts (Warnmeldungen) → Loop Integrity
+Diagnostic (Diagnose der Integrität des Messkreises) → Settings (Einstellungen) → 
+Configure Loop Integrity (Integrität des Messkreises konfigurieren) navigieren.
+2.9.2 
+Diagnose von verstopften Impulsleitungen konfigurieren
+Die Diagnose von verstopften Impulsleitungen bietet eine Möglichkeit, verstopfte
+Impulsleitungen frühzeitig zu erkennen.
+Die Technologie basiert auf vorausschauenden Betrachtungen aller dynamischen
+Prozesse, die ein einzigartiges Rauschen oder Variation der Signatur bei normalem
+Betrieb aufweisen. Änderungen dieser Signaturen können bedeuten, dass signifikante
+Signaländerungen im Prozess eintreten werden oder eingetreten sind. Das Erfassen
+der einzigartigen Signatur verwendet Software auf der Elektronikplatine, um statistische
+Parameter zu berechnen, die das Rauschen oder die Variation charakterisieren und
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+38
+Rosemount 3051
+
+
+=== PDF PAGE 39 ===
+quantifizieren. Diese statistischen Parameter sind der Mittelwert, die Standardabweichung
+und der Variationskoeffizient (Verhältnis von Standardabweichung zum Mittelwert).
+Der Messumformer verfügt über eine Filterfunktion, um langsame Änderungen im Prozess
+aufgrund von Sollwertänderungen von Prozessrauschen oder von Abweichungen von
+Interesse zu unterscheiden
+Abbildung 2-15: Änderung des Prozessrauschens oder der Variabilität und Einfluss auf
+die statistischen Parameter
+A. Prozessrauschen
+B. Standardabweichung
+C. Mittelwert
+D. Zeit (Minuten)
+Anmerkung
+Standardabweichung wird bei Änderung des Rauschwertes erhöht oder reduziert.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+39
+
+
+=== PDF PAGE 40 ===
+Abbildung 2-16: Der Variationskoeffizient (CV) ist das Verhältnis der
+Standardabweichung zum Mittelwert
+Mean
+Standard
+Deviation
+Coefficient of
+Variation
+CV ist stabil, wenn sich der Mittelwert proportional zur Standardabweichung ändert.
+Typische Anwendungen der Diagnose von verstopften Impulsleitungen schließen die
+Erkennung abnormaler Prozessanschlussbedingungen ein, zu denen u. a. Folgendes
+gehört:
+•
+Verstopfte Impulsleitungen
+•
+Prozessleckagen
+•
+Beschichteter oder verstopfter Rosemount Annubar
+Diagnose von verstopften Impulsleitungen mit einem
+Kommunikationsgerät konfigurieren
+Um die Diagnose von verstopften Impulsleitungen zu konfigurieren, eine einfache
+Methode in der Messumformer-Software verwenden.
+Prozedur
+1. Zu Diagnostics (Diagnosefunktionalitäten) → Alerts (Warnmeldungen) → Plugged
+Impulse Line Diagnostic (Diagnose von verstopften Impulsleitungen) → Settings
+(Einstellungen) → Configure Plugged Impulse Line Diagnostic (Diagnose von
+verstopften Impulsleitungen konfigurieren) gehen.
+2. Einen Benachrichtigungsmodus auswählen:
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+40
+Rosemount 3051
+
+
+=== PDF PAGE 41 ===
+•
+HART® Alarm
+•
+Analogausgangs-Alarm
+3. Auswählen, ob der Messumformer in einer Durchflussanwendung installiert ist oder
+nicht.
+Die Software wählt je nach Anwendung die Standardabweichung oder den
+Variationskoeffizienten aus. Dann bestimmt die Software, ob der Messumformer
+in einem aktiven laufenden Prozess installiert ist, und stellt sicher, dass genügend
+Rauschen zur Konfiguration der Diagnose vorhanden ist.
+4. Sobald die Diagnose konfiguriert ist, kann die Empfindlichkeitsstufe an
+anwendungsspezifische Bedingungen angepasst werden.
+Sie können die Empfindlichkeit einstellen auf:
+•
+Niedrig
+•
+Mittel
+•
+Hoch
+2.10 
+Durchführen von Messumformertests
+2.10.1 
+Überprüfen des Alarmwerts
+Wenn Elektronikplatine, Sensormodul oder Anzeiger des Messumformers repariert oder
+ausgetauscht wurden, die Alarmwerte überprüfen, bevor der Messumformer wieder
+in Betrieb genommen wird. Dies ist hilfreich, um das Verhalten des Leitsystems
+zu überprüfen, wenn sich ein Messumformer im Alarmzustand befindet und so
+sicherzustellen, dass das Steuerungssystem den Alarm erkennt, wenn er aktiviert wird.
+Um die Alarmwerte des Messumformers zu überprüfen, einen Messkreistest durchführen
+und dabei den Messumformerausgang auf die Alarmwerte setzen (siehe Tabelle 2-6, bis
+Tabelle 2-8).
+2.10.2 
+Analog-Messkreistest durchführen
+Der Befehl analog loop test (Analoger Messkreistest) überprüft den
+Messumformerausgang, die Integrität des Messkreises und die Funktion von Schreibern
+oder ähnlichen Aufzeichnungsgeräten im Messkreis. Emerson empfiehlt, dass bei der
+Installation, bei der Reparatur oder beim Austausch des Messumformers neben den
+Werten 4-20 mA (1-5 VDC) auch die Alarmwerte überprüft werden.
+Das Hostsystem kann möglicherweise einen aktuellen Messwert für den 4–20 mA (1-5 Vdc)
+HART® Ausgang liefern. Falls dies nicht der Fall ist, einen Referenzanzeiger entweder an
+die Testklemmen des Anschlussklemmenblocks oder parallel an einen Punkt im Messkreis
+anschließen.
+Einen analogen Messkreistest unter Verwendung eines
+Kommunikationsgeräts durchführen
+Prozedur
+Zu Diagnostics (Diagnosefunktionalitäten) → Simulation (Simulation) → Loop Test
+(Messkreistest) navigieren.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+41
+
+
+=== PDF PAGE 42 ===
+Durchführen eines Analog-Messkreistests mit den
+Schnellservicetasten
+Prozedur
+1. Die externen Tasten unter dem oberen Typenschild lokalisieren, wie in Abbildung
+2-2 gezeigt.
+2. Eine der beiden Tasten drücken, um das Menü zu aktivieren.
+3. Der Aufforderung auf dem Bildschirm folgen, indem Sie die andere Schaltfläche
+drücken.
+Das Quick Service Button Main Menu (Hauptmenü der Schnellservice-Schaltfläche)
+öffnet sich.
+4. Die Tasten Scroll (Blättern) und Enter (Eingabe) verwenden, um zum Loop Test
+Menu (Menü Messkreistest) zu navigieren.
+Analoger Messkreistest mit dem Bedieninterface (LOI)
+durchführen
+Prozedur
+1. Auf eine der Schaltflächen klicken, um das Bedieninterface zu aktivieren.
+2. Loop Test (Messkreistest) auswählen.
+2.10.3 
+Gerätevariablen simulieren
+Die folgenden Variablen können vorübergehend für Testzwecke auf benutzerdefinierte
+feste Werte eingestellt werden.
+•
+Druck
+•
+Modultemperatur
+Sobald die Methode der simulierten Variablen verlassen wird, schaltet der Sender die
+Prozessvariable automatisch auf eine Echtzeit-Messung zurück.
+Simulation einer Gerätevariablen mit einem
+Kommunikationsgerät
+Prozedur
+Zu Diagnostics (Diagnosefunktionalitäten) → Simulation (Simulation) → Simulate Device
+Variable (Gerätevariable simulieren) navigieren.
+2.10.4 
+Primärvariable simulieren
+Die Primärvariable kann vorübergehend für Testzwecke auf benutzerdefinierte feste
+Werte eingestellt werden. Durch die Simulation der Primärvariablen werden der digitale
+Messwert und der Analogausgang auf den benutzerdefinierten Wert abgestimmt.
+Die Primärvariable kann auf eine der folgenden Ausgangsvariablen eingestellt werden:
+•
+Druck
+•
+Ebene
+•
+Volumen
+•
+Durchfluss
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+42
+Rosemount 3051
+
+
+=== PDF PAGE 43 ===
+•
+Summierter Durchfluss
+Primärvariablen mit einem Kommunikationsgerät simulieren
+Prozedur
+Zu Diagnostics (Diagnosefunktionalitäten) → Simulation (Simulation) → Simulate PV (PV
+simulieren) navigieren.
+2.11 
+Konfigurieren der Burst-Betriebsart
+Die Burst-Betriebsart ist kompatibel zum Analogsignal. Das HART® Protokoll kann
+gleichzeitig digitale und analoge Daten übertragen; somit kann das Analogsignal ein Gerät
+im Messkreis steuern, während das digitale Signal vom Leitsystem verarbeitet wird.
+Die Burst-Betriebsart kann nur für die Übertragung dynamischer Daten verwendet werden
+und sie beeinflusst nicht den Datenfluss anderer angeschlossener Messumformer. Die
+aktivierte Burst-Betriebsart kann jedoch die Geschwindigkeit der Kommunikation nicht
+dynamischer Daten an den Host um bis zu 50 Prozent herabsetzen.
+Der Messumformer greift auf andere Informationen als dynamische Messumformerdaten
+über die normale Abfrage-/Antwortmethode der HART® Kommunikation zu. Eine Abfrage
+von normalen, verfügbaren Daten über das HART Kommunikationsgerät oder das
+Leitsystem ist möglich. Zwischen jeder Nachricht, die der Messumformer sendet, gibt es
+eine kurze Pause, die es dem Kommunikationsgerät ermöglicht, eine Abfrage zu starten.
+Optionen für den Nachrichteninhalt:
+Bef 1
+Primärvariable lesen
+Bef 2
+Prozentbereich/Strom lesen
+Bef 3
+Dynamische Variablen/Strom lesen
+Bef 9
+Gerätevariablen mit Status lesen
+Bef 33
+Gerätevariablen lesen
+Bef 48
+Erweiterten Gerätestatus lesen
+Triggermodus-Optionen:
+•
+Kontinuierlich
+•
+Steigend
+•
+Fallend
+•
+Im Fenster
+•
+Bei Änderung
+BEACHTEN
+Informationen bezüglich der jeweiligen Anforderungen für die Burst-Betriebsart sind beim
+Hersteller des Hostsystems erhältlich.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+43
+
+
+=== PDF PAGE 44 ===
+2.11.1 
+Burst-Betriebsart mittels Kommunikationsgerät
+konfigurieren
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (or Communication) [Ausgang
+(oder Kommunikation)] → HART → Burst Mode Configuration (Burst-Modus konfigurieren)
+navigieren.
+2.12 
+Herstellen einer Multidrop-Kommunikation
+Multidrop-Kommunikation bedeutet, dass mehrere Messumformer an die gleiche
+Datenübertragungsleitung angeschlossen sind. Die Kommunikation zwischen dem Host
+und den Messumformern erfolgt digital, d. h. der Analogausgang des Messumformers ist
+deaktiviert.
+Um eine Multidrop-Kommunikation zu installieren, muss die erforderliche
+Aktualisierungsrate der einzelnen Messumformer, die Kombination der Messumformer-
+Modelle und die Länge der Übertragungsleistung berücksichtigt werden. Sie können
+mit Messumformern mit HART Modems und einem Host, der das HART Protokoll
+implementiert, kommunizieren. Jeder Messumformer hat eine eindeutige Adresse und
+antwortet auf die Befehle des HART Protokolls. Handterminals, die AMS Device Manager
+und die AMS Device Configurator Bluetooth®-App können Messumformer für die
+Multidrop-Installation konfigurieren und testen, wie einen Messumformer für eine
+standardmäßige Einzelinstallation.
+Abbildung 2-17 zeigt ein typisches Multidrop-Netzwerk. Diese Abbildung ist kein
+Installationsplan.
+Anmerkung
+Ein Multidrop-Messumformer hat einen festen Analogausgang von 4 mA für alle bis auf ein
+Gerät. Es darf nur jeweils ein Gerät ein aktives analoges Signal übertragen.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+44
+Rosemount 3051
+
+
+=== PDF PAGE 45 ===
+Abbildung 2-17: Typisches Multidrop-Netzwerk
+A. HART®-Modem
+B. Spannungsversorgung
+Emerson stellt den Rosemount 3051 ist werkseitig auf die Adresse Null (0) eingestellt,
+die für eine standardmäßige Einzelinstallation mit 4-20 mA Ausgangssignal benötigt wird.
+Die Messumformeradresse muss auf eine Zahl zwischen 1 und 63 geändert werden,
+um die Multidrop-Kommunikation zu aktivieren. Diese Änderung deaktiviert den 4-20
+mA Analogausgang und setzt diesen auf 4 mA. Ebenso wird das bei einer Störung
+gesetzte Alarmsignal außer Funktion gesetzt, das über die Schalterposition für Aufwärts/
+Abwärts eingestellt wird. HART Meldungen kommunizieren Fehlersignale in Multidropped-
+Messumformern.
+2.12.1 
+Ändern der Messumformeradresse
+Die Messumformer-Abfrageadresse muss einer Zahl zwischen 1 und 63 zugeordnet
+werden, um die Multidrop-Kommunikation zu aktivieren.
+Jeder Messumformer in einem Multidrop-Messkreis muss eine eindeutige Abfrageadresse
+aufweisen.
+Ändern der Messumformeradresse mithilfe eines
+Kommunikationsgeräts
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Output (or Communication) [Ausgang (oder
+Kommunikation)] → HART → Communication Settings (Kommunikationseinstellungen) → 
+Change Polling Address (Abfrageadresse ändern) navigieren.
+Betriebsanleitung
+Konfiguration
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+45
+
+
+=== PDF PAGE 46 ===
+2.12.2 
+Kommunikation mit einem Messumformer in der
+Multidrop-Betriebsart
+Zur Kommunikation mit einem Messumformer in der Multidrop-Betriebsart muss das
+Kommunikationsgerät oder der AMS Device Manager auf Abfrage eingestellt sein.
+Kommunikation mit einem Messumformer in der Multidrop-
+Betriebsart mittels Kommunikationsgerät
+Einrichten eines Kommunikationsgeräts für die Abfrage:
+Prozedur
+1. Zu Utility (Dienstprogramm) → Configure HART Application (HART Anwendung
+konfigurieren) navigieren.
+2. Polling Addresses (Abfrageadressen) auswählen.
+3. 0-63 eingeben.
+Kommunizieren mit einem Messumformer in der Multidrop-
+Betriebsart mittels AMS Device Manager
+Prozedur
+1. Das HART Modem-Symbol anklicken.
+2. Die Option Scan All Devices (Alle Geräte scannen) auswählen.
+Konfiguration
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+46
+Rosemount 3051
+
+
+=== PDF PAGE 47 ===
+3 
+Hardware-Installation
+3.1 
+Übersicht
+Dieser Abschnitt enthält Informationen zur Installation des Rosemount 3051 mit HART®
+Protokolle. Emerson liefert mit jedem Messumformer eine Kurzanleitung aus. Dieses
+Dokument beschreibt die empfohlenen Rohrleitungsteile und Verkabelungsverfahren für
+jede Erstinstallation.
+Maßzeichnungen für jede Variante des Rosemount 3051 und Montagekonfigurationen sind
+enthalten in Montagehalterungen.
+Zugehörige Informationen
+Messumformer wieder auseinander bauen
+Messumformer wieder zusammenbauen
+3.2 
+Sicherheitsmeldungen
+Die in diesem Abschnitt beschriebenen Verfahren und Anleitungen können besondere
+Vorsichtsmaßnahmen erforderlich machen, um die Sicherheit des Bedienpersonals zu
+gewährleisten.
+Siehe Sicherheitshinweise.
+3.3 
+Besondere Hinweise
+3.3.1 
+Installationsanforderungen
+Die Messgenauigkeit hängt von der richtigen Installation des Messumformers und der
+Impulsleitung ab. Den Messumformer nahe am Prozess montieren und die Verkabelung
+möglichst kurz halten, um eine hohe Genauigkeit zu erreichen. Ebenso einen leichten
+Zugang, die Sicherheit für Personen, eine entsprechende Feldkalibrierung und eine
+geeignete Umgebung für den Messumformer berücksichtigen. Montieren Sie den
+Messumformer so, dass er möglichst geringen Vibrations- und Stoßeinflüssen sowie
+Temperaturschwankungen ausgesetzt ist.
+ WARNUNG
+Den beiliegenden Verschlussstopfen mit mindestens fünf Gewindegängen in die
+unbenutzte Leitungseinführung des Gehäuses eindrehen, um den Ex-Vorschriften
+gerecht zu werden.
+Für konische Gewinde mit dem Schraubenschlüssel festziehen.
+Hinweise zur Kompatibilität von Werkstoffen sind in der Technischen Mitteilung zur
+Werkstoffauswahl und -kompatibilität für Rosemount Druckmessumformer zu finden.
+3.3.2 
+Umgebungsanforderungen
+Montieren Sie den Messumformer so, dass er möglichst geringen
+Temperaturschwankungen ausgesetzt ist.
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+47
+
+
+=== PDF PAGE 48 ===
+Die Betriebstemperaturgrenzen für die Messumformerelektronik betragen -40 bis +185 °F
+(-40 bis +85 °C). Siehe Abschnitt Technische Daten im Produktdatenblatt des Rosemount
+3051 Druckmessumformers, um die Betriebsgrenzen des Sensorelements anzuzeigen.
+Montieren Sie den Messumformer so, dass er keinen Vibrations- und Stoßeinflüssen
+ausgesetzt ist, und vermeiden Sie äußerlich den Kontakt mit korrosiven Werkstoffen.
+3.3.3 
+Mechanische Anforderungen
+Dampfanwendung
+Bei Dampfmessung oder Anwendungen mit Prozesstemperaturen, die über den
+Grenzwerten des Messumformers liegen, die Impulsleitungen nicht über den
+Messumformer ausblasen. Die Impulsleitungen bei geschlossenen Absperrventilen spülen
+und die Leitungen vor der Wiederaufnahme der Messung mit Wasser befüllen. Siehe
+Abbildung 3-9 bzgl. der richtigen Einbaulage.
+Seitliche Montage
+Zur besseren Entlüftung und Entwässerung den Messumformer mit Coplanar Flansch
+seitlich zur Prozessleitung montieren. Den Flansch wie in Abbildung 3-9 dargestellt
+montieren. Bei Anwendungen mit Gas die Ablass-/Entlüftungsventile nach unten anordnen,
+bei Anwendungen mit Flüssigkeiten nach oben.
+3.3.4 
+Anforderungen bei Kleinstdrücken
+Installation
+Emerson empfiehlt, das Modell Rosemount 3051CD0, Messumformer für Kleinstdrücke,
+bevorzugt mit der Membrane in horizontaler Lage zu montieren.
+Ein Beispiel für die Montage eines Messumformers für Kleinstdrücke an einem Ventilblock
+Rosemount 304 ist in Abbildung 3-1 zu finden. Diese Installation des Messumformers
+reduziert den Einfluss der Ölsäule.
+Ein schräg montierter Messumformer kann eine Nullpunktabweichung des
+Messumformer-Ausgangs verursachen; dies können Sie jedoch durch das
+Abgleichverfahren eliminieren.
+Abbildung 3-1: Beispiel – Montage eines Messumformers für Kleinstdrücke
+A. Trenner
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+48
+Rosemount 3051
+
+
+=== PDF PAGE 49 ===
+Reduzieren von Prozessrauschen
+Rosemount 3051CD0 Messumformer für Kleinstdrücke nehmen selbst geringe
+Druckänderungen wahr. Eine Reduzierung der Dämpfung reduziert das Prozessrauschen;
+dabei wird jedoch die Ansprechzeit weiter reduziert. Bei Anwendungen mit Überdruck ist
+es wichtig, Druckschwankungen zur Membran an der Niederdruckseite zu minimieren.
+Dämpfen des Ausgangs
+Emerson stellt werkseitig die Ausgangsdämpfung für den Rosemount 3051CD0 auf 3,2
+ein. Rauscht der Messumformerausgang immer noch, erhöhen Sie die Dämpfungszeit.
+Wenn Sie eine schnellere Antwortzeit benötigen, ist die Dämpfungszeit zu verringern.
+Umfassende Informationen zur Einstellung der Dämpfung sind unter Dämpfung zu finden.
+Filtern der Referenzseite
+Bei Anwendungen mit Überdruck ist es wichtig, Schwankungen des atmosphärischen
+Drucks zu minimieren, denen die Membrane ausgesetzt ist.
+Eine Methode zur Reduzierung von Schwankungen des atmosphärischen Druckes ist es,
+ein Stück Rohr als Druckpuffer an der Referenzseite des Messumformers anzusetzen.
+3.4 
+Installationsverfahren
+3.4.1 
+Messumformer montieren
+Informationen bzgl. Maßzeichnungen sind im Abschnitt Maßzeichnungen im
+Produktdatenblatt des Rosemount 3051 zu finden.
+Ausrichten der Prozessflansche
+Die Prozessflansche mit ausreichendem Freiraum für die Prozessanschlüsse montieren. Die
+Ablass-/Entlüftungsventile aus Sicherheitsgründen so montieren, dass das Prozessmedium
+nicht mit Menschen in Kontakt kommen kann, wenn die Ventile geöffnet werden. Weiterhin
+die Erfordernis eines Prüf- oder Kalibrieranschlusses berücksichtigen.
+Anmerkung
+Die meisten Messumformer werden im Werk in horizontaler Position kalibriert. Wenn
+Sie den Messumformer in einer anderen Position montieren als er im Werk kalibriert
+wurde, verschiebt sich der Nullpunkt um den gleichen Betrag wie die darüber liegende
+Flüssigkeitssäule. Anweisungen zum Nullpunktabgleich sind unter Übersicht über den
+Sensorabgleich zu finden.
+Drehen des Gehäuses
+Das Elektronikgehäuse kann in beiden Richtungen um je 180° gedreht werden, um den
+Zugang vor Ort sowie der Ablesbarkeit des optionalen LCD-Displays/Bedieninterface (LOI)
+zu verbessern.
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+49
+
+
+=== PDF PAGE 50 ===
+Abbildung 3-2: Messumformer-Gehäusesicherungsschraube
+A. Gehäusesicherungsschraube (5/64 in.)
+Prozedur
+1. Die Gehäusesicherungsschraube mit einem 5/64 in.-Sechskantschlüssel lösen.
+Anmerkung
+Beschädigung am Messumformer
+•
+Überdrehen kann den Messumformer beschädigen.
+•
+Den Messumformer nicht mehr als 180 Grad drehen.
+2. Das Gehäuse nach links oder rechts um 180 Grad von der Ausgangsposition
+drehen.(3)
+3. Die Gehäusesicherungsschraube wieder festziehen.
+Freiraum des Elektronikgehäuses
+Montieren Sie den Messumformer so, dass die Seite mit dem Anschlussklemmenblock
+zugänglich ist.
+Um den Deckel zu entfernen, muss ein Freiraum von 0,75 Zoll (19 mm) vorhanden
+sein. Verwenden Sie den Verschlussstopfen für die unbenutzte Leitungseinführung. Sie
+benötigen 3 in. (76 mm) Freiraum, um den Deckel zu entfernen, wenn ein Messgerät
+installiert ist.
+Abdichtung des Gehäuses
+Für die Anforderungen von NEMA® 4X, IP66 und IP68 verwenden Sie PTFE-Band oder
+Paste auf dem Außengewinde des Rohrs, um eine wasser- und staubdichte Abdichtung zu
+gewährleisten.
+(3) Der Rosemount 3051C ist in der Ausgangsposition mit der H-Seite ausgerichtet; die Ausgangsposition des
+Rosemount 3051T befindet sich gegenüber den Halterungsbohrungen.
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+50
+Rosemount 3051
+
+
+=== PDF PAGE 51 ===
+Den/die Gehäusedeckel der Elektronik stets so installieren, dass eine ordnungsgemäße
+Abdichtung gewährleistet ist (Metall/Metall-Kontakt). O-Ringe von Rosemount verwenden.
+Flanschschrauben
+Emerson kann den Rosemount 3051 mit einem Coplanar Flansch oder einem
+Anpassungsflansch mit vier 1,75 in.-Flanschschrauben ausliefern.
+Montageschrauben und Schraubenkonfigurationen für die Coplanar und
+Anpassungsflansche sind unter Tabelle 3-1 und Abbildung 3-3 zu finden. Emerson liefert
+Edelstahlschrauben zur besseren Montage mit einem Gleitmittel versehen. Schrauben aus
+Kohlenstoffstahl erfordern keine Schmierung. Beim Einbau einer dieser Schraubentypen
+kein zusätzliches Schmiermittel verwenden. Von Emerson gelieferte Schrauben können
+durch ihre Markierung am Schraubenkopf identifiziert werden.
+Schraubenmontage
+ WARNUNG
+Ersatzteile
+Austausch-oder Ersatzteile, die nicht durch Emerson zugelassen sind, können die
+Druckfestigkeit des Messumformers reduzieren, sodass das Gerät ein Gefahrenpotenzial
+darstellt.
+Ausschließlich von Emerson gelieferte oder verkaufte Ersatzteile verwenden.
+Tabelle 3-1: Drehmomentwerte für die Montage der Schrauben
+Schraubenwerkstoff
+Anfangsdrehmoment
+Enddrehmoment
+CS-(ASTM-A445) Standard
+300 in-lb (34 Nm)
+650 in-lb (73 Nm)
+Austenitischer Edelstahl 316 −
+Option L4
+150 in-lb (17 Nm)
+300 in-lb (34 Nm)
+ASTM A193 Grade B7M – Option
+L5
+300 in-lb (34 Nm)
+650 in-lb (73 Nm)
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+51
+
+
+=== PDF PAGE 52 ===
+Abbildung 3-3: Anpassungsflansch Schraubenanordnung
+A. Messumformer für Differenzdruck
+B. Messumformer für Über-/Absolutdruck
+C. Entlüftungsventil
+D. Entlüftungsanschluss
+E. 1,75 in. (44 mm) x 4
+F. 1,50 in. (38 mm) x 4(4)
+Abmessungen in in. (mm).
+(4) Für Messumformer für Über- und Absolutdruck: 150 (38) x 2
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+52
+Rosemount 3051
+
+
+=== PDF PAGE 53 ===
+Abbildung 3-4: Montageschrauben und -anordnung für Coplanar Flansch
+A. Messumformer mit Flanschschrauben
+B. Messumformer mit Ovaladaptern und Flansch-/Adapterschrauben
+C. 1,75 (44) x 4
+D. 2,88 (73) x 4
+Anmerkung
+Abmessungen in in. (mm).
+Beschreibung
+Menge
+Größe
+Differenzdruck  
+Flanschschrauben
+4
+1,75 in. (44 mm)
+Flansch-/AdapterschraubenFlansch/Adapter
+4
+2,88 in. (73 mm)
+Über-/Absolutdruck (1)
+Flanschschrauben
+4
+1,75 in. (44 mm)
+Flansch-/Adapterschrauben
+2
+2,88 in. (73 mm)
+(1) Rosemount 3051T Messumformer werden direkt montiert und benötigen keine
+Schrauben für den Prozessanschluss.
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+53
+
+
+=== PDF PAGE 54 ===
+Abbildung 3-5: Montagehalterung, Optionscodes B1, B7 und BA
+Anmerkung
+Abmessungen in in. (mm).
+Abbildung 3-6: Montagehalterung für Schalttafelmontage, Optionscodes B2 und B8
+A. Befestigungsbohrungen Durchmesser 0,375 (10)
+Anmerkung
+Abmessungen in in. (mm).
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+54
+Rosemount 3051
+
+
+=== PDF PAGE 55 ===
+Abbildung 3-7: Montagehalterung für Flachwandmontage, Optionscodes B3 und BC
+Anmerkung
+Abmessungen in in. (mm).
+1. Schrauben handfest anziehen.
+2. Schrauben kreuzweise mit dem Anfangsdrehmoment anziehen (siehe Tabelle 3-1
+bzgl. Drehmomentwerte).
+3. Schrauben kreuzweise (wie vorher) mit dem Enddrehmoment anziehen.
+Montagehalterungen
+Der Rosemount 3051 Messumformer kann mit einer optionalen Halterung an der
+Schalttafel oder an einem Rohr montiert werden.
+Komplettes Angebot, siehe Tabelle 3-2 und Abmessungen und
+Montagearten, siehe #unique_108/unique_108_Connect_42_RFIXbq15879 und
+#unique_108/unique_108_Connect_42_RFIXbq19918.
+Komplettes Angebot, siehe Tabelle 3-2 und Abmessungen und Montagearten, siehe
+Abbildung 3-7 und Abbildung 3-8.
+Tabelle 3-2: Montagehalterungen
+Opti‐
+onscode
+Prozessanschlüsse
+Montage
+Werkstoffe
+Kopla‐
+nar
+Inline
+Traditio‐
+nell
+Rohr‐
+monta‐
+ge
+Wand‐
+monta‐
+ge
+Flach‐
+wand‐
+monta‐
+ge
+Halte‐
+rung aus
+Kohlen‐
+stoff‐
+stahl
+(CS)
+Halte‐
+rung aus
+Edel‐
+stahl
+(SST)
+Schrau‐
+ben aus
+Kohlen‐
+stoff‐
+stahl
+Schrau‐
+ben aus
+Edel‐
+stahl
+B4
+X
+X
+–
+X
+X
+X
+–
+X
+–
+X
+B1
+–
+–
+X
+X
+–
+–
+X
+–
+X
+–
+B2
+–
+–
+X
+–
+X
+–
+X
+–
+X
+–
+B3
+–
+–
+X
+–
+–
+X
+X
+–
+X
+–
+B7
+–
+–
+X
+X
+–
+–
+X
+–
+–
+X
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+55
+
+
+=== PDF PAGE 56 ===
+Tabelle 3-2: Montagehalterungen (Fortsetzung)
+Opti‐
+onscode
+Prozessanschlüsse
+Montage
+Werkstoffe
+Kopla‐
+nar
+Inline
+Traditio‐
+nell
+Rohr‐
+monta‐
+ge
+Wand‐
+monta‐
+ge
+Flach‐
+wand‐
+monta‐
+ge
+Halte‐
+rung aus
+Kohlen‐
+stoff‐
+stahl
+(CS)
+Halte‐
+rung aus
+Edel‐
+stahl
+(SST)
+Schrau‐
+ben aus
+Kohlen‐
+stoff‐
+stahl
+Schrau‐
+ben aus
+Edel‐
+stahl
+B8
+–
+–
+X
+–
+X
+–
+X
+–
+–
+X
+B9
+–
+–
+X
+–
+–
+X
+X
+–
+–
+X
+BA
+–
+–
+X
+X
+–
+–
+–
+X
+–
+X
+BC
+–
+–
+X
+–
+–
+X
+–
+X
+–
+X
+Abbildung 3-8: Montagehalter Option Code B4
+A.
+5/16 x 1½ in. (38 mm) Schrauben für Wandmontage (nicht im Lieferumfang enthalten)
+B. 3,4 in. (85 mm)
+C. ⅜ in. 16 x 1¼ in. (32 mm) Schrauben zur Montage an den Messumformer
+D. 2,8 in. (71 mm)
+Anmerkung
+Abmessungen in Zoll (mm).
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+56
+Rosemount 3051
+
+
+=== PDF PAGE 57 ===
+Tabelle 3-3: Kopfmarkierung
+Kohlenstoffstahl (CS)-Markierung
+Edelstahl (SST)-Markierung (1)
+Alloy K-500-Markierung
+(1) Die letzte Stelle der FS93-Markierung kann ein beliebiger Buchstabe zwischen A und M
+sein.
+3.4.2 
+Impulsleitungen
+Montageanforderungen
+Die Konfiguration der Impulsleitungen ist abhängig von den speziellen Messbedingungen.
+Siehe Abbildung 3-9 als Beispiele für die folgenden Anordnungen:
+Flüssigkeitsmessung
+•
+Die Entnahmestutzen seitlich von der Leitung anbringen, um Ablagerungen auf den
+Messumformer-Trennmembranen zu vermeiden.
+•
+Den Messumformer neben oder unter den Entnahmestutzen montieren, damit Gase in
+die Prozessleitung entweichen können.
+•
+Das Ablass-/Entlüftungsventil oben anbringen, damit Gase entweichen können.
+Gasmessung
+•
+Druckentnahmen oberhalb oder seitlich an der Prozessleitung platzieren.
+•
+Den Messumformer neben den Entnahmestutzen oder darüber montieren, damit
+Flüssigkeiten in die Prozessleitung ablaufen können.
+Dampfmessung
+•
+Druckentnahmen seitlich an der Prozessleitung platzieren.
+•
+Den Messumformer unterhalb der Entnahmestutzen montieren, um sicherzustellen,
+dass die Impulsleitungen mit Kondensat gefüllt bleiben.
+•
+Bei Betrieb mit Dampf über 250 °F (121 °C) die Impulsleitungen mit Wasser füllen, um
+so zu verhindern, dass Dampf direkt an den Messumformer kommt und eine korrekte
+Messung von der Inbetriebnahme an erfolgen kann.
+BEACHTEN
+Bei Dampf oder anderen Anwendungen mit ebenso hohen Temperaturen ist es wichtig,
+dass die Temperaturen am Prozessanschluss nicht die Temperaturgrenzen des
+Messumformers überschreiten.
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+57
+
+
+=== PDF PAGE 58 ===
+Abbildung 3-9: Installationsbeispiele
+A. Flüssigkeitsanwendung
+B. Gasanwendungen
+C. Dampfanwendung
+D. Durchfluss
+E. Ablass-/Entlüftungsventile
+Bewährte Verfahren
+Um genaue Messungen zu erreichen, müssen die Leitungen zwischen der Prozessleitung
+und dem Messumformer den Druck exakt übertragen.
+Es gibt sechs mögliche Fehlerquellen:
+•
+Druckübertragung
+•
+Leckagen
+•
+Reibungsverlust (insbesondere bei Verwendung einer Spülung)
+•
+Eingeschlossenes Gas in einer Flüssigkeitsleitung
+•
+Flüssigkeit in einer Gasleitung
+•
+Dichteschwankungen zwischen den Leitungen
+Die beste Anordnung des Messumformers zur Prozessleitung ist abhängig vom Prozess
+selbst. Nachfolgende Richtlinien verwenden, um Messumformer und Impulsleitungen
+richtig anzuordnen:
+•
+Die Impulsleitungen so kurz wie möglich halten.
+•
+Für Flüssigkeitsanwendungen die Impulsleitungen mindestens 1 in./ft neigen. (8 cm/m)
+vom Messumformer nach oben in Richtung Prozessanschluss verlegt werden.
+•
+Für Gasanwendungen die Leitungen mindestens 1 in./ft neigen. (8 cm/m) vom
+Messumformer nach unten in Richtung Prozessanschluss verlegt werden.
+•
+Hoch liegende Punkte bei Flüssigkeitsleitungen und niedrig liegende Punkte bei
+Gasleitungen vermeiden.
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+58
+Rosemount 3051
+
+
+=== PDF PAGE 59 ===
+•
+Sicherstellen, dass beide Impulsleitungen die gleiche Temperatur haben.
+•
+Verwenden Sie Impulsleitungen, die groß genug sind, um ein Verstopfen sowie ein
+Einfrieren zu verhindern.
+•
+Gas vollständig aus den mit Flüssigkeit gefüllten Impulsleitungen entlüften.
+•
+Wenn eine Sperrflüssigkeit verwendet wird, beide Impulsleitungen auf das gleiche
+Niveau befüllen.
+•
+Zum Ausblasen die Ausblasanschlüsse möglichst nahe an die Prozessentnahmestutzen
+setzen und mittels gleich langen und gleichem Rohrdurchmesser ausblasen. Ausblasen
+über den Messumformer vermeiden.
+•
+Direkten Kontakt von korrosiven oder heißen Prozessmedien (über 250 °F [121 °C]) mit
+den Sensormodulen und den Flanschen vermeiden.
+•
+Ablagerungen in den Impulsleitungen verhindern.
+•
+Halten Sie den Flüssigkeitsspiegel in beiden Impulsleitungen auf gleichem Niveau.
+•
+Vermeiden Sie Betriebsbedingungen, die das Einfrieren der Prozessmedien bis hin zu
+den Prozessflanschen ermöglichen.
+3.4.3 
+Prozessanschlüsse
+Prozessanschluss mit Coplanar oder Anpassungsflansch
+Bei richtiger Installation stehen die Flanschschrauben über das Gehäuse des Moduls
+hinaus.
+Ovaladapter installieren
+Die Modelle Rosemount 3051DP und GP verfügen über Prozessflansche mit ¼-18
+NPT. Ovaladapter sind mit Standard ½-14 NPT Class 2 Anschlüssen lieferbar. Mit
+dem Ovaladapter können Anwender den Messumformer durch Entfernen der Flansch-/
+Adapterschrauben vom Prozess trennen.
+ WARNUNG
+Prozessleckagen
+Prozessleckagen können zu schweren oder tödlichen Verletzungen führen.
+Alle vier Flanschschrauben vor der Druckbeaufschlagung installieren und festziehen.
+Nicht versuchen, die Flanschschrauben zu lösen oder zu entfernen, während der
+Messumformer in Betrieb ist.
+Für die Installation verwenden Sie Schmiermittel oder Dichtmittel, die für Ihre Anlage
+zugelassen sind. Der Abstand zwischen den Druckanschlüssen ist dem Abschnitt
+Maßzeichnungen im Produktdatenblatt des Rosemount 3051 zu entnehmen. Sie können
+den Abstand um ±¼ in. (6,4 mm) variieren, indem Sie einen oder beide Ovaladapter drehen.
+Für die Installation des Adapters an einem Coplanar Flansch:
+Prozedur
+1. Die Prozessflanschschrauben entfernen.
+Wenn Sie die Flansche oder Ovaladapter demontieren, müssen die PTFE-O-
+Ringe jedes Mal visuell geprüft werden. Bei Anzeichen von Beschädigungen,
+wie z. B. Kerben oder Schnitte, die O-Ringe durch O-Ringe ersetzen, die für
+Rosemount Messumformer entwickelt wurden. Unbeschädigte O-Ringe können
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+59
+
+
+=== PDF PAGE 60 ===
+wiederverwendet werden. Nach dem Sie die O-Ringe ausgetauscht haben, müssen
+die Flanschschrauben nach erfolgter Montage nochmals nachgezogen werden,
+um die Kaltflusseigenschaft der O-Ringe auszugleichen. Siehe Rosemount 3051C
+Prozessflansch wieder zusammenbauen.
+BEACHTEN
+Beim Entfernen des Ovaladapters die PFTE-O-Ringe ersetzen.
+2. Den Coplanar Flansch belassen und die Ovaladapter einschließlich der O-Ringe
+positionieren.
+3. Die Ovaladapter und den Coplanar Flansch mit den mitgelieferten längeren
+Schrauben am Messumformer Sensormodul befestigen.
+4. Die Schrauben festziehen. Siehe Drehmomentwerte in Flanschschrauben.
+3.4.4 
+Prozessanschluss mit Inline Flansch
+Einbaulage des Inline-Messumformers für Überdruck
+BEACHTEN
+Der Messumformer kann fehlerhafte Druckwerte ausgeben.
+Den Anschluss für den Referenz-Atmosphärendruck nicht beeinträchtigen oder blockieren.
+Der Niederdruckanschluss (Referenz-Atmosphärendruck) des Inline-Messumformers für
+Überdruck befindet sich am Stutzen des Messumformers hinten am Gehäuse. Die
+Entlüftungsöffnungen sind 360 Grad um den Messumformer zwischen Gehäuse und
+Sensor angeordnet (siehe Abbildung 3-10).
+Die Entlüftungsöffnungen bei der Montage des Messumformers stets frei von z. B. Lack,
+Staub und Schmiermittel halten, sodass der Prozess sich entlüften kann.
+Abbildung 3-10: Niederdruckanschluss des Inline-Messumformers für Überdruck
+A. Niederdruckanschluss (Referenz-Atmosphärendruck)
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+60
+Rosemount 3051
+
+
+=== PDF PAGE 61 ===
+BEACHTEN
+Beschädigung der Elektronik
+Verdrehen des Sensormoduls gegenüber dem Prozessanschluss kann die Elektronik
+zerstören.
+Das Sensormodul nicht direkt mit einem Drehmoment beaufschlagen.
+Zur Vermeidung von Beschädigungen das Drehmoment nur am Sechskant-
+Prozessanschluss anwenden. Siehe Abbildung 3-11.
+Abbildung 3-11: Inline-Messgerät
+A. Sensormodul
+B. Prozessanschluss
+Installation von Hochdruckanschlüssen mit Konus und Gewinde
+Der Messumformer wird mit einem für Druckanwendungen konstruierten Autoklav-
+Anschluss geliefert. Anschließen des Messumformer an den Prozess:
+Prozedur
+1. Ein prozesskompatibles Schmiermittel auf das Gewinde der Verschraubungsmutter
+auftragen.
+2. Die Verschraubungsmutter auf das Rohr schieben und anschließend die Muffe auf
+das Rohrende aufschrauben.
+Die Muffe hat ein Linksgewinde.
+3. Eine geringe Menge von prozesskompatiblem Schmiermittel auf den Rohrkonus
+auftragen, um ein Festfressen zu vermeiden und die Abdichtung zu erleichtern. Die
+Rohrleitung in den Anschluss einsetzen und die Schrauben handfest anziehen.
+4. Die Verschraubungsmutter mit einem Anzugsdrehmoment von 25 ft-lb festziehen.
+Anmerkung
+Für die Sicherheit und zur Erkennung von Leckagen wurde der Messumformer
+mit einer Drainageöffnung versehen. Wenn Flüssigkeit beginnt, aus der
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+61
+
+
+=== PDF PAGE 62 ===
+Drainageöffnung auszutreten, den Prozessdruck isolieren, den Messumformer
+trennen und neu abdichten, bis die Leckage beseitigt ist.
+3.4.5 
+Rosemount 304, 305 und 306 Ventilblöcke
+Das Modell 305 ist in zwei Ausführungen erhältlich: mit Anpassungs- und Coplanar Flansch.
+Mit den Ovaladaptern kann die Ausführung des 305 integrierten Ventilblocks mit
+Anpassungsflansch an die meisten auf dem Markt befindlichen Primärelemente montiert
+werden. Um die Funktionen von Absperr- und Entlüftungsventil, bis 10000 psi (690 bar),
+zu realisieren, wird der integrierte Ventilblock 306 mit einem 3051T Inline-Messumformer
+verwendet.
+Abbildung 3-12: Ventilinseln
+A. Rosemount 3051C und 304 Anpassungsflansch
+B. Rosemount 3051C und 305 Integrierter Coplanar Flansch
+C. Rosemount 3051C und 305 Integrierter Anpassungsflansch
+D. Rosemount 3051T und 306 Inline
+Der Ventilblock Rosemount 304 mit Anpassungsflansch kombiniert einen
+Anpassungsflansch mit einem Ventilblock, der an die meisten Wirkdruckgeber montiert
+werden kann.
+Rosemount 304 konventionellen Ventilblock installieren
+Siehe Sicherheitshinweise.
+Prozedur
+1. Den konventionellen Ventilblock auf den Flansch des Messumformers ausrichten.
+Die vier Ventilblockschrauben zur Zentrierung verwenden.
+2. Die Schrauben handfest anziehen, dann schrittweise über Kreuz, bis sie den
+Drehmomentendwert erreicht haben.
+Nach dem vollständigen Anziehen müssen die Schrauben durch die Oberseite des
+Sensormodul-Gehäuses hinausragen.
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+62
+Rosemount 3051
+
+
+=== PDF PAGE 63 ===
+3. Über den gesamten Druckbereich des Messumformers eine Leckageprüfung
+durchführen.
+Integrierten Rosemount 305 Ventilblock installieren
+Prozedur
+1. Die PTFE-O-Ringe des Sensormoduls überprüfen.
+Unbeschädigte O-Ringe können wiederverwendet werden. Weisen die O-Ringe
+Beschädigungen wie z. B. Risse oder Kerben auf, müssen sie mit O-Ringen für
+Rosemount erneuert werden.
+BEACHTEN
+Darauf achten, dass die O-Ring-Nuten und die Trennmembran beim Austausch
+defekter O-Ringe nicht verkratzt oder beschädigt werden.
+2. Den integrierten Ventilblock an das Sensormodul montieren. Die vier 2,25 in.-
+Schrauben (57 mm) zur Zentrierung verwenden. Die Schrauben handfest anziehen,
+dann wie in Abbildung 3-13 dargestellt schrittweise über Kreuz, bis das endgültige
+Anzugsmoment erreicht ist.
+Nach dem vollständigen Anziehen müssen die Schrauben durch die Oberseite des
+Sensormodul-Gehäuses hinausragen.
+Abbildung 3-13: Anzugsreihenfolge der Schrauben
+3. Wenn die PTFE O-Ringe des Sensormoduls ausgetauscht wurden, müssen die
+Flanschschrauben nach der Installation wieder angezogen werden, um den Kaltfluss
+des O-Rings zu kompensieren.
+Integrierten Rosemount 306 Ventilblock installieren
+Verwenden Sie den Rosemount 306 Ventilblock nur mit einem Rosemount 3051T Inline-
+Messumformer.
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+63
+
+
+=== PDF PAGE 64 ===
+ WARNUNG
+Prozessleckagen
+Prozessleckagen können zu schweren oder tödlichen Verletzungen führen.
+Vor Druckbeaufschlagung Prozessanschlüsse installieren und festziehen.
+Alle vier Flanschschrauben vor der Druckbeaufschlagung installieren und festziehen.
+Nicht versuchen, die Flanschschrauben zu lösen oder zu entfernen, während der
+Messumformer in Betrieb ist.
+Montieren Sie den Rosemount Ventilblock 306 und den Rosemount 3051T In-Line
+Messumformer unter Verwendung eines Gewinde-Dichtmittels.
+Funktionsweise der Ventilblöcke
+ WARNUNG
+Prozessleckagen
+Prozessleckagen können zu schweren oder tödlichen Verletzungen führen.
+Sicherstellen, dass die Ventilblöcke korrekt installiert und betrieben werden.
+Um Abweichungen/Shifts aufgrund von Einflüssen der Einbaulage zu vermeiden, nach
+der Installation stets einen Nullpunktabgleich an der Messumformer/Ventilblock-Einheit
+durchführen.
+Zugehörige Informationen
+Übersicht über den Sensorabgleich
+Einen Nullpunktabgleich an 3- und 5-fach Ventilblöcken durchführen
+Nullpunktabgleich bei statischem Leitungsdruck durchführen.
+Im Normalbetrieb sind die beiden Isolierventile (Blockventile) zwischen den
+Prozessanschlüssen und dem Messumformer geöffnet und das Ausgleichsventil
+geschlossen.Im Normalbetrieb sind die beiden Blockventile zwischen den Prozess- und den
+Geräteanschlüssen geöffnet und das Ausgleichsventil geschlossen.
+A. Ablass-/Entlüftungsventil
+B. Absperrventil (geöffnet)
+C. Ausgleichsventil (geschlossen)
+D. Prozess
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+64
+Rosemount 3051
+
+
+=== PDF PAGE 65 ===
+Prozedur
+1. Zum Nullpunktabgleich des Messumformers das Absperrventil auf der
+Niederdruckseite (Auslassseite) des Messumformers schließen.Für einen
+Nullpunktabgleich des Rosemount 3051, zuerst das Absperrventil auf der
+Niederdruckseite (Auslassseite) schließen.
+A. Ablass-/Entlüftungsventil
+B. Absperrventil (geöffnet)
+C. Ausgleichsventil (geschlossen)
+D. Prozess
+E. Absperrventil (geschlossen)
+2. Das Ausgleichsventil öffnen, um die Drücke auf beiden Seiten des Messumformers
+auszugleichen. Das mittlere Ausgleichsventil öffnen, um die Drücke auf beiden
+Seiten des Messumformers auszugleichen.
+Der Ventilblock ist nun korrekt konfiguriert, um den Nullpunktabgleich des
+Messumformers durchführen zu können.Die Ventilblöcke sind nun in der richtigen
+Konfiguration für den Nullpunktabgleich des Messumformers.
+A. Ablass-/Entlüftungsventil
+B. Absperrventil (geöffnet)
+C. Ausgleichsventil (geöffnet)
+D. Prozess
+E. Absperrventil (geschlossen)
+3. Nach dem Nullpunktabgleich des Messumformers das Ausgleichsventil schließen.
+A. Ablass-/Entlüftungsventil
+B. Absperrventil (geöffnet)
+C. Ausgleichsventil (geschlossen)
+D. Prozess
+E. Absperrventil (geschlossen)
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+65
+
+
+=== PDF PAGE 66 ===
+4. Um den Messumformer wieder in Betrieb zu nehmen, öffnen Sie schließlich das
+Absperrventil auf der Niederdruckseite.Das Absperrventil auf der Niederdruckseite
+des Messumformers öffnen, um den Messumformer wieder in Betrieb zu nehmen.
+A. Ablass-/Entlüftungsventil
+B. Absperrventil (geöffnet)
+C. Ausgleichsventil (geschlossen)
+D. Prozess
+E. Absperrventil (geöffnet)
+5-fach-Ventilblock für Erdgas nullen
+Nullpunktabgleich bei statischem Leitungsdruck durchführen.
+Beim normalen Betrieb sind die beiden Absperrventile zwischen den Prozessanschlüssen
+und dem Messumformer geöffnet und die Ausgleichsventile geschlossen.
+Entlüftungsventile können geöffnet oder geschlossen sein.Beim normalen Betrieb sind
+die beiden Absperrventile zwischen dem Prozess- und Geräteanschluss geöffnet und die
+Ausgleichsventile geschlossen.
+A. Verstopft
+B. Testanschluss (verschlossen)
+C. Absperrventil (geöffnet)
+D. Prozess
+E. Ausgleichsventil (geschlossen)
+F. Ablass-/Entlüftungsventil (geschlossen)
+G. Prozess
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+66
+Rosemount 3051
+
+
+=== PDF PAGE 67 ===
+Prozedur
+1. Zum Nullpunktabgleich des Messumformers zunächst das Absperrventil auf der
+Niederdruckseite (Auslassseite) des Messumformers und das Entlüftungsventil
+schließen.Das Absperrventil auf der Niederdruckseite (stromabwärts) des
+Messumformers schließen.
+A. Verstopft
+B. Testanschluss (verschlossen)
+C. Absperrventil (geöffnet)
+D. Prozess
+E. Ausgleichsventil (geschlossen)
+F. Ablass-/Entlüftungsventil (geschlossen)
+G. Absperrventil (geschlossen)
+2. Das Ausgleichsventil auf der Hochdruckseite (Einlaufstrecke) des Messumformers
+öffnen.
+A. Verstopft
+B. Testanschluss (verschlossen)
+C. Absperrventil (geöffnet)
+D. Prozess
+E. Ausgleichsventil (geöffnet)
+F. Ausgleichsventil (geschlossen)
+G. Ablass-/Entlüftungsventil (geschlossen)
+H. Absperrventil (geschlossen)
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+67
+
+
+=== PDF PAGE 68 ===
+3. Das Ausgleichsventil auf der Niederdruckseite (Auslaufseite) des Messumformers
+öffnen.
+Der Ventilblock ist nun korrekt konfiguriert, um den Nullpunktabgleich des
+Messumformers durchführen zu können.
+A. Verstopft
+B. Testanschluss (verschlossen)
+C. Absperrventil (geöffnet)
+D. Prozess
+E. Ausgleichsventil (geöffnet)
+F. Ablass-/Entlüftungsventil (geschlossen)
+G. Absperrventil (geschlossen)
+4. Nach dem Nullpunktabgleich des Messumformers das Ausgleichsventil auf der
+Niederdruckseite (Auslassseite) des Messumformers schließen.
+A. Verstopft
+B. Testanschluss (verschlossen)
+C. Absperrventil (geöffnet)
+D. Prozess
+E. Ausgleichsventil (geöffnet)
+F. Ausgleichsventil (geschlossen)
+G. Ablass-/Entlüftungsventil (geschlossen)
+H. Absperrventil (geschlossen)
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+68
+Rosemount 3051
+
+
+=== PDF PAGE 69 ===
+5. Das Ausgleichsventil auf der Hochdruckseite (Einlaufstrecke) schließen.
+A. Verstopft
+B. Testanschluss (verschlossen)
+C. Absperrventil (geöffnet)
+D. Prozess
+E. Ausgleichsventil (geschlossen)
+F. Ablass-/Entlüftungsventil (geschlossen)
+G. Absperrventil (geschlossen)
+6. Zum Abschluss das Absperr- und Entlüftungsventil auf der Niederdruckseite öffnen,
+um den Messumformer wieder in Betrieb zu nehmen.Um den Messumformer
+wieder in Betrieb zu nehmen, das Absperrventil auf der Niederdruckseite öffnen.
+Das Entlüftungsventil kann während des Betriebs geöffnet oder geschlossen sein.
+A. Verstopft
+B. Testanschluss (verschlossen)
+C. Absperrventil (geöffnet)
+D. Prozess
+E. Ausgleichsventil (geschlossen)
+F. Ablass-/Entlüftungsventil (geschlossen)
+Betriebsanleitung
+Hardware-Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+69
+
+
+=== PDF PAGE 70 ===
+Hardware-Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+70
+Rosemount 3051
+
+
+=== PDF PAGE 71 ===
+4 
+Elektrische Installation
+4.1 
+Übersicht
+Dieser Abschnitt enthält Informationen zur Installation des Druckmessumformers
+Rosemount 3051.
+Zu jedem Messumformer gehört eine Kurzanleitung zur Beschreibung von Rohrmontage
+und Verkabelungsverfahren und Grundkonfiguration für die Erstinstallation durchgeführt
+werden.
+Zugehörige Informationen
+Messumformer wieder auseinander bauen
+Messumformer wieder zusammenbauen
+4.2 
+Sicherheitsmeldungen
+Die in diesem Abschnitt beschriebenen Anleitungen und Verfahren können besondere
+Vorsichtsmaßnahmen erforderlich machen, um die Sicherheit des Bedienpersonals zu
+gewährleisten.
+Siehe Sicherheitshinweise.
+4.3 
+Installieren des LCD-Displays
+Emerson liefert Messumformer, die mit den Optionen LCD-Display, grafisches LCD-Display
+oder Bedienerinterface (LOI) bestellt wurden, mit installiertem Display aus.
+Zur Installation des Displays auf einem vorhandenen Rosemount 3051 Messumformer:
+Voraussetzungen
+Kleiner Schraubenzieher für Instrumente
+Prozedur
+Die gewünschten Stecker des LCD-Displays vorsichtig mit dem Elektronikplatinen-
+Anschluss ausrichten.
+Wenn die Steckverbinder nicht aufeinander ausgerichtet werden können, sind Display und
+Elektronikplatine nicht kompatibel.
+Betriebsanleitung
+Elektrische Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+71
+
+
+=== PDF PAGE 72 ===
+Abbildung 4-1: LCD-Displayeinheit
+D
+C
+B
+A
+A. Steckerpins
+B. Steckbrücken (obere und untere)
+C. Display
+D. Erweiterter Gehäusedeckel
+4.3.1 
+Display drehen
+Die folgenden Schritte ausführen, wenn das Bedieninterface (LOI) oder das LCD-Display
+gedreht werden muss, nachdem es auf dem Messumformer installiert wurde.
+Prozedur
+1. Den Messkreis auf Handbetrieb einstellen und die Spannungsversorgung des
+Messumformers trennen.
+ WARNUNG
+Explosionen
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+Vor Anschluss eines Handterminals in einer explosionsgefährdeten Umgebung
+sicherstellen, dass die Geräte in Übereinstimmung mit den Vorschriften für
+eigensichere oder nicht funkenerzeugende Feldverdrahtung installiert sind.
+2. Den Gehäusedeckel des Messumformers entfernen.
+3. Schrauben aus dem Display entfernen und in die gewünschte Ausrichtung drehen.
+a) Den 10-poligen Steckverbinder in die Displayplatine für die entsprechende
+Ausrichtung stecken. Die Stifte vor dem Einsetzen in die Ausgangsplatine
+vorsichtig ausrichten.
+4. Die Schrauben wieder einsetzen.
+5. Den Gehäusedeckel wieder am Messumformer anbringen.
+Sicherstellen, dass die Abdeckung vollständig eingerastet ist, um die Anforderungen
+an den Ex-Schutz zu erfüllen.
+6. Die Spannungsversorgung des Messumformers wiederherstellen und den Messkreis
+wieder auf Automatikbetrieb einstellen.
+Elektrische Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+72
+Rosemount 3051
+
+
+=== PDF PAGE 73 ===
+Anmerkung
+Das grafische LCD-Display kann mit der Software um 180 Grad gedreht werden.
+Sie können auf diese Funktion mit einem beliebigen Konfigurationsgerät oder den
+Schnellservice-Schaltflächen zugreifen. Für eine Ausrichtung von 90° und 270° ist die
+Drehung des physischen Displays weiterhin erforderlich.
+4.4 
+Sicherheitsfunktion des Messumformers
+konfigurieren
+Es gibt drei Möglichkeiten, die Sicherheit mit dem Rosemount 3051 Messumformer zu
+verwalten.
+•
+Schreibschutz-Schalter
+•
+Software Schreibschutz
+•
+Bedieninterface-Kennwort
+Abbildung 4-2: Elektronikplatine
+Ohne Bedieninterface/LCD-Display
+Mit Bedieninterface/Digitalanzeiger
+A. Alarm
+B. Sicherheit
+4.4.1 
+Schreibschutz-Schalter aktivieren
+Sie können den Schalter Security (Schreibschutz) aktivieren, um Änderungen an den
+Konfigurationsdaten des Messumformers zu verhindern.
+Wenn Sie den Schalter Security (Schreibschutz) auf Locked (Verriegelt) stellen, weist
+der Messumformer alle über HART®, Bluetooth®, das Bedieninterface (LOI) oder lokale
+Konfigurationstasten gesendeten Konfigurationsanforderungen zurück und ändert die
+Konfigurationsdaten nicht. Siehe Abbildung 4-2 bzgl. der Anordnung des Schalters Security
+(Schreibschutz).
+Betriebsanleitung
+Elektrische Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+73
+
+
+=== PDF PAGE 74 ===
+Prozedur
+1. Wenn der Messumformer montiert ist, den Messkreis sichern und die
+Spannungsversorgung unterbrechen.
+ WARNUNG
+Explosionen
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+Bei einer Installation mit Ex-Schutz/druckfester Kapselung die Messumformer-
+Gehäusedeckel nicht entfernen, wenn die Auswerteelektronik unter Spannung steht.
+2. Die Gehäuseabdeckung auf der Seite, die der Seite mit den Anschlussklemmen
+gegenüberliegt, entfernen.
+ WARNUNG
+In explosionsgefährdeten Atmosphären die Gehäuseabdeckung des Geräts nicht
+abnehmen, wenn der Stromkreis unter Spannung steht.
+3. Den Schalter mit einem kleinen Schraubendreher in die verriegelte Position
+schieben.
+4. Den Gehäusedeckel wieder am Messumformer anbringen.
+Um die Ex-Schutz-Anforderungen zu erfüllen, empfiehlt Emerson den Deckel
+festzuziehen, bis zwischen Deckel und Gehäuse kein Abstand mehr vorhanden ist.
+4.4.2 
+Software-Schreibschutzsperre
+Die software security lock (Software-Schreibschutzsperre) verhindert Änderungen an den
+Konfigurationsdaten des Messumformers durch jegliche Quellen. Dadurch werden alle
+mittels HART®, Bluetooth®, Bedieninterface (LOI) oder lokalen Einstelltasten angeforderten
+Änderungen vom Messumformer abgelehnt.
+Verwenden Sie ein Kommunikationsgerät, um die software security lock (Software-
+Schreibschutzsperre) zu aktivieren oder zu deaktivieren.
+4.4.3 
+Bedieninterface-Kennwort
+Sie können ein Bedieninterface-Kennwort eingeben und aktivieren, um die Überprüfung
+und Änderung der Gerätekonfiguration über das Bedieninterface zu verhindern.
+Der Kennwortschutz verhindert nicht die Konfiguration mittels HART Kommunikation
+oder externen Einstelltasten (analoger Nullpunkt und Messspanne oder digitaler
+Nullpunktabgleich).
+Das Bedieninterface-Passwort ist ein 4-stelliger Code, den Sie einstellen können. Wenn das
+Kennwort verloren geht oder vergessen wird, verwenden Sie das Master-Kennwort: 9307.
+Sie können das Bedieninterface-Kennwort über die HART Kommunikation über einen
+Feldkommunikator, AMS Device Manager oder das Bedieninterface konfigurieren,
+aktivieren oder deaktivieren.
+4.5 
+Verschieben des Alarmschalters
+Auf der Elektronikplatine befindet sich ein Schalter Alarm.
+Elektrische Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+74
+Rosemount 3051
+
+
+=== PDF PAGE 75 ===
+Bezüglich der Positionierung des Schalters siehe Abbildung 4-2. Die nachfolgenden Schritte
+verwenden, um den Schalter Alarm zu bewegen:
+Prozedur
+1. Den Messkreis auf Manual (Manuell) setzen und die Spannungsversorgung trennen.
+ WARNUNG
+Explosionen
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+Bei einer Installation mit Ex-Schutz/druckfester Kapselung die Messumformer-
+Gehäusedeckel nicht entfernen, wenn die Auswerteelektronik unter Spannung steht.
+2. Den Gehäusedeckel des Messumformers entfernen.
+3. Den Schalter mit einem kleinen Schraubendreher in die gewünschte Position
+schieben.
+4. Deckel des Messumformers wieder anbringen.
+Anmerkung
+Der Deckel muss vollständig geschlossen sein, um die Anforderungen an den Ex-
+Schutz zu erfüllen.
+4.6 
+Elektrische Anforderungen
+ WARNUNG
+Sicherstellen, dass der elektrische Anschluss gemäß nationaler und lokaler Vorschriften für
+die Elektroinstallation vorgenommen wird.
+ WARNUNG
+Stromschlag
+Stromschlag kann schwere oder tödliche Verletzungen verursachen.
+Die Signalleitungen nicht zusammen mit Stromleitungen in einem offenen Kabelkanal oder
+einem Schutzrohr und nicht in der Nähe von Starkstromgeräten verlegen.
+4.6.1 
+Montage des Kabelschutzrohrs
+Anmerkung
+Beschädigung am Messumformer
+Alle Kabeldurchführungen müssen abgedichtet werden, da der Messumformer durch
+Ansammlung übermäßiger Feuchtigkeit beschädigt werden kann.
+Den Messumformer so montieren, dass das Elektronikgehäuse nach unten weist, um den
+Flüssigkeitsabfluss zu gewährleisten.
+Um die Ansammlung von Feuchtigkeit im Gehäuse zu vermeiden, verlegen Sie die
+Leitungen so mit einer Abtropfschlaufe, dass das unterste Niveau tiefer als die
+Kabeldurchführungen und das Messumformergehäuse liegt.
+Abbildung 4-3 zeigt empfohlene Kabelanschlüsse.
+Betriebsanleitung
+Elektrische Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+75
+
+
+=== PDF PAGE 76 ===
+Abbildung 4-3: Installationsdiagramme des Kabelschutzrohrs
+A
+A
+B
+B
+A. Mögliche Positionen des Kabelschutzrohrs
+B. Dichtmasse
+4.6.2 
+Spannungsversorgung für 4-20 mA HART®
+Der Messumformer arbeitet mit 10,5 bis 42,4 Vdc am Terminal des Messumformers. Die
+Welligkeit der Gleichspannungsversorgung muss unter 2 % liegen. Messkreise mit einem
+Widerstand von 250 Ω erfordern mindestens 16,6 V.
+Anmerkung
+Der Messumformer muss einen Mindestwiderstand von 250 Ω aufweisen, um mit einem
+Kommunikationsgerät kommunizieren zu können. Wird eine einzelne Spannungsquelle zur
+Versorgung mehrerer Rosemount 3051 Messumformer verwendet, dürfen die verwendete
+Spannungsquelle und der gesamte Messkreis nicht mehr als 20 Ω Impedanz bei 1200 Hz
+aufweisen.
+Elektrische Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+76
+Rosemount 3051
+
+
+=== PDF PAGE 77 ===
+Abbildung 4-4: Bürdengrenze
+Max. Messkreisbürde = 43,5 x (Spannungsversorgung – 10,5)
+A. Bürde (Ω)
+B. Spannung (VDC)
+C. Betriebsbereich
+Der Gesamtwiderstand der Last ist die Summe aus dem Widerstand der Signalleitungen
+und dem Lastwiderstand des Steuergeräts, der Anzeige, der eigensicheren (IS)-Barrieren
+und der zugehörigen Teile. Wenn Sie IS-Barrieren verwenden, dann schließen Sie den
+Widerstand und den Spannungsabfall ein.
+4.6.3 
+Messumformer verkabeln
+Anmerkung
+Beschädigung des Geräts
+Der Testschaltkreis kann durch falsche Verdrahtung beschädigt werden.
+Die spannungsführenden Signalleitungen nicht an die Testklemmen anschließen.
+Anmerkung
+Für eine gute Kommunikation abgeschirmte Kabel mit paarweise verdrillten Adern
+verwenden. Um eine ordnungsgemäße Kommunikation zu gewährleisten, ein Kabel mit
+24 AWG oder mehr verwenden und nicht die 5000 ft. (1500 m) verwenden.
+Betriebsanleitung
+Elektrische Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+77
+
+
+=== PDF PAGE 78 ===
+Abbildung 4-5: Verkabelung des Messumformers
+A. Widerstand
+B. Spannungsversorgung
+C. Erdung
+Prozedur
+1. Entfernen Sie den Gehäusedeckel an der Seite des Anschlussklemmenraums.
+ WARNUNG
+Explosionen
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+Bei einer Installation mit Ex-Schutz/druckfester Kapselung die Messumformer-
+Gehäusedeckel nicht entfernen, wenn die Auswerteelektronik unter Spannung steht.
+Anmerkung
+Die Signalverkabelung liefert die Spannung für den Messumformer.
+2. Für einen 4-20 mA HART® Ausgang die Plusader an die mit pwr/comm+
+(Spannungsversorgung/Kommunikation+) und die Minusader an die mit
+pwr/comm- (Spannungsversorgung/Kommunikation-) gekennzeichnete Klemme
+anschließen.
+Anmerkung
+Beschädigung des Geräts
+dies kann die interne Testdiode zerstören.
+Keine unter Spannung stehenden Signalleitungen an die Testklemmen anschließen.
+3. Um Feuchtigkeitsansammlungen im Anschlussgehäuse zu vermeiden verschließen
+und dichten Sie die nicht benötigten Kabeldurchführungen ab.
+Elektrische Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+78
+Rosemount 3051
+
+
+=== PDF PAGE 79 ===
+4.6.4 
+Erdung der Signalkabelabschirmung
+Die Abschirmung des Signalkabels und die nicht verwendete Beilitze müssen kurz abisoliert
+und vom Gehäuse des Messumformers isoliert werden.
+Abbildung 4-6 fasst die Erdung des Signalkabelschirms zusammen.
+Abbildung 4-6: Verdrahten von Leitungspaar und Erdung
+DP
+A
+B
+C
+A. Kabelschirm und Beilitze isolieren.
+B. Freiliegende Beilitze isolieren.
+C. Den Draht der Abschirmadern am Erdungsanschluss abschließen.
+Anweisungen zur Erdung des Messumformergehäuses sind unter Messumformergehäuse
+erden zu finden.
+Prozedur
+1. Den Gehäusedeckel mit der Aufschrift „Field Terminals“ (Feldanschlussklemmen)
+entfernen.
+Betriebsanleitung
+Elektrische Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+79
+
+
+=== PDF PAGE 80 ===
+2. Das Signalkabelpaar gemäß Abbildung 4-5 an den Feldanschlussklemmen
+anschließen.
+Sicherstellen, dass der Kabelschirm:
+•
+kurz abisoliert und vom Gehäuse des Messumformers isoliert werden.
+•
+Dauerhaft am Abschlusspunkt angeschlossen werden.
+•
+Mit einem guten Erdungspunkt auf der Seite der Spannungsversorgung
+verbunden ist.
+3. Den Gehäusedeckel mit der Aufschrift „Field Terminals“ (Feldanschlussklemmen)
+wieder anbringen.
+Die Abdeckung muss vollständig geschlossen sein, um die Anforderungen an den
+Ex-Schutz zu erfüllen.
+Sichererstellen, dass die Beilitze an Abschlüssen außerhalb des
+Messumformergehäuses durchgehend elektrisch verbunden sind.
+Jegliche freiliegende Beilitze wie in Abbildung 4-6 dargestellt bis zum
+Abschlusspunkt isolieren.
+4. Die Beilitze des Signalkabels ordnungsgemäß an oder in der Nähe der
+Spannungsversorgung an einem Erdungsanschluss abschließen.
+Messumformergehäuse erden
+Das Messumformergehäuse stets gemäß nationalen und lokalen Vorschriften für die
+Elektroinstallation erden. Die beste Erdung des Messumformergehäuses wird durch einen
+direkten Erdungsanschluss mit minimaler Impedanz erreicht. Methoden zur Erdung des
+Messumformergehäuses:
+•
+Interner Erdungsanschluss: Der innenliegende Erdungsanschluss befindet sich auf
+der Seite mit der Kennzeichnung FIELD TERMINALS (FELDANSCHLUSSKLEMMEN)
+im Inneren des Elektronikgehäuses. Die Schraube ist mit dem Erdungssymbol (
+)
+gekennzeichnet. Und ist Standard bei allen Rosemount 3051 Messumformern. Siehe
+Abbildung 4-7.
+Abbildung 4-7: Interne Erdung
+A
+A. Einbaulage der internen Erdung
+•
+Externer Erdungsanschluss: Der externe Erdungsanschluss befindet sich an der
+Außenseite des Messumformers. Siehe Abbildung 4-8. Dieser Anschluss ist nur mit
+Option V5 und T1 verfügbar.
+Elektrische Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+80
+Rosemount 3051
+
+
+=== PDF PAGE 81 ===
+Abbildung 4-8: Externer Erdungsanschluss (Option V5 oder T1)
+A. Einbaulage der externen Erdung
+BEACHTEN
+Die Erdung des Messgerätegehäuses am Leitungseinführungsgewinde gewährleistet ggf.
+keinen ausreichenden Schutz.
+Erdungs-Anschlussklemmenblock mit Überspannungsschutz
+Der Messumformer widersteht gewöhnlich elektrischen Überspannungen, die dem
+Energieniveau von statischen Entladungen bzw. induktiven Schaltvorgängen entsprechen.
+Energiereiche Überspannungen, die z. B. von Blitzschlägen in der Verkabelung induziert
+werden, können jedoch den Messumformer beschädigen.
+Der Anschlussklemmenblock mit integriertem Überspannungsschutz kann als installierte
+Option (Optionscode T1) oder als ein an installierte Messumformer nachrüstbares
+Ersatzteil bestellt werden. Die Teilenummern finden Sie im Abschnitt Ersatzteile des
+Rosemount 3051 Produktdatenblatts. Das in Abbildung 4-9 dargestellte Blitzsymbol
+identifiziert den Anschlussklemmenblock mit integriertem Überspannungsschutz.
+Betriebsanleitung
+Elektrische Installation
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+81
+
+
+=== PDF PAGE 82 ===
+Abbildung 4-9: Anschlussklemmenblock mit integriertem Überspannungsschutz
+A. Anordnung der externen Erdungsschraube
+B. Blitzanschluss
+BEACHTEN
+Der Anschlussklemmenblock mit integriertem Überspannungsschutz bietet nur dann
+Schutz vor Spannungsspitzen, wenn das Messumformergehäuse ordnungsgemäß geerdet
+ist. Die genannten Richtlinien zur Erdung des Messumformergehäuses befolgen. Siehe
+Abbildung 4-9.
+Elektrische Installation
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+82
+Rosemount 3051
+
+
+=== PDF PAGE 83 ===
+5 
+Betrieb und Wartung
+5.1 
+Übersicht
+Anmerkung
+Kalibrierung
+Wenn ein Abgleich unsachgemäß oder mit ungenauen Geräten durchgeführt wird, kann
+dies die Leistung des Messumformers beeinträchtigen.
+Emerson kalibriert Absolutdruck-Messumformer (Rosemount 3051CA und 3051TA)
+werkseitig. Abgleichsfunktionen justieren die Lage der Kennlinie der
+Werkscharakterisierung.
+Emerson bietet Anweisungen für die Ausführung von Konfigurationsfunktionen mit den
+folgenden Funktionen:
+•
+Feldkommunikator
+•
+AMS Device Manager
+•
+AMS Device Configurator Bluetooth®-App
+•
+Schnellservicetasten
+•
+Bedieninterface (LOI)
+5.2 
+Sicherheitsmeldungen
+Die in diesem Abschnitt beschriebenen Verfahren und Anleitungen können besondere
+Vorsichtsmaßnahmen erforderlich machen, um die Sicherheit des Bedienpersonals zu
+gewährleisten.
+Siehe Sicherheitshinweise.
+Die Durchführung eines Restart with defaults (Neustart mit
+Standardwerten), um alle Function Block Informationen im Gerät auf die
+Werkseinstellungen zurückzusetzen. Dazu gehört das Löschen aller Function Block Links
+und Schedules sowie das Wiederherstellen der Voreinstellungen aller Resource und
+Transducer Block Benutzerdaten (Konfiguration der SPM Block Algorithmen, Konfiguration
+der LCD-Displays Transducer Block Parameter usw.).
+5.3 
+Empfohlene Kalibriervorgänge
+5.3.1 
+Vor Ort kalibrieren
+Prozedur
+1. Den Sensornullpunkt/unteren Abgleich durchführen, um die Auswirkungen des
+Montagedrucks zu kompensieren.
+Siehe Funktionsweise der Ventilblöcke für Anweisungen zur ordnungsgemäßen
+Entleerung/Entlüftung der Ventile.
+2. Basis-Konfigurationsparameter setzen/prüfen:
+•
+Dämpfungswert
+Betriebsanleitung
+Betrieb und Wartung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+83
+
+
+=== PDF PAGE 84 ===
+•
+Art des Ausgangs
+•
+Ausgangseinheiten
+•
+Messbereichswerte
+5.3.2 
+Auf einem Prüfstand kalibrieren
+Prozedur
+1. Den optionalen 4-20 mA Ausgangsabgleich durchführen.
+2. Sensorabgleich durchführen
+a) Nullpunkt-/unteren Sensorabgleich auf unter Verwendung der Korrektur bei
+statischem Druck durchführen.
+Siehe Funktionsweise der Ventilblöcke bzgl. der Funktionsweise der Ablass-/
+Entlüftungsventile der integrierten Ventilblöcke.
+b) Optionalen Abgleich des Messbereichs-Endwerts durchführen.
+Dadurch wird die Messspanne des Messumformers gesetzt und erfordert
+präzise Kalibriergeräte.
+c) Basis-Konfigurationsparameter setzen/prüfen
+BEACHTEN
+Zur Kalibrierung der Rosemount Messumformer 3051CA, 3051TA mit
+Messbereich 0 und Messbereich 5 ist eine genaue Absolutdruckquelle
+erforderlich.
+5.4 
+Kalibrierübersicht
+Anmerkung
+Emerson kalibriert den Rosemount 3051 Druckmessumformer im Werk. Emerson bietet
+eine Option zur Kalibrierung vor Ort, um die Anlagenanforderungen oder Industrienormen
+zu erfüllen.
+Anmerkung
+Die Kalibrierung des Sensors ermöglicht Ihnen die Anpassung des (digitalen) Druckwerts,
+der vom Messumformer ausgegeben wird, an ein Drucknormal. Dabei kann die
+Druckabweichung kompensiert werden, um den Einfluss der Einbaubedingungen oder
+des statischen Drucks zu korrigieren. Emerson empfiehlt diese Korrektur. Die Kalibrierung
+des Druckbereichs (Korrektur von Drucksignalbereich oder -verstärkung) erfordert genaue
+Drucknormale (Quellen) für die vollständige Kalibrierung.
+Die vollständige Kalibrierung des Messumformers besteht aus zwei Teilen: der
+Sensorkalibrierung und der Kalibrierung des Analogausgangs.
+Sensor einstellen
+Siehe, um einen Sensorabgleich oder einen digitalen Nullpunktabgleich durchzuführen,
+siehe Abgleich des Drucksignals.
+4-20 mA-Ausgang einstellen
+•
+Durchführen D/A-Abgleich (4-20 mA Ausgangsabgleich)
+Betrieb und Wartung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+84
+Rosemount 3051
+
+
+=== PDF PAGE 85 ===
+5.4.1 
+Bestimmen der erforderlichen Abgleichvorgänge des
+Sensors
+Mit Prüfstandskalibrierungen können Sie das Messgerät für seinen gewünschten
+Betriebsbereich kalibrieren. Nach dem einfachen Anschluss an eine Druckquelle kann
+die vollständige Kalibrierung der gewünschten Betriebspunkte durchgeführt werden. Den
+Messumformer über den gewünschten Druckbereich betreiben, um den Analogausgang zu
+überprüfen.
+Abgleich des Drucksignals wird beschrieben, wie die Kalibrierung durch die
+Abgleichsvorgänge geändert wird. Wenn ein Abgleich nicht korrekt oder mit ungenauen
+Betriebsmitteln ausgeführt wird, können sich die Leistungsmerkmale des Messumformers
+verschlechtern. Sie können den Messumformer auf die Werkseinstellungen zurücksetzen,
+indem Sie den in Zurücksetzen auf Werksabgleich – Sensorabgleich gezeigten Befehl Recall
+Factory Trim (Zurücksetzen auf Werksabgleich) verwenden.
+Für Messumformer für Differenzdruck, die vor Ort montiert werden, kann mithilfe
+der in Abschnitt Rosemount 304, 305 und 306 Ventilblöcke beschriebenen Ventilblöcke
+und der entsprechenden Funktion ein Nullpunktabgleich durchgeführt werden. Im
+Abschnitt „Rosemount 305, 306 und 304 Ventilblöcke“ werden 3- und 5-fach
+Ventilblöcke beschrieben. Diese Einstellungen nach der Feldmontage eliminieren jegliche
+Druckabweichungen, die durch Einflüsse der Einbaulage (Einfluss der darüberliegenden
+Ölfüllung) und des statischen Drucks des Prozesses verursacht werden.
+Um die erforderlichen Abgleiche zu festzulegen:
+Prozedur
+1. Mit Druck beaufschlagen.
+2. Den Druck überprüfen. Wenn der Druck nicht mit dem angelegten Druck
+übereinstimmt, muss ein Sensorabgleich durchgeführt werden.
+Siehe Abgleich des Drucksignals.
+3. Den ausgegebenen Analogausgang mit dem Live-Analogausgang vergleichen.
+Wenn die Werte nicht übereinstimmen, einen analogen Ausgangsabgleich
+durchführen.
+Siehe Durchführen D/A-Abgleich (4-20 mA Ausgangsabgleich).
+Abgleichen mittels Konfigurationstasten
+Die lokalen Konfigurationstasten sind die externen Tasten, die unter der oberen
+Messstellenkennzeichnung des Messumformers zu finden sind und die Durchführung von
+Abgleichen verwendet werden.
+Um Zugriff auf die Tasten zu erhalten, die Schraube lösen und das obere Schild beiseite
+drehen, bis die Tasten sichtbar sind.
+Konfigurationstas‐
+ten
+Ermöglicht die Durchführung des digitalen Sensorabgleichs und des
+Abgleichs des 4-20-mA-Ausgangs (Abgleich des Analogausgangs). Ver‐
+wenden Sie das gleiche Verfahren zum Abgleich mit einem Kommuni‐
+kationsgerät oder mit AMS.
+Digitaler Null‐
+punktabgleich
+Die Anweisungen für den Abgleich sind unter Abgleich des Drucksig‐
+nals zu finden.
+Überwachen Sie alle Konfigurationsänderungen, indem Sie auf eine Anzeige schauen oder
+den Messkreisausgang messen. Tabelle 5-1 zeigt die physischen Unterschiede zwischen
+den beiden Tastensätzen.
+Betriebsanleitung
+Betrieb und Wartung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+85
+
+
+=== PDF PAGE 86 ===
+Tabelle 5-1: Optionen für die lokalen Konfigurationstasten
+Bedieninterface (LOI) und Schnellservicetasten -
+grüner Käfighalter
+Digitaler Nullpunktabgleich − grauer Käfighalter
+5.4.2 
+Kalibrierintervalle festlegen
+Das Kalibrierintervall kann je nach Anwendung, erforderlicher Genauigkeit und
+Prozessbedingungen stark voneinander abweichen. Siehe Technische Mitteilung zur
+Berechnung der Kalibrierungsintervalle von Druckmessumformer.
+Das nachfolgende Verfahren kann als Richtlinie für das Festlegen des Kalibrierintervalls
+verwendet werden:
+Prozedur
+1. Die erforderliche Genauigkeit für die Anwendung festlegen.
+2. Die Betriebsbedingungen feststellen.
+3. Wahrscheinlichen Gesamtfehler (TPE = Total Probable Error) berechnen.
+4. Die Stabilität pro Monat berechnen.
+5. Kalibrierintervall berechnen.
+Probenberechnung für Rosemount 3051 (0,04 Prozent
+Genauigkeit und 10 Jahre Stabilität)
+Im Folgenden wird ein Beispiel für die Berechnung der Kalibrationsintervalle dargestellt:
+Prozedur
+1. Die erforderliche Genauigkeit für die Anwendung festlegen.
+Erforderliche Genauigkeit
+0,20% der Messspanne
+2. Die Betriebsbedingungen feststellen.
+Messumformer
+Rosemount 3051CD, Messbereich 2 (URL = 250 inH2O [6,2
+bar])
+Kalibrierte Messspanne 150 inH2O (3,7 bar)
+Statischer Druck
+500 psig (34,5 barg)
+3. Berechnung des wahrscheinlichen Gesamtfehlers (TPE = Total Probable Error).
+TPE = 
+ = 0,105 %
+der Messspanne
+Dabei gilt:
+Referenzgenauigkeit
+±0,04% der Messspanne
+Betrieb und Wartung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+86
+Rosemount 3051
+
+
+=== PDF PAGE 87 ===
+Einfluss der Umgebungstemperatur
+Einfluss des statischen Drucks
+(5)
+4. Die Stabilität pro Monat berechnen.
+5. Kalibrierintervalle berechnen.
+5.4.3 
+Einflüsse des statischen Drucks auf die Messspanne
+kompensieren (Messbereich 4 und 5)
+Rosemount Druckmessumformer mit Messbereich 4 und 5 3051 erfordern eine spezielle
+Kalibrierung, wenn sie in Differenzdruckanwendungen eingesetzt werden. Mit diesem
+Verfahren wird die Genauigkeit des Messumformers optimiert, indem die Einflüsse des
+statischen Drucks bei solchen Anwendungen reduziert werden.
+Die Rosemount Differenzdruckmessumformer (Messbereiche 1 bis 3) erfordern dieses
+Verfahren nicht, da die Optimierung am Sensor stattfindet.Bei den Rosemount 3051
+Messumformern für Differenzdruck (Messbereich 0 bis 3) muss dieses Verfahren nicht
+angewendet werden, da diese Optimierung am Sensor vorgenommen wird.
+Die systematische Messspannenverschiebung bei Anwendungen mit statischem Druck
+beträgt –0,95 % vom Messwert pro 1 000 psi (69 bar) bei Messumformern mit
+Messbereich 4 und –1 % des Messwerts pro 1 000 psi (69 bar) bei Messumformern mit
+Messbereich 5.
+Den Einfluss des statischen Drucks der Messspanne
+kompensieren (Beispiel)
+Ein Messumformer für Differenzdruck mit Messbereich 4 (Rosemount 3051CD4...) wird
+in einer Anwendung mit einem statischen Druck von 83 bar (1 200 psi) eingesetzt. Die
+DP-Messspanne reicht von 500 inH2O (1,2 bar) bis 1 500 inH2O (3,7 bar).Ein HART®
+Messumformer für Differenzdruck mit Messbereich 4 (Rosemount 3051CD4...) wird in
+einer Anwendung mit einem statischen Druck von 83 bar (1 200 psi) eingesetzt. Der
+Messumformerausgang ist eingestellt auf 4 mA bei 500 inH2O (1,2 bar) und 20 mA
+bei 1 500 inH2O (3,7 bar). Für die Korrektur des systematischen Fehlers durch den
+hohen statischen Druck zunächst den korrigierten oberen Abgleichswert anhand folgender
+Formeln berechnen.
+Oberer Abgleichswert
+HT = (URV – [S/100 ×P/1 000 × LRV])
+Dabei gilt:
+HT
+Korrigierter oberer Abgleichswert
+(5) Der Einfluss auf den Nullpunkt kann durch einen Nullpunktabgleich bei statischem Druck kompensiert werden.
+Betriebsanleitung
+Betrieb und Wartung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+87
+
+
+=== PDF PAGE 88 ===
+URV Messende
+S
+Messspannenverschiebung gem. Spezifikation (als Prozentwert des angezeigten
+Werts)
+P
+Statischer Druck in psi.
+In diesem Beispiel:
+URV
+1 500 inH2O (3,7 bar)
+S
+-0,95 %
+P
+1 200 psi
+LT
+1 500 inH2O + (0,95 %/100 x 1 200 psi/100 psi x 1 500 inH2O)
+LT
+1517,1 inH2O
+Führen Sie den oberen Sensorabgleich wie in Abgleich des Drucksignals beschrieben
+aus. Im obigen Beispiel gilt für Schritt 4 der Nenndruckwert von 1 500 inH2O.Wenn Sie
+die Stabilität pro Monat berechnen, wenden Sie den Nenndruckwert von 1 500 inH2O
+Lo an. Geben Sie jedoch den berechneten korrekten oberen Sensorabgleichswert von
+1 517,1 inH2O mit einem Kommunikationsgerät ein.
+BEACHTEN
+Die Messbereichswerte für die 4 und 20 mA Punkte sollten den Nennwerten für URV und
+LRV entsprechen. Im vorangehenden Beispiel sind diese Werte 1 500 inH2O bzw.
+500 inH2O. Bestätigen Sie die Werte auf dem Bildschirm HOME (STARTSEITE) des
+Kommunikationsgeräts. Die Werte falls erforderlich durch Ausführung der Schritte in
+Neueinstellen des Messumformers modifizieren.
+5.5 
+Abgleich des Drucksignals
+5.5.1 
+Übersicht über den Sensorabgleich
+Ein Sensorabgleich korrigiert die Druckabweichung und den Drucksignalbereich
+entsprechend einem Drucknormal.
+Der obere Sensorabgleich korrigiert den Druckbereich und der untere Sensorabgleich
+(Nullpunktabgleich) korrigiert den Druck Offset. Die vollständige Kalibrierung erfordert
+ein genaues Drucknormal. Es kann ein Nullpunktabgleich durchgeführt werden, nachdem
+der Prozessdruck entlastet wurde bzw. wenn der Druck auf der Hochdruck- und
+Niederdruckseite gleich ist (bei Messumformern für Differenzdruck).
+Der Nullpunktabgleich ist eine Einpunkteinstellung. Diese ist sinnvoll zur Kompensation
+der Einflüsse der Einbaulage. Sie sollte erst dann durchgeführt werden, wenn der
+Messumformer in seiner endgültigen Position installiert ist. Da bei dieser Korrektur die
+Steigung der Kennlinie beibehalten wird, darf sie nicht anstelle eines Sensorabgleichs über
+den gesamten Messbereich des Sensors verwendet werden.
+Beim Nullpunktabgleich ist darauf zu achten, dass das Ausgleichsventil geöffnet ist
+und alle befüllten Impulsleitungen auf den richtigen Füllstand gefüllt sind. Bei einem
+Nullpunktabgleich statischen Druck am Messumformer anlegen, um durch den statischen
+Druck verursachte Fehler zu eliminieren. Siehe Funktionsweise der Ventilblöcke.
+Betrieb und Wartung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+88
+Rosemount 3051
+
+
+=== PDF PAGE 89 ===
+Anmerkung
+Keinen Nullpunktabgleich an einem Rosemount 3051T Druckmessumformer für
+Absolutdruck vornehmen. Der Nullpunkt bezieht sich auf 0 als Druckwert, und der
+Messumformer für Absolutdruck bezieht sich auf einen absoluten Druckwert von 0. Zur
+Korrektur der Einflüsse der Einbaulage bei einem Rosemount 3051T Druckmessumformer
+für Absolutdruck einen Abgleich des unteren Sensorabgleiches innerhalb des
+Sensorabgleiches durchführen. Der Abgleich des unteren Sensorgrenzwertes führt eine
+Offsetkorrektur ähnlich wie beim Nullpunktabgleich durch, ein Eingang für den Nullpunkt
+ist jedoch nicht erforderlich.
+Der obere und untere Sensorabgleich ist eine Zweipunkteinstellung des Sensors, bei der
+die beiden Druck-Endwerte eingestellt und alle zwischen diesen beiden Werten liegenden
+Ausgangswerte linearisiert werden; diese Kalibrierung erfordert ebenfalls eine genaue
+Druckquelle. Immer zuerst den unteren Abgleichswert einstellen, um den korrekten Offset
+festzulegen. Durch die Einstellung des oberen Abgleichswertes wird die Steigung der
+Kennlinie basierend auf dem unteren Abgleichswert korrigiert. Mithilfe der Abgleichswerte
+kann die Genauigkeit des Messumformers über einen angegebenen Messbereich optimiert
+werden.
+Abbildung 5-1: Beispiel Sensorabgleich
+A. Vor dem Trimmen
+B. Nach dem Trimmen
+C. Nullpunkt- bzw. unterer Sensorabgleich
+D. Ausgegebener Druck
+E. Druckeingang
+F. Upper Sensor Trim (Oberer Sensorabgleich)
+5.5.2 
+Durchführen eines Sensorabgleichs
+Bei der Durchführung eines Sensorabgleichs können Sie sowohl die obere als auch die
+untere Sensorgrenze abgleichen. Wenn sowohl oberer als auch unterer Sensorabgleich
+erforderlich sind, führen Sie zuerst den unteren Abgleich durch.
+Anmerkung
+Eine Quelle für den Eingangsdruck verwenden, die mindestens viermal genauer ist als der
+Messumformer. Vor der Eingabe eines Werts 60 Sekunden lang warten, damit sich der
+Druck stabilisieren kann.
+Betriebsanleitung
+Betrieb und Wartung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+89
+
+
+=== PDF PAGE 90 ===
+Anmerkung
+Eine Quelle für den Eingangsdruck verwenden, die mindestens viermal genauer ist als der
+Messumformer. Vor der Eingabe eines Werts 10 Sekunden lang warten, damit sich der
+Druck stabilisieren kann.
+Sensorabgleich mit dem Feldkommunikator durchführen
+So kalibrieren Sie den Sensor mit einem Feldkommunikator unter Verwendung des
+Sensorabgleichs:
+Prozedur
+1. Die folgende Funktionstastenfolge von der HOME (STARTSEITE) aus eingeben.
+Geräte-Dashboard Funktionstasten
+3, 4, 1
+2. Lower Sensor Trim (Unterer Sensorabgleich) auswählen.
+Anmerkung
+Die Druckwerte so auswählen, dass der untere und der obere Wert dem erwarteten
+Betriebsbereich des Prozesses entsprechen oder außerhalb dieses Bereiches liegen.
+Hierzu siehe Neueinstellen des Messumformers.
+3. Den Anweisungen des Feldkommunikators folgen, um die Einstellung des unteren
+Wertes auszuführen.
+4. Das Verfahren für den oberen Wert wiederholen und Lower Sensor Trim (Unterer
+Sensorabgleich) mit Upper Sensor Trim (Oberer Sensorabgleich) in Schritt 2
+ersetzen.
+Sensorabgleich mit dem AMS Device Manager durchführen
+Prozedur
+1. Mit der rechten Maustaste auf das Gerät klicken und Method (Methode) 
+→ Calibrate (Kalibrieren) → Sensor Trim (Sensorabgleich) → Lower Sensor Trim
+(Unterer Sensorabgleich) aufrufen.
+2. Den Menüanweisungen folgen, um den Sensorabgleich mit AMS Device Manager
+durchzuführen.
+3. Bei Bedarf mit der rechten Maustaste erneut auf das Gerät klicken und
+Method (Methode) → Calibrate (Kalibrieren) → Sensor Trim (Sensorabgleich) → 
+Upper Sensor Trim (Oberer Sensorabgleich) aufrufen.
+Einen Sensorabgleich mit dem Bedieninterface (LOI)
+durchführen
+Siehe Abbildung 5-2 um den oberen und unteren Sensorabgleich durchzuführen.
+Betrieb und Wartung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+90
+Rosemount 3051
+
+
+=== PDF PAGE 91 ===
+Abbildung 5-2: Sensorabgleich mit Bedieninterface (LOI)
+EXTENDED MENU
+CALIBRAT
+DAMPING
+TRANSFER FUNCT
+SCALED VARIAB
+ASSIGN PV
+TAG
+ALARM SAT VALUES
+PASSWORD
+SIMULATE
+HART REV
+BACK TO MENU
+EXIT MENU
+VIEW CONFIG
+ZERO TRIM
+UNITS
+RERANGE
+LOOP TEST
+DISPLAY
+EXTENDED MENU
+EXIT MENU
+CALIBRAT
+ZERO TRIM
+LOWER TRIM
+UPPER TRIM
+ANALOG TRIM
+FACTORY RECALL
+BACK TO MENU
+EXIT MENU
+Zu EXTENDED MENU (ERWEITERTES MENÜ) → CALIBRAT (KALIBRIER) → LOWER TRIM
+(UNTERER ABGLEICH) navigieren, um den unteren Abgleichswert auszuwählen. Zu
+EXTENDED MENU (ERWEITERTES MENÜ) → CALIBRAT (KALIBRIER) → UPPER TRIM (OBERER
+ABGLEICH) navigieren, um den oberen Abgleichswert auszuwählen.
+Digitalen Nullpunktabgleich durchführen (Option DZ)
+Der digitale Nullpunktabgleich (Option DZ) hat die gleiche Funktion wie der
+Nullpunktabgleich bzw. der untere Sensorabgleich, kann jedoch zu jedem beliebigen
+Zeitpunkt in explosionsgefährdeten Bereichen durchgeführt werden. Drücken Sie
+dazu einfach die Taste für den Zero trim (Nullpunktabgleich) bei Null Druck des
+Messumformers.
+Befindet sich der Messumformer nicht nahe genug am Nullpunkt, wenn Sie die Taste
+drücken, kann der Befehl aufgrund einer übermäßigen Korrektur fehlschlagen. Bei Bedarf
+können Sie einen digitalen Nullpunktabgleich mithilfe externer Konfigurationstasten unter
+der oberen Messstellenkennzeichnung des Messumformers durchführen. Siehe Tabelle 5-1
+für Position der DZ-Tasten.
+Prozedur
+1. Das obere Metallschild des Messumformers lösen, um Zugang zu den Tasten zu
+erhalten.
+2. Die Taste für Digital zero (Digitaler Nullpunktabgleich) drücken und mindestens
+zwei Sekunden lang gedrückt halten, um einen digitalen Nullpunktabgleich
+durchzuführen.
+5.5.3 
+Zurücksetzen auf Werksabgleich – Sensorabgleich
+Sie können den Befehl Recall factory trim - Sensor trim (Zurücksetzen auf Werksabgleich
+– Sensorabgleich) verwenden, um die Werte für den Sensorabgleich auf die werkseitigen
+Einstellungen zurückzusetzen.
+Dieser Befehl kann verwendet werden, wenn bei einem Messumformer für Absolutdruck
+versehentlich ein Nullpunktabgleich durchgeführt oder eine ungenaue Druckquelle
+verwendet wurde.
+Betriebsanleitung
+Betrieb und Wartung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+91
+
+
+=== PDF PAGE 92 ===
+Zurücksetzen auf Werksabgleich mittels Kommunikationsgerät
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Calibration (Kalibrierung) → Pressure
+(Druck) → Factory Calibration (Werksseite Kalibrierung) → Restore Factory Calibration
+(Werkseinstellung wiederherstellen) navigieren.
+5.6 
+Abgleich des Analogausgangs
+Sie können den Befehl Abgleich Analogausgang verwenden, um die aktuellen 4 und 20 mA
+Punkte des Messumformerausgangs auf die Anlagenparameter einzustellen. Führen Sie
+diesen Abgleich nach der Digital-Analog-Konvertierung durch, sodass er nur das analoge
+4-20 mA-Signal beeinflusst.
+Abbildung 5-3 und Abbildung 5-4 eine grafische Darstellung der beiden Möglichkeiten, wie
+die Kennlinie durch den Abgleich des Analogausgangs beeinflusst werden kann.
+Abbildung 5-3: 4-20 mA Abgleich des Ausgangs - Nullpunkt/Niedrigerer Abgleich
+A. Vor dem Abgleich
+B. Nach dem Abgleich
+C. Ausgegebener Wert
+D. mA-Ausgang
+Betrieb und Wartung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+92
+Rosemount 3051
+
+
+=== PDF PAGE 93 ===
+Abbildung 5-4: 4-20 mA Abgleich des Ausgangs - Oberer Abgleich
+A. Vor dem Abgleich
+B. Nach dem Abgleich
+C. Ausgegebener Wert
+D. mA-Ausgang
+5.6.1 
+Durchführen D/A-Abgleich (4-20 mA Ausgangsabgleich)
+BEACHTEN
+Wenn ein Widerstand in den Messkreis eingefügt wird, müssen Sie sicherstellen, dass die
+Spannungsversorgung ausreicht, um den Messumformer mit einem zusätzlichen
+Messkreiswiderstand auf 20 mA zu bringen. Siehe Spannungsversorgung für 4-20 mA
+HART®.
+Einen 4-20 mA Ausgangsabgleich mit einem
+Kommunikationsgerät durchführen
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Calibration (Kalibrierung) → Analog Output
+(Analogausgang) → Calibration (Kalibrierung) → Analog Calibration (Analogkalibrierung)
+navigieren.
+Betriebsanleitung
+Betrieb und Wartung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+93
+
+
+=== PDF PAGE 94 ===
+5.6.2 
+Zurücksetzen auf Werksabgleich – Analogausgang
+Sie können den Befehl Recall Factory Trim - Analog Output (Rückruf-
+Werksabgleich - Analog) verwenden, um die werksseitigen Einstellungen des
+Ausgangsabgleichs wiederherzustellen.
+Dieser Befehl kann nützlich sein, wenn ein unbeabsichtigter Abgleich ausgeführt wurde
+oder falsche Anlagenparameter oder ein defektes Anzeigegerät verwendet wurde.
+Zurücksetzen auf Werksabgleich – Analogausgang mittels
+Kommunikationsgerät
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Calibration (Kalibrierung) → Analog
+Calibration (Analogkalibrierung) → Factory Calibration (Werksseite Kalibrierung) → 
+Restore Analog Calibration (Analogkalibrierung wiederherstellen) navigieren.
+Betrieb und Wartung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+94
+Rosemount 3051
+
+
+=== PDF PAGE 95 ===
+6 
+Störungsanalyse und -beseitigung
+6.1 
+Übersicht
+Dieser Abschnitt enthält eine Zusammenfassung von Hinweisen zur Störungsanalyse und
+-beseitigung bei den am häufigsten auftretenden Betriebsproblemen.
+Wird eine Funktionsstörung vermutet und es erscheinen keine Diagnosemeldungen auf
+der Anzeige des Feldkommunikators, wird empfohlen, Diagnosemeldungen zu verwenden,
+um ein potenzielles Problem zu identifizieren.
+6.2 
+Sicherheitsmeldungen
+Die in diesem Abschnitt beschriebenen Verfahren und Anleitungen können besondere
+Vorsichtsmaßnahmen erforderlich machen, um die Sicherheit des Bedienpersonals zu
+gewährleisten.
+Siehe Sicherheitshinweise.
+Die Durchführung eines Restart with defaults (Neustart mit
+Standardwerten), um alle Function Block Informationen im Gerät auf die
+Werkseinstellungen zurückzusetzen. Dazu gehört das Löschen aller Function Block Links
+und Schedules sowie das Wiederherstellen der Voreinstellungen aller Resource und
+Transducer Block Benutzerdaten (Konfiguration der SPM Block Algorithmen, Konfiguration
+der LCD-Displays Transducer Block Parameter usw.).
+6.3 
+Störungsanalyse und -beseitigung für den 4-20
+mA-Ausgang
+6.3.1 
+Messumformer mA-Ausgang ist Null
+Empfohlene Maßnahmen
+1. Überprüfen, ob die Spannung an den Signalklemmen 10,5 bis 42,4 VDC beträgt.
+2. Die Spannungsversorgungsleiter auf richtige Polarität prüfen.
+3. Überprüfen, ob die Spannungsversorgungsleiter an den Signalklemmen
+angeschlossen sind.
+4. Auf eine offene Diode über den Testklemmen prüfen.
+6.3.2 
+Messumformer kommuniziert nicht mit
+Kommunikationsgerät
+Empfohlene Maßnahmen
+1. Überprüfen, ob die Spannung an den Klemmen 10,5 bis 42,2 VDC beträgt.
+2. Messkreiswiderstand prüfen.
+(Spannungsversorgung - Anschlussklemmenspannung)/Messkreisstrom sollte
+mindestens 250 Ω betragen.
+Betriebsanleitung
+Störungsanalyse und -beseitigung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+95
+
+
+=== PDF PAGE 96 ===
+3. Überprüfen, ob die Spannungsversorgungsleiter an den Signalklemmen (und
+nicht an den Testklemmen) angeschlossen sind.
+4. Auf eine saubere Gleichspannungsversorgung zum Messumformer prüfen.
+Maximales AC-Rauschen beträgt 0,2 V Spitze zu Spitze.
+5. Überprüfen, ob der Ausgang zwischen 4 und 20 mA oder den Sättigungswerten
+liegt.
+6. Verwenden Sie das Kommunikationsgerät, um alle Adressen abzufragen.
+6.3.3 
+Messumformer mA-Ausgang ist hoch oder niedrig
+Empfohlene Maßnahmen
+1. Den angelegten Druck überprüfen.
+2. 4 und 20 mA Punkt überprüfen.
+3. Sicherstellen, dass der Ausgang nicht im Alarmzustand ist.
+4. Analogabgleich durchführen.
+5. Überprüfen, ob die Spannungsversorgungsleiter an den richtigen
+Signalklemmen (Plus an Plus und Minus an Minus) angeschlossen sind (und
+nicht an den Testklemmen).
+6.3.4 
+Messumformer reagiert nicht auf Änderung des
+angelegten Betriebsdrucks
+Empfohlene Maßnahmen
+1. Impulsleitungen oder Ventilblock auf Blockierung prüfen.
+2. Prüfen, ob der angelegte Druck zwischen den Werten 4 und 20 mA liegt.
+3. Sicherstellen, dass der Ausgang kein Alarm-Zustand ist.
+4. Sicherstellen, dass der Messumformer nicht in den Modus Loop Test
+(Messkreistest) geschaltet wurde.
+5. Sicherstellen, dass der Messumformer nicht in den Multidrop-Modus
+geschaltet wurde.
+6. Prüfausrüstung prüfen
+6.3.5 
+Angezeigte digitale Druckvariable ist hoch oder niedrig
+Empfohlene Maßnahmen
+1. Impulsleitungen auf Blockierung oder niedrigen Füllstand der befüllten
+Leitungen prüfen.
+2. Überprüfen, ob der Messumformer ordnungsgemäß kalibriert ist.
+3. Testausrüstung prüfen (Genauigkeit prüfen).
+4. Die Berechnung des Drucks für die Anwendung überprüfen.
+5. Druckkalibrierung wiederherstellen. Zu Device Settings (Geräteeinstellungen) 
+→ Calibration (Kalibrierung) → Pressure (Druck) → Factory Calibration
+(Werksseite Kalibrierung) → Restore Pressure Calibration (Druckkalibrierung
+wiederherstellen) navigieren.
+Störungsanalyse und -beseitigung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+96
+Rosemount 3051
+
+
+=== PDF PAGE 97 ===
+6.3.6 
+Angezeigte digitale Druckvariable ist instabil
+Empfohlene Maßnahmen
+1. Die Anwendung auf defekte Ausrüstung in der Druckleitung prüfen.
+2. Überprüfen, ob der Messumformer direkt auf das Ein- und Ausschalten von
+Geräten reagiert.
+3. Überprüfen, ob die Dämpfung für die Anwendung richtig eingestellt ist.
+6.3.7 
+mA-Ausgang ist instabil
+Empfohlene Maßnahmen
+1. Überprüfen, ob die Spannungsversorgung zum Messumformer eine
+ausreichende Spannung und Stromstärke aufweist.
+2. Auf externe elektrische Störungen prüfen.
+3. Überprüfen, dass der Messumformer richtig geerdet ist.
+4. Überprüfen, ob die Abschirmung für das verdrillte Adernpaar nur an einem
+Ende geerdet ist.
+6.4 
+Diagnosemeldungen
+Die folgenden Abschnitte enthalten mögliche Meldungen, die auf dem Display, einem
+Kommunikationsgerät oder einem AMS-System erscheinen. Verwenden Sie diese zur
+Diagnose von Statusmeldungen.
+•
+Fehler
+•
+Funktionsprüfung
+•
+Wartung erforderlich
+•
+Außerhalb der Spezifikationen
+6.4.1 
+Diagnosemeldungen: Fehler
+Störung der Elektronikplatine
+Es wurde eine Störung der Elektronikplatine erkannt.
+Grafische Digi‐
+talanzeige
+Störung der Elektronikplatine
+Digitalanzeiger
+AUSFALLPLATINE
+Bedieninterface
+(LOI)
+AUSFALLPLATINE
+Empfohlene Maßnahme
+Die Elektronikplatine austauschen.
+Inkompatibles Sensormodul
+Die Elektronikplatine hat ein Sensormodul erkannt, das mit dem System nicht kompatibel
+ist.
+Betriebsanleitung
+Störungsanalyse und -beseitigung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+97
+
+
+=== PDF PAGE 98 ===
+Grafisches LCD-
+Display
+Inkompatibles Sensormodul
+LCD-Display
+XMTR MSMTCH
+Bedieninterface
+(LOI)
+XMTR MSMTCH
+Empfohlene Maßnahme
+Das inkompatible Sensormodul austauschen.
+Keine Druckaktualisierungen
+Der Sensor sendet keine aktualisierten Druckwerte an die Elektronik.
+Grafische Digi‐
+talanzeige
+Sensor-Kommunikationsfehler
+Digitalanzeiger
+KEINE P-AKTUALISIERUNG
+Bedieninterface
+(LOI)
+KEIN DRUCK-UPDATE
+Empfohlene Maßnahmen
+1. Sicherstellen, dass die Kabel zwischen Sensor und Elektronik fest angeschlossen
+sind.
+2. Den Drucksensor austauschen.
+Sensormodulfehler
+Es wurde ein Fehler im Sensormodul erkannt.
+Grafisches LCD-
+Display
+Sensormodulfehler
+LCD-Display
+FAIL-SENSOR
+Bedieninterface
+(LOI)
+FAIL-SENSOR
+Empfohlene Maßnahme
+Das Sensormodul austauschen.
+Keine Temperaturaktualisierungen
+Der Sensor sendet keine aktualisierten Temperaturwerte an die Elektronik.
+Grafische Digi‐
+talanzeige
+Sensor-Kommunikationsfehler
+Digitalanzeiger
+KEINE T-AKTUALISIERUNG
+Bedieninterface
+(LOI)
+KEINE TEMP.-AKTUALISIERUNG
+Empfohlene Maßnahmen
+1. Sicherstellen, dass die Kabel zwischen Sensor und Elektronik fest angeschlossen
+sind.
+2. Den Drucksensor austauschen.
+Störungsanalyse und -beseitigung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+98
+Rosemount 3051
+
+
+=== PDF PAGE 99 ===
+6.4.2 
+Diagnosemeldungen: Funktionsprüfung
+Primär- oder Gerätevariable simuliert
+Die Primär- oder Gerätevariable wird simuliert und entspricht nicht den
+Prozessmesswerten.
+Grafisches LCD-
+Display
+[Variable] simuliert
+LCD-Display
+(Kein)
+Bedieninterface
+(LOI)
+(Kein)
+Empfohlene Maßnahme
+Starten Sie das Gerät erneut.
+Messkreisstrom auf Festwert eingestellt
+Der Analogausgang ist auf einen festen Wert eingestellt und entspricht nicht den
+Prozessmesswerten, da das Gerät auf den Messkreistestmodus eingestellt ist.
+Grafisches LCD-
+Display
+Messkreisstrom auf Festwert eingestellt
+LCD-Display
+ANLOG FIXIERT
+Bedieninterface
+(LOI)
+ANLOG FIXIERT
+Empfohlene Maßnahmen
+1. Sicherstellen, dass der Messkreistest nicht mehr erforderlich ist.
+2. Messkreistestmodus deaktivieren oder das Gerät neu starten.
+6.4.3 
+Diagnosemeldungen: Wartung erforderlich
+Fehler Bluetooth®-Elektronik
+Die interne Diagnose des Feldgeräts hat einen Fehler der Bluetooth-Elektronik festgestellt.
+Dieser Fehler führt wahrscheinlich zu einer reduzierten oder fehlenden Bluetooth-
+Kommunikationsfähigkeit. Das Feldgerät funktioniert jedoch unabhängig von diesem
+Bluetooth-Alarm weiterhin.
+Grafisches LCD-
+Display
+Bluetooth-Elektronikfehler
+LCD-Display
+–
+Bedieninterface
+(LOI)
+–
+Empfohlene Maßnahmen
+1. Die vordere Gehäuseabdeckung (unter Beachtung der Anforderungen für Ex-
+Bereiche) abnehmen.
+2. Das Display (das die Bluetooth-Elektronik enthält) austauschen.
+3. Starten Sie das Gerät erneut.
+Betriebsanleitung
+Störungsanalyse und -beseitigung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+99
+
+
+=== PDF PAGE 100 ===
+Bluetooth®-Funktionalität eingeschränkt
+Das Feldgerät kann aufgrund eines internen Fehlers keine Gerätedaten über Bluetooth
+senden. Das Feldgerät funktioniert weiterhin unabhängig von diesem Bluetooth-Alarm.
+Grafisches LCD-
+Display
+Begrenzte Bluetooth-Funktionalität
+LCD-Display
+–
+Bedieninterface
+(LOI)
+–
+Empfohlene Maßnahmen
+1. Die vordere Gehäuseabdeckung (unter Beachtung der Anforderungen für Ex-
+Bereiche) abnehmen und überprüfen, ob die Display-Baugruppe richtig sitzt
+und an die Elektronikplatine angeschlossen ist.
+2. Das Display (das die Bluetooth-Elektronik enthält) austauschen.
+Taste hängt
+Mindestens eine Taste am Messumformer-Display oder im Gehäuse hängt.
+Grafisches LCD-
+Display
+Taste hängt
+LCD-Display
+TASTE HÄNGT
+Bedieninterface
+(LOI)
+TASTE HÄNGT
+Empfohlene Maßnahmen
+1. Sicherstellen, dass die Tasten am Gehäuse nicht gedrückt sind.
+2. Die vordere Gehäuseabdeckung (unter Beachtung der Anforderungen für Ex-
+Bereiche) abnehmen und sicherstellen, dass die Displaytasten (falls vorhanden)
+nicht gedrückt sind.
+3. Wenn die Schaltflächen nicht verwendet werden, deaktivieren Sie diese.
+4. Display austauschen, falls es Tasten enthält.
+5. Die Elektronikplatine austauschen.
+Kommunikationsfehler des Displays
+Die Kommunikation zwischen Elektronikplatine und Display ist unterbrochen. Beachten Sie,
+dass der angezeigte Inhalt möglicherweise nicht korrekt ist.
+Grafisches LCD-
+Display
+–
+LCD-Display
+–
+Bedieninterface
+(LOI)
+–
+Empfohlene Maßnahmen
+1. Die vordere Gehäuseabdeckung (unter Beachtung der Anforderungen für Ex-
+Bereiche) abnehmen und überprüfen, ob die Display-Baugruppe richtig sitzt
+und an die Elektronikplatine angeschlossen ist.
+2. Display austauschen.
+Störungsanalyse und -beseitigung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+100
+Rosemount 3051
+
+
+=== PDF PAGE 101 ===
+3. Die Elektronikplatine austauschen.
+Diagnose der Integrität des Messkreises
+Die Diagnose der Integrität des Messkreises hat erkannt, dass die Klemmenspannung
+außerhalb der eingestellten Grenzwerte liegt. Dies kann zu einer Beeinträchtigung der
+Integrität des Regel- oder Messkreises führen.
+Grafisches LCD-
+Display
+Diagnose der Integrität des Messkreises
+LCD-Display
+STROMWARNUNG
+Bedieninterface
+(LOI)
+STROMWARNUNG
+Empfohlene Maßnahmen
+1. Sicherstellen, dass die Gleichspannungsversorgung korrekt und stabil ist und
+eine minimale Welligkeit aufweist.
+2. Den Messkreis auf eine Beeinträchtigung der Leistung oder eine unsachgemäße
+Erdung überprüfen.
+3. Die Abdeckung des Anschlussraums abnehmen (unter Beachtung der
+Anforderungen für Ex-Bereiche) und auf eingedrungenes Wasser oder
+Korrosion des Anschlussklemmenblocks prüfen.
+4. Messkreis erneut charakterisieren und den Abweichungsgrenzwert
+gegebenenfalls anpassen.
+Diagnose von verstopften Impulsleitungen
+Die Diagnose von verstopften Impulsleitungen hat eine Änderung der Prozessrauschpegel
+festgestellt, die auf eine verstopfte Impulsleitung, einen verstopften Durchfluss-
+Wirkdruckgeber oder Bewegungsverluste zurückzuführen sein könnte.
+Grafisches LCD-
+Display
+Diagnose von verstopften Impulsleitungen
+LCD-Display
+Leitung stopfen
+Bedieninterface
+(LOI)
+Verstopfte Impulsleitung
+Empfohlene Maßnahmen
+1. Die Bedingungen des Prozesses prüfen, in dem der Messumformer installiert
+ist.
+2. Die umliegenden Geräte und Prozesse auf die folgenden Bedingungen prüfen:
+•
+Verstopfte Impulsleitung
+•
+Verstopftes Durchflusselement
+•
+Bewegungsverluste
+Prozesswarnung 1
+Das Gerät hat eine Änderung an der überwachten Variable festgestellt, die die
+konfigurierten Schwellenwerte für Prozesswarnung 1 überschreitet.
+Grafisches LCD-
+Display
+Prozessalarm 1 [Alarmname]
+Betriebsanleitung
+Störungsanalyse und -beseitigung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+101
+
+
+=== PDF PAGE 102 ===
+LCD-Display
+[Alarmname]
+Bedieninterface
+(LOI)
+[Alarmname]
+Empfohlene Maßnahmen
+1. Sicherstellen, dass die überwachte Variable die Alarmwerte überschreitet.
+2. Die Alarmeinstellungen ändern oder den Alarm ausschalten.
+Prozesswarnung 2
+Das Gerät hat eine Änderung an der überwachten Variable festgestellt, die die
+konfigurierten Schwellenwerte für Prozesswarnung 2 überschreitet.
+Grafisches LCD-
+Display
+Prozessalarm 2 [Alarmname]
+LCD-Display
+[Alarmname]
+Bedieninterface
+(LOI)
+[Alarmname]
+Empfohlene Maßnahmen
+1. Sicherstellen, dass die überwachte Variable die Alarmwerte überschreitet.
+2. Die Alarmeinstellungen ändern oder den Alarm ausschalten.
+6.4.4 
+Diagnosemeldungen: Außerhalb der Spezifikationen
+Pressure Out of Limits (Druck außerhalb der Grenzwerte)
+Der Prozessdruck hat den maximalen Messbereich des Messumformers überschritten.
+Grafisches LCD-
+Display
+Pressure Out of Limits (Druck außerhalb der Grenzwerte)
+LCD-Display
+KEINE P-AKTUALISIERUNG
+Bedieninterface
+(LOI)
+GRENZEN VORGEBEN
+Empfohlene Maßnahmen
+1. Die Bedingungen des Prozesses prüfen, in dem der Messumformer installiert
+ist.
+2. Den Druckanschluss des Messumformers prüfen, um zu bestätigen, dass der
+Anschluss nicht verstopft ist und dass die Trennmembranen nicht beschädigt
+sind.
+3. Das Sensormodul austauschen.
+Module Temperature Out of Limits (Modultemperatur
+außerhalb der Grenzwerte)
+Die Modultemperatur hat den normalen Betriebsbereich überschritten.
+Grafisches LCD-
+Display
+Module Temperature Out of Limits (Modultemperatur außerhalb der
+Grenzwerte)
+LCD-Display
+TEMP-GRENZEN
+Störungsanalyse und -beseitigung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+102
+Rosemount 3051
+
+
+=== PDF PAGE 103 ===
+Bedieninterface
+(LOI)
+AUSZEIT-GRENZWERTE
+Empfohlene Maßnahmen
+1. Die Prozess- und Umgebungstemperatur überprüfen, um sicherzustellen, dass
+sie innerhalb der Spezifikationen liegt.
+2. Das Sensormodul austauschen.
+Analogausgang gesättigt
+Der Messkreisstrom ist gesättigt, da der Analogwert außerhalb des Sättigungswertbereichs
+liegt, oder die Primärvariable gesättigt wird.
+Grafisches LCD-
+Display
+Analogausgang gesättigt
+LCD-Display
+ANLOG SÄTT.
+Bedieninterface
+(LOI)
+ANALOG SÄTT.
+Empfohlene Maßnahmen
+1. Die Bedingungen des Prozesses prüfen, in dem der Messumformer installiert
+ist.
+2. Die Einstellungen für die 4 mA- und 20 mA-Messbereichspunkte überprüfen und
+bei Bedarf neu justieren.
+3. Den Druckanschluss des Messumformers prüfen, um zu bestätigen, dass der
+Anschluss nicht verstopft ist und dass die Trennmembranen nicht beschädigt
+sind.
+4. Das Sensormodul austauschen.
+6.5 
+Messumformer wieder auseinander bauen
+ WARNUNG
+Explosion
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+In explosionsgefährdeten Atmosphären den Geräte-Gehäusedeckel nicht abnehmen, wenn
+der Stromkreis unter Spannung steht.
+6.5.1 
+Messumformer außer Betrieb nehmen
+ WARNUNG
+Alle Richtlinien und Verfahren für die Anlagensicherheit beachten.
+Prozedur
+1. Die Spannungsversorgung des Geräts ausschalten.
+2. Die Prozessleitungen vom Messumformer trennen und entlüften, bevor der
+Messumformer außer Betrieb genommen wird.
+Betriebsanleitung
+Störungsanalyse und -beseitigung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+103
+
+
+=== PDF PAGE 104 ===
+3. Alle elektrischen Leiter und das Schutzrohr abklemmen.
+4. Den Messumformer vom Prozessanschluss abschrauben.
+•
+Der Rosemount 3051C Messumformer ist mit vier Flanschschrauben und zwei
+Kopfschrauben am Prozessanschluss montiert. Die Flansch- und Kopfschrauben
+abmontieren und den Messumformer vom Prozessanschluss trennen. Den
+Prozessanschluss für die erneute Installation in seiner Position belassen. Siehe
+#unique_128/unique_128_Connect_42_RFIXbq69002 für Coplanar Flansch.Siehe
+Abbildung 3-4 für Coplanar Flansch.
+•
+Der Rosemount 3051T Messumformer ist mit einer einzelnen Sechskantmutter
+am Prozessanschluss montiert. Die Sechskantmutter lockern, um den
+Messumformer vom Prozess zu trennen. Keinen Schraubenschlüssel am Flansch
+des Messumformers ansetzen. Die Warnung unter Einbaulage des Inline-
+Messumformers für Überdruck beachten.
+5. Die Trennmembranen mit einem weichen Tuch und einer milden Reinigungslösung
+reinigen und mit sauberem Wasser abspülen.
+Anmerkung
+Die Trennmembranen nicht verkratzen, durchstechen oder zusammendrücken.
+6. Beim Entfernen des Rosemount 3051C vom Prozessflansch oder von den
+Ovaladaptern stets die PTFE O-Ringe visuell überprüfen. Die O-Ringe austauschen,
+wenn diese Anzeichen von Beschädigung wie Kerben oder Risse aufweisen.
+Anmerkung
+Unbeschädigte O-Ringe können wiederverwendet werden.
+6.5.2 
+Anschlussklemmenblock ausbauen
+Die elektrischen Anschlüsse befinden am Anschlussklemmenblock in dem mit FIELD
+TERMINALS (ANSCHLUSSKLEMMEN) gekennzeichneten Gehäuse.
+Prozedur
+1. Den Gehäusedeckel auf der Seite mit den Anschlussklemmen abnehmen.
+Siehe Sicherheitsmeldungen bzgl. vollständiger Warnungsinformationen.
+2. Die beiden kleinen Schrauben in der 9-Uhr-Stellung und in der 5-Uhr-Stellung (zur
+Oberseite des Messumformers gesehen) an der Baugruppe lösen.
+3. Den gesamten Anschlussklemmenblock aus dem Gehäuse herausziehen, um diesen
+abzuklemmen.
+6.5.3 
+Elektronikplatine ausbauen
+Die Elektronikplatine des Messumformers befindet sich in der den Anschlussklemmen
+gegenüberliegenden Gehäusekammer.
+Prozedur
+1. Die Gehäuseabdeckung auf der Seite, die der Seite mit den Anschlussklemmen
+gegenüberliegt, entfernen.
+2. Zum Demontieren eines Messumformers mit einem LCD-Display die beiden
+unverlierbaren Schrauben auf der Vorderseite des LCD-Displays lösen.
+Die beiden Schrauben befestigen den LCD-Display an der Elektronikplatine und die
+Elektronikplatine am Gehäuse.
+Störungsanalyse und -beseitigung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+104
+Rosemount 3051
+
+
+=== PDF PAGE 105 ===
+3. Zum Demontieren eines Messumformers mit Bedieninterface (LOI) oder LCD-Display
+die beiden unverlierbaren Schrauben vom Digitalanzeiger lösen.
+4. Siehe Abbildung 4-1 für die Schraubenpositionierung. Die beiden Schrauben
+befestigen das Bedieninterface/das LCD-Display an der Elektronikplatine und die
+Elektronikplatine am Gehäuse.
+Anmerkung
+Die Elektronikplatine ist elektrostatisch empfindlich; die entsprechenden
+Handhabungsvorschriften für statisch empfindliche Komponenten befolgen.
+Anmerkung
+Beim Ausbau des Bedieninterface/LCD-Displays vorsichtig vorgehen, da das
+Anzeigegerät über elektronische Pins verfügt, die die Verbindung zwischen
+Bedieninterface/LCD-Display und Elektronikplatine herstellen.
+5.
+6.5.4 
+Sensormodul aus dem Elektronikgehäuse ausbauen
+Prozedur
+1. Die Elektronikplatine ausbauen.
+Siehe Elektronikplatine ausbauen.
+BEACHTEN
+Um Schäden am Sensormodul-Flachkabel zu verhindern, das Kabel von der
+Elektronikplatine trennen, bevor das Sensormodul aus dem Elektronikgehäuse
+ausgebaut wird.
+2. Den Kabelstecker vorsichtig vollständig in die interne schwarze Kappe schieben.
+BEACHTEN
+Das Gehäuse erst dann entfernen, nachdem der Kabelstecker vorsichtig vollständig
+in die interne schwarze Kappe geschoben wurde. Die schwarze Kappe schützt das
+Flachkabel vor Beschädigungen, die beim Drehen des Gehäuses auftreten können.
+3. Die Gehäusesicherungsschraube mit einem 5/64 in. Sechskantschlüssel eine volle
+Umdrehung lösen.
+4. Das Modul vom Gehäuse abschrauben und dabei sicherstellen, dass die schwarze
+Kappe am Sensormodul und das Sensorkabel nicht am Gehäuse hängen bleiben.
+6.6 
+Messumformer wieder zusammenbauen
+Prozedur
+1. Alle (nicht mediumberührten) O-Ringe von Deckel und Gehäuse untersuchen und
+falls erforderlich austauschen. Die O-Ringe leicht mit Silikonfett schmieren, um eine
+gute Abdichtung zu gewährleisten.
+2. Den Kabelstecker vorsichtig vollständig in die interne schwarze Kappe schieben.
+Hierfür die schwarze Kappe und das Kabel eine Umdrehung gegen den
+Uhrzeigersinn drehen, um das Kabel zu spannen.
+Betriebsanleitung
+Störungsanalyse und -beseitigung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+105
+
+
+=== PDF PAGE 106 ===
+3. Das Elektronikgehäuse auf das Modul absenken. Die interne schwarze Kappe und
+das Kabel am Sensormodul durch das Gehäuse und in die externe schwarze Kappe
+führen.
+4. Das Modul im Uhrzeigersinn in das Gehäuse schrauben.
+Anmerkung
+Sicherstellen, dass das Sensormodul-Flachkabel und die interne schwarze Kappe
+beim Drehen nicht am Gehäuse hängen bleiben. Wenn sich die interne schwarze
+Kappe und das Flachkabel mit dem Gehäuse drehen, kann das Kabel beschädigt
+werden.
+5. Das Gehäuse vollständig auf das Sensormodul aufschrauben.
+Das Gehäuse nur so weit aufschrauben, dass es bis auf eine Umdrehung mit
+dem Sensormodul fluchtet, um die Anforderungen für Ex-Schutz zu erfüllen. Siehe
+Sicherheitshinweise bzgl. vollständiger Warnungsinformationen.
+6. Die Gehäusesicherungsschraube mit einem 5/64 in.-Schraubenschlüssel anziehen.
+6.6.1 
+Elektronikplatine anbringen
+ WARNUNG
+Explosionen
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+Bei einer Installation mit Ex-Schutz/druckfester Kapselung die Messumformer-
+Gehäusedeckel nicht entfernen, wenn die Auswerteelektronik unter Spannung steht.
+Die Messumformer-Gehäusedeckel müssen vollständig eingeschraubt werden, sodass
+sich Deckel- und Gehäuserand berühren, um eine ordnungsgemäße Abdichtung zu
+gewährleisten und die Ex-Schutz-Anforderungen zu erfüllen.
+Prozedur
+1. Den Kabelstecker aus der internen schwarzen Kappe herausziehen und an der
+Elektronikplatine anbringen.
+2. Die Elektronikplatine unter Verwendung der beiden unverlierbaren Schrauben als
+Griff in das Gehäuse einsetzen.
+Sicherstellen, dass die Spannungsversorgungsstifte am Elektronikgehäuse
+ordnungsgemäß in die Buchsen auf der Elektronikplatine eingreifen. Die Einheit
+nicht mit Gewalt eindrücken. Die Elektronikplatine muss leicht in die Anschlüsse
+gleiten.
+3. Die unverlierbaren Befestigungsschrauben festziehen.
+4. Den Deckel des Elektronikgehäuses wieder anbringen.
+6.6.2 
+Anschlussklemmenblock installieren
+Prozedur
+1. Den Anschlussklemmenblock vorsichtig einschieben und darauf achten, dass die
+beiden Spannungsversorgungsstifte am Elektronikgehäuse ordnungsgemäß in die
+Buchsen am Anschlussklemmenblock eingreifen.
+Störungsanalyse und -beseitigung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+106
+Rosemount 3051
+
+
+=== PDF PAGE 107 ===
+ WARNUNG
+Stromschlag
+Stromschlag kann schwere oder tödliche Verletzungen verursachen.
+Kontakt mit Leitungsadern und Anschlussklemmen meiden. Eine möglicherweise
+vorhandene Hochspannung an den Leitungen kann einen elektrischen Schlag
+verursachen.
+2. Die unverlierbaren Schrauben festziehen.
+3. Den Deckel des Elektronikgehäuses wieder anbringen.
+ WARNUNG
+Explosionen
+Explosionen können zu schweren oder tödlichen Verletzungen führen.
+Die Messumformer-Gehäusedeckel müssen vollständig geschlossen sein, um die Ex-
+Schutz Anforderungen zu erfüllen.
+6.6.3 
+Rosemount 3051C Prozessflansch wieder
+zusammenbauen
+Siehe Sicherheitshinweise bzgl. vollständiger Warnungsinformationen.
+Prozedur
+1. Die PTFE O-Ringe des Sensormoduls inspizieren.
+Unbeschädigte O-Ringe können wiederverwendet werden. Die O-Ringe
+austauschen, wenn sie Anzeichen von Beschädigung wie z. B. Kerben, Risse oder
+allgemeine Verschleißerscheinungen aufweisen.
+Anmerkung
+Beim Auswechseln beschädigter O-Ringe darauf achten, dass die Nut der O-Ringe
+bzw. die Oberfläche der Trennmembran nicht verkratzt wird.
+2. Den Prozessflansch installieren. Zu den möglichen Optionen gehören:
+•
+Coplanar Prozessflansch:
+a. Den Prozessflansch fixieren, indem zwei Justierschrauben handfest
+montiert werden (Schrauben sind nicht drucktragend). Die Schrauben
+nicht zu fest anziehen, da sonst die Ausrichtung zwischen Modul und
+Flansch beeinträchtigt wird.
+b. Die vier 1,75 in. (44 mm) Flanschschrauben handfest am Flansch
+anschrauben.
+•
+Coplanar Prozessflansch mit Ovaladaptern:
+a. Den Prozessflansch fixieren, indem zwei Justierschrauben handfest
+montiert werden (Schrauben sind nicht drucktragend). Die Schrauben
+nicht zu fest anziehen, da sonst die Ausrichtung zwischen Modul und
+Flansch beeinträchtigt wird.
+b. Die Ovaladapter und Adapter-O-Ringe festhalten und gleichzeitig die
+vier 2,88 in. (73 mm) Schrauben (je nach Anwendung in eine der vier
+möglichen Prozessanschluss-Abstandskonfigurationen) einsetzen, um die
+Adapter fest am Coplanar Flansch anzubringen. Bei Konfigurationen für
+Betriebsanleitung
+Störungsanalyse und -beseitigung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+107
+
+
+=== PDF PAGE 108 ===
+Überdruck zwei 2,88 in. (73 mm) Schrauben und zwei 1,75 in. (44 mm)
+Schrauben verwenden.
+•
+Ventilblock: Informationen über die geeigneten Schrauben und Verfahren
+erhalten Sie vom Hersteller des Ventilblocks.
+3. Die Schrauben über Kreuz auf das Anfangsdrehmoment anziehen.
+Die entsprechenden Drehmomentwerte sind in Tabelle 6-1 zu finden.
+4. Die Schrauben kreuzweise (wie vorher) mit dem in Tabelle 6-1 angegebenen
+Drehmoment-Endwert anziehen.
+Anmerkung
+Wenn die PTFE O-Ringe des Sensormoduls ausgetauscht wurden, müssen die
+Flanschschrauben nach der Installation wieder angezogen werden, um den Kaltfluss
+des O-Ring-Werkstoffs zu kompensieren.
+Anmerkung
+Bei Messumformern der Reihe 1 den Messumformer nach dem Austausch der
+O-Ringe und dem Wiedereinbau des Prozessflansches zwei Stunden lang einer
+Temperatur von 185 °F (85 °C) aus. Danach die Flanschschrauben erneut über Kreuz
+anziehen und den Messumformer vor der Kalibrierung erneut zwei Stunden lang
+einer Temperatur von 185 °F (85 °C) aussetzen.
+Tabelle 6-1: Drehmomentwerte für die Montage der Schrauben
+Schraubenwerkstoff
+Anfangsdrehmoment
+Enddrehmoment
+CS-ASTM-A445 – Standard
+300 in.-lb. (34 Nm)
+650 in.-lb. (73 Nm)
+Edelstahl 316 – Option L4
+150 in.-lb. (17 Nm)
+300 in.-lb. (34 Nm)
+ASTM-A-19 B7M − Option L5
+300 in.-lb. (34 Nm)
+650 in.-lb. (73 Nm)
+ASTM-A-193 Class 2, Güteklasse B8M — Option
+L8
+150 in.-lb. (17 Nm)
+300 in.-lb. (34 Nm)
+6.6.4 
+Ablass-/Entlüftungsventil einbauen
+Prozedur
+1. Dichtungsband am Gewinde des Ventilsitzes anbringen. Am unteren Ende des
+Ventils beginnend fünf Lagen des Dichtungsbandes im Uhrzeigersinn anbringen,
+wobei das Gewindeende zum Monteur zeigen muss.
+BEACHTEN
+Die Öffnung am Ventil so ausrichten, dass das Prozessmedium beim Öffnen des
+Ventils zum Boden abfließen kann und ein Kontakt mit Menschen verhindert wird.
+2. Das Ablass-/Entlüftungsventil mit 250 in-lb. (28,25 Nm) anziehen.
+Störungsanalyse und -beseitigung
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+108
+Rosemount 3051
+
+
+=== PDF PAGE 109 ===
+7 
+Anforderungen an
+die sicherheitsgerichtete
+Systeminstrumentierung (SIS)
+Der sicherheitskritische Ausgang des Rosemount 3051 Druckmessumformers ist ein
+4-20 mA Zweileitersignal, das den Druck repräsentiert. Der gemäß Sicherheit zertifizierte
+Rosemount 3051 Druckmessumformer ist zertifiziert nach:
+•
+Geringe und hohe Leistungsanforderungen: Element Typ B
+•
+Route 2H, Anwendung mit niedriger Anforderung: SIL 2 für Zufallsintegrität bei HFT=0,
+SIL 3 für Zufallsintegrität bei HFT=1
+•
+Route 2H, Anwendung mit hoher Anforderung: SIL 2 und SIL3 für Zufallsintegrität bei
+HFT=1
+•
+Route 1H, bei der die SFF-≥ 90 % beträgt: SIL 2 für Zufallsintegrität bei HFT=0, SIL 3 für
+Zufallsintegrität bei HFT=1
+•
+SIL 3 für Systemintegrität
+7.1 
+Sicherheitszertifizierung des Rosemount 3051
+identifizieren
+Sie müssen alle Rosemount 3051 Messumformer als sicherheitszertifiziert identifizieren,
+bevor Sie sie in sicherheitsgerichtete Systeminstrumentierung (SIS) einbauen. So
+identifizieren Sie das Modell Rosemount 3051 mit Zertifizierung für sicherheitsgerichtete
+Systeminstrumentierung:
+Prozedur
+1. Die Version der NAMUR-Software prüfen, die auf dem Metallschild am Gerät zu
+finden ist. SW_._._.
+Nummer der NAMUR Softwareversion: SW(6) 1.0.x-1.4.x und 2.0.x. Siehe Tabelle 2-1.
+2. Prüfen, ob der Option Code QT in der Modellnummer des Messumformers
+enthalten und TR nicht in der Modellnummer enthalten ist.
+Geräte, die in Sicherheitsanwendungen mit Umgebungstemperaturen unter -40 °F
+(-40 °C) eingesetzt werden, benötigen Optionscode QT und BR5 oder BR6.
+7.2 
+Installation bei Anwendungen mit
+sicherheitsgerichteter Systeminstrumentierung
+(SIS)
+Es gibt keine zusätzlichen Anweisungen zur Installation des Messumformers in SIS-
+Anwendungen.
+(6) NAMUR-Softwareversion: Auf dem Metallschild am Gerät.
+Betriebsanleitung
+Anforderungen an die sicherheitsgerichtete Systeminstrumentierung (SIS)
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+109
+
+
+=== PDF PAGE 110 ===
+ WARNUNG
+Die Installation des Rosemount 3051 in SIS-Anwendungen darf nur von qualifiziertem
+Personal durchgeführt werden.
+Die Gehäusedeckel der Elektronik stets so installieren, dass eine ordnungsgemäße
+Abdichtung gewährleistet ist (Metall/Metall-Kontakt).
+Die Umgebungs- und Betriebsgrenzwerte finden Sie im Abschnitt Technische Daten des
+Rosemount 3051 Produktdatenblatts.
+Den Messkreis so ausgelegen, dass die Spannung an den Anschlussklemmen nicht unter
+10,5 VDC abfällt, wenn der Ausgang des Messumformers auf 23 mA gesetzt ist.
+Den Schalter Security (Schreibschutz) in die Stellung „Sperren“ bringen, um versehentliche
+oder beabsichtigte Änderungen der Konfigurationsdaten während des normalen Betriebs
+zu verhindern.
+7.3 
+Konfiguration bei Anwendungen mit
+sicherheitsgerichteter Systeminstrumentierung
+(SIS)
+Zur Kommunikation und Prüfung der Konfiguration des Rosemount 3051 ein HART®-
+fähiges Konfigurationstool verwenden.
+BEACHTEN
+Die Sicherheit des Messumformerausgangs wird bei folgenden Verfahren nicht überwacht:
+Konfigurationsänderungen, Multidrop und Messkreistest. Daher müssen alternative
+Maßnahmen getroffen werden, um die Prozesssicherheit bei der Durchführung von
+Konfigurations- und Wartungsmaßnahmen am Messumformer zu gewährleisten.
+7.3.1 
+Dämpfung
+Eine vom Anwender ausgewählte Dämpfung beeinflusst die Reaktionsfähigkeit des
+Messumformers auf Änderungen im angewendeten Verfahren. Dämpfungswert +
+Ansprechzeit dürfen die Messkreisanforderungen nicht überschreiten.
+Anweisungen zum Ändern des Dämpfungswerts finden Sie unter Dämpfung.
+7.3.2 
+Alarm and Saturation Levels (Alarm- und Sättigungswerte)
+Das Prozessleitsystems oder den Sicherheits-Logikbaustein entsprechend des
+Messumformers konfigurieren.
+Die untenstehenden Zahlen identifizieren die drei verfügbaren Alarmbereiche und ihre
+Betriebswerte.
+Anforderungen an die sicherheitsgerichtete Systeminstrumentierung (SIS)
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+110
+Rosemount 3051
+
+
+=== PDF PAGE 111 ===
+Abbildung 7-1: Rosemount Alarmwert
+A. Niedrige Sättigung
+B. Normalbetrieb
+C. Hohe Sättigung
+Abbildung 7-2: NAMUR Alarmwert
+A. Niedrige Sättigung
+B. Normalbetrieb
+C. Hohe Sättigung
+Abbildung 7-3: Kundenspezifischer Alarmwert
+A. Niedrige Sättigung
+B. Normalbetrieb
+C. Hohe Sättigung
+1. Messumformer-Fehler, Hardware- oder Software-Alarm in Position LO (NIEDRIG).
+2. Messumformer-Fehler, Hardware- oder Software-Alarm in Position HI (HOCH).
+7.4 
+Betrieb und Wartung der sicherheitsgerichteten
+Systeminstrumentierung (SIS)
+7.4.1 
+Abnahmeprüfungen
+Emerson empfiehlt die folgenden Abnahmeprüfungen.
+Wenn Sie einen Sicherheits- oder Funktionsfehler finden, können Sie die Ergebnisse
+der Abnahmeprüfung und Korrekturmaßnahmen dokumentieren, die bei Emerson.com/
+ReportFailure durchgeführt wurden.
+ WARNUNG
+Nur qualifiziertes Personal darf die Abnahmeprüfungen durchführen.
+Betriebsanleitung
+Anforderungen an die sicherheitsgerichtete Systeminstrumentierung (SIS)
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+111
+
+
+=== PDF PAGE 112 ===
+Sicherstellen, dass sich der Schalter Security (Schreibschutz) während des Abnahmetests
+in der Position Unlock (Entriegelt) befindet und nach der Abnahmeprüfung in die Position
+Lock (Verriegelt) gebracht wird.
+7.4.2 
+Führen Sie eine geführte Abnahmeprüfung durch.
+Wenn Sie die Option „geführte Abnahmeprüfung“ auswählen, unterstützt der Rosemount
+3051 eine Funktion, die eine geführte teilweise oder umfassende Abnahmeprüfung
+durchführen kann.
+Diese Funktion führt Sie durch die Schritte, die zum Durchführen einer Abnahmeprüfung
+erforderlich sind. Die Alarmpegel und erforderlichen Schritte werden bereitgestellt, ohne
+dass Sie sie nachschlagen müssen.
+Zugreifen auf die geführte Abnahmeprüfung:
+Prozedur
+Zu Device Settings (Geräteeinstellungen) → Calibration (Kalibrierung) → Proof Test
+(Abnahmeprüfung) → Perform Proof Tests (Abnahmeprüfungen durchführen) gehen.
+Die Option „geführte Abnahmeprüfung“ verfügt über ein Protokoll für die geführte
+Abnahme. In diesem Protokoll werden die zehn letzten Abnahmeprüfungen direkt im
+Messumformer gespeichert. Das Protokoll enthält Zeitstempel, Kommunikationsquelle,
+Bestanden/Fehlgeschlagen-Ergebnis und alle benutzerdefinierten Hinweise.
+7.4.3 
+Teil-Abnahmeprüfung
+Die vorgeschlagene einfache Abnahmeprüfung besteht aus dem Aus- und Einschalten der
+Spannungsversorgung sowie Plausibilitätsprüfungen des Messumformerausgangs.
+Siehe Bericht Fehlermodus, Einflüsse und Diagnoseanalyse unter Emerson.com/
+Rosemount3051CP.
+Voraussetzungen
+Erforderliche Hilfsmittel:
+•
+Kommunikationsgerät
+•
+mA-Messgerät
+Prozedur
+1. Die Sicherheitsfunktion umgehen und entsprechende Maßnahmen einleiten, um
+eine falsche Auslösung zu vermeiden.
+2. Diagnosemeldungen mit dem HART® Feldkommunikator abrufen und
+entsprechende Abhilfemaßnahmen treffen.
+3. Einen HART Befehl an den Messumformer auswählen, um den Hochalarm-
+Stromausgangswert einzustellen, und prüfen, ob der Analogstrom diesen Wert
+erreicht.(7)
+Siehe Überprüfen des Alarmwerts.
+4. Einen HART Befehl an den Messumformer senden, um den Niedrigalarm-
+Stromausgangswert einzustellen und prüfen, ob der Analogstrom diesen Wert
+erreicht.(7)
+5. Den Bypass entfernen und den Normalbetrieb wieder herstellen.
+6. Den Schalter Security (Sicherheit) in die Lock (verriegelt) Position bringen.
+(7) Damit kann geprüft werden, ob potenzielle Ausfälle durch den Ruhestrom verursacht werden.
+Anforderungen an die sicherheitsgerichtete Systeminstrumentierung (SIS)
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+112
+Rosemount 3051
+
+
+=== PDF PAGE 113 ===
+7.4.4 
+Umfassende Abnahmeprüfung
+Die ausführliche Abnahmeprüfung besteht aus denselben Schritten, die auch bei der
+vorgeschlagenen einfachen Abnahmeprüfung durchgeführt werden, jedoch mit einer
+Zweipunkteinstellung des Drucksensors anstatt der Plausibilitätsprüfung.
+Im Bericht Fehlermodus, Einflüsse und Diagnoseanalyse unter Emerson.com/
+Rosemount3051CP finden Sie Angaben zu möglichen DU-Fehlern im Gerät.
+Voraussetzungen
+Erforderliche Hilfsmittel:
+•
+Kommunikationsgerät
+•
+Druckkalibriergerät
+Prozedur
+1. Die Sicherheitsfunktion umgehen und entsprechende Maßnahmen einleiten, um
+eine falsche Auslösung zu vermeiden.
+2. Diagnosemeldungen mit dem HART Feldkommunikator abrufen und entsprechende
+Abhilfemaßnahmen treffen.
+3. Einen HART Befehl an den Messumformer senden, um den Hochalarm-
+Stromausgangswert einzustellen, und prüfen, ob der Analogstrom diesen Wert
+erreicht.(7)
+Siehe Überprüfen des Alarmwerts.
+4. Einen HART Befehl an den Messumformer senden, um den Niedrigalarm-
+Stromausgangswert einzustellen, und prüfen, ob der Analogstrom diesen Wert
+erreicht.(8)
+5. Eine 2-Punkt-Kalibrierung des Sensors über den vollen Betriebsbereich durchführen
+und den Stromausgang an beiden Punkten überprüfen.
+Siehe Abgleich des Drucksignals.
+6. Den Bypass entfernen und den Normalbetrieb wieder herstellen.
+7. Den Schalter Security (Sicherheit) in die Lock (verriegelt) Position bringen.
+BEACHTEN
+•
+Sie bestimmen die Anforderungen der Abnahmeprüfung für Impulsleitungen.
+•
+Für den korrigierten Prozentsatz der DU werden automatische
+Diagnosefunktionen definiert. Das Gerät führt diese Tests während der Laufzeit
+intern durch, ohne dass Sie den Messumformer aktivieren oder programmieren
+müssen.
+7.4.5 
+Berechnung der mittleren Ausfallwahrscheinlichkeit der
+Funktion bei Erfordernis (PFDAVG)
+Siehe Bericht Fehlermodus, Einflüsse und Diagnoseanalyse unter Emerson.com/
+Rosemount3051CP für die PFDAVG-Berechnung.
+(8) Damit kann geprüft werden, ob Probleme mit der Quellenspannung wie eine niedrige Versorgungsspannung
+oder eine übermäßige Verkabelungsdistanz vorliegen. Dabei wird der Messkreis auch auf andere mögliche
+Fehler geprüft.
+Betriebsanleitung
+Anforderungen an die sicherheitsgerichtete Systeminstrumentierung (SIS)
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+113
+
+
+=== PDF PAGE 114 ===
+7.5 
+Prüfung
+7.5.1 
+Produktreparatur
+Sie können den Rosemount 3051 reparieren, indem Sie Hauptkomponenten austauschen.
+Melden Sie alle durch Diagnosefunktionalitäten des Messumformers oder bei der
+Abnahmeprüfung erkannten Fehler. Senden Sie Ihr Feedback elektronisch.
+ WARNUNG
+Lassen Sie nur qualifiziertes Personal das Produkt reparieren und Teile austauschen.
+7.5.2 
+Rosemount 3051 sicherheitsgerichtete
+Systeminstrumentierung (SIS) Handbuch
+Betreiben Sie den Rosemount 3051 in Übereinstimmung mit den Funktions- und
+Leistungsspezifikationen, die im Abschnitt Technische Daten des Rosemount 3051
+Produktdatenblattes angegeben sind.
+7.5.3 
+Daten zur Fehlerquote
+Siehe Bericht Failure Modes, Effects and diagnostic Analysis (Fehlermodus, Einflüsse und
+Diagnoseanalyse) unter Emerson.com/Rosemount3051CP für Ausfallraten und Schätzungen
+des Beta-Faktors für gemeinsame Ursachen.
+7.5.4 
+Fehlerwerte
+Sicherheitsabweichung
+±2,0 Prozent
+Messumformer-Ansprechzeit Siehe Abschnitt Technische Daten des Rosemount 3051 Pro‐
+duktdatenblatts.
+Selbstdiagnose-Testintervall
+Mindestens einmal alle 60 Minuten
+7.5.5 
+Produkt-Lebensdauer
+Die Produkt-Lebensdauer beträgt 50 Jahre, basierend auf den Worst-Case-Bedingungen für
+Verschleißmechanismen von Komponenten – nicht basierend auf dem Verschleißprozess
+von mediumberührten Werkstoffen.
+Anforderungen an die sicherheitsgerichtete Systeminstrumentierung (SIS)
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+114
+Rosemount 3051
+
+
+=== PDF PAGE 115 ===
+A 
+Referenzdaten
+A.1 
+Bestellinformationen, Technische Daten und
+Zeichnungen
+Um aktuelle Bestellinformationen, technische Daten und Zeichnungen des Rosemount
+3051 anzeigen, führen Sie die folgenden Schritte aus:
+Prozedur
+1. Gehen Sie zu Emerson.com/Rosemount3051CP.
+2. Sofern erforderlich zur grünen Menüleiste scrollen und dann auf Documents &
+Drawings (Dokumente und Zeichnungen) klicken.
+3. Für die Installationszeichnungen auf Drawings & Schematics (Zeichnungen und
+Schaltpläne) klicken und dann das entsprechende Dokument auswählen.
+4. Für die Bestellinformationen, technischen Daten und Maßzeichnungen auf Data
+Sheets & Bulletins (Datenblätter und Bulletins) klicken und dann das entsprechende
+Produktdatenblatt auswählen.
+5. Klicken Sie für die Konformitätserklärung auf Certificates & Approvals (Zertifikate &
+Zulassungen) und wählen Sie das aktuellste Dokument aus.
+A.2 
+Produkt-Zulassungen
+Die aktuellen Produkt-Zulassungen für den Rosemount 3051 sind in der Kurzanleitung des
+Rosemount 3051 zu finden.
+Betriebsanleitung
+Referenzdaten
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+115
+
+
+=== PDF PAGE 116 ===
+Referenzdaten
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+116
+Rosemount 3051
+
+
+=== PDF PAGE 117 ===
+B 
+Gerätetreiber (DD) Menüstruktur
+Abbildung B-1: Menüstrukturen der ersten Ebene
+Betriebsanleitung
+Gerätetreiber (DD) Menüstruktur
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+117
+
+
+=== PDF PAGE 118 ===
+Abbildung B-2: Menü Process Variables (Prozessvariablen)
+Abbildung B-3: Geräteeinstellungen 1
+Gerätetreiber (DD) Menüstruktur
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+118
+Rosemount 3051
+
+
+=== PDF PAGE 119 ===
+Abbildung B-4: Geräteeinstellungen 2
+Betriebsanleitung
+Gerätetreiber (DD) Menüstruktur
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+119
+
+
+=== PDF PAGE 120 ===
+Abbildung B-5: Geräteeinstellungen 3
+Gerätetreiber (DD) Menüstruktur
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+120
+Rosemount 3051
+
+
+=== PDF PAGE 121 ===
+Abbildung B-6: Geräteeinstellungen 4
+Betriebsanleitung
+Gerätetreiber (DD) Menüstruktur
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+121
+
+
+=== PDF PAGE 122 ===
+Abbildung B-7: Diagnosefunktionen 1
+Gerätetreiber (DD) Menüstruktur
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+122
+Rosemount 3051
+
+
+=== PDF PAGE 123 ===
+Abbildung B-8: Diagnosefunktionen 2
+Betriebsanleitung
+Gerätetreiber (DD) Menüstruktur
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+123
+
+
+=== PDF PAGE 124 ===
+Abbildung B-9: Wartung 1
+Gerätetreiber (DD) Menüstruktur
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+124
+Rosemount 3051
+
+
+=== PDF PAGE 125 ===
+Abbildung B-10: Wartung 2
+Betriebsanleitung
+Gerätetreiber (DD) Menüstruktur
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+125
+
+
+=== PDF PAGE 126 ===
+Gerätetreiber (DD) Menüstruktur
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+126
+Rosemount 3051
+
+
+=== PDF PAGE 127 ===
+C 
+Schnellservicetasten
+Menütitel
+Taste
+Konfig. anzeigen
+PV (Primärvariable)
+PV-Dämpfung
+PV Messende (URV)
+PV Messanfang (LRV)
+AO Alarm (Analogausgang)
+Sättigung HOCH
+Sättigung NIEDRIG
+Null
+Abgleich auf PV-Nullpunkt
+Aktuellen Messwert auf 4 mA einstellen
+Neueinstellung
+4 mA einstellen
+20 mA einstellen
+Messkreistest
+4 MA einstellen
+8 MA einstellen
+12 MA einstellen
+16 MA einstellen
+20 MA einstellen
+Bildschirm umdrehen
+Um 180 Grad drehen
+Betriebsanleitung
+Schnellservicetasten
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+127
+
+
+=== PDF PAGE 128 ===
+Schnellservicetasten
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+128
+Rosemount 3051
+
+
+=== PDF PAGE 129 ===
+D 
+Bedieninterface (LOI)
+D.1 
+Zahlen in das Bedieninterface (LOI) eingeben
+Mit dem Bedieninterface können Gleitkommanummern eingegeben werden, indem alle
+acht Ziffernpositionen auf der oberen Linie verwendet werden.
+Die folgenden Schritte geben ein Beispiel dafür, wie ein Wert von -0000022 zu 000011,2
+geändert wird.
+Zu Beginn der Zifferneingabe ist die Stelle ganz links die ausgewählte Stelle. In diesem
+Beispiel blinkt das Minuszeichen „-“ auf der Anzeige. -0000022
+Prozedur
+1. Die Taste Scroll (Scrollen) drücken, bis 0 an der ausgewählten Stelle auf der Anzeige
+blinkt.
+00000022
+2. Die Taste Enter (Eingabe) drücken, um 0 als Eingabewert auszuwählen.
+Die zweite Stelle von links blinkt: 00000022
+3. Die Taste Enter (Eingabe) drücken, um 0 als Eingabewert für die zweite Stelle
+auszuwählen.
+Die dritte Stelle von links blinkt: 00000022
+4. Die Taste Enter (Eingabe) drücken, um 0 als Eingabewert für die dritte Stelle
+auszuwählen.
+Die vierte Stelle von links blinkt: 00000022
+5. Die Taste Enter (Eingabe) drücken, um 0 als Eingabewert für die vierte Stelle
+auszuwählen.
+Die fünfte Stelle von links blinkt: 00000022
+6. Die Taste Scroll (Scrollen) drücken, um die Ziffern zu durchlaufen, bis 1 auf der
+Anzeige angezeigt wird.
+00001022
+7. Die Taste Enter (Eingabe) drücken, um 1 als Eingabewert für die fünfte Stelle
+auszuwählen.
+Die sechste Stelle von links blinkt: 00001022
+8. Die Taste Scroll (Scrollen) drücken, um die Ziffern zu durchlaufen, bis 1 auf der
+Anzeige angezeigt wird.
+00001122
+9. Die Taste Enter (Eingabe) drücken, um 1 als Eingabewert für die sechste Stelle
+auszuwählen.
+Die siebte Stelle von links blinkt: 00001122
+10. Die Scroll-Taste drücken, um die Ziffern zu durchlaufen, bis das Dezimalzeichen „,“
+auf der Anzeige angezeigt wird.
+000011.2
+11. Drücken Sie die Taste Enter (Eingabe), um das Dezimalzeichen „,“ für die siebte
+Stelle auszuwählen.
+Nach Drücken der Enter (Eingabe)-Taste werden alle Stellen rechts neben dem
+Dezimalpunkt auf 0 gesetzt. Die achte Stelle von links blinkt: 000011.0
+12. Die Taste Scroll (Scrollen) drücken, um die Ziffern zu durchlaufen, bis 2 auf der
+Anzeige angezeigt wird.
+Betriebsanleitung
+Bedieninterface (LOI)
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+129
+
+
+=== PDF PAGE 130 ===
+000011.2
+13. Die Taste Enter (Eingabe) drücken, um 2 als Eingabewert für die achte Stelle
+auszuwählen.
+000011.2
+Die Nummerneingabe ist abgeschlossen. Ein SAVE (SPEICHERN)-Bildschirm wird angezeigt.
+Anmerkungen:
+•
+Zum Zurückgehen während der Eingabe von Ziffern den nach links weisenden Pfeil
+drücken und an der gewünschten Stelle die Enter (Eingabe)-Taste drücken.
+•
+Das Minuszeichen ist nur an der ganz linken Stelle zulässig.
+•
+Um Zahlen in wissenschaftlicher Notation einzugeben, ein E an die siebte Stelle setzen.
+D.2 
+Text in das Bedieninterface (LOI) eingeben
+Je nach bearbeitetem Element können Sie an bis zu acht Stellen in der oberen Zeile Text
+eingeben.
+Die Texteingabe folgt den gleichen Regeln wie die Zifferneingabe, siehe Zahlen in das
+Bedieninterface (LOI) eingeben, mit der Ausnahme, dass die folgenden Zeichen an allen
+Stellen verfügbar sind: A-Z, 0-9, -, /, Leerraum.
+Anmerkung
+Wenn der aktuelle Text ein Zeichen enthält, das vom Bedieninterface nicht dargestellt
+werden kann, erscheint an der entsprechenden Stelle ein Sternchen („*“).
+Bedieninterface (LOI)
+Betriebsanleitung
+Februar 2024
+00809-0105-4007
+130
+Rosemount 3051
+
+
+=== PDF PAGE 131 ===
+Betriebsanleitung
+00809-0105-4007
+Februar 2024
+Emerson.com/Rosemount
+131
+
+
+=== PDF PAGE 132 ===
+00809-0105-4007
+Rev. BF
+2024
+Weiterführende Informationen: Emerson.com/global
+©2024 Emerson. Alle Rechte vorbehalten.
+Die Verkaufsbedingungen von Emerson sind auf
+Anfrage erhältlich. Das Emerson Logo ist eine
+Marke und Dienstleistungsmarke der Emerson Electric
+Co. Rosemount ist eine Marke der Emerson
+Unternehmensgruppe. Alle anderen Marken sind
+Eigentum ihres jeweiligen Inhabers.
+Das Wortzeichen und das Logo von Bluetooth sind
+eingetragene Marken der Bluetooth SIG Inc. und jegliche
+Verwendung dieser Marken durch Emerson erfolgt unter
+Lizenz.

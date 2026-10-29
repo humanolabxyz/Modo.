@@ -2,7 +2,7 @@ const assert=require('node:assert/strict');
 const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const base=process.env.PANELLAB_URL||'http://127.0.0.1:4324/';
 (async()=>{const browser=await chromium.launch();try{
- const ctx=await browser.newContext({viewport:{width:390,height:844}});const page=await ctx.newPage();
+ const ctx=await browser.newContext({viewport:{width:390,height:844}});await ctx.addInitScript(()=>localStorage.setItem('modo-tutoriales-bienvenida-v1','seen'));const page=await ctx.newPage();
  await page.goto(base);
  const link=await page.locator('link[rel=manifest]').getAttribute('href');assert.equal(link,'/manifest.webmanifest');
  const manifest=await (await page.request.get(base+'manifest.webmanifest')).json();

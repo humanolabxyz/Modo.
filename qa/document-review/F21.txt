@@ -1,0 +1,115 @@
+ 
+ACTIVIDAD TECNOLÓGICA 2 
+FUNCIONES POLINÓMICAS DE GRADO 2 
+ 
+Esta actividad tiene por objetivo familiarizar a los estudiantes, mediante la incorporación de 
+GeoGebra, en el trabajo con las funciones polinómicas de grado 2. 
+ 
+ACTIVIDAD 1: Ingresar a GeoGebra Clásico online 
+Ingresa a la siguiente dirección: 
+ 
+https://www.geogebra.org/classic 
+ 
+ 
+ 
+ACTIVIDAD 2: Ingresar una función cuadrática 
+Para ingresar la función cuadrática 𝑓(𝑥) =
+!
+" 𝑥" −2𝑥−1, escribe en la barra de entrada lo 
+siguiente: 
+ 
+1/2x^2-2x-1 .¿. 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 3: Calcular una imagen de una función cuadrática 
+Para calcular la imagen de la función 𝑓(𝑥) =
+!
+" 𝑥" −2𝑥−1, para 𝑥= 3, escribe en la barra de 
+entrada lo siguiente: 
+ 
+f(3) .¿. 
+ 
+ 
+ 
+ACTIVIDAD 4: Calcular unas preimágenes de una función cuadrática 
+Para calcular las preimágenes de la función 𝑓(𝑥) =
+!
+" 𝑥" −2𝑥−1, para 𝑓(𝑥) = 5, escribe en la 
+barra de entrada lo siguiente: 
+ 
+Resuelve(f=5) .¿. 
+ 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 5: Encontrar la intersección con los ejes coordenados y el extremo de una función 
+cuadrática 
+Para encontrar la intersección con los ejes coordenados y el extremo de la función 𝑓(𝑥) =
+!
+" 𝑥" −
+2𝑥−1, escribe en la barra de entrada lo siguiente: 
+ 
+Interseca(f,EjeX) .¿. 
+Interseca(f,EjeY) .¿. 
+Extremo(f) .¿. 
+ 
+ 
+ 
+Antes de mostrar la otra alternativa, debe borrarse todo excepto la función. Una manera más 
+cómoda de obtener lo anterior es a través de la opción Puntos especiales, haciendo clic en los 
+tres puntitos que se encuentran a la derecha de la función en la barra de entrada como se 
+muestra a continuación: 
+ 
+ 
+ 
+ 
+De esta manera se obtienen los mismos puntos: 
+ 
+ 
+ 
+ACTIVIDAD 6: Encontrar la expresión algebraica de una función cuadrática a partir de tres 
+puntos 
+Para encontrar la expresión algebraica de una función cuadrática a partir de los puntos A, B y C, 
+escribe en la barra de entrada lo siguiente: 
+ 
+A=(-2,1) .¿. 
+B=(3,4) .¿. 
+C=(5,-2) .¿. 
+{A,B,C} .¿. 
+AjustePolinómico(l1,2) .¿. 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 7: Graficar dos funciones cuadráticas y encontrar su intersección 
+Ingresa las funciones 𝑓(𝑥) = 𝑥" −5𝑥+ 6 y 𝑔(𝑥) = −2𝑥" + 8𝑥−2. Para esto, escribe en la 
+barra de entrada lo siguiente: 
+ 
+x^2-5x+6 .¿. 
+-2x^2+8x-2 .¿. 
+Interseca(f,g) .¿. 
+ 
+ 
+ 
+ACTIVIDAD 8: Ajustar un conjunto de puntos por una función polinómica de grado 2 
+Para encontrar la expresión algebraica de una función cuadrática que mejor ajuste a los puntos 
+A, B, C, D y E, escribe en la barra de entrada lo siguiente: 
+ 
+A=(-2.5,1) .¿. 
+B=(-2,3) .¿. 
+C=(0,4) .¿. 
+D=(1,2.5) .¿. 
+E=(3,0) .¿. 
+{A,B,C,D,E} .¿. 
+AjustePolinómico(l1,2) .¿. 
+ 
+ 
+ 
+ 
+ 

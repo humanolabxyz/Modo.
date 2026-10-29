@@ -63,7 +63,7 @@ function InstallDialog({onClose, canInstall, onInstall}: {onClose: () => void; c
       <div>
         <p className="install-eyebrow">INSTALAR MODO.</p>
         <h2 id={titleId}>Llévate modo. contigo<span>.</span></h2>
-        <p>Se abre como una app, sin la barra del navegador, y sigue funcionando sin conexión después de la primera apertura.</p>
+        <p>Se abre como una app, sin la barra del navegador. Para llevar todos los simuladores y materiales sin internet, completa «Preparar viaje» en Inicio.</p>
       </div>
       <button type="button" className="install-close" aria-label="Cerrar instrucciones" autoFocus onClick={close}><X size={22} aria-hidden="true"/></button>
     </header>

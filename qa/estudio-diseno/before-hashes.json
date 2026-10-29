@@ -1,0 +1,13 @@
+{
+  "src/components/App.tsx": "9093344b403535a9773a785b49c3182df0a2f69b0675b5bd8f76f8a6bf23108e",
+  "src/components/Board.tsx": "c636f4a82e3abb2429d9c040d4af7c075a8f2a3bca972e6607f7cb32bc6efb21",
+  "src/data/panel.ts": "0ad505f2d44efe6b631ec975c0a05cc0872b6a70391a151c82af20b180c42063",
+  "src/data/wiring.ts": "0eb2694acf6b707e574a27b2d802eeb02c8a1d814a21928224309a2edf2bb994",
+  "src/lab/dc.ts": "b8e0146c66493239e7384807d8951f521dc33e5a5eee4052cb2ea228ed0c4a36",
+  "src/study/academicContent.ts": "e8450f761a4404ad3b951a26bfe0fa6aed923f06cdb6864a838f9e16701927fe",
+  "src/study/academicModels.ts": "21fb826c2123d26b5d2d302c731dbcc42ee45a90b68b0540e91be757127950d2",
+  "src/study/academicState.ts": "006293a8e2ad0b181ed6474a3ca4ce54488ceb170265a90eb4c3f80735c1d5d6",
+  "src/study/lessonTeachings.ts": "fbb911a19780ebc7287ae50386e5dd16d6eb80af96d08882e247ccd7fd3080ec",
+  "src/study/TeachingVisual.tsx": "5d3db8ac6241ad2ba85004efe22ecd4f489e489904d509a2018cbcab850af408",
+  "src/study/model.ts": "74d454df487c75a3743a420881bd05fae6fe356370e79d74ff118f534aa55e63"
+}

@@ -1495,14 +1495,14 @@ var source = { id: "FUENTE", title: "ALIMENTACI\xD3N Y TRANSFORMADOR", subtitle:
   port("F", 493, 230, "red", "Borne marcado F: funci\xF3n interna por confirmar", void 0, "bottom", "no_verificado"),
   port("TP", 550, 242, "green", "Tierra de protecci\xF3n")
 ] };
-var btn = { id: "BOTONERAS", title: "LUCES PILOTO 24 V A.C. / BOTONERAS", x: 712, y: 76, w: 615, h: 300, image: "/references/botoneras.jpg", category: "botoneras", summary: "Cuatro pilotos y tres pulsadores. Pares rojos 1\u20132; pares claros 3\u20134. En el pulsador derecho las columnas est\xE1n invertidas. NA/NC por convenci\xF3n, pendiente de verificaci\xF3n.", labelBands: [1, 2, 3].flatMap((s) => [[`S${s}:1`, `S${s}:3`], [`S${s}:2`, `S${s}:4`]]), terminals: [
+var btn = { id: "BOTONERAS", title: "LUCES PILOTO 24 V A.C. / BOTONERAS", x: 712, y: 76, w: 615, h: 300, image: "/references/botoneras.jpg", category: "botoneras", summary: "Cuatro pilotos y tres pulsadores. Pares rojos 1\u20132; pares claros 3\u20134. NA/NC por convenci\xF3n, pendiente de verificaci\xF3n.", labelBands: [1, 2, 3].flatMap((s) => [[`S${s}:1`, `S${s}:3`], [`S${s}:2`, `S${s}:4`]]), terminals: [
   ...[78, 228, 378, 530].map((x, i) => port(`PILOTO_${i + 1}`, x, 105, "red", `Conector visible bajo piloto ${i + 1}; retorno a\xFAn no verificado`, void 0, "bottom", "no_verificado")),
   ...[115, 303, 488].flatMap((cx, i) => [
-    // IMG_4737 and IMG_4536: the right-hand button has its columns reversed.
-    port(`S${i + 1}:1`, cx + (i === 2 ? 29 : -29), 196, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
-    port(`S${i + 1}:2`, cx + (i === 2 ? 29 : -29), 250, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
-    port(`S${i + 1}:3`, cx + (i === 2 ? -29 : 29), 196, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
-    port(`S${i + 1}:4`, cx + (i === 2 ? -29 : 29), 250, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar")
+    // Los tres pulsadores se leen de izquierda a derecha: rojos 1–2 a la izquierda y claros 3–4 a la derecha. (Las fotos IMG_4737 e IMG_4536 muestran el derecho con las columnas invertidas; se normaliza a petición del autor.)
+    port(`S${i + 1}:1`, cx - 29, 196, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
+    port(`S${i + 1}:2`, cx - 29, 250, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
+    port(`S${i + 1}:3`, cx + 29, 196, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
+    port(`S${i + 1}:4`, cx + 29, 250, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar")
   ]),
   port("N", 571, 132, "white", "Borne N visible del m\xF3dulo; conexi\xF3n interna no verificada", void 0, "bottom", "no_verificado"),
   port("TP_IZQ", 40, 260, "green", "Tierra de protecci\xF3n"),
@@ -11734,12 +11734,55 @@ var timer2 = () => ({
 });
 var STAR_PANELS = { estrellaManual: manual(), estrellaTimer: timer2() };
 
+// src/data/twoContactorReference.ts
+var referencePort = (object, terminal) => `reference:${object}:${terminal}`;
+var pairs = [
+  [53, "2", 54, "95"],
+  [54, "96", 55, "11"],
+  [55, "12", 56, "13"],
+  [56, "13", 57, "13"],
+  [56, "14", 57, "14"],
+  [57, "14", 63, "A1"],
+  [63, "A2", 52, "N"],
+  [57, "14", 58, "11"],
+  [58, "12", 59, "11"],
+  [59, "12", 64, "A1"],
+  [64, "A2", 52, "N"],
+  [57, "14", 58, "13"],
+  [58, "14", 61, "11"],
+  [61, "12", 65, "A1"],
+  [65, "A2", 52, "N"],
+  [2, "4", 3, "3"],
+  [2, "6", 3, "5"],
+  [4, "2", 5, "U1"],
+  [4, "4", 5, "V1"],
+  [4, "6", 5, "W1"],
+  [5, "W2", 7, "6"],
+  [5, "U2", 7, "4"],
+  [5, "V2", 7, "2"],
+  [7, "1", 7, "3"],
+  [7, "3", 7, "5"],
+  [2, "2", 6, "1"],
+  [2, "4", 6, "3"],
+  [2, "6", 6, "5"],
+  [6, "6", 5, "W2"],
+  [6, "4", 5, "U2"],
+  [6, "2", 5, "V2"],
+  [69, "X2", 52, "N"],
+  [64, "A1", 67, "X1"],
+  [65, "A1", 68, "X1"],
+  [2, "2", 3, "1"],
+  [53, "2", 54, "97"],
+  [54, "98", 69, "X1"]
+];
+var TWO_CONTACTOR_REFERENCE_PAIRS = pairs.map(([a, b, c, d]) => [referencePort(a, b), referencePort(c, d)]);
+
 // src/data/cade.ts
 var WIRE_TYPES = [4e3, 4009, 4010];
 var onLine = (p, w) => Math.abs((w.x2 - w.x) * (p.y - w.y) - (w.y2 - w.y) * (p.x - w.x)) < 1e-3 && p.x >= Math.min(w.x, w.x2) && p.x <= Math.max(w.x, w.x2) && p.y >= Math.min(w.y, w.y2) && p.y <= Math.max(w.y, w.y2);
 function cadePorts(o) {
   const port2 = (terminal, x, y) => ({ objectId: o.id, reference: o.reference, terminal, x, y });
-  if (o.ports) return o.ports.map((p) => ({ ...port2(p.terminal, p.x, p.y), ...p.panel ? { panel: p.panel } : {} }));
+  if (o.ports) return o.ports.map((p) => ({ ...port2(p.terminal, p.x, p.y), ...p.panel ? { panel: p.panel } : {}, ...p.anchor ? { anchor: p.anchor } : {} }));
   if ([6009, 2001, 6007].includes(o.type)) {
     const h = o.type === 6009 ? 21 : 12;
     return [0, 1, 2].flatMap((i) => [port2(o.labels[i], o.x + i * 6, o.y), port2(o.labels[i + 3], o.x + i * 6, o.y + h)]);
@@ -11750,10 +11793,10 @@ function cadePorts(o) {
   if (o.type === 8018) return [port2(o.labels[0], o.x, o.y), port2(o.labels[2], o.x, o.y + 12), port2(o.labels[1], o.x + 9, o.y), port2(o.labels[3], o.x + 9, o.y + 12)];
   return [port2(o.labels[0], o.x, o.y), port2(o.labels[1], o.x, o.y + (o.type === 6010 ? 21 : 12))];
 }
-function createCade(drawing) {
+function createCade(drawing, bank) {
   const objects = drawing.objects;
   const WIRES = objects.filter((o) => WIRE_TYPES.includes(o.type));
-  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type));
+  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type)).map((o) => bank?.[o.id] ? { ...o, bank: bank[o.id] } : o);
   const JUNCTIONS = objects.filter((o) => o.type === 4001);
   const PORTS = SYMBOLS.flatMap(cadePorts);
   function network(wireId) {
@@ -11787,27 +11830,52 @@ var CADE_PORTS = PERFECTO_CADE.PORTS;
 var cadeNetwork = PERFECTO_CADE.network;
 var ESTRELLA_CADE = createCade(cadeEstrellaTriangulo_default);
 var withPanels = (drawing, map) => ({ ...drawing, objects: drawing.objects.map((o) => o.ports && map[o.id] ? { ...o, ports: o.ports.map((p) => map[o.id][p.terminal] ? { ...p, panel: map[o.id][p.terminal] } : p) } : o) });
-var manualWiring = (d) => {
-  const old = d.objects.find((o) => o.id === 100 && o.type === 4e3);
-  if (!old) return d;
-  const w = (id, x, y, x2, y2) => ({ id, type: 4e3, reference: "", labels: [], x, y, x2, y2, color: old.color });
-  return { ...d, objects: [...d.objects.filter((o) => o !== old), { id: 300, type: 4001, reference: "", labels: [], x: 331, y: 129, x2: 331, y2: 129 }, w(301, 331, 129, 366, 129), w(302, 366, 129, 366, 168), w(303, 366, 168, 344, 168), w(304, 344, 168, 344, 174)] };
+var TIMER = "Temporizador neum\xE1tico";
+var THERMAL = "Contactor + rel\xE9 t\xE9rmico";
+var TRI = "Contactor trif\xE1sico";
+var TWO_CONTACTOR_BANK_NAMES = {
+  3: { name: TIMER },
+  57: { name: TIMER },
+  62: { name: TIMER },
+  63: { name: TIMER, part: "Bobina del temporizador neum\xE1tico" },
+  58: { name: TIMER, part: "Contactos temporizados del temporizador neum\xE1tico (KT1)", note: "El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del temporizador neum\xE1tico: 55-56 (NC) y 67-68 (NA).", what: "Contactos que cambian de estado cuando termina el tiempo del temporizador." },
+  6: { name: THERMAL },
+  59: { name: THERMAL },
+  60: { name: THERMAL },
+  65: { name: THERMAL, part: "Bobina del contactor + rel\xE9 t\xE9rmico" },
+  7: { name: TRI },
+  61: { name: TRI },
+  64: { name: TRI, part: "Bobina del contactor trif\xE1sico" }
 };
 var LESSON_CADES = {
   simple: createCade(cadeLecciones_default.simple),
   inversion: createCade(cadeLecciones_default.inversion),
-  estrellaManual: createCade(withPanels(manualWiring(cadeEstrellaTriangulo_default), STAR_PANELS.estrellaManual)),
-  estrellaTimer: createCade(withPanels(cadeEstrellaTemporizador_default, STAR_PANELS.estrellaTimer))
+  estrellaManual: createCade(withPanels(cadeEstrellaTriangulo_default, STAR_PANELS.estrellaManual)),
+  estrellaTimer: createCade(withPanels(cadeEstrellaTemporizador_default, STAR_PANELS.estrellaTimer)),
+  // Preserve every original symbol, label and coordinate; annotate reference
+  // anchors separately from real bank-terminal mappings.
+  estrellaDosContactores: createCade({ ...cadeEstrellaTriangulo_default, objects: cadeEstrellaTriangulo_default.objects.map((o) => ({ ...o, ..."ports" in o && o.ports ? { ports: o.ports.map((p) => ({ ...p, anchor: referencePort(o.id, p.terminal) })) } : {} })) }, TWO_CONTACTOR_BANK_NAMES)
 };
 var CADE_DRAWINGS = [
   { id: "perfecto", title: "PERFECTO", cade: PERFECTO_CADE, guided: true },
   { id: "estrella", title: "Estrella-tri\xE1ngulo", cade: ESTRELLA_CADE, guided: false },
   { id: "simple", title: "Lecci\xF3n \xB7 Marcha y paro", cade: LESSON_CADES.simple, guided: false },
   { id: "inversion", title: "Lecci\xF3n \xB7 Inversi\xF3n de giro", cade: LESSON_CADES.inversion, guided: false },
-  { id: "estrellaTimer", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo con temporizador", cade: LESSON_CADES.estrellaTimer, guided: false }
+  { id: "estrellaTimer", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo con temporizador", cade: LESSON_CADES.estrellaTimer, guided: false },
+  { id: "estrellaDosContactores", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo \xB7 2 contactores", cade: LESSON_CADES.estrellaDosContactores, guided: false }
 ];
 
 // src/data/panelCorrespondence.ts
+var cadePortKey = (p) => `${p.reference === "-Q" && p.objectId === 3 ? "-Q.potencia" : p.reference}:${p.terminal}`;
+function migrateCadeBindings(bindings) {
+  const next = { ...bindings };
+  for (const key of Object.keys(next)) if (/^-Q:[3-6]$/.test(key)) {
+    const scoped = key.replace("-Q:", "-Q.potencia:");
+    if (!Object.hasOwn(next, scoped)) next[scoped] = next[key];
+    delete next[key];
+  }
+  return next;
+}
 var DEFAULT_CADE_BINDINGS = {
   "-F:95": "CONTACTOR_TERMICO:95",
   "-F:96": "CONTACTOR_TERMICO:96",
@@ -11825,9 +11893,37 @@ var DEFAULT_CADE_BINDINGS = {
   "-KM1:14": "CONTACTOR_TERMICO:14",
   "-KM1:11": "CONTACTOR_TERMICO:71",
   "-KM1:12": "CONTACTOR_TERMICO:72",
-  "-SB2:13": "BOTONERAS:S3:3",
-  "-SB2:14": "BOTONERAS:S3:4"
+  "-SB1:11": "BOTONERAS:S2:1",
+  "-SB1:12": "BOTONERAS:S2:2",
+  "-SB2:13": "BOTONERAS:S1:3",
+  "-SB2:14": "BOTONERAS:S1:4",
+  "-H1:X1": "BOTONERAS:PILOTO_1",
+  "-H2:X1": "BOTONERAS:PILOTO_3",
+  "-H3:X1": "BOTONERAS:PILOTO_2",
+  "-H1:X2": "BOTONERAS:N",
+  "-H2:X2": "BOTONERAS:N",
+  "-H3:X2": "BOTONERAS:N",
+  "-X:L": "FUENTE:F",
+  "-X:N": "FUENTE:N",
+  "-X:PE": "FUENTE:TP",
+  "-M:PE": "BORNERA_MOTOR:TP",
+  "-Q:1": "FUENTE:F",
+  "-Q:2": "FUENTE:F",
+  "-X:L1": "FUENTE:R",
+  "-X:L2": "FUENTE:S",
+  "-X:L3": "FUENTE:T",
+  ...Object.fromEntries(["R", "S", "T"].flatMap((phase, i) => [
+    [`-Q.potencia:${i * 2 + 1}`, `FUENTE:${phase}`],
+    [`-Q.potencia:${i * 2 + 2}`, `FUENTE:${phase}`],
+    [`-KM1:${i * 2 + 1}`, `CONTACTOR_TERMICO:L${i + 1}`],
+    [`-KM1:${i * 2 + 2}`, `CONTACTOR_TERMICO:T${i + 1}`],
+    [`-F:${i * 2 + 1}`, `CONTACTOR_TERMICO:T${i + 1}`],
+    [`-F:${i * 2 + 2}`, `CONTACTOR_TERMICO:T${i + 1}`]
+  ]))
 };
+function bindingConflict(key, id, bindings) {
+  return !!id && Object.entries({ ...DEFAULT_CADE_BINDINGS, ...bindings }).some(([other, value]) => other !== key && value === id && !(DEFAULT_CADE_BINDINGS[key] === id && DEFAULT_CADE_BINDINGS[other] === id));
+}
 
 // src/data/layout.ts
 var import_react = __toESM(require_react(), 1);
@@ -11864,7 +11960,7 @@ function freeSlot(layout, me, modules = MODULES) {
 var VIEW_ASPECT = 1680 / 1460;
 
 // src/data/lessonIds.ts
-var LESSON_IDS = ["simple", "inversion", "estrellaManual", "estrellaTimer"];
+var LESSON_IDS = ["simple", "inversion", "estrellaManual", "estrellaTimer", "estrellaDosContactores"];
 
 // src/data/assessmentState.ts
 function readAssessment(raw, known) {
@@ -11916,13 +12012,24 @@ function createCable(from, to, wires, color = BANANA_COLOR) {
   if (!TERMINAL_BY_ID.has(from) || !TERMINAL_BY_ID.has(to) || from === to) throw new Error("Selecciona dos bornes distintos del inventario.");
   return { id: crypto.randomUUID(), from: { terminalId: from }, to: { terminalId: to }, color, route: { sag: 130 }, layer: wires.reduce((n, w) => Math.max(n, w.layer), 0) + 1 };
 }
-function cableGeometry(wire, wires) {
+function indexCableEndpoints(wires) {
+  const ordered = [...wires].sort((a, b) => a.layer - b.layer || a.id.localeCompare(b.id)), slots = /* @__PURE__ */ new Map();
+  for (const w of ordered) for (const id of [w.from.terminalId, w.to.terminalId]) {
+    let siblings = slots.get(id);
+    if (!siblings) {
+      siblings = /* @__PURE__ */ new Map();
+      slots.set(id, siblings);
+    }
+    siblings.set(w.id, siblings.size);
+  }
+  return { ordered, slots };
+}
+function cableGeometry(wire, wires, index) {
   const endpoint = (end) => {
     const id = wire[end].terminalId;
     const point = terminalPoint(id);
-    const siblings = wires.filter((w) => w.from.terminalId === id || w.to.terminalId === id).sort((a, b) => a.layer - b.layer || a.id.localeCompare(b.id));
-    const index = siblings.findIndex((w) => w.id === wire.id);
-    const stack = wire[end].stackOffset || { x: Math.max(0, index) * 8, y: Math.max(0, index) * -5 };
+    const position = index?.slots.get(id)?.get(wire.id) ?? wires.filter((w) => w.from.terminalId === id || w.to.terminalId === id).sort((a, b) => a.layer - b.layer || a.id.localeCompare(b.id)).findIndex((w) => w.id === wire.id);
+    const stack = wire[end].stackOffset || { x: Math.max(0, position) * 8, y: Math.max(0, position) * -5 };
     const offset = end === "from" ? wire.route?.fromOffset : wire.route?.toOffset;
     return { point, head: { x: point.x + stack.x, y: point.y + stack.y }, offset: offset || { x: 0, y: 0 } };
   };
@@ -11961,14 +12068,14 @@ function readPractice(value) {
     return s;
   });
   if (allSteps.length && !diagram) throw new Error("Los pasos necesitan su imagen de referencia.");
-  const learning = v.learning;
+  let learning = v.learning;
   if (learning) {
     if (!["guided", "free", "exam"].includes(learning.mode) || !Number.isInteger(learning.index) || learning.index < 0 || learning.index >= 47 || ![1, 2, 3].includes(learning.assistance) || !learning.bindings || typeof learning.bindings !== "object" || Array.isArray(learning.bindings) || typeof learning.examFinished !== "boolean" || !learning.answers || typeof learning.answers !== "object" || Array.isArray(learning.answers) || Object.values(learning.answers).some((s) => typeof s !== "string" || s.length > 3e3) || Object.entries(learning.bindings).some(([key, id]) => !key.startsWith("-") || typeof id !== "string" || id !== "" && !knownTerminal(id))) throw new Error("El progreso o las correspondencias de PERFECTO no son v\xE1lidos.");
-    const known = new Set(CADE_PORTS.map((p) => `${p.reference}:${p.terminal}`));
+    learning = { ...learning, bindings: migrateCadeBindings(learning.bindings) };
+    const known = new Set(CADE_PORTS.map(cadePortKey));
     if (Object.keys(learning.bindings).some((k) => !known.has(k))) throw new Error("La correspondencia no pertenece a PERFECTO.");
-    const defaults = DEFAULT_CADE_BINDINGS;
-    const assigned = Object.values({ ...defaults, ...learning.bindings }).filter(Boolean);
-    if (new Set(assigned).size !== assigned.length) throw new Error("Dos bornes del esquema no pueden asignarse al mismo borne f\xEDsico.");
+    const personalBindings = learning.bindings;
+    if (Object.entries(personalBindings).some(([key, id]) => bindingConflict(key, id, personalBindings))) throw new Error("Dos bornes independientes del esquema no pueden asignarse al mismo borne f\xEDsico.");
   }
   const retired = (a, b) => RETIRED_TERMINAL_IDS.has(a) || RETIRED_TERMINAL_IDS.has(b);
   const wires = allWires.filter((w) => !retired(w.from.terminalId, w.to.terminalId)), steps = allSteps.filter((s) => !retired(s.from, s.to));
@@ -11988,6 +12095,7 @@ export {
   cablePath,
   connectedByCables,
   createCable,
+  indexCableEndpoints,
   networkFor,
   readPractice,
   terminalPoint

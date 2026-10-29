@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "Screenshot F28 hierarchy: exact U2 order, U1 formative links, pending trig modules and ABPro; all existing IDs grouped once, no invented modules in other courses",
+    "Home restored: six illustrated course cards directly visible; inside course all units and nested modules follow reference, with exact resource order",
+    "Collapse/expand all, opening a real lesson, scoped next/previous classes and return to original module work",
+    "Formative problems and matrix notebooks retain content and return context; direct links reveal and scroll to support module",
+    "390: restored home and course fit viewport; mobile course index closes after selection; keyboard accordion works",
+    "820: restored home and course fit viewport; mobile course index closes after selection; keyboard accordion works",
+    "1440: restored home and course fit viewport; mobile course index closes after selection; keyboard accordion works",
+    "Other subjects keep available classes and home search; return removes stale unit/module parameters"
+  ],
+  "errors": []
+}

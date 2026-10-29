@@ -1,0 +1,22 @@
+{
+  "base": "http://127.0.0.1:4327",
+  "checks": [
+    {
+      "engine": "chromium",
+      "input": "native touch",
+      "width": 768,
+      "height": 1024,
+      "nativeScroll": 267,
+      "startAmps": 14.122,
+      "steadyStarAmps": 1.702,
+      "loadedDeltaAmps": 5.267,
+      "timerReprogrammed": true,
+      "coasting": [
+        1491,
+        1327
+      ],
+      "sampleRecorded": true
+    }
+  ],
+  "errors": []
+}

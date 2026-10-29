@@ -1,0 +1,11 @@
+CPU x4  (tiempos en ms; script/style/layout = trabajo durante la interacción)
+name	fcp	lcp	loadEv	reqs	kb	tbt	fps	p95	worst	jank	script	style	layout	recalcs	layouts	heapMB
+home	148	428	490	32	1312	29	60	16.8	17	0	46	43	11	62	8	4
+estudio-scroll	0	664	171	14	1187	100	60	16.8	17	0	25	0	0	0	0	3
+estudio-hover	0	708	211	19	1225	155	59.6	16.8	33	0	24	84	18	60	21	5
+estudio-leccion	0	1084	192	34	1520	20	Infinity	0	0	0	-129	54	144	12	0	7
+panel-pan-zoom	272	272	369	44	1518	849	57.9	16.8	300	6	453	739	800	51	98	5
+panel-ventana	316	316	422	45	1518	685	58.5	16.7	433	3	489	322	371	113	71	7
+lab-esquemas	0	756	112	28	736	188	60	16.8	17	0	79	17	0	49	0	4
+lab-protoboard	0	764	105	19	652	846	51.6	16.8	567	4	418	523	779	216	188	9
+lab-plc	0	824	116	28	736	255	59.2	16.7	83	1	232	87	69	42	19	6

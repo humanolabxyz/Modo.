@@ -1,0 +1,14 @@
+{
+  "src/components/App.tsx": "9093344b403535a9773a785b49c3182df0a2f69b0675b5bd8f76f8a6bf23108e",
+  "src/components/Board.tsx": "c636f4a82e3abb2429d9c040d4af7c075a8f2a3bca972e6607f7cb32bc6efb21",
+  "src/data/panel.ts": "0ad505f2d44efe6b631ec975c0a05cc0872b6a70391a151c82af20b180c42063",
+  "src/data/wiring.ts": "0eb2694acf6b707e574a27b2d802eeb02c8a1d814a21928224309a2edf2bb994",
+  "src/data/simulation.ts": "16248c7d1d973839bc1998931b6eab28a864648ed4538852e5a1e57e5e2d0b80",
+  "src/lab/model.ts": "c955bd20eceee493a5581ff8aa116076ad00d9f9ee0bfbe1b5fb13b881e06dfc",
+  "src/lab/dc.ts": "b8e0146c66493239e7384807d8951f521dc33e5a5eee4052cb2ea228ed0c4a36",
+  "src/lab/useLaboratory.ts": "7336484d086d734b378468e7a7635023b021c70a467984fd4a9aa9ff6539c0aa",
+  "src/study/model.ts": "74d454df487c75a3743a420881bd05fae6fe356370e79d74ff118f534aa55e63",
+  "src/study/academicContent.ts": "e8450f761a4404ad3b951a26bfe0fa6aed923f06cdb6864a838f9e16701927fe",
+  "src/study/academicModels.ts": "21fb826c2123d26b5d2d302c731dbcc42ee45a90b68b0540e91be757127950d2",
+  "src/study/academicState.ts": "006293a8e2ad0b181ed6474a3ca4ce54488ceb170265a90eb4c3f80735c1d5d6"
+}

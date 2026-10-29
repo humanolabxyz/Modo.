@@ -1,0 +1,22 @@
+[
+  {
+    "engine": "WebKit",
+    "width": 390,
+    "height": 844,
+    "nestedClose": true,
+    "diagramMenu": true,
+    "measurementPreparation": true,
+    "rotation": true,
+    "errors": []
+  },
+  {
+    "engine": "WebKit",
+    "width": 844,
+    "height": 390,
+    "nestedClose": true,
+    "diagramMenu": true,
+    "measurementPreparation": true,
+    "rotation": true,
+    "errors": []
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "deployment": "dpl_2nVGLGhUgSeMXLN7HCHzU4bVn12X",
+  "url": "https://modo-lab.vercel.app",
+  "mobile": true,
+  "wiresBeforeStarting": 0,
+  "temperatureSteps": 9,
+  "errors": []
+}

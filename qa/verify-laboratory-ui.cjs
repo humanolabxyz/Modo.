@@ -39,7 +39,7 @@ async function desktop(browser){
   await page.mouse.move(hb.x+hb.width/2,hb.y+hb.height/2);await page.mouse.down();await page.mouse.move(target.x+target.width/2,target.y+target.height/2,{steps:8});await page.mouse.up();await settle(page,700);
   assert.equal((await stored(page)).breadboard.components.find(c=>c.id===placed.id).to,'c:24');pass('un extremo se mueve arrastrando su manejador');
   // 7. la plantilla de referencia y el multímetro
-  await page.locator('.lab-project-menu summary').click();await page.locator('.lab-project-menu button',{hasText:'marcha y retención'}).click();await settle(page,900);
+  await page.locator('.lab-project-menu summary').click();await page.locator('.lab-project-window-list button',{hasText:'marcha y retención'}).click();await settle(page,900);
   const meter=page.getByRole('group',{name:'Multímetro',exact:true}),lcd=meter.getByLabel('Lectura del multímetro');
   assert.ok(await page.locator('.lab-lead').count()===2,'dos cables con puntas sobre la placa');
   const choose=async text=>{await meter.getByLabel('Poner las puntas en').selectOption({label:text});await settle(page,500);};

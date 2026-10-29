@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Notebook floats above the real full-size graph; folding preserves its typed answer, confirmation and graph dimensions",
+    "Shared Diagram window moves and resizes by keyboard, resets size and stays in bounds",
+    "Trusted touch drag moves the lesson window",
+    "Trusted touch resize changes window size using its corner",
+    "Construction steps prepare commands, fold to work and check real GeoGebra; automatic advancement preserves notebook and applet",
+    "Phone, tablet and desktop orientation changes keep window, controls and construction in bounds without recreating the applet",
+    "Hidden lesson does not trap Escape or interfere with other shared windows"
+  ],
+  "errors": []
+}

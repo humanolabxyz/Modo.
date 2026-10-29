@@ -1,0 +1,132 @@
+ 
+ACTIVIDAD TECNOLÓGICA 1 
+FUNCIONES POLINÓMICAS DE GRADOS 0 y 1 
+ 
+Esta actividad tiene por objetivo familiarizar a los estudiantes, mediante la incorporación de 
+GeoGebra, en el trabajo con las funciones polinómicas de grados 0 y 1. 
+ 
+ACTIVIDAD 1: Ingresar a GeoGebra Clásico online 
+Ingresa a la siguiente dirección: 
+ 
+https://www.geogebra.org/classic 
+ 
+ 
+ 
+ACTIVIDAD 2: Ingresar una función constante 
+Para ingresar la función constante 𝑓(𝑥) = −3, escribe en la barra de entrada lo siguiente: 
+ 
+f(x)=-3 .¿. 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 3: Ingresar una función lineal 
+Para ingresar la función lineal 𝑔(𝑥) = 2𝑥−3, y aprovechando que previamente ha sido 
+ingresada la función 𝑓(𝑥) = −3, escribe en la barra de entrada lo siguiente: 
+ 
+2x+f .¿. 
+ 
+ 
+ 
+ACTIVIDAD 4: Calcular una imagen de una función lineal y visualizar un punto que contiene la 
+preimagen y la imagen de dicha función 
+Para calcular la imagen de la función 𝑔(𝑥) = 2𝑥−3, para 𝑥= 2, y visualizar el punto 
+conformado por la preimagen e imagen, escribe en la barra de entrada lo siguiente: 
+ 
+g(2) .¿. 
+(2,a) .¿. 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 5: Calcular una preimagen de una función lineal 
+Para calcular la preimagen de la función 𝑔(𝑥) = 2𝑥−3, para 𝑔(𝑥) = −5, escribe en la barra de 
+entrada lo siguiente: 
+ 
+Resuelve(g=-5) .¿. 
+ 
+ 
+ 
+ACTIVIDAD 6: Encontrar la expresión algebraica de una función lineal a partir de dos puntos 
+Para encontrar la expresión algebraica de una función lineal a partir de los puntos A y B, escribe 
+en la barra de entrada lo siguiente: 
+ 
+(-1,3) .¿. 
+(1,-1) .¿. 
+{A,B} .¿. 
+AjustePolinómico(l1,1) .¿. 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 7: Graficar una función lineal y editar los ejes coordenados 
+Ingresa la función 𝑓(𝑥) = 100𝑥+ 50. Para esto, escribe en la barra de entrada lo siguiente: 
+ 
+100x+50 .¿. 
+ 
+ 
+ 
+Como se puede observar, la función no se visualiza de la mejor manera. Para esto, es necesario 
+ajustar los ejes coordenados a partir del menú Desplaza Vista Gráfica mostrado a continuación: 
+ 
+ 
+ 
+Al seleccionar la opción Desplaza Vista Gráfica se puede ajustar de manera adecuada la visual de 
+la gráfica, arrastrando los ejes coordenados. Por ejemplo, se puede modificar el eje vertical y 
+ajustarlo a un rango aproximado desde -200 y hasta 200. 
+ 
+ 
+ 
+ 
+ 
+Otra manera de editar los ejes es a partir de las propiedades de la Vista Gráfica, como se muestra 
+a continuación: 
+ 
+ 
+ 
+O bien, 
+ 
+ 
+ 
+ 
+ 
+Otra forma es escribiendo -250 en y Mín y 250 en y Máx, como se muestra a continuación: 
+ 
+ 
+ 
+ACTIVIDAD 8: Graficar dos funciones lineales y encontrar su intersección 
+Ingresa la función 𝑔(𝑥) = −50𝑥−100. Para esto, escribe en la barra de entrada lo siguiente: 
+ 
+-50x-100 .¿. 
+Interseca(f,g) .¿. 
+ 
+ 
+ 
+Otra manera de encontrar la intersección de las funciones es desde la barra de herramientas, 
+seleccionando la opción Intersección, como se muestra a continuación: 
+ 
+ 
+ 
+ 
+ 
+Posterior a esto, debes hacer clic en cualquier punto de cada una de las dos funciones. 
+ 
+ACTIVIDAD 10: Ajustar un conjunto de puntos por una función constante y por una función 
+lineal 
+Para encontrar la expresión algebraica de una función constante y de una lineal que mejor ajuste 
+a los puntos A, B, C, D y E, escribe en la barra de entrada lo siguiente: 
+ 
+(1,2) .¿. 
+(2,1.5) .¿. 
+(4,2) .¿. 
+(5,1) .¿. 
+(7,2.5) .¿. 
+{A,B,C,D,E} .¿. 
+AjustePolinómico(l1,0) .¿. 
+AjustePolinómico(l1,1) .¿. 
+ 
+ 
+ 

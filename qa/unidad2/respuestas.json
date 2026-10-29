@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "answers": {
+    "exp-image": "9",
+    "exp-preimage": "2,321928094887362",
+    "bacteria-eight": "429,98169599999983",
+    "bacteria-hour": "19",
+    "elimination-factor": "0,9",
+    "elimination-half": "6,578813478960585",
+    "logs-preimage": "7,38905609893065",
+    "logs-domain": "1",
+    "followers-first": "600",
+    "followers-rate": "146,39191646888364"
+  },
+  "checked": [
+    "exp-preimage",
+    "bacteria-eight",
+    "bacteria-hour",
+    "elimination-factor",
+    "elimination-half",
+    "logs-preimage",
+    "logs-domain",
+    "followers-first",
+    "followers-rate"
+  ]
+}

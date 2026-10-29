@@ -1,0 +1,12 @@
+{
+  "base": "http://127.0.0.1:4327",
+  "checks": [
+    "chromium 390: opciones plegables; Pinza siempre disponible; Escape restaura el foco; movimiento reducido respetado",
+    "chromium 390: menú con diez módulos, cuatro categorías, desplegable anclado al botón, teclado, selección, Escape y cierre exterior; navegación conserva el proyecto; iconos y ayuda en barras de equipment, schematic, plc, hmi, process, breadboard, temperature, detectors, soldering, geogebra",
+    "webkit 820: opciones plegables; Pinza siempre disponible; Escape restaura el foco; movimiento reducido respetado",
+    "webkit 820: menú con diez módulos, cuatro categorías, desplegable anclado al botón, teclado, selección, Escape y cierre exterior; navegación conserva el proyecto; iconos y ayuda en barras de schematic, plc, hmi, process, temperature",
+    "chromium 1440: opciones plegables; Pinza siempre disponible; Escape restaura el foco; movimiento reducido respetado",
+    "chromium 1440: menú con diez módulos, cuatro categorías, desplegable anclado al botón, teclado, selección, Escape y cierre exterior; navegación conserva el proyecto; iconos y ayuda en barras de schematic, plc, hmi, process, temperature"
+  ],
+  "errors": []
+}

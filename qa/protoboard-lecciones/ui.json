@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "Lección de fundamentos completa: cuatro acciones reales, pregunta, avance automático, observaciones y recarga",
+    "Divisor: no avanza sin anotar, rechaza cálculo incorrecto y verifica I/suma desde dos lecturas",
+    "Menú compartido: flechas, Home/End, Escape y devolución de foco",
+    "Catálogo y cierre accesible en tablet, móvil vertical y horizontal; sin desborde"
+  ],
+  "errors": [],
+  "base": "http://127.0.0.1:4326"
+}

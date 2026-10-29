@@ -1,0 +1,3585 @@
+{
+  "pages": [
+    "Cómo se construye un tablero",
+    "Referencias para construir la escena",
+    "Referencias para construir la escena",
+    "Referencias para construir la escena",
+    "Referencias para construir la escena",
+    "Referencias para construir la escena",
+    "Referencias para construir la escena",
+    "Cómo funciona: energía, órdenes y señales",
+    "Qué familias conviene representar",
+    "Del encargo a la entrega",
+    "Cómo enseñar diagnóstico y reparación",
+    "Fallas que se pueden convertir en ejercicios",
+    "Fallas que se pueden convertir en ejercicios",
+    "Fallas que se pueden convertir en ejercicios",
+    "Fallas que se pueden convertir en ejercicios",
+    "Cómo incorporarlo a modo.",
+    "Documentos técnicos verificados",
+    "Imágenes, contexto y alcance"
+  ],
+  "text_bounds": [
+    {
+      "page": 1,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 1,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ATLAS VISUAL Y TÉCNICO"
+    },
+    {
+      "page": 1,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Cómo se construye un tablero"
+    },
+    {
+      "page": 1,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Base de investigación para integrar montaje, funcionamiento y diagnóstico en el laboratorio existente."
+    },
+    {
+      "page": 1,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 1,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "01"
+    },
+    {
+      "page": 1,
+      "x": 36,
+      "top": 139,
+      "w": 740,
+      "h": 23.400000000000002,
+      "text": "De la imagen al ejercicio"
+    },
+    {
+      "page": 1,
+      "x": 36,
+      "top": 169,
+      "w": 755,
+      "h": 15.600000000000001,
+      "text": "12 referencias visuales seleccionadas · 7 documentos técnicos · 16 casos de fallas propuestos"
+    },
+    {
+      "page": 1,
+      "x": 48,
+      "top": 418,
+      "w": 224,
+      "h": 13.0,
+      "text": "Interior y conexionado"
+    },
+    {
+      "page": 1,
+      "x": 241,
+      "top": 420,
+      "w": 30,
+      "h": 10.4,
+      "text": "F01"
+    },
+    {
+      "page": 1,
+      "x": 307,
+      "top": 418,
+      "w": 224,
+      "h": 13.0,
+      "text": "CCM y unidades de motor"
+    },
+    {
+      "page": 1,
+      "x": 500,
+      "top": 420,
+      "w": 30,
+      "h": 10.4,
+      "text": "F03"
+    },
+    {
+      "page": 1,
+      "x": 566,
+      "top": 418,
+      "w": 224,
+      "h": 13.0,
+      "text": "Gabinete y compartimentos"
+    },
+    {
+      "page": 1,
+      "x": 759,
+      "top": 420,
+      "w": 30,
+      "h": 10.4,
+      "text": "F04"
+    },
+    {
+      "page": 1,
+      "x": 36,
+      "top": 468,
+      "w": 765,
+      "h": 16.900000000000002,
+      "text": "Objetivo: que la persona comprenda el encargo, arme, conecte, pruebe una función y explique una falla."
+    },
+    {
+      "page": 1,
+      "x": 36,
+      "top": 511,
+      "w": 765,
+      "h": 26.0,
+      "text": "Fotografías industriales, visuales de fabricante y figuras de manual están diferenciados. Son referencias internacionales; no prueban la instalación de estas marcas en Tarapacá. El simulador propuesto no equivale a una verificación física."
+    },
+    {
+      "page": 2,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 2,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ATLAS 1 / 6"
+    },
+    {
+      "page": 2,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Referencias para construir la escena"
+    },
+    {
+      "page": 2,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Cada imagen se vincula con una decisión de aprendizaje y declara qué no permite concluir."
+    },
+    {
+      "page": 2,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 2,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "02"
+    },
+    {
+      "page": 2,
+      "x": 49,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V01  Interior de un gabinete de automatización"
+    },
+    {
+      "page": 2,
+      "x": 49,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Fotografía industrial  |  F01"
+    },
+    {
+      "page": 2,
+      "x": 49,
+      "top": 383,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Observar:</b> Fuente, módulos, bornes, rieles y canaletas visibles; conductores identificados."
+    },
+    {
+      "page": 2,
+      "x": 49,
+      "top": 413,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Placa editable con componentes, etiquetas y extremos de cada hilo seleccionables."
+    },
+    {
+      "page": 2,
+      "x": 49,
+      "top": 443,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> La foto no demuestra el circuito completo ni autoriza deducir el destino de un hilo oculto."
+    },
+    {
+      "page": 2,
+      "x": 49,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://eiffageenergiesystemes.be/fr/cablage-sur-site/\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 2,
+      "x": 440,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V02  CCM instalado: conjunto de columnas"
+    },
+    {
+      "page": 2,
+      "x": 440,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Fotografía de caso industrial  |  F03"
+    },
+    {
+      "page": 2,
+      "x": 440,
+      "top": 383,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Observar:</b> Puertas, mandos y divisiones por unidades. Caso Boral, Charlton, Australia."
+    },
+    {
+      "page": 2,
+      "x": 440,
+      "top": 401,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Llevar a modo.:</b> Vista general por columnas y acceso a la unidad seleccionada."
+    },
+    {
+      "page": 2,
+      "x": 440,
+      "top": 419,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> Es una referencia internacional; no es una fotografía de una faena de Tarapacá."
+    },
+    {
+      "page": 2,
+      "x": 440,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://www.rockwellautomation.com/en-us/company/news/case-studies/boral-quarry-invests-in-intelligent-motor-control-solution.html\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 3,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 3,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ATLAS 2 / 6"
+    },
+    {
+      "page": 3,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Referencias para construir la escena"
+    },
+    {
+      "page": 3,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Cada imagen se vincula con una decisión de aprendizaje y declara qué no permite concluir."
+    },
+    {
+      "page": 3,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 3,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "03"
+    },
+    {
+      "page": 3,
+      "x": 49,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V03  Estructura de un conjunto de distribución"
+    },
+    {
+      "page": 3,
+      "x": 49,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Visual de fabricante  |  F04"
+    },
+    {
+      "page": 3,
+      "x": 49,
+      "top": 383,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Observar:</b> Compartimentos, barras y unidades en una presentación del sistema VX25 Ri4Power."
+    },
+    {
+      "page": 3,
+      "x": 49,
+      "top": 413,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Capas de gabinete, zonas funcionales y envolventes, separadas del circuito."
+    },
+    {
+      "page": 3,
+      "x": 49,
+      "top": 443,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> No convertir esta imagen comercial en un plano de fabricación ni en una clasificación IP universal."
+    },
+    {
+      "page": 3,
+      "x": 49,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://webinfo.rittal.com/com-en/ri4power\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 3,
+      "x": 440,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V04  Espacio de entrada y tendido de cables"
+    },
+    {
+      "page": 3,
+      "x": 440,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Visual de fabricante  |  F05"
+    },
+    {
+      "page": 3,
+      "x": 440,
+      "top": 383,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Observar:</b> Cámara lateral dedicada a la llegada y organización de cables."
+    },
+    {
+      "page": 3,
+      "x": 440,
+      "top": 401,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Llevar a modo.:</b> Zona de entrada, sujeción, recorrido y llegada a bornes externos."
+    },
+    {
+      "page": 3,
+      "x": 440,
+      "top": 419,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> La capacidad y las dimensiones deben venir del producto concreto y del proyecto."
+    },
+    {
+      "page": 3,
+      "x": 440,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://webinfo.rittal.com/com-en/ri4power\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 4,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 4,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ATLAS 3 / 6"
+    },
+    {
+      "page": 4,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Referencias para construir la escena"
+    },
+    {
+      "page": 4,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Cada imagen se vincula con una decisión de aprendizaje y declara qué no permite concluir."
+    },
+    {
+      "page": 4,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 4,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "04"
+    },
+    {
+      "page": 4,
+      "x": 49,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V05  Placa de montaje y fijaciones"
+    },
+    {
+      "page": 4,
+      "x": 49,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Fragmento visual de catálogo  |  M06 · pág. PDF 6"
+    },
+    {
+      "page": 4,
+      "x": 49,
+      "top": 383,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Observar:</b> La envolvente y la placa son piezas diferentes; la referencia muestra sus fijaciones."
+    },
+    {
+      "page": 4,
+      "x": 49,
+      "top": 413,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Montar primero la placa y sus soportes, antes de poblarla de equipos."
+    },
+    {
+      "page": 4,
+      "x": 49,
+      "top": 443,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> La disposición pertenece a VX SE; no extender sus detalles a todos los gabinetes."
+    },
+    {
+      "page": 4,
+      "x": 49,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://www.rittal.com/imf/none/3_8456/5856600______EN\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 4,
+      "x": 440,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V06  Unidades de motor fijas y extraíbles"
+    },
+    {
+      "page": 4,
+      "x": 440,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Fotografías en manual  |  M01 · pág. PDF 67"
+    },
+    {
+      "page": 4,
+      "x": 440,
+      "top": 383,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Observar:</b> Dos construcciones de unidad de motor del CENTERLINE 2500."
+    },
+    {
+      "page": 4,
+      "x": 440,
+      "top": 401,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Familias de unidad y relación entre mando frontal, conexiones y módulo."
+    },
+    {
+      "page": 4,
+      "x": 440,
+      "top": 431,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Límite:</b> La representación no es un procedimiento para retirar unidades energizadas."
+    },
+    {
+      "page": 4,
+      "x": 440,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://literature.rockwellautomation.com/idc/groups/literature/documents/in/2500-in001_-en-p.pdf\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 5,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 5,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ATLAS 4 / 6"
+    },
+    {
+      "page": 5,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Referencias para construir la escena"
+    },
+    {
+      "page": 5,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Cada imagen se vincula con una decisión de aprendizaje y declara qué no permite concluir."
+    },
+    {
+      "page": 5,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 5,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "05"
+    },
+    {
+      "page": 5,
+      "x": 49,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V07  Montaje de un variador dentro del gabinete"
+    },
+    {
+      "page": 5,
+      "x": 49,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Diagrama dimensional  |  M02 · pág. PDF 118"
+    },
+    {
+      "page": 5,
+      "x": 49,
+      "top": 383,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Observar:</b> Posición de montaje y espacios que el manual distingue por talla."
+    },
+    {
+      "page": 5,
+      "x": 49,
+      "top": 401,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Huella física y zonas de reserva tomadas de la ficha del variador elegido."
+    },
+    {
+      "page": 5,
+      "x": 49,
+      "top": 431,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> Las cotas corresponden a tallas concretas; no usarlas como regla para cualquier variador."
+    },
+    {
+      "page": 5,
+      "x": 49,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://www.se.com/ph/en/download/document/EAV64301/\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 5,
+      "x": 440,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V08  Separación entre bornes de control y potencia"
+    },
+    {
+      "page": 5,
+      "x": 440,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Esquema técnico, fragmento  |  M02 · pág. PDF 160"
+    },
+    {
+      "page": 5,
+      "x": 440,
+      "top": 383,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Observar:</b> El bloque de control diferencia entradas, salidas, alimentación y funciones."
+    },
+    {
+      "page": 5,
+      "x": 440,
+      "top": 401,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Puertos con función y tipo de señal; esquema enlazado con el componente."
+    },
+    {
+      "page": 5,
+      "x": 440,
+      "top": 431,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> Un fragmento no sustituye el esquema completo, la revisión del manual ni la arquitectura de seguridad."
+    },
+    {
+      "page": 5,
+      "x": 440,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://www.se.com/ph/en/download/document/EAV64301/\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 6,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 6,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ATLAS 5 / 6"
+    },
+    {
+      "page": 6,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Referencias para construir la escena"
+    },
+    {
+      "page": 6,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Cada imagen se vincula con una decisión de aprendizaje y declara qué no permite concluir."
+    },
+    {
+      "page": 6,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 6,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "06"
+    },
+    {
+      "page": 6,
+      "x": 49,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V09  Instalación de una CPU en riel DIN"
+    },
+    {
+      "page": 6,
+      "x": 49,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Ilustración de montaje  |  M04 · pág. PDF 32"
+    },
+    {
+      "page": 6,
+      "x": 49,
+      "top": 383,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Observar:</b> El enganche y el clip representan estados mecánicos distintos."
+    },
+    {
+      "page": 6,
+      "x": 49,
+      "top": 401,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Secuencia de colocación y fijación, con validación de soporte compatible."
+    },
+    {
+      "page": 6,
+      "x": 49,
+      "top": 431,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> La ilustración es del S7-1200 G2; los accesorios y pasos dependen del modelo."
+    },
+    {
+      "page": 6,
+      "x": 49,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://support.industry.siemens.com/cs/attachments/109988293/S71200_G2_system_manual_en-US_en-US.pdf\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 6,
+      "x": 440,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V10  Frente de CPU y puntos de diagnóstico"
+    },
+    {
+      "page": 6,
+      "x": 440,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Ilustración identificada  |  M04 · pág. PDF 19"
+    },
+    {
+      "page": 6,
+      "x": 440,
+      "top": 383,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Observar:</b> Puertos, indicadores y conexiones identificados en la CPU."
+    },
+    {
+      "page": 6,
+      "x": 440,
+      "top": 401,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Indicadores seleccionables y vínculo con estado, diagnóstico y mapa de E/S."
+    },
+    {
+      "page": 6,
+      "x": 440,
+      "top": 431,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Límite:</b> No atribuir colores o patrones de LED de este modelo a todos los PLC."
+    },
+    {
+      "page": 6,
+      "x": 440,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://support.industry.siemens.com/cs/attachments/109988293/S71200_G2_system_manual_en-US_en-US.pdf\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 7,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 7,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ATLAS 6 / 6"
+    },
+    {
+      "page": 7,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Referencias para construir la escena"
+    },
+    {
+      "page": 7,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Cada imagen se vincula con una decisión de aprendizaje y declara qué no permite concluir."
+    },
+    {
+      "page": 7,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 7,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "07"
+    },
+    {
+      "page": 7,
+      "x": 49,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V11  Del instrumento de campo al lazo de señal"
+    },
+    {
+      "page": 7,
+      "x": 49,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Diagrama de instrumento  |  M07 · pág. PDF 78"
+    },
+    {
+      "page": 7,
+      "x": 49,
+      "top": 383,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Observar:</b> Compartimento de bornes del transmisor y lazo externo de alimentación/señal."
+    },
+    {
+      "page": 7,
+      "x": 49,
+      "top": 413,
+      "w": 353,
+      "h": 12,
+      "text": "<b>Llevar a modo.:</b> Conexión entre campo, bornes del tablero y entrada analógica."
+    },
+    {
+      "page": 7,
+      "x": 49,
+      "top": 431,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> El PDF descargado está en alemán, Rev BF 02/2024; referencia específica del 3051 HART."
+    },
+    {
+      "page": 7,
+      "x": 49,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://www.emerson.com/documents/automation/manual-rosemount-3051-pressure-transmitter-en-89452.pdf\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 7,
+      "x": 440,
+      "top": 144,
+      "w": 353,
+      "h": 16.900000000000002,
+      "text": "V12  Instalación de campo alrededor del equipo"
+    },
+    {
+      "page": 7,
+      "x": 440,
+      "top": 181,
+      "w": 353,
+      "h": 11.05,
+      "text": "Fotografía de instalación  |  F02"
+    },
+    {
+      "page": 7,
+      "x": 440,
+      "top": 383,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Observar:</b> Equipo de proceso, cableado exterior y dispositivos locales; el tablero forma parte de un sistema."
+    },
+    {
+      "page": 7,
+      "x": 440,
+      "top": 413,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Llevar a modo.:</b> Una vista de campo conectada al gabinete, con cables y dispositivos identificados."
+    },
+    {
+      "page": 7,
+      "x": 440,
+      "top": 443,
+      "w": 353,
+      "h": 24,
+      "text": "<b>Límite:</b> No identificar la máquina ni su filosofía de control más allá de lo documentado por la fuente."
+    },
+    {
+      "page": 7,
+      "x": 440,
+      "top": 530,
+      "w": 160,
+      "h": 10.4,
+      "text": "<link href=\"https://eiffageenergiesystemes.be/fr/cablage-sur-site/\" color=\"#087E83\"><u>Fuente original</u></link>"
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 8,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "MODELO DE LECTURA"
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Cómo funciona: energía, órdenes y señales"
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Esquema conceptual original para enseñar relaciones. No es un plano de cableado."
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 8,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "08"
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 144,
+      "w": 730,
+      "h": 13.0,
+      "text": "POTENCIA"
+    },
+    {
+      "page": 8,
+      "x": 49,
+      "top": 180,
+      "w": 213,
+      "h": 16.900000000000002,
+      "text": "Entrada"
+    },
+    {
+      "page": 8,
+      "x": 49,
+      "top": 206,
+      "w": 213,
+      "h": 13.0,
+      "text": "Alimentación y seccionamiento"
+    },
+    {
+      "page": 8,
+      "x": 314,
+      "top": 180,
+      "w": 213,
+      "h": 16.900000000000002,
+      "text": "Maniobra"
+    },
+    {
+      "page": 8,
+      "x": 314,
+      "top": 206,
+      "w": 213,
+      "h": 13.0,
+      "text": "Protección y accionamiento"
+    },
+    {
+      "page": 8,
+      "x": 579,
+      "top": 180,
+      "w": 213,
+      "h": 16.900000000000002,
+      "text": "Carga"
+    },
+    {
+      "page": 8,
+      "x": 579,
+      "top": 206,
+      "w": 213,
+      "h": 13.0,
+      "text": "Motor o equipo de proceso"
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 269,
+      "w": 730,
+      "h": 13.0,
+      "text": "CONTROL"
+    },
+    {
+      "page": 8,
+      "x": 49,
+      "top": 305,
+      "w": 213,
+      "h": 16.900000000000002,
+      "text": "Señal y orden"
+    },
+    {
+      "page": 8,
+      "x": 49,
+      "top": 331,
+      "w": 213,
+      "h": 13.0,
+      "text": "Pulsador, sensor o consigna"
+    },
+    {
+      "page": 8,
+      "x": 314,
+      "top": 305,
+      "w": 213,
+      "h": 16.900000000000002,
+      "text": "Decisión"
+    },
+    {
+      "page": 8,
+      "x": 314,
+      "top": 331,
+      "w": 213,
+      "h": 13.0,
+      "text": "Relés o PLC según el caso"
+    },
+    {
+      "page": 8,
+      "x": 579,
+      "top": 305,
+      "w": 213,
+      "h": 16.900000000000002,
+      "text": "Actuación"
+    },
+    {
+      "page": 8,
+      "x": 579,
+      "top": 331,
+      "w": 213,
+      "h": 13.0,
+      "text": "Contactor o permiso al variador"
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 405,
+      "w": 365,
+      "h": 14.3,
+      "text": "REALIMENTACIÓN"
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 424.3,
+      "w": 365,
+      "h": 42.900000000000006,
+      "text": "Estados, magnitudes y fallas permiten comprobar si la orden produjo el resultado. La HMI presenta información y órdenes según la arquitectura del ejercicio."
+    },
+    {
+      "page": 8,
+      "x": 432,
+      "top": 405,
+      "w": 365,
+      "h": 14.3,
+      "text": "PROTECCIÓN Y ENVOLVENTE"
+    },
+    {
+      "page": 8,
+      "x": 432,
+      "top": 424.3,
+      "w": 365,
+      "h": 42.900000000000006,
+      "text": "Protección de masas, resguardos, compatibilidad y ambiente condicionan el conjunto. Una función de seguridad requiere su propia arquitectura y validación."
+    },
+    {
+      "page": 8,
+      "x": 36,
+      "top": 522,
+      "w": 770,
+      "h": 11.700000000000001,
+      "text": "Referencias: M01 (unidades de motor), M02-M03 (variador), M04 (PLC), M05 (conjunto). La topología mostrada es una síntesis didáctica, no una prescripción de montaje."
+    },
+    {
+      "page": 9,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 9,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "APLICACIÓN AL APRENDIZAJE"
+    },
+    {
+      "page": 9,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Qué familias conviene representar"
+    },
+    {
+      "page": 9,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Clasificación funcional propuesta. Un gabinete real puede combinar varias de estas funciones."
+    },
+    {
+      "page": 9,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 9,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "09"
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 147,
+      "w": 353,
+      "h": 15.600000000000001,
+      "text": "Mando de motor"
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 170,
+      "w": 353,
+      "h": 26.52,
+      "text": "Pulsadores, contactores y protección; permite aprender orden, retención y enclavamiento."
+    },
+    {
+      "page": 9,
+      "x": 440,
+      "top": 147,
+      "w": 353,
+      "h": 15.600000000000001,
+      "text": "CCM"
+    },
+    {
+      "page": 9,
+      "x": 440,
+      "top": 170,
+      "w": 353,
+      "h": 26.52,
+      "text": "Agrupación de unidades de motor; vista por columna, unidad y circuito. Referencias V02 y V06."
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 249,
+      "w": 353,
+      "h": 15.600000000000001,
+      "text": "Variador"
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 272,
+      "w": 353,
+      "h": 26.52,
+      "text": "Orden de marcha, consigna y diagnóstico, con montaje específico del equipo. V07-V08."
+    },
+    {
+      "page": 9,
+      "x": 440,
+      "top": 249,
+      "w": 353,
+      "h": 15.600000000000001,
+      "text": "PLC / HMI"
+    },
+    {
+      "page": 9,
+      "x": 440,
+      "top": 272,
+      "w": 353,
+      "h": 13.26,
+      "text": "Entradas, secuencia, salidas y supervisión; seguir una señal completa. V09-V10."
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 351,
+      "w": 353,
+      "h": 15.600000000000001,
+      "text": "Instrumentación"
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 374,
+      "w": 353,
+      "h": 13.26,
+      "text": "Convertir una variable de proceso en una señal interpretable. V11."
+    },
+    {
+      "page": 9,
+      "x": 440,
+      "top": 351,
+      "w": 353,
+      "h": 15.600000000000001,
+      "text": "Distribución y servicios"
+    },
+    {
+      "page": 9,
+      "x": 440,
+      "top": 374,
+      "w": 353,
+      "h": 13.26,
+      "text": "Organización del conjunto, entradas, alimentación y protección. V03-V05."
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 468,
+      "w": 740,
+      "h": 16.900000000000002,
+      "text": "Para Tarapacá: comenzar por bombeo auxiliar"
+    },
+    {
+      "page": 9,
+      "x": 49,
+      "top": 491,
+      "w": 740,
+      "h": 26.0,
+      "text": "QB documenta procesos mineros y servicios de agua; Collahuasi, transporte y tratamiento; SQM, operaciones de yodo y nitratos. Sirven como contexto para encargos de bombeo, correas e instrumentación. No acreditan un modelo de tablero ni su frecuencia de demanda. Fuentes R01-R03, pág. 18."
+    },
+    {
+      "page": 10,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 10,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "MONTAJE E INSTALACIÓN"
+    },
+    {
+      "page": 10,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Del encargo a la entrega"
+    },
+    {
+      "page": 10,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Montar el gabinete en taller e instalarlo en campo son etapas diferentes del mismo proyecto."
+    },
+    {
+      "page": 10,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 10,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "10"
+    },
+    {
+      "page": 10,
+      "x": 48,
+      "top": 145,
+      "w": 28,
+      "h": 19.5,
+      "text": "01"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 146,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Definir el encargo"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 168,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Función del equipo, modos, alarmas, ambiente y documentos de referencia."
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 198,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: requisitos y lista de señales."
+    },
+    {
+      "page": 10,
+      "x": 439,
+      "top": 145,
+      "w": 28,
+      "h": 19.5,
+      "text": "02"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 146,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Preparar el gabinete"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 168,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Envolvente, placa, entradas de cables y disposición antes del montaje."
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 198,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: plano de implantación del caso."
+    },
+    {
+      "page": 10,
+      "x": 48,
+      "top": 245,
+      "w": 28,
+      "h": 19.5,
+      "text": "03"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 246,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Montar componentes"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 268,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Rieles, canaletas, equipos, bornes y elementos de puerta."
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 298,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: montaje mecánico coherente con las fichas."
+    },
+    {
+      "page": 10,
+      "x": 439,
+      "top": 245,
+      "w": 28,
+      "h": 19.5,
+      "text": "04"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 246,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Cablear e identificar"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 268,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Unir los bornes indicados y registrar hilos, destinos y terminaciones."
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 298,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: lista de conexiones y etiquetas."
+    },
+    {
+      "page": 10,
+      "x": 48,
+      "top": 345,
+      "w": 28,
+      "h": 19.5,
+      "text": "05"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 346,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Verificar el conjunto"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 368,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Comparar con planos y registrar las verificaciones virtuales previstas."
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 398,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: lista de comprobaciones con evidencia."
+    },
+    {
+      "page": 10,
+      "x": 439,
+      "top": 345,
+      "w": 28,
+      "h": 19.5,
+      "text": "06"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 346,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Instalar en campo"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 368,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Representar fijación, entradas, protección de masas y equipos externos."
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 398,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: correspondencia gabinete-campo."
+    },
+    {
+      "page": 10,
+      "x": 48,
+      "top": 445,
+      "w": 28,
+      "h": 19.5,
+      "text": "07"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 446,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Comprobar la función"
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 468,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Recorrer modos, señales y respuesta ante una condición de fallo."
+    },
+    {
+      "page": 10,
+      "x": 84,
+      "top": 498,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: registro de pruebas del escenario."
+    },
+    {
+      "page": 10,
+      "x": 439,
+      "top": 445,
+      "w": 28,
+      "h": 19.5,
+      "text": "08"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 446,
+      "w": 318,
+      "h": 15.600000000000001,
+      "text": "Mantener y diagnosticar"
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 468,
+      "w": 318,
+      "h": 12.090000000000002,
+      "text": "Observar, formular una hipótesis, comprobar, corregir y repetir la prueba."
+    },
+    {
+      "page": 10,
+      "x": 475,
+      "top": 498,
+      "w": 318,
+      "h": 11.18,
+      "text": "Entrega: causa encontrada y resultado posterior."
+    },
+    {
+      "page": 11,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 11,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "MÉTODO DEL EJERCICIO"
+    },
+    {
+      "page": 11,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Cómo enseñar diagnóstico y reparación"
+    },
+    {
+      "page": 11,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "La corrección debe responder a una causa demostrada y terminar en una prueba repetible."
+    },
+    {
+      "page": 11,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 11,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "11"
+    },
+    {
+      "page": 11,
+      "x": 49,
+      "top": 145,
+      "w": 150,
+      "h": 14.950000000000001,
+      "text": "1. Observar"
+    },
+    {
+      "page": 11,
+      "x": 191,
+      "top": 145,
+      "w": 300,
+      "h": 26.0,
+      "text": "Registrar el síntoma, modo de operación e historial; distinguir orden, señal y resultado."
+    },
+    {
+      "page": 11,
+      "x": 49,
+      "top": 216,
+      "w": 150,
+      "h": 14.950000000000001,
+      "text": "2. Formular"
+    },
+    {
+      "page": 11,
+      "x": 191,
+      "top": 216,
+      "w": 300,
+      "h": 26.0,
+      "text": "Elegir una hipótesis y anticipar qué evidencia la confirmaría o descartaría."
+    },
+    {
+      "page": 11,
+      "x": 49,
+      "top": 287,
+      "w": 150,
+      "h": 14.950000000000001,
+      "text": "3. Comprobar"
+    },
+    {
+      "page": 11,
+      "x": 191,
+      "top": 287,
+      "w": 300,
+      "h": 26.0,
+      "text": "Seguir el esquema y consultar estados o instrumentos virtuales; registrar el dato."
+    },
+    {
+      "page": 11,
+      "x": 49,
+      "top": 358,
+      "w": 150,
+      "h": 14.950000000000001,
+      "text": "4. Corregir"
+    },
+    {
+      "page": 11,
+      "x": 191,
+      "top": 358,
+      "w": 300,
+      "h": 26.0,
+      "text": "Modificar la conexión, configuración o componente que explica la falla del caso."
+    },
+    {
+      "page": 11,
+      "x": 49,
+      "top": 429,
+      "w": 150,
+      "h": 14.950000000000001,
+      "text": "5. Repetir"
+    },
+    {
+      "page": 11,
+      "x": 191,
+      "top": 429,
+      "w": 300,
+      "h": 26.0,
+      "text": "Volver a las condiciones iniciales, probar la función y documentar el resultado."
+    },
+    {
+      "page": 11,
+      "x": 540,
+      "top": 152,
+      "w": 250,
+      "h": 19.5,
+      "text": "La evidencia de mantenimiento"
+    },
+    {
+      "page": 11,
+      "x": 540,
+      "top": 202,
+      "w": 250,
+      "h": 171.60000000000002,
+      "text": "El registro debe conservar fecha, condición observada, comprobación, intervención y resultado. La periodicidad real depende del equipo, uso y ambiente; no se inventa un intervalo universal.<br/><br/>En campo, la intervención corresponde a personal competente y al procedimiento de aislamiento aplicable. Los instrumentos de este taller son virtuales.<br/><br/>No premiar un rearme reiterado, puentear protecciones o subir umbrales para ocultar la falla."
+    },
+    {
+      "page": 11,
+      "x": 36,
+      "top": 510,
+      "w": 770,
+      "h": 12.35,
+      "text": "Base: M01, pág. 85-88; M02, mantenimiento; M05, anexo 2.3. Los pasos y la evaluación son una propuesta educativa."
+    },
+    {
+      "page": 12,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 12,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "DIAGNÓSTICO 1 / 4"
+    },
+    {
+      "page": 12,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Fallas que se pueden convertir en ejercicios"
+    },
+    {
+      "page": 12,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Causas posibles para un escenario definido; el síntoma por sí solo no demuestra cuál ocurrió."
+    },
+    {
+      "page": 12,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 12,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "12"
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D01  /  Mando"
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "El circuito no responde."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Falta la alimentación de control o el retorno definido."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Seguir el esquema y consultar el medidor virtual."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Restablecer la conexión correcta del caso."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> La alimentación y el retorno son coherentes."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M05 · escenario propuesto"
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D02  /  Mando"
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "El contactor vibra o actúa de forma inestable."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Tensión de bobina inadecuada o contacto de mando inestable."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Comparar la bobina seleccionada y la señal virtual."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Corregir la causa representada; revisar el estado del componente."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> El mando permanece estable."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: Q03 · escenario propuesto"
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D03  /  Mando"
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "El motor se detiene al soltar marcha."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> El contacto auxiliar de retención del ejercicio no cierra la ruta prevista."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Revisar la red virtual y la referencia del auxiliar."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Corregir el conexionado o asociación del auxiliar."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> Marcha se mantiene; paro la desactiva."
+    },
+    {
+      "page": 12,
+      "x": 48,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M05 · escenario propuesto"
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D04  /  Mando"
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "Aparecen órdenes incompatibles."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Falta el enclavamiento previsto en el caso de inversión."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Consultar estados y condiciones de ambas órdenes."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Completar la lógica o conexión definida en el esquema."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> No pueden activarse ambos sentidos."
+    },
+    {
+      "page": 12,
+      "x": 439,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M05 · escenario propuesto"
+    },
+    {
+      "page": 13,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 13,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "DIAGNÓSTICO 2 / 4"
+    },
+    {
+      "page": 13,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Fallas que se pueden convertir en ejercicios"
+    },
+    {
+      "page": 13,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Causas posibles para un escenario definido; el síntoma por sí solo no demuestra cuál ocurrió."
+    },
+    {
+      "page": 13,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 13,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "13"
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D05  /  Protección"
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "Una protección ha disparado."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> La carga o la condición de fallo del ejercicio excede lo permitido."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Ver la causa simulada y el ajuste documentado."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Eliminar la causa antes del rearme previsto."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> La prueba se repite sin mantener el fallo."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M01 p. 85,86; M05 · escenario propuesto"
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D06  /  Variador"
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "El variador está disponible, sin orden de marcha."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> La autoridad de mando o un permiso no coincide con el encargo."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Ver canal activo y señales del caso."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Seleccionar el mando válido y satisfacer el permiso."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> La orden llega por el canal definido."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M03 p. 238,239 · escenario propuesto"
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D07  /  Variador"
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "La velocidad no sigue la consigna esperada."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Referencia o tipo de señal configurados para otro origen."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Comparar referencia activa y señal virtual."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Corregir la configuración del escenario."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> La respuesta sigue la referencia elegida."
+    },
+    {
+      "page": 13,
+      "x": 48,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M03 · escenario propuesto"
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D08  /  Variador"
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "Código OHF en el perfil ATV600."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Sobretemperatura; ventilación o carga ambiental incompatibles."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Consultar estado térmico y condiciones de montaje."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Corregir el problema representado y respetar las condiciones de recuperación."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> No se acepta un reset con la causa presente."
+    },
+    {
+      "page": 13,
+      "x": 439,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M03 p. 672; Q01 · escenario propuesto"
+    },
+    {
+      "page": 14,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 14,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "DIAGNÓSTICO 3 / 4"
+    },
+    {
+      "page": 14,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Fallas que se pueden convertir en ejercicios"
+    },
+    {
+      "page": 14,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Causas posibles para un escenario definido; el síntoma por sí solo no demuestra cuál ocurrió."
+    },
+    {
+      "page": 14,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 14,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "14"
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D09  /  Variador"
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "Código USF en el perfil ATV600."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Condición de subtensión detectada."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Comparar alimentación virtual y configuración del perfil."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Restaurar la alimentación adecuada del caso."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> Desaparece la condición de subtensión."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M03 p. 687; Q02 · escenario propuesto"
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D10  /  Variador"
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "Código OCF en el perfil ATV600."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Sobrecorriente; revisar datos, carga y mecanismo del caso."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Relacionar historial, datos de motor y carga."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Eliminar la causa; aplicar el tipo de recuperación del manual."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> El arranque posterior cumple las condiciones."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M03 p. 672 · escenario propuesto"
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D11  /  PLC"
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "El PLC no ejecuta la secuencia."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> CPU en STOP o diagnóstico activo."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Consultar estado y diagnóstico del perfil seleccionado."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Resolver el diagnóstico o estado definido por el ejercicio."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> La secuencia se ejecuta bajo las condiciones previstas."
+    },
+    {
+      "page": 14,
+      "x": 48,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M04 p. 245,246 · escenario propuesto"
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D12  /  PLC"
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "La entrada cambia en campo, pero no en el programa."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Origen, borne o asignación de E/S diferentes."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Seguir la señal del dispositivo al mapa de E/S."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Corregir conexión o asignación del caso."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> La variable representa la señal correspondiente."
+    },
+    {
+      "page": 14,
+      "x": 439,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M04 p. 38,39 · escenario propuesto"
+    },
+    {
+      "page": 15,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 15,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "DIAGNÓSTICO 4 / 4"
+    },
+    {
+      "page": 15,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Fallas que se pueden convertir en ejercicios"
+    },
+    {
+      "page": 15,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Causas posibles para un escenario definido; el síntoma por sí solo no demuestra cuál ocurrió."
+    },
+    {
+      "page": 15,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 15,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "15"
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D13  /  HMI"
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "La pantalla muestra datos congelados o desconexión."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Enlace lógico o destino no disponible en el caso."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Ver estado del enlace y variable de origen."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Restablecer configuración/conexión compatible."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> Datos actuales y pérdida de enlace diferenciados."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M04 · escenario propuesto"
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 144,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D14  /  Instrumentación"
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 162,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "La lectura es plausible, pero está escalada mal."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 180.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Rango o tipo de entrada no coincide con la señal."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 196.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Comparar señal virtual y escala definida."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 211.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Ajustar el rango coherente del ejercicio."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 226.8,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> La magnitud sigue la escala documentada."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 313,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M07 p. 17,18 · escenario propuesto"
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D15  /  Instrumentación"
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "El lazo presenta una lectura anormal."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Conductor abierto, polaridad o alimentación del lazo incorrectos."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Inspeccionar el lazo y su diagnóstico virtual."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Reponer la conexión definida; verificar señal y diagnóstico."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> Fallo de lazo y cero de proceso se distinguen."
+    },
+    {
+      "page": 15,
+      "x": 48,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M07 p. 78,95 · escenario propuesto"
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 350,
+      "w": 355,
+      "h": 11.700000000000001,
+      "text": "D16  /  Montaje"
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 368,
+      "w": 355,
+      "h": 15.600000000000001,
+      "text": "No se supera la comprobación de protección de masas."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 386.6,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Hipótesis:</b> Una masa del montaje queda sin la conexión prevista."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 402.0,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Comprobar:</b> Consultar el esquema de protección y continuidad virtual."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 417.4,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Corregir:</b> Completar la unión definida en el proyecto."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 432.79999999999995,
+      "w": 355,
+      "h": 11.4,
+      "text": "<b>Aceptar:</b> El montaje tiene evidencia de la comprobación."
+    },
+    {
+      "page": 15,
+      "x": 439,
+      "top": 519,
+      "w": 355,
+      "h": 9.75,
+      "text": "Base: M05 p. 18 · escenario propuesto"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 16,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "PROPUESTA DE IMPLEMENTACIÓN"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Cómo incorporarlo a modo."
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Ampliar el laboratorio existente, conservar sus proyectos e integrar el trabajo sin conexión."
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 16,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "16"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 138,
+      "w": 365,
+      "h": 20.8,
+      "text": "Escena y documentos"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 176,
+      "w": 365,
+      "h": 14.3,
+      "text": "Vistas coordinadas"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 194.3,
+      "w": 365,
+      "h": 27.3,
+      "text": "Placa, puerta, esquema y campo. Seleccionar un equipo debe localizar sus bornes y señales."
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 235.6,
+      "w": 365,
+      "h": 14.3,
+      "text": "Datos de montaje"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 253.9,
+      "w": 365,
+      "h": 13.65,
+      "text": "Dimensiones, soporte, fijación y zonas de reserva provienen del perfil elegido."
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 281.55,
+      "w": 365,
+      "h": 14.3,
+      "text": "Conexionado"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 299.85,
+      "w": 365,
+      "h": 27.3,
+      "text": "Separar extremos eléctricos y recorrido físico. Añadir ID de hilo, etiqueta, borne y terminación."
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 341.15000000000003,
+      "w": 365,
+      "h": 14.3,
+      "text": "Expediente"
+    },
+    {
+      "page": 16,
+      "x": 36,
+      "top": 359.45000000000005,
+      "w": 365,
+      "h": 27.3,
+      "text": "Lista de materiales y conexiones, mapa de E/S y registro de pruebas del ejercicio."
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 138,
+      "w": 365,
+      "h": 20.8,
+      "text": "Aprendizaje y rendimiento"
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 176,
+      "w": 365,
+      "h": 14.3,
+      "text": "Primera experiencia"
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 194.3,
+      "w": 365,
+      "h": 27.3,
+      "text": "Una bomba auxiliar; después dos bombas con alternancia, PLC/HMI y variante con variador."
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 235.6,
+      "w": 365,
+      "h": 14.3,
+      "text": "Evaluación visible"
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 253.9,
+      "w": 365,
+      "h": 27.3,
+      "text": "Comprobar montaje, conexión y comportamiento por separado; explicar qué no está modelado."
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 295.2,
+      "w": 365,
+      "h": 14.3,
+      "text": "Representación ligera"
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 313.5,
+      "w": 365,
+      "h": 27.3,
+      "text": "2D/SVG; mover la cámara no debe recalcular el circuito. Usar reglas cuando cambien datos."
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 354.8,
+      "w": 365,
+      "h": 14.3,
+      "text": "Viaje sin conexión"
+    },
+    {
+      "page": 16,
+      "x": 432,
+      "top": 373.1,
+      "w": 365,
+      "h": 27.3,
+      "text": "Recursos propios y casos locales. Preparación explícita del paquete; probar reapertura y exportación offline."
+    },
+    {
+      "page": 16,
+      "x": 49,
+      "top": 494,
+      "w": 740,
+      "h": 14.3,
+      "text": "Criterio de salida de la primera entrega"
+    },
+    {
+      "page": 16,
+      "x": 49,
+      "top": 514,
+      "w": 740,
+      "h": 26.0,
+      "text": "Un encargo completo: entender, montar, cablear, detectar una falla y exportar evidencia. Validar fluidez en móvil y escritorio con el mismo caso, sin declarar mejoras de rendimiento antes de medirlas."
+    },
+    {
+      "page": 17,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 17,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "ÍNDICE DE FUENTES"
+    },
+    {
+      "page": 17,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Documentos técnicos verificados"
+    },
+    {
+      "page": 17,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Páginas indicadas = posición en el PDF local. Consultar siempre el equipo, edición e idioma correspondientes."
+    },
+    {
+      "page": 17,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 17,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "17"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 140,
+      "w": 390,
+      "h": 13.65,
+      "text": "M01  Rockwell - CENTERLINE 2500"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 159,
+      "w": 425,
+      "h": 10.920000000000002,
+      "text": "2500-IN001H-EN-P, 07/2022 | EN"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 140,
+      "w": 302,
+      "h": 11.700000000000001,
+      "text": "Páginas: 12, 67, 85-88"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 159,
+      "w": 302,
+      "h": 10.920000000000002,
+      "text": "<link href=\"https://literature.rockwellautomation.com/idc/groups/literature/documents/in/2500-in001_-en-p.pdf\" color=\"#087E83\"><u>Documento oficial</u></link>"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 195,
+      "w": 390,
+      "h": 13.65,
+      "text": "M02  Schneider - instalación ATV630/650"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 214,
+      "w": 425,
+      "h": 10.920000000000002,
+      "text": "EAV64301.13, 06/2025 | EN"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 195,
+      "w": 302,
+      "h": 11.700000000000001,
+      "text": "Páginas: 118, 160, 233, 236-238"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 214,
+      "w": 302,
+      "h": 10.920000000000002,
+      "text": "<link href=\"https://www.se.com/ph/en/download/document/EAV64301/\" color=\"#087E83\"><u>Documento oficial</u></link>"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 250,
+      "w": 390,
+      "h": 13.65,
+      "text": "M03  Schneider - programación ATV600"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 269,
+      "w": 425,
+      "h": 10.920000000000002,
+      "text": "EAV64318.14, 05/2026 | EN"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 250,
+      "w": 302,
+      "h": 11.700000000000001,
+      "text": "Páginas: 235, 238-239, 672, 687"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 269,
+      "w": 302,
+      "h": 10.920000000000002,
+      "text": "<link href=\"https://www.se.com/hk/en/download/document/EAV64318/\" color=\"#087E83\"><u>Documento oficial</u></link>"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 305,
+      "w": 390,
+      "h": 13.65,
+      "text": "M04  Siemens - S7-1200 G2"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 324,
+      "w": 425,
+      "h": 10.920000000000002,
+      "text": "A5E52923928-AB, V1.0.1, 04/2025 | EN"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 305,
+      "w": 302,
+      "h": 11.700000000000001,
+      "text": "Páginas: 19, 32, 38-39, 245-246"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 324,
+      "w": 302,
+      "h": 10.920000000000002,
+      "text": "<link href=\"https://support.industry.siemens.com/cs/attachments/109988293/S71200_G2_system_manual_en-US_en-US.pdf\" color=\"#087E83\"><u>Documento oficial</u></link>"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 360,
+      "w": 390,
+      "h": 13.65,
+      "text": "M05  SEC - RIC N.º 02: tableros"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 379,
+      "w": 425,
+      "h": 10.920000000000002,
+      "text": "RIC N02, archivo oficial 17/06/2021 | ES"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 360,
+      "w": 302,
+      "h": 11.700000000000001,
+      "text": "Páginas: 18 (anexo 2.3)"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 379,
+      "w": 302,
+      "h": 10.920000000000002,
+      "text": "<link href=\"https://www.sec.cl/sitio-web/wp-content/uploads/2021/06/RIC-N02-Tableros-Electricos-170621-2.pdf\" color=\"#087E83\"><u>Documento oficial</u></link>"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 415,
+      "w": 390,
+      "h": 13.65,
+      "text": "M06  Rittal - gabinete VX SE y accesorios"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 434,
+      "w": 425,
+      "h": 10.920000000000002,
+      "text": "VX SE brochure, 28 paginas; sin fecha afirmada | EN"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 415,
+      "w": 302,
+      "h": 11.700000000000001,
+      "text": "Páginas: 6 y accesorios"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 434,
+      "w": 302,
+      "h": 10.920000000000002,
+      "text": "<link href=\"https://www.rittal.com/imf/none/3_8456/5856600______EN\" color=\"#087E83\"><u>Documento oficial</u></link>"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 470,
+      "w": 390,
+      "h": 13.65,
+      "text": "M07  Emerson - Rosemount 3051 HART"
+    },
+    {
+      "page": 17,
+      "x": 48,
+      "top": 489,
+      "w": 425,
+      "h": 10.920000000000002,
+      "text": "00809-0105-4007 Rev BF, 02/2024 | DE"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 470,
+      "w": 302,
+      "h": 11.700000000000001,
+      "text": "Páginas: 17-18, 78, 95"
+    },
+    {
+      "page": 17,
+      "x": 490,
+      "top": 489,
+      "w": 302,
+      "h": 10.920000000000002,
+      "text": "<link href=\"https://www.emerson.com/documents/automation/manual-rosemount-3051-pressure-transmitter-en-89452.pdf\" color=\"#087E83\"><u>Documento oficial</u></link>"
+    },
+    {
+      "page": 17,
+      "x": 36,
+      "top": 525,
+      "w": 770,
+      "h": 11.05,
+      "text": "M07: el enlace contiene “en”, pero el archivo recibido está en alemán, Rev BF de febrero de 2024. No se le atribuye otra revisión. Los archivos guardados tienen tamaño y SHA-256 en fuentes.json."
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 20,
+      "w": 500,
+      "h": 11.700000000000001,
+      "text": "modo.  /  TALLER DE TABLEROS"
+    },
+    {
+      "page": 18,
+      "x": 571.8897637795277,
+      "top": 20,
+      "w": 234,
+      "h": 11.700000000000001,
+      "text": "FUENTES Y USO"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 49,
+      "w": 769.8897637795277,
+      "h": 35.1,
+      "text": "Imágenes, contexto y alcance"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 92,
+      "w": 769.8897637795277,
+      "h": 13.65,
+      "text": "Documentación pública consultada el 25/10/2026. Fotografías y figuras conservan los derechos de sus titulares."
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 569.2755905511812,
+      "w": 650,
+      "h": 10.4,
+      "text": "Investigación y propuesta didáctica  |  25 octubre 2026"
+    },
+    {
+      "page": 18,
+      "x": 775.8897637795277,
+      "top": 568.2755905511812,
+      "w": 30,
+      "h": 11.700000000000001,
+      "text": "18"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 139,
+      "w": 92,
+      "h": 12.35,
+      "text": "F01, F02, F06"
+    },
+    {
+      "page": 18,
+      "x": 136,
+      "top": 139,
+      "w": 670,
+      "h": 13.0,
+      "text": "<link href=\"https://eiffageenergiesystemes.be/fr/cablage-sur-site/\" color=\"#087E83\"><u>Eiffage Énergie Systèmes - cableado e instalación industrial</u></link>"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 179,
+      "w": 92,
+      "h": 12.35,
+      "text": "F03"
+    },
+    {
+      "page": 18,
+      "x": 136,
+      "top": 179,
+      "w": 670,
+      "h": 13.0,
+      "text": "<link href=\"https://www.rockwellautomation.com/en-us/company/news/case-studies/boral-quarry-invests-in-intelligent-motor-control-solution.html\" color=\"#087E83\"><u>Rockwell - caso de CCM Boral, Charlton, Australia</u></link>"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 219,
+      "w": 92,
+      "h": 12.35,
+      "text": "F04, F05"
+    },
+    {
+      "page": 18,
+      "x": 136,
+      "top": 219,
+      "w": 670,
+      "h": 13.0,
+      "text": "<link href=\"https://webinfo.rittal.com/com-en/ri4power\" color=\"#087E83\"><u>Rittal - sistema VX25 Ri4Power; visuales comerciales</u></link>"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 259,
+      "w": 92,
+      "h": 12.35,
+      "text": "Q01-Q03"
+    },
+    {
+      "page": 18,
+      "x": 136,
+      "top": 259,
+      "w": 670,
+      "h": 13.0,
+      "text": "<link href=\"https://www.se.com/sg/en/faqs/FA311478/\" color=\"#087E83\"><u>Schneider - OHF, USF y vibración de contactores (enlaces en JSON)</u></link>"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 299,
+      "w": 92,
+      "h": 12.35,
+      "text": "R01"
+    },
+    {
+      "page": 18,
+      "x": 136,
+      "top": 299,
+      "w": 670,
+      "h": 13.0,
+      "text": "<link href=\"https://www.teck.com/operations/chile/operations/quebrada-blanca/quebrada-blanca\" color=\"#087E83\"><u>Teck - procesos y servicios de Quebrada Blanca</u></link>"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 339,
+      "w": 92,
+      "h": 12.35,
+      "text": "R02"
+    },
+    {
+      "page": 18,
+      "x": 136,
+      "top": 339,
+      "w": 670,
+      "h": 13.0,
+      "text": "<link href=\"https://www.collahuasi.cl/wp-content/uploads/2020/10/collahuasi-inventario-de-gei-2019.pdf\" color=\"#087E83\"><u>Collahuasi - inventario GEI 2019; referencia histórica de procesos</u></link>"
+    },
+    {
+      "page": 18,
+      "x": 36,
+      "top": 379,
+      "w": 92,
+      "h": 12.35,
+      "text": "R03"
+    },
+    {
+      "page": 18,
+      "x": 136,
+      "top": 379,
+      "w": 670,
+      "h": 13.0,
+      "text": "<link href=\"https://sqm-ynv.com/sqmeninfografias/presencia.html\" color=\"#087E83\"><u>SQM Yodo Nutrición Vegetal - presencia / Nueva Victoria</u></link>"
+    },
+    {
+      "page": 18,
+      "x": 49,
+      "top": 448,
+      "w": 740,
+      "h": 16.900000000000002,
+      "text": "Qué queda pendiente antes de publicar el taller"
+    },
+    {
+      "page": 18,
+      "x": 49,
+      "top": 474,
+      "w": 740,
+      "h": 52.0,
+      "text": "Obtener material autorizado de un tablero local y validar un caso con un docente o profesional. Confirmar fichas y esquemas por referencia antes de fijar bornes, cotas o parámetros. Crear ilustraciones propias para la aplicación o gestionar la licencia de las imágenes.<br/><br/>Este dossier prepara la implementación; no modifica el simulador, no certifica un conjunto y no acredita marcas o modelos usados por una faena específica."
+    }
+  ],
+  "output": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\output\\pdf\\Investigacion_tableros_modo_2026-10-25.pdf"
+}

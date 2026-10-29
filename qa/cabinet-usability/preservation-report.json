@@ -1,0 +1,13 @@
+{
+  "unexpected": [],
+  "unchanged": 356,
+  "changed": [
+    "src/components/FloatingWindow.tsx",
+    "src/components/Home.tsx",
+    "src/lab/EquipmentView.tsx",
+    "src/lab/InspectorSheet.tsx",
+    "src/styles/floating-window.css",
+    "src/lab/equipment/CabinetScene.tsx",
+    "src/lab/equipment/CabinetWorkshop.tsx"
+  ]
+}

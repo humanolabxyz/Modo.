@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "Modelos, banco, herramientas y contenidos conservados",
+    "390x844: las tres vistas tienen Entrar; primer toque solo despliega; Panel entra libre",
+    "820x1180: las tres vistas tienen Entrar; primer toque solo despliega; Panel entra libre",
+    "1180x820: las tres vistas tienen Entrar; primer toque solo despliega; Panel entra libre",
+    "1440x960: las tres vistas tienen Entrar; primer toque solo despliega; Panel entra libre",
+    "Entrar libre mantiene cables/diagrama/pasos; Deshacer recupera el modo anterior",
+    "Continuar también entra en modo libre sin perder el circuito",
+    "El acceso rápido Simulador usa la misma entrada directa",
+    "Sin errores JavaScript"
+  ],
+  "errors": []
+}

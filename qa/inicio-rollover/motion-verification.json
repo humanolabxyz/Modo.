@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "no-preference: close retains the outgoing box through its fade, or removes it immediately with reduced motion",
+    "no-preference: switching crossfades the old and new sections without leaving an interactive duplicate",
+    "reduce: close retains the outgoing box through its fade, or removes it immediately with reduced motion",
+    "reduce: switching crossfades the old and new sections without leaving an interactive duplicate",
+    "Touch: closing animates and restores the original card"
+  ],
+  "errors": []
+}

@@ -1,0 +1,37 @@
+.panel-meter-workspace{position:absolute;inset:0;z-index:34;pointer-events:none;overflow:hidden}
+.panel-meter-workspace .lab-dmm-device{pointer-events:auto}
+.panel-meter-workspace .lab-dmm-device.has-side-actions,.panel-clamp-instrument.has-side-actions{box-sizing:content-box;padding-right:52px}
+.panel-meter-workspace .lab-dmm-device.has-side-actions{max-width:calc(100% - 72px)}
+body.modo-soft-ui .panel-meter-workspace .instrument-options .instrument-options-toggle[aria-expanded=true]{background:#263735;color:#fff;border-color:#263735}
+.instrument-options-group{display:grid;grid-template-rows:0fr;opacity:0;transform:translateY(-5px);transition:grid-template-rows .2s ease,opacity .16s ease,transform .2s ease;width:42px;pointer-events:none}.instrument-options-group>div{display:flex;flex-direction:column;align-items:center;gap:8px;min-height:0;overflow:hidden}.instrument-options.is-expanded .instrument-options-group{grid-template-rows:1fr;opacity:1;transform:translateY(0);pointer-events:auto}.instrument-options-group button{transition:opacity .16s ease,transform .18s ease;opacity:0;transform:translateX(-5px)}.instrument-options.is-expanded .instrument-options-group button{opacity:1;transform:translateX(0);transition-delay:calc(var(--option-index,0)*18ms)}.instrument-options .instrument-options-toggle svg{transition:transform .18s ease}.instrument-options button:active:not(:disabled){transform:scale(.92)}.instrument-options button{transition:background .14s ease,border-color .14s ease,box-shadow .14s ease,transform .14s ease}.instrument-options button:hover:not(:disabled){box-shadow:0 3px 10px #2433481b}.instrument-options button:focus-visible{outline:2px solid #397858;outline-offset:3px}@media(prefers-reduced-motion:reduce){.instrument-options-group,.instrument-options button,.instrument-options .instrument-options-toggle svg{transition:none;animation:none}.instrument-options-group,.instrument-options-group button{transform:none}}
+.panel-meter-workspace .instrument-options{position:absolute;right:2px;top:44px;display:flex;flex-direction:column;align-items:center;gap:8px;width:42px;z-index:4;pointer-events:auto}
+body.modo-soft-ui .panel-meter-workspace .instrument-options button{position:relative;display:grid;place-items:center;width:40px;height:40px;min-width:40px;min-height:40px;border-radius:50%;padding:0;border:1px solid #d9dfe6;background:#fff;color:#53606b;box-shadow:0 2px 7px #24334812;cursor:pointer;flex:none;font:11px var(--ui-font,system-ui)}
+body.modo-soft-ui .panel-meter-workspace .instrument-options button.has-caption{margin-bottom:12px}
+body.modo-soft-ui .panel-meter-workspace .instrument-options button[aria-pressed=true]{background:#263735;color:#fff;border-color:#263735}
+body.modo-soft-ui .panel-meter-workspace .instrument-options button:hover:not(:disabled){border-color:#84999a;background:#f1f5f4;color:#263735}
+body.modo-soft-ui .panel-meter-workspace .instrument-options button:disabled{opacity:.35;cursor:default}
+.instrument-options button:focus-visible{outline:2px solid #073cff;outline-offset:3px}.instrument-option-caption{position:absolute;top:42px;left:50%;transform:translateX(-50%);color:#435159;background:#fff;padding:1px 4px;border-radius:5px;font-size:9px;white-space:nowrap;pointer-events:none}.instrument-option-tip{position:absolute;right:calc(100% + 9px);top:50%;transform:translateY(-50%);background:#263735;color:#fff;border-radius:7px;padding:6px 9px;font:11px/1.3 var(--ui-font,system-ui);white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none;box-shadow:0 2px 8px #26373522}.instrument-options button:is(:hover,:focus-visible) .instrument-option-tip{opacity:1;visibility:visible}.instrument-option-badge{position:absolute;right:-3px;top:-4px;min-width:15px;padding:1px 3px;border-radius:10px;background:#e9b931;color:#29382c;font:9px/1.3 system-ui}.panel-clamp-instrument.options-on-left .instrument-options{right:auto;left:-48px}.panel-clamp-instrument.options-on-left .instrument-option-tip{right:auto;left:calc(100% + 9px)}.panel-clamp-instrument .clamp-instrument-log{position:absolute;top:148px;right:54px;z-index:5;min-width:170px;max-width:240px;box-shadow:0 4px 18px #233b2c22;user-select:text;touch-action:pan-y}.clamp-instrument-log button{font:11px var(--ui-font,system-ui);min-height:34px;border:1px solid #dce3df;border-radius:8px;background:#fff;color:#264231;padding:6px 9px;cursor:pointer}.clamp-instrument-log .clamp-phase-buttons{margin-top:6px;justify-content:center}
+
+.panel-meter-workspace,.panel-meter-workspace .lab-leads{touch-action:none}
+
+.panel-meter-workspace.is-compact .lab-dmm-device{right:12px;bottom:84px;width:calc(172px * var(--dmm-scale,1))}
+.panel-meter-workspace.is-compact .lab-dmm-device.is-collapsed{width:auto}
+
+.panel-meter-workspace,.panel-meter-workspace *{-webkit-tap-highlight-color:transparent}
+.panel-meter-info-button{width:100%;min-height:44px;margin-top:6px;border:1px solid #aabdc5;border-radius:9px;background:#f6f8f8;color:#294653;font:600 12px system-ui;cursor:pointer}
+.panel-meter-info p{line-height:1.5}
+.panel-meter-info label{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0}
+.panel-meter-info input{width:105px;min-height:44px;min-width:0;border:1px solid #aabdc5;border-radius:7px;padding:8px;color:#213e49;background:#fff;font:inherit}
+.panel-meter-learn{display:inline-flex;align-items:center;justify-content:center;gap:6px;align-self:stretch;min-height:34px;padding:6px 12px;border:1px solid #1d2b27;border-radius:10px;background:#1d2b27;color:#fff;font:600 13px/1 inherit;font-family:inherit;cursor:pointer;pointer-events:auto}
+.panel-meter-learn[aria-pressed="true"]{background:#fff;color:#1d2b27}
+.panel-meter-learn:focus-visible{outline:3px solid #f5cf14;outline-offset:2px}
+.panel-meter-hazard{display:grid;gap:3px;padding:8px 10px;border-radius:10px;font-size:12px;line-height:1.35;background:#fff3cd;color:#4a3500;border:1px solid #e0b100;pointer-events:auto}
+.panel-meter-hazard.is-danger{background:#fde8e6;color:#6b1209;border-color:#d93a2b}
+.panel-meter-hazard strong{font-size:12.5px}
+.panel-meter-workspace .lab-dmm-device .panel-meter-learn{align-self:flex-end;width:auto;min-width:0;min-height:26px;height:26px;padding:0 10px;gap:5px;font-size:11px;font-weight:600;line-height:1;border-radius:999px;box-shadow:none;flex:0 0 auto}
+.panel-meter-workspace .lab-dmm-device .panel-meter-learn svg{width:13px;height:13px}
+
+/* Cables banana del multímetro (serie): clavija dorada gruesa y funda más ancha en lugar de la punta fina. */
+.lab-leads.is-banana .pen-tip{stroke:#d9ae3a;stroke-width:9}
+.lab-leads.is-banana .pen-body{stroke-width:15}
+.lab-leads.is-banana .pen-grip{stroke-width:11;stroke-dasharray:3 3}

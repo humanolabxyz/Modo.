@@ -28,7 +28,9 @@ __export(cade_exports, {
   CADE_SYMBOLS: () => CADE_SYMBOLS,
   CADE_WIRES: () => CADE_WIRES,
   ESTRELLA_CADE: () => ESTRELLA_CADE,
+  LESSON_CADES: () => LESSON_CADES,
   PERFECTO_CADE: () => PERFECTO_CADE,
+  TWO_CONTACTOR_BANK_NAMES: () => TWO_CONTACTOR_BANK_NAMES,
   cadeNetwork: () => cadeNetwork,
   cadePorts: () => cadePorts,
   createCade: () => createCade
@@ -6146,12 +6148,4074 @@ var cadeEstrellaTriangulo_default = {
   ]
 };
 
+// src/data/cadeLecciones.json
+var cadeLecciones_default = {
+  simple: {
+    name: "Marcha y paro con retenci\xF3n",
+    source: "Esquema de la lecci\xF3n guiada, redibujado a partir del circuito armado en el banco.",
+    origin: "lesson",
+    splitX: 140,
+    objects: [
+      {
+        id: 1,
+        type: 9100,
+        shape: "terminal-round",
+        reference: "-X",
+        labels: [
+          "R",
+          "S",
+          "T",
+          "PE"
+        ],
+        x: 63,
+        y: 24,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "R",
+            x: 63,
+            y: 26,
+            panel: "FUENTE:R"
+          },
+          {
+            terminal: "S",
+            x: 72,
+            y: 26,
+            panel: "FUENTE:S"
+          },
+          {
+            terminal: "T",
+            x: 81,
+            y: 26,
+            panel: "FUENTE:T"
+          },
+          {
+            terminal: "PE",
+            x: 90,
+            y: 26,
+            panel: "FUENTE:TP"
+          }
+        ],
+        box: [
+          54,
+          18,
+          94,
+          27
+        ],
+        pins: [
+          "R",
+          "S",
+          "T",
+          "PE"
+        ]
+      },
+      {
+        id: 2,
+        type: 9100,
+        shape: "contactor3",
+        reference: "KM1",
+        labels: [
+          "1",
+          "3",
+          "5",
+          "2",
+          "4",
+          "6"
+        ],
+        x: 63,
+        y: 60,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "1",
+            x: 63,
+            y: 60,
+            panel: "CONTACTOR_TERMICO:L1"
+          },
+          {
+            terminal: "3",
+            x: 72,
+            y: 60,
+            panel: "CONTACTOR_TERMICO:L2"
+          },
+          {
+            terminal: "5",
+            x: 81,
+            y: 60,
+            panel: "CONTACTOR_TERMICO:L3"
+          },
+          {
+            terminal: "2",
+            x: 63,
+            y: 78
+          },
+          {
+            terminal: "4",
+            x: 72,
+            y: 78
+          },
+          {
+            terminal: "6",
+            x: 81,
+            y: 78
+          }
+        ],
+        box: [
+          52,
+          59,
+          86,
+          79
+        ]
+      },
+      {
+        id: 3,
+        type: 9100,
+        shape: "thermal3",
+        reference: "F1",
+        labels: [
+          "1",
+          "3",
+          "5",
+          "2",
+          "4",
+          "6"
+        ],
+        x: 63,
+        y: 100,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "1",
+            x: 63,
+            y: 100
+          },
+          {
+            terminal: "3",
+            x: 72,
+            y: 100
+          },
+          {
+            terminal: "5",
+            x: 81,
+            y: 100
+          },
+          {
+            terminal: "2",
+            x: 63,
+            y: 109,
+            panel: "CONTACTOR_TERMICO:T1"
+          },
+          {
+            terminal: "4",
+            x: 72,
+            y: 109,
+            panel: "CONTACTOR_TERMICO:T2"
+          },
+          {
+            terminal: "6",
+            x: 81,
+            y: 109,
+            panel: "CONTACTOR_TERMICO:T3"
+          }
+        ],
+        box: [
+          50,
+          97,
+          88,
+          112
+        ]
+      },
+      {
+        id: 4,
+        type: 9100,
+        shape: "motor",
+        reference: "M1",
+        labels: [
+          "U1",
+          "V1",
+          "W1",
+          "W2",
+          "U2",
+          "V2",
+          "PE"
+        ],
+        x: 72,
+        y: 150,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "U1",
+            x: 63,
+            y: 142,
+            panel: "BORNERA_MOTOR:U1"
+          },
+          {
+            terminal: "V1",
+            x: 72,
+            y: 138,
+            panel: "BORNERA_MOTOR:V1"
+          },
+          {
+            terminal: "W1",
+            x: 81,
+            y: 142,
+            panel: "BORNERA_MOTOR:W1"
+          },
+          {
+            terminal: "W2",
+            x: 63,
+            y: 158,
+            panel: "BORNERA_MOTOR:W2"
+          },
+          {
+            terminal: "U2",
+            x: 72,
+            y: 162,
+            panel: "BORNERA_MOTOR:U2"
+          },
+          {
+            terminal: "V2",
+            x: 81,
+            y: 158,
+            panel: "BORNERA_MOTOR:V2"
+          },
+          {
+            terminal: "PE",
+            x: 84,
+            y: 150,
+            panel: "BORNERA_MOTOR:TP"
+          }
+        ],
+        box: [
+          56,
+          134,
+          92,
+          166
+        ]
+      },
+      {
+        id: 5,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 26,
+        x2: 63,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 6,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 78,
+        x2: 63,
+        y2: 100,
+        color: "#2f343a",
+        internal: true
+      },
+      {
+        id: 7,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 26,
+        x2: 72,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 8,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 78,
+        x2: 72,
+        y2: 100,
+        color: "#2f343a",
+        internal: true
+      },
+      {
+        id: 9,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 26,
+        x2: 81,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 10,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 78,
+        x2: 81,
+        y2: 100,
+        color: "#2f343a",
+        internal: true
+      },
+      {
+        id: 11,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 109,
+        x2: 63,
+        y2: 142,
+        color: "#2f343a"
+      },
+      {
+        id: 12,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 109,
+        x2: 72,
+        y2: 138,
+        color: "#2f343a"
+      },
+      {
+        id: 13,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 109,
+        x2: 81,
+        y2: 142,
+        color: "#2f343a"
+      },
+      {
+        id: 14,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 158,
+        x2: 63,
+        y2: 172,
+        color: "#2f343a"
+      },
+      {
+        id: 15,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 172,
+        x2: 72,
+        y2: 172,
+        color: "#2f343a"
+      },
+      {
+        id: 16,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 162,
+        x2: 72,
+        y2: 172,
+        color: "#2f343a"
+      },
+      {
+        id: 17,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 158,
+        x2: 81,
+        y2: 172,
+        color: "#2f343a"
+      },
+      {
+        id: 18,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 172,
+        x2: 72,
+        y2: 172,
+        color: "#2f343a"
+      },
+      {
+        id: 19,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 172,
+        x2: 72,
+        y2: 172
+      },
+      {
+        id: 20,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 26,
+        x2: 90,
+        y2: 70,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 21,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 70,
+        x2: 90,
+        y2: 110,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 22,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 110,
+        x2: 90,
+        y2: 150,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 23,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 150,
+        x2: 84,
+        y2: 150,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 24,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 70,
+        x2: 90,
+        y2: 70
+      },
+      {
+        id: 25,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 70,
+        x2: 100,
+        y2: 70,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 26,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "KM1",
+        labels: [
+          "TP"
+        ],
+        x: 100,
+        y: 70,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "TP",
+            x: 100,
+            y: 70,
+            panel: "CONTACTOR_TERMICO:TP_DER"
+          }
+        ],
+        box: [
+          97,
+          67,
+          103,
+          73
+        ],
+        pins: [
+          "TP KM1"
+        ]
+      },
+      {
+        id: 27,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 110,
+        x2: 90,
+        y2: 110
+      },
+      {
+        id: 28,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 110,
+        x2: 100,
+        y2: 110,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 29,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "BOT",
+        labels: [
+          "TP"
+        ],
+        x: 100,
+        y: 110,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "TP",
+            x: 100,
+            y: 110,
+            panel: "BOTONERAS:TP_DER"
+          }
+        ],
+        box: [
+          97,
+          107,
+          103,
+          113
+        ],
+        pins: [
+          "TP BOT"
+        ]
+      },
+      {
+        id: 30,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "-X",
+        labels: [
+          "F"
+        ],
+        x: 150,
+        y: 24,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "F",
+            x: 150,
+            y: 26,
+            panel: "FUENTE:F"
+          }
+        ],
+        box: [
+          147,
+          21,
+          153,
+          29
+        ],
+        pins: [
+          "F"
+        ]
+      },
+      {
+        id: 31,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "",
+        labels: [
+          "N"
+        ],
+        x: 320,
+        y: 24,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "N",
+            x: 320,
+            y: 26,
+            panel: "FUENTE:N"
+          }
+        ],
+        box: [
+          317,
+          21,
+          323,
+          29
+        ],
+        pins: [
+          "N"
+        ]
+      },
+      {
+        id: 32,
+        type: 9100,
+        shape: "f1aux",
+        reference: "F1",
+        labels: [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        x: 150,
+        y: 40,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "95",
+            x: 150,
+            y: 40,
+            panel: "CONTACTOR_TERMICO:95"
+          },
+          {
+            terminal: "96",
+            x: 150,
+            y: 58,
+            panel: "CONTACTOR_TERMICO:96"
+          },
+          {
+            terminal: "97",
+            x: 163.5,
+            y: 40,
+            panel: "CONTACTOR_TERMICO:97"
+          },
+          {
+            terminal: "98",
+            x: 163.5,
+            y: 58,
+            panel: "CONTACTOR_TERMICO:98"
+          }
+        ],
+        box: [
+          132,
+          39,
+          172,
+          59
+        ]
+      },
+      {
+        id: 33,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 26,
+        x2: 150,
+        y2: 32,
+        color: "#a64a4a"
+      },
+      {
+        id: 34,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 32,
+        x2: 150,
+        y2: 40,
+        color: "#a64a4a"
+      },
+      {
+        id: 35,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 32,
+        x2: 163.5,
+        y2: 32,
+        color: "#a64a4a"
+      },
+      {
+        id: 36,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 163.5,
+        y: 32,
+        x2: 163.5,
+        y2: 40,
+        color: "#a64a4a"
+      },
+      {
+        id: 37,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 32,
+        x2: 150,
+        y2: 32
+      },
+      {
+        id: 38,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 58,
+        x2: 150,
+        y2: 70,
+        color: "#a64a4a"
+      },
+      {
+        id: 39,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 70,
+        x2: 150,
+        y2: 70
+      },
+      {
+        id: 40,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 70,
+        x2: 150,
+        y2: 80,
+        color: "#a64a4a"
+      },
+      {
+        id: 41,
+        type: 9100,
+        shape: "push-nc",
+        reference: "S2",
+        labels: [
+          "1",
+          "2"
+        ],
+        x: 150,
+        y: 80,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "1",
+            x: 150,
+            y: 80,
+            panel: "BOTONERAS:S2:1"
+          },
+          {
+            terminal: "2",
+            x: 150,
+            y: 98,
+            panel: "BOTONERAS:S2:2"
+          }
+        ],
+        box: [
+          126,
+          79,
+          158,
+          99
+        ]
+      },
+      {
+        id: 42,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 70,
+        x2: 190,
+        y2: 70,
+        color: "#a64a4a"
+      },
+      {
+        id: 43,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 190,
+        y: 70,
+        x2: 190,
+        y2: 80,
+        color: "#a64a4a"
+      },
+      {
+        id: 44,
+        type: 9100,
+        shape: "contact-nc",
+        reference: "KM1",
+        labels: [
+          "71",
+          "72"
+        ],
+        x: 190,
+        y: 80,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "71",
+            x: 190,
+            y: 80,
+            panel: "CONTACTOR_TERMICO:71"
+          },
+          {
+            terminal: "72",
+            x: 190,
+            y: 98,
+            panel: "CONTACTOR_TERMICO:72"
+          }
+        ],
+        box: [
+          176,
+          79,
+          198,
+          99
+        ]
+      },
+      {
+        id: 45,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 190,
+        y: 98,
+        x2: 190,
+        y2: 112,
+        color: "#a64a4a"
+      },
+      {
+        id: 46,
+        type: 9100,
+        shape: "lamp",
+        reference: "P2",
+        labels: [
+          "X1",
+          "X2"
+        ],
+        x: 190,
+        y: 112,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "X1",
+            x: 190,
+            y: 112,
+            panel: "BOTONERAS:PILOTO_2"
+          },
+          {
+            terminal: "X2",
+            x: 190,
+            y: 130
+          }
+        ],
+        box: [
+          174,
+          111,
+          199,
+          131
+        ]
+      },
+      {
+        id: 47,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 190,
+        y: 130,
+        x2: 190,
+        y2: 200,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 48,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 98,
+        x2: 150,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 49,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 108,
+        x2: 150,
+        y2: 108
+      },
+      {
+        id: 50,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 150,
+        y: 108,
+        x2: 210,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 51,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 210,
+        y: 108,
+        x2: 210,
+        y2: 108
+      },
+      {
+        id: 52,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 210,
+        y: 108,
+        x2: 210,
+        y2: 118,
+        color: "#a64a4a"
+      },
+      {
+        id: 53,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 210,
+        y: 108,
+        x2: 250,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 54,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 250,
+        y: 108,
+        x2: 250,
+        y2: 118,
+        color: "#a64a4a"
+      },
+      {
+        id: 55,
+        type: 9100,
+        shape: "push-no",
+        reference: "S1",
+        labels: [
+          "3",
+          "4"
+        ],
+        x: 210,
+        y: 118,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "3",
+            x: 210,
+            y: 118,
+            panel: "BOTONERAS:S1:3"
+          },
+          {
+            terminal: "4",
+            x: 210,
+            y: 136,
+            panel: "BOTONERAS:S1:4"
+          }
+        ],
+        box: [
+          186,
+          117,
+          218,
+          137
+        ]
+      },
+      {
+        id: 56,
+        type: 9100,
+        shape: "contact-no",
+        reference: "KM1",
+        labels: [
+          "13",
+          "14"
+        ],
+        x: 250,
+        y: 118,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "13",
+            x: 250,
+            y: 118,
+            panel: "CONTACTOR_TERMICO:13"
+          },
+          {
+            terminal: "14",
+            x: 250,
+            y: 136,
+            panel: "CONTACTOR_TERMICO:14"
+          }
+        ],
+        box: [
+          236,
+          117,
+          258,
+          137
+        ]
+      },
+      {
+        id: 57,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 210,
+        y: 136,
+        x2: 210,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 58,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 210,
+        y: 146,
+        x2: 230,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 59,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 250,
+        y: 136,
+        x2: 250,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 60,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 250,
+        y: 146,
+        x2: 230,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 61,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 146,
+        x2: 230,
+        y2: 146
+      },
+      {
+        id: 62,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 250,
+        y: 146,
+        x2: 290,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 63,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 250,
+        y: 146,
+        x2: 250,
+        y2: 146
+      },
+      {
+        id: 64,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 146,
+        x2: 230,
+        y2: 158,
+        color: "#a64a4a"
+      },
+      {
+        id: 65,
+        type: 9100,
+        shape: "coil",
+        reference: "KM1",
+        labels: [
+          "A1",
+          "A2"
+        ],
+        x: 230,
+        y: 158,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "A1",
+            x: 230,
+            y: 158,
+            panel: "CONTACTOR_TERMICO:A1"
+          },
+          {
+            terminal: "A2",
+            x: 230,
+            y: 176,
+            panel: "CONTACTOR_TERMICO:A2"
+          }
+        ],
+        box: [
+          214,
+          157,
+          238,
+          177
+        ]
+      },
+      {
+        id: 66,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 290,
+        y: 146,
+        x2: 290,
+        y2: 158,
+        color: "#a64a4a"
+      },
+      {
+        id: 67,
+        type: 9100,
+        shape: "lamp",
+        reference: "P1",
+        labels: [
+          "X1",
+          "X2"
+        ],
+        x: 290,
+        y: 158,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "X1",
+            x: 290,
+            y: 158,
+            panel: "BOTONERAS:PILOTO_1"
+          },
+          {
+            terminal: "X2",
+            x: 290,
+            y: 176
+          }
+        ],
+        box: [
+          274,
+          157,
+          299,
+          177
+        ]
+      },
+      {
+        id: 68,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 176,
+        x2: 230,
+        y2: 200,
+        color: "#3d6fae"
+      },
+      {
+        id: 69,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 290,
+        y: 176,
+        x2: 290,
+        y2: 200,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 70,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 163.5,
+        y: 58,
+        x2: 163.5,
+        y2: 64,
+        color: "#a64a4a"
+      },
+      {
+        id: 71,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 163.5,
+        y: 64,
+        x2: 350,
+        y2: 64,
+        color: "#a64a4a"
+      },
+      {
+        id: 72,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 350,
+        y: 64,
+        x2: 350,
+        y2: 70,
+        color: "#a64a4a"
+      },
+      {
+        id: 73,
+        type: 9100,
+        shape: "lamp",
+        reference: "P3",
+        labels: [
+          "X1",
+          "X2"
+        ],
+        x: 350,
+        y: 70,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "X1",
+            x: 350,
+            y: 70,
+            panel: "BOTONERAS:PILOTO_3"
+          },
+          {
+            terminal: "X2",
+            x: 350,
+            y: 88
+          }
+        ],
+        box: [
+          334,
+          69,
+          359,
+          89
+        ]
+      },
+      {
+        id: 74,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 350,
+        y: 88,
+        x2: 350,
+        y2: 200,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 75,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 320,
+        y: 26,
+        x2: 320,
+        y2: 200,
+        color: "#3d6fae"
+      },
+      {
+        id: 76,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 320,
+        y: 200,
+        x2: 320,
+        y2: 200
+      },
+      {
+        id: 77,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "BOT",
+        labels: [
+          "N"
+        ],
+        x: 172,
+        y: 200,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "N",
+            x: 172,
+            y: 200,
+            panel: "BOTONERAS:N"
+          }
+        ],
+        box: [
+          169,
+          197,
+          175,
+          203
+        ],
+        pins: [
+          "N"
+        ],
+        ref: true
+      },
+      {
+        id: 78,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 172,
+        y: 200,
+        x2: 190,
+        y2: 200,
+        color: "#3d6fae"
+      },
+      {
+        id: 79,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 190,
+        y: 200,
+        x2: 230,
+        y2: 200,
+        color: "#3d6fae"
+      },
+      {
+        id: 80,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 200,
+        x2: 290,
+        y2: 200,
+        color: "#3d6fae"
+      },
+      {
+        id: 81,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 290,
+        y: 200,
+        x2: 320,
+        y2: 200,
+        color: "#3d6fae"
+      },
+      {
+        id: 82,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 320,
+        y: 200,
+        x2: 350,
+        y2: 200,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 83,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 190,
+        y: 200,
+        x2: 190,
+        y2: 200
+      },
+      {
+        id: 84,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 200,
+        x2: 230,
+        y2: 200
+      },
+      {
+        id: 85,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 290,
+        y: 200,
+        x2: 290,
+        y2: 200
+      },
+      {
+        id: 86,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 350,
+        y: 200,
+        x2: 350,
+        y2: 200
+      }
+    ],
+    views: {
+      all: {
+        x: 34,
+        y: 10,
+        w: 340,
+        h: 214
+      },
+      power: {
+        x: 34,
+        y: 14,
+        w: 112,
+        h: 176
+      },
+      control: {
+        x: 142,
+        y: 14,
+        w: 238,
+        h: 204
+      }
+    }
+  },
+  inversion: {
+    name: "Inversi\xF3n de giro con enclavamiento",
+    source: "Esquema de la lecci\xF3n guiada, redibujado a partir del circuito armado en el banco.",
+    origin: "lesson",
+    splitX: 195,
+    objects: [
+      {
+        id: 1,
+        type: 9100,
+        shape: "terminal-round",
+        reference: "-X",
+        labels: [
+          "R",
+          "S",
+          "T",
+          "PE"
+        ],
+        x: 63,
+        y: 24,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "R",
+            x: 63,
+            y: 26,
+            panel: "FUENTE:R"
+          },
+          {
+            terminal: "S",
+            x: 72,
+            y: 26,
+            panel: "FUENTE:S"
+          },
+          {
+            terminal: "T",
+            x: 81,
+            y: 26,
+            panel: "FUENTE:T"
+          },
+          {
+            terminal: "PE",
+            x: 90,
+            y: 26,
+            panel: "FUENTE:TP"
+          }
+        ],
+        box: [
+          54,
+          18,
+          94,
+          27
+        ],
+        pins: [
+          "R",
+          "S",
+          "T",
+          "PE"
+        ]
+      },
+      {
+        id: 2,
+        type: 9100,
+        shape: "contactor3",
+        reference: "KM1",
+        labels: [
+          "1",
+          "3",
+          "5",
+          "2",
+          "4",
+          "6"
+        ],
+        x: 63,
+        y: 60,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "1",
+            x: 63,
+            y: 60,
+            panel: "CONTACTOR_TERMICO:L1"
+          },
+          {
+            terminal: "3",
+            x: 72,
+            y: 60,
+            panel: "CONTACTOR_TERMICO:L2"
+          },
+          {
+            terminal: "5",
+            x: 81,
+            y: 60,
+            panel: "CONTACTOR_TERMICO:L3"
+          },
+          {
+            terminal: "2",
+            x: 63,
+            y: 78
+          },
+          {
+            terminal: "4",
+            x: 72,
+            y: 78
+          },
+          {
+            terminal: "6",
+            x: 81,
+            y: 78
+          }
+        ],
+        box: [
+          52,
+          59,
+          86,
+          79
+        ]
+      },
+      {
+        id: 3,
+        type: 9100,
+        shape: "contactor3",
+        reference: "KM2",
+        labels: [
+          "1",
+          "3",
+          "5",
+          "2",
+          "4",
+          "6"
+        ],
+        x: 120,
+        y: 60,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "1",
+            x: 120,
+            y: 60,
+            panel: "CONTACTOR_TRIFASICO:L1"
+          },
+          {
+            terminal: "3",
+            x: 129,
+            y: 60,
+            panel: "CONTACTOR_TRIFASICO:L2"
+          },
+          {
+            terminal: "5",
+            x: 138,
+            y: 60,
+            panel: "CONTACTOR_TRIFASICO:L3"
+          },
+          {
+            terminal: "2",
+            x: 120,
+            y: 78,
+            panel: "CONTACTOR_TRIFASICO:T1"
+          },
+          {
+            terminal: "4",
+            x: 129,
+            y: 78,
+            panel: "CONTACTOR_TRIFASICO:T2"
+          },
+          {
+            terminal: "6",
+            x: 138,
+            y: 78,
+            panel: "CONTACTOR_TRIFASICO:T3"
+          }
+        ],
+        box: [
+          109,
+          59,
+          143,
+          79
+        ]
+      },
+      {
+        id: 4,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 26,
+        x2: 63,
+        y2: 40,
+        color: "#2f343a"
+      },
+      {
+        id: 5,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 40,
+        x2: 63,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 6,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 40,
+        x2: 63,
+        y2: 40
+      },
+      {
+        id: 7,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 40,
+        x2: 120,
+        y2: 40,
+        color: "#2f343a"
+      },
+      {
+        id: 8,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 120,
+        y: 40,
+        x2: 120,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 9,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 26,
+        x2: 72,
+        y2: 46,
+        color: "#2f343a"
+      },
+      {
+        id: 10,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 46,
+        x2: 72,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 11,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 46,
+        x2: 72,
+        y2: 46
+      },
+      {
+        id: 12,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 46,
+        x2: 129,
+        y2: 46,
+        color: "#2f343a"
+      },
+      {
+        id: 13,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 129,
+        y: 46,
+        x2: 129,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 14,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 26,
+        x2: 81,
+        y2: 52,
+        color: "#2f343a"
+      },
+      {
+        id: 15,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 52,
+        x2: 81,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 16,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 52,
+        x2: 81,
+        y2: 52
+      },
+      {
+        id: 17,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 52,
+        x2: 138,
+        y2: 52,
+        color: "#2f343a"
+      },
+      {
+        id: 18,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 138,
+        y: 52,
+        x2: 138,
+        y2: 60,
+        color: "#2f343a"
+      },
+      {
+        id: 19,
+        type: 9100,
+        shape: "thermal3",
+        reference: "F1",
+        labels: [
+          "1",
+          "3",
+          "5",
+          "2",
+          "4",
+          "6"
+        ],
+        x: 63,
+        y: 100,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "1",
+            x: 63,
+            y: 100
+          },
+          {
+            terminal: "3",
+            x: 72,
+            y: 100
+          },
+          {
+            terminal: "5",
+            x: 81,
+            y: 100
+          },
+          {
+            terminal: "2",
+            x: 63,
+            y: 109,
+            panel: "CONTACTOR_TERMICO:T1"
+          },
+          {
+            terminal: "4",
+            x: 72,
+            y: 109,
+            panel: "CONTACTOR_TERMICO:T2"
+          },
+          {
+            terminal: "6",
+            x: 81,
+            y: 109,
+            panel: "CONTACTOR_TERMICO:T3"
+          }
+        ],
+        box: [
+          50,
+          97,
+          88,
+          112
+        ]
+      },
+      {
+        id: 20,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 78,
+        x2: 63,
+        y2: 100,
+        color: "#2f343a",
+        internal: true
+      },
+      {
+        id: 21,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 78,
+        x2: 72,
+        y2: 100,
+        color: "#2f343a",
+        internal: true
+      },
+      {
+        id: 22,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 78,
+        x2: 81,
+        y2: 100,
+        color: "#2f343a",
+        internal: true
+      },
+      {
+        id: 23,
+        type: 9100,
+        shape: "motor",
+        reference: "M1",
+        labels: [
+          "U1",
+          "V1",
+          "W1",
+          "W2",
+          "U2",
+          "V2",
+          "PE"
+        ],
+        x: 72,
+        y: 160,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "U1",
+            x: 63,
+            y: 152,
+            panel: "BORNERA_MOTOR:U1"
+          },
+          {
+            terminal: "V1",
+            x: 72,
+            y: 148,
+            panel: "BORNERA_MOTOR:V1"
+          },
+          {
+            terminal: "W1",
+            x: 81,
+            y: 152,
+            panel: "BORNERA_MOTOR:W1"
+          },
+          {
+            terminal: "W2",
+            x: 63,
+            y: 168,
+            panel: "BORNERA_MOTOR:W2"
+          },
+          {
+            terminal: "U2",
+            x: 72,
+            y: 172,
+            panel: "BORNERA_MOTOR:U2"
+          },
+          {
+            terminal: "V2",
+            x: 81,
+            y: 168,
+            panel: "BORNERA_MOTOR:V2"
+          },
+          {
+            terminal: "PE",
+            x: 84,
+            y: 160,
+            panel: "BORNERA_MOTOR:TP"
+          }
+        ],
+        box: [
+          56,
+          144,
+          92,
+          176
+        ]
+      },
+      {
+        id: 24,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 109,
+        x2: 63,
+        y2: 126,
+        color: "#2f343a"
+      },
+      {
+        id: 25,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 126,
+        x2: 63,
+        y2: 152,
+        color: "#2f343a"
+      },
+      {
+        id: 26,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 126,
+        x2: 63,
+        y2: 126
+      },
+      {
+        id: 27,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 109,
+        x2: 72,
+        y2: 132,
+        color: "#2f343a"
+      },
+      {
+        id: 28,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 132,
+        x2: 72,
+        y2: 148,
+        color: "#2f343a"
+      },
+      {
+        id: 29,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 132,
+        x2: 72,
+        y2: 132
+      },
+      {
+        id: 30,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 109,
+        x2: 81,
+        y2: 120,
+        color: "#2f343a"
+      },
+      {
+        id: 31,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 120,
+        x2: 81,
+        y2: 152,
+        color: "#2f343a"
+      },
+      {
+        id: 32,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 120,
+        x2: 81,
+        y2: 120
+      },
+      {
+        id: 33,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 120,
+        y: 78,
+        x2: 120,
+        y2: 120,
+        color: "#2f343a"
+      },
+      {
+        id: 34,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 120,
+        y: 120,
+        x2: 81,
+        y2: 120,
+        color: "#2f343a"
+      },
+      {
+        id: 35,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 129,
+        y: 78,
+        x2: 129,
+        y2: 132,
+        color: "#2f343a"
+      },
+      {
+        id: 36,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 129,
+        y: 132,
+        x2: 72,
+        y2: 132,
+        color: "#2f343a"
+      },
+      {
+        id: 37,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 138,
+        y: 78,
+        x2: 138,
+        y2: 126,
+        color: "#2f343a"
+      },
+      {
+        id: 38,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 138,
+        y: 126,
+        x2: 63,
+        y2: 126,
+        color: "#2f343a"
+      },
+      {
+        id: 39,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 168,
+        x2: 63,
+        y2: 182,
+        color: "#2f343a"
+      },
+      {
+        id: 40,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 63,
+        y: 182,
+        x2: 72,
+        y2: 182,
+        color: "#2f343a"
+      },
+      {
+        id: 41,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 172,
+        x2: 72,
+        y2: 182,
+        color: "#2f343a"
+      },
+      {
+        id: 42,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 168,
+        x2: 81,
+        y2: 182,
+        color: "#2f343a"
+      },
+      {
+        id: 43,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 81,
+        y: 182,
+        x2: 72,
+        y2: 182,
+        color: "#2f343a"
+      },
+      {
+        id: 44,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 72,
+        y: 182,
+        x2: 72,
+        y2: 182
+      },
+      {
+        id: 45,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 90,
+        y: 26,
+        x2: 160,
+        y2: 26,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 46,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 26,
+        x2: 160,
+        y2: 50,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 47,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 50,
+        x2: 160,
+        y2: 70,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 48,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 70,
+        x2: 160,
+        y2: 90,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 49,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 90,
+        x2: 160,
+        y2: 110,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 50,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 110,
+        x2: 160,
+        y2: 160,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 51,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 160,
+        x2: 84,
+        y2: 160,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 52,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 50,
+        x2: 160,
+        y2: 50
+      },
+      {
+        id: 53,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 50,
+        x2: 170,
+        y2: 50,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 54,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "BOT",
+        labels: [
+          "TP"
+        ],
+        x: 170,
+        y: 50,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "TP",
+            x: 170,
+            y: 50,
+            panel: "BOTONERAS:TP_DER"
+          }
+        ],
+        box: [
+          167,
+          47,
+          173,
+          53
+        ],
+        pins: [
+          "TP BOT"
+        ]
+      },
+      {
+        id: 55,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 70,
+        x2: 160,
+        y2: 70
+      },
+      {
+        id: 56,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 70,
+        x2: 170,
+        y2: 70,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 57,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "KM1",
+        labels: [
+          "TP"
+        ],
+        x: 170,
+        y: 70,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "TP",
+            x: 170,
+            y: 70,
+            panel: "CONTACTOR_TERMICO:TP_DER"
+          }
+        ],
+        box: [
+          167,
+          67,
+          173,
+          73
+        ],
+        pins: [
+          "TP KM1"
+        ]
+      },
+      {
+        id: 58,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 90,
+        x2: 160,
+        y2: 90
+      },
+      {
+        id: 59,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 90,
+        x2: 170,
+        y2: 90,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 60,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "KM2 izq",
+        labels: [
+          "TP"
+        ],
+        x: 170,
+        y: 90,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "TP",
+            x: 170,
+            y: 90,
+            panel: "CONTACTOR_TRIFASICO:TP_IZQ"
+          }
+        ],
+        box: [
+          167,
+          87,
+          173,
+          93
+        ],
+        pins: [
+          "TP KM2 izq"
+        ]
+      },
+      {
+        id: 61,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 110,
+        x2: 160,
+        y2: 110
+      },
+      {
+        id: 62,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 160,
+        y: 110,
+        x2: 170,
+        y2: 110,
+        color: "#2a8a62",
+        dashed: true
+      },
+      {
+        id: 63,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "KM2 der",
+        labels: [
+          "TP"
+        ],
+        x: 170,
+        y: 110,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "TP",
+            x: 170,
+            y: 110,
+            panel: "CONTACTOR_TRIFASICO:TP_DER"
+          }
+        ],
+        box: [
+          167,
+          107,
+          173,
+          113
+        ],
+        pins: [
+          "TP KM2 der"
+        ]
+      },
+      {
+        id: 64,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "-X",
+        labels: [
+          "F"
+        ],
+        x: 230,
+        y: 24,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "F",
+            x: 230,
+            y: 26,
+            panel: "FUENTE:F"
+          }
+        ],
+        box: [
+          227,
+          21,
+          233,
+          29
+        ],
+        pins: [
+          "F"
+        ]
+      },
+      {
+        id: 65,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "",
+        labels: [
+          "N"
+        ],
+        x: 555,
+        y: 24,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "N",
+            x: 555,
+            y: 26,
+            panel: "FUENTE:N"
+          }
+        ],
+        box: [
+          552,
+          21,
+          558,
+          29
+        ],
+        pins: [
+          "N"
+        ]
+      },
+      {
+        id: 66,
+        type: 9100,
+        shape: "f1aux",
+        reference: "F1",
+        labels: [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        x: 230,
+        y: 40,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "95",
+            x: 230,
+            y: 40,
+            panel: "CONTACTOR_TERMICO:95"
+          },
+          {
+            terminal: "96",
+            x: 230,
+            y: 58,
+            panel: "CONTACTOR_TERMICO:96"
+          },
+          {
+            terminal: "97",
+            x: 243.5,
+            y: 40,
+            panel: "CONTACTOR_TERMICO:97"
+          },
+          {
+            terminal: "98",
+            x: 243.5,
+            y: 58,
+            panel: "CONTACTOR_TERMICO:98"
+          }
+        ],
+        box: [
+          212,
+          39,
+          252,
+          59
+        ]
+      },
+      {
+        id: 67,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 26,
+        x2: 230,
+        y2: 32,
+        color: "#a64a4a"
+      },
+      {
+        id: 68,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 32,
+        x2: 230,
+        y2: 40,
+        color: "#a64a4a"
+      },
+      {
+        id: 69,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 32,
+        x2: 243.5,
+        y2: 32,
+        color: "#a64a4a"
+      },
+      {
+        id: 70,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 243.5,
+        y: 32,
+        x2: 243.5,
+        y2: 40,
+        color: "#a64a4a"
+      },
+      {
+        id: 71,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 32,
+        x2: 230,
+        y2: 32
+      },
+      {
+        id: 72,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 58,
+        x2: 230,
+        y2: 70,
+        color: "#a64a4a"
+      },
+      {
+        id: 73,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 70,
+        x2: 230,
+        y2: 70
+      },
+      {
+        id: 74,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 70,
+        x2: 230,
+        y2: 80,
+        color: "#a64a4a"
+      },
+      {
+        id: 75,
+        type: 9100,
+        shape: "push-nc",
+        reference: "S2",
+        labels: [
+          "1",
+          "2"
+        ],
+        x: 230,
+        y: 80,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "1",
+            x: 230,
+            y: 80,
+            panel: "BOTONERAS:S2:1"
+          },
+          {
+            terminal: "2",
+            x: 230,
+            y: 98,
+            panel: "BOTONERAS:S2:2"
+          }
+        ],
+        box: [
+          206,
+          79,
+          238,
+          99
+        ]
+      },
+      {
+        id: 76,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 70,
+        x2: 470,
+        y2: 70,
+        color: "#a64a4a"
+      },
+      {
+        id: 77,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 470,
+        y: 70,
+        x2: 470,
+        y2: 80,
+        color: "#a64a4a"
+      },
+      {
+        id: 78,
+        type: 9100,
+        shape: "contact-nc",
+        reference: "KM1",
+        labels: [
+          "81",
+          "82"
+        ],
+        x: 470,
+        y: 80,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "81",
+            x: 470,
+            y: 80,
+            panel: "CONTACTOR_TERMICO:81"
+          },
+          {
+            terminal: "82",
+            x: 470,
+            y: 98,
+            panel: "CONTACTOR_TERMICO:82"
+          }
+        ],
+        box: [
+          456,
+          79,
+          478,
+          99
+        ]
+      },
+      {
+        id: 79,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 470,
+        y: 98,
+        x2: 470,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 80,
+        type: 9100,
+        shape: "contact-nc",
+        reference: "KM2",
+        labels: [
+          "81",
+          "82"
+        ],
+        x: 470,
+        y: 108,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "81",
+            x: 470,
+            y: 108,
+            panel: "CONTACTOR_TRIFASICO:81"
+          },
+          {
+            terminal: "82",
+            x: 470,
+            y: 126,
+            panel: "CONTACTOR_TRIFASICO:82"
+          }
+        ],
+        box: [
+          456,
+          107,
+          478,
+          127
+        ]
+      },
+      {
+        id: 81,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 470,
+        y: 126,
+        x2: 470,
+        y2: 136,
+        color: "#a64a4a"
+      },
+      {
+        id: 82,
+        type: 9100,
+        shape: "lamp",
+        reference: "P2",
+        labels: [
+          "X1",
+          "X2"
+        ],
+        x: 470,
+        y: 136,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "X1",
+            x: 470,
+            y: 136,
+            panel: "BOTONERAS:PILOTO_2"
+          },
+          {
+            terminal: "X2",
+            x: 470,
+            y: 154
+          }
+        ],
+        box: [
+          454,
+          135,
+          479,
+          155
+        ]
+      },
+      {
+        id: 83,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 470,
+        y: 154,
+        x2: 470,
+        y2: 235,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 84,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 243.5,
+        y: 58,
+        x2: 243.5,
+        y2: 64,
+        color: "#a64a4a"
+      },
+      {
+        id: 85,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 243.5,
+        y: 64,
+        x2: 520,
+        y2: 64,
+        color: "#a64a4a"
+      },
+      {
+        id: 86,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 520,
+        y: 64,
+        x2: 520,
+        y2: 70,
+        color: "#a64a4a"
+      },
+      {
+        id: 87,
+        type: 9100,
+        shape: "lamp",
+        reference: "P3",
+        labels: [
+          "X1",
+          "X2"
+        ],
+        x: 520,
+        y: 70,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "X1",
+            x: 520,
+            y: 70,
+            panel: "BOTONERAS:PILOTO_3"
+          },
+          {
+            terminal: "X2",
+            x: 520,
+            y: 88
+          }
+        ],
+        box: [
+          504,
+          69,
+          529,
+          89
+        ]
+      },
+      {
+        id: 88,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 520,
+        y: 88,
+        x2: 520,
+        y2: 235,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 89,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 98,
+        x2: 230,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 90,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 108,
+        x2: 230,
+        y2: 108
+      },
+      {
+        id: 91,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 230,
+        y: 108,
+        x2: 265,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 92,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 265,
+        y: 108,
+        x2: 295,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 93,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 295,
+        y: 108,
+        x2: 375,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 94,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 375,
+        y: 108,
+        x2: 405,
+        y2: 108,
+        color: "#a64a4a"
+      },
+      {
+        id: 95,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 265,
+        y: 108,
+        x2: 265,
+        y2: 108
+      },
+      {
+        id: 96,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 265,
+        y: 108,
+        x2: 265,
+        y2: 118,
+        color: "#a64a4a"
+      },
+      {
+        id: 97,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 295,
+        y: 108,
+        x2: 295,
+        y2: 108
+      },
+      {
+        id: 98,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 295,
+        y: 108,
+        x2: 295,
+        y2: 118,
+        color: "#a64a4a"
+      },
+      {
+        id: 99,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 375,
+        y: 108,
+        x2: 375,
+        y2: 108
+      },
+      {
+        id: 100,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 375,
+        y: 108,
+        x2: 375,
+        y2: 118,
+        color: "#a64a4a"
+      },
+      {
+        id: 101,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 405,
+        y: 108,
+        x2: 405,
+        y2: 108
+      },
+      {
+        id: 102,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 405,
+        y: 108,
+        x2: 405,
+        y2: 118,
+        color: "#a64a4a"
+      },
+      {
+        id: 103,
+        type: 9100,
+        shape: "push-no",
+        reference: "S1",
+        labels: [
+          "3",
+          "4"
+        ],
+        x: 265,
+        y: 118,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "3",
+            x: 265,
+            y: 118,
+            panel: "BOTONERAS:S1:3"
+          },
+          {
+            terminal: "4",
+            x: 265,
+            y: 136,
+            panel: "BOTONERAS:S1:4"
+          }
+        ],
+        box: [
+          241,
+          117,
+          273,
+          137
+        ]
+      },
+      {
+        id: 104,
+        type: 9100,
+        shape: "contact-no",
+        reference: "KM1",
+        labels: [
+          "13",
+          "14"
+        ],
+        x: 295,
+        y: 118,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "13",
+            x: 295,
+            y: 118,
+            panel: "CONTACTOR_TERMICO:13"
+          },
+          {
+            terminal: "14",
+            x: 295,
+            y: 136,
+            panel: "CONTACTOR_TERMICO:14"
+          }
+        ],
+        box: [
+          281,
+          117,
+          303,
+          137
+        ]
+      },
+      {
+        id: 105,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 265,
+        y: 136,
+        x2: 265,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 106,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 265,
+        y: 146,
+        x2: 280,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 107,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 295,
+        y: 136,
+        x2: 295,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 108,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 295,
+        y: 146,
+        x2: 280,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 109,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 146,
+        x2: 280,
+        y2: 146
+      },
+      {
+        id: 110,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 146,
+        x2: 280,
+        y2: 156,
+        color: "#a64a4a"
+      },
+      {
+        id: 111,
+        type: 9100,
+        shape: "contact-nc",
+        reference: "KM2",
+        labels: [
+          "71",
+          "72"
+        ],
+        x: 280,
+        y: 156,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "71",
+            x: 280,
+            y: 156,
+            panel: "CONTACTOR_TRIFASICO:71"
+          },
+          {
+            terminal: "72",
+            x: 280,
+            y: 174,
+            panel: "CONTACTOR_TRIFASICO:72"
+          }
+        ],
+        box: [
+          266,
+          155,
+          288,
+          175
+        ]
+      },
+      {
+        id: 112,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 174,
+        x2: 280,
+        y2: 184,
+        color: "#a64a4a"
+      },
+      {
+        id: 113,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 184,
+        x2: 280,
+        y2: 184
+      },
+      {
+        id: 114,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 184,
+        x2: 280,
+        y2: 194,
+        color: "#a64a4a"
+      },
+      {
+        id: 115,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 184,
+        x2: 310,
+        y2: 184,
+        color: "#a64a4a"
+      },
+      {
+        id: 116,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 310,
+        y: 184,
+        x2: 310,
+        y2: 194,
+        color: "#a64a4a"
+      },
+      {
+        id: 117,
+        type: 9100,
+        shape: "coil",
+        reference: "KM1",
+        labels: [
+          "A1",
+          "A2"
+        ],
+        x: 280,
+        y: 194,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "A1",
+            x: 280,
+            y: 194,
+            panel: "CONTACTOR_TERMICO:A1"
+          },
+          {
+            terminal: "A2",
+            x: 280,
+            y: 212,
+            panel: "CONTACTOR_TERMICO:A2"
+          }
+        ],
+        box: [
+          264,
+          193,
+          288,
+          213
+        ]
+      },
+      {
+        id: 118,
+        type: 9100,
+        shape: "lamp",
+        reference: "P1",
+        labels: [
+          "X1",
+          "X2"
+        ],
+        x: 310,
+        y: 194,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "X1",
+            x: 310,
+            y: 194,
+            panel: "BOTONERAS:PILOTO_1"
+          },
+          {
+            terminal: "X2",
+            x: 310,
+            y: 212
+          }
+        ],
+        box: [
+          294,
+          193,
+          319,
+          213
+        ]
+      },
+      {
+        id: 119,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 212,
+        x2: 280,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 120,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 310,
+        y: 212,
+        x2: 310,
+        y2: 235,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 121,
+        type: 9100,
+        shape: "push-no",
+        reference: "S3",
+        labels: [
+          "3",
+          "4"
+        ],
+        x: 375,
+        y: 118,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "3",
+            x: 375,
+            y: 118,
+            panel: "BOTONERAS:S3:3"
+          },
+          {
+            terminal: "4",
+            x: 375,
+            y: 136,
+            panel: "BOTONERAS:S3:4"
+          }
+        ],
+        box: [
+          351,
+          117,
+          383,
+          137
+        ]
+      },
+      {
+        id: 122,
+        type: 9100,
+        shape: "contact-no",
+        reference: "KM2",
+        labels: [
+          "13",
+          "14"
+        ],
+        x: 405,
+        y: 118,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "13",
+            x: 405,
+            y: 118,
+            panel: "CONTACTOR_TRIFASICO:13"
+          },
+          {
+            terminal: "14",
+            x: 405,
+            y: 136,
+            panel: "CONTACTOR_TRIFASICO:14"
+          }
+        ],
+        box: [
+          391,
+          117,
+          413,
+          137
+        ]
+      },
+      {
+        id: 123,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 375,
+        y: 136,
+        x2: 375,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 124,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 375,
+        y: 146,
+        x2: 390,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 125,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 405,
+        y: 136,
+        x2: 405,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 126,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 405,
+        y: 146,
+        x2: 390,
+        y2: 146,
+        color: "#a64a4a"
+      },
+      {
+        id: 127,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 146,
+        x2: 390,
+        y2: 146
+      },
+      {
+        id: 128,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 146,
+        x2: 390,
+        y2: 156,
+        color: "#a64a4a"
+      },
+      {
+        id: 129,
+        type: 9100,
+        shape: "contact-nc",
+        reference: "KM1",
+        labels: [
+          "71",
+          "72"
+        ],
+        x: 390,
+        y: 156,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "71",
+            x: 390,
+            y: 156,
+            panel: "CONTACTOR_TERMICO:71"
+          },
+          {
+            terminal: "72",
+            x: 390,
+            y: 174,
+            panel: "CONTACTOR_TERMICO:72"
+          }
+        ],
+        box: [
+          376,
+          155,
+          398,
+          175
+        ]
+      },
+      {
+        id: 130,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 174,
+        x2: 390,
+        y2: 184,
+        color: "#a64a4a"
+      },
+      {
+        id: 131,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 184,
+        x2: 390,
+        y2: 184
+      },
+      {
+        id: 132,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 184,
+        x2: 390,
+        y2: 194,
+        color: "#a64a4a"
+      },
+      {
+        id: 133,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 184,
+        x2: 420,
+        y2: 184,
+        color: "#a64a4a"
+      },
+      {
+        id: 134,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 420,
+        y: 184,
+        x2: 420,
+        y2: 194,
+        color: "#a64a4a"
+      },
+      {
+        id: 135,
+        type: 9100,
+        shape: "coil",
+        reference: "KM2",
+        labels: [
+          "A1",
+          "A2"
+        ],
+        x: 390,
+        y: 194,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "A1",
+            x: 390,
+            y: 194,
+            panel: "CONTACTOR_TRIFASICO:A1"
+          },
+          {
+            terminal: "A2",
+            x: 390,
+            y: 212,
+            panel: "CONTACTOR_TRIFASICO:A2"
+          }
+        ],
+        box: [
+          374,
+          193,
+          398,
+          213
+        ]
+      },
+      {
+        id: 136,
+        type: 9100,
+        shape: "lamp",
+        reference: "P4",
+        labels: [
+          "X1",
+          "X2"
+        ],
+        x: 420,
+        y: 194,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "X1",
+            x: 420,
+            y: 194,
+            panel: "BOTONERAS:PILOTO_4"
+          },
+          {
+            terminal: "X2",
+            x: 420,
+            y: 212
+          }
+        ],
+        box: [
+          404,
+          193,
+          429,
+          213
+        ]
+      },
+      {
+        id: 137,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 212,
+        x2: 390,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 138,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 420,
+        y: 212,
+        x2: 420,
+        y2: 235,
+        color: "#3d6fae",
+        internal: true
+      },
+      {
+        id: 139,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 555,
+        y: 26,
+        x2: 555,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 140,
+        type: 9100,
+        shape: "terminal-diamond",
+        reference: "BOT",
+        labels: [
+          "N"
+        ],
+        x: 250,
+        y: 235,
+        x2: 0,
+        y2: 0,
+        ports: [
+          {
+            terminal: "N",
+            x: 250,
+            y: 235,
+            panel: "BOTONERAS:N"
+          }
+        ],
+        box: [
+          247,
+          232,
+          253,
+          238
+        ],
+        pins: [
+          "N"
+        ],
+        ref: true
+      },
+      {
+        id: 141,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 250,
+        y: 235,
+        x2: 280,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 142,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 235,
+        x2: 310,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 143,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 310,
+        y: 235,
+        x2: 390,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 144,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 235,
+        x2: 420,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 145,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 420,
+        y: 235,
+        x2: 470,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 146,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 470,
+        y: 235,
+        x2: 520,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 147,
+        type: 4e3,
+        reference: "",
+        labels: [],
+        x: 520,
+        y: 235,
+        x2: 555,
+        y2: 235,
+        color: "#3d6fae"
+      },
+      {
+        id: 148,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 280,
+        y: 235,
+        x2: 280,
+        y2: 235
+      },
+      {
+        id: 149,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 310,
+        y: 235,
+        x2: 310,
+        y2: 235
+      },
+      {
+        id: 150,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 390,
+        y: 235,
+        x2: 390,
+        y2: 235
+      },
+      {
+        id: 151,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 420,
+        y: 235,
+        x2: 420,
+        y2: 235
+      },
+      {
+        id: 152,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 470,
+        y: 235,
+        x2: 470,
+        y2: 235
+      },
+      {
+        id: 153,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 520,
+        y: 235,
+        x2: 520,
+        y2: 235
+      },
+      {
+        id: 154,
+        type: 4001,
+        reference: "",
+        labels: [],
+        x: 555,
+        y: 235,
+        x2: 555,
+        y2: 235
+      }
+    ],
+    views: {
+      all: {
+        x: 34,
+        y: 10,
+        w: 545,
+        h: 248
+      },
+      power: {
+        x: 34,
+        y: 14,
+        w: 150,
+        h: 176
+      },
+      control: {
+        x: 196,
+        y: 14,
+        w: 388,
+        h: 240
+      }
+    }
+  }
+};
+
+// src/data/cadeEstrellaTemporizador.json
+var cadeEstrellaTemporizador_default = { name: "ESTRELLA-TRI\xC1NGULO CON TEMPORIZADOR", source: "Redibujado al estilo de CADe_SIMU a partir del montaje con temporizador (KT1) y del dibujo \xABCAMBIO DELTA, ESTRELLA\xBB; no es una copia de un archivo .cad", origin: "lesson", frame: { left: 30, top: 12, right: 539, bottom: 270, header: 5, band: 4, columns: { first: 31, width: 63.5, letters: "ABCDEFGH" }, rows: { first: 18, height: 60, count: 4 } }, views: { all: { x: 20, y: 6, w: 535, h: 272 }, power: { x: 26, y: 8, w: 190, h: 222 }, control: { x: 238, y: 8, w: 285, h: 250 } }, splitX: 225, objects: [{ id: 1, type: 9100, shape: "terminal-round", reference: "-X", labels: ["L1", "L2", "L3", "PE"], x: 63, y: 24, x2: 0, y2: 0, ports: [{ terminal: "L1", x: 63, y: 26 }, { terminal: "L2", x: 72, y: 26 }, { terminal: "L3", x: 81, y: 26 }, { terminal: "PE", x: 90, y: 26 }], box: [54, 18, 94, 27], pins: ["L1", "L2", "L3", "PE"] }, { id: 2, type: 9100, shape: "breaker3", reference: "Q1", labels: ["1", "3", "5", "2", "4", "6"], x: 63, y: 45, x2: 0, y2: 0, ports: [{ terminal: "1", x: 63, y: 45 }, { terminal: "3", x: 72, y: 45 }, { terminal: "5", x: 81, y: 45 }, { terminal: "2", x: 63, y: 69 }, { terminal: "4", x: 72, y: 69 }, { terminal: "6", x: 81, y: 69 }], box: [44, 43, 88, 71] }, { id: 3, type: 9100, shape: "contactor3", reference: "KM1", labels: ["1", "3", "5", "2", "4", "6"], x: 63, y: 96, x2: 0, y2: 0, ports: [{ terminal: "1", x: 63, y: 96 }, { terminal: "3", x: 72, y: 96 }, { terminal: "5", x: 81, y: 96 }, { terminal: "2", x: 63, y: 114 }, { terminal: "4", x: 72, y: 114 }, { terminal: "6", x: 81, y: 114 }], box: [52, 95, 86, 115] }, { id: 4, type: 9100, shape: "thermal3", reference: "F1", labels: ["1", "3", "5", "2", "4", "6"], x: 63, y: 137, x2: 0, y2: 0, ports: [{ terminal: "1", x: 63, y: 137 }, { terminal: "3", x: 72, y: 137 }, { terminal: "5", x: 81, y: 137 }, { terminal: "2", x: 63, y: 146 }, { terminal: "4", x: 72, y: 146 }, { terminal: "6", x: 81, y: 146 }], box: [50, 134, 88, 149] }, { id: 5, type: 9100, shape: "motor", reference: "M1", labels: ["U1", "V1", "W1", "W2", "U2", "V2", "PE"], x: 72, y: 184, x2: 0, y2: 0, ports: [{ terminal: "U1", x: 63, y: 176 }, { terminal: "V1", x: 72, y: 172 }, { terminal: "W1", x: 81, y: 176 }, { terminal: "W2", x: 63, y: 192 }, { terminal: "U2", x: 72, y: 196 }, { terminal: "V2", x: 81, y: 192 }, { terminal: "PE", x: 84, y: 184 }], box: [56, 168, 92, 200] }, { id: 6, type: 9100, shape: "contactor3", reference: "KM3", labels: ["1", "3", "5", "2", "4", "6"], x: 117, y: 111, x2: 0, y2: 0, ports: [{ terminal: "1", x: 117, y: 111 }, { terminal: "3", x: 126, y: 111 }, { terminal: "5", x: 135, y: 111 }, { terminal: "2", x: 117, y: 129 }, { terminal: "4", x: 126, y: 129 }, { terminal: "6", x: 135, y: 129 }], box: [105, 110, 140, 130], pitch: 9 }, { id: 7, type: 9100, shape: "contactor3", reference: "KM2", labels: ["1", "3", "5", "2", "4", "6"], x: 165, y: 111, x2: 0, y2: 0, ports: [{ terminal: "1", x: 165, y: 111 }, { terminal: "3", x: 174, y: 111 }, { terminal: "5", x: 183, y: 111 }, { terminal: "2", x: 165, y: 129 }, { terminal: "4", x: 174, y: 129 }, { terminal: "6", x: 183, y: 129 }], box: [153, 110, 188, 130], pitch: 9 }, { id: 8, type: 4e3, reference: "", labels: [], x: 63, y: 26, x2: 63, y2: 45, color: "#2f343a" }, { id: 9, type: 4e3, reference: "", labels: [], x: 72, y: 26, x2: 72, y2: 45, color: "#2f343a" }, { id: 10, type: 4e3, reference: "", labels: [], x: 81, y: 26, x2: 81, y2: 45, color: "#2f343a" }, { id: 11, type: 4e3, reference: "", labels: [], x: 90, y: 26, x2: 90, y2: 184, color: "#2f343a", dashed: true }, { id: 12, type: 4e3, reference: "", labels: [], x: 90, y: 184, x2: 84, y2: 184, color: "#2f343a" }, { id: 13, type: 4e3, reference: "", labels: [], x: 63, y: 69, x2: 63, y2: 96, color: "#2f343a" }, { id: 14, type: 4e3, reference: "", labels: [], x: 63, y: 114, x2: 63, y2: 137, color: "#2f343a" }, { id: 15, type: 4e3, reference: "", labels: [], x: 72, y: 69, x2: 72, y2: 96, color: "#2f343a" }, { id: 16, type: 4e3, reference: "", labels: [], x: 72, y: 114, x2: 72, y2: 137, color: "#2f343a" }, { id: 17, type: 4e3, reference: "", labels: [], x: 81, y: 69, x2: 81, y2: 96, color: "#2f343a" }, { id: 18, type: 4e3, reference: "", labels: [], x: 81, y: 114, x2: 81, y2: 137, color: "#2f343a" }, { id: 19, type: 4e3, reference: "", labels: [], x: 63, y: 146, x2: 63, y2: 176, color: "#2f343a" }, { id: 20, type: 4e3, reference: "", labels: [], x: 72, y: 146, x2: 72, y2: 172, color: "#2f343a" }, { id: 21, type: 4e3, reference: "", labels: [], x: 81, y: 146, x2: 81, y2: 176, color: "#2f343a" }, { id: 22, type: 4001, reference: "", labels: [], x: 63, y: 78, x2: 63, y2: 78 }, { id: 23, type: 4001, reference: "", labels: [], x: 72, y: 87, x2: 72, y2: 87 }, { id: 24, type: 4001, reference: "", labels: [], x: 81, y: 90, x2: 81, y2: 90 }, { id: 25, type: 4e3, reference: "", labels: [], x: 63, y: 78, x2: 117, y2: 78, color: "#2f343a" }, { id: 26, type: 4e3, reference: "", labels: [], x: 117, y: 78, x2: 117, y2: 111, color: "#2f343a" }, { id: 27, type: 4e3, reference: "", labels: [], x: 72, y: 87, x2: 126, y2: 87, color: "#2f343a" }, { id: 28, type: 4e3, reference: "", labels: [], x: 126, y: 87, x2: 126, y2: 111, color: "#2f343a" }, { id: 29, type: 4e3, reference: "", labels: [], x: 81, y: 90, x2: 135, y2: 90, color: "#2f343a" }, { id: 30, type: 4e3, reference: "", labels: [], x: 135, y: 90, x2: 135, y2: 111, color: "#2f343a" }, { id: 31, type: 4e3, reference: "", labels: [], x: 165, y: 111, x2: 165, y2: 104, color: "#2f343a" }, { id: 32, type: 4e3, reference: "", labels: [], x: 174, y: 111, x2: 174, y2: 104, color: "#2f343a" }, { id: 33, type: 4e3, reference: "", labels: [], x: 183, y: 111, x2: 183, y2: 104, color: "#2f343a" }, { id: 34, type: 4e3, reference: "", labels: [], x: 165, y: 104, x2: 183, y2: 104, color: "#2f343a" }, { id: 35, type: 4001, reference: "", labels: [], x: 174, y: 104, x2: 174, y2: 104 }, { id: 36, type: 4e3, reference: "", labels: [], x: 81, y: 192, x2: 81, y2: 201, color: "#2f343a" }, { id: 37, type: 4e3, reference: "", labels: [], x: 81, y: 201, x2: 165, y2: 201, color: "#2f343a" }, { id: 38, type: 4e3, reference: "", labels: [], x: 72, y: 196, x2: 72, y2: 207, color: "#2f343a" }, { id: 39, type: 4e3, reference: "", labels: [], x: 72, y: 207, x2: 174, y2: 207, color: "#2f343a" }, { id: 40, type: 4e3, reference: "", labels: [], x: 63, y: 192, x2: 63, y2: 213, color: "#2f343a" }, { id: 41, type: 4e3, reference: "", labels: [], x: 63, y: 213, x2: 183, y2: 213, color: "#2f343a" }, { id: 42, type: 4e3, reference: "", labels: [], x: 117, y: 129, x2: 117, y2: 201, color: "#2f343a" }, { id: 43, type: 4e3, reference: "", labels: [], x: 126, y: 129, x2: 126, y2: 207, color: "#2f343a" }, { id: 44, type: 4e3, reference: "", labels: [], x: 135, y: 129, x2: 135, y2: 213, color: "#2f343a" }, { id: 45, type: 4e3, reference: "", labels: [], x: 165, y: 129, x2: 165, y2: 201, color: "#2f343a" }, { id: 46, type: 4e3, reference: "", labels: [], x: 174, y: 129, x2: 174, y2: 207, color: "#2f343a" }, { id: 47, type: 4e3, reference: "", labels: [], x: 183, y: 129, x2: 183, y2: 213, color: "#2f343a" }, { id: 48, type: 4001, reference: "", labels: [], x: 117, y: 201, x2: 117, y2: 201 }, { id: 49, type: 4001, reference: "", labels: [], x: 126, y: 207, x2: 126, y2: 207 }, { id: 50, type: 4001, reference: "", labels: [], x: 135, y: 213, x2: 135, y2: 213 }, { id: 51, type: 9100, shape: "terminal-diamond", reference: "-X", labels: ["L"], x: 339, y: 24, x2: 0, y2: 0, ports: [{ terminal: "L", x: 339, y: 26 }], box: [330, 18, 342, 28], pins: ["L"], ref: true }, { id: 52, type: 9100, shape: "terminal-diamond", reference: "", labels: ["N"], x: 351, y: 24, x2: 0, y2: 0, ports: [{ terminal: "N", x: 351, y: 26 }], box: [348, 18, 354, 28], pins: ["N"] }, { id: 53, type: 9100, shape: "breaker1", reference: "-Q", labels: ["1", "2"], x: 339, y: 42, x2: 0, y2: 0, ports: [{ terminal: "1", x: 339, y: 42 }, { terminal: "2", x: 339, y: 67.5 }], box: [315, 41, 347, 69] }, { id: 54, type: 9100, shape: "f1aux", reference: "F1", labels: ["95", "96", "97", "98"], x: 339, y: 81, x2: 0, y2: 0, ports: [{ terminal: "95", x: 339, y: 81 }, { terminal: "96", x: 339, y: 99 }, { terminal: "97", x: 352.5, y: 81 }, { terminal: "98", x: 352.5, y: 99 }], box: [321, 80, 360.5, 100] }, { id: 55, type: 9100, shape: "push-nc", reference: "SB1", labels: ["11", "12"], x: 305, y: 105, x2: 0, y2: 0, ports: [{ terminal: "11", x: 305, y: 105 }, { terminal: "12", x: 305, y: 123 }], box: [281, 104, 313, 124] }, { id: 56, type: 9100, shape: "push-no", reference: "SB2", labels: ["13", "14"], x: 305, y: 135, x2: 0, y2: 0, ports: [{ terminal: "13", x: 305, y: 135 }, { terminal: "14", x: 305, y: 153 }], box: [281, 134, 313, 154] }, { id: 57, type: 9100, shape: "contact-no", reference: "KM1", labels: ["13", "14"], x: 331, y: 135, x2: 0, y2: 0, ports: [{ terminal: "13", x: 331, y: 135 }, { terminal: "14", x: 331, y: 153 }], box: [317, 134, 339, 154] }, { id: 63, type: 9100, shape: "coil", reference: "KM1", labels: ["A1", "A2"], x: 305, y: 198, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 305, y: 198 }, { terminal: "A2", x: 305, y: 216 }], box: [289, 197, 313, 217] }, { id: 70, type: 4e3, reference: "", labels: [], x: 339, y: 26, x2: 339, y2: 42, color: "#a64a4a" }, { id: 71, type: 4e3, reference: "", labels: [], x: 339, y: 67.5, x2: 339, y2: 75, color: "#a64a4a" }, { id: 72, type: 4001, reference: "", labels: [], x: 339, y: 75, x2: 339, y2: 75 }, { id: 77, type: 4e3, reference: "", labels: [], x: 339, y: 75, x2: 339, y2: 81, color: "#a64a4a" }, { id: 78, type: 4e3, reference: "", labels: [], x: 339, y: 75, x2: 352.5, y2: 75, color: "#a64a4a" }, { id: 79, type: 4e3, reference: "", labels: [], x: 352.5, y: 75, x2: 352.5, y2: 81, color: "#a64a4a" }, { id: 80, type: 4e3, reference: "", labels: [], x: 339, y: 99, x2: 305, y2: 99, color: "#a64a4a" }, { id: 81, type: 4e3, reference: "", labels: [], x: 305, y: 99, x2: 305, y2: 105, color: "#a64a4a" }, { id: 85, type: 4e3, reference: "", labels: [], x: 305, y: 123, x2: 305, y2: 129, color: "#a64a4a" }, { id: 86, type: 4001, reference: "", labels: [], x: 305, y: 129, x2: 305, y2: 129 }, { id: 87, type: 4e3, reference: "", labels: [], x: 305, y: 129, x2: 305, y2: 135, color: "#a64a4a" }, { id: 88, type: 4e3, reference: "", labels: [], x: 305, y: 153, x2: 305, y2: 156, color: "#a64a4a" }, { id: 89, type: 4001, reference: "", labels: [], x: 305, y: 156, x2: 305, y2: 156 }, { id: 90, type: 4e3, reference: "", labels: [], x: 305, y: 129, x2: 331, y2: 129, color: "#a64a4a" }, { id: 91, type: 4e3, reference: "", labels: [], x: 331, y: 129, x2: 331, y2: 135, color: "#a64a4a" }, { id: 92, type: 4e3, reference: "", labels: [], x: 331, y: 153, x2: 331, y2: 156, color: "#a64a4a" }, { id: 93, type: 4e3, reference: "", labels: [], x: 331, y: 156, x2: 305, y2: 156, color: "#a64a4a" }, { id: 94, type: 4e3, reference: "", labels: [], x: 305, y: 156, x2: 305, y2: 165, color: "#a64a4a" }, { id: 95, type: 4001, reference: "", labels: [], x: 305, y: 165, x2: 305, y2: 165 }, { id: 96, type: 4e3, reference: "", labels: [], x: 305, y: 165, x2: 305, y2: 198, color: "#a64a4a" }, { id: 97, type: 4e3, reference: "", labels: [], x: 305, y: 216, x2: 305, y2: 249, color: "#3d6fae" }, { id: 200, type: 4e3, reference: "", labels: [], x: 339, y: 75, x2: 250, y2: 75, color: "#a64a4a" }, { id: 201, type: 4e3, reference: "", labels: [], x: 352.5, y: 99, x2: 490, y2: 99, color: "#a64a4a" }, { id: 202, type: 4e3, reference: "", labels: [], x: 490, y: 99, x2: 490, y2: 166, color: "#a64a4a" }, { id: 203, type: 4e3, reference: "", labels: [], x: 490, y: 184, x2: 490, y2: 249, color: "#a64a4a" }, { id: 204, type: 9100, shape: "contact-nc", reference: "KM1", labels: ["81", "82"], x: 250, y: 90, x2: 0, y2: 0, ports: [{ terminal: "81", x: 250, y: 90 }, { terminal: "82", x: 250, y: 108 }], box: [236, 89, 258, 109] }, { id: 205, type: 4e3, reference: "", labels: [], x: 250, y: 75, x2: 250, y2: 90, color: "#a64a4a" }, { id: 206, type: 4e3, reference: "", labels: [], x: 250, y: 108, x2: 250, y2: 118, color: "#a64a4a" }, { id: 207, type: 9100, shape: "contact-nc", reference: "KM2", labels: ["81", "82"], x: 250, y: 118, x2: 0, y2: 0, ports: [{ terminal: "81", x: 250, y: 118 }, { terminal: "82", x: 250, y: 136 }], box: [236, 117, 258, 137] }, { id: 208, type: 4e3, reference: "", labels: [], x: 250, y: 136, x2: 250, y2: 146, color: "#a64a4a" }, { id: 209, type: 9100, shape: "contact-nc", reference: "KM3", labels: ["81", "82"], x: 250, y: 146, x2: 0, y2: 0, ports: [{ terminal: "81", x: 250, y: 146 }, { terminal: "82", x: 250, y: 164 }], box: [236, 145, 258, 165] }, { id: 210, type: 4e3, reference: "", labels: [], x: 250, y: 164, x2: 250, y2: 174, color: "#a64a4a" }, { id: 211, type: 9100, shape: "lamp", reference: "H2", labels: ["X1", "X2"], x: 250, y: 174, x2: 0, y2: 0, ports: [{ terminal: "X1", x: 250, y: 174 }, { terminal: "X2", x: 250, y: 192 }], box: [234, 173, 259, 193] }, { id: 212, type: 4e3, reference: "", labels: [], x: 250, y: 192, x2: 250, y2: 249, color: "#a64a4a" }, { id: 213, type: 4001, reference: "", labels: [], x: 305, y: 186, x2: 305, y2: 186 }, { id: 214, type: 4e3, reference: "", labels: [], x: 305, y: 186, x2: 272, y2: 186, color: "#a64a4a" }, { id: 215, type: 4e3, reference: "", labels: [], x: 272, y: 186, x2: 272, y2: 190, color: "#a64a4a" }, { id: 216, type: 9100, shape: "lamp", reference: "H1", labels: ["X1", "X2"], x: 272, y: 190, x2: 0, y2: 0, ports: [{ terminal: "X1", x: 272, y: 190 }, { terminal: "X2", x: 272, y: 208 }], box: [256, 189, 281, 209] }, { id: 217, type: 4e3, reference: "", labels: [], x: 272, y: 208, x2: 272, y2: 249, color: "#a64a4a" }, { id: 218, type: 9100, shape: "lamp", reference: "H3", labels: ["X1", "X2"], x: 490, y: 166, x2: 0, y2: 0, ports: [{ terminal: "X1", x: 490, y: 166 }, { terminal: "X2", x: 490, y: 184 }], box: [474, 165, 499, 185] }, { id: 219, type: 4e3, reference: "", labels: [], x: 305, y: 165, x2: 440, y2: 165, color: "#a64a4a" }, { id: 220, type: 4001, reference: "", labels: [], x: 345, y: 165, x2: 345, y2: 165 }, { id: 221, type: 4e3, reference: "", labels: [], x: 345, y: 165, x2: 345, y2: 198, color: "#a64a4a" }, { id: 222, type: 9100, shape: "coil-timer", reference: "KT1", labels: ["A1", "A2"], x: 345, y: 198, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 345, y: 198 }, { terminal: "A2", x: 345, y: 216 }], box: [325, 197, 357, 217] }, { id: 223, type: 4e3, reference: "", labels: [], x: 345, y: 216, x2: 345, y2: 249, color: "#a64a4a" }, { id: 224, type: 4001, reference: "", labels: [], x: 390, y: 165, x2: 390, y2: 165 }, { id: 225, type: 4e3, reference: "", labels: [], x: 390, y: 165, x2: 390, y2: 174, color: "#a64a4a" }, { id: 226, type: 9100, shape: "contact-nc-timed", reference: "KT1", labels: ["55", "56"], x: 390, y: 174, x2: 0, y2: 0, ports: [{ terminal: "55", x: 390, y: 174 }, { terminal: "56", x: 390, y: 192 }], box: [364, 173, 398, 193] }, { id: 227, type: 4e3, reference: "", labels: [], x: 390, y: 192, x2: 390, y2: 201, color: "#a64a4a" }, { id: 228, type: 9100, shape: "contact-nc", reference: "KM3", labels: ["71", "72"], x: 390, y: 201, x2: 0, y2: 0, ports: [{ terminal: "71", x: 390, y: 201 }, { terminal: "72", x: 390, y: 219 }], box: [376, 200, 398, 220] }, { id: 229, type: 4e3, reference: "", labels: [], x: 390, y: 219, x2: 390, y2: 222, color: "#a64a4a" }, { id: 230, type: 9100, shape: "coil", reference: "KM2", labels: ["A1", "A2"], x: 390, y: 222, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 390, y: 222 }, { terminal: "A2", x: 390, y: 240 }], box: [374, 221, 398, 241] }, { id: 231, type: 4e3, reference: "", labels: [], x: 390, y: 240, x2: 390, y2: 249, color: "#a64a4a" }, { id: 232, type: 4001, reference: "", labels: [], x: 440, y: 165, x2: 440, y2: 165 }, { id: 233, type: 4e3, reference: "", labels: [], x: 440, y: 165, x2: 440, y2: 174, color: "#a64a4a" }, { id: 234, type: 9100, shape: "contact-no-timed", reference: "KT1", labels: ["67", "68"], x: 440, y: 174, x2: 0, y2: 0, ports: [{ terminal: "67", x: 440, y: 174 }, { terminal: "68", x: 440, y: 192 }], box: [414, 173, 448, 193] }, { id: 235, type: 4e3, reference: "", labels: [], x: 440, y: 192, x2: 440, y2: 201, color: "#a64a4a" }, { id: 236, type: 9100, shape: "contact-nc", reference: "KM2", labels: ["71", "72"], x: 440, y: 201, x2: 0, y2: 0, ports: [{ terminal: "71", x: 440, y: 201 }, { terminal: "72", x: 440, y: 219 }], box: [426, 200, 448, 220] }, { id: 237, type: 4e3, reference: "", labels: [], x: 440, y: 219, x2: 440, y2: 222, color: "#a64a4a" }, { id: 238, type: 9100, shape: "coil", reference: "KM3", labels: ["A1", "A2"], x: 440, y: 222, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 440, y: 222 }, { terminal: "A2", x: 440, y: 240 }], box: [424, 221, 448, 241] }, { id: 239, type: 4e3, reference: "", labels: [], x: 440, y: 240, x2: 440, y2: 249, color: "#a64a4a" }, { id: 240, type: 4e3, reference: "", labels: [], x: 351, y: 26, x2: 351, y2: 36, color: "#3d6fae" }, { id: 241, type: 4e3, reference: "", labels: [], x: 351, y: 36, x2: 510, y2: 36, color: "#3d6fae" }, { id: 242, type: 4e3, reference: "", labels: [], x: 510, y: 36, x2: 510, y2: 249, color: "#3d6fae" }, { id: 243, type: 4e3, reference: "", labels: [], x: 250, y: 249, x2: 510, y2: 249, color: "#3d6fae" }, { id: 244, type: 4001, reference: "", labels: [], x: 250, y: 249, x2: 250, y2: 249 }, { id: 245, type: 4001, reference: "", labels: [], x: 272, y: 249, x2: 272, y2: 249 }, { id: 246, type: 4001, reference: "", labels: [], x: 305, y: 249, x2: 305, y2: 249 }, { id: 247, type: 4001, reference: "", labels: [], x: 345, y: 249, x2: 345, y2: 249 }, { id: 248, type: 4001, reference: "", labels: [], x: 390, y: 249, x2: 390, y2: 249 }, { id: 249, type: 4001, reference: "", labels: [], x: 440, y: 249, x2: 440, y2: 249 }, { id: 250, type: 4001, reference: "", labels: [], x: 490, y: 249, x2: 490, y2: 249 }] };
+
+// src/data/starPanelMap.ts
+var K1 = "CONTACTOR_TERMICO:";
+var K2 = "CONTACTOR_TRIFASICO:";
+var K3 = "CONTACTOR_TRIFASICO_3:";
+var BT = "BOTONERAS:";
+var KT = "TEMPORIZADOR_1:";
+var seq = (prefix, terminals, names) => Object.fromEntries(terminals.map((t, i) => [t, prefix + names[i]]));
+var power = (prefix, outs) => ({ ...seq(prefix, ["1", "3", "5"], ["L1", "L2", "L3"]), ...seq(prefix, outs, ["T1", "T2", "T3"]) });
+var common = () => ({
+  2: { "2": "FUENTE:R", "4": "FUENTE:S", "6": "FUENTE:T" },
+  3: seq(K1, ["1", "3", "5"], ["L1", "L2", "L3"]),
+  4: seq(K1, ["2", "4", "6"], ["T1", "T2", "T3"]),
+  5: { U1: "BORNERA_MOTOR:U1", V1: "BORNERA_MOTOR:V1", W1: "BORNERA_MOTOR:W1", W2: "BORNERA_MOTOR:W2", U2: "BORNERA_MOTOR:U2", V2: "BORNERA_MOTOR:V2", PE: "BORNERA_MOTOR:TP" },
+  52: { N: "FUENTE:N" },
+  53: { "2": "FUENTE:F" },
+  54: seq(K1, ["95", "96", "97", "98"], ["95", "96", "97", "98"]),
+  55: { "11": BT + "S2:1", "12": BT + "S2:2" },
+  56: { "13": BT + "S1:3", "14": BT + "S1:4" },
+  57: seq(K1, ["13", "14"], ["13", "14"]),
+  63: seq(K1, ["A1", "A2"], ["A1", "A2"])
+});
+var manual = () => ({
+  ...common(),
+  6: power(K2, ["6", "4", "2"]),
+  7: power(K3, ["2", "4", "6"]),
+  58: seq(BT + "S3:", ["11", "12", "13", "14"], ["1", "2", "3", "4"]),
+  59: seq(K2, ["11", "12"], ["71", "72"]),
+  60: { "13": K2 + "13", "12": K2 + "14" },
+  61: seq(K3, ["11", "12"], ["71", "72"]),
+  62: seq(K1, ["11", "12"], ["71", "72"]),
+  64: seq(K3, ["A1", "A2"], ["A1", "A2"]),
+  65: seq(K2, ["A1", "A2"], ["A1", "A2"]),
+  66: { X1: BT + "PILOTO_2", X2: BT + "N" },
+  67: { X1: BT + "PILOTO_1", X2: BT + "N" },
+  68: { X1: BT + "PILOTO_4", X2: BT + "N" },
+  69: { X1: BT + "PILOTO_3", X2: BT + "N" }
+});
+var timer = () => ({
+  ...common(),
+  6: power(K3, ["6", "4", "2"]),
+  7: power(K2, ["2", "4", "6"]),
+  204: seq(K1, ["81", "82"], ["81", "82"]),
+  207: seq(K2, ["81", "82"], ["81", "82"]),
+  209: seq(K3, ["81", "82"], ["81", "82"]),
+  211: { X1: BT + "PILOTO_2", X2: BT + "N" },
+  216: { X1: BT + "PILOTO_1", X2: BT + "N" },
+  218: { X1: BT + "PILOTO_3", X2: BT + "N" },
+  222: seq(KT, ["A1", "A2"], ["A1", "A2"]),
+  226: seq(KT, ["55", "56"], ["55", "56"]),
+  234: seq(KT, ["67", "68"], ["67", "68"]),
+  228: seq(K3, ["71", "72"], ["71", "72"]),
+  236: seq(K2, ["71", "72"], ["71", "72"]),
+  230: seq(K2, ["A1", "A2"], ["A1", "A2"]),
+  238: seq(K3, ["A1", "A2"], ["A1", "A2"])
+});
+var STAR_PANELS = { estrellaManual: manual(), estrellaTimer: timer() };
+
+// src/data/twoContactorReference.ts
+var referencePort = (object, terminal) => `reference:${object}:${terminal}`;
+var pairs = [
+  [53, "2", 54, "95"],
+  [54, "96", 55, "11"],
+  [55, "12", 56, "13"],
+  [56, "13", 57, "13"],
+  [56, "14", 57, "14"],
+  [57, "14", 63, "A1"],
+  [63, "A2", 52, "N"],
+  [57, "14", 58, "11"],
+  [58, "12", 59, "11"],
+  [59, "12", 64, "A1"],
+  [64, "A2", 52, "N"],
+  [57, "14", 58, "13"],
+  [58, "14", 61, "11"],
+  [61, "12", 65, "A1"],
+  [65, "A2", 52, "N"],
+  [2, "4", 3, "3"],
+  [2, "6", 3, "5"],
+  [4, "2", 5, "U1"],
+  [4, "4", 5, "V1"],
+  [4, "6", 5, "W1"],
+  [5, "W2", 7, "6"],
+  [5, "U2", 7, "4"],
+  [5, "V2", 7, "2"],
+  [7, "1", 7, "3"],
+  [7, "3", 7, "5"],
+  [2, "2", 6, "1"],
+  [2, "4", 6, "3"],
+  [2, "6", 6, "5"],
+  [6, "6", 5, "W2"],
+  [6, "4", 5, "U2"],
+  [6, "2", 5, "V2"],
+  [69, "X2", 52, "N"],
+  [64, "A1", 67, "X1"],
+  [65, "A1", 68, "X1"],
+  [2, "2", 3, "1"],
+  [53, "2", 54, "97"],
+  [54, "98", 69, "X1"]
+];
+var TWO_CONTACTOR_REFERENCE_PAIRS = pairs.map(([a, b, c, d]) => [referencePort(a, b), referencePort(c, d)]);
+
 // src/data/cade.ts
 var WIRE_TYPES = [4e3, 4009, 4010];
 var onLine = (p, w) => Math.abs((w.x2 - w.x) * (p.y - w.y) - (w.y2 - w.y) * (p.x - w.x)) < 1e-3 && p.x >= Math.min(w.x, w.x2) && p.x <= Math.max(w.x, w.x2) && p.y >= Math.min(w.y, w.y2) && p.y <= Math.max(w.y, w.y2);
 function cadePorts(o) {
   const port = (terminal, x, y) => ({ objectId: o.id, reference: o.reference, terminal, x, y });
-  if (o.ports) return o.ports.map((p) => port(p.terminal, p.x, p.y));
+  if (o.ports) return o.ports.map((p) => ({ ...port(p.terminal, p.x, p.y), ...p.panel ? { panel: p.panel } : {}, ...p.anchor ? { anchor: p.anchor } : {} }));
   if ([6009, 2001, 6007].includes(o.type)) {
     const h = o.type === 6009 ? 21 : 12;
     return [0, 1, 2].flatMap((i) => [port(o.labels[i], o.x + i * 6, o.y), port(o.labels[i + 3], o.x + i * 6, o.y + h)]);
@@ -6162,10 +10226,10 @@ function cadePorts(o) {
   if (o.type === 8018) return [port(o.labels[0], o.x, o.y), port(o.labels[2], o.x, o.y + 12), port(o.labels[1], o.x + 9, o.y), port(o.labels[3], o.x + 9, o.y + 12)];
   return [port(o.labels[0], o.x, o.y), port(o.labels[1], o.x, o.y + (o.type === 6010 ? 21 : 12))];
 }
-function createCade(drawing) {
+function createCade(drawing, bank) {
   const objects = drawing.objects;
   const WIRES = objects.filter((o) => WIRE_TYPES.includes(o.type));
-  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type));
+  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type)).map((o) => bank?.[o.id] ? { ...o, bank: bank[o.id] } : o);
   const JUNCTIONS = objects.filter((o) => o.type === 4001);
   const PORTS = SYMBOLS.flatMap(cadePorts);
   function network(wireId) {
@@ -6199,9 +10263,40 @@ var CADE_JUNCTIONS = PERFECTO_CADE.JUNCTIONS;
 var CADE_PORTS = PERFECTO_CADE.PORTS;
 var cadeNetwork = PERFECTO_CADE.network;
 var ESTRELLA_CADE = createCade(cadeEstrellaTriangulo_default);
+var withPanels = (drawing, map) => ({ ...drawing, objects: drawing.objects.map((o) => o.ports && map[o.id] ? { ...o, ports: o.ports.map((p) => map[o.id][p.terminal] ? { ...p, panel: map[o.id][p.terminal] } : p) } : o) });
+var TIMER = "Temporizador neum\xE1tico";
+var THERMAL = "Contactor + rel\xE9 t\xE9rmico";
+var TRI = "Contactor trif\xE1sico";
+var TWO_CONTACTOR_BANK_NAMES = {
+  3: { name: TIMER },
+  57: { name: TIMER },
+  62: { name: TIMER },
+  63: { name: TIMER, part: "Bobina del temporizador neum\xE1tico" },
+  58: { name: TIMER, part: "Contactos temporizados del temporizador neum\xE1tico (KT1)", note: "El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del temporizador neum\xE1tico: 55-56 (NC) y 67-68 (NA).", what: "Contactos que cambian de estado cuando termina el tiempo del temporizador." },
+  6: { name: THERMAL },
+  59: { name: THERMAL },
+  60: { name: THERMAL },
+  65: { name: THERMAL, part: "Bobina del contactor + rel\xE9 t\xE9rmico" },
+  7: { name: TRI },
+  61: { name: TRI },
+  64: { name: TRI, part: "Bobina del contactor trif\xE1sico" }
+};
+var LESSON_CADES = {
+  simple: createCade(cadeLecciones_default.simple),
+  inversion: createCade(cadeLecciones_default.inversion),
+  estrellaManual: createCade(withPanels(cadeEstrellaTriangulo_default, STAR_PANELS.estrellaManual)),
+  estrellaTimer: createCade(withPanels(cadeEstrellaTemporizador_default, STAR_PANELS.estrellaTimer)),
+  // Preserve every original symbol, label and coordinate; annotate reference
+  // anchors separately from real bank-terminal mappings.
+  estrellaDosContactores: createCade({ ...cadeEstrellaTriangulo_default, objects: cadeEstrellaTriangulo_default.objects.map((o) => ({ ...o, ..."ports" in o && o.ports ? { ports: o.ports.map((p) => ({ ...p, anchor: referencePort(o.id, p.terminal) })) } : {} })) }, TWO_CONTACTOR_BANK_NAMES)
+};
 var CADE_DRAWINGS = [
   { id: "perfecto", title: "PERFECTO", cade: PERFECTO_CADE, guided: true },
-  { id: "estrella", title: "Estrella-tri\xE1ngulo", cade: ESTRELLA_CADE, guided: false }
+  { id: "estrella", title: "Estrella-tri\xE1ngulo", cade: ESTRELLA_CADE, guided: false },
+  { id: "simple", title: "Lecci\xF3n \xB7 Marcha y paro", cade: LESSON_CADES.simple, guided: false },
+  { id: "inversion", title: "Lecci\xF3n \xB7 Inversi\xF3n de giro", cade: LESSON_CADES.inversion, guided: false },
+  { id: "estrellaTimer", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo con temporizador", cade: LESSON_CADES.estrellaTimer, guided: false },
+  { id: "estrellaDosContactores", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo \xB7 2 contactores", cade: LESSON_CADES.estrellaDosContactores, guided: false }
 ];
 var CADE_QUESTIONS = [
   { question: "Potencia: sigue L1 hasta la entrada 1 de -Q.", wire: 103, scope: "power", hint: "El primer conductor de la columna de potencia." },
@@ -6227,7 +10322,9 @@ var CADE_QUESTIONS = [
   CADE_SYMBOLS,
   CADE_WIRES,
   ESTRELLA_CADE,
+  LESSON_CADES,
   PERFECTO_CADE,
+  TWO_CONTACTOR_BANK_NAMES,
   cadeNetwork,
   cadePorts,
   createCade

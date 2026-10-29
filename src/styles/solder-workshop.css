@@ -1,0 +1,56 @@
+/* Shared PanStage, FloatingDock and FloatingWindow; only solder-specific framing. */
+.tool-soldering .lab-pan{--pan-top:200px;--pan-right:20px;--pan-bottom:150px;--pan-left:20px}
+.tool-soldering .workshop-scene{display:block;width:1000px;height:700px;max-width:none;touch-action:none;font-family:system-ui}
+.tool-soldering svg [role=button]{cursor:pointer}.tool-soldering svg [role=button]:focus-visible{outline:3px solid #247ba1}
+.solder-modebar{position:absolute;top:132px;left:16px;right:16px;display:flex;align-items:center;gap:12px;z-index:30;pointer-events:none;font:13px system-ui;color:#294653}.solder-modebar>*{pointer-events:auto}.solder-modebar>strong{font-size:15px}.solder-exercises{display:flex;gap:6px;flex-wrap:wrap}.solder-modebar>button{margin-left:auto}
+.solder-modebar button,.solder-panel-content button{min-height:44px;border:1px solid #c3d1d8;border-radius:9px;background:#fff;padding:8px 12px;color:#294653;font:inherit;cursor:pointer}.solder-modebar button[aria-pressed=true],.solder-panel-content button[aria-pressed=true]{background:#284b5d;color:white}.solder-panel-content button:disabled{opacity:.5;cursor:default}
+.solder-feedback{position:absolute;left:20px;bottom:78px;max-width:560px;right:20px;width:fit-content;padding:10px 14px;border:1px solid #c8dce3;border-radius:10px;background:#f4faf9eb;color:#294653;font:12px/1.5 system-ui;pointer-events:none}.solder-feedback span{display:block;font-size:11px;color:#56727e}
+.solder-panel-content{font:13px/1.6 system-ui;color:#294653}.solder-panel-content p{margin:0 0 14px}.solder-panel-content .workshop-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.solder-panel-content a{color:#245d78}.solder-panel-content details{line-height:1.7}.solder-cable-validation{min-width:0}.solder-cable-validation h3{margin:0 0 10px}.solder-cable-validation .cable-meter>svg{min-width:600px}.solder-cable-validation .cable-meter{overflow:auto}.panel-multimeter .manual-meter-host{font-family:system-ui}.panel-multimeter .manual-cord{pointer-events:none}.panel-multimeter foreignObject{overflow:visible}
+@media(max-width:800px){.solder-modebar{top:64px;left:8px;right:8px;gap:6px;align-items:flex-start;flex-wrap:wrap}.solder-modebar>strong{display:none}.solder-modebar button{font-size:11px;min-height:40px;padding:6px 9px}.solder-modebar>button{margin:0}.tool-soldering .lab-pan{--pan-top:154px;--pan-left:8px;--pan-right:8px;--pan-bottom:155px}.solder-feedback{left:10px;right:10px;bottom:74px;font-size:11px;max-height:84px;overflow:hidden}.solder-feedback span{font-size:10px}}
+@media(max-width:900px) and (max-height:500px){.solder-modebar{top:60px}.tool-soldering .lab-pan{--pan-top:110px;--pan-bottom:100px}.solder-feedback{left:10px;right:240px;bottom:64px;max-height:62px}.solder-feedback span{display:none}}
+.solder-cable-validation .academic-cable{padding:16px;min-width:0}.solder-cable-validation .academic-cable>svg{display:block;width:100%;max-width:660px;margin:18px auto}.solder-cable-validation .academic-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.solder-cable-validation .academic-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:15px 0}.solder-cable-validation label{display:flex;gap:8px;flex-direction:column;font-size:13px}.solder-cable-validation select{min-height:44px;padding:8px;max-width:100%;border:1px solid #b5cbd5;border-radius:8px}.solder-cable-validation .academic-reading{display:block;padding:14px;background:#edf3f5;border-radius:9px}.solder-cable-validation .academic-limits{font-size:12px;line-height:1.6;max-width:none}.solder-cable-validation .academic-wire-status{font-size:13px;line-height:1.8}@media(max-width:600px){.solder-cable-validation .academic-fields{grid-template-columns:1fr}.solder-cable-validation .academic-cable{padding:0}}
+
+.tool-soldering .lab-zoombar{top:auto;bottom:18px;right:18px}
+@media(max-width:700px){.tool-soldering .lab-zoombar{top:auto;bottom:138px;right:10px}}
+
+.lab-compact .tool-soldering.lab-canvas-workspace>.lab-zoombar{top:auto;bottom:138px;right:10px}
+
+/* The bench starts clear. Tools are added from the shared floating selector. */
+.solder-modebar label{display:flex;align-items:center;gap:8px;min-width:0}.solder-modebar select{min-height:44px;max-width:230px;border:1px solid #c3d1d8;border-radius:9px;padding:8px 12px;background:#fff;color:#294653;font:13px system-ui}.solder-modebar>span{font-size:12px;color:#5b7580}.solder-modebar>button{margin-left:0}
+.tool-soldering .lab-pan.interaction-pan{cursor:grab}.tool-soldering .lab-pan.interaction-pan *{cursor:grab!important}.tool-soldering .lab-pan.interaction-objects{cursor:default}
+.tool-soldering .lab-dock.has-labels{gap:3px;padding:6px;bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 16px)}.tool-soldering .lab-dock.has-labels>button{width:70px;min-width:0;height:52px;display:flex;flex-direction:column;gap:4px;justify-content:center;padding:4px}.tool-soldering .lab-dock-label{display:block;font:11px system-ui;white-space:nowrap}.tool-soldering .lab-dock.has-labels .lab-dock-tip{display:none}
+.tool-soldering .solder-feedback{top:190px;bottom:auto;max-width:650px;margin:0;max-height:62px;overflow:hidden;padding:8px 10px;font-size:12px}.tool-soldering .solder-feedback>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tool-soldering .lab-pan{--pan-top:268px;--pan-bottom:116px}.tool-soldering .lab-zoombar{top:auto;bottom:calc(82px + env(safe-area-inset-bottom,0px));right:10px}
+.solder-shelf-tabs{display:flex;gap:5px;margin-bottom:12px}.solder-shelf-tabs button{flex:1;min-height:42px;padding:6px;border:1px solid #c2d0d7;border-radius:8px;background:white;color:#294653;font:12px system-ui}.solder-shelf-tabs button[aria-pressed=true]{background:#284b5d;color:white}.solder-shelf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.solder-shelf-card{touch-action:none;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:110px;border:1px solid #c8d5da;border-radius:12px;padding:8px;background:#f7fafb;color:#294653;cursor:grab;font:13px system-ui}.solder-shelf-card>svg{width:90px;height:64px;pointer-events:none}.solder-shelf-card>strong{font-weight:600}.solder-shelf-card>small{font-size:10px;color:#587582}.solder-shelf-ghost{position:fixed;z-index:10000;transform:translate(-50%,-50%);pointer-events:none;display:flex;flex-direction:column;align-items:center;background:#fffD;border:1px solid #83a8ba;border-radius:12px;padding:6px;box-shadow:0 6px 20px #213a4828;font:11px system-ui;color:#294653}.solder-shelf-ghost svg{height:70px;width:80px}
+@media(max-width:800px){.solder-modebar{top:64px;flex-wrap:nowrap;align-items:center;gap:6px}.solder-modebar label{font-size:0;flex:none}.solder-modebar select{font-size:12px;max-width:175px;padding:6px 8px}.solder-modebar>span{font-size:11px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.solder-modebar>button{min-height:44px;font-size:11px;padding:6px 9px}.tool-soldering .solder-feedback{top:116px;left:8px;right:8px;font-size:11px;max-height:58px}.tool-soldering .lab-pan{--pan-top:182px;--pan-bottom:138px;--pan-left:8px;--pan-right:8px}.tool-soldering .lab-dock.has-labels>button{width:65px}.lab-compact .tool-soldering.lab-canvas-workspace>.lab-zoombar{top:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));right:8px}}
+@media(max-height:500px){.tool-soldering .solder-feedback{display:none}.tool-soldering .lab-pan{--pan-top:114px;--pan-bottom:105px}.tool-soldering .lab-zoombar,.lab-compact .tool-soldering.lab-canvas-workspace>.lab-zoombar{bottom:16px;right:8px}.tool-soldering .lab-dock.has-labels{left:8px;transform:none;max-width:calc(100vw - 200px)}}
+
+.solder-modebar>select{max-width:94px}.solder-modebar>label{font-size:0}.solder-tool-shelf .floating-window-header h3,.solder-tool-shelf .floating-window-header small{font-family:system-ui}
+
+.solder-tool-shelf.is-dragging{opacity:0;pointer-events:none}
+
+/* The power control remains finger-sized regardless of canvas zoom. */
+.solder-modebar .solder-power{min-height:44px;background:#f6e9d8;border-color:#bd8a50;font-weight:650;white-space:nowrap}.solder-modebar .solder-power[aria-pressed=true]{background:#2f6455;color:#fff;border-color:#2f6455}
+.solder-melt-animation{pointer-events:none}.solder-pool{transform-box:fill-box;transform-origin:center;animation:solder-pool-spread 1.2s ease-out both}.solder-flow{stroke-dasharray:22;animation:solder-feed .65s ease-out both}.solder-vapour{animation:solder-vapour 1.2s ease-out both}.solder-liquid{animation:solder-liquid .8s ease-in-out infinite alternate}
+@keyframes solder-pool-spread{0%{transform:scale(.25);fill:#a9b9c0}35%{transform:scale(1.1);fill:#f4f8f9}100%{transform:scale(.65);fill:#bdcdd4}}
+@keyframes solder-feed{from{stroke-dashoffset:22;opacity:0}30%{opacity:1}to{stroke-dashoffset:-22;opacity:0}}
+@keyframes solder-vapour{from{opacity:0;transform:translateY(4px)}25%{opacity:.35}to{opacity:0;transform:translateY(-15px)}}
+@keyframes solder-liquid{from{fill:#b7c8d0}to{fill:#eef6f7}}
+@media(prefers-reduced-motion:reduce){.solder-pool,.solder-flow,.solder-vapour,.solder-liquid{animation:none}.solder-vapour{display:none}}
+@media(max-width:800px){.solder-modebar{display:grid;grid-template-columns:minmax(85px,1fr) 66px 80px;gap:5px}.solder-modebar:has(>button[aria-label="Guardar herramienta"]){grid-template-columns:minmax(85px,1fr) 66px 80px 48px}.solder-modebar label{min-width:0}.solder-modebar select{width:100%;max-width:100%;min-width:0;padding:6px;font-size:11px}.solder-modebar>button{padding:6px;font-size:11px}.solder-modebar .solder-power{padding:6px 4px;font-size:12px}}
+
+/* Objects may live anywhere on the white board, beyond the original SVG rectangle. */
+.tool-soldering .workshop-scene,.tool-soldering .lab-pan-content{overflow:visible}
+
+.solder-pool{animation:solder-pool-spread 2.8s ease-out both}
+.solder-flow{stroke-width:5;animation:solder-feed .7s ease-out 3 both}
+.solder-vapour{animation:solder-vapour 2.8s ease-out both}
+.solder-heat-ring{animation:solder-heat-pulse .7s ease-in-out 4 alternate}
+@keyframes solder-heat-pulse{to{opacity:.25;r:29}}
+@media(prefers-reduced-motion:reduce){.solder-heat-ring{animation:none}}
+
+/* Scroll on the tool preview; a separate grip deliberately starts placement drag. */
+.solder-shelf-grid .solder-shelf-card{touch-action:pan-y;cursor:default;padding:6px;gap:6px;min-height:0}
+.solder-shelf-card>.solder-shelf-place{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:100%;min-height:110px;padding:6px;background:transparent;border:0;box-shadow:none;touch-action:pan-y;color:inherit;font:inherit}
+.solder-shelf-place>svg{width:90px;height:64px;pointer-events:none}.solder-shelf-place>small{font-size:11px}
+.solder-shelf-card>.solder-shelf-drag{width:100%;min-height:44px;padding:6px;border:1px solid #c2c7cb;border-radius:8px;touch-action:none;cursor:grab;font:600 12px var(--ui-font,system-ui)}

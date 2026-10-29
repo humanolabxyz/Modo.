@@ -1,6 +1,7 @@
 import type {ManualStep} from './practice';
 import type {LessonId} from './lessonIds';
 import {starTeaching} from './starDeltaTeaching';
+import {twoContactorDetail} from './twoContactorTeaching';
 
 export type ComponentTeaching={name:string;role:string};
 export type StepTeaching={components:ComponentTeaching[];why:string;behavior:string;without:string;question:string;criteria:string[]};
@@ -44,6 +45,7 @@ export function componentForTerminal(id:string):ComponentTeaching{
 
 export function teachingForStep(step:Pick<ManualStep,'from'|'to'>,schematic:LessonId):StepTeaching{
  const a=step.from,b=step.to,ends=[a,b];
+ if(schematic==='estrellaDosContactores')return {...twoContactorDetail(a,b),components:[...new Map(ends.map(id=>{const c=componentForTerminal(id);if(id.startsWith('TEMPORIZADOR_1:'))return ['Conjunto temporizado · KT1',{name:'Conjunto temporizado · KT1',role:'En este montaje reúne bobina, auxiliar 13–14, contactos temporizados 55–56 / 67–68 y tres polos de línea L–T. No es KM3.'}];return [c.name,c];})).values()]};
  if(schematic==='estrellaManual'||schematic==='estrellaTimer')return {...starTeaching(schematic,a,b),components:[...new Map(ends.map(id=>{const c=componentForTerminal(id);return [c.name,c]})).values()]};
  let kind:string;
  if(ends.some(id=>id.includes(':TP')))kind='earth';

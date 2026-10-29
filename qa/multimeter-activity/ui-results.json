@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "profile": "manual",
+      "steps": 33,
+      "records": 33
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "profile": "matias",
+      "steps": 33,
+      "records": 33
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "profile": "manual",
+      "steps": 33,
+      "records": 33
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "profile": "manual",
+      "steps": 12,
+      "records": 12
+    }
+  ],
+  "errors": []
+}

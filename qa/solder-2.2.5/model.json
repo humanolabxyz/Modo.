@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Tres conductores independientes",
+    "Reposo sin cambios",
+    "Unión soldada bloqueada hasta fusión",
+    "Tubo impide recalentar para extraer",
+    "Cada aleación conserva su umbral",
+    "Los otros hilos enfrían sin borrarse",
+    "Estación compartida",
+    "Recarga conserva unión soldada fría y rechaza estados inválidos",
+    "Colores según F34 página 4"
+  ]
+}

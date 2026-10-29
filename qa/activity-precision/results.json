@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "Eight maneuvers in both profiles: real transition, order, source, stage, released buttons, TEST and RESET; final state cannot substitute action",
+    "Transcription equals captured digits, with comma/point, displayed SI scale and OL; percentage-near values rejected",
+    "Legacy readings retained; capture conditions and maneuver proof persist and export; malformed evidence rejected"
+  ]
+}

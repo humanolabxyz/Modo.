@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Materia, modelos, progreso, panel y laboratorio conservados",
+    "Cabecera compacta y lectura principal legible en escritorio",
+    "El cambio visual conserva selección por teclado y las tres fases",
+    "Inicio, ramo, explicación, electrónica, herramienta y codificación sin desbordamiento a 390/768/1280 px",
+    "Cuaderno, tabla, desafío y taller conservan controles utilizables en móvil",
+    "Cero excepciones y errores de consola"
+  ],
+  "errors": []
+}

@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "chromium: primer toque lateral centra; segundo toque abre Panel",
+    "chromium: arrastre con mouse en vista móvil cambia de tarjeta sin abrir módulo",
+    "chromium: gesto corto mueve sin navegar accidentalmente",
+    "chromium: toque en tarjeta central abre Laboratorio",
+    "Chromium: deslizamientos táctiles en ambas direcciones conservan Home",
+    "Chromium: después de deslizar, el primer toque lateral selecciona y el segundo entra",
+    "chromium: indicadores y acceso a Comunidad conservados",
+    "chromium: escritorio conserva apertura directa con un clic",
+    "webkit: primer toque lateral centra; segundo toque abre Panel",
+    "webkit: arrastre con mouse en vista móvil cambia de tarjeta sin abrir módulo",
+    "webkit: gesto corto mueve sin navegar accidentalmente",
+    "webkit: toque en tarjeta central abre Laboratorio",
+    "webkit: indicadores y acceso a Comunidad conservados",
+    "webkit: escritorio conserva apertura directa con un clic"
+  ],
+  "errors": []
+}

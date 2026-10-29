@@ -1,0 +1,492 @@
+{
+  "date": "2026-10-25",
+  "status": "investigacion_y_propuesta_no_implementada",
+  "visuals": [
+    {
+      "id": "V01",
+      "title": "Interior de un gabinete de automatización",
+      "source": "F01",
+      "kind": "Fotografía industrial",
+      "image": "imagenes/F01-eiffage.jpg",
+      "observe": "Fuente, módulos, bornes, rieles y canaletas visibles; conductores identificados.",
+      "implement": "Placa editable con componentes, etiquetas y extremos de cada hilo seleccionables.",
+      "limit": "La foto no demuestra el circuito completo ni autoriza deducir el destino de un hilo oculto.",
+      "pdf_page": null,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V02",
+      "title": "CCM instalado: conjunto de columnas",
+      "source": "F03",
+      "kind": "Fotografía de caso industrial",
+      "image": "imagenes/F03-boral.jpg",
+      "observe": "Puertas, mandos y divisiones por unidades. Caso Boral, Charlton, Australia.",
+      "implement": "Vista general por columnas y acceso a la unidad seleccionada.",
+      "limit": "Es una referencia internacional; no es una fotografía de una faena de Tarapacá.",
+      "pdf_page": null,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V03",
+      "title": "Estructura de un conjunto de distribución",
+      "source": "F04",
+      "kind": "Visual de fabricante",
+      "image": "imagenes/F04-rittal.jpg",
+      "observe": "Compartimentos, barras y unidades en una presentación del sistema VX25 Ri4Power.",
+      "implement": "Capas de gabinete, zonas funcionales y envolventes, separadas del circuito.",
+      "limit": "No convertir esta imagen comercial en un plano de fabricación ni en una clasificación IP universal.",
+      "pdf_page": null,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V04",
+      "title": "Espacio de entrada y tendido de cables",
+      "source": "F05",
+      "kind": "Visual de fabricante",
+      "image": "imagenes/F05-cables.jpg",
+      "observe": "Cámara lateral dedicada a la llegada y organización de cables.",
+      "implement": "Zona de entrada, sujeción, recorrido y llegada a bornes externos.",
+      "limit": "La capacidad y las dimensiones deben venir del producto concreto y del proyecto.",
+      "pdf_page": null,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V05",
+      "title": "Placa de montaje y fijaciones",
+      "source": "M06",
+      "kind": "Fragmento visual de catálogo",
+      "image": "paginas/V05-placa.png",
+      "observe": "La envolvente y la placa son piezas diferentes; la referencia muestra sus fijaciones.",
+      "implement": "Montar primero la placa y sus soportes, antes de poblarla de equipos.",
+      "limit": "La disposición pertenece a VX SE; no extender sus detalles a todos los gabinetes.",
+      "pdf_page": 6,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V06",
+      "title": "Unidades de motor fijas y extraíbles",
+      "source": "M01",
+      "kind": "Fotografías en manual",
+      "image": "paginas/V06-unidades.png",
+      "observe": "Dos construcciones de unidad de motor del CENTERLINE 2500.",
+      "implement": "Familias de unidad y relación entre mando frontal, conexiones y módulo.",
+      "limit": "La representación no es un procedimiento para retirar unidades energizadas.",
+      "pdf_page": 67,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V07",
+      "title": "Montaje de un variador dentro del gabinete",
+      "source": "M02",
+      "kind": "Diagrama dimensional",
+      "image": "paginas/V07-variador-montaje.png",
+      "observe": "Posición de montaje y espacios que el manual distingue por talla.",
+      "implement": "Huella física y zonas de reserva tomadas de la ficha del variador elegido.",
+      "limit": "Las cotas corresponden a tallas concretas; no usarlas como regla para cualquier variador.",
+      "pdf_page": 118,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V08",
+      "title": "Separación entre bornes de control y potencia",
+      "source": "M02",
+      "kind": "Esquema técnico, fragmento",
+      "image": "paginas/V08-bornes-control.png",
+      "observe": "El bloque de control diferencia entradas, salidas, alimentación y funciones.",
+      "implement": "Puertos con función y tipo de señal; esquema enlazado con el componente.",
+      "limit": "Un fragmento no sustituye el esquema completo, la revisión del manual ni la arquitectura de seguridad.",
+      "pdf_page": 160,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V09",
+      "title": "Instalación de una CPU en riel DIN",
+      "source": "M04",
+      "kind": "Ilustración de montaje",
+      "image": "paginas/V09-cpu-riel.png",
+      "observe": "El enganche y el clip representan estados mecánicos distintos.",
+      "implement": "Secuencia de colocación y fijación, con validación de soporte compatible.",
+      "limit": "La ilustración es del S7-1200 G2; los accesorios y pasos dependen del modelo.",
+      "pdf_page": 32,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V10",
+      "title": "Frente de CPU y puntos de diagnóstico",
+      "source": "M04",
+      "kind": "Ilustración identificada",
+      "image": "paginas/V10-cpu-frente.png",
+      "observe": "Puertos, indicadores y conexiones identificados en la CPU.",
+      "implement": "Indicadores seleccionables y vínculo con estado, diagnóstico y mapa de E/S.",
+      "limit": "No atribuir colores o patrones de LED de este modelo a todos los PLC.",
+      "pdf_page": 19,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V11",
+      "title": "Del instrumento de campo al lazo de señal",
+      "source": "M07",
+      "kind": "Diagrama de instrumento",
+      "image": "paginas/V11-instrumento.png",
+      "observe": "Compartimento de bornes del transmisor y lazo externo de alimentación/señal.",
+      "implement": "Conexión entre campo, bornes del tablero y entrada analógica.",
+      "limit": "El PDF descargado está en alemán, Rev BF 02/2024; referencia específica del 3051 HART.",
+      "pdf_page": 78,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    },
+    {
+      "id": "V12",
+      "title": "Instalación de campo alrededor del equipo",
+      "source": "F02",
+      "kind": "Fotografía de instalación",
+      "image": "imagenes/F02-eiffage-galeria.jpg",
+      "observe": "Equipo de proceso, cableado exterior y dispositivos locales; el tablero forma parte de un sistema.",
+      "implement": "Una vista de campo conectada al gabinete, con cables y dispositivos identificados.",
+      "limit": "No identificar la máquina ni su filosofía de control más allá de lo documentado por la fuente.",
+      "pdf_page": null,
+      "visual_review": "Inspeccionada en esta sesion; foto o fragmento identificado, no imagen generada."
+    }
+  ],
+  "workflow": [
+    [
+      "01",
+      "Definir el encargo",
+      "Función del equipo, modos, alarmas, ambiente y documentos de referencia.",
+      "Entrega: requisitos y lista de señales."
+    ],
+    [
+      "02",
+      "Preparar el gabinete",
+      "Envolvente, placa, entradas de cables y disposición antes del montaje.",
+      "Entrega: plano de implantación del caso."
+    ],
+    [
+      "03",
+      "Montar componentes",
+      "Rieles, canaletas, equipos, bornes y elementos de puerta.",
+      "Entrega: montaje mecánico coherente con las fichas."
+    ],
+    [
+      "04",
+      "Cablear e identificar",
+      "Unir los bornes indicados y registrar hilos, destinos y terminaciones.",
+      "Entrega: lista de conexiones y etiquetas."
+    ],
+    [
+      "05",
+      "Verificar el conjunto",
+      "Comparar con planos y registrar las verificaciones virtuales previstas.",
+      "Entrega: lista de comprobaciones con evidencia."
+    ],
+    [
+      "06",
+      "Instalar en campo",
+      "Representar fijación, entradas, protección de masas y equipos externos.",
+      "Entrega: correspondencia gabinete-campo."
+    ],
+    [
+      "07",
+      "Comprobar la función",
+      "Recorrer modos, señales y respuesta ante una condición de fallo.",
+      "Entrega: registro de pruebas del escenario."
+    ],
+    [
+      "08",
+      "Mantener y diagnosticar",
+      "Observar, formular una hipótesis, comprobar, corregir y repetir la prueba.",
+      "Entrega: causa encontrada y resultado posterior."
+    ]
+  ],
+  "faults": [
+    {
+      "id": "D01",
+      "family": "Mando",
+      "symptom": "El circuito no responde.",
+      "hypothesis": "Falta la alimentación de control o el retorno definido.",
+      "virtual_check": "Seguir el esquema y consultar el medidor virtual.",
+      "simulated_correction": "Restablecer la conexión correcta del caso.",
+      "acceptance": "La alimentación y el retorno son coherentes.",
+      "sources": [
+        "M05"
+      ],
+      "source_pages": {},
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D02",
+      "family": "Mando",
+      "symptom": "El contactor vibra o actúa de forma inestable.",
+      "hypothesis": "Tensión de bobina inadecuada o contacto de mando inestable.",
+      "virtual_check": "Comparar la bobina seleccionada y la señal virtual.",
+      "simulated_correction": "Corregir la causa representada; revisar el estado del componente.",
+      "acceptance": "El mando permanece estable.",
+      "sources": [
+        "Q03"
+      ],
+      "source_pages": {},
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D03",
+      "family": "Mando",
+      "symptom": "El motor se detiene al soltar marcha.",
+      "hypothesis": "El contacto auxiliar de retención del ejercicio no cierra la ruta prevista.",
+      "virtual_check": "Revisar la red virtual y la referencia del auxiliar.",
+      "simulated_correction": "Corregir el conexionado o asociación del auxiliar.",
+      "acceptance": "Marcha se mantiene; paro la desactiva.",
+      "sources": [
+        "M05"
+      ],
+      "source_pages": {},
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D04",
+      "family": "Mando",
+      "symptom": "Aparecen órdenes incompatibles.",
+      "hypothesis": "Falta el enclavamiento previsto en el caso de inversión.",
+      "virtual_check": "Consultar estados y condiciones de ambas órdenes.",
+      "simulated_correction": "Completar la lógica o conexión definida en el esquema.",
+      "acceptance": "No pueden activarse ambos sentidos.",
+      "sources": [
+        "M05"
+      ],
+      "source_pages": {},
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D05",
+      "family": "Protección",
+      "symptom": "Una protección ha disparado.",
+      "hypothesis": "La carga o la condición de fallo del ejercicio excede lo permitido.",
+      "virtual_check": "Ver la causa simulada y el ajuste documentado.",
+      "simulated_correction": "Eliminar la causa antes del rearme previsto.",
+      "acceptance": "La prueba se repite sin mantener el fallo.",
+      "sources": [
+        "M01",
+        "M05"
+      ],
+      "source_pages": {
+        "M01": [
+          85,
+          86
+        ]
+      },
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D06",
+      "family": "Variador",
+      "symptom": "El variador está disponible, sin orden de marcha.",
+      "hypothesis": "La autoridad de mando o un permiso no coincide con el encargo.",
+      "virtual_check": "Ver canal activo y señales del caso.",
+      "simulated_correction": "Seleccionar el mando válido y satisfacer el permiso.",
+      "acceptance": "La orden llega por el canal definido.",
+      "sources": [
+        "M03"
+      ],
+      "source_pages": {
+        "M03": [
+          238,
+          239
+        ]
+      },
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D07",
+      "family": "Variador",
+      "symptom": "La velocidad no sigue la consigna esperada.",
+      "hypothesis": "Referencia o tipo de señal configurados para otro origen.",
+      "virtual_check": "Comparar referencia activa y señal virtual.",
+      "simulated_correction": "Corregir la configuración del escenario.",
+      "acceptance": "La respuesta sigue la referencia elegida.",
+      "sources": [
+        "M03"
+      ],
+      "source_pages": {},
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D08",
+      "family": "Variador",
+      "symptom": "Código OHF en el perfil ATV600.",
+      "hypothesis": "Sobretemperatura; ventilación o carga ambiental incompatibles.",
+      "virtual_check": "Consultar estado térmico y condiciones de montaje.",
+      "simulated_correction": "Corregir el problema representado y respetar las condiciones de recuperación.",
+      "acceptance": "No se acepta un reset con la causa presente.",
+      "sources": [
+        "M03",
+        "Q01"
+      ],
+      "source_pages": {
+        "M03": [
+          672
+        ]
+      },
+      "evidence_kind": "codigo_fabricante_y_escenario_propuesto"
+    },
+    {
+      "id": "D09",
+      "family": "Variador",
+      "symptom": "Código USF en el perfil ATV600.",
+      "hypothesis": "Condición de subtensión detectada.",
+      "virtual_check": "Comparar alimentación virtual y configuración del perfil.",
+      "simulated_correction": "Restaurar la alimentación adecuada del caso.",
+      "acceptance": "Desaparece la condición de subtensión.",
+      "sources": [
+        "M03",
+        "Q02"
+      ],
+      "source_pages": {
+        "M03": [
+          687
+        ]
+      },
+      "evidence_kind": "codigo_fabricante_y_escenario_propuesto"
+    },
+    {
+      "id": "D10",
+      "family": "Variador",
+      "symptom": "Código OCF en el perfil ATV600.",
+      "hypothesis": "Sobrecorriente; revisar datos, carga y mecanismo del caso.",
+      "virtual_check": "Relacionar historial, datos de motor y carga.",
+      "simulated_correction": "Eliminar la causa; aplicar el tipo de recuperación del manual.",
+      "acceptance": "El arranque posterior cumple las condiciones.",
+      "sources": [
+        "M03"
+      ],
+      "source_pages": {
+        "M03": [
+          672
+        ]
+      },
+      "evidence_kind": "codigo_fabricante_y_escenario_propuesto"
+    },
+    {
+      "id": "D11",
+      "family": "PLC",
+      "symptom": "El PLC no ejecuta la secuencia.",
+      "hypothesis": "CPU en STOP o diagnóstico activo.",
+      "virtual_check": "Consultar estado y diagnóstico del perfil seleccionado.",
+      "simulated_correction": "Resolver el diagnóstico o estado definido por el ejercicio.",
+      "acceptance": "La secuencia se ejecuta bajo las condiciones previstas.",
+      "sources": [
+        "M04"
+      ],
+      "source_pages": {
+        "M04": [
+          245,
+          246
+        ]
+      },
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D12",
+      "family": "PLC",
+      "symptom": "La entrada cambia en campo, pero no en el programa.",
+      "hypothesis": "Origen, borne o asignación de E/S diferentes.",
+      "virtual_check": "Seguir la señal del dispositivo al mapa de E/S.",
+      "simulated_correction": "Corregir conexión o asignación del caso.",
+      "acceptance": "La variable representa la señal correspondiente.",
+      "sources": [
+        "M04"
+      ],
+      "source_pages": {
+        "M04": [
+          38,
+          39
+        ]
+      },
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D13",
+      "family": "HMI",
+      "symptom": "La pantalla muestra datos congelados o desconexión.",
+      "hypothesis": "Enlace lógico o destino no disponible en el caso.",
+      "virtual_check": "Ver estado del enlace y variable de origen.",
+      "simulated_correction": "Restablecer configuración/conexión compatible.",
+      "acceptance": "Datos actuales y pérdida de enlace diferenciados.",
+      "sources": [
+        "M04"
+      ],
+      "source_pages": {},
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D14",
+      "family": "Instrumentación",
+      "symptom": "La lectura es plausible, pero está escalada mal.",
+      "hypothesis": "Rango o tipo de entrada no coincide con la señal.",
+      "virtual_check": "Comparar señal virtual y escala definida.",
+      "simulated_correction": "Ajustar el rango coherente del ejercicio.",
+      "acceptance": "La magnitud sigue la escala documentada.",
+      "sources": [
+        "M07"
+      ],
+      "source_pages": {
+        "M07": [
+          17,
+          18
+        ]
+      },
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D15",
+      "family": "Instrumentación",
+      "symptom": "El lazo presenta una lectura anormal.",
+      "hypothesis": "Conductor abierto, polaridad o alimentación del lazo incorrectos.",
+      "virtual_check": "Inspeccionar el lazo y su diagnóstico virtual.",
+      "simulated_correction": "Reponer la conexión definida; verificar señal y diagnóstico.",
+      "acceptance": "Fallo de lazo y cero de proceso se distinguen.",
+      "sources": [
+        "M07"
+      ],
+      "source_pages": {
+        "M07": [
+          78,
+          95
+        ]
+      },
+      "evidence_kind": "propuesta_didactica"
+    },
+    {
+      "id": "D16",
+      "family": "Montaje",
+      "symptom": "No se supera la comprobación de protección de masas.",
+      "hypothesis": "Una masa del montaje queda sin la conexión prevista.",
+      "virtual_check": "Consultar el esquema de protección y continuidad virtual.",
+      "simulated_correction": "Completar la unión definida en el proyecto.",
+      "acceptance": "El montaje tiene evidencia de la comprobación.",
+      "sources": [
+        "M05"
+      ],
+      "source_pages": {
+        "M05": [
+          18
+        ]
+      },
+      "evidence_kind": "propuesta_didactica"
+    }
+  ],
+  "support_sources": [
+    {
+      "id": "Q01",
+      "title": "Schneider: diagnóstico OHF",
+      "url": "https://www.se.com/sg/en/faqs/FA311478/"
+    },
+    {
+      "id": "Q02",
+      "title": "Schneider: subtensión USF en ATV630",
+      "url": "https://www.se.com/us/en/faqs/FA317653/"
+    },
+    {
+      "id": "Q03",
+      "title": "Schneider: causas de vibración de contactor",
+      "url": "https://www.se.com/us/en/faqs/FA120094/"
+    }
+  ]
+}

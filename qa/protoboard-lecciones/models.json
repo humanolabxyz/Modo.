@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "Plantilla válida y preparación comprobada: fundamentals",
+    "Plantilla válida y preparación comprobada: divider",
+    "Plantilla válida y preparación comprobada: diode",
+    "Plantilla válida y preparación comprobada: led",
+    "Plantilla válida y preparación comprobada: current",
+    "Plantilla válida y preparación comprobada: bjt",
+    "Plantilla válida y preparación comprobada: bridge",
+    "Lecturas nuevas, tomas, HOLD/REL y cálculo desde datos: divider",
+    "Lecturas nuevas, tomas, HOLD/REL y cálculo desde datos: diode",
+    "Lecturas nuevas, tomas, HOLD/REL y cálculo desde datos: led",
+    "Lecturas nuevas, tomas, HOLD/REL y cálculo desde datos: bjt",
+    "Columnas, canal, corte de riel y puente comprobados eléctricamente",
+    "Amperímetro en rama abierta y devolución a V Ω",
+    "Puente H opera y mide su motor usando el solver existente",
+    "Progreso, observaciones y rechazo de estado incompatible"
+  ]
+}

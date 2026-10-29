@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "Tres conductores café/blanco/verde visibles desde cubierta común; encendido táctil de 44 px",
+    "Pelado, tubo, cobre en copa, limpieza y estañado de punta con herramientas arrastradas",
+    "Estaño espera frío; cautín + hilo en unión caliente producen mojado y animación sin pulsar un botón de soldar",
+    "La unión fría no se extrae ni cambia de pin ni se borra al repetir, seleccionar otro hilo o recargar",
+    "Al recalentar con cautín hasta fundir, el conductor se extrae físicamente"
+  ],
+  "errors": []
+}

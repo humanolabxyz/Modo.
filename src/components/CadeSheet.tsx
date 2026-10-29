@@ -1,11 +1,15 @@
 import type {CadeFrame,CadeObject} from '../data/cade';
+import {createContext,useContext} from 'react';
+export const CadePortHighlight=createContext<ReadonlySet<string>>(new Set());
 /* Símbolos al estilo de CADe_SIMU, dibujados con las proporciones medidas sobre la fotografía de «CAMBIO DELTA, ESTRELLA».
  * Cada símbolo se dibuja respecto a su borne superior; los bornes reales vienen en los datos (`ports`). */
 const W=.55,TEXT='Arial, Helvetica, sans-serif';
 const S={stroke:'currentColor',strokeWidth:W,fill:'none'} as const;
-function T({x,y,children,anchor='start',size=2.9,bold=false}:{x:number;y:number;children:React.ReactNode;anchor?:'start'|'middle'|'end';size?:number;bold?:boolean}){
- return <text x={x} y={y} textAnchor={anchor} dominantBaseline="central" fontSize={size} fontFamily={TEXT} fontWeight={bold?700:400} fill="currentColor" stroke="none">{children}</text>;
+export function CadeTerminalText({x,y,children,anchor='start',size=2.9,bold=false,baseline='central'}:{x:number;y:number;children:React.ReactNode;anchor?:'start'|'middle'|'end';size?:number;bold?:boolean;baseline?:'central'|'auto'}){
+ const highlighted=useContext(CadePortHighlight).has(String(children));
+ return <text pointerEvents="none" data-cade-terminal-label={highlighted?String(children):undefined} x={x} y={y} textAnchor={anchor} dominantBaseline={baseline} fontSize={size} fontFamily={TEXT} fontWeight={bold?700:400} fill={highlighted?'#b84d00':'currentColor'} stroke="none">{children}</text>;
 }
+const T=CadeTerminalText;
 /** Polo de potencia: vástago superior, cuchilla con marca de accionamiento y vástago inferior. */
 function PowerPole({x,y}:{x:number;y:number}){return <path {...S} d={`M${x} ${y} V${y+5.6} M${x-4.3} ${y+5.9} L${x} ${y+13.2} M${x-4} ${y+9.4} H${x} M${x} ${y+13.2} V${y+18}`}/>}
 function ContactNO({x,y}:{x:number;y:number}){return <path {...S} d={`M${x} ${y} V${y+4.2} M${x-4.7} ${y+5.3} L${x} ${y+12.3} M${x} ${y+12.3} V${y+18}`}/>}

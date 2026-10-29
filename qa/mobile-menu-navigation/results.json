@@ -1,0 +1,46 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "bodyHeight": 769,
+    "nativeTouchScroll": true,
+    "nestedFilters": true,
+    "diagramMenu": true,
+    "measurementMenus": true,
+    "rotation": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "bodyHeight": 315,
+    "nativeTouchScroll": true,
+    "nestedFilters": true,
+    "diagramMenu": true,
+    "measurementMenus": true,
+    "rotation": true,
+    "errors": []
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "bodyHeight": 493,
+    "nativeTouchScroll": true,
+    "nestedFilters": true,
+    "diagramMenu": true,
+    "measurementMenus": true,
+    "rotation": true,
+    "errors": []
+  },
+  {
+    "width": 568,
+    "height": 320,
+    "bodyHeight": 245,
+    "nativeTouchScroll": true,
+    "nestedFilters": true,
+    "diagramMenu": true,
+    "measurementMenus": true,
+    "rotation": true,
+    "errors": []
+  }
+]

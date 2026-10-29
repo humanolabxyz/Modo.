@@ -1,0 +1,90 @@
+ 
+ 
+ 
+ 
+SITUACIÓN DE MODELACIÓN 3
+DESABASTECIMIENTO
+En el mundo empresarial, la gestión de bodegas e 
+inventarios permite entregar un mejor servicio, ya sea en 
+el caso de almacenar materiales que forman parte de un 
+proceso de producción, como los productos mismos ya 
+terminados y destinados a la venta. Para lograr un buen 
+rendimiento y tiempos óptimos de operación será 
+necesario contar con un software que permita, por 
+ejemplo, conocer el stock disponible utilizando el código 
+SKU de un producto. 
+ 
+ 
+SITUACIÓN DE MODELACIÓN 3 
+DESABASTECIMIENTO 
+ 
+El control de almacén se refiere a todo el proceso logístico que se encarga de la recepción, el 
+almacenamiento y el movimiento de la mercancía dentro del almacén hasta el punto de consumo 
+en las unidades logísticas. Incluye todas las acciones dirigidas a gestionar las existencias de un 
+negocio, así como el tratamiento de los datos que se generan durante ese proceso. 
+ 
+En el día a día, consiste en llevar un control exhaustivo en tiempo real de todos los cambios que 
+se producen en las existencias o stocks que se encuentran en el almacén, desde las entradas y 
+salidas de mercancías, hasta las reservas o reagrupamientos. 
+ 
+Muchas veces la demanda es impredecible, por lo que es primordial contar con un stock de 
+seguridad, o sea, cierta cantidad que no se piensa vender pero hay que tener en caso de que la 
+demanda por algún producto aumente y no haya desabastecimiento. 
+ 
+ACTIVIDAD 1 (actividad generadora) 
+En la siguiente tabla se sintetiza el stock por día (al inicio de este) de un determinado producto 
+en un almacén: 
+ 
+Día de inventario 
+Stock 
+1 
+9867 
+2 
+9575 
+3 
+9102 
+4 
+9009 
+5 
+8956 
+6 
+8307 
+7 
+7802 
+ 
+a. Grafica en GeoGebra los valores entregados en la tabla anterior. 
+b. Observando sólo el conjunto de puntos, ¿aproximadamente en qué día podría ocurrir el 
+desabastecimiento en dicho almacén? 
+ 
+ 
+ 
+ 
+ACTIVIDAD 2 
+a. Realiza un ajuste lineal teniendo en cuenta el conjunto de puntos graficados. 
+b. ¿Cuál es la expresión algebraica que modela el número de productos disponibles en el 
+almacén en función del día de inventario? 
+c. ¿Entre qué días se estaría produciendo el desabastecimiento del producto en el almacén? 
+d. ¿En qué día, a más tardar, debe llegar el nuevo pedido para dar continuidad a la demanda 
+del producto? 
+ 
+ACTIVIDAD 3 
+a. Realiza un ajuste cuadrático teniendo en cuenta el conjunto de puntos graficados. 
+b. ¿Cuál es la expresión algebraica que modela el número de productos disponibles en el 
+almacén en función del día de inventario? 
+c. ¿Entre qué días se estaría produciendo el desabastecimiento del producto en el almacén? 
+d. ¿En qué día, a más tardar, debe llegar el nuevo pedido para dar continuidad a la demanda 
+del producto? 
+ 
+ACTIVIDAD 4 
+a. Realiza un ajuste cúbico teniendo en cuenta el conjunto de puntos graficados. 
+b. ¿Cuál es la expresión algebraica que modela el número de productos disponibles en el 
+almacén en función del día de inventario? 
+c. ¿Entre qué días se estaría produciendo el desabastecimiento del producto en el almacén? 
+d. ¿En qué día, a más tardar, debe llegar el nuevo pedido para dar continuidad a la demanda 
+del producto? 
+ 
+ACTIVIDAD 5 (actividad de cierre) 
+Teniendo en cuenta los tres modelos encontrados y lo analizado hasta el momento, ¿qué le 
+sugerirías al encargado del almacén para determinar aproximadamente en qué día podría ocurrir 
+el desabastecimiento del producto? 
+ 

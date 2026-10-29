@@ -1,0 +1,9 @@
+{
+  "base": "https://modo-lab.vercel.app",
+  "checks": [
+    "webkit 390: tamaño 40–130 %, controles accesibles, memoria del tamaño, vista compacta y restauración",
+    "chromium 820: tamaño 40–130 %, controles accesibles, memoria del tamaño, vista compacta y restauración",
+    "chromium 1440: tamaño 40–130 %, controles accesibles, memoria del tamaño, vista compacta y restauración"
+  ],
+  "errors": []
+}

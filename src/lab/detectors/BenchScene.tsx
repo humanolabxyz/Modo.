@@ -1,6 +1,7 @@
-import type {KeyboardEvent,MutableRefObject,ReactNode} from 'react';
+import {BenchMeter,ManualLeads,svgPoint} from '../ManualBench';
+import {useRef,useState,type KeyboardEvent,type MutableRefObject,type ReactNode} from 'react';
 import {KIND_NAMES,OUTPUT_NAMES,TERMINALS,type Kind,type MeterRead,type Settings,type Solution,type Spec,type Terminal} from './physics';
-import {JACKS,METER,OBJECT,PLC,PLC_ROW,SENSOR,STRIP,SUPPLY,TRACK,WORLD,cable,hangingCable,objectX,termPos,trackSpan} from './geometry';
+import {METER,OBJECT,PLC,PLC_ROW,SENSOR,STRIP,SUPPLY,TRACK,WORLD,cable,objectX,termPos,trackSpan} from './geometry';
 import {WIRE_COLORS} from './datasheets';
 import {formatMm,formatNumber,formatVolts} from './state';
 export type Equipment='supply'|'sensor'|'object';
@@ -13,12 +14,13 @@ const BARREL_H:Record<number,number>={12:44,18:64,30:96};
 const FACE:Record<Kind,string>={inductive:'#d9c25c',capacitive:'#ecece6',photo:'#3b2024'};
 const LED_COLOR=(model:Settings['model'])=>model.startsWith('CR30')||model==='BR100-DDT-P'?'#ff4a4a':'#ffd23d';
 
-type Props={settings:Settings;spec:Spec|null;pending:string;sol:Solution;reading:MeterRead;tool:Tool;wireFrom:Terminal|null;selected:Equipment|null;onSelect:(id:Equipment)=>void;onTerminal:(id:Terminal)=>void;refs:MutableRefObject<Partial<Record<Equipment,SVGGElement|null>>>};
-export function BenchScene({settings:s,spec,pending,sol,reading,tool,wireFrom,selected,onSelect,onTerminal,refs}:Props){
+type Props={settings:Settings;spec:Spec|null;pending:string;sol:Solution;reading:MeterRead;tool:Tool;wireFrom:Terminal|null;selected:Equipment|null;onSelect:(id:Equipment)=>void;onTerminal:(id:Terminal)=>void;onChange:(patch:Partial<Settings>)=>void;onRecord:()=>void;onLog:()=>void;recordReady:boolean;onReadoutState?:(state:string|null)=>void;refs:MutableRefObject<Partial<Record<Equipment,SVGGElement|null>>>};
+export function BenchScene({settings:s,spec,pending,sol,reading,tool,wireFrom,selected,onSelect,onTerminal,onChange,onRecord,onLog,recordReady,onReadoutState,refs}:Props){
+  const [cableDrag,setCableDrag]=useState<{from:Terminal;point:{x:number;y:number}}|null>(null),cableStart=useRef<{id:Terminal;x:number;y:number}|null>(null);
   const equipment=(id:Equipment,label:string,children:ReactNode)=><g ref={el=>{refs.current[id]=el;}} className={`temp-equipment ${selected===id?'selected':''}`} role="button" tabIndex={0} aria-pressed={selected===id} aria-label={label} onClick={()=>{if(tool!=='pan')onSelect(id);}} onKeyDown={onKey(()=>onSelect(id))}>{children}</g>;
   const terminal=(id:Terminal,text:string)=>{
     const pos=termPos(id),used=s.red===id?'red':s.black===id?'black':'',joined=s.wires.some(w=>w.includes(id));
-    return <g key={id} className={`det-terminal t-${id.replace('+','p').replace('-','m')} ${used} ${joined?'wired':''} ${wireFrom===id?'pending':''}`} role="button" tabIndex={0} aria-label={`${TERMINALS.find(x=>x.id===id)!.label}${used?` · punta ${used==='red'?'roja':'negra'} conectada`:''}${joined?' · con cable':''}${wireFrom===id?' · primer extremo del cable elegido':''}`} onClick={e=>{e.stopPropagation();onTerminal(id);}} onKeyDown={onKey(()=>onTerminal(id))}>
+    return <g key={id} className={`det-terminal t-${id.replace('+','p').replace('-','m')} ${used} ${joined?'wired':''} ${wireFrom===id?'pending':''}`} role="button" tabIndex={0} aria-label={`${TERMINALS.find(x=>x.id===id)!.label}${used?` · punta ${used==='red'?'roja':'negra'} conectada`:''}${joined?' · con cable':''}${wireFrom===id?' · primer extremo del cable elegido':''}`} onPointerDown={e=>{if(tool==='pan')return;e.stopPropagation();e.currentTarget.setPointerCapture(e.pointerId);const p=svgPoint(e);cableStart.current={id,x:p.x,y:p.y};}} onPointerMove={e=>{const a=cableStart.current;if(!a)return;const p=svgPoint(e);if(Math.hypot(p.x-a.x,p.y-a.y)>8)setCableDrag({from:a.id,point:p});}} onPointerUp={e=>{const a=cableStart.current;cableStart.current=null;if(!a)return;const p=svgPoint(e);if(Math.hypot(p.x-a.x,p.y-a.y)>12){const target=TERMINALS.find(t=>Math.hypot(termPos(t.id).x-p.x,termPos(t.id).y-p.y)<24);if(target&&target.id!==a.id){const exists=s.wires.some(w=>w.includes(a.id)&&w.includes(target.id));onChange({wires:exists?s.wires.filter(w=>!(w.includes(a.id)&&w.includes(target.id))):[...s.wires,[a.id,target.id]]});}e.currentTarget.dataset.dragged='yes';}setCableDrag(null);}} onPointerCancel={()=>{cableStart.current=null;setCableDrag(null);}} onClick={e=>{e.stopPropagation();if(e.currentTarget.dataset.dragged==='yes'){e.currentTarget.dataset.dragged='';return;}onTerminal(id);}} onKeyDown={onKey(()=>onTerminal(id))}>
       <circle className="hit" cx={pos.x} cy={pos.y} r="19"/><circle className="screw" cx={pos.x} cy={pos.y} r="12"/><circle className="hole" cx={pos.x} cy={pos.y} r="4.5"/><text x={pos.x} y={pos.y-17} textAnchor="middle">{text}</text>
     </g>;
   };
@@ -84,6 +86,9 @@ export function BenchScene({settings:s,spec,pending,sol,reading,tool,wireFrom,se
       <text className="det-small" x={ox+OBJECT.w/2} y={cy+OBJECT.h/2+14} textAnchor="middle">{s.object==='metal'?'metal':'plástico'}</text>
     </>):equipment('object','Sin objeto frente al detector. Abre su edición para colocar uno.',<g><rect className="det-object-none" x={TRACK.x+20} y={cy-OBJECT.h/2} width={OBJECT.w} height={OBJECT.h} rx="6"/><text className="det-small" x={TRACK.x+20+OBJECT.w/2} y={cy+4} textAnchor="middle">sin objeto</text></g>)}
 
+    <g className="manual-action" role="button" tabIndex={0} aria-label="Deslizar objeto frente al detector" onPointerDown={e=>{e.stopPropagation();e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e=>{if(e.currentTarget.hasPointerCapture(e.pointerId)){const p=svgPoint(e);onChange({distance:Math.max(0,Math.min(span,(p.x-TRACK.x)*span/TRACK.w))});}}} onKeyDown={e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();onChange({distance:Math.max(0,Math.min(span,s.distance+(e.key==='ArrowRight'?1:-1)))});}}}><rect x={ox-4} y={cy-OBJECT.h/2-5} width={OBJECT.w+8} height={OBJECT.h+10} rx="6" style={{fill:'transparent',stroke:'#567888',strokeDasharray:'3 3'}}/></g>
+    <g className="manual-action" role="button" tabIndex={0} aria-label="Interruptor de la fuente" onClick={()=>onChange({supplyOn:!s.supplyOn})} onKeyDown={onKey(()=>onChange({supplyOn:!s.supplyOn}))}><rect x={SUPPLY.x+SUPPLY.w/2-18} y={SUPPLY.y+138} width="36" height="42" rx="4"/><text x={SUPPLY.x+SUPPLY.w/2} y={SUPPLY.y+163} textAnchor="middle">{s.supplyOn?'I':'O'}</text></g>
+    <g className="manual-action" role="button" tabIndex={0} aria-label="Cambiar material del objeto" onClick={()=>onChange({object:s.object==='metal'?'plastic':s.object==='plastic'?'none':'metal'})} onKeyDown={onKey(()=>onChange({object:s.object==='metal'?'plastic':s.object==='plastic'?'none':'metal'}))}><rect x={TRACK.x} y={cy+115} width="170" height="32" rx="6"/><text x={TRACK.x+85} y={cy+136} textAnchor="middle">Objeto: {s.object==='metal'?'metal':s.object==='plastic'?'plástico':'ninguno'} ↻</text></g>
     <g className="det-plc">
       <rect className="plc-body" x={PLC.x} y={PLC.y} width={PLC.w} height={PLC.h} rx="10"/>
       <rect className="plc-rail" x={PLC.x+24} y={PLC.y+14} width={PLC.w-48} height="74" rx="6"/>
@@ -97,24 +102,12 @@ export function BenchScene({settings:s,spec,pending,sol,reading,tool,wireFrom,se
       {[0,1,2,3].map(n=><rect key={n} className="plc-dummy out" x={PLC.x+PLC.w-170+n*36} y={PLC.y+PLC.h-30} width="26" height="16" rx="3" aria-hidden="true"/>)}
     </g>
 
-    <g className="temp-meter">
-      <rect className="meter-body" x={METER.x} y={METER.y} width={METER.w} height={METER.h} rx="22"/>
-      <rect className="meter-screen" x={METER.x+20} y={METER.y+22} width={METER.w-40} height="96" rx="8"/>
-      <text className={`meter-text ${reading.state}`} x={METER.x+METER.w-32} y={METER.y+84} textAnchor="end">{displayText(reading)}</text>
-      <text className="meter-sub" x={METER.x+32} y={METER.y+48}>{s.mode==='off'?'APAGADO':'DC V'}</text>
-      <circle className="meter-dial" cx={METER.x+METER.w/2} cy={METER.y+235} r="62"/>
-      <text className={`meter-dial-label ${s.mode==='off'?'on':''}`} x={METER.x+METER.w/2-70} y={METER.y+190} textAnchor="middle">OFF</text><text className={`meter-dial-label ${s.mode==='V'?'on':''}`} x={METER.x+METER.w/2+70} y={METER.y+190} textAnchor="middle">V⎓</text>
-      <line className="meter-pointer" x1={METER.x+METER.w/2} y1={METER.y+235} x2={METER.x+METER.w/2+(s.mode==='V'?36:-36)} y2={METER.y+235-36} /><circle className="meter-hub" cx={METER.x+METER.w/2} cy={METER.y+235} r="9"/>
-      <text className="meter-jack-label" x={JACKS.black.x} y={JACKS.black.y-22} textAnchor="middle">COM</text><text className="meter-jack-label" x={JACKS.red.x} y={JACKS.red.y-22} textAnchor="middle">V</text>
-      <circle className="jack black" cx={JACKS.black.x} cy={JACKS.black.y} r="13"/><circle className="jack red" cx={JACKS.red.x} cy={JACKS.red.y} r="13"/>
-    </g>
-    <text className="temp-name" x={METER.x+METER.w/2} y={METER.y+METER.h+30} textAnchor="middle">MULTÍMETRO DIGITAL (10 MΩ)</text>
+    <BenchMeter x={METER.x} y={METER.y} mode={s.mode==='off'?'OFF':'V'} text={displayText(reading)} note={reading.note} onMode={m=>onChange({mode:m==='OFF'?'off':'V'})} record={recordReady} onRecord={onRecord} onLog={onLog} onReadoutState={onReadoutState} resistance={false}/>
 
+
+    {cableDrag?<path d={`M${termPos(cableDrag.from).x} ${termPos(cableDrag.from).y}Q${cableDrag.point.x} ${cableDrag.point.y+60} ${cableDrag.point.x} ${cableDrag.point.y}`} fill="none" stroke="#277d80" strokeWidth="4" strokeDasharray="6 4" pointerEvents="none"/>:null}
     <g className="temp-wires det-wires" aria-hidden="true">{s.wires.map(([a,b],i)=><path key={`${a}${b}`} d={cable(a,b,i%4)}/>)}</g>
-    <g className="temp-leads" aria-hidden="true">
-      {s.black?<path className="lead black" d={hangingCable(JACKS.black,termPos(s.black),90)}/>:null}
-      {s.red?<path className="lead red" d={hangingCable(JACKS.red,termPos(s.red),70)}/>:null}
-    </g>
+    <ManualLeads x={METER.x} y={METER.y} red={s.red} black={s.black} terminals={TERMINALS.map(t=>({...t,point:termPos(t.id)}))} onConnect={(color,id)=>onChange({[color]:id})}/>
     {([['g+','+'],['g-','−'],['s+','+'],['s-','−'],['so','O'],['px','X0'],['pc','S/S']] as [Terminal,string][]).map(([id,text])=>terminal(id,text))}
   </svg>;
 }

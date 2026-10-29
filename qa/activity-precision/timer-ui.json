@@ -1,0 +1,23 @@
+{
+  "base": "https://modo-lab.vercel.app",
+  "record": {
+    "id": "change-delta",
+    "observed": "Estado comprobado",
+    "text": "Estado comprobado",
+    "value": null,
+    "at": "2026-10-27T14:19:21.808Z",
+    "rpm": 1491.4370869462268,
+    "loadTorqueNm": 4,
+    "motorMode": "induction",
+    "action": {
+      "version": 1,
+      "eventId": 2,
+      "kind": "timer",
+      "control": "TEMPORIZADOR_1",
+      "seconds": 4.010400000005959,
+      "from": "estrella",
+      "to": "triángulo"
+    }
+  },
+  "errors": []
+}

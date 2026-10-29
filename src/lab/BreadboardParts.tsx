@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {HOLES,IC_PIN_NAMES,type ProtoComponent,type ProtoKind} from './model';
+import {HOLES,HOLE_BY_ID,buttonPins,IC_PIN_NAMES,type ProtoComponent,type ProtoKind} from './model';
 import type {IcState} from './dc';
 import {resistorBands} from './units';
 import type {Point} from './labels';
@@ -15,15 +15,18 @@ export const BoardArt=memo(function BoardArt(){
       <radialGradient id="lab-dome" cx=".38" cy=".32" r=".8"><stop offset="0" stopColor="#fff" stopOpacity=".75"/><stop offset=".35" stopColor="#fff" stopOpacity=".12"/><stop offset="1" stopColor="#000" stopOpacity=".22"/></radialGradient>
       <filter id="lab-led-glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="5"/></filter>
     </defs>
-    <rect x="15" y="25" width="780" height="395" rx="21" fill="url(#lab-plate)" stroke="#cfcdc2" strokeWidth="1.4" filter="url(#lab-board-shadow)"/>
-    <rect x="17" y="27" width="776" height="391" rx="19" fill="none" stroke="#fff" strokeWidth="1.4" opacity=".85"/>
-    <rect x="28" y="32" width="754" height="81" rx="8" fill="#ebe8de"/><rect x="28" y="347" width="754" height="63" rx="8" fill="#ebe8de"/>
-    <rect x="28" y="221" width="754" height="31" rx="5" fill="#dcdcd4"/><path d="M30 235H780" stroke="#bbbcb3" strokeWidth="2"/>
-    {[45,349].map(y=><g key={y}><path d={`M44 ${y}H395 M427 ${y}H764`} stroke="#d44e52" strokeWidth="2"/><path d={`M44 ${y+52}H395 M427 ${y+52}H764`} stroke="#3c82af" strokeWidth="2"/></g>)}
-    {[62,366].map(y=><g key={y} className="lab-rail-sign"><text x="39" y={y+4} textAnchor="middle" fill="#c4474b">+</text><text x="39" y={y+28} textAnchor="middle" fill="#3a78a3">−</text></g>)}
+    <rect x="15" y="25" width="780" height="415" rx="21" fill="url(#lab-plate)" stroke="#cfcdc2" strokeWidth="1.4" filter="url(#lab-board-shadow)"/>
+    <rect x="17" y="27" width="776" height="411" rx="19" fill="none" stroke="#fff" strokeWidth="1.4" opacity=".85"/>
+    <rect x="28" y="32" width="754" height="81" rx="8" fill="#ebe8de"/><rect x="28" y="374" width="754" height="60" rx="8" fill="#ebe8de"/>
+    <g data-central-channel="e-f"><rect x="28" y="113" width="754" height="112" rx="7" fill="#f9f8f1" stroke="#d0cec4"/><rect x="28" y="251" width="754" height="114" rx="7" fill="#f9f8f1" stroke="#d0cec4"/><path d="M29 229H781V247H29Z" fill="#687271"/><path d="M29 229H781V234H29Z" fill="#a6aaa2"/><path d="M29 244H781V250H29Z" fill="#fffef7"/><path d="M30 228H780M30 251H780" stroke="#b8bab0" strokeWidth="1.5"/><text x="405" y="241" textAnchor="middle" fontSize="8" fill="#fff">CANAL CENTRAL · e / f SIN UNIÓN INTERNA</text></g>
+    {[45,374].map(y=><g key={y}><path d={`M44 ${y}H391 M415 ${y}H764`} stroke="#d44e52" strokeWidth="2"/><path d={`M44 ${y+52}H391 M415 ${y+52}H764`} stroke="#3c82af" strokeWidth="2"/></g>)}
+    {[62,386].map(y=><g key={y} className="lab-rail-sign"><text x="39" y={y+4} textAnchor="middle" fill="#c4474b">+</text><text x="39" y={y+28} textAnchor="middle" fill="#3a78a3">−</text></g>)}
     {[0,1,2,3,4,5,6,7,8,9].map(i=><text key={i} x="35" y={138+i*20+(i>=5?35:0)} className="lab-hole-label">{'abcdefghij'[i]}</text>)}
     {Array.from({length:30},(_,i)=><text key={i} x={55+i*24} y="125" textAnchor="middle" className="lab-hole-number">{i+1}</text>)}
-    <text x="405" y="452" textAnchor="middle" className="lab-sheet-caption">a–e CONECTADOS POR COLUMNA · f–j CONECTADOS POR COLUMNA · RIELES PARTIDOS EN 15 / 16</text>
+    {[..."abcdefghij"].map((row,i)=><text key={row} x="775" y={138+i*20+(i>=5?35:0)} className="lab-hole-label">{row}</text>)}
+    {Array.from({length:30},(_,i)=><text key={i} x={55+i*24} y="369" textAnchor="middle" className="lab-hole-number">{i+1}</text>)}
+    {[55,380].map(y=><g key={y}><path d={`M403 ${y-8}v43`} stroke="#8f9c9c" strokeDasharray="3 3"/><text x="403" y={y-13} textAnchor="middle" fontSize="8" fill="#64777a">corte</text></g>)}
+    <text x="405" y="476" textAnchor="middle" className="lab-sheet-caption">a–e CONECTADOS POR COLUMNA · f–j CONECTADOS POR COLUMNA · RIELES PARTIDOS EN 15 / 16</text>
   </g>;
 });
 
@@ -33,7 +36,7 @@ export function ComponentShape({c,a,b,current,closed,previewValue,straight}:Shap
   const mx=(a.x+b.x)/2,my=(a.y+b.y)/2,dx=b.x-a.x,dy=b.y-a.y,dist=Math.hypot(dx,dy)||1,angle=Math.atan2(dy,dx)*180/Math.PI,cos=dx/dist,sin=dy/dist;
   if(c.kind==='wire'){
     const top=Math.min(a.y,b.y)-35,d=straight?`M${a.x} ${a.y} L${b.x} ${b.y}`:`M${a.x} ${a.y} C${a.x} ${top} ${b.x} ${top} ${b.x} ${b.y}`;
-    return <g><path d={d} stroke="#10202a" strokeOpacity=".16" strokeWidth="8" fill="none" strokeLinecap="round" transform="translate(0 2)"/><path d={d} stroke={c.color} strokeWidth="5" fill="none" strokeLinecap="round"/><path d={d} stroke="#fff" strokeOpacity=".28" strokeWidth="1.4" fill="none" strokeLinecap="round" transform="translate(0 -1.4)"/></g>;
+    return <g><path d={d} stroke="#10202a" strokeOpacity=".16" strokeWidth="8" fill="none" strokeLinecap="round" transform="translate(0 2)"/><path d={d} stroke={c.color} strokeWidth="5" fill="none" strokeLinecap="round"/><path d={d} stroke="#fff" strokeOpacity=".28" strokeWidth="1.4" fill="none" strokeLinecap="round" transform="translate(0 -1.4)"/>{[a,b].map((p,i)=><g key={i}><rect x={p.x-4.5} y={p.y-11} width="9" height="13" rx="2" fill="#293a43" stroke="#1a2931"/><path d={`M${p.x} ${p.y+1}v5`} stroke="#bec9cc" strokeWidth="2.5"/></g>)}</g>;
   }
   const legs=<><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#6f7a7e" strokeOpacity=".22" strokeWidth="5" strokeLinecap="round" transform="translate(0 1.6)"/><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#9ba4a8" strokeWidth="2.6" strokeLinecap="round"/></>;
   if(c.kind==='resistor'){
@@ -56,21 +59,25 @@ export function ComponentShape({c,a,b,current,closed,previewValue,straight}:Shap
     return <g>{legs}<g transform={`translate(${mx} ${my}) rotate(${angle})`}><rect x={-length/2} y="-5.5" width={length} height="11" rx="3.5" fill="#1d2023" stroke="#0b0d0e" strokeWidth="1"/><rect x={length/2-8} y="-5.5" width="5" height="11" fill="#d3d9dc"/><rect x={-length/2+2} y="-4" width={length-14} height="2.4" rx="1.2" fill="#fff" opacity=".22"/></g></g>;
   }
   if(c.kind==='bjt'){
-    const bx=(a.x+b.x)/2,yb=my-12,letters=a.x<b.x?['E','B','C']:['C','B','E'],xs=[a.x,bx,b.x],tops=xs.map(x=>bx+(x-bx)*.4);
-    return <g>{xs.map((x,i)=><g key={i}><line x1={x} y1={my} x2={tops[i]} y2={yb+1} stroke="#6f7a7e" strokeOpacity=".25" strokeWidth="4.6" strokeLinecap="round" transform="translate(0 1.5)"/><line x1={x} y1={my} x2={tops[i]} y2={yb+1} stroke="#aab2b6" strokeWidth="2.4" strokeLinecap="round"/><circle cx={x} cy={my} r="3" fill="#3e4342"/></g>)}
-      <path d={`M${bx-13} ${yb}V${yb-8}A13 13 0 0 1 ${bx+13} ${yb-8}V${yb}Z`} fill="#202428" stroke="#0b0d0e" strokeWidth="1.2"/>
-      <path d={`M${bx-13} ${yb}V${yb-8}A13 13 0 0 1 ${bx-3} ${yb-20}`} fill="none" stroke="#fff" strokeOpacity=".22" strokeWidth="2" strokeLinecap="round"/>
-      <rect x={bx-13} y={yb-3} width="26" height="3" fill="#0b0d0e" opacity=".5"/>
-      <text x={bx} y={yb-9} textAnchor="middle" className="lab-bjt-name">{c.polarity==='pnp'?'2N2907':'2N2222'}</text>
-      {letters.map((l,i)=><text key={i} x={bx+(i-1)*8.5} y={yb-1} textAnchor="middle" className="lab-bjt-pins">{l}</text>)}</g>;
+    const bx=mx,yb=my-12,letters=a.x<b.x?['E','B','C']:['C','B','E'],xs=[Math.min(a.x,b.x),bx,Math.max(a.x,b.x)];
+    return <g className="lab-transistor-package" data-flat-face="front">
+      <ellipse cx={bx+2} cy={yb-5} rx="17" ry="13" fill="#1e2d3340"/>
+      {xs.map((x,i)=><g key={i}><path d={`M${bx+(i-1)*9} ${yb-4}V${yb+2}L${x} ${my-3}V${my}`} fill="none" stroke="#6d787c" strokeWidth="4" strokeLinecap="round"/><path d={`M${bx+(i-1)*9-1} ${yb-4}V${yb+2}L${x-1} ${my-3}`} fill="none" stroke="#d0d5d5" strokeWidth="1.4"/><circle cx={x} cy={my} r="3" fill="#3e4342"/></g>)}
+      <path d={`M${bx-14} ${yb}V${yb-16}Q${bx-13} ${yb-25} ${bx} ${yb-25}Q${bx+13} ${yb-25} ${bx+14} ${yb-16}V${yb}Z`} fill="#151a1d" stroke="#070c0f" strokeWidth="1.2"/>
+      <path d={`M${bx-14} ${yb-16}Q${bx} ${yb-24} ${bx+14} ${yb-16}V${yb}H${bx-14}Z`} fill="#30373a"/>
+      <path d={`M${bx-12} ${yb-14}V${yb-2}H${bx+12}`} fill="none" stroke="#596265" strokeWidth="1"/>
+      <text x={bx} y={yb-11} textAnchor="middle" className="lab-bjt-name">{c.polarity==='pnp'?'2N2907':'2N2222'}</text>
+      {letters.map((l,i)=><text key={i} x={bx+(i-1)*9} y={yb-2} textAnchor="middle" className="lab-bjt-pins">{l}</text>)}
+    </g>;
   }
   if(c.kind==='button'){
+    const pins=buttonPins(c.from,c.to);if(pins){const x=Math.min(a.x,b.x),y=Math.min(a.y,b.y),w=Math.abs(b.x-a.x),h=Math.abs(b.y-a.y);return <g>{pins.map(id=>{const p=HOLE_BY_ID.get(id)!;return <g key={id}><line x1={p.x} y1={p.y} x2={p.x<x+w/2?p.x+9:p.x-9} y2={p.y<y+h/2?p.y+8:p.y-8} stroke="#aab5ba" strokeWidth="4"/><circle cx={p.x} cy={p.y} r="3" fill="#3e4342"/></g>;})}<rect x={x+8} y={y+6} width={w-16} height={h-12} rx="5" fill="#303a40" stroke="#18242b" strokeWidth="2"/><rect x={x+11} y={y+9} width={w-22} height="7" rx="3" fill="#aab4b9"/><circle cx={x+w/2} cy={y+h/2+(closed?2:0)} r={closed?13:15} fill={closed?'#9e2d35':c.color} stroke="#69232b" strokeWidth="2"/><ellipse cx={x+w/2-4} cy={y+h/2-5} rx="5" ry="3" fill="#fff" opacity={closed?.1:.35}/></g>;}
     return <g>{legs}<g transform={`translate(${mx} ${my}) rotate(${angle})`}><rect x="-13" y="-12" width="26" height="24" rx="3.5" fill="#2f353a" stroke="#14181b" strokeWidth="1"/><rect x="-13" y="-12" width="26" height="6" rx="3" fill="#fff" opacity=".1"/>{[[-10,-9],[10,-9],[-10,9],[10,9]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="1.5" fill="#b9c0c4"/>)}<circle cx={closed?.8:0} cy={closed?.8:0} r={closed?8:9.2} fill="#8c969c" stroke="#5c666c" strokeWidth="1"/><circle cx={closed?.8:0} cy={closed?.8:0} r={closed?6.2:7.4} fill={closed?'#a92d2d':c.color} stroke="#7d1f1f" strokeWidth="1"/><ellipse cx="-2.2" cy="-2.8" rx="2.8" ry="1.8" fill="#fff" opacity={closed?.15:.45}/></g></g>;
   }
   if(c.kind==='motor'){
     const turning=Math.abs(current)>1e-4,sign=current>=0?1:-1;
     return <g>{legs}<g transform={`translate(${mx} ${my}) rotate(${angle})`}><rect x="-22" y="-9" width="6" height="3.6" rx="1" fill="#c4cacd"/><rect x="-22" y="5.4" width="6" height="3.6" rx="1" fill="#c4cacd"/><rect x="-17" y="-12.5" width="30" height="25" rx="5" fill="url(#lab-can)" stroke="#55606a" strokeWidth="1.2"/><rect x="13" y="-12.5" width="7" height="25" rx="2" fill="#5d6770" stroke="#3d454c" strokeWidth=".8"/><rect x="20" y="-3" width="9" height="6" rx="2" fill="#d5dade" stroke="#8b949b" strokeWidth=".8"/><path d="M-12 -7h18M-12 -3.5h18M-12 0h18M-12 3.5h18M-12 7h18" stroke="#6f7a83" strokeOpacity=".35" strokeWidth=".8"/><g transform={`rotate(${-angle})`}><circle r="7" fill="#f3f5f6" stroke="#6f7a83" strokeWidth=".9"/><text y="3.4" textAnchor="middle" className="lab-motor-m">M</text></g></g>
-      {turning?<g transform={`translate(${mx} ${my})`}><g className="lab-motor-spin" style={{transformOrigin:'0 0',animationDirection:sign>0?'normal':'reverse'}}><path d="M0 -22A22 22 0 1 1 -19 -11" fill="none" stroke="#1599dc" strokeWidth="2.4" strokeLinecap="round"/><path d="M-23 -14L-19 -9L-14 -14Z" fill="#1599dc"/></g></g>:null}</g>;
+      {turning?<g transform={`translate(${mx} ${my})`}><g className="lab-proto-motor-spin" data-direction={sign>0?'forward':'reverse'} style={{animationDirection:sign>0?'normal':'reverse'}}><circle r="16" fill="#ddf5e9" fillOpacity=".75"/><path d="M0 -15V15M-15 0H15" stroke="#168063" strokeWidth="4" strokeLinecap="round"/><path d="M0 -22A22 22 0 1 1 -19 -11" fill="none" stroke="#1599dc" strokeWidth="2.4" strokeLinecap="round"/><path d="M-23 -14L-19 -9L-14 -14Z" fill="#1599dc"/></g></g>:null}</g>;
   }
   const length=clamp(dist-12,28,42);
   return <g>{legs}<g transform={`translate(${mx} ${my}) rotate(${angle})`}><rect x={-length/2} y="-11" width={length} height="22" rx="5.5" fill={closed?'#0f766e':'#69757a'} stroke="#1c2b2f" strokeOpacity=".35"/><rect x={closed?length/2-17:-length/2+4} y="-7" width="13" height="14" rx="3" fill="#fff"/><circle cx={-length/2} cy="0" r="2.6" fill="#2d3739"/><circle cx={length/2} cy="0" r="2.6" fill="#2d3739"/></g></g>;
@@ -120,5 +127,11 @@ export const BoardStrips=memo(function BoardStrips(){
 export function BurntMark({a,b,kind}:{a:Point;b:Point;kind:ProtoKind}){
   const x=kind==='l293d'?(a.x+b.x)/2:kind==='bjt'?(a.x+b.x)/2:(a.x+b.x)/2,y=kind==='l293d'?(a.y+b.y)/2:kind==='bjt'?a.y-20:(a.y+b.y)/2,w=kind==='l293d'?(b.x-a.x)/2+14:kind==='bjt'?15:17,h=kind==='l293d'?(a.y-b.y)/2-2:kind==='bjt'?15:13;
   return <g className="lab-burnt" pointerEvents="none"><rect x={x-w} y={y-h} width={w*2} height={h*2} rx="6" fill="#171210" opacity=".78"/><path d={`M${x-w*.6} ${y-h*.7}L${x-w*.1} ${y}L${x-w*.5} ${y+h*.7}M${x+w*.3} ${y-h*.8}L${x+w*.6} ${y+h*.2}`} stroke="#5b3a2b" strokeWidth="1.4" fill="none" strokeLinecap="round"/><text x={x} y={y+4} textAnchor="middle" className="lab-burnt-x">✕</text>
-    {[0,1,2].map(i=><circle key={i} className="lab-smoke" cx={x-6+i*6} cy={y-h-2} r={4+i} style={{animationDelay:`${i*.6}s`}}/>)}</g>;
+</g>;
+}
+
+/** Local coordinates keep smoke anchored while the board pans or zooms. Finite animation. */
+export function BurntSmoke({a,b,kind,id}:{a:Point;b:Point;kind:ProtoKind;id:string}){
+ const x=(a.x+b.x)/2,y=kind==='bjt'?a.y-40:kind==='l293d'?Math.min(a.y,b.y)-12:(a.y+b.y)/2-12;
+ return <g className="lab-failure-smoke" data-smoke-component={id} transform={`translate(${x} ${y})`} pointerEvents="none" aria-hidden="true">{[0,1,2,3,4,5].map(i=><g key={i} transform={`translate(${(i%3-1)*7} 0)`}><circle className="lab-failure-puff" cx="0" cy="0" r={5+i%3*2} style={{animationDelay:`${i*.24}s`}}/></g>)}</g>;
 }

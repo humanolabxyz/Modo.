@@ -1,0 +1,22 @@
+[
+  {
+    "engine": "chromium",
+    "width": 820,
+    "fullWires": 37,
+    "start": "S1",
+    "sample": "14,115 A",
+    "capturedConnection": "star",
+    "faultWires": 36,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 390,
+    "fullWires": 37,
+    "start": "S1",
+    "sample": "13,749 A",
+    "capturedConnection": "star",
+    "faultWires": 36,
+    "errors": []
+  }
+]

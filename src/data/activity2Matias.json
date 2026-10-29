@@ -1,0 +1,635 @@
+{
+  "title": "Ejemplo virtual · Arranque estrella-triángulo con temporizador",
+  "wires": [
+    {
+      "id": "cce54ab9-4f71-4c06-bfe6-5faa4ba14ab6",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:95"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 1
+    },
+    {
+      "id": "90ad760e-5a45-40ee-ba70-8762e1935559",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:96"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:S2:1"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 2
+    },
+    {
+      "id": "ec1a558f-35c0-41a4-8305-568fc4874ca4",
+      "from": {
+        "terminalId": "BOTONERAS:S2:2"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:S1:3"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 3
+    },
+    {
+      "id": "06ee4d18-2fdf-449b-be29-c645297972be",
+      "from": {
+        "terminalId": "BOTONERAS:S1:4"
+      },
+      "to": {
+        "terminalId": "TEMPORIZADOR_1:A1"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 4
+    },
+    {
+      "id": "3241a752-925f-4ef8-94da-e6b05ce70c21",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:A2"
+      },
+      "to": {
+        "terminalId": "FUENTE:N"
+      },
+      "color": "#2978c8",
+      "route": {
+        "sag": 130
+      },
+      "layer": 5
+    },
+    {
+      "id": "5100b61d-1ac4-4b75-8d83-f7b1b1c3c2f0",
+      "from": {
+        "terminalId": "BOTONERAS:S2:2"
+      },
+      "to": {
+        "terminalId": "TEMPORIZADOR_1:13"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 7
+    },
+    {
+      "id": "f3bbad2c-05ee-48fe-af37-78254cd70a92",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:14"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:S1:4"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 8
+    },
+    {
+      "id": "f454b964-02f9-4e33-9374-00deae41d2f3",
+      "from": {
+        "terminalId": "BOTONERAS:S1:4"
+      },
+      "to": {
+        "terminalId": "TEMPORIZADOR_1:55"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 9
+    },
+    {
+      "id": "6e80c1cb-ffa3-4158-bfd7-98f3aa44934f",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:56"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TRIFASICO:71"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 10
+    },
+    {
+      "id": "e180980d-ce8b-4490-8a4e-65338f01f929",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:72"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:A1"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 11
+    },
+    {
+      "id": "779250c0-c67e-4dd0-a3c9-5be31308196b",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:A2"
+      },
+      "to": {
+        "terminalId": "FUENTE:N"
+      },
+      "color": "#2978c8",
+      "route": {
+        "sag": 130
+      },
+      "layer": 12
+    },
+    {
+      "id": "dee86745-f7b3-47f0-8175-73f5ac01f546",
+      "from": {
+        "terminalId": "BOTONERAS:S1:4"
+      },
+      "to": {
+        "terminalId": "TEMPORIZADOR_1:67"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 13
+    },
+    {
+      "id": "57e9fcfa-22e4-449e-89aa-265d000ef691",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:68"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:71"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 14
+    },
+    {
+      "id": "a9f54ed8-e362-4fa9-b0b7-de2c3c5ca582",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:72"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TRIFASICO:A1"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 15
+    },
+    {
+      "id": "e545aa2c-fc9b-4db9-a908-72115e5e342b",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:A2"
+      },
+      "to": {
+        "terminalId": "FUENTE:N"
+      },
+      "color": "#2978c8",
+      "route": {
+        "sag": 130
+      },
+      "layer": 16
+    },
+    {
+      "id": "95a76639-014b-4769-a742-89fe605013ad",
+      "from": {
+        "terminalId": "BOTONERAS:N"
+      },
+      "to": {
+        "terminalId": "FUENTE:N"
+      },
+      "color": "#2978c8",
+      "route": {
+        "sag": 130
+      },
+      "layer": 17
+    },
+    {
+      "id": "939d360a-33a1-44b3-a712-a3a99f88a2e0",
+      "from": {
+        "terminalId": "FUENTE:R"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TRIFASICO:L1"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 18
+    },
+    {
+      "id": "b46e148f-d522-4e35-a0d5-1e3fe3a23474",
+      "from": {
+        "terminalId": "FUENTE:S"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TRIFASICO:L2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 19
+    },
+    {
+      "id": "c791ebf2-b72a-4184-8159-8fc31270794d",
+      "from": {
+        "terminalId": "FUENTE:T"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TRIFASICO:L3"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 20
+    },
+    {
+      "id": "ecc8b2e5-95ec-4396-bc8b-b74f0424e17c",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:T1"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:W2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 21
+    },
+    {
+      "id": "f1925e3e-9c54-438d-96e6-e0575f308bdc",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:T2"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:U2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 22
+    },
+    {
+      "id": "daf89e3f-e776-4593-ad8e-87c22b89847c",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:T3"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:V2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 23
+    },
+    {
+      "id": "8db2bb10-3d50-42fb-afb8-2b0995aed07b",
+      "from": {
+        "terminalId": "FUENTE:R"
+      },
+      "to": {
+        "terminalId": "TEMPORIZADOR_1:L1"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 24
+    },
+    {
+      "id": "af86409f-7b50-41e9-883a-25c239896357",
+      "from": {
+        "terminalId": "FUENTE:S"
+      },
+      "to": {
+        "terminalId": "TEMPORIZADOR_1:L2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 25
+    },
+    {
+      "id": "aa59b0e6-07b8-4c3a-8fb3-fa84852f6437",
+      "from": {
+        "terminalId": "FUENTE:T"
+      },
+      "to": {
+        "terminalId": "TEMPORIZADOR_1:L3"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 26
+    },
+    {
+      "id": "ac8b750f-de15-4014-bf26-0c10cf219385",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:T1"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:U1"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 27
+    },
+    {
+      "id": "27cad97c-1f58-4280-9f8e-08b43b922944",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:T2"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:V1"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 28
+    },
+    {
+      "id": "8bb21bdf-2623-4292-9536-4ebc7645d47d",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:T3"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:W1"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 29
+    },
+    {
+      "id": "b0c3ab15-8f7e-4637-af9b-d0f3efff3a87",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:L1"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:L2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 30
+    },
+    {
+      "id": "58425b64-8d58-4b5f-b8ac-6d4971d0c417",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:L3"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:L2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 31
+    },
+    {
+      "id": "53c6f415-b194-4c2e-bebb-bf692dc4302d",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:T1"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:V2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 32
+    },
+    {
+      "id": "4570c9e7-a50a-4a76-bd10-a194784a9d82",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:T2"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:U2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 33
+    },
+    {
+      "id": "114094af-6573-4afd-a819-14c9a52617e9",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:T3"
+      },
+      "to": {
+        "terminalId": "BORNERA_MOTOR:W2"
+      },
+      "color": "#c53943",
+      "route": {
+        "sag": 130
+      },
+      "layer": 34
+    },
+    {
+      "id": "c4c842ad-0724-4a63-b05d-21d9cdfd2d58",
+      "from": {
+        "terminalId": "BOTONERAS:PILOTO_2"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TRIFASICO:82"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 35
+    },
+    {
+      "id": "b5cb3367-8960-47a9-83e4-bfe70b4a93d0",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:81"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:82"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 36
+    },
+    {
+      "id": "f3aea82f-9b65-4073-b084-0314867160b7",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:81"
+      },
+      "to": {
+        "terminalId": "FUENTE:F"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 37
+    },
+    {
+      "id": "cf9d2be1-28c5-4a00-82b9-3ffc19bdebe9",
+      "from": {
+        "terminalId": "FUENTE:F"
+      },
+      "to": {
+        "terminalId": "CONTACTOR_TERMICO:97"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 50
+    },
+    {
+      "id": "f9e898d9-d58d-421e-850f-522ecbd8a534",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:98"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:PILOTO_3"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 51
+    },
+    {
+      "id": "38aeee8d-d557-461f-8483-4238b2f9e158",
+      "from": {
+        "terminalId": "TEMPORIZADOR_1:TP_DER"
+      },
+      "to": {
+        "terminalId": "FUENTE:TP"
+      },
+      "color": "#32834b",
+      "route": {
+        "sag": 130
+      },
+      "layer": 53
+    },
+    {
+      "id": "2e154c3e-ce17-4f7e-8738-0882039e5dfa",
+      "from": {
+        "terminalId": "BORNERA_MOTOR:TP"
+      },
+      "to": {
+        "terminalId": "FUENTE:TP"
+      },
+      "color": "#32834b",
+      "route": {
+        "sag": 130
+      },
+      "layer": 54
+    },
+    {
+      "id": "c114d2e2-eb46-4a11-9f25-9c7b33d94a94",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:TP_DER"
+      },
+      "to": {
+        "terminalId": "FUENTE:TP"
+      },
+      "color": "#32834b",
+      "route": {
+        "sag": 130
+      },
+      "layer": 55
+    },
+    {
+      "id": "b0141501-a8d4-46f4-914c-cf7c11be9ea3",
+      "from": {
+        "terminalId": "BOTONERAS:TP_IZQ"
+      },
+      "to": {
+        "terminalId": "FUENTE:TP"
+      },
+      "color": "#32834b",
+      "route": {
+        "sag": 130
+      },
+      "layer": 56
+    },
+    {
+      "id": "e570ce0a-0cc2-405d-81de-1a5bdef8186b",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:TP_IZQ"
+      },
+      "to": {
+        "terminalId": "FUENTE:TP"
+      },
+      "color": "#32834b",
+      "route": {
+        "sag": 130
+      },
+      "layer": 57
+    },
+    {
+      "id": "608ec287-76d3-4ea6-8c22-9f323dcad985",
+      "from": {
+        "terminalId": "CONTACTOR_TRIFASICO:A1"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:PILOTO_4"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 58
+    },
+    {
+      "id": "7bddfeb1-d1ae-45cb-a830-eb67d8074d3c",
+      "from": {
+        "terminalId": "CONTACTOR_TERMICO:A1"
+      },
+      "to": {
+        "terminalId": "BOTONERAS:PILOTO_1"
+      },
+      "color": "#d8ab28",
+      "route": {
+        "sag": 130
+      },
+      "layer": 59
+    }
+  ]
+}

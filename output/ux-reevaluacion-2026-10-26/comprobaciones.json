@@ -1,0 +1,27 @@
+{
+  "mount": {
+    "row": {
+      "x": 77,
+      "y": 519.75,
+      "w": 290,
+      "h": 379.15625
+    },
+    "name": {
+      "x": 77,
+      "y": 529.75,
+      "w": 11.390625,
+      "h": 358.15625
+    },
+    "button": {
+      "x": 96.390625,
+      "y": 687.828125,
+      "w": 270.609375,
+      "h": 42
+    },
+    "text": "G1\nFuente de mando 24 V DC\nColocado"
+  },
+  "identify": {
+    "selectedBefore": 0,
+    "selectedAfter": 0
+  }
+}

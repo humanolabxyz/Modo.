@@ -1,0 +1,4 @@
+const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs=require('node:fs');
+const out='output/ux-automatizacion-2026-10-26';fs.mkdirSync(out,{recursive:true});
+(async()=>{const browser=await chromium.launch({headless:true});const c=await browser.newContext({viewport:{width:1440,height:960},reducedMotion:'reduce',serviceWorkers:'block'});await c.addInitScript(()=>localStorage.setItem('modo-tutoriales-bienvenida-v1','seen'));const p=await c.newPage();await p.goto('http://127.0.0.1:4327/laboratorio?tool=equipment');await p.locator('[data-lab-ready="true"]').waitFor();await p.waitForTimeout(1800);await p.screenshot({path:out+'/01-entrada-desktop.png'});console.log((await p.locator('body').innerText()).slice(0,14000));await browser.close();})().catch(e=>{console.error(e);process.exit(1)});

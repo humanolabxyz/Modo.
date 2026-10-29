@@ -9,7 +9,7 @@ export const timerIds=():string[]=>MODULES.filter(m=>m.category==='temporizadore
 /** Bobinas del banco: contactores y temporizadores. Los dos siguen el mismo ciclo de energizado. */
 export const relayIds=():string[]=>[...contactorIds(),...timerIds()];
 export type ContactorId=string;
-export type SimulationInput={enabled:boolean;plugged:boolean;forceBreaker:boolean;breakers:[boolean,boolean];pressed:string[];thermalTripped:boolean};
+export type SimulationInput={enabled:boolean;plugged:boolean;forceBreaker:boolean;breakers:[boolean,boolean];pressed:string[];thermalTripped:boolean;powerContacts?:RelayState};
 export type RelayState=Record<ContactorId,boolean>;
 export const OFF_RELAYS=():RelayState=>Object.fromEntries(relayIds().map(id=>[id,false]));
 export const sameRelays=(a:RelayState,b:RelayState)=>relayIds().every(id=>!!a[id]===!!b[id]);
@@ -17,7 +17,7 @@ export const emptySimulation=():SimulationInput=>({enabled:false,plugged:false,f
 /** Estado del motor trifásico: gira solo si las tres fases llegan a U1 V1 W1 y las bobinas forman estrella o triángulo. */
 export type MotorState={status:'off'|'running'|'fault';connection:'star'|'delta'|null;direction:1|-1;speed:number;message:string;lines:('R'|'S'|'T'|null)[]};
 export const IDLE_MOTOR:MotorState={status:'off',connection:null,direction:1,speed:0,message:'Sin tensión de fuerza.',lines:[null,null,null]};
-export type SimulationResult={powered:boolean;fault:'short'|'unstable'|null;relays:RelayState;pilots:boolean[];liveTerminals:string[];liveWireIds:string[];closedContacts:[string,string][];motor:MotorState};
+export type SimulationResult={powered:boolean;fault:'short'|'unstable'|'phase-short'|null;relays:RelayState;pilots:boolean[];liveTerminals:string[];liveWireIds:string[];closedContacts:[string,string][];motor:MotorState};
 
 /** Explicit teaching model, separate from cable-only topology and source-photo confidence. */
 /**
@@ -30,10 +30,12 @@ export function simulationContacts(input:SimulationInput,relays:RelayState,timed
  for(const id of contactorIds()){
   const closed=!!relays[id];
   for(const [a,b] of closed?[['13','14'],['63','64'],['93','94']]:[['71','72'],['81','82']])pairs.push([`${id}:${a}`,`${id}:${b}`]);
-  if(closed&&(id!=='CONTACTOR_TERMICO'||!input.thermalTripped))for(const i of [1,2,3])pairs.push([`${id}:L${i}`,`${id}:T${i}`]);
+  if(input.powerContacts?.[id]??closed)for(const i of [1,2,3])pairs.push([`${id}:L${i}`,`${id}:T${i}`]);
  }
  for(const id of timerIds()){
   const on=!!relays[id],done=on&&timed.includes(id);
+  // This bank module is a contactor with a pneumatic timing attachment: its power poles act immediately.
+  if(input.powerContacts?.[id]??on)for(const i of [1,2,3])pairs.push([`${id}:L${i}`,`${id}:T${i}`]);
   if(on)pairs.push([`${id}:13`,`${id}:14`]);
   pairs.push(done?[`${id}:67`,`${id}:68`]:[`${id}:55`,`${id}:56`]);
  }
@@ -75,13 +77,13 @@ function solveControl(wires:BananaCable[],input:SimulationInput,previous:RelaySt
 const MOTOR='BORNERA_MOTOR:';
 const SEQUENCES=['RST','STR','TRS'];
 /** Circuito de fuerza: R, S y T llegan al motor a través de los contactos que estén cerrados. No calcula corrientes. */
-function solveMotor(wires:BananaCable[],input:SimulationInput,relays:RelayState,timed:readonly string[]=[]):{motor:MotorState;live:string[]}{
+function solveMotor(wires:BananaCable[],input:SimulationInput,relays:RelayState,timed:readonly string[]=[]):{motor:MotorState;live:string[];short?:boolean}{
  const idle=(message:string,status:MotorState['status']='off'):{motor:MotorState;live:string[]}=>({motor:{...IDLE_MOTOR,status,message},live:[]});
  if(!input.enabled)return idle('Simulación detenida.');
  if(!input.plugged)return idle('Enchufa la corriente virtual en el módulo de alimentación.');
  if(!input.forceBreaker)return idle('Cierra el interruptor FUERZA para energizar R, S y T.');
  const g=graph(wires,simulationContacts(input,relays,timed)),[r,s,t]=g.phases;
- if(new Set([r,s,t]).size<3)return idle('Cortocircuito entre fases: algún cable une R, S o T. Retíralo.','fault');
+ if(new Set([r,s,t]).size<3)return {...idle('Cortocircuito entre fases: algún cable une R, S o T. Retíralo.','fault'),short:true};
  const label=(id:string):'R'|'S'|'T'|null=>{const x=g.root(MOTOR+id);return x===r?'R':x===s?'S':x===t?'T':null};
  const live=TERMINALS.filter(x=>[r,s,t].includes(g.root(x.key))).map(x=>x.key);
  const lines=['U1','V1','W1'].map(label),ends=['U2','V2','W2'].map(label);
@@ -99,6 +101,7 @@ function solveMotor(wires:BananaCable[],input:SimulationInput,relays:RelayState,
 }
 export function solveSimulation(wires:BananaCable[],input:SimulationInput,previous:RelayState=OFF_RELAYS(),timed:readonly string[]=[]):SimulationResult{
  const base=solveControl(wires,input,previous,timed),force=solveMotor(wires,input,base.relays,timed);
+ if(force.short)return {...base,powered:false,fault:'phase-short',relays:OFF_RELAYS(),pilots:[false,false,false,false],liveTerminals:[],liveWireIds:[],closedContacts:[],motor:force.motor};
  if(!force.live.length)return {...base,motor:force.motor};
  const liveTerminals=[...new Set([...base.liveTerminals,...force.live])];
  return {...base,motor:force.motor,liveTerminals,liveWireIds:wires.filter(w=>liveTerminals.includes(w.from.terminalId)).map(w=>w.id)};
@@ -132,7 +135,21 @@ export const SIMULATION_EXAMPLES={
  ]},
  simple:{title:'Marcha y paro con retención (el más simple, de un compañero)',pairs:SIMPLE_LESSON.pairs},
  inversion:{title:'Inversión de giro con enclavamiento y paro (circuito de un compañero)',pairs:INVERSION_LESSON.pairs},
- starDelta:{title:'Arranque estrella-triángulo con temporizador',needs:['CONTACTOR_TRIFASICO_3'],pairs:[
+ starDelta:{title:'Estrella-triángulo · 2 contactores + conjunto temporizado',pairs:[
+  // KT1 is the line contactor with pneumatic block. KM2 = star; KM1 = delta.
+  ['FUENTE:F','CONTACTOR_TERMICO:95'],['CONTACTOR_TERMICO:96','BOTONERAS:S2:1'],['BOTONERAS:S2:2','BOTONERAS:S3:3'],
+  ['BOTONERAS:S3:3','TEMPORIZADOR_1:13'],['BOTONERAS:S3:4','TEMPORIZADOR_1:14'],['TEMPORIZADOR_1:14','TEMPORIZADOR_1:A1'],['TEMPORIZADOR_1:A2','FUENTE:N'],
+  ['TEMPORIZADOR_1:14','TEMPORIZADOR_1:55'],['TEMPORIZADOR_1:56','CONTACTOR_TERMICO:71'],['CONTACTOR_TERMICO:72','CONTACTOR_TRIFASICO:A1'],['CONTACTOR_TRIFASICO:A2','FUENTE:N'],
+  ['TEMPORIZADOR_1:14','TEMPORIZADOR_1:67'],['TEMPORIZADOR_1:68','CONTACTOR_TRIFASICO:71'],['CONTACTOR_TRIFASICO:72','CONTACTOR_TERMICO:A1'],['CONTACTOR_TERMICO:A2','FUENTE:N'],
+  ['FUENTE:R','TEMPORIZADOR_1:L1'],['FUENTE:S','TEMPORIZADOR_1:L2'],['FUENTE:T','TEMPORIZADOR_1:L3'],
+  ['TEMPORIZADOR_1:T1','BORNERA_MOTOR:U1'],['TEMPORIZADOR_1:T2','BORNERA_MOTOR:V1'],['TEMPORIZADOR_1:T3','BORNERA_MOTOR:W1'],
+  ['BORNERA_MOTOR:W2','CONTACTOR_TRIFASICO:L1'],['BORNERA_MOTOR:U2','CONTACTOR_TRIFASICO:L2'],['BORNERA_MOTOR:V2','CONTACTOR_TRIFASICO:L3'],
+  ['CONTACTOR_TRIFASICO:T1','CONTACTOR_TRIFASICO:T2'],['CONTACTOR_TRIFASICO:T2','CONTACTOR_TRIFASICO:T3'],
+  ['BORNERA_MOTOR:U1','CONTACTOR_TERMICO:L1'],['BORNERA_MOTOR:V1','CONTACTOR_TERMICO:L2'],['BORNERA_MOTOR:W1','CONTACTOR_TERMICO:L3'],
+  ['CONTACTOR_TERMICO:T1','BORNERA_MOTOR:W2'],['CONTACTOR_TERMICO:T2','BORNERA_MOTOR:U2'],['CONTACTOR_TERMICO:T3','BORNERA_MOTOR:V2'],
+  ['FUENTE:N','BOTONERAS:N'],['CONTACTOR_TRIFASICO:A1','BOTONERAS:PILOTO_1'],['CONTACTOR_TERMICO:A1','BOTONERAS:PILOTO_4']
+ ]},
+ starDeltaThree:{title:'Estrella-triángulo · 3 contactores + temporizador separado',needs:['CONTACTOR_TRIFASICO_3'],pairs:[
   // Mando: F → térmico → parada → marcha con retención en KM1. KM1:14 alimenta al temporizador y a los dos contactores de conmutación.
   ['FUENTE:F','CONTACTOR_TERMICO:95'],['CONTACTOR_TERMICO:96','BOTONERAS:S2:1'],['BOTONERAS:S2:2','BOTONERAS:S3:3'],
   ['BOTONERAS:S3:3','CONTACTOR_TERMICO:13'],['BOTONERAS:S3:4','CONTACTOR_TERMICO:14'],['CONTACTOR_TERMICO:14','CONTACTOR_TERMICO:A1'],

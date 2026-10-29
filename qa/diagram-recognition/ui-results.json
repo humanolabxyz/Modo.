@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "chromium 1440: 47 líneas de PERFECTO muestran el recorrido directamente, sin botón ni bornes pendientes",
+    "chromium 1440: repetir la línea, fondo vacío y Escape deseleccionan sin cambiar el montaje; arrastrar conserva la selección",
+    "chromium 1440: selección por mouse, 4 lecciones, KM3, guardado y correspondencias personales conservados",
+    "chromium 390: 10 líneas de PERFECTO muestran el recorrido directamente, sin botón ni bornes pendientes",
+    "chromium 390: repetir la línea, fondo vacío y Escape deseleccionan sin cambiar el montaje; arrastrar conserva la selección",
+    "chromium 390: selección por tacto, 4 lecciones, KM3, guardado y correspondencias personales conservados",
+    "webkit 1440: 47 líneas de PERFECTO muestran el recorrido directamente, sin botón ni bornes pendientes",
+    "webkit 1440: repetir la línea, fondo vacío y Escape deseleccionan sin cambiar el montaje; arrastrar conserva la selección",
+    "webkit 1440: selección por mouse, 4 lecciones, KM3, guardado y correspondencias personales conservados",
+    "webkit 390: 10 líneas de PERFECTO muestran el recorrido directamente, sin botón ni bornes pendientes",
+    "webkit 390: repetir la línea, fondo vacío y Escape deseleccionan sin cambiar el montaje; arrastrar conserva la selección",
+    "webkit 390: selección por tacto, 4 lecciones, KM3, guardado y correspondencias personales conservados"
+  ],
+  "errors": []
+}

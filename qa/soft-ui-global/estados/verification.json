@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "1440: neutral off, green simulation, green plug/breakers, powered indicator follows supply, off restores neutral",
+    "1440: laboratory RUN green, STOP restores black",
+    "390: neutral off, green simulation, green plug/breakers, powered indicator follows supply, off restores neutral",
+    "390: laboratory RUN green, STOP restores black"
+  ],
+  "errors": []
+}

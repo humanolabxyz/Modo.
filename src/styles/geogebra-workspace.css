@@ -1,0 +1,68 @@
+/* The graph owns the workspace; the guide opens above it on demand. */
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-calculator-toggle{display:flex;align-items:center;gap:7px;min-height:44px;padding:8px 10px;border:1px solid #d7dadd;border-radius:10px;background:#fff;color:#30343a;font:600 12px/1.5 LabSource,system-ui;cursor:pointer}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-calculator-toggle[aria-expanded=true]{background:#e8f2f6;border-color:#7599ac}
+.geo-calculator-toggle[aria-expanded=true]>svg:last-child{transform:rotate(180deg)}
+
+@media(max-height:500px){body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-calculator-toggle{display:flex;align-items:center;gap:7px;min-height:44px;padding:8px 10px;border:1px solid #d7dadd;border-radius:10px;background:#fff;color:#30343a;font:600 12px/1.5 LabSource,system-ui;cursor:pointer}}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-layout.has-guide{display:block}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-layout.has-guide .geo-surface{position:relative;inset:auto;visibility:visible;pointer-events:auto}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-guide{position:absolute;inset:0 auto 0 0;z-index:4;width:min(420px,100%);background:#fff;border:1px solid #d7dadd;border-radius:12px;box-shadow:8px 0 24px #1112}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-workbench:has(.geo-layout.has-guide)>.geo-command{display:flex}
+.geo-guide-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.geo-guide-top button,.geo-results-trigger{border:1px solid #d7dadd;border-radius:9px;background:#fff;color:#30343a;padding:8px 12px;min-height:44px;font:500 12px LabSource,system-ui;cursor:pointer}
+.geo-results-list p{padding:10px 0;border-bottom:1px solid #ddd}.geo-results-list code{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}.geo-results-list button{min-height:44px;padding:10px;font:inherit;cursor:pointer}
+.geo-confirmation{position:absolute;z-index:6;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#ffffffec;pointer-events:none;color:#23745b;animation:geo-confirm-enter .18s ease-out}.geo-confirmation svg{width:76px;height:76px}.geo-confirmation circle{fill:#e2f2eb;stroke:#23745b;stroke-width:2}.geo-confirmation path{fill:none;stroke:#23745b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;animation:geo-confirm-tick .3s ease-out}.geo-confirmation strong{font-size:25px}.geo-confirmation span{font-size:14px}.geo-completed-link{display:flex;justify-content:center;align-items:center;gap:10px;color:#23745b;font-size:13px;min-height:44px;flex:none}
+@keyframes geo-confirm-enter{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}@keyframes geo-confirm-tick{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@media(max-width:1100px){body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-guide{width:100%}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-workbench{gap:4px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-heading>span{display:none}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-toolbar{min-height:46px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-viewbar{justify-content:flex-start;gap:6px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-viewbar label{flex:1}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-viewbar select{width:100%;max-width:220px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-footer{display:none}}
+@media(max-width:720px){body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-heading strong{max-width:160px}.geo-results-trigger{font-size:11px;padding:6px 8px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-mobile-tabs{display:none}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-guide-toggle{display:flex}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-toolbar-actions{gap:2px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-guide-toggle{font-size:0;gap:0}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-toolbar-actions .geo-lessons-trigger{font-size:0;gap:0}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command{flex-wrap:nowrap}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command label{display:none}}
+@media(prefers-reduced-motion:reduce){.geo-confirmation,.geo-confirmation path{animation:none}}
+/* Shared lab-card-toggle panels fold above the graph, without changing its size. */
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail{position:absolute;left:10px;top:58px;z-index:5;width:min(350px,calc(100% - 20px));max-height:calc(100% - 190px);display:flex;flex-direction:column;overflow:hidden;border:1px solid #d7dadd;border-radius:12px;background:#fff;box-shadow:0 3px 12px #1112}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail .geo-guide{position:relative;inset:auto;min-height:0;flex:1;width:100%;height:auto;max-height:100%;border:0;box-shadow:none;border-radius:0}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail .geo-guide-body{max-height:35dvh;min-height:0;overflow:auto}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel{position:absolute;inset:auto 10px 10px;z-index:5;max-width:540px;border:1px solid #d7dadd;border-radius:12px;background:#fff;box-shadow:0 3px 12px #1112;overflow:hidden}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel .geo-command{border:0;border-top:1px solid #e0e3e4;border-radius:0;margin:0;min-height:54px}
+body.modo-soft-ui .lab-page.lab-geogebra-mode :is(.geo-panel-rail,.geo-command-panel)>.lab-card-toggle,body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-results-tab{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:44px;padding:10px 13px;font:600 13px/1.5 LabSource,system-ui;background:#fff;border:0;color:#30343a;cursor:pointer;box-shadow:none}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-results-tab{position:absolute;right:10px;top:58px;z-index:4;width:auto;border:1px solid #d7dadd;border-radius:12px;box-shadow:0 3px 12px #1112}
+.geo-panel-rail:has(.geo-guide)+.geo-surface{pointer-events:auto}.geo-panel-rail .lab-card-toggle[aria-expanded=true]>svg:last-child,.geo-command-panel .lab-card-toggle[aria-expanded=true]>svg{transform:rotate(180deg)}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail .geo-guide-actions{padding:8px;gap:5px}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-feedback[data-result=error]{color:#a52828;background:#fff0f0;border:1px solid #e7aaaa}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-feedback[data-result=correct]{color:#16663c;background:#ecf8ef;border:1px solid #a0d1b1}
+@media(max-width:650px){body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail{width:185px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail:has(.geo-guide){width:calc(100% - 20px)}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail .geo-guide-body{max-height:28dvh}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-viewbar .geo-mobile-tabs{display:none}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel .geo-command label{display:none}}
+@media(max-height:500px){body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail{top:6px;max-height:calc(100% - 6px);width:300px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail .geo-guide-body{max-height:100px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-results-tab{top:6px}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel{max-width:420px;left:auto;width:calc(100% - 330px)}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel>.lab-card-toggle{min-height:34px;padding:5px 10px}}
+
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-work-feedback{position:absolute;z-index:5;left:12px;right:12px;bottom:126px;max-width:540px;max-height:60px;margin:0;background:#fff;box-shadow:0 2px 8px #1112;pointer-events:none}
+
+/* One compact instrument bar, then a graph that grows with the viewport. */
+@media(max-width:1200px),(pointer:coarse){
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .lab-workspace{padding:calc(var(--lab-bar-height) + 4px) 4px 4px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-workbench{display:grid;grid-template-columns:minmax(0,1fr) 145px;grid-template-rows:48px minmax(0,1fr);grid-auto-rows:44px;gap:4px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-toolbar{grid-column:1;grid-row:1;min-height:0;padding:2px 6px;gap:4px;box-shadow:none;border-radius:8px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-toolbar-actions{background:transparent;padding:0;gap:0}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-toolbar-actions button{min-width:40px;min-height:44px;padding:8px;gap:0}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-lessons-trigger{font-size:0}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-toolbar-actions button>span{display:none}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-heading strong{font-size:12px;max-width:none}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-heading>span{display:none}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-viewbar{grid-column:2;grid-row:1;min-height:0}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-viewbar label{font-size:0}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-viewbar select{width:145px;max-width:none;min-height:44px;font-size:13px;border-radius:8px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-layout{grid-column:1/-1;grid-row:2;height:100%;min-height:0;border-radius:6px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode :is(.geo-taskbar,.geo-completed-link){grid-column:1/-1;grid-row:3;min-height:44px;padding:0 4px;box-sizing:border-box}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-taskbar button{min-height:42px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-footer{display:none}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-panel-rail{top:58px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-results-tab{top:58px}
+}
+body.modo-soft-ui .lab-page.lab-geogebra-mode.geo-expanded .lab-compact-bar{display:none}
+body.modo-soft-ui .lab-page.lab-geogebra-mode.geo-expanded .lab-workspace{padding:0}
+body.modo-soft-ui .lab-page.lab-geogebra-mode.geo-expanded .geo-workbench{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);grid-auto-rows:44px;gap:0}
+body.modo-soft-ui .lab-page.lab-geogebra-mode.geo-expanded :is(.geo-toolbar,.geo-viewbar,.geo-footer){display:none}
+body.modo-soft-ui .lab-page.lab-geogebra-mode.geo-expanded .geo-layout{grid-column:1;grid-row:1;border:0;border-radius:0}
+body.modo-soft-ui .lab-page.lab-geogebra-mode.geo-expanded :is(.geo-taskbar,.geo-completed-link){grid-column:1;grid-row:2}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-focus-exit{position:absolute;right:10px;bottom:122px;z-index:6;display:flex;align-items:center;gap:7px;min-height:44px;padding:9px 12px;border:1px solid #d4dce2;border-radius:9px;background:#fff;box-shadow:0 2px 8px #1112;color:#304c60;font-size:12px;cursor:pointer}
+
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-workbench[data-calculator-open=true] :is(.geo-panel-rail,.geo-results-tab){display:none}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-workbench[data-view=AG] :is(.geo-panel-rail,.geo-results-tab){top:auto;bottom:70px}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-workbench[data-view=AG]:has(.geo-command) :is(.geo-panel-rail,.geo-results-tab){bottom:126px}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-workbench[data-view=AG] .geo-panel-rail:has(.geo-guide){top:8px;bottom:auto;max-height:calc(100% - 16px)}
+@media(max-width:650px){body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-heading{display:none!important}body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-calculator-toggle span{display:none}}

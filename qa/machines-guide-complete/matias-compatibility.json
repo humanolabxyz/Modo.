@@ -1,0 +1,5 @@
+{
+  "base": "local",
+  "check": "La variante de Matías conserva su cierre sin exigir el esquema distinto de la guía manual",
+  "passed": true
+}

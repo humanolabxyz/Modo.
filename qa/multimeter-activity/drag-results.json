@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "chromium 1440: arrastre real con mouse de ambas puntas a 95–96, lectura 0,4 Ω y reapertura del mismo paso",
+    "chromium 390: arrastre real táctil emulado de ambas puntas a 95–96, lectura 0,4 Ω y reapertura del mismo paso",
+    "webkit 390: arrastre real con mouse de ambas puntas a 95–96, lectura 0,4 Ω y reapertura del mismo paso"
+  ],
+  "errors": []
+}

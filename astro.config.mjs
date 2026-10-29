@@ -38,8 +38,12 @@ const protectStaticPages=()=>({name:'humano-static-security',hooks:{'astro:build
 /** Rellena __BUILD__ y __PRECACHE__ en dist/sw.js con los archivos reales del build. */
 const stampServiceWorker=()=>({name:'panellab-stamp-sw',hooks:{'astro:build:done':({dir})=>{
  const root=fileURLToPath(dir),sw=join(root,'sw.js');
- const urls=walk(root).map(p=>'/'+relative(root,p).split('\\').join('/')).filter(u=>u.startsWith('/_astro/')||/^\/(?:index\.html|estudio\/index\.html|laboratorio\/index\.html|legal\/index\.html|comunidad\/index\.html)$/.test(u)||/^\/(?:brand\/(?!og-)|references\/|images\/modo\/)/.test(u)||/^\/fonts\/[^/]+\.woff2$/.test(u)||/^\/fonts\/.*LICENSE\.(?:txt|md)$/.test(u)||u==='/THIRD_PARTY_NOTICES.txt'||u==='/panel-model.json'||u==='/manifest.webmanifest').map(u=>u==='/index.html'?'/':u.replace(/\/index\.html$/,'/'));
- const body=readFileSync(sw,'utf8').replace('__BUILD__',Date.now().toString(36)).replace('__PRECACHE__',JSON.stringify([...new Set(urls)]));
+ const files=walk(root).filter(p=>{const name=relative(root,p).split('\\').join('/');return !['sw.js','offline-assets.json'].includes(name)&&!/^vendor\/geogebra\/HTML5\/5\.0\/(web|webSimple)\//.test(name)});
+ const assets=files.map(p=>({url:('/'+relative(root,p).split('\\').join('/')).replace(/\/index\.html$/,'/'),bytes:statSync(p).size}));
+ const urls=assets.map(a=>a.url).filter(u=>u.startsWith('/_astro/')||u==='/'||/^\/(?:estudio|laboratorio|legal|comunidad|versiones|sin-conexion)\/$/.test(u)||/^\/(?:brand\/(?!og-)(?!.*\.(?:mp4|jpg)$)|references\/|images\/home-approved\/|icons\/)/.test(u)||/^\/fonts\/[^/]+\.woff2$/.test(u)||/^\/fonts\/.*LICENSE\.(?:txt|md)$/.test(u)||['/THIRD_PARTY_NOTICES.txt','/panel-model.json','/manifest.webmanifest','/geogebra-frame.html'].includes(u));
+ const hash=createHash('sha256');for(const file of files){hash.update(relative(root,file));hash.update(readFileSync(file));}const build=hash.digest('hex').slice(0,16);
+ writeFileSync(join(root,'offline-assets.json'),JSON.stringify({version:1,build,bytes:assets.reduce((sum,a)=>sum+a.bytes,0),assets}));
+ const body=readFileSync(sw,'utf8').replace('__BUILD__',build).replace('__PRECACHE__',JSON.stringify([...new Set([...urls,'/offline-assets.json'])]));
  writeFileSync(sw,body);
 }}});
 export default defineConfig({integrations:[react(),protectStaticPages(),stampServiceWorker()],output:'static',devToolbar:{enabled:false}});

@@ -1,0 +1,265 @@
+Herramienta del laboratorio
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+Tableros de control
+Proyecto creado.
+Automatización
+16 equipos · 0 cables
+Vista
+Conjunto
+Placa
+Puerta
+Campo
+modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS
+GABINETE DE CONTROL
+PUERTA DE MANDO
+EQUIPO DE CAMPO
+ESPACIO DE RESERVA · AMPLIACIONES
+AREA UTIL ASIGNADA 720 x 780 · MODELO
+BOMBA AUXILIAR · M1
+ALIMENTACIÓN Y MOTOR EQUIVALENTES
+LED INTERIOR · MODELO
+0
+I
+QS1 · SECCIONADOR
+FILTRO-VENTILADOR
+ENVOLVENTE · MODELO
+IP66 · NEMA 4X EQUIVALENTE
+400 V · 50 Hz · didáctico
+BOMBA CENTRÍFUGA · MODELO
+G1
+Ubicación del encargo
+FU1
+Ubicación del encargo
+QM1
+Ubicación del encargo
+K1
+Ubicación del encargo
+F1
+Ubicación del encargo
+X1:U
+Ubicación del encargo
+X1:V
+Ubicación del encargo
+X1:W
+Ubicación del encargo
+PE1
+Ubicación del encargo
+S0
+Ubicación del encargo
+S1
+Ubicación del encargo
+H1
+Ubicación del encargo
+RED
+Ubicación del encargo
+M1
+Ubicación del encargo
+PLC1
+Ubicación del encargo
+B1
+Ubicación del encargo
+Bandeja de equipos · selecciona y coloca cada pieza
+Modelo didáctico · representación industrial genérica · sin cotas de fabricación.
+G1
+DC POWER SUPPLY
+24 V DC
+DC OK
+G1 · ALIMENTACIÓN DE MANDO
++
+−
+Fuente DC regulada
+FU1
+FU1
+CARTUCHO INSERTADO
+1
+2
+Portafusible
+QM1
+AJUSTE DE PRÁCTICA
+I
+O
+MOTOR PROTECTION
+I · CERRADO
+1
+3
+5
+2
+4
+6
+Guardamotor
+K1
+CONTACTOR · K1
+O
+BOBINA 24 V DC
+L1
+L2
+L3
+T1
+T2
+T3
+A1
+A2
+13
+14
+21
+22
+Contactor de potencia
+F1
+RELÉ TÉRMICO · F1
+RESET
+TEST
+NORMAL
+L1
+L2
+L3
+T1
+T2
+T3
+95
+96
+97
+98
+Relé térmico
+X1:U
+U
+1
+2
+Bornera de paso
+X1:V
+V
+1
+2
+Bornera de paso
+X1:W
+W
+1
+2
+Bornera de paso
+PE1
+PE
+PE
+Tierra de protección
+S0
+O
+PARO
+1
+2
+Pulsador NC
+S1
+I
+MARCHA
+3
+4
+Pulsador NA
+H1
+MARCHA
+1
+2
+Piloto
+RED
+RED 3~
+400 V · RMS
+PUNTO DE ALIMENTACIÓN EQUIVALENTE
+L1
+L2
+L3
+N
+PE
+Fuente trifásica
+M1
+MOTOR 3~ · MODELO
+400 V · 50 Hz
+U1
+V1
+W1
+W2
+U2
+V2
+PE
+Motor trifásico de seis bornes
+PLC1
+PLC INDUSTRIAL · modo.
+PWR
+RUN
+ERR
+DI
+DO
+SALIDA Q1 · CONTACTOR K1
+SIN MANDO
+PROGRAMAR
+24 V DC · CONTROLADOR GENÉRICO
+L+
+M
+I1
+I2
+I3
+I4
+I5
+I6
+I7
+I8
+C1
+Q1
+C2
+Q2
+C3
+Q3
+C4
+Q4
+PLC del proyecto
+B1
+0
+I
+PERMISO I
+3
+4
+Selector de dos posiciones
+34%
+Actividad
+Actividad · Tableros
+PASO 1 DE 7
+1. Comprender
+2. Montar
+3. Cablear
+4. Programar
+5. Verificar
+6. Probar
+7. Diagnosticar
+Entiende qué debe hacer la bomba
+
+Lee el encargo y responde la pregunta de comprobación.
+
+Entradas, programa, salidas y campo
+
+Monta un tablero para una bomba auxiliar. Marcha debe activar K1; el programa mantiene la salida al soltar. Paro y el contacto térmico interrumpen el mando.
+
+Potencia: RED → QM1 → K1 → F1 → X1 → motor.
+Control: Señales → entradas → programa → salida → bobina.
+Campo: motor en estrella y ruta PE separada del neutro.
+Contexto Tarapacá
+
+Los procesos de agua de QB, las correas de Collahuasi y las operaciones de SQM orientan los casos de estudio. Este ejercicio es un diseño didáctico; no reproduce el tablero de una faena.
+
+Comprueba antes de montar
+
+¿Dónde se define la retención de la orden?
+
+El programa conserva Q0.0 mientras se cumplen los permisos.
+El motor genera su propia alimentación de mando.
+Ir al montaje
+Ajustes y ayuda del taller
+Ver esquema
+1/10 verificaciones
+Expediente y notas
+Qué aprendemos de los tableros industriales
+Mover: cabecera · Tamaño: esquinas

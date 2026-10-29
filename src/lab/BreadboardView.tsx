@@ -1,17 +1,26 @@
+import {Power as SourcePowerIcon} from 'lucide-react';
+import {floatingDiagnostics,type FloatingDiagnostic} from './breadboardFloatingDiagnostics';
+import {BreadboardFaultPractice} from './BreadboardFaultPractice';
+import {BreadboardDiagnostics} from './BreadboardDiagnostics';
+import {ContextHint} from '../components/ContextHint';
+import {componentBody,bodyCollision} from './componentGeometry';
+import {BreadboardSupply} from './BreadboardSupply';
+import {BreadboardPractice} from './BreadboardPractice';
+import {CableBench} from './CableBench';
 import {useCompactLayout} from '../hooks/useCompactLayout';
 import {LAB_COMPACT_QUERY} from './workspaceLayout';
 import {memo,useCallback,useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode} from 'react';
-import {BookOpen,ChevronDown,GraduationCap,Keyboard,ChevronRight,Eraser,Gauge,Hand,MousePointer2,Redo2,Undo2} from 'lucide-react';
-import {HOLES,HOLE_BY_ID,bjtBase,componentHoles,crowdedHoles,icTo,parseHoleId,relocate,uid,type ProtoComponent,type ProtoKind} from './model';
+import {BookOpen,ChevronDown,GraduationCap,Keyboard,ChevronRight,Wrench,Eraser,Gauge,Hand,MousePointer2,Redo2,Undo2} from 'lucide-react';
+import {DEFAULT_BOARD_POWER,boardPowered,HOLES,HOLE_BY_ID,buttonPins,bjtBase,componentHoles,crowdedHoles,icTo,parseHoleId,relocate,uid,type ProtoComponent,type ProtoKind} from './model';
 import {holeName,measureResistance,netGroups,solveBreadboard} from './dc';
 import type {Laboratory} from './useLaboratory';
 import {useSvgNavigation,type CanvasView} from '../hooks/useSvgNavigation';
 import {FloatingDock,ZoomBar,type DockItem} from './CanvasControls';
-import {BoardArt,BoardStrips,BurntMark,ComponentShape,IcShape,PartIcon} from './BreadboardParts';
+import {BoardArt,BoardStrips,BurntMark,BurntSmoke,ComponentShape,IcShape,PartIcon} from './BreadboardParts';
 import {LogBody,meterDisplay,type MeterDisplay,type MeterMode,type Shortcut} from './MeterPanel';
 import {MeterDevice,MeterLeads,jackAnchors,type LeadFrame,type Pt} from './MeterInstrument';
 import {CLASS_DIAGRAMS,DiagramViewer} from './DiagramViewer';
-import {SupplyEditor,ValueEditor,LED_COLORS,type EditorPatch} from './ValueEditor';
+import {ValueEditor,LED_COLORS,type EditorPatch} from './ValueEditor';
 import {formatAmps,formatOhms,formatVolts} from './units';
 import {labelWidth,placeLabels,wirePolyline,type Point,type Segment} from './labels';
 
@@ -20,13 +29,13 @@ type PartKind=ProtoKind|'pnp';
 const PLACEMENT:ProtoKind[]=['wire','resistor','led','switch','button','motor','l293d','bjt','diode'];
 const isPlacement=(tool:BoardTool)=>tool==='pnp'||PLACEMENT.includes(tool as ProtoKind);
 const KIND_NAMES:Record<ProtoKind,string>={diode:'Diodo',wire:'Puente',resistor:'Resistencia',led:'LED',switch:'Interruptor',button:'Pulsador',motor:'Motor',l293d:'L293D',bjt:'2N2222'};
-const LIBRARY:{kind:PartKind;name:string;note:string;key:string}[]=[{kind:'wire',name:'Puente',note:'Une dos orificios',key:'W'},{kind:'resistor',name:'Resistencia',note:'Valor visible en ohmios',key:'R'},{kind:'led',name:'LED',note:'El primer extremo es el ánodo',key:'L'},{kind:'switch',name:'Interruptor',note:'Se opera durante la simulación',key:'S'},{kind:'button',name:'Pulsador',note:'Conduce solo mientras se mantiene presionado',key:'P'},{kind:'motor',name:'Motor',note:'Motor DC: el giro sigue la corriente',key:'O'},{kind:'l293d',name:'L293D',note:'Puente H: clic en el pin 1 (fila f)',key:'I'},{kind:'bjt',name:'2N2222 (NPN)',note:'Transistor NPN: E, B y C en tres orificios seguidos',key:'T'},{kind:'pnp',name:'2N2907 (PNP)',note:'Transistor PNP: E, B y C en tres orificios seguidos',key:'N'},{kind:'diode',name:'Diodo 1N4007',note:'Ánodo primero; el cátodo lleva la banda',key:'D'}];
+const LIBRARY:{kind:PartKind;name:string;note:string;key:string}[]=[{kind:'wire',name:'Puente macho–macho',note:'Dos pines aislados; une dos orificios libres',key:'W'},{kind:'resistor',name:'Resistencia',note:'Valor visible en ohmios',key:'R'},{kind:'led',name:'LED',note:'El primer extremo es el ánodo',key:'L'},{kind:'switch',name:'Interruptor',note:'Se opera durante la simulación',key:'S'},{kind:'button',name:'Pulsador de cuatro patas',note:'Cruza e–f, tres columnas; dos pares unidos internamente',key:'P'},{kind:'motor',name:'Motor',note:'Motor DC: el giro sigue la corriente',key:'O'},{kind:'l293d',name:'L293D',note:'Puente H: clic en el pin 1 (fila f)',key:'I'},{kind:'bjt',name:'2N2222 (NPN)',note:'Un toque en E coloca E–B–C en tres columnas',key:'T'},{kind:'pnp',name:'2N2907 (PNP)',note:'Un toque en E coloca E–B–C en tres columnas',key:'N'},{kind:'diode',name:'Diodo 1N4007',note:'Ánodo primero; el cátodo lleva la banda',key:'D'}];
 const SHORTCUTS:Record<string,BoardTool>={v:'select',h:'pan',w:'wire',r:'resistor',l:'led',s:'switch',p:'button',o:'motor',i:'l293d',t:'bjt',n:'pnp',d:'diode',m:'measure',e:'erase'};
-const BOARD={x:8,y:16,w:794,h:448};
+const BOARD={x:8,y:-265,w:794,h:755};
 const MIN_W=140,MAX_W=2200;
 const LESSONS:{title:string;text:string}[]=[
-  {title:'Columnas',text:'Cada columna une cinco orificios con una lámina metálica: a–e arriba (ámbar) y f–j abajo (verde). Los cinco orificios de una columna son un mismo punto eléctrico; las dos mitades no se tocan.'},
-  {title:'Canal central',text:'El canal separa las mitades de arriba y abajo. Por eso un circuito integrado (DIP, como el L293D) se coloca sobre el canal: cada pata queda en una columna distinta y ninguna se une con su vecina.'},
+  {title:'Columnas',text:'Comprueba primero con continuidad y la fuente detenida. Cada columna une cinco orificios con una lámina metálica: a–e arriba (ámbar) y f–j abajo (verde). Los cinco orificios de una columna son un mismo punto eléctrico; las dos mitades no se tocan.'},
+  {title:'Canal central',text:'La orientación del dibujo puede cambiar: sigue la numeración y verifica continuidad. El canal separa las mitades de arriba y abajo. Por eso un circuito integrado (DIP, como el L293D) se coloca sobre el canal: cada pata queda en una columna distinta y ninguna se une con su vecina.'},
   {title:'Rieles + y −',text:'Los rieles reparten la alimentación a lo largo de la placa. Aquí están partidos entre las columnas 15 y 16: la mitad izquierda y la derecha son redes distintas; si necesitas alimentar ambas, une las mitades con un puente.'},
   {title:'Una pata por orificio',text:'Cada orificio admite una sola pata. Para unir dos componentes, ponlos en orificios distintos de la misma columna (por ejemplo a5 y b5). Un orificio con dos patas se marca en rojo.'},
   {title:'Ver interior',text:'Se muestran las láminas metálicas. Pasa el cursor sobre un orificio para ver toda su red eléctrica: sus columnas, los puentes y los interruptores o pulsadores cerrados que la prolongan.'},
@@ -65,6 +74,9 @@ type Tone='fail'|'value'|'preview'|'reading'|'state'|'plus'|'minus'|'probe-a'|'p
 type LabelSpec={id:string;anchor:Point;parts:{text:string;tone:Tone}[];component?:string};
 
 export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['board']}){
+  const [faultPracticeOpen,setFaultPracticeOpen]=useState(false);
+  const openFaultPractice=()=>{setLessonAction(v=>({kind:'free',id:v.id+1}));setFaultPracticeOpen(true);};
+  const [cableBench,setCableBench]=useState(false),[lessonOpen,setLessonOpen]=useState(false),[lessonAction,setLessonAction]=useState<{kind:'catalog'|'free';id:number}>({kind:'free',id:0});
   const {project,update,running}=lab,board=project.breadboard,switches=lab.protoSwitches;
   const wrap=useRef<HTMLDivElement>(null),svg=useRef<SVGSVGElement>(null);
   const [size,setSize]=useState({w:1200,h:700});
@@ -73,29 +85,36 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
   const [probeHoles,setProbeHoles]=useState<[string|null,string|null]>([null,null]),[hovered,setHovered]=useState<string|null>(null);
   const measurement=useMemo<[string,string]|null>(()=>probeHoles[0]&&probeHoles[1]?[probeHoles[0],probeHoles[1]]:null,[probeHoles]);
   const setMeasurement=(next:[string,string]|null|((m:[string,string]|null)=>[string,string]|null))=>setProbeHoles(h=>{const current:[string,string]|null=h[0]&&h[1]?[h[0],h[1]]:null,value=typeof next==='function'?next(current):next;return value?[value[0],value[1]]:[null,null];});
-  const [sourceOpen,setSourceOpen]=useState(()=>typeof matchMedia==='undefined'||!matchMedia(LAB_COMPACT_QUERY).matches);
-  const [panel,setPanel]=useState<'learn'|'diagrams'|'names'|null>(null),[meterShown,setMeterShown]=useState(true),[meterCollapsed,setMeterCollapsed]=useState(()=>typeof matchMedia!=='undefined'&&matchMedia(LAB_COMPACT_QUERY).matches),[logOpen,setLogOpen]=useState(false),[held,setHeld]=useState<MeterDisplay|null>(null),[deviceRect,setDeviceRect]=useState<DOMRect|null>(null),[dragProbe,setDragProbe]=useState<{which:0|1;pt:Pt;dx:number;dy:number}|null>(null),[lastPart,setLastPart]=useState<PartKind>('resistor');
+  const [sourceReset,setSourceReset]=useState(0);
+  const [panel,setPanel]=useState<'learn'|'diagrams'|'names'|null>(null),[meterShown,setMeterShown]=useState(true),[meterCollapsed,setMeterCollapsed]=useState(()=>typeof matchMedia!=='undefined'&&matchMedia(LAB_COMPACT_QUERY).matches),[logOpen,setLogOpen]=useState(false),[held,setHeld]=useState<MeterDisplay|null>(null),[deviceRect,setDeviceRect]=useState<DOMRect|null>(null),[dragProbe,setDragProbe]=useState<{which:0|1;pt:Pt;dx:number;dy:number}|null>(null),[lastPart,setLastPart]=useState<PartKind>('resistor'),[bjtDirection,setBjtDirection]=useState<1|-1>(1);
+  const [diagnosticSelection,setDiagnosticSelection]=useState<FloatingDiagnostic|null>(null);
   const [diagram,setDiagram]=useState<string|null>(null);
   const [lesson,setLesson]=useState<number|null>(null),[xray,setXray]=useState(false),[focusHole,setFocusHole]=useState('a:1');
-  const [straight,setStraight]=useState(()=>{try{return localStorage.getItem('panellab-straight-wires')==='1';}catch{return false;}}),[moving,setMoving]=useState<{id:string;end:'from'|'to'|'body';hole:string|null}|null>(null);
+  const [straight,setStraight]=useState(()=>{try{const saved=localStorage.getItem('panellab-straight-wires');return saved===null?board.components.some(c=>c.id==='bj-q2'):saved==='1';}catch{return false;}}),[moving,setMoving]=useState<{id:string;end:'from'|'to'|'body';hole:string|null}|null>(null);
   const [fromText,setFromText]=useState('a:1'),[toText,setToText]=useState('f:1');
   const [view,setView]=useState<CanvasView>({x:0,y:0,w:810,h:480});
   const firstView=useRef('0 0 810 480');
   const nav=useSvgNavigation(svg,view,setView,{min:MIN_W,max:MAX_W});
+  const [redJack,setRedJack]=useState<'vo'|'a10'>('vo');
+  const [lessonTargets,setLessonTargets]=useState<{ids:[string,string];ghost:boolean}|null>(null),[readoutState,setReadoutState]=useState<string|null>(null);
   const [dial,setDial]=useState<MeterMode|'OFF'>('V');
   const mode:MeterMode=dial==='OFF'?'V':dial;
   const damaged=lab.damaged;
-  const solveOptions=useMemo(()=>({failures:true,damaged,ammeter:running&&dial==='A'&&measurement?{a:measurement[0],b:measurement[1]}:undefined}),[damaged,running,dial,measurement]);
-  const result=useMemo(()=>running?solveBreadboard(board,switches,solveOptions):null,[running,board,switches,solveOptions]);
+  const power=board.power??DEFAULT_BOARD_POWER,powered=running&&boardPowered(power);
+  const solveOptions=useMemo(()=>({failures:true,damaged,voltmeter:running&&dial==='V'&&redJack==='vo'&&measurement?{a:measurement[0],b:measurement[1],ohms:10_000_000}:undefined,ammeter:running&&redJack==='a10'&&measurement?{a:measurement[0],b:measurement[1]}:undefined}),[damaged,running,dial,measurement,redJack]);
+  const result=useMemo(()=>running?solveBreadboard({...board,voltage:powered?board.voltage:0},switches,solveOptions):null,[running,powered,board,switches,solveOptions]);
+  const floatingIssues=useMemo(()=>powered&&result?floatingDiagnostics(board,result,switches):[],[powered,board,result,switches]);
+  useEffect(()=>{if(diagnosticSelection&&!floatingIssues.some(i=>i.id===diagnosticSelection.id))setDiagnosticSelection(null);},[floatingIssues,diagnosticSelection]);
+  const locateDiagnostic=(issue:FloatingDiagnostic)=>{setDiagnosticSelection(issue);setEditing(false);const points=issue.holeIds.map(id=>HOLE_BY_ID.get(id)).filter((p):p is NonNullable<typeof p>=>!!p);if(!points.length)return;const xs=points.map(p=>p.x),ys=points.map(p=>p.y),w=Math.min(MAX_W,Math.max(380,Math.max(...xs)-Math.min(...xs)+140,(Math.max(...ys)-Math.min(...ys)+140)*size.w/size.h)),h=w*size.h/size.w;setView({x:(Math.min(...xs)+Math.max(...xs))/2-w/2,y:(Math.min(...ys)+Math.max(...ys))/2-h/2,w,h});};
   useEffect(()=>{if(result&&Object.keys(result.failures).length)lab.damage(result.failures);},[result]);
   const ohm=useMemo(()=>!running&&measurement&&(dial==='R'||dial==='C')?measureResistance(board,switches,measurement[0],measurement[1]):null,[running,measurement,dial,board,switches]);
-  useEffect(()=>{if(running)setDial(d=>d==='R'||d==='C'?'V':d);setHeld(null);},[running]);
-  const liveDisplay:MeterDisplay=dial==='OFF'?{text:'',tone:'idle',note:'Multímetro apagado.'}:meterDisplay(mode,running,measurement,result,ohm,damaged);
+  useEffect(()=>{setHeld(null);},[running,redJack]);
+  const liveDisplay:MeterDisplay=dial!=='OFF'&&((dial==='A')!==(redJack==='a10'))?{text:'REVISAR TOMAS',tone:'warn',note:dial==='A'?'Detén la simulación, abre el circuito y conecta la punta roja a A antes de medir corriente.':'La punta roja sigue en A: puede puentear el circuito. Detén y vuelve a V Ω.'}:dial==='OFF'?{text:'',tone:'idle',note:'Multímetro apagado.'}:meterDisplay(mode,running,measurement,result,ohm,damaged);
   const display=held&&dial!=='OFF'?held:liveDisplay;
   const geo=useMemo(()=>board.components.map(c=>({c,a:HOLE_BY_ID.get(c.from)!,b:HOLE_BY_ID.get(c.to)!})),[board.components]);
   const active=geo.find(g=>g.c.id===selected);
 
-  const padding=useCallback((w:number)=>compact?{l:12,r:12,t:136,b:92}:{l:diagram?486:panel?244:24,r:304,t:132,b:96},[panel,diagram,compact]);
+  const padding=useCallback((w:number)=>compact?{l:lessonOpen&&w>800?390:12,r:12,t:92,b:lessonOpen&&w<=800?Math.max(92,size.h*.48+60):92}:{l:lessonOpen?390:diagram?486:panel?244:24,r:24,t:160,b:96},[panel,diagram,compact,lessonOpen,size.h]);
   const fit=useCallback((overview=true)=>{const box=wrap.current?.getBoundingClientRect();const s=box?{w:box.width,h:box.height}:size;setView(fitView(s,padding(s.w),overview));},[padding,size]);
   useLayoutEffect(()=>{
     const element=wrap.current;if(!element)return;
@@ -104,13 +123,14 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
     firstView.current=`${v.x} ${v.y} ${v.w} ${v.h}`;svg.current?.setAttribute('viewBox',firstView.current);setSize(initial);setView(v);
     const observer=new ResizeObserver(measure);observer.observe(element);return()=>observer.disconnect();
   },[]);
+  useEffect(()=>{fit(true);},[lessonOpen]);
   const previousCompact=useRef(compact);
   useLayoutEffect(()=>{if(previousCompact.current!==compact)fit(true);previousCompact.current=compact;},[compact]);
   const viewerOpen=!!diagram,viewerMounted=useRef(false);
   useEffect(()=>{if(!viewerMounted.current){viewerMounted.current=true;return;}if(!compact)fit(true);},[viewerOpen]);
   useEffect(()=>{setView(v=>{const h=v.w*size.h/size.w;return Math.abs(h-v.h)>1?{...v,h}:v;});},[size]);
 
-  useEffect(()=>{setPending(null);if(running){setTool('measure');}else setTool(t=>t==='measure'?'select':t);},[running]);
+  useEffect(()=>{setPending(null);if(running){setTool('select');setEditing(false);}else setTool(t=>t==='measure'?'select':t);},[running]);
   useEffect(()=>{if(selected&&!board.components.some(c=>c.id===selected)){setSelected(null);setEditing(false);}},[board.components,selected]);
   const patch=(id:string,value:EditorPatch&Partial<Pick<ProtoComponent,'from'|'to'>>)=>update(p=>({...p,breadboard:{...p.breadboard,components:p.breadboard.components.map(c=>c.id===id?{...c,...value}:c)}}));
   const remove=(id:string)=>{update(p=>({...p,breadboard:{...p.breadboard,components:p.breadboard.components.filter(c=>c.id!==id)}}));if(selected===id){setSelected(null);setEditing(false);}};
@@ -121,15 +141,17 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
     let to=target;
     if(!isPlacement(tool)||running)return;
     if(tool==='l293d'){const end=icTo(from);if(!end){lab.setMessage('El L293D empieza en un orificio de la fila f, columnas 1 a 23: ese será el pin 1.');return;}to=end;}
+    else if(tool==='button'){if(!buttonPins(from,to)){lab.setMessage('El pulsador de cuatro patas cruza el canal: elige e y f con tres columnas de separación (por ejemplo e2 y f5).');setPending(null);return;}}
     else if(tool==='bjt'||tool==='pnp'){if(!bjtBase(from,to)){lab.setMessage('El transistor ocupa tres orificios seguidos de una misma fila: elige el del emisor (E) y el del colector (C), con uno libre en medio para la base.');setPending(null);return;}}
     else if(from===to){lab.setMessage('Selecciona dos orificios diferentes.');return;}
     if(board.components.length>=128){lab.setMessage('La protoboard admite 128 elementos en esta versión.');return;}
     const kind:ProtoKind=tool==='pnp'?'bjt':tool as ProtoKind,component:ProtoComponent={id:uid('part'),kind,from,to,value:kind==='resistor'?1000:kind==='led'?1.9:kind==='diode'?.7:kind==='motor'?40:kind==='bjt'?100:0,closed:kind!=='button',...tool==='pnp'?{polarity:'pnp' as const}:{},color:kind==='bjt'?(tool==='pnp'?'#262a3a':'#1f2327'):kind==='diode'?'#1d2023':kind==='led'?LED_COLORS[0].hex:kind==='button'?'#d94848':kind==='motor'?'#4b5563':kind==='l293d'?'#2b3035':'#0f766e'};
-    const occupied=new Set(board.components.flatMap(c=>componentHoles(c)));if(componentHoles(component).some(h=>occupied.has(h)))lab.setMessage('Ese orificio ya tiene una pata. En una protoboard real cada orificio admite una sola: usa otro de la misma columna.');
-    update(p=>({...p,breadboard:{...p.breadboard,components:[...p.breadboard.components,component]}}));setSelected(component.id);setEditing(kind==='resistor'||kind==='led'||kind==='diode'||kind==='motor'||kind==='l293d'||kind==='bjt');setPending(null);
+    const occupied=new Set(board.components.flatMap(c=>componentHoles(c)));if(power.redConnected)occupied.add(board.positive);if(power.blackConnected)occupied.add(board.negative);if(componentHoles(component).some(h=>occupied.has(h))){lab.setMessage('Ese orificio ya tiene una pata. En una protoboard real cada orificio admite una sola: usa otro de la misma columna.');setPending(null);return;}
+    if(bodyCollision(component,board.components)){lab.setMessage('El cuerpo se superpone con otra pieza. Elige otra fila o separa los componentes usando puentes macho–macho.');setPending(null);return;}
+    update(p=>({...p,breadboard:{...p.breadboard,components:[...p.breadboard.components,component]}}));setSelected(component.id);setEditing(kind==='resistor'||kind==='led'||kind==='diode'||kind==='motor'||kind==='l293d');setPending(null);
   };
   const applyPoints=(from:string,to:string)=>{
-    if(tool==='positive'||tool==='negative'){if(!running)update(p=>({...p,breadboard:{...p.breadboard,[tool]:from}}));setTool('select');return;}
+    if(tool==='positive'||tool==='negative'){if(!running)lab.connectBoardSource(tool==='positive'?'red':'black',from);setTool('select');return;}
     if(tool==='measure'){setMeasurement([from,to]);setPending(null);return;}
     if(!isPlacement(tool)){lab.setMessage('Elige primero Puente, Resistencia, LED, Interruptor o Medir.');return;}
     place(from,to);
@@ -139,6 +161,8 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
     if(tool==='positive'||tool==='negative'){applyPoints(id,id);return;}
     if(running&&tool!=='measure')return;
     if(tool==='l293d'){place(id,id);return;}
+    if(tool==='bjt'||tool==='pnp'){const h=/^([a-j]):(\d+)$/.exec(id);if(!h){lab.setMessage('El transistor se coloca en filas a–j. Toca el orificio del emisor E.');return;}const end=Number(h[2])+2*bjtDirection;if(end<1||end>30){lab.setMessage('Se necesitan tres columnas libres. Cambia la orientación o elige otra columna.');return;}place(id,`${h[1]}:${end}`);return;}
+    if(tool==='button'){const h=/^([ef]):(\d+)$/.exec(id);if(!h||Number(h[2])>27){lab.setMessage('Toca e o f entre las columnas 1 y 27: las cuatro patas se colocan a ambos lados del canal.');return;}place(id,`${h[1]==='e'?'f':'e'}:${Number(h[2])+3}`);return;}
     if(!pending){setPending(id);return;}
     if(pending===id){setPending(null);return;}
     applyPoints(pending,id);
@@ -148,7 +172,7 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
     if(tool==='pan')return;
     if(tool==='erase'){if(!running)remove(c.id);return;}
     setSelected(c.id);
-    if(running&&c.kind==='switch')lab.setProtoSwitch(c.id,!(switches[c.id]??c.closed));
+    if(running&&(c.kind==='button'||c.kind==='switch')){if(c.kind==='switch')lab.setProtoSwitch(c.id,!(switches[c.id]??c.closed));setEditing(false);return;}
     setEditing(tool==='select'||(isPlacement(tool)&&!running));
   };
   const openEditor=(id:string)=>{setSelected(id);setEditing(true);};
@@ -168,10 +192,10 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
       if(c.kind==='led'&&selected===c.id)parts.push({text:`Vf ${formatVolts(c.value)}`,tone:'value'});
       if(c.kind==='switch')parts.push({text:closed?'Cerrado':'Abierto',tone:'state'});
       if(c.kind==='diode'){parts.push({text:'1N4007',tone:'value'});if(running&&amps!==undefined)parts.push({text:formatAmps(Math.abs(amps)),tone:'reading'});}
-      if(c.kind==='bjt'){parts.push({text:c.polarity==='pnp'?'2N2907':'2N2222',tone:'value'});const t=result?.bjts[c.id];if(running&&t)parts.push({text:`${t.region} · ${formatAmps(t.ic)}`,tone:'reading'});}
+      if(c.kind==='bjt'&&selected===c.id){parts.push({text:c.polarity==='pnp'?'2N2907':'2N2222',tone:'value'});const t=result?.bjts[c.id];if(running&&t)parts.push({text:`${t.region} · ${formatAmps(t.ic)}`,tone:'reading'});}
       if(c.kind==='button')parts.push({text:running?(switches[c.id]?'Presionado':'Suelto'):'Pulsador',tone:'state'});
       if(c.kind==='motor'){parts.push({text:'Motor',tone:'value'});if(running&&amps!==undefined)parts.push({text:Math.abs(amps)<1e-6?'parado':`${amps>0?'↻':'↺'} ${formatAmps(Math.abs(amps))}`,tone:'reading'});}
-      if(running&&amps!==undefined&&(c.kind==='resistor'||c.kind==='led'))parts.push({text:formatAmps(Math.abs(amps)),tone:'reading'});
+      if(running&&selected===c.id&&amps!==undefined&&(c.kind==='resistor'||c.kind==='led'))parts.push({text:formatAmps(Math.abs(amps)),tone:'reading'});
       if(parts.length)list.push({id:c.id,anchor,parts,component:c.id});
     }
     const pos=HOLE_BY_ID.get(board.positive),neg=HOLE_BY_ID.get(board.negative);
@@ -183,8 +207,9 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
   const labels=useMemo(()=>{
     const segments:Segment[]=[];
     for(const {c,a,b} of geo){if(c.kind==='wire'){const pts=wirePolyline(a,b,14,straight);for(let i=0;i<pts.length-1;i++)segments.push([pts[i],pts[i+1]]);}else if(c.kind==='bjt'){const bx=(a.x+b.x)/2,x0=bx-15,x1=bx+15,y0=a.y-36,y1=a.y-10,box:Point[]=[{x:x0,y:y0},{x:x1,y:y0},{x:x1,y:y1},{x:x0,y:y1},{x:x0,y:y0}];for(let i=0;i<4;i++)segments.push([box[i],box[i+1]]);segments.push([a,b]);}else if(c.kind==='l293d'){const x0=a.x-12,x1=b.x+12,y0=b.y+6,y1=a.y-6,box:Point[]=[{x:x0,y:y0},{x:x1,y:y0},{x:x1,y:y1},{x:x0,y:y1},{x:x0,y:y0}];for(let i=0;i<4;i++)segments.push([box[i],box[i+1]]);}else segments.push([a,b]);}
-    return placeLabels(specs.map(s=>({id:s.id,anchor:s.anchor,w:labelWidth(s.parts.map(p=>p.text))})),segments);
-  },[specs,geo,straight]);
+    const bodies=geo.flatMap(({c})=>{const body=componentBody(c);return body?[body]:[];});
+    return placeLabels([...specs].sort((a,b)=>Number(b.component===selected)-Number(a.component===selected)).map(s=>({id:s.id,anchor:s.anchor,w:labelWidth(s.parts.map(p=>p.text))*labelScale,h:18*labelScale})),segments,bodies,110);
+  },[specs,geo,straight,labelScale,selected]);
 
   /* Navegación del pizarrón: la arrastra el fondo; el zoom y la rueda los resuelve el hook compartido */
   /* Un arrastre mayor al umbral desplaza la vista desde cualquier punto; un toque corto sigue siendo un clic.
@@ -256,13 +281,18 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
     {id:'pan',label:'Mover vista',shortcut:'H',icon:<Hand size={20}/>,pressed:tool==='pan',onClick:()=>choose('pan')},
     'separator',
     {id:'parts',label:'Componentes',icon:<PartIcon kind={lastPart} size={30}/>,pressed:isPlacement(tool),disabled:running,menu:LIBRARY.map(item=>({id:item.kind,label:item.name,note:item.note,shortcut:item.key,icon:<PartIcon kind={item.kind} size={36}/>,pressed:tool===item.kind,onClick:()=>choose(item.kind)}))},
-    {id:'meter',label:'Multímetro',shortcut:'M',icon:<Gauge size={20}/>,pressed:meterShown,onClick:()=>{choose('measure');setMeterShown(shown=>!shown);}},
+    {id:'meter',label:'Multímetro',shortcut:'M',icon:<Gauge size={20}/>,pressed:meterShown,onClick:()=>{choose('measure');setMeterShown(true);setMeterCollapsed(false);}},
+    {id:'bridge-color',label:'Color del puente',help:'Selecciona un puente y abre sus colores.',icon:<span className="lab-bridge-color-icon"><i style={{backgroundColor:active?.c.kind==='wire'?active.c.color:'#145650'}}/>Color</span>,disabled:running,onClick:()=>{if(active?.c.kind==='wire')openEditor(active.c.id);else{choose('select');lab.setMessage('Selecciona un puente en la placa y pulsa Color para cambiarlo.');}}},
     {id:'erase',label:'Retirar',shortcut:'E',icon:<Eraser size={20}/>,pressed:tool==='erase',disabled:running,onClick:()=>choose('erase')},
     'separator',
     {id:'undo',label:'Deshacer',shortcut:'Ctrl+Z',icon:<Undo2 size={19}/>,disabled:!lab.canUndo||running,onClick:lab.undo},
     {id:'redo',label:'Rehacer',shortcut:'Ctrl+Y',icon:<Redo2 size={19}/>,disabled:!lab.canRedo||running,onClick:lab.redo},
     'separator',
+    {id:'source',label:'Fuente de alimentación',icon:<SourcePowerIcon size={20}/>,onClick:()=>{setSourceReset(n=>n+1);fit(true);}},
     {id:'help',label:'Aprender y referencias',icon:<GraduationCap size={20}/>,pressed:!!panel||!!diagram,menu:[
+      {id:'fault-test',label:'Modo prueba · buscar fallos',note:'Puente H armado: retirar o mover un puente',icon:<Wrench size={20}/>,onClick:openFaultPractice},
+      {id:'lessons',label:'Lecciones de protoboard',note:'Abrir el catálogo cuando lo necesites',icon:<GraduationCap size={20}/>,onClick:()=>setLessonAction(v=>({kind:'catalog',id:v.id+1}))},
+      {id:'free',label:'Práctica libre',note:'Cerrar la guía conservando el montaje',icon:<MousePointer2 size={20}/>,onClick:()=>setLessonAction(v=>({kind:'free',id:v.id+1}))},
       {id:'learn',label:'Cómo funciona',note:'Columnas, canal, rieles y redes',icon:<span className="lab-menu-icon"><GraduationCap size={20}/></span>,pressed:panel==='learn',onClick:()=>{setPanel(panel==='learn'?null:'learn');}},
       {id:'diagrams',label:'Diagramas de la clase',note:'Práctica 1 y 2, pines del L293D',icon:<span className="lab-menu-icon"><BookOpen size={20}/></span>,pressed:panel==='diagrams',onClick:()=>{setPanel(panel==='diagrams'?null:'diagrams');}},
       {id:'names',label:'Puntos por nombre',note:'Colocar o medir escribiendo a5, f10…',icon:<span className="lab-menu-icon"><Keyboard size={20}/></span>,pressed:panel==='names',onClick:()=>{setPanel(panel==='names'?null:'names');}},
@@ -280,6 +310,7 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
 
   const stable=handlers;
   const crowded=useMemo(()=>crowdedHoles(board.components),[board.components]);
+  const overlappingBodies=useMemo(()=>board.components.filter((c,i)=>bodyCollision(c,board.components.slice(i+1))).length,[board.components]);
   const groupsNow=useMemo(()=>netGroups(board,switches),[board,switches]);
   const xrayOn=xray||lesson===4||lesson===5;
   const netOf=xrayOn&&hovered?groupsNow[hovered]:undefined;
@@ -295,7 +326,7 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
   const holeAt=(clientX:number,clientY:number)=>{const matrix=svg.current?.getScreenCTM();if(!matrix)return null;const point=new DOMPoint(clientX,clientY).matrixTransform(matrix.inverse());let best:string|null=null,nearest=15*15;for(const h of HOLES){const d=(h.x-point.x)**2+(h.y-point.y)**2;if(d<nearest){nearest=d;best=h.id;}}return best;};
   const moveChange=(m:{end:'from'|'to'|'body';hole:string|null})=>m.end==='from'?{from:m.hole??undefined}:m.end==='to'?{to:m.hole??undefined}:{anchor:m.hole??undefined};
   const relocation=moving&&moving.hole?relocate(board.components,moving.id,moveChange(moving)):null;
-  const finishMove=()=>{const m=moving;setMoving(null);if(!m||!m.hole)return;const result=relocate(board.components,m.id,moveChange(m));if(!result.ok){lab.setMessage(result.error);return;}if(result.component.from!==board.components.find(c=>c.id===m.id)?.from||result.component.to!==board.components.find(c=>c.id===m.id)?.to)patch(m.id,{from:result.component.from,to:result.component.to});};
+  const finishMove=()=>{const m=moving;setMoving(null);if(!m||!m.hole)return;const result=relocate(board.components,m.id,moveChange(m));if(!result.ok){lab.setMessage(result.error);return;}if(bodyCollision(result.component,board.components)){lab.setMessage('El cuerpo se superpone con otra pieza. Separa los componentes.');return;}if(result.component.from!==board.components.find(c=>c.id===m.id)?.from||result.component.to!==board.components.find(c=>c.id===m.id)?.to)patch(m.id,{from:result.component.from,to:result.component.to});};
   const startMove=(event:React.PointerEvent,id:string,end:'from'|'to'|'body')=>{event.stopPropagation();event.preventDefault();try{(event.currentTarget as Element).setPointerCapture(event.pointerId);}catch{/* sin captura */}setSelected(id);setMoving({id,end,hole:null});};
   const ghostGeo=relocation?.ok?{c:relocation.component,a:HOLE_BY_ID.get(relocation.component.from)!,b:HOLE_BY_ID.get(relocation.component.to)!}:null;
   const moveGhost=moving?<g className="lab-ghost" pointerEvents="none" aria-hidden="true">{ghostGeo?(ghostGeo.c.kind==='l293d'?<IcShape a={ghostGeo.a} b={ghostGeo.b}/>:<ComponentShape c={ghostGeo.c} a={ghostGeo.a} b={ghostGeo.b} current={0} closed={ghostGeo.c.closed} straight={straight} previewValue={null}/>):null}{moving.hole&&HOLE_BY_ID.get(moving.hole)?<circle className={relocation?.ok?'lab-drop-ok':'lab-drop-bad'} cx={HOLE_BY_ID.get(moving.hole)!.x} cy={HOLE_BY_ID.get(moving.hole)!.y} r="11"/>:null}</g>:null;
@@ -306,11 +337,13 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
   const meterFace=useRef<Element|null>(null);
   useLayoutEffect(()=>{meterFace.current=wrap.current?.querySelector('.lab-dmm-body,.lab-dmm-pill')??null;});
   const frameOf=():LeadFrame|null=>{
+    if(live.current.collapsed&&!live.current.probes.some(Boolean))return null;
     const box=wrap.current?.getBoundingClientRect(),vb=svg.current?.viewBox.baseVal,face=meterFace.current;
     if(!box||!vb||!vb.width||!face)return null;
     const fr=face.getBoundingClientRect();if(!fr.width)return null;
-    const rel={left:fr.left-box.left,top:fr.top-box.top,width:fr.width,height:fr.height},anchors=jackAnchors(rel,live.current.dial,live.current.collapsed),k=box.width/vb.width;
-    const parked:[Pt,Pt]=[{x:rel.left-34,y:rel.top+70},{x:rel.left-34,y:rel.top+150}];
+    const rel={left:fr.left-box.left,top:fr.top-box.top,width:fr.width,height:fr.height},anchors=jackAnchors(rel,live.current.dial,live.current.collapsed,redJack),k=box.width/vb.width;
+    const parkX=clamp(rel.left-60,28,box.width-28),parkY=clamp(rel.top+60,170,box.height-180);
+    const parked:[Pt,Pt]=[{x:parkX,y:parkY},{x:parkX,y:Math.min(box.height-110,parkY+85)}];
     const tip=(i:0|1):Pt=>{const d=live.current.drag;if(d&&d.which===i)return d.pt;const h=live.current.probes[i]?HOLE_BY_ID.get(live.current.probes[i]!):undefined;return h?{x:(h.x-vb.x)*k,y:(h.y-vb.y)*k}:parked[i];};
     return {jacks:[anchors.red,anchors.black],tips:[tip(0),tip(1)]};
   };
@@ -325,50 +358,61 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
     d.pt={x:e.clientX-box.left+d.dx,y:e.clientY-box.top+d.dy};
     const hole=holeAt(box.left+d.pt.x,box.top+d.pt.y);setSnapHole(previous=>previous===hole?previous:hole);
   };
-  const dropProbe=()=>{const d=live.current.drag;if(!d)return;const target=snapHole;live.current.drag=null;setDragProbe(null);setSnapHole(null);setProbeHoles(h=>d.which===0?[target,h[1]]:[h[0],target]);setPending(null);};
-  const hint=moving?(relocation?(relocation.ok?'Suelta para mover aquí':relocation.error):'Arrastra hasta el orificio de destino'):netOf&&hovered?`Red de ${holeName(hovered)}: ${netSize} orificios unidos eléctricamente (columnas, rieles, puentes e interruptores cerrados)`:tool==='positive'?'Selecciona dónde conectar el polo positivo':tool==='negative'?'Selecciona dónde conectar el polo negativo':tool==='pan'?'Arrastra para mover la vista · Ctrl + rueda acerca':tool==='erase'?'Selecciona un componente para retirarlo · Deshacer lo recupera':tool==='measure'?pending?`Punto A ${holeName(pending)} · elige el punto B`:'Medir: elige el punto A y el punto B':isPlacement(tool)?pending?`Desde ${holeName(pending)} · selecciona el segundo orificio`:`${(LIBRARY.find(i=>i.kind===tool)?.name??"Componente")}: elige dos orificios`:running?'Simulación activa · opera interruptores y mide':'Selecciona un componente para editar su valor';
+  const dropProbe=(e:React.PointerEvent)=>{const d=live.current.drag;if(!d)return;if(e.type==='pointercancel'){live.current.drag=null;setDragProbe(null);setSnapHole(null);return;}const box=wrap.current?.getBoundingClientRect();const target=box?holeAt(box.left+d.pt.x,box.top+d.pt.y):null;live.current.drag=null;setDragProbe(null);setSnapHole(null);setProbeHoles(h=>d.which===0?[target,h[1]]:[h[0],target]);setPending(null);};
+  const hint=moving?(relocation?(relocation.ok?'Suelta para mover aquí':relocation.error):'Arrastra hasta el orificio de destino'):netOf&&hovered?`Red de ${holeName(hovered)}: ${netSize} orificios unidos eléctricamente (columnas, rieles, puentes e interruptores cerrados)`:tool==='positive'?'Selecciona dónde conectar el polo positivo':tool==='negative'?'Selecciona dónde conectar el polo negativo':tool==='pan'?'Arrastra para mover la vista · Ctrl + rueda acerca':tool==='erase'?'Selecciona un componente para retirarlo · Deshacer lo recupera':tool==='measure'?pending?`Punto A ${holeName(pending)} · elige el punto B`:'Medir: elige el punto A y el punto B':isPlacement(tool)?pending?`Desde ${holeName(pending)} · selecciona el segundo orificio`:tool==='bjt'||tool==='pnp'?'Toca el emisor E: la base B y el colector C se colocan solos.':tool==='button'?'Toca e o f para colocar las cuatro patas sobre el canal.':`${(LIBRARY.find(i=>i.kind===tool)?.name??"Componente")}: elige dos orificios`:running?powered?'Simulación activa · mantén pulsados los botones y mide':'Sin salida DC: enchufa la fuente, conecta ambos cables y activa OUTPUT':'Selecciona un componente para editar su valor';
   const holeLayer=useMemo(()=>HOLES.map(h=><g key={h.id} className="lab-hole" data-hole={h.id} role="button" tabIndex={focusHole===h.id?0:-1} aria-label={`Orificio ${holeName(h.id)}`} onClick={()=>stable.current.clickHole(h.id)} onPointerEnter={()=>stable.current.hover(h.id)} onPointerLeave={()=>stable.current.hover(null)} onFocus={()=>{setFocusHole(h.id);stable.current.hover(h.id);}} onBlur={()=>stable.current.hover(null)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stable.current.clickHole(h.id);return;}const next=neighborHole(h.id,e.key);if(next){e.preventDefault();e.stopPropagation();setFocusHole(next);requestAnimationFrame(()=>(document.querySelector(`[data-hole="${next}"]`) as SVGElement|null)?.focus());}}}><circle cx={h.x} cy={h.y} r="9" fill="transparent"/><rect x={h.x-4.5} y={h.y-4.5} width="9" height="9" rx="2" fill={holeFill(h)} stroke={crowded[h.id]?'#d1453b':pending===h.id?'#e8a234':h.group===group?'#4d9e91':'#eeeee8'} strokeWidth={crowded[h.id]?2.6:pending===h.id?3:1}/><circle cx={h.x} cy={h.y} r="2.4" fill="#3f4341"/></g>),[group,pending,crowded,lessonColors,netOf,groupsNow,focusHole]);
   const specById=new Map(specs.map(s=>[s.id,s]));
   const hoverHole=hovered?HOLE_BY_ID.get(hovered):undefined,pendingHole=pending?HOLE_BY_ID.get(pending):undefined;
   const hitsOn=tool==='select'||tool==='erase'||tool==='measure'||tool==='pan';
 
-  return <div className={`lab-canvas-workspace tool-${tool} ${diagram?'has-viewer':''}`} ref={wrap} data-tool={tool}>
+  return <div className={`lab-canvas-workspace tool-${tool} ${diagram?'has-viewer':''} ${cableBench?'has-cable-bench':''} ${lessonOpen?'has-protoboard-lesson':''}`} ref={wrap} data-tool={tool}>
+      <BreadboardPractice onFaults={openFaultPractice} action={lessonAction} onVisibility={setLessonOpen} lab={lab} context={{board,running,probes:probeHoles,dial,redJack,result,reading:display.record,meterReady:!held&&!readoutState}} onOpenGuide={()=>setPanel('learn')} onCable={()=>setCableBench(true)} onTargets={(ids,ghost=false)=>setLessonTargets(ids?{ids,ghost}:null)}/>
+      <BreadboardFaultPractice key={project.id} lab={lab} open={faultPracticeOpen} onClose={()=>setFaultPracticeOpen(false)} onTargets={ids=>{setLessonTargets({ids,ghost:false});const a=HOLE_BY_ID.get(ids[0]),b=HOLE_BY_ID.get(ids[1]);if(a&&b){const w=Math.max(450,Math.abs(a.x-b.x)+160),h=w*size.h/size.w;setView({x:(a.x+b.x)/2-w/2,y:(a.y+b.y)/2-h/2,w,h});}}}/>
+      {cableBench?<CableBench onClose={()=>setCableBench(false)}/>:null}
+      <div style={{display:cableBench?'none':'contents'}} inert={cableBench}>
     <svg ref={svg} className="lab-board-svg" viewBox={firstView.current} role="group" tabIndex={0} aria-label="Protoboard de 30 columnas con rieles partidos. Flechas para desplazar, más y menos para acercar, Inicio para ajustar." onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp} onClickCapture={e=>{if(justDragged.current){e.stopPropagation();e.preventDefault();justDragged.current=false;}}}
       onKeyDown={e=>{if(e.target!==e.currentTarget)return;const step=view.w*.06,moves:Record<string,[number,number]>={ArrowLeft:[-step,0],ArrowRight:[step,0],ArrowUp:[0,-step],ArrowDown:[0,step]};if(e.key==='Home'){e.preventDefault();fit(true);}else if(e.key==='+'||e.key==='='){e.preventDefault();zoomBy(1/1.25);}else if(e.key==='-'){e.preventDefault();zoomBy(1.25);}else if(moves[e.key]){e.preventDefault();setView(v=>({...v,x:v.x+moves[e.key][0],y:v.y+moves[e.key][1]}));}}}>
       <BoardArt/>
       {xrayOn?<BoardStrips/>:null}
       {lesson===1?<rect className="lab-lesson-channel" x="28" y="221" width="754" height="31" rx="5" pointerEvents="none"/>:null}
       {holeLayer}
+      {lessonTargets?<g className="breadboard-targets" pointerEvents="none" aria-hidden="true">{lessonTargets.ghost?(()=>{const a=HOLE_BY_ID.get(lessonTargets.ids[0]),b=HOLE_BY_ID.get(lessonTargets.ids[1]);return a&&b?<line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#337d91" strokeWidth="3" strokeDasharray="5 5"/>:null;})():null}{lessonTargets.ids.map((id,i)=>{const h=HOLE_BY_ID.get(id);return h?<g key={id}><circle cx={h.x} cy={h.y} r="13" fill="none" stroke={i?'#303c42':'#bd3035'} strokeWidth="3"/><text x={h.x+15} y={h.y-10} fontSize="10" fill="#254b60">{holeName(id)}</text></g>:null;})}</g>:null}
+      {diagnosticSelection&&<g className="breadboard-diagnostic-points" pointerEvents="none">{diagnosticSelection.holeIds.map((id,i)=>{const p=HOLE_BY_ID.get(id);return p?<g key={id} data-diagnostic-hole={id}><circle cx={p.x} cy={p.y} r="11" fill="#efad3333" stroke="#a76700" strokeWidth="2.5"/>{i<6&&<text x={p.x+13} y={p.y-12} fontSize="11" fill="#714500" stroke="#fff" strokeWidth="3" paintOrder="stroke">{holeName(id)}</text>}</g>:null;})}</g>}
       {pendingHole&&hoverHole&&hoverHole.id!==pendingHole.id?<line className="lab-pending-preview" x1={pendingHole.x} y1={pendingHole.y} x2={hoverHole.x} y2={hoverHole.y} pointerEvents="none"/>:null}
       {[...geo].sort((x,y)=>(x.c.kind==='wire'?0:1)-(y.c.kind==='wire'?0:1)).map(({c,a,b})=>{
         const closed=switches[c.id]??(c.kind==='button'?false:c.closed),isSelected=selected===c.id,amps=result?.amps[c.id]??0,dist=Math.hypot(b.x-a.x,b.y-a.y)||1,ux=(b.x-a.x)/dist,uy=(b.y-a.y)/dist,inset=dist>30?12:0;
         const top=Math.min(a.y,b.y)-35,wirePath=straight?`M${a.x} ${a.y} L${b.x} ${b.y}`:`M${a.x} ${a.y} C${a.x} ${top} ${b.x} ${top} ${b.x} ${b.y}`,isIc=c.kind==='l293d',isBjt=c.kind==='bjt';
         const detail=c.kind==='resistor'?` ${formatOhms(c.value)}`:c.kind==='led'?` caída ${formatVolts(c.value)}`:c.kind==='switch'?closed?' cerrado':' abierto':c.kind==='button'?closed?' presionado':' suelto':c.kind==='motor'?` ${formatOhms(c.value)} de bobinado`:c.kind==='diode'?` ánodo ${holeName(c.from)}, cátodo ${holeName(c.to)}`:c.kind==='bjt'?` ${c.polarity==='pnp'?'PNP':'NPN'} ganancia ${c.value}, emisor ${holeName(c.from)}, base ${holeName(bjtBase(c.from,c.to)??c.from)}, colector ${holeName(c.to)}`:'';
         const press=(down:boolean)=>{if(running&&c.kind==='button')lab.setProtoSwitch(c.id,down);};
-        return <g key={c.id} className={`lab-proto-component ${isSelected?'selected':''} ${moving?.id===c.id?'is-moving':''}`} role="button" tabIndex={0} aria-pressed={isSelected} aria-label={`${KIND_NAMES[c.kind]}${detail}, ${isIc?`pin 1 en ${holeName(c.from)}`:isBjt?'':`${holeName(c.from)} a ${holeName(c.to)}`}`} onClick={()=>activate(c)}
-          onPointerDown={()=>press(true)} onPointerUp={()=>press(false)} onPointerLeave={()=>press(false)} onPointerCancel={()=>press(false)}
+        return <g key={c.id} className={`lab-proto-component ${running&&(c.kind==='button'||c.kind==='switch')?'simulation-control':''} ${isSelected?'selected':''} ${moving?.id===c.id?'is-moving':''}`} role="button" tabIndex={0} aria-pressed={isSelected} data-component-id={c.id} data-component-kind={c.kind} data-closed={closed} data-current={amps} aria-label={`${KIND_NAMES[c.kind]}${detail}, ${isIc?`pin 1 en ${holeName(c.from)}`:isBjt?'':`${holeName(c.from)} a ${holeName(c.to)}`}`} onClick={()=>activate(c)}
+          onPointerDown={e=>{if(running&&c.kind==='button'&&tool!=='pan'){e.preventDefault();e.stopPropagation();e.currentTarget.setPointerCapture(e.pointerId);press(true);}}} onPointerUp={e=>{if(c.kind==='button'&&running){e.stopPropagation();press(false);if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);}}} onPointerLeave={e=>{if(!e.currentTarget.hasPointerCapture(e.pointerId))press(false);}} onLostPointerCapture={()=>press(false)} onPointerCancel={()=>press(false)} onBlur={()=>press(false)}
           onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();if(c.kind==='button'&&running)press(true);else activate(c);}}} onKeyUp={e=>{if((e.key==='Enter'||e.key===' ')&&c.kind==='button')press(false);}}>
           {isSelected?(isBjt?<rect className="lab-halo-box" x={(a.x+b.x)/2-17} y={a.y-38} width="34" height="42" rx="8"/>:isIc?<rect className="lab-halo-box" x={a.x-16} y={b.y+2} width={b.x-a.x+32} height={a.y-b.y-4} rx="6"/>:c.kind==='wire'?<path d={wirePath} className="lab-halo" fill="none"/>:<line className="lab-halo" x1={a.x} y1={a.y} x2={b.x} y2={b.y}/>):null}
-          <g pointerEvents="none">{damaged[c.id]?<BurntMark a={a} b={b} kind={c.kind}/>:null}{isIc?<IcShape a={a} b={b} state={result?.ics[c.id]}/>:<><ComponentShape c={c} a={a} b={b} current={amps} closed={closed} straight={straight} previewValue={preview!==null&&isSelected&&c.kind==='resistor'?preview:null}/><circle cx={a.x} cy={a.y} r="3" fill="#3e4342"/><circle cx={b.x} cy={b.y} r="3" fill="#3e4342"/></>}</g>
-          {hitsOn?(isBjt?<rect className="lab-proto-hit-box" x={(a.x+b.x)/2-15} y={a.y-36} width="30" height="23"/>:isIc?<rect className="lab-proto-hit-box" x={a.x-12} y={b.y+8} width={b.x-a.x+24} height={a.y-b.y-16}/>:c.kind==='wire'?<path className="lab-proto-hit" d={wirePath} fill="none" pathLength={100} strokeDasharray="0 7 86 7"/>:<line className="lab-proto-hit" x1={a.x+ux*inset} y1={a.y+uy*inset} x2={b.x-ux*inset} y2={b.y-uy*inset}/>):null}
+          <g pointerEvents="none">{isIc?<IcShape a={a} b={b} state={result?.ics[c.id]}/>:<><ComponentShape c={c} a={a} b={b} current={amps} closed={closed} straight={straight} previewValue={preview!==null&&isSelected&&c.kind==='resistor'?preview:null}/><circle cx={a.x} cy={a.y} r="3" fill="#3e4342"/><circle cx={b.x} cy={b.y} r="3" fill="#3e4342"/></>}{damaged[c.id]?<BurntMark a={a} b={b} kind={c.kind}/>:null}</g>
+          {running&&c.kind==='button'&&tool!=='pan'?<path d={`M${(a.x+b.x)/2} ${(a.y+b.y)/2}h.01`} stroke="transparent" strokeWidth="44" vectorEffect="non-scaling-stroke" fill="none" pointerEvents="stroke"/>:null}
+          {hitsOn?(c.kind==='button'?<rect className="lab-proto-hit-box lab-button-hit" x={Math.min(a.x,b.x)+3} y={Math.min(a.y,b.y)+3} width={Math.max(30,Math.abs(b.x-a.x)-6)} height={Math.max(32,Math.abs(b.y-a.y)-6)} rx="8"/>:isBjt?<rect className="lab-proto-hit-box" x={(a.x+b.x)/2-15} y={a.y-38} width="30" height="27"/>:isIc?<rect className="lab-proto-hit-box" x={a.x-12} y={b.y+8} width={b.x-a.x+24} height={a.y-b.y-16}/>:c.kind==='wire'?<path className="lab-proto-hit" d={wirePath} fill="none" pathLength={100} strokeDasharray="0 7 86 7"/>:<line className="lab-proto-hit" x1={a.x+ux*inset} y1={a.y+uy*inset} x2={b.x-ux*inset} y2={b.y-uy*inset}/>):null}
         </g>;
       })}
+      {(tool==='bjt'||tool==='pnp')&&hovered?(()=>{const h=/^([a-j]):(\d+)$/.exec(hovered);if(!h)return null;const from=HOLE_BY_ID.get(hovered),to=HOLE_BY_ID.get(`${h[1]}:${Number(h[2])+2*bjtDirection}`);if(!from||!to)return null;const base=HOLE_BY_ID.get(`${h[1]}:${Number(h[2])+bjtDirection}`)!;return <g pointerEvents="none" opacity=".65"><ComponentShape c={{id:'preview',kind:'bjt',from:from.id,to:to.id,value:100,closed:true,color:'#222222'}} a={from} b={to} current={0} closed straight={false} previewValue={null}/>{[from,base,to].map((p,i)=><g key={p.id}><circle cx={p.x} cy={p.y} r="10" fill="none" stroke="#278f9b" strokeWidth="2"/><text x={p.x} y={p.y+21} textAnchor="middle" fontSize="12" fill="#174858">{['E','B','C'][i]}</text></g>)}</g>;})():null}
       {moveGhost}
       {moveHandles}
+      {active?.c.kind==='bjt'?<g className="lab-transistor-pin-guide" pointerEvents="none" aria-hidden="true">{[active.c.from,bjtBase(active.c.from,active.c.to)!,active.c.to].map((id,i)=>{const h=HOLE_BY_ID.get(id)!;const color=['#b46d2b','#8b5eb5','#287e9f'][i];return <g key={id} data-transistor-pin={['E','B','C'][i]} data-pin-hole={id}><circle cx={h.x} cy={h.y} r="9" fill="none" stroke={color} strokeWidth="2"/><path d={`M${h.x} ${h.y+9}v14`} stroke={color} strokeWidth="1.5"/><rect x={h.x-13} y={h.y+23} width="26" height="17" rx="5" fill="#fff" stroke={color}/><text x={h.x} y={h.y+35} textAnchor="middle" fontSize="12" fontWeight="700" fill={color}>{['E','B','C'][i]}</text></g>;})}</g>:null}
       {labels.map(p=>{
         const spec=specById.get(p.id);if(!spec)return null;
         const widths=spec.parts.map(part=>part.text.length*6.4+14),total=widths.reduce((s,w)=>s+w,0)+(widths.length-1)*4;
-        const tx=clamp(p.anchor.x,p.x-p.w/2,p.x+p.w/2),ty=p.anchor.y<p.y?p.y-9*labelScale:p.y+9*labelScale,far=Math.abs(ty-p.anchor.y)>14;
+        const tx=clamp(p.anchor.x,p.x-p.w/2,p.x+p.w/2),ty=p.anchor.y<p.y?p.y-9*labelScale:p.y+9*labelScale,far=true;
         let offset=-total/2;
         return <g key={p.id} className="lab-label-layer">
-          {far?<line className="lab-leader" x1={p.anchor.x} y1={p.anchor.y} x2={tx} y2={ty}/>:null}
-          <g className={`lab-label ${spec.component?'clickable':''}`} data-label={p.id} transform={`translate(${p.x} ${p.y}) scale(${labelScale})`} aria-hidden="true" onClick={spec.component?()=>{const c=board.components.find(x=>x.id===spec.component);if(c&&tool!=='erase'&&tool!=='pan')openEditor(c.id);}:undefined}>
+          {far?<g pointerEvents="none"><line className="lab-leader" x1={p.anchor.x} y1={p.anchor.y} x2={tx} y2={ty}/><circle cx={p.anchor.x} cy={p.anchor.y} r="2" fill="#526c7b"/></g>:null}
+          <g className={`lab-label ${spec.component&&!running?'clickable':''}`} style={{pointerEvents:running?'none':undefined}} data-label={p.id} transform={`translate(${p.x} ${p.y}) scale(${labelScale})`} aria-hidden="true" onClick={spec.component?()=>{const c=board.components.find(x=>x.id===spec.component);if(c&&tool!=='erase'&&tool!=='pan')openEditor(c.id);}:undefined}>
             {spec.parts.map((part,i)=>{const x=offset;offset+=widths[i]+4;return <g key={i} className={`lab-pill ${part.tone}`}><rect x={x} y="-9" width={widths[i]} height="18" rx="5"/><text x={x+widths[i]/2} y="4" textAnchor="middle">{part.text}</text></g>;})}
           </g>
         </g>;
       })}
+      {geo.filter(({c})=>damaged[c.id]).map(({c,a,b})=><BurntSmoke key={c.id} a={a} b={b} kind={c.kind} id={c.id}/>)}
       {(['positive','negative'] as const).map(key=>{const h=HOLE_BY_ID.get(board[key])!;return <circle key={key} className={`lab-pole ${key}`} cx={h.x} cy={h.y} r="9.5" fill="none" pointerEvents="none"/>;})}
       {probeHoles.map((id,i)=>{const h=id?HOLE_BY_ID.get(id):undefined;return h?<circle key={`${id}-${i}`} className={`lab-probe ${i===0?'a':'b'}`} cx={h.x} cy={h.y} r="11.5" fill="none" pointerEvents="none"/>:null;})}
+      <BreadboardSupply lab={lab} holeAt={holeAt} reset={sourceReset} scale={scale} onFocus={p=>{const k=Math.min((size.w-24)/650,(size.h-240)/290,1.3),w=size.w/k,h=size.h/k;setView({x:p.x+210-w/2,y:p.y+110-h/2,w,h});}} current={result?.sourceCurrent??0} tripped={!!result?.tripped}/>
     </svg>
 
     {panel?<div className="lab-left-stack">
@@ -379,39 +423,40 @@ export const BreadboardView=memo(function BreadboardView({lab}:{lab:Laboratory['
       {panel==='diagrams'?<Card className="lab-diagrams-card" title="Diagramas de la clase" summary={<span className="lab-count">{CLASS_DIAGRAMS.length}</span>} open onToggle={()=>setPanel(null)}>
         <ul className="lab-diagram-list">{CLASS_DIAGRAMS.map(d=><li key={d.id}><button type="button" aria-pressed={diagram===d.id} onClick={()=>setDiagram(diagram===d.id?null:d.id)}><img src={d.src} alt="" loading="lazy" draggable={false}/><span>{d.title}</span></button></li>)}</ul>
         <button type="button" className="lab-wide" disabled={running||!lab.ready} onClick={()=>{lab.add('hbridge');}}>Cargar la Práctica 2 armada</button>
-        <button type="button" className="lab-wide" disabled={running||!lab.ready} onClick={()=>{lab.add('hbridge-bjt');}}>Cargar la Práctica 1 armada</button>
+        <button type="button" className="lab-wide" disabled={running||!lab.ready} onClick={()=>{lab.add('hbridge-bjt');}}>Cargar la Práctica 1 · montaje de referencia</button>
         <small>Crea un proyecto nuevo con el circuito del diagrama; tu proyecto actual no se modifica.</small>
       </Card>:null}
       {panel==='names'?<Card className="lab-names-card" title="Puntos por nombre" summary={<Keyboard size={16}/>} open onToggle={()=>setPanel(null)}>
         <form className="lab-hole-form" onSubmit={e=>{e.preventDefault();const from=parseHoleId(fromText),to=parseHoleId(toText);if(!from||!to){lab.setMessage('Usa un orificio como a5, f10, top+:1 o bottom-:20 (columnas 1 a 30).');return;}applyPoints(from,to);}}><label>Desde<input aria-label="Orificio de origen" value={fromText} maxLength={20} onChange={e=>setFromText(e.target.value)} placeholder="a5"/></label><label>Hasta<input aria-label="Orificio de destino" value={toText} maxLength={20} onChange={e=>setToText(e.target.value)} placeholder="f10"/></label><button type="submit">{tool==='measure'?'Medir entre estos puntos':'Aplicar herramienta'}</button></form>
-        <details className="lab-help"><summary>Conexiones internas y límites</summary><p>Cada columna une a–e y, por separado, f–j. El canal central los separa. Los rieles se interrumpen entre las columnas 15 y 16. El modelo es una red de corriente continua con resistencias, LED, transistores NPN, motor y L293D; capacitores y microcontroladores todavía no están incluidos.</p></details>
+        <details className="lab-help"><summary>Conexiones internas y límites</summary><p>Cada columna une a–e y, por separado, f–j. El canal central los separa. Los rieles se interrumpen entre las columnas 15 y 16. El modelo es una red de corriente continua con resistencias, LED, transistores NPN, motor y L293D; el voltímetro carga el circuito con 10 MΩ. En Valores reales, diodo y LED usan una unión no lineal genérica. Capacitores y microcontroladores todavía no están incluidos.</p></details>
       </Card>:null}
     </div>:null}
 
     {meterShown?<>
-      <MeterLeads size={size} getFrame={frameOf} snap={snapPoint} onGrab={grabProbe} onMove={moveProbe} onDrop={dropProbe}/>
-      <MeterDevice mode={dial} onMode={setDial} display={display} held={!!held} onHold={()=>setHeld(h=>h?null:liveDisplay)} hasProbes={!!measurement} collapsed={meterCollapsed} onCollapsed={setMeterCollapsed} logCount={board.log?.length??0} logOpen={logOpen} onLog={()=>setLogOpen(open=>!open)} onRect={rect=>setDeviceRect(previous=>previous&&rect&&Math.abs(previous.left-rect.left)<.5&&Math.abs(previous.top-rect.top)<.5&&Math.abs(previous.width-rect.width)<.5&&Math.abs(previous.height-rect.height)<.5?previous:rect)}
+      <MeterLeads interactive={!isPlacement(tool)&&tool!=='pan'&&tool!=='erase'} size={size} getFrame={frameOf} snap={snapPoint} onGrab={grabProbe} onMove={moveProbe} onDrop={dropProbe}/>
+      <MeterDevice onReadoutState={setReadoutState} redJack={redJack} onJack={jack=>{if(jack!=='ma')setRedJack(jack);}} mode={dial} onMode={setDial} display={display} held={!!held} onHold={()=>setHeld(h=>h?null:liveDisplay)} hasProbes={!!measurement} collapsed={meterCollapsed} onCollapsed={setMeterCollapsed} logCount={board.log?.length??0} logOpen={logOpen} onLog={()=>setLogOpen(open=>!open)} onRect={rect=>setDeviceRect(previous=>previous&&rect&&Math.abs(previous.left-rect.left)<.5&&Math.abs(previous.top-rect.top)<.5&&Math.abs(previous.width-rect.width)<.5&&Math.abs(previous.height-rect.height)<.5?previous:rect)}
         shortcuts={shortcuts} onShortcut={sc=>{setMeasurement([sc.a,sc.b]);setPending(null);}}
-        onRecord={()=>{if(!display.record||!measurement)return;lab.addMeasurement({kind:display.record.kind,a:measurement[0],b:measurement[1],value:display.record.value,label:describePoints(measurement[0],measurement[1])});setLogOpen(true);}}/>
+        onRecord={()=>{if(!display.record||!measurement)return;lab.addMeasurement({kind:display.record.kind,a:measurement[0],b:measurement[1],value:display.record.value,sourceVoltage:powered?board.voltage:0,label:describePoints(measurement[0],measurement[1])});setLogOpen(true);}}/>
     </>:null}
     {diagram?<DiagramViewer diagram={CLASS_DIAGRAMS.find(d=>d.id===diagram)!} onSelect={setDiagram} onClose={()=>setDiagram(null)}/>:null}
     <div className="lab-right-stack">
-      <Card className="lab-source-card" title="Fuente DC" summary={<span className="lab-big">{formatVolts(board.voltage)} DC</span>} open={sourceOpen} onToggle={()=>setSourceOpen(!sourceOpen)}>
-        <SupplyEditor voltage={board.voltage} running={running} onApply={v=>update(p=>({...p,breadboard:{...p.breadboard,voltage:v}}))}/>
-        <label className="lab-check"><input type="checkbox" checked={!!board.realistic} disabled={running} onChange={e=>update(p=>({...p,breadboard:{...p.breadboard,realistic:e.target.checked}}))}/><span>Componentes reales: resistencias con ±5 %, β y Vf variables</span></label>
-        <div className="lab-poles"><button type="button" aria-pressed={tool==='positive'} disabled={running} onClick={()=>choose('positive')}>Ubicar polo +</button><button type="button" aria-pressed={tool==='negative'} disabled={running} onClick={()=>choose('negative')}>Ubicar polo −</button></div>
-        <small>+ en {holeName(board.positive)} · − en {holeName(board.negative)}</small>
-      </Card>
       {logOpen?<Card className="lab-log-card" title="Mediciones" summary={<span className="lab-count">{board.log?.length??0}</span>} open onToggle={()=>setLogOpen(false)}>
         <LogBody log={board.log??[]} notes={board.notes??''} onRemove={lab.removeMeasurement} onLabel={lab.labelMeasurement} onClearAll={lab.clearMeasurements} onNotes={lab.setNotes} onNotice={lab.setMessage}/>
       </Card>:null}
     </div>
 
-    {active&&editing?<div className="lab-editor-anchor" style={popoverStyle}><ValueEditor key={active.c.id} component={active.c} position={`${holeName(active.c.from)} → ${holeName(active.c.to)}`} running={running} closed={switches[active.c.id]??active.c.closed} amps={result?.amps[active.c.id]} ic={result?.ics[active.c.id]} bjt={result?.bjts[active.c.id]} failure={damaged[active.c.id]} onApply={value=>patch(active.c.id,value)} onSwitch={closed=>lab.setProtoSwitch(active.c.id,closed)} onSwap={()=>patch(active.c.id,{from:active.c.to,to:active.c.from})} onRemove={()=>remove(active.c.id)} onClose={closeEditor} onPreview={setPreview} onMove={change=>{const r=relocate(board.components,active.c.id,change);if(!r.ok)return r.error;patch(active.c.id,{from:r.component.from,to:r.component.to});return null;}}/></div>:null}
+    {active&&editing?<div className="lab-editor-anchor" style={popoverStyle}><ValueEditor key={active.c.id} component={active.c} position={`${holeName(active.c.from)} → ${holeName(active.c.to)}`} running={running} closed={switches[active.c.id]??active.c.closed} amps={result?.amps[active.c.id]} ic={result?.ics[active.c.id]} bjt={result?.bjts[active.c.id]} failure={damaged[active.c.id]} onApply={value=>patch(active.c.id,value)} onSwitch={closed=>lab.setProtoSwitch(active.c.id,closed)} onSwap={()=>patch(active.c.id,{from:active.c.to,to:active.c.from})} onRemove={()=>remove(active.c.id)} onClose={closeEditor} onPreview={setPreview} onMove={change=>{const r=relocate(board.components,active.c.id,change);if(!r.ok)return r.error;if(bodyCollision(r.component,board.components))return 'El cuerpo se superpone con otra pieza. Separa los componentes.';patch(active.c.id,{from:r.component.from,to:r.component.to});return null;}}/></div>:null}
 
-    <div className="lab-alerts" aria-live="polite">{Object.keys(crowded).length?<ul className="lab-board-warnings"><li>{Object.keys(crowded).length===1?'Dos patas comparten el orificio':'Hay patas que comparten orificio'} {Object.keys(crowded).slice(0,4).map(holeName).join(', ')}. En una protoboard real cada orificio admite una sola pata: usa otro orificio de la misma columna.</li></ul>:null}{Object.keys(damaged).length?<ul className="lab-failures" role="alert">{Object.entries(damaged).map(([id,why])=>{const c=board.components.find(x=>x.id===id);return <li key={id}><strong>{id==='meter'?'Fusible del multímetro fundido':`${c?KIND_NAMES[c.kind]:'Pieza'} dañado${c?` (${c.kind==='l293d'?`pin 1 en ${holeName(c.from)}`:`${holeName(c.from)} – ${holeName(c.to)}`})`:''}`}</strong> {why}</li>;})}<li className="lab-failure-note">Se reponen al detener la simulación.</li></ul>:null}{result?.fault?<p className="lab-error" role="alert">{result.fault}</p>:null}{result?.warnings.length?<ul className="lab-board-warnings">{[...new Set(result.warnings)].map(w=><li key={w}>{w}</li>)}</ul>:null}</div>
-    <div className="lab-hint" role="status">{hint}{pending?<button type="button" onClick={()=>setPending(null)}>Cancelar</button>:null}</div>
+    <div className="lab-alerts">{diagnosticSelection&&<div className="breadboard-diagnostic-selection" role="status"><span>{diagnosticSelection.title} · puntos marcados en ámbar</span><button type="button" onClick={()=>setDiagnosticSelection(null)}>Quitar marcas</button></div>}<BreadboardDiagnostics floatingIssues={floatingIssues} onLocateGroup={locateDiagnostic} components={board.components} damaged={damaged} fault={result?.fault??null} warnings={[
+      ...(overlappingBodies?['Hay cuerpos de componentes superpuestos. Detén y usa Mover sin arrastrar para separarlos conservando sus columnas.']:[]),
+      ...(Object.keys(crowded).length?[`Hay patas que comparten orificio: ${Object.keys(crowded).slice(0,4).map(holeName).join(', ')}. Usa otro orificio de la misma columna.`]:[]),
+      ...(powered?result?.warnings??[]:[])
+    ]} onLocate={id=>{openEditor(id);const part=geo.find(({c})=>c.id===id);if(part){const w=Math.min(view.w,700),h=w*size.h/size.w;setView({x:(part.a.x+part.b.x)/2-w/2,y:(part.a.y+part.b.y)/2-h/2,w,h});}}}/></div>
+
+    <ContextHint key={tool} className="lab-hint" message={Object.keys(damaged).length||result?.fault||overlappingBodies||Object.keys(crowded).length||powered&&result?.warnings.length?'':tool==='select'&&!moving&&!running?'':hint}>{pending?<button type="button" onClick={()=>setPending(null)}>Cancelar</button>:null}</ContextHint>
+    {(tool==='bjt'||tool==='pnp')&&!running?<div className="lab-placement-controls"><strong>{tool==='pnp'?'PNP':'NPN'} · toca el orificio E</strong><button type="button" aria-label="Cambiar orientación del transistor" onClick={()=>setBjtDirection(v=>v===1?-1:1)}>{bjtDirection===1?'E → B → C':'C ← B ← E'}</button>{active?.c.kind==='bjt'?<button type="button" onClick={()=>{choose('select');openEditor(active.c.id);}}>Ver pieza y patas</button>:null}<button type="button" onClick={()=>choose('select')}>Terminar</button></div>:null}
     <FloatingDock items={dock} label="Herramientas de la protoboard"/>
     <ZoomBar percent={Math.round(scale*100)} onZoomIn={()=>zoomBy(1/1.25)} onZoomOut={()=>zoomBy(1.25)} onFit={()=>fit(true)} xray={xrayOn} onXray={()=>{setXray(!xray);if(lesson===4||lesson===5)setLesson(null);}} straight={straight} onStraight={()=>{const next=!straight;setStraight(next);try{localStorage.setItem('panellab-straight-wires',next?'1':'0');}catch{/* sin almacenamiento */}}}/>
+  </div>
   </div>;
 });

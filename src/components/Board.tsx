@@ -1,4 +1,4 @@
-import React, {useRef,useState} from 'react';
+import React, {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import { COLOR_HEX, matchesTerminal, terminalDisplay, terminalLabelPosition, type PanelModule, type Terminal } from '../data/panel';
 import type {BananaCable} from '../data/practice';
 import {terminalPoint,cablePath} from '../data/wiring';
@@ -10,7 +10,7 @@ import type {SimulationController} from '../hooks/useSimulation';
 import {boardFrame,clampFree,dropModule,fitView,getLayout,modulePos,setModulePos,snapModule,useLayout,useModules,type Pos} from '../data/layout';
 
 type View = {x:number;y:number;w:number;h:number};
-type Props={modulesLocked?:boolean;selected:string|null;onSelect:(id:string)=>void;group:string;query:string;view:View;setView:(v:View)=>void;aliases:Record<string,string>;wires?:BananaCable[];selectedWire?:string|null;onSelectWire?:(id:string)=>void;highlightedTerminals?:string[];highlightedModules?:string[];pendingTerminal?:string|null;hitConnectors?:boolean;ghost?:{from:string;to:string};ghosts?:{from:string;to:string}[];routeWireIds?:string[];errorWires?:string[];simulation?:SimulationController;overlay?:React.ReactNode;liveWireIds?:string[];onRemoveModule?:(id:string)=>void;};
+type Props={omitExtraContactors?:boolean;modulesLocked?:boolean;selected:string|null;onSelect:(id:string)=>void;group:string;query:string;view:View;setView:(v:View)=>void;aliases:Record<string,string>;wires?:BananaCable[];selectedWire?:string|null;onSelectWire?:(id:string)=>void;highlightedTerminals?:string[];glowTerminals?:string[];highlightedModules?:string[];pendingTerminal?:string|null;hitConnectors?:boolean;ghost?:{from:string;to:string};ghosts?:{from:string;to:string}[];routeWireIds?:string[];errorWires?:string[];simulation?:SimulationController;overlay?:React.ReactNode;liveWireIds?:string[];onRemoveModule?:(id:string)=>void;};
 const textStyle:React.CSSProperties={userSelect:'none'};
 
 function Tag({x,y,children,small=false}:{x:number;y:number;children:React.ReactNode;small?:boolean}){
@@ -69,6 +69,8 @@ function ModelContactor({x,y,w=128,h=165,thermal=false,delayed=false,variant=1}:
  </g>;
 }
 function Ports({module,selected,onSelect,query,alias}:{module:PanelModule;selected:string|null;onSelect:(id:string)=>void;query:string;alias:string}){
+ /* Radio táctil por borne: mitad de la distancia a su vecino más cercano, entre 20 y 28, para que crezca sin pisar a los demás. */
+ const touchRadius=React.useMemo(()=>new Map(module.terminals.map((t:Terminal)=>[t.id,Math.max(20,Math.min(28,Math.min(...module.terminals.filter(o=>o!==t).map(o=>Math.hypot(o.x-t.x,o.y-t.y)))/2))])),[module]);
  return <g>
  {module.terminals.map((t:Terminal)=>{
    const key=`${module.id}:${t.id}`;
@@ -78,7 +80,7 @@ function Ports({module,selected,onSelect,query,alias}:{module:PanelModule;select
    const isWhite=t.color==='white';
    return <g key={key} data-terminal-id={key} role="button" aria-pressed={active} tabIndex={0} aria-label={`${module.title} terminal ${t.id}`} className={`terminal ${active?'is-selected':''}`} onClick={e=>{e.stopPropagation();onSelect(key)}} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();onSelect(key)}}}>
      {(active||hit)&&<circle cx={t.x} cy={t.y} r="27" fill="none" stroke={active?'#edab3f':'#2486fa'} strokeWidth="5" opacity=".8" className="selected-ring" />}
-     <circle cx={t.x} cy={t.y} r="20" fill="transparent" className="terminal-hit" />
+     <circle cx={t.x} cy={t.y} r="20" fill="transparent" className="terminal-hit" style={{'--hit-r':`${touchRadius.get(t.id)}px`} as React.CSSProperties}/>
      <circle cx={t.x+1} cy={t.y+2} r="17" fill="#4d535d" opacity=".3" />
      <circle cx={t.x} cy={t.y} r="15" fill="url(#socketMetal)" stroke="#7e858c" strokeWidth="1.2"/>
      <circle cx={t.x} cy={t.y} r="12" fill={color} stroke={isWhite?'#b0a99e':'#22262c'} strokeWidth="1"/>
@@ -119,17 +121,20 @@ function turnArrow(cx:number,cy:number,r:number,direction:1|-1){
 /** Motor trifásico visto desde el eje: el rotor gira según el estado calculado por la simulación (sentido y estrella/triángulo). */
 function MotorFace({m,simulation}:{m:PanelModule;simulation?:SimulationController}){
  const motor=simulation?.result.motor,running=motor?.status==='running',fault=motor?.status==='fault';
- const cx=240,cy=150,spin=running?`${(.6/(motor!.speed||1)).toFixed(2)}s`:'0s',dir=(motor?.direction??1) as 1|-1,arrow=running?turnArrow(cx,cy,60,dir):null;
- const label=!simulation?.input.enabled?'MOTOR EN REPOSO':running?`GIRANDO · ${motor!.connection==='star'?'ESTRELLA':'TRIÁNGULO'} · ${dir===1?'HORARIO ↻':'ANTIHORARIO ↺'}`:fault?'REVISAR CONEXIÓN':'SIN TENSIÓN';
- return <g data-motor-status={motor?.status||'off'} data-motor-connection={motor?.connection||''} data-motor-direction={running?dir:0}>
+ const dynamic=simulation?.meterModel.motorMode==='induction',rpm=dynamic?(simulation?.motorMotion.rpm??0):(running?1500*(motor?.speed??1)*(motor?.direction??1):0),moving=Math.abs(rpm)>1,stalled=!!simulation?.motorMotion.stalled;
+ const rotor=useRef<SVGGElement>(null),speed=useRef(rpm),angle=useRef(0);speed.current=simulation?.paused?0:rpm;
+ useEffect(()=>{if(!dynamic||!moving||simulation?.paused||matchMedia('(prefers-reduced-motion:reduce)').matches)return;let frame=0,last=0;const tick=(now:number)=>{const dt=last?Math.min(.05,(now-last)/1000):0;last=now;if(!document.hidden){angle.current=(angle.current+speed.current*6*dt*.06)%360;if(rotor.current)rotor.current.style.transform=`rotate(${angle.current}deg)`;}frame=requestAnimationFrame(tick);};frame=requestAnimationFrame(tick);return()=>cancelAnimationFrame(frame);},[dynamic,moving,simulation?.paused]);
+ const cx=240,cy=150,spin=running?`${(.6/(motor!.speed||1)).toFixed(2)}s`:'0s',dir=(moving?Math.sign(rpm):motor?.direction??1) as 1|-1,arrow=moving?turnArrow(cx,cy,60,dir):null;
+ const label=dynamic&&simulation?.input.enabled?(fault?`REVISAR · ${Math.round(Math.abs(rpm))} rpm`:stalled?'BLOQUEADO · CARGA EXCESIVA':running?`${motor!.connection==='star'?'ESTRELLA':'TRIÁNGULO'} · ${Math.round(Math.abs(rpm))} rpm ${dir===1?'↻':'↺'}`:moving?`SIN TENSIÓN · ${Math.round(Math.abs(rpm))} rpm`:'MOTOR EN REPOSO'):!simulation?.input.enabled?'MOTOR EN REPOSO':running?`GIRANDO · ${motor!.connection==='star'?'ESTRELLA':'TRIÁNGULO'} · ${dir===1?'HORARIO ↻':'ANTIHORARIO ↺'}`:fault?'REVISAR CONEXIÓN':'SIN TENSIÓN';
+ return <g data-motor-status={motor?.status||'off'} data-motor-connection={motor?.connection||''} data-motor-direction={moving?dir:0} data-motor-rpm={Math.round(rpm)} data-motor-stalled={stalled} data-simulation-paused={simulation?.paused} data-simulation-seconds={simulation?.simulationSeconds.toFixed(3)} data-thermal-memory={simulation?.thermal.heat.toFixed(5)} data-transitioning={simulation?.transitioning}>
   <rect x="150" y="238" width="180" height="14" rx="3" fill="#3a444a"/><rect x="190" y="38" width="100" height="30" rx="5" fill="#2c5f93" stroke="#1d4472" strokeWidth="2"/><path d="M215 38 V30 H265 V38" fill="none" stroke="#1d4472" strokeWidth="4"/>
   <circle cx={cx} cy={cy+3} r="98" fill="#142029" opacity=".2"/>
   <circle cx={cx} cy={cy} r="96" fill="#2f6fb0" stroke="#1d4472" strokeWidth="3"/>
   {Array.from({length:36},(_,i)=><line key={i} x1={cx} x2={cx} y1={cy-92} y2={cy-82} stroke="#1d4472" strokeWidth="4" strokeLinecap="round" transform={`rotate(${i*10} ${cx} ${cy})`}/>)}
   <circle cx={cx} cy={cy} r="76" fill="#e8edee" stroke="#8f9ba1" strokeWidth="2.5"/>
   {/* Rotor en SVG puro: un foreignObject con animación CSS no sigue las transformaciones del tablero en navegadores móviles (se descolocaba y se agrandaba al mover el panel). El grupo gira sobre su propio origen (0,0), que es el eje del motor. */}
-  <g transform={`translate(${cx} ${cy})`} pointerEvents="none"><g className="motor-rotor" data-spinning={running} style={{'--spin':spin,animationDirection:dir===-1?'reverse':'normal'} as React.CSSProperties}>
-   {running&&ROTOR_BLADES.map(a=><path key={`g${a}`} d="M0 0 C8 -26 34 -52 12 -68 C-4 -52 -12 -26 0 0Z" fill="#58707d" opacity=".22" transform={`rotate(${a-dir*24})`}/>)}
+  <g transform={`translate(${cx} ${cy})`} pointerEvents="none"><g ref={rotor} className="motor-rotor" data-dynamic={dynamic} data-spinning={moving} style={{...dynamic?{animation:'none'}:{},'--spin':spin,animationDirection:dir===-1?'reverse':'normal'} as React.CSSProperties}>
+   {moving&&ROTOR_BLADES.map(a=><path key={`g${a}`} d="M0 0 C8 -26 34 -52 12 -68 C-4 -52 -12 -26 0 0Z" fill="#58707d" opacity=".22" transform={`rotate(${a-dir*24})`}/>)}
    {ROTOR_BLADES.map(a=><path key={a} d="M0 0 C8 -26 34 -52 12 -68 C-4 -52 -12 -26 0 0Z" fill={a===0?'#d9453b':'#58707d'} stroke={a===0?'#8f2620':'#3e5260'} strokeWidth="1.5" transform={`rotate(${a})`}/>)}
    <circle r="16" fill="#b4bfc5" stroke="#6c7b84" strokeWidth="2"/><circle r="6" fill="#26323a"/><rect x="-2" y="-14" width="4" height="9" fill="#26323a"/>
   </g></g>
@@ -213,18 +218,18 @@ function Face({m,aliases,simulation}:{m:PanelModule;aliases:Record<string,string
 function TimerStatus({id,simulation}:{id:string;simulation?:SimulationController}){
  const on=!!simulation?.input.enabled,coil=!!simulation?.result.relays[id],done=coil&&!!simulation?.timed.includes(id);
  if(!on)return <text x="397" y="64" textAnchor="middle" fontSize="10" fill="#606a76">Retardo a la conexión</text>;
- const seconds=simulation!.timerSeconds,label=done?'TEMPORIZADO':coil?`CONTANDO · ${seconds} s`:'EN REPOSO';
- return <g data-sim-timer={id} data-timer-state={done?'done':coil?'timing':'idle'} data-timer-seconds={seconds}>
+ const seconds=simulation!.timerSeconds,remaining=simulation!.timerStatus[id]?.remaining??seconds,progress=done?1:coil?simulation!.timerStatus[id]?.progress??0:0,label=done?'TEMPORIZADO':coil?`FALTAN ${remaining.toFixed(1).replace('.',',')} s`:'EN REPOSO';
+ return <g data-sim-timer={id} data-timer-state={done?'done':coil?'timing':'idle'} data-timer-seconds={seconds} data-timer-remaining={coil&&!done?remaining:0}>
   <clipPath id={`timer-clip-${id}`}><rect x="335" y="68" width="124" height="22" rx="4"/></clipPath>
   <rect x="335" y="68" width="124" height="22" rx="4" fill={done?'#ccf0da':'#e5e9e7'} stroke={done?'#7fb99a':'#c4cac8'}/>
-  {coil&&!done&&<g clipPath={`url(#timer-clip-${id})`}><rect className="timer-fill" x="335" y="68" width="124" height="22" fill="#f3dc8a" style={{'--delay':`${seconds}s`} as React.CSSProperties}/></g>}
+  {coil&&!done&&<g clipPath={`url(#timer-clip-${id})`}><rect key={seconds} className="timer-fill timer-fill-synced" x="335" y="68" width={124*progress} height="22" fill="#f3dc8a" style={{animation:'none'}}/></g>}
   <text x="397" y="83" textAnchor="middle" fontSize="11" fontWeight="700" fill={done?'#1e6a49':'#4c585f'} style={textStyle}>{label}</text>
  </g>;
 }
 const MemoFace=React.memo(Face),MemoPorts=React.memo(Ports),MemoLabels=React.memo(TerminalLabels),MemoWireLayer=React.memo(WireLayer);
 export {FULL} from '../layout/boardViewport';
-export function Board({modulesLocked=true,selected,onSelect,group,query,view,setView,aliases,wires=[],selectedWire=null,onSelectWire=()=>{},highlightedTerminals=[],highlightedModules=[],pendingTerminal=null,hitConnectors=true,ghost,ghosts=ghost?[ghost]:[],routeWireIds=[],errorWires=[],simulation,liveWireIds=[],onRemoveModule,overlay}:Props){
- const [pointer,setPointer]=useState<{x:number;y:number}|null>(null);
+export function Board({omitExtraContactors=false,modulesLocked=true,selected,onSelect,group,query,view,setView,aliases,wires=[],selectedWire=null,onSelectWire=()=>{},highlightedTerminals=[],glowTerminals=[],highlightedModules=[],pendingTerminal=null,hitConnectors=true,ghost,ghosts=ghost?[ghost]:[],routeWireIds=[],errorWires=[],simulation,liveWireIds=[],onRemoveModule,overlay}:Props){
+ const pointerPath=useRef<SVGPathElement>(null);
  const anchor=useRef<{x:number;y:number;view:View;scale:number}|null>(null);
  const svg=useRef<SVGSVGElement>(null);
  const nav=useSvgNavigation(svg,view,setView);
@@ -284,8 +289,11 @@ export function Board({modulesLocked=true,selected,onSelect,group,query,view,set
  const drawOrder=dragId?[...modules.filter(m=>m.id!==dragId),...modules.filter(m=>m.id===dragId)]:modules;
  const dragModule=dragId?modules.find(m=>m.id===dragId):undefined,targetModule=preview?.target?modules.find(m=>m.id===preview.target):undefined;
  const pointerFrame=useRef(0),pointerNext=useRef<{x:number;y:number}|null>(null);
+ const clearPointer=()=>{cancelAnimationFrame(pointerFrame.current);pointerFrame.current=0;pointerNext.current=null;pointerPath.current?.setAttribute('visibility','hidden');};
+ useLayoutEffect(clearPointer,[pendingTerminal]);
+ useEffect(()=>()=>cancelAnimationFrame(pointerFrame.current),[]);
  const onDown=(e:React.PointerEvent<SVGSVGElement>)=>{
-  if((e.target as Element).closest('.terminal,.interactive-wire,.simulation-control,.module-remove'))return;
+  if((e.target as Element).closest('.terminal,.interactive-wire,.simulation-control,.module-remove,[data-nopan]'))return;
   if(!modulesLocked&&(e.target as Element).closest('.module-grip'))return;
   if(e.button!==0)return;
   const matrix=svg.current?.getScreenCTM();
@@ -294,13 +302,13 @@ export function Board({modulesLocked=true,selected,onSelect,group,query,view,set
  };
  const onMove=(e:React.PointerEvent<SVGSVGElement>)=>{
   if(dragging.current){moveDrag(e);return}
-  if(pendingTerminal&&svg.current){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.current.getScreenCTM()!.inverse());pointerNext.current={x:p.x,y:p.y};if(!pointerFrame.current)pointerFrame.current=requestAnimationFrame(()=>{pointerFrame.current=0;setPointer(pointerNext.current)})}
+  if(pendingTerminal&&svg.current){const matrix=svg.current.getScreenCTM();if(matrix){const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(matrix.inverse());pointerNext.current={x:p.x,y:p.y};if(!pointerFrame.current)pointerFrame.current=requestAnimationFrame(()=>{pointerFrame.current=0;const start=terminalPoint(pendingTerminal),end=pointerNext.current,path=pointerPath.current;if(start&&end&&path){path.setAttribute('d',cablePath(start,end,60));path.setAttribute('visibility','visible');}});}}
   if(!anchor.current||!svg.current)return;
   const scale=anchor.current.scale;
   nav.show({...anchor.current.view,x:anchor.current.view.x-(e.clientX-anchor.current.x)/scale,y:anchor.current.view.y-(e.clientY-anchor.current.y)/scale});
  };
  const onUp=()=>{if(dragging.current){endDrag();return}if(anchor.current)nav.commit();anchor.current=null;if(svg.current)delete svg.current.dataset.dragging};
- return <svg ref={svg} className="board-svg" data-modules-locked={modulesLocked} viewBox={firstView.current} role="group" tabIndex={0} aria-label="Panel didáctico interactivo; flechas para desplazar, Inicio para ajustar" onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp} onPointerLeave={()=>setPointer(null)} onKeyDown={e=>{
+ return <svg ref={svg} className="board-svg" data-modules-locked={modulesLocked} viewBox={firstView.current} role="group" tabIndex={0} aria-label="Panel didáctico interactivo; flechas para desplazar, Inicio para ajustar" onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp} onPointerLeave={clearPointer} onKeyDown={e=>{
   const step=view.w*.06;
   if(e.key==='Home'){e.preventDefault();setView(fitView(getLayout()));return;}
   const delta:Record<string,[number,number]>={ArrowLeft:[-step,0],ArrowRight:[step,0],ArrowUp:[0,-step],ArrowDown:[0,step]};
@@ -324,7 +332,7 @@ export function Board({modulesLocked=true,selected,onSelect,group,query,view,set
  {dragModule&&preview&&<g data-drop-preview pointerEvents="none">{targetModule&&<rect data-drop-target={targetModule.id} x={modulePos(targetModule,layout).x-6} y={modulePos(targetModule,layout).y-6} width={targetModule.w+12} height={targetModule.h+12} rx="8" fill="#1c8fb512" stroke="#1c8fb5" strokeWidth="3"/>}<rect x={preview.pos.x} y={preview.pos.y} width={dragModule.w} height={dragModule.h} rx="5" fill="#1c8fb51f" stroke="#1c8fb5" strokeWidth="3.5" strokeDasharray="14 9"/>{preview.kind==='swap'&&targetModule&&preview.moves[targetModule.id]&&<g data-swap-preview={targetModule.id}><rect x={preview.moves[targetModule.id].x} y={preview.moves[targetModule.id].y} width={targetModule.w} height={targetModule.h} rx="5" fill="#e0953a1f" stroke="#d4891f" strokeWidth="3.5" strokeDasharray="14 9"/><text x={preview.moves[targetModule.id].x+targetModule.w/2} y={preview.moves[targetModule.id].y+targetModule.h/2} textAnchor="middle" fontSize="34" fontWeight="800" fill="#b8700f" style={textStyle}>⇄ INTERCAMBIO</text></g>}</g>}
  {dragId&&preview?.guides.x!=null&&<line data-snap-guide="x" x1={preview!.guides.x} x2={preview!.guides.x} y1="28" y2={frame.bottom} stroke="#1c8fb5" strokeWidth="2.5" strokeDasharray="10 8" opacity=".8" pointerEvents="none"/>}
  {dragId&&preview?.guides.y!=null&&<line data-snap-guide="y" x1="29" x2={frame.right} y1={preview!.guides.y} y2={preview!.guides.y} stroke="#1c8fb5" strokeWidth="2.5" strokeDasharray="10 8" opacity=".8" pointerEvents="none"/>}
- {drawOrder.map(m=>{
+ {drawOrder.filter(m=>!omitExtraContactors||!m.extra||m.kind!=='tri').map(m=>{
    const faded=group!=='todos'&&m.category!==group;
    const byQuery=query.trim()&&m.terminals.some(t=>matchesTerminal(m,t,query,aliases[m.id]));
    const pos=modulePos(m,layout);
@@ -341,11 +349,12 @@ export function Board({modulesLocked=true,selected,onSelect,group,query,view,set
      <MemoPorts module={m} selected={selected} onSelect={onSelect} query={query} alias={aliases[m.id]||''}/>
    </g>;
  })}
-  {pendingTerminal&&pointer&&terminalPoint(pendingTerminal)&&<path className="pending-cable-preview" d={cablePath(terminalPoint(pendingTerminal)!,pointer,60)} fill="none" stroke="#258cb2" strokeWidth="5" strokeDasharray="10 7" opacity=".7" pointerEvents="none"/>}
+  {pendingTerminal&&<path ref={pointerPath} visibility="hidden" className="pending-cable-preview" fill="none" stroke="#258cb2" strokeWidth="5" strokeDasharray="10 7" opacity=".7" pointerEvents="none"/>}
  {ghosts.map((g,i)=>terminalPoint(g.from)&&terminalPoint(g.to)&&<g key={`${g.from}-${g.to}`} className="ghost-cable" data-ghost-from={g.from} data-ghost-to={g.to} opacity=".48" pointerEvents="none" aria-hidden="true"><BananaCableVisual id={`lesson-ghost-${i}`} from={terminalPoint(g.from)!} to={terminalPoint(g.to)!} sag={80+(i%4)*24} color="#168cac"/></g>)}
  <MemoWireLayer layoutKey={layout} liveWireIds={liveWireIds} routeWireIds={routeWireIds} hitConnectors={hitConnectors} wires={wires} selected={selectedWire} onSelect={onSelectWire} errorWires={errorWires}/>
  {drawOrder.map(m=><g key={m.id} data-module-labels={m.id} transform={`translate(${modulePos(m,layout).x} ${modulePos(m,layout).y})`} opacity={group!=='todos'&&m.category!==group ? .2 : 1}>
-  {m.terminals.filter(t=>highlightedTerminals.includes(`${m.id}:${t.id}`)||pendingTerminal===`${m.id}:${t.id}`).map(t=><circle key={t.id} data-highlight-terminal={`${m.id}:${t.id}`} cx={t.x} cy={t.y} r="23" fill="none" stroke={pendingTerminal===`${m.id}:${t.id}`?'#edab3f':'#168a74'} strokeWidth="4" pointerEvents="none"/>)}
+  {m.terminals.filter(t=>glowTerminals.includes(`${m.id}:${t.id}`)).map(t=><g key={`glow-${t.id}`} className="terminal-glow" data-glow-terminal={`${m.id}:${t.id}`} pointerEvents="none"><circle cx={t.x} cy={t.y} r="36" fill="#ffe84d" fillOpacity=".32"/><circle cx={t.x} cy={t.y} r="27" fill="none" stroke="#ffd60a" strokeWidth="6"/><circle cx={t.x} cy={t.y} r="27" fill="none" stroke="#fffbd0" strokeWidth="2"/></g>)}
+  {m.terminals.filter(t=>highlightedTerminals.includes(`${m.id}:${t.id}`)||pendingTerminal===`${m.id}:${t.id}`).map(t=><circle key={t.id} data-highlight-terminal={`${m.id}:${t.id}`} className={`terminal-target-highlight${pendingTerminal===`${m.id}:${t.id}`?' is-pending':''}`} cx={t.x} cy={t.y} r="23" fill="none" stroke={pendingTerminal===`${m.id}:${t.id}`?'#edab3f':'#168a74'} strokeWidth="4" pointerEvents="none"/>)}
   <MemoLabels module={m}/>
  </g>)}
  {overlay}

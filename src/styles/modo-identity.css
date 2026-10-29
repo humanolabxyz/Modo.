@@ -1,0 +1,427 @@
+/* modo. · Identidad común (la del Home aprobado).
+   Se activa con body.modo-identity y se importa siempre al final de cada página.
+   Sólo cambia la "piel": colores, tipografía, radios y sombras. Esquemas, equipos,
+   bornes y cables conservan sus colores semánticos. */
+@font-face{font-family:Inter;src:url('/fonts/InterVariable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+
+body.modo-identity{
+  --id-ink:#111115;--id-muted:#62617a;--id-blue:#073cff;--id-blue-soft:#eaeeff;
+  --id-bg:#f7f8fb;--id-card:#fff;--id-line:#e3e6f0;--id-lime:#a3cb2c;
+  --id-r-card:22px;--id-r-ctl:14px;
+  --id-shadow:0 14px 30px -18px #20233c55,0 1px 2px #20233c0f;
+  --id-shadow-ctl:0 1px 2px #20233c14,0 5px 12px -8px #20233c33;
+  --id-font:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+  /* Re-mapea la capa soft-ui anterior a la paleta del Home */
+  --soft-surface:var(--id-card);--soft-ink:var(--id-ink);--soft-muted:var(--id-muted);
+  --soft-accent:var(--id-blue);--soft-line:var(--id-line);--soft-shadow:#20233c33;--soft-light:#fff;
+  --soft-raised:var(--id-shadow);--soft-control:var(--id-shadow-ctl);
+  --soft-inset:inset 0 0 0 1px var(--id-line);--soft-overlay:0 24px 48px -20px #20233c66;
+  --modo-ink:var(--id-ink);--modo-accent:var(--id-blue);--modo-bg:var(--id-bg);
+  --modo-surface:var(--id-card);--modo-border:var(--id-line);--modo-muted:var(--id-muted);
+  --modo-font:var(--id-font);--ui-font:var(--id-font);
+  margin:0;font-family:var(--id-font);color:var(--id-ink);
+  background-color:var(--id-bg);
+  background-image:radial-gradient(ellipse 300px 230px at 9% -4%,#e7e9f1a6 99%,transparent 100%),radial-gradient(ellipse 250px 260px at 91% -5%,#e8eaf2a6 99%,transparent 100%),radial-gradient(ellipse 460px 310px at 115% 68%,#e8ebf7b0 99%,transparent 100%);
+}
+html body.modo-soft-ui.modo-identity{background-color:var(--id-bg);color:var(--id-ink)}
+body.modo-identity :is(.modo-logo,.modo-logo-img){filter:grayscale(1) brightness(0)}
+body.modo-identity :is(a,button,input,select,textarea,summary,[tabindex="0"]):focus-visible{outline:3px solid var(--id-lime);outline-offset:4px}
+
+/* ───────── Comunidad ───────── */
+body.modo-identity.community-page{font-family:var(--id-font);background-color:var(--id-bg)}
+body.modo-soft-ui.modo-identity :is(.community-header,.legal-header){max-width:1200px;border-bottom:0;background:transparent;box-shadow:none}
+body.modo-identity .community-header nav a{min-height:44px;border-radius:999px;color:var(--id-ink);font-weight:600}
+body.modo-identity .community-header nav a:hover{background:#fff;border-color:var(--id-line)}
+body.modo-identity .community-header nav .community-panel-link{background:var(--id-ink);border-color:var(--id-ink);color:#fff;box-shadow:var(--id-shadow-ctl)}
+body.modo-identity .community-header nav .community-panel-link:hover{background:var(--id-blue);border-color:var(--id-blue)}
+body.modo-identity .community-eyebrow{color:var(--id-muted)}
+body.modo-identity .community-eyebrow>span{background:var(--id-blue)}
+body.modo-identity .community-intro h1{letter-spacing:-4px;font-weight:800}
+body.modo-identity .community-intro h1>span{color:var(--id-blue)}
+body.modo-identity .community-lead{color:var(--id-ink);font-weight:500}
+body.modo-identity .community-description{color:var(--id-muted)}
+body.modo-identity .community-section-heading h2{font-size:18px;font-weight:700}
+body.modo-identity .community-section-heading>span{color:var(--id-muted)}
+body.modo-identity .recognition-card{gap:30px;border:0;border-radius:28px;background:#fff;box-shadow:var(--id-shadow)}
+body.modo-identity .recognition-portrait{border:0;border-radius:var(--id-r-card);background:linear-gradient(150deg,#1d4bff,var(--id-blue) 55%,#0630d6);color:#fff;box-shadow:0 22px 40px -24px #073cffaa}
+body.modo-identity .recognition-portrait:before{background-image:linear-gradient(#ffffff12 1px,transparent 1px),linear-gradient(90deg,#ffffff12 1px,transparent 1px)}
+body.modo-identity .recognition-portrait-label{color:#ffffffee}
+body.modo-identity .recognition-initial{color:#fff;text-shadow:0 12px 30px #0420a066}
+body.modo-identity .recognition-portrait-foot{border-top-color:#ffffff33;color:#ffffffee}
+body.modo-identity .recognition-category{color:var(--id-blue)}
+body.modo-identity .recognition-content h3{letter-spacing:-2.4px;font-weight:800}
+body.modo-identity .recognition-title{color:var(--id-ink)}
+body.modo-identity .recognition-description{color:var(--id-muted)}
+body.modo-identity .recognition-contributions li{border-color:transparent;background:var(--id-blue-soft);color:var(--id-blue);font-weight:600}
+body.modo-identity .recognition-thanks{border-top-color:var(--id-line)}
+body.modo-identity .recognition-thanks strong{color:var(--id-ink)}
+body.modo-identity .recognition-thanks p{color:var(--id-muted)}
+body.modo-identity .community-closing p{color:var(--id-muted)}
+body.modo-identity .community-closing strong{color:var(--id-ink)}
+body.modo-identity .community-closing a{color:var(--id-blue)}
+body.modo-identity .community-closing a:hover{color:var(--id-ink)}
+body.modo-identity .community-footer{border-top-color:var(--id-line);color:var(--id-muted)}
+body.modo-identity .community-footer strong{color:var(--id-ink)}
+body.modo-identity .community-skip{background:#fff;border-color:var(--id-line)}
+
+/* ───────── Legal y Versiones ───────── */
+body.modo-identity{--legal-link:var(--id-blue)}
+body.modo-identity .legal-main a,body.modo-identity .legal-footer a,body.modo-identity .release-note a{color:var(--id-blue);text-decoration-color:#073cff55}
+body.modo-identity .legal-header>a:last-child{display:inline-flex;align-items:center;min-height:44px;padding:9px 18px;border-radius:999px;background:#fff;color:var(--id-ink);font-size:13px;font-weight:600;text-decoration:none;box-shadow:var(--id-shadow-ctl)}
+body.modo-identity .legal-header span{color:var(--id-muted)}
+body.modo-identity .legal-eyebrow{color:var(--id-muted)}
+body.modo-identity .legal-main :is(h1,h2){color:var(--id-ink);font-weight:800}
+body.modo-identity .legal-main h1{letter-spacing:-2.4px}
+body.modo-identity .legal-intro{color:var(--id-ink)}
+body.modo-identity .legal-date,body.modo-identity .legal-footer{color:var(--id-muted)}
+body.modo-identity .legal-nav a{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;border-radius:999px;background:#fff;color:var(--id-ink);font-weight:600;text-decoration:none;box-shadow:var(--id-shadow-ctl)}
+body.modo-identity .legal-nav a:hover{background:var(--id-ink);color:#fff}
+body.modo-identity .legal-summary{border:0;border-radius:var(--id-r-card);background:var(--id-blue);color:#fff;box-shadow:0 22px 40px -24px #073cffaa}
+body.modo-identity .legal-summary p,body.modo-identity .legal-summary strong{color:#fff}
+body.modo-identity .legal-main section{border-bottom-color:var(--id-line)}
+body.modo-identity .legal-main :is(p,li){color:#3d3d52}
+body.modo-identity .legal-main .legal-summary :is(p,strong,li){color:#fff}
+body.modo-identity .legal-nav{background:transparent;box-shadow:none}
+body.modo-identity .release-card{border:0;border-radius:var(--id-r-card);background:#fff;box-shadow:var(--id-shadow)}
+body.modo-identity .release-note{color:var(--id-muted)}
+body.modo-identity .release-badge{background:var(--id-blue);color:#fff;border-color:transparent;border-radius:999px;box-shadow:none}
+
+/* ───────── Estudio ───────── */
+body.modo-identity .study-shell.study-campus-shell{
+  --study-ink:var(--id-ink);--study-muted:var(--id-muted);--study-green:var(--id-blue);--study-line:var(--id-line);
+  --accent:var(--id-blue);--accent-ink:var(--id-blue);--accent-soft:var(--id-blue-soft);
+  --ink:var(--id-ink);--muted:var(--id-muted);--line:var(--id-line);--green:var(--id-blue);
+  background-color:transparent;font-family:var(--id-font);color:var(--id-ink);
+}
+body.modo-identity .study-shell *:where(:not(svg):not(svg *)){font-family:inherit}
+body.modo-identity .study-shell.study-campus-shell .topbar.study-header{background:#fffffff2;border:0;border-radius:0 0 var(--id-r-card) var(--id-r-card);box-shadow:var(--id-shadow);color:var(--id-ink)}
+/* Tarjetas */
+body.modo-identity .study-shell.study-campus-shell :is(.study-home-hero,.campus-course,.campus-topic,.campus-resume,.study-card,.gl-card,.study-class-context .study-context-controls,.teaching-visual-card,.teaching-reading-card,.academic-notebook,.academic-challenge,.calc-dock-panel,.class-unit,.academic-backup,.campus-options,.teaching-reader,.tool-teaching){
+  background:#fff;border:0;border-radius:var(--id-r-card);box-shadow:var(--id-shadow);color:var(--id-ink);
+}
+body.modo-identity .study-shell.study-campus-shell .campus-course{transition:transform .22s ease,box-shadow .22s ease}
+body.modo-identity .study-shell.study-campus-shell .campus-course:hover{transform:translateY(-3px);box-shadow:0 22px 38px -20px #20233c66}
+body.modo-identity .study-shell.study-campus-shell :is(.campus-course-cover,.study-home-hero-art){background:#f1f3f9;border-color:transparent}
+body.modo-identity .study-shell.study-campus-shell :is(.campus-course-cover,.study-home-hero-art) .study-art{filter:none}
+body.modo-identity .study-shell.study-campus-shell :is(.campus-course-code,.campus-topic-number,.class-unit-number,.class-row-number){background:var(--id-blue-soft);color:var(--id-blue);border-color:transparent;font-weight:700}
+body.modo-identity .study-shell.study-campus-shell .study-home-hero-copy{background:var(--id-ink);color:#fff}
+body.modo-identity .study-shell.study-campus-shell :is(.lesson-title-row h1,.campus-course-name,.campus-heading h1,.class-unit h2,.study-course-hero h1,.teaching-reader h2,.academic-step-head h2,.campus-topic-copy strong,.study-card h2,.study-card h3){color:var(--id-ink);font-weight:700;letter-spacing:-.02em}
+body.modo-identity .study-shell.study-campus-shell :is(.campus-heading h1){font-size:clamp(34px,4vw,52px);font-weight:800;letter-spacing:-.035em}
+body.modo-identity .study-shell.study-campus-shell :is(.study-kicker,.study-breadcrumb,.campus-course-description,.teaching-reader-intro,.teaching-reading-text,.campus-course-status){color:var(--id-muted)}
+/* Detalle de ramo */
+body.modo-identity .study-shell .course-unit>summary,body.modo-identity .study-shell .course-unit>summary *{color:var(--id-ink)}
+body.modo-identity .study-shell .course-unit{background:#fff;border:0;border-radius:var(--id-r-card);box-shadow:var(--id-shadow)}
+body.modo-identity .study-shell .course-index{background:transparent;border-color:var(--id-line)}
+body.modo-identity .study-shell .course-index :is(.course-index-title,a,summary,small){color:var(--id-ink)}
+body.modo-identity .study-shell .course-index>*:first-child,body.modo-identity .study-shell .course-index-title:first-child{border-radius:var(--id-r-ctl)}
+body.modo-identity .study-shell .course-index nav>a:first-child,body.modo-identity .study-shell .course-index .is-current{background:var(--id-blue-soft)}
+/* Botones: píldora; primario = tinta del Home */
+body.modo-identity .study-shell.study-campus-shell :is(button,.study-top-link,.campus-back,.study-context-back,.study-context-paging>a,.class-start,.study-explore,.academic-paging>a,.tool-study-secondary,.study-import){
+  background:#fff;color:var(--id-ink);border:1px solid var(--id-line);border-radius:999px;box-shadow:var(--id-shadow-ctl);font-weight:600;
+}
+body.modo-identity .study-shell.study-campus-shell :is(button,.study-top-link,.campus-back,.class-start,.study-explore):hover{border-color:var(--id-ink)}
+body.modo-identity .study-shell.study-campus-shell :is(.study-primary,.study-solid,.academic-modes button[aria-pressed=true],.academic-modes button[aria-selected=true],.tool-teaching-nav button[aria-pressed=true],.study-segments button[aria-pressed=true],.study-explore,.class-start,.journey-steps button.is-current,.study-lesson-rail button[aria-current=step]){
+  background:var(--id-ink);color:#fff;border-color:var(--id-ink);box-shadow:var(--id-shadow-ctl);
+}
+body.modo-identity .study-shell.study-campus-shell :is(.study-primary,.study-solid):hover{background:var(--id-blue);border-color:var(--id-blue)}
+/* Campos */
+body.modo-identity .study-shell.study-campus-shell :is(input:not(:where([type=radio],[type=checkbox],[type=range],[type=file])),select,textarea,.campus-search){
+  background:#fff;border:1px solid var(--id-line);border-radius:var(--id-r-ctl);box-shadow:var(--id-shadow-ctl);color:var(--id-ink);
+}
+body.modo-identity .study-shell.study-campus-shell .campus-search{border-radius:999px}
+body.modo-identity .study-shell.study-campus-shell :is(input,select,textarea):focus{border-color:var(--id-blue);box-shadow:0 0 0 3px #073cff22}
+body.modo-identity .study-shell.study-campus-shell :is(.study-progress-track>span,.gl-progress>span,.study-progress-track>i){background:var(--id-blue)}
+
+@media(max-width:700px){
+  body.modo-identity .recognition-card{border-radius:22px}
+  body.modo-identity .study-shell.study-campus-shell .topbar.study-header{border-radius:0 0 18px 18px}
+}
+@media(prefers-reduced-motion:reduce){body.modo-identity .study-shell .campus-course{transition:none}body.modo-identity .study-shell .campus-course:hover{transform:none}}
+
+/* Contraste (WCAG AA): textos pequeños sobre fondos claros y tinta en ilustraciones */
+body.modo-identity .study-shell .campus-course .campus-course-code,body.modo-identity .study-shell .campus-topic-number,body.modo-identity .study-shell .class-unit-number{color:#0a2fb8}
+body.modo-identity .study-shell .campus-course-cover svg text{fill:#1d2a47}
+body.modo-identity .study-shell :is(small,.study-source-pending,.class-material-name small,.campus-course-status){color:var(--id-muted)}
+body.modo-identity .study-shell .study-kicker,body.modo-identity .community-eyebrow{color:var(--id-muted)}
+body.modo-identity .study-home .campus-course.is-pending .campus-course-cover{filter:none;opacity:1}
+body.modo-identity .study-home .campus-course.is-pending .study-art{filter:saturate(.4);opacity:.75}
+body.modo-identity .study-shell .campus-course-cover svg text{fill:#1d2a47!important}
+body.modo-soft-ui.modo-identity :is(.community-header,.legal-header){background:transparent!important;box-shadow:none!important;border-bottom:0!important}
+body.modo-identity .study-shell .course-index nav{background:transparent!important}
+body.modo-identity .study-shell .course-index .course-index-title{background:var(--id-blue-soft)!important;border-radius:var(--id-r-ctl)}
+body.modo-identity .study-shell.study-campus-shell .campus-heading h1{font-weight:750;letter-spacing:-.028em}
+body.modo-identity .study-shell button:disabled{opacity:1;color:var(--id-muted);background:#f1f3f9;border-color:var(--id-line);box-shadow:none}
+
+/* ───────── Laboratorio y Panel ─────────
+   Sólo la piel del entorno: barras, paneles, botones, campos y el dock.
+   Lienzos, esquemas, equipos, bornes, cables y estados funcionales
+   (energizado, advertencia, error) conservan sus colores. */
+body.modo-identity :is(.lab-page,.editor-workbench){
+  --study-ink:var(--id-ink);--study-muted:var(--id-muted);--study-green:var(--id-blue);--study-line:var(--id-line);
+  --accent:var(--id-blue);--accent-ink:var(--id-blue);--accent-soft:var(--id-blue-soft);
+  --ink:var(--id-ink);--muted:var(--id-muted);--line:var(--id-line);--green:var(--id-blue);
+  --canvas-bg:var(--id-bg);--float-bg:#fff;--float-border:var(--id-line);--float-shadow:var(--id-shadow);
+  background-color:var(--id-bg);color:var(--id-ink);font-family:var(--id-font);
+}
+body.modo-identity :is(.lab-page,.editor-workbench) :is(button,input,select,textarea){font-family:var(--id-font)}
+/* Barras y paneles flotantes */
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(
+  .lab-topbar,.lab-projectbar,.lab-tool-nav,.lab-stagebar,.lab-float,.lab-sheet,.lab-editor-pop,.lab-project-menu>div,
+  .lab-dock-menu,.lab-compact-bar,.lab-project-settings,.lab-zoombar,.lab-inspector,.lab-card-toggle,
+  .workspace-navigation,.topbar,.work-tools,.zoom-toolbar,.searchbox-wrap,.search-results,
+  .inspector,.guide-card,.practice-settings,.practice-menu>summary,.reviewed-steps,.procedure-drawer,
+  .temp-sheet,.geo-guide,.geo-toolbar,.reading-explanation,.simulation-menu-body){
+  background:#fff;color:var(--id-ink);border-color:var(--id-line);border-radius:var(--id-r-card);box-shadow:var(--id-shadow);
+}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(.workspace-navigation,.work-tools,.searchbox-wrap,.zoom-toolbar,.lab-zoombar,.lab-tool-nav){border-radius:999px}
+/* Fondo de lienzo: el del Home; la cuadrícula y todo lo dibujado no cambian */
+body.modo-soft-ui.modo-identity .lab-page .lab-canvas-workspace{background-color:var(--id-bg)}
+body.modo-soft-ui.modo-identity .editor-workbench .practice-workspace .svg-surface{background-color:var(--id-bg)}
+/* Botones en píldora; seleccionado = tinta */
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(
+  button:not(:where(.lab-hmi-toggle,.lab-hmi-button,.lab-dock *,.tool-dock *,.lab-swatches *)),.lab-project-menu>summary,
+  .lab-project-menu>div>a,.lab-project-menu>div>label,.practice-settings>label,.upload-button,.procedure-import,.lab-project-import){
+  background:#fff;color:var(--id-ink);border-color:var(--id-line);border-radius:999px;box-shadow:var(--id-shadow-ctl);font-weight:600;
+}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(
+  .lab-run:not(.running),.lab-compact-run:not(.running),.lab-apply,.geo-primary,.primary-action,.cade-practice-button,
+  .lab-tool-nav button.current,.workspace-views button[aria-pressed=true],.lab-segmented button[aria-pressed=true],
+  .lab-chips button[aria-pressed=true]){
+  background:var(--id-ink);color:#fff;border-color:var(--id-ink);box-shadow:var(--id-shadow-ctl);
+}
+body.modo-soft-ui.modo-identity .lab-page .lab-tool-nav button.current :is(strong,span){color:#fff}
+/* Campos */
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(input:not(:where([type=radio],[type=checkbox],[type=range],[type=file],[type=color])),select,textarea){
+  background:#fff;color:var(--id-ink);border:1px solid var(--id-line);border-radius:var(--id-r-ctl);box-shadow:none;
+}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) .searchbox-wrap input{background:transparent;border:0}
+body.modo-identity :is(.lab-page,.editor-workbench) :is(input,select,textarea):focus{border-color:var(--id-blue);box-shadow:0 0 0 3px #073cff22}
+/* Dock: tira oscura con la tinta del Home */
+body.modo-soft-ui.modo-identity :is(.lab-page .lab-dock,.editor-workbench .tool-dock){background:var(--id-ink);border-color:#2b2b35;border-radius:22px;box-shadow:0 18px 34px -16px #111115aa}
+body.modo-soft-ui.modo-identity :is(.lab-page .lab-dock,.editor-workbench .tool-dock) button{color:#f1f2f8}
+body.modo-soft-ui.modo-identity :is(.lab-page .lab-dock,.editor-workbench .tool-dock) button.active{background:#fff;color:var(--id-ink)}
+/* Diálogos y tutoriales sobre cualquier espacio */
+body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.tutorial-dialog,.tutorial-welcome,.modal,.guide-window,.floating-menu){
+  background:#fff;border-radius:var(--id-r-card);box-shadow:var(--soft-overlay);
+}
+body.modo-soft-ui.modo-identity .lab-page{background-color:var(--id-bg)!important}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) button:disabled:not(:where(.lab-dock *,.tool-dock *)){opacity:1;color:var(--id-muted);background:#f1f3f9;border-color:var(--id-line);box-shadow:none}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) button:disabled:not(:where(.lab-dock *,.tool-dock *)) *{color:inherit}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(.lab-inspector li,.temp-empty,.lab-memory-row small,.lab-stagefoot){color:var(--id-muted)}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(.temp-empty,.cade-picker>span,.cade-picker .cade-picker-label,.diagram-practice-entry p,.diagram-practice-entry small,.menu-caption,.diagram-pane small,.diagram-pane p){color:var(--id-muted)!important}
+body.modo-identity :is(.temp-empty,.menu-caption,.temp-log-card small){color:var(--id-muted)!important}
+body.modo-soft-ui.modo-identity .editor-workbench .menu-compact .menu-tile:is([aria-pressed=true],[aria-checked=true]){background:var(--id-blue);border-color:var(--id-blue);color:#fff;box-shadow:0 8px 18px -8px #073cffaa}
+body.modo-soft-ui.modo-identity .editor-workbench .menu-compact .menu-tile{border-radius:var(--id-r-ctl)}
+/* Home: mismo gris secundario accesible que el resto (antes 4,3:1) */
+body.modo-identity .modo-home-shell{--home-muted:var(--id-muted)}
+body.modo-identity .modo-home-shell :is(.home-description,.home-import,.home-import span,.install-link,.home-carousel-hint,.home-version-popover small,.clock-enable){color:var(--id-muted)!important}
+body.modo-identity .modo-home-shell .clock-enable:hover{color:var(--id-blue)!important}
+
+/* ───────── Pulido de paneles (Laboratorio y Panel) ───────── */
+/* El escenario deja ver el fondo del Home en vez de un bloque blanco a pantalla completa */
+body.modo-soft-ui.modo-identity .lab-page :is(.lab-split,.lab-stage,.eq-workspace,.eq-stage){background:transparent}
+/* HMI y Procesos: tarjeta de escena limpia y widgets coherentes */
+body.modo-soft-ui.modo-identity .lab-page .lab-hmi-screen{background:#eef0f8;border:0;border-radius:28px;box-shadow:var(--id-shadow)}
+body.modo-soft-ui.modo-identity .lab-page .lab-hmi-screen .lab-widget{border:0;border-radius:18px;background:#fff;box-shadow:var(--id-shadow-ctl)}
+body.modo-soft-ui.modo-identity .lab-page :is(.lab-process-controls,.lab-hint,.temp-hint){border:0;border-radius:22px;background:#fff;box-shadow:var(--id-shadow)}
+body.modo-soft-ui.modo-identity .lab-page .lab-state{border:0;border-radius:999px;background:#fff;box-shadow:var(--id-shadow-ctl);color:var(--id-muted)}
+/* Dock y accesos principales */
+body.modo-soft-ui.modo-identity :is(.lab-page .lab-dock,.editor-workbench .tool-dock){border-radius:22px;border:0;box-shadow:var(--id-shadow)}
+body.modo-soft-ui.modo-identity .lab-page .solder-commission-entry{background:var(--id-ink);border:0;border-radius:999px;color:#fff;box-shadow:var(--id-shadow-ctl)}
+body.modo-soft-ui.modo-identity .lab-page .solder-commission-entry:hover{background:var(--id-blue)}
+/* Inspector: título claro y texto de apoyo sin saltos de tamaño */
+body.modo-soft-ui.modo-identity .lab-page .lab-inspector h2{font-size:20px;font-weight:800;letter-spacing:-.02em}
+body.modo-soft-ui.modo-identity .lab-page .lab-inspector .lab-sheet-body>p{font-size:14px;line-height:1.55;color:var(--id-muted)}
+body.modo-soft-ui.modo-identity .lab-page .lab-inspector fieldset legend,body.modo-soft-ui.modo-identity .lab-page .lab-inspector label{color:var(--id-muted)}
+/* Panel: grupo de bloqueo sin caja azulada, y menús del mismo radio */
+body.modo-soft-ui.modo-identity .editor-workbench .module-lock-controls{background:#fff;border-radius:999px;box-shadow:var(--id-shadow-ctl);padding:0 2px;border:0}
+body.modo-soft-ui.modo-identity .editor-workbench .module-lock-controls button{box-shadow:none;border-color:transparent}
+body.modo-soft-ui.modo-identity .editor-workbench :is(.simulation-menu>summary,.procedure-trigger,.add-panel-toggle,.stage-topline select){border-radius:999px}
+body.modo-soft-ui.modo-identity .editor-workbench .stage-topline select{padding-inline:14px 8px}
+body.modo-soft-ui.modo-identity .editor-workbench :is(.practice-settings,.diagram-pane,.guide-card,.inspector){border:0}
+body.modo-soft-ui.modo-identity .lab-page :is(.solder-feedback,.solder-status,.solder-modebar>p){background:#fff;border:0;border-radius:18px;box-shadow:var(--id-shadow-ctl);color:var(--id-ink)}
+body.modo-soft-ui.modo-identity .lab-page .lab-hmi-screen .lab-widget :is(button,[role=switch],.lab-switch,.lab-toggle){background:#f1f3f9;border-color:var(--id-line)}
+/* Selector Banco / Diagrama: carril claro, sólo el activo en tinta */
+body.modo-soft-ui.modo-identity .editor-workbench :is(.compact-views,.workspace-views){background:#eef0f8!important;background-image:none!important;border:0;border-radius:999px;box-shadow:none}
+body.modo-soft-ui.modo-identity .editor-workbench :is(.compact-views,.workspace-views) button{background:transparent;border-color:transparent;box-shadow:none;color:var(--id-ink)}
+body.modo-soft-ui.modo-identity .editor-workbench :is(.compact-views,.workspace-views){--seg-bg:var(--id-ink);--seg-shadow:var(--id-shadow-ctl)}
+body.modo-soft-ui.modo-identity .editor-workbench .workspace-views button:is([aria-pressed=true],[aria-selected=true],.active,.current){color:#fff}
+body.modo-soft-ui.modo-identity .editor-workbench .compact-views button:is([aria-pressed=true],[aria-selected=true],.active,.current){color:var(--id-ink);background-image:linear-gradient(#fff,#fff)!important;font-weight:700}
+body.modo-soft-ui.modo-identity .editor-workbench .diagram-practice-entry{background:var(--id-blue-soft);border:0;border-radius:var(--id-r-ctl)}
+body.modo-soft-ui.modo-identity .editor-workbench .diagram-practice-entry>:first-child:not(p):not(h2):not(h3){background:#fff;color:var(--id-blue);border-radius:14px}
+body.modo-soft-ui.modo-identity .editor-workbench :is(.floating-window-header h2,.floating-window-header strong,.diagram-pane h2){color:var(--id-ink)}
+body.modo-identity .app-shell.editor-workbench{background:var(--id-bg)!important}
+
+/* ───────── Interacción: cursor, hover y objetivos táctiles ───────── */
+:where(body.modo-identity) :where(button,summary,[role=button],[role=tab],select,label[for]):where(:not(:disabled)){cursor:pointer}
+/* Transición común (respeta movimiento reducido más abajo) */
+body.modo-identity :is(.lab-page,.editor-workbench,.study-shell,.community-page,.legal-header,.modo-home-shell,.release-main) :is(button,a,summary,select){transition:background-color .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease,transform .16s ease}
+/* Botones claros (píldora blanca): hover con fondo y borde */
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(button:not(:where(.lab-hmi-toggle,.lab-hmi-button,.lab-dock *,.tool-dock *,.lab-swatches *,.motion-seg-item,.lab-run,.lab-compact-run,.solder-commission-entry)),.lab-project-menu>summary,.lab-project-menu>div>a,.practice-menu>summary,.simulation-menu>summary):is(:hover,:focus-visible):not(:disabled):not([aria-pressed=true]){background:#f1f3fb;border-color:#c5cae0;box-shadow:var(--id-shadow-ctl),0 0 0 1px #c5cae055}
+/* Principales (tinta): hover azul del Home */
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(.lab-run:not(.running),.lab-compact-run:not(.running),.lab-apply,.geo-primary,.primary-action,.cade-practice-button):hover:not(:disabled){background:var(--id-blue);border-color:var(--id-blue);color:#fff}
+/* Pestañas no activas: azul suave */
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(.lab-tool-nav,.workspace-views,.compact-views) button:not([aria-pressed=true]):not(.current):not(.active):hover{background:var(--id-blue-soft);color:var(--id-blue)}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(.lab-tool-nav,.workspace-views,.compact-views) button:not([aria-pressed=true]):not(.current):not(.active):hover :is(strong,span,small){color:var(--id-blue)}
+/* Dock oscuro */
+body.modo-soft-ui.modo-identity :is(.lab-page .lab-dock,.editor-workbench .tool-dock) button:not(.active):not(:disabled):hover{background:#ffffff22;color:#fff}
+/* Marca y enlaces */
+body.modo-identity :is(.brand-wrap,.community-brand,.legal-header>a:first-child,.study-brand,.home-brand a,a[aria-label="modo. · inicio"]){transition:opacity .16s ease}
+body.modo-identity :is(.brand-wrap,.community-brand,.legal-header>a:first-child,.study-brand,a[aria-label="modo. · inicio"]):hover{opacity:.65}
+body.modo-identity :is(.legal-footer a,.legal-main a,.release-note a,.community-footer a,.community-closing a):hover{color:var(--id-ink);text-decoration-color:currentColor}
+body.modo-identity .community-header nav a:hover,body.modo-identity .legal-header>a:last-child:hover{background:var(--id-ink);color:#fff;border-color:var(--id-ink)}
+/* Estudio: filas y botones secundarios */
+body.modo-identity .study-shell :is(.class-material-row,.academic-resource-row,.course-unit>summary,.course-index a,.course-index summary):hover{background:var(--id-blue-soft);border-radius:var(--id-r-ctl)}
+body.modo-identity .study-shell :is(.study-top-link,.study-header a,.study-header button,.humano-legal-link):hover{background:var(--id-blue-soft);color:var(--id-blue)}
+body.modo-identity .study-shell .campus-search:hover,body.modo-identity .study-shell .campus-search:focus-within{border-color:var(--id-blue);box-shadow:0 0 0 3px #073cff22}
+/* Home */
+body.modo-identity .modo-home-shell :is(.install-link,.home-import,.home-footer-links a,.home-version>summary,.clock-pause):hover{color:var(--id-blue)!important}
+body.modo-identity .modo-home-shell .home-footer-links a:hover,body.modo-identity .modo-home-shell .install-link:hover{text-decoration:underline;text-underline-offset:4px}
+body.modo-identity .modo-home-shell .home-version-popover a:hover{background:#f1f3fb;border-radius:12px}
+/* Ventanas flotantes: acciones de cabecera */
+body.modo-identity :is(.floating-window-header button,.diagram-pane-actions button,.floating-window-footer button):hover:not(:disabled){background:var(--id-blue-soft);color:var(--id-blue);border-color:transparent}
+
+/* Objetivos táctiles de al menos 36 px (móvil/tableta) */
+@media(max-width:800px){
+  body.modo-identity .modo-home-shell :is(.home-footer-links a,.home-import,.install-link,.home-version>summary){min-height:36px;display:inline-flex;align-items:center}
+  body.modo-identity .modo-home-shell .clock-pause{min-width:36px;min-height:36px}
+  body.modo-identity :is(.community-brand,.legal-header>a:first-child,.study-brand,.brand-wrap,a[aria-label="modo. · inicio"]){display:inline-flex;align-items:center;min-height:36px}
+  body.modo-identity .study-shell a.campus-topic,body.modo-identity .study-shell .class-material-row a{min-height:36px}
+  body.modo-identity :is(.lab-page,.editor-workbench) :is(.zoom-toolbar,.lab-zoombar,.lab-dock,.tool-dock,.workspace-navigation) button,body.modo-identity .editor-workbench .simulation-menu>summary{min-width:36px;min-height:36px}
+  body.modo-identity .editor-workbench :is(.cable-color-chips button,.wire-legend button,.cade-legend button,.diagram-pane [class*=legend] button){min-height:32px}
+  body.modo-identity :is(.lab-page,.editor-workbench) input:not([type=checkbox],[type=radio],[type=range]){min-height:36px}
+}
+@media(prefers-reduced-motion:reduce){body.modo-identity :is(button,a,summary,select){transition:none!important}}
+
+/* ───────── Restos de gris azulado / cian: todo a la tinta, al gris del Home o al azul ───────── */
+body.modo-identity .study-shell :is(.class-material-row,.class-material-row strong,.class-material-name,summary){color:var(--id-ink)}
+body.modo-identity .study-shell .class-ready{color:var(--id-blue);font-weight:600}
+body.modo-identity .study-shell .class-material-row.is-pending,body.modo-identity .study-shell .class-material-row.is-pending strong{color:var(--id-muted)}
+body.modo-identity :is(.lab-page,.editor-workbench) :is(output,summary,.solder-modebar){color:var(--id-ink)}
+body.modo-identity .editor-workbench :is(.cade-reader,.cade-reader-toolbar,.cade-quick-help,.diagram-info-actions,.reader-workspace,.diagram-pane-actions strong){color:var(--id-ink)}
+body.modo-soft-ui.modo-identity .lab-page :is(.lab-sheet,.temp-sheet,.temp-sheet-body) button:is([aria-pressed=true],[aria-selected=true],.active,.on,.is-on,.current){background:var(--id-ink);border-color:var(--id-ink);color:#fff;box-shadow:var(--id-shadow-ctl)}
+body.modo-soft-ui.modo-identity .lab-page :is(.lab-back,.tutorial-trigger,.lab-help-toggle,.lab-header-links a):hover{background:var(--id-blue-soft);color:var(--id-blue);border-radius:999px}
+body.modo-soft-ui.modo-identity .editor-workbench :is(.tutorial-trigger,.help-btn,.home-link,.icon-button):hover:not(:disabled){background:var(--id-blue-soft);color:var(--id-blue)}
+
+/* Ventanas flotantes (se montan fuera de .lab-page): mismas reglas de selección, hover y color */
+body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) :is(button,summary):is([aria-selected=true],[aria-pressed=true],.active,.on,.is-on,.current):not(.lab-hmi-toggle):not(:disabled){background:var(--id-ink);border-color:var(--id-ink);color:#fff}
+body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) button:not(:disabled):not([aria-selected=true]):not([aria-pressed=true]):not(.active):not(.on):not(.is-on):not(.current):not(.floating-window-resize):hover{background:#f1f3fb;border-color:#c5cae0;color:var(--id-ink)}
+body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) button:not(.floating-window-resize){border-radius:14px}
+body.modo-soft-ui.modo-identity .mobile-floating-window .floating-window-header button{border-radius:999px}
+body.modo-soft-ui.modo-identity .mobile-floating-window .temp-tabs{border-radius:999px;background:#eef0f8;padding:3px;border:0}
+body.modo-soft-ui.modo-identity .mobile-floating-window .temp-tabs button{border-radius:999px;border-color:transparent;background:transparent;box-shadow:none}
+body.modo-soft-ui.modo-identity .mobile-floating-window .temp-tabs button[aria-selected=true]{background:var(--id-ink);color:#fff}
+/* Estudio: texto de filas */
+body.modo-identity .study-shell.study-campus-shell .class-material-name>strong{color:var(--id-ink)}
+body.modo-identity .study-shell.study-campus-shell .class-material-name>small{color:var(--id-muted)}
+body.modo-soft-ui.modo-identity .study-shell.study-campus-shell .class-ready{color:var(--id-blue)}
+/* Hover de utilidades de cabecera que usan motion-seg */
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench,.study-shell) :is(.tutorial-trigger,.lab-help-toggle):hover{background:var(--id-blue-soft)!important;color:var(--id-blue)!important}
+body.modo-soft-ui.modo-identity .editor-workbench .cade-reader{color:var(--id-ink)}
+
+/* ───────── Red de seguridad de legibilidad (menús, diálogos y portales incluidos) ───────── */
+/* Controles deshabilitados: se distinguen por fondo y gris, no por opacidad (que bajaba el contraste) */
+body.modo-identity :is(button,[aria-disabled=true],.is-disabled,a.disabled):is(:disabled,[aria-disabled=true],.is-disabled,.disabled):not(:where(.lab-dock *,.tool-dock *,.lab-swatches *,.float-handle)){opacity:1!important;color:var(--id-muted)!important;background:#f1f3fb!important;border-color:var(--id-line)!important;box-shadow:none!important}
+body.modo-identity :is(button,[aria-disabled=true]):is(:disabled,[aria-disabled=true]):not(:where(.lab-dock *,.tool-dock *)) :is(strong,small,span,p,svg){color:inherit!important;opacity:1!important}
+/* Textos secundarios de menús y guías */
+body.modo-identity :is(.add-panel-count,.add-panel-pop small,.guide-menu-title,.guide-lesson-number,.guide-lesson-choice small,.guide-lesson-choice p,.guide-replace-note,.guide-menu-pop small,.lab-dock-menu small,.academic-notebook p,.academic-notebook label,.study-practice-prompt>span:first-child,.academic-alert,.academic-number,.academic-number+span){color:var(--id-muted)!important}
+body.modo-identity :is(.academic-actions a,.academic-actions a:visited){color:var(--id-blue)!important;font-weight:600}
+body.modo-identity .guide-lesson-number{background:var(--id-blue-soft)!important;color:#0a2fb8!important}
+body.modo-identity .study-shell .study-notebook-wrap>summary>span:last-child{color:var(--id-blue)!important;font-weight:700}
+body.modo-identity .study-shell .academic-fields label strong{color:var(--id-blue)}
+
+/* ───────── Controles dibujados dentro del lienzo (SVG): mismo botón claro, hover azul y foco visible ───────── */
+body.modo-identity :is(.manual-action,.lab-dmm-native>g[role=button],.breadboard-source-focus,.manual-action) rect{fill:#fff;stroke:#c5cae0;stroke-width:1;rx:12px;ry:12px;transition:fill .16s ease,stroke .16s ease}
+body.modo-identity :is(.manual-action,.lab-dmm-native>g[role=button],.breadboard-source-focus) text{fill:var(--id-ink);font-family:var(--id-font);font-weight:600}
+body.modo-identity :is(.manual-action,.lab-dmm-native>g[role=button],.breadboard-source-focus):is(:hover,:focus-visible) rect{fill:var(--id-blue-soft);stroke:var(--id-blue)}
+body.modo-identity :is(.manual-action,.lab-dmm-native>g[role=button],.breadboard-source-focus):is(:hover,:focus-visible) text{fill:var(--id-blue)}
+body.modo-identity :is(.manual-action,.lab-dmm-native>g[role=button],.breadboard-source-focus):focus-visible{outline:3px solid var(--id-lime);outline-offset:3px}
+body.modo-identity .manual-action{cursor:pointer}
+body.modo-identity .lab-dmm-handle{border-radius:999px;background:#fff;border-color:var(--id-line);color:var(--id-ink);font-family:var(--id-font);box-shadow:var(--id-shadow-ctl)}
+body.modo-identity .lab-dmm-handle:hover{background:var(--id-blue-soft);color:var(--id-blue);border-color:#c5cae0}
+body.modo-identity .fluke-notebook-actions button{border-radius:999px;background:#fff;border:1px solid var(--id-line);color:var(--id-ink);font-family:var(--id-font);font-weight:600;box-shadow:var(--id-shadow-ctl)}
+body.modo-identity .fluke-notebook-actions button:hover:not(:disabled){background:var(--id-blue-soft);color:var(--id-blue);border-color:#c5cae0}
+@media(max-width:800px){
+  body.modo-identity .study-shell .course-index a{min-height:36px;display:flex;align-items:center}
+  body.modo-identity .editor-workbench .diagram-pane :is(.cade-legend,.cade-wire-legend,.wire-legend,[class*=legend]) button{min-height:32px}
+}
+@media(max-width:800px){body.modo-identity .editor-workbench .diagram-pane button{min-height:32px}}
+body.modo-identity :is(.lab-project-save,.lab-project-settings legend,.lab-project-settings small,.lab-project-examples legend,.lab-editor-pop small,.lab-saved-as){color:var(--id-muted)!important}
+body.modo-identity .lab-project-save svg{color:#0b7a4f}
+body.modo-soft-ui.modo-identity :is(.lab-project-import,.lab-project-settings label.lab-project-import){background:#fff;border:1px solid var(--id-line);border-radius:999px;color:var(--id-ink);box-shadow:var(--id-shadow-ctl)}
+body.modo-soft-ui.modo-identity :is(.lab-project-settings,.lab-project-window) :is(input,select){border:1px solid var(--id-line);border-radius:var(--id-r-ctl);background:#fff}
+
+/* ───────── Estados que se ven: verde = activo o bloqueado, azul = libre, rojo = alerta ─────────
+   Se aplican a los controles de estado del Panel (rayo de simulación, candados, interruptores virtuales) y
+   se pintan por encima del botón claro genérico. */
+body.modo-identity{--id-on:#0e8a45;--id-on-dark:#0a6b36;--id-on-soft:#e2f6ea;--id-on-line:#8fd4ad;--id-warn:#b42318;--id-warn-soft:#fde8e6;--id-warn-line:#f0a8a1}
+/* Rayo: apagado = claro; encendido = verde sólido con brillo */
+body.modo-soft-ui.modo-identity .editor-workbench .simulation-toggle{transition:background .18s ease,box-shadow .18s ease,color .18s ease,border-color .18s ease}
+body.modo-soft-ui.modo-identity .editor-workbench .simulation-toggle[aria-pressed=true]{background:linear-gradient(145deg,#1fae63,var(--id-on) 55%,var(--id-on-dark))!important;border-color:var(--id-on-dark)!important;color:#fff!important;box-shadow:0 10px 20px -10px #12a150cc,inset 0 1px 0 #ffffff55!important}
+body.modo-soft-ui.modo-identity .editor-workbench .simulation-toggle[aria-pressed=true] svg{color:#fff;filter:drop-shadow(0 0 4px #ffffffaa)}
+body.modo-soft-ui.modo-identity .editor-workbench .simulation-toggle i{background:#b9bfd6;box-shadow:none}
+body.modo-soft-ui.modo-identity .editor-workbench .simulation-toggle[aria-pressed=true] i{background:#ffffffb0}
+body.modo-soft-ui.modo-identity .editor-workbench .simulation-toggle i.is-powered{background:#fff;box-shadow:0 0 0 3px #ffffff66,0 0 8px #fff}
+body.modo-soft-ui.modo-identity .editor-workbench .simulation-toggle:not([aria-pressed=true]):hover svg{color:var(--id-on-dark)}
+/* Candados: bloqueado = verde sólido; libre (mover) = azul suave */
+body.modo-soft-ui.modo-identity .editor-workbench .module-lock-controls button{transition:background .18s ease,color .18s ease,box-shadow .18s ease}
+body.modo-soft-ui.modo-identity .editor-workbench .module-lock-controls button[aria-label^="Bloquear"][aria-pressed=true]{background:linear-gradient(145deg,#1fae63,var(--id-on) 55%,var(--id-on-dark))!important;color:#fff!important;border-color:var(--id-on-dark)!important;box-shadow:0 8px 16px -8px #12a150cc!important}
+body.modo-soft-ui.modo-identity .editor-workbench .module-lock-controls button[aria-label^="Desbloquear"][aria-pressed=true]{background:var(--id-blue-soft)!important;color:var(--id-blue)!important;border-color:#b9c4ff!important;box-shadow:none!important}
+body.modo-soft-ui.modo-identity .editor-workbench .module-lock-controls button[aria-pressed=false]{color:var(--id-muted)}
+body.modo-soft-ui.modo-identity .editor-workbench .module-lock-controls button[aria-label^="Bloquear"][aria-pressed=false]:hover{color:var(--id-on-dark);background:var(--id-on-soft)!important;border-color:var(--id-on-line)!important}
+/* Interruptores virtuales del menú de simulación y chips de estado */
+body.modo-soft-ui.modo-identity .mobile-floating-window :is(.sim-tile,.simulation-plug-action)[aria-pressed=true]:not(:disabled){background:var(--id-on-soft)!important;border-color:var(--id-on-line)!important;color:var(--id-on-dark)!important;box-shadow:0 6px 14px -8px #12a150aa!important}
+body.modo-soft-ui.modo-identity .mobile-floating-window :is(.sim-tile,.simulation-plug-action)[aria-pressed=true]:not(:disabled) :is(svg,span){color:var(--id-on-dark)!important}
+body.modo-soft-ui.modo-identity .mobile-floating-window .sim-tile[aria-pressed=false]:not(:disabled):hover{background:var(--id-on-soft)!important;border-color:var(--id-on-line)!important;color:var(--id-on-dark)!important}
+body.modo-identity .sim-chip.on{background:var(--id-on-soft);border-color:var(--id-on-line);color:var(--id-on-dark)}
+body.modo-soft-ui.modo-identity .mobile-floating-window .sim-icon[aria-pressed=true]:not(:disabled){background:var(--id-warn-soft)!important;border-color:var(--id-warn-line)!important;color:var(--id-warn)!important}
+body.modo-identity .sim-state.is-powered{background:var(--id-on-soft);color:var(--id-on-dark)}
+body.modo-identity .sim-state.is-powered i{background:var(--id-on);box-shadow:0 0 0 3px #12a15026}
+body.modo-identity .sim-state.simulation-fault{background:var(--id-warn-soft);color:var(--id-warn)}
+body.modo-identity .power-status>span.is-on{background:var(--id-on-soft);border-color:var(--id-on-line)}
+body.modo-identity .power-status>span.is-fault{background:var(--id-warn-soft);border-color:var(--id-warn-line)}
+body.modo-identity .power-status b{color:var(--id-ink)}
+
+/* ───────── Protoboard y bancos de instrumentos ───────── */
+/* Simulación en marcha: verde (activo) en vez del botón claro */
+body.modo-soft-ui.modo-identity .lab-page :is(.lab-run.running,.lab-compact-run.running){background:linear-gradient(145deg,#1fae63,var(--id-on) 55%,var(--id-on-dark))!important;border-color:var(--id-on-dark)!important;color:#fff!important;box-shadow:0 10px 20px -10px #12a150cc,inset 0 1px 0 #ffffff55!important}
+body.modo-soft-ui.modo-identity .lab-page :is(.lab-run.running,.lab-compact-run.running):hover{background:linear-gradient(145deg,#1fb468,#0e8f48 55%,#086b32)!important}
+body.modo-soft-ui.modo-identity .lab-page :is(.lab-run.running,.lab-compact-run.running) :is(svg,span){color:#fff}
+/* Tablero: etiquetas, vista previa y foco con la misma paleta */
+body.modo-identity .lab-board-svg:focus-visible{outline:3px solid var(--id-lime);outline-offset:-3px}
+body.modo-identity .lab-pill rect{stroke:#c5cae0}
+body.modo-identity .lab-pill text{fill:var(--id-ink);font-family:var(--id-font);font-weight:650}
+body.modo-identity .lab-label.clickable:hover .lab-pill rect{stroke:var(--id-blue);fill:var(--id-blue-soft)}
+body.modo-identity .lab-label.clickable:hover .lab-pill text{fill:var(--id-blue)}
+body.modo-identity .lab-pill.preview rect{fill:var(--id-blue-soft);stroke:var(--id-blue)}
+body.modo-identity .lab-pill.preview text{fill:var(--id-blue)}
+body.modo-identity .lab-pill.reading rect{fill:var(--id-on-soft);stroke:var(--id-on-line)}
+body.modo-identity .lab-pill.reading text{fill:var(--id-on-dark)}
+body.modo-identity .lab-pending-preview{stroke:var(--id-blue)}
+/* Componentes: se iluminan al pasar el cursor y quedan marcados al seleccionarlos */
+body.modo-identity .lab-canvas-workspace:not([data-tool=erase]) .lab-proto-component{cursor:pointer}
+body.modo-identity .lab-proto-component .lab-proto-hit{transition:fill .15s ease,stroke .15s ease}
+body.modo-identity .lab-canvas-workspace:not([data-tool=erase]) .lab-proto-component:hover .lab-proto-hit{fill:#073cff14;stroke:#073cff80;stroke-width:2}
+body.modo-identity .lab-canvas-workspace .lab-proto-component.selected .lab-proto-hit{fill:#073cff1f;stroke:var(--id-blue);stroke-width:2.5}
+body.modo-identity .lab-canvas-workspace[data-tool=erase] .lab-proto-component:hover .lab-proto-hit{fill:#b4231814;stroke:#b42318aa;stroke-width:2}
+/* Multímetro: herramientas redondas blancas con hover azul */
+body.modo-identity .lab-dmm-tools button,body.modo-identity .lab-dmm-pill button{background:#fff;border:1px solid var(--id-line);color:var(--id-ink);box-shadow:var(--id-shadow-ctl);transition:background .16s ease,color .16s ease,border-color .16s ease}
+body.modo-identity .lab-dmm-tools button:hover:not(:disabled),body.modo-identity .lab-dmm-pill button:hover:not(:disabled){background:var(--id-blue-soft);color:var(--id-blue);border-color:#c5cae0}
+/* Móvil: el zoom sube a la esquina para no chocar con el multímetro plegado ni con la barra de herramientas */
+@media(max-width:800px){
+  body.modo-identity .lab-compact .lab-canvas-workspace .lab-zoombar{top:calc(var(--lab-bar-height,56px) + 10px);bottom:auto;right:10px;left:auto}
+}
+/* Fuente DC de la protoboard: salida y enchufe con estado de color */
+body.modo-identity .lab-canvas-workspace g[role=button] rect,body.modo-identity .lab-canvas-workspace g[role=button] circle{transition:fill .16s ease,stroke .16s ease}
+body.modo-identity .lab-canvas-workspace g[role=button]:not([aria-disabled=true]):hover>rect{stroke:var(--id-blue)}
+body.modo-identity .lab-canvas-workspace g[role=button][aria-label$="salida DC"]>rect{fill:#8d93ab;stroke:#6d7390}
+body.modo-identity .lab-canvas-workspace g[role=button][aria-label$="salida DC"][aria-pressed=true]>rect{fill:var(--id-on);stroke:var(--id-on-dark)}
+body.modo-identity .lab-canvas-workspace g[role=button][aria-label$="salida DC"][aria-pressed=true]{filter:drop-shadow(0 0 7px #12a150aa)}
+body.modo-identity .lab-canvas-workspace g[role=button][aria-label*="nchufar fuente"][aria-pressed=true]{filter:drop-shadow(0 0 6px #12a150bb)}
+body.modo-identity .lab-canvas-workspace g[role=button][aria-label*="nchufar fuente"][aria-pressed=true] rect{stroke:var(--id-on-dark)}
+body.modo-identity .lab-canvas-workspace g[role=button][aria-label="Paso de ajuste de tensión"][aria-pressed=true]>rect{fill:var(--id-blue-soft);stroke:var(--id-blue)}
+body.modo-identity .lab-canvas-workspace g[role=button][aria-label="Paso de ajuste de tensión"][aria-pressed=true]>text{fill:var(--id-blue)}
+
+/* Rendimiento: las animaciones decorativas de las portadas de Estudio sólo corren al apuntar la tarjeta (antes consumían el hilo principal sin parar) */
+body.modo-identity .study-shell .campus-course :is(.study-flow-line,.study-rotor){animation-play-state:paused}
+body.modo-identity .study-shell .campus-course:is(:hover,:focus-within) :is(.study-flow-line,.study-rotor){animation-play-state:running}

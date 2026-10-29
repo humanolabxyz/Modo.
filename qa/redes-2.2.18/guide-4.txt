@@ -1,0 +1,53 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 4 
+ 
+ 
+Desarrollo de la actividad: 
+ 
+ACTIVIDADES: 
+1. Verificar los materiales necesarios para comenzar a trabajar, esto es, cable utp, conector DB9 macho y 
+un conector con tornillos que permita energizar el COM2 para RS-485. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figura 1.5. Cable utp de par trenzado, conector DB9 macho y conector con tornillos de energización para RS-485 desde HMI 
+a PLC. 
+ 
+2. Siga los siguientes pasos para la elaboración del cable RS-485 para conectar pantalla HMI con PLC 
+Delta. 
+ 
+ 
+Paso N°1: 
+ 
+Soldar el cable utp al DB9, siguiendo la imagen mostrada: 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+Figura 1.6. DB9 con cables soldados. 
+ 
+El cable verde (GND), va en el pin N°5, el cable café al pin N°1 (+24 V) y el cable blanco al pin N°6, teniendo 
+como referencia la información del manual del fabricante: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figura 1.7. Armado del cable RS485 con DB9 y conector de tornillo. 

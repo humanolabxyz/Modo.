@@ -1,17 +1,20 @@
 import type {Board as EquipmentBoard} from './equipment/model';
 export type Memory = Record<string, boolean | number>;
-export type Tool = 'schematic' | 'plc' | 'hmi' | 'process' | 'breadboard' | 'geogebra' | 'temperature' | 'detectors' | 'equipment';
+export type Tool = 'schematic' | 'plc' | 'hmi' | 'process' | 'breadboard' | 'geogebra' | 'temperature' | 'detectors' | 'equipment' | 'soldering';
 export const TOOLS: {id: Tool; name: string; description: string}[] = [
   {id:'schematic',name:'Esquemas',description:'Dibuja y prueba circuitos de mando.'},
-  {id:'equipment',name:'Equipos eléctricos',description:'Monta mando, automatización y energía con equipos y bornes interactivos.'},
+  {id:'equipment',name:'Tableros de control',description:'Distribuye equipos en el gabinete, cablea y programa PLC o relés lógicos.'},
   {id:'plc',name:'PLC',description:'Programa contactos, bobinas y temporizadores.'},
   {id:'hmi',name:'HMI',description:'Crea una pantalla para operar tus señales.'},
   {id:'process',name:'Procesos',description:'Controla el llenado de un tanque.'},
   {id:'breadboard',name:'Protoboard',description:'Monta un circuito y mide tensión y corriente.'},
+  {id:'soldering',name:'Soldadura',description:'Prepara herramientas, suelda el DB9 HMI–PLC y comprueba el cable.'},
   {id:'temperature',name:'Temperatura',description:'Mide termocupla y Pt100 en un horno de pozo seco, con transmisor.'},
   {id:'detectors',name:'Detectores',description:'Mide detectores inductivo, capacitivo y fotoeléctrico y conéctalos a un PLC.'},
   {id:'geogebra',name:'GeoGebra',description:'Explora funciones, geometría, cálculo y matrices libremente o con una lección.'},
 ];
+/** Herramientas de un mismo proyecto de automatización: el PLC manda al tablero, la HMI opera las mismas señales y el proceso devuelve el nivel. */
+export const TOOL_GROUPS:{id:string;name:string;tools:Tool[]}[]=[{id:'automation',name:'Automatización',tools:['equipment','plc','hmi','process']}];
 export type DeviceKind = 'supply'|'no'|'nc'|'coil'|'contact'|'lamp'|'motor'|'output'|'breaker'|'fuse'|'emergency'|'selector'|'contact-nc'|'terminal'|'buzzer';
 export const DEVICES: {kind: DeviceKind; name: string; prefix: string}[] = [
   {kind:'supply',name:'Fuente 24 V DC',prefix:'G'}, {kind:'no',name:'Pulsador NA',prefix:'S'},
@@ -45,14 +48,17 @@ export type Tag = {address:string;name:string;type:'bool'|'number';initial:boole
 export type Widget = {id:string;kind:'toggle'|'lamp'|'number'|'bar';label:string;address:string;x:number;y:number;max:number};
 export type ProtoKind = 'wire'|'resistor'|'led'|'switch'|'button'|'motor'|'l293d'|'bjt'|'diode';
 export type ProtoComponent = {id:string;kind:ProtoKind;from:string;to:string;value:number;closed:boolean;color:string;polarity?:'pnp'};
-export type Measurement = {id:string;kind:'voltage'|'current'|'resistance'|'continuity';a:string;b:string;value:number|null;label:string;at:string};
+export type Measurement = {id:string;kind:'voltage'|'current'|'resistance'|'continuity';a:string;b:string;value:number|null;label:string;at:string;sourceVoltage?:number};
+export type BreadboardPower={plugged:boolean;enabled:boolean;redConnected:boolean;blackConnected:boolean};
+export const DEFAULT_BOARD_POWER:BreadboardPower={plugged:false,enabled:false,redConnected:false,blackConnected:false};
+export const boardPowered=(p:BreadboardPower)=>p.plugged&&p.enabled&&p.redConnected&&p.blackConnected;
 export type LabProject = {
   format:'panellab-laboratory';version:2;id:string;name:string;
   schematic:{devices:Device[];wires:Wire[]};
   plc:{language:'ladder'|'st';tags:Tag[];rungs:Rung[];source:string};
   hmi:{widgets:Widget[]};
   process:{capacity:number;initialLevel:number;inflow:number;outflow:number;low:number;high:number;pumpSignal:string;lowSignal:string;highSignal:string;levelSignal:string};
-  breadboard:{voltage:number;positive:string;negative:string;components:ProtoComponent[];realistic?:boolean;log?:Measurement[];notes?:string};
+  breadboard:{power?:BreadboardPower;voltage:number;positive:string;negative:string;components:ProtoComponent[];realistic?:boolean;log?:Measurement[];notes?:string};
   equipment?:EquipmentBoard;
 };
 export const uid = (prefix='id') => `${prefix}-${crypto.randomUUID()}`;
@@ -95,34 +101,26 @@ export function newProject(kind:'motor'|'tank'|'blank'|'hbridge'|'hbridge-bjt'='
       {id:'hm5',kind:'number',label:'Nivel (%)',address:'AI0',x:455,y:260,max:100},
     ]},
     process:{capacity:100,initialLevel:20,inflow:6,outflow:1,low:20,high:80,pumpSignal:'Q0.0',lowSignal:'I0.2',highSignal:'I0.3',levelSignal:'AI0'},
-    breadboard:kind==='hbridge-bjt'?{voltage:12,positive:'top+:1',negative:'top-:1',components:[
-      ...(['e:2','e:6','e:10','e:14'] as const).map((from,i)=>({id:`bj-q${[2,3,1,4][i]}`,kind:'bjt' as const,from,to:`e:${[4,8,12,16][i]}`,value:100,closed:true,color:'#1f2327'})),
-      {id:'bj-r1',kind:'resistor',from:'c:3',to:'c:5',value:1000,closed:true,color:'#0f766e'},
-      {id:'bj-r2',kind:'resistor',from:'c:7',to:'c:9',value:1000,closed:true,color:'#0f766e'},
-      {id:'bj-r3',kind:'resistor',from:'d:11',to:'d:9',value:1000,closed:true,color:'#0f766e'},
-      {id:'bj-r4',kind:'resistor',from:'c:15',to:'c:13',value:1000,closed:true,color:'#0f766e'},
-      {id:'bj-s1',kind:'button',from:'b:4',to:'b:5',value:0,closed:false,color:'#d94848'},
-      {id:'bj-s2',kind:'button',from:'d:4',to:'e:9',value:0,closed:false,color:'#d94848'},
-      {id:'bj-m',kind:'motor',from:'h:3',to:'h:9',value:40,closed:true,color:'#4b5563'},
-      {id:'bj-p1',kind:'wire',from:'top+:4',to:'a:4',value:0,closed:true,color:'#d94848'},
-      {id:'bj-p2',kind:'wire',from:'top+:12',to:'a:12',value:0,closed:true,color:'#d94848'},
-      {id:'bj-g1',kind:'wire',from:'top-:6',to:'a:6',value:0,closed:true,color:'#334155'},
-      {id:'bj-g2',kind:'wire',from:'top-:14',to:'a:14',value:0,closed:true,color:'#334155'},
-      {id:'bj-ml',kind:'wire',from:'a:2',to:'a:8',value:0,closed:true,color:'#e07b2a'},
-      {id:'bj-mr',kind:'wire',from:'a:10',to:'a:16',value:0,closed:true,color:'#d6a516'},
-      {id:'bj-na',kind:'wire',from:'a:5',to:'a:13',value:0,closed:true,color:'#2f6fd1'},
-      {id:'bj-ma',kind:'wire',from:'d:2',to:'g:3',value:0,closed:true,color:'#e07b2a'},
-      {id:'bj-mb',kind:'wire',from:'d:10',to:'g:9',value:0,closed:true,color:'#d6a516'},
-    ]}:kind==='hbridge'?{voltage:12,positive:'top+:1',negative:'bottom-:1',components:[
-      {id:'hb-r1',kind:'resistor',from:'top+:4',to:'a:10',value:330,closed:true,color:'#0f766e'},
-      {id:'hb-vs',kind:'wire',from:'top+:14',to:'j:17',value:0,closed:true,color:'#d94848'},
+    breadboard:kind==='hbridge-bjt'?{voltage:12,positive:'top+:1',negative:'bottom-:1',components:[
+      ...([['bj-q2','c:9','c:11'],['bj-q1','c:14','c:16'],['bj-q3','h:9','h:11'],['bj-q4','h:14','h:16']] as const).map(([id,from,to])=>({id,kind:'bjt' as const,from,to,value:100,closed:true,color:'#1f2327'})),
+      ...([['bj-r1','b:4','b:7'],['bj-r2','g:4','g:7'],['bj-r3','b:15','b:19'],['bj-r4','g:15','g:19']] as const).map(([id,from,to])=>({id,kind:'resistor' as const,from,to,value:1000,closed:true,color:'#0f766e'})),
+      {id:'bj-s1',kind:'button',from:'a:1',to:'d:4',value:0,closed:false,color:'#d94848'},
+      {id:'bj-s2',kind:'button',from:'f:1',to:'i:4',value:0,closed:false,color:'#d94848'},
+      {id:'bj-m',kind:'motor',from:'c:23',to:'c:27',value:40,closed:true,color:'#4b5563'},
+      ...([['bj-p1','top+:11','a:11'],['bj-p2','top+:17','a:16'],['bj-supply1','top+:2','e:1'],['bj-supply2','top+:3','j:1'],['bj-positive-rail','top+:15','top+:16'],
+      ['bj-g1','bottom-:9','j:9'],['bj-g2','bottom-:14','j:14'],['bj-negative-rail','bottom-:15','bottom-:16'],
+      ['bj-ma','a:9','f:11'],['bj-ma-motor','g:11','a:23'],['bj-mb','a:14','f:16'],['bj-mb-motor','g:16','a:27'],
+      ['bj-input1a','a:7','a:10'],['bj-input1b','e:4','j:19'],['bj-input2a','j:4','a:19'],['bj-input2b','j:7','j:10']] as const).map(([id,from,to])=>({id,kind:'wire' as const,from,to,value:0,closed:true,color:'#0f766e'})),
+    ]}:kind==='hbridge'?{voltage:5,positive:'top+:1',negative:'bottom-:1',components:[
       {id:'hb-ic',kind:'l293d',from:'f:10',to:'e:17',value:0,closed:true,color:'#2b3035'},
-      {id:'hb-s1',kind:'button',from:'c:10',to:'g:11',value:0,closed:false,color:'#d94848'},
-      {id:'hb-s2',kind:'button',from:'d:10',to:'g:16',value:0,closed:false,color:'#d94848'},
-      {id:'hb-en',kind:'wire',from:'h:10',to:'h:16',value:0,closed:true,color:'#2f6fd1'},
+      {id:'hb-s1',kind:'button',from:'e:2',to:'f:5',value:0,closed:false,color:'#d94848'},
+      {id:'hb-s2',kind:'button',from:'e:24',to:'f:27',value:0,closed:false,color:'#d94848'},
       {id:'hb-m',kind:'motor',from:'h:12',to:'h:15',value:40,closed:true,color:'#4b5563'},
-      {id:'hb-g1',kind:'wire',from:'bottom-:13',to:'i:13',value:0,closed:true,color:'#334155'},
-      {id:'hb-g2',kind:'wire',from:'bottom-:14',to:'i:14',value:0,closed:true,color:'#334155'},
+      {id:'hb-pull1',kind:'resistor',from:'i:11',to:'i:7',value:10000,closed:true,color:'#0f766e'},
+      {id:'hb-pull2',kind:'resistor',from:'i:16',to:'i:20',value:10000,closed:true,color:'#0f766e'},
+      ...([['hb-vss','top+:10','a:10'],['hb-vs','top+:14','j:17'],['hb-en','top+:12','j:10'],['hb-sp1','top+:2','a:2'],['hb-sp2','top+:24','a:24'],['hb-rail','top+:15','top+:16']] as const).map(([id,from,to])=>({id,kind:'wire' as const,from,to,value:0,closed:true,color:'#c53943'})),
+      ...([['hb-g1','bottom-:13','i:13'],['hb-g2','bottom-:14','i:14'],['hb-g3','top-:13','a:13'],['hb-g4','top-:14','a:14'],['hb-grail','top-:1','bottom-:2'],['hb-grail2','bottom-:15','bottom-:16'],['hb-gpull1','bottom-:7','j:7'],['hb-gpull2','bottom-:20','j:20']] as const).map(([id,from,to])=>({id,kind:'wire' as const,from,to,value:0,closed:true,color:'#343b42'})),
+      ...([['hb-in1','j:5','h:11'],['hb-in2','j:27','h:16']] as const).map(([id,from,to])=>({id,kind:'wire' as const,from,to,value:0,closed:true,color:'#2978c8'})),
     ]}:{voltage:5,positive:'top+:1',negative:'top-:1',components:empty?[]:[
       {id:'pr1',kind:'wire',from:'top+:1',to:'a:5',value:0,closed:true,color:'#0f766e'},
       {id:'pr2',kind:'resistor',from:'b:5',to:'b:10',value:1000,closed:true,color:'#0f766e'},
@@ -136,7 +134,7 @@ export type Hole = {id:string;x:number;y:number;group:string};
 export const HOLES:Hole[] = [];
 for(let col=1;col<=30;col++) {
   const x=55+(col-1)*24;
-  for(const [row,y] of [['top+',62],['top-',86],['bottom+',366],['bottom-',390]] as const)HOLES.push({id:`${row}:${col}`,x,y,group:`${row}:${col<=15?'left':'right'}`});
+  for(const [row,y] of [['top+',62],['top-',86],['bottom+',386],['bottom-',410]] as const)HOLES.push({id:`${row}:${col}`,x,y,group:`${row}:${col<=15?'left':'right'}`});
   for(const [i,row] of [...'abcdefghij'].entries())HOLES.push({id:`${row}:${col}`,x,y:135+i*20+(i>=5?35:0),group:`${i<5?'upper':'lower'}:${col}`});
 }
 export const HOLE_BY_ID = new Map(HOLES.map(h=>[h.id,h]));
@@ -165,9 +163,19 @@ export function bjtBase(from:string,to:string):string|null {
   return `${a[1]}:${(Number(a[2])+Number(b[2]))/2}`;
 }
 
+/** Four-pin tactile package across the channel. Each side pair is permanently connected. */
+export function buttonPins(from:string,to:string):[string,string,string,string]|null{
+  const a=/^([a-j]):(\d+)$/.exec(from),b=/^([a-j]):(\d+)$/.exec(to);if(!a||!b||Math.abs(+a[2]-+b[2])!==3||!HOLE_BY_ID.has(from)||!HOLE_BY_ID.has(to))return null;
+  const ar='abcdefghij'.indexOf(a[1]),br='abcdefghij'.indexOf(b[1]),across=(a[1]==='e'&&b[1]==='f')||(a[1]==='f'&&b[1]==='e'),sameHalf=Math.floor(ar/5)===Math.floor(br/5)&&Math.abs(ar-br)===3;
+  if(!across&&!sameHalf)return null;
+  return [from,`${b[1]}:${a[2]}`,`${a[1]}:${b[2]}`,to];
+}
+export function joinBoardParts(nets:Nets,components:ProtoComponent[],switches:Record<string,boolean>){for(const c of components){const pins=c.kind==='button'?buttonPins(c.from,c.to):null;if(pins){nets.join(pins[0],pins[1]);nets.join(pins[2],pins[3]);}if(c.kind==='wire'||(c.kind==='switch'||c.kind==='button')&&(switches[c.id]??(c.kind==='button'?false:c.closed)))nets.join(c.from,c.to);}}
+
 /** Orificios que ocupan las patas de un componente (una pata por orificio en una protoboard real). */
 export function componentHoles(c:{kind:ProtoKind;from:string;to:string}):string[] {
   if(c.kind==='l293d')return icPinHoles(c.from)??[c.from];
+  if(c.kind==='button')return buttonPins(c.from,c.to)??[c.from,c.to];
   if(c.kind==='bjt'){const base=bjtBase(c.from,c.to);return base?[c.from,base,c.to]:[c.from,c.to];}
   return [c.from,c.to];
 }
@@ -187,12 +195,21 @@ export function relocate(components:ProtoComponent[],id:string,change:{from?:str
   let from=change.from??c.from,to=change.to??c.to;
   if(change.anchor!==undefined){
     if(c.kind==='l293d'){from=change.anchor;}
+    else if(c.kind==='button'&&buttonPins(c.from,c.to)){
+      const col=holeCol(change.anchor),row=change.anchor.split(':')[0],rows='abcdefghij',oldA=c.from.split(':')[0],oldB=c.to.split(':')[0];
+      if(!rows.includes(row)||row.length!==1)return {ok:false,error:'El pulsador necesita filas a–j.'};
+      const across=['e','f'].includes(oldA)&&['e','f'].includes(oldB);
+      if(across&&!['e','f'].includes(row))return {ok:false,error:'Este pulsador cruza el canal central (e–f).'};
+      const endRow=across?(row==='e'?'f':'e'):rows[rows.indexOf(row)+rows.indexOf(oldB)-rows.indexOf(oldA)];
+      from=change.anchor;to=`${endRow}:${col+holeCol(c.to)-holeCol(c.from)}`;
+    }
     else if(c.kind==='bjt'){const row=/^([a-j]):\d+$/.exec(change.anchor);if(!row)return {ok:false,error:'El transistor va en las filas a–j, no en un riel.'};from=change.anchor;to=`${row[1]}:${holeCol(change.anchor)+holeCol(c.to)-holeCol(c.from)}`;}
     else from=change.anchor;
   }
   if(!HOLE_BY_ID.has(from)||!HOLE_BY_ID.has(to))return {ok:false,error:c.kind==='bjt'?'El transistor necesita tres orificios seguidos dentro de la placa.':'Ese orificio no existe.'};
   if(c.kind==='l293d'){const end=icTo(from);if(!end)return {ok:false,error:'El L293D empieza en la fila f, columnas 1 a 23, y cruza el canal central.'};to=end;}
   else if(c.kind==='bjt'){if(!bjtBase(from,to))return {ok:false,error:'El transistor ocupa tres orificios seguidos de una misma fila (emisor, base y colector).'};}
+  else if(c.kind==='button'&&buttonPins(c.from,c.to)&&!buttonPins(from,to))return {ok:false,error:'Conserva la separación de las cuatro patas: tres columnas y el canal central, o tres filas dentro de la misma mitad.'};
   else if(from===to)return {ok:false,error:'Elige dos orificios diferentes.'};
   const next={...c,from,to},mine=new Set(componentHoles(c));
   const taken=new Map<string,string>();for(const o of components)if(o.id!==id)for(const h of componentHoles(o))taken.set(h,o.kind);

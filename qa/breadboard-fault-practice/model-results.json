@@ -1,0 +1,229 @@
+{
+  "checks": [
+    "90 comprobaciones de continuidad en las dos mitades y aislamiento e–f",
+    "36 fallos observables sobre cables reales, sin alterar piezas ni fuente nominal",
+    "Retirada y movimiento no dañan la referencia; OUTPUT apagado",
+    "Una avería no pasa la comprobación; reparación por redes equivalentes sí",
+    "Puentes nuevos con IDs y sentido distintos válidos",
+    "Montajes del estudiante y persistencia por proyecto"
+  ],
+  "maxGenerationMs": 17.456999999999994,
+  "rows": [
+    {
+      "mode": "remove",
+      "seed": 0,
+      "kind": "remove",
+      "ms": 4.698999999999984
+    },
+    {
+      "mode": "remove",
+      "seed": 1,
+      "kind": "remove",
+      "ms": 3.6718999999999937
+    },
+    {
+      "mode": "remove",
+      "seed": 2,
+      "kind": "remove",
+      "ms": 2.6639999999999873
+    },
+    {
+      "mode": "remove",
+      "seed": 3,
+      "kind": "remove",
+      "ms": 3.9387000000000114
+    },
+    {
+      "mode": "remove",
+      "seed": 4,
+      "kind": "remove",
+      "ms": 2.204100000000011
+    },
+    {
+      "mode": "remove",
+      "seed": 5,
+      "kind": "remove",
+      "ms": 2.9070000000000107
+    },
+    {
+      "mode": "remove",
+      "seed": 6,
+      "kind": "remove",
+      "ms": 2.273699999999991
+    },
+    {
+      "mode": "remove",
+      "seed": 7,
+      "kind": "remove",
+      "ms": 3.24260000000001
+    },
+    {
+      "mode": "remove",
+      "seed": 8,
+      "kind": "remove",
+      "ms": 2.029599999999988
+    },
+    {
+      "mode": "remove",
+      "seed": 9,
+      "kind": "remove",
+      "ms": 2.0197000000000003
+    },
+    {
+      "mode": "remove",
+      "seed": 10,
+      "kind": "remove",
+      "ms": 1.8644000000000176
+    },
+    {
+      "mode": "remove",
+      "seed": 11,
+      "kind": "remove",
+      "ms": 2.002299999999991
+    },
+    {
+      "mode": "move",
+      "seed": 0,
+      "kind": "move",
+      "ms": 3.1327
+    },
+    {
+      "mode": "move",
+      "seed": 1,
+      "kind": "move",
+      "ms": 2.563900000000018
+    },
+    {
+      "mode": "move",
+      "seed": 2,
+      "kind": "move",
+      "ms": 2.0966000000000236
+    },
+    {
+      "mode": "move",
+      "seed": 3,
+      "kind": "move",
+      "ms": 2.179300000000012
+    },
+    {
+      "mode": "move",
+      "seed": 4,
+      "kind": "move",
+      "ms": 2.0522000000000276
+    },
+    {
+      "mode": "move",
+      "seed": 5,
+      "kind": "move",
+      "ms": 2.111499999999978
+    },
+    {
+      "mode": "move",
+      "seed": 6,
+      "kind": "move",
+      "ms": 2.7182999999999993
+    },
+    {
+      "mode": "move",
+      "seed": 7,
+      "kind": "move",
+      "ms": 17.456999999999994
+    },
+    {
+      "mode": "move",
+      "seed": 8,
+      "kind": "move",
+      "ms": 2.4009000000000356
+    },
+    {
+      "mode": "move",
+      "seed": 9,
+      "kind": "move",
+      "ms": 4.244799999999998
+    },
+    {
+      "mode": "move",
+      "seed": 10,
+      "kind": "move",
+      "ms": 3.789800000000014
+    },
+    {
+      "mode": "move",
+      "seed": 11,
+      "kind": "move",
+      "ms": 2.8672000000000253
+    },
+    {
+      "mode": "surprise",
+      "seed": 0,
+      "kind": "remove",
+      "ms": 1.9096000000000117
+    },
+    {
+      "mode": "surprise",
+      "seed": 1,
+      "kind": "move",
+      "ms": 2.4569999999999936
+    },
+    {
+      "mode": "surprise",
+      "seed": 2,
+      "kind": "remove",
+      "ms": 2.4418000000000006
+    },
+    {
+      "mode": "surprise",
+      "seed": 3,
+      "kind": "move",
+      "ms": 2.0527999999999906
+    },
+    {
+      "mode": "surprise",
+      "seed": 4,
+      "kind": "remove",
+      "ms": 2.54219999999998
+    },
+    {
+      "mode": "surprise",
+      "seed": 5,
+      "kind": "move",
+      "ms": 2.556699999999978
+    },
+    {
+      "mode": "surprise",
+      "seed": 6,
+      "kind": "remove",
+      "ms": 1.8213999999999828
+    },
+    {
+      "mode": "surprise",
+      "seed": 7,
+      "kind": "move",
+      "ms": 14.159899999999993
+    },
+    {
+      "mode": "surprise",
+      "seed": 8,
+      "kind": "remove",
+      "ms": 1.913499999999999
+    },
+    {
+      "mode": "surprise",
+      "seed": 9,
+      "kind": "move",
+      "ms": 3.2246000000000095
+    },
+    {
+      "mode": "surprise",
+      "seed": 10,
+      "kind": "remove",
+      "ms": 1.9753000000000043
+    },
+    {
+      "mode": "surprise",
+      "seed": 11,
+      "kind": "move",
+      "ms": 2.185100000000034
+    }
+  ]
+}

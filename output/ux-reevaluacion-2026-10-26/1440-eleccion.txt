@@ -1,0 +1,65 @@
+Nombre del proyecto
+Inicio
+Marcha y retención
+Proyecto
+Guardado en este navegador
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+Esquemas
+Automatización
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+Tableros de control
+Automatización
+Un proyecto compartido · Montaje, programa, pantalla y proceso.
+Añade piezas desde el dock · arrastra para colocar · une dos bornes
+0 equipos · 0 cables
+Taller de tableros
+¿Qué quieres montar?
+
+Construye el control de una bomba paso a paso o añade equipos para un montaje libre.
+
+Elegir práctica de tableros
+Para explorar libremente, añade piezas desde la barra de equipos.
+modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS
+Tu montaje empieza con una pieza
+Mando y protecciones · Automatización · Medición y energía
+También puedes añadir uno de los tres ejemplos desde Montajes y archivos.
+73%
+Equipo y conexiones
+Taller de tableros de control
+TALLER DE TABLEROS DE CONTROL
+¿Cómo quieres controlar la bomba?
+
+Monta los equipos, conecta los bornes y comprueba Marcha y Paro.
+
+PLC industrial
+
+Cablea las entradas y salidas y programa en Ladder o ST.
+
+Comenzar con PLC
+Mando cableado
+
+Practica marcha y retención con contactores, sin programar.
+
+Comenzar mando cableado
+Relé programable
+
+Controla la maniobra con un relé lógico compacto.
+
+Comenzar con relé programable
+Se crea un proyecto nuevo. Tu trabajo anterior se conserva en este navegador.
+Qué aprenderás · estudiar o enseñar

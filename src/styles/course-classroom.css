@@ -1,0 +1,32 @@
+/* Only the inside of a course: the home and lesson workspaces retain their UI. */
+.course-classroom{display:grid;grid-template-columns:235px minmax(0,1fr);gap:36px;margin-top:28px;align-items:start}
+.course-index{position:sticky;top:20px;min-width:0;background:#f4f6f7;border-right:1px solid #e0e4e8;padding:14px 14px 20px 0;max-height:calc(100dvh - 40px);overflow:auto}
+.course-index-title{display:block;padding:12px;background:#e4e9eb;border-radius:5px;font-size:13px;line-height:1.6;margin-bottom:12px;color:#263f52}
+.course-index details{padding-left:10px}.course-index nav>details{padding-left:0}.course-index summary{font-size:12px;font-weight:600;line-height:1.7;padding:9px 0;cursor:pointer;color:#40566a;overflow-wrap:anywhere}
+.course-index a{display:block;padding:9px 6px 9px 16px;color:#385f80;text-decoration:none;font-size:11px;line-height:1.7;overflow-wrap:anywhere}.course-index a:hover{text-decoration:underline;background:#e8eef2}
+.study-shell .course-index-toggle{display:none}
+.course-classroom-content{min-width:0;max-width:830px}
+.course-program-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.study-shell .course-program-heading h2{font-size:18px;letter-spacing:-.02em;margin:0}
+body.modo-soft-ui .study-shell .course-program-heading button{font-size:12px;min-height:44px;padding:8px 6px;border:0;background:transparent;box-shadow:none;color:#3d607c;white-space:nowrap}
+.course-classroom .course-unit{border:1px solid #d8dfe6;border-radius:12px;background:#fff;padding:14px;margin-bottom:16px;scroll-margin-top:20px}
+.course-classroom :is(.course-unit,.course-module)>summary{display:flex;align-items:center;gap:13px;min-height:44px;list-style:none;cursor:pointer;color:#1d354b;line-height:1.6;font-size:17px;font-weight:600;padding:0 0 5px}
+.course-classroom summary::-webkit-details-marker{display:none}
+.course-classroom :is(.course-unit,.course-module)>summary>svg{background:#f0f2f4;border-radius:5px;padding:5px;box-sizing:content-box;flex:none;color:#54728a;transform:rotate(-90deg)}
+.course-classroom :is(.course-unit,.course-module)[open]>summary>svg{transform:none}
+.course-classroom .course-module{border:1px solid #d8dfe6;border-radius:10px;padding:10px 12px;margin-top:12px;scroll-margin-top:20px}
+.course-classroom .course-module>summary{font-size:15px;font-weight:550;gap:10px}
+.course-classroom .class-materials{border:0;padding:0}
+body.modo-soft-ui .study-shell .course-classroom .class-material-row,.course-classroom .course-resource{display:flex;align-items:center;gap:13px;min-height:62px;width:100%;padding:13px 8px;border:0;border-bottom:1px solid #dde3e8;background:transparent;border-radius:0;box-shadow:none;color:#385e7c;text-decoration:none;text-align:left;white-space:normal}
+body.modo-soft-ui .study-shell .course-classroom .class-material-row:last-child,.course-classroom .course-resource:last-child{border-bottom:0}
+.course-classroom .course-activity-icon,.course-classroom .course-resource>svg{color:#03a1bb;flex:none}
+body.modo-soft-ui .study-shell .course-classroom .class-material-name>strong{color:#385e7c;font-size:13px;font-weight:400;line-height:1.8;overflow-wrap:anywhere}
+body.modo-soft-ui .study-shell .course-classroom .class-material-name>small{display:none}
+body.modo-soft-ui .study-shell .course-classroom .class-ready{font-size:11px;color:#53738c;flex:none}
+.course-classroom .course-resource{font-size:13px;line-height:1.8}.course-resource>span{flex:1}
+.course-classroom :is(a.class-material-row,.course-resource):hover{background:#f3f8fb;text-decoration:underline}
+.study-shell .course-classroom .course-pending{font-size:12px;line-height:1.8;color:#687885;margin:10px 8px}
+.course-support{border-top:1px dashed #d8e1e7;margin-top:18px;padding-top:8px}.course-support>summary{min-height:44px;padding:9px 2px;cursor:pointer;font-size:13px;color:#567186}
+.course-classroom :focus-visible{outline:2px solid #467ea7;outline-offset:3px}
+@media(max-width:950px){.course-classroom{grid-template-columns:195px minmax(0,1fr);gap:20px}.course-index{padding-right:10px}}
+@media(max-width:700px){.course-classroom{grid-template-columns:minmax(0,1fr);gap:18px;margin-top:20px}.course-index{position:static;max-height:none;overflow:visible;padding:0;background:#fff;border:1px solid #d8dfe6;border-radius:8px}.study-shell .course-index-toggle{display:flex;align-items:center;justify-content:space-between;min-height:48px;width:100%;padding:12px 15px;border:0;box-shadow:none;border-radius:8px;background:#f0f4f7;color:#29485f;font-size:13px}.course-index nav{display:none;padding:10px;max-height:65dvh;overflow:auto}.course-index nav.is-open{display:block}.course-index a{font-size:12px;min-height:44px}.course-index summary{font-size:13px}.course-classroom .course-unit{padding:10px}.course-classroom .course-module{padding:8px;margin-top:10px}.course-classroom .course-unit>summary{font-size:15px}.course-classroom .course-module>summary{font-size:14px}.study-shell .course-program-heading h2{font-size:16px}body.modo-soft-ui .study-shell .course-classroom .class-material-row{padding:12px 3px;gap:9px}body.modo-soft-ui .study-shell .course-classroom .class-ready{font-size:0;gap:0}.course-classroom :is(.course-unit,.course-module){scroll-margin-top:14px}}

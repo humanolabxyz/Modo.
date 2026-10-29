@@ -2,6 +2,8 @@ import layout from './leccionInversion.layout.json';
 import type {DiagramReference,DiagramRegion,ManualStep} from './practice';
 import type {LessonId} from './lessonIds';
 import sources from './starDeltaSources.json';
+import twoContactorSource from './twoContactorSource.json';
+import {TWO_CONTACTOR_DETAILS} from './twoContactorTeaching';
 import {starDetail,type StarLessonId} from './starDeltaTeaching';
 /** Lecciones guiadas a partir de los montajes aportados. Las variantes estrella-triángulo conservan cada cable y el orden
  * del montaje final recibido; su historial está recortado y no se presenta como una secuencia cronológica completa. */
@@ -109,13 +111,26 @@ export const SIMPLE_LESSON=buildLesson('simple','simple','Lección · Marcha y p
  {id:'leccion-marcha-paro',name:'Mapa de bornes · marcha y paro',src:'/diagrams/leccion-marcha-paro.png',origin:'class_photo'},SIMPLE);
 function buildStarLesson(id:StarLessonId):Lesson{
  const source=sources[id];
- const pairs=source.pairs as [string,string][];
- return {id,schematic:id,title:`Lección · ${source.title}`,summary:source.summary,needs:['CONTACTOR_TRIFASICO_3'],diagram:{id:`leccion-${id}`,name:source.title,src:`/diagrams/leccion-${id==='estrellaManual'?'estrella-manual':'estrella-temporizador'}.png`,origin:'class_photo'},pairs,
+ // Guide figure 1, p.5: SB3 NO takes the output of SB2 / KM1 holding branch.
+ // Preserve the received project; adapt only this lesson's copy.
+ const pairs=source.pairs.map(([from,to])=>[id==='estrellaManual'&&from==='BOTONERAS:S2:2'&&to==='BOTONERAS:S3:3'?'BOTONERAS:S1:4':from,to] as [string,string]);
+ return {id,schematic:id,title:`Lección · ${source.title} · 3 contactores`,summary:source.summary,needs:['CONTACTOR_TRIFASICO_3'],diagram:{id:`leccion-${id}`,name:source.title,src:`/diagrams/leccion-${id==='estrellaManual'?'estrella-manual':'estrella-temporizador'}.png`,origin:'class_photo'},pairs,
   steps:pairs.map(([from,to],i)=>{const detail=starDetail(id,from,to);return {id:`${id}-${String(i+1).padStart(2,'0')}`,from,to,title:detail.title,explanation:detail.why,review:'user_reviewed',region:{x:0,y:0,w:1000,h:1000}}})};
 }
 export const STAR_MANUAL_LESSON=buildStarLesson('estrellaManual');
 export const STAR_TIMER_LESSON=buildStarLesson('estrellaTimer');
-export const LESSONS={simple:SIMPLE_LESSON,inversion:INVERSION_LESSON,estrellaManual:STAR_MANUAL_LESSON,estrellaTimer:STAR_TIMER_LESSON} as const;
+/* Ajuste pedido por el autor: la marcha del montaje recibido se da con el pulsador verde izquierdo (S1), no con S3.
+ * El archivo recibido y su extracción (twoContactorSource.json) se conservan tal cual; aquí solo se traslada S3 → S1. */
+const startOnS1=(id:string)=>id.replace('BOTONERAS:S3:','BOTONERAS:S1:');
+const TWO_CONTACTOR_PAIRS=twoContactorSource.pairs.map(([a,b])=>[startOnS1(a),startOnS1(b)] as [string,string]);
+export const TWO_CONTACTOR_LESSON:Lesson={
+ id:'estrellaDosContactores',schematic:'estrellaDosContactores',title:'Lección · Estrella-triángulo · 2 contactores',
+ summary:'Tu montaje: KM1 con relé térmico, KM2 y conjunto temporizado KT1. S1 da marcha; S2 para. 37 cables, paso a paso desde el banco vacío.',
+ diagram:{id:'leccion-estrellaDosContactores',name:twoContactorSource.receivedDiagram.name,src:twoContactorSource.receivedDiagram.src,origin:'class_photo'},
+ pairs:TWO_CONTACTOR_PAIRS.map(([a,b])=>[a,b]),
+ steps:TWO_CONTACTOR_PAIRS.map(([from,to],i)=>({id:`estrellaDosContactores-${String(i+1).padStart(2,'0')}`,from,to,title:TWO_CONTACTOR_DETAILS[i].title,explanation:TWO_CONTACTOR_DETAILS[i].why,review:'user_reviewed',region:{x:0,y:0,w:1000,h:1000}})),
+};
+export const LESSONS={simple:SIMPLE_LESSON,inversion:INVERSION_LESSON,estrellaManual:STAR_MANUAL_LESSON,estrellaTimer:STAR_TIMER_LESSON,estrellaDosContactores:TWO_CONTACTOR_LESSON} as const;
 /** «CONTACTOR_TERMICO:95» → «KM1 · 95»; «BOTONERAS:S1:3» → «Botoneras · S1 borne 3». */
 const MODULE_NAMES:Record<string,string>={FUENTE:'Fuente',BOTONERAS:'Botoneras',CONTACTOR_TERMICO:'KM1',CONTACTOR_TRIFASICO:'KM2',CONTACTOR_TRIFASICO_3:'KM3',TEMPORIZADOR_1:'KT1',BORNERA_MOTOR:'Motor'};
 export function terminalLabel(id:string){

@@ -1,0 +1,181 @@
+/* Soft UI: open workspaces, with relief reserved for interactive controls. */
+.modo-home-shell{--home-surface:#e7e9ed;--home-shadow:#c8ccd3;--home-light:#fff;--modo-muted:#69727b;background:var(--home-surface);color:#343c43}
+.modo-home-shell .topbar{background:var(--home-surface);border-bottom:1px solid var(--home-line);box-shadow:none}
+.modo-home-shell>main{max-width:1440px;padding:42px 48px 28px}
+.modo-home .modo-workspace{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:42px 68px;grid-template-rows:auto 1fr}
+.modo-home .modo-intro{grid-column:1/-1;padding:0;gap:30px;align-items:flex-end}
+.modo-home .modo-intro>div:first-child{white-space:normal}
+.modo-home .modo-intro .modo-eyebrow{color:#78818a;font-size:9px;letter-spacing:1.8px;margin-bottom:15px}
+.modo-home .modo-intro h1{font-size:clamp(38px,4vw,54px);line-height:1.12;letter-spacing:-2px;margin-bottom:15px;font-weight:650;color:#343c43;text-shadow:0 1px 0 #ffffffa0}
+.modo-home .modo-title-break{display:none}
+.modo-home .modo-intro-description{max-width:540px;font-size:14px;line-height:1.8;color:#727b84}
+.modo-home-shortcuts{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end;flex-shrink:0;padding-bottom:4px}
+.modo-home-shortcuts>a{display:flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:12px 19px;border:0;border-radius:30px;background:var(--home-surface);color:#606b74;font-size:11px;font-weight:550;text-decoration:none;box-shadow:5px 5px 11px var(--home-shadow),-5px -5px 11px var(--home-light);transition:box-shadow .18s,color .18s}
+.modo-home-shortcuts>a:first-child{color:var(--home-accent)}
+.modo-home-shortcuts>a:hover,.modo-home-shortcuts>a:active{box-shadow:inset 3px 3px 7px var(--home-shadow),inset -3px -3px 7px var(--home-light);color:var(--home-accent)}
+.modo-home .modo-card{border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+.modo-home .modo-card::before,.modo-home .modo-laboratory-open::before{display:none}
+.modo-home .modo-module-icon{width:58px;height:58px;border-radius:50%;background:var(--home-surface);color:#69747e;box-shadow:6px 6px 13px var(--home-shadow),-6px -6px 13px var(--home-light)}
+.modo-home .modo-module-icon>svg{width:25px;height:25px;stroke-width:1.6}
+.modo-home .modo-eyebrow{color:#78818a;font-size:9px;font-weight:550;letter-spacing:1.5px}
+.modo-home .modo-card-heading{gap:21px}
+.modo-home .modo-card-heading h2{color:#3b444d;font-size:29px;font-weight:600;letter-spacing:-.8px;line-height:1.2}
+.modo-home .modo-card-heading p:not(.modo-eyebrow){color:#727b85;font-size:14px;line-height:1.85;letter-spacing:0}
+.modo-home .modo-card-photo{width:230px;height:230px;inset:0 0 auto auto;object-fit:cover;object-position:center;border-radius:50%;filter:grayscale(1);opacity:.24;mix-blend-mode:multiply;mask-image:radial-gradient(circle,#000 18%,transparent 70%)}
+.modo-home .modo-panel{padding:10px 0 0;min-height:0}
+.modo-home .modo-panel .modo-card-photo{width:290px;height:290px;top:-30px;right:-35px}
+.modo-home .modo-panel .modo-card-heading{min-height:148px}
+.modo-home .modo-panel .modo-card-heading>div{max-width:340px}
+.modo-home .modo-panel-form{margin-top:28px;padding:0 0 0 79px;flex:1}
+.modo-home .modo-panel-fields{width:100%;max-width:none;padding:0;border:0}
+.modo-home .modo-panel-fields>label{margin-bottom:13px;font-size:12px;color:#707a84;font-weight:500}
+.modo-home select{min-height:55px;border:0;border-radius:17px;background:var(--home-surface);color:#4f5b65;font-size:13px;box-shadow:inset 4px 4px 8px var(--home-shadow),inset -4px -4px 8px var(--home-light)}
+.modo-home .modo-select>svg{color:#79838d}
+.modo-home .modo-diagram{margin-top:18px;border:0;border-radius:0;background:transparent}
+.modo-home .modo-diagram>summary{min-height:46px;gap:12px;padding:8px 3px;font-size:12px;color:#69747e}
+.modo-home .modo-diagram>summary>svg{width:17px}
+.modo-home .modo-optional{color:#818b94}
+.modo-home .modo-diagram-content{padding:9px 0 16px;gap:12px}
+.modo-home .modo-diagram-content small{color:#7b848e}
+.modo-home .modo-primary{width:100%;max-width:none;min-height:54px;margin-top:22px;border:0;border-radius:30px;background:var(--home-surface);color:var(--home-accent);justify-content:space-between;padding:16px 24px;font-size:13px;font-weight:600;box-shadow:7px 7px 15px var(--home-shadow),-7px -7px 15px var(--home-light)}
+.modo-home .modo-primary:hover,.modo-home .modo-primary:active{background:var(--home-surface);box-shadow:inset 4px 4px 9px var(--home-shadow),inset -4px -4px 9px var(--home-light)}
+.modo-home .modo-side{grid-row:2;grid-template-rows:auto auto;gap:30px;padding:10px 0 0 36px;border-left:1px solid var(--home-line)}
+.modo-home .modo-study{min-height:185px;padding:0 0 24px}
+.modo-home .modo-side .modo-card-heading{display:flex;gap:21px}
+.modo-home .modo-side .modo-module-icon{margin:0}
+.modo-home .modo-side .modo-card-heading .modo-eyebrow{position:static;font-size:9px;margin:2px 0 10px}
+.modo-home .modo-side .modo-card-heading p:not(.modo-eyebrow){max-width:310px;padding-right:35px;font-size:13px}
+.modo-home .modo-round-arrow{width:44px;height:44px;border:0;border-radius:50%;color:#66737c;background:var(--home-surface);box-shadow:4px 4px 9px var(--home-shadow),-4px -4px 9px var(--home-light)}
+.modo-home .modo-study>.modo-round-arrow{position:absolute;right:0;bottom:20px;top:auto;margin:0}
+.modo-home .modo-laboratory{border-top:1px solid var(--home-line);padding-top:28px}
+.modo-home .modo-laboratory-open{min-height:145px;padding:0}
+.modo-home .modo-laboratory-open .modo-module-icon{background:var(--home-surface)}
+.modo-home .modo-lab-arrow{display:none}
+.modo-home .modo-laboratory-tools{grid-template-columns:repeat(4,minmax(0,1fr));padding:12px 0 0;gap:9px;background:transparent}
+.modo-home .modo-laboratory-tools>a{flex-direction:column;gap:9px;min-height:64px;padding:5px 2px;border:0;border-radius:0;background:transparent;font-size:10px;color:#6c7781;box-shadow:none}
+.modo-home .modo-laboratory-tools>a>svg{box-sizing:content-box;width:16px;height:16px;padding:11px;border-radius:50%;background:var(--home-surface);box-shadow:4px 4px 9px var(--home-shadow),-4px -4px 9px var(--home-light)}
+.modo-home .modo-laboratory-tools>a:hover{color:var(--home-accent);background:transparent}
+.modo-home .modo-laboratory-tools>a:hover>svg{box-shadow:inset 3px 3px 6px var(--home-shadow),inset -3px -3px 6px var(--home-light)}
+.modo-home .modo-recent{margin-top:42px;padding:28px 0;min-height:0;gap:21px;border-top:1px solid var(--home-line)}
+.modo-home .modo-recent h2{color:#4d5862;font-size:19px;font-weight:550;letter-spacing:-.4px}
+.modo-home .modo-recent-copy>p:last-child{font-size:12px;line-height:1.8;color:#7a848d}
+.modo-home .modo-continue,.modo-home .modo-import{min-height:48px;padding:13px 21px;border:0;border-radius:28px;background:var(--home-surface);color:#65717a;gap:10px;font-size:12px;box-shadow:5px 5px 11px var(--home-shadow),-5px -5px 11px var(--home-light)}
+.modo-home .modo-continue{color:var(--home-accent)}
+.modo-home .modo-import::before{display:none}
+.modo-home .modo-continue:hover,.modo-home .modo-import:hover{background:var(--home-surface);box-shadow:inset 3px 3px 7px var(--home-shadow),inset -3px -3px 7px var(--home-light)}
+.modo-home .modo-community{min-height:95px;margin:0;padding:24px 0;gap:21px;border-top:1px solid var(--home-line);background:transparent}
+.modo-home .modo-community-icon{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--home-surface);color:#79838c;box-shadow:inset 4px 4px 9px var(--home-shadow),inset -4px -4px 9px var(--home-light)}
+.modo-home .modo-community-icon>svg{width:25px}
+.modo-home .modo-community-copy h2{color:#59646e;font-size:18px;font-weight:550}
+.modo-home .modo-community-copy>p:last-child{font-size:12px;color:#808a93}
+.modo-home .modo-community-note{display:none}
+.modo-home .modo-community-arrow{margin-left:auto;width:44px;height:44px;border-radius:50%;color:#79848d;background:var(--home-surface);box-shadow:4px 4px 9px var(--home-shadow),-4px -4px 9px var(--home-light)}
+.modo-home .humano-credit{color:#87919a}
+.modo-home .modo-eyebrow,.modo-home .modo-intro .modo-eyebrow,
+.modo-home .modo-intro-description,.modo-home .modo-card-heading p:not(.modo-eyebrow),
+.modo-home .modo-panel-fields>label,.modo-home .modo-diagram>summary,.modo-home .modo-optional,
+.modo-home .modo-diagram-content small,.modo-home .modo-laboratory-tools>a,
+.modo-home .modo-recent-copy>p:last-child,.modo-home .modo-community-copy>p:last-child,
+.modo-home .humano-credit{color:var(--home-muted)}
+.modo-home :is(button,a,select,summary):focus-visible,.modo-home .modo-import:focus-within{outline:2px solid var(--home-accent);outline-offset:6px}
+/* Neutral surfaces and a black accent, scoped to the home. */
+.modo-home-shell{
+ --home-surface:#e6e7e8;
+ --home-shadow:#c5c7ca;
+ --home-light:#fafafa;
+ --home-ink:#242527;
+ --home-muted:#595c61;
+ --home-accent:#171819;
+ --home-line:#ccced1;
+ --modo-muted:var(--home-muted);
+ --modo-accent:var(--home-accent);
+ color:var(--home-ink);
+}
+.modo-home-shell .topbar{border-color:var(--home-line)}
+.modo-home-shell .topbar .modo-logo{filter:grayscale(1)}
+.modo-home-shell .topbar :is(.home-link,.help-btn,.humano-legal-link){color:var(--home-ink)}
+.modo-home-shell .topbar .tutorial-trigger{background:var(--home-surface);color:var(--home-ink);border-color:var(--home-line)}
+.modo-home-shell .modo-home .modo-intro h1{color:var(--home-ink);font-weight:620}
+.modo-home-shell .modo-home .modo-intro h1>span{color:var(--home-accent)}
+.modo-home-shell .modo-home :is(.modo-card-heading h2,.modo-recent h2,.modo-community-copy h2){color:var(--home-ink)}
+.modo-home-shell .modo-home :is(.modo-eyebrow,.modo-intro .modo-eyebrow){color:var(--home-muted);font-weight:600}
+.modo-home-shell .modo-home .modo-panel .modo-eyebrow{color:var(--home-accent)}
+.modo-home-shell .modo-home :is(.modo-module-icon,.modo-laboratory-open .modo-module-icon){
+ color:var(--home-accent);background:var(--home-surface);
+ box-shadow:5px 5px 11px var(--home-shadow),-5px -5px 11px var(--home-light),inset 0 0 0 1px #fafafa66;
+}
+.modo-home-shell .modo-home .modo-panel .modo-module-icon{
+ color:#f6f6f6;background:linear-gradient(145deg,#303133,#171819);
+ box-shadow:5px 5px 11px var(--home-shadow),-5px -5px 11px var(--home-light),inset 0 1px 1px #ffffff30;
+}
+.modo-home-shortcuts>a{color:var(--home-ink);box-shadow:4px 4px 9px var(--home-shadow),-4px -4px 9px var(--home-light),inset 0 0 0 1px #fafafa55}
+.modo-home-shortcuts>a>svg{color:var(--home-accent)}
+.modo-home-shell .modo-home .modo-primary{
+ color:#f6f6f6;background:linear-gradient(145deg,#303133,#171819);
+ box-shadow:5px 5px 12px var(--home-shadow),-5px -5px 12px var(--home-light),inset 0 1px 1px #ffffff30;
+}
+.modo-home-shell .modo-home .modo-primary:hover,.modo-home-shell .modo-home .modo-primary:active{
+ color:#fff;background:linear-gradient(145deg,#202123,#101112);
+ box-shadow:3px 3px 8px var(--home-shadow),-3px -3px 8px var(--home-light),inset 1px 2px 4px #00000055;
+}
+.modo-home-shell .modo-home .modo-card-photo{filter:grayscale(.8) saturate(.45);opacity:.38}
+.modo-home-shell .modo-home :is(.modo-round-arrow,.modo-community-arrow){color:var(--home-accent)}
+.modo-home-shell .modo-home .modo-laboratory-tools>a>svg{color:var(--home-accent);box-shadow:3px 3px 7px var(--home-shadow),-3px -3px 7px var(--home-light),inset 0 0 0 1px #fafafa66}
+.modo-home-shell .modo-home :is(.modo-side,.modo-laboratory,.modo-recent,.modo-community){border-color:var(--home-line)}
+.modo-home-shell .modo-home select{color:var(--home-ink);box-shadow:inset 3px 3px 7px var(--home-shadow),inset -3px -3px 7px var(--home-light)}
+.modo-home-shell .modo-home .modo-select>svg{color:var(--home-muted)}
+.modo-home-shell .modo-home .modo-continue{color:var(--home-accent)}
+.modo-home-shell .modo-home :is(button,a,select,summary):focus-visible,.modo-home-shell .modo-home .modo-import:focus-within{outline:2px solid var(--home-accent);outline-offset:6px}
+.modo-home-shell .modo-home :is(.modo-study,.modo-laboratory-open):hover h2{color:var(--home-accent)}
+.modo-home-shell .modo-home .humano-credit,.modo-home-shell .modo-home .humano-credit :is(p,strong,a){color:var(--home-muted)}
+@media(max-width:1100px){
+ .modo-home-shell>main{padding:34px 28px 26px}
+ .modo-home .modo-intro{flex-wrap:wrap;gap:24px}
+ .modo-home-shortcuts{justify-content:flex-start}
+ .modo-home .modo-workspace{gap:35px 35px}
+ .modo-home .modo-side{padding-left:26px}
+ .modo-home .modo-panel-form{padding-left:0}
+ .modo-home .modo-laboratory-tools{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+ .modo-home .modo-recent{flex-wrap:wrap}
+ .modo-home .modo-recent-actions{margin-left:auto}
+}
+@media(max-width:760px){
+ .modo-home-shell .topbar{padding:0 22px;background:var(--home-surface)}
+ .modo-home-shell .home-link{border:0;border-radius:24px;background:var(--home-surface);color:#5b6872;box-shadow:4px 4px 8px var(--home-shadow),-4px -4px 8px var(--home-light)}
+ .modo-home-shell>main{padding:30px 24px 24px}
+ .modo-home .modo-intro{padding:0;gap:24px}
+ .modo-home .modo-intro h1{max-width:320px;font-size:39px;letter-spacing:-1.5px}
+ .modo-home .modo-intro-description{font-size:13px}
+ .modo-home-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%}
+ .modo-home-shortcuts>a{min-height:46px;flex-direction:column;border-radius:20px;padding:13px 3px;gap:8px;font-size:10px}
+ .modo-home-shortcuts>a:first-child>svg:last-child{display:none}
+ .modo-home .modo-workspace{gap:38px}
+ .modo-home .modo-card-photo{display:none}
+ .modo-home .modo-panel{padding:0}
+ .modo-home .modo-panel .modo-card-heading{min-height:0}
+ .modo-home .modo-module-icon{width:48px;height:48px}
+ .modo-home .modo-card-heading{gap:18px}
+ .modo-home .modo-card-heading h2{font-size:25px}
+ .modo-home .modo-card-heading p:not(.modo-eyebrow){font-size:13px}
+ .modo-home .modo-panel-form{margin-top:25px;padding:0}
+ .modo-home select,.modo-home .modo-select>select{font-size:16px;min-height:55px}
+ .modo-home .modo-select>select{padding-left:40px}
+ .modo-home .modo-side{display:flex;border:0;padding:0;gap:27px}
+ .modo-home .modo-study{padding:27px 0 12px;border-top:1px solid var(--home-line);min-height:175px}
+ .modo-home .modo-side .modo-card-heading{gap:18px}
+ .modo-home .modo-side .modo-card-heading p:not(.modo-eyebrow){max-width:none;padding-right:8px;font-size:13px}
+ .modo-home .modo-study>.modo-round-arrow{bottom:-5px}
+ .modo-home .modo-laboratory{padding-top:27px}
+ .modo-home .modo-laboratory-open{padding:0;min-height:135px}
+ .modo-home .modo-laboratory-tools{padding-top:8px;gap:14px 8px}
+ .modo-home .modo-laboratory-tools>a{font-size:9px}
+ .modo-home .modo-recent{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px 18px;margin-top:30px;padding:27px 0}
+ .modo-home .modo-recent .modo-module-icon{width:48px}
+ .modo-home .modo-recent-actions{display:flex;flex-wrap:wrap;grid-column:1/-1;width:100%;gap:14px;padding-top:8px}
+ .modo-home .modo-continue,.modo-home .modo-import{margin:0;min-width:0;flex:1;width:auto;padding:13px 10px;font-size:11px}
+ .modo-home .modo-community{padding:24px 0;gap:18px}
+ .modo-home .modo-community-icon{width:48px;height:48px}
+ .modo-home .modo-community-copy h2{font-size:17px}
+ .modo-home .modo-community-arrow{width:40px;height:40px;flex:none}
+}
+@media(prefers-reduced-motion:reduce){.modo-home-shortcuts>a{transition:none}}

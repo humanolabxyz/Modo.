@@ -1,0 +1,118 @@
+[
+ {
+  "size": "phone",
+  "menu": "opciones",
+  "left": 16,
+  "top": 58,
+  "right": 382,
+  "bottom": 683,
+  "vw": 390,
+  "vh": 844,
+  "clipped": false,
+  "scrolls": false
+ },
+ {
+  "size": "phone",
+  "menu": "guia",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button',"
+ },
+ {
+  "size": "phone",
+  "menu": "taller",
+  "left": 32,
+  "top": 143,
+  "right": 382,
+  "bottom": 768,
+  "vw": 390,
+  "vh": 844,
+  "clipped": false,
+  "scrolls": true
+ },
+ {
+  "size": "phone-land",
+  "menu": "opciones",
+  "left": 436,
+  "top": 58,
+  "right": 836,
+  "bottom": 283,
+  "vw": 844,
+  "vh": 390,
+  "clipped": false,
+  "scrolls": false
+ },
+ {
+  "size": "phone-land",
+  "menu": "guia",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button',"
+ },
+ {
+  "size": "phone-land",
+  "menu": "taller",
+  "left": 486,
+  "top": 89,
+  "right": 836,
+  "bottom": 314,
+  "vw": 844,
+  "vh": 390,
+  "clipped": false,
+  "scrolls": true
+ },
+ {
+  "size": "tablet",
+  "menu": "opciones",
+  "left": 360,
+  "top": 58,
+  "right": 760,
+  "bottom": 841,
+  "vw": 768,
+  "vh": 1024,
+  "clipped": false,
+  "scrolls": false
+ },
+ {
+  "size": "tablet",
+  "menu": "guia",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button',"
+ },
+ {
+  "size": "tablet",
+  "menu": "taller",
+  "left": 410,
+  "top": 162,
+  "right": 760,
+  "bottom": 945,
+  "vw": 768,
+  "vh": 1024,
+  "clipped": false,
+  "scrolls": true
+ },
+ {
+  "size": "tablet-land",
+  "menu": "opciones",
+  "left": 616,
+  "top": 58,
+  "right": 1016,
+  "bottom": 616,
+  "vw": 1024,
+  "vh": 768,
+  "clipped": false,
+  "scrolls": false
+ },
+ {
+  "size": "tablet-land",
+  "menu": "guia",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button',"
+ },
+ {
+  "size": "tablet-land",
+  "menu": "taller",
+  "left": 666,
+  "top": 134,
+  "right": 1016,
+  "bottom": 692,
+  "vw": 1024,
+  "vh": 768,
+  "clipped": false,
+  "scrolls": true
+ }
+]

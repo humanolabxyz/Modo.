@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "1440×960: inicio visible, proyecto previo intacto, ventana movible y ajustable, PLC contextual, 16 equipos, 36 hilos, ocho pruebas, marcha/paro y continuidad entre herramientas",
+    "390×844: inicio visible, proyecto previo intacto, ventana movible y ajustable, PLC contextual, 16 equipos, 36 hilos, ocho pruebas, marcha/paro y continuidad entre herramientas",
+    "1024×768: inicio visible, proyecto previo intacto, ventana movible y ajustable, PLC contextual, 16 equipos, 36 hilos, ocho pruebas, marcha/paro y continuidad entre herramientas",
+    "844×390: inicio visible, proyecto previo intacto, ventana movible y ajustable, PLC contextual, 16 equipos, 36 hilos, ocho pruebas, marcha/paro y continuidad entre herramientas",
+    "Proyecto anterior conserva nombres personalizados y la edición manual del cable mantiene sus bornes",
+    "WebKit móvil: ventanas libres, cambio de tamaño y operación táctil de marcha y paro",
+    "Sin errores JavaScript de página"
+  ],
+  "errors": []
+}

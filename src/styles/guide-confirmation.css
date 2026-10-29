@@ -1,32 +1,13 @@
-/* Confirmar sin mover ni redimensionar el contenido de la ventana. */
-.guide-window .guide-card{position:relative}
-.guide-window .guide-step-content{display:flex;flex-direction:column;gap:8px;transition:opacity .18s ease}
+/* Confirmation is a short screen toast; the guide only transitions to its next step. */
+.guide-window .guide-step-content{display:flex;flex-direction:column;gap:8px}
 .guide-window .guide-step-content>*{margin-top:0;margin-bottom:0}
 .guide-window .guide-step-content>.guide-waiting,.guide-window .guide-step-content>.guide-success{min-height:90px;box-sizing:border-box}
 .guide-window .guide-step-content>.guide-waiting{align-items:center}
-.guide-window [data-guide-phase=confirmed] .guide-step-content,.guide-window [data-guide-phase=leaving] .guide-step-content{opacity:.15}
-.guide-window .guide-check-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:24px 18px;border:1px solid #d7eadf;border-radius:14px;background:#f8fdfaf5;text-align:center;color:#236747;animation:guide-confirm-in .24s ease both}
-.guide-window .guide-check-overlay>strong{font-size:22px;line-height:1.25;letter-spacing:-.4px}
-.guide-window .guide-check-overlay>span{font-size:14px;color:#4b6d5c}
-.guide-window .guide-check-overlay>small{font-size:12px;color:#638373}
-.guide-window .guide-check-overlay>button{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:#44745b}
-.guide-window .guide-check-mark{width:92px;height:92px;margin-bottom:8px;overflow:visible;animation:guide-check-pop .65s cubic-bezier(.2,.8,.3,1) both}
-.guide-check-halo{fill:none;stroke:#59b98b;stroke-width:3;opacity:0;transform-origin:40px 40px;animation:guide-check-halo .85s ease-out .45s both}
-.guide-check-fill{fill:#e1f3e8}
-.guide-check-ring{fill:none;stroke:#329568;stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1;transform:rotate(-90deg);transform-origin:40px 40px;animation:guide-check-draw .55s ease .08s forwards}
-.guide-check-tick{fill:none;stroke:#258459;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:guide-check-draw .48s cubic-bezier(.3,0,.2,1) .3s forwards}
-.guide-window .guide-check-progress{width:140px;height:3px;margin-top:12px;overflow:hidden;border-radius:9px;background:#dcebe2}
-.guide-check-progress>i{display:block;height:100%;border-radius:inherit;background:#4c9b72;transform-origin:left;animation:guide-check-progress 1.8s linear both}
-.guide-window [data-guide-phase=leaving] .guide-check-overlay{animation:guide-confirm-out .26s ease both}
-@keyframes guide-check-draw{to{stroke-dashoffset:0}}
-@keyframes guide-check-pop{0%{opacity:0;transform:scale(.65)}60%{opacity:1;transform:scale(1.08)}82%{transform:scale(.97)}100%{opacity:1;transform:scale(1)}}
-@keyframes guide-check-halo{from{opacity:.65;transform:scale(.95)}to{opacity:0;transform:scale(1.4)}}
-@keyframes guide-confirm-in{from{opacity:0}to{opacity:1}}
-@keyframes guide-confirm-out{to{opacity:0;transform:translateY(-4px)}}
-@keyframes guide-check-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-html.modo-reduced .guide-window .guide-step-content{transition:none}
-html.modo-reduced .guide-window :is(.guide-check-overlay,.guide-check-mark,.guide-check-ring,.guide-check-tick,.guide-check-halo,.guide-check-progress>i){animation:none;transform:none;stroke-dashoffset:0}
-@media(prefers-reduced-motion:reduce){
- html:not(.modo-motion-full) .guide-window .guide-step-content{transition:none}
- html:not(.modo-motion-full) .guide-window :is(.guide-check-overlay,.guide-check-mark,.guide-check-ring,.guide-check-tick,.guide-check-halo,.guide-check-progress>i){animation:none;transform:none;stroke-dashoffset:0}
-}
+.guide-check-toast{position:fixed;z-index:1600;top:calc(env(safe-area-inset-top,0px) + 90px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);box-sizing:border-box;padding:12px 20px 12px 12px;border:1px solid #cde8d8;border-radius:18px;background:#f9fffcf5;box-shadow:0 8px 28px #183d2d20;backdrop-filter:blur(12px);color:#236747;pointer-events:none;animation:guide-toast-in .18s cubic-bezier(.2,.8,.2,1) both}
+.guide-check-toast>div{display:flex;flex-direction:column;gap:3px}.guide-check-toast strong{font-size:16px;line-height:1.25;letter-spacing:-.2px}.guide-check-toast span{font-size:12px;color:#527362}
+.guide-check-toast .guide-check-mark{width:48px;height:48px;flex-shrink:0;overflow:visible}
+.guide-check-fill{fill:#e3f5eb}.guide-check-ring{fill:none;stroke:#329568;stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1;transform:rotate(-90deg);transform-origin:40px 40px;animation:guide-tick-draw .24s ease-out .03s forwards}.guide-check-tick{fill:none;stroke:#258459;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:guide-tick-draw .28s cubic-bezier(.2,0,.2,1) .1s forwards}
+.guide-check-toast.is-leaving{animation:guide-toast-out .18s ease-in both}
+@keyframes guide-tick-draw{to{stroke-dashoffset:0}}@keyframes guide-toast-in{from{opacity:0;transform:translate(-50%,-6px) scale(.97)}to{opacity:1;transform:translate(-50%,0) scale(1)}}@keyframes guide-toast-out{to{opacity:0;transform:translate(-50%,-4px)}}
+html.modo-reduced .guide-check-toast,html.modo-reduced .guide-check-toast *{animation:none;stroke-dashoffset:0}
+@media(prefers-reduced-motion:reduce){html:not(.modo-motion-full) .guide-check-toast,html:not(.modo-motion-full) .guide-check-toast *{animation:none;stroke-dashoffset:0}}

@@ -5,13 +5,15 @@ import ModoSplash from '../components/motion/ModoSplash.astro';
 import {COMMUNITY_RECOGNITIONS} from '../data/community';
 import '../styles/modo-brand.css';
 import '../styles/community.css';
+import '../styles/modo-soft-ui.css';
+import '../styles/modo-identity.css';
 ---
 <!doctype html>
 <html lang="es">
  <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <meta name="theme-color" content="#F7F8FA"/>
+  <meta name="theme-color" content="#e6e7e8"/>
   <meta name="description" content="La comunidad de modo. Reconocemos a quienes comparten su conocimiento y ayudan a mejorar esta forma de aprender y practicar."/>
   <meta name="author" content="Humano Lab · Félix Levancini"/>
   <meta name="robots" content="noindex, nofollow, noarchive"/>
@@ -21,7 +23,7 @@ import '../styles/community.css';
   <title>Comunidad · modo.</title>
   <MotionHead/>
  </head>
- <body class="community-page">
+ <body class="community-page modo-soft-ui modo-identity">
   <ModoSplash/>
   <a class="community-skip" href="#comunidad">Ir al contenido</a>
   <header class="community-header">

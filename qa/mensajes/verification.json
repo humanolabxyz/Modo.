@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "360x800: panel tools, pending/cancel, three laboratory hints; readable and within viewport, clear of dock",
+    "390x844: panel tools, pending/cancel, three laboratory hints; readable and within viewport, clear of dock",
+    "768x1024: panel tools, pending/cancel, three laboratory hints; readable and within viewport, clear of dock",
+    "1062x834: panel tools, pending/cancel, three laboratory hints; readable and within viewport, clear of dock",
+    "1440x960: panel tools, pending/cancel, three laboratory hints; readable and within viewport, clear of dock"
+  ],
+  "errors": []
+}

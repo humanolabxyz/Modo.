@@ -1,0 +1,4 @@
+const http=require('http'),fs=require('fs'),path=require('path');const root=path.resolve('dist');
+const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp','.png':'image/png','.woff2':'font/woff2','.json':'application/json','.webmanifest':'application/json'};
+http.createServer((q,r)=>{let p=decodeURIComponent(q.url.split('?')[0]);let f=path.join(root,p);if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');else if(!fs.existsSync(f)&&fs.existsSync(f+'/index.html'))f=f+'/index.html';
+ if(!fs.existsSync(f)){r.writeHead(404);return r.end('nf')}r.writeHead(200,{'content-type':types[path.extname(f)]||'application/octet-stream'});fs.createReadStream(f).pipe(r)}).listen(+process.argv[2],'127.0.0.1');

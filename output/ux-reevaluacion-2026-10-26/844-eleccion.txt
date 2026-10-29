@@ -1,0 +1,39 @@
+Herramienta del laboratorio
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+Marcha y retención
+Simular
+TU ESPACIO DE TRABAJO
+Tableros de control
+Añade piezas desde el dock · arrastra para colocar · une dos bornes
+Taller de tableros
+¿Qué quieres montar?
+
+Construye el control de una bomba paso a paso o añade equipos para un montaje libre.
+
+Elegir práctica de tableros
+Para explorar libremente, añade piezas desde la barra de equipos.
+modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS
+Tu montaje empieza con una pieza
+Mando y protecciones · Automatización · Medición y energía
+También puedes añadir uno de los tres ejemplos desde Montajes y archivos.
+25%
+Equipo y conexiones
+Taller de tableros de control
+¿Cómo quieres controlar la bomba?
+PLC industrial
+Comenzar con PLC
+Mando cableado
+Comenzar mando cableado
+Relé programable
+Comenzar con relé programable
+Se crea un proyecto nuevo. Tu trabajo anterior se conserva en este navegador.
+Qué aprenderás · estudiar o enseñar

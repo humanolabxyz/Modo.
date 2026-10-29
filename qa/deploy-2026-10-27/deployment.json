@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-27",
+  "project": "modo-lab",
+  "deployment": "dpl_5Y4Djgv2cKNqtQvvokzQko39jLBG",
+  "url": "https://modo-d5g3l7wth-humanolabxyz-9765s-projects.vercel.app",
+  "production": "https://modo-lab.vercel.app",
+  "status": "READY",
+  "requestedByUser": true,
+  "checks": [
+    "Producción pública: rutas, cabeceras y activos locales coinciden",
+    "Lección de dos contactores: navegador público escritorio/tablet/móvil, diagrama original y tick externo",
+    "S3 inicia estrella, cambio temporizado a triángulo y S2 detiene"
+  ]
+}

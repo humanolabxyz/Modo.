@@ -1,0 +1,35 @@
+/* Ventana «Mi proyecto»: secciones con título, tarjetas con icono y una línea de ayuda; lo avanzado queda plegado. */
+.lab-project-settings.lab-pf{gap:18px}
+.lab-pf .lab-pf-section{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;border:0;min-width:0}
+.lab-pf h3,.lab-pf legend{margin:0;padding:0;font:600 14px/1.3 LabSource,system-ui,sans-serif;color:#2c5164;letter-spacing:0}
+.lab-pf label{font-size:13px;font-weight:600;color:#355b6e}
+.lab-pf input[type=text],.lab-pf input:not([type]),.lab-pf select{min-height:46px;padding:10px 14px;border:1.5px solid #cfdfe7;border-radius:14px;background:#fff;font-size:15px;color:#27495b;transition:border-color .2s,box-shadow .2s}
+.lab-pf input:focus,.lab-pf select:focus{outline:none;border-color:#2fa88a;box-shadow:0 0 0 4px #3fd9b22e}
+.lab-pf .lab-project-save{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#5d8a79}
+.lab-pf .lab-pf-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:8px}
+.lab-pf button.lab-pf-row,.lab-pf label.lab-pf-row,.lab-pf .lab-pf-cards button{position:relative;display:flex;align-items:center;gap:12px;width:100%;min-height:58px;padding:10px 12px;border:1.5px solid #dbe8ee;border-radius:14px;background:linear-gradient(180deg,#fff,#f6fafb);color:#27495b;text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .15s,background .2s}
+.lab-pf .lab-pf-cards button{align-items:flex-start}
+.lab-pf button.lab-pf-row:hover:not(:disabled),.lab-pf label.lab-pf-row:hover,.lab-pf .lab-pf-cards button:hover:not(:disabled){border-color:#8fd3c0;box-shadow:0 4px 14px #35c2a41f;transform:translateY(-1px)}
+.lab-pf button:active:not(:disabled){transform:translateY(0) scale(.99)}
+.lab-pf .lab-pf-icon{flex:none;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:12px;background:#e4f5ef;color:#168a6f}
+.lab-pf .lab-pf-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.lab-pf .lab-pf-text strong{font:600 14px/1.3 LabSource,system-ui,sans-serif;color:#26485a}
+.lab-pf .lab-pf-text small{font:400 12.5px/1.4 LabSource,system-ui,sans-serif;color:#5d7686!important}
+.lab-pf .lab-pf-tag{position:absolute;top:-8px;right:10px;padding:2px 9px;border-radius:999px;background:#168a6f;color:#fff;font:600 11px/1.5 LabSource,system-ui,sans-serif}
+.lab-pf .lab-project-import input[type=file]{position:absolute;inset:0;width:100%;height:100%;min-height:0;opacity:0;cursor:pointer}
+.lab-pf .lab-project-import.disabled{opacity:.5}
+.lab-pf button:disabled{opacity:.5;cursor:default}
+.lab-pf .lab-pf-more{border-top:1px solid #e1ecf0;padding-top:12px;display:flex;flex-direction:column;gap:12px}
+.lab-pf .lab-pf-more>summary{cursor:pointer;font:600 13px LabSource,system-ui,sans-serif;color:#4a6f82;padding:6px 2px;list-style:none;display:flex;align-items:center;gap:6px}
+.lab-pf .lab-pf-more>summary::-webkit-details-marker{display:none}
+.lab-pf .lab-pf-more>summary::before{content:'';width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
+.lab-pf .lab-pf-more[open]>summary::before{transform:rotate(45deg)}
+.lab-pf .lab-pf-more[open]{gap:12px}
+.lab-pf .lab-project-links{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px}
+.lab-pf .lab-project-links a,.lab-pf .lab-project-links button{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:4px 2px;border:0;background:none;color:#2a6f8a;font:600 13px LabSource,system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px}
+@media(prefers-reduced-motion:reduce){.lab-pf *{transition:none!important}}
+.lab-project-settings.lab-pf label.lab-pf-row.lab-project-import{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;border-radius:14px!important;text-align:left!important;padding:10px 12px!important;gap:12px!important;box-shadow:none}
+.lab-pf .lab-pf-cards button strong{font-size:13.5px}
+.lab-project-settings.lab-pf label.lab-pf-row.lab-project-import{box-sizing:border-box;width:100%;min-height:58px;height:auto;overflow:hidden}
+.lab-project-settings.lab-pf .lab-project-links{flex-direction:row!important;align-items:center;gap:6px 16px}
+.lab-pf .lab-pf-row .lab-pf-text strong{font-size:14px}

@@ -1,6 +1,7 @@
+import {functionProblemLessons} from './functionProblems';
 export type GeoCheck={objects:string[];expression:string};
 export type GeoStep={title:string;page:number;text:string;commands:string[];check:GeoCheck;success:string};
-export type GeoLesson={id:string;materialId:string;title:string;unit:1|2;source:string;intro:string;concept:string;question:string;options:string[];answer:number;explanation:string;steps:GeoStep[]};
+export type GeoLesson={id:string;materialId:string;title:string;unit:1|2|4;source:string;intro:string;concept:string;question:string;options:string[];answer:number;explanation:string;steps:GeoStep[];viewBounds?:[number,number,number,number]};
 const check=(objects:string[],expression:string):GeoCheck=>({objects,expression});
 const near=(a:string,b:string|number)=>`abs((${a})-(${b}))<10^(-5)`;
 const polynomial=(name:string,values:number[])=>`Length(Coefficients(${name}))==${values.length} && ${values.map((v,i)=>near(`Element(Coefficients(${name}),${i+1})`,v)).join(' && ')}`;
@@ -33,9 +34,30 @@ export const geoLessons:GeoLesson[]=[
     {title:'Ajusta datos con un logaritmo',page:4,text:'Actividad 7. Ingresa los cuatro puntos y ajusta r con FitLog. Compara la curva con cada punto y registra tu conclusión.',commands:['L={(0.5,-2),(1,1),(3,3),(6,4)}','r=FitLog(L)'],check:check(['L','r'],`AreEqual(L,{(0.5,-2),(1,1),(3,3),(6,4)}) && AreEqual(r,FitLog(L))`),success:'El conjunto y su ajuste están comprobados; la interpretación queda en tus notas.'},
   ]},
 ];
+geoLessons.push(
+ {id:'matrices-operaciones',materialId:'mtfm01-matrices-operaciones',title:'Matrices: datos y operaciones',unit:4,source:'',intro:'Práctica complementaria: organiza la producción de dos equipos en dos turnos; interpreta sumas, escalas y transpuestas.',concept:'Una matriz organiza datos por filas y columnas. La suma se calcula posición por posición y exige matrices del mismo tamaño.',question:'¿Qué condición exige la suma de dos matrices?',options:['Tener el mismo número de filas y columnas','Tener determinante distinto de cero','Ser siempre matrices cuadradas'],answer:0,explanation:'Solo se suman entradas correspondientes de matrices de igual dimensión.',steps:[
+  {title:'Organiza las mediciones',page:1,text:'Dos equipos producen piezas de tipo 1 y tipo 2. A registra el primer turno: filas (2, 1) y (3, 4). Cada fila corresponde a un equipo y cada columna a un tipo de pieza.',commands:['A={{2,1},{3,4}}'],check:check(['A'],'AreEqual(A,{{2,1},{3,4}})'),success:'A contiene dos filas y dos columnas con los datos indicados.'},
+  {title:'Suma dos registros',page:1,text:'B registra el segundo turno con filas (1, 3) y (2, 0). Antes de calcular S = A + B, predice el total de cada equipo y tipo de pieza.',commands:['B={{1,3},{2,0}}','S=A+B'],check:check(['A','B','S'],'AreEqual(A,{{2,1},{3,4}}) && AreEqual(B,{{1,3},{2,0}}) && AreEqual(S,{{3,4},{5,4}})'),success:'La suma es {{3,4},{5,4}}. Se sumaron entradas de la misma posición.'},
+  {title:'Aplica un factor de escala',page:1,text:'Supón que cada equipo duplica la producción del primer turno. Calcula D = 2A y explica qué significa cada entrada respecto de A.',commands:['D=2*A'],check:check(['A','D'],'AreEqual(A,{{2,1},{3,4}}) && AreEqual(D,{{4,2},{6,8}})'),success:'Todas las cantidades de piezas se multiplicaron por 2.'},
+  {title:'Intercambia filas y columnas',page:1,text:'Calcula T, la transpuesta de A. Observa que la primera fila de A pasa a ser la primera columna de T.',commands:['T=Transpose(A)'],check:check(['A','T'],'AreEqual(A,{{2,1},{3,4}}) && AreEqual(T,{{2,3},{1,4}})'),success:'La transpuesta es {{2,3},{1,4}}. Explica el cambio en tus observaciones.'}
+ ]},
+ {id:'matrices-producto',materialId:'mtfm01-matrices-producto',title:'Producto de matrices y orden',unit:4,source:'',intro:'Práctica complementaria: compara dos etapas que transforman una entrada (x,y). A entrega (x+2y,y) y B entrega (2x,3x+y). ¿Importa cuál actúa primero?',concept:'Cada entrada del producto se obtiene multiplicando una fila por una columna y sumando los resultados. En general, AB no coincide con BA.',question:'¿Siempre se cumple A·B = B·A?',options:['No: el orden puede cambiar el resultado','Sí, igual que con números reales','Solo cambia si hay números negativos'],answer:0,explanation:'El producto matricial no es conmutativo en general.',steps:[
+  {title:'Define los factores',page:1,text:'Crea las matrices A = {{1,2},{0,1}} y B = {{2,0},{3,1}}.',commands:['A={{1,2},{0,1}}','B={{2,0},{3,1}}'],check:check(['A','B'],'AreEqual(A,{{1,2},{0,1}}) && AreEqual(B,{{2,0},{3,1}})'),success:'Ambas matrices tienen dimensión 2 × 2; los dos productos están definidos.'},
+  {title:'Calcula A por B',page:1,text:'Predice la primera entrada: 1×2 + 2×3. Calcula P = A B y verifica las cuatro posiciones.',commands:['P=A*B'],check:check(['A','B','P'],'AreEqual(A,{{1,2},{0,1}}) && AreEqual(B,{{2,0},{3,1}}) && AreEqual(P,{{8,2},{3,1}})'),success:'AB = {{8,2},{3,1}}; la primera entrada vale 8.'},
+  {title:'Invierte el orden',page:1,text:'Calcula Q = B A y compara el resultado con P. Describe en tus notas qué posiciones cambiaron.',commands:['Q=B*A'],check:check(['P','Q'],'AreEqual(P,{{8,2},{3,1}}) && AreEqual(Q,{{2,4},{3,7}})'),success:'BA = {{2,4},{3,7}}, distinto de AB. El orden importa.'}
+ ]},
+ {id:'matrices-sistemas',materialId:'mtfm01-matrices-sistemas',title:'Determinante, inversa y sistemas',unit:4,source:'',intro:'Práctica complementaria: cada pieza X usa 2 y 1 minutos en las estaciones 1 y 2; cada pieza Y usa 1 y 3 minutos. Ambas estaciones trabajaron 5 minutos. Resuelve 2x + y = 5; x + 3y = 5 e interpreta las cantidades de piezas.',concept:'En A X = b, si el determinante de A es distinto de cero, existe una solución única y se obtiene con X = A⁻¹b.',question:'¿Cuándo tiene inversa una matriz cuadrada?',options:['Cuando su determinante es distinto de cero','Cuando todas sus entradas son positivas','Cuando todas sus filas son iguales'],answer:0,explanation:'Un determinante no nulo permite invertir la matriz y obtener una solución única.',steps:[
+  {title:'Escribe el sistema matricial',page:1,text:'Representa los coeficientes de 2x + y = 5 y x + 3y = 5 en A. Crea b como una columna con los términos independientes.',commands:['A={{2,1},{1,3}}','b={{5},{5}}'],check:check(['A','b'],'AreEqual(A,{{2,1},{1,3}}) && AreEqual(b,{{5},{5}})'),success:'El sistema quedó representado como A X = b.'},
+  {title:'Comprueba el determinante',page:1,text:'Calcula d = det(A). Contrasta el resultado con 2×3 − 1×1. ¿Se puede invertir A?',commands:['d=Determinant(A)'],check:check(['A','d'],'AreEqual(A,{{2,1},{1,3}}) && abs(d-5)<10^(-5)'),success:'El determinante vale 5; A tiene inversa.'},
+  {title:'Obtén la solución',page:1,text:'Calcula la inversa N y luego X = N b. Interpreta la primera y la segunda fila como los valores de x e y.',commands:['N=Invert(A)','X=N*b'],check:check(['A','N','b','X'],'AreEqual(N,{{0.6,-0.2},{-0.2,0.4}}) && AreEqual(b,{{5},{5}}) && AreEqual(X,{{2},{1}})'),success:'La solución es x = 2, y = 1.'},
+  {title:'Verifica en las ecuaciones',page:1,text:'Calcula R = A X. Debe recuperar b. Comprueba también a mano: 2×2+1=5 y 2+3×1=5.',commands:['R=A*X'],check:check(['A','X','R'],'AreEqual(A,{{2,1},{1,3}}) && AreEqual(X,{{2},{1}}) && AreEqual(R,{{5},{5}})'),success:'La solución satisface ambas ecuaciones. Registra por qué esta comprobación es necesaria.'}
+ ]}
+);
+geoLessons.push(...functionProblemLessons);
 export const geoLesson=(id:string|null|undefined)=>geoLessons.find(l=>l.id===id);
-export const studyLessonUrl=(lesson:GeoLesson,step=1)=>`/estudio?curso=s2-5&clase=${lesson.materialId}&paso=${step}`;
-export const laboratoryLessonUrl=(lesson:GeoLesson)=>`/laboratorio?tool=geogebra&leccion=${lesson.id}`;
+const reviewSuffix=()=>typeof location!=='undefined'&&new URLSearchParams(location.search).get('repaso')==='unidad2'?'&repaso=unidad2':'';
+export const studyLessonUrl=(lesson:GeoLesson,step=1)=>`/estudio?curso=s2-5&clase=${lesson.materialId}&paso=${step}${reviewSuffix()}`;
+export const laboratoryLessonUrl=(lesson:GeoLesson)=>`/laboratorio?tool=geogebra&leccion=${lesson.id}${reviewSuffix()}`;
 
 export type GeoProgress={version:1;step:number;completed:number[];notes:string;reviewed:boolean};
 export const newGeoProgress=():GeoProgress=>({version:1,step:0,completed:[],notes:'',reviewed:false});

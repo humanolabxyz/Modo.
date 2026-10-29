@@ -1,0 +1,33 @@
+{
+  "checks": [
+    "47 líneas originales conservadas y con correspondencia",
+    "Mando de 24 V separado de fuerza trifásica",
+    "24 conexiones de marcha/paro aceptadas y todas las redes completas",
+    "Retornos comunes aceptados sin permitir unir bornes independientes",
+    "Cortocircuitos entre fuentes detectados",
+    "Guardado e importación conservan datos y correspondencias personales",
+    "4 lecciones mantienen bornes y trazado"
+  ],
+  "lessons": [
+    {
+      "id": "simple",
+      "steps": 24,
+      "traced": 24
+    },
+    {
+      "id": "inversion",
+      "steps": 41,
+      "traced": 41
+    },
+    {
+      "id": "estrellaManual",
+      "steps": 46,
+      "traced": 41
+    },
+    {
+      "id": "estrellaTimer",
+      "steps": 42,
+      "traced": 42
+    }
+  ]
+}

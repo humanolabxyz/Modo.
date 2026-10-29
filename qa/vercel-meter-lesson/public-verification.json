@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-24T15:39:45.253571+00:00",
+  "deployment": "dpl_22smn5Fh9kHnnJ4ZBT4HQ5hKgcU3",
+  "production": "https://modo-lab.vercel.app",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/",
+      "bytes": 37493,
+      "nosniff": "nosniff"
+    },
+    {
+      "path": "/?view=simulator",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/?view=simulator",
+      "bytes": 37493,
+      "nosniff": "nosniff",
+      "currentApp": true
+    },
+    {
+      "path": "/estudio/",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/estudio/",
+      "bytes": 22268,
+      "nosniff": "nosniff"
+    },
+    {
+      "path": "/laboratorio/",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/laboratorio/",
+      "bytes": 28231,
+      "nosniff": "nosniff"
+    },
+    {
+      "path": "/comunidad/",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/comunidad/",
+      "bytes": 19650,
+      "nosniff": "nosniff"
+    },
+    {
+      "path": "/legal/",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/legal/",
+      "bytes": 11300,
+      "nosniff": "nosniff"
+    },
+    {
+      "path": "/versiones/",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/versiones/",
+      "bytes": 49369,
+      "nosniff": "nosniff"
+    },
+    {
+      "path": "/sw.js",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/sw.js",
+      "bytes": 8358,
+      "nosniff": "nosniff"
+    },
+    {
+      "path": "/_astro/PanelMeterLesson.CsVAuexD.js",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/_astro/PanelMeterLesson.CsVAuexD.js",
+      "bytes": 41763,
+      "nosniff": "nosniff",
+      "sha256": "77f919be8898530891e4ee1075bc663d8609043fbe3e4ff7445ba1c5c7cf978f",
+      "matchesLocal": true
+    },
+    {
+      "path": "/_astro/App.DuzSbUGS.js",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/_astro/App.DuzSbUGS.js",
+      "bytes": 157067,
+      "nosniff": "nosniff",
+      "sha256": "8f947b37fd2cd51cb9d6f112ea1d840b362ae282d48ae6d59fe4f6497d10497a",
+      "matchesLocal": true
+    },
+    {
+      "path": "/_astro/index.EMx1G8mR.css",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/_astro/index.EMx1G8mR.css",
+      "bytes": 159963,
+      "nosniff": "nosniff",
+      "sha256": "6d85d3bcefac8c7863bdf41667a9a1c353eb51835d233720fdb9a5642a3263bc",
+      "matchesLocal": true
+    },
+    {
+      "path": "/_astro/panel-meter-lesson.CIUU1yxP.css",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/_astro/panel-meter-lesson.CIUU1yxP.css",
+      "bytes": 14391,
+      "nosniff": "nosniff",
+      "sha256": "c083efcfeb6c062309ac8264abc81b3d7395d4744d2d7171c34a02495987aec7",
+      "matchesLocal": true
+    },
+    {
+      "path": "/activities/actividad-2-unidad-2.pdf",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/activities/actividad-2-unidad-2.pdf",
+      "bytes": 727265,
+      "nosniff": "nosniff",
+      "sha256": "49775a14bcb23af18ac3fb07cfcafa1cf5041cd032e5fe363b0682d2265dc0da",
+      "matchesLocal": true
+    },
+    {
+      "path": "/activities/proyecto-matias.json",
+      "status": 200,
+      "url": "https://modo-lab.vercel.app/activities/proyecto-matias.json",
+      "bytes": 30682,
+      "nosniff": "nosniff",
+      "sha256": "2d6cebde0eeac99304d2fb57ae805a760fb66d767ec6a4c712b208e9058c125b",
+      "matchesLocal": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "poblacion: plain context, interactive symbol meanings, wrong concept retry, correct transition and resume without inventing answered questions",
+    "estroncio: plain context, interactive symbol meanings, wrong concept retry, correct transition and resume without inventing answered questions",
+    "ahorro: plain context, interactive symbol meanings, wrong concept retry, correct transition and resume without inventing answered questions",
+    "planta: plain context, interactive symbol meanings, wrong concept retry, correct transition and resume without inventing answered questions",
+    "Completed teacher notebook leads to the actual corresponding guided GeoGebra lesson",
+    "Interactive problem lessons fit phone, tablet and desktop",
+    "Source lesson formula itself opens a beginner explanation with meaningful symbols"
+  ],
+  "errors": []
+}

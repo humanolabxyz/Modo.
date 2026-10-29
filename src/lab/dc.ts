@@ -1,5 +1,12 @@
-import {HOLES,HOLE_BY_ID,IC_PIN_NAMES,Nets,bjtBase,icPinHoles,type LabProject,type ProtoComponent} from './model';
-export type DCBranch={id:string;a:string;b:string;resistance:number;drop?:number};
+import {HOLES,HOLE_BY_ID,IC_PIN_NAMES,Nets,joinBoardParts,bjtBase,icPinHoles,type LabProject,type ProtoComponent} from './model';
+export type DCBranch={id:string;a:string;b:string;resistance:number;drop?:number;junction?:{saturation:number;nvt:number}};
+/** Generic Shockley junction with series resistance. Parameters are teaching examples, not a manufacturer SPICE model. */
+export function junctionCurrent(v:number,resistance:number,j:{saturation:number;nvt:number}){
+ const rs=Math.max(resistance,1e-6),is=j.saturation,vt=j.nvt;
+ if(v<=0){const ex=Math.exp(Math.max(-40,v/vt));return {current:is*(ex-1),conductance:Math.max(1e-12,is*ex/vt)};}
+ let lo=0,hi=v/rs;for(let k=0;k<64;k++){const mid=(lo+hi)/2;if(vt*Math.log1p(mid/is)+mid*rs>v)hi=mid;else lo=mid;}
+ const current=(lo+hi)/2;return {current,conductance:1/(rs+vt/(current+is))};
+}
 /** Transistor NPN: base, colector y emisor como nodos; beta es la ganancia de corriente (hFE). */
 export type BJT={id:string;b:string;c:string;e:string;beta:number;pnp?:boolean};
 export type BJTRegion='corte'|'activa'|'saturación';
@@ -31,8 +38,9 @@ export function solveDC(branches:DCBranch[],fixed:Record<string,number>,transist
     for(const branch of branches){
       if(!reachable.has(branch.a)||!reachable.has(branch.b)||branch.a===branch.b)continue;
       const conducting=branch.drop===undefined||((volts[branch.a]??0)-(volts[branch.b]??0))>branch.drop;
-      const conductance=conducting?1/branch.resistance:1e-8;
-      const drop=conducting?(branch.drop??0):0;
+      const v=(volts[branch.a]??0)-(volts[branch.b]??0),nonlinear=branch.junction?junctionCurrent(v,branch.resistance,branch.junction):null;
+      const conductance=nonlinear?.conductance??(conducting?1/branch.resistance:1e-8);
+      const drop=nonlinear?v-nonlinear.current/conductance:conducting?(branch.drop??0):0;
       for(const [a,b,sign] of [[branch.a,branch.b,1],[branch.b,branch.a,-1]] as const){
         const i=lookup.get(a);if(i===undefined)continue;matrix[i][i]+=conductance;
         const j=lookup.get(b);if(j!==undefined)matrix[i][j]-=conductance;else matrix[i][nodes.length]+=conductance*fixed[b];
@@ -65,7 +73,7 @@ export function solveDC(branches:DCBranch[],fixed:Record<string,number>,transist
     }
     const next={...fixed};nodes.forEach((id,i)=>{next[id]=matrix[i][nodes.length];});
     if(!regionChanged&&nodes.every(id=>Math.abs((volts[id]??0)-next[id])<1e-8)){volts=next;converged=true;break;}
-    volts=next;
+    volts=branches.some(b=>b.junction)?Object.fromEntries(Object.entries(next).map(([id,value])=>[id,id in fixed?value:(volts[id]??0)*.4+value*.6])):next;
   }
   if(!converged&&nodes.length)return failure(transistors.length?'El modelo del transistor no converge en este montaje. Revisa la resistencia de base y las conexiones.':'El modelo de diodo no converge en este montaje. Revisa polaridad y resistencia.');
   /* Alcance real: las uniones de transistor en corte no unen sus nodos; lo que queda sin camino a la fuente se declara sin referencia. */
@@ -79,7 +87,7 @@ export function solveDC(branches:DCBranch[],fixed:Record<string,number>,transist
     if(lost.length){volts={...volts};for(const id of lost)delete volts[id];floatingAll=[...new Set([...floating,...lost])];}
   }
   const amps:Record<string,number>={},bjts:Record<string,BJTState>={};
-  for(const b of branches)if(volts[b.a]!==undefined&&volts[b.b]!==undefined)amps[b.id]=b.drop===undefined?(volts[b.a]-volts[b.b])/b.resistance:Math.max(0,(volts[b.a]-volts[b.b]-b.drop)/b.resistance);
+  for(const b of branches)if(volts[b.a]!==undefined&&volts[b.b]!==undefined)amps[b.id]=b.junction?junctionCurrent(volts[b.a]-volts[b.b],b.resistance,b.junction).current:b.drop===undefined?(volts[b.a]-volts[b.b])/b.resistance:Math.max(0,(volts[b.a]-volts[b.b]-b.drop)/b.resistance);
   for(const t of transistors){
     const region=regions.get(t.id)??'corte',vb=volts[t.b],ve=volts[t.e],vc=volts[t.c];
     if(vb===undefined||ve===undefined){bjts[t.id]={ib:0,ic:0,vbe:0,vce:0,region:'corte'};amps[t.id]=0;continue;}
@@ -95,6 +103,8 @@ export type BreadboardResult=DCResult&{holeVolts:Record<string,number>;groups:Re
 export type SolveOptions={
   /** Amperímetro en serie entre dos orificios (resistencia de carga de 0,1 Ω, fusible de 10 A). */
   ammeter?:{a:string;b:string};
+  /** Real loading of the voltage input; omitted in pure solver calls. */
+  voltmeter?:{a:string;b:string;ohms?:number};
   /** Activa fallas por sobreesfuerzo (LED, resistencia, transistor, L293D, fusible del multímetro, protección de la fuente). */
   failures?:boolean;
   /** Componentes ya dañados en esta simulación: se comportan como circuito abierto. */
@@ -120,13 +130,15 @@ type Pass={result:BreadboardResult;stress:Record<string,string>};
 function solveOnce(board:LabProject['breadboard'],switches:Record<string,boolean>,options:SolveOptions,dead:Set<string>):Pass {
   const nets=new Nets();for(const hole of HOLES)nets.join(hole.id,hole.group);
   const closedOf=(c:ProtoComponent)=>switches[c.id]??(c.kind==='button'?false:c.closed);
-  for(const c of board.components)if(c.kind==='wire'||(c.kind==='switch'||c.kind==='button')&&closedOf(c))nets.join(c.from,c.to);
+  joinBoardParts(nets,board.components,switches);
   const groups=Object.fromEntries(HOLES.map(h=>[h.id,nets.find(h.id)])),positive=nets.find(board.positive),negative=nets.find(board.negative);
   const none={failures:{},damaged:{},tripped:false,sourceCurrent:0};
   const empty={volts:{},amps:{},floating:[],holeVolts:{},groups,warnings:[],ics:{},bjts:{},...none};
   if(positive===negative)return {result:{...empty,fault:'Cortocircuito: los dos polos de la fuente están unidos.'},stress:{}};
   const live=board.components.filter(c=>!dead.has(c.id)),real=(c:ProtoComponent)=>actualValue(c,board.realistic);
   const branches:DCBranch[]=live.filter(c=>c.kind==='resistor'||c.kind==='led'||c.kind==='motor'||c.kind==='diode').map(c=>({id:c.id,a:nets.find(c.from),b:nets.find(c.to),resistance:c.kind==='led'?10:c.kind==='diode'?1:real(c),...c.kind==='led'||c.kind==='diode'?{drop:real(c)}:{}}));
+  if(board.realistic)for(const branch of branches){const part=live.find(c=>c.id===branch.id);if(part&&(part.kind==='diode'||part.kind==='led')){const nvt=part.kind==='led'?.06:.045,referenceCurrent=part.kind==='led'?.02:.01;branch.junction={saturation:referenceCurrent/Math.expm1((real(part)-referenceCurrent*branch.resistance)/nvt),nvt};delete branch.drop;}}
+  if(options.voltmeter){const a=nets.find(options.voltmeter.a),b=nets.find(options.voltmeter.b);if(a!==b)branches.push({id:'voltmeter-input',a,b,resistance:options.voltmeter.ohms??10_000_000});}
   const meterNets=options.ammeter&&!dead.has('meter')?[nets.find(options.ammeter.a),nets.find(options.ammeter.b)]:null;
   if(meterNets&&meterNets[0]!==meterNets[1])branches.push({id:'meter',a:meterNets[0],b:meterNets[1],resistance:AMMETER_OHMS});
   const transistors:BJT[]=live.filter(c=>c.kind==='bjt').flatMap(c=>{const base=bjtBase(c.from,c.to);return base?[{id:c.id,e:nets.find(c.from),b:nets.find(base),c:nets.find(c.to),beta:real(c),pnp:c.polarity==='pnp'}]:[];});
@@ -210,7 +222,7 @@ export function solveBreadboard(board:LabProject['breadboard'],switches:Record<s
 /** Óhmetro: se mide con el circuito sin energía (la fuente se retira). Devuelve null si está abierto («OL»). */
 export function measureResistance(board:LabProject['breadboard'],switches:Record<string,boolean>,a:string,b:string,damaged:Record<string,string>={}):{ohms:number|null;short:boolean}{
   const nets=new Nets();for(const hole of HOLES)nets.join(hole.id,hole.group);
-  for(const c of board.components)if(c.kind==='wire'||(c.kind==='switch'||c.kind==='button')&&(switches[c.id]??(c.kind==='button'?false:c.closed)))nets.join(c.from,c.to);
+  joinBoardParts(nets,board.components,switches);
   const na=nets.find(a),nb=nets.find(b);if(na===nb)return {ohms:0,short:true};
   const live=board.components.filter(c=>!(c.id in damaged)),real=(c:ProtoComponent)=>actualValue(c,board.realistic);
   const branches:DCBranch[]=live.filter(c=>c.kind==='resistor'||c.kind==='led'||c.kind==='motor'||c.kind==='diode').map(c=>({id:c.id,a:nets.find(c.from),b:nets.find(c.to),resistance:c.kind==='led'?10:c.kind==='diode'?1:real(c),...c.kind==='led'||c.kind==='diode'?{drop:real(c)}:{}}));
@@ -223,7 +235,7 @@ export function measureResistance(board:LabProject['breadboard'],switches:Record
 /** Redes eléctricas del tablero (columnas, rieles y puentes/interruptores/pulsadores cerrados) sin resolver tensiones. */
 export function netGroups(board:LabProject['breadboard'],switches:Record<string,boolean>={}):Record<string,string> {
   const nets=new Nets();for(const hole of HOLES)nets.join(hole.id,hole.group);
-  for(const c of board.components)if(c.kind==='wire'||(c.kind==='switch'||c.kind==='button')&&(switches[c.id]??(c.kind==='button'?false:c.closed)))nets.join(c.from,c.to);
+  joinBoardParts(nets,board.components,switches);
   return Object.fromEntries(HOLES.map(h=>[h.id,nets.find(h.id)]));
 }
 export function holeName(id:string){return HOLE_BY_ID.has(id)?id.replace(':','').replace('top+','+ superior ').replace('top-','− superior ').replace('bottom+','+ inferior ').replace('bottom-','− inferior '):id;}

@@ -40,7 +40,7 @@ export function ptOhms(celsius:number):number{
 
 export const AMBIENT_MIN=5,AMBIENT_MAX=40,SET_MAX=150,TX_OUT_MAX=10;
 export type Settings={
-  ptWires:3|4;ambient:number;tcType:TcType;setpoint:number;
+  ptLeadOhms?:number;ptWires:3|4;ambient:number;tcType:TcType;setpoint:number;
   txType:TcType;txMin:number;txMax:number;txConnected:boolean;txPowered:boolean;
   mode:MeterMode;red:Terminal|null;black:Terminal|null;inWell:{tc:boolean;pt:boolean};
 };
@@ -48,6 +48,7 @@ export type Temps={bath:number;tc:number;pt:number};
 export const defaultSettings=():Settings=>({ptWires:3,ambient:22,tcType:'K',setpoint:22,txType:'K',txMin:0,txMax:100,txConnected:false,txPowered:false,mode:'off',red:null,black:null,inWell:{tc:false,pt:false}});
 /** El Pt100 de 3 hilos no tiene el cuarto: una punta conectada a él se suelta. */
 export function normalizeSettings(s:Settings):Settings{
+  s={...s,ptLeadOhms:Math.max(0,Math.min(10,s.ptLeadOhms??0))};
   if(s.ptWires===4)return s;
   return {...s,red:s.red==='pt4'?null:s.red,black:s.black==='pt4'?null:s.black};
 }
@@ -103,8 +104,8 @@ export function readMeter(s:Settings,t:Temps):Reading{
   }
   if(a==='pt'){
     if(s.mode!=='ohm')return reading({state:'ok',value:0,unit:s.mode==='V'?'V':'mV',sensor:'pt',note:'El Pt100 no genera tensión: es una resistencia. Usa Ω.'});
-    if(ptSide(s.red)===ptSide(s.black))return reading({state:'ok',value:0,unit:'Ω',sensor:'pt',note:`Los dos hilos ${ptSide(s.red)==='red'?'rojos':'blancos'} van unidos al mismo extremo del elemento: solo mides el cable (≈ 0 Ω). Mide entre un hilo rojo y uno blanco.`});
-    return reading({state:'ok',value:ptOhms(t.pt),unit:'Ω',sensor:'pt',meaningful:true,note:`Resistencia del Pt100 entre un hilo rojo y uno blanco (${s.ptWires} hilos). La resistencia de los cables no está modelada.`});
+    if(ptSide(s.red)===ptSide(s.black))return reading({state:'ok',value:2*(s.ptLeadOhms??0),unit:'Ω',sensor:'pt',note:`Los dos hilos ${ptSide(s.red)==='red'?'rojos':'blancos'} van unidos al mismo extremo del elemento: solo mides los dos hilos de cable del mismo lado. Mide entre un hilo rojo y uno blanco.`});
+    return reading({state:'ok',value:ptOhms(t.pt)+2*(s.ptLeadOhms??0),unit:'Ω',sensor:'pt',meaningful:true,note:`Resistencia del Pt100 entre un hilo rojo y uno blanco (${s.ptWires} hilos). El DMM usa dos puntas: suma los dos hilos del lazo; tener una sonda de 3/4 hilos no compensa automáticamente.`});
   }
   if(s.mode==='V'){
     const v=txVolts(s,t)*(s.red==='tx+'?1:-1);

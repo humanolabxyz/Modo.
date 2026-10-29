@@ -1,0 +1,359 @@
+--- PAGINA 1 ---
+TFL AUTOMATIZACIÓN Y ROBÓTICA
+ARCM02 – Control de Máquinas Eléctricas Rotativas
+Unidad 2 – Control electromecánico de
+motores de corriente alterna.
+Guía de Actividad N° 2
+Implementación de partida estrella – triángulo
+para un motor de inducción de corriente alterna.
+Versión Otoño 2025.
+Docente elaborador: Juan Carlos Toro Cornejo.
+Presentación:
+La partida de motores de corriente alterna en configuración estrella - triángulo es una técnica utilizada
+ampliamente en el campo del control de máquinas eléctricas rotativas de tipo trifásicas. También es
+denominada dentro de la literatura especializada como partida “i griega – delta” (Y - ∆), por la forma de
+conexión interna que adquieren las bobinas del estator del motor durante el desarrollo del proceso.
+La implementación de este método de partida para un motor trifásico consiste inicialmente en la
+conexión del circuito de fuerza del sistema a las bobinas del estator de forma tal que se agrupen un conjunto
+de extremos en un punto común, mientras que los 3 terminales libres se conecten a las fases de alimentación
+L1, L2 y L3, o bien R, S o T, según sea la nomenclatura utilizada. Lo anterior se puede apreciar en la siguiente
+figura, junto con la manera en la cual se conectan los 6 terminales dentro de la caja de bornes de la máquina
+eléctrica:
+Figura Nº1: Conexionado en estrella para bobinas del estator de un motor trifásico, y forma de interconexión en la caja de
+bornes de dicha máquina eléctrica. Fuente: https://capacitaciontecnica.com.ar/2019/11/24/conexionado-de-motores-
+trifasicos/
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 1
+--- PAGINA 2 ---
+Una vez conectado el motor en configuración estrella, se procede a activar la partida del mismo y sacar
+de la inercia al rotor. Este tipo de conexionado permite una circulación de corriente de arranque menor por
+cada devanado, debido a que éstos se encuentran alimentados entre las fases y el punto común entre dichas
+bobinas; además protege al motor y a la red eléctrica de fluctuaciones bruscas en el inicio de la operación del
+sistema.
+Luego de unos cuantos segundos, y cuando el motor eléctrico se encuentra operativo y girando a una
+determinada velocidad, se procede a realizar el cambio de conexión del circuito de fuerza a las bobinas del
+estator, alimentando a cada devanado por dos fases de alimentación. Lo anterior se puede apreciar en la
+siguiente figura, junto con la manera en la cual se conectan los 6 terminales dentro de la caja de bornes de la
+máquina eléctrica:
+Figura Nº2: Conexionado en triángulo para bobinas del estator de un motor trifásico, y forma de interconexión en la caja
+de bornes de dicha máquina eléctrica. Fuente: https://capacitaciontecnica.com.ar/2019/11/24/conexionado-de-motores-
+trifasicos/
+Esta práctica mejora la eficiencia y seguridad en la operación de los motores eléctricos, reduciendo su
+corriente de arranque y disminuyendo el sobre esfuerzo mecánico de las máquinas, aumentando por lo tanto
+su vida útil y contribuyendo con las actividades de mantenimiento asociadas. Además, permite dar
+cumplimiento a las normativas vigentes en el área de la electricidad en lo referido al control en la operación de
+este tipo de equipamiento conectado a las redes de distribución.
+Al momento de efectuar la conexión de un motor en configuración estrella – triángulo, es necesario
+revisar la información que entrega la placa característica de la máquina, en específico los valores de voltaje
+para cada tipo de conexionado, verificando que el conjunto de bobinas soporte la tensión que se aplicará desde
+la red de alimentación evitando que se sobrecalienten y dañen, especialmente en conexión triángulo porque
+los extremos de cada devanado recibe la tensión de dos fases.
+En Chile, la alimentación de corriente alterna trifásica posee un valor de tensión de 220 V en cada fase
+con respecto al terminal de neutro, lo cual implica que en conexión estrella cada bobina recibe en sus extremos
+un voltaje de 220 V, mientras que en conexión triángulo cada devanado recibe en sus extremos un valor de 380
+V. Teniendo en cuenta estos antecedentes, y al momento de revisar la placa de datos antes mencionada,
+entonces se puede verificar si el motor utilizado permite la conexión en ambas configuraciones sin provocar
+daño en su estructura interna.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 2
+--- PAGINA 3 ---
+Figura Nº3: Ejemplo de placa característica para un motor trifásico, destacando los valores de voltaje y corriente de
+trabajo para las conexiones estrella y triángulo. Fuente: https://www.areatecnologia.com/electricidad/motor-
+trifasico.html
+En el ejemplo presentado en la imagen Nº3, se destacan los valores de tensión en conexión estrella y
+triángulo en la placa característica de un motor trifásico. Si dicha máquina eléctrica fuese utilizada en Chile,
+entonces es posible concluir que se puede conectar en estrella, debido a que cada bobina soporta hasta 400 V
+en sus extremos. Sin embargo, no es posible conectarlo en configuración triángulo, porque cada devanado
+soporta hasta 230 V en sus extremos.
+Aprendizaje esperado de la unidad:
+2.1. Implementa circuitos electromecánicos de comando y fuerza para el control de motores eléctricos de
+corriente alterna, resolviendo problemáticas de diferentes niveles de complejidad, según requerimientos
+técnicos y normativa vigente.
+Descripción de la actividad:
+Las y los estudiantes, conformando previamente equipos de entre 2 y 4 integrantes, según las
+instrucciones entregadas por el Docente, se ubicarán en un puesto de trabajo al interior del laboratorio que
+posea el equipamiento necesario para la ejecución de prácticas de control y comando de máquinas eléctricas.
+Luego, desarrollarán la secuencia de actividades dispuesta en la presente guía, donde se requiere el
+conexionado y posterior puesta en servicio de los esquemas de control y fuerza para la partida y operación
+manual en configuración estrella - triángulo de un motor de corriente alterna trifásico. Además, efectuarán
+mediciones de parámetros eléctricos relevantes con multitester y amperímetro de tenazas y ejecutarán
+pruebas de falla forzada por sobrecarga en el circuito de fuerza.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 3
+--- PAGINA 4 ---
+Criterios de evaluación:
+2.1.1. Distingue los tipos de elementos de protección utilizados en circuitos de control electromecánico de
+motores de corriente alterna, considerando requerimientos del esquema y ajustando las protecciones, según
+cálculos.
+2.1.2. Diferencia los elementos de control y maniobra utilizados en circuitos de control electromecánico de
+motores de corriente alterna, considerando requerimientos de esquema.
+2.1.3. Diagrama esquemas control y fuerza electromecánicos de motores de corriente alterna, a partir de
+simbología normalizada.
+2.1.4. Ejecuta el montaje de circuitos de control y fuerza electromecánicos de motores de corriente alterna,
+considerando normativas de seguridad y medioambiente.
+2.1.5. Analiza el funcionamiento de los circuitos de control y fuerza electromecánicos de motores de corriente
+alterna, utilizando instrumentos de medición, logrando una comprensión exhaustiva de los mismos.
+Desarrollo de la actividad:
+Preparación de la ejecución práctica.
+1. Al inicio de las actividades proceda a hacer uso de su cotona y los elementos de protección personal
+requeridos según el protocolo de laboratorio (zapato de seguridad y guantes dialéctricos). A continuación,
+revise el banco de trabajo asignado y verifique que éste se encuentra desenergizado. En caso contrario,
+informe de inmediato al Docente a cargo para solucionar la situación.
+2. Lea e interprete los diagramas de control y fuerza presentados en las figuras Nº1 y Nº2, respectivamente,
+para el reconocimiento de los diversos elementos de maniobra, protección y señalización requeridos en la
+posterior implementación de los circuitos antes mencionados.
+3. Revise su puesto de trabajo y verifique la existencia de todos los elementos de maniobra, protección,
+señalización, instrumentos y accesorios requeridos para la posterior implementación y prueba de los
+circuitos antes mencionados. En caso que falte algún elemento, informe al Docente a cargo, para que
+pueda proveerlo.
+Montaje y operación del circuito de control.
+4. Utilizando el banco de trabajo, monte el circuito de control presentado en la figura Nº1 y luego solicite la
+revisión por parte del Docente a cargo. En caso de ser necesario, verifique el correcto conexionado entre
+los diversos elementos con la ayuda del multitester en el modo “continuidad”.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 4
+--- PAGINA 5 ---
+Figura Nº1: Circuito de control para el funcionamiento de un motor trifásico de corriente alterna, con partida manual en
+configuración estrella – triángulo. Fuente: Elaboración propia.
+5. Con la aprobación del Docente para el punto anterior, conecte la alimentación monofásica del puesto de
+trabajo y luego active el disyuntor del circuito de control. Utilizando el multitester en el modo de voltaje
+AC, mida la presencia de tensión para la alimentación monofásica del circuito. En caso de presentar
+problemas, revise junto con el Docente las posibles razones para solucionar el inconveniente (fusible
+quemado, alimentación desde el tablero general, entre otros).
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 5
+--- PAGINA 6 ---
+Figura Nº2: Circuito de fuerza para el funcionamiento de un motor trifásico de corriente alterna, con partida manual en
+configuración estrella – triángulo. Fuente: Elaboración propia.
+6. Una vez energizado el circuito de control, verifique que la lámpara piloto roja que posee el texto “PILOTO
+MOTOR DETENIDO” se encuentre encendida, dando cuenta que el sistema se encuentra sin
+funcionamiento. En caso contrario, desactive el disyuntor monofásico y verifique la conexión de la lámpara
+piloto roja.
+7. A continuación, presione el pulsador de partida “SB2” del circuito de control y que posee el texto “PARTIR
+ESTRELLA” en el diagrama de la figura Nº1. Lo anterior permitirá la activación de las bobinas de los
+contactores KM1 y KM3, además de apagar la lámpara piloto roja que posee el texto “PILOTO MOTOR
+DETENIDO” y encender la lámpara piloto verde que posee el texto “PILOTO FUNCIONAMIENTO EN
+ESTRELLA”. En caso de presentar algún problema o que no se cumpla alguna de las acciones antes
+descritas, entonces detenga la operación del circuito de control presionando el pulsador de parada “SB1”,
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 6
+--- PAGINA 7 ---
+luego desactive el disyuntor monofásico y revise el conexionado del circuito con la ayuda del multitester en
+el modo “continuidad”. Si el problema persiste, solicite la ayuda del Docente a cargo hasta resolver la
+situación y luego repita el procedimiento los puntos 5, 6 y 7 de esta guía.
+8. Una vez que en circuito de control se encuentra funcionando en conexión estrella, presione el pulsador
+“SB3” que posee el texto “CONEXIÓN TRIÁNGULO” en el diagrama de la figura Nº1. Lo anterior mantendrá
+en operación la bobina del contactor KM1, al tiempo que desactivará la bobina del contactor KM3 y
+activará la bobina del contactor KM2, además de apagar la lámpara piloto verde que posee el texto
+“PILOTO FUNCIONAMIENTO EN ESTRELLA” y encender la lámpara piloto verde que posee el texto “PILOTO
+FUNCIONAMIENTO EN TRIÁNGULO”. En caso de presentar algún problema o que no se cumpla alguna de
+las acciones antes descritas, entonces detenga la operación del circuito de control presionando el pulsador
+de parada “SB1”, luego desactive el disyuntor monofásico y revise el conexionado del circuito con la ayuda
+del multitester en el modo “continuidad”. Si el problema persiste, solicite la ayuda del Docente a cargo
+hasta resolver la situación y luego repita el procedimiento de los puntos 7 y 8 de esta guía.
+9. Una vez que en circuito de control se encuentra funcionando en conexión triángulo, realice la prueba
+forzada de sobrecarga mediante la activación del punto de prueba que posee el relé términco en su parte
+frontal, rotulado como “TEST” sobre el dispositivo. Al momento de ejecutar dicha acción, se deben
+desactivar las bobinas de los contactores KM1 y KM2, junto con apagar la lámpara piloto verde que posee
+el texto “PILOTO FUNCIONAMIENTO EN TRIÁNGULO” y encender las lámparas piloto amarilla que posee el
+texto “PILOTO SOBRECARGA” y roja que posee el texto “PILOTO MOTOR DETENIDO”. En caso de presentar
+algún problema o que no se cumpla alguna de las acciones antes descritas, entonces detenga la operación
+del circuito de control presionando el pulsador de parada “SB1”, luego desactive el disyuntor monofásico y
+revise el conexionado del circuito con la ayuda del multitester en el modo “continuidad”. Si el problema
+persiste, solicite la ayuda del Docente a cargo hasta resolver la situación y luego repita el procedimiento de
+los puntos 7, 8 y 9 de esta guía.
+10. Una vez que el circuito de control se encuentra operando con la prueba forzada de sobrecarga, es
+necesario volver el relé térmico a su funcionamiento normal, previa solución del problema que dio origen a
+la sobrecarga. Para ello, se requiere presionar el botón de la parte frontal rotulado como “RESET”, lo cual
+apagará la lámpara piloto amarilla que posee el texto “PILOTO SOBRECARGA” en el diagrama de la figura
+Nº1, manteniendo solamente encendida la lámpara piloto roja que posee el texto “PILOTO MOTOR
+DETENIDO”, llevando el funcionamiento del sistema a la condición de inicio. En caso de presentar algún
+problema o que no se cumpla alguna de las acciones antes descritas, entonces detenga la operación del
+circuito de control presionando el pulsador de parada “SB1”, luego desactive el disyuntor monofásico y
+revise el conexionado del circuito con la ayuda del multitester en el modo “continuidad”. Si el problema
+persiste, solicite la ayuda del Docente a cargo hasta resolver la situación y luego repita el procedimiento de
+los puntos 7, 8, 9 y 10 de esta guía.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 7
+--- PAGINA 8 ---
+Montaje y operación del circuito de fuerza.
+11. Utilizando el banco de trabajo, monte el circuito de fuerza presentado en la figura Nº2. Una vez concluida
+la actividad, solicite la revisión por parte del docente a cargo. En caso de ser necesario verifique el correcto
+conexionado entre los diversos elementos con la ayuda del multitester en el modo “continuidad”.
+12. Con la aprobación del docente para el punto anterior, conecte la alimentación trifásica del puesto de
+trabajo y luego active el disyuntor trifásico del circuito de fuerza. Utilizando el multitester en el modo de
+voltaje AC, mida la presencia de tensión para la alimentación trifásica del circuito, anotando sus resultados
+en la siguiente tabla. En caso de presentar problemas, revise junto con el Docente las posibles razones para
+solucionar el inconveniente.
+V Fases L1 – L2 o V Fases L1 – L3 o V Fases L2 – L3 o
+“V ” “V ” “V ”
+R-S R-T S-T
+Voltajes entre
+fases para
+alimentación
+trifásica
+(V)
+Tabla Nº1: Mediciones para mangitudes de voltajes entre fases para alimentación del circuito trifásico de
+fuerza. Fuente: elaboración propia.
+13. Una vez energizado el circuito de fuerza, conecte la alimentación monofásica del puesto de trabajo y luego
+active el disyuntor monofásico del circuito de control, verificando que la lámpara piloto roja se encuentre
+encendida, dando cuenta que el sistema se encuentra detenido. En caso contrario, desactive el disyuntor
+monofásico y verifique la conexión de la lámpara piloto roja.
+Operación simultánea de los circuitos de fuerza y control en configuración estrella - triángulo.
+14. Con ambos circuitos energizados, presione el pulsador de partida “SB2” del esquema de control, lo cual
+activará los contactores KM1 y KM3, y permitirá que el motor comience a operar en configuración estrella,
+además de activar y desactivar las lámparas pilotos respectivas, según lo expuesto en el punto 7 de esta
+guía, junto con apagar la lámpara piloto roja que posee el texto “PILOTO MOTOR DETENIDO”. En caso de
+presentar algún problema o que no se cumpla alguna de las acciones antes descritas, entonces detenga la
+operación del circuito de control presionando el pulsador de parada “SB1”, luego desactive los disyuntores
+monofásico y trifásico, y revise el conexionado del sistema con la ayuda del multitester en el modo
+“continuidad”. Si el problema persiste, solicite la ayuda del Docente a cargo hasta resolver la situación y
+luego repita el procedimiento de los puntos 12, 13 y 14 de esta guía.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 8
+--- PAGINA 9 ---
+15. Utilizando el voltímetro en el modo AC, mida las tensiones entre los terminales de cada bobina del motor
+para el funcionamiento en estrella, anotando sus resultados en la siguiente tabla:
+Voltaje en Voltaje en Voltaje en
+terminales U1 – U2 terminales V1 – V2 terminales W1 – W2
+Voltajes entre
+terminales de
+conexión del
+motor eléctrico,
+en conexión
+estrella
+(V)
+Tabla Nº3: Mediciones para mangitudes de voltajes entre los terminales de cada bobina del motor para el
+funcionamiento en configuración estrella. Fuente: elaboración propia.
+16. Utilizando amperímetro de tenazas, mida las corrientes que circulan por cada fase (entre la toma de
+alimentación y la llegada a cada carga) en el circuito de fuerza para el funcionamiento en estrella, anotando
+sus resultados en la siguiente tabla:
+Corriente de fase Corriente de fase Corriente de fase
+L1 o “R” L2 o “S” L3 o “T”
+Corrientes de fase
+del circuito de
+fuerza, en
+configuración
+estrella
+(A)
+Tabla Nº4: Mediciones para mangitudes de corrientes en cada fase del circuito de fuerza en configuración
+estrella. Fuente: elaboración propia.
+17. Una vez que el motor se encuentra funcionando en configuración estrella, presione el pulsador “SB3” que
+posee el texto “CONEXIÓN TRIÁNGULO” en el diagrama de la figura Nº1. Lo anterior mantendrá en
+operación el contactor KM1, al tiempo que desactivará el contactor KM3 y activará el contactor KM2,
+permitiendo que el motor opere ahora en configuración triángulo, además de activar y desactivar las
+lámparas pilotos respectivas, según lo expuesto en el punto 8 de esta guía. En caso de presentar algún
+problema o que no se cumpla alguna de las acciones antes descritas, entonces detenga la operación del
+circuito de control presionando el pulsador de parada “SB1”, luego desactive los disyuntores monofásico y
+trifásico, y revise el conexionado del sistema con la ayuda del multitester en el modo “continuidad”. Si el
+problema persiste, solicite la ayuda del Docente a cargo hasta resolver la situación y luego repita el
+procedimiento de los puntos 12, 13, 14 y 17 de esta guía.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 9
+--- PAGINA 10 ---
+18. Utilizando el voltímetro en el modo AC, mida las tensiones entre los terminales de cada bobina del motor
+para el funcionamiento en triángulo, anotando sus resultados en la siguiente tabla:
+Voltaje en Voltaje en Voltaje en
+terminales U1 – U2 terminales V1 – V2 terminales W1 – W2
+Voltajes entre
+terminales de
+conexión del
+motor eléctrico,
+en conexión
+triángulo
+(V)
+Tabla Nº5: Mediciones para mangitudes de voltajes entre los terminales de cada bobina del motor para el
+funcionamiento en configuración triángulo. Fuente: elaboración propia.
+19. Utilizando el amperímetro de tenazas, mida las corrientes que circulan por cada línea (entre la toma de
+alimentación y la llegada a cada carga) en el circuito de fuerza para el funcionamiento en triángulo,
+anotando sus resultados en la siguiente tabla:
+Corriente de línea Corriente de línea Corriente de línea
+L1 o “R” L2 o “S” L3 o “T”
+Corrientes de
+línea del circuito
+de fuerza, en
+configuración
+triángulo
+(A)
+Tabla Nº6: Mediciones para mangitudes de corrientes en cada fase del circuito de fuerza en configuración
+triángulo. Fuente: elaboración propia.
+Comparación entre voltajes y corrientes medidos en configuraciones estrella y triángulo.
+20. Compare los valores medidos de los voltajes y las corrientes para el funcionamiento del motor en
+configuración estrella respecto de la operación en triángulo, anotando sus observaciones y justificaciones
+matemáticas en el siguiente recuadro:
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 10
+--- PAGINA 11 ---
+Comparación para valores obtenidos de voltajes y corrientes en
+el funcionamiento del motor en configuración estrella v/s triángulo
+Operación forzada para la condición de sobrecarga
+21. Una vez que el motor se encuentra funcionando en conexión triángulo, realice la prueba forzada de
+sobrecarga mediante la activación del punto de prueba que posee el relé términco en su parte frontal,
+rotulado como “TEST” sobre el dispositivo. Al momento de ejecutar dicha acción, se deben desactivar las
+los contactores KM1 y KM2, deteniendo la operación del motor, además de activar y desactivar las
+lámparas pilotos respectivas, según lo expuesto en el punto 9 de esta guía. En caso de presentar algún
+problema o que no se cumpla alguna de las acciones antes descritas, entonces detenga la operación del
+circuito de control presionando el pulsador de parada “SB1”, luego desactive los disyuntores monofásico y
+trifásico, y revise el conexionado del sistema con la ayuda del multitester en el modo “continuidad”. Si el
+problema persiste, solicite la ayuda del Docente a cargo hasta resolver la situación y luego repita el
+procedimiento de los puntos 12, 13, 14, 17 y 21 de esta guía.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 11
+--- PAGINA 12 ---
+22. Una vez que el sistema se encuentra operando con la prueba forzada de sobrecarga, es necesario volver el
+relé térmico a su funcionamiento normal, previa solución del problema que dio origen a la sobrecarga. Para
+ello, se requiere presionar el botón de la parte frontal rotulado como “RESET”, lo cual apagará la lámpara
+piloto amarilla que posee el texto “PILOTO SOBRECARGA” en el diagrama de la figura Nº1, manteniendo
+solamente encendida la lámpara piloto roja que posee el texto “PILOTO MOTOR DETENIDO”, llevando el
+funcionamiento del sistema a la condición de inicio. En caso de presentar algún problema o que no se
+cumpla alguna de las acciones antes descritas, entonces detenga la operación del circuito de control
+presionando el pulsador de parada “SB1”, luego desactive los disyuntores monofásico y trifásico, y revise el
+conexionado del sistema con la ayuda del multitester en el modo “continuidad”. Si el problema persiste,
+solicite la ayuda del Docente a cargo hasta resolver la situación y luego repita el procedimiento de los
+puntos 12, 13, 14, 17, 21 y 22 de esta guía.
+23. Cuando tenga la certeza que el sistema opera en su totalidad según lo establecido, solicite al Docente a
+cargo la respectiva revisión del funcionamiento, de las mediciones realizadas y las observaciones anotadas.
+24. Una vez aprobado el funcionamiento del sistema por parte del Docente a cargo, desactive los disyuntores
+de los circuitos de control y fuerza, junto con la alimentación eléctrica del puesto de trabajo.
+25. Finalmente, desconecte cada uno de los elementos de los circuitos de fuerza y control, y ordene su puesto
+de trabajo.
+Requerimientos de entrega:
+Como resultado de la actividad, cada equipo de trabajo debe cumplir con los siguientes puntos
+relevantes:
+- Ejecutar el montaje y puesta en servicio del circuito de control requerido para el sistema.
+- Ejecutar el montaje y puesta en servicio del circuito de fuerza requerido para el sistema.
+- Efectuar mediciones de corrientes en cada fase para el funcionamiento del sistema en configuración
+estrella.
+- Efectuar mediciones de corrientes en cada fase para el funcionamiento del sistema en configuración
+triángulo.
+- Realizar el análisis comparativo entre los valores obtenidos de voltajes y corrientes para la operación
+del sistema en estrella y triángulo, destacando sus semejanzas y diferencias.
+Equipos, materiales y software:
+Para el desarrollo de la actividad, cada equipo conformado requiere los siguientes elementos
+previamente dispuestos en un banco de trabajo, considerando la disponibilidad y características técnicas de la
+implementación que posea el laboratorio utilizado:
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 12
+--- PAGINA 13 ---
+- 01 conexión a toma de alimentación trifásica.
+- 01 motor de inducción trifásico de corriente alterna.
+- 01 disyuntor electromagnético trifásico, tripolar u omnipolar.
+- 03 contactor trifásico, con contactos auxiliares N/C y N/A.
+- 01 relé térmico, con contactos auxiliares N/C y N/A.
+- 01 disyuntor monofásico, monopolar o bipolar.
+- 01 botonera N/A.
+- 01 botonera N/A – N/C.
+- 01 botonera N/C.
+- 01 lámpara piloto roja.
+- 02 lampara piloto verde.
+- 01 lámpara piloto amarilla.
+- 01 multitester.
+- 01 amperímetro de tenazas.
+- Set de terminales de conexión punta – punta, de diversos colores.
+- 01 destornillador de punta cruz.
+- 01 destornillador de punta paleta.
+- 01 destornillador perillero de punta paleta.
+Identificación y evaluación de riesgos:
+Para el desarrollo de la actividad, es necesario tener en consideración los siguientes aspectos
+vinculados a los riesgos presentes y comportamientos esperados por parte de las y los estudiantes:
+- Cuidar el orden y la limpieza del lugar de trabajo.
+- Mantener despejadas las áreas de tránsito de personas.
+- Respetar la normativa de uso de laboratorios, que implica entre otros aspectos el uso de la cotona y
+elementos de protección personal (para este caso, calzado de seguridad y guantes dieléctricos), evitar
+el consumo de alimentos en su interior y mantener la concentración en todo instante del
+procedimiento efectuado.
+- En la operación de los circuitos, se utilizará alimentación eléctrica monofásica y trifásica, la cual
+presenta riesgos de electrocución para los usuarios por tensiones peligrosas frente a una manipulación
+inadecuada. Por lo tanto, se requiere desarrollar las actividades propuestas, siguiendo las instrucciones
+presentadas en la presente guía y las recomendaciones entregadas por el Docente a cargo.
+- En caso de presentar dudas respecto de la ejecución de las conexiones eléctricas o medición de
+magnitudes, solicite el apoyo del Docente a cargo.
+ARCM02 – Control de Máquinas Eléctricas Rotativas – Actividad Nº 2 UA2 – Página 13

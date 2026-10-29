@@ -1,0 +1,38 @@
+[
+  {
+    "width": 393,
+    "tool": "soldering",
+    "TaskDuration": 0.0503070000000001,
+    "ScriptDuration": 0.046794,
+    "LayoutDuration": 0,
+    "LayoutCount": 0,
+    "RecalcStyleCount": 0
+  },
+  {
+    "width": 393,
+    "tool": "temperature",
+    "TaskDuration": 0.09073799999999999,
+    "ScriptDuration": 0.050975999999999994,
+    "LayoutDuration": 0.011987999999999999,
+    "LayoutCount": 9,
+    "RecalcStyleCount": 9
+  },
+  {
+    "width": 820,
+    "tool": "soldering",
+    "TaskDuration": 0.07140100000000005,
+    "ScriptDuration": 0.06692900000000002,
+    "LayoutDuration": 0,
+    "LayoutCount": 0,
+    "RecalcStyleCount": 0
+  },
+  {
+    "width": 820,
+    "tool": "temperature",
+    "TaskDuration": 0.11651299999999998,
+    "ScriptDuration": 0.061113,
+    "LayoutDuration": 0.014931000000000028,
+    "LayoutCount": 10,
+    "RecalcStyleCount": 10
+  }
+]

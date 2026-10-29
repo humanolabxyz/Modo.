@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "27 clases / 90 pasos con explicación, conceptos, ejemplo razonado y acción relacionada"
+  ],
+  "errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: src/components/App.tsx\n+ actual - expected\n\n+ '777967b2ad621fa16e742abb60efb9badd2596f638792d80a4befdf7706f88d2'\n- '9093344b403535a9773a785b49c3182df0a2f69b0675b5bd8f76f8a6bf23108e'\n"
+}

@@ -1,0 +1,25 @@
+{
+  "project": "modo-lab",
+  "projectId": "prj_tqclHzAbuZzPqfAwvDETHjG8sa7L",
+  "teamId": "team_iNJdFEbhcCf5nImzqTiX9CYD",
+  "environment": "production",
+  "gitHead": "a66b0389fa77d92a95fe6fa36e4e67207e64786b",
+  "source": "current local working tree, including uncommitted changes",
+  "files": {
+    "src/components/PanelMeterLesson.tsx": "f8154340694ffa1ab7eb855168824a9a3c72ecf81fcf5023d640df690c0bb40e",
+    "src/components/PanelMultimeter.tsx": "07c567d9da996284cab2ffd52953c543247dd5da0b593c57ff65637638e095e7",
+    "src/components/Board.tsx": "b2f672c496dc3aec320ff96beb58ddadb9aabf04b4ee2dfeae943a204eaf2e48",
+    "src/styles/measurement-focus.css": "9e7d24e601d451da8db42c6fd8df5ba940379cc56efd4c24d1c427f52276addc",
+    "src/data/machineGuideCoverage.ts": "4e5669dfedf7fb0b27a81a1c238673b2338ac8735469e6f1a82d26f16b5dba47",
+    "src/data/machineReport.ts": "9a46ff7d699eb1c5127da4874de728914823140bdc2d9fb3341cb3dc2d9e692b",
+    "public/activities/actividad-2-unidad-2.pdf": "49775a14bcb23af18ac3fb07cfcafa1cf5041cd032e5fe363b0682d2265dc0da",
+    "package-lock.json": "8a80ecc5804a1459497031aed9eb170437483088ac51aabd2a0590f90e293db8"
+  },
+  "deploymentId": "dpl_4gr2RoqtZqJ5HALbZaB5PRuXYu9z",
+  "productionUrl": "https://modo-lab.vercel.app",
+  "readyState": "READY",
+  "publicDesktopSteps": 34,
+  "publicMobileSteps": 34,
+  "publicExportTables": 5,
+  "publicExportMeasurements": 15
+}

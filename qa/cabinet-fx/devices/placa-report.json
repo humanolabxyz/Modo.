@@ -1,0 +1,109 @@
+[
+ {
+  "size": "phone",
+  "tool": "equipment",
+  "hscroll": false,
+  "offscreen": [
+   "Campo [344,69,69x42]",
+   "Cable RED:L1 a QM1:1 [56,341,524x84]",
+   "Cable RED:L2 a QM1:3 [172,342,413x84]",
+   "Cable RED:L3 a QM1:5 [181,344,412x84]",
+   "Cable X1:U:2 a M1:U1 [58,428,604x155]",
+   "Cable X1:V:2 a M1:V1 [60,429,617x155]"
+  ],
+  "smallTargets": 8
+ },
+ {
+  "size": "phone",
+  "tool": "plc",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 12
+ },
+ {
+  "size": "phone",
+  "tool": "schematic",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 15
+ },
+ {
+  "size": "phone",
+  "errors": []
+ },
+ {
+  "size": "phone-land",
+  "tool": "equipment",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 8
+ },
+ {
+  "size": "phone-land",
+  "tool": "plc",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 6
+ },
+ {
+  "size": "phone-land",
+  "tool": "schematic",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 9
+ },
+ {
+  "size": "phone-land",
+  "errors": []
+ },
+ {
+  "size": "tablet",
+  "tool": "equipment",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 8
+ },
+ {
+  "size": "tablet",
+  "tool": "plc",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 12
+ },
+ {
+  "size": "tablet",
+  "tool": "schematic",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 15
+ },
+ {
+  "size": "tablet",
+  "errors": []
+ },
+ {
+  "size": "tablet-land",
+  "tool": "equipment",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 8
+ },
+ {
+  "size": "tablet-land",
+  "tool": "plc",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 6
+ },
+ {
+  "size": "tablet-land",
+  "tool": "schematic",
+  "hscroll": false,
+  "offscreen": [],
+  "smallTargets": 9
+ },
+ {
+  "size": "tablet-land",
+  "errors": []
+ }
+]

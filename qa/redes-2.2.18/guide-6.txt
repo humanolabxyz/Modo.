@@ -1,0 +1,20 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 6 
+ 
+ 
+Instruccional.dpa
+ 
+Instruccional.isp
+ 
+ 
+ 
+Figura 1.10. Proceso para cargar pantalla HMI, utilizando cable USB facilitado. 
+ 
+ 
+ 
+Figura 1.11. Proceso para cargar programa al PLC. 
+ 
+ 
+ 

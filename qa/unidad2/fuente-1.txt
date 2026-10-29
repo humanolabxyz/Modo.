@@ -1,0 +1,127 @@
+--- PÁGINA 1 ---
+ 
+ACTIVIDAD TECNOLÓGICA 1 
+FUNCIONES EXPONENCIALES 
+ 
+Esta actividad tiene por objetivo familiarizar a los estudiantes, mediante la incorporación de 
+GeoGebra, en el trabajo con las funciones exponenciales. 
+ 
+ACTIVIDAD 1: Ingresar a GeoGebra Clásico online 
+Ingresa a la siguiente dirección: 
+ 
+https://www.geogebra.org/classic 
+ 
+ 
+ 
+ACTIVIDAD 2: Ingresar una función exponencial 
+Para ingresar la función exponencial 𝑓(𝑥) = 2!, escribe en la barra de entrada lo siguiente: 
+ 
+2^x .¿. 
+ 
+ 
+
+--- PÁGINA 2 ---
+ 
+ACTIVIDAD 3: Calcular una imagen de una función exponencial y visualizar un punto que 
+contiene la preimagen y la imagen de dicha función 
+Para calcular la imagen de la función 𝑓(𝑥) = 2!, para 𝑥= 2, y visualizar el punto conformado 
+por la preimagen e imagen, escribe en la barra de entrada lo siguiente: 
+ 
+f(2) .¿. 
+(2,a) .¿. 
+ 
+ 
+ 
+ACTIVIDAD 4: Calcular una preimagen de una función exponencial 
+Para calcular la preimagen de la función 𝑓(𝑥) = 2!, para 𝑓(𝑥) = 5, escribe en la barra de entrada 
+lo siguiente: 
+ 
+Resuelve(f=5) .¿. 
+ 
+ 
+ 
+ 
+
+--- PÁGINA 3 ---
+ 
+También se podría utilizar el comando ResoluciónN que entrega sólo la solución aproximada, a 
+diferencia de Resuelve que primero la entrega como, por ejemplo, una fracción o con raíces y, 
+posteriormente, puede hacerse el cambio para que entregue la aproximada. 
+ 
+ACTIVIDAD 5: Graficar una función exponencial y encontrar su intersección con una función 
+lineal 
+Ingresa la función 𝑔(𝑥) = 𝑥+ 2. Para esto, escribe en la barra de entrada lo siguiente: 
+ 
+x+2 .¿. 
+Interseca(f,g) .¿. 
+ 
+ 
+ 
+Nota que en este caso, el comando entrega sólo una de las intersecciones, la de la izquierda que 
+es (−1.69, 0.31). Esto sucede con algunas funciones como es el caso, por ejemplo, de las 
+exponenciales y las logarítmicas. Para encontrar la segunda intersección debe agregarse al 
+comando el extremo inferior y el extremo superior del intervalo donde se encuentra la 
+intersección, por ejemplo, el intervalo (1, 3). Para este ejemplo, ingresa 
+ 
+Interseca(f,g,1,3) .¿. 
+ 
+ 
+
+--- PÁGINA 4 ---
+ 
+ 
+ 
+De esta manera se obtiene el punto de intersección de la derecha que es (2, 4). 
+ 
+ACTIVIDAD 6: Encontrar la intersección de una función exponencial con el eje de las 𝒚 
+Para encontrar la intersección con el eje de las 𝑦, escribe en la barra de entrada lo siguiente: 
+ 
+Interseca(f,EjeY) .¿. 
+ 
+ 
+ 
+Una manera más cómoda de obtener lo anterior es encontrando los puntos especiales: 
+ 
+ 
+
+--- PÁGINA 5 ---
+ 
+entregando los siguientes resultados: 
+ 
+ 
+ 
+Nota que el único valor que entrega es la intersección con el eje de las 𝑦 ya que no tiene 
+intersección con el eje de las 𝑥 ni extremos. 
+ 
+ACTIVIDAD 7: Ajustar un conjunto de puntos por una función exponencial 
+Para encontrar la expresión algebraica de una función exponencial que mejor ajuste a los puntos 
+A, B, C, y D, escribe en la barra de entrada lo siguiente: 
+ 
+(1,1) .¿. 
+(3,2) .¿. 
+(5,4) .¿. 
+(6,8) .¿. 
+{A,B,C,D} .¿. 
+AjusteBaseExp(l1) .¿. 
+ 
+ 
+ 
+ 
+
+--- PÁGINA 6 ---
+ 
+O bien, ingresa 
+ 
+AjusteExp(l1) .¿. 
+ 
+ 
+ 
+Nota que las gráficas de los modelos son iguales. Esto sucede porque las expresiones son 
+equivalentes. Si la expresión de un modelo es 𝑓(𝑥) = 𝑎𝑏! y la del otro es 𝑔(𝑥) = 𝑎𝑒"!, se tiene 
+que 𝑏= 𝑒". 
+ 
+En este ejemplo, la expresión del primer modelo es 𝑝(𝑥) = 0.63 ∙1.49!, la del segundo modelo 
+es 𝑓(𝑥) = 0.63𝑒#.%!, y se cumple que 1.49 ≈𝑒#.%. Recuerda que los números están aproximados 
+por redondeo a las centésimas, por eso no se obtiene la igualdad. 
+ 
+ 

@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-28",
+  "base": "http://127.0.0.1:4330",
+  "checks": [
+    "Una sola acción por etapa; la lectura se conserva directamente sin transcripción manual",
+    "control-rest: S3 desde reposo no arranca; se conserva S1 como marcha",
+    "TEST desde reposo rechazado aunque pilotos y térmico coincidan; se exige la transición desde triángulo",
+    "powered-rest: S3 desde reposo no arranca; se conserva S1 como marcha",
+    "Placas y protecciones comprobadas; montaje completo con motor desde el inicio, fuerza abierta durante mando; conexiones guardadas del montaje de dos contactores; 34 pasos, 15 mediciones, TEST/RESET, comparación, cierre y exportaciones CSV/JSON/HTML",
+    "Acceso a Actividad 2 desde las guías del panel en móvil 390 × 844"
+  ],
+  "errors": []
+}

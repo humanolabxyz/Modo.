@@ -4,11 +4,13 @@ import {canBind,LABEL_BINDINGS,portKey,routePairs,type LearningNet,type Learning
 import type {BananaCable} from '../data/practice';
 import {TERMINAL_BY_ID} from '../data/wiring';
 
-export function CadeRouteToolbar({title,nets,wires,onShow,onDetails,canDetails=true}:{title:string;nets:LearningNet[];wires:BananaCable[];onShow:()=>void;onDetails:()=>void;canDetails?:boolean}){
+export function CadeRouteToolbar({title,nets,wires,onDetails,canDetails=true}:{title:string;nets:LearningNet[];wires:BananaCable[];onDetails:()=>void;canDetails?:boolean}){
  const routes=routePairs(nets,wires),missing=new Set(nets.flatMap(n=>n.missing.map(portKey)));
+ /* Sin selección no hay nada que explicar: se deja el espacio al diagrama y a sus acciones. */
+ if(!nets.length)return null;
  return <div className="cade-route-toolbar" aria-label="Recorrido de CADe en el banco">
-  <div className="cade-route-head"><i aria-hidden="true"><CircuitBoard size={18}/></i><div><small>{nets.length?'Selección':'Esquema de la prueba'}</small><strong>{nets.length?title:'PERFECTO'}</strong><p>{nets.length?`${routes.length} conexiones identificadas${missing.size?` · ${missing.size} bornes pendientes`:''}`:'Toca una línea o un componente para ver sus cables en el banco.'}</p></div></div>
-  {nets.length>0&&<div className="cade-route-actions"><button onClick={onShow}>Mostrar recorrido en el tablero</button>{canDetails&&<button onClick={onDetails}>Ver bornes</button>}</div>}
+  <div className="cade-route-head"><i aria-hidden="true"><CircuitBoard size={18}/></i><div><small>Selección</small><strong>{title}</strong><p>{`${routes.length} ${routes.length===1?'conexión identificada':'conexiones identificadas'}${missing.size?` · ${missing.size} bornes pendientes`:''}`}</p></div></div>
+  {canDetails&&<div className="cade-route-actions"><button onClick={onDetails}>Ver bornes</button></div>}
  </div>;
 }
 export function CadeRouteOptions({all,onAll}:{all:boolean;onAll:()=>void}){

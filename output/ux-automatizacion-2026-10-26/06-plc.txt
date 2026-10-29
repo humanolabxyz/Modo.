@@ -1,0 +1,75 @@
+Nombre del proyecto
+Inicio
+Marcha y retención
+Tablero · PLC industrial
+Proyecto
+Guardado en este navegador
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+PLC
+PLC VIRTUAL · STOP
+0 segmentos · 9 variables
+Tu primer segmento
+
+Añade contactos, una salida y una instrucción para empezar.
+
++ Añadir segmento
+Programa listo
+
+Sin errores en el subconjunto admitido del PLC virtual.
+
+Variables y memoria
+
+Las entradas de la planta se actualizan desde el tanque. Las demás entradas pueden accionarse durante RUN.
+
+I0.0
+Marcha
+0
+I0.1
+Paro pulsado
+0
+I0.2
+Nivel bajo
+1
+I0.3
+Nivel alto
+0
+Q0.0
+Bomba / marcha
+0
+M0.0
+Memoria auxiliar
+0
+T1
+Temporizador
+0
+C1
+Contador
+0
+AI0
+Nivel del tanque (%)
+20.0
+Añadir variable
+Dirección
+Nombre
+Tipo
+Booleano
+Número
+Añadir variable
+Alcance del PLC virtual

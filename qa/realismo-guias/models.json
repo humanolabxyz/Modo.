@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "Voltímetro de 10 MΩ carga un divisor de 10 MΩ+10 MΩ: 2,5 → 1,6667 V",
+    "Unión no lineal: la tensión directa cambia con corriente, e inversa presenta fuga limitada",
+    "Diodo realista en serie converge y conserva KCL en barrido de fuente",
+    "Amperímetro agrega 0,1 Ω de carga al insertarse en la rama abierta",
+    "Pt100 con dos puntas suma ambos hilos, incluso en una sonda de 3/4 hilos",
+    "Repeticiones transcritas se conservan, numeran y exportan sin sobrescribir",
+    "CRC16 Modbus vector conocido 01 03 0000 000A → C5 CD",
+    "Función 05 confirma y escribe; función 03 devuelve el registro de estado con CRC",
+    "CRC alterado, cable roto, dirección o paridad incorrectas y 115200 contra 9600 no cambian la salida",
+    "Excepción de dirección de dato no es una escritura; respuesta tiene CRC válido",
+    "Resistencia del cable depende de su topología, contactos, puntas y flexión",
+    "Cada lectura conserva su fuente aplicada al exportar/importar; guardados anteriores siguen abriendo"
+  ]
+}

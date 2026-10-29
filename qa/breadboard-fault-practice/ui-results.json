@@ -1,0 +1,38 @@
+[
+  {
+    "engine": "chromium",
+    "width": 820,
+    "kind": "remove",
+    "persisted": true,
+    "manualRepair": true,
+    "restored": true,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 390,
+    "kind": "move",
+    "persisted": true,
+    "manualRepair": true,
+    "restored": true,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "width": 390,
+    "kind": "move",
+    "persisted": true,
+    "manualRepair": true,
+    "restored": true,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 820,
+    "kind": "remove",
+    "persisted": true,
+    "manualRepair": true,
+    "restored": true,
+    "errors": []
+  }
+]

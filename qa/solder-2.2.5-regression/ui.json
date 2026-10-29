@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Tres copas DB9 soldadas con punta limpia/estañada, flux, calentamiento, enfriado y tubo previo; extremos PLC sujetos con tornillos",
+    "El cable fabricado pasa tres continuidades, tres aislamientos y una orden RTU en el mismo taller",
+    "Fluke del panel mide el contacto 95–96 sin cablear bornes y guarda la lectura",
+    "Panel: rechaza Ω energizado, mide 24 V virtuales entre F/N y no agrega cables al medir",
+    "Panel y soldadura sin desborde de página en móvil vertical y horizontal"
+  ],
+  "errors": [],
+  "base": "http://127.0.0.1:4327/"
+}

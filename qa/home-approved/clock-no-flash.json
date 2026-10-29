@@ -1,0 +1,120 @@
+{
+  "checks": [
+    "chromium: el commit de la siguiente palabra conserva ESTUDIO hasta montar las láminas; giro y cierre muestran LAB sin salto ni cambio de tamaño",
+    "webkit: el commit de la siguiente palabra conserva ESTUDIO hasta montar las láminas; giro y cierre muestran LAB sin salto ni cambio de tamaño"
+  ],
+  "samples": [
+    {
+      "browser": "chromium",
+      "samples": [
+        {
+          "from": "",
+          "to": "modo. LAB",
+          "top": " ESTUDIO ",
+          "bottom": " ESTUDIO ",
+          "turning": 0
+        }
+      ],
+      "state": [
+        {
+          "from": "E",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "S",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "T",
+          "to": "L",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "U",
+          "to": "A",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "D",
+          "to": "B",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "I",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "O",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "samples": [
+        {
+          "from": "",
+          "to": "modo. LAB",
+          "top": " ESTUDIO ",
+          "bottom": " ESTUDIO ",
+          "turning": 0
+        }
+      ],
+      "state": [
+        {
+          "from": "E",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "S",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "T",
+          "to": "L",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "U",
+          "to": "A",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "D",
+          "to": "B",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "I",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        },
+        {
+          "from": "O",
+          "to": " ",
+          "upper": "matrix(1, 0, 0, 1, 0, 0)",
+          "lower": "matrix3d(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1)"
+        }
+      ]
+    }
+  ]
+}

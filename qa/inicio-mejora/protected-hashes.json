@@ -1,0 +1,9 @@
+{
+  "src/components/App.tsx": "9093344b403535a9773a785b49c3182df0a2f69b0675b5bd8f76f8a6bf23108e",
+  "src/components/Board.tsx": "c636f4a82e3abb2429d9c040d4af7c075a8f2a3bca972e6607f7cb32bc6efb21",
+  "src/data/panel.ts": "0ad505f2d44efe6b631ec975c0a05cc0872b6a70391a151c82af20b180c42063",
+  "src/data/practice.ts": "349550fbe3e5e40205ae395c256d5d49d23285d3cff7d1beb982657a4295224e",
+  "src/data/wiring.ts": "0eb2694acf6b707e574a27b2d802eeb02c8a1d814a21928224309a2edf2bb994",
+  "src/study/academicContent.ts": "e8450f761a4404ad3b951a26bfe0fa6aed923f06cdb6864a838f9e16701927fe",
+  "src/study/mathUnit2.ts": "4b8f89341dd140aef1ac3d30250003e417a52d4071664f89eb2f3aefa9926398"
+}

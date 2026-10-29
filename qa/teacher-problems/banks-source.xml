@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<geogebra format="5.0" version="5.0.467.0" app="classic" platform="w" id="81409003-8714-4e40-b198-63b9cfad6729"  xsi:noNamespaceSchemaLocation="http://www.geogebra.org/ggb.xsd" xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+<gui>
+	<window width="957" height="575" />
+	<perspectives>
+<perspective id="tmp">
+	<panes>
+		<pane location="" divider="0.30303030303030304" orientation="1" />
+	</panes>
+	<views>
+		<view id="4097" visible="false" inframe="true" stylebar="true" location="1,1,1,1" size="400" window="290,80,700,611" />
+		<view id="512" toolbar="0 | 1 501 5 19 , 67 | 2 15 45 18 , 7 37 | 514 3 9 , 13 44 , 47 | 16 | 551 550 11 ,  20 22 21 23 , 55 56 57 , 12 | 69 | 510 511 , 512 513 | 533 531 , 534 532 , 522 523 , 537 536 , 535 | 521 520 | 36 , 38 49 560 | 571 30 29 570 31 33 | 17 | 540 40 41 42 , 27 28 35 , 6 , 502" visible="false" inframe="false" stylebar="false" location="1,1,1" size="500" window="100,100,600,400" />
+		<view id="4" toolbar="0 || 2020 , 2021 , 2022 , 66 || 2001 , 2003 , 2002 , 2004 , 2005 || 2040 , 2041 , 2042 , 2044 , 2043" visible="false" inframe="false" stylebar="true" location="1,1" size="291" window="100,100,600,400" />
+		<view id="8" toolbar="1001 | 1002 | 1003  || 1005 | 1004 || 1006 | 1007 | 1010 || 1008 1009 || 66 68 || 6" visible="false" inframe="false" stylebar="false" location="1,3" size="300" window="100,100,600,400" />
+		<view id="1" visible="true" inframe="false" stylebar="true" location="1" size="955" window="340,185,600,400" />
+		<view id="2" visible="false" inframe="false" stylebar="true" location="3" size="290" window="100,100,250,400" />
+		<view id="16" visible="false" inframe="false" stylebar="false" location="1" size="150" window="50,50,500,500" />
+		<view id="32" visible="false" inframe="false" stylebar="true" location="1" size="150" window="50,50,500,500" />
+		<view id="64" toolbar="0" visible="false" inframe="true" stylebar="true" location="1" size="150" window="50,50,500,500" />
+		<view id="128" visible="false" inframe="true" stylebar="false" location="1" size="480" window="50,50,500,500" />
+		<view id="70" toolbar="0 || 2020 || 2021 || 2022" visible="false" inframe="true" stylebar="true" location="1" size="150" window="50,50,500,500" />
+		<view id="43" visible="false" inframe="false" stylebar="false" location="1" size="450" window="50,50,500,500" />
+	</views>
+	<toolbar show="false" items="0 39 73 62 | 1 501 67 , 5 19 , 72 75 76 | 2 15 45 , 18 65 , 7 37 | 4 3 8 9 , 13 44 , 58 , 47 | 16 51 64 , 70 | 10 34 53 11 , 24  20 22 , 21 23 | 55 56 57 , 12 | 36 46 , 38 49  50 , 71  14  68 | 30 29 54 32 31 33 | 25 17 26 60 52 61 | 40 41 42 , 27 28 35 , 6" position="1" help="false" />
+	<input show="false" cmd="true" top="algebra" />
+	<dockBar show="false" east="false" />
+</perspective>
+	</perspectives>
+	<labelingStyle  val="0"/>
+	<font  size="16"/>
+</gui>
+<euclidianView>
+	<viewNumber viewNo="1"/>
+	<size  width="955" height="573"/>
+	<coordSystem xZero="474.8089925760438" yZero="517.8706815000224" scale="2.850325338267096" yscale="6.9591065440929105"/>
+	<evSettings axes="true" grid="true" gridIsBold="false" pointCapturing="3" rightAngleStyle="1" checkboxSize="26" gridType="0"/>
+	<bgColor r="255" g="255" b="255"/>
+	<axesColor r="0" g="0" b="0"/>
+	<gridColor r="192" g="192" b="192"/>
+	<lineStyle axes="1" grid="0"/>
+	<axis id="0" show="true" label="" unitLabel="" tickStyle="1" showNumbers="true" positiveAxis="true"/>
+	<axis id="1" show="true" label="" unitLabel="" tickStyle="1" showNumbers="true" tickDistance="2" tickExpression="2" positiveAxis="true"/>
+</euclidianView>
+<kernel>
+	<continuous val="false"/>
+	<usePathAndRegionParameters val="true"/>
+	<decimals val="2"/>
+	<angleUnit val="degree"/>
+	<algebraStyle val="0" spreadsheet="0"/>
+	<coordStyle val="0"/>
+</kernel>
+<scripting blocked="false" disabled="false"/>
+<construction title="U05 - PPMAT03" author="" date="">
+<element type="button" label="botón1">
+	<show object="true" label="true"/>
+	<objColor r="0" g="0" b="0" alpha="1"/>
+	<bgColor r="153" g="255" b="153" alpha="255"/>
+	<layer val="0"/>
+	<labelOffset x="20" y="12"/>
+	<labelMode val="3"/>
+	<fixed val="true"/>
+	<auxiliary val="true"/>
+	<ggbscript val="UpdateConstruction[ ]&#10;contador=1"/>
+	<caption val="Nuevo Ejercicio"/>
+</element>
+<expression label="base2" exp="Random[14, 16] / 10" />
+<element type="numeric" label="base2">
+	<value val="1.5"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="base1" exp="Random[17, 19] / 10" />
+<element type="numeric" label="base1">
+	<value val="1.7"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<command name="Random">
+	<input a0="10" a1="15"/>
+	<output a0="CI2"/>
+</command>
+<element type="numeric" label="CI2">
+	<value val="11"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<element type="button" label="botón2">
+	<show object="true" label="true"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<bgColor r="255" g="255" b="0" alpha="255"/>
+	<layer val="0"/>
+	<labelOffset x="160" y="14"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<auxiliary val="true"/>
+	<ggbscript val="contador=2"/>
+	<caption val="Ver Respuesta"/>
+</element>
+<expression label="texto1" exp="&quot;\text{Dos hermanos han decidido depositar en diferentes bancos una } \\&#10;\text{cantidad inicial de dinero }  C_i \text{ (en miles de pesos). El tiempo } T \text{ } \\&#10;\text{(en meses) que debe estar el dinero en el banco para obtener una}  \\&#10;\text{ganancia } G \text{ (en miles de pesos), está dada por la siguiente función}&quot;"/>
+<element type="text" label="texto1">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="17" y="45"/>
+</element>
+<expression label ="contador" exp="1"/>
+<element type="numeric" label="contador">
+	<value val="1"/>
+	<show object="false" label="true"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+	<layer val="0"/>
+	<labelMode val="1"/>
+	<animation step="1" speed="1" type="0" playing="false"/>
+</element>
+<command name="Random">
+	<input a0="16" a1="20"/>
+	<output a0="CI1"/>
+</command>
+<element type="numeric" label="CI1">
+	<value val="16"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="f" exp="f(x) = If[x ≥ 0, (12 * log(base1, (x + CI1) / CI1))]" />
+<element type="function" label="f">
+	<show object="true" label="true" ev="4"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="0" g="100" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<lineStyle thickness="3" type="0" typeHidden="1"/>
+</element>
+<expression label="texto6" exp="&quot;\text{a) Si en el Banco Chile se depositó inicialmente \$&quot; + (LaTeX[CI1]) + &quot;000 y en el \\&#10;Banco Estado \$&quot; + (LaTeX[CI2]) + &quot;000, grafique ambas funciones.}&quot;" />
+<element type="text" label="texto6">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="22" y="243"/>
+</element>
+<command name="Random">
+	<input a0="10" a1="150"/>
+	<output a0="Ganancia1B1"/>
+</command>
+<element type="numeric" label="Ganancia1B1">
+	<value val="11"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="g" exp="g(x) = If[x ≥ 0, (12 * log(base2, (x + CI2) / CI2))]" />
+<element type="function" label="g">
+	<show object="true" label="true" ev="4"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="0" g="0" b="255" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<lineStyle thickness="3" type="0" typeHidden="1"/>
+</element>
+<command name="Random">
+	<input a0="10" a1="150"/>
+	<output a0="Ganancia1B2"/>
+</command>
+<element type="numeric" label="Ganancia1B2">
+	<value val="11"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<command name="Random">
+	<input a0="1" a1="4"/>
+	<output a0="Tiempo1B1"/>
+</command>
+<element type="numeric" label="Tiempo1B1">
+	<value val="3"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="texto4" exp="&quot;\text{d) Si en el Banco Chile mantiene el dinero durante &quot; + (LaTeX[Tiempo1B1]) + &quot; años y medio. \\¿Cuánta ganancia obtendrá?}&quot;" />
+<element type="text" label="texto4">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<startPoint  x="-159.03732921790152" y="13.625416899449146" z="1"/>
+</element>
+<command name="Random">
+	<input a0="12" a1="60"/>
+	<output a0="Tiempo1B2"/>
+</command>
+<element type="numeric" label="Tiempo1B2">
+	<value val="44"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="texto8" exp="&quot;\text{e) Si en el Banco Estado mantiene el dinero durante &quot; + (LaTeX[Tiempo1B2]) + &quot; meses. \\¿Cuánta ganancia obtendrá?}&quot;" />
+<element type="text" label="texto8">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="22" y="487"/>
+</element>
+<expression label="texto3" exp="&quot;\text{b) ¿Cuál es el tiempo mínimo que se debe mantener el ahorro en\\&#10;el Banco Chile para tener una ganancia superior a \$&quot; + (LaTeX[Ganancia1B1]) + &quot;000 ?}&quot;" />
+<element type="text" label="texto3">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="22" y="287"/>
+</element>
+<expression label="texto7" exp="&quot;\text{c) ¿Cuál es el tiempo mínimo que se debe mantener el ahorro \\&#10;en el Banco Estado para tener una ganancia superior a \$ &quot; + (LaTeX[Ganancia1B2]) + &quot;000 ?}&quot;" />
+<element type="text" label="texto7">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="22" y="354"/>
+</element>
+<expression label="Respb" exp="f(Ganancia1B1) - fractionalPart(f(Ganancia1B1)) + 1" />
+<element type="numeric" label="Respb">
+	<value val="12"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="Respc" exp="g(Ganancia1B2) - fractionalPart(g(Ganancia1B2)) + 1" />
+<element type="numeric" label="Respc">
+	<value val="21"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="texto9" exp="&quot;\text{Resp: Al menos &quot; + (LaTeX[Respb]) + &quot; meses}&quot;" />
+<element type="text" label="texto9">
+	<show object="true" label="true" ev="40"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="26" y="332"/>
+</element>
+<expression label="texto10" exp="&quot;\text{Resp: Al menos &quot; + (LaTeX[Respc]) + &quot; meses}&quot;" />
+<element type="text" label="texto10">
+	<show object="true" label="true" ev="40"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="26" y="400"/>
+</element>
+<expression label="y1" exp="(Tiempo1B1 * 12) + 6" />
+<element type="numeric" label="y1">
+	<value val="42"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="y2" exp="Tiempo1B2" />
+<element type="numeric" label="y2">
+	<value val="44"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="x1" exp="(base1^(y1 / 12) * CI1) - CI1" />
+<element type="numeric" label="x1">
+	<value val="86.49229253363396"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="x2" exp="(base2^(y2 / 12) * CI2) - CI2" />
+<element type="numeric" label="x2">
+	<value val="37.647512130002646"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="Respd" exp="round((x1 * 1000))" />
+<element type="numeric" label="Respd">
+	<value val="86492"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="Respe" exp="round((x2 * 1000))" />
+<element type="numeric" label="Respe">
+	<value val="37648"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="texto11" exp="&quot;\text{Resp: Aproximadamente \$&quot; + (LaTeX[Respd]) + &quot; }&quot;" />
+<element type="text" label="texto11">
+	<show object="true" label="true" ev="8"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="31" y="464"/>
+</element>
+<expression label="texto12" exp="&quot;\text{Resp: Aproximadamente \$ &quot; + (LaTeX[Respe]) + &quot;}&quot;" />
+<element type="text" label="texto12">
+	<show object="true" label="true" ev="40"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="31" y="534"/>
+</element>
+<expression label="texto2" exp="&quot;\text{Banco Chile: } T_1(G)=12\log_{&quot; + (LaTeX[base1]) + &quot;}\left (\frac{G+C_i}{C_i} \right)&quot;" />
+<element type="text" label="texto2">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="81" y="138"/>
+</element>
+<expression label="texto5" exp="&quot;\text{Banco Estado: } T_2(G)=12\log_{&quot; + (LaTeX[base2]) + &quot; }\left (\frac{G+C_i}{C_i} \right)&quot;" />
+<element type="text" label="texto5">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="76" y="192"/>
+</element>
+</construction>
+</geogebra>

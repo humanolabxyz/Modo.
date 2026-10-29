@@ -1,0 +1,10 @@
+{
+  "base": "http://127.0.0.1:4327",
+  "checks": [
+    "chromium 320: cinco círculos laterales sin fila adicional; cambian tester/pinza, acompañan el arrastre, caben en pantalla y abren lección, libreta y ajustes",
+    "webkit 390: cinco círculos laterales sin fila adicional; cambian tester/pinza, acompañan el arrastre, caben en pantalla y abren lección, libreta y ajustes",
+    "chromium 820: cinco círculos laterales sin fila adicional; cambian tester/pinza, acompañan el arrastre, caben en pantalla y abren lección, libreta y ajustes",
+    "chromium 1440: cinco círculos laterales sin fila adicional; cambian tester/pinza, acompañan el arrastre, caben en pantalla y abren lección, libreta y ajustes"
+  ],
+  "errors": []
+}

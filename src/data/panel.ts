@@ -14,14 +14,14 @@ const port=(id:string,x:number,y:number,color:ColorName,note?:string,state?:stri
 const source:PanelModule={id:'FUENTE',title:'ALIMENTACIÓN Y TRANSFORMADOR',subtitle:'Transformador 220 / 24 V · 3 A',x:65,y:82,w:585,h:285,image:'/references/suministro.jpg',category:'alimentacion',summary:'Fuentes y puntos de alimentación visibles. No energizar equipos reales sin autorización docente.',labelBands:[['R','S','T'],['N','F']],terminals:[
  port('R',237,230,'blue','Fase R'),port('S',297,230,'black','Fase S'),port('T',357,230,'red','Fase T'),port('N',430,230,'white','Neutro / referencia: conexión interna por confirmar',undefined,'bottom','no_verificado'),port('F',493,230,'red','Borne marcado F: función interna por confirmar',undefined,'bottom','no_verificado'),port('TP',550,242,'green','Tierra de protección')
 ]};
-const btn:PanelModule={id:'BOTONERAS',title:'LUCES PILOTO 24 V A.C. / BOTONERAS',x:712,y:76,w:615,h:300,image:'/references/botoneras.jpg',category:'botoneras',summary:'Cuatro pilotos y tres pulsadores. Pares rojos 1–2; pares claros 3–4. En el pulsador derecho las columnas están invertidas. NA/NC por convención, pendiente de verificación.',labelBands:[1,2,3].flatMap(s=>[[`S${s}:1`,`S${s}:3`],[`S${s}:2`,`S${s}:4`]]),terminals:[
+const btn:PanelModule={id:'BOTONERAS',title:'LUCES PILOTO 24 V A.C. / BOTONERAS',x:712,y:76,w:615,h:300,image:'/references/botoneras.jpg',category:'botoneras',summary:'Cuatro pilotos y tres pulsadores. Pares rojos 1–2; pares claros 3–4. NA/NC por convención, pendiente de verificación.',labelBands:[1,2,3].flatMap(s=>[[`S${s}:1`,`S${s}:3`],[`S${s}:2`,`S${s}:4`]]),terminals:[
  ...[78,228,378,530].map((x,i)=>port(`PILOTO_${i+1}`,x,105,'red',`Conector visible bajo piloto ${i+1}; retorno aún no verificado`,undefined,'bottom','no_verificado')),
  ...[115,303,488].flatMap((cx,i)=>[
- // IMG_4737 and IMG_4536: the right-hand button has its columns reversed.
- port(`S${i+1}:1`,cx+(i===2?29:-29),196,'red',`Pulsador ${i+1} · contacto 1–2`,'NC por convención · por confirmar','bottom','convencion_por_confirmar'),
- port(`S${i+1}:2`,cx+(i===2?29:-29),250,'red',`Pulsador ${i+1} · contacto 1–2`,'NC por convención · por confirmar','bottom','convencion_por_confirmar'),
- port(`S${i+1}:3`,cx+(i===2?-29:29),196,'white',`Pulsador ${i+1} · contacto 3–4`,'NA por convención · por confirmar','bottom','convencion_por_confirmar'),
- port(`S${i+1}:4`,cx+(i===2?-29:29),250,'white',`Pulsador ${i+1} · contacto 3–4`,'NA por convención · por confirmar','bottom','convencion_por_confirmar')
+ // Los tres pulsadores se leen de izquierda a derecha: rojos 1–2 a la izquierda y claros 3–4 a la derecha. (Las fotos IMG_4737 e IMG_4536 muestran el derecho con las columnas invertidas; se normaliza a petición del autor.)
+ port(`S${i+1}:1`,cx-29,196,'red',`Pulsador ${i+1} · contacto 1–2`,'NC por convención · por confirmar','bottom','convencion_por_confirmar'),
+ port(`S${i+1}:2`,cx-29,250,'red',`Pulsador ${i+1} · contacto 1–2`,'NC por convención · por confirmar','bottom','convencion_por_confirmar'),
+ port(`S${i+1}:3`,cx+29,196,'white',`Pulsador ${i+1} · contacto 3–4`,'NA por convención · por confirmar','bottom','convencion_por_confirmar'),
+ port(`S${i+1}:4`,cx+29,250,'white',`Pulsador ${i+1} · contacto 3–4`,'NA por convención · por confirmar','bottom','convencion_por_confirmar')
  ]),
  port('N',571,132,'white','Borne N visible del módulo; conexión interna no verificada',undefined,'bottom','no_verificado'),
  port('TP_IZQ',40,260,'green','Tierra de protección'),port('TP_DER',579,260,'green','Tierra de protección')

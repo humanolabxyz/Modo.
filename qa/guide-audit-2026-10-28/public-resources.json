@@ -1,0 +1,35 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "finalUrl": "https://modo-lab.vercel.app/",
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "sha256": "81b1ed79b01bc12b15554105d2141c2302596391dad9de19b0924a3a9c044ae1",
+    "bytes": 43263,
+    "title": "modo. \u2014 Tu espacio de trabajo"
+  },
+  {
+    "path": "/activities/actividad-2-unidad-2.pdf",
+    "status": 200,
+    "finalUrl": "https://modo-lab.vercel.app/activities/actividad-2-unidad-2.pdf",
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "sha256": "49775a14bcb23af18ac3fb07cfcafa1cf5041cd032e5fe363b0682d2265dc0da",
+    "bytes": 727265
+  },
+  {
+    "path": "/sw.js",
+    "status": 200,
+    "finalUrl": "https://modo-lab.vercel.app/sw.js",
+    "cacheControl": "no-cache",
+    "sha256": "a0a17be3032701619cf63faac7b6c164fbf3e0e6c0521dd8cefcc25bdca9060d",
+    "bytes": 9214
+  },
+  {
+    "path": "/manifest.webmanifest",
+    "status": 200,
+    "finalUrl": "https://modo-lab.vercel.app/manifest.webmanifest",
+    "cacheControl": "no-cache",
+    "sha256": "f2f24af0c9176f67f4851100c48d8183e6d088943b623c2b905e5449a3b3c1cb",
+    "bytes": 679
+  }
+]

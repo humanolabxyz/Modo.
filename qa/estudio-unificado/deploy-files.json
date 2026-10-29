@@ -1,0 +1,2911 @@
+{
+  "framework": {
+    "name": "Astro",
+    "slug": "astro"
+  },
+  "basePath": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP",
+  "fileCount": 450,
+  "totalSize": 109467327,
+  "ignoredCount": 93,
+  "ignored": [
+    ".astro",
+    ".cache",
+    ".env.local",
+    ".git",
+    ".gitignore",
+    ".vercel",
+    "00_FOTOS_DEL_LABORATORIO",
+    "ABRIR_MODO.cmd",
+    "ABRIR_PANELLAB_ACTUAL.cmd",
+    "ABRIR_SIMULADOR.html",
+    "AGENTS.md",
+    "APRENDIZAJE_GUIADO.md",
+    "ASSETS_ESTUDIO_V2.md",
+    "COLOR_DE_CABLES.md",
+    "COMUNIDAD.md",
+    "CONTINUAR_CON_CLAUDE.md",
+    "CONTINUAR_ELECTRODESK_CON_CLAUDE.md",
+    "CORRECCION_KM1.md",
+    "DESPLIEGUE_LECCIONES_2026-10-16.md",
+    "DESPLIEGUE_VERCEL.md",
+    "DIAGRAMA_SENCILLO_Y_ENCHUFE.md",
+    "DIAGRAMA_Y_MATERIA.md",
+    "ENTREGA_DETECTORES.md",
+    "ENTREGA_ESTUDIO_AMPLIACION.md",
+    "ENTREGA_ESTUDIO_PROTECCIONES.md",
+    "ENTREGA_ESTUDIO_VISUAL.md",
+    "ENTREGA_GEOGEBRA_ESTUDIO.md",
+    "ENTREGA_INTERFAZ_ESTUDIO.md",
+    "ENTREGA_LABORATORIO_TABLET.md",
+    "ENTREGA_LECCIONES_COMPRENSION.md",
+    "ENTREGA_LECCIONES_ESTRELLA_TRIANGULO.md",
+    "ENTREGA_MODO.md",
+    "ENTREGA_MOVIL_VERTICAL.md",
+    "ENTREGA_RENDIMIENTO_SIMULACION.md",
+    "ENTREGA_TEMPERATURA.md",
+    "ENTREGA_UNIDAD_2.md",
+    "ENTREGA_V1_1.md",
+    "ENTREGA_V2.md",
+    "ENTREGA_VENTANAS_PRUEBA.md",
+    "ENTREGA_VENTILADOR_Y_VENTANAS.md",
+    "EQUIPOS_ELECTRICOS_ADAPTADOS.md",
+    "ESPECIFICACION_GENERAL.md",
+    "ESTRELLA_TRIANGULO.md",
+    "ESTUDIO_INTERACTIVO.md",
+    "FOTOS_LOTO_Y_GRABACION.md",
+    "HERRAMIENTAS_Y_CADE.md",
+    "HISTORIAL_Y_PANEL_JSON.md",
+    "INSTRUCCION_CODEX.md",
+    "INSTRUCCION_CODEX_V1_1.md",
+    "INVENTARIO_ORIGINAL.json",
+    "LABORATORIO_INTEGRADO.md",
+    "LEEME_PRIMERO.md",
+    "LICENSE.md",
+    "LIENZO_Y_MOVIMIENTO.md",
+    "LIMPIEZA_INTERFAZ.md",
+    "MANIFIESTO_PAQUETE.json",
+    "MEJORAS_CONTENIDO_ESTUDIO.md",
+    "MEJORAS_ESTUDIO_V2.md",
+    "MODO_MOVIL_PWA.md",
+    "PANELES_ADICIONALES.md",
+    "PANEL_LAB_INACAP.html",
+    "PEGAR_A_CODEX_CON_FOTOS.txt",
+    "PEGAR_EN_CODEX.txt",
+    "PIZARRON_PRACTICO.md",
+    "PROTECCION_HUMANO_LAB.md",
+    "PRUEBAS_Y_APROBACION_V1_1.md",
+    "PUBLICACION_EQUIPOS_ELECTRICOS.md",
+    "README.md",
+    "README_INICIO_AQUI.md",
+    "RECORRIDOS_CADE.md",
+    "REFERENCIAS_FOTOGRAFICAS_V1_1.md",
+    "RENDIMIENTO_APERTURA.md",
+    "RENDIMIENTO_COMUNIDAD.md",
+    "REVISION_ESTUDIO_V4.md",
+    "REVISION_ESTUDIO_V7.md",
+    "REVISION_MATERIA_PROFESOR_V6.md",
+    "REVISION_ROTULOS.md",
+    "REVISION_SIMBOLOGIA_ESTUDIO.md",
+    "SIMULACION_MANDO.md",
+    "TABLA_DE_BORNES.csv",
+    "TABLA_TECNICA_PANEL_V1_1.md",
+    "TABLERO_ACOPLABLE_Y_MOTOR.md",
+    "VERIFICACION_VERCEL_2026-10-15.md",
+    "analisis-materias-2026-10-17",
+    "dist",
+    "docs",
+    "node_modules",
+    "offline",
+    "panellab-local.log",
+    "qa",
+    "referencias",
+    "scripts",
+    "video-tutorial"
+  ],
+  "directories": [
+    {
+      "path": "public",
+      "fileCount": 169,
+      "size": 106562475
+    },
+    {
+      "path": "src",
+      "fileCount": 275,
+      "size": 2755115
+    },
+    {
+      "path": "package-lock.json",
+      "fileCount": 1,
+      "size": 138435
+    },
+    {
+      "path": "astro.config.mjs",
+      "fileCount": 1,
+      "size": 4470
+    },
+    {
+      "path": "package.json",
+      "fileCount": 1,
+      "size": 3259
+    },
+    {
+      "path": "vercel.json",
+      "fileCount": 1,
+      "size": 3161
+    },
+    {
+      "path": ".vercelignore",
+      "fileCount": 1,
+      "size": 255
+    },
+    {
+      "path": "tsconfig.json",
+      "fileCount": 1,
+      "size": 157
+    }
+  ],
+  "largestFiles": [
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-1.mp4",
+      "size": 11993909,
+      "mode": 33206,
+      "sha": "4270c0463ba4a42fbd9774ad2cbc58944574ebd9"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-1.mp4",
+      "size": 10709112,
+      "mode": 33206,
+      "sha": "3a200ca84ce29b0553f79f5f4b61487c29c92494"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-2.mp4",
+      "size": 10577048,
+      "mode": 33206,
+      "sha": "0f77f682c9ed52f666b1179b8952dd9474d15f3a"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-2.mp4",
+      "size": 9082876,
+      "mode": 33206,
+      "sha": "6696d825c388dd89b75585bbdeec5ad552a477f1"
+    },
+    {
+      "path": "public/estudio/fuentes/F33.pdf",
+      "size": 3006468,
+      "mode": 33206,
+      "sha": "1a7337dfcc837c7abb1522cbbf7af198b214579a"
+    },
+    {
+      "path": "public/estudio/fuentes/F14.pptx",
+      "size": 2482856,
+      "mode": 33206,
+      "sha": "187836c111015f831c4e0dc2ca0144635c656c1b"
+    },
+    {
+      "path": "public/estudio/fuentes/F19.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-lineales.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    },
+    {
+      "path": "public/estudio/fuentes/F37.pdf",
+      "size": 1749286,
+      "mode": 33206,
+      "sha": "a22795e8c900c7ad8dc22059c34f3ec6685d537f"
+    },
+    {
+      "path": "public/estudio/fuentes/F21.pdf",
+      "size": 1740233,
+      "mode": 33206,
+      "sha": "c2ce6c841e493e8218c017e7980b8328ecf3ded4"
+    }
+  ],
+  "files": [
+    {
+      "path": ".vercelignore",
+      "size": 255,
+      "mode": 33206,
+      "sha": "bc0251d68361f087ee39db8d8f010e83c7117418"
+    },
+    {
+      "path": "astro.config.mjs",
+      "size": 4470,
+      "mode": 33206,
+      "sha": "bda4fc30d5fb4b86c5263ab753414fcf738ddaab"
+    },
+    {
+      "path": "package-lock.json",
+      "size": 138435,
+      "mode": 33206,
+      "sha": "8b0cf5853d97e835dffda2b4bc9d8840cbbfd809"
+    },
+    {
+      "path": "package.json",
+      "size": 3259,
+      "mode": 33206,
+      "sha": "59346ea21da95bc2cac74059a481397619adbfe0"
+    },
+    {
+      "path": "public/brand/apple-touch-icon.png",
+      "size": 4229,
+      "mode": 33206,
+      "sha": "2396268440b941ceb1bbb84ac14baa2d4b5ddad6"
+    },
+    {
+      "path": "public/brand/favicon.ico",
+      "size": 2797,
+      "mode": 33206,
+      "sha": "3ea60ce31f8737d566733bd5faaab8683fc67055"
+    },
+    {
+      "path": "public/brand/icono-app-128.png",
+      "size": 3059,
+      "mode": 33206,
+      "sha": "4bbef7fac42ecc0e11cd500679b4a550daa1092c"
+    },
+    {
+      "path": "public/brand/icono-app-16.png",
+      "size": 390,
+      "mode": 33206,
+      "sha": "ec5e77fb9fb3bc8c3071fee5cd257db526ae057c"
+    },
+    {
+      "path": "public/brand/icono-app-180.png",
+      "size": 4229,
+      "mode": 33206,
+      "sha": "2396268440b941ceb1bbb84ac14baa2d4b5ddad6"
+    },
+    {
+      "path": "public/brand/icono-app-192.png",
+      "size": 4525,
+      "mode": 33206,
+      "sha": "e9e2ded2489955a72ebff19e4597d27799d659b8"
+    },
+    {
+      "path": "public/brand/icono-app-256.png",
+      "size": 6186,
+      "mode": 33206,
+      "sha": "09517975d55e8701c02244913d2180894c2af4ec"
+    },
+    {
+      "path": "public/brand/icono-app-32.png",
+      "size": 745,
+      "mode": 33206,
+      "sha": "b34fd36b1cff5eb23e6a60851acac48902a7196b"
+    },
+    {
+      "path": "public/brand/icono-app-48.png",
+      "size": 1145,
+      "mode": 33206,
+      "sha": "4810ace3f22785dac581d1ea6489f0eae4e7e0ba"
+    },
+    {
+      "path": "public/brand/icono-app-512.png",
+      "size": 13833,
+      "mode": 33206,
+      "sha": "ee98395e2414bcd7d7a4f1f51c9fe980d31b62c5"
+    },
+    {
+      "path": "public/brand/icono-app-64.png",
+      "size": 1525,
+      "mode": 33206,
+      "sha": "ed3a923a4bc873cc73f068643018338ed11074af"
+    },
+    {
+      "path": "public/brand/icono-app-96.png",
+      "size": 2292,
+      "mode": 33206,
+      "sha": "29e59e4e36ecd12ffd14d377a4a9d21813b26aa0"
+    },
+    {
+      "path": "public/brand/icono-app-claro-512.png",
+      "size": 12834,
+      "mode": 33206,
+      "sha": "12c382f7076c7ef8e3647352713c206946aad084"
+    },
+    {
+      "path": "public/brand/icono-app-verde-512.png",
+      "size": 13646,
+      "mode": 33206,
+      "sha": "96987d60f1ea59b1c9f8fd168cf33b58fc148452"
+    },
+    {
+      "path": "public/brand/icono-maskable-192.png",
+      "size": 2458,
+      "mode": 33206,
+      "sha": "8764baebb72d837233c0bf2204d6700a8ab7e243"
+    },
+    {
+      "path": "public/brand/icono-maskable-512.png",
+      "size": 7406,
+      "mode": 33206,
+      "sha": "ded5762104692ef3bf6901c52e05c4de60edd454"
+    },
+    {
+      "path": "public/brand/modo-app-claro.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "a2df75c79b8a15f52cee8937c2fc5e0b20275601"
+    },
+    {
+      "path": "public/brand/modo-app-oscuro.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "d9c202a66b4a88a0a0054395d7b1c75f45a67590"
+    },
+    {
+      "path": "public/brand/modo-app-verde.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "733f85196548df1e546f8d97f964f295ac02729d"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-blanco-mono.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "9457c87ace616ec8aa5c11dc0b0f0f7638c2a5e5"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-blanco.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "ce2459bbfc7473d569785759ab6be149fbadfb70"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-color.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "d202d87551322cacfb3d09b5ccc1485c9df414d5"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-negro.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "3ae6a8dc9e7d28d2f8efe86c16e84cc4803c6ebd"
+    },
+    {
+      "path": "public/brand/modo-logo-vertical-blanco.svg",
+      "size": 1640,
+      "mode": 33206,
+      "sha": "2e6628c9c6203de9b44c5673df2e2eb696aecee7"
+    },
+    {
+      "path": "public/brand/modo-logo-vertical-color.svg",
+      "size": 1640,
+      "mode": 33206,
+      "sha": "91dbd5dfc98669b1148abed261d1adbe968d2708"
+    },
+    {
+      "path": "public/brand/modo-logotipo-blanco.svg",
+      "size": 1502,
+      "mode": 33206,
+      "sha": "d3de248670e21f0140eeefde9175efb31f28cd94"
+    },
+    {
+      "path": "public/brand/modo-logotipo-color.svg",
+      "size": 1502,
+      "mode": 33206,
+      "sha": "03fb82864abb0432949b879b662cc5509ac82326"
+    },
+    {
+      "path": "public/brand/modo-logotipo-negro.svg",
+      "size": 1502,
+      "mode": 33206,
+      "sha": "86bb44f96d0b6fb2850bb6e9e65e7fe97e17ba45"
+    },
+    {
+      "path": "public/brand/modo-maskable-oscuro.svg",
+      "size": 364,
+      "mode": 33206,
+      "sha": "354850022c7e070ca40719f95504bf8855895c37"
+    },
+    {
+      "path": "public/brand/modo-simbolo-blanco.svg",
+      "size": 285,
+      "mode": 33206,
+      "sha": "6bac01debd3500befc71dce760a5082d30375dbb"
+    },
+    {
+      "path": "public/brand/modo-simbolo-negro.svg",
+      "size": 285,
+      "mode": 33206,
+      "sha": "5dcd39579b3d91189fc639796a001fc04d27db64"
+    },
+    {
+      "path": "public/brand/modo-simbolo-verde.svg",
+      "size": 285,
+      "mode": 33206,
+      "sha": "e03c127d8c5cdff5f9ee7425c0a859cb27b1cd78"
+    },
+    {
+      "path": "public/brand/og-modo.jpg",
+      "size": 128351,
+      "mode": 33206,
+      "sha": "77c6503b9cafd1cd6a7ee9269ac9049288f0f98c"
+    },
+    {
+      "path": "public/diagrams/clase-1.jpg",
+      "size": 352812,
+      "mode": 33206,
+      "sha": "f9595f568a3d8afe159a475b2f711bf9a48066ff"
+    },
+    {
+      "path": "public/diagrams/clase-2.jpg",
+      "size": 370245,
+      "mode": 33206,
+      "sha": "a62721013e43c8328b1b24b4fd6372c7ed4f9d90"
+    },
+    {
+      "path": "public/diagrams/clase-3.jpg",
+      "size": 375927,
+      "mode": 33206,
+      "sha": "4d87d4ab005c5a00cd8f59c28ab4076a257825f2"
+    },
+    {
+      "path": "public/diagrams/clase-4-l293d-pines.webp",
+      "size": 60944,
+      "mode": 33206,
+      "sha": "f5508fcacc3537c4f478204943354117329e3e0c"
+    },
+    {
+      "path": "public/diagrams/clase-4-practica-1-transistores.webp",
+      "size": 71534,
+      "mode": 33206,
+      "sha": "7119692eb92f7e930ed5bcc32492987f2499ae3e"
+    },
+    {
+      "path": "public/diagrams/clase-4-practica-2-l293d.webp",
+      "size": 25122,
+      "mode": 33206,
+      "sha": "0da5451a5d599e78bd5046e7282c18f1fd2bfa08"
+    },
+    {
+      "path": "public/diagrams/leccion-estrella-manual.png",
+      "size": 58867,
+      "mode": 33206,
+      "sha": "f2d95426dd2dc11ba1b15592bd388e1a7a5a7c3a"
+    },
+    {
+      "path": "public/diagrams/leccion-estrella-temporizador.png",
+      "size": 58867,
+      "mode": 33206,
+      "sha": "f2d95426dd2dc11ba1b15592bd388e1a7a5a7c3a"
+    },
+    {
+      "path": "public/diagrams/leccion-inversion-giro.png",
+      "size": 139479,
+      "mode": 33206,
+      "sha": "e89c9e87f48b5ef9a767e44bb1318297a9043a3e"
+    },
+    {
+      "path": "public/diagrams/leccion-marcha-paro.png",
+      "size": 156598,
+      "mode": 33206,
+      "sha": "810b7356489998ec7402ddb3883350e0ca8c4a6e"
+    },
+    {
+      "path": "public/diagrams/PERFECTO.cad",
+      "size": 6111,
+      "mode": 33206,
+      "sha": "dc978f21891f94541e8587135be61b7dbfa2c993"
+    },
+    {
+      "path": "public/estudio/assets/fusibles-v2.webp",
+      "size": 223008,
+      "mode": 33206,
+      "sha": "e4dbbfa4bb8c0f0d8ecaef8832c2a7e490191b0f"
+    },
+    {
+      "path": "public/estudio/assets/lamina-04.png",
+      "size": 306736,
+      "mode": 33206,
+      "sha": "b6f7dff49d515472a56b8c14c33b671845ca8451"
+    },
+    {
+      "path": "public/estudio/assets/lamina-06.png",
+      "size": 60660,
+      "mode": 33206,
+      "sha": "c2685b14a5f851261b9f722ba47281983b38d71e"
+    },
+    {
+      "path": "public/estudio/assets/lamina-08.png",
+      "size": 232682,
+      "mode": 33206,
+      "sha": "078422c6ce03d26848a90ff79451279c027c4d19"
+    },
+    {
+      "path": "public/estudio/assets/lamina-10.png",
+      "size": 323670,
+      "mode": 33206,
+      "sha": "d364ffd89f61aa0097d0a8768f2d94b2b7f758dd"
+    },
+    {
+      "path": "public/estudio/assets/lamina-12.png",
+      "size": 90094,
+      "mode": 33206,
+      "sha": "cc2962535b16cde94ffc555ba4b4749a2d04c524"
+    },
+    {
+      "path": "public/estudio/assets/lamina-13.png",
+      "size": 77612,
+      "mode": 33206,
+      "sha": "e4cef73288c9e8f18a0748bb1fad9204237b3217"
+    },
+    {
+      "path": "public/estudio/assets/lamina-14.png",
+      "size": 277513,
+      "mode": 33206,
+      "sha": "13bed161cf08cc2d9330602e9db1332a6a9752e2"
+    },
+    {
+      "path": "public/estudio/assets/lamina-15.png",
+      "size": 334595,
+      "mode": 33206,
+      "sha": "93d52c8c4861eb2922e49269f875698e6dd1ceb5"
+    },
+    {
+      "path": "public/estudio/assets/motor-v2.webp",
+      "size": 326942,
+      "mode": 33206,
+      "sha": "04144963350461774e11286e2775c1f9be09cadd"
+    },
+    {
+      "path": "public/estudio/assets/spd-diferencial-v2.webp",
+      "size": 134472,
+      "mode": 33206,
+      "sha": "b3c022febbae6f4cf7e8749d549aa123a7dccc41"
+    },
+    {
+      "path": "public/estudio/assets/termomagnetico-v2.webp",
+      "size": 100788,
+      "mode": 33206,
+      "sha": "aa4ef9bc2b71734ed92997ce012171f9383d3fde"
+    },
+    {
+      "path": "public/estudio/fotos/01_tablero_electrico.jpg",
+      "size": 491383,
+      "mode": 33206,
+      "sha": "baa5a3c98309330beca9db7eb755d7511f097f1d"
+    },
+    {
+      "path": "public/estudio/fotos/02_motor_electrico.jpg",
+      "size": 147500,
+      "mode": 33206,
+      "sha": "9f8c48546202d435e4b236dd63259e9e7fa95948"
+    },
+    {
+      "path": "public/estudio/fotos/03_arco_electrico.jpg",
+      "size": 94947,
+      "mode": 33206,
+      "sha": "e042765bb409c9a2736900cd25df39a3c70a2566"
+    },
+    {
+      "path": "public/estudio/fotos/04_interruptor_termomagnetico.jpg",
+      "size": 68586,
+      "mode": 33206,
+      "sha": "81fd9348e8fd1b7d187647d79ef7ab40d20aa794"
+    },
+    {
+      "path": "public/estudio/fotos/05_fusibles.jpg",
+      "size": 132816,
+      "mode": 33206,
+      "sha": "10d8c8f523cffd5e5c909b6b44d70b45a18dab46"
+    },
+    {
+      "path": "public/estudio/fotos/06_spd_y_diferencial.jpg",
+      "size": 83758,
+      "mode": 33206,
+      "sha": "c613dd803066ca655025f9241363399730c1acf8"
+    },
+    {
+      "path": "public/estudio/fotos/07_motor_trifasico.jpg",
+      "size": 145227,
+      "mode": 33206,
+      "sha": "164edd9ec0909d3a2fd7eedd6d7a2017f066163c"
+    },
+    {
+      "path": "public/estudio/fuentes/F01.pdf",
+      "size": 516304,
+      "mode": 33206,
+      "sha": "3c15f11480db8b29d617a174ce67822136d9099f"
+    },
+    {
+      "path": "public/estudio/fuentes/F02.pdf",
+      "size": 1371059,
+      "mode": 33206,
+      "sha": "db8b70fdb0bca137acb981eaac0918179b16c813"
+    },
+    {
+      "path": "public/estudio/fuentes/F03.pdf",
+      "size": 1235954,
+      "mode": 33206,
+      "sha": "eb87007e9dcaf050fa2f1d3c132c3d23b6b21706"
+    },
+    {
+      "path": "public/estudio/fuentes/F04.pdf",
+      "size": 1355494,
+      "mode": 33206,
+      "sha": "fa05a810f001fc50b17e4489e167a17e4fdd7b3b"
+    },
+    {
+      "path": "public/estudio/fuentes/F05.pdf",
+      "size": 1140992,
+      "mode": 33206,
+      "sha": "e504500280cf85be847ce9cea08f44bb3541d591"
+    },
+    {
+      "path": "public/estudio/fuentes/F06.pdf",
+      "size": 1111703,
+      "mode": 33206,
+      "sha": "35d90a3f11eedc93dd4103ce0dca785c9c5f9beb"
+    },
+    {
+      "path": "public/estudio/fuentes/F07.pdf",
+      "size": 404062,
+      "mode": 33206,
+      "sha": "a48edd03fb41b732dde8f36d54072890c646057e"
+    },
+    {
+      "path": "public/estudio/fuentes/F08.png",
+      "size": 416439,
+      "mode": 33206,
+      "sha": "b69cf97a616a2e8ab8bbe524416c55fc0ca1eac6"
+    },
+    {
+      "path": "public/estudio/fuentes/F09.png",
+      "size": 447503,
+      "mode": 33206,
+      "sha": "24e12dbc6298405f4cf185b61e629ae729103923"
+    },
+    {
+      "path": "public/estudio/fuentes/F10.pdf",
+      "size": 1626983,
+      "mode": 33206,
+      "sha": "9c7ffdd8e43d6f7df788a494a5845b2e1c355c14"
+    },
+    {
+      "path": "public/estudio/fuentes/F11.pdf",
+      "size": 1547600,
+      "mode": 33206,
+      "sha": "3635eea7cde6307e8320423b95d088efa67b0350"
+    },
+    {
+      "path": "public/estudio/fuentes/F12.pdf",
+      "size": 1031901,
+      "mode": 33206,
+      "sha": "36250c8c258bd2b8ebc7138eb99a5209b18e7022"
+    },
+    {
+      "path": "public/estudio/fuentes/F13.txt",
+      "size": 200,
+      "mode": 33206,
+      "sha": "d5837fc2bff864e5c161887b3c145147320c89c6"
+    },
+    {
+      "path": "public/estudio/fuentes/F14.pptx",
+      "size": 2482856,
+      "mode": 33206,
+      "sha": "187836c111015f831c4e0dc2ca0144635c656c1b"
+    },
+    {
+      "path": "public/estudio/fuentes/F15.docx",
+      "size": 20854,
+      "mode": 33206,
+      "sha": "766df2cc2b2f570ae4121d22785494393b40e7b6"
+    },
+    {
+      "path": "public/estudio/fuentes/F16.xlsx",
+      "size": 22456,
+      "mode": 33206,
+      "sha": "49362b4c85de32959e920aec1888ba4b7eea649e"
+    },
+    {
+      "path": "public/estudio/fuentes/F17.png",
+      "size": 445661,
+      "mode": 33206,
+      "sha": "5c489c030c7f433b2b0e802f6dab3f880afaa3df"
+    },
+    {
+      "path": "public/estudio/fuentes/F18.docx",
+      "size": 57666,
+      "mode": 33206,
+      "sha": "979aea0745b44255a1bcc3ae506a0e263f420354"
+    },
+    {
+      "path": "public/estudio/fuentes/F19.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    },
+    {
+      "path": "public/estudio/fuentes/F20.pdf",
+      "size": 1438301,
+      "mode": 33206,
+      "sha": "df5c0b14136aaa3a308b23a44685f04ac3a40f5c"
+    },
+    {
+      "path": "public/estudio/fuentes/F21.pdf",
+      "size": 1740233,
+      "mode": 33206,
+      "sha": "c2ce6c841e493e8218c017e7980b8328ecf3ded4"
+    },
+    {
+      "path": "public/estudio/fuentes/F22.pdf",
+      "size": 527372,
+      "mode": 33206,
+      "sha": "97a84108c1df95045eb9602bc01b22a21cc475fa"
+    },
+    {
+      "path": "public/estudio/fuentes/F23.pdf",
+      "size": 508344,
+      "mode": 33206,
+      "sha": "b033a75dbeb7e7f2def6860c19bb1241763985c5"
+    },
+    {
+      "path": "public/estudio/fuentes/F24.pdf",
+      "size": 457105,
+      "mode": 33206,
+      "sha": "613d129b3ea92613bc43e1d8a0162f704dfd37c2"
+    },
+    {
+      "path": "public/estudio/fuentes/F25.pdf",
+      "size": 446208,
+      "mode": 33206,
+      "sha": "74859cb890725d807ed131263974003824f86e10"
+    },
+    {
+      "path": "public/estudio/fuentes/F26.txt",
+      "size": 154,
+      "mode": 33206,
+      "sha": "3306dc57f3efcec7ff0ce56fff8607a05d58ac46"
+    },
+    {
+      "path": "public/estudio/fuentes/F27.txt",
+      "size": 193,
+      "mode": 33206,
+      "sha": "90e0e10708aa20a21c4c5ba04cc68f507aec13de"
+    },
+    {
+      "path": "public/estudio/fuentes/F28.png",
+      "size": 666782,
+      "mode": 33206,
+      "sha": "913134257fdb79c98153474462a9c1a7e993561f"
+    },
+    {
+      "path": "public/estudio/fuentes/F29.pdf",
+      "size": 608683,
+      "mode": 33206,
+      "sha": "90ab53968cfb6e023cfca5a3bd73cbabd5dd2c3d"
+    },
+    {
+      "path": "public/estudio/fuentes/F30.pdf",
+      "size": 542680,
+      "mode": 33206,
+      "sha": "c4369088b18cc5e9e05b93baf2215f7b37a06d43"
+    },
+    {
+      "path": "public/estudio/fuentes/F31.pdf",
+      "size": 556936,
+      "mode": 33206,
+      "sha": "0c186712b79ed05ffac1d8e888785e144b4c5abf"
+    },
+    {
+      "path": "public/estudio/fuentes/F32.pdf",
+      "size": 597640,
+      "mode": 33206,
+      "sha": "4750100e0e6a44eeda1eaa3c494448ead2209846"
+    },
+    {
+      "path": "public/estudio/fuentes/F33.pdf",
+      "size": 3006468,
+      "mode": 33206,
+      "sha": "1a7337dfcc837c7abb1522cbbf7af198b214579a"
+    },
+    {
+      "path": "public/estudio/fuentes/F34.pdf",
+      "size": 809161,
+      "mode": 33206,
+      "sha": "2bb4e38659d045a3d9447e401b289e4753a1b889"
+    },
+    {
+      "path": "public/estudio/fuentes/F35.pdf",
+      "size": 199112,
+      "mode": 33206,
+      "sha": "9b7ce63d203b07a76aca4340e5202987e5c5e477"
+    },
+    {
+      "path": "public/estudio/fuentes/F36.png",
+      "size": 398490,
+      "mode": 33206,
+      "sha": "d3477ebb10897b1c9236378ce4aac19a1dfc637b"
+    },
+    {
+      "path": "public/estudio/fuentes/F37.pdf",
+      "size": 1749286,
+      "mode": 33206,
+      "sha": "a22795e8c900c7ad8dc22059c34f3ec6685d537f"
+    },
+    {
+      "path": "public/estudio/fuentes/F38.pdf",
+      "size": 556553,
+      "mode": 33206,
+      "sha": "4e7eeafe3d1a904dd4c0962759bf6bd969efef0b"
+    },
+    {
+      "path": "public/estudio/fuentes/F39.pdf",
+      "size": 438974,
+      "mode": 33206,
+      "sha": "2973259fac2fd18f20dee35b801ee729b36bdda5"
+    },
+    {
+      "path": "public/estudio/fuentes/I01.pdf",
+      "size": 502202,
+      "mode": 33206,
+      "sha": "967f7e3335cc64c65879c645fffee181b49362f3"
+    },
+    {
+      "path": "public/estudio/fuentes/I02.pdf",
+      "size": 1030605,
+      "mode": 33206,
+      "sha": "aed7866758ceef98280987c16bd764d128d06449"
+    },
+    {
+      "path": "public/estudio/fuentes/I03.pdf",
+      "size": 908979,
+      "mode": 33206,
+      "sha": "7013c64effd85a274fb7f0e5341ecccb68a70ea4"
+    },
+    {
+      "path": "public/estudio/fuentes/I04.pdf",
+      "size": 680948,
+      "mode": 33206,
+      "sha": "eeb9bfd4f2f5ffab39e510f84d5dab175ca804bf"
+    },
+    {
+      "path": "public/estudio/fuentes/I05.pdf",
+      "size": 550886,
+      "mode": 33206,
+      "sha": "aaa3009e15f07020bec1d5786d91af6a52c2d2ad"
+    },
+    {
+      "path": "public/estudio/fuentes/I06.pdf",
+      "size": 499919,
+      "mode": 33206,
+      "sha": "b4a46687eec40673e2337986df319490dd56b3fa"
+    },
+    {
+      "path": "public/estudio/fuentes/I07.pdf",
+      "size": 1236490,
+      "mode": 33206,
+      "sha": "61dfba84249b708a5da593288ff6a194e74f9234"
+    },
+    {
+      "path": "public/estudio/fuentes/I08.pdf",
+      "size": 428277,
+      "mode": 33206,
+      "sha": "25a51dda96b5d267a4f0d5cd932e06a2b9c8ecf7"
+    },
+    {
+      "path": "public/estudio/instrumentacion/guia-detectores-g01.docx",
+      "size": 114952,
+      "mode": 33206,
+      "sha": "6173f1a2f51d128810d8c0a67a4f315cbeb66c89"
+    },
+    {
+      "path": "public/estudio/instrumentacion/guia-proximidad-plc-g02.docx",
+      "size": 70390,
+      "mode": 33206,
+      "sha": "fe7313f55fbc642c83d5fd4b00c38c91eba627c5"
+    },
+    {
+      "path": "public/estudio/instrumentacion/guia-temperatura-g03.docx",
+      "size": 78141,
+      "mode": 33206,
+      "sha": "6e3ba566026aa08258333e49f9b8f6d5481da43c"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-cuadraticas.pdf",
+      "size": 1740233,
+      "mode": 33206,
+      "sha": "c2ce6c841e493e8218c017e7980b8328ecf3ded4"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-lineales.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-logaritmicas.pdf",
+      "size": 1438301,
+      "mode": 33206,
+      "sha": "df5c0b14136aaa3a308b23a44685f04ac3a40f5c"
+    },
+    {
+      "path": "public/estudio/profesor.pdf",
+      "size": 1658593,
+      "mode": 33206,
+      "sha": "c8ab27bdae8552dacde5326b56dd92813ea4d228"
+    },
+    {
+      "path": "public/fonts/INTER-LICENSE.txt",
+      "size": 4380,
+      "mode": 33206,
+      "sha": "174b037934980ddcad39144da3ce7b0f9d73546c"
+    },
+    {
+      "path": "public/fonts/InterVariable.woff2",
+      "size": 105968,
+      "mode": 33206,
+      "sha": "8806db8cea32cdc426ebb4da3f329a97650496c5"
+    },
+    {
+      "path": "public/fonts/SOURCE-SANS-LICENSE.md",
+      "size": 4486,
+      "mode": 33206,
+      "sha": "f5e261a9c5aa2833520c9bedc2e0ac0f867cfb39"
+    },
+    {
+      "path": "public/fonts/SourceSans3-Bold.woff2",
+      "size": 31120,
+      "mode": 33206,
+      "sha": "50101947f3b04abb39eae501579ff2e641f5adc8"
+    },
+    {
+      "path": "public/fonts/SourceSans3-Regular.woff2",
+      "size": 31264,
+      "mode": 33206,
+      "sha": "e21b42670ff6ff9a03bbbc6158c13887e4aeb4b7"
+    },
+    {
+      "path": "public/fonts/SourceSans3-Semibold.woff2",
+      "size": 31196,
+      "mode": 33206,
+      "sha": "e4cc5a523e6f77a0fcb6d5fe03825ef948750b9c"
+    },
+    {
+      "path": "public/geogebra-frame.html",
+      "size": 376,
+      "mode": 33206,
+      "sha": "83e0014a7eafc967d21bffe926ea449bb9c7c166"
+    },
+    {
+      "path": "public/icons/apple-touch-icon.png",
+      "size": 4229,
+      "mode": 33206,
+      "sha": "2396268440b941ceb1bbb84ac14baa2d4b5ddad6"
+    },
+    {
+      "path": "public/icons/icon-192.png",
+      "size": 4525,
+      "mode": 33206,
+      "sha": "e9e2ded2489955a72ebff19e4597d27799d659b8"
+    },
+    {
+      "path": "public/icons/icon-512.png",
+      "size": 13833,
+      "mode": 33206,
+      "sha": "ee98395e2414bcd7d7a4f1f51c9fe980d31b62c5"
+    },
+    {
+      "path": "public/icons/icon-maskable-512.png",
+      "size": 7406,
+      "mode": 33206,
+      "sha": "ded5762104692ef3bf6901c52e05c4de60edd454"
+    },
+    {
+      "path": "public/icons/icon.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "d9c202a66b4a88a0a0054395d7b1c75f45a67590"
+    },
+    {
+      "path": "public/images/modo/bornes-1024.webp",
+      "size": 43392,
+      "mode": 33206,
+      "sha": "9424e5f61bfdf274d4fc43e2b93531c97e03c582"
+    },
+    {
+      "path": "public/images/modo/bornes-640.webp",
+      "size": 25072,
+      "mode": 33206,
+      "sha": "4b1c8ab16db109602e8c33e7c253bc813cbae247"
+    },
+    {
+      "path": "public/images/modo/bornes.webp",
+      "size": 96652,
+      "mode": 33206,
+      "sha": "a9507ac4d973ee387a06f0aeb92c95753baafa14"
+    },
+    {
+      "path": "public/images/modo/laboratorio-1024.webp",
+      "size": 59652,
+      "mode": 33206,
+      "sha": "cbd47796faa7d742f6fa27a31df28359570f0a73"
+    },
+    {
+      "path": "public/images/modo/laboratorio-640.webp",
+      "size": 33256,
+      "mode": 33206,
+      "sha": "4de7242340f96e00f4f570f89e5b387c5b530539"
+    },
+    {
+      "path": "public/images/modo/laboratorio.webp",
+      "size": 130070,
+      "mode": 33206,
+      "sha": "418f83550355929ff45a0de3527d4574d5996597"
+    },
+    {
+      "path": "public/images/modo/protecciones-1024.webp",
+      "size": 56612,
+      "mode": 33206,
+      "sha": "c591aaf96ec4ac66734508096c9cebd8a6a7f929"
+    },
+    {
+      "path": "public/images/modo/protecciones-640.webp",
+      "size": 30684,
+      "mode": 33206,
+      "sha": "256a17a1d25b323eef77b957b4f4787b6730ec0b"
+    },
+    {
+      "path": "public/images/modo/protecciones.webp",
+      "size": 130562,
+      "mode": 33206,
+      "sha": "65cfeae866fd932e5f9afcd1f09c1466e10a85ec"
+    },
+    {
+      "path": "public/manifest.webmanifest",
+      "size": 694,
+      "mode": 33206,
+      "sha": "d7df4017ec110d369693ca0f217be1b2ca7dbc72"
+    },
+    {
+      "path": "public/materiales/actividad-1-u2.pdf",
+      "size": 1626983,
+      "mode": 33206,
+      "sha": "9c7ffdd8e43d6f7df788a494a5845b2e1c355c14"
+    },
+    {
+      "path": "public/materiales/bornes-estrella.png",
+      "size": 103769,
+      "mode": 33206,
+      "sha": "949ccab3b2bee1103a8285ff8df3f876cc9e80a7"
+    },
+    {
+      "path": "public/materiales/bornes-triangulo.png",
+      "size": 111919,
+      "mode": 33206,
+      "sha": "16b8f32f224fbf8db474e6e6b8e8415c98fb60a5"
+    },
+    {
+      "path": "public/materiales/circuito-fuerza.png",
+      "size": 12812,
+      "mode": 33206,
+      "sha": "8ae02a98de5073437ba8f2160dd9b28b21126cc6"
+    },
+    {
+      "path": "public/materiales/circuito-mando.png",
+      "size": 170391,
+      "mode": 33206,
+      "sha": "19b30c7a600825f48d2086a87887e83367e22570"
+    },
+    {
+      "path": "public/materiales/prueba-partida-directa.png",
+      "size": 907355,
+      "mode": 33206,
+      "sha": "dd148ca870a47a95bb938c28f241b8a93a631703"
+    },
+    {
+      "path": "public/panel-model.json",
+      "size": 32342,
+      "mode": 33206,
+      "sha": "5e34821e15342c76b9162fb6f52a3b8607de4e50"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-1.jpg",
+      "size": 1411212,
+      "mode": 33206,
+      "sha": "fc2f3a2983149358c2a2f2bacfa0caedd0133c43"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-2.jpg",
+      "size": 1391695,
+      "mode": 33206,
+      "sha": "3875db0df2edfff83464ab5486769b34dc978e5e"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-3.jpg",
+      "size": 1567990,
+      "mode": 33206,
+      "sha": "855d8ed70a368b2dd9d6c9c0c3fa8de81424fed6"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-4.jpg",
+      "size": 1533126,
+      "mode": 33206,
+      "sha": "e566fb1cc220cc0270657253836a78d3cd84a6f6"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-5.jpg",
+      "size": 1721918,
+      "mode": 33206,
+      "sha": "85a6db54ba6926622e84ee3b53fce2fe2926626e"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-6.jpg",
+      "size": 1587243,
+      "mode": 33206,
+      "sha": "7edecb8d5be504ec3aed95e0dccfa98945fa9511"
+    },
+    {
+      "path": "public/references/botoneras.jpg",
+      "size": 42382,
+      "mode": 33206,
+      "sha": "be7a9f1af0ae7b9338f8a21bf1355e22c1c04faf"
+    },
+    {
+      "path": "public/references/contactor-termico.jpg",
+      "size": 66067,
+      "mode": 33206,
+      "sha": "8296c7a895ea875746123d8282c4464543cda649"
+    },
+    {
+      "path": "public/references/contactor-trifasico.jpg",
+      "size": 55807,
+      "mode": 33206,
+      "sha": "75ecab57efcb14fed65f66ef4b967128b69c316c"
+    },
+    {
+      "path": "public/references/motor.jpg",
+      "size": 64917,
+      "mode": 33206,
+      "sha": "90763a2286316563b60ba492e6ab07abf9aecb18"
+    },
+    {
+      "path": "public/references/suministro.jpg",
+      "size": 44163,
+      "mode": 33206,
+      "sha": "30a6e872b6395af679c083b75242370b78f9a68e"
+    },
+    {
+      "path": "public/references/temporizador-1.jpg",
+      "size": 31570,
+      "mode": 33206,
+      "sha": "8887580269143065c87cfe773e71c39b918138b7"
+    },
+    {
+      "path": "public/references/temporizador-2.jpg",
+      "size": 59109,
+      "mode": 33206,
+      "sha": "4ae45ae7af6e72c7ad1308f4be5bc128d71a5982"
+    },
+    {
+      "path": "public/robots.txt",
+      "size": 176,
+      "mode": 33206,
+      "sha": "256c1ce90a961856d0bfb186f8a824b5bbe8afe3"
+    },
+    {
+      "path": "public/sw.js",
+      "size": 2413,
+      "mode": 33206,
+      "sha": "a0b48f758adaa121fb3df1092abc3401e762d1a7"
+    },
+    {
+      "path": "public/tutoriales/laboratorio-1.webp",
+      "size": 16220,
+      "mode": 33206,
+      "sha": "002659dfc038c9c530fbb07f2247dddec0c86666"
+    },
+    {
+      "path": "public/tutoriales/laboratorio-2.webp",
+      "size": 17624,
+      "mode": 33206,
+      "sha": "5b5db45385ec8838c47fb09840192952c7672783"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-1.mp4",
+      "size": 11993909,
+      "mode": 33206,
+      "sha": "4270c0463ba4a42fbd9774ad2cbc58944574ebd9"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-2.mp4",
+      "size": 10577048,
+      "mode": 33206,
+      "sha": "0f77f682c9ed52f666b1179b8952dd9474d15f3a"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-1.mp4",
+      "size": 10709112,
+      "mode": 33206,
+      "sha": "3a200ca84ce29b0553f79f5f4b61487c29c92494"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-2.mp4",
+      "size": 9082876,
+      "mode": 33206,
+      "sha": "6696d825c388dd89b75585bbdeec5ad552a477f1"
+    },
+    {
+      "path": "public/tutoriales/practica-1.webp",
+      "size": 13754,
+      "mode": 33206,
+      "sha": "16967da6df52cd8af87a7899cdea30d10349d3ff"
+    },
+    {
+      "path": "public/tutoriales/practica-2.webp",
+      "size": 14038,
+      "mode": 33206,
+      "sha": "518edf9cfc55c8590977f1ae2bb0b5743ab76e9f"
+    },
+    {
+      "path": "src/components/AddPanelMenu.tsx",
+      "size": 2414,
+      "mode": 33206,
+      "sha": "49930117481bcd79aacd76e8f5bab56e2eff34a2"
+    },
+    {
+      "path": "src/components/App.tsx",
+      "size": 52791,
+      "mode": 33206,
+      "sha": "a3e213102ce80528e88978d655ea2bfcac5114c3"
+    },
+    {
+      "path": "src/components/AssessmentDraft.tsx",
+      "size": 1615,
+      "mode": 33206,
+      "sha": "6b7db485c44d6e1964c2e4bfbb8d03bfe2496f40"
+    },
+    {
+      "path": "src/components/AssessmentWindows.tsx",
+      "size": 18264,
+      "mode": 33206,
+      "sha": "198b7e7fb2ac8231e887b9d90d9412f27c232224"
+    },
+    {
+      "path": "src/components/BananaCable.tsx",
+      "size": 4758,
+      "mode": 33206,
+      "sha": "e9f2fd5f70a4f777c2e42124ecfc31faa71812cb"
+    },
+    {
+      "path": "src/components/Board.tsx",
+      "size": 41990,
+      "mode": 33206,
+      "sha": "5ca48f55bd8d83a2a4d8a470ebaa2775120e8dba"
+    },
+    {
+      "path": "src/components/CableColorPicker.tsx",
+      "size": 1588,
+      "mode": 33206,
+      "sha": "fc9e4afafa590dd31a938db02ac7c0408f056eb6"
+    },
+    {
+      "path": "src/components/CablesMenu.tsx",
+      "size": 769,
+      "mode": 33206,
+      "sha": "fbbc71f1dd3f6a529b2d3f5d549e1cd6b3f25c10"
+    },
+    {
+      "path": "src/components/CadeDiagram.tsx",
+      "size": 26491,
+      "mode": 33206,
+      "sha": "a5ac7325c0ba4ee5e3683c6c132e208f4eb99cb8"
+    },
+    {
+      "path": "src/components/CadeHelp.tsx",
+      "size": 4993,
+      "mode": 33206,
+      "sha": "843efc9916696e45370d001207bc487031e3e422"
+    },
+    {
+      "path": "src/components/CadeNames.tsx",
+      "size": 3378,
+      "mode": 33206,
+      "sha": "dcac5335e3ab87e906e9da0a1c20bd11ee25d545"
+    },
+    {
+      "path": "src/components/CadeRoute.tsx",
+      "size": 3909,
+      "mode": 33206,
+      "sha": "7f83736531de6130119306931e62159552fbd806"
+    },
+    {
+      "path": "src/components/CadeSheet.tsx",
+      "size": 10191,
+      "mode": 33206,
+      "sha": "47d6b886389688095837c7f9177322e2856d1585"
+    },
+    {
+      "path": "src/components/CommunityCard.tsx",
+      "size": 727,
+      "mode": 33206,
+      "sha": "432d177ab032f39ec2c3b751850fef872f1201bb"
+    },
+    {
+      "path": "src/components/CompactBar.tsx",
+      "size": 909,
+      "mode": 33206,
+      "sha": "d32ef60353a733ab5f23f99729888bedcdb36211"
+    },
+    {
+      "path": "src/components/Compat.astro",
+      "size": 6141,
+      "mode": 33206,
+      "sha": "24aba4b3e2ab1d0b5c188f97476a9c5144a5593e"
+    },
+    {
+      "path": "src/components/ConnectionLesson.tsx",
+      "size": 6850,
+      "mode": 33206,
+      "sha": "297b8896e84d61a8274babb22cc41b8a81831bd8"
+    },
+    {
+      "path": "src/components/DevCacheReset.astro",
+      "size": 1153,
+      "mode": 33206,
+      "sha": "285c32f4b2f261e8860699686d27467a1446c6f2"
+    },
+    {
+      "path": "src/components/DiagramPane.tsx",
+      "size": 19596,
+      "mode": 33206,
+      "sha": "402e935b3a6725dbdb95d751c4a649b706b87593"
+    },
+    {
+      "path": "src/components/DiagramReader.tsx",
+      "size": 9387,
+      "mode": 33206,
+      "sha": "ce218cfa3ce7bcba89a27e9edcb69564bddc1f61"
+    },
+    {
+      "path": "src/components/DiagramWindow.tsx",
+      "size": 5296,
+      "mode": 33206,
+      "sha": "2770446b0718e311ce332f2c95f5d8c96e869d3d"
+    },
+    {
+      "path": "src/components/ExamReference.tsx",
+      "size": 2497,
+      "mode": 33206,
+      "sha": "b02e892188b3c2ee88f17d459c916e1ed4359a28"
+    },
+    {
+      "path": "src/components/FloatingDisclosure.tsx",
+      "size": 1094,
+      "mode": 33206,
+      "sha": "685315e836f144b09c391c4b52beddbcfba42bb3"
+    },
+    {
+      "path": "src/components/FloatingWindow.tsx",
+      "size": 10989,
+      "mode": 33206,
+      "sha": "51181a706cc24e6a3dff7e0ab94f6dfc4e8b77c2"
+    },
+    {
+      "path": "src/components/Home.tsx",
+      "size": 6467,
+      "mode": 33206,
+      "sha": "486d67a7218eabd6ff4827332b4a828ed0a239d1"
+    },
+    {
+      "path": "src/components/InstallApp.tsx",
+      "size": 8310,
+      "mode": 33206,
+      "sha": "52a927c3914b27f27cb59cb062c7d917e3ba0411"
+    },
+    {
+      "path": "src/components/LegalLink.tsx",
+      "size": 416,
+      "mode": 33206,
+      "sha": "e6ed37494e50d03a442a6125e50eac52988bc551"
+    },
+    {
+      "path": "src/components/LessonAssessment.tsx",
+      "size": 76,
+      "mode": 33206,
+      "sha": "4fefb094514831848de8272d7700db5d8a75f643"
+    },
+    {
+      "path": "src/components/LessonConnectionCard.tsx",
+      "size": 539,
+      "mode": 33206,
+      "sha": "869a96affe047644a689140e5660525b1a8c3327"
+    },
+    {
+      "path": "src/components/LessonReference.tsx",
+      "size": 2093,
+      "mode": 33206,
+      "sha": "6321162703df63b4f354fb10a6e9e52574c544ff"
+    },
+    {
+      "path": "src/components/LessonSchematic.tsx",
+      "size": 4428,
+      "mode": 33206,
+      "sha": "7da19c7cd1d6329b1159b9628dfd4acacadaebd5"
+    },
+    {
+      "path": "src/components/LessonUnderstanding.tsx",
+      "size": 3416,
+      "mode": 33206,
+      "sha": "2686950fe0496f7f45cf2dd94d458044ba50910d"
+    },
+    {
+      "path": "src/components/LogoModo.tsx",
+      "size": 318,
+      "mode": 33206,
+      "sha": "f6bad447f0c11f62042d6880015e88f076307c68"
+    },
+    {
+      "path": "src/components/LotoBox.tsx",
+      "size": 6467,
+      "mode": 33206,
+      "sha": "8b2de8fcb653e8ac88d8cbf99ebde25f729f402e"
+    },
+    {
+      "path": "src/components/motion/ModoSplash.astro",
+      "size": 4558,
+      "mode": 33206,
+      "sha": "53635c03518026b79b18168c19822b9dade6b522"
+    },
+    {
+      "path": "src/components/motion/MotionHead.astro",
+      "size": 3243,
+      "mode": 33206,
+      "sha": "de4bf8fa3616b5d16af63bfea0228db600a7dc70"
+    },
+    {
+      "path": "src/components/PowerStatus.tsx",
+      "size": 2412,
+      "mode": 33206,
+      "sha": "8c133917bc10ce94858fc420ffe1bd39f05c39ee"
+    },
+    {
+      "path": "src/components/ProcedureTools.tsx",
+      "size": 14473,
+      "mode": 33206,
+      "sha": "410fe42a67d49749374946fb026937ea9c8e6cac"
+    },
+    {
+      "path": "src/components/SearchBox.tsx",
+      "size": 1091,
+      "mode": 33206,
+      "sha": "15703448840cde7273be3815fcda6e0f4581abf8"
+    },
+    {
+      "path": "src/components/SimulationControls.tsx",
+      "size": 6888,
+      "mode": 33206,
+      "sha": "7124945b22dba433c12c7094ec2d01fd1efab2fb"
+    },
+    {
+      "path": "src/components/SimulatorInspector.tsx",
+      "size": 4903,
+      "mode": 33206,
+      "sha": "9eebca221e21498c48fb7ac63ca5e72b9c669a1c"
+    },
+    {
+      "path": "src/components/StudyGuide.tsx",
+      "size": 7847,
+      "mode": 33206,
+      "sha": "1f2cfe7eb23cc35ed665b0eea1590292cdad8603"
+    },
+    {
+      "path": "src/components/TeacherMaterial.tsx",
+      "size": 3166,
+      "mode": 33206,
+      "sha": "a6fefb7beef2347bd6283bc0fadecbc3a1c2d7ca"
+    },
+    {
+      "path": "src/components/ToolDock.tsx",
+      "size": 5755,
+      "mode": 33206,
+      "sha": "0e90fda1cc89272d5b9b41a49da55d3389df64de"
+    },
+    {
+      "path": "src/components/TutorialHelp.tsx",
+      "size": 7477,
+      "mode": 33206,
+      "sha": "a820cf2b2ab211adb75faf9e7b5b2ad7efef72bd"
+    },
+    {
+      "path": "src/components/WireInspector.tsx",
+      "size": 1953,
+      "mode": 33206,
+      "sha": "bdabde3fc3178cc3213ca99f35289f048f4d33d1"
+    },
+    {
+      "path": "src/components/WireLayer.tsx",
+      "size": 5973,
+      "mode": 33206,
+      "sha": "4021650c85fb83d99254903cd75300b03a4dd124"
+    },
+    {
+      "path": "src/data/assessmentState.ts",
+      "size": 1518,
+      "mode": 33206,
+      "sha": "477c11765394ddf73c56644eae8fcdb8b95c7ad3"
+    },
+    {
+      "path": "src/data/cade.ts",
+      "size": 8726,
+      "mode": 33206,
+      "sha": "c29a08fb2f6094abf07f375206a46ec2ef3fb6ee"
+    },
+    {
+      "path": "src/data/cadeComponents.ts",
+      "size": 15371,
+      "mode": 33206,
+      "sha": "2c2f482a94a0e71f3a1755ffb4c37eb603db0985"
+    },
+    {
+      "path": "src/data/cadeEstrellaTemporizador.json",
+      "size": 17368,
+      "mode": 33206,
+      "sha": "e9b3a73274e6728fd8b6a43b5e58d22543cca039"
+    },
+    {
+      "path": "src/data/cadeEstrellaTriangulo.json",
+      "size": 27359,
+      "mode": 33206,
+      "sha": "f6330465af3214c9be6273a345e525a4170be969"
+    },
+    {
+      "path": "src/data/cadeLearn.ts",
+      "size": 9775,
+      "mode": 33206,
+      "sha": "32939a71d35a52df5e424063b0c76270e7dc48a5"
+    },
+    {
+      "path": "src/data/cadeLecciones.json",
+      "size": 56828,
+      "mode": 33206,
+      "sha": "54c7ca9bc7c622110cc2f06f022c0fd1b5746829"
+    },
+    {
+      "path": "src/data/cadePerfecto.json",
+      "size": 57990,
+      "mode": 33206,
+      "sha": "1a5888df6967836bf70048c4a0ecc6fcca6035f1"
+    },
+    {
+      "path": "src/data/changes.ts",
+      "size": 2408,
+      "mode": 33206,
+      "sha": "78d9d7a4d6c519eeda407d6e0a0c3284018c6327"
+    },
+    {
+      "path": "src/data/community.ts",
+      "size": 675,
+      "mode": 33206,
+      "sha": "96f2d044438eb5577ad029c9ad56f526542e7253"
+    },
+    {
+      "path": "src/data/diagramReading.ts",
+      "size": 5466,
+      "mode": 33206,
+      "sha": "5a226658872e6615420fc547a29846d1d6b72039"
+    },
+    {
+      "path": "src/data/examReference.ts",
+      "size": 4228,
+      "mode": 33206,
+      "sha": "2d4d47dd5536e3b30fdb0052f5c0e8d8d818bae4"
+    },
+    {
+      "path": "src/data/layout.ts",
+      "size": 13588,
+      "mode": 33206,
+      "sha": "954e622c8918ab6ad5a1a1fb766821e0a9e10067"
+    },
+    {
+      "path": "src/data/learning.ts",
+      "size": 9907,
+      "mode": 33206,
+      "sha": "54947f093f6a0da281707c1ca61f95457c01fddc"
+    },
+    {
+      "path": "src/data/leccionInversion.layout.json",
+      "size": 4292,
+      "mode": 33206,
+      "sha": "d5ed808c0453231e066a58c254b1c18edaf79eb7"
+    },
+    {
+      "path": "src/data/lessonAssessment.ts",
+      "size": 2237,
+      "mode": 33206,
+      "sha": "426b076e9557347eb8aa10153b00ea5fb1191c00"
+    },
+    {
+      "path": "src/data/lessonIds.ts",
+      "size": 138,
+      "mode": 33206,
+      "sha": "6278e6104127470ef49ca65e996fba4b4f11e02a"
+    },
+    {
+      "path": "src/data/lessons.ts",
+      "size": 15101,
+      "mode": 33206,
+      "sha": "0946d1770c329a0b05dc126a52116ec934253dcc"
+    },
+    {
+      "path": "src/data/lessonSchematics.ts",
+      "size": 5293,
+      "mode": 33206,
+      "sha": "e6d0cf3fdafd0300c683e3f43e58183b0e63537f"
+    },
+    {
+      "path": "src/data/lessonTeaching.ts",
+      "size": 15385,
+      "mode": 33206,
+      "sha": "a20ede75f76a57614dd2f226de69af72af334557"
+    },
+    {
+      "path": "src/data/panel.ts",
+      "size": 15755,
+      "mode": 33206,
+      "sha": "a26b3b020e5d95126ec6a262000e6df2d904cd2c"
+    },
+    {
+      "path": "src/data/panelCorrespondence.ts",
+      "size": 923,
+      "mode": 33206,
+      "sha": "e893559cc8894dafec74de96b31e66fbd15968ca"
+    },
+    {
+      "path": "src/data/panelHistory.ts",
+      "size": 3366,
+      "mode": 33206,
+      "sha": "6bf75fb0f5325e62f04bfe5533c8846d8a0339a6"
+    },
+    {
+      "path": "src/data/practice.ts",
+      "size": 4203,
+      "mode": 33206,
+      "sha": "95a977c9f8e0660dce2310e31fa79cdf5fb06549"
+    },
+    {
+      "path": "src/data/ropes.ts",
+      "size": 4322,
+      "mode": 33206,
+      "sha": "70ab29019d5647076be89c061ee8dbb63412ffa3"
+    },
+    {
+      "path": "src/data/session.ts",
+      "size": 7091,
+      "mode": 33206,
+      "sha": "a5cc00ad4a4788f90d7c160eac82082258309495"
+    },
+    {
+      "path": "src/data/simulation.ts",
+      "size": 14215,
+      "mode": 33206,
+      "sha": "77e44998c68fe15f52e5360b5b176790e5f060a0"
+    },
+    {
+      "path": "src/data/starDeltaSources.json",
+      "size": 6577,
+      "mode": 33206,
+      "sha": "cbb9b99d7ca4833e5c62e3608a58421f9a4d9ea4"
+    },
+    {
+      "path": "src/data/starDeltaTeaching.ts",
+      "size": 12925,
+      "mode": 33206,
+      "sha": "46b368b7c75f98896bec6f4775cd9392d09dc8c8"
+    },
+    {
+      "path": "src/data/starPanelMap.ts",
+      "size": 3073,
+      "mode": 33206,
+      "sha": "b1912e70233103fe16267607f8965d593242ef41"
+    },
+    {
+      "path": "src/data/tutorials.ts",
+      "size": 1051,
+      "mode": 33206,
+      "sha": "9ac336eb08ef6c9871d275524a15965d3ca26b41"
+    },
+    {
+      "path": "src/data/wiring.ts",
+      "size": 9415,
+      "mode": 33206,
+      "sha": "9dc20c9cb5c1b60f282f3d15e9688773b2f994dd"
+    },
+    {
+      "path": "src/hooks/useActionRecorder.ts",
+      "size": 4602,
+      "mode": 33206,
+      "sha": "0e7d7b959fe61647bec019daac662b5eeb2e1f26"
+    },
+    {
+      "path": "src/hooks/useCompactLayout.ts",
+      "size": 908,
+      "mode": 33206,
+      "sha": "4d0a9dcc74b6454a6217e43b62e7bb001ffcd719"
+    },
+    {
+      "path": "src/hooks/usePractice.ts",
+      "size": 5658,
+      "mode": 33206,
+      "sha": "b25e75d3425ec58278f7b2ba7004edc6197c13f7"
+    },
+    {
+      "path": "src/hooks/useSimulation.ts",
+      "size": 4564,
+      "mode": 33206,
+      "sha": "6cd780b0edafeb4eba67953156bf50e44225d506"
+    },
+    {
+      "path": "src/hooks/useSvgNavigation.ts",
+      "size": 7427,
+      "mode": 33206,
+      "sha": "7deea879850dbe711377130bc9e95a7c19d8f59b"
+    },
+    {
+      "path": "src/lab/BreadboardParts.tsx",
+      "size": 18050,
+      "mode": 33206,
+      "sha": "2c7beb6cf170e52a83d538e59a4d01ca75b5f5c9"
+    },
+    {
+      "path": "src/lab/BreadboardView.tsx",
+      "size": 51244,
+      "mode": 33206,
+      "sha": "b69faa07c17413630d5b37148c5c41fe1778f39b"
+    },
+    {
+      "path": "src/lab/CanvasControls.tsx",
+      "size": 4367,
+      "mode": 33206,
+      "sha": "c9e745c7fe34b64c35999bb7b0aec7f7643380f6"
+    },
+    {
+      "path": "src/lab/cords.ts",
+      "size": 3135,
+      "mode": 33206,
+      "sha": "1bb9b414d3b632adbbb485422b3d99372ee3f8a3"
+    },
+    {
+      "path": "src/lab/dc.ts",
+      "size": 21926,
+      "mode": 33206,
+      "sha": "78d68045f0f6bc31b584535e023adac61ce9d6cb"
+    },
+    {
+      "path": "src/lab/detectors/BenchScene.tsx",
+      "size": 14680,
+      "mode": 33206,
+      "sha": "7288786b67c32220cd353bfef250b89fb104d271"
+    },
+    {
+      "path": "src/lab/detectors/datasheets.ts",
+      "size": 17868,
+      "mode": 33206,
+      "sha": "736acce52583545a68f0dbd05662ffbd36c3d98b"
+    },
+    {
+      "path": "src/lab/detectors/DetectorChart.tsx",
+      "size": 1908,
+      "mode": 33206,
+      "sha": "708551570c2ff49751fe3158a4490637e117f3df"
+    },
+    {
+      "path": "src/lab/detectors/DetectorDatasheets.tsx",
+      "size": 1716,
+      "mode": 33206,
+      "sha": "40364adc181db26411cb4cc016be9a65e6c37943"
+    },
+    {
+      "path": "src/lab/detectors/DetectorEditor.tsx",
+      "size": 5758,
+      "mode": 33206,
+      "sha": "ca4ed7035b5d6fabed16d8f9d475d78f383d811e"
+    },
+    {
+      "path": "src/lab/detectors/geometry.ts",
+      "size": 2018,
+      "mode": 33206,
+      "sha": "cf62ee32fb1fdf4f8d7a81faa53f31e47c32baf4"
+    },
+    {
+      "path": "src/lab/detectors/physics.ts",
+      "size": 11028,
+      "mode": 33206,
+      "sha": "0b6f3953676b7af47f8703d354b48b966fe37377"
+    },
+    {
+      "path": "src/lab/detectors/state.ts",
+      "size": 5224,
+      "mode": 33206,
+      "sha": "b72f1e2440b204c1fab656d478443758c94c13c8"
+    },
+    {
+      "path": "src/lab/DetectorsView.tsx",
+      "size": 27619,
+      "mode": 33206,
+      "sha": "fad40a5d78dfd1f771baff45f5749793695cde3a"
+    },
+    {
+      "path": "src/lab/DeviceIcons.tsx",
+      "size": 3036,
+      "mode": 33206,
+      "sha": "428b78eba5694ba539b77cb0b0020e474ae043b8"
+    },
+    {
+      "path": "src/lab/DiagramViewer.tsx",
+      "size": 3231,
+      "mode": 33206,
+      "sha": "81e2a33ac67f83ab882d955fa76d83fd1e04603f"
+    },
+    {
+      "path": "src/lab/engine.ts",
+      "size": 7518,
+      "mode": 33206,
+      "sha": "682ebef984ba6c686faed0dadbc7d8efdfd7293e"
+    },
+    {
+      "path": "src/lab/equipment/Art.tsx",
+      "size": 14296,
+      "mode": 33206,
+      "sha": "803ad8cdd229ca472ad76c9bb54ee9a75ded6a12"
+    },
+    {
+      "path": "src/lab/equipment/engine.ts",
+      "size": 17247,
+      "mode": 33206,
+      "sha": "cd5ef45b33929cfb0260d101cbe54a2ac07a76d7"
+    },
+    {
+      "path": "src/lab/equipment/model.ts",
+      "size": 16262,
+      "mode": 33206,
+      "sha": "8ebc410745c9b8eb7db3dd6eca1d47b3ba6ddec6"
+    },
+    {
+      "path": "src/lab/equipment/Thumbnail.tsx",
+      "size": 587,
+      "mode": 33206,
+      "sha": "76bfefdad026b4024c4768ce8b210a9fff864b4d"
+    },
+    {
+      "path": "src/lab/EquipmentView.tsx",
+      "size": 23034,
+      "mode": 33206,
+      "sha": "eff1a27a73c377cc404a75bdf056d08c7b02e199"
+    },
+    {
+      "path": "src/lab/geogebra/api.ts",
+      "size": 2781,
+      "mode": 33206,
+      "sha": "8c31e5ebbb0f9d9ae58ab8a567365d3d785066f0"
+    },
+    {
+      "path": "src/lab/GeoGebraView.tsx",
+      "size": 13779,
+      "mode": 33206,
+      "sha": "6a238216afd040c94ea780e77d7b9bfa32261688"
+    },
+    {
+      "path": "src/lab/HMIView.tsx",
+      "size": 8405,
+      "mode": 33206,
+      "sha": "85ea41c2c4137063513bed9d9e96ea1a749e4170"
+    },
+    {
+      "path": "src/lab/HomeTools.tsx",
+      "size": 1903,
+      "mode": 33206,
+      "sha": "5022e2940f32eaf581a9009e5b857f8d28f4d4f0"
+    },
+    {
+      "path": "src/lab/InspectorSheet.tsx",
+      "size": 1758,
+      "mode": 33206,
+      "sha": "21b2aaf86f6e5883bd9e42dbc2a32d15f15d76f0"
+    },
+    {
+      "path": "src/lab/labels.ts",
+      "size": 3407,
+      "mode": 33206,
+      "sha": "529aa164005ff308e052980ce2e07cec81c9ec54"
+    },
+    {
+      "path": "src/lab/LaboratoryApp.tsx",
+      "size": 10789,
+      "mode": 33206,
+      "sha": "d7e0379c4c972a1df8b2baa874adbffd73ded3b5"
+    },
+    {
+      "path": "src/lab/LaboratoryBar.tsx",
+      "size": 5204,
+      "mode": 33206,
+      "sha": "7ebf5a8681569e6339fe8d682fdf5919877e3a36"
+    },
+    {
+      "path": "src/lab/MeterInstrument.tsx",
+      "size": 16303,
+      "mode": 33206,
+      "sha": "78603673eecfdc284beba017ac58628744c21d8e"
+    },
+    {
+      "path": "src/lab/MeterPanel.tsx",
+      "size": 7105,
+      "mode": 33206,
+      "sha": "22f8991a3fe9dc54976d0fa208bcb07d33637b87"
+    },
+    {
+      "path": "src/lab/model.ts",
+      "size": 17313,
+      "mode": 33206,
+      "sha": "149c3b26b7fdc3c882a73f86c33f3dc8b3366e1b"
+    },
+    {
+      "path": "src/lab/PanStage.tsx",
+      "size": 10102,
+      "mode": 33206,
+      "sha": "8cb130d6a20a80c2e993b03be3a104ca6c955708"
+    },
+    {
+      "path": "src/lab/PLCView.tsx",
+      "size": 12005,
+      "mode": 33206,
+      "sha": "6a0da0d7b2dd02cc604f186d3cdbe02f551ec320"
+    },
+    {
+      "path": "src/lab/ProcessView.tsx",
+      "size": 7566,
+      "mode": 33206,
+      "sha": "5d0e39877fe2de14544454792c6e5bb68b4daefe"
+    },
+    {
+      "path": "src/lab/SchematicView.tsx",
+      "size": 18273,
+      "mode": 33206,
+      "sha": "cfc5de15958ad966ddf12ad1970f58d0dee6e63a"
+    },
+    {
+      "path": "src/lab/st.ts",
+      "size": 6445,
+      "mode": 33206,
+      "sha": "5496806c28cacf752acbefecfb4db0ad52c09a25"
+    },
+    {
+      "path": "src/lab/SurfaceDock.tsx",
+      "size": 689,
+      "mode": 33206,
+      "sha": "3668004e349488f78b77b580ab7e332cc31a9009"
+    },
+    {
+      "path": "src/lab/temperature/BenchScene.tsx",
+      "size": 14560,
+      "mode": 33206,
+      "sha": "f4d62dab89ac3c3a08ef014b955846ac7cccea80"
+    },
+    {
+      "path": "src/lab/temperature/datasheets.ts",
+      "size": 9702,
+      "mode": 33206,
+      "sha": "b249ea46968b93ef9706e579da53a066162d43f1"
+    },
+    {
+      "path": "src/lab/temperature/geometry.ts",
+      "size": 2548,
+      "mode": 33206,
+      "sha": "81295c30b311ff1c97fd12a5cf787449b80780ce"
+    },
+    {
+      "path": "src/lab/temperature/physics.ts",
+      "size": 9126,
+      "mode": 33206,
+      "sha": "3fd47f93b28cc1546cde237d8769c61ed5c5811f"
+    },
+    {
+      "path": "src/lab/temperature/state.ts",
+      "size": 5231,
+      "mode": 33206,
+      "sha": "1ad8efc88db95e640c6e77a2d2c11ec57be3e31f"
+    },
+    {
+      "path": "src/lab/temperature/TemperatureChart.tsx",
+      "size": 2085,
+      "mode": 33206,
+      "sha": "5fd23127590137fab381b7bad994b72fa7ba3186"
+    },
+    {
+      "path": "src/lab/temperature/TemperatureDatasheets.tsx",
+      "size": 1550,
+      "mode": 33206,
+      "sha": "24e2206fabb2772e705c5659b93a47cbf233a5ee"
+    },
+    {
+      "path": "src/lab/temperature/TemperatureEditor.tsx",
+      "size": 7737,
+      "mode": 33206,
+      "sha": "b5fb91b733864b84e9af84e49cae70c07e0128f4"
+    },
+    {
+      "path": "src/lab/TemperatureView.tsx",
+      "size": 22426,
+      "mode": 33206,
+      "sha": "d28b3d4adb488a7d82438655796bbec93cd982a6"
+    },
+    {
+      "path": "src/lab/units.ts",
+      "size": 8530,
+      "mode": 33206,
+      "sha": "08b8ff3810c587d73098cca6503982a2f5a47d7c"
+    },
+    {
+      "path": "src/lab/useLaboratory.ts",
+      "size": 10848,
+      "mode": 33206,
+      "sha": "e23fc9a32fbf1e49db7f48bb7c99510be0dac776"
+    },
+    {
+      "path": "src/lab/validation.ts",
+      "size": 9863,
+      "mode": 33206,
+      "sha": "7f0353c10e1b690adc1300051b2b23f68917e92f"
+    },
+    {
+      "path": "src/lab/ValueEditor.tsx",
+      "size": 18024,
+      "mode": 33206,
+      "sha": "a08cbaa2aea781199dd459d0f98ef1a5703f2756"
+    },
+    {
+      "path": "src/lab/workspaceLayout.ts",
+      "size": 182,
+      "mode": 33206,
+      "sha": "14246eb8509ef923540b15b34983af7d8920a647"
+    },
+    {
+      "path": "src/layout/boardViewport.ts",
+      "size": 115,
+      "mode": 33206,
+      "sha": "33b094d3e03dd1c68141d48715f6e32d79ea4d05"
+    },
+    {
+      "path": "src/layout/floatRect.ts",
+      "size": 1403,
+      "mode": 33206,
+      "sha": "3a524f3a880348c41fcce4463acdd1d13c5fcef3"
+    },
+    {
+      "path": "src/layout/focusView.ts",
+      "size": 1710,
+      "mode": 33206,
+      "sha": "82092c3ab9b2fb81cb503acab2daf323238df85f"
+    },
+    {
+      "path": "src/layout/scaledWindow.ts",
+      "size": 538,
+      "mode": 33206,
+      "sha": "858a4548f7d0219d633f095a5f1b438a63ede9b5"
+    },
+    {
+      "path": "src/learning/detectorLessons.ts",
+      "size": 14722,
+      "mode": 33206,
+      "sha": "824984d51077d1bee91265014d6066fef3a2d7ba"
+    },
+    {
+      "path": "src/learning/geogebraLessons.ts",
+      "size": 12602,
+      "mode": 33206,
+      "sha": "a7d88723dc2a06151dc56ede813044f5a1ab8bca"
+    },
+    {
+      "path": "src/learning/temperatureLessons.ts",
+      "size": 12634,
+      "mode": 33206,
+      "sha": "a2f6bc3da7e1e8d6557afb8e8c7cd5cbb2dbf97a"
+    },
+    {
+      "path": "src/learning/temperatureReview.ts",
+      "size": 15943,
+      "mode": 33206,
+      "sha": "be5c4399392b18611473dadcc76a4b692f838b2d"
+    },
+    {
+      "path": "src/learning/temperatureReviewStore.ts",
+      "size": 968,
+      "mode": 33206,
+      "sha": "1f32b93d2c74c9f459ebd7406a6bbb287ea69075"
+    },
+    {
+      "path": "src/motion/indicators.ts",
+      "size": 5310,
+      "mode": 33206,
+      "sha": "d756b78be819870884eaee9d26da384240e62292"
+    },
+    {
+      "path": "src/motion/opening.ts",
+      "size": 371,
+      "mode": 33206,
+      "sha": "8bf3eec72b6e14da7c52b2d4c9fda7e73e9d4129"
+    },
+    {
+      "path": "src/motion/surface.ts",
+      "size": 1408,
+      "mode": 33206,
+      "sha": "9839e2e106ab661beeb4b41b2392fdcca76019ba"
+    },
+    {
+      "path": "src/motion/transition.ts",
+      "size": 2322,
+      "mode": 33206,
+      "sha": "b4222d2e875f7bc5869d6aeb0149386b34f076b8"
+    },
+    {
+      "path": "src/pages/comunidad.astro",
+      "size": 3966,
+      "mode": 33206,
+      "sha": "c9ec168a3efbc3413629c17871eb3e2b71e3d3e9"
+    },
+    {
+      "path": "src/pages/estudio.astro",
+      "size": 1889,
+      "mode": 33206,
+      "sha": "3cd5960a05b192a6736c0336d0349c1377ac4272"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "size": 3280,
+      "mode": 33206,
+      "sha": "975dd077c4a99b3c05f630ad4c17da861baf9b59"
+    },
+    {
+      "path": "src/pages/laboratorio.astro",
+      "size": 1726,
+      "mode": 33206,
+      "sha": "83ffc82f8a15b75c5b9d8226200825ed64618810"
+    },
+    {
+      "path": "src/pages/legal.astro",
+      "size": 9699,
+      "mode": 33206,
+      "sha": "d6daa30378291df061e0a623235712df86ceb762"
+    },
+    {
+      "path": "src/pwa/install.ts",
+      "size": 2653,
+      "mode": 33206,
+      "sha": "5403debffda67f19a2888f1c1b669637b3b5479f"
+    },
+    {
+      "path": "src/study/AcademicBackup.tsx",
+      "size": 1573,
+      "mode": 33206,
+      "sha": "88af6048aaa330f80fefb417b82c955971be3775"
+    },
+    {
+      "path": "src/study/AcademicChallenge.tsx",
+      "size": 2118,
+      "mode": 33206,
+      "sha": "4deda732b4dc39ffe1bace254e2e69f52d2c3f3a"
+    },
+    {
+      "path": "src/study/academicChallenges.ts",
+      "size": 3115,
+      "mode": 33206,
+      "sha": "59898fcf66f971415f976eece6807096bddabd2f"
+    },
+    {
+      "path": "src/study/academicContent.ts",
+      "size": 45328,
+      "mode": 33206,
+      "sha": "ef7ce8909456cb83736837fb5007ea004d175126"
+    },
+    {
+      "path": "src/study/AcademicLessonView.tsx",
+      "size": 15122,
+      "mode": 33206,
+      "sha": "8cd313170df71f78517b5c4b3f8ac61beff6daef"
+    },
+    {
+      "path": "src/study/academicModels.ts",
+      "size": 5764,
+      "mode": 33206,
+      "sha": "c6e8dc3e74716c31b36479fb449c0f8355084750"
+    },
+    {
+      "path": "src/study/AcademicScenes.tsx",
+      "size": 19793,
+      "mode": 33206,
+      "sha": "82a26dde957c6d90e95acc093fff381855c666c4"
+    },
+    {
+      "path": "src/study/academicState.ts",
+      "size": 4312,
+      "mode": 33206,
+      "sha": "2dedba3c42ad1d057787a8c6fc34a0fc9e5ffde1"
+    },
+    {
+      "path": "src/study/Activity.tsx",
+      "size": 35047,
+      "mode": 33206,
+      "sha": "af03c3ccaf9c91e5931449311c012cc0350fa449"
+    },
+    {
+      "path": "src/study/CableWorkshop.tsx",
+      "size": 10944,
+      "mode": 33206,
+      "sha": "2da775b26549c1b008fb65eceb85c2f963bb388d"
+    },
+    {
+      "path": "src/study/calcEngine.ts",
+      "size": 4036,
+      "mode": 33206,
+      "sha": "1d15759b44b2fb2ab6a8851699a6056e3efafd3a"
+    },
+    {
+      "path": "src/study/CalcModule.tsx",
+      "size": 28700,
+      "mode": 33206,
+      "sha": "5043eb68f70747ea38d160aaae289d048ce42d69"
+    },
+    {
+      "path": "src/study/CalculationSteps.tsx",
+      "size": 1421,
+      "mode": 33206,
+      "sha": "b086a0b648a0bdf87262e171235cf20798eaeb33"
+    },
+    {
+      "path": "src/study/Calculator.tsx",
+      "size": 7395,
+      "mode": 33206,
+      "sha": "ea26e4f695e6bbd6c6f6a8155cae969e7a02281e"
+    },
+    {
+      "path": "src/study/CalculatorDock.tsx",
+      "size": 5324,
+      "mode": 33206,
+      "sha": "f311d08f147dd850d89320a1a1a200867e15d4e6"
+    },
+    {
+      "path": "src/study/classCatalog.ts",
+      "size": 5648,
+      "mode": 33206,
+      "sha": "75fd5e4b5982cfbb2ea6b7dfac4a40a0f9f16f31"
+    },
+    {
+      "path": "src/study/content/academic-sources.json",
+      "size": 12592,
+      "mode": 33206,
+      "sha": "645b1628bfc72a6f8f00bde1f980910406e1bd70"
+    },
+    {
+      "path": "src/study/content/casos_interactivos_7.json",
+      "size": 3342,
+      "mode": 33206,
+      "sha": "3526c0c4ea225e25dcbdc5746fe819c1edef6e48"
+    },
+    {
+      "path": "src/study/content/lecciones.json",
+      "size": 7804,
+      "mode": 33206,
+      "sha": "14a8df7791cae316dcd88628e807ff2fbbfdde91"
+    },
+    {
+      "path": "src/study/content/preguntas_alternativas_32.json",
+      "size": 21218,
+      "mode": 33206,
+      "sha": "ae8dcce5635f1559c3105625c7d084043dbfde6c"
+    },
+    {
+      "path": "src/study/content/preguntas_desarrollo_12.json",
+      "size": 13005,
+      "mode": 33206,
+      "sha": "b415d992c5d531b45684e3daea55fa8d62a9920e"
+    },
+    {
+      "path": "src/study/content/preguntas-publicas.json",
+      "size": 16492,
+      "mode": 33206,
+      "sha": "338cea242024ffef655490fa66d319321e8089a2"
+    },
+    {
+      "path": "src/study/courseCatalog.ts",
+      "size": 3050,
+      "mode": 33206,
+      "sha": "5035466023b3de959f4e050a0ed724e96de32ffe"
+    },
+    {
+      "path": "src/study/CourseOutline.tsx",
+      "size": 11761,
+      "mode": 33206,
+      "sha": "f21e92e6591bc16fa5d68f19c56343264518e93a"
+    },
+    {
+      "path": "src/study/DetectorLessonStudy.tsx",
+      "size": 8532,
+      "mode": 33206,
+      "sha": "bd5bf22df536450b614b09235a4c753c51480ac7"
+    },
+    {
+      "path": "src/study/dialog.ts",
+      "size": 1013,
+      "mode": 33206,
+      "sha": "8b41b5eb7e2630670cb6ddb12873d38e9814fed3"
+    },
+    {
+      "path": "src/study/ExamView.tsx",
+      "size": 16672,
+      "mode": 33206,
+      "sha": "bbfa6a87e7e33dfe3140bb162d497a99f41b3965"
+    },
+    {
+      "path": "src/study/FormulaSheet.tsx",
+      "size": 1805,
+      "mode": 33206,
+      "sha": "5756019204017dbafeb55cefd2c0f911c5cf19d2"
+    },
+    {
+      "path": "src/study/grading.ts",
+      "size": 371,
+      "mode": 33206,
+      "sha": "395d91adcf114c110bfece32af8a7343eff40e17"
+    },
+    {
+      "path": "src/study/GuidedLesson.tsx",
+      "size": 15569,
+      "mode": 33206,
+      "sha": "191d3d776999131179e842f0f34403e86fa0770c"
+    },
+    {
+      "path": "src/study/journeyContent.ts",
+      "size": 7032,
+      "mode": 33206,
+      "sha": "76fa676d926f91375d23430d93ab86283f7400e9"
+    },
+    {
+      "path": "src/study/lessonCards.ts",
+      "size": 25135,
+      "mode": 33206,
+      "sha": "a541e849659fba10f3acb67905c1de3824a1abf0"
+    },
+    {
+      "path": "src/study/lessonContent.ts",
+      "size": 7259,
+      "mode": 33206,
+      "sha": "37c9780fed063a77ad3c213e435719759a102d26"
+    },
+    {
+      "path": "src/study/LessonGuide.tsx",
+      "size": 7421,
+      "mode": 33206,
+      "sha": "b2d7a1bd5d3ac623b494889998e1c98d3490d779"
+    },
+    {
+      "path": "src/study/LessonJourney.tsx",
+      "size": 8068,
+      "mode": 33206,
+      "sha": "07b1e87cd8e36ec1764abf42aec46704ec81bc15"
+    },
+    {
+      "path": "src/study/LessonMedia.tsx",
+      "size": 15078,
+      "mode": 33206,
+      "sha": "107d87c59aa3a2436cbc6736e77fb2f34dcf8784"
+    },
+    {
+      "path": "src/study/lessonTeachings.ts",
+      "size": 58725,
+      "mode": 33206,
+      "sha": "73c3917e886d85706ffa352022d42bf35e1cfedc"
+    },
+    {
+      "path": "src/study/mathUnit2.ts",
+      "size": 10959,
+      "mode": 33206,
+      "sha": "a32fb9b24315057b528b2a7549d60508bbfdee72"
+    },
+    {
+      "path": "src/study/MathUnitReview.tsx",
+      "size": 11728,
+      "mode": 33206,
+      "sha": "08394fe53f3fce052358907139ec69b5d8feee9d"
+    },
+    {
+      "path": "src/study/model.ts",
+      "size": 8165,
+      "mode": 33206,
+      "sha": "2c418aa0a13f4c609e6abf5f87df8c4548eb23f7"
+    },
+    {
+      "path": "src/study/Practice.tsx",
+      "size": 9568,
+      "mode": 33206,
+      "sha": "029fe26d50392df764bd07254454065532aca85e"
+    },
+    {
+      "path": "src/study/ProfessorFaultView.tsx",
+      "size": 3118,
+      "mode": 33206,
+      "sha": "23151664a0514fad2396a72f95b9e349dd113212"
+    },
+    {
+      "path": "src/study/QuickExperiment.tsx",
+      "size": 9532,
+      "mode": 33206,
+      "sha": "3b248cbb7ff22dd6f0cc51aa974678b085388e9e"
+    },
+    {
+      "path": "src/study/RememberCard.tsx",
+      "size": 548,
+      "mode": 33206,
+      "sha": "662e75312cd8c8ac8d896039eee4e6113840ae01"
+    },
+    {
+      "path": "src/study/rememberContent.ts",
+      "size": 3057,
+      "mode": 33206,
+      "sha": "8f55a1f1bf95761f1b267d687e7f86ce0c50d163"
+    },
+    {
+      "path": "src/study/Rich.tsx",
+      "size": 1602,
+      "mode": 33206,
+      "sha": "7c817a5f0d2e2cf05a1fc849c200e81b902aa1a6"
+    },
+    {
+      "path": "src/study/StudyActivityProgress.tsx",
+      "size": 370,
+      "mode": 33206,
+      "sha": "60af147de9c59392bed6fdd37bcfaca30de68465"
+    },
+    {
+      "path": "src/study/StudyApp.tsx",
+      "size": 30182,
+      "mode": 33206,
+      "sha": "fe504d1d883b0d1e768571bb61d1c9da6a525bd7"
+    },
+    {
+      "path": "src/study/StudyArt.tsx",
+      "size": 10758,
+      "mode": 33206,
+      "sha": "345c1c71dc458f8f99f6b2facb31c4708734261c"
+    },
+    {
+      "path": "src/study/StudyClassContext.tsx",
+      "size": 2409,
+      "mode": 33206,
+      "sha": "c65056d209a0e56e863fcf4f315cfbba674a6517"
+    },
+    {
+      "path": "src/study/studyFocus.ts",
+      "size": 170,
+      "mode": 33206,
+      "sha": "275b6ad8de845b9da8b6172d0d4c3e3b439968c2"
+    },
+    {
+      "path": "src/study/StudyFocusBanner.tsx",
+      "size": 695,
+      "mode": 33206,
+      "sha": "a24bae18571de3b7a63604d15ed484eb91ba1dd5"
+    },
+    {
+      "path": "src/study/StudyHub.tsx",
+      "size": 9767,
+      "mode": 33206,
+      "sha": "bbd179c58e929e38abafaa5a70c682c04533c611"
+    },
+    {
+      "path": "src/study/StudyNavigation.tsx",
+      "size": 8363,
+      "mode": 33206,
+      "sha": "067b543b094aa789564ed62ef5e0e325e44d41ea"
+    },
+    {
+      "path": "src/study/StudySequence.tsx",
+      "size": 1060,
+      "mode": 33206,
+      "sha": "de24a2b82c88b307c142c71e58f8015ed0d615ae"
+    },
+    {
+      "path": "src/study/teachingContent.ts",
+      "size": 39255,
+      "mode": 33206,
+      "sha": "6a3074b181054de1fca309bd78fff71bbb023447"
+    },
+    {
+      "path": "src/study/TeachingReader.tsx",
+      "size": 4013,
+      "mode": 33206,
+      "sha": "c3ea41a1c60d24ff7fa49d4d5f962687e0bce928"
+    },
+    {
+      "path": "src/study/TeachingVisual.tsx",
+      "size": 22940,
+      "mode": 33206,
+      "sha": "85165319a6ae24defcdbe176fb59b0df40ccac50"
+    },
+    {
+      "path": "src/study/TemperatureLessonStudy.tsx",
+      "size": 9445,
+      "mode": 33206,
+      "sha": "1eb4e9b493418d5d6bffa3dbdbbdf9b06999f8ea"
+    },
+    {
+      "path": "src/study/TemperatureReviewStudy.tsx",
+      "size": 7047,
+      "mode": 33206,
+      "sha": "ebd1ec6cc06117f0c2a69939bde4a283cc6bbbf4"
+    },
+    {
+      "path": "src/study/TermExplorer.tsx",
+      "size": 6669,
+      "mode": 33206,
+      "sha": "3228cdce42dff9a682f74e0a19934d711caf00fc"
+    },
+    {
+      "path": "src/study/ToolLessonStudy.tsx",
+      "size": 6517,
+      "mode": 33206,
+      "sha": "ea4be488c90862e2c679cf638c307420e3010cb8"
+    },
+    {
+      "path": "src/study/ToolTeaching.tsx",
+      "size": 590,
+      "mode": 33206,
+      "sha": "5f42e0656dd7efb6e23dd3c92539dd856ee4d502"
+    },
+    {
+      "path": "src/study/TopicDone.tsx",
+      "size": 1675,
+      "mode": 33206,
+      "sha": "106c5faa3bebd70f350cd4ebc0958be5f755d24a"
+    },
+    {
+      "path": "src/styles/academic.css",
+      "size": 7480,
+      "mode": 33206,
+      "sha": "e13fc33789dc89ad26f18a652b343174a021f18d"
+    },
+    {
+      "path": "src/styles/board-layout.css",
+      "size": 18117,
+      "mode": 33206,
+      "sha": "b625104ae018194da987ecd7575962964b9e0608"
+    },
+    {
+      "path": "src/styles/cable-color.css",
+      "size": 2196,
+      "mode": 33206,
+      "sha": "0cdf5af2efda8777133c4943bc7a15ea31f8c577"
+    },
+    {
+      "path": "src/styles/cade-help.css",
+      "size": 5560,
+      "mode": 33206,
+      "sha": "c23467fe1cd1fd6d976ff287d9bf8da09d001662"
+    },
+    {
+      "path": "src/styles/canvas.css",
+      "size": 26400,
+      "mode": 33206,
+      "sha": "c114435deebaf6d299b32407301ceed8cc6ff16f"
+    },
+    {
+      "path": "src/styles/community-card.css",
+      "size": 2078,
+      "mode": 33206,
+      "sha": "a67ef3dca2304ead2f72a4cf39791dcc366ebf72"
+    },
+    {
+      "path": "src/styles/community.css",
+      "size": 8145,
+      "mode": 33206,
+      "sha": "ea6ffeeb71fbb0afcc036ee8e117d6f12e4a7054"
+    },
+    {
+      "path": "src/styles/compact-ui.css",
+      "size": 3033,
+      "mode": 33206,
+      "sha": "b066e4d307321e4ad81215a9ab27012d6ffb6fd2"
+    },
+    {
+      "path": "src/styles/detectors.css",
+      "size": 5824,
+      "mode": 33206,
+      "sha": "dfb41b51cc7ddb21a2001053e5bcd0f07c140e95"
+    },
+    {
+      "path": "src/styles/diagram-info-windows.css",
+      "size": 4398,
+      "mode": 33206,
+      "sha": "b418b2ecfbc376a7d43c6fc4139173403a2cf995"
+    },
+    {
+      "path": "src/styles/diagram-layout.css",
+      "size": 37600,
+      "mode": 33206,
+      "sha": "320f3db214e70755f61e434c41cee13e98e2dd61"
+    },
+    {
+      "path": "src/styles/equipment.css",
+      "size": 3763,
+      "mode": 33206,
+      "sha": "6c50ac297678ab9cb2c34d0079420d693f45cea4"
+    },
+    {
+      "path": "src/styles/floating-window.css",
+      "size": 5525,
+      "mode": 33206,
+      "sha": "4a99985987bf7d58038463af694886aa85f4ea49"
+    },
+    {
+      "path": "src/styles/geogebra.css",
+      "size": 6050,
+      "mode": 33206,
+      "sha": "54d48c5f01f27482ea0909ee869b1fcdf8b1faee"
+    },
+    {
+      "path": "src/styles/global.css",
+      "size": 59195,
+      "mode": 33206,
+      "sha": "f373abab8b93ba25a1b9fafc7e8e799ee6f92c4d"
+    },
+    {
+      "path": "src/styles/guide-confirmation.css",
+      "size": 3591,
+      "mode": 33206,
+      "sha": "8e9c70393df62ef3e1b5e3c8e4f4a3ba576e5499"
+    },
+    {
+      "path": "src/styles/home-laboratory.css",
+      "size": 2142,
+      "mode": 33206,
+      "sha": "6c2de685297c57f723298c19f287e30d68eecf7d"
+    },
+    {
+      "path": "src/styles/home-tools.css",
+      "size": 393,
+      "mode": 33206,
+      "sha": "49de53ba0330e29ec4e018d8fef1d2b5144e3f7e"
+    },
+    {
+      "path": "src/styles/install.css",
+      "size": 4390,
+      "mode": 33206,
+      "sha": "b6e6026a305573ff92601bda646c04e352346f13"
+    },
+    {
+      "path": "src/styles/laboratory-canvas.css",
+      "size": 54573,
+      "mode": 33206,
+      "sha": "b15596880800eb6582328535e2dcf1637051b547"
+    },
+    {
+      "path": "src/styles/laboratory-compact.css",
+      "size": 12246,
+      "mode": 33206,
+      "sha": "4ebd51ce5e260eaa8c9c70e799a58a24182eb8d3"
+    },
+    {
+      "path": "src/styles/laboratory.css",
+      "size": 27722,
+      "mode": 33206,
+      "sha": "85875c3df09ef35d586e6025f6ba9f9922c44f92"
+    },
+    {
+      "path": "src/styles/learning.css",
+      "size": 2032,
+      "mode": 33206,
+      "sha": "b48de16a7c9da11ca761097cacca8ebe6f60e375"
+    },
+    {
+      "path": "src/styles/legal-links.css",
+      "size": 1142,
+      "mode": 33206,
+      "sha": "3503de860c4682177674680d6aa40c30e01662f4"
+    },
+    {
+      "path": "src/styles/legal.css",
+      "size": 1798,
+      "mode": 33206,
+      "sha": "a4a1f32d001a5b087cbedcb6714db456a847dbbf"
+    },
+    {
+      "path": "src/styles/lesson-understanding.css",
+      "size": 14395,
+      "mode": 33206,
+      "sha": "c46083ee6d8612fa7b92e6536e7c21b3eecc832b"
+    },
+    {
+      "path": "src/styles/loto.css",
+      "size": 1005,
+      "mode": 33206,
+      "sha": "b9afac4603580c34c0069fbd2659698a6df997bc"
+    },
+    {
+      "path": "src/styles/mobile.css",
+      "size": 9981,
+      "mode": 33206,
+      "sha": "e73e55c459c585110a3cc33c44511f2becb3c310"
+    },
+    {
+      "path": "src/styles/modo-brand.css",
+      "size": 508,
+      "mode": 33206,
+      "sha": "4f2e71ea89c4b78fa530df7b1d2f43b1db0eceeb"
+    },
+    {
+      "path": "src/styles/modo-home.css",
+      "size": 15073,
+      "mode": 33206,
+      "sha": "7b15c0307bbaeaa0d2f7b3cdf10edd3545a5bf78"
+    },
+    {
+      "path": "src/styles/modo-motion.css",
+      "size": 15097,
+      "mode": 33206,
+      "sha": "599fd7ba7949f9d896a27922f5fccb6452aeaa73"
+    },
+    {
+      "path": "src/styles/modo-tokens.css",
+      "size": 975,
+      "mode": 33206,
+      "sha": "b3e3fe508c979bb28182d0ef0dcd1ae76b96ab15"
+    },
+    {
+      "path": "src/styles/procedures.css",
+      "size": 3777,
+      "mode": 33206,
+      "sha": "311d096fee10b43fa342b2eb85e3d6e48eaa5bba"
+    },
+    {
+      "path": "src/styles/simulation.css",
+      "size": 7561,
+      "mode": 33206,
+      "sha": "afffbbd70d2f287e6d19a3fd56078dc33a0d816a"
+    },
+    {
+      "path": "src/styles/study-calc.css",
+      "size": 28752,
+      "mode": 33206,
+      "sha": "c7518f93bb1d2a26a2564fc5899c24f768dad067"
+    },
+    {
+      "path": "src/styles/study-campus.css",
+      "size": 15313,
+      "mode": 33206,
+      "sha": "bdb8f3a2c3ce38463f48444f4c533adc027fb20d"
+    },
+    {
+      "path": "src/styles/study-experience.css",
+      "size": 55208,
+      "mode": 33206,
+      "sha": "742f41f7dff018435c953ac6bfdb40c615be512c"
+    },
+    {
+      "path": "src/styles/study-final.css",
+      "size": 5610,
+      "mode": 33206,
+      "sha": "60364a9b9e38015c211bb93ba6763cc72c66fc7b"
+    },
+    {
+      "path": "src/styles/study-focus-unit2.css",
+      "size": 12891,
+      "mode": 33206,
+      "sha": "6c1fff76b9194dfc2d6f7edf74af9e835255fef7"
+    },
+    {
+      "path": "src/styles/study-focus.css",
+      "size": 23379,
+      "mode": 33206,
+      "sha": "eca7ddcf343131523cc5ccbbbfdb1693dbefe80c"
+    },
+    {
+      "path": "src/styles/study-home.css",
+      "size": 5093,
+      "mode": 33206,
+      "sha": "a75b58b565d6dbd242366b3f4b9c96dd45870e74"
+    },
+    {
+      "path": "src/styles/study-interface.css",
+      "size": 45125,
+      "mode": 33206,
+      "sha": "85978ff23e19495e254ac76a8bb8881af95e1a55"
+    },
+    {
+      "path": "src/styles/study-learning.css",
+      "size": 20105,
+      "mode": 33206,
+      "sha": "95f55a40e1395b3d0dcbf40127bb7c50c2aad9a2"
+    },
+    {
+      "path": "src/styles/study-lesson.css",
+      "size": 13912,
+      "mode": 33206,
+      "sha": "614f75ce1816dfac33cff0e2b37d52eff5d3131a"
+    },
+    {
+      "path": "src/styles/study-polish.css",
+      "size": 44126,
+      "mode": 33206,
+      "sha": "c2f3c2045a38dec93bcb4be6dfe4ad7667c5c190"
+    },
+    {
+      "path": "src/styles/study-professor.css",
+      "size": 2656,
+      "mode": 33206,
+      "sha": "984835cd0b1cd1d7c06e90b221baacabe6f65222"
+    },
+    {
+      "path": "src/styles/study-unified.css",
+      "size": 11158,
+      "mode": 33206,
+      "sha": "a185e166a9fdbcc253c115f9989eddc9167edba9"
+    },
+    {
+      "path": "src/styles/study-v8.css",
+      "size": 20798,
+      "mode": 33206,
+      "sha": "5d0c1431536b2080bb26b2ce3ecf0b3a0d281b6c"
+    },
+    {
+      "path": "src/styles/study.css",
+      "size": 19388,
+      "mode": 33206,
+      "sha": "d000c0cee9316ae7dad84d8d4504e1b164151823"
+    },
+    {
+      "path": "src/styles/temperature-review.css",
+      "size": 1283,
+      "mode": 33206,
+      "sha": "ac0d0fd0935b6f0835acb6a64dba67d4b417ce79"
+    },
+    {
+      "path": "src/styles/temperature-sheets.css",
+      "size": 529,
+      "mode": 33206,
+      "sha": "03c7f8e1675c662eb17e5b5b7a6e4bdf40332498"
+    },
+    {
+      "path": "src/styles/temperature.css",
+      "size": 13242,
+      "mode": 33206,
+      "sha": "7554dabc4e22b6000a136b0d2e7361e35dbff20d"
+    },
+    {
+      "path": "src/styles/tool-lessons.css",
+      "size": 3224,
+      "mode": 33206,
+      "sha": "737f9e42472ddeb8cd5226bc4f914b4535952085"
+    },
+    {
+      "path": "src/styles/touch-portrait.css",
+      "size": 5072,
+      "mode": 33206,
+      "sha": "3552bc842c86955cf14a7a420208fb3bf7afb560"
+    },
+    {
+      "path": "src/styles/tutorials.css",
+      "size": 5663,
+      "mode": 33206,
+      "sha": "d59ddaff20b28560da4c1c067ea977eb91199171"
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 157,
+      "mode": 33206,
+      "sha": "5c21a5d40d8cb3918182d1c40b580ced81ca99d6"
+    },
+    {
+      "path": "vercel.json",
+      "size": 3161,
+      "mode": 33206,
+      "sha": "feb2e769ef7214f1c58af2526ce911c4271efa63"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+Nombre del proyecto
+Inicio
+Marcha y retención
+Tablero · PLC industrial
+Proyecto
+Guardado en este navegador
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+Tableros de control
+Proyecto creado.
+Taller de tableros · bombeo auxiliar
+16 equipos · 0 cables
+Guía del taller
+Conjunto
+Placa
+Puerta
+Campo
+modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS
+GABINETE DE CONTROL
+PUERTA DE MANDO
+EQUIPO DE CAMPO
+ESPACIO DE RESERVA · AMPLIACIONES
+AREA UTIL ASIGNADA 720 x 780 · MODELO
+BOMBA AUXILIAR · M1
+ALIMENTACIÓN Y MOTOR EQUIVALENTES
+LED INTERIOR · MODELO
+0
+I
+QS1 · SECCIONADOR
+FILTRO-VENTILADOR
+ENVOLVENTE · MODELO
+IP66 · NEMA 4X EQUIVALENTE
+400 V · 50 Hz · didáctico
+BOMBA CENTRÍFUGA · MODELO
+G1
+Ubicación del encargo
+FU1
+Ubicación del encargo
+QM1
+Ubicación del encargo
+K1
+Ubicación del encargo
+F1
+Ubicación del encargo
+X1:U
+Ubicación del encargo
+X1:V
+Ubicación del encargo
+X1:W
+Ubicación del encargo
+PE1
+Ubicación del encargo
+S0
+Ubicación del encargo
+S1
+Ubicación del encargo
+H1
+Ubicación del encargo
+RED
+Ubicación del encargo
+M1
+Ubicación del encargo
+PLC1
+Ubicación del encargo
+B1
+Ubicación del encargo
+Bandeja de equipos · selecciona y coloca cada pieza
+Modelo didáctico · representación industrial genérica · sin cotas de fabricación.
+G1
+DC POWER SUPPLY
+24 V DC
+DC OK
+G1 · ALIMENTACIÓN DE MANDO
++
+−
+Fuente DC regulada
+FU1
+FU1
+CARTUCHO INSERTADO
+1
+2
+Portafusible
+QM1
+AJUSTE DE PRÁCTICA
+I
+O
+MOTOR PROTECTION
+I · CERRADO
+1
+3
+5
+2
+4
+6
+Guardamotor
+K1
+CONTACTOR · K1
+O
+BOBINA 24 V DC
+L1
+L2
+L3
+T1
+T2
+T3
+A1
+A2
+13
+14
+21
+22
+Contactor de potencia
+F1
+RELÉ TÉRMICO · F1
+RESET
+TEST
+NORMAL
+L1
+L2
+L3
+T1
+T2
+T3
+95
+96
+97
+98
+Relé térmico
+X1:U
+U
+1
+2
+Bornera de paso
+X1:V
+V
+1
+2
+Bornera de paso
+X1:W
+W
+1
+2
+Bornera de paso
+PE1
+PE
+PE
+Tierra de protección
+S0
+O
+PARO
+1
+2
+Pulsador NC
+S1
+I
+MARCHA
+3
+4
+Pulsador NA
+H1
+MARCHA
+1
+2
+Piloto
+RED
+RED 3~
+400 V · RMS
+PUNTO DE ALIMENTACIÓN EQUIVALENTE
+L1
+L2
+L3
+N
+PE
+Fuente trifásica
+M1
+MOTOR 3~ · MODELO
+400 V · 50 Hz
+U1
+V1
+W1
+W2
+U2
+V2
+PE
+Motor trifásico de seis bornes
+PLC1
+PLC INDUSTRIAL · modo.
+PWR
+RUN
+ERR
+DI
+DO
+SALIDA Q1 · CONTACTOR K1
+SIN MANDO
+PROGRAMAR
+24 V DC · CONTROLADOR GENÉRICO
+L+
+M
+I1
+I2
+I3
+I4
+I5
+I6
+I7
+I8
+C1
+Q1
+C2
+Q2
+C3
+Q3
+C4
+Q4
+PLC del proyecto
+B1
+0
+I
+PERMISO I
+3
+4
+Selector de dos posiciones
+44%
+Montar
+Cablear
+Programar
+Verificar
+Accionar
+Guardar copia
+Guía y propiedades
+BOMBEO AUXILIAR · GUÍA Y COMPROBACIONES
+Taller de tableros
+TALLER · BOMBA AUXILIAR
+Construye el control de una bomba
+
+16 equipos · 36 hilos · espacio asignado
+
+Qué puedo hacer en este taller
+01
+Comprender
+02
+Montar
+03
+Cablear
+04
+Programar
+05
+Verificar
+06
+Probar
+07
+Diagnosticar
+1/10 verificaciones
+QUÉ HACER AHORA
+Arma el interior del gabinete
+
+Prepara los soportes y coloca los equipos. Puedes usar la posición sugerida o distribuirlos tú.
+
+Resultado esperado: Los equipos deben quedar dentro del área, sobre rieles y sin invadir canaletas.
+16 equipos del encargo
+Ver actividad de esta etapa
+Conjunto
+Placa
+Puerta
+Campo
+Ver esquema de mando y potencia
+Prepara y coloca
+
+El gabinete es un único espacio de montaje. Distribuye dentro de él los rieles, las canaletas y los equipos; las ubicaciones sugeridas son un punto de partida. Puedes arrastrar las piezas o usar las flechas.
+
+Preparación del gabinete
+Preparar los tres rieles
+Preparar las canaletas
+Representar unión PE de placa y puerta
+Definir espacio, rieles y canaletas
+G1
+Fuente de mando 24 V DC
+Colocar
+FU1
+Portafusible de mando
+Colocar
+QM1
+Guardamotor de práctica
+Colocar
+K1
+Contactor con auxiliares
+Colocar
+F1
+Relé térmico de práctica
+Colocar
+X1:U
+Borne de salida U
+Colocar
+X1:V
+Borne de salida V
+Colocar
+X1:W
+Borne de salida W
+Colocar
+PE1
+Punto de protección de masas
+Colocar
+S0
+Paro NC del ejercicio
+Colocar
+S1
+Marcha NA del ejercicio
+Colocar
+H1
+Piloto de mando activo
+Colocar
+RED
+Alimentación equivalente 400 V
+Colocar
+M1
+Bomba · motor equivalente
+Colocar
+PLC1
+PLC genérico · 8 DI / 4 DO
+Colocar
+B1
+Permiso de proceso virtual
+Colocar
+Ubicaciones y soportes del encargo virtual; no representan dimensiones ni fijaciones de un producto físico.
+Seguir con el cableado
+Expediente y notas
+Qué aprendemos de los tableros industriales
+Alcance de estos equipos
+Mover: cabecera · Tamaño: esquinas

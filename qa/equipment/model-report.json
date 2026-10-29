@@ -33,6 +33,14 @@
       "passed": true
     },
     {
+      "name": "Soft starter ramps the motor voltage from the initial value to full voltage and cuts output on stop",
+      "passed": true
+    },
+    {
+      "name": "Soft starter does not start with a missing supply phase",
+      "passed": true
+    },
+    {
       "name": "Reversing a moving drive first decelerates to zero",
       "passed": true
     },
@@ -67,8 +75,36 @@
     {
       "name": "Solver does not mutate saved parts, wires or parameters",
       "passed": true
+    },
+    {
+      "name": "Protections do not trip on a normal load, even after a long run",
+      "passed": true
+    },
+    {
+      "name": "A sustained overload trips a breaker after an inverse-time delay and it rearms with OFF then ON",
+      "passed": true
+    },
+    {
+      "name": "A short circuit through a breaker trips it at once instead of faulting the solver",
+      "passed": true
+    },
+    {
+      "name": "The thermal relay measures motor current, opens its 95-96 contact on overload and drops the contactor",
+      "passed": true
+    },
+    {
+      "name": "An ON-delay timer counts only while its coil is energized, then closes 15-18 and opens 15-16",
+      "passed": true
+    },
+    {
+      "name": "A residual-current device ignores a balanced load but trips on an earth leak",
+      "passed": true
+    },
+    {
+      "name": "A motor draws a start-up surge that decays to its running current",
+      "passed": true
     }
   ],
-  "passed": 17,
-  "total": 17
+  "passed": 26,
+  "total": 26
 }

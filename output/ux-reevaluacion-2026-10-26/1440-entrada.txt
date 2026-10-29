@@ -1,0 +1,28 @@
+Nombre del proyecto
+Inicio
+Marcha y retención
+Proyecto
+Guardando…
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+Esquemas
+Automatización
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+Tableros de control
+Automatización
+Un proyecto compartido · Montaje, programa, pantalla y proceso.
+Abriendo herramienta…

@@ -1,0 +1,29 @@
+{
+  "base": "http://127.0.0.1:4345",
+  "checks": [
+    "17 questions: independent numeric values, units, comma decimals, invalid input and forged completion rejected",
+    "problema-poblacion: wrong/correct answers, single question, procedure and position persisted, GeoGebra progress independent",
+    "problema-estroncio: wrong/correct answers, single question, procedure and position persisted, GeoGebra progress independent",
+    "problema-ahorro: wrong/correct answers, single question, procedure and position persisted, GeoGebra progress independent",
+    "problema-planta: wrong/correct answers, single question, procedure and position persisted, GeoGebra progress independent",
+    "Matrices: focused workspace, one question at a time, existing storage preserved",
+    "390: no overflow, mobile statement/answer panels usable",
+    "820: no overflow, mobile statement/answer panels usable",
+    "1180: no overflow, mobile statement/answer panels usable",
+    "matrices-operaciones: 4 real GeoGebra activities, empty work rejected, quick confirmation, automatic next step, reload preserves completion",
+    "matrices-producto: 3 real GeoGebra activities, empty work rejected, quick confirmation, automatic next step, reload preserves completion",
+    "matrices-sistemas: 4 real GeoGebra activities, empty work rejected, quick confirmation, automatic next step, reload preserves completion",
+    "problema-poblacion: 4 real GeoGebra activities, empty work rejected, quick confirmation, automatic next step, reload preserves completion",
+    "problema-estroncio: 4 real GeoGebra activities, empty work rejected, quick confirmation, automatic next step, reload preserves completion",
+    "problema-ahorro: 5 real GeoGebra activities, empty work rejected, quick confirmation, automatic next step, reload preserves completion",
+    "problema-planta: 4 real GeoGebra activities, empty work rejected, quick confirmation, automatic next step, reload preserves completion",
+    "Free workspace remains separate and unchanged",
+    "390x844: wide graph, visible command input, real command/result, guide closes without recreating applet",
+    "820x1180: wide graph, visible command input, real command/result, guide closes without recreating applet",
+    "1180x820: wide graph, visible command input, real command/result, guide closes without recreating applet",
+    "844x390: wide graph, visible command input, real command/result, guide closes without recreating applet",
+    "Existing linear-functions lesson still checks and advances",
+    "Unreadable prior answers preserved"
+  ],
+  "errors": []
+}

@@ -1,0 +1,16 @@
+--- PÁGINA 1 ---
+ 
+ 
+ARPA 1 
+ELIMINACIÓN DE FÁRMACOS 
+ 
+Los analgésicos como, por ejemplo, el paracetamol, son los principales fármacos utilizados para 
+tratar distintos tipos de dolores. Sus efectos comienzan cuando estos llegan al torrente 
+sanguíneo, disminuyendo su concentración de forma permanente hasta que nuestro organismo 
+prácticamente los elimina. 
+ 
+La dosis recomendada, por el médico, de uno de estos fármacos es una pastilla de 1000 mg al 
+día. Se sabe que la eliminación de este medicamento en el organismo es de 10% cada hora 
+respecto de la cantidad, en miligramos, que queda en el cuerpo en la hora anterior. 
+¿Aproximadamente en qué tiempo la dosis inicial se reduce a la mitad? 
+ 

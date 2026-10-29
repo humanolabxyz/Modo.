@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "Temperatura: insertar sonda, consigna, selector Ω, arrastre de puntas y persistencia",
+    "Detectores: fuente, cableado entre bornes por arrastre, objeto por teclado y arrastre, lectura de salida 24 V con puntas",
+    "Soldadura: unión fría rechazada, preparar, calentar, estañar, enfriar, aislar y medir continuidad; regreso a protoboard",
+    "Capturas tablet y móvil, sin overflow de página"
+  ],
+  "errors": []
+}

@@ -312,3 +312,8 @@ button:focus-visible,summary:focus-visible,select:focus-visible,textarea:focus-v
 /* El esquema no selecciona texto al tocar o hacer doble clic */
 .cade-artboard,.cade-artboard svg,.cade-artboard svg *{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
 .cade-artboard svg ::selection{background:transparent}
+
+/* Conductor focus follows the line, without painting its enlarged hit target. */
+body.modo-identity .editor-workbench .cade-reader .cade-wire.cade-element:focus-visible{outline:none}
+.cade-reader .cade-wire:is(:hover,:focus-visible) .cade-wire-hit{stroke:transparent;opacity:0}
+.cade-reader .cade-wire:is(:hover,:focus-visible) .cade-wire-stroke{stroke-width:2.4px}

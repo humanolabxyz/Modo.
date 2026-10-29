@@ -94,7 +94,7 @@
       "h": 300,
       "image": "/references/botoneras.jpg",
       "category": "botoneras",
-      "summary": "Cuatro pilotos y tres pulsadores. Pares rojos 1–2; pares claros 3–4. En el pulsador derecho las columnas están invertidas. NA/NC por convención, pendiente de verificación.",
+      "summary": "Cuatro pilotos y tres pulsadores. Pares rojos 1–2; pares claros 3–4. NA/NC por convención, pendiente de verificación.",
       "labelBands": [
         [
           "S1:1",
@@ -253,7 +253,7 @@
         {
           "id": "S3:1",
           "label": "S3:1",
-          "x": 517,
+          "x": 459,
           "y": 196,
           "color": "red",
           "note": "Pulsador 3 · contacto 1–2",
@@ -264,7 +264,7 @@
         {
           "id": "S3:2",
           "label": "S3:2",
-          "x": 517,
+          "x": 459,
           "y": 250,
           "color": "red",
           "note": "Pulsador 3 · contacto 1–2",
@@ -275,7 +275,7 @@
         {
           "id": "S3:3",
           "label": "S3:3",
-          "x": 459,
+          "x": 517,
           "y": 196,
           "color": "white",
           "note": "Pulsador 3 · contacto 3–4",
@@ -286,7 +286,7 @@
         {
           "id": "S3:4",
           "label": "S3:4",
-          "x": 459,
+          "x": 517,
           "y": 250,
           "color": "white",
           "note": "Pulsador 3 · contacto 3–4",

@@ -1,0 +1,12 @@
+{
+  "base": "https://modo-lab.vercel.app",
+  "verifiedAt": "2026-10-18T14:57:34.745Z",
+  "deployment": "dpl_EVpBdxvTmydUJkavr6WRgc6xM4KK",
+  "checks": [
+    "Cinco rutas públicas devuelven 200 y conservan las cabeceras de seguridad",
+    "El dominio público sirve exactamente el JavaScript comprobado en local",
+    "47 fuentes originales disponibles en producción",
+    "Los tres PDF de la Unidad 2 publicados coinciden byte por byte con sus originales",
+    "Service worker actualizado y sin marcador de compilación pendiente"
+  ]
+}

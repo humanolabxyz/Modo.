@@ -75,3 +75,18 @@ main{padding-top:24px}.compact-heading{margin-bottom:20px;gap:16px;align-items:c
 @media(max-width:900px){.reading-only .cade-reader .reader-workspace{grid-template-columns:1fr}.cade-reader .reader-heading{align-items:flex-start;flex-direction:column;gap:15px}.cade-artboard>svg{height:620px}.cade-reader .reading-explanation{padding:20px 0}}
 @media(max-width:560px){.cade-view-options{flex-direction:column;align-items:flex-start;gap:8px}.cade-view-options label{font-size:10px}.cade-practice-button{width:100%}.cade-artboard>svg{height:550px}.cade-port-list>span{font-size:11px}.cade-reader .reader-heading p{font-size:12px}.cade-drawing-caption{font-size:9px;padding:11px}}
 .board-tool-pan .terminal *,.board-tool-pan .wire-layer *{pointer-events:none!important}
+
+/* The trash button slides out of the eraser, above its touch target. */
+.dock-erase-group{position:relative;display:flex;flex-shrink:0}
+.tool-dock .dock-eraser{touch-action:none}
+.dock-erase-popover{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);z-index:15;animation:dock-trash-reveal .18s ease-out both}
+body.modo-soft-ui .app-shell.editor-workbench .tool-dock .dock-erase-popover button.dock-clear-all{width:48px;height:48px;min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center;padding:0;border:1px solid #e1dadd;border-radius:14px;white-space:nowrap;color:#923c43;background:#fff;box-shadow:0 4px 14px #22354524}
+body.modo-soft-ui .app-shell.editor-workbench .tool-dock .dock-erase-popover button.dock-clear-all:not(:disabled):hover{background:#fff0ef;color:#923c43}
+body.modo-soft-ui .app-shell.editor-workbench .tool-dock .dock-erase-popover button.dock-clear-all>svg{display:block;width:22px;height:22px;flex-shrink:0;color:inherit}
+.dock-clear-caption{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:#7d3941;background:#fff;border-radius:6px;padding:3px 6px;pointer-events:none}
+.tool-dock.is-erase-open,.app-shell.editor-workbench.is-compact .tool-dock.is-erase-open{z-index:1200}
+.tool-dock.is-erase-open .dock-eraser .dock-tooltip{visibility:hidden}
+@keyframes dock-trash-reveal{from{opacity:0;transform:translate(-50%,48px) scale(.7)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.dock-erase-popover{animation:none}}
+
+body.modo-soft-ui .app-shell.editor-workbench:has(.tool-dock.is-erase-open) .connection-message.context-hint{top:auto;bottom:calc(164px + var(--safe-b,0px))}

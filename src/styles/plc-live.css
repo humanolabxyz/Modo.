@@ -1,0 +1,81 @@
+/* Pantalla de programar: escalera con energía visible, editor ST con color y LED de variables. */
+
+/* ── LED de estado (insignia RUN/STOP y bits de memoria) ── */
+.plc-led{display:inline-block;flex:none;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;background:radial-gradient(circle at 35% 30%,#d9e3dd,#8fa299);box-shadow:inset 0 -1px 1px #0003,0 0 0 1px #0000001a;transition:background .25s,box-shadow .35s}
+.lab-badge.is-on .plc-led,.lab-bit.is-on .plc-led{background:radial-gradient(circle at 35% 30%,#eafff3,#3dff9a 55%,#12b768);box-shadow:0 0 0 2px #3dff9a33,0 0 9px #3dff9acc}
+.lab-page .lab-bit{display:inline-flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s,box-shadow .3s}
+.lab-page .lab-bit.is-on{box-shadow:0 0 0 1px #8fe0b866,0 0 14px #3dff9a33}
+.lab-memory-row .lab-bit .plc-led{margin-right:5px}
+
+/* ── Escalera: el segmento energizado se enciende de riel a bobina ── */
+.lab-rung{transition:border-color .3s,box-shadow .35s}
+.lab-rung.is-run .lab-branches{border-left-color:#2fbf94;border-right-color:#8fa79b;transition:border-color .3s}
+.lab-rung.powered{border-color:#79d4b3;box-shadow:0 0 0 1px #79d4b355,0 8px 26px #2fd9a02b}
+.lab-rung.powered header{background:linear-gradient(90deg,#e1fbf1,#f4faf6)}
+.lab-rung.powered .lab-rung-number{color:#0b8f72;font-weight:700}
+.lab-rung.powered .lab-branches{border-right-color:#2fbf94}
+.lab-branch:before{transition:background .25s,box-shadow .3s,height .2s}
+.lab-branch.is-live:before{height:3px;top:30.5px;background:repeating-linear-gradient(90deg,#10a07c 0 14px,#8dffdc 14px 20px);background-size:40px 100%;box-shadow:0 0 9px #3fe0b8b0;animation:plc-flow .9s linear infinite}
+@keyframes plc-flow{to{background-position:40px 0}}
+.lab-contact{transition:filter .3s}
+.lab-contact.active .lab-ladder-symbol{stroke:#0fa385;filter:drop-shadow(0 0 4px #3fe0b8b0)}
+.lab-contact.active select{border-color:#79d4b3;box-shadow:0 0 0 3px #3fe0b826}
+.lab-rung.powered .lab-coil-symbol .lab-ladder-symbol{stroke:#e48b00;filter:drop-shadow(0 0 6px #ffc54dcc)}
+.lab-rung.powered .lab-coil-symbol text{fill:#b36a00}
+.lab-rung.powered .lab-coil select:first-of-type{border-color:#f0c26a;box-shadow:0 0 0 3px #ffc54d2b}
+.lab-ladder-symbol{transition:stroke .25s,filter .3s}
+.lab-diagnostics h2:before{content:'';display:inline-block;width:9px;height:9px;margin-right:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#eafff3,#3dff9a 55%,#12b768);box-shadow:0 0 8px #3dff9a99;vertical-align:baseline}
+.lab-diagnostics:has(ul) h2:before{background:radial-gradient(circle at 35% 30%,#ffe3d7,#ff7a50 55%,#c8401d);box-shadow:0 0 8px #ff7a5099}
+
+/* ── Editor de texto estructurado ── */
+.st-editor{--st-size:14px;--st-pad:18px;flex:1;display:flex;min-height:340px;overflow:hidden;border:1px solid #1d3a31;border-radius:12px;background:#0e1b17;box-shadow:inset 0 1px 0 #ffffff12,0 10px 28px #0d241c33;position:relative}
+.st-gutter{flex:none;overflow:hidden;padding:var(--st-pad) 0;min-width:46px;background:#0a1512;border-right:1px solid #ffffff10;color:#4f7569;text-align:right;font:var(--st-size)/1.85 ui-monospace,SFMono-Regular,Consolas,monospace;user-select:none}
+.st-gutter span{display:block;padding:0 10px 0 8px}
+.st-stack{position:relative;flex:1;min-width:0}
+.st-editor .st-layer,.st-editor .st-input{position:absolute;inset:0;margin:0;box-sizing:border-box;border:0!important;border-radius:0!important;padding:var(--st-pad)!important;font-family:ui-monospace,SFMono-Regular,Consolas,monospace!important;font-size:var(--st-size)!important;line-height:1.85!important;tab-size:2;white-space:pre!important;overflow:auto;letter-spacing:0!important;word-spacing:0}
+.st-editor .st-layer{color:#d6f1e6;pointer-events:none;scrollbar-width:none}
+.st-editor .st-layer::-webkit-scrollbar{display:none}
+.st-editor .st-input{width:100%;height:100%;min-height:0!important;resize:none!important;background:transparent!important;color:transparent!important;-webkit-text-fill-color:transparent;caret-color:#7dffd6;outline:none;box-shadow:none!important}
+.st-editor .st-input::selection{background:#2f8f7a88;-webkit-text-fill-color:transparent}
+.st-editor:focus-within{border-color:#2fbf94;box-shadow:inset 0 1px 0 #ffffff12,0 0 0 3px #3fe0b830,0 10px 28px #0d241c33}
+.st-editor.is-disabled .st-layer{opacity:.72}
+.st-c{color:#6f9488;font-style:italic}
+.st-k{color:#ffd166;font-weight:700}
+.st-a{color:#7be6ff}
+.st-n{color:#c9a8ff}
+.st-o{color:#ff9fb5}
+@media(max-width:700px){.st-editor{--st-size:13px;--st-pad:12px;min-height:280px}.st-gutter{min-width:38px}}
+@media(max-width:700px){.lab-compact .lab-program .st-editor .st-input,.lab-compact .lab-program .st-editor .st-layer{font-size:var(--st-size)!important}}
+
+/* ── Ventana de programación del taller: variables con LED y escalera dibujada ── */
+.cab-io-table tr{transition:background .3s}
+.cab-io-table tr.is-on{background:linear-gradient(90deg,#e4f8ee,transparent)}
+.cab-io-table td:first-child{display:flex;align-items:center;gap:2px}
+.cab-io-table tr.is-on .plc-led{background:radial-gradient(circle at 35% 30%,#eafff3,#3dff9a 55%,#12b768);box-shadow:0 0 0 2px #3dff9a33,0 0 9px #3dff9acc}
+.cab-program td b.is-on{box-shadow:0 0 0 3px #3dff9a30,0 0 10px #3dff9aaa}
+.cab-io{display:grid;gap:6px;margin:14px 0}
+.cab-io>div{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:9px 11px;border:1px solid #d3e3d9;border-radius:10px;background:linear-gradient(180deg,#fff,#f3f8f4)}
+.cab-io code{font:700 12px ui-monospace,Consolas,monospace;color:#2f6b57}
+.cab-io small{display:block;margin:2px 0 0!important;color:#6b8478}
+.cab-io span{font-size:11px;line-height:1.35;color:#3d5a4e}
+.cab-io em{font-style:normal;font:700 10px ui-monospace,Consolas,monospace;color:#7d958a}
+.cab-io i{display:block;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#dfe9e3,#93a79d);box-shadow:inset 0 -1px 1px #0003,0 0 0 1px #0000001a;transition:background .25s,box-shadow .35s}
+.cab-io .is-on i{background:radial-gradient(circle at 35% 30%,#eafff3,#3dff9a 55%,#12b768);box-shadow:0 0 0 3px #3dff9a30,0 0 12px #3dff9acc}
+.cab-io .is-on{border-color:#8fd6b5;background:linear-gradient(180deg,#f5fffa,#e6f8ee)}
+.cab-ladder-view{display:grid;gap:10px;margin:12px 0}
+.cab-ladder-view .rung{display:flex;align-items:center;gap:6px;padding:10px 8px;border:1px solid #d3e3d9;border-radius:10px;background:#fbfdfb;overflow-x:auto}
+.cab-ladder-view .rung.powered{border-color:#79d4b3;box-shadow:0 0 0 3px #3fe0b81f}
+.cab-ladder-view .rail{flex:none;align-self:stretch;width:3px;border-radius:2px;background:#9db3a7}
+.cab-ladder-view .rung.powered .rail{background:#2fbf94;box-shadow:0 0 8px #3fe0b8aa}
+.cab-ladder-view .branches{display:grid;gap:4px;flex:1;min-width:0}
+.cab-ladder-view .branch{display:flex;align-items:center;gap:2px;min-width:max-content;position:relative}
+.cab-ladder-view .branch:before{content:'';position:absolute;left:0;right:0;top:12px;height:2px;background:#bccdc3;z-index:0}
+.cab-ladder-view .branch.is-live:before{background:repeating-linear-gradient(90deg,#10a07c 0 12px,#8dffdc 12px 17px);background-size:34px 100%;box-shadow:0 0 7px #3fe0b8a0;animation:plc-flow .9s linear infinite}
+.cab-ladder-view .cell{position:relative;z-index:1;display:grid;justify-items:center;background:#fbfdfb;padding:0 2px}
+.cab-ladder-view .cell .lab-ladder-symbol{width:44px;height:20px}
+.cab-ladder-view .cell small{margin:0!important;font:600 9px ui-monospace,Consolas,monospace;color:#5d7a6d}
+.cab-ladder-view .cell.active .lab-ladder-symbol{stroke:#0fa385;filter:drop-shadow(0 0 4px #3fe0b8b0)}
+.cab-ladder-view .cell.coil.active .lab-ladder-symbol{stroke:#e48b00;filter:drop-shadow(0 0 6px #ffc54dcc)}
+.cab-ladder-view .cell.coil.active small{color:#a86200}
+
+@media(prefers-reduced-motion:reduce){.lab-branch.is-live:before,.cab-ladder-view .branch.is-live:before{animation:none}}

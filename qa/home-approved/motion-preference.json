@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Preferencia del sistema reducida: reloj estático y opción visible para activar",
+    "Activación explícita vence al sistema reducido: láminas en ejecución y transiciones CSS activas",
+    "La elección se conserva al recargar y al volver al enlace base",
+    "Mouse: elevación de tarjeta y respuesta del asset",
+    "La pausa manual sigue funcionando",
+    "El modo reducido explícito continúa disponible"
+  ],
+  "errors": []
+}

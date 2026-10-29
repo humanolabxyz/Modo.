@@ -73,11 +73,11 @@ try{
   test('Puente H con L293D (Práctica 2): sentido de giro, habilitación, conflictos y validación',()=>{
     const h=newProject('hbridge');assert.equal(readProject(JSON.stringify(h)).ok,true);const board=h.breadboard;
     const motor=r=>r.amps['hb-m'];
-    let r=solveBreadboard(board,{});assert.equal(r.fault,null);assert.ok(!motor(r)||Math.abs(motor(r))<1e-9,'sin pulsar el motor no recibe corriente');assert.equal(r.ics['hb-ic'].powered,true);assert.equal(r.ics['hb-ic'].pins[2].level,'off');
-    r=solveBreadboard(board,{'hb-s2':true});assert.ok(Math.abs(motor(r)+12/40)<1e-6,'S2: OUT2=VS y OUT1=GND; corriente de OUT2 a OUT1');assert.equal(r.ics['hb-ic'].pins[5].level,'high');assert.equal(r.ics['hb-ic'].pins[2].level,'low');
-    r=solveBreadboard(board,{'hb-s1':true});assert.ok(!motor(r)||Math.abs(motor(r))<1e-9,'S1 solo: EN1 sigue bajo y el L293D no excita');
+    let r=solveBreadboard(board,{});assert.equal(r.fault,null);assert.ok(!motor(r)||Math.abs(motor(r))<1e-9,'sin pulsar el motor no recibe corriente');assert.equal(r.ics['hb-ic'].powered,true);assert.equal(r.ics['hb-ic'].pins[2].level,'low');
+    r=solveBreadboard(board,{'hb-s2':true});assert.ok(Math.abs(motor(r)+5/40)<1e-6,'S2: OUT2=VS y OUT1=GND; corriente de OUT2 a OUT1');assert.equal(r.ics['hb-ic'].pins[5].level,'high');assert.equal(r.ics['hb-ic'].pins[2].level,'low');
+    r=solveBreadboard(board,{'hb-s1':true});assert.ok(Math.abs(motor(r)-5/40)<1e-6,'S1 invierte la polaridad con EN1 activo');
     r=solveBreadboard(board,{'hb-s1':true,'hb-s2':true});assert.ok(Math.abs(motor(r))<1e-9,'las dos entradas altas: ambas salidas en VS, motor parado');assert.equal(r.ics['hb-ic'].pins[2].level,'high');
-    assert.ok(solveBreadboard(board,{'hb-s2':true}).warnings.some(w=>w.includes('VSS')),'VSS de 12 V se advierte según la hoja de datos');
+    assert.ok(!solveBreadboard(board,{'hb-s2':true}).warnings.some(w=>w.includes('VSS')),'El montaje corregido usa 5 V para la lógica');const over=clone(board);over.voltage=12;assert.ok(solveBreadboard(over,{'hb-s2':true}).warnings.some(w=>w.includes('VSS')),'Una fuente incorrecta de 12 V sigue advirtiendo el error');
     const noGround=clone(board);noGround.components=noGround.components.filter(c=>!c.id.startsWith('hb-g'));r=solveBreadboard(noGround,{'hb-s2':true});assert.ok(!r.ics['hb-ic'].powered);assert.ok(!motor(r)||Math.abs(motor(r))<1e-9,'sin GND no hay salidas');
     const clash=clone(board);clash.components.push({id:'hb-bad',kind:'wire',from:'g:12',to:'top+:2',value:0,closed:true,color:'#000000'});r=solveBreadboard(clash,{'hb-s2':true});assert.match(r.fault,/unida a otra tensión/);
     const bad=clone(h);bad.breadboard.components.find(c=>c.id==='hb-ic').to='e:18';assert.equal(parseProject(bad).ok,false);
@@ -165,17 +165,17 @@ try{
     const v1=clone(base);v1.version=1;const read=readProject(JSON.stringify(v1));assert.equal(read.ok,true);assert.equal(read.project.version,2);const v99=clone(base);v99.version=99;assert.equal(parseProject(v99).ok,false);
   });
   test('Reubicar componentes: extremos libres, transistor y L293D conservan su forma y no pisan otras patas',()=>{
-    const parts=newProject('hbridge').breadboard.components;
+    const parts=[{id:'hb-r1',kind:'resistor',from:'top+:4',to:'a:10',value:330,closed:true,color:'#0f766e'},{id:'hb-s1',kind:'button',from:'c:10',to:'g:11',value:0,closed:false,color:'#d94848'},...newProject('hbridge').breadboard.components.filter(c=>c.kind==='l293d')];
     let r=relocate(parts,'hb-r1',{to:'a:11'});assert.equal(r.ok,true);assert.equal(r.component.to,'a:11');assert.equal(r.component.from,'top+:4');
     r=relocate(parts,'hb-r1',{to:'c:10'});assert.equal(r.ok,false);assert.match(r.error,/ya tiene una pata/);
     r=relocate(parts,'hb-r1',{to:'zz:9'});assert.equal(r.ok,false);
     r=relocate(parts,'hb-r1',{from:'a:10'});assert.equal(r.ok,false);assert.match(r.error,/diferentes/);
-    r=relocate(parts,'hb-ic',{anchor:'f:20'});assert.equal(r.ok,true);assert.equal(r.component.to,'e:27');
+    r=relocate(parts,'hb-ic',{anchor:'f:18'});assert.equal(r.ok,true);assert.equal(r.component.to,'e:25');
     r=relocate(parts,'hb-ic',{anchor:'f:25'});assert.equal(r.ok,false);r=relocate(parts,'hb-ic',{anchor:'e:20'});assert.equal(r.ok,false);
     const bj=newProject('hbridge-bjt').breadboard.components;
     r=relocate(bj,'bj-q2',{anchor:'d:20'});assert.equal(r.ok,true);assert.equal(r.component.from,'d:20');assert.equal(r.component.to,'d:22');
     r=relocate(bj,'bj-q2',{anchor:'top+:20'});assert.equal(r.ok,false);r=relocate(bj,'bj-q2',{from:'e:1',to:'e:5'});assert.equal(r.ok,false);
-    r=relocate(bj,'bj-q2',{anchor:'e:6'});assert.equal(r.ok,false,'no se puede pisar a otro transistor');
+    r=relocate(bj,'bj-q2',{anchor:'h:7'});assert.equal(r.ok,false,'no se puede pisar a otro transistor');
     r=relocate(bj,'no-existe',{from:'a:1'});assert.equal(r.ok,false);
     const own=relocate(parts,'hb-r1',{from:'top+:5'});assert.equal(own.ok,true,'mover una pata a otro orificio libre del riel');
   });

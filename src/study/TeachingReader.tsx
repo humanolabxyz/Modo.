@@ -1,0 +1,20 @@
+import {useState} from 'react';
+import {ArrowRight,BookOpen,Lightbulb,Check,ArrowLeft,ExternalLink} from 'lucide-react';
+import {TeachingVisual} from './TeachingVisual';
+import type {TeachingUnit} from './lessonTeachings';
+export function TeachingReader({unit,courseId,example,onExample,onPractice,sourceUrl,pages}:{unit:TeachingUnit;courseId:string;example:boolean;onExample:()=>void;onPractice:()=>void;sourceUrl:string;pages:string}){
+ const [section,setSection]=useState(0),[exampleStep,setExampleStep]=useState(0),part=unit.sections[Math.min(section,unit.sections.length-1)],worked=unit.example.steps[exampleStep];
+ return <section className={`teaching-reader ${example?'is-example':''}`} aria-label={example?'Ejemplo explicado':'Explicación de la materia'}>
+  <div className="teaching-reader-intro"><span className="study-kicker"><BookOpen size={14}/>{example?'RAZONAMOS EL EJEMPLO':'LA MATERIA, EXPLICADA'}</span><h3>{example?unit.example.title:unit.title}</h3><p>{example?unit.example.given:unit.lead}</p></div>
+  <div className="teaching-reader-grid"><div className="teaching-visual-card"><div className="teaching-visual-top"><span className="study-live-dot"/><span>Observa y explora</span><small>Apoyo didáctico</small></div><TeachingVisual kind={unit.visual} courseId={courseId}/></div>
+   <div className="teaching-reading-card">
+    {example?<><span className="teaching-part-count">PASO {exampleStep+1} DE {unit.example.steps.length}</span><h4>{worked[0]}</h4><p className="teaching-reading-text">{worked[1]}</p><ol className="teaching-example-index">{unit.example.steps.map(([title],i)=><li key={title}><button aria-current={i===exampleStep?'step':undefined} onClick={()=>setExampleStep(i)}><span>{i<exampleStep?<Check size={13}/>:i+1}</span>{title}</button></li>)}</ol>{exampleStep===unit.example.steps.length-1&&<div className="teaching-conclusion"><Lightbulb size={20}/><p>{unit.example.result}</p></div>}
+     <div className="teaching-reading-nav"><button aria-label="Paso anterior del ejemplo" disabled={!exampleStep} onClick={()=>setExampleStep(exampleStep-1)}><ArrowLeft size={17}/></button>{exampleStep<unit.example.steps.length-1?<button onClick={()=>setExampleStep(exampleStep+1)}>Siguiente paso<ArrowRight size={16}/></button>:<button className="study-solid" onClick={onPractice}>Ahora practico<ArrowRight size={16}/></button>}</div></>:
+    <><span className="teaching-part-count">IDEA {section+1} DE {unit.sections.length}</span><h4>{part.title}</h4><p className="teaching-reading-text">{part.text}</p><div className="teaching-section-dots" aria-label="Ideas de la explicación">{unit.sections.map((s,i)=><button key={s.title} aria-label={`Leer idea ${i+1}: ${s.title}`} aria-current={i===section?'step':undefined} onClick={()=>setSection(i)}/>)}</div><div className="teaching-reading-nav"><button aria-label="Idea anterior" disabled={!section} onClick={()=>setSection(section-1)}><ArrowLeft size={17}/></button>{section<unit.sections.length-1?<button onClick={()=>setSection(section+1)}>Siguiente idea<ArrowRight size={16}/></button>:<button className="study-solid" onClick={onExample}>Ver el ejemplo<ArrowRight size={16}/></button>}</div></>}
+   </div>
+  </div>
+  <div className="teaching-terms" aria-label="Conceptos de la explicación">{unit.terms.map(([word,meaning])=><div key={word}><strong>{word}</strong><p>{meaning}</p></div>)}</div>
+  <aside className="teaching-remember"><Lightbulb size={20}/><div><strong>La idea que debes conservar</strong><p>{unit.remember}</p></div></aside>
+  <div className="teaching-reader-footer"><span>Explicación de apoyo al material docente · referencia pp. {pages}. Los ejemplos son didácticos; consulta también la actividad original.</span><a href={`${sourceUrl}#page=${unit.pages?.[0]||Number.parseInt(pages)||1}`} target="_blank" rel="noreferrer">Consultar material<ExternalLink size={14}/></a>{unit.support&&<a href={unit.support} target="_blank" rel="noreferrer">Resumen y precisiones<ExternalLink size={14}/></a>}</div>
+ </section>;
+}

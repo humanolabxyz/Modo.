@@ -1,3 +1,4 @@
+import {StudySequence} from './StudySequence';
 import { useEffect, useId, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, BookOpen, Check, RotateCcw, X } from "lucide-react";
 import { LessonMedia } from "./LessonMedia";
@@ -42,7 +43,7 @@ export function LessonJourney({ topic, slides, draft, onDraft, onResult, onNext,
   const changeAnswer = (value: string) => onDraft({ ...draft, journeyAnswer: value, journeyFeedback: "" });
   const experimentTitles: Record<string, string> = { "objetivos-fallas": "Cambia la falla", coordinacion: "Mueve la protección", termomagnetico: "Prueba las curvas", fusibles: "Lee la placa", conductores: "Cambia la temperatura", guardamotor: "Elige el rango", "tierra-sobretension": "Compara los fenómenos", "motor-trifasico": "Baja el rendimiento" };
   return <div className="lesson-journey" ref={root}>
-    <nav className="journey-steps" aria-label="Pasos del tema">{["Aprende", "Prueba", "Resuelve"].map((label, index) => <button key={label} aria-current={step === index ? "step" : undefined} onClick={() => setStep(index)}><span>{index === 2 && feedback === "correct" ? <Check size={14} /> : index + 1}</span>{label}</button>)}</nav>
+    <StudySequence className="journey-steps" label="Pasos del tema" value={step===0?'understand':step===1?'example':'practice'} onChange={view=>setStep(view==='understand'?0:view==='example'?1:2)}/>
     <div className="journey-stage" key={step}>
       {step === 0 && <GuidedLesson topic={topic} draft={draft} onDraft={onDraft} onFinish={() => setStep(1)} intro={(start) => <div className="journey-intro">
         <div className="journey-intro-copy"><span className="journey-eyebrow">EMPIEZA POR ESTA IDEA</span><h2 ref={heading} tabIndex={-1}>{info.title}</h2><p className="journey-hook">{info.hook}</p><p className="journey-idea"><Rich text={info.idea} /></p><button className="study-primary journey-start" onClick={start}>Empezar la lección <ArrowRight size={18} /></button><button className="journey-reading-link" onClick={openReading}><BookOpen size={16} /> Entenderlo con más detalle</button></div>

@@ -1,0 +1,80 @@
+ 
+ 
+ 
+ 
+SITUACIÓN DE MODELACIÓN 2
+SUEÑO DORADO
+El análisis de los costos, ingresos y utilidades es crucial 
+para el éxito de una empresa. Controlar los costos permite 
+optimizar recursos y fijar precios competitivos. Evaluar los 
+ingresos ayuda a entender el desempeño en el mercado, 
+hacer proyecciones y segmentar el mercado eficazmente. 
+Analizar las utilidades muestra la rentabilidad y guía 
+decisiones estratégicas, como inversiones y expansiones. 
+En conjunto, este análisis integral asegura una gestión 
+financiera sólida, facilita la planificación estratégica y 
+garantiza la sostenibilidad y el crecimiento continuo de 
+una empresa en un entorno competitivo.
+ 
+ 
+SITUACIÓN DE MODELACIÓN 2 
+SUEÑO DORADO 
+ 
+En una empresa se desea determinar cuáles serán los ingresos y las ganancias  (ambos en pesos) 
+que genera su nuevo producto estrella, una almohada llamada “sueño dorado”. Esta almohada, 
+apenas te recuestas en ella, comienza a realizar masajes que inducen un sueño profundo, 
+asegurándole al cliente un sueño reparador para comenzar su día cargado de energía. 
+ 
+ACTIVIDAD 1: (actividad generadora) 
+Sabiendo que los ingresos obtenidos, por la venta del producto, se calculan mediante la expresión 
+ 
+𝑖𝑛𝑔𝑟𝑒𝑠𝑜𝑠= 𝑝𝑟𝑒𝑐𝑖𝑜 𝑑𝑒 𝑣𝑒𝑛𝑡𝑎 𝑝𝑜𝑟 𝑢𝑛𝑖𝑑𝑎𝑑∙𝑐𝑎𝑛𝑡𝑖𝑑𝑎𝑑 𝑑𝑒 𝑢𝑛𝑖𝑑𝑎𝑑𝑒𝑠 𝑣𝑒𝑛𝑑𝑖𝑑𝑎𝑠 
+ 
+y que el precio de venta que la empresa ha fijado para este producto es de $80000, responde: 
+a. Completa la tabla con los ingresos que se obtienen, de acuerdo a la información dada 
+inicialmente. 
+ 
+Unidades vendidas 
+Ingresos ($) 
+100 
+ 
+200 
+ 
+300 
+ 
+400 
+ 
+500 
+ 
+ 
+b. ¿Cuál es la expresión algebraica de la función que permite modelar el ingreso 
+dependiendo de la cantidad de unidades vendidas? 
+c. ¿Qué ocurre con los ingresos de la empresa a medida que vende una mayor cantidad del 
+producto? 
+d. ¿Existe alguna cantidad de unidades vendidas para que los ingresos sean máximos?  
+e. ¿Existe alguna cantidad de unidades vendidas para la cual la empresa no tenga ingresos? 
+f. ¿Cuál es el número de almohadas que se deben vender para alcanzar ingresos de 1200 
+millones de pesos?  
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 2 
+Si la función de costos de la empresa es 𝐶(𝑥) = −0.14𝑥2 + 1580𝑥+ 805000000, donde 𝑥 está 
+expresada en unidades del producto, responde: 
+a. ¿Qué ocurre con los costos de la empresa a medida que produce una mayor cantidad del 
+producto? ¿Por qué crees que ocurre esto? 
+b. ¿Cuál es el costo de no producir unidades? 
+c. ¿Qué cantidad del producto genera el costo máximo? ¿Y el costo mínimo? 
+ 
+ACTIVIDAD 3 (actividad de cierre) 
+Analizando las funciones anteriores, responde: 
+a. ¿Para qué cantidad de unidades producidas y vendidas la empresa alcanza un punto de 
+equilibrio, es decir, donde los costos sean iguales a los ingresos? 
+b. ¿Para qué cantidad de unidades producidas y vendidas la empresa obtendrá ganancias?  
+c. ¿Para qué cantidad de unidades producidas y vendidas la empresa tendrá pérdidas? 
+d. ¿Cuál es la expresión algebraica que permite determinar las ganancias de la empresa, en 
+pesos, de acuerdo a la cantidad de unidades vendidas de su almohada “sueño dorado”? 
+Considera que las ganancias se calculan restando los costos del producto a los ingresos 
+obtenidos por ventas. 

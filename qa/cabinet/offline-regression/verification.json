@@ -1,0 +1,163 @@
+{
+  "checks": [
+    "Registro de caché al entrar directamente a Estudio, sin pasar por Inicio",
+    "509 archivos preparados, incluidos recursos nunca abiertos (156 MiB)",
+    "Sin acceso a red: importar práctica y recargar conserva los cinco cables",
+    "Primera apertura sin red: equipment",
+    "Primera apertura sin red: schematic",
+    "Primera apertura sin red: plc",
+    "Primera apertura sin red: hmi",
+    "Primera apertura sin red: process",
+    "Primera apertura sin red: breadboard",
+    "Primera apertura sin red: temperature",
+    "Primera apertura sin red: detectors",
+    "Primera apertura sin red: soldering",
+    "PLC: edición de segmentos, Ladder/ST y guardado tras recarga sin internet",
+    "HMI: crear un elemento y guardarlo sin internet",
+    "Proceso: simulación en marcha y accionamiento de válvula",
+    "GeoGebra local: aritmética, exponencial, determinante, CAS, punto 3D y archivo restaurado",
+    "Cuaderno y actividad integrada de GeoGebra sin red",
+    "PDF sin consulta previa y video con rangos, sufijos y errores 416 correctos sin servidor",
+    "Inicio, Estudio, preparación, protoboard y GeoGebra sin desbordamiento a 390 y 820 px",
+    "Navegador cerrado y vuelto a abrir sin red: motor, archivos y estado offline conservados",
+    "Comprobar archivos detecta una pérdida parcial de caché y no declara listo un paquete incompleto",
+    "Sin peticiones externas ni errores inesperados; diagnóstico 3D de GeoGebra y respuesta 416 deliberada registrados aparte"
+  ],
+  "errors": [],
+  "expectedDiagnostics": [
+    "file has 3D objects",
+    "file has 3D objects",
+    "file has 3D objects",
+    "file has 3D objects",
+    "Failed to load resource: the server responded with a status of 416 ()",
+    "file has 3D objects",
+    "file has 3D objects",
+    "file has 3D objects"
+  ],
+  "performance": [
+    {
+      "route": "/estudio?curso=s2-5",
+      "readyMs": 377
+    },
+    {
+      "route": "/sin-conexion/",
+      "readyMs": 102
+    },
+    {
+      "route": "/",
+      "readyMs": 240
+    },
+    {
+      "route": "/?view=simulator",
+      "readyMs": 420
+    },
+    {
+      "route": "/laboratorio?tool=equipment",
+      "readyMs": 390
+    },
+    {
+      "route": "/laboratorio?tool=schematic",
+      "readyMs": 373
+    },
+    {
+      "route": "/laboratorio?tool=plc",
+      "readyMs": 365
+    },
+    {
+      "route": "/laboratorio?tool=hmi",
+      "readyMs": 361
+    },
+    {
+      "route": "/laboratorio?tool=process",
+      "readyMs": 354
+    },
+    {
+      "route": "/laboratorio?tool=breadboard",
+      "readyMs": 509
+    },
+    {
+      "route": "/laboratorio?tool=temperature",
+      "readyMs": 420
+    },
+    {
+      "route": "/laboratorio?tool=detectors",
+      "readyMs": 893
+    },
+    {
+      "route": "/laboratorio?tool=soldering",
+      "readyMs": 79
+    },
+    {
+      "route": "/laboratorio?tool=plc",
+      "readyMs": 68
+    },
+    {
+      "route": "/laboratorio?tool=hmi",
+      "readyMs": 56
+    },
+    {
+      "route": "/laboratorio?tool=process",
+      "readyMs": 73
+    },
+    {
+      "route": "/laboratorio?tool=geogebra",
+      "readyMs": 1469
+    },
+    {
+      "route": "/estudio?curso=s2-5&clase=mtfm01-problema-poblacion",
+      "readyMs": 418
+    },
+    {
+      "route": "/",
+      "readyMs": 103
+    },
+    {
+      "route": "/estudio?curso=s2-5",
+      "readyMs": 64
+    },
+    {
+      "route": "/sin-conexion/",
+      "readyMs": 127
+    },
+    {
+      "route": "/laboratorio?tool=breadboard",
+      "readyMs": 402
+    },
+    {
+      "route": "/laboratorio?tool=geogebra",
+      "readyMs": 1344
+    },
+    {
+      "route": "/",
+      "readyMs": 127
+    },
+    {
+      "route": "/estudio?curso=s2-5",
+      "readyMs": 78
+    },
+    {
+      "route": "/sin-conexion/",
+      "readyMs": 225
+    },
+    {
+      "route": "/laboratorio?tool=breadboard",
+      "readyMs": 859
+    },
+    {
+      "route": "/laboratorio?tool=geogebra",
+      "readyMs": 1095
+    },
+    {
+      "route": "/laboratorio?tool=geogebra",
+      "readyMs": 1547
+    },
+    {
+      "route": "/sin-conexion/",
+      "readyMs": 157
+    }
+  ],
+  "requests": [],
+  "profile": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\.cache\\offline-browser-1792971447567",
+  "assets": 509,
+  "bytes": 163213194
+}

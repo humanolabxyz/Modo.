@@ -1,0 +1,1111 @@
+{
+  "format": "panellab-laboratory",
+  "version": 2,
+  "id": "project-43c49ca2-db4f-4516-9ea1-69784f54c9f8",
+  "name": "Tablero · PLC industrial",
+  "schematic": {
+    "devices": [],
+    "wires": []
+  },
+  "equipment": {
+    "version": 1,
+    "parts": [
+      {
+        "id": "349a0769-af66-4202-b714-45b8a7abf162",
+        "kind": "dc",
+        "tag": "G1",
+        "x": 232,
+        "y": 300,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+        "kind": "fuse",
+        "tag": "FU1",
+        "x": 358,
+        "y": 300,
+        "closed": true,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "c92fe642-6b08-4225-aa04-dc21291e2072",
+        "kind": "guard",
+        "tag": "QM1",
+        "x": 484,
+        "y": 300,
+        "closed": true,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "3b0f8001-14ca-401b-82c5-68bbade18516",
+        "kind": "contactor",
+        "tag": "K1",
+        "x": 620,
+        "y": 300,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+        "kind": "thermal",
+        "tag": "F1",
+        "x": 620,
+        "y": 560,
+        "closed": true,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "ce58de72-f646-4f9c-9ae2-c55ac5a92702",
+        "kind": "terminal",
+        "tag": "X1:U",
+        "x": 232,
+        "y": 818,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "8def09cf-5bd5-4bbd-8f77-a84d82dda70a",
+        "kind": "terminal",
+        "tag": "X1:V",
+        "x": 322,
+        "y": 818,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "56acda74-a951-4a31-b7d8-37645228902f",
+        "kind": "terminal",
+        "tag": "X1:W",
+        "x": 412,
+        "y": 818,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "4de20dd8-398e-4320-963c-688eb4db4c6f",
+        "kind": "earth",
+        "tag": "PE1",
+        "x": 520,
+        "y": 818,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "1d0c31ab-a498-453a-b5dc-e6784314a350",
+        "kind": "push-nc",
+        "tag": "S0",
+        "x": 1230,
+        "y": 300,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "393c517a-0cba-44c6-b64c-82af9833d624",
+        "kind": "push-no",
+        "tag": "S1",
+        "x": 1420,
+        "y": 300,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "3c1c4b87-ca47-45ea-a661-deb4d2377c6f",
+        "kind": "lamp",
+        "tag": "H1",
+        "x": 1320,
+        "y": 570,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 2,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "99443f18-90b4-47dd-a424-df589b63debf",
+        "kind": "threephase",
+        "tag": "RED",
+        "x": 1750,
+        "y": 300,
+        "closed": false,
+        "params": {
+          "voltage": 400,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "1d22d164-7777-471f-9aee-ffec9768487d",
+        "kind": "motor3",
+        "tag": "M1",
+        "x": 1980,
+        "y": 610,
+        "closed": false,
+        "params": {
+          "voltage": 400,
+          "power": 1500,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      },
+      {
+        "id": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+        "kind": "plc",
+        "tag": "PLC1",
+        "x": 232,
+        "y": 560,
+        "closed": false,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": "plc"
+        }
+      },
+      {
+        "id": "ec557ecc-2cc1-4ed4-9181-6d1d06085246",
+        "kind": "selector",
+        "tag": "B1",
+        "x": 1750,
+        "y": 610,
+        "closed": true,
+        "params": {
+          "voltage": 24,
+          "power": 100,
+          "current": 10,
+          "capacity": 100,
+          "soc": 50,
+          "irradiance": 1000,
+          "frequency": 50,
+          "target": 30,
+          "ramp": 3,
+          "poles": 4,
+          "tariff": 0,
+          "text": ""
+        }
+      }
+    ],
+    "wires": [
+      {
+        "id": "fd49a3ee-f710-4f09-abea-6bbe4c4526d4",
+        "from": {
+          "part": "99443f18-90b4-47dd-a424-df589b63debf",
+          "port": "L1"
+        },
+        "to": {
+          "part": "c92fe642-6b08-4225-aa04-dc21291e2072",
+          "port": "1"
+        },
+        "label": "W01",
+        "route": "power"
+      },
+      {
+        "id": "24dfab55-b7f4-44c3-9345-c925e8079068",
+        "from": {
+          "part": "99443f18-90b4-47dd-a424-df589b63debf",
+          "port": "L2"
+        },
+        "to": {
+          "part": "c92fe642-6b08-4225-aa04-dc21291e2072",
+          "port": "3"
+        },
+        "label": "W02",
+        "route": "power"
+      },
+      {
+        "id": "f66061d6-27b2-4453-adcb-611deed3f787",
+        "from": {
+          "part": "99443f18-90b4-47dd-a424-df589b63debf",
+          "port": "L3"
+        },
+        "to": {
+          "part": "c92fe642-6b08-4225-aa04-dc21291e2072",
+          "port": "5"
+        },
+        "label": "W03",
+        "route": "power"
+      },
+      {
+        "id": "0eaa3c8a-0f5c-4fc1-ae3c-8277e0642744",
+        "from": {
+          "part": "c92fe642-6b08-4225-aa04-dc21291e2072",
+          "port": "2"
+        },
+        "to": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "L1"
+        },
+        "label": "W04",
+        "route": "power"
+      },
+      {
+        "id": "5c7607a9-2797-4803-92af-2915bef3955b",
+        "from": {
+          "part": "c92fe642-6b08-4225-aa04-dc21291e2072",
+          "port": "4"
+        },
+        "to": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "L2"
+        },
+        "label": "W05",
+        "route": "power"
+      },
+      {
+        "id": "bd7591b0-9f2d-40e4-938d-5c04d2851d87",
+        "from": {
+          "part": "c92fe642-6b08-4225-aa04-dc21291e2072",
+          "port": "6"
+        },
+        "to": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "L3"
+        },
+        "label": "W06",
+        "route": "power"
+      },
+      {
+        "id": "f29958a5-801e-4618-a588-a02c30947d12",
+        "from": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "T1"
+        },
+        "to": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "L1"
+        },
+        "label": "W07",
+        "route": "power"
+      },
+      {
+        "id": "ef3ab69a-7b3a-4fb3-b1b0-ad76bdb5544d",
+        "from": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "T2"
+        },
+        "to": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "L2"
+        },
+        "label": "W08",
+        "route": "power"
+      },
+      {
+        "id": "044b1891-f8dc-4ada-9fde-87645303871a",
+        "from": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "T3"
+        },
+        "to": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "L3"
+        },
+        "label": "W09",
+        "route": "power"
+      },
+      {
+        "id": "efa617d4-4565-4980-b56d-de57b382afac",
+        "from": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "T1"
+        },
+        "to": {
+          "part": "ce58de72-f646-4f9c-9ae2-c55ac5a92702",
+          "port": "1"
+        },
+        "label": "W10",
+        "route": "power"
+      },
+      {
+        "id": "e4016947-5d0b-4f58-9c85-d5dc3eee0d28",
+        "from": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "T2"
+        },
+        "to": {
+          "part": "8def09cf-5bd5-4bbd-8f77-a84d82dda70a",
+          "port": "1"
+        },
+        "label": "W11",
+        "route": "power"
+      },
+      {
+        "id": "07da3d92-2a3a-4918-be10-a93f4d479147",
+        "from": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "T3"
+        },
+        "to": {
+          "part": "56acda74-a951-4a31-b7d8-37645228902f",
+          "port": "1"
+        },
+        "label": "W12",
+        "route": "power"
+      },
+      {
+        "id": "c35e9f0d-3312-4932-b25a-4d4a8124fa72",
+        "from": {
+          "part": "ce58de72-f646-4f9c-9ae2-c55ac5a92702",
+          "port": "2"
+        },
+        "to": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "U1"
+        },
+        "label": "W13",
+        "route": "power"
+      },
+      {
+        "id": "02e0194d-2c2a-4f51-96c0-1ddf72d2be32",
+        "from": {
+          "part": "8def09cf-5bd5-4bbd-8f77-a84d82dda70a",
+          "port": "2"
+        },
+        "to": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "V1"
+        },
+        "label": "W14",
+        "route": "power"
+      },
+      {
+        "id": "e6848d10-2dff-4384-acbe-245739bbecf2",
+        "from": {
+          "part": "56acda74-a951-4a31-b7d8-37645228902f",
+          "port": "2"
+        },
+        "to": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "W1"
+        },
+        "label": "W15",
+        "route": "power"
+      },
+      {
+        "id": "76eb5307-03be-4b28-96d1-9ba72d6cc931",
+        "from": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "W2"
+        },
+        "to": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "U2"
+        },
+        "label": "W16",
+        "route": "power"
+      },
+      {
+        "id": "438a71dc-979b-47ad-a444-42448a560f70",
+        "from": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "U2"
+        },
+        "to": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "V2"
+        },
+        "label": "W17",
+        "route": "power"
+      },
+      {
+        "id": "de8024b6-c5b5-459b-99bc-3264055aa606",
+        "from": {
+          "part": "99443f18-90b4-47dd-a424-df589b63debf",
+          "port": "PE"
+        },
+        "to": {
+          "part": "4de20dd8-398e-4320-963c-688eb4db4c6f",
+          "port": "PE"
+        },
+        "label": "W18",
+        "route": "pe"
+      },
+      {
+        "id": "488b0699-c9a6-4c33-ae46-1976d4ee48ea",
+        "from": {
+          "part": "4de20dd8-398e-4320-963c-688eb4db4c6f",
+          "port": "PE"
+        },
+        "to": {
+          "part": "1d22d164-7777-471f-9aee-ffec9768487d",
+          "port": "PE"
+        },
+        "label": "W19",
+        "route": "pe"
+      },
+      {
+        "id": "7c16bcfd-0d0f-45e0-814f-738050fed655",
+        "from": {
+          "part": "349a0769-af66-4202-b714-45b8a7abf162",
+          "port": "+"
+        },
+        "to": {
+          "part": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+          "port": "1"
+        },
+        "label": "W20",
+        "route": "control"
+      },
+      {
+        "id": "542707a9-0a7b-4b0e-9d71-0f4c176a5ff4",
+        "from": {
+          "part": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+          "port": "2"
+        },
+        "to": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "L+"
+        },
+        "label": "W21",
+        "route": "control"
+      },
+      {
+        "id": "3ed9ecfc-fdf1-4305-be80-c97cb1c30bfa",
+        "from": {
+          "part": "349a0769-af66-4202-b714-45b8a7abf162",
+          "port": "−"
+        },
+        "to": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "M"
+        },
+        "label": "W22",
+        "route": "control"
+      },
+      {
+        "id": "fa5586b7-7075-48ef-98fc-bf6ed2595069",
+        "from": {
+          "part": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+          "port": "2"
+        },
+        "to": {
+          "part": "1d0c31ab-a498-453a-b5dc-e6784314a350",
+          "port": "1"
+        },
+        "label": "W23",
+        "route": "control"
+      },
+      {
+        "id": "5c4102bf-b649-411e-a8fb-345172a8c6e5",
+        "from": {
+          "part": "1d0c31ab-a498-453a-b5dc-e6784314a350",
+          "port": "2"
+        },
+        "to": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "I2"
+        },
+        "label": "W24",
+        "route": "control"
+      },
+      {
+        "id": "7517bfac-06cb-4f3b-88c8-4ebac76d4d89",
+        "from": {
+          "part": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+          "port": "2"
+        },
+        "to": {
+          "part": "393c517a-0cba-44c6-b64c-82af9833d624",
+          "port": "3"
+        },
+        "label": "W25",
+        "route": "control"
+      },
+      {
+        "id": "8cc7bef4-8796-4b82-bdd2-e73a8b466d2b",
+        "from": {
+          "part": "393c517a-0cba-44c6-b64c-82af9833d624",
+          "port": "4"
+        },
+        "to": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "I1"
+        },
+        "label": "W26",
+        "route": "control"
+      },
+      {
+        "id": "5a234717-4565-4791-b1f4-665c0d592b3e",
+        "from": {
+          "part": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+          "port": "2"
+        },
+        "to": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "97"
+        },
+        "label": "W27",
+        "route": "control"
+      },
+      {
+        "id": "6d9d80b6-d445-4332-9de1-5c8f70c97e9a",
+        "from": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "98"
+        },
+        "to": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "I3"
+        },
+        "label": "W28",
+        "route": "control"
+      },
+      {
+        "id": "573b4786-63d7-476d-9969-18cf3cb31ec1",
+        "from": {
+          "part": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+          "port": "2"
+        },
+        "to": {
+          "part": "ec557ecc-2cc1-4ed4-9181-6d1d06085246",
+          "port": "3"
+        },
+        "label": "W29",
+        "route": "control"
+      },
+      {
+        "id": "ea77a0e9-6727-4734-a81b-99fc2727ff51",
+        "from": {
+          "part": "ec557ecc-2cc1-4ed4-9181-6d1d06085246",
+          "port": "4"
+        },
+        "to": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "I4"
+        },
+        "label": "W30",
+        "route": "control"
+      },
+      {
+        "id": "be1cd76e-8901-4617-97c0-3b70ba273917",
+        "from": {
+          "part": "1d0c31ab-a498-453a-b5dc-e6784314a350",
+          "port": "2"
+        },
+        "to": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "C1"
+        },
+        "label": "W31",
+        "route": "control"
+      },
+      {
+        "id": "0c228db2-b0f8-486c-a12b-ca8466d600e3",
+        "from": {
+          "part": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+          "port": "Q1"
+        },
+        "to": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "95"
+        },
+        "label": "W32",
+        "route": "control"
+      },
+      {
+        "id": "75722547-c40a-46a6-8300-9bb50490c828",
+        "from": {
+          "part": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+          "port": "96"
+        },
+        "to": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "A1"
+        },
+        "label": "W33",
+        "route": "control"
+      },
+      {
+        "id": "240da0fc-56af-49b3-900b-bd4f4bf0f31c",
+        "from": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "A2"
+        },
+        "to": {
+          "part": "349a0769-af66-4202-b714-45b8a7abf162",
+          "port": "−"
+        },
+        "label": "W34",
+        "route": "control"
+      },
+      {
+        "id": "4f6262de-0798-4827-9ff0-600e0a2e386d",
+        "from": {
+          "part": "3b0f8001-14ca-401b-82c5-68bbade18516",
+          "port": "A1"
+        },
+        "to": {
+          "part": "3c1c4b87-ca47-45ea-a661-deb4d2377c6f",
+          "port": "1"
+        },
+        "label": "W35",
+        "route": "control"
+      },
+      {
+        "id": "dfe61fc7-9050-406b-ab5b-ac1f983853f3",
+        "from": {
+          "part": "3c1c4b87-ca47-45ea-a661-deb4d2377c6f",
+          "port": "2"
+        },
+        "to": {
+          "part": "349a0769-af66-4202-b714-45b8a7abf162",
+          "port": "−"
+        },
+        "label": "W36",
+        "route": "control"
+      }
+    ],
+    "cabinet": {
+      "version": 1,
+      "layout": "compact",
+      "scenario": "pump-plc",
+      "roles": {
+        "supply": "349a0769-af66-4202-b714-45b8a7abf162",
+        "fuse": "f663eb74-7a23-4a87-9d3b-91193c5b9b8f",
+        "guard": "c92fe642-6b08-4225-aa04-dc21291e2072",
+        "contactor": "3b0f8001-14ca-401b-82c5-68bbade18516",
+        "thermal": "6e529e05-2ab9-4ac9-bbd5-68d28efd1622",
+        "u": "ce58de72-f646-4f9c-9ae2-c55ac5a92702",
+        "v": "8def09cf-5bd5-4bbd-8f77-a84d82dda70a",
+        "w": "56acda74-a951-4a31-b7d8-37645228902f",
+        "earth": "4de20dd8-398e-4320-963c-688eb4db4c6f",
+        "stop": "1d0c31ab-a498-453a-b5dc-e6784314a350",
+        "start": "393c517a-0cba-44c6-b64c-82af9833d624",
+        "lamp": "3c1c4b87-ca47-45ea-a661-deb4d2377c6f",
+        "feed": "99443f18-90b4-47dd-a424-df589b63debf",
+        "motor": "1d22d164-7777-471f-9aee-ffec9768487d",
+        "plc": "97e283df-4b78-4545-8419-ca1cac33d7b4",
+        "permit": "ec557ecc-2cc1-4ed4-9181-6d1d06085246"
+      },
+      "step": "test",
+      "fixtures": {
+        "rail": true,
+        "duct": true,
+        "bond": true
+      },
+      "area": {
+        "width": 720,
+        "height": 780
+      },
+      "rails": [
+        {
+          "id": "rail-1",
+          "x": 214,
+          "y": 372,
+          "width": 600
+        },
+        {
+          "id": "rail-2",
+          "x": 214,
+          "y": 620,
+          "width": 600
+        },
+        {
+          "id": "rail-3",
+          "x": 214,
+          "y": 880,
+          "width": 600
+        }
+      ],
+      "ducts": [
+        {
+          "id": "duct-1",
+          "x": 175,
+          "y": 245,
+          "width": 38,
+          "height": 751
+        },
+        {
+          "id": "duct-2",
+          "x": 839,
+          "y": 245,
+          "width": 38,
+          "height": 751
+        },
+        {
+          "id": "duct-3",
+          "x": 213,
+          "y": 245,
+          "width": 626,
+          "height": 30
+        },
+        {
+          "id": "duct-4",
+          "x": 213,
+          "y": 498,
+          "width": 626,
+          "height": 30
+        },
+        {
+          "id": "duct-5",
+          "x": 213,
+          "y": 758,
+          "width": 626,
+          "height": 30
+        },
+        {
+          "id": "duct-6",
+          "x": 213,
+          "y": 966,
+          "width": 626,
+          "height": 30
+        }
+      ],
+      "understood": true,
+      "notes": "",
+      "repairs": [],
+      "test": {
+        "signature": "57dd0799",
+        "at": "2026-10-26T21:01:49.117Z",
+        "results": [
+          {
+            "id": "idle",
+            "pass": true,
+            "detail": "Al iniciar, la bomba permanece detenida."
+          },
+          {
+            "id": "start",
+            "pass": true,
+            "detail": "Marcha activa la bobina y el motor."
+          },
+          {
+            "id": "hold",
+            "pass": true,
+            "detail": "Al soltar marcha, el programa mantiene la salida."
+          },
+          {
+            "id": "stop",
+            "pass": true,
+            "detail": "Paro detiene el motor."
+          },
+          {
+            "id": "restart",
+            "pass": true,
+            "detail": "Soltar paro no provoca un rearranque."
+          },
+          {
+            "id": "thermal",
+            "pass": true,
+            "detail": "El disparo térmico de práctica impide la marcha."
+          },
+          {
+            "id": "guard",
+            "pass": true,
+            "detail": "El guardamotor abierto interrumpe la potencia."
+          },
+          {
+            "id": "permit",
+            "pass": true,
+            "detail": "Sin permiso del proceso, el programa impide la marcha."
+          }
+        ]
+      }
+    }
+  },
+  "plc": {
+    "language": "ladder",
+    "tags": [
+      {
+        "address": "I0.0",
+        "name": "Marcha · S1",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "I0.1",
+        "name": "Paro disponible · S0",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "I0.2",
+        "name": "Disparo térmico · F1",
+        "type": "bool",
+        "initial": true
+      },
+      {
+        "address": "I0.3",
+        "name": "Permiso de proceso · B1",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "Q0.0",
+        "name": "Orden de contactor · K1",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "M0.0",
+        "name": "Memoria auxiliar",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "T1",
+        "name": "Temporizador",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "C1",
+        "name": "Contador",
+        "type": "bool",
+        "initial": false
+      },
+      {
+        "address": "AI0",
+        "name": "Nivel del tanque (%)",
+        "type": "number",
+        "initial": 20
+      }
+    ],
+    "rungs": [
+      {
+        "id": "cab-pump-control",
+        "comment": "Marcha con retención, paro, térmico y permiso",
+        "branches": [
+          [
+            {
+              "address": "I0.1",
+              "negated": false
+            },
+            {
+              "address": "I0.2",
+              "negated": true
+            },
+            {
+              "address": "I0.3",
+              "negated": false
+            },
+            {
+              "address": "I0.0",
+              "negated": false
+            }
+          ],
+          [
+            {
+              "address": "I0.1",
+              "negated": false
+            },
+            {
+              "address": "I0.2",
+              "negated": true
+            },
+            {
+              "address": "I0.3",
+              "negated": false
+            },
+            {
+              "address": "Q0.0",
+              "negated": false
+            }
+          ]
+        ],
+        "output": "Q0.0",
+        "mode": "coil",
+        "preset": 1
+      }
+    ],
+    "source": "Q0.0 := I0.1 AND NOT I0.2 AND I0.3 AND (I0.0 OR Q0.0);"
+  },
+  "hmi": {
+    "widgets": []
+  },
+  "process": {
+    "capacity": 100,
+    "initialLevel": 20,
+    "inflow": 6,
+    "outflow": 1,
+    "low": 20,
+    "high": 80,
+    "pumpSignal": "Q0.0",
+    "lowSignal": "I0.2",
+    "highSignal": "I0.3",
+    "levelSignal": "AI0"
+  },
+  "breadboard": {
+    "voltage": 5,
+    "positive": "top+:1",
+    "negative": "top-:1",
+    "components": []
+  }
+}

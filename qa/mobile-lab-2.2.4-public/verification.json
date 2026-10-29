@@ -1,0 +1,12 @@
+{
+  "base": "https://modo-lab.vercel.app/",
+  "checks": [
+    "Selector: tocar, arrastrar al escenario, evitar duplicados y guardar herramienta con gestos táctiles",
+    "Soldadura: desplazar con el dedo sobre la mesa libre sin cambiar de modo",
+    "Mover vista desplaza la escena sin alterar las piezas; cable y cobre se dibujan sobre el puerto",
+    "Temperatura: ambas puntas se arrastran con el dedo, leen Pt100 y la libreta abre encima del banco",
+    "Panel: tamaño nativo SVG, cuerpo/barra/cables alineados, lectura táctil 95–96 y libreta en primer plano"
+  ],
+  "errors": [],
+  "status": "PASS"
+}

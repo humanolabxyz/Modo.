@@ -1,0 +1,9 @@
+{
+  "base": "http://127.0.0.1:4327",
+  "checks": [
+    "chromium 1440: multímetro → aprender → continuidad sin cuestionario previo; interpretación, reabrir lección, apertura real de rama, corriente en serie y reposición solo desconectado",
+    "webkit 390: multímetro → aprender → continuidad sin cuestionario previo; interpretación, reabrir lección, apertura real de rama, corriente en serie y reposición solo desconectado",
+    "Instrumento de pinza dentro de la pizarra: corriente RMS del conductor real, selector OFF/A~, HOLD, registro, CSV, arrastre de mordaza hasta cable S y regreso al paso"
+  ],
+  "errors": []
+}

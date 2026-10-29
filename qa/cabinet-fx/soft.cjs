@@ -1,0 +1,13 @@
+const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const base=process.env.PANELLAB_URL||'http://127.0.0.1:4411';
+(async()=>{const b=await chromium.launch(),c=await b.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1.5});await c.addInitScript(()=>localStorage.setItem('modo-tutoriales-bienvenida-v1','seen'));
+const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+await p.goto(base+'/laboratorio?tool=equipment');await p.waitForTimeout(1200);
+await p.getByRole('button',{name:'Montajes y archivos'}).click();await p.getByRole('menuitem',{name:/arrancador suave/}).click().catch(async()=>{await p.getByText('Añadir ejemplo de arrancador suave').click();});
+await p.waitForTimeout(800);await p.screenshot({path:'qa/cabinet-fx/soft-reposo.png'});
+await p.getByRole('button',{name:'Simular proyecto',exact:true}).click();await p.waitForTimeout(500);
+await p.locator('.eq-part-hit').nth(1).click({force:true});await p.waitForTimeout(300);
+const run=p.getByRole('button',{name:'Marcha del arrancador'});if(await run.count())await run.click();else console.log('sin boton Marcha');
+await p.waitForTimeout(1200);await p.screenshot({path:'qa/cabinet-fx/soft-rampa.png'});
+await p.waitForTimeout(3500);await p.screenshot({path:'qa/cabinet-fx/soft-plena.png'});
+console.log(JSON.stringify({errors}));await b.close();})().catch(e=>{console.error(e);process.exit(1);});

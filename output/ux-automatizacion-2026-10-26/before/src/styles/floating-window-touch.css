@@ -1,0 +1,22 @@
+/* Ventanas flotantes en pantallas pequeñas.
+   Arrastrar y cambiar el tamaño son gestos de ratón: en tacto la ventana se ancla a un lado y se desplaza por dentro. */
+@media (pointer:coarse){
+ .mobile-floating-window .fw-edge{display:none}
+ .mobile-floating-window .floating-window-header{cursor:default}
+ .mobile-floating-window .fw-controls-hint{display:none}
+}
+/* Teléfono horizontal y pantallas bajas: panel lateral de alto completo, para que quepa más que dos filas. */
+@media (orientation:landscape) and (max-height:560px){
+ .mobile-floating-window{top:58px!important;bottom:8px!important;right:8px!important;left:auto!important;width:min(460px,56vw)!important;height:auto!important;max-height:none!important;transform:none!important}
+ .mobile-floating-window .floating-window-footer{display:none}
+}
+/* Teléfono vertical: la ventana deja libre la barra superior y usa el ancho completo. */
+@media (max-width:520px) and (orientation:portrait){
+ .mobile-floating-window{left:8px!important;right:8px!important;width:auto!important}
+}
+/* Tableta, vertical y horizontal: el mismo panel lateral del teléfono horizontal. Deja libre la barra superior (Simular)
+   y la barra de acciones de abajo. Solo en el laboratorio y solo con puntero táctil; con ratón la ventana sigue siendo movible. */
+@media (pointer:coarse) and (min-width:701px) and (max-width:1366px){
+ body:has(.lab-page) .mobile-floating-window{top:58px!important;bottom:148px!important;right:8px!important;left:auto!important;width:min(460px,52vw)!important;height:auto!important;max-height:none!important;transform:none!important}
+ body:has(.lab-page) .mobile-floating-window .floating-window-footer{display:none}
+}

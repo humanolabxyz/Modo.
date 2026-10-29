@@ -1,0 +1,24 @@
+/* Aviso del multímetro: misma forma y animación que «¡Cable correcto!», con tono ámbar o rojo suave. */
+.guide-check-toast.meter-toast{max-width:min(460px,calc(100vw - 32px));align-items:flex-start;pointer-events:none}
+.guide-check-toast.meter-toast>div{gap:4px}
+.guide-check-toast.meter-toast strong{font-size:15px}
+.guide-check-toast.meter-toast span{font-size:13px;line-height:1.4}
+.meter-toast.is-warn{border-color:#f0dcae;background:#fffcf3f5;color:#7a5200;box-shadow:0 8px 28px #5a3f0a20}
+.meter-toast.is-warn span{color:#7d6430}
+.meter-toast.is-warn .guide-check-fill{fill:#fdf0c9}
+.meter-toast.is-warn .guide-check-ring{stroke:#c99417}
+.meter-toast.is-warn .guide-check-tick{stroke:#b07c0c}
+.meter-toast.is-danger{border-color:#f2cbc5;background:#fff8f7f5;color:#8a2a1f;box-shadow:0 8px 28px #5a141020}
+.meter-toast.is-danger span{color:#8a5a54}
+.meter-toast.is-danger .guide-check-fill{fill:#fde3df}
+.meter-toast.is-danger .guide-check-ring{stroke:#cf5446}
+.meter-toast.is-danger .guide-check-tick{stroke:#b93a2c}
+.meter-toast-dot{fill:#b07c0c;opacity:0;animation:meter-toast-dot .2s ease-out .32s forwards}
+.meter-toast.is-danger .meter-toast-dot{fill:#b93a2c}
+@keyframes meter-toast-dot{to{opacity:1}}
+html.modo-reduced .meter-toast .meter-toast-dot{animation:none;opacity:1}
+@media(max-width:600px){.guide-check-toast.meter-toast{top:calc(env(safe-area-inset-top,0px) + 64px);padding:10px 14px 10px 10px}.guide-check-toast.meter-toast .guide-check-mark{width:40px;height:40px}}
+
+/* Botón del aviso (por ejemplo «Cambiar fusible»): un toque grande, el aviso en sí no captura el puntero. */
+.meter-toast-action{pointer-events:auto;align-self:flex-start;margin-top:6px;min-height:44px;padding:8px 18px;border:0;border-radius:12px;background:#b93a2c;color:#fff;font:700 14px/1 var(--modo-font,system-ui,sans-serif);cursor:pointer;box-shadow:0 2px 8px #5a141040}
+.meter-toast-action:hover{background:#a23024}.meter-toast-action:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px #b93a2c}

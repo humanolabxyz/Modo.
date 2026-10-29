@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": 17,
+  "notes": [
+    "Color no modifica continuidad ni invalida mediciones",
+    "Cambio real de pin invalida el cable",
+    "Posición de punta conserva el agarre",
+    "Cautín caliente conserva transferencia al apagar"
+  ]
+}

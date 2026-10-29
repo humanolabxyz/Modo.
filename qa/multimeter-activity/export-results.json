@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Fixture de prueba: CSV contiene cabecera y 15 mediciones de cinco tablas",
+    "JSON conserva datos y estado incompleto, sin declararlo aprobado",
+    "PDF y JSON originales disponibles en local con respuesta 200"
+  ]
+}

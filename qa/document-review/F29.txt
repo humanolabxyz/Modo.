@@ -1,0 +1,166 @@
+ 
+ 
+ 
+ 
+SITUACIÓN DE MODELACIÓN 1
+SERVICIO ELÉCTRICO
+En conformidad a lo dispuesto en la Ley Eléctrica vigente 
+en Chile, las tarifas finales de distribución para los clientes 
+son fijadas cada cuatro años por el Ministerio de 
+Economía, y se realiza en base a estudios encargados a 
+consultores expertos. Las fórmulas tarifarias quedan 
+establecidas a través de un Decreto del Ministerio de 
+Economía, en el cual se incluyen las diversas modalidades 
+de tarifas reguladas a las que pueden optar libremente los 
+clientes.
+ 
+ 
+SITUACIÓN DE MODELACIÓN 1 
+SERVICIO ELÉCTRICO 
+ 
+El consumo energético por vivienda es la cantidad de energía usada por un hogar para satisfacer 
+sus necesidades diarias como la iluminación, la calefacción, la refrigeración y el uso de 
+electrodomésticos. Hay que tener en cuenta que el consumo energético de una vivienda puede 
+variar significativamente según diversos factores como el tamaño de la vivienda, el número de 
+personas que la habitan, el clima de la zona o de la temporada, las prácticas de eficiencia 
+energética implementadas y el uso de equipos y electrodomésticos energéticamente eficientes. 
+Por lo general, la unidad de medida utilizada para expresar el consumo energético es el kilovatio-
+hora (kWh). 
+ 
+ACTIVIDAD 1 (actividad generadora) 
+Los datos que se muestran a continuación, corresponden al consumo de energía de un hogar en 
+una región de Chile, cuyo servicio eléctrico es brindado por la empresa LUMINUS: 
+ 
+Consumo estimado 
+mensual (kWh) 
+Administración del 
+servicio ($) 
+Electricidad consumida 
+($) 
+Total a pagar en la 
+boleta ($) 
+1 
+1324 
+144 
+1488 
+2 
+1324 
+288 
+1651 
+3 
+1324 
+432 
+1815 
+4 
+1324 
+576 
+1978 
+5 
+1324 
+720 
+2142 
+ 
+¿Existe algún tipo de regularidad en las columnas “Administración del servicio”, “Electricidad 
+consumida” y “Total a pagar en la boleta”? 
+ 
+ACTIVIDAD 2 
+¿Cuál es la expresión algebraica que modela el total a pagar en la boleta en función del consumo 
+estimado mensual? ¿Qué parámetros están presentes y cómo se interpretan? 
+ 
+ACTIVIDAD 3 
+Considera la función planteada en la actividad anterior. 
+a. ¿Cuál sería el total a pagar si una persona consumiera 234 kWh? 
+b. La página web de la empresa ha publicado que el total a pagar por 234 kWh es de $35595. 
+¿Existe alguna diferencia con la respuesta de la pregunta anterior? Analiza. 
+c. ¿Cuántos kWh se deben consumir para pagar un total de $20000 en la boleta? 
+ 
+ 
+ 
+ 
+ACTIVIDAD 4 
+La empresa ha entregado la siguiente información en su página web: 
+ 
+Consumo estimado mensual (kWh) 
+Total a pagar en la boleta ($) 
+50 
+9502 
+120 
+20950 
+210 
+35670 
+310 
+52025 
+415 
+69197 
+ 
+a. ¿Cuál es la expresión algebraica que modela el total a pagar en la boleta en función del 
+consumo estimado mensual? 
+b. ¿Cuál sería el total a pagar si una persona consumiera 234 kWh? 
+c. ¿Existe alguna diferencia entre la respuesta de la pregunta anterior y lo publicado por la 
+empresa? Analiza. 
+d. ¿Cuántos kWh se deben consumir para pagar $20000 en la boleta? 
+ 
+ACTIVIDAD 5 (actividad de cierre) 
+La empresa CHISPITA tiene otros costos fijos y variables diferentes a los de la empresa LUMINUS. 
+En la siguiente tabla se ha registrado el servicio eléctrico de cinco hogares pertenecientes a la 
+empresa CHISPITA. 
+ 
+Consumo estimado 
+mensual (kWh) 
+Administración 
+del servicio ($) 
+Electricidad 
+consumida ($) 
+Transporte de 
+electricidad ($) 
+Total a pagar en la 
+boleta ($) 
+70 
+685 
+8164 
+1124 
+ 
+78 
+685 
+9098 
+1254 
+ 
+79 
+685 
+9214 
+1268 
+ 
+86 
+685 
+10031 
+1381 
+ 
+113 
+685 
+13178 
+1816 
+ 
+ 
+a. Completa la tabla anterior, considerando que el total a pagar en la boleta es la suma de 
+la administración del servicio, la electricidad consumida y el transporte de electricidad. 
+ 
+ 
+ 
+ 
+b. ¿Cuál es la expresión algebraica que modela el total a pagar en la boleta en función del 
+consumo estimado mensual de esta nueva empresa? Ten en cuenta cada uno de los 
+siguientes casos: 
+§ 
+Considera sólo los dos primeros hogares 
+§ 
+Considera sólo los tres primeros hogares 
+§ 
+Considera sólo los cuatro primeros hogares 
+§ 
+Considera los cinco hogares 
+Analiza tus resultados. 
+c. Representa gráficamente la función de la empresa CHISPITA (considerando los cinco 
+hogares) y la función de la empresa LUMINUS (determinada en la actividad 4) en 
+GeoGebra. Posteriormente, determina la intersección entre ambas e interpreta este 
+resultado en los contextos gráfico y algebraico. 
+ 

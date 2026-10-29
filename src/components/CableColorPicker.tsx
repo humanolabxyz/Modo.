@@ -1,8 +1,8 @@
 import {useRef} from 'react';
-import {BANANA_COLOR} from '../data/practice';
+import {WIRE_PALETTE} from '../data/wireColors';
 import {FloatingDisclosure} from './FloatingDisclosure';
 
-const COLORS=[['Petróleo',BANANA_COLOR],['Rojo','#c53943'],['Azul','#2978c8'],['Amarillo','#d8ab28'],['Negro','#343b42'],['Blanco','#f4f1e7']] as const;
+const COLORS=WIRE_PALETTE.map(c=>[c.name,c.hex]);
 export function CableColorPicker({value,onChange,selected=false}:{value:string;onChange:(color:string)=>void;selected?:boolean}){
  const menu=useRef<HTMLDetailsElement>(null);
  const title=selected?'Color del cable seleccionado':'Color para nuevos cables';

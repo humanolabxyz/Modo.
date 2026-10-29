@@ -1,0 +1,315 @@
+{
+  "profile": "twoContactors",
+  "fullWires": 37,
+  "controlWires": 20,
+  "steps": 34,
+  "tableReadings": 15,
+  "records": [
+    {
+      "id": "thermal",
+      "observed": "Estado comprobado",
+      "text": "0,4 Ω",
+      "value": 0.42000000000000004,
+      "at": "2026-10-28T20:54:16.025Z"
+    },
+    {
+      "id": "stop",
+      "observed": "Estado comprobado",
+      "text": "0,4 Ω",
+      "value": 0.42000000000000004,
+      "at": "2026-10-28T20:54:16.026Z"
+    },
+    {
+      "id": "start-open",
+      "observed": "Estado comprobado",
+      "text": "OL",
+      "value": null,
+      "at": "2026-10-28T20:54:16.027Z"
+    },
+    {
+      "id": "contact-ohms",
+      "observed": "Estado comprobado",
+      "text": "0,4 Ω",
+      "value": 0.42000000000000004,
+      "at": "2026-10-28T20:54:16.027Z"
+    },
+    {
+      "id": "control-volts",
+      "observed": "Estado comprobado",
+      "text": "24,00 V",
+      "value": 24,
+      "at": "2026-10-28T20:54:16.030Z"
+    },
+    {
+      "id": "control-rest",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.030Z"
+    },
+    {
+      "id": "control-star",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.031Z",
+      "action": {
+        "version": 1,
+        "eventId": 1,
+        "kind": "press",
+        "control": "S1",
+        "seconds": 1,
+        "from": "reposo",
+        "to": "estrella"
+      }
+    },
+    {
+      "id": "control-delta",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.031Z",
+      "action": {
+        "version": 1,
+        "eventId": 2,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 2,
+        "from": "estrella",
+        "to": "triángulo"
+      }
+    },
+    {
+      "id": "control-trip",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.032Z",
+      "action": {
+        "version": 1,
+        "eventId": 3,
+        "kind": "test",
+        "seconds": 3,
+        "from": "triángulo",
+        "to": "disparo"
+      }
+    },
+    {
+      "id": "control-reset",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.032Z",
+      "action": {
+        "version": 1,
+        "eventId": 4,
+        "kind": "thermalReset",
+        "seconds": 4,
+        "from": "disparo",
+        "to": "reposo"
+      }
+    },
+    {
+      "id": "force-continuity",
+      "observed": "Estado comprobado",
+      "text": "0,4 Ω",
+      "value": 0.41000000000000003,
+      "at": "2026-10-28T20:54:16.033Z"
+    },
+    {
+      "id": "line-RS",
+      "observed": "Estado comprobado",
+      "text": "380,0 V",
+      "value": 380,
+      "at": "2026-10-28T20:54:16.034Z"
+    },
+    {
+      "id": "line-RT",
+      "observed": "Estado comprobado",
+      "text": "380,0 V",
+      "value": 380.00000000000006,
+      "at": "2026-10-28T20:54:16.034Z"
+    },
+    {
+      "id": "line-ST",
+      "observed": "Estado comprobado",
+      "text": "380,0 V",
+      "value": 379.99999999999994,
+      "at": "2026-10-28T20:54:16.035Z"
+    },
+    {
+      "id": "powered-rest",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.035Z"
+    },
+    {
+      "id": "start-star",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.036Z",
+      "action": {
+        "version": 1,
+        "eventId": 5,
+        "kind": "press",
+        "control": "S1",
+        "seconds": 5,
+        "from": "reposo",
+        "to": "estrella"
+      }
+    },
+    {
+      "id": "star-U",
+      "observed": "Estado comprobado",
+      "text": "219,3 V",
+      "value": 219.25635474264683,
+      "at": "2026-10-28T20:54:16.037Z"
+    },
+    {
+      "id": "star-V",
+      "observed": "Estado comprobado",
+      "text": "219,3 V",
+      "value": 219.25635474264686,
+      "at": "2026-10-28T20:54:16.037Z"
+    },
+    {
+      "id": "star-W",
+      "observed": "Estado comprobado",
+      "text": "219,3 V",
+      "value": 219.2563547426469,
+      "at": "2026-10-28T20:54:16.038Z"
+    },
+    {
+      "id": "star-current-R",
+      "observed": "Estado comprobado",
+      "text": "1,497 A",
+      "value": 1.4968116848937587,
+      "at": "2026-10-28T20:54:16.038Z"
+    },
+    {
+      "id": "star-current-S",
+      "observed": "Estado comprobado",
+      "text": "1,497 A",
+      "value": 1.4968116848937583,
+      "at": "2026-10-28T20:54:16.039Z"
+    },
+    {
+      "id": "star-current-T",
+      "observed": "Estado comprobado",
+      "text": "1,497 A",
+      "value": 1.4968116848937616,
+      "at": "2026-10-28T20:54:16.039Z"
+    },
+    {
+      "id": "change-delta",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.040Z",
+      "action": {
+        "version": 1,
+        "eventId": 6,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 6,
+        "from": "estrella",
+        "to": "triángulo"
+      }
+    },
+    {
+      "id": "delta-U",
+      "observed": "Estado comprobado",
+      "text": "379,3 V",
+      "value": 379.2895758123652,
+      "at": "2026-10-28T20:54:16.041Z"
+    },
+    {
+      "id": "delta-V",
+      "observed": "Estado comprobado",
+      "text": "379,3 V",
+      "value": 379.2895758123651,
+      "at": "2026-10-28T20:54:16.041Z"
+    },
+    {
+      "id": "delta-W",
+      "observed": "Estado comprobado",
+      "text": "379,3 V",
+      "value": 379.28957581236523,
+      "at": "2026-10-28T20:54:16.042Z"
+    },
+    {
+      "id": "delta-current-R",
+      "observed": "Estado comprobado",
+      "text": "4,485 A",
+      "value": 4.48483541310455,
+      "at": "2026-10-28T20:54:16.043Z"
+    },
+    {
+      "id": "delta-current-S",
+      "observed": "Estado comprobado",
+      "text": "4,485 A",
+      "value": 4.484835413104534,
+      "at": "2026-10-28T20:54:16.043Z"
+    },
+    {
+      "id": "delta-current-T",
+      "observed": "Estado comprobado",
+      "text": "4,485 A",
+      "value": 4.484835413104545,
+      "at": "2026-10-28T20:54:16.043Z"
+    },
+    {
+      "id": "compare",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.044Z"
+    },
+    {
+      "id": "overload",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.044Z",
+      "action": {
+        "version": 1,
+        "eventId": 7,
+        "kind": "test",
+        "seconds": 7,
+        "from": "triángulo",
+        "to": "disparo"
+      }
+    },
+    {
+      "id": "reset",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.044Z",
+      "action": {
+        "version": 1,
+        "eventId": 8,
+        "kind": "thermalReset",
+        "seconds": 8,
+        "from": "disparo",
+        "to": "reposo"
+      }
+    },
+    {
+      "id": "shutdown",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.044Z"
+    },
+    {
+      "id": "dismantle",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:54:16.044Z"
+    }
+  ]
+}

@@ -87,6 +87,7 @@
 .temp-table{width:100%;border-collapse:collapse;font:500 12px ui-monospace,Consolas,monospace}.temp-table th{position:sticky;top:0;background:#f3f6f8;text-align:left;font:700 10.5px Inter,system-ui,sans-serif;letter-spacing:.5px;color:#566b78;padding:6px}.temp-table td{padding:5px 6px;border-top:1px solid #edf1f3;white-space:nowrap}
 .temp-empty{margin:0;font-size:12px;color:#6d808b}
 .temp-log-actions{display:flex;gap:6px;flex-wrap:wrap}.tool-temperature .temp-log-actions button{display:flex;align-items:center;gap:5px;font-size:12px;padding:6px 9px}
+.tool-temperature .temp-guide .lab-apply,.tool-temperature .temp-guide .lab-apply:hover:not(:disabled){background:#131316!important;border-color:#131316!important;color:#fff!important}
 .temp-chart{margin:0}.temp-chart svg{width:100%;height:auto;display:block;background:#fbfcfd;border:1px solid #e3e9ec;border-radius:10px}
 .temp-chart .grid{stroke:#e3e9ec}.temp-chart .tick{font:500 10px ui-monospace,Consolas,monospace;fill:#6d808b}.temp-chart .axis{font:600 10px Inter,system-ui,sans-serif;fill:#566b78}
 .temp-chart .reference{fill:none;stroke:#9aa7b0;stroke-width:2;stroke-dasharray:5 4}.temp-chart .p-sim{fill:#1599dc;stroke:#fff;stroke-width:1.5}.temp-chart .p-real{fill:#ee8a2b;stroke:#fff;stroke-width:1.5}

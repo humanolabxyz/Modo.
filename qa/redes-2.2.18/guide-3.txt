@@ -1,0 +1,38 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 3 
+ 
+ 
+Los niveles de voltaje con los cuales trabaja una interfaz RS485 durante la comunicación de datos, va de ±2 [Vdc] 
+hasta ±6 [Vdc] y el RS232 desde ±3 [Vdc] hasta ±15 [Vdc].  
+ 
+Aplicación en el contexto laboral: 
+Esta actividad, permite entender y generar soluciones a problemas en la implementación práctica de protocolos 
+de comunicación serial para la automatización industrial, tales como: PROFIBUS DP/PA, FIELDBUS, CANopen y 
+MODBUS ASCII/RTU. Evidentemente, los tipos de conectores utilizados por los protocolos industriales de 
+comunicación son distintos, sin embargo, el principio para la elaboración de cables es el mismo, sólo se debe 
+asegurar de conocer el pinout de los conectores por utilizar. 
+ 
+Aprendizaje esperado de la unidad: 
+ 
+Diferencia los medios y los dispositivos de una red de comunicación industrial, para configurar los diferentes 
+equipos, considerando la transferencia efectiva de información. 
+ 
+Descripción de la actividad: 
+ 
+En grupos de 2 y máximo 4 personas, implementan un cable de comunicación para el protocolo serial RS232, 
+permitiendo la conexión mediante conectores DB9 y terminales adecuados. Seleccionan los materiales y 
+herramientas adecuadas y realizan las conexiones siguiendo recomendaciones técnicas. Finalmente, verifican el 
+correcto funcionamiento del cable mediante pruebas de continuidad con multitester y mediante la conexión de 
+equipamiento industrial de automatización.  
+ 
+Criterios de evaluación: 
+ 
+1.1.3. Describe los diversos elementos de la red de comunicación, en base al Modelo OSI de las7 capas. 
+1.1.4. Reconoce los medios de comunicación más utilizados en la industria, en base a su clasificación y principales 
+características. 
+ 
+ 
+ 
+ 

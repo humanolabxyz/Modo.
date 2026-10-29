@@ -1,0 +1,2137 @@
+{
+  "url": "https://modo-lab.vercel.app",
+  "deployment": "dpl_36yDu4Jw4w8hAdi4RqpttAezMSxz",
+  "readyState": "READY",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/estudio/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/laboratorio/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/sin-conexion/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/legal/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/comunidad/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/versiones/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/sw.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "frame": "DENY",
+      "cache": "no-cache"
+    },
+    {
+      "route": "/offline-assets.json",
+      "status": 200,
+      "type": "application/json; charset=utf-8",
+      "frame": "DENY",
+      "cache": "public, max-age=0, must-revalidate"
+    },
+    {
+      "route": "/manifest.webmanifest",
+      "status": 200,
+      "type": "application/manifest+json; charset=utf-8",
+      "frame": "DENY",
+      "cache": "no-cache"
+    },
+    {
+      "route": "/geogebra-frame.html",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "frame": "SAMEORIGIN",
+      "cache": "public, max-age=0, must-revalidate"
+    }
+  ],
+  "hashes": [
+    {
+      "url": "/vendor/geogebra/deployggb.js",
+      "sha256": "85f60b83bb8702f70443bd6462fdcbd855396b7c9ba23841a2fd28f94856e167"
+    },
+    {
+      "url": "/vendor/geogebra/HTML5/5.0/web3d/web3d.nocache.js",
+      "sha256": "830f886885e9feaf1f8d2ac7381ed6df9cb71277a45bb049633f112327b8f452"
+    },
+    {
+      "url": "/_astro/GeoGebraView.B3EZ_jyj.js",
+      "sha256": "fd5c9cacaf3adc39f16eb6ab650418e304fc968cda5f7e6b39c7f98596e3e3fa"
+    },
+    {
+      "url": "/_astro/GeoGebraView.a2KDcwW1.css",
+      "sha256": "e81acc9eefe3d97ee409822b795237bdfab43f771a2b1108dbad48a72855d41d"
+    },
+    {
+      "url": "/_astro/LaboratoryApp.FrhuXvRo.js",
+      "sha256": "df3f617f4ea670b817a5cf0b7fde2792416cc4d6a6c5a9c3e6af17c6a6548316"
+    }
+  ],
+  "manifest": {
+    "version": 1,
+    "build": "16cf0eb284b9284c",
+    "bytes": 163165923,
+    "assets": [
+      {
+        "url": "/THIRD_PARTY_NOTICES.txt",
+        "bytes": 11879
+      },
+      {
+        "url": "/_astro/AcademicLessonView.CfjxlBeE.js",
+        "bytes": 38763
+      },
+      {
+        "url": "/_astro/AcademicLessonView.Cyd5h0Zf.css",
+        "bytes": 5718
+      },
+      {
+        "url": "/_astro/App.BQNPiTBj.js",
+        "bytes": 161433
+      },
+      {
+        "url": "/_astro/Board.CNilWrqy.js",
+        "bytes": 46302
+      },
+      {
+        "url": "/_astro/BreadboardView.kXPG1jaU.js",
+        "bytes": 118205
+      },
+      {
+        "url": "/_astro/CableBench.BpwOXirH.css",
+        "bytes": 33035
+      },
+      {
+        "url": "/_astro/CableBench.Dl3urlVv.js",
+        "bytes": 107097
+      },
+      {
+        "url": "/_astro/CableWorkshop.Cyd5h0Zf.css",
+        "bytes": 5718
+      },
+      {
+        "url": "/_astro/CableWorkshop.Dg3OygYK.js",
+        "bytes": 19854
+      },
+      {
+        "url": "/_astro/CadeSheet.Dvd9aAqB.js",
+        "bytes": 10256
+      },
+      {
+        "url": "/_astro/CanvasControls.BoPl8GyI.js",
+        "bytes": 6035
+      },
+      {
+        "url": "/_astro/DetectorDatasheets.CKxK7zqQ.js",
+        "bytes": 38484
+      },
+      {
+        "url": "/_astro/DetectorsView.-YpkEAuj.css",
+        "bytes": 5516
+      },
+      {
+        "url": "/_astro/DetectorsView.DJLWOHqz.js",
+        "bytes": 43727
+      },
+      {
+        "url": "/_astro/DeviceIcons.OmY8XMr4.js",
+        "bytes": 3755
+      },
+      {
+        "url": "/_astro/DiagramPane.CSJZoZi1.css",
+        "bytes": 9467
+      },
+      {
+        "url": "/_astro/DiagramPane.Dug9IVCd.js",
+        "bytes": 94321
+      },
+      {
+        "url": "/_astro/EquipmentView.hbhCwUjl.js",
+        "bytes": 34010
+      },
+      {
+        "url": "/_astro/FloatingDisclosure.D9o2h8RV.js",
+        "bytes": 2448
+      },
+      {
+        "url": "/_astro/GeoGebraView.B3EZ_jyj.js",
+        "bytes": 71147
+      },
+      {
+        "url": "/_astro/GeoGebraView.a2KDcwW1.css",
+        "bytes": 37479
+      },
+      {
+        "url": "/_astro/HMIView.Zzjes5IV.js",
+        "bytes": 7405
+      },
+      {
+        "url": "/_astro/LaboratoryApp.FrhuXvRo.js",
+        "bytes": 54406
+      },
+      {
+        "url": "/_astro/LessonAssessment.BFvQHJZ0.js",
+        "bytes": 20097
+      },
+      {
+        "url": "/_astro/ManualBench.BgCMpS-a.js",
+        "bytes": 4617
+      },
+      {
+        "url": "/_astro/MathUnitReview.BV3b0I38.js",
+        "bytes": 24684
+      },
+      {
+        "url": "/_astro/MathUnitReview.DVKJZ2JE.css",
+        "bytes": 12784
+      },
+      {
+        "url": "/_astro/MotionHead.DOi_moVf.css",
+        "bytes": 11781
+      },
+      {
+        "url": "/_astro/MotionHead.astro_astro_type_script_index_0_lang.LAQjBJfz.js",
+        "bytes": 3304
+      },
+      {
+        "url": "/_astro/PLCView.Cqp9tURN.js",
+        "bytes": 11992
+      },
+      {
+        "url": "/_astro/PanStage.DqIFUjAG.js",
+        "bytes": 6888
+      },
+      {
+        "url": "/_astro/PanelMeterLesson.DO1ONR64.js",
+        "bytes": 43158
+      },
+      {
+        "url": "/_astro/ProcedureTools.CfgvmKF2.js",
+        "bytes": 13793
+      },
+      {
+        "url": "/_astro/ProcessView.DAef-ud_.js",
+        "bytes": 7872
+      },
+      {
+        "url": "/_astro/SchematicView.BafdsLZs.js",
+        "bytes": 16398
+      },
+      {
+        "url": "/_astro/SimulatorInspector.0OCGt8cW.js",
+        "bytes": 6829
+      },
+      {
+        "url": "/_astro/StudyApp.2OuBHTih.js",
+        "bytes": 316223
+      },
+      {
+        "url": "/_astro/StudyGuide.Dbe24MMG.js",
+        "bytes": 9911
+      },
+      {
+        "url": "/_astro/StudySequence.CVS4kvp0.js",
+        "bytes": 1041
+      },
+      {
+        "url": "/_astro/SurfaceDock.CctBtvJ1.js",
+        "bytes": 1701
+      },
+      {
+        "url": "/_astro/TemperatureDatasheets.DyqkZAzA.js",
+        "bytes": 42561
+      },
+      {
+        "url": "/_astro/TemperatureView.BW3TBkrw.js",
+        "bytes": 43097
+      },
+      {
+        "url": "/_astro/Unit2ExamReview.H_R1IXuT.js",
+        "bytes": 4049
+      },
+      {
+        "url": "/_astro/ValueEditor.C_vvdPJz.js",
+        "bytes": 16117
+      },
+      {
+        "url": "/_astro/academicModels.CRF9pSSn.js",
+        "bytes": 3350
+      },
+      {
+        "url": "/_astro/academicState.B4aNUB6U.css",
+        "bytes": 7402
+      },
+      {
+        "url": "/_astro/academicState.DeOvfLZk.js",
+        "bytes": 155094
+      },
+      {
+        "url": "/_astro/arrow-left-right.bDSdVAlN.js",
+        "bytes": 246
+      },
+      {
+        "url": "/_astro/boardViewport.nm-d3eaS.js",
+        "bytes": 6637
+      },
+      {
+        "url": "/_astro/cable.DNlvv23I.js",
+        "bytes": 428
+      },
+      {
+        "url": "/_astro/chevron-right.DcK0z2QI.js",
+        "bytes": 129
+      },
+      {
+        "url": "/_astro/client.B2uGjll9.js",
+        "bytes": 209084
+      },
+      {
+        "url": "/_astro/clipboard-list.LI3DvCJz.js",
+        "bytes": 410
+      },
+      {
+        "url": "/_astro/comunidad.0iXbGTJP.css",
+        "bytes": 8054
+      },
+      {
+        "url": "/_astro/cpu.BmbPX4gH.js",
+        "bytes": 496
+      },
+      {
+        "url": "/_astro/createLucideIcon.Odgs681m.js",
+        "bytes": 906
+      },
+      {
+        "url": "/_astro/dc.BmxGGFiU.js",
+        "bytes": 29705
+      },
+      {
+        "url": "/_astro/droplets.Cq4KagbE.js",
+        "bytes": 373
+      },
+      {
+        "url": "/_astro/eraser.DnM3hXOB.js",
+        "bytes": 269
+      },
+      {
+        "url": "/_astro/estudio.UthfDvgO.css",
+        "bytes": 375714
+      },
+      {
+        "url": "/_astro/external-link.B8UtQkV-.js",
+        "bytes": 250
+      },
+      {
+        "url": "/_astro/eye.CuVPpDx5.js",
+        "bytes": 256
+      },
+      {
+        "url": "/_astro/gauge.C_WN8e8j.js",
+        "bytes": 300
+      },
+      {
+        "url": "/_astro/global.BXChgX8h.css",
+        "bytes": 57731
+      },
+      {
+        "url": "/_astro/grading.CH53i8T4.js",
+        "bytes": 27077
+      },
+      {
+        "url": "/_astro/graduation-cap.gb9qtuY_.js",
+        "bytes": 331
+      },
+      {
+        "url": "/_astro/hand.DctNmCJa.js",
+        "bytes": 406
+      },
+      {
+        "url": "/_astro/index.6sWX2lpQ.css",
+        "bytes": 162501
+      },
+      {
+        "url": "/_astro/info.BVaJDXm_.js",
+        "bytes": 204
+      },
+      {
+        "url": "/_astro/keyboard.CRP78cux.js",
+        "bytes": 453
+      },
+      {
+        "url": "/_astro/laboratorio.DsjkT18z.css",
+        "bytes": 39420
+      },
+      {
+        "url": "/_astro/laboratory-canvas.BrNNB7pW.css",
+        "bytes": 61737
+      },
+      {
+        "url": "/_astro/layers.BoFBRP0Y.js",
+        "bytes": 421
+      },
+      {
+        "url": "/_astro/lesson-understanding.B2qkTHCG.js",
+        "bytes": 30960
+      },
+      {
+        "url": "/_astro/lesson-understanding.Cg-5Kt-o.css",
+        "bytes": 14201
+      },
+      {
+        "url": "/_astro/lessonAssessment.C-Sdoa2B.js",
+        "bytes": 15825
+      },
+      {
+        "url": "/_astro/lessonSchematics.1MGsIqdn.js",
+        "bytes": 2267
+      },
+      {
+        "url": "/_astro/lightbulb.Cj0yTvz0.js",
+        "bytes": 398
+      },
+      {
+        "url": "/_astro/list-checks.1FQQdrV2.js",
+        "bytes": 278
+      },
+      {
+        "url": "/_astro/minus.DSnI7L1t.js",
+        "bytes": 402
+      },
+      {
+        "url": "/_astro/model.CeUupA9m.js",
+        "bytes": 12805
+      },
+      {
+        "url": "/_astro/modo-identity.HqKwNqhy.css",
+        "bytes": 42503
+      },
+      {
+        "url": "/_astro/modo-soft-ui.zmSiAEAI.css",
+        "bytes": 37271
+      },
+      {
+        "url": "/_astro/mouse-pointer-2.BEwYCOQ0.js",
+        "bytes": 249
+      },
+      {
+        "url": "/_astro/panel-meter-lesson.B1McEFo6.js",
+        "bytes": 7581
+      },
+      {
+        "url": "/_astro/panel-meter-lesson.CIUU1yxP.css",
+        "bytes": 14391
+      },
+      {
+        "url": "/_astro/practice.Bw5lzfRH.js",
+        "bytes": 13316
+      },
+      {
+        "url": "/_astro/problem-notebook.D1U0HOVg.css",
+        "bytes": 18190
+      },
+      {
+        "url": "/_astro/react-dom.Y38I8yiu.js",
+        "bytes": 12338
+      },
+      {
+        "url": "/_astro/route.HMS-hT8L.js",
+        "bytes": 568
+      },
+      {
+        "url": "/_astro/search.Dbz4RhIW.js",
+        "bytes": 373
+      },
+      {
+        "url": "/_astro/shapes.CY_tvejm.js",
+        "bytes": 317
+      },
+      {
+        "url": "/_astro/simulation.BRV6lDnv.js",
+        "bytes": 11047
+      },
+      {
+        "url": "/_astro/sliders-horizontal.Flz7vhzE.js",
+        "bytes": 584
+      },
+      {
+        "url": "/_astro/surface.dEOTHXW_.js",
+        "bytes": 878
+      },
+      {
+        "url": "/_astro/temperature.CojCFDH5.js",
+        "bytes": 867
+      },
+      {
+        "url": "/_astro/temperature.D9Hl8GMz.css",
+        "bytes": 12454
+      },
+      {
+        "url": "/_astro/touch-portrait.DyEbLkm5.css",
+        "bytes": 4701
+      },
+      {
+        "url": "/_astro/transition.Alkd3s5l.css",
+        "bytes": 18370
+      },
+      {
+        "url": "/_astro/transition.BHMAf4I6.css",
+        "bytes": 18370
+      },
+      {
+        "url": "/_astro/transition.BYsgVoDa.js",
+        "bytes": 24057
+      },
+      {
+        "url": "/_astro/trash-2.XWFJj36Z.js",
+        "bytes": 357
+      },
+      {
+        "url": "/_astro/unit2-exam-review.B8daH246.css",
+        "bytes": 2857
+      },
+      {
+        "url": "/_astro/unit2-exam-review.Dg-oUbH3.js",
+        "bytes": 23690
+      },
+      {
+        "url": "/_astro/unplug.CJo1HjMc.js",
+        "bytes": 440
+      },
+      {
+        "url": "/_astro/upload.DaAgfbK3.js",
+        "bytes": 257
+      },
+      {
+        "url": "/_astro/useSvgNavigation.CX1hTVk2.js",
+        "bytes": 5176
+      },
+      {
+        "url": "/_astro/wireColors.BWHWIGcz.css",
+        "bytes": 6143
+      },
+      {
+        "url": "/_astro/wireColors.BWkiQpeU.js",
+        "bytes": 29206
+      },
+      {
+        "url": "/_astro/wiring.BvfwaIBe.js",
+        "bytes": 96510
+      },
+      {
+        "url": "/activities/actividad-2-unidad-2.pdf",
+        "bytes": 727265
+      },
+      {
+        "url": "/activities/proyecto-matias.json",
+        "bytes": 30682
+      },
+      {
+        "url": "/brand/apple-touch-icon.png",
+        "bytes": 4229
+      },
+      {
+        "url": "/brand/favicon.ico",
+        "bytes": 2797
+      },
+      {
+        "url": "/brand/humanolab-cierre.jpg",
+        "bytes": 18948
+      },
+      {
+        "url": "/brand/humanolab-cierre.mp4",
+        "bytes": 132604
+      },
+      {
+        "url": "/brand/humanolab-loop.mp4",
+        "bytes": 215385
+      },
+      {
+        "url": "/brand/icono-app-128.png",
+        "bytes": 3059
+      },
+      {
+        "url": "/brand/icono-app-16.png",
+        "bytes": 390
+      },
+      {
+        "url": "/brand/icono-app-180.png",
+        "bytes": 4229
+      },
+      {
+        "url": "/brand/icono-app-192.png",
+        "bytes": 4525
+      },
+      {
+        "url": "/brand/icono-app-256.png",
+        "bytes": 6186
+      },
+      {
+        "url": "/brand/icono-app-32.png",
+        "bytes": 745
+      },
+      {
+        "url": "/brand/icono-app-48.png",
+        "bytes": 1145
+      },
+      {
+        "url": "/brand/icono-app-512.png",
+        "bytes": 13833
+      },
+      {
+        "url": "/brand/icono-app-64.png",
+        "bytes": 1525
+      },
+      {
+        "url": "/brand/icono-app-96.png",
+        "bytes": 2292
+      },
+      {
+        "url": "/brand/icono-app-claro-512.png",
+        "bytes": 12834
+      },
+      {
+        "url": "/brand/icono-app-verde-512.png",
+        "bytes": 13646
+      },
+      {
+        "url": "/brand/icono-maskable-192.png",
+        "bytes": 2458
+      },
+      {
+        "url": "/brand/icono-maskable-512.png",
+        "bytes": 7406
+      },
+      {
+        "url": "/brand/modo-app-claro.svg",
+        "bytes": 379
+      },
+      {
+        "url": "/brand/modo-app-oscuro.svg",
+        "bytes": 379
+      },
+      {
+        "url": "/brand/modo-app-verde.svg",
+        "bytes": 379
+      },
+      {
+        "url": "/brand/modo-logo-horizontal-blanco-mono.svg",
+        "bytes": 1636
+      },
+      {
+        "url": "/brand/modo-logo-horizontal-blanco.svg",
+        "bytes": 1636
+      },
+      {
+        "url": "/brand/modo-logo-horizontal-color.svg",
+        "bytes": 1636
+      },
+      {
+        "url": "/brand/modo-logo-horizontal-negro.svg",
+        "bytes": 1636
+      },
+      {
+        "url": "/brand/modo-logo-vertical-blanco.svg",
+        "bytes": 1640
+      },
+      {
+        "url": "/brand/modo-logo-vertical-color.svg",
+        "bytes": 1640
+      },
+      {
+        "url": "/brand/modo-logotipo-blanco.svg",
+        "bytes": 1502
+      },
+      {
+        "url": "/brand/modo-logotipo-color.svg",
+        "bytes": 1502
+      },
+      {
+        "url": "/brand/modo-logotipo-negro.svg",
+        "bytes": 1502
+      },
+      {
+        "url": "/brand/modo-maskable-oscuro.svg",
+        "bytes": 364
+      },
+      {
+        "url": "/brand/modo-simbolo-blanco.svg",
+        "bytes": 285
+      },
+      {
+        "url": "/brand/modo-simbolo-negro.svg",
+        "bytes": 285
+      },
+      {
+        "url": "/brand/modo-simbolo-verde.svg",
+        "bytes": 285
+      },
+      {
+        "url": "/brand/og-modo.jpg",
+        "bytes": 128351
+      },
+      {
+        "url": "/comunidad/",
+        "bytes": 21374
+      },
+      {
+        "url": "/diagrams/PERFECTO.cad",
+        "bytes": 6111
+      },
+      {
+        "url": "/diagrams/clase-1.jpg",
+        "bytes": 352812
+      },
+      {
+        "url": "/diagrams/clase-2.jpg",
+        "bytes": 370245
+      },
+      {
+        "url": "/diagrams/clase-3.jpg",
+        "bytes": 375927
+      },
+      {
+        "url": "/diagrams/clase-4-l293d-pines.webp",
+        "bytes": 60944
+      },
+      {
+        "url": "/diagrams/clase-4-practica-1-transistores.webp",
+        "bytes": 71534
+      },
+      {
+        "url": "/diagrams/clase-4-practica-2-l293d.webp",
+        "bytes": 25122
+      },
+      {
+        "url": "/diagrams/leccion-estrella-manual.png",
+        "bytes": 58867
+      },
+      {
+        "url": "/diagrams/leccion-estrella-temporizador.png",
+        "bytes": 58867
+      },
+      {
+        "url": "/diagrams/leccion-inversion-giro.png",
+        "bytes": 139479
+      },
+      {
+        "url": "/diagrams/leccion-marcha-paro.png",
+        "bytes": 156598
+      },
+      {
+        "url": "/estudio/assets/fusibles-v2.webp",
+        "bytes": 223008
+      },
+      {
+        "url": "/estudio/assets/lamina-04.png",
+        "bytes": 306736
+      },
+      {
+        "url": "/estudio/assets/lamina-06.png",
+        "bytes": 60660
+      },
+      {
+        "url": "/estudio/assets/lamina-08.png",
+        "bytes": 232682
+      },
+      {
+        "url": "/estudio/assets/lamina-10.png",
+        "bytes": 323670
+      },
+      {
+        "url": "/estudio/assets/lamina-12.png",
+        "bytes": 90094
+      },
+      {
+        "url": "/estudio/assets/lamina-13.png",
+        "bytes": 77612
+      },
+      {
+        "url": "/estudio/assets/lamina-14.png",
+        "bytes": 277513
+      },
+      {
+        "url": "/estudio/assets/lamina-15.png",
+        "bytes": 334595
+      },
+      {
+        "url": "/estudio/assets/motor-v2.webp",
+        "bytes": 326942
+      },
+      {
+        "url": "/estudio/assets/spd-diferencial-v2.webp",
+        "bytes": 134472
+      },
+      {
+        "url": "/estudio/assets/termomagnetico-v2.webp",
+        "bytes": 100788
+      },
+      {
+        "url": "/estudio/fotos/01_tablero_electrico.jpg",
+        "bytes": 491383
+      },
+      {
+        "url": "/estudio/fotos/02_motor_electrico.jpg",
+        "bytes": 147500
+      },
+      {
+        "url": "/estudio/fotos/03_arco_electrico.jpg",
+        "bytes": 94947
+      },
+      {
+        "url": "/estudio/fotos/04_interruptor_termomagnetico.jpg",
+        "bytes": 68586
+      },
+      {
+        "url": "/estudio/fotos/05_fusibles.jpg",
+        "bytes": 132816
+      },
+      {
+        "url": "/estudio/fotos/06_spd_y_diferencial.jpg",
+        "bytes": 83758
+      },
+      {
+        "url": "/estudio/fotos/07_motor_trifasico.jpg",
+        "bytes": 145227
+      },
+      {
+        "url": "/estudio/fuentes/F01.pdf",
+        "bytes": 516304
+      },
+      {
+        "url": "/estudio/fuentes/F02.pdf",
+        "bytes": 1371059
+      },
+      {
+        "url": "/estudio/fuentes/F03.pdf",
+        "bytes": 1235954
+      },
+      {
+        "url": "/estudio/fuentes/F04.pdf",
+        "bytes": 1355494
+      },
+      {
+        "url": "/estudio/fuentes/F05.pdf",
+        "bytes": 1140992
+      },
+      {
+        "url": "/estudio/fuentes/F06.pdf",
+        "bytes": 1111703
+      },
+      {
+        "url": "/estudio/fuentes/F07.pdf",
+        "bytes": 404062
+      },
+      {
+        "url": "/estudio/fuentes/F08.png",
+        "bytes": 416439
+      },
+      {
+        "url": "/estudio/fuentes/F09.png",
+        "bytes": 447503
+      },
+      {
+        "url": "/estudio/fuentes/F10.pdf",
+        "bytes": 1626983
+      },
+      {
+        "url": "/estudio/fuentes/F11.pdf",
+        "bytes": 1547600
+      },
+      {
+        "url": "/estudio/fuentes/F12.pdf",
+        "bytes": 1031901
+      },
+      {
+        "url": "/estudio/fuentes/F13.txt",
+        "bytes": 200
+      },
+      {
+        "url": "/estudio/fuentes/F14.pptx",
+        "bytes": 2482856
+      },
+      {
+        "url": "/estudio/fuentes/F15.docx",
+        "bytes": 20854
+      },
+      {
+        "url": "/estudio/fuentes/F16.xlsx",
+        "bytes": 22456
+      },
+      {
+        "url": "/estudio/fuentes/F17.png",
+        "bytes": 445661
+      },
+      {
+        "url": "/estudio/fuentes/F18.docx",
+        "bytes": 57666
+      },
+      {
+        "url": "/estudio/fuentes/F19.pdf",
+        "bytes": 1883809
+      },
+      {
+        "url": "/estudio/fuentes/F20.pdf",
+        "bytes": 1438301
+      },
+      {
+        "url": "/estudio/fuentes/F21.pdf",
+        "bytes": 1740233
+      },
+      {
+        "url": "/estudio/fuentes/F22.pdf",
+        "bytes": 527372
+      },
+      {
+        "url": "/estudio/fuentes/F23.pdf",
+        "bytes": 508344
+      },
+      {
+        "url": "/estudio/fuentes/F24.pdf",
+        "bytes": 457105
+      },
+      {
+        "url": "/estudio/fuentes/F25.pdf",
+        "bytes": 446208
+      },
+      {
+        "url": "/estudio/fuentes/F26.txt",
+        "bytes": 154
+      },
+      {
+        "url": "/estudio/fuentes/F27.txt",
+        "bytes": 193
+      },
+      {
+        "url": "/estudio/fuentes/F28.png",
+        "bytes": 666782
+      },
+      {
+        "url": "/estudio/fuentes/F29.pdf",
+        "bytes": 608683
+      },
+      {
+        "url": "/estudio/fuentes/F30.pdf",
+        "bytes": 542680
+      },
+      {
+        "url": "/estudio/fuentes/F31.pdf",
+        "bytes": 556936
+      },
+      {
+        "url": "/estudio/fuentes/F32.pdf",
+        "bytes": 597640
+      },
+      {
+        "url": "/estudio/fuentes/F33.pdf",
+        "bytes": 3006468
+      },
+      {
+        "url": "/estudio/fuentes/F34.pdf",
+        "bytes": 809161
+      },
+      {
+        "url": "/estudio/fuentes/F35.pdf",
+        "bytes": 199112
+      },
+      {
+        "url": "/estudio/fuentes/F36.png",
+        "bytes": 398490
+      },
+      {
+        "url": "/estudio/fuentes/F37.pdf",
+        "bytes": 1749286
+      },
+      {
+        "url": "/estudio/fuentes/F38.pdf",
+        "bytes": 556553
+      },
+      {
+        "url": "/estudio/fuentes/F39.pdf",
+        "bytes": 438974
+      },
+      {
+        "url": "/estudio/fuentes/I01.pdf",
+        "bytes": 502202
+      },
+      {
+        "url": "/estudio/fuentes/I02.pdf",
+        "bytes": 1030605
+      },
+      {
+        "url": "/estudio/fuentes/I03.pdf",
+        "bytes": 908979
+      },
+      {
+        "url": "/estudio/fuentes/I04.pdf",
+        "bytes": 680948
+      },
+      {
+        "url": "/estudio/fuentes/I05.pdf",
+        "bytes": 550886
+      },
+      {
+        "url": "/estudio/fuentes/I06.pdf",
+        "bytes": 499919
+      },
+      {
+        "url": "/estudio/fuentes/I07.pdf",
+        "bytes": 1236490
+      },
+      {
+        "url": "/estudio/fuentes/I08.pdf",
+        "bytes": 428277
+      },
+      {
+        "url": "/estudio/",
+        "bytes": 24054
+      },
+      {
+        "url": "/estudio/instrumentacion/guia-detectores-g01.docx",
+        "bytes": 114952
+      },
+      {
+        "url": "/estudio/instrumentacion/guia-proximidad-plc-g02.docx",
+        "bytes": 70390
+      },
+      {
+        "url": "/estudio/instrumentacion/guia-temperatura-g03.docx",
+        "bytes": 78141
+      },
+      {
+        "url": "/estudio/matematicas/funciones-cuadraticas.pdf",
+        "bytes": 1740233
+      },
+      {
+        "url": "/estudio/matematicas/funciones-lineales.pdf",
+        "bytes": 1883809
+      },
+      {
+        "url": "/estudio/matematicas/funciones-logaritmicas.pdf",
+        "bytes": 1438301
+      },
+      {
+        "url": "/estudio/practica-ispsoft-dopsoft.md",
+        "bytes": 6706
+      },
+      {
+        "url": "/estudio/profesor.pdf",
+        "bytes": 1658593
+      },
+      {
+        "url": "/estudio/referencia-programa-profesor.jpeg",
+        "bytes": 70918
+      },
+      {
+        "url": "/fonts/INTER-LICENSE.txt",
+        "bytes": 4380
+      },
+      {
+        "url": "/fonts/InterVariable.woff2",
+        "bytes": 105968
+      },
+      {
+        "url": "/fonts/SOURCE-SANS-LICENSE.md",
+        "bytes": 4486
+      },
+      {
+        "url": "/fonts/SourceSans3-Bold.woff2",
+        "bytes": 31120
+      },
+      {
+        "url": "/fonts/SourceSans3-Regular.woff2",
+        "bytes": 31264
+      },
+      {
+        "url": "/fonts/SourceSans3-Semibold.woff2",
+        "bytes": 31196
+      },
+      {
+        "url": "/geogebra-frame.html",
+        "bytes": 1258
+      },
+      {
+        "url": "/icons/apple-touch-icon.png",
+        "bytes": 4229
+      },
+      {
+        "url": "/icons/icon-192.png",
+        "bytes": 4525
+      },
+      {
+        "url": "/icons/icon-512.png",
+        "bytes": 13833
+      },
+      {
+        "url": "/icons/icon-maskable-512.png",
+        "bytes": 7406
+      },
+      {
+        "url": "/icons/icon.svg",
+        "bytes": 379
+      },
+      {
+        "url": "/images/home-approved/community.webp",
+        "bytes": 55608
+      },
+      {
+        "url": "/images/home-approved/lab.webp",
+        "bytes": 86862
+      },
+      {
+        "url": "/images/home-approved/panel.webp",
+        "bytes": 114264
+      },
+      {
+        "url": "/images/home-approved/study.webp",
+        "bytes": 98224
+      },
+      {
+        "url": "/images/modo/bornes-1024.webp",
+        "bytes": 43392
+      },
+      {
+        "url": "/images/modo/bornes-640.webp",
+        "bytes": 25072
+      },
+      {
+        "url": "/images/modo/bornes.webp",
+        "bytes": 96652
+      },
+      {
+        "url": "/images/modo/laboratorio-1024.webp",
+        "bytes": 59652
+      },
+      {
+        "url": "/images/modo/laboratorio-640.webp",
+        "bytes": 33256
+      },
+      {
+        "url": "/images/modo/laboratorio.webp",
+        "bytes": 130070
+      },
+      {
+        "url": "/images/modo/protecciones-1024.webp",
+        "bytes": 56612
+      },
+      {
+        "url": "/images/modo/protecciones-640.webp",
+        "bytes": 30684
+      },
+      {
+        "url": "/images/modo/protecciones.webp",
+        "bytes": 130562
+      },
+      {
+        "url": "/images/preview-home/lab.jpg",
+        "bytes": 74926
+      },
+      {
+        "url": "/images/preview-home/panel.jpg",
+        "bytes": 118021
+      },
+      {
+        "url": "/images/preview-home/study.jpg",
+        "bytes": 74231
+      },
+      {
+        "url": "/",
+        "bytes": 40350
+      },
+      {
+        "url": "/laboratorio/",
+        "bytes": 29955
+      },
+      {
+        "url": "/legal/",
+        "bytes": 11720
+      },
+      {
+        "url": "/manifest.webmanifest",
+        "bytes": 694
+      },
+      {
+        "url": "/materiales/actividad-1-u2.pdf",
+        "bytes": 1626983
+      },
+      {
+        "url": "/materiales/bornes-estrella.png",
+        "bytes": 103769
+      },
+      {
+        "url": "/materiales/bornes-triangulo.png",
+        "bytes": 111919
+      },
+      {
+        "url": "/materiales/circuito-fuerza.png",
+        "bytes": 12812
+      },
+      {
+        "url": "/materiales/circuito-mando.png",
+        "bytes": 170391
+      },
+      {
+        "url": "/materiales/prueba-partida-directa.png",
+        "bytes": 907355
+      },
+      {
+        "url": "/panel-model.json",
+        "bytes": 32342
+      },
+      {
+        "url": "/photos-2026-10-15/foto-1.jpg",
+        "bytes": 1411212
+      },
+      {
+        "url": "/photos-2026-10-15/foto-2.jpg",
+        "bytes": 1391695
+      },
+      {
+        "url": "/photos-2026-10-15/foto-3.jpg",
+        "bytes": 1567990
+      },
+      {
+        "url": "/photos-2026-10-15/foto-4.jpg",
+        "bytes": 1533126
+      },
+      {
+        "url": "/photos-2026-10-15/foto-5.jpg",
+        "bytes": 1721918
+      },
+      {
+        "url": "/photos-2026-10-15/foto-6.jpg",
+        "bytes": 1587243
+      },
+      {
+        "url": "/references/botoneras.jpg",
+        "bytes": 42382
+      },
+      {
+        "url": "/references/contactor-termico.jpg",
+        "bytes": 66067
+      },
+      {
+        "url": "/references/contactor-trifasico.jpg",
+        "bytes": 55807
+      },
+      {
+        "url": "/references/motor.jpg",
+        "bytes": 64917
+      },
+      {
+        "url": "/references/suministro.jpg",
+        "bytes": 44163
+      },
+      {
+        "url": "/references/temporizador-1.jpg",
+        "bytes": 31570
+      },
+      {
+        "url": "/references/temporizador-2.jpg",
+        "bytes": 59109
+      },
+      {
+        "url": "/robots.txt",
+        "bytes": 176
+      },
+      {
+        "url": "/sin-conexion/",
+        "bytes": 18016
+      },
+      {
+        "url": "/tutoriales/laboratorio-1.webp",
+        "bytes": 16220
+      },
+      {
+        "url": "/tutoriales/laboratorio-2.webp",
+        "bytes": 17624
+      },
+      {
+        "url": "/tutoriales/modo-v3-laboratorio-1.mp4",
+        "bytes": 11993909
+      },
+      {
+        "url": "/tutoriales/modo-v3-laboratorio-2.mp4",
+        "bytes": 10577048
+      },
+      {
+        "url": "/tutoriales/modo-v3-practica-1.mp4",
+        "bytes": 10709112
+      },
+      {
+        "url": "/tutoriales/modo-v3-practica-2.mp4",
+        "bytes": 9082876
+      },
+      {
+        "url": "/tutoriales/practica-1.webp",
+        "bytes": 13754
+      },
+      {
+        "url": "/tutoriales/practica-2.webp",
+        "bytes": 14038
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/GeoGebra.html",
+        "bytes": 349460
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/app-header.css",
+        "bytes": 6959
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/av-styles.css",
+        "bytes": 15667
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/bundles/bundle.css",
+        "bytes": 232812
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/bundles/simple-bundle.css",
+        "bytes": 35505
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/colorMap.css",
+        "bytes": 1
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/colors.css",
+        "bytes": 206
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/component-styles.css",
+        "bytes": 38413
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/context-menu.css",
+        "bytes": 6055
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/dialog-styles.css",
+        "bytes": 43319
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/dimens.css",
+        "bytes": 1
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/editor.css",
+        "bytes": 17140
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/ev-styles.css",
+        "bytes": 13934
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/evaluator-styles.css",
+        "bytes": 139
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/exam.css",
+        "bytes": 126
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/fonts.css",
+        "bytes": 7992
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/general.css",
+        "bytes": 2638
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/greek-font.css",
+        "bytes": 10753
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/header.css",
+        "bytes": 2151
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/headerbar.css",
+        "bytes": 11325
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/info-card.css",
+        "bytes": 856
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/keyboard-styles.css",
+        "bytes": 5630
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/layout.css",
+        "bytes": 4126
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/menu-styles.css",
+        "bytes": 3406
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/mow-toolbox.css",
+        "bytes": 2932
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/mow-topbar.css",
+        "bytes": 725
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/mow.css",
+        "bytes": 9888
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/open-screen.css",
+        "bytes": 16439
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/popup-styles.css",
+        "bytes": 8962
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/print.css",
+        "bytes": 863
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/probability-layout.css",
+        "bytes": 2809
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/reset.css",
+        "bytes": 7232
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/scientific-layout.css",
+        "bytes": 2691
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/settings-styles.css",
+        "bytes": 9231
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/shared.css",
+        "bytes": 4364
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/snackbar.css",
+        "bytes": 3254
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/spreadsheet-tab.css",
+        "bytes": 340
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/spreadsheet.css",
+        "bytes": 3663
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/tableview.css",
+        "bytes": 7403
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/text-styles.css",
+        "bytes": 524
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/toolbar-styles.css",
+        "bytes": 8284
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/web-styles-global.css",
+        "bytes": 3420
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/web-styles.css",
+        "bytes": 51888
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/css/z-index.css",
+        "bytes": 1
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/29EB0586CD5B749E221F6BB019F1B206.cache.js",
+        "bytes": 7929313
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/clear.cache.gif",
+        "bytes": 43
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/1.cache.js",
+        "bytes": 141886
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/10.cache.js",
+        "bytes": 18636
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/11.cache.js",
+        "bytes": 83920
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/12.cache.js",
+        "bytes": 732808
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/13.cache.js",
+        "bytes": 495928
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/14.cache.js",
+        "bytes": 1738862
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/15.cache.js",
+        "bytes": 4118
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/2.cache.js",
+        "bytes": 10185290
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/3.cache.js",
+        "bytes": 215555
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/4.cache.js",
+        "bytes": 513814
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/5.cache.js",
+        "bytes": 54362
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/6.cache.js",
+        "bytes": 160702
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/7.cache.js",
+        "bytes": 59445
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/8.cache.js",
+        "bytes": 163751
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/9.cache.js",
+        "bytes": 181433
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/base/jlm_cmmi10.js",
+        "bytes": 71022
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/base/jlm_cmmib10.js",
+        "bytes": 83766
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnbx10.js",
+        "bytes": 90796
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnbxti10.js",
+        "bytes": 156977
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnr10.js",
+        "bytes": 102118
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnss10.js",
+        "bytes": 49509
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnssbx10.js",
+        "bytes": 87228
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnssi10.js",
+        "bytes": 69527
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnti10.js",
+        "bytes": 151215
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wntt10.js",
+        "bytes": 94607
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/euler/jlm_eufb10.js",
+        "bytes": 58932
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/euler/jlm_eufm10.js",
+        "bytes": 57318
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmbipg.js",
+        "bytes": 191184
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmbpg.js",
+        "bytes": 187896
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmripg.js",
+        "bytes": 198725
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmrpg.js",
+        "bytes": 190616
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcsbpg.js",
+        "bytes": 141549
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcsropg.js",
+        "bytes": 160767
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcsrpg.js",
+        "bytes": 137603
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fctrpg.js",
+        "bytes": 171156
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_cmr10.js",
+        "bytes": 56137
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmbi10.js",
+        "bytes": 6800
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmbx10.js",
+        "bytes": 6431
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmi10.js",
+        "bytes": 6375
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmr10.js",
+        "bytes": 9165
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmsb10.js",
+        "bytes": 6169
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmsbi10.js",
+        "bytes": 5863
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmsi10.js",
+        "bytes": 4704
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmss10.js",
+        "bytes": 4234
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmtt10.js",
+        "bytes": 4514
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmbx10.js",
+        "bytes": 58085
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmbxti10.js",
+        "bytes": 85561
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmssbx10.js",
+        "bytes": 61389
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmssi10.js",
+        "bytes": 36546
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmti10.js",
+        "bytes": 93348
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmtt10.js",
+        "bytes": 68586
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/licences/Knuth_License.txt",
+        "bytes": 395
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/licences/License_for_dsrom.txt",
+        "bytes": 260
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/licences/OFL.txt",
+        "bytes": 4630
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_cmbsy10.js",
+        "bytes": 67294
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_msam10.js",
+        "bytes": 54230
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_msbm10.js",
+        "bytes": 81054
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_rsfs10.js",
+        "bytes": 30402
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_special.js",
+        "bytes": 1785
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_stmary10.js",
+        "bytes": 51376
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/optional/jlm_dsrom10.js",
+        "bytes": 23187
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/html/ggtcallback.html",
+        "bytes": 1082
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/html/windowslive.html",
+        "bytes": 481
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/Roboto.js",
+        "bytes": 203810
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/RobotoSerif.js",
+        "bytes": 153011
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/canvas-to-svg.umd.min.js",
+        "bytes": 18496
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/canvas2pdf.js",
+        "bytes": 40449
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/canvas2pdf.min.js",
+        "bytes": 31953
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/gifshot.min.js",
+        "bytes": 26319
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_af.js",
+        "bytes": 177726
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_am.js",
+        "bytes": 241819
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar-MA.js",
+        "bytes": 447039
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar-SY.js",
+        "bytes": 444937
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar-TN.js",
+        "bytes": 441823
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar.js",
+        "bytes": 444925
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_az.js",
+        "bytes": 238658
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_bg.js",
+        "bytes": 578395
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_bn.js",
+        "bytes": 180506
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_br.js",
+        "bytes": 186079
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_bs.js",
+        "bytes": 201304
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ca-XV.js",
+        "bytes": 206659
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ca.js",
+        "bytes": 204365
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_cs.js",
+        "bytes": 228071
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_cy.js",
+        "bytes": 181648
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_da.js",
+        "bytes": 189202
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_de-AT.js",
+        "bytes": 197310
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_de.js",
+        "bytes": 197295
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_el.js",
+        "bytes": 614552
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_en-AU.js",
+        "bytes": 177627
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_en-GB.js",
+        "bytes": 177766
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_en.js",
+        "bytes": 177519
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_eo.js",
+        "bytes": 180859
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_es-ES.js",
+        "bytes": 206480
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_es-UY.js",
+        "bytes": 202686
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_es.js",
+        "bytes": 202695
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_et.js",
+        "bytes": 197593
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_eu.js",
+        "bytes": 194738
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fa.js",
+        "bytes": 373384
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fi.js",
+        "bytes": 199498
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fil.js",
+        "bytes": 181227
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fr.js",
+        "bytes": 200871
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_gl.js",
+        "bytes": 209620
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_he.js",
+        "bytes": 360158
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hi.js",
+        "bytes": 455822
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hr.js",
+        "bytes": 201200
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hu.js",
+        "bytes": 232122
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hy.js",
+        "bytes": 505787
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_id.js",
+        "bytes": 181902
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_is.js",
+        "bytes": 212443
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_it.js",
+        "bytes": 191228
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ja.js",
+        "bytes": 306595
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ka.js",
+        "bytes": 545794
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_kk.js",
+        "bytes": 486062
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_km.js",
+        "bytes": 187722
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_kn.js",
+        "bytes": 452618
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ko.js",
+        "bytes": 299191
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_lt.js",
+        "bytes": 217381
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_lv.js",
+        "bytes": 208889
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mk.js",
+        "bytes": 507335
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ml.js",
+        "bytes": 199267
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mn-Mong.js",
+        "bytes": 586120
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mn.js",
+        "bytes": 586100
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mr.js",
+        "bytes": 317565
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ms.js",
+        "bytes": 182385
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nb.js",
+        "bytes": 187100
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ne.js",
+        "bytes": 429723
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nl-NL.js",
+        "bytes": 186637
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nl.js",
+        "bytes": 187787
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nn.js",
+        "bytes": 186417
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_pl.js",
+        "bytes": 215877
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_pt-PT.js",
+        "bytes": 209737
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_pt.js",
+        "bytes": 210716
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ro.js",
+        "bytes": 212100
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ru.js",
+        "bytes": 506749
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_si.js",
+        "bytes": 391300
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sk.js",
+        "bytes": 214524
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sl.js",
+        "bytes": 197213
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sq.js",
+        "bytes": 184213
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sr.js",
+        "bytes": 194322
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sv.js",
+        "bytes": 201252
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ta.js",
+        "bytes": 359151
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_tg.js",
+        "bytes": 324878
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_th.js",
+        "bytes": 499238
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_tr.js",
+        "bytes": 231504
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ug.js",
+        "bytes": 553117
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_uk.js",
+        "bytes": 566674
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_uz.js",
+        "bytes": 196131
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_vi.js",
+        "bytes": 267458
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_xh.js",
+        "bytes": 189837
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_yi.js",
+        "bytes": 373304
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_zh-CN.js",
+        "bytes": 261871
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_zh-TW.js",
+        "bytes": 236531
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/whammy.js",
+        "bytes": 5199
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/js/whammy.min.js",
+        "bytes": 3836
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/sworker-locked.js",
+        "bytes": 13611
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/web3d.nocache.js",
+        "bytes": 5455
+      },
+      {
+        "url": "/vendor/geogebra/HTML5/5.0/web3d/web3d.nocache.mjs",
+        "bytes": 29416
+      },
+      {
+        "url": "/vendor/geogebra/README.txt",
+        "bytes": 1024
+      },
+      {
+        "url": "/vendor/geogebra/bundle-source.json",
+        "bytes": 386
+      },
+      {
+        "url": "/vendor/geogebra/deployggb.js",
+        "bytes": 37188
+      },
+      {
+        "url": "/versiones/",
+        "bytes": 49865
+      }
+    ]
+  }
+}

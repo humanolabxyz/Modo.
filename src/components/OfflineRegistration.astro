@@ -1,0 +1,12 @@
+<script>
+  import {watchForUpdate} from '../pwa/update-notice';
+  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+    const register = () => navigator.serviceWorker.register('/sw.js', {updateViaCache: 'none'}).then(registration => {
+      try {watchForUpdate(registration);} catch (error) {console.warn('modo.: no se pudo vigilar las actualizaciones.', error);}
+    }).catch(error => {
+      console.warn('modo.: no se pudo preparar la caché sin conexión.', error);
+    });
+    if (document.readyState === 'complete') void register();
+    else window.addEventListener('load', register, {once: true});
+  }
+</script>

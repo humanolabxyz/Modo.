@@ -1,0 +1,6 @@
+const { chromium } = require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const f=()=>{const o=[];for(const e of document.querySelectorAll('body *')){if(e.closest('svg'))continue;const r=e.getBoundingClientRect();if(r.width*r.height<20000)continue;const cs=getComputedStyle(e);if(cs.display==='none')continue;o.push((e.tagName+'.'+String(e.className).slice(0,50))+' | '+cs.backgroundColor+(cs.backgroundImage!=='none'&&!/url/.test(cs.backgroundImage)?' +grad':'')+' | r'+cs.borderRadius.slice(0,12)+' | '+(cs.boxShadow==='none'?'':'sh')+' | '+Math.round(r.width)+'x'+Math.round(r.height))}return o.slice(0,40)};
+(async()=>{const b=await chromium.launch();const c=await b.newContext({viewport:{width:1440,height:900},serviceWorkers:'block'});await c.addInitScript(()=>{localStorage.setItem('modo-tutoriales-bienvenida-v1','seen')});const p=await c.newPage();
+await p.goto('http://127.0.0.1:4455/laboratorio/');await p.waitForTimeout(3000);
+for(const t of ['Equipos eléctricos','HMI','Procesos','Protoboard','Soldadura']){await p.getByRole('button',{name:new RegExp('^'+t)}).first().click().catch(()=>{});await p.waitForTimeout(1500);console.log('\n##',t);(await p.evaluate(f)).forEach(x=>console.log(' ',x))}
+await b.close()})()

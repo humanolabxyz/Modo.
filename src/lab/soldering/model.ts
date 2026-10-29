@@ -1,0 +1,14 @@
+export const ALLOYS={sn63:{label:'Sn63Pb37 · núcleo de resina',liquidus:183},sac305:{label:'SAC305 · sin plomo',liquidus:220}};
+export type Station={on:boolean;setpoint:number;tip:number;joint:number;clean:boolean;tinned:boolean;alloy:keyof typeof ALLOYS;flux:boolean;quality:'none'|'cold'|'wet'|'disturbed';contact:boolean;overheat:number};
+export const newStation=():Station=>({on:false,setpoint:330,tip:22,joint:22,clean:false,tinned:false,alloy:'sn63',flux:false,quality:'none',contact:false,overheat:0});
+/** Accelerated lumped thermal teaching model, not station calibration or a dwell-time prescription. */
+export function stepStation(s:Station,dt:number):Station{
+ dt=Math.max(0,Math.min(dt,.5));const goal=s.on?s.setpoint:22;
+ let tip=s.tip+(goal-s.tip)*(1-Math.exp(-dt/1.8));if(Math.abs(tip-goal)<.005)tip=goal;
+ const target=s.contact?tip:22;let joint=s.joint+(target-s.joint)*(1-Math.exp(-dt/(s.contact?(s.clean&&s.tinned?1.5:5):1.3)));if(Math.abs(joint-target)<.005)joint=target;
+ const overheat=s.contact&&joint>300?s.overheat+dt:Math.max(0,s.overheat-dt);
+ return tip===s.tip&&joint===s.joint&&overheat===s.overheat?s:{...s,tip,joint,overheat};
+}
+export function cleanTip(s:Station,method:'sponge'|'brass'|'restorer',moist=true){if(method==='sponge'&&!moist)return {state:s,message:'La esponja debe estar humedecida y escurrida; no limpia como una esponja seca.'};return {state:{...s,clean:true,tinned:method==='restorer'||method==='brass'&&s.tinned,tip:Math.max(22,s.tip-(method==='sponge'?30:5))},message:method==='restorer'?'Restaurador específico de punta. Retira residuos y vuelve a estañar; no es flux de unión.':'Punta limpia. Comprueba el estañado antes de calentar la unión.'};}
+export function solder(s:Station,target:'tip'|'joint',joined:boolean){const liquidus=ALLOYS[s.alloy].liquidus;if(s.tip<liquidus)return {state:s,message:'Enciende la estación y espera que la punta pueda fundir esta aleación.'};if(target==='tip')return !s.clean?{state:s,message:'Limpia primero la punta oxidada.'}:{state:{...s,tinned:true},message:'Punta estañada: una película de soldadura mejora la transferencia de calor.'};if(!joined)return {state:s,message:'Prepara y sujeta el conductor antes de aportar soldadura.'};if(!s.contact||!s.clean||!s.tinned||s.joint<liquidus)return {state:{...s,quality:'cold' as const},message:'Unión fría: no basta fundir una gota sobre el cautín. Calienta conductor y terminal y rehace la unión.'};if(s.quality==='cold'||s.quality==='disturbed')return {state:s,message:'Retira la soldadura defectuosa con la malla y repite el proceso.'};if(s.overheat>5)return {state:s,message:'Exceso de calor en el modelo: retira el cautín y revisa aislamiento y terminal.'};return {state:{...s,quality:'wet' as const,flux:true},message:'Mojado de conductor y terminal. El hilo aporta flux de su núcleo; retira hilo y cautín y deja enfriar sin mover.'};}
+export const jointFinished=(s:Station)=>s.quality==='wet'&&!s.contact&&s.joint<50;

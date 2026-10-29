@@ -1,13 +1,14 @@
 import {CADE_JUNCTIONS,CADE_PORTS,CADE_SYMBOLS,CADE_WIRES,cadeNetwork,type CadePort} from './cade';
 import {cableNodes,connectedByCables,TERMINAL_BY_ID} from './wiring';
 import type {AssistanceLevel,BananaCable} from './practice';
-import {DEFAULT_CADE_BINDINGS} from './panelCorrespondence';
+import {DEFAULT_CADE_BINDINGS,cadePortKey,bindingConflict} from './panelCorrespondence';
+import {SIMPLE_LESSON} from './lessons';
 
 export type LearningState={mode:'guided'|'free'|'exam';index:number;assistance:AssistanceLevel;bindings:Record<string,string>;examFinished:boolean;answers:Record<string,string>};
 export const newLearning=():LearningState=>({mode:'free',index:0,assistance:1,bindings:{},examFinished:false,answers:{}});
-export const portKey=(p:CadePort)=>`${p.reference}:${p.terminal}`;
+export const portKey=cadePortKey;
 export const UNIQUE_PORTS=[...new Map(CADE_PORTS.filter(p=>p.terminal).map(p=>[portKey(p),p])).values()];
-/** Only existing unambiguous label correspondences. No KM, supply or button assignment by convention. */
+/** Correspondences shared with the virtual lesson's bank components. */
 export const LABEL_BINDINGS=DEFAULT_CADE_BINDINGS;
 const visited=new Set<number>();
 const geometricNets=CADE_WIRES.flatMap(w=>{
@@ -22,21 +23,47 @@ export const LEARNING_NETS=geometricNets.reduce<typeof geometricNets>((groups,ne
  const merged=[net,...related];
  return [...groups.filter(g=>!related.includes(g)),{id:Math.min(...merged.map(n=>n.id)),lineIds:merged.flatMap(n=>n.lineIds),ports:[...new Map(merged.flatMap(n=>n.ports).map(p=>[portKey(p),p])).values()]}];
 },[]).sort((a,b)=>a.id-b.id);
-export function learningModel(bindings:Record<string,string>={}){
+function pairsForTerminals(terminals:string[]){
+ const parent=new Map(terminals.map(id=>[id,id])),root=(id:string):string=>parent.get(id)===id?id:root(parent.get(id)!);
+ const pairs:{from:string;to:string}[]=[];
+ const add=(from:string,to:string)=>{if(!parent.has(from)||!parent.has(to)||root(from)===root(to))return;parent.set(root(from),root(to));pairs.push({from,to})};
+ // Prefer the actual lesson cables and their order. Only personal remappings
+ // need the fallback spanning chain; equivalent cable topologies still validate.
+ SIMPLE_LESSON.pairs.forEach(([from,to])=>add(from,to));
+ terminals.slice(1).forEach((to,i)=>add(terminals[i],to));
+ return pairs;
+}
+function mapNet(net:typeof LEARNING_NETS[number],bindings:Record<string,string>){
  const map={...LABEL_BINDINGS,...bindings};
- return LEARNING_NETS.map(net=>{
-  const terminals=[...new Set(net.ports.map(p=>map[portKey(p)]).filter(id=>TERMINAL_BY_ID.has(id)))];
-  const missing=net.ports.filter(p=>!TERMINAL_BY_ID.has(map[portKey(p)]));
-  const pairs=terminals.slice(1).map((to,i)=>({from:terminals[i],to}));
-  return {...net,terminals,missing,pairs};
- });
+ const terminals=[...new Set(net.ports.map(p=>map[portKey(p)]).filter(id=>TERMINAL_BY_ID.has(id)))];
+ // Expected protection cables from the lesson; no implicit internal links.
+ if(net.ports.some(p=>portKey(p)==='-M:PE')&&!net.ports.some(p=>Object.hasOwn(bindings,portKey(p))))terminals.push(...['CONTACTOR_TERMICO:TP_DER','BOTONERAS:TP_DER'].filter(id=>TERMINAL_BY_ID.has(id)));
+ return {...net,terminals,missing:net.ports.filter(p=>!TERMINAL_BY_ID.has(map[portKey(p)])),pairs:pairsForTerminals(terminals)};
+}
+/** Show only the cables represented by the selected conductor, even when the
+ * panel integrates two drawing networks in the same supply/protection socket. */
+export function routeForLine(id:number,bindings:Record<string,string>={}){
+ const net=LEARNING_NETS.find(n=>n.lineIds.includes(id));return net?mapNet(net,bindings):undefined;
+}
+export function learningModel(bindings:Record<string,string>={}){
+ const mapped=LEARNING_NETS.map(net=>mapNet(net,bindings));
+ // The panel exposes one common pilot return and integrates the supply protections
+ // and thermal power stage. Merge their equivalent sockets, never the contacts themselves.
+ return mapped.reduce<typeof mapped>((groups,net)=>{
+  let merged=net,remaining=groups;
+  for(;;){const related=remaining.filter(g=>g.terminals.some(id=>merged.terminals.includes(id)));if(!related.length)break;
+   const all=[merged,...related];remaining=remaining.filter(g=>!related.includes(g));
+   merged={id:Math.min(...all.map(g=>g.id)),lineIds:all.flatMap(g=>g.lineIds),ports:all.flatMap(g=>g.ports),terminals:[...new Set(all.flatMap(g=>g.terminals))],missing:all.flatMap(g=>g.missing),pairs:[]};
+  }
+  merged.pairs=pairsForTerminals(merged.terminals);return [...remaining,merged];
+ },[]).sort((a,b)=>a.id-b.id);
 }
 export type LearningNet=ReturnType<typeof learningModel>[number];
 export const netForLine=(id:number,model:LearningNet[])=>model.find(n=>n.lineIds.includes(id));
 export function canBind(key:string,id:string,bindings:Record<string,string>){
  if(!UNIQUE_PORTS.some(p=>portKey(p)===key)||id&&!TERMINAL_BY_ID.has(id))return false;
  // Distinct source ports cannot silently collapse onto one physical socket.
- return !id||!Object.entries({...LABEL_BINDINGS,...bindings}).some(([k,v])=>k!==key&&v===id);
+ return !bindingConflict(key,id,bindings);
 }
 function shortedNodes(wires:BananaCable[],bindings:Record<string,string>){
  const map={...LABEL_BINDINGS,...bindings};
@@ -44,8 +71,7 @@ function shortedNodes(wires:BananaCable[],bindings:Record<string,string>){
  const sourcePorts=CADE_PORTS.filter(p=>sources.some(o=>o.id===p.objectId));
  return [...cableNodes(wires).values()].filter(ids=>{
   const potentials=new Set(sourcePorts.filter(p=>ids.includes(map[portKey(p)])).map(p=>p.terminal));
-  // L and L1 may be the same supply: require distinct, explicitly named potentials.
-  if(potentials.has('L')){potentials.delete('L');potentials.add('L1')}
+  // The lesson's 24 V control F (L in the drawing) is separate from three-phase R (L1).
   return potentials.size>1;
  });
 }

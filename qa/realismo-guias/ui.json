@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Referencia docente construida con modelo no lineal, lectura física con puntas, registro y tomas manuales A/VΩ",
+    "Repetir conserva dos ensayos; añadir 0,25 Ω por hilo aumenta la medida 0,5 Ω",
+    "Fabricar tres conductores, asignar pines en el dibujo y comprobar tres recorridos/tres aislamientos con el Fluke compartido",
+    "Marcha RTU, timeout a 115200 conservando ON, error CRC, lectura 03 y paro confirmado",
+    "Redes revisado en tablet y móvil emulados, sin desborde de página",
+    "Protoboard y temperatura revisadas también a 390 px, con controles de cierre accesibles"
+  ],
+  "errors": []
+}

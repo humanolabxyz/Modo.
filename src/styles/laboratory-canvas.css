@@ -43,7 +43,7 @@
 }
 
 /* Superficie */
-.lab-canvas-workspace{position:absolute;inset:0;overflow:hidden;background-color:var(--canvas-bg);background-image:radial-gradient(#b7c3cc80 .7px,transparent .7px);background-size:18px 18px;touch-action:none}
+.lab-canvas-workspace{position:absolute;inset:0;overflow:hidden;background-color:var(--canvas-bg);background-image:radial-gradient(#b7c3cc80 .7px,transparent .7px);background-size:18px 18px;touch-action:auto}
 .lab-board-svg{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none;outline:none;cursor:default}
 .lab-board-svg:focus-visible{outline:3px solid #c99a54;outline-offset:-3px}
 .lab-canvas-workspace[data-tool=pan] .lab-board-svg{cursor:grab}.lab-board-svg[data-space-pan=true]{cursor:grab}.lab-board-svg[data-dragging=true]{cursor:grabbing!important}
@@ -373,3 +373,97 @@
 .lab-dmm-device.is-tiny .lab-dmm-place{display:none}
 .lab-canvas-workspace .lab-dmm-tools button.lab-dmm-zoom:disabled{opacity:.4;cursor:not-allowed}
 @media(max-width:800px){.lab-dmm-device{width:calc(172px*var(--dmm-scale,1))}.lab-dmm-device.is-collapsed{width:auto}}
+
+.breadboard-source-leads{position:absolute;inset:0;z-index:25;pointer-events:none;overflow:visible}.breadboard-supply svg{display:block;width:100%;max-height:260px}.breadboard-supply{display:flex;flex-direction:column;gap:12px;font:13px/1.5 system-ui;color:#294653}.breadboard-supply button{min-height:44px;padding:8px 12px;border:1px solid #adc3cd;border-radius:8px;background:#f5faf9;color:#294653;cursor:pointer}.breadboard-supply p{margin:0}.breadboard-supply .workshop-actions{display:flex;flex-wrap:wrap;gap:6px}.lab-button-hit{touch-action:none;pointer-events:fill}.lab-proto-component[data-component-kind=button]{touch-action:none;cursor:pointer}
+
+.class-diagram-window .lab-diagram-scroll{overflow:auto;max-height:60dvh;touch-action:pan-x pan-y;border:1px solid #c7d8dc;border-radius:10px;background:#fbfdfc}.class-circuit-svg{display:block;max-width:none}.class-route-tools,.class-diagram-options,.class-diagram-toolbar,.class-diagram-window .lab-diagram-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.class-diagram-toolbar{justify-content:space-between;margin-bottom:10px}.class-diagram-toolbar small{display:block;max-width:620px;color:#587480;font:12px/1.5 system-ui}.class-route-tools{position:sticky;left:0;padding:10px;background:#f6faf9;font:12px system-ui}.class-route-tools span{color:#587480}.class-diagram-options{margin:10px 0}.class-diagram-window button{min-height:44px;border:1px solid #bfd1d7;border-radius:8px;background:#fff;color:#294653;padding:7px 10px;cursor:pointer}.class-diagram-window button[aria-pressed=true]{background:#dcefeb;border-color:#468c83}.class-device-explanation{position:sticky;left:0;padding:12px;max-width:800px;font:13px/1.5 system-ui;color:#294653;background:#edf5f3}.class-diagram-window footer{font:11px/1.5 system-ui;color:#587480;margin-top:10px}.class-diagram-window .lab-diagram-tabs{display:flex;gap:5px;flex-wrap:wrap}
+
+.breadboard-supply-window.is-dragging{opacity:0;pointer-events:none}.breadboard-source-status{position:absolute;top:74px;left:12px;z-index:28;display:flex;flex-direction:column;gap:3px;min-height:44px;padding:8px 12px;border:1px solid #c4d4d9;border-radius:9px;background:#f4f8f8;color:#294653;cursor:pointer;font:11px system-ui}.breadboard-source-status strong{font-size:15px}.breadboard-source-status.is-on{background:#e1f1e9;border-color:#8db8a7}
+
+.class-diagram-window,.class-diagram-window h3,.class-diagram-window header{font-family:system-ui,sans-serif}
+
+/* Dock menus are portalled out of scaled and clipped workspaces. */
+.lab-dock-menu[role=menu]{box-sizing:border-box;overflow-y:auto;overflow-x:hidden;touch-action:pan-y;overscroll-behavior:contain;font-family:system-ui}.lab-dock-menu[role=menu]>button{display:flex;align-items:center;flex:none;width:100%;height:auto;min-height:56px;justify-content:flex-start;gap:10px;padding:8px 10px;text-align:left;color:#e5eaed;background:transparent;border:0;border-radius:9px;font:500 13px system-ui;cursor:pointer}.lab-dock-menu[role=menu]>button.on{background:#176e84;color:#fff}.lab-dock-menu[role=menu]>button:focus-visible{outline:2px solid #74c7dc;outline-offset:-2px}.lab-dock-menu[role=menu]>button>svg{flex-shrink:0}.lab-dock-menu[role=menu]>button:disabled{opacity:.4;cursor:default}
+.lab-placement-controls{position:absolute;left:12px;bottom:92px;z-index:35;display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:calc(100% - 24px);padding:8px 10px;background:#f4faf9;border:1px solid #b9ced5;border-radius:10px;font:12px system-ui;color:#294653}.lab-placement-controls button{min-height:44px;padding:7px 12px;border:1px solid #aac0c9;border-radius:8px;background:white;color:#294653}.lab-placement-controls strong{font-size:13px}
+
+.breadboard-supply svg,.breadboard-supply svg *{touch-action:none}
+
+.lab-placement-controls{bottom:156px;z-index:70}
+
+@media(min-width:1101px) and (pointer:fine){.breadboard-source-status{top:142px}}
+.class-circuit-svg{margin-inline:auto}
+
+/* Labels never intercept the controls beneath them while a circuit is running. */
+.lab-label-layer{pointer-events:none}
+.lab-label-layer .lab-label.clickable{pointer-events:auto}
+.lab-leader{stroke:#526c7b;stroke-opacity:.85;stroke-dasharray:none}
+.lab-dmm-handle{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #c5d0d5;border-radius:10px;background:#f4f7f8;color:#344d59;font:600 12px system-ui;cursor:grab;touch-action:none;user-select:none}
+.lab-dmm-handle:active{cursor:grabbing}
+.lab-lead .pen-hit{stroke-width:44}
+.lab-proto-motor-spin{transform-box:view-box;transform-origin:0 0;animation:lab-proto-rotate 1s linear infinite;pointer-events:none}
+@keyframes lab-proto-rotate{to{transform:rotate(360deg)}}
+.breadboard-power-help{position:absolute;z-index:36;left:50%;bottom:154px;transform:translateX(-50%);max-width:calc(100% - 24px);min-height:44px;padding:10px 16px;border:1px solid #b6c8ce;border-radius:12px;background:#fff;color:#294653;box-shadow:var(--float-shadow);font:600 13px system-ui}
+@media(prefers-reduced-motion:reduce){.lab-proto-motor-spin{animation:none}}
+
+.lab-leads.is-inactive .pen-hit{pointer-events:none}
+
+.lab-dmm-tools button{min-width:44px;min-height:44px;display:grid;place-items:center;padding:8px;border:1px solid #c5d0d5;border-radius:9px;background:#f4f7f8;color:#344d59;cursor:pointer}
+
+.lab-sr-only{position:absolute!important;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
+.breadboard-physical-supply{touch-action:none;user-select:none}.breadboard-supply-body{cursor:grab}.breadboard-supply-body [role=button]{cursor:pointer}.breadboard-supply-body [role=button]:focus-visible,.breadboard-physical-supply [role=slider]:focus-visible{outline:2px solid #2c899c;outline-offset:3px}.breadboard-supply-body text{pointer-events:none}
+
+.breadboard-supply-body [role=button]>rect{stroke-width:2;vector-effect:non-scaling-stroke}.breadboard-source-focus{cursor:zoom-in}
+
+.lab-canvas-mode .lab-notice{pointer-events:none}.lab-canvas-mode .lab-notice button,.lab-canvas-mode .lab-notice a{pointer-events:auto}
+
+.lab-board-svg .lab-hole-label{font:600 11px system-ui;fill:#657674}
+.lab-board-svg .lab-hole-number{font:600 9px system-ui;fill:#6c7b78}
+.lab-transistor-pin-guide{pointer-events:none}
+.transistor-pinout{font:13px/1.5 system-ui;color:#344f5a}.transistor-pinout p{margin:8px 0 12px}.transistor-pinout>svg{display:block;width:100%;max-height:190px;background:#eef2ef;border:1px solid #d3dfd9;border-radius:10px}.transistor-pin-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}.transistor-pin-buttons button{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:70px;padding:7px 3px;border:1px solid;border-radius:9px;background:#fff;font:12px system-ui;color:#344f5a;cursor:pointer}.transistor-pin-buttons button[aria-pressed=true]{background:#e2eee8;box-shadow:inset 0 0 0 1px currentColor}.transistor-pin-buttons strong{font-size:20px}.transistor-pin-buttons small{font:600 12px ui-monospace,monospace}.transistor-pin-explanation{padding:10px;background:#edf4ef;border-radius:8px}.transistor-pinout a{color:#236778}
+
+.lab-editor-anchor:has(.transistor-pinout){max-height:calc(100dvh - 200px);overflow:auto}.lab-editor-pop:has(.transistor-pinout)>header{position:sticky;top:-1px;z-index:2;background:#fff;padding-block:5px}.lab-placement-controls:has(button:nth-of-type(3)){flex-wrap:wrap}
+
+/* Only the drawing owns pan gestures; sibling editors keep native scrolling. */
+.lab-editor-anchor,.lab-sheet-body,.lab-project-settings,.lab-project-menu>div{touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.class-diagram-window{height:86dvh}
+.class-diagram-window .floating-window-body{display:flex;overflow:hidden;min-height:0}
+.class-diagram-window .floating-window-content{display:flex;flex-direction:column;flex:1;min-width:0;min-height:0}
+.class-diagram-window .lab-diagram-scroll{flex:1;min-height:80px;max-height:none;touch-action:pan-x pan-y}
+.class-diagram-window .class-diagram-toolbar,.class-diagram-window .lab-diagram-tabs,.class-diagram-window .class-diagram-options,.class-diagram-window .class-diagram-note{flex:none}
+.class-diagram-note{font:12px/1.5 var(--ui-font,system-ui);margin-top:8px}.class-diagram-note>summary{cursor:pointer;min-height:32px;display:flex;align-items:center}
+.class-diagram-note p{max-height:100px;overflow:auto}
+@media(max-height:600px){.class-diagram-window .class-diagram-options{margin:4px 0}.class-diagram-window .class-diagram-toolbar{margin-bottom:4px}.class-diagram-window .floating-window-body{padding:6px 10px}.class-diagram-window button{min-height:36px;padding:4px 8px}}
+
+/* SVG probe lines need a block-level gesture boundary on touch browsers. */
+.lab-leads{touch-action:none}
+
+.lab-failure-smoke{pointer-events:none}.lab-failure-puff{fill:#50565b;opacity:0;animation:lab-failure-puff 1.9s ease-out 3}
+@keyframes lab-failure-puff{0%{opacity:0;transform:translate(0,0) scale(.6)}12%{opacity:.75}65%{opacity:.28}100%{opacity:0;transform:translate(12px,-100px) scale(2.8)}}
+@media(prefers-reduced-motion:reduce){.lab-failure-puff{animation:none;will-change:auto;opacity:.22}.lab-failure-puff:nth-child(odd){opacity:0}}
+.breadboard-diagnostic-summary{display:flex;align-items:center;gap:8px;padding:5px 7px 5px 10px;border:1px solid #d8c393;background:#fff8e9;color:#6e532c;border-radius:12px;font:12px/1.4 var(--ui-font,system-ui);pointer-events:auto}
+.breadboard-diagnostic-summary.has-failure{border-color:#dba79b;background:#fff0ec;color:#8c392c}.breadboard-diagnostic-summary>svg{flex:none}.breadboard-diagnostic-summary>span{flex:1;min-width:0}.breadboard-diagnostic-summary>button{min-height:44px;padding:6px 12px;border:1px solid currentColor;border-radius:8px;background:#fff;color:inherit;cursor:pointer}
+.breadboard-diagnostics{font-family:var(--ui-font,system-ui)}.breadboard-diagnostics h4{margin:8px 0;font-size:16px}.breadboard-damage-list{padding:0;list-style:none}.breadboard-damage-list>li{padding:12px;margin:12px 0;border:1px solid #dec3bc;background:#fff7f4;border-radius:10px}.breadboard-diagnostics p,.breadboard-diagnostics li{font-size:13px;line-height:1.55}.breadboard-diagnostic-position{font-family:ui-monospace,monospace}.breadboard-damage-list button{display:flex;align-items:center;gap:7px;min-height:44px;border:1px solid #bbc5ca;border-radius:9px;background:#fff;padding:8px 12px;color:#263b46}.breadboard-diagnostic-note{color:#68727a;font-size:11px!important}
+
+/* A brief digit refresh keeps the instrument responsive without a React RAF loop. */
+@keyframes dmm-reading-refresh{from{opacity:.65}to{opacity:1}}
+.lab-dmm-body .dmm-lcd{animation:dmm-reading-refresh .1s ease-out}
+@media(prefers-reduced-motion:reduce){.lab-dmm-body .dmm-lcd{animation:none}}
+
+.breadboard-floating-list{list-style:none;padding:0}.breadboard-floating-list>li{margin:12px 0;padding:12px;border:1px solid #dfc58e;border-radius:10px;background:#fffaf0}.breadboard-floating-list ul{padding-left:18px}.breadboard-floating-list button,.breadboard-diagnostic-selection button{min-height:44px;display:flex;align-items:center;gap:7px;border:1px solid #c8b582;border-radius:9px;background:#fff;color:#614b21;padding:8px 12px}
+.breadboard-diagnostic-selection{position:relative;box-sizing:border-box;width:100%;display:flex;gap:10px;align-items:center;max-width:100%;padding:8px 10px;border:1px solid #dfc58e;border-radius:10px;background:#fffaf0;color:#614b21;font:12px/1.4 var(--ui-font,system-ui)}.breadboard-diagnostic-selection span{min-width:0}.breadboard-diagnostic-selection button{flex:none}
+
+.breadboard-fault-practice{font:13px/1.55 var(--ui-font,system-ui)}.breadboard-fault-practice label{display:flex;flex-direction:column;gap:5px;margin:12px 0}.breadboard-fault-practice select,.breadboard-fault-practice textarea{box-sizing:border-box;width:100%;min-height:44px;border:1px solid #cbd5dd;border-radius:8px;padding:8px;background:#fff;color:#243f35}.breadboard-fault-practice button{display:flex;align-items:center;gap:8px;min-height:44px;margin:8px 0;padding:8px 12px;border:1px solid #c5d4cb;border-radius:9px;background:#fff;color:#254c3a}.breadboard-fault-practice .fault-primary{background:#24583f;color:white}.fault-state,.fault-feedback,.fault-reveal{padding:10px 12px;border:1px solid #d8c494;border-radius:9px;background:#fff9ed;color:#5b4826}
+
+/* Colores de puentes: controles con nombre, visibles también en ventanas portales. */
+.lab-bridge-colors h4{margin:0 0 8px;font-size:15px;color:#294653}
+.lab-bridge-current{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:13px;color:#435b68}
+.lab-bridge-current>i,.lab-bridge-palette button>i{display:block;flex:none;width:20px;height:20px;border:1px solid #8c9ba5;border-radius:50%}
+.mobile-floating-window .lab-bridge-palette{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mobile-floating-window .lab-bridge-palette button{display:flex;align-items:center;gap:7px;min-width:0;width:100%;min-height:44px;padding:8px;border:1px solid #bdcad4;border-radius:9px;background:#fff;color:#294653;font:inherit;font-size:12px;text-align:left;cursor:pointer}
+.mobile-floating-window .lab-bridge-palette button>span{flex:1}
+.mobile-floating-window .lab-bridge-palette button[aria-pressed=true]{border:2px solid #287c88;background:#eaf5f3;padding:7px;font-weight:700}
+.mobile-floating-window .lab-bridge-palette button:focus-visible{outline:3px solid #2388b6;outline-offset:2px}
+.mobile-floating-window .lab-bridge-palette button:disabled{cursor:default;opacity:.55}
+.lab-bridge-color-icon{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;line-height:1.1}
+.lab-bridge-color-icon>i{display:block;width:18px;height:13px;border:1px solid #83969c;border-radius:4px}

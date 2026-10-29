@@ -1,0 +1,3 @@
+const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs=require('node:fs');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:960},reducedMotion:'reduce'});await p.addInitScript(()=>localStorage.setItem('modo-tutoriales-bienvenida-v1','seen'));for(const [name,url]of [['home','/estudio'],['course','/estudio?curso=s2-5']]){await p.goto('http://127.0.0.1:4345'+url);await p.waitForSelector('.campus-course-grid,.course-classroom');await p.screenshot({path:'qa/aula-reference/'+name+'-1440.png',fullPage:true});}await b.close();})();

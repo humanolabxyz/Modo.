@@ -1,0 +1,351 @@
+{
+  "date": "2026-10-25",
+  "scope": "Integridad documental y referencias; no certificación eléctrica ni prueba funcional del taller propuesto.",
+  "pdf": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\output\\pdf\\Investigacion_tableros_modo_2026-10-25.pdf",
+  "pdf_pages": 18,
+  "pdf_bytes": 2870067,
+  "pdf_sha256": "5e9ad68329c874fd88c02ca0aad281846082347cdafd945bc538f25f60dda825",
+  "source_files": 13,
+  "manuals": 7,
+  "visual_cards": 12,
+  "fault_cases": 16,
+  "workflow_stages": 8,
+  "pdf_links": 26,
+  "visual_review": {
+    "all_pages": "Hojas de contacto de las 18 páginas revisadas.",
+    "full_size_examples": [
+      2,
+      13,
+      17
+    ],
+    "result": "Sin recortes de texto, superposiciones ni defectos visibles en el render final."
+  },
+  "checks": [
+    {
+      "check": "13 fuentes disponibles",
+      "pass": true
+    },
+    {
+      "check": "F01 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "F01 dimensiones",
+      "pass": true
+    },
+    {
+      "check": "F02 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "F02 dimensiones",
+      "pass": true
+    },
+    {
+      "check": "F03 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "F03 dimensiones",
+      "pass": true
+    },
+    {
+      "check": "F04 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "F04 dimensiones",
+      "pass": true
+    },
+    {
+      "check": "F05 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "F05 dimensiones",
+      "pass": true
+    },
+    {
+      "check": "F06 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "F06 dimensiones",
+      "pass": true
+    },
+    {
+      "check": "M01 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "M01 páginas e idioma registrado",
+      "pass": true
+    },
+    {
+      "check": "M02 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "M02 páginas e idioma registrado",
+      "pass": true
+    },
+    {
+      "check": "M03 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "M03 páginas e idioma registrado",
+      "pass": true
+    },
+    {
+      "check": "M04 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "M04 páginas e idioma registrado",
+      "pass": true
+    },
+    {
+      "check": "M05 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "M05 páginas e idioma registrado",
+      "pass": true
+    },
+    {
+      "check": "M06 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "M06 páginas e idioma registrado",
+      "pass": true
+    },
+    {
+      "check": "M07 integridad SHA-256 y tamaño",
+      "pass": true
+    },
+    {
+      "check": "M07 páginas e idioma registrado",
+      "pass": true
+    },
+    {
+      "check": "12 referencias visuales con IDs únicos",
+      "pass": true
+    },
+    {
+      "check": "V01 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V02 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V03 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V04 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V05 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V05 página válida",
+      "pass": true
+    },
+    {
+      "check": "V06 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V06 página válida",
+      "pass": true
+    },
+    {
+      "check": "V07 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V07 página válida",
+      "pass": true
+    },
+    {
+      "check": "V08 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V08 página válida",
+      "pass": true
+    },
+    {
+      "check": "V09 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V09 página válida",
+      "pass": true
+    },
+    {
+      "check": "V10 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V10 página válida",
+      "pass": true
+    },
+    {
+      "check": "V11 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "V11 página válida",
+      "pass": true
+    },
+    {
+      "check": "V12 imagen y fuente",
+      "pass": true
+    },
+    {
+      "check": "8 etapas de aprendizaje",
+      "pass": true
+    },
+    {
+      "check": "16 casos con IDs únicos",
+      "pass": true
+    },
+    {
+      "check": "D01 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D02 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D03 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D04 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D05 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D05 referencia de página M01",
+      "pass": true
+    },
+    {
+      "check": "D06 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D06 referencia de página M03",
+      "pass": true
+    },
+    {
+      "check": "D07 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D08 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D08 referencia de página M03",
+      "pass": true
+    },
+    {
+      "check": "D09 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D09 referencia de página M03",
+      "pass": true
+    },
+    {
+      "check": "D10 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D10 referencia de página M03",
+      "pass": true
+    },
+    {
+      "check": "D11 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D11 referencia de página M04",
+      "pass": true
+    },
+    {
+      "check": "D12 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D12 referencia de página M04",
+      "pass": true
+    },
+    {
+      "check": "D13 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D14 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D14 referencia de página M07",
+      "pass": true
+    },
+    {
+      "check": "D15 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D15 referencia de página M07",
+      "pass": true
+    },
+    {
+      "check": "D16 fuentes y campos completos",
+      "pass": true
+    },
+    {
+      "check": "D16 referencia de página M05",
+      "pass": true
+    },
+    {
+      "check": "CSV corresponde a los 16 casos",
+      "pass": true
+    },
+    {
+      "check": "PDF de 18 páginas",
+      "pass": true
+    },
+    {
+      "check": "PDF con texto extraíble y sin reemplazos Unicode",
+      "pass": true
+    },
+    {
+      "check": "PDF incluye todos los casos",
+      "pass": true
+    },
+    {
+      "check": "PDF con enlaces de fuentes",
+      "pass": true
+    },
+    {
+      "check": "18 páginas renderizadas con Poppler",
+      "pass": true
+    }
+  ],
+  "result": "pass",
+  "application_changes": "Ninguna modificación funcional ni publicación de la aplicación como parte de esta investigación."
+}

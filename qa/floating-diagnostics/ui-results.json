@@ -1,0 +1,38 @@
+[
+  {
+    "engine": "chromium",
+    "width": 390,
+    "identifiedGroups": 8,
+    "scrollTop": 321,
+    "locatedMotor": true,
+    "clearedOnConduction": true,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "width": 820,
+    "identifiedGroups": 8,
+    "scrollTop": 319,
+    "locatedMotor": true,
+    "clearedOnConduction": true,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 390,
+    "identifiedGroups": 8,
+    "scrollTop": 500,
+    "locatedMotor": true,
+    "clearedOnConduction": true,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 820,
+    "identifiedGroups": 8,
+    "scrollTop": 500,
+    "locatedMotor": true,
+    "clearedOnConduction": true,
+    "errors": []
+  }
+]

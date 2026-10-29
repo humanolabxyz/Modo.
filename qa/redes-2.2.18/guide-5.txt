@@ -1,0 +1,54 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 5 
+ 
+ 
+Paso N°2: 
+ 
+Atornillar el otro extremo de los cables utp al conector de tornillo para energizado del COM 2 RS-485, 
+obedeciendo a la imagen anterior, de esta manera el conector de tornillos quedaría, así como lo muestra 
+la imagen de la figura 1.8. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figura 1.8. Imagen referencial de conector de tornillos. 
+ 
+Paso N°3: 
+ 
+Una vez elaborado el cable con los conectores, verificar continuidad, con ayuda de un multitester, entre 
+el conector de tornillos y el conector DB9 macho. 
+ 
+ 
+Paso N°4: 
+ 
+Conectar el cable elaborado al puerto COM2 del HMI, destinado para RS485 (hembra del DB9) y el 
+terminal de tornillos, conectarlo debajo del PLC DVPSx2según imagen referencial: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figura 1.9. Puerto COM2 de HMI (izquierda) y vista inferior del PLC DVP Sx2 conectado a COM2 de HMI (derecha).  
+ 
+ 
+3. Verificar la correcta comunicación entre HMI y el PLC (no se debe escuchar un beep en la pantalla), 
+cargando una pantalla simple desde el computador al HMI y una programación ladder al PLC. Puede 
+probar con los siguientes archivos de prueba para encender y apagar una salida del PLC. Para poder 
+abrirlos debe tener instalados los softwares ISPSoft, DopSoft 4.0 y COMMGR. En el Anexo se encuentran 
+los links para descargar e instalar los softwares. Para abrir los archivos de a continuación, copie y pegue 
+en el escritorio, para luego ejecutarlos en su computador: 
+ 

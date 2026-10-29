@@ -4,7 +4,7 @@
 export const OHM_MIN=1;
 export const OHM_MAX=1e7;
 export const SUPPLY_MIN=.1;
-export const SUPPLY_MAX=24;
+export const SUPPLY_MAX=30;
 export const LED_DROP_MIN=.1;
 export const LED_DROP_MAX=5;
 export type OhmUnit='Ω'|'kΩ'|'MΩ';
@@ -128,13 +128,17 @@ export function parseGain(text:string,min=10,max=1000):Parsed{
   return {ok:true,value};
 }
 
-/** Lectura de multímetro con cuatro dígitos y coma decimal, y el rango que elegiría un instrumento automático. */
+/** Resolución normal de 6000 cuentas del 87 V. V y A usan sus funciones principales;
+ * mV/µA son funciones independientes, no rangos implícitos de la toma de 10 A.
+ * La resolución del visor no agrega exactitud al modelo eléctrico. */
 export function formatReading(kind:'voltage'|'current'|'resistance',value:number):{text:string;unit:string}{
-  const abs=Math.abs(value),fixed=(n:number,decimals:number)=>(Math.abs(n)<Math.pow(10,-decimals)/2?0:n).toFixed(decimals).replace('.',',');
-  const digits=(n:number)=>Math.abs(n)<10?3:Math.abs(n)<100?2:1;
-  if(kind==='voltage')return {text:fixed(value,digits(value)),unit:'V'};
-  if(kind==='current')return abs>=1?{text:fixed(value,3),unit:'A'}:{text:fixed(value*1e3,digits(value*1e3)),unit:'mA'};
-  if(abs>=1e6)return {text:fixed(value/1e6,3),unit:'MΩ'};
-  if(abs>=1e3)return {text:fixed(value/1e3,digits(value/1e3)),unit:'kΩ'};
-  return {text:fixed(value,abs<100?2:1),unit:'Ω'};
+  const abs=Math.abs(value),fixed=(n:number,d:number)=>(Math.abs(n)<10**-d/2?0:n).toFixed(d).replace('.',',');
+  const ranges=kind==='voltage'?[[6,1,3,'V'],[60,1,2,'V'],[600,1,1,'V'],[1000,1,0,'V']]:kind==='current'?[[6,1,3,'A'],[10,1,2,'A'],[20,1,2,'A']]:[[600,1,1,'Ω'],[6000,1e3,3,'kΩ'],[60000,1e3,2,'kΩ'],[600000,1e3,1,'kΩ'],[6000000,1e6,3,'MΩ'],[50000000,1e6,2,'MΩ']];
+  for(let i=0;i<ranges.length;i++){
+    const [limit,factor,d,unit]=ranges[i] as [number,number,number,string];
+    // Switch range when rounding would produce 6000 counts, not after displaying 6.000.
+    const rounded=Number((abs/factor).toFixed(d))*factor,last=i===ranges.length-1;
+    if((last?abs<=limit:rounded<limit))return {text:fixed(value/factor,d),unit};
+  }
+  return {text:'OL',unit:''};
 }

@@ -1,0 +1,158 @@
+Herramienta del laboratorio
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+PLC
+Automatización
+1 segmentos · 9 variables
+001
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NC
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
++
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NC
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
++
+×
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+Bobina
+SET
+RESET
+TON
+TOF
+CTU
++ Rama en paralelo
++ Añadir segmento
+Sin errores de compilación
+
+La compilación es correcta. Prueba la secuencia para comprobar que cumple el objetivo.
+
+Variables y memoria
+9 VARIABLES
+Variables y memoria
+
+Las entradas I0.0–I0.3 se leen del cableado del tablero: marcha, paro, térmico y permiso. Simula y acciona sus mandos para observarlas.
+
+I0.0
+Marcha · S1
+—
+I0.1
+Paro disponible · S0
+—
+I0.2
+Disparo térmico · F1
+—
+I0.3
+Permiso de proceso · B1
+—
+Q0.0
+Orden de contactor · K1
+0
+M0.0
+Memoria auxiliar
+0
+T1
+Temporizador
+0
+C1
+Contador
+0
+AI0
+Nivel del tanque (%)
+20.0
+Añadir variable
+Dirección
+Nombre
+Tipo
+Booleano
+Número
+Añadir variable
+Alcance del PLC virtual

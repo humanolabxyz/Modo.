@@ -1,0 +1,65 @@
+Estudio
+/
+Automatización y Robótica
+Créditos y políticas
+Videos tutoriales
+Inicio
+Simulador
+Mis ramos
+Control de Máquinas Eléctricas Rotativas
+
+Abre una unidad, despliega su módulo y elige la actividad.
+
+Control de Máquinas Eléctricas Rotativas
+Unidad 1: Fundamentos de máquinas eléctricas rotativas
+Unidad 2: Control electromecánico
+Unidad 3: Control electrónico de motores CA
+Contenido del curso
+Colapsar todo
+Unidad 1: Fundamentos de máquinas eléctricas rotativas
+Guía de Actividad 1 · Motores CC
+Estudiar
+Guía de Actividad 2 · Motores de inducción
+Estudiar
+Temario de Evaluación 1
+Ver original ↗
+Rúbrica del informe · EVA1
+Ver original ↗
+Resolución de prueba · contiene pauta en revisión
+Ver original ↗
+Unidad 2: Control electromecánico
+Actividad 1 U2 · Arranque manual estrella–triángulo
+Estudiar
+Actividad 2 U2 · Implementación y mediciones estrella–triángulo
+Estudiar
+Protecciones eléctricas
+Estudiar
+Unidad 3: Control electrónico de motores CA
+
+Material de esta unidad pendiente de incorporar.
+
+Todos los originales recibidos (10)
+
+Incluye clases, consulta, índices y evaluaciones. Abrir una fuente no registra dominio ni supone que su adaptación esté completa.
+
+F10 · Actividad 1 U2.pdf ↗
+PDF · 17 páginas
+F11 · Actividad 2 (1).pdf ↗
+PDF · 15 páginas
+F12 · Actividad 2.pdf ↗
+PDF · 14 páginas
+F13 · linkdevideo.txt ↗
+TXT
+F14 · protecciones (1).pptx ↗
+PPTX · 16 páginas
+F15 · Resolucion Prueba (1).docx ↗
+DOCX
+F16 · Rubrica 1 (1).xlsx ↗
+XLSX
+F17 · screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_24.png ↗
+PNG
+F18 · Temario Evaluacion.docx ↗
+DOCX
+CM-U2-A2 · Actividad 2 Unidad 2 · Implementación estrella–triángulo.pdf ↗
+PDF · 13 páginas
+Progreso guardado en este navegador

@@ -1,0 +1,2353 @@
+{
+  "activity": "ARCM02 · Actividad 2 · Unidad 2",
+  "guide": "/activities/actividad-2-unidad-2.pdf",
+  "version": 1,
+  "profile": "twoContactors",
+  "index": 33,
+  "records": [
+    {
+      "id": "thermal",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "CONTACTOR_TERMICO:95",
+      "black": "CONTACTOR_TERMICO:96",
+      "at": "2026-10-28T20:54:59.841Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:00.809Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "stop",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "BOTONERAS:S2:1",
+      "black": "BOTONERAS:S2:2",
+      "at": "2026-10-28T20:55:03.278Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:04.213Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "start-open",
+      "observed": "OL",
+      "text": "OL",
+      "value": null,
+      "red": "CONTACTOR_TRIFASICO:63",
+      "black": "CONTACTOR_TRIFASICO:64",
+      "at": "2026-10-28T20:55:05.697Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:05.777Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "contact-ohms",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "CONTACTOR_TERMICO:95",
+      "black": "CONTACTOR_TERMICO:96",
+      "at": "2026-10-28T20:55:07.467Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:08.420Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "control-volts",
+      "observed": "24,00",
+      "text": "24,00 V",
+      "value": 24,
+      "red": "FUENTE:F",
+      "black": "FUENTE:N",
+      "at": "2026-10-28T20:55:10.713Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:10.791Z",
+      "conditions": {
+        "simulationSeconds": 11.998000000000003,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "control-rest",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:11.127Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction"
+    },
+    {
+      "id": "control-star",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:11.443Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 2,
+        "kind": "press",
+        "control": "S1",
+        "seconds": 12.534700000002982,
+        "from": "reposo",
+        "to": "estrella"
+      }
+    },
+    {
+      "id": "control-delta",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:13.716Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 3,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 14.940999999999994,
+        "from": "estrella",
+        "to": "triángulo"
+      }
+    },
+    {
+      "id": "control-trip",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:16.891Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 9,
+        "kind": "test",
+        "seconds": 18.091499999999982,
+        "from": "triángulo",
+        "to": "disparo"
+      }
+    },
+    {
+      "id": "control-reset",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:17.191Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 10,
+        "kind": "thermalReset",
+        "seconds": 18.33860000000147,
+        "from": "disparo",
+        "to": "reposo"
+      }
+    },
+    {
+      "id": "force-continuity",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "FUENTE:R",
+      "black": "TEMPORIZADOR_1:L1",
+      "at": "2026-10-28T20:55:19.928Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:20.259Z",
+      "conditions": {
+        "simulationSeconds": 18.978999999999978,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "line-RS",
+      "observed": "380,0",
+      "text": "380,0 V",
+      "value": 380,
+      "red": "FUENTE:R",
+      "black": "FUENTE:S",
+      "at": "2026-10-28T20:55:21.173Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:21.358Z",
+      "conditions": {
+        "simulationSeconds": 21.96070000000295,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "line-RT",
+      "observed": "380,0",
+      "text": "380,0 V",
+      "value": 380,
+      "red": "FUENTE:R",
+      "black": "FUENTE:T",
+      "at": "2026-10-28T20:55:21.642Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:21.709Z",
+      "conditions": {
+        "simulationSeconds": 22.423400000005934,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "line-ST",
+      "observed": "380,0",
+      "text": "380,0 V",
+      "value": 380,
+      "red": "FUENTE:S",
+      "black": "FUENTE:T",
+      "at": "2026-10-28T20:55:21.886Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:21.994Z",
+      "conditions": {
+        "simulationSeconds": 22.673900000005933,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      }
+    },
+    {
+      "id": "powered-rest",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:22.675Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction"
+    },
+    {
+      "id": "start-star",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:22.996Z",
+      "rpm": 17.77074430960265,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 12,
+        "kind": "press",
+        "control": "S1",
+        "seconds": 23.59360000000146,
+        "from": "reposo",
+        "to": "estrella"
+      }
+    },
+    {
+      "id": "star-U",
+      "observed": "219,1",
+      "text": "219,1 V",
+      "value": 219.1,
+      "red": "BORNERA_MOTOR:U1",
+      "black": "BORNERA_MOTOR:U2",
+      "at": "2026-10-28T20:55:25.574Z",
+      "rpm": 1462.9350758782994,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:25.698Z",
+      "conditions": {
+        "simulationSeconds": 26.159399999998477,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      }
+    },
+    {
+      "id": "star-V",
+      "observed": "219,2",
+      "text": "219,2 V",
+      "value": 219.2,
+      "red": "BORNERA_MOTOR:V1",
+      "black": "BORNERA_MOTOR:V2",
+      "at": "2026-10-28T20:55:25.929Z",
+      "rpm": 1473.126090007951,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:25.977Z",
+      "conditions": {
+        "simulationSeconds": 26.517300000004436,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      }
+    },
+    {
+      "id": "star-W",
+      "observed": "219,2",
+      "text": "219,2 V",
+      "value": 219.2,
+      "red": "BORNERA_MOTOR:W1",
+      "black": "BORNERA_MOTOR:W2",
+      "at": "2026-10-28T20:55:27.335Z",
+      "rpm": 1473.454135472589,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:27.595Z",
+      "conditions": {
+        "simulationSeconds": 27.786999999999964,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      }
+    },
+    {
+      "id": "star-current-R",
+      "observed": "1,702",
+      "text": "1,702 A",
+      "value": 1.702,
+      "phase": "R",
+      "at": "2026-10-28T20:55:27.812Z",
+      "rpm": 1473.454136701862,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:27.843Z",
+      "conditions": {
+        "simulationSeconds": 28.262799999996986,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      }
+    },
+    {
+      "id": "star-current-S",
+      "observed": "1,702",
+      "text": "1,702 A",
+      "value": 1.702,
+      "phase": "S",
+      "at": "2026-10-28T20:55:27.943Z",
+      "rpm": 1473.4541367100264,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:27.994Z",
+      "conditions": {
+        "simulationSeconds": 28.380299999996986,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      }
+    },
+    {
+      "id": "star-current-T",
+      "observed": "1,702",
+      "text": "1,702 A",
+      "value": 1.702,
+      "phase": "T",
+      "at": "2026-10-28T20:55:28.091Z",
+      "rpm": 1473.4541367128384,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:28.142Z",
+      "conditions": {
+        "simulationSeconds": 28.513999999999967,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      }
+    },
+    {
+      "id": "change-delta",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:30.557Z",
+      "rpm": 1481.9738472222534,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 13,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 30.817799999996986,
+        "from": "estrella",
+        "to": "triángulo"
+      }
+    },
+    {
+      "id": "delta-U",
+      "observed": "379,7",
+      "text": "379,7 V",
+      "value": 379.7,
+      "red": "BORNERA_MOTOR:U1",
+      "black": "BORNERA_MOTOR:U2",
+      "at": "2026-10-28T20:55:32.187Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:32.276Z",
+      "conditions": {
+        "simulationSeconds": 32.5711999999955,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      }
+    },
+    {
+      "id": "delta-V",
+      "observed": "379,7",
+      "text": "379,7 V",
+      "value": 379.7,
+      "red": "BORNERA_MOTOR:V1",
+      "black": "BORNERA_MOTOR:V2",
+      "at": "2026-10-28T20:55:33.189Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:33.360Z",
+      "conditions": {
+        "simulationSeconds": 33.533399999998466,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      }
+    },
+    {
+      "id": "delta-W",
+      "observed": "379,7",
+      "text": "379,7 V",
+      "value": 379.7,
+      "red": "BORNERA_MOTOR:W1",
+      "black": "BORNERA_MOTOR:W2",
+      "at": "2026-10-28T20:55:34.934Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:35.096Z",
+      "conditions": {
+        "simulationSeconds": 35.30079999999696,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      }
+    },
+    {
+      "id": "delta-current-R",
+      "observed": "3,704",
+      "text": "3,704 A",
+      "value": 3.704,
+      "phase": "R",
+      "at": "2026-10-28T20:55:35.216Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:35.259Z",
+      "conditions": {
+        "simulationSeconds": 35.659699999995475,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      }
+    },
+    {
+      "id": "delta-current-S",
+      "observed": "3,704",
+      "text": "3,704 A",
+      "value": 3.704,
+      "phase": "S",
+      "at": "2026-10-28T20:55:35.359Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:35.445Z",
+      "conditions": {
+        "simulationSeconds": 35.77289999999845,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      }
+    },
+    {
+      "id": "delta-current-T",
+      "observed": "3,704",
+      "text": "3,704 A",
+      "value": 3.704,
+      "phase": "T",
+      "at": "2026-10-28T20:55:35.581Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:35.644Z",
+      "conditions": {
+        "simulationSeconds": 36.01709999999398,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      }
+    },
+    {
+      "id": "compare",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:35.795Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction"
+    },
+    {
+      "id": "overload",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:36.142Z",
+      "rpm": 1479.6481583115833,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 14,
+        "kind": "test",
+        "seconds": 36.41719999999547,
+        "from": "triángulo",
+        "to": "disparo"
+      }
+    },
+    {
+      "id": "reset",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:36.492Z",
+      "rpm": 1391.350269297655,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 15,
+        "kind": "thermalReset",
+        "seconds": 36.782099999993974,
+        "from": "disparo",
+        "to": "reposo"
+      }
+    },
+    {
+      "id": "shutdown",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:37.156Z",
+      "rpm": 1212.7086100113906,
+      "loadTorqueNm": 4,
+      "motorMode": "induction"
+    },
+    {
+      "id": "dismantle",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:37.291Z",
+      "rpm": 1180.155654682077,
+      "loadTorqueNm": 4,
+      "motorMode": "induction"
+    }
+  ],
+  "reflection": "Las bobinas reciben VL dividido por raíz de tres en estrella y VL en triángulo. La relación de corrientes depende de la velocidad y carga registradas; ambas conexiones se comparan con sus condiciones.",
+  "complete": true,
+  "analysis": {
+    "voltage": "1.733",
+    "current": "2.176"
+  },
+  "preparation": {
+    "version": 1,
+    "starVoltage": "219,4",
+    "deltaVoltage": "380",
+    "compatible": "yes",
+    "incompatible": "star",
+    "location": "inside",
+    "setting": "5,77",
+    "range": "4-6",
+    "device": "thermal",
+    "diagram": {
+      "wires": [
+        {
+          "id": "17f2d463-9a15-4974-ad13-13d7a7aaf81e",
+          "from": {
+            "terminalId": "FUENTE:F"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:95"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 1
+        },
+        {
+          "id": "b6405338-9311-46ba-9558-d34d0a03d3b9",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:96"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:S2:1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 2
+        },
+        {
+          "id": "30c3b587-46b2-4932-8c16-89fde43cb288",
+          "from": {
+            "terminalId": "BOTONERAS:S2:2"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:S1:3"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 3
+        },
+        {
+          "id": "b7397863-5d08-481e-944a-73f324661178",
+          "from": {
+            "terminalId": "BOTONERAS:S1:3"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:13"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 4
+        },
+        {
+          "id": "3e51c662-69a4-4d36-8f99-4465c207d056",
+          "from": {
+            "terminalId": "BOTONERAS:S1:4"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:14"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 5
+        },
+        {
+          "id": "7f69e2f4-389a-4409-b169-edf761868719",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:14"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:A1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 6
+        },
+        {
+          "id": "8918939c-4965-47ae-939c-66e0d51fe93a",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:A2"
+          },
+          "to": {
+            "terminalId": "FUENTE:N"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 7
+        },
+        {
+          "id": "2621a788-1ebe-4972-a93d-5d137efffee2",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:14"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:55"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 8
+        },
+        {
+          "id": "4c858212-4f07-4001-b838-60fac15354cc",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:56"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:71"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 9
+        },
+        {
+          "id": "483288e9-c816-410b-982f-cd539eeada82",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:72"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:A1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 10
+        },
+        {
+          "id": "2b2bcbe9-34dc-448f-acfc-c1c4d44d3717",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:A2"
+          },
+          "to": {
+            "terminalId": "FUENTE:N"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 11
+        },
+        {
+          "id": "0b6b7590-9a2b-4582-983f-808e2c754246",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:14"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:67"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 12
+        },
+        {
+          "id": "239c7b7b-1260-4aac-99dd-3ebeb41f05a3",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:68"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:71"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 13
+        },
+        {
+          "id": "dcbd783c-b9ed-4cb8-955c-1078409ea996",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:72"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:A1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 14
+        },
+        {
+          "id": "b6663760-90db-44ed-bda5-bf377939e348",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:A2"
+          },
+          "to": {
+            "terminalId": "FUENTE:N"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 15
+        },
+        {
+          "id": "79754caa-1ec5-4bba-bbb7-8fb50ac42d67",
+          "from": {
+            "terminalId": "FUENTE:S"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:L2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 16
+        },
+        {
+          "id": "0eb5298f-65e2-4aca-b625-0abe587525a0",
+          "from": {
+            "terminalId": "FUENTE:T"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:L3"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 17
+        },
+        {
+          "id": "8cfa0631-81e5-4dff-b46d-785c22cd7292",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:T1"
+          },
+          "to": {
+            "terminalId": "BORNERA_MOTOR:U1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 18
+        },
+        {
+          "id": "a5b3f05a-e4c0-4e78-9d05-352e021a102f",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:T2"
+          },
+          "to": {
+            "terminalId": "BORNERA_MOTOR:V1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 19
+        },
+        {
+          "id": "1ab642a3-86fc-4cdc-ae3c-f1c51be637fd",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:T3"
+          },
+          "to": {
+            "terminalId": "BORNERA_MOTOR:W1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 20
+        },
+        {
+          "id": "94894aad-6afc-4b71-8c16-e5cf0fc6f880",
+          "from": {
+            "terminalId": "BORNERA_MOTOR:W2"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:L1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 21
+        },
+        {
+          "id": "490683b2-4ce6-4eac-8696-9aaaa87090e6",
+          "from": {
+            "terminalId": "BORNERA_MOTOR:U2"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:L2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 22
+        },
+        {
+          "id": "624414fb-2f3e-40ad-9e90-37b8b5ffdcb2",
+          "from": {
+            "terminalId": "BORNERA_MOTOR:V2"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:L3"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 23
+        },
+        {
+          "id": "9fed840c-ef8c-4fcb-8d29-6d86dd633c19",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:T1"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:T2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 24
+        },
+        {
+          "id": "fea148ef-aaed-4712-9f75-913fdb16564f",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:T2"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:T3"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 25
+        },
+        {
+          "id": "52b9e15e-7e97-49e7-8e35-a0759caab4fc",
+          "from": {
+            "terminalId": "BORNERA_MOTOR:U1"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:L1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 26
+        },
+        {
+          "id": "baa16be2-e455-4f9e-a4a4-8cfc3e1c0d45",
+          "from": {
+            "terminalId": "BORNERA_MOTOR:V1"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:L2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 27
+        },
+        {
+          "id": "2226ad92-77f0-4c54-b421-cc14ae27c79a",
+          "from": {
+            "terminalId": "BORNERA_MOTOR:W1"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:L3"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 28
+        },
+        {
+          "id": "9bc55a6f-d690-4757-8a36-152b2439330e",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:T1"
+          },
+          "to": {
+            "terminalId": "BORNERA_MOTOR:W2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 29
+        },
+        {
+          "id": "4d36dd5d-3d4e-4bd4-aeef-54a16cb797b0",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:T2"
+          },
+          "to": {
+            "terminalId": "BORNERA_MOTOR:U2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 30
+        },
+        {
+          "id": "20775c18-e1ae-443a-930e-df5f2a6b9d5e",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:T3"
+          },
+          "to": {
+            "terminalId": "BORNERA_MOTOR:V2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 31
+        },
+        {
+          "id": "acdf1875-6a17-4615-b7c3-77a2414a68fd",
+          "from": {
+            "terminalId": "FUENTE:N"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:N"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 32
+        },
+        {
+          "id": "07eaad6c-309b-4295-872a-e9d40f31588c",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:A1"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:PILOTO_1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 33
+        },
+        {
+          "id": "99a0dc1f-ba2a-405d-8143-973d31b9a97c",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:A1"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:PILOTO_4"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 34
+        },
+        {
+          "id": "1a7ac987-5c6c-48ff-be19-51695408d780",
+          "from": {
+            "terminalId": "FUENTE:R"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:L1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 35
+        },
+        {
+          "id": "b8167e99-c244-4be2-a034-630bb7c465c0",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:97"
+          },
+          "to": {
+            "terminalId": "FUENTE:F"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 36
+        },
+        {
+          "id": "e913c70e-d2c7-436b-a4c8-9c086669e114",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:98"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:PILOTO_3"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 37
+        }
+      ],
+      "positions": {},
+      "explanation": "KT1 retiene la marcha dada por S3. KM2 forma estrella y KM1 triángulo tras la temporización. Los NC cruzados enclavan las ramas y 95–96 interrumpe el mando."
+    }
+  },
+  "model": {
+    "nameplate": {
+      "deltaVolts": 380,
+      "starVolts": 660,
+      "lineAmps": 10,
+      "source": "Ejemplo didáctico; no corresponde a la placa del laboratorio"
+    },
+    "lineVolts": 380,
+    "supplyVariationPct": 0,
+    "supplyVariationEnabled": false,
+    "coilOhms": 240,
+    "pilotOhms": 480,
+    "windingOhms": 100,
+    "motorMode": "induction",
+    "frequencyHz": 50,
+    "loadTorqueNm": 4,
+    "lineOhms": 0.15,
+    "motorParameters": {
+      "statorOhms": 4,
+      "rotorOhms": 3,
+      "statorX50": 7,
+      "rotorX50": 7,
+      "magnetizingX50": 180,
+      "poles": 4,
+      "inertia": 0.18,
+      "friction": 0.005
+    },
+    "rotorRpm": 1123.536609719518,
+    "motorDirection": 1,
+    "simulationSeconds": 37.93299999999248,
+    "lastMakeSeconds": 30.94320000000295,
+    "resistanceMode": "model",
+    "providedResistances": {}
+  },
+  "calibration": {
+    "version": 1,
+    "name": "Banco didáctico · parámetros de ejemplo",
+    "reference": "Sin datos físicos del laboratorio",
+    "model": {
+      "nameplate": {
+        "deltaVolts": 380,
+        "starVolts": 660,
+        "lineAmps": 10,
+        "source": "Ejemplo didáctico; no corresponde a la placa del laboratorio"
+      },
+      "lineVolts": 380,
+      "supplyVariationPct": 0,
+      "supplyVariationEnabled": false,
+      "coilOhms": 240,
+      "pilotOhms": 480,
+      "windingOhms": 100,
+      "motorMode": "induction",
+      "frequencyHz": 50,
+      "loadTorqueNm": 4,
+      "lineOhms": 0.15,
+      "motorParameters": {
+        "statorOhms": 4,
+        "rotorOhms": 3,
+        "statorX50": 7,
+        "rotorX50": 7,
+        "magnetizingX50": 180,
+        "poles": 4,
+        "inertia": 0.18,
+        "friction": 0.005
+      }
+    },
+    "thermal": {
+      "enabled": true,
+      "amps": 6,
+      "tripClass": 10,
+      "coolingSeconds": 180,
+      "resetLevel": 0.65
+    },
+    "contacts": {
+      "pickupMs": 40,
+      "dropMs": 25,
+      "gapMs": 80
+    },
+    "resistanceMode": "model",
+    "resistances": {}
+  },
+  "measurements": [
+    {
+      "id": "thermal",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "CONTACTOR_TERMICO:95",
+      "black": "CONTACTOR_TERMICO:96",
+      "at": "2026-10-28T20:54:59.841Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:00.809Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "thermal",
+        "title": "Continuidad del térmico",
+        "page": 4,
+        "point": "4 y 11",
+        "stage": "cold",
+        "mode": "C",
+        "red": "CONTACTOR_TERMICO:95",
+        "black": "CONTACTOR_TERMICO:96",
+        "why": "Antes de energizar, comprueba el contacto NC 95–96 en reposo. El tono y la baja resistencia indican un camino cerrado.",
+        "expected": "low",
+        "kind": "meter",
+        "task": "Selecciona continuidad. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "stop",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "BOTONERAS:S2:1",
+      "black": "BOTONERAS:S2:2",
+      "at": "2026-10-28T20:55:03.278Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:04.213Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "stop",
+        "title": "Continuidad del paro",
+        "page": 4,
+        "point": "4",
+        "stage": "cold",
+        "mode": "C",
+        "red": "BOTONERAS:S2:1",
+        "black": "BOTONERAS:S2:2",
+        "why": "SB1 del dibujo es S2 en el banco. Su par NC 1–2 está cerrado en reposo.",
+        "expected": "low",
+        "kind": "meter",
+        "task": "Selecciona continuidad. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "start-open",
+      "observed": "OL",
+      "text": "OL",
+      "value": null,
+      "red": "CONTACTOR_TRIFASICO:63",
+      "black": "CONTACTOR_TRIFASICO:64",
+      "at": "2026-10-28T20:55:05.697Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:05.777Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "start-open",
+        "title": "Reconocer un auxiliar NA libre",
+        "page": 4,
+        "point": "Preparación adicional",
+        "stage": "cold",
+        "mode": "C",
+        "red": "CONTACTOR_TRIFASICO:63",
+        "black": "CONTACTOR_TRIFASICO:64",
+        "why": "El auxiliar NA 63–64 de KM2 queda libre en los 37 cables de este montaje y está abierto en reposo. Comprueba OL sin confundirlo con una falla del instrumento.",
+        "expected": "open",
+        "kind": "meter",
+        "task": "Selecciona continuidad. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "contact-ohms",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "CONTACTOR_TERMICO:95",
+      "black": "CONTACTOR_TERMICO:96",
+      "at": "2026-10-28T20:55:07.467Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:08.420Z",
+      "conditions": {
+        "simulationSeconds": 1.49830000000447,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "contact-ohms",
+        "title": "Resistencia de un contacto cerrado",
+        "page": 4,
+        "point": "Preparación adicional",
+        "stage": "cold",
+        "mode": "R",
+        "red": "CONTACTOR_TERMICO:95",
+        "black": "CONTACTOR_TERMICO:96",
+        "why": "Práctica adicional de Ω: la guía pide continuidad, no una tabla de resistencias. El modelo incluye 0,2 Ω por punta y 0,02 Ω por contacto; no es una resistencia real de placa.",
+        "expected": "low",
+        "kind": "meter",
+        "task": "Selecciona Ω. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "control-volts",
+      "observed": "24,00",
+      "text": "24,00 V",
+      "value": 24,
+      "red": "FUENTE:F",
+      "black": "FUENTE:N",
+      "at": "2026-10-28T20:55:10.713Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:10.791Z",
+      "conditions": {
+        "simulationSeconds": 11.998000000000003,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "control-volts",
+        "title": "Voltaje de alimentación del mando",
+        "page": 5,
+        "point": "5",
+        "stage": "control",
+        "mode": "V",
+        "red": "FUENTE:F",
+        "black": "FUENTE:N",
+        "why": "En el banco virtual el secundario F–N es de 24 V~. La guía usa alimentación monofásica; no confundas estos 24 V didácticos con su red monofásica.",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "control-rest",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:11.127Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "task": {
+        "id": "control-rest",
+        "title": "Mando · reposo del montaje de dos contactores",
+        "page": 6,
+        "point": "6",
+        "stage": "control-rest",
+        "kind": "action",
+        "why": "KT1, KM1 y KM2 están desactivados. P2 no está cableado en el montaje recibido; en reposo no hay pilotos activos.",
+        "task": "Alimenta solo el mando, sin cerrar FUERZA. Comprueba las bobinas desactivadas y los pilotos apagados."
+      }
+    },
+    {
+      "id": "control-star",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:11.443Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 2,
+        "kind": "press",
+        "control": "S1",
+        "seconds": 12.534700000002982,
+        "from": "reposo",
+        "to": "estrella"
+      },
+      "task": {
+        "id": "control-star",
+        "title": "Mando · orden de partir en estrella",
+        "page": 6,
+        "point": "7",
+        "stage": "control-star",
+        "kind": "action",
+        "why": "S1 alimenta y retiene KT1. El contacto temporizado 55–56 da la orden a KM2, que conecta estrella; P1 indica esa orden. Con FUERZA abierta el motor todavía no gira.",
+        "task": "Con FUERZA abierta, pulsa y suelta S1. Comprueba KT1 y KM2 activos, KM1 desactivado y P1 encendido."
+      }
+    },
+    {
+      "id": "control-delta",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:13.716Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 3,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 14.940999999999994,
+        "from": "estrella",
+        "to": "triángulo"
+      },
+      "task": {
+        "id": "control-delta",
+        "title": "Mando · orden de conexión triángulo",
+        "page": 7,
+        "point": "8",
+        "stage": "control-delta",
+        "kind": "action",
+        "why": "KT1 se mantiene y su temporización abre estrella KM2 y ordena triángulo KM1. P1 se apaga y P4 se enciende; FUERZA sigue abierta.",
+        "task": "Espera el temporizador o reduce su retardo. Comprueba KT1 + KM1, KM2 desactivado y P4 encendido."
+      }
+    },
+    {
+      "id": "control-trip",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:16.891Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 9,
+        "kind": "test",
+        "seconds": 18.091499999999982,
+        "from": "triángulo",
+        "to": "disparo"
+      },
+      "task": {
+        "id": "control-trip",
+        "title": "Mando · prueba TEST del térmico",
+        "page": 7,
+        "point": "9",
+        "stage": "control-trip",
+        "kind": "action",
+        "why": "TEST abre 95–96 y desactiva las bobinas. El contacto 97–98 enciende P3 amarillo; P2 no está cableado.",
+        "task": "Pulsa TEST: deben caer KT1, KM1 y KM2, apagarse P1/P4 y encenderse solamente P3."
+      }
+    },
+    {
+      "id": "control-reset",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:17.191Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 10,
+        "kind": "thermalReset",
+        "seconds": 18.33860000000147,
+        "from": "disparo",
+        "to": "reposo"
+      },
+      "task": {
+        "id": "control-reset",
+        "title": "Mando · RESET y vuelta al reposo",
+        "page": 7,
+        "point": "10",
+        "stage": "control-reset",
+        "kind": "action",
+        "why": "RESET rearma el térmico y apaga P3. No da marcha ni enciende un piloto rojo de reposo, porque P2 no está cableado.",
+        "task": "Rearma el térmico. Comprueba bobinas desactivadas y todos los pilotos apagados."
+      }
+    },
+    {
+      "id": "force-continuity",
+      "observed": "0,4",
+      "text": "0,4 Ω",
+      "value": 0.4,
+      "red": "FUENTE:R",
+      "black": "TEMPORIZADOR_1:L1",
+      "at": "2026-10-28T20:55:19.928Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "Ω",
+      "capturedAt": "2026-10-28T20:55:20.259Z",
+      "conditions": {
+        "simulationSeconds": 18.978999999999978,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "force-continuity",
+        "title": "Fuerza · comprobar continuidad antes de energizar",
+        "page": 8,
+        "point": "11",
+        "stage": "cold",
+        "mode": "C",
+        "red": "FUENTE:R",
+        "black": "TEMPORIZADOR_1:L1",
+        "why": "El cable de entrada R llega a L1 del conjunto de línea KT1. Comprueba ese conductor sin confundirlo con el polo interno L1–T1.",
+        "expected": "low",
+        "kind": "meter",
+        "task": "Desenchufa y abre FUERZA y los dos CONTROL. Mide continuidad entre R y KT1:L1."
+      }
+    },
+    {
+      "id": "line-RS",
+      "observed": "380,0",
+      "text": "380,0 V",
+      "value": 380,
+      "red": "FUENTE:R",
+      "black": "FUENTE:S",
+      "at": "2026-10-28T20:55:21.173Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:21.358Z",
+      "conditions": {
+        "simulationSeconds": 21.96070000000295,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "line-RS",
+        "title": "Voltaje entre fases R–S",
+        "page": 8,
+        "point": "12",
+        "stage": "supply",
+        "mode": "V",
+        "red": "FUENTE:R",
+        "black": "FUENTE:S",
+        "why": "Las dos puntas van entre fases, en paralelo. No uses TP ni el N del mando como referencia de fuerza. El modelo parte de 380 V entre fases.",
+        "table": "Tabla 1",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "line-RT",
+      "observed": "380,0",
+      "text": "380,0 V",
+      "value": 380,
+      "red": "FUENTE:R",
+      "black": "FUENTE:T",
+      "at": "2026-10-28T20:55:21.642Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:21.709Z",
+      "conditions": {
+        "simulationSeconds": 22.423400000005934,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "line-RT",
+        "title": "Voltaje entre fases R–T",
+        "page": 8,
+        "point": "12",
+        "stage": "supply",
+        "mode": "V",
+        "red": "FUENTE:R",
+        "black": "FUENTE:T",
+        "why": "Las dos puntas van entre fases, en paralelo. No uses TP ni el N del mando como referencia de fuerza. El modelo parte de 380 V entre fases.",
+        "table": "Tabla 1",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "line-ST",
+      "observed": "380,0",
+      "text": "380,0 V",
+      "value": 380,
+      "red": "FUENTE:S",
+      "black": "FUENTE:T",
+      "at": "2026-10-28T20:55:21.886Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:21.994Z",
+      "conditions": {
+        "simulationSeconds": 22.673900000005933,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": null
+      },
+      "task": {
+        "id": "line-ST",
+        "title": "Voltaje entre fases S–T",
+        "page": 8,
+        "point": "12",
+        "stage": "supply",
+        "mode": "V",
+        "red": "FUENTE:S",
+        "black": "FUENTE:T",
+        "why": "Las dos puntas van entre fases, en paralelo. No uses TP ni el N del mando como referencia de fuerza. El modelo parte de 380 V entre fases.",
+        "table": "Tabla 1",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "powered-rest",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:22.675Z",
+      "rpm": 0,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "task": {
+        "id": "powered-rest",
+        "title": "Fuerza y mando · motor detenido",
+        "page": 8,
+        "point": "13",
+        "stage": "powered-rest",
+        "kind": "action",
+        "why": "Con las alimentaciones habilitadas, el montaje permanece detenido hasta dar marcha con S1. Los pilotos siguen apagados; no se añade P2 al circuito.",
+        "task": "Habilita FUERZA y ambos CONTROL sin pulsar marcha. Comprueba el motor y las bobinas en reposo."
+      }
+    },
+    {
+      "id": "start-star",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:22.996Z",
+      "rpm": 17.77074430960265,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 12,
+        "kind": "press",
+        "control": "S1",
+        "seconds": 23.59360000000146,
+        "from": "reposo",
+        "to": "estrella"
+      },
+      "task": {
+        "id": "start-star",
+        "title": "Poner el motor en estrella",
+        "page": 8,
+        "point": "14",
+        "stage": "star",
+        "kind": "action",
+        "why": "En este montaje S1 inicia KT1 y KM2 (estrella). KM1 permanece desactivado hasta el cambio temporizado.",
+        "task": "Conecta la corriente, cierra FUERZA y los dos CONTROL. Pulsa y suelta S1; comprueba la retención en estrella."
+      }
+    },
+    {
+      "id": "star-U",
+      "observed": "219,1",
+      "text": "219,1 V",
+      "value": 219.1,
+      "red": "BORNERA_MOTOR:U1",
+      "black": "BORNERA_MOTOR:U2",
+      "at": "2026-10-28T20:55:25.574Z",
+      "rpm": 1462.9350758782994,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:25.698Z",
+      "conditions": {
+        "simulationSeconds": 26.159399999998477,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      },
+      "task": {
+        "id": "star-U",
+        "title": "Estrella · devanado U1–U2",
+        "page": 9,
+        "point": "15",
+        "stage": "star",
+        "mode": "V",
+        "red": "BORNERA_MOTOR:U1",
+        "black": "BORNERA_MOTOR:U2",
+        "why": "Mide entre los dos extremos de una misma bobina, no entre dos bornes superiores. En el modelo equilibrado esperas V de línea / √3.",
+        "table": "Tabla 3",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "star-V",
+      "observed": "219,2",
+      "text": "219,2 V",
+      "value": 219.2,
+      "red": "BORNERA_MOTOR:V1",
+      "black": "BORNERA_MOTOR:V2",
+      "at": "2026-10-28T20:55:25.929Z",
+      "rpm": 1473.126090007951,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:25.977Z",
+      "conditions": {
+        "simulationSeconds": 26.517300000004436,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      },
+      "task": {
+        "id": "star-V",
+        "title": "Estrella · devanado V1–V2",
+        "page": 9,
+        "point": "15",
+        "stage": "star",
+        "mode": "V",
+        "red": "BORNERA_MOTOR:V1",
+        "black": "BORNERA_MOTOR:V2",
+        "why": "Mide entre los dos extremos de una misma bobina, no entre dos bornes superiores. En el modelo equilibrado esperas V de línea / √3.",
+        "table": "Tabla 3",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "star-W",
+      "observed": "219,2",
+      "text": "219,2 V",
+      "value": 219.2,
+      "red": "BORNERA_MOTOR:W1",
+      "black": "BORNERA_MOTOR:W2",
+      "at": "2026-10-28T20:55:27.335Z",
+      "rpm": 1473.454135472589,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:27.595Z",
+      "conditions": {
+        "simulationSeconds": 27.786999999999964,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      },
+      "task": {
+        "id": "star-W",
+        "title": "Estrella · devanado W1–W2",
+        "page": 9,
+        "point": "15",
+        "stage": "star",
+        "mode": "V",
+        "red": "BORNERA_MOTOR:W1",
+        "black": "BORNERA_MOTOR:W2",
+        "why": "Mide entre los dos extremos de una misma bobina, no entre dos bornes superiores. En el modelo equilibrado esperas V de línea / √3.",
+        "table": "Tabla 3",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "star-current-R",
+      "observed": "1,702",
+      "text": "1,702 A",
+      "value": 1.702,
+      "phase": "R",
+      "at": "2026-10-28T20:55:27.812Z",
+      "rpm": 1473.454136701862,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:27.843Z",
+      "conditions": {
+        "simulationSeconds": 28.262799999996986,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      },
+      "task": {
+        "id": "star-current-R",
+        "title": "Estrella · corriente de línea R",
+        "page": 9,
+        "point": "16",
+        "stage": "star",
+        "kind": "clamp",
+        "phase": "R",
+        "table": "Tabla 4",
+        "why": "La guía pide amperímetro de tenazas: abraza un solo conductor de entrada, antes de sus derivaciones. No conectes un multímetro en A entre fases.",
+        "task": "En la pinza virtual, elige el conductor de entrada solicitado y registra su lectura."
+      }
+    },
+    {
+      "id": "star-current-S",
+      "observed": "1,702",
+      "text": "1,702 A",
+      "value": 1.702,
+      "phase": "S",
+      "at": "2026-10-28T20:55:27.943Z",
+      "rpm": 1473.4541367100264,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:27.994Z",
+      "conditions": {
+        "simulationSeconds": 28.380299999996986,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      },
+      "task": {
+        "id": "star-current-S",
+        "title": "Estrella · corriente de línea S",
+        "page": 9,
+        "point": "16",
+        "stage": "star",
+        "kind": "clamp",
+        "phase": "S",
+        "table": "Tabla 4",
+        "why": "La guía pide amperímetro de tenazas: abraza un solo conductor de entrada, antes de sus derivaciones. No conectes un multímetro en A entre fases.",
+        "task": "En la pinza virtual, elige el conductor de entrada solicitado y registra su lectura."
+      }
+    },
+    {
+      "id": "star-current-T",
+      "observed": "1,702",
+      "text": "1,702 A",
+      "value": 1.702,
+      "phase": "T",
+      "at": "2026-10-28T20:55:28.091Z",
+      "rpm": 1473.4541367128384,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:28.142Z",
+      "conditions": {
+        "simulationSeconds": 28.513999999999967,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "star"
+      },
+      "task": {
+        "id": "star-current-T",
+        "title": "Estrella · corriente de línea T",
+        "page": 9,
+        "point": "16",
+        "stage": "star",
+        "kind": "clamp",
+        "phase": "T",
+        "table": "Tabla 4",
+        "why": "La guía pide amperímetro de tenazas: abraza un solo conductor de entrada, antes de sus derivaciones. No conectes un multímetro en A entre fases.",
+        "task": "En la pinza virtual, elige el conductor de entrada solicitado y registra su lectura."
+      }
+    },
+    {
+      "id": "change-delta",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:30.557Z",
+      "rpm": 1481.9738472222534,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 13,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 30.817799999996986,
+        "from": "estrella",
+        "to": "triángulo"
+      },
+      "task": {
+        "id": "change-delta",
+        "title": "Cambiar a triángulo",
+        "page": 9,
+        "point": "17",
+        "stage": "delta",
+        "kind": "action",
+        "why": "El temporizador mantiene KT1, desactiva KM2 y activa KM1 para triángulo. No interviene un tercer contactor.",
+        "task": "Reduce el retardo o espera el cambio automático. Comprueba estrella desactivada y triángulo activo."
+      }
+    },
+    {
+      "id": "delta-U",
+      "observed": "379,7",
+      "text": "379,7 V",
+      "value": 379.7,
+      "red": "BORNERA_MOTOR:U1",
+      "black": "BORNERA_MOTOR:U2",
+      "at": "2026-10-28T20:55:32.187Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:32.276Z",
+      "conditions": {
+        "simulationSeconds": 32.5711999999955,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      },
+      "task": {
+        "id": "delta-U",
+        "title": "Triángulo · devanado U1–U2",
+        "page": 10,
+        "point": "18",
+        "stage": "delta",
+        "mode": "V",
+        "red": "BORNERA_MOTOR:U1",
+        "black": "BORNERA_MOTOR:U2",
+        "why": "Conserva la medición entre los extremos de la misma bobina. En triángulo cada devanado queda entre dos fases y recibe la tensión de línea.",
+        "table": "Tabla 5",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "delta-V",
+      "observed": "379,7",
+      "text": "379,7 V",
+      "value": 379.7,
+      "red": "BORNERA_MOTOR:V1",
+      "black": "BORNERA_MOTOR:V2",
+      "at": "2026-10-28T20:55:33.189Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:33.360Z",
+      "conditions": {
+        "simulationSeconds": 33.533399999998466,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      },
+      "task": {
+        "id": "delta-V",
+        "title": "Triángulo · devanado V1–V2",
+        "page": 10,
+        "point": "18",
+        "stage": "delta",
+        "mode": "V",
+        "red": "BORNERA_MOTOR:V1",
+        "black": "BORNERA_MOTOR:V2",
+        "why": "Conserva la medición entre los extremos de la misma bobina. En triángulo cada devanado queda entre dos fases y recibe la tensión de línea.",
+        "table": "Tabla 5",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "delta-W",
+      "observed": "379,7",
+      "text": "379,7 V",
+      "value": 379.7,
+      "red": "BORNERA_MOTOR:W1",
+      "black": "BORNERA_MOTOR:W2",
+      "at": "2026-10-28T20:55:34.934Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "V",
+      "capturedAt": "2026-10-28T20:55:35.096Z",
+      "conditions": {
+        "simulationSeconds": 35.30079999999696,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      },
+      "task": {
+        "id": "delta-W",
+        "title": "Triángulo · devanado W1–W2",
+        "page": 10,
+        "point": "18",
+        "stage": "delta",
+        "mode": "V",
+        "red": "BORNERA_MOTOR:W1",
+        "black": "BORNERA_MOTOR:W2",
+        "why": "Conserva la medición entre los extremos de la misma bobina. En triángulo cada devanado queda entre dos fases y recibe la tensión de línea.",
+        "table": "Tabla 5",
+        "kind": "meter",
+        "task": "Selecciona V~. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+      }
+    },
+    {
+      "id": "delta-current-R",
+      "observed": "3,704",
+      "text": "3,704 A",
+      "value": 3.704,
+      "phase": "R",
+      "at": "2026-10-28T20:55:35.216Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:35.259Z",
+      "conditions": {
+        "simulationSeconds": 35.659699999995475,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      },
+      "task": {
+        "id": "delta-current-R",
+        "title": "Triángulo · corriente de línea R",
+        "page": 10,
+        "point": "19",
+        "stage": "delta",
+        "kind": "clamp",
+        "phase": "R",
+        "table": "Tabla 6",
+        "why": "Vuelve a medir el mismo conductor de entrada, antes de las bifurcaciones. Compara con la corriente que registraste en estrella.",
+        "task": "Selecciona una sola fase en la pinza virtual y anota la corriente."
+      }
+    },
+    {
+      "id": "delta-current-S",
+      "observed": "3,704",
+      "text": "3,704 A",
+      "value": 3.704,
+      "phase": "S",
+      "at": "2026-10-28T20:55:35.359Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:35.445Z",
+      "conditions": {
+        "simulationSeconds": 35.77289999999845,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      },
+      "task": {
+        "id": "delta-current-S",
+        "title": "Triángulo · corriente de línea S",
+        "page": 10,
+        "point": "19",
+        "stage": "delta",
+        "kind": "clamp",
+        "phase": "S",
+        "table": "Tabla 6",
+        "why": "Vuelve a medir el mismo conductor de entrada, antes de las bifurcaciones. Compara con la corriente que registraste en estrella.",
+        "task": "Selecciona una sola fase en la pinza virtual y anota la corriente."
+      }
+    },
+    {
+      "id": "delta-current-T",
+      "observed": "3,704",
+      "text": "3,704 A",
+      "value": 3.704,
+      "phase": "T",
+      "at": "2026-10-28T20:55:35.581Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "displayUnit": "A",
+      "capturedAt": "2026-10-28T20:55:35.644Z",
+      "conditions": {
+        "simulationSeconds": 36.01709999999398,
+        "lineVolts": 380,
+        "frequencyHz": 50,
+        "relayAmps": 6,
+        "profile": "Banco didáctico · parámetros de ejemplo",
+        "connection": "delta"
+      },
+      "task": {
+        "id": "delta-current-T",
+        "title": "Triángulo · corriente de línea T",
+        "page": 10,
+        "point": "19",
+        "stage": "delta",
+        "kind": "clamp",
+        "phase": "T",
+        "table": "Tabla 6",
+        "why": "Vuelve a medir el mismo conductor de entrada, antes de las bifurcaciones. Compara con la corriente que registraste en estrella.",
+        "task": "Selecciona una sola fase en la pinza virtual y anota la corriente."
+      }
+    },
+    {
+      "id": "compare",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:35.795Z",
+      "rpm": 1491.437127142557,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "task": {
+        "id": "compare",
+        "title": "Comparar estrella y triángulo",
+        "page": 10,
+        "point": "20",
+        "stage": "delta",
+        "kind": "compare",
+        "why": "Usa tus tablas para explicar cómo cambia la tensión de cada bobina y la corriente de entrada. El motor de inducción cambia su corriente con velocidad, carga y conexión. Registra en qué condición hiciste cada medición.",
+        "task": "Explica la relación VY ≈ VL/√3 y VΔ ≈ VL. Calcula IΔ/IY con tus datos. La relación 3 solo corresponde a la misma impedancia y tensión de red; no es universal entre dos estados de marcha."
+      }
+    },
+    {
+      "id": "overload",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:36.142Z",
+      "rpm": 1479.6481583115833,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 14,
+        "kind": "test",
+        "seconds": 36.41719999999547,
+        "from": "triángulo",
+        "to": "disparo"
+      },
+      "task": {
+        "id": "overload",
+        "title": "Comprobar la sobrecarga virtual",
+        "page": 11,
+        "point": "21",
+        "stage": "trip",
+        "kind": "action",
+        "why": "TEST abre 95–96 y corta el mando. P3 señaliza el disparo mediante 97–98; no se espera un piloto rojo.",
+        "task": "Desde triángulo, pulsa TEST y comprueba la parada y solamente P3 amarillo encendido."
+      }
+    },
+    {
+      "id": "reset",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:36.492Z",
+      "rpm": 1391.350269297655,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "action": {
+        "version": 1,
+        "eventId": 15,
+        "kind": "thermalReset",
+        "seconds": 36.782099999993974,
+        "from": "disparo",
+        "to": "reposo"
+      },
+      "task": {
+        "id": "reset",
+        "title": "Rearmar el relé térmico",
+        "page": 12,
+        "point": "22",
+        "stage": "reset",
+        "kind": "action",
+        "why": "RESET elimina el estado de disparo, pero no debe arrancar el motor por sí mismo.",
+        "task": "Rearma el térmico y verifica que el motor permanezca detenido."
+      }
+    },
+    {
+      "id": "shutdown",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:37.156Z",
+      "rpm": 1212.7086100113906,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "task": {
+        "id": "shutdown",
+        "title": "Desenergizar el banco",
+        "page": 12,
+        "point": "23–24",
+        "stage": "off",
+        "kind": "action",
+        "why": "Guarda los resultados para revisión docente y deja el banco sin alimentación. La revisión del profesor se registra por separado en el cuaderno de entrega.",
+        "task": "Abre FUERZA y ambos CONTROL y desconecta el enchufe virtual. Descarga tus resultados en la pestaña Resultados."
+      }
+    },
+    {
+      "id": "dismantle",
+      "observed": "Estado comprobado",
+      "text": "Estado comprobado",
+      "value": null,
+      "at": "2026-10-28T20:55:37.291Z",
+      "rpm": 1180.155654682077,
+      "loadTorqueNm": 4,
+      "motorMode": "induction",
+      "task": {
+        "id": "dismantle",
+        "title": "Desmontar y ordenar el panel",
+        "page": 12,
+        "point": "25",
+        "stage": "off",
+        "kind": "action",
+        "why": "La guía termina desconectando los elementos. Tus mediciones se conservan al retirar los cables. Deshacer recupera el circuito.",
+        "task": "Con el banco sin alimentación, retira todos los cables o usa «Desmontar circuito». Después comprueba el cierre."
+      }
+    }
+  ],
+  "notice": "Práctica virtual RMS. El modo de inducción incluye velocidad, carga y deslizamiento; los parámetros son didácticos, sin calibración del equipo físico."
+}

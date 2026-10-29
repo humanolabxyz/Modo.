@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Panel: F/N=24 V y bobina pasa de 0 a 24 V según el mando y los cables",
+    "Panel: continuidad de cables/contactos, apertura del térmico y respeto por bornes flotantes",
+    "Estaño Sn63Pb37 y SAC305 tienen fusión distinta; el modelo requiere punta limpia y estañada",
+    "Calentar, aportar a unión, retirar y enfriar; unión fría exige rehacer y moverla la invalida"
+  ]
+}

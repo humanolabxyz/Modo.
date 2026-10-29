@@ -1,0 +1,112 @@
+[
+  {
+    "state": "estrella",
+    "connection": "star",
+    "red": "FUENTE:R",
+    "black": "FUENTE:S",
+    "text": "379,8 V",
+    "value": 379.76314629660965
+  },
+  {
+    "state": "estrella",
+    "connection": "star",
+    "red": "FUENTE:R",
+    "black": "FUENTE:T",
+    "text": "379,8 V",
+    "value": 379.76314629660976
+  },
+  {
+    "state": "estrella",
+    "connection": "star",
+    "red": "FUENTE:S",
+    "black": "FUENTE:T",
+    "text": "379,8 V",
+    "value": 379.7631462966097
+  },
+  {
+    "state": "estrella",
+    "connection": "star",
+    "red": "BORNERA_MOTOR:U1",
+    "black": "BORNERA_MOTOR:U2",
+    "text": "219,3 V",
+    "value": 219.25635474264683
+  },
+  {
+    "state": "estrella",
+    "connection": "star",
+    "red": "FUENTE:F",
+    "black": "FUENTE:N",
+    "text": "24,00 V",
+    "value": 24
+  },
+  {
+    "state": "estrella",
+    "connection": "star",
+    "red": "FUENTE:R",
+    "black": "FUENTE:N",
+    "text": "SIN REFERENCIA"
+  },
+  {
+    "state": "estrella",
+    "connection": "star",
+    "red": "FUENTE:R",
+    "black": "FUENTE:R",
+    "text": "0,000 V",
+    "value": 0
+  },
+  {
+    "state": "triangulo",
+    "connection": "delta",
+    "red": "FUENTE:R",
+    "black": "FUENTE:S",
+    "text": "379,3 V",
+    "value": 379.2895758123652
+  },
+  {
+    "state": "triangulo",
+    "connection": "delta",
+    "red": "FUENTE:R",
+    "black": "FUENTE:T",
+    "text": "379,3 V",
+    "value": 379.28957581236523
+  },
+  {
+    "state": "triangulo",
+    "connection": "delta",
+    "red": "FUENTE:S",
+    "black": "FUENTE:T",
+    "text": "379,3 V",
+    "value": 379.2895758123651
+  },
+  {
+    "state": "triangulo",
+    "connection": "delta",
+    "red": "BORNERA_MOTOR:U1",
+    "black": "BORNERA_MOTOR:U2",
+    "text": "379,3 V",
+    "value": 379.2895758123652
+  },
+  {
+    "state": "triangulo",
+    "connection": "delta",
+    "red": "FUENTE:F",
+    "black": "FUENTE:N",
+    "text": "24,00 V",
+    "value": 24
+  },
+  {
+    "state": "triangulo",
+    "connection": "delta",
+    "red": "FUENTE:R",
+    "black": "FUENTE:N",
+    "text": "SIN REFERENCIA"
+  },
+  {
+    "state": "triangulo",
+    "connection": "delta",
+    "red": "FUENTE:R",
+    "black": "FUENTE:R",
+    "text": "0,000 V",
+    "value": 0
+  }
+]

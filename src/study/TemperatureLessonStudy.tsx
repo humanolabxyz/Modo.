@@ -8,6 +8,10 @@ import {DatasheetList} from '../lab/temperature/TemperatureDatasheets';
 import '../styles/temperature-sheets.css';
 import '../styles/temperature.css';
 import '../styles/tool-lessons.css';
+import {StudyActivityProgress} from './StudyActivityProgress';
+import {StudySequence,type StudyView} from './StudySequence';
+import {ToolTeaching} from './ToolTeaching';
+import {GuideWorkbook} from './GuideWorkbook';
 /** Clase de la guía G03 en Estudio: Comprender → Practicar en el banco (o responder) → Comprobar. Consultar el material no acredita el aprendizaje. */
 export function QuizBlock({quiz,name,disabled,onCorrect}:{quiz:Quiz;name:string;disabled?:boolean;onCorrect?:()=>void}){
   const [answer,setAnswer]=useState(''),[feedback,setFeedback]=useState(''),[right,setRight]=useState(false),[counted,setCounted]=useState('');
@@ -18,24 +22,26 @@ export function QuizBlock({quiz,name,disabled,onCorrect}:{quiz:Quiz;name:string;
     <button className="class-start" disabled={disabled} onClick={review}>Comprobar respuesta <Check size={17}/></button>{feedback&&<p className={`tool-study-feedback ${right?'is-right':''}`} role="status">{feedback}</p>}</div>;
 }
 export function TemperatureLessonStudy({lesson,onBack}:{lesson:TempLesson;onBack:()=>void}){
+  const [example,setExample]=useState(false);
   const [phase,setPhase]=useState(0),[progress,setProgress]=useState<TempProgress>(newTempProgress),[error,setError]=useState('');
   const completed=lesson.steps.every((_,i)=>progress.completed.includes(i));
   const last=lesson.bench?2:1;
   useEffect(()=>{
-    const sync=()=>{const requested=Number(new URLSearchParams(location.search).get('paso')||0);setPhase(requested>=0&&requested<=last?requested:0);try{setProgress(readTempProgress(lesson));setError('');}catch{setError('No se pudo leer el avance de esta clase. El guardado anterior se conserva.');}};
+    const sync=()=>{setExample(new URLSearchParams(location.search).get('lectura')==='ejemplo');const requested=Number(new URLSearchParams(location.search).get('paso')||0);setPhase(requested>=0&&requested<=last?requested:0);try{setProgress(readTempProgress(lesson));setError('');}catch{setError('No se pudo leer el avance de esta clase. El guardado anterior se conserva.');}};
     sync();window.addEventListener('popstate',sync);window.addEventListener('focus',sync);window.addEventListener('storage',sync);return()=>{window.removeEventListener('popstate',sync);window.removeEventListener('focus',sync);window.removeEventListener('storage',sync);};
   },[lesson,last]);
   const persist=(next:TempProgress)=>{setProgress(next);if(error)return;try{localStorage.setItem(progressKey(lesson.id),JSON.stringify(next));}catch{setError('No se pudo guardar el avance en este navegador.');}};
-  const navigate=(next:number)=>{setPhase(next);history.pushState(null,'',tempStudyUrl(lesson,next));window.scrollTo({top:0,behavior:'instant'});requestAnimationFrame(()=>document.getElementById('campus-title')?.focus({preventScroll:true}));};
-  const labels=lesson.bench?['Comprender','Practicar en el banco','Comprobar']:['Comprender','Responder'];
+  const navigate=(next:number,showExample=false)=>{setExample(showExample);setPhase(next);const url=tempStudyUrl(lesson,next)+(showExample?'&lectura=ejemplo':'');if(location.pathname+location.search!==url)history.pushState(null,'',url);window.scrollTo({top:0,behavior:'instant'});requestAnimationFrame(()=>document.getElementById('campus-title')?.focus({preventScroll:true}));};
   return <div className="study-hub tool-study">
     <button className="campus-back" onClick={onBack}><ArrowLeft size={17}/>Volver al ramo</button>
     <header className="campus-heading"><p>INSTRUMENTACIÓN INDUSTRIAL · UNIDAD 2 · GUÍA G03</p><h1 id="campus-title" tabIndex={-1}>{lesson.title}</h1></header>
-    <nav className="tool-study-steps" aria-label="Momentos de la clase">{labels.map((label,i)=><button key={label} aria-current={phase===i?'step':undefined} onClick={()=>navigate(i)}><span>{i+1}</span>{label}</button>)}</nav>
+    <StudyActivityProgress value={progress.completed.length} total={lesson.steps.length} reviewed={progress.reviewed}/>
+    <StudySequence className="tool-study-steps" label="Momentos de la clase" value={phase===0?(example?'example':'understand'):phase===1?'practice':'check'} withCheck={lesson.bench} onChange={(view:StudyView)=>{if(view==='understand'||view==='example'){navigate(0,view==='example');}else navigate(view==='practice'?1:2);}}/>
     {error&&<p role="alert">{error}</p>}
-    {phase===0&&<section className="tool-study-body"><p className="tool-study-intro">{lesson.intro}</p><div className="tool-study-concept"><BookOpen size={22}/><p>{lesson.concept}</p></div>{lesson.bench&&<details className="tool-study-sheets"><summary>Fichas de los equipos del banco</summary><DatasheetList/></details>}<h2>Lo que vas a hacer</h2><ol>{lesson.steps.map(step=><li key={step.title}>{step.title}</li>)}</ol>
+    {phase===0&&<ToolTeaching topic="temperature" courseId="s2-3" source={lesson.source} onPractice={()=>navigate(1)} example={example} onExample={()=>navigate(0,true)}/>}
+    {phase===0&&!example&&<details className="study-activity-brief"><summary>Preparar la actividad y consultar los equipos</summary><section className="tool-study-body"><p className="tool-study-intro">{lesson.intro}</p><div className="tool-study-concept"><BookOpen size={22}/><p>{lesson.concept}</p></div>{lesson.bench&&<details className="tool-study-sheets"><summary>Fichas de los equipos del banco</summary><DatasheetList/></details>}<h2>Lo que vas a hacer</h2><ol>{lesson.steps.map(step=><li key={step.title}>{step.title}</li>)}</ol>
       {lesson.bench?<p>La práctica abre el banco de temperatura con una guía al lado. Los datos que obtienes son <strong>simulados</strong>: sirven para preparar la sesión. Las mediciones reales de tus equipos se registran aparte, en la pestaña «En clase».</p>:<p>Son preguntas de comprensión sobre los puntos de investigación de la guía. La presentación grupal y el debate se conservan como una tarea independiente.</p>}
-      <button className="class-start" onClick={()=>navigate(1)}>{lesson.bench?'Llegar a la práctica':'Responder las preguntas'} <ArrowRight size={18}/></button></section>}
+      <button className="class-start" onClick={()=>navigate(1)}>{lesson.bench?'Llegar a la práctica':'Responder las preguntas'} <ArrowRight size={18}/></button></section></details>}
     {phase===1&&lesson.bench&&<section className="tool-study-body"><h2>Ahora te toca medir</h2><p>Abre el banco, sigue la guía de la práctica y comprueba cada paso. Al volver seguirás en esta clase. Este banco se guarda separado de tu espacio libre y de las demás herramientas.</p>
       <a className="class-start" href={tempLabUrl(lesson)}>{progress.completed.length?'Continuar práctica en el banco':'Abrir el banco de temperatura'}<ArrowRight size={18}/></a>
       <p className="tool-study-progress"><Check size={17}/>{progress.completed.length}/{lesson.steps.length} pasos comprobados{completed?' · práctica completada':''}</p>
@@ -50,6 +56,7 @@ export function TemperatureLessonStudy({lesson,onBack}:{lesson:TempLesson;onBack
       {progress.reviewed&&<p className="tool-study-progress"><Check size={17}/>Práctica completada y concepto revisado.</p>}
       {progress.notes&&<div className="tool-study-notes"><h3>Tus observaciones del laboratorio</h3><p>{progress.notes}</p></div>}
       <a className="tool-study-secondary" href={reviewUrl()}>Repasar la guía G03 <ArrowRight size={16}/></a><button className="tool-study-secondary" onClick={onBack}>Volver a las clases <ArrowRight size={16}/></button></>}</section>}
-    <footer className="tool-study-source"><a href={lesson.source} target="_blank" rel="noreferrer">Guía original (G03) <ExternalLink size={15}/></a>{lesson.bench&&<a href="/laboratorio?tool=temperature">Abrir el banco libre <ExternalLink size={15}/></a>}<span>Recorrido didáctico adaptado a la guía docente.</span></footer>
+    <GuideWorkbook kind="temperature"/>
+    <footer className="tool-study-source"><a href={lesson.source} target="_blank" rel="noreferrer">Guía original · Laboratorio 2 (G03) <ExternalLink size={15}/></a>{lesson.bench&&<a href="/laboratorio?tool=temperature">Abrir el banco libre <ExternalLink size={15}/></a>}<span>Recorrido didáctico adaptado a la guía docente. La presentación y entrega se siguen en el cuaderno.</span></footer>
   </div>;
 }

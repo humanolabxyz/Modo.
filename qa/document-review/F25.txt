@@ -1,0 +1,28 @@
+ 
+ 
+ARPA 2 
+LANZAMIENTO DE UNA PIEDRA 
+ 
+Una piedra es lanzada hacia arriba desde una azotea que se encuentra a 40 metros de altura. 
+Llega a un punto máximo de altura y cae al suelo. Algunos de los tiempos y sus respectivas alturas 
+se muestran a continuación: 
+ 
+Tiempo (s) 
+Altura (m) 
+0 
+40 
+1 
+60 
+2 
+70 
+3 
+70 
+4 
+60 
+5 
+40 
+6 
+10 
+ 
+¿Cuál fue la altura máxima aproximada que alcanzó la piedra y en qué tiempo ocurrió? 
+ 

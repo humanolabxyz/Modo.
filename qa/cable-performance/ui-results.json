@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "chromium: material compartido, mover módulo conserva cables, cuerda descansa, vista previa/Escape, retardo 6→2 s, curva estable al seleccionar y protección entre fases",
+    "webkit: material compartido, mover módulo conserva cables, cuerda descansa, vista previa/Escape, retardo 6→2 s, curva estable al seleccionar y protección entre fases"
+  ],
+  "errors": [],
+  "result": "PASS"
+}

@@ -1,0 +1,25 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 2 
+ 
+ 
+ 
+Figura 1.3. Pinout RS232 en COM1 versus RS485 del COM2, según manual técnico de HMI Delta. 
+Las principales diferencias de la comunicación serial RS485 respecto al RS232 son: 
+✓ Comunicación multipunto para RS485. 
+✓ Velocidad de transmisión de datos, 10Mbps para RS485 y 20KB/s para RS232. 
+✓ La distancia de transmisión de datos para RS232 es de un poco más de 15 [metros] y el RS485 mayor a 
+1000 [metros]. 
+Este tipo de cableado se puede encontrar en las maquetas de PLC Delta + HMI, por ejemplo, el cable que va 
+desde HMI al PLC (imagen referencial de la parte posterior de la maqueta para un RS485 y RS232). El cable RS485 
+va conectado al puerto COM2 de la pantalla HMI. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figura 1.4. Vista posterior de HMI Delta. 

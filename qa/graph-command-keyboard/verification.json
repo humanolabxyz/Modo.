@@ -1,0 +1,12 @@
+{
+  "base": "http://127.0.0.1:4345",
+  "checks": [
+    "320x740: ABC, arithmetic and exponential command execute in graph-only view; folding preserves graph, objects and applet; manual view selection respected",
+    "390x844: ABC, arithmetic and exponential command execute in graph-only view; folding preserves graph, objects and applet; manual view selection respected",
+    "844x390: ABC, arithmetic and exponential command execute in graph-only view; folding preserves graph, objects and applet; manual view selection respected",
+    "820x1180: ABC, arithmetic and exponential command execute in graph-only view; folding preserves graph, objects and applet; manual view selection respected",
+    "1180x820: ABC, arithmetic and exponential command execute in graph-only view; folding preserves graph, objects and applet; manual view selection respected",
+    "1440x960: ABC, arithmetic and exponential command execute in graph-only view; folding preserves graph, objects and applet; manual view selection respected"
+  ],
+  "errors": []
+}

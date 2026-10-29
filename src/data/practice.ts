@@ -34,7 +34,7 @@ export const IDENTIFICATION_STEPS=[
  {terminalId:'CONTACTOR_TERMICO:96',title:'Encuentra su pareja: 96',explanation:'96 está a la derecha de 95 en la misma franja. Reconocer la pareja no equivale a unirla con un cable.'},
  {terminalId:'CONTACTOR_TERMICO:97',title:'Localiza el borne 97',explanation:'97 inicia la última fila azul de la columna derecha del módulo térmico; 98 está a su derecha.'},
  {terminalId:'CONTACTOR_TRIFASICO:A1',title:'Distingue A1 en el contactor trifásico',explanation:'A1 aparece en crema bajo A2. El ID del módulo evita confundirlo con la bobina de otro dispositivo.'},
- {terminalId:'BOTONERAS:S3:3',title:'Busca el borne 3 del pulsador derecho',explanation:'En el pulsador derecho, la columna crema 3–4 queda a la izquierda de la columna roja 1–2.'},
+ {terminalId:'BOTONERAS:S3:3',title:'Busca el borne 3 del pulsador derecho',explanation:'En el pulsador derecho, igual que en los otros dos, la columna crema 3–4 queda a la derecha de la columna roja 1–2.'},
  {terminalId:'TEMPORIZADOR_1:55',title:'Reconoce 55 en el temporizador 1',explanation:'55 y 56 son el par negro a la izquierda del mecanismo. El tipo de retardo no está confirmado.'},
  {terminalId:'TEMPORIZADOR_1:68',title:'Reconoce 68 en el temporizador',explanation:'68 es el borne derecho del par azul 67–68 del único temporizador.'},
  {terminalId:'BORNERA_MOTOR:U2',title:'Encuentra U2 en el motor',explanation:'La fila inferior es W2, U2, V2: U2 es azul y ocupa la posición central.'},

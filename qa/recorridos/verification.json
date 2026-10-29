@@ -1,5 +1,44 @@
 {
-  "checks": [],
+  "checks": [
+    "Selecting CADe line 42 automatically shows every known branch, including left green SB2 (S1), without installing cables",
+    "Visible selected-network mapping explains missing pilot and updates every route on assign/clear",
+    "Line 83 now has a known supply endpoint: one route F→95, no invented route or thermal 95-96 bridge",
+    "Mouse selection of SB2 synchronizes its separate input/output networks with the bank",
+    "All-routes view includes every identified network, keeping unassigned endpoints explicit",
+    "Installing a preview cable removes only its silhouette and highlights real cable; undo restores route",
+    "Persistent route actions and a usable single scroll area fit seven desktop/tablet/mobile/landscape sizes",
+    "KM2 95/96 are independent clickable sockets; KM1 sockets remain unchanged"
+  ],
   "errors": [],
-  "viewports": []
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 844,
+      "height": 390
+    }
+  ],
+  "result": "PASS"
 }

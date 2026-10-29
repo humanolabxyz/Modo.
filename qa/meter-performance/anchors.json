@@ -1,0 +1,16 @@
+[
+  {
+    "engine": "chromium",
+    "viewport": "820x1180",
+    "frames": 12,
+    "maxGapPx": 0.018570222506852294,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "820x1180",
+    "frames": 12,
+    "maxGapPx": 0.018372150922760958,
+    "errors": []
+  }
+]

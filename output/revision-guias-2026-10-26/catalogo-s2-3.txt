@@ -1,0 +1,75 @@
+Estudio
+/
+Automatización y Robótica
+Créditos y políticas
+Videos tutoriales
+Inicio
+Simulador
+Mis ramos
+Instrumentación Industrial
+
+Abre una unidad, despliega su módulo y elige la actividad.
+
+Instrumentación Industrial
+Unidad 1: Clasificación y características de la instrumentación
+Unidad 2: Medición y actuación discreta y analógica
+Unidad 3: Interpretación de instrumentación y control
+Contenido del curso
+Colapsar todo
+Unidad 1: Clasificación y características de la instrumentación
+Conferencia 1 · Fundamentos de instrumentación
+Estudiar
+Conferencia 2 · Características y metrología
+Estudiar
+Conferencia 3 · Medidas de caudal
+Estudiar
+Conferencia 4 · Medidas de presión
+Estudiar
+Conferencia 5 · Medidas de nivel
+Estudiar
+Conferencia 6 · Medidas de temperatura
+Estudiar
+Unidad 2: Medición y actuación discreta y analógica
+Conferencia 2 U2 · Sensores de proximidad
+Estudiar
+Detectores · Guía 1, experiencia 1: investigar y explicar
+Estudiar
+Detectores · Guía 1, experiencia 2: montar y medir detectores
+Estudiar
+Proximidad y PLC · Guía 2: funcionamiento y conexión al PLC
+Estudiar
+Temperatura · Experiencia 1: investigar y explicar
+Estudiar
+Temperatura · Experiencia 2: medir y comparar sensores
+Estudiar
+Temperatura · Experiencia 3: medir mediante transmisor
+Estudiar
+Temperatura · Repaso de la guía G03
+Estudiar
+Unidad 3: Interpretación de instrumentación y control
+
+Material de esta unidad pendiente de incorporar.
+
+Todos los originales recibidos (9)
+
+Incluye clases, consulta, índices y evaluaciones. Abrir una fuente no registra dominio ni supone que su adaptación esté completa.
+
+F09 · screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_03.png ↗
+PNG
+I01 · Presentación de la Asignatura (1).pdf ↗
+PDF · 13 páginas
+I02 · Conf. 1 (1).pdf ↗
+PDF · 38 páginas
+I03 · Conf. 2 (2).pdf ↗
+PDF · 30 páginas
+I04 · Conf. 3 Medidas de caudal.pdf ↗
+PDF · 29 páginas
+I05 · Conf. 4 Medidas de Presión.pdf ↗
+PDF · 23 páginas
+I06 · Conf. 5 Medidas de nivel.pdf ↗
+PDF · 25 páginas
+I07 · Conf. 6 Medidas de temperatura.pdf ↗
+PDF · 36 páginas
+I08 · Conf. 2 (3).pdf ↗
+PDF · 12 páginas
+Progreso guardado en este navegador

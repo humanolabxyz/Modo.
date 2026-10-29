@@ -1,6 +1,7 @@
 import {useEffect, useId, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {ArrowRight, Play, Video, X} from 'lucide-react';
+import {FloatingWindow} from './FloatingWindow';
 import {TUTORIALS, tutorialPoster, tutorialSource, type TutorialContext} from '../data/tutorials';
 import '../styles/tutorials.css';
 
@@ -8,7 +9,6 @@ const WELCOME_KEY = 'modo-tutoriales-bienvenida-v1';
 let welcomedThisPage = false;
 
 function TutorialDialog({initialIndex, onClose}: {initialIndex: number; onClose: () => void}) {
-  const dialog = useRef<HTMLDialogElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const titleId = useId();
   const [index, setIndex] = useState(initialIndex);
@@ -21,39 +21,11 @@ function TutorialDialog({initialIndex, onClose}: {initialIndex: number; onClose:
     return () => {media?.pause();};
   }, [index, attempt]);
 
-  useEffect(() => {
-    const element = dialog.current;
-    if (!element) return;
-    const overflow = document.body.style.overflow;
-    // El diálogo nativo contiene el foco y deja inerte el banco que está detrás.
-    element.showModal();
-    document.body.style.overflow = 'hidden';
-    const stopShortcuts = (event: KeyboardEvent) => {
-      // Mantener también el ciclo de Tab dentro de la ayuda, incluidos sus extremos.
-      if (event.key === 'Tab') {
-        const controls = Array.from(element.querySelectorAll<HTMLElement>('button,a[href],video[controls],[tabindex="0"]')).filter(control => control.getClientRects().length > 0 && !control.hasAttribute('disabled'));
-        const first = controls[0], last = controls.at(-1);
-        if (event.shiftKey && document.activeElement === first) {event.preventDefault(); last?.focus();}
-        else if (!event.shiftKey && document.activeElement === last) {event.preventDefault(); first?.focus();}
-      }
-      event.stopPropagation();
-    };
-    element.addEventListener('keydown', stopShortcuts);
-    return () => {
-      element.removeEventListener('keydown', stopShortcuts);
-      element.close();
-      document.body.style.overflow = overflow;
-    };
-  }, []);
-
   const select = (next: number) => {setFailed(false); setIndex(next);};
-  const close = () => {dialog.current?.close(); onClose();};
+  const close = () => onClose();
 
-  return <dialog ref={dialog} className="tutorial-dialog" aria-labelledby={titleId} onCancel={event => {event.preventDefault(); close();}}>
-    <header className="tutorial-heading">
-      <div><p className="tutorial-eyebrow">AYUDA DE MODO.</p><h2 id={titleId}>Aprende viendo<span>.</span></h2><p>Cuatro videos cortos para empezar a tu ritmo.</p></div>
-      <button type="button" className="tutorial-close" aria-label="Cerrar tutoriales" autoFocus onClick={close}><X size={22} aria-hidden="true"/></button>
-    </header>
+  return <FloatingWindow title="Aprende viendo" eyebrow="AYUDA DE MODO." width={940} className="tutorial-window" closeLabel="Cerrar tutoriales" onClose={close}>
+    <p className="tutorial-intro">Cuatro videos cortos para empezar a tu ritmo.</p>
     <div className="tutorial-layout">
       <section className="tutorial-player" aria-label="Video seleccionado">
         <video ref={video} key={`${tutorial.id}-${attempt}`} controls playsInline preload="metadata" poster={tutorialPoster(tutorial.id)} aria-label={`${tutorial.area} · Parte ${tutorial.part}: ${tutorial.title}`} onError={() => setFailed(true)}>
@@ -73,7 +45,7 @@ function TutorialDialog({initialIndex, onClose}: {initialIndex: number; onClose:
         <p className="tutorial-list-note">Puedes cerrar esta ayuda y volver desde «Videos tutoriales».</p>
       </nav>
     </div>
-  </dialog>;
+  </FloatingWindow>;
 }
 
 export function TutorialHelp({context = 'home', variant = 'header'}: {context?: TutorialContext; variant?: 'header' | 'tile'}) {

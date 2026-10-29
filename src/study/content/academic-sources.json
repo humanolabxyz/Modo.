@@ -1,0 +1,434 @@
+[
+  {
+    "id": "F01",
+    "title": "Activadad con calculo Ajuste cero.pdf",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F01.pdf",
+    "pages": 6,
+    "format": "pdf",
+    "sha256": "1fecba56f6af9c9e5798c2ddd716cf66330f6d5cef23df682bce19066232c5eb"
+  },
+  {
+    "id": "F02",
+    "title": "Clase 1.pdf",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F02.pdf",
+    "pages": 16,
+    "format": "pdf",
+    "sha256": "fedc701febb302339bc5b2113b8598a47cfab0b87bc19d9ab627f2ee7a98d4b1"
+  },
+  {
+    "id": "F03",
+    "title": "Clase 2.pdf",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F03.pdf",
+    "pages": 16,
+    "format": "pdf",
+    "sha256": "c4d8b92546bc3e54618ac81d0f962ce0251fb6bc164050744605cbba95ba832c"
+  },
+  {
+    "id": "F04",
+    "title": "Clase 3.pdf",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F04.pdf",
+    "pages": 23,
+    "format": "pdf",
+    "sha256": "3622fc261a80f27edc65789f62d4adce05a1a1c5bdf201e68bf504d62346da90"
+  },
+  {
+    "id": "F05",
+    "title": "clase 4.pdf",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F05.pdf",
+    "pages": 15,
+    "format": "pdf",
+    "sha256": "f5163412512142563de7dccb45cfea33343245a37f63cb2e1dc0813c08073f4e"
+  },
+  {
+    "id": "F06",
+    "title": "Clase 5.pdf",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F06.pdf",
+    "pages": 13,
+    "format": "pdf",
+    "sha256": "ffda256efc1afa28fbb9ad65a320d4e40b9e6fd5f6c93a3818fce5f8935ef3fc"
+  },
+  {
+    "id": "F07",
+    "title": "Guia 1.pdf",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F07.pdf",
+    "pages": 9,
+    "format": "pdf",
+    "sha256": "ed3545b78c6a2f8f45fb53315462169f691ecd0ee871f1e47ba2f9c2d51a05fc"
+  },
+  {
+    "id": "F08",
+    "title": "screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_54.png",
+    "courseId": "s2-1",
+    "url": "/estudio/fuentes/F08.png",
+    "pages": null,
+    "format": "png",
+    "sha256": "66c9f0cde04c5f4d17e41dcbbb96e5224bc40f30b9cb0a487497b2e0bc81d7c8"
+  },
+  {
+    "id": "F09",
+    "title": "screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_03.png",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/F09.png",
+    "pages": null,
+    "format": "png",
+    "sha256": "d12d6fc38a73219f2d3cead42d519cb1dbc2b6b1e7fbbb0615358731fa6c2751"
+  },
+  {
+    "id": "F10",
+    "title": "Actividad 1 U2.pdf",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F10.pdf",
+    "pages": 17,
+    "format": "pdf",
+    "sha256": "2f66c9f2503865c2bdc04b0a34d0049e998a815d0d00db8c9a88ddf76ce0499b"
+  },
+  {
+    "id": "F11",
+    "title": "Actividad 2 (1).pdf",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F11.pdf",
+    "pages": 15,
+    "format": "pdf",
+    "sha256": "7904d787994d2563df9eeb351ed91f181de3475460ffa6e5f24d0fc0cc91cdbb"
+  },
+  {
+    "id": "F12",
+    "title": "Actividad 2.pdf",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F12.pdf",
+    "pages": 14,
+    "format": "pdf",
+    "sha256": "4e5959f14936273c1e5e2fc8fcfb446fd25ff13688ceec11e5bd9ea9b3319cd6"
+  },
+  {
+    "id": "F13",
+    "title": "linkdevideo.txt",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F13.txt",
+    "pages": null,
+    "format": "txt",
+    "sha256": "4f7bbc80e96e53f0201ac98f138b914652566b037ac3f8a2740957448d26d9be"
+  },
+  {
+    "id": "F14",
+    "title": "protecciones (1).pptx",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F14.pptx",
+    "pages": 16,
+    "format": "pptx",
+    "sha256": "38d11c0b35bf320dc6739c2b4ea4c3d3f37de20300d6e6457480b550bd00240a"
+  },
+  {
+    "id": "F15",
+    "title": "Resolucion Prueba (1).docx",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F15.docx",
+    "pages": null,
+    "format": "docx",
+    "sha256": "dd28269e85f0b304015e1147897963bae8d6f4bd1e7558c5440565a27555f1d4"
+  },
+  {
+    "id": "F16",
+    "title": "Rubrica 1 (1).xlsx",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F16.xlsx",
+    "pages": null,
+    "format": "xlsx",
+    "sha256": "04d854ac6266be6de61d14cbe2e38bd899a864fcf8dc5100cad0f4e61b3a3b9a"
+  },
+  {
+    "id": "F17",
+    "title": "screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_24.png",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F17.png",
+    "pages": null,
+    "format": "png",
+    "sha256": "94d5b347abe3b8d0f0ce4189b7a4c9802963b3c4ebd1b95e3390082459444db9"
+  },
+  {
+    "id": "F18",
+    "title": "Temario Evaluacion.docx",
+    "courseId": "s2-2",
+    "url": "/estudio/fuentes/F18.docx",
+    "pages": null,
+    "format": "docx",
+    "sha256": "b6a70e7d47a2403e19c157b87da101dce841a240d8059fb618592087ead01f20"
+  },
+  {
+    "id": "F19",
+    "title": "Actividad tecnológica 1 Funciones polinómicas de grados 0 y 1.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F19.pdf",
+    "pages": 7,
+    "format": "pdf",
+    "sha256": "e2586d0d71f42096d4e6fe04738d3dd2bf0aa6252b481c6a50b05154d6afd9da"
+  },
+  {
+    "id": "F20",
+    "title": "Actividad tecnológica 2 Funciones logarítmicas.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F20.pdf",
+    "pages": 4,
+    "format": "pdf",
+    "sha256": "3aa6f6e46d342ca36d1774827612078ec4a48456a23cdd893e15f9d066c6a686"
+  },
+  {
+    "id": "F21",
+    "title": "Actividad tecnológica 2 Funciones polinómicas de grado 2.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F21.pdf",
+    "pages": 6,
+    "format": "pdf",
+    "sha256": "d96b0140050bd6c4ad0110dd4771dce06ce72231c6730479e2b6cba95d735f13"
+  },
+  {
+    "id": "F22",
+    "title": "ARPA 1 Consumo de energía (extensión).pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F22.pdf",
+    "pages": 1,
+    "format": "pdf",
+    "sha256": "fcf6d1e243f7914f862487ef4669664997a6d4d7c7e3c20e23ec36f2bdfb0ac4"
+  },
+  {
+    "id": "F23",
+    "title": "ARPA 1 Consumo de energía.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F23.pdf",
+    "pages": 1,
+    "format": "pdf",
+    "sha256": "2505ef3e048e9c433f26971083631213e098d9f8b511f63ca815f86e9483f884"
+  },
+  {
+    "id": "F24",
+    "title": "ARPA 2 Lanzamiento de una piedra (extensión).pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F24.pdf",
+    "pages": 1,
+    "format": "pdf",
+    "sha256": "f444fbf67c4a306a9cb3b5bf54e603d24c75acb6d8fb9930c08e80ffad9ea342"
+  },
+  {
+    "id": "F25",
+    "title": "ARPA 2 Lanzamiento de una piedra.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F25.pdf",
+    "pages": 1,
+    "format": "pdf",
+    "sha256": "ce468bdab3bd42ec1a0afee9bcff5eb79e3aeaab49b437e3d199b68610cc80b8"
+  },
+  {
+    "id": "F26",
+    "title": "link de actividades formativas 2.txt",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F26.txt",
+    "pages": null,
+    "format": "txt",
+    "sha256": "45afa797962295365f4f8bf4a8c6d9918fb5a44a0db581fe109d50fe5dfd366e"
+  },
+  {
+    "id": "F27",
+    "title": "link de actividades formativas.txt",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F27.txt",
+    "pages": null,
+    "format": "txt",
+    "sha256": "3049629efdb3fc2f1208967b48c3d1f7bbc28ec610a7d228605859e8b8382b31"
+  },
+  {
+    "id": "F28",
+    "title": "screencapture-aai-inacap-cl-course-view-2026-10-17-21_16_40.png",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F28.png",
+    "pages": null,
+    "format": "png",
+    "sha256": "1a1fc3433ef5d9942ca0b29634f5c3553a160c7ad3677354ad3749d0692de266"
+  },
+  {
+    "id": "F29",
+    "title": "Situación de modelación 1 Servicio eléctrico.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F29.pdf",
+    "pages": 4,
+    "format": "pdf",
+    "sha256": "8d3b66932b8fce4a7586658aacfc3840a8510225fe47d4652e5d52cabb7d218d"
+  },
+  {
+    "id": "F30",
+    "title": "Situación de modelación 2 Seguidores en Instagram.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F30.pdf",
+    "pages": 3,
+    "format": "pdf",
+    "sha256": "c92c03d5ea8c77100aeb2bb8c0591236cf34868f1fa9d9f033ceedbe5fe4a035"
+  },
+  {
+    "id": "F31",
+    "title": "Situación de modelación 2 Sueño dorado.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F31.pdf",
+    "pages": 3,
+    "format": "pdf",
+    "sha256": "9c00f68a1c68c1194d403df8cdad89a93835430577df168782f180cc339319bd"
+  },
+  {
+    "id": "F32",
+    "title": "Situación de modelación 3 Desabastecimiento.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F32.pdf",
+    "pages": 3,
+    "format": "pdf",
+    "sha256": "7f41a9092c2433b87242b3cca7f83d115aa456ab149d5f75d9c9b23830ed41df"
+  },
+  {
+    "id": "F33",
+    "title": "Clase Teorica.pdf",
+    "courseId": "s2-4",
+    "url": "/estudio/fuentes/F33.pdf",
+    "pages": 43,
+    "format": "pdf",
+    "sha256": "f488c45276f849f5483f769b121b0ae91e7549f1d8dec6f57e41f2cdce468ad6"
+  },
+  {
+    "id": "F34",
+    "title": "Guía 1.pdf",
+    "courseId": "s2-4",
+    "url": "/estudio/fuentes/F34.pdf",
+    "pages": 9,
+    "format": "pdf",
+    "sha256": "3db3a83c67d160ee075eafb83229a086efa64738037e27acb021f5f12cafdafb"
+  },
+  {
+    "id": "F35",
+    "title": "Resumen Teorico.pdf",
+    "courseId": "s2-4",
+    "url": "/estudio/fuentes/F35.pdf",
+    "pages": 4,
+    "format": "pdf",
+    "sha256": "e11fecf41f70810744c4722cffc309ed29ef46caae31c3513336234bd3f97910"
+  },
+  {
+    "id": "F36",
+    "title": "screencapture-aai-inacap-cl-course-view-2026-10-17-21_17_38.png",
+    "courseId": "s2-4",
+    "url": "/estudio/fuentes/F36.png",
+    "pages": null,
+    "format": "png",
+    "sha256": "e62e31b44e36e1ace22b512befb59e830d7b62104270749e88a1d8d47a33adac"
+  },
+  {
+    "id": "F37",
+    "title": "Actividad tecnológica 1 Funciones exponenciales.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F37.pdf",
+    "pages": 6,
+    "format": "pdf",
+    "sha256": "baeb9ee1c850d87ff639d43961f49a66cc4f8f6ea5c0bae1edff5cfc7a08580d"
+  },
+  {
+    "id": "F38",
+    "title": "Situación de modelación 1 Crecimiento de bacterias.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F38.pdf",
+    "pages": 3,
+    "format": "pdf",
+    "sha256": "f7b60bab31f2a89ff7ee4cfa7df066a017f270d1684426132b1273b2e9123e7a"
+  },
+  {
+    "id": "F39",
+    "title": "ARPA 1 Eliminación de fármacos.pdf",
+    "courseId": "s2-5",
+    "url": "/estudio/fuentes/F39.pdf",
+    "pages": 1,
+    "format": "pdf",
+    "sha256": "8e19deb09ddf74af00ea4f8ad0df257848216cba68414cd2c24719334f4f2726"
+  },
+  {
+    "id": "I01",
+    "title": "Presentación de la Asignatura (1).pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I01.pdf",
+    "pages": 13,
+    "format": "pdf",
+    "sha256": "0355238d25b7e344932d39ae3d33ed5079f0fd4931be9feae9356a0e6a9f1a58"
+  },
+  {
+    "id": "I02",
+    "title": "Conf. 1 (1).pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I02.pdf",
+    "pages": 38,
+    "format": "pdf",
+    "sha256": "a68df2d507d18de369f75d312dd7c88ed4a6c86e1edb771db125a327d98a5fb9"
+  },
+  {
+    "id": "I03",
+    "title": "Conf. 2 (2).pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I03.pdf",
+    "pages": 30,
+    "format": "pdf",
+    "sha256": "725723fa82efd628e478a41aa6e599fcb2367420187eec3ff7460869a941f635"
+  },
+  {
+    "id": "I04",
+    "title": "Conf. 3 Medidas de caudal.pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I04.pdf",
+    "pages": 29,
+    "format": "pdf",
+    "sha256": "3a8e95e2db99a60b9a5d3fcdc9bdecfb55a3881be3ec78ad136bfa24189e71da"
+  },
+  {
+    "id": "I05",
+    "title": "Conf. 4 Medidas de Presión.pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I05.pdf",
+    "pages": 23,
+    "format": "pdf",
+    "sha256": "4bccb3711ac28b722e5ec7e24a1a0d5858029472c0f6b048b54ac96056726d1b"
+  },
+  {
+    "id": "I06",
+    "title": "Conf. 5 Medidas de nivel.pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I06.pdf",
+    "pages": 25,
+    "format": "pdf",
+    "sha256": "7eb6b334877a4d370e58ca79501533523a74cfccb16727cd854a486598e0bd22"
+  },
+  {
+    "id": "I07",
+    "title": "Conf. 6 Medidas de temperatura.pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I07.pdf",
+    "pages": 36,
+    "format": "pdf",
+    "sha256": "cdfdd35e152356851260a1672abad6a321782f4a4e3215481f78da24427c8b20"
+  },
+  {
+    "id": "I08",
+    "title": "Conf. 2 (3).pdf",
+    "courseId": "s2-3",
+    "url": "/estudio/fuentes/I08.pdf",
+    "pages": 12,
+    "format": "pdf",
+    "sha256": "2173bff4f606599f02c3a0fd472d504ec84bde357c491a51caec6a13ad5271d9"
+  },
+  {
+    "id": "CM-U2-A2",
+    "title": "Actividad 2 Unidad 2 · Implementación estrella–triángulo.pdf",
+    "courseId": "s2-2",
+    "url": "/activities/actividad-2-unidad-2.pdf",
+    "pages": 13,
+    "format": "pdf",
+    "sha256": "49775a14bcb23af18ac3fb07cfcafa1cf5041cd032e5fe363b0682d2265dc0da"
+  }
+]

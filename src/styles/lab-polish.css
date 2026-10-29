@@ -1,0 +1,26 @@
+/* Ajustes de superposición y de toque en las herramientas del laboratorio (pantallas pequeñas). */
+.lab-compact-bar a[href="/estudio"]{display:inline-flex;align-items:center;gap:6px;min-height:44px}
+@media(max-width:520px){
+ .lab-compact-bar a[href="/estudio"] .lab-bar-study{display:none}
+ .lab-compact-bar a[href="/estudio"]{min-width:44px;justify-content:center}
+}
+/* El botón de ayuda no debe tapar los paneles plegables que quedan sobre la barra de herramientas. */
+@media(max-width:600px){
+ .lab-page .lab-dock>button.lab-dock-guide-toggle{bottom:calc(100% - 14px);right:-6px;width:28px;height:28px;min-height:28px}
+}
+/* Soldadura: el zoom ocupa la esquina superior derecha; la barra de práctica baja para no quedar debajo. */
+@media(max-width:800px){
+ .tool-soldering .solder-modebar{top:118px}
+ .tool-soldering .lab-pan{--pan-top:206px}
+}
+/* Procesos: los caudales quedan sobre la barra de herramientas y el botón de señales. */
+@media(max-width:600px){
+ .lab-compact .lab-stage>.lab-process-controls{bottom:140px}
+}
+/* El indicador de equipos y cables no se recorta: el texto de ayuda es el que cede espacio. */
+.lab-surface-mode .lab-stagebar>.lab-count-chip{flex:none;max-width:none;overflow:visible;text-overflow:clip}
+.lab-surface-mode.lab-automation .eq-stage>.lab-stagebar{max-width:min(820px,calc(100vw - 560px))}
+/* Texto fijo legible: nada por debajo de 11 px en las etiquetas y estados de las herramientas. */
+.lab-page .lab-eyebrow,.lab-page .lab-save-state,.lab-page .lab-badge,.lab-page .lab-hmi-heading span{font-size:11px}
+.lab-page .lab-contact-actions button{font-size:11px}
+.lab-page small{font-size:11px}

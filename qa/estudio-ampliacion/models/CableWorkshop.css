@@ -1,0 +1,1425 @@
+/* src/styles/bench-practice.css */
+.cable-meter > svg {
+  width: 100%;
+  max-width: 850px;
+  height: auto;
+  display: block;
+}
+.cable-meter {
+  border: 1px solid #c9d7dc;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 14px 0;
+}
+.cable-meter .manual-meter-host .lab-dmm-device {
+  touch-action: none;
+}
+.serial-practice .academic-fields label:has(input[type=checkbox]) {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.serial-practice .academic-fields input[type=checkbox] {
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+  flex: none;
+}
+.breadboard-modes {
+  position: absolute;
+  top: 136px;
+  left: 260px;
+  z-index: 31;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  max-width: calc(100% - 590px);
+  padding: 4px;
+  background: #f7f8f8ed;
+  border: 1px solid #d5dde0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px #2436450a;
+}
+.breadboard-modes button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  color: #395664;
+  background: transparent;
+  font: 600 12px system-ui;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.breadboard-modes button[aria-pressed=true] {
+  background: #253d48;
+  color: white;
+}
+.breadboard-modes button:focus-visible {
+  outline: 3px solid #248fb3;
+  outline-offset: 2px;
+}
+.breadboard-lesson-window .floating-window-body {
+  padding: 16px;
+}
+.breadboard-lesson {
+  gap: 14px;
+}
+.breadboard-lesson .guide-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #627d8b;
+}
+.breadboard-lesson .breadboard-consigna {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.breadboard-lesson .guide-hints {
+  border: 1px solid #dae4e9;
+  border-radius: 9px;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+.breadboard-lesson summary {
+  cursor: pointer;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+}
+.breadboard-lesson .guide-hints p {
+  margin: 8px 0;
+}
+.breadboard-lesson .assistance-levels {
+  display: flex;
+  gap: 5px;
+}
+.breadboard-lesson .assistance-levels button {
+  flex: 1;
+  min-height: 44px;
+  border: 1px solid #cad9df;
+  border-radius: 7px;
+  padding: 5px;
+  color: #3b5b6a;
+  background: white;
+  font-size: 12px;
+}
+.breadboard-lesson .assistance-levels button[aria-pressed=true] {
+  background: #dcecf2;
+  border-color: #6797ab;
+}
+.breadboard-confirm {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 12px;
+  background: #e6f3ec;
+  color: #27684f;
+  padding: 24px 12px;
+  border-radius: 12px;
+}
+.breadboard-confirm span {
+  font-size: 12px;
+}
+.breadboard-lesson .guide-waiting {
+  font-size: 12px;
+  padding: 10px;
+  background: #f2f6f8;
+  border-radius: 8px;
+}
+.breadboard-lesson .guide-success {
+  font-size: 12px;
+  display: flex;
+  gap: 8px;
+  color: #27684f;
+}
+.breadboard-lesson .guide-feedback {
+  font-size: 12px;
+  color: #8b4a2e;
+}
+.breadboard-answer,
+.breadboard-lesson-options label {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+}
+.breadboard-answer input,
+.breadboard-lesson-options textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+  border: 1px solid #abc0cc;
+  padding: 10px;
+  border-radius: 8px;
+  font: 16px system-ui;
+}
+.breadboard-question {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 13px;
+}
+.breadboard-question legend {
+  margin-bottom: 10px;
+}
+.breadboard-question label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid #d6e2e8;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+.breadboard-question input {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.breadboard-lesson-options {
+  border-top: 1px solid #dbe5e9;
+  font-size: 12px;
+  padding-top: 6px;
+}
+.breadboard-lesson-options .lesson-action {
+  margin: 10px 0;
+  width: 100%;
+  min-height: 44px;
+}
+.breadboard-lesson .lesson-window-actions .lesson-action {
+  min-height: 44px;
+}
+.breadboard-lesson > small {
+  font-size: 11px;
+  color: #687e8b;
+}
+.breadboard-lesson .assessment-menu-links > button {
+  min-height: 76px;
+}
+.breadboard-lesson .lesson-study-launch {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px;
+  border: 1px solid #c4dbe7;
+  background: #edf5f9;
+  color: #2b5b70;
+  border-radius: 9px;
+  cursor: pointer;
+  text-align: left;
+}
+.breadboard-lesson .lesson-study-launch span {
+  display: grid;
+  gap: 4px;
+  flex: 1;
+}
+.breadboard-lesson .lesson-study-launch small {
+  font-size: 11px;
+}
+.breadboard-lesson .lesson-study-launch b {
+  font-size: 13px;
+}
+@media (max-width: 1250px) {
+  .breadboard-modes {
+    left: 16px;
+    max-width: calc(100% - 320px);
+  }
+  .breadboard-modes button {
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 800px) {
+  .breadboard-modes {
+    top: 64px;
+    left: 8px;
+    right: 8px;
+    max-width: none;
+    gap: 2px;
+    padding: 3px;
+  }
+  .breadboard-modes button {
+    flex: 1;
+    min-height: 44px;
+    padding: 6px 5px;
+    font-size: 11px;
+    white-space: normal;
+  }
+  .breadboard-modes button span {
+    display: none;
+  }
+  .breadboard-modes button:nth-child(3)::after {
+    content: "Soldar";
+  }
+  .breadboard-modes button:nth-child(4)::after {
+    content: "Ayuda";
+  }
+  .breadboard-lesson-window .floating-window-body {
+    padding: 12px;
+  }
+  .breadboard-lesson {
+    gap: 11px;
+  }
+  .breadboard-lesson h2 {
+    font-size: 20px;
+  }
+}
+.breadboard-resume {
+  position: absolute;
+  z-index: 32;
+  top: 196px;
+  left: 16px;
+  max-width: calc(100% - 330px);
+  border: 1px solid #adc6d2;
+  border-radius: 10px;
+  padding: 9px 12px;
+  min-height: 44px;
+  background: #eff7fa;
+  color: #2f5e73;
+  font: 600 12px system-ui;
+  cursor: pointer;
+}
+.breadboard-lesson-window .floating-window-title {
+  font-family: var(--ui-font,system-ui);
+}
+.breadboard-lesson-window .floating-window-title h3 {
+  font: 600 14px var(--ui-font,system-ui);
+}
+@media (max-width: 800px) {
+  .breadboard-resume {
+    top: 118px;
+    left: 8px;
+    max-width: calc(100% - 16px);
+    font-size: 11px;
+  }
+}
+.wire-color-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 7px;
+  margin: 10px 0;
+}
+.wire-color-swatches button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  border: 1px solid #bacbd3;
+  background: #fff;
+  border-radius: 8px;
+  padding: 7px;
+  color: #294653;
+  font: 12px system-ui;
+  cursor: pointer;
+}
+.wire-color-swatches button i {
+  display: block;
+  flex: none;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #778c95;
+  border-radius: 50%;
+}
+.wire-color-swatches button[aria-pressed=true] {
+  outline: 2px solid #247b9f;
+  outline-offset: 0;
+  background: #edf5f7;
+}
+.academic-wire-colors {
+  margin: 16px 0;
+}
+.academic-wire-colors > label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.academic-wire-colors input[type=color] {
+  min-height: 44px;
+  width: 70px;
+  padding: 3px;
+}
+.academic-wire-colors p {
+  font-size: 12px;
+}
+.solder-panel-content input[type=color] {
+  display: block;
+  min-height: 44px;
+  width: 70px;
+  padding: 3px;
+}
+
+/* src/styles/floating-window.css */
+.mobile-floating-window {
+  position: fixed;
+  z-index: 300;
+  left: 8px;
+  top: 70px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  border: 1px solid #cfe1ea;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 50px #1c354538, 0 2px 8px #1c354515;
+  color: #3c6176;
+  font: 400 14px/1.5 var(--ui-font);
+  isolation: isolate;
+  overflow: hidden;
+}
+.floating-window-hidden {
+  display: none !important;
+}
+.floating-window-header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px 8px 14px;
+  border-bottom: 1px solid #e4edf2;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  background: #fff;
+}
+.floating-window-header:active {
+  cursor: grabbing;
+}
+.floating-window-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+.floating-window-title > svg {
+  flex: none;
+  color: #91a8b3;
+}
+.floating-window-title small {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  color: #0b6f8f;
+  text-transform: uppercase;
+}
+.floating-window-title h3 {
+  margin: 0;
+  color: #1f4a60;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.floating-window-header > button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 11px;
+  background: #f1f5f7;
+  color: #536f7e;
+  cursor: pointer;
+}
+.floating-window-header > button > svg {
+  width: 20px;
+  height: 20px;
+}
+.mobile-floating-window :focus-visible {
+  outline: 3px solid #159dc4;
+  outline-offset: 2px;
+}
+.floating-window-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  padding: 14px;
+  touch-action: pan-x pan-y;
+}
+.floating-window-body p {
+  margin: 0 0 10px;
+}
+.floating-window-content {
+  display: flow-root;
+  max-width: none;
+}
+.floating-window-footer {
+  flex: none;
+  position: relative;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  border-top: 1px solid #edf2f5;
+  background: #fbfdfe;
+  color: #8097a4;
+  font-size: 10px;
+  user-select: none;
+}
+.floating-window-footer > button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 26px;
+  min-height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #6b8a9b;
+  cursor: pointer;
+}
+.floating-window-footer > button:hover {
+  background: #eaf3f7;
+}
+.floating-window-footer > .floating-window-resize {
+  cursor: nwse-resize;
+  touch-action: none;
+}
+.mobile-floating-window[data-resizing=true] {
+  user-select: none;
+}
+.mobile-floating-window[data-resizing=true] * {
+  cursor: nwse-resize !important;
+}
+.mobile-floating-window .cade-sheet-content figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dce9f0;
+  border-radius: 11px;
+  background: #f8fcfd;
+}
+.mobile-floating-window .cade-sheet-media {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.mobile-floating-window .cade-sheet-content figure svg,
+.mobile-floating-window .cade-sheet-content figure img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  padding: 8px;
+  background: white;
+}
+.mobile-floating-window .cade-sheet-content figcaption {
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #6a8493;
+}
+.mobile-floating-window .cade-sheet-device {
+  font-size: 13px;
+  color: #6a8493;
+}
+.floating-menu .simulation-menu-body.sim-compact,
+.floating-menu .practice-settings.menu-compact {
+  position: static;
+  inset: auto;
+  width: 100%;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 !important;
+  overflow: visible;
+  box-sizing: border-box;
+  animation: none;
+}
+.floating-menu .searchbox-wrap {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  min-height: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: none;
+}
+.floating-menu .search-results {
+  position: static;
+  flex: 1 1 100%;
+  max-height: 35dvh;
+  overflow: auto;
+  box-shadow: none;
+}
+.floating-menu .compact-legal {
+  display: flex;
+  justify-content: flex-end;
+}
+.floating-menu select {
+  width: 100%;
+  min-height: 44px;
+  max-width: 100%;
+  font: inherit;
+}
+.floating-menu .simulation-examples > button {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  text-align: left;
+}
+.floating-menu .filters-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.floating-menu .simulation-examples > button {
+  border: 1px solid #cbdde5;
+  background: #f2f8fa;
+  color: #386479;
+  border-radius: 8px;
+  font: 600 14px var(--ui-font);
+  min-height: 44px;
+  padding: 8px 12px;
+}
+.floating-menu summary {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.floating-menu .practice-settings {
+  margin: 0;
+}
+.floating-menu .filter-pill {
+  min-height: 40px;
+}
+.mobile-floating-window .cade-guide-grid,
+.mobile-floating-window .cade-guide-extra {
+  padding: 12px 0;
+}
+.mobile-floating-window .cade-tour {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+.floating-menu .dock-color-menu {
+  position: static;
+  inset: auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.floating-menu .cable-color-presets button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 60px;
+  padding: 8px;
+  border: 1px solid #dde7ed;
+  border-radius: 9px;
+  background: #f7fafb;
+  color: #4c6c80;
+}
+.floating-menu .cable-color-presets button[aria-pressed=true] {
+  border-color: #3d9dd0;
+  background: #e5f4fc;
+  box-shadow: 0 0 0 1px #3d9dd0;
+}
+.mobile-floating-window .procedure-drawer {
+  position: static;
+  inset: auto;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.mobile-floating-window .procedure-drawer nav {
+  margin-top: 0;
+}
+.floating-help img {
+  display: block;
+  width: 100%;
+  max-height: 65dvh;
+  object-fit: contain;
+  border-radius: 9px;
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .floating-window-body {
+    padding: 12px;
+  }
+  .mobile-floating-window .cade-sheet-content figure svg,
+  .mobile-floating-window .cade-sheet-content figure img {
+    height: 115px;
+  }
+  .floating-window-header {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+@media (pointer: coarse) {
+  .floating-window-footer {
+    height: 38px;
+  }
+  .floating-window-footer > button {
+    width: 44px;
+    height: 38px;
+    min-height: 38px;
+  }
+  .floating-window-body {
+    scrollbar-width: auto;
+  }
+}
+.fw-edge {
+  position: absolute;
+  z-index: 6;
+  touch-action: none;
+  background: transparent;
+}
+.fw-edge-n {
+  top: 0;
+  left: 18px;
+  right: 18px;
+  height: 7px;
+  cursor: ns-resize;
+}
+.fw-edge-s {
+  bottom: 0;
+  left: 18px;
+  right: 18px;
+  height: 7px;
+  cursor: ns-resize;
+}
+.fw-edge-e {
+  right: 0;
+  top: 18px;
+  bottom: 30px;
+  width: 6px;
+  cursor: ew-resize;
+}
+.fw-edge-w {
+  left: 0;
+  top: 18px;
+  bottom: 30px;
+  width: 6px;
+  cursor: ew-resize;
+}
+.fw-edge-ne {
+  top: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nesw-resize;
+}
+.fw-edge-nw {
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+}
+.fw-edge-se {
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: nwse-resize;
+}
+.fw-edge-sw {
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  cursor: nesw-resize;
+}
+.mobile-floating-window[data-resizing=true] {
+  user-select: none;
+  transition: none;
+}
+.mobile-floating-window[data-resizing=true] .floating-window-body {
+  pointer-events: none;
+}
+.floating-window-footer > .floating-window-resize {
+  cursor: nwse-resize;
+  touch-action: none;
+}
+.mobile-floating-window .floating-window-body {
+  margin-right: 6px;
+  padding-right: 8px;
+}
+.floating-window-header {
+  gap: 6px;
+}
+.floating-window-header > .floating-window-max {
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+}
+.floating-window-max .fw-icon-restore {
+  display: none;
+}
+.mobile-floating-window[data-maximized=true] .floating-window-max .fw-icon-max {
+  display: none;
+}
+.mobile-floating-window[data-maximized=true] .floating-window-max .fw-icon-restore {
+  display: block;
+}
+.mobile-floating-window[data-maximized=true] {
+  border-radius: 14px;
+}
+.floating-window-body {
+  container-type: inline-size;
+  container-name: fw;
+}
+.floating-window-content {
+  min-width: 0;
+}
+.floating-window-content :is(img, video, canvas, svg:not([width]), iframe) {
+  max-width: 100%;
+}
+.floating-window-content :is(table) {
+  max-width: 100%;
+}
+.floating-window-content :is(input, select, textarea):not([type=checkbox], [type=radio], [type=range], [type=color]) {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.floating-window-content :is(p, li, h1, h2, h3, h4, summary, label, small, strong, span, button) {
+  overflow-wrap: anywhere;
+}
+.floating-window-content :is(pre, code) {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+@container fw (max-width:420px) {
+  .floating-window-content :is(.sim-compact .simulation-examples, .cable-color-presets, .lab-chips, .lab-project-actions, .lab-project-examples, .menu-compact .menu-tiles, .menu-tiles) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .floating-window-content :is(.lab-project-links, .guide-menu-actions, .assessment-menu-links, .diagram-info-actions, .procedure-actions) {
+    flex-wrap: wrap;
+  }
+  .floating-window-content :is(.lab-move-fields, .lab-field-row, .temp-tabs) {
+    flex-wrap: wrap;
+  }
+}
+@container fw (max-width:300px) {
+  .floating-window-content :is(.sim-compact .simulation-examples, .cable-color-presets, .lab-chips, .menu-tiles, .menu-compact .menu-tiles, .lab-project-actions, .lab-project-examples) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .floating-window-content button {
+    width: 100%;
+    white-space: normal;
+  }
+}
+@container fw (min-width:560px) {
+  .floating-window-content :is(.cable-color-presets) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .floating-window-content :is(.menu-compact .menu-tiles, .menu-tiles) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .floating-window-content :is(.lab-project-actions) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (pointer: coarse) {
+  .fw-edge-e,
+  .fw-edge-w {
+    width: 14px;
+  }
+  .fw-edge-n,
+  .fw-edge-s {
+    height: 14px;
+  }
+  .fw-edge-ne,
+  .fw-edge-nw,
+  .fw-edge-se,
+  .fw-edge-sw {
+    width: 30px;
+    height: 30px;
+  }
+  .floating-window-header > .floating-window-max {
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (max-width: 520px) {
+  .floating-window-header > .floating-window-max {
+    display: none;
+  }
+}
+.mobile-floating-window .lab-editor-pop {
+  position: static;
+  inset: auto;
+  width: auto;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  animation: none;
+}
+.mobile-floating-window .lab-editor-pop > header {
+  display: none;
+}
+.mobile-floating-window .lab-editor-pop footer {
+  flex-wrap: wrap;
+}
+.lab-project-window-list {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: minmax(0, 1fr);
+}
+.lab-project-window-list > :is(button, a, label) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 14px;
+  box-sizing: border-box;
+  border: 1px solid #e3e6f0;
+  border-radius: 14px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  font: 600 14px/1.3 var(--ui-font);
+  text-align: left;
+  cursor: pointer;
+}
+.lab-project-window-list > :is(button, a, label):hover:not(:disabled) {
+  background: #eaeeff;
+  border-color: #c5cae0;
+  color: #073cff;
+}
+.lab-project-window-list > :is(button, a, label):is(:disabled, .disabled) {
+  opacity: .55;
+  cursor: default;
+}
+.lab-project-window-list > label input[type=file] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.lab-project-window-list > :is(button, a, label) svg {
+  flex: none;
+}
+@container fw (min-width:560px) {
+  .lab-project-window-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.lab-dock-window .lab-dock-menu {
+  position: static;
+  inset: auto;
+  width: auto;
+  max-height: none;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  animation: none;
+}
+@container fw (min-width:600px) {
+  .lab-dock-window .lab-dock-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@container fw (min-width:900px) {
+  .lab-dock-window .lab-dock-menu {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.tutorial-window {
+  font-family: var(--modo-font,Inter,system-ui,sans-serif);
+}
+.tutorial-window .tutorial-intro {
+  margin: 0 0 12px;
+  color: #62617a;
+  font-size: 14px;
+}
+.tutorial-window .tutorial-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  gap: 20px;
+}
+@container fw (max-width:720px) {
+  .tutorial-window .tutorial-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tutorial-window .tutorial-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+  }
+  .tutorial-window .tutorial-list > .tutorial-eyebrow,
+  .tutorial-window .tutorial-list > .tutorial-list-note {
+    grid-column: 1/-1;
+  }
+}
+.tutorial-window .tutorial-player video {
+  max-height: 60cqh;
+}
+.tutorial-window :focus-visible {
+  outline: 3px solid #a3cb2c;
+  outline-offset: 3px;
+}
+.home-version-popover {
+  max-width: calc(100vw - 24px);
+  max-height: min(70dvh, 520px);
+  overflow: auto;
+  box-sizing: border-box;
+}
+.floating-window-footer > button {
+  position: relative;
+  z-index: 8;
+}
+.fw-edge-sw,
+.fw-edge-se {
+  height: 14px;
+}
+@media (pointer: coarse) {
+  .fw-edge-sw,
+  .fw-edge-se {
+    height: 24px;
+  }
+}
+.mobile-floating-window[data-moving=true] {
+  will-change: transform;
+  user-select: none;
+}
+
+/* src/styles/manual-bench.css */
+.manual-meter {
+  overflow: visible;
+}
+.manual-meter-host {
+  position: relative;
+  width: 220px;
+  height: 340px;
+}
+.manual-meter-host .lab-dmm-device {
+  position: relative !important;
+  inset: auto !important;
+  width: 220px !important;
+  max-width: none !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+.manual-meter-host .lab-dmm-body {
+  width: 220px !important;
+  height: 340px !important;
+  max-height: none !important;
+}
+.manual-meter-host .lab-dmm-tools {
+  display: none;
+}
+.manual-cord {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.manual-meter-host .dmm-pos {
+  cursor: pointer;
+}
+.manual-action {
+  cursor: grab;
+  touch-action: none;
+}
+.manual-action:focus-visible {
+  outline: 3px solid #337dba;
+}
+.manual-action text {
+  font: 12px system-ui;
+  fill: #26323a;
+}
+.manual-action rect {
+  fill: #f6f7f8;
+  stroke: #506978;
+}
+.cable-workshop {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  background: #edf1f3;
+  overflow: auto;
+  padding: 16px;
+}
+.cable-workshop header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cable-workshop h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.cable-workshop p {
+  max-width: 760px;
+}
+.cable-workshop svg.workshop-scene {
+  display: block;
+  width: 100%;
+  min-width: 620px;
+  max-height: 600px;
+}
+.cable-workshop button {
+  min-height: 44px;
+  border: 1px solid #9caab3;
+  border-radius: 8px;
+  background: white;
+  padding: 8px 14px;
+  color: #1d2a33;
+}
+.cable-workshop .workshop-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cable-workshop button[aria-pressed=true] {
+  background: #213842;
+  color: white;
+}
+.cable-workshop .workshop-board {
+  overflow: auto;
+}
+.workshop-launch {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  z-index: 12;
+  border: 1px solid #a6b4bb;
+  background: #fff;
+  border-radius: 9px;
+  padding: 10px 14px;
+  color: #213842;
+  min-height: 44px;
+}
+.manual-meter-host .lab-dmm-body {
+  touch-action: auto;
+}
+.manual-leads {
+  pointer-events: auto;
+}
+.workshop-launch {
+  top: 136px;
+  left: 260px;
+  z-index: 31;
+}
+.cable-workshop {
+  inset: 132px 8px 8px;
+  z-index: 50;
+  touch-action: auto;
+  border: 1px solid #c8d2d8;
+  border-radius: 14px;
+}
+.cable-workshop header {
+  position: sticky;
+  top: -16px;
+  background: #edf1f3;
+  z-index: 4;
+  padding: 8px 0;
+}
+.cable-workshop .manual-meter-host .lab-dmm-device {
+  z-index: auto;
+}
+@media (max-width: 800px) {
+  .workshop-launch {
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+  }
+  .cable-workshop {
+    inset: 0;
+    border-radius: 0;
+  }
+  .cable-workshop header {
+    align-items: flex-start;
+  }
+  .cable-workshop header button {
+    max-width: 150px;
+  }
+  .cable-workshop h2 {
+    font-size: 17px;
+  }
+}
+@media (max-width: 800px) {
+  .workshop-launch {
+    top: 64px;
+  }
+  .cable-workshop {
+    inset: 56px 0 0;
+  }
+}
+.lab-canvas-workspace.has-cable-bench {
+  touch-action: auto;
+}
+.workshop-board {
+  touch-action: pan-x pan-y;
+}
+@media (max-width: 800px) {
+  .workshop-board:before {
+    content: "Desliza el banco hacia los lados para alcanzar cables y mult\edmetro.";
+    display: block;
+    font: 12px system-ui;
+    color: #405967;
+    padding: 8px 0;
+  }
+}
+.fluke-body {
+  filter: drop-shadow(0 4px 4px #18232945);
+}
+.fluke-key {
+  cursor: pointer;
+}
+.fluke-key:focus-visible {
+  outline: 2px solid #f5d226;
+}
+.fluke-notebook-actions {
+  display: flex;
+  gap: 5px;
+  position: relative;
+  z-index: 2;
+}
+.fluke-notebook-actions button {
+  flex: 1;
+  border: 1px solid #a1afb6;
+  border-radius: 7px;
+  background: #fff;
+  color: #263b45;
+  font: 600 11px system-ui;
+  padding: 7px 4px;
+  min-height: 32px;
+}
+.fluke-notebook-actions button:disabled {
+  color: #87949a;
+  background: #e4e8e9;
+}
+.manual-meter-host .fluke-notebook-actions {
+  margin-top: 4px;
+}
+.manual-meter-host {
+  height: 385px;
+}
+.temperature-notebook p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #40545e;
+}
+.practice-grid {
+  table-layout: fixed;
+  width: 100%;
+}
+.practice-grid th,
+.practice-grid td {
+  padding: 5px 3px !important;
+  text-align: center;
+}
+.practice-grid th {
+  font-size: 10px;
+  white-space: normal;
+}
+.practice-grid th small {
+  display: block;
+  font-size: 9px;
+}
+.practice-grid button {
+  width: 100%;
+  min-height: 40px;
+  border: 1px dashed #b4bec4;
+  background: #fafbfc;
+  border-radius: 6px;
+  color: #344d5a;
+  font-size: 10px;
+  padding: 4px;
+}
+.practice-grid button[aria-pressed=true] {
+  border: 2px solid #26788b;
+  background: #d9eff1;
+}
+.notebook-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 12px 0;
+}
+.notebook-entry label {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.notebook-entry input {
+  padding: 10px;
+  border: 1px solid #8ca2ae;
+  border-radius: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  font: 18px ui-monospace, monospace;
+}
+.notebook-entry > button {
+  background: #233e49;
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  padding: 12px;
+  font-weight: 600;
+}
+.notebook-entry small {
+  color: #536f7a;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.notebook-live {
+  border-top: 1px solid #d1dadd;
+  padding-top: 9px;
+}
+.notebook-records summary {
+  cursor: pointer;
+  font-size: 12px;
+}
+.detector-bench-status {
+  position: static !important;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.temp-right:has(.temperature-notebook) {
+  width: 330px;
+}
+.tool-temperature .temp-log-card .lab-float-body {
+  max-height: 70dvh;
+  overflow: auto;
+}
+@media (max-width: 800px) {
+  .temp-right:has(.temperature-notebook) {
+    width: auto;
+  }
+  .tool-temperature .temp-log-card .lab-float-body {
+    max-height: 42dvh;
+  }
+  .practice-grid button {
+    min-height: 44px;
+  }
+}
+.fluke-body {
+  aspect-ratio: 220/420;
+  height: auto !important;
+}
+.manual-meter-host .lab-dmm-body.fluke-body {
+  height: 420px !important;
+}
+.manual-meter-host {
+  height: 460px;
+}
+.fluke-notebook-actions button {
+  min-height: 30px;
+}
+.tool-temperature:not(.tool-detectors) .lab-pan {
+  --pan-right:362px;
+}
+.tool-temperature:not(.tool-detectors) .temp-right {
+  width: 338px;
+}
+.tool-temperature .temp-right .temp-log-card {
+  position: static;
+}
+.tool-temperature .temp-right .temp-log-card:only-child {
+  max-height: 80dvh;
+}
+@media (max-width: 800px) {
+  .tool-temperature:not(.tool-detectors) .lab-pan {
+    --pan-right:8px;
+  }
+  .tool-temperature:not(.tool-detectors) .temp-right {
+    width: auto;
+  }
+}
+.temperature-notebook .temp-table-wrap {
+  max-height: none;
+  overflow: visible;
+}
+.practice-grid thead {
+  position: sticky;
+  top: 0;
+  background: #eff4f6;
+  z-index: 1;
+}
+.manual-meter-host .lab-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.lab-dmm-native .dmm-native-body {
+  display: block;
+  overflow: visible;
+  max-width: none;
+  transform: none;
+  touch-action: none;
+}
+.lab-dmm-native .dmm-lcd {
+  font-family:
+    ui-monospace,
+    Consolas,
+    monospace;
+  fill: #182c23;
+  letter-spacing: -.5px;
+}
+.lab-dmm-native .dmm-pos,
+.lab-dmm-native .fluke-key {
+  cursor: pointer;
+}
+.lab-dmm-native [role=button]:focus-visible,
+.lab-dmm-native [role=radio]:focus-visible {
+  outline: 2px solid #247b9f;
+}
+.manual-probe-hit {
+  touch-action: none;
+}
+.manual-leads [role=button] {
+  touch-action: none;
+}
+.panel-multimeter .fluke-body {
+  cursor: grab;
+}
+.panel-multimeter .fluke-body:active {
+  cursor: grabbing;
+}

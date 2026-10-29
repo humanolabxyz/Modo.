@@ -2,14 +2,25 @@ import {Nets,type Memory} from '../model';
 import {key,maintained,ports,type Board,type Part} from './model';
 export type Complex={r:number;i:number};
 export type Reading={voltage:number;current:number;power:number;energy:number;cost:number;frequency:number;rpm:number;soc:number;active:boolean;closed:boolean;reverse:boolean;status:string};
-export type State={readings:Record<string,Reading>;contacts:Record<string,boolean>;hz:Record<string,number>;reverse:Record<string,boolean>;soc:Record<string,number>;energy:Record<string,number>;volts:Record<string,Complex>;live:string[];warnings:string[];fault:string|null};
+export type State={readings:Record<string,Reading>;contacts:Record<string,boolean>;hz:Record<string,number>;reverse:Record<string,boolean>;soc:Record<string,number>;energy:Record<string,number>;volts:Record<string,Complex>;live:string[];warnings:string[];fault:string|null;
+ /** Protecciones disparadas, calentamiento acumulado (0–1,5; 1 = disparo) y tiempo transcurrido de cada temporizador. */
+ tripped:Record<string,boolean>;heat:Record<string,number>;timers:Record<string,number>;
+ /** Diferenciales que dispararon por corriente residual (fuga a tierra) y no por sobrecarga. */
+ leak:Record<string,boolean>};
+/** Polos de potencia de cada protección, para medir su corriente. */
+const POLES:Record<string,[string,string][]>={differential:[['1','2'],['3','4']],breaker:[['1','2']],fuse:[['1','2']],breaker2:[['1','2'],['3','4']],breaker3:[['1','2'],['3','4'],['5','6']],guard:[['1','2'],['3','4'],['5','6']],thermal:[['L1','T1'],['L2','T2'],['L3','T3']]};
+const guarded=(kind:string)=>kind in POLES;
+/** Disparo magnético a 10 veces la corriente nominal; térmico inverso: a 1,5×In tarda unos 25 s y a 2×In unos 10 s. */
+const MAGNETIC=10,OVERLOAD=1.13,HEAT_TIME=30,COOL_TIME=60;
+/** Sensibilidad del diferencial (30 mA) y arranque del motor: pico de 6 veces la corriente nominal que decae con constante de 0,5 s. */
+const RESIDUAL=.03,INRUSH=6,INRUSH_TAU=.5;
 type Branch={id:string;a:string;b:string;r:number};
 type Source={owner:string;positive:string;negative:string;v:Complex;r:number;frequency:number};
 const zero:Complex={r:0,i:0},mag=(v:Complex)=>Math.hypot(v.r,v.i),sub=(a:Complex,b:Complex):Complex=>({r:a.r-b.r,i:a.i-b.i});
 const phase=(v:number,angle:number):Complex=>({r:v*Math.cos(angle),i:v*Math.sin(angle)});
 const pkey=(p:Part,port:string)=>key({part:p.id,port});
 const mains=(kind:string)=>kind==='ac'||kind==='threephase';
-export const freshEquipment=():State=>({readings:{},contacts:{},hz:{},reverse:{},soc:{},energy:{},volts:{},live:[],warnings:[],fault:null});
+export const freshEquipment=():State=>({readings:{},contacts:{},hz:{},reverse:{},soc:{},energy:{},volts:{},live:[],warnings:[],fault:null,tripped:{},heat:{},timers:{},leak:{}});
 
 /** Nodal resistive equivalents with complex RMS sources. No inductance, PWM or certified protection curves. */
 function solve(branches:Branch[],fixed:Record<string,Complex>):{volts:Record<string,Complex>;amps:Record<string,Complex>} {
@@ -34,10 +45,13 @@ function solve(branches:Branch[],fixed:Record<string,Complex>):{volts:Record<str
 }
 
 export function stepEquipment(board:Board,previous:State,memory:Memory,controls:Record<string,boolean>,pressed:Record<string,boolean>,dt:number):State {
- const state:State={...freshEquipment(),contacts:{...previous.contacts},hz:{...previous.hz},reverse:{...previous.reverse},soc:{...previous.soc},energy:{...previous.energy}};
- const activeIds=new Set(board.parts.map(p=>p.id));for(const store of [state.contacts,state.hz,state.reverse,state.soc,state.energy])for(const id of Object.keys(store))if(!activeIds.has(id))delete store[id];
+ const state:State={...freshEquipment(),contacts:{...previous.contacts},hz:{...previous.hz},reverse:{...previous.reverse},soc:{...previous.soc},energy:{...previous.energy},tripped:{...previous.tripped},heat:{...previous.heat},timers:{...previous.timers},leak:{...previous.leak}};
+ const activeIds=new Set(board.parts.map(p=>p.id));for(const store of [state.contacts,state.hz,state.reverse,state.soc,state.energy,state.tripped,state.heat,state.timers,state.leak])for(const id of Object.keys(store))if(!activeIds.has(id))delete store[id];
  dt=Number.isFinite(dt)?Math.max(0,Math.min(dt,2)):0;
  const control=(p:Part)=>controls[p.id]??p.closed;
+ /* Una protección disparada se rearma llevándola a OFF y volviéndola a conectar, como la palanca real. */
+ for(const p of board.parts)if(guarded(p.kind)&&!control(p)&&state.tripped[p.id]){delete state.tripped[p.id];delete state.leak[p.id];state.heat[p.id]=Math.min(state.heat[p.id]??0,.5);}
+ const rated=(p:Part)=>Math.max(.1,p.params.current),currents:Record<string,number>={};
  let lastVolts=previous.volts,lastPower:Record<string,number>={},stable=false,net=new Nets(),amps:Record<string,Complex>={},sources:Source[]=[],frequency:Record<string,number>={};
  const read=(p:Part,a:string,b:string,values=lastVolts)=>sub(values[pkey(p,a)]??zero,values[pkey(p,b)]??zero);
  const warnings=new Set<string>(),conversionScale:Record<string,number>={};
@@ -48,17 +62,17 @@ export function stepEquipment(board:Board,previous:State,memory:Memory,controls:
    for(const p of board.parts){
     const on=control(p),kind=p.kind;
     if(kind==='terminal')join(p,'1','2');if(kind==='busbar')for(const port of ['2','3','4'])join(p,'1',port);
-    if(['breaker','fuse','emergency'].includes(kind)&&on)join(p,'1','2');
+    if(kind==='emergency'&&on)join(p,'1','2');
     if((kind==='push-no'&&pressed[p.id])||(kind==='push-nc'&&!pressed[p.id]))join(p,kind==='push-no'?'3':'1',kind==='push-no'?'4':'2');
     if(kind==='selector'&&on)join(p,'3','4');
-    if((kind==='breaker2'||kind==='differential')&&on){join(p,'1','2');join(p,'3','4');}
-    if((kind==='breaker3'||kind==='guard')&&on)for(let i=1;i<=5;i+=2)join(p,''+i,''+(i+1));
-    if(kind==='thermal'){for(let i=1;i<=3;i++)join(p,'L'+i,'T'+i);join(p,on?'95':'97',on?'96':'98');}
+    /* Disyuntores, fusible, guardamotor y térmico llevan una resistencia de contacto de 2 mΩ para poder medir su corriente. */
+    if(kind==='thermal'){const ok=on&&!state.tripped[p.id];join(p,ok?'95':'97',ok?'96':'98');}
     if(kind==='contactor'){if(state.contacts[p.id]){for(let i=1;i<=3;i++)join(p,'L'+i,'T'+i);join(p,'13','14');}else join(p,'21','22');}
+    if(kind==='timer'){const done=!!state.contacts[p.id]&&(state.timers[p.id]??0)>=p.params.ramp;join(p,'15',done?'18':'16');}
     if(kind==='aux-no'||kind==='aux-nc'){const energized=board.parts.some(c=>c.kind==='contactor'&&c.tag===p.tag&&state.contacts[c.id]);if(kind==='aux-no'?energized:!energized)join(p,kind==='aux-no'?'13':'21',kind==='aux-no'?'14':'22');}
     if(kind==='plc'&&mag(read(p,'L+','M'))>=18&&mag(read(p,'L+','M'))<=30)for(let i=1;i<=4;i++)if(memory['Q0.'+(i-1)])join(p,'C'+i,'Q'+i);
     if(kind==='controller'){join(p,'BAT+','LOAD+');join(p,'BAT−','LOAD−');join(p,'PV−','BAT−');}
-    if(kind==='vfd'||kind==='vfd3')join(p,'PE','PEo');
+    if(kind==='vfd'||kind==='vfd3'||kind==='softstart')join(p,'PE','PEo');
    }
    const root=(p:Part,port:string)=>net.find(pkey(p,port));
    const branches:Branch[]=[],fixed:Record<string,Complex>={};sources=[];frequency={};
@@ -66,32 +80,35 @@ export function stepEquipment(board:Board,previous:State,memory:Memory,controls:
    const load=(p:Part,a:string,b:string,r:number,id=p.id)=>branch(id,root(p,a),root(p,b),r);
    const source=(p:Part,plus:string,minus:string,v:Complex,resistance=.000001,f=0)=>{const positive=root(p,plus),negative=root(p,minus);if(positive===negative&&mag(v)>1)throw new Error(`${p.tag}: cortocircuito entre los polos de la fuente.`);sources.push({owner:p.id,positive,negative,v,r:resistance,frequency:f});};
    for(const p of board.parts){const q=p.params,kind=p.kind;
+    if(guarded(kind)&&(kind==='thermal'||(control(p)&&!state.tripped[p.id])))for(const [a,b] of POLES[kind])load(p,a,b,.002,p.id+':'+a);
     if(kind==='dc')source(p,'+','−',{r:q.voltage,i:0});
     if(kind==='ac')source(p,'L','N',{r:q.voltage,i:0},.000001,q.frequency);
     if(kind==='threephase')for(let i=0;i<3;i++)source(p,'L'+(i+1),'N',phase(q.voltage/Math.sqrt(3),-i*2*Math.PI/3),.000001,q.frequency);
     if(kind==='pv')source(p,'+','−',{r:q.irradiance>0?q.voltage:0,i:0},Math.max(.05,q.voltage*q.voltage/(4*q.power*Math.max(.001,q.irradiance/1000))));
     if(kind==='battery'){const soc=state.soc[p.id]??q.soc;source(p,'+','−',{r:q.voltage*(.9+.2*soc/100),i:0},soc<=0?1e8:.4);}
-    if(kind==='contactor')load(p,'A1','A2',1200);
+    if(kind==='contactor'||kind==='timer')load(p,'A1','A2',1200);
     if(kind==='lamp'||kind==='buzzer')load(p,'1','2',q.voltage*q.voltage/q.power);
-    if(kind==='motor')load(p,'L','N',q.voltage*q.voltage/q.power);
-    if(kind==='motor3')for(const [a,b]of [['U1','U2'],['V1','V2'],['W1','W2']])load(p,a,b,q.voltage*q.voltage/q.power,p.id+':'+a);
+    /* Arranque: la corriente nace unas 6 veces mayor y decae en ~1,5 s hasta la de régimen (el rotor aún no gira). */
+    const surge=1+(INRUSH-1)*Math.exp(-(state.timers[p.id]??0)/INRUSH_TAU);
+    if(kind==='motor')load(p,'L','N',q.voltage*q.voltage/q.power/surge);
+    if(kind==='motor3')for(const [a,b]of [['U1','U2'],['V1','V2'],['W1','W2']])load(p,a,b,q.voltage*q.voltage/q.power/surge,p.id+':'+a);
     if(kind==='voltmeter')load(p,'V+','V−',1e7);
     if(kind==='ammeter')load(p,'A1','A2',.01);
     if(kind==='wattmeter'||kind==='energy'){load(p,'I1','I2',.01);load(p,'V+','V−',1e7,p.id+':V');}
     if(kind==='plc'){load(p,'L+','M',240);for(let i=1;i<=8;i++)load(p,'I'+i,'M',10000,p.id+':I'+i);}
-    if(kind==='vfd'||kind==='vfd3'){
-     const single=kind==='vfd',input=single?mag(read(p,'L','N')):[mag(read(p,'L1','L2')),mag(read(p,'L2','L3')),mag(read(p,'L3','L1'))].reduce((a,b)=>a+b)/3;
+    if(kind==='vfd'||kind==='vfd3'||kind==='softstart'){
+     const single=kind==='vfd',soft=kind==='softstart',outs=soft?['T1','T2','T3']:['U','V','W'],input=single?mag(read(p,'L','N')):[mag(read(p,'L1','L2')),mag(read(p,'L2','L3')),mag(read(p,'L3','L1'))].reduce((a,b)=>a+b)/3;
      const expected=q.voltage,powered=input>=expected*.8&&input<=expected*1.15;
      const phases=single?[]:[mag(read(p,'L1','L2')),mag(read(p,'L2','L3')),mag(read(p,'L3','L1'))];
      const unbalanced=phases.length>0&&Math.max(...phases)-Math.min(...phases)>input*.1;
-     const outputRoots=['U','V','W'].map(port=>root(p,port)),conflict=new Set(outputRoots).size<3||board.parts.some(s=>s.id!==p.id&&(mains(s.kind)||s.kind==='dc'||s.kind==='battery')&&ports(s.kind).some(port=>!port.id.startsWith('PE')&&outputRoots.includes(root(s,port.id))));
-     if(conflict)warnings.add(`${p.tag}: salidas U/V/W unidas o conectadas a una fuente.`);
+     const outputRoots=outs.map(port=>root(p,port)),conflict=new Set(outputRoots).size<3||board.parts.some(s=>s.id!==p.id&&(mains(s.kind)||s.kind==='dc'||s.kind==='battery')&&ports(s.kind).some(port=>!port.id.startsWith('PE')&&outputRoots.includes(root(s,port.id))));
+     if(conflict)warnings.add(`${p.tag}: salidas ${outs.join('/')} unidas o conectadas a una fuente.`);
      if(input>1&&(!powered||unbalanced))warnings.add(`${p.tag}: alimentación fuera de rango o fase ausente/repetida.`);
      const wired=board.wires.some(w=>w.from.part===p.id&&w.from.port==='DI1'||w.to.part===p.id&&w.to.port==='DI1');
-     const run=wired?root(p,'24')===root(p,'DI1'):!!controls[p.id+':run'];const reverse=wired?root(p,'24')===root(p,'DI2'):!!controls[p.id+':reverse'];
-     if(pass===1){let hz=state.hz[p.id]??0,oldReverse=state.reverse[p.id]??false;const target=powered&&!unbalanced&&!conflict&&run&&(reverse===oldReverse||hz<=.000001)?Math.min(q.target,q.frequency):0;const step=q.frequency/q.ramp*dt;hz+=Math.max(-step,Math.min(step,target-hz));if(hz<1e-6){hz=0;oldReverse=reverse;}state.hz[p.id]=powered&&!conflict?hz:0;state.reverse[p.id]=oldReverse;}
+     const run=wired?root(p,'24')===root(p,'DI1'):!!controls[p.id+':run'];const reverse=soft?false:wired?root(p,'24')===root(p,'DI2'):!!controls[p.id+':reverse'];
+     if(pass===1){let hz=state.hz[p.id]??0,oldReverse=state.reverse[p.id]??false;const target=powered&&!unbalanced&&!conflict&&run&&(reverse===oldReverse||hz<=.000001)?(soft?q.frequency:Math.min(q.target,q.frequency)):0;const step=q.frequency/q.ramp*dt;hz+=Math.max(-step,Math.min(step,target-hz));if(soft&&!target)hz=0;if(hz<1e-6){hz=0;oldReverse=reverse;}state.hz[p.id]=powered&&!conflict?hz:0;state.reverse[p.id]=oldReverse;}
      const hz=state.hz[p.id]??0;
-     if(powered&&!unbalanced&&!conflict){source(p,'24','COM',{r:24,i:0},.1);if(hz>0){const sign=state.reverse[p.id]?-1:1,line=expected*Math.min(1,hz/q.frequency);for(const [i,port]of ['U','V','W'].entries())sources.push({owner:p.id,positive:root(p,port),negative:'ref:'+p.id,v:phase(line/Math.sqrt(3),-sign*i*2*Math.PI/3),r:.001,frequency:hz});}}
+     if(powered&&!unbalanced&&!conflict){source(p,'24','COM',{r:24,i:0},.1);if(hz>0){const sign=state.reverse[p.id]?-1:1,progress=Math.min(1,hz/q.frequency),line=soft?expected*(q.target/100+(1-q.target/100)*progress):expected*progress;for(const [i,port]of outs.entries())sources.push({owner:p.id,positive:root(p,port),negative:'ref:'+p.id,v:phase(line/Math.sqrt(3),-sign*i*2*Math.PI/3),r:.001,frequency:soft?q.frequency*Math.max(.15,progress):hz});}}
      if(input>1)load(p,single?'L':'L1',single?'N':'L2',input*input/Math.max(1,(lastPower[p.id]??0)/.95));
     }
     if(kind==='inverter'||kind==='dcdc'||kind.startsWith('micro')||kind==='controller'){
@@ -113,7 +130,20 @@ export function stepEquipment(board:Board,previous:State,memory:Memory,controls:
    for(const [i,s]of sources.entries()){assign(s.negative,zero);const hidden='source:'+i;assign(hidden,s.v);branch('source:'+i,hidden,s.positive,s.r);frequency[s.positive]=s.frequency;}
    const result=solve(branches,fixed);amps=result.amps;lastVolts={};for(const p of board.parts)for(const port of ports(p.kind)){const value=result.volts[root(p,port.id)];if(value)lastVolts[pkey(p,port.id)]=value;}
    lastPower={};for(const [i,s]of sources.entries()){const current=amps['source:'+i]??zero,terminal=sub(result.volts[s.positive]??zero,result.volts[s.negative]??zero);lastPower[s.owner]=(lastPower[s.owner]??0)+Math.max(0,terminal.r*current.r+terminal.i*current.i);}
-   let changed=false;for(const p of board.parts)if(p.kind==='contactor'){const energized=mag(read(p,'A1','A2'))>=p.params.voltage*.75;if(energized!==!!state.contacts[p.id])changed=true;state.contacts[p.id]=energized;}
+   let changed=false;
+   for(const p of board.parts){if(!guarded(p.kind))continue;
+    const I=Math.max(0,...POLES[p.kind].map(([a])=>mag(amps[p.id+':'+a]??zero)));currents[p.id]=I;
+    /* Diferencial: la corriente que sale por el polo de fase y no vuelve por el neutro es corriente residual (fuga a tierra). */
+    if(p.kind==='differential'&&control(p)&&!state.tripped[p.id]){const a=amps[p.id+':1']??zero,b=amps[p.id+':3']??zero;if(Math.hypot(a.r+b.r,a.i+b.i)>RESIDUAL){state.tripped[p.id]=true;state.leak[p.id]=true;changed=true;}}
+    if(p.kind!=='thermal'&&control(p)&&!state.tripped[p.id]&&I>rated(p)*MAGNETIC){state.tripped[p.id]=true;changed=true;}
+    /* El elemento térmico no sigue las puntas breves (arranque): responde hasta 2,5 veces la corriente de ajuste; lo mayor lo cubre el disparo magnético. */
+    if(pass===1){const ratio=Math.min(I/rated(p),2.5),heat=state.heat[p.id]??0;state.heat[p.id]=ratio>OVERLOAD?Math.min(1.5,heat+(ratio*ratio-1)*dt/HEAT_TIME):Math.max(0,heat-dt/COOL_TIME);if(state.heat[p.id]>=1&&!state.tripped[p.id]&&control(p)){state.tripped[p.id]=true;changed=true;}}
+   }
+   if(pass===1)for(const p of board.parts){
+    if(p.kind==='timer')state.timers[p.id]=state.contacts[p.id]?(state.timers[p.id]??0)+dt:0;
+    if(p.kind==='motor'||p.kind==='motor3'){const pairs=p.kind==='motor3'?[['U1','U2'],['V1','V2'],['W1','W2']]:[['L','N']],powered=pairs.every(([a,b])=>mag(read(p,a,b))>p.params.voltage*.2);state.timers[p.id]=powered?(state.timers[p.id]??0)+dt:0;}
+   }
+   for(const p of board.parts)if(p.kind==='contactor'||p.kind==='timer'){const energized=mag(read(p,'A1','A2'))>=p.params.voltage*.75;if(energized!==!!state.contacts[p.id])changed=true;state.contacts[p.id]=energized;}
    if(pass>=4&&!changed){stable=true;break;}
   }
   if(!stable&&board.parts.length)warnings.add('La maniobra no se estabilizó; revisa los enclavamientos.');
@@ -121,13 +151,16 @@ export function stepEquipment(board:Board,previous:State,memory:Memory,controls:
    const port=ports(kind),v=port.length>=2?read(p,port[0].id,port[1].id):zero;r.voltage=mag(v);r.current=mag(amps[p.id]??zero);r.power=r.voltage*r.current;
    if(maintained(kind))r.status=control(p)?(kind==='thermal'?'Normal':'Cerrado'):(kind==='emergency'?'Enclavada':kind==='thermal'?'Disparo de práctica':'Abierto');
    if(kind==='push-no'||kind==='push-nc'){r.closed=kind==='push-no'?!!pressed[p.id]:!pressed[p.id];r.status=pressed[p.id]?'Pulsado':'Suelto';}
+   if(guarded(kind)){r.current=currents[p.id]??0;r.power=r.voltage*r.current;if(state.tripped[p.id]){r.closed=false;const cause=state.leak[p.id]?'fuga a tierra (corriente residual sobre 30 mA)':kind==='thermal'?'sobrecarga del motor':'sobrecarga o cortocircuito';r.status='Disparado por '+cause+' · apágalo y vuelve a conectar';warnings.add(`${p.tag}: disparó por ${cause}. Corrige la causa y rearma (OFF y luego ON).`);}else if((state.heat[p.id]??0)>.3&&control(p))r.status+=` · calentamiento ${Math.round(Math.min(1,state.heat[p.id])*100)} %`;}
+   if(kind==='timer'){const t=state.timers[p.id]??0,done=!!state.contacts[p.id]&&t>=q.ramp;r.voltage=mag(read(p,'A1','A2'));r.active=done;r.closed=done;r.status=state.contacts[p.id]?(done?'Retardo cumplido · 15–18 cerrado':`Contando ${t.toFixed(1)} / ${q.ramp} s`):'Sin bobina · 15–16 cerrado';}
    if(kind==='contactor'){r.voltage=mag(read(p,'A1','A2'));r.power=r.voltage*r.current;r.active=!!state.contacts[p.id];r.status=r.active?'Bobina activa':'En reposo';}
    if(kind==='aux-no'||kind==='aux-nc'){const on=board.parts.some(c=>c.kind==='contactor'&&c.tag===p.tag&&state.contacts[c.id]);r.closed=kind==='aux-no'?on:!on;r.status=r.closed?'Contacto cerrado':'Contacto abierto';}
    if(kind==='lamp'||kind==='buzzer'){r.voltage=mag(read(p,'1','2'));r.active=r.voltage>=q.voltage*.75;r.status=r.active?'Activo':'Apagado';}
    if(kind==='motor'||kind==='motor3'){
     const pairs=kind==='motor3'?[['U1','U2'],['V1','V2'],['W1','W2']]:[['L','N']];const values=pairs.map(([a,b])=>mag(read(p,a,b)));r.voltage=Math.max(...values);r.active=values.every(x=>x>q.voltage*.2);
-    r.frequency=r.active?(frequency[net.find(pkey(p,pairs[0][0]))]??q.frequency):0;r.rpm=r.active?120*r.frequency/q.poles*.95:0;r.power=pairs.reduce((sum,[a,b])=>sum+mag(read(p,a,b))**2/(q.voltage*q.voltage/q.power),0);if(kind==='motor3'){const u=read(p,'U1','V1'),v=read(p,'V1','W1');r.reverse=u.r*v.i-u.i*v.r>0;}r.status=r.active?`Marcha ${r.reverse?'↺':'↻'} · equivalente resistivo`:values.some(x=>x>1)?'Bobinado sin alimentación completa':'Detenido';
+    r.frequency=r.active?(frequency[net.find(pkey(p,pairs[0][0]))]??q.frequency):0;r.rpm=r.active?120*r.frequency/q.poles*.95:0;r.power=pairs.reduce((sum,[a,b])=>sum+mag(read(p,a,b))**2/(q.voltage*q.voltage/q.power),0);if(kind==='motor3'){const u=read(p,'U1','V1'),v=read(p,'V1','W1');r.reverse=u.r*v.i-u.i*v.r>0;}r.status=r.active?`Marcha ${r.reverse?'↺':'↻'} · equivalente resistivo`:values.some(x=>x>1)?'Bobinado sin alimentación completa':'Detenido';if(kind==='motor3'&&values.some(x=>x>1)&&!values.every(x=>x>q.voltage*.2))warnings.add(`${p.tag}: falta una fase o una bobina sin alimentar; en un motor real se calentaría y el térmico dispararía.`);
    }
+   if(kind==='softstart'){const progress=Math.min(1,(state.hz[p.id]??0)/q.frequency);r.frequency=state.hz[p.id]??0;r.active=progress>0;r.status=r.active?(progress>=.9999?'Plena tensión · puenteado':`Rampa ${Math.round(progress*100)} %`):'Detenido';r.voltage=mag(read(p,'T1','T2'));}
    if(kind==='vfd'||kind==='vfd3'){r.frequency=state.hz[p.id]??0;r.active=r.frequency>0;r.status=r.active?(Math.abs(r.frequency-q.target)<.01?'Marcha':'En rampa'):'Detenido';r.voltage=mag(read(p,'U','V'));}
    if(kind==='voltmeter'){r.voltage=mag(read(p,'V+','V−'));r.status='Tensión entre puntas';}
    if(kind==='ammeter')r.status='Corriente por el shunt';

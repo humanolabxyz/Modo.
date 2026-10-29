@@ -1,0 +1,41 @@
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_EVpBdxvTmydUJkavr6WRgc6xM4KK",
+    "url": "https://modo-fn2mil0iy-humanolabxyz-9765s-projects.vercel.app",
+    "productionUrl": "https://modo-lab-humanolabxyz-9765s-projects.vercel.app",
+    "inspectorUrl": "https://vercel.com/humanolabxyz-9765s-projects/modo-lab/EVpBdxvTmydUJkavr6WRgc6xM4KK",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_EVpBdxvTmydUJkavr6WRgc6xM4KK",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": [
+      "vercel_authentication"
+    ]
+  },
+  "message": "Deployment modo-fn2mil0iy-humanolabxyz-9765s-projects.vercel.app ready. Production URL: https://modo-lab-humanolabxyz-9765s-projects.vercel.app",
+  "next": [
+    {
+      "command": "vercel git connect --scope humanolabxyz-9765s-projects",
+      "when": "Automatically deploy changes on every push"
+    },
+    {
+      "command": "vercel curl https://modo-lab-humanolabxyz-9765s-projects.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect modo-fn2mil0iy-humanolabxyz-9765s-projects.vercel.app --scope humanolabxyz-9765s-projects",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --scope humanolabxyz-9765s-projects",
+      "when": "Promote to production"
+    }
+  ]
+}

@@ -15,13 +15,15 @@ import '../styles/procedures.css';
 import '../styles/touch-portrait.css';
 import '../styles/compact-ui.css';
 import '../styles/loto.css';
+import '../styles/modo-soft-ui.css';
+import '../styles/modo-identity.css';
 ---
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#F7F8FA" />
+    <meta name="theme-color" content="#e6e7e8" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/brand/modo-app-oscuro.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
@@ -50,11 +52,6 @@ import '../styles/loto.css';
     <link rel="icon" href="/brand/favicon.ico" sizes="any" />
     <title>modo. — Tu espacio de trabajo</title>
   <meta name="author" content="Humano Lab · Félix Levancini"/><meta name="robots" content="noindex, nofollow, noarchive"/><MotionHead/></head>
-  <body><ModoSplash/><App client:load />
-    <script>
-      if ('serviceWorker' in navigator && import.meta.env.PROD) {
-        window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
-      }
-    </script>
+  <body class="modo-soft-ui modo-identity"><ModoSplash/><App client:load />
   </body>
 </html>

@@ -1,11 +1,14 @@
+import {TransistorPinout} from './TransistorPinout';
+import {FloatingWindow} from '../components/FloatingWindow';
 import {useEffect,useId,useRef,useState,type ReactNode} from 'react';
 import {ArrowLeftRight,Check,Trash2,X} from 'lucide-react';
 import {IC_PIN_NAMES,parseHoleId,type ProtoComponent} from './model';
 import {holeName} from './dc';
+import {WIRE_PALETTE} from '../data/wireColors';
 import type {BJTState,IcState} from './dc';
 import {COMMON_OHMS,COMMON_SUPPLY,LED_DROP_MAX,LED_DROP_MIN,OHM_UNITS,SUPPLY_MAX,SUPPLY_MIN,formatAmps,formatOhms,formatVolts,parseGain,parseOhms,parseVolts,splitOhms,type OhmUnit,type Parsed} from './units';
 export const LED_COLORS=[{name:'Rojo',hex:'#d94848'},{name:'Verde',hex:'#2f9e5f'},{name:'Amarillo',hex:'#d6a516'},{name:'Azul',hex:'#2f6fd1'},{name:'Blanco',hex:'#9aa7b0'}];
-export const WIRE_COLORS=[{name:'Verde petróleo',hex:'#0f766e'},{name:'Rojo',hex:'#d94848'},{name:'Negro',hex:'#334155'},{name:'Azul',hex:'#2f6fd1'},{name:'Amarillo',hex:'#d6a516'},{name:'Naranja',hex:'#e07b2a'}];
+export const WIRE_COLORS=WIRE_PALETTE;
 
 /** Campo de valor con borrador: Enter confirma, Escape cancela y el error permanece junto al campo. */
 export function Field({label,value,onChange,onSubmit,error,disabled,autoFocus,children,inputMode='decimal'}:{label:string;value:string;onChange:(v:string)=>void;onSubmit:()=>void;error?:string;disabled?:boolean;autoFocus?:boolean;children?:ReactNode;inputMode?:'decimal'|'text'}){
@@ -74,8 +77,7 @@ function BjtForm({component,running,bjt,onApply,onClose}:Pick<EditorProps,'compo
   const [text,setText]=useState(String(component.value)),[touched,setTouched]=useState(false);
   const parsed:Parsed=parseGain(text),error=touched&&!parsed.ok?parsed.error:undefined;
   const apply=()=>{setTouched(true);if(!parsed.ok||running)return;if(parsed.value!==component.value)onApply({value:parsed.value});onClose();};
-  return <><Field label="Ganancia de corriente (hFE)" value={text} onChange={v=>{setText(v);setTouched(true);}} onSubmit={apply} error={error} disabled={running} autoFocus={!running}><span className="lab-suffix">β</span></Field>
-    <p className="lab-saved-as">{component.polarity==='pnp'?'PNP':'NPN'}, cara plana al frente: <strong>E · B · C</strong> de izquierda a derecha (patillaje típico del {component.polarity==='pnp'?'2N2907':'2N2222'} en TO-92; confirma con tu hoja de datos). Modelo didáctico: Vbe = 0,7 V, Ic = β·Ib en región activa y Vce ≈ 0,2 V en saturación.</p>
+  return <><TransistorPinout component={component}/><details className="lab-help"><summary>Parámetros del modelo</summary><Field label="Ganancia de corriente (hFE)" value={text} onChange={v=>{setText(v);setTouched(true);}} onSubmit={apply} error={error} disabled={running}><span className="lab-suffix">β</span></Field><p className="lab-saved-as">Modelo didáctico: |Vbe| ≈ 0,7 V, Ic = β·Ib en región activa y |Vce| ≈ 0,2 V en saturación.</p></details>
     {running&&bjt?<dl className="lab-bjt-readout"><div><dt>Región</dt><dd>{bjt.region}</dd></div><div><dt>Ib</dt><dd>{formatAmps(bjt.ib)}</dd></div><div><dt>Ic</dt><dd>{formatAmps(bjt.ic)}</dd></div><div><dt>Vbe</dt><dd>{formatVolts(Number(bjt.vbe.toFixed(3)))}</dd></div><div><dt>Vce</dt><dd>{formatVolts(Number(bjt.vce.toFixed(3)))}</dd></div></dl>:null}
     <Actions apply={apply} applyDisabled={!parsed.ok} running={running}/></>;
 }
@@ -88,10 +90,12 @@ function MoveForm({component,running,onMove}:Pick<EditorProps,'component'|'runni
     {error?<p className="lab-field-error" role="alert">{error}</p>:null}<button type="button" disabled={running} onClick={submit}>Mover</button>
   </details>;
 }
+/** Los editores son ventanas: se mueven, se ajustan por los bordes y recuerdan su lugar. */
+export function EditorWindow({title,subtitle,onClose,children}:{title:string;subtitle?:string;onClose:()=>void;children:ReactNode}){
+  return <FloatingWindow title={title} eyebrow={subtitle} width={340} side="right" top={104} className="lab-editor-window" scope=".lab-canvas-workspace" closeLabel="Cerrar edición" onClose={onClose}>{children}</FloatingWindow>;
+}
 export function ValueEditor({component,position,running,closed,amps,ic,bjt,failure,onMove,onApply,onSwitch,onSwap,onRemove,onClose,onPreview}:EditorProps){
-  const heading=useId();
-  return <div className="lab-editor-pop" role="dialog" aria-labelledby={heading} onKeyDown={e=>{if(e.key==='Escape'){e.stopPropagation();onClose();}}}>
-    <header><div><strong id={heading}>{TITLES[component.kind]}</strong><small>{position}</small></div><button type="button" className="lab-icon-button" aria-label="Cerrar edición" onClick={onClose}><X size={16}/></button></header>
+  return <EditorWindow title={TITLES[component.kind]} subtitle={position} onClose={onClose}><div className="lab-editor-pop">
     {failure?<p className="lab-failure" role="alert"><strong>Componente dañado</strong>{failure}. Se comporta como circuito abierto; se repone al detener la simulación.</p>:null}
     {component.kind==='resistor'?<ResistorForm component={component} running={running} onApply={onApply} onPreview={onPreview} onClose={onClose}/>:null}
     {component.kind==='led'?<LedForm component={component} running={running} onApply={onApply} onClose={onClose}/>:null}
@@ -101,12 +105,12 @@ export function ValueEditor({component,position,running,closed,amps,ic,bjt,failu
     {component.kind==='l293d'?<IcInfo ic={ic} running={running}/>:null}
     {component.kind==='button'?<p className="lab-saved-as">Pulsador normalmente abierto: conduce solo mientras lo mantienes presionado durante la simulación (pulsa y mantén sobre el componente o con Espacio).</p>:null}
     {component.kind==='switch'?<><p className="lab-saved-as">{closed?'Cerrado: conduce.':'Abierto: no conduce.'}{running?' Durante la simulación el cambio es temporal y no modifica el diseño guardado.':''}</p><button type="button" className="lab-wide" aria-pressed={closed} onClick={()=>running?onSwitch(!closed):onApply({closed:!component.closed})}>{closed?'Abrir interruptor':'Cerrar interruptor'}</button></>:null}
-    {component.kind==='wire'?<><p className="lab-saved-as">Color del puente</p><Swatches colors={WIRE_COLORS} current={component.color} label="Color del puente" disabled={running} onPick={hex=>onApply({color:hex})}/></>:null}
+    {component.kind==='wire'?<section className="lab-bridge-colors"><h4>Cambiar color del puente</h4><p className="lab-bridge-current" aria-live="polite"><i style={{backgroundColor:component.color}} aria-hidden="true"/>Actual: {WIRE_COLORS.find(c=>c.hex.toLowerCase()===component.color.toLowerCase())?.name??'Personalizado'}</p><div className="lab-bridge-palette" role="group" aria-label="Color del puente">{WIRE_COLORS.map(c=><button key={c.hex} type="button" disabled={running} aria-pressed={c.hex.toLowerCase()===component.color.toLowerCase()} onClick={()=>onApply({color:c.hex})}><i style={{backgroundColor:c.hex}} aria-hidden="true"/><span>{c.name}</span>{c.hex.toLowerCase()===component.color.toLowerCase()?<Check size={16} aria-hidden="true"/>:null}</button>)}</div></section>:null}
     {running&&amps!==undefined&&(component.kind==='resistor'||component.kind==='led'||component.kind==='motor'||component.kind==='diode')?<div className="lab-reading"><span>Corriente medida</span><strong>{formatAmps(component.kind==='motor'?amps:Math.abs(amps))}</strong>{component.kind==='motor'?<small>{Math.abs(amps)<1e-6?'parado':amps>0?'giro horario ↻':'giro antihorario ↺'}</small>:null}{component.kind==='resistor'?<small>{formatOhms(component.value)} · {(amps*amps*component.value*1000).toFixed(2).replace('.',',')} mW</small>:null}</div>:null}
     {running?<p className="lab-lock-note">Detén la simulación para editar el circuito.</p>:null}
     {running?null:<MoveForm key={`${component.from}|${component.to}`} component={component} running={running} onMove={onMove}/>}
     <footer>{component.kind==='led'||component.kind==='motor'||component.kind==='diode'?<button type="button" disabled={running} onClick={onSwap}><ArrowLeftRight size={15}/>Invertir polaridad</button>:null}<button type="button" className="lab-danger" disabled={running} onClick={onRemove}><Trash2 size={15}/>Retirar</button></footer>
-  </div>;
+  </div></EditorWindow>;
 }
 
 /** Fuente DC: valor visible y editable con el mismo flujo de borrador y confirmación. */

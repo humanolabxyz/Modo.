@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-25",
+  "project": "modo-lab",
+  "deployment": "dpl_36yDu4Jw4w8hAdi4RqpttAezMSxz",
+  "url": "https://modo-87807ifzu-humanolabxyz-9765s-projects.vercel.app",
+  "production": "https://modo-lab.vercel.app/",
+  "status": "READY",
+  "offlineChecks": 22,
+  "assets": 506,
+  "bytes": 163165923,
+  "publicBuild": "16cf0eb284b9284c",
+  "unexpectedErrors": 0,
+  "externalRequests": 0
+}

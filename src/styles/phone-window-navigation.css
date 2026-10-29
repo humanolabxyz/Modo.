@@ -1,0 +1,81 @@
+/* Phones use viewport-bounded panels; desktop/tablet windows keep their free layout. */
+body .mobile-floating-window[data-phone-layout=true] {
+  min-height: 0 !important;
+  border-radius: 12px;
+  transform: none !important;
+}
+.mobile-floating-window[data-phone-layout=true] .fw-edge,
+.mobile-floating-window[data-phone-layout=true]>.floating-window-footer,
+.mobile-floating-window[data-phone-layout=true] .floating-window-max {
+  display: none !important;
+}
+.mobile-floating-window[data-phone-layout=true]>.floating-window-header {
+  cursor: default;
+  touch-action: pan-y;
+}
+.mobile-floating-window[data-phone-layout=true]>.floating-window-body {
+  margin-right: 0;
+  padding-right: 14px;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+.mobile-floating-window[data-phone-layout=true] .floating-window-content {
+  min-width: 0;
+  max-width: 100%;
+}
+.mobile-floating-window[data-phone-layout=true] .floating-window-header>button {
+  min-width: 44px;
+  min-height: 44px;
+}
+/* In landscape a fixed lesson header + fixed reading consumed the entire height.
+   Keep only the window header fixed, and scroll the lesson as one native surface. */
+body .mobile-floating-window[data-phone-landscape=true].is-measuring>.floating-window-body,
+body .mobile-floating-window[data-phone-layout=true].is-measuring:not(.is-measurement-ready)>.floating-window-body,
+body .mobile-floating-window[data-phone-layout=true].is-editing-measurement>.floating-window-body {
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+body .mobile-floating-window[data-phone-landscape=true].is-measuring :is(.floating-window-content,.measure-lesson-content),
+body .mobile-floating-window[data-phone-layout=true].is-measuring:not(.is-measurement-ready) :is(.floating-window-content,.measure-lesson-content),
+body .mobile-floating-window[data-phone-layout=true].is-editing-measurement :is(.floating-window-content,.measure-lesson-content) {
+  display: block;
+  flex: none;
+  height: auto;
+  min-height: 0;
+}
+body .mobile-floating-window[data-phone-landscape=true].is-measuring .measure-lesson-body,
+body .mobile-floating-window[data-phone-layout=true].is-measuring:not(.is-measurement-ready) .measure-lesson-body,
+body .mobile-floating-window[data-phone-layout=true].is-editing-measurement .measure-lesson-body {
+  overflow: visible;
+  flex: none;
+  height: auto;
+}
+.diagram-menu-shortcut { display: none; }
+@media (pointer:coarse) and (max-width:520px), (pointer:coarse) and (max-height:520px) and (max-width:1000px) {
+  .diagram-menu-shortcut { display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+  body .app-shell.editor-workbench.is-compact .diagram-window[data-phone-layout=true] {
+    left: calc(env(safe-area-inset-left,0px) + 6px) !important;
+    right: calc(env(safe-area-inset-right,0px) + 6px) !important;
+    top: calc(var(--bar-total,44px) + 6px) !important;
+    bottom: calc(env(safe-area-inset-bottom,0px) + 6px) !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0;
+    max-height: none;
+    z-index: 120;
+    transform: none !important;
+  }
+  .diagram-window[data-phone-layout=true] .float-handle { display: none; }
+  .diagram-window[data-phone-layout=true] .diagram-pane-actions { cursor: default; gap: 4px; padding: 5px 8px; }
+  .diagram-window[data-phone-layout=true] .diagram-move-handle { cursor: default; }
+  .diagram-window[data-phone-layout=true] .diagram-pane-actions>button { min-height: 44px; padding: 6px 9px; }
+  .diagram-window[data-phone-layout=true] .diagram-pane-body { -webkit-overflow-scrolling: touch; touch-action: pan-y; }
+}
+@media (pointer:coarse) and (orientation:landscape) and (max-height:520px) and (max-width:1000px) {
+  body .app-shell.editor-workbench.is-compact .diagram-window[data-phone-layout=true] {
+    left: auto !important;
+    width: min(540px,64vw) !important;
+  }
+}

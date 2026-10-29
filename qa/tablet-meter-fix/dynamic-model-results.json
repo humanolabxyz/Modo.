@@ -1,0 +1,168 @@
+{
+  "checks": [
+    "R+jX: desfase y magnitud contrastados con solución analítica",
+    "Red serie compleja: continuidad de corriente y divisor de tensión",
+    "A igual deslizamiento y red ideal: corriente Δ/Y = 3",
+    "Caída de red bajo carga y ausencia de tensión con fuerza abierta",
+    "Arranque en estrella: aceleración y caída de corriente hasta estabilización",
+    "Estrella→triángulo: velocidad continua y nueva aceleración/corriente",
+    "Aumentar carga incrementa corriente y deslizamiento, y produce mayor caída de tensión",
+    "Carga excesiva: rotor bloqueado y corriente de arranque sostenida",
+    "Desenergizar: corriente nula y parada con inercia hasta cero",
+    "Secuencia inversa: velocidad mecánica negativa",
+    "Regresión: continuidad conserva la resistencia de puntas/contacto"
+  ],
+  "start": {
+    "motion": {
+      "rpm": 1473.4541367138795,
+      "torqueNm": 4.771498781883729,
+      "slip": 0.017697242190746976,
+      "phaseVolts": 219.21414243634177,
+      "stalled": false
+    },
+    "samples": [
+      {
+        "seconds": 0,
+        "rpm": 7.145996372848704,
+        "amps": 14.222093681019803,
+        "volts": 378.3547409923639
+      },
+      {
+        "seconds": 1,
+        "rpm": 433.37214544722036,
+        "amps": 13.727363645970076,
+        "volts": 378.22297011359205
+      },
+      {
+        "seconds": 2,
+        "rpm": 1148.1028732211162,
+        "amps": 10.412352387128857,
+        "volts": 378.03712832716633
+      },
+      {
+        "seconds": 3,
+        "rpm": 1473.3763296006964,
+        "amps": 1.7054643101574511,
+        "volts": 379.68898157323395
+      },
+      {
+        "seconds": 4,
+        "rpm": 1473.4541330015268,
+        "amps": 1.7022929953981516,
+        "volts": 379.69003238723633
+      },
+      {
+        "seconds": 5,
+        "rpm": 1473.454136713703,
+        "amps": 1.7022928441898597,
+        "volts": 379.6900324373823
+      }
+    ]
+  },
+  "switched": {
+    "motion": {
+      "rpm": 1491.437127142557,
+      "torqueNm": 4.78091465365369,
+      "slip": 0.005708581904961929,
+      "phaseVolts": 379.680537470857,
+      "stalled": false
+    },
+    "samples": [
+      {
+        "seconds": 0,
+        "rpm": 1483.5300740630473,
+        "amps": 5.098550191126452,
+        "volts": 379.0708306677843
+      },
+      {
+        "seconds": 1,
+        "rpm": 1491.437127142557,
+        "amps": 3.704485318099091,
+        "volts": 379.68053747085696
+      },
+      {
+        "seconds": 2,
+        "rpm": 1491.437127142557,
+        "amps": 3.704485318099091,
+        "volts": 379.68053747085696
+      },
+      {
+        "seconds": 3,
+        "rpm": 1491.437127142557,
+        "amps": 3.704485318099091,
+        "volts": 379.68053747085696
+      }
+    ]
+  },
+  "loaded": {
+    "motion": {
+      "rpm": 1468.4410050031686,
+      "torqueNm": 16.76887391225795,
+      "slip": 0.0210393299978876,
+      "phaseVolts": 378.90608513256035,
+      "stalled": false
+    },
+    "samples": [
+      {
+        "seconds": 0,
+        "rpm": 1478.7047316952055,
+        "amps": 3.704485318099091,
+        "volts": 379.68053747085696
+      },
+      {
+        "seconds": 1,
+        "rpm": 1468.4410050031686,
+        "amps": 5.615144578013896,
+        "volts": 378.90608513256035
+      },
+      {
+        "seconds": 2,
+        "rpm": 1468.4410050031686,
+        "amps": 5.615144578013896,
+        "volts": 378.90608513256035
+      },
+      {
+        "seconds": 3,
+        "rpm": 1468.4410050031686,
+        "amps": 5.615144578013896,
+        "volts": 378.90608513256035
+      },
+      {
+        "seconds": 4,
+        "rpm": 1468.4410050031686,
+        "amps": 5.615144578013896,
+        "volts": 378.90608513256035
+      }
+    ]
+  },
+  "blocked": {
+    "motion": {
+      "rpm": 0,
+      "torqueNm": 10.734942912256239,
+      "slip": 1,
+      "phaseVolts": 218.4432115611124,
+      "stalled": true
+    },
+    "samples": [
+      {
+        "seconds": 0,
+        "rpm": 0,
+        "amps": 14.222093681019803,
+        "volts": 378.3547409923639
+      },
+      {
+        "seconds": 1,
+        "rpm": 0,
+        "amps": 14.222093681019803,
+        "volts": 378.3547409923639
+      }
+    ]
+  },
+  "reverse": {
+    "rpm": -1491.250592500789,
+    "torqueNm": 4.780816984343582,
+    "slip": 0.0058329383328072915,
+    "phaseVolts": 375.67042819724145,
+    "stalled": false
+  }
+}

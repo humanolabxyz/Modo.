@@ -1,5 +1,8 @@
 ---
+import OfflineRegistration from '../components/OfflineRegistration.astro';
 import '../styles/legal.css';
+import '../styles/modo-soft-ui.css';
+import '../styles/modo-identity.css';
 ---
 <!doctype html>
 <html lang="es">
@@ -12,7 +15,7 @@ import '../styles/legal.css';
     <link rel="icon" href="/brand/modo-app-oscuro.svg" type="image/svg+xml" />
     <title>Créditos y políticas · Humano Lab · modo.</title>
   </head>
-  <body>
+  <body class="modo-soft-ui modo-identity">
     <a class="legal-skip" href="#contenido">Ir al contenido</a>
     <header class="legal-header">
       <a href="/" aria-label="modo. · inicio"><img src="/brand/modo-logo-horizontal-color.svg" alt="modo." width="100" height="40" /></a>
@@ -77,5 +80,5 @@ import '../styles/legal.css';
       </section>
       <footer class="legal-footer">© 2026 Humano Lab · Creación y dirección: Félix Levancini.<br/><a href="/">Volver a modo.</a></footer>
     </main>
-  </body>
+  <OfflineRegistration/></body>
 </html>

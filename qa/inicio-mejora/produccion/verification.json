@@ -1,0 +1,12 @@
+{
+  "base": "https://modo-lab.vercel.app",
+  "checks": [
+    "Simulador, datos, prácticas y materia conservan sus hashes",
+    "Inicio sin aviso de prueba; tres accesos y ocho herramientas utilizables a 360/390/768/1024/1440/1920 px",
+    "El panel abre y regresa al inicio; el aviso de la prueba permanece dentro de Estudio",
+    "Tarjetas de Estudio y laboratorio conservan sus destinos",
+    "Una práctica con cable guardado se reconoce y continúa sin reemplazar su documento",
+    "Sin excepciones ni errores de consola"
+  ],
+  "errors": []
+}

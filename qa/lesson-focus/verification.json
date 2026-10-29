@@ -1,0 +1,96 @@
+{
+  "checks": [
+    "Specific lesson has one concept/example/question at a time, optional resources, scoped class switch, wrong-answer retry, correct continuation and saved answers",
+    "Other source lessons retain their own topic; full review keeps all five topics accessible",
+    "Four teacher problems keep original questions and show the requested solution one step at a time",
+    "Lesson detail fits phone, tablet and desktop without horizontal overflow",
+    "820x1180: live orientation resize, native applet fits frame, full-width graph, expand/restore preserves construction",
+    "1180x820: live orientation resize, native applet fits frame, full-width graph, expand/restore preserves construction",
+    "390x844: live orientation resize, native applet fits frame, full-width graph, expand/restore preserves construction",
+    "844x390: live orientation resize, native applet fits frame, full-width graph, expand/restore preserves construction",
+    "820x1180: live orientation resize, native applet fits frame, full-width graph, expand/restore preserves construction"
+  ],
+  "errors": [],
+  "geometry": [
+    {
+      "width": 820,
+      "height": 1180,
+      "normal": {
+        "x": 5,
+        "y": 107,
+        "width": 810,
+        "height": 1020
+      },
+      "expanded": {
+        "x": 0,
+        "y": 0,
+        "width": 820,
+        "height": 1136
+      }
+    },
+    {
+      "width": 1180,
+      "height": 820,
+      "normal": {
+        "x": 5,
+        "y": 107,
+        "width": 1170,
+        "height": 660
+      },
+      "expanded": {
+        "x": 0,
+        "y": 0,
+        "width": 1180,
+        "height": 776
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "normal": {
+        "x": 5,
+        "y": 107,
+        "width": 380,
+        "height": 684
+      },
+      "expanded": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 800
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "normal": {
+        "x": 5,
+        "y": 107,
+        "width": 834,
+        "height": 230
+      },
+      "expanded": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 346
+      }
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "normal": {
+        "x": 5,
+        "y": 107,
+        "width": 810,
+        "height": 1020
+      },
+      "expanded": {
+        "x": 0,
+        "y": 0,
+        "width": 820,
+        "height": 1136
+      }
+    }
+  ]
+}

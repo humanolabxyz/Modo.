@@ -1,7 +1,7 @@
 import {RETIRED_TERMINAL_IDS,TERMINAL_BY_ID,isExtraModuleId} from './panel';
 import {BANANA_COLOR,emptyPractice,type BananaCable,type PracticeDocument,type Point} from './practice';
 import {CADE_PORTS} from './cade';
-import {DEFAULT_CADE_BINDINGS} from './panelCorrespondence';
+import {cadePortKey,bindingConflict,migrateCadeBindings} from './panelCorrespondence';
 import {modulePos} from './layout';
 import {readAssessment} from './assessmentState';
 export {TERMINAL_BY_ID};
@@ -29,12 +29,17 @@ export function createCable(from:string,to:string,wires:BananaCable[],color=BANA
  if(!TERMINAL_BY_ID.has(from)||!TERMINAL_BY_ID.has(to)||from===to)throw new Error('Selecciona dos bornes distintos del inventario.');
  return {id:crypto.randomUUID(),from:{terminalId:from},to:{terminalId:to},color,route:{sag:130},layer:wires.reduce((n,w)=>Math.max(n,w.layer),0)+1};
 }
-export function cableGeometry(wire:BananaCable,wires:BananaCable[]){
+/** Sort once for the whole scene; stack positions remain identical to the per-terminal ordering. */
+export function indexCableEndpoints(wires:BananaCable[]){
+ const ordered=[...wires].sort((a,b)=>a.layer-b.layer||a.id.localeCompare(b.id)),slots=new Map<string,Map<string,number>>();
+ for(const w of ordered)for(const id of [w.from.terminalId,w.to.terminalId]){let siblings=slots.get(id);if(!siblings){siblings=new Map();slots.set(id,siblings)}siblings.set(w.id,siblings.size);}
+ return {ordered,slots};
+}
+export function cableGeometry(wire:BananaCable,wires:BananaCable[],index?:ReturnType<typeof indexCableEndpoints>){
  const endpoint=(end:'from'|'to')=>{
   const id=wire[end].terminalId;const point=terminalPoint(id)!;
-  const siblings=wires.filter(w=>w.from.terminalId===id||w.to.terminalId===id).sort((a,b)=>a.layer-b.layer||a.id.localeCompare(b.id));
-  const index=siblings.findIndex(w=>w.id===wire.id);
-  const stack=wire[end].stackOffset||{x:Math.max(0,index)*8,y:Math.max(0,index)*-5};
+  const position=index?.slots.get(id)?.get(wire.id)??wires.filter(w=>w.from.terminalId===id||w.to.terminalId===id).sort((a,b)=>a.layer-b.layer||a.id.localeCompare(b.id)).findIndex(w=>w.id===wire.id);
+  const stack=wire[end].stackOffset||{x:Math.max(0,position)*8,y:Math.max(0,position)*-5};
   const offset=end==='from'?wire.route?.fromOffset:wire.route?.toOffset;
   return {point,head:{x:point.x+stack.x,y:point.y+stack.y},offset:offset||{x:0,y:0}};
  };
@@ -71,13 +76,14 @@ export function readPractice(value:unknown):PracticeDocument{
   stepIds.add(s.id);return s;
  });
  if(allSteps.length&&!diagram)throw new Error('Los pasos necesitan su imagen de referencia.');
- const learning=v.learning as PracticeDocument['learning'];
+ let learning=v.learning as PracticeDocument['learning'];
  if(learning){
   if(!['guided','free','exam'].includes(learning.mode)||!Number.isInteger(learning.index)||learning.index<0||learning.index>=47||![1,2,3].includes(learning.assistance)||!learning.bindings||typeof learning.bindings!=='object'||Array.isArray(learning.bindings)||typeof learning.examFinished!=='boolean'||!learning.answers||typeof learning.answers!=='object'||Array.isArray(learning.answers)||Object.values(learning.answers).some(s=>typeof s!=='string'||s.length>3000)||Object.entries(learning.bindings).some(([key,id])=>!key.startsWith('-')||typeof id!=='string'||id!==''&&!knownTerminal(id)))throw new Error('El progreso o las correspondencias de PERFECTO no son válidos.');
-  const known=new Set(CADE_PORTS.map(p=>`${p.reference}:${p.terminal}`));
+  learning={...learning,bindings:migrateCadeBindings(learning.bindings)};
+  const known=new Set(CADE_PORTS.map(cadePortKey));
   if(Object.keys(learning.bindings).some(k=>!known.has(k)))throw new Error('La correspondencia no pertenece a PERFECTO.');
-  const defaults=DEFAULT_CADE_BINDINGS;
-  const assigned=Object.values({...defaults,...learning.bindings}).filter(Boolean);if(new Set(assigned).size!==assigned.length)throw new Error('Dos bornes del esquema no pueden asignarse al mismo borne físico.');
+  const personalBindings=learning.bindings;
+  if(Object.entries(personalBindings).some(([key,id])=>bindingConflict(key,id,personalBindings)))throw new Error('Dos bornes independientes del esquema no pueden asignarse al mismo borne físico.');
  }
  const retired=(a:string,b:string)=>RETIRED_TERMINAL_IDS.has(a)||RETIRED_TERMINAL_IDS.has(b);
  const wires=allWires.filter(w=>!retired(w.from.terminalId,w.to.terminalId)),steps=allSteps.filter(s=>!retired(s.from,s.to));

@@ -1,0 +1,24 @@
+---
+import OfflineRegistration from '../components/OfflineRegistration.astro';
+import {APP_VERSION,releases} from '../data/releases';
+import '../styles/legal.css';
+import '../styles/modo-soft-ui.css';
+import '../styles/modo-identity.css';
+---
+<!doctype html>
+<html lang="es">
+ <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex, nofollow, noarchive"/><meta name="description" content="Versiones y cambios de modo., el laboratorio eléctrico de Humano Lab."/><link rel="icon" href="/brand/modo-app-oscuro.svg" type="image/svg+xml"/><title>Versión {APP_VERSION} · Cambios · modo.</title></head>
+ <body class="modo-soft-ui modo-identity">
+  <header class="legal-header"><a href="/" aria-label="modo. · inicio"><img src="/brand/modo-logo-horizontal-color.svg" alt="modo." width="100" height="40"/></a><a href="/">Volver al inicio</a></header>
+  <main class="legal-main release-main">
+   <p class="legal-eyebrow">HISTORIAL DEL LABORATORIO</p><h1>Así evoluciona<br/>modo.</h1><p class="legal-intro">Versión actual <strong>{APP_VERSION}</strong> · Humano Lab</p>
+   <p class="release-note">Las novedades se agrupan por versión. Las entregas antiguas sin numeración propia se resumen en su base documentada.</p>
+   <nav class="legal-nav" aria-label="Versiones">{releases.map(release=><a href={`#v${release.version}`}>v{release.version}</a>)}</nav>
+   {releases.map((release,index)=><article id={`v${release.version}`} class="release-card"><header><span class="release-badge">v{release.version}{index===0?' · Actual':''}</span><p>{release.date}</p><h2>{release.title}</h2></header>{release.groups.map(group=><section><h3>{group.title}</h3><ul>{group.items.map(item=><li>{item}</li>)}</ul></section>)}</article>)}
+   <footer class="release-note">Creación y dirección: Félix Levancini · Humano Lab. El progreso se guarda en el navegador; GeoGebra dispone de un motor local. <a href="/sin-conexion/">Preparar viaje</a>. <a href="/legal/">Créditos y políticas</a>.</footer>
+  </main>
+ <OfflineRegistration/></body>
+</html>
+<style>
+ .release-main{max-width:980px}.release-note{font-size:14px;line-height:1.7;color:#595c61}.release-card{scroll-margin-top:24px;margin:28px 0;padding:28px;background:#fff;border:1px solid #dddfe2;border-radius:22px;box-shadow:8px 8px 20px #cfd2d680,-8px -8px 20px #fff}.release-card>header>p{font-size:13px;color:#595c61}.release-card h2{font-size:27px;line-height:1.25;letter-spacing:-.7px;margin:14px 0 24px}.release-card section{padding:18px 0;border-top:1px solid #e4e5e7}.release-card h3{font-size:17px;margin:0 0 12px}.release-card ul{padding-left:20px;margin:0;display:grid;gap:9px}.release-card li{font-size:15px;line-height:1.7;color:#41454b}.release-badge{display:inline-flex;padding:8px 12px;border-radius:10px;background:#242527;color:#fff;font-size:13px;font-weight:600}.legal-header>a:last-child{font-size:14px;color:#242527;text-decoration:none;padding:12px}.release-note a{color:#242527}@media(max-width:600px){.release-card{padding:20px;border-radius:18px}.release-card h2{font-size:23px}.release-card li{font-size:14px}}
+</style>

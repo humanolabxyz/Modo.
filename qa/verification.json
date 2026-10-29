@@ -1,14 +1,52 @@
 {
-  "url": "http://127.0.0.1:4410/",
+  "url": "http://127.0.0.1:4399",
   "checks": [
     "6 visible modules, 94 interactive terminals, empty panel without demo cables",
     "SVG terminal labels do not overlap socket faces",
     "94 complete printed labels at 16 SVG units, independently associated with each terminal",
-    "All labels remain inside their module; 95 and 96 have at least 12 px glyph height in desktop overview"
+    "All labels remain inside their module; 95 and 96 have at least 12 px glyph height in desktop overview",
+    "Search + canvas highlight + inspector: 95",
+    "Search + canvas highlight + inspector: 96",
+    "Search + canvas highlight + inspector: 97",
+    "Search + canvas highlight + inspector: 98",
+    "Search + canvas highlight + inspector: 55",
+    "Search + canvas highlight + inspector: 56",
+    "Search + canvas highlight + inspector: 67",
+    "Search + canvas highlight + inspector: 68",
+    "Search + canvas highlight + inspector: A1",
+    "Search + canvas highlight + inspector: 13",
+    "Search + canvas highlight + inspector: S2:3",
+    "Search + canvas highlight + inspector: BOTONERAS:S2:3",
+    "Empty search and Escape",
+    "All 94 terminals selected by physical click, correct inspector, confidence and independent A1 IDs",
+    "Keyboard Enter and native terminal selector",
+    "Zoom in/out/reset; mouse pan and keyboard arrows/Home",
+    "Personal aliases, search all matches, reload persistence and Inicio/continue",
+    "Photo modal, keyboard focus trap and Escape",
+    "Actual diagram reference is opened on request",
+    "Module filters",
+    "Desktop 1440/1920, tablet 768, mobile 390/360: no page overflow and functioning inspector",
+    "Mobile touch: physical terminal tap and canvas drag",
+    "No browser exceptions, failed requests or console errors"
   ],
-  "errors": [
-    "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok((await page.locator('.info-lines').innerText()).includes(query==='BOTONERAS:S2:3'?'BOTONERAS:S2:3':query))\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-ui.cjs:65:27"
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    }
   ],
-  "viewports": [],
-  "selectedTerminals": 0
+  "selectedTerminals": 94
 }

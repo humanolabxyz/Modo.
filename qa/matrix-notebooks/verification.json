@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "matrices-operaciones: direct navigation, example steps, analysis answers persisted, prompts in GeoGebra, no false completion",
+    "matrices-producto: direct navigation, example steps, analysis answers persisted, prompts in GeoGebra, no false completion",
+    "matrices-sistemas: direct navigation, example steps, analysis answers persisted, prompts in GeoGebra, no false completion",
+    "1440: notebook fits viewport",
+    "820: notebook fits viewport",
+    "390: notebook fits viewport, mobile practice opens correct lesson",
+    "Functions: practice opens its own lesson",
+    "Unreadable stored answers preserved"
+  ],
+  "errors": []
+}

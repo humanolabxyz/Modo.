@@ -1,0 +1,25 @@
+{
+  "base": "https://modo-lab.vercel.app/",
+  "checks": [
+    "chromium 393: 10 laboratory modes, 8 menus, 13 dialogs, theme and bounds",
+    "chromium 393: panel opens diagram, tablet floating drag",
+    "chromium 393: home, study course, community, policies and versions",
+    "chromium 1180: 10 laboratory modes, 8 menus, 13 dialogs, theme and bounds",
+    "chromium 1180: panel opens diagram, tablet floating drag",
+    "chromium 1180: home, study course, community, policies and versions",
+    "chromium 1440: 10 laboratory modes, 8 menus, 2 dialogs, theme and bounds",
+    "chromium 1440: panel opens diagram, tablet floating drag",
+    "chromium 1440: home, study course, community, policies and versions",
+    "webkit 393: 10 laboratory modes, 8 menus, 13 dialogs, theme and bounds",
+    "webkit 393: panel opens diagram, tablet floating drag",
+    "webkit 393: home, study course, community, policies and versions",
+    "webkit 1180: 10 laboratory modes, 8 menus, 13 dialogs, theme and bounds",
+    "webkit 1180: panel opens diagram, tablet floating drag",
+    "webkit 1180: home, study course, community, policies and versions",
+    "webkit 1440: 10 laboratory modes, 8 menus, 2 dialogs, theme and bounds",
+    "webkit 1440: panel opens diagram, tablet floating drag",
+    "webkit 1440: home, study course, community, policies and versions"
+  ],
+  "errors": [],
+  "consoleErrors": []
+}

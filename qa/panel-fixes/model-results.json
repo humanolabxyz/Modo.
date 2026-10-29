@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "checks": [
+    "F/N da 24 V; R/S, S/T y T/R dan 380 V RMS sin usar TP como neutro",
+    "Voltaje sobre bobina, contacto abierto y punto flotante conserva la referencia correcta",
+    "Amperímetro exige A/COM y una rama abierta; el puente no modifica los cables del usuario",
+    "Entrada A rechaza conexiones entre fuentes, sobrecarga y unión mando/fuerza",
+    "Amperímetro insertado en retorno de bobina permite actuar y retener el contactor",
+    "2 contactores + conjunto temporizado: estrella → triángulo, polos de KT1 y enclavamientos",
+    "Corriente de línea trifásica: abrir una fase e insertar A conserva el giro y calcula la rama",
+    "Los valores ajustados cambian el cálculo; la variante previa de 3 contactores sigue disponible"
+  ]
+}

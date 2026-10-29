@@ -1,0 +1,33 @@
+{
+  "deltaCurrent": {
+    "line": 7.675985991937628,
+    "thermalBranchMeasuredWithMeter": 4.427382887400482,
+    "ratio": 1.7337524644146034,
+    "note": "El modelo térmico usa max(lineAmps) en useSimulation.ts:45-46, sin separar esta rama."
+  },
+  "bypassedThermal": {
+    "contactorCoilBefore": true,
+    "contactorCoilAfterTest": true,
+    "powerContactAfterTest": false,
+    "motor": "off"
+  },
+  "equivalentCircuit": {
+    "starRuns": "running",
+    "accepted": false
+  },
+  "controlOnly": {
+    "wireCount": 28,
+    "KM1": true,
+    "KM3": true,
+    "pilots": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "validation": {
+      "ready": false,
+      "message": "El cableado ya no coincide con la práctica elegida. Prepara de nuevo el montaje; Deshacer conserva tu trabajo anterior."
+    }
+  }
+}

@@ -1,0 +1,129 @@
+Nombre del proyecto
+Inicio
+Marcha y retención
+Proyecto
+Guardado en este navegador
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+Tableros de control
+Añade piezas desde el dock · arrastra para colocar · une dos bornes
+0 equipos · 0 cables
+Taller de tableros
+modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS
+Tu montaje empieza con una pieza
+Mando y protecciones · Automatización · Medición y energía
+También puedes añadir uno de los tres ejemplos desde Montajes y archivos.
+80%
+Equipo y conexiones
+TALLER DE TABLEROS DE CONTROL
+Voy a estudiar
+Voy a enseñar
+Aprende a montar y hacer funcionar un tablero
+
+Recibes un gabinete, sus equipos y el encargo de controlar una bomba. Tú distribuyes, conectas y pruebas la maniobra.
+
+Al terminar: una bomba que responde a Marcha y Paro, un proyecto guardado y un informe de lo que comprobaste.
+
+1. Montar
+Distribuye los equipos en el espacio asignado.
+2. Conectar
+Une los bornes siguiendo el encargo.
+3. Probar
+Acciona, observa y corrige una falla.
+
+En plantas e industria el mando de un tablero lo hace un controlador (PLC). Elige con cuál empezar.
+
+LO HABITUAL EN PLANTA
+PLC industrial
+
+En una planta, el PLC recibe las señales de pulsadores, sensores y protecciones, y ordena a los contactores. Conecta sus entradas y salidas y escribe la lógica en Ladder o ST.
+
+Comenzar con PLC
+BASE · POTENCIA CON CONTACTORES
+Mando cableado
+
+Comprende marcha, paro y retención con contactores, sin programar. Es la parte de potencia que después comanda el PLC.
+
+Comenzar mando cableado
+Relé programable
+
+Practica una maniobra con un controlador lógico compacto y su programa.
+
+Comenzar con relé programable
+Se crea un proyecto nuevo. Tu trabajo anterior se conserva. Puedes continuar y exportar sin internet.
+
+Las piezas se incorporan al mismo proyecto y conservan su montaje al cambiar de herramienta.
+
+Mando y protecciones
+Automatización
+Medición y energía
+FUENTE DC
+24
+V DC
+Fuente DC regulada
+FUENTE AC
+230
+V RMS
+Fuente monofásica
+Tierra de protección
+PASO
+Bornera de paso
+PASO
+Barra de distribución
+DISYUNTOR 1P
+modo. · MANIOBRA
+I · CERRADO
+Disyuntor de un polo
+DISYUNTOR 2P
+modo. · MANIOBRA
+I · CERRADO
+Disyuntor de dos polos
+DISYUNTOR 3P
+modo. · MANIOBRA
+I · CERRADO
+Disyuntor de tres polos
+PORTAFUSIBLE
+CARTUCHO
+Portafusible
+DIFERENCIAL
+modo. · MANIOBRA
+T
+I · CERRADO
+Diferencial didáctico
+GUARDAMOTOR
+modo. · MANIOBRA
+I · CERRADO
+Guardamotor
+PROTECCIÓN · TÉRMICO
+Relé térmico
+NA
+Auxiliar NA
+NC
+Auxiliar NC
+Pulsador NA
+Pulsador NC
+PARO
+Parada de emergencia
+Selector de dos posiciones
+Piloto
+Zumbador
+Riel DIN
+Mi montaje
+Rótulo de montaje
+Alcance de estos equipos

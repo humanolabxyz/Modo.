@@ -1,0 +1,107 @@
+--- PÁGINA 1 ---
+ 
+ 
+ 
+ 
+SITUACIÓN DE MODELACIÓN 1
+CRECIMIENTO DE 
+BACTERIAS
+Los ecólogos de poblaciones usan varios métodos 
+matemáticos para modelar la dinámica de poblaciones 
+(los cambios en el tamaño y la composición de las 
+poblaciones a lo largo del tiempo). Algunos de estos 
+modelos representan el crecimiento sin restricciones 
+ambientales, mientras que otros incluyen "topes" 
+determinados por los recursos limitados. Los modelos 
+matemáticos de las poblaciones pueden utilizarse para 
+describir con precisión los cambios en una población y, 
+aún más importante, predecir los cambios futuros.
+
+--- PÁGINA 2 ---
+ 
+ 
+SITUACIÓN DE MODELACIÓN 1 
+CRECIMIENTO DE BACTERIAS 
+ 
+Se realiza un experimento en un laboratorio para estudiar el crecimiento de una población de 
+bacterias en un entorno controlado. Se sabe que el crecimiento de estas bacterias sigue un 
+modelo exponencial, donde el número de bacterias en un momento dado está relacionado con 
+la tasa de crecimiento y el tiempo transcurrido desde el inicio del experimento. 
+ 
+ACTIVIDAD 1 (actividad generadora) 
+La persona que lleva a cabo el experimento registra, en cada una de las primeras cinco horas, el 
+número de bacterias existentes en la placa Petri. Al revisar los valores, se percata de que la tasa 
+de crecimiento es de 20% respecto de la cantidad de bacterias en la hora anterior. 
+ 
+Completa la siguiente tabla, a partir de la información entregada: 
+ 
+Hora 
+Número de bacterias 
+0 
+100 
+1 
+ 
+2 
+ 
+3 
+ 
+4 
+ 
+5 
+ 
+ 
+ACTIVIDAD 2 
+a. ¿Cuál es la expresión algebraica que modela el número de bacterias en la placa Petri en 
+función del tiempo? ¿Existe una única expresión? 
+b. En la representación gráfica de la función en GeoGebra, identifica e interpreta cada una 
+de las constantes en la expresión. 
+ 
+ACTIVIDAD 3 
+Considera la función planteada en la actividad anterior cuya forma es 𝑓(𝑥) = 𝑎∙𝑏!. 
+a. ¿Cuál será la población de bacterias después de ocho horas? 
+b. ¿A qué hora la población como mínimo será de 2800 bacterias? 
+c. ¿Existe algún instante de tiempo específico en el que se alcance exactamente dicha 
+cantidad de bacterias? 
+ 
+ 
+
+--- PÁGINA 3 ---
+ 
+ 
+ACTIVIDAD 4 
+Si en el laboratorio desearan alcanzar una población de 5000 bacterias en 10 horas, responde 
+cada una de las siguientes preguntas de manera independiente: 
+a. ¿Cuál tendría que ser la población inicial de bacterias? 
+b. ¿Cuál tendría que ser la tasa de crecimiento óptima de las bacterias? 
+ 
+ACTIVIDAD 5 (actividad de cierre) 
+El crecimiento exponencial puede ocurrir durante un tiempo, si hay pocos individuos y muchos 
+recursos. Cuando el número de individuos es lo suficientemente grande, los recursos empiezan 
+a agotarse, haciendo que se desacelere la tasa de crecimiento y provocando, por tanto, que el 
+tamaño de la población se nivele o se estabilice. 
+ 
+En este caso, el modelo exponencial es 
+ 
+𝑃(𝑡) =
+𝐾𝑃"𝑒#$
+𝐾+ 𝑃"(𝑒#$ + 1) 
+ 
+donde 
+𝑃(𝑡) es la población en el instante 𝑡 
+𝐾 es la capacidad de resistencia o de carga de la población o sistema, es decir, el valor 
+máximo que la población puede alcanzar 
+𝑃" es la población inicial 
+𝑟 es la tasa de crecimiento de la población (en tanto por uno) 
+𝑡 es el tiempo, en horas 
+ 
+Considera los mismos valores de la población inicial y la tasa de crecimiento del modelo de la 
+actividad 3 y una capacidad de resistencia de 10000 bacterias. 
+a. ¿Cuál es la expresión algebraica que modela el número de bacterias en la placa Petri en 
+función del tiempo? 
+b. Representa gráficamente la función en GeoGebra. 
+c. ¿Cuál será la población de bacterias transcurridas ocho horas? ¿Y transcurridas 40 horas? 
+Compara con el modelo de la actividad 3.  
+d. ¿En qué tiempo aproximadamente se podría alcanzar la capacidad de resistencia de la 
+población? 
+ 
+ 

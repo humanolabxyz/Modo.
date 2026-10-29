@@ -30,6 +30,7 @@ __export(cade_exports, {
   ESTRELLA_CADE: () => ESTRELLA_CADE,
   LESSON_CADES: () => LESSON_CADES,
   PERFECTO_CADE: () => PERFECTO_CADE,
+  TWO_CONTACTOR_BANK_NAMES: () => TWO_CONTACTOR_BANK_NAMES,
   cadeNetwork: () => cadeNetwork,
   cadePorts: () => cadePorts,
   createCade: () => createCade
@@ -10166,12 +10167,55 @@ var timer = () => ({
 });
 var STAR_PANELS = { estrellaManual: manual(), estrellaTimer: timer() };
 
+// src/data/twoContactorReference.ts
+var referencePort = (object, terminal) => `reference:${object}:${terminal}`;
+var pairs = [
+  [53, "2", 54, "95"],
+  [54, "96", 55, "11"],
+  [55, "12", 56, "13"],
+  [56, "13", 57, "13"],
+  [56, "14", 57, "14"],
+  [57, "14", 63, "A1"],
+  [63, "A2", 52, "N"],
+  [57, "14", 58, "11"],
+  [58, "12", 59, "11"],
+  [59, "12", 64, "A1"],
+  [64, "A2", 52, "N"],
+  [57, "14", 58, "13"],
+  [58, "14", 61, "11"],
+  [61, "12", 65, "A1"],
+  [65, "A2", 52, "N"],
+  [2, "4", 3, "3"],
+  [2, "6", 3, "5"],
+  [4, "2", 5, "U1"],
+  [4, "4", 5, "V1"],
+  [4, "6", 5, "W1"],
+  [5, "W2", 7, "6"],
+  [5, "U2", 7, "4"],
+  [5, "V2", 7, "2"],
+  [7, "1", 7, "3"],
+  [7, "3", 7, "5"],
+  [2, "2", 6, "1"],
+  [2, "4", 6, "3"],
+  [2, "6", 6, "5"],
+  [6, "6", 5, "W2"],
+  [6, "4", 5, "U2"],
+  [6, "2", 5, "V2"],
+  [69, "X2", 52, "N"],
+  [64, "A1", 67, "X1"],
+  [65, "A1", 68, "X1"],
+  [2, "2", 3, "1"],
+  [53, "2", 54, "97"],
+  [54, "98", 69, "X1"]
+];
+var TWO_CONTACTOR_REFERENCE_PAIRS = pairs.map(([a, b, c, d]) => [referencePort(a, b), referencePort(c, d)]);
+
 // src/data/cade.ts
 var WIRE_TYPES = [4e3, 4009, 4010];
 var onLine = (p, w) => Math.abs((w.x2 - w.x) * (p.y - w.y) - (w.y2 - w.y) * (p.x - w.x)) < 1e-3 && p.x >= Math.min(w.x, w.x2) && p.x <= Math.max(w.x, w.x2) && p.y >= Math.min(w.y, w.y2) && p.y <= Math.max(w.y, w.y2);
 function cadePorts(o) {
   const port = (terminal, x, y) => ({ objectId: o.id, reference: o.reference, terminal, x, y });
-  if (o.ports) return o.ports.map((p) => ({ ...port(p.terminal, p.x, p.y), ...p.panel ? { panel: p.panel } : {} }));
+  if (o.ports) return o.ports.map((p) => ({ ...port(p.terminal, p.x, p.y), ...p.panel ? { panel: p.panel } : {}, ...p.anchor ? { anchor: p.anchor } : {} }));
   if ([6009, 2001, 6007].includes(o.type)) {
     const h = o.type === 6009 ? 21 : 12;
     return [0, 1, 2].flatMap((i) => [port(o.labels[i], o.x + i * 6, o.y), port(o.labels[i + 3], o.x + i * 6, o.y + h)]);
@@ -10182,10 +10226,10 @@ function cadePorts(o) {
   if (o.type === 8018) return [port(o.labels[0], o.x, o.y), port(o.labels[2], o.x, o.y + 12), port(o.labels[1], o.x + 9, o.y), port(o.labels[3], o.x + 9, o.y + 12)];
   return [port(o.labels[0], o.x, o.y), port(o.labels[1], o.x, o.y + (o.type === 6010 ? 21 : 12))];
 }
-function createCade(drawing) {
+function createCade(drawing, bank) {
   const objects = drawing.objects;
   const WIRES = objects.filter((o) => WIRE_TYPES.includes(o.type));
-  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type));
+  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type)).map((o) => bank?.[o.id] ? { ...o, bank: bank[o.id] } : o);
   const JUNCTIONS = objects.filter((o) => o.type === 4001);
   const PORTS = SYMBOLS.flatMap(cadePorts);
   function network(wireId) {
@@ -10220,24 +10264,39 @@ var CADE_PORTS = PERFECTO_CADE.PORTS;
 var cadeNetwork = PERFECTO_CADE.network;
 var ESTRELLA_CADE = createCade(cadeEstrellaTriangulo_default);
 var withPanels = (drawing, map) => ({ ...drawing, objects: drawing.objects.map((o) => o.ports && map[o.id] ? { ...o, ports: o.ports.map((p) => map[o.id][p.terminal] ? { ...p, panel: map[o.id][p.terminal] } : p) } : o) });
-var manualWiring = (d) => {
-  const old = d.objects.find((o) => o.id === 100 && o.type === 4e3);
-  if (!old) return d;
-  const w = (id, x, y, x2, y2) => ({ id, type: 4e3, reference: "", labels: [], x, y, x2, y2, color: old.color });
-  return { ...d, objects: [...d.objects.filter((o) => o !== old), { id: 300, type: 4001, reference: "", labels: [], x: 331, y: 129, x2: 331, y2: 129 }, w(301, 331, 129, 366, 129), w(302, 366, 129, 366, 168), w(303, 366, 168, 344, 168), w(304, 344, 168, 344, 174)] };
+var TIMER = "Temporizador neum\xE1tico";
+var THERMAL = "Contactor + rel\xE9 t\xE9rmico";
+var TRI = "Contactor trif\xE1sico";
+var TWO_CONTACTOR_BANK_NAMES = {
+  3: { name: TIMER },
+  57: { name: TIMER },
+  62: { name: TIMER },
+  63: { name: TIMER, part: "Bobina del temporizador neum\xE1tico" },
+  58: { name: TIMER, part: "Contactos temporizados del temporizador neum\xE1tico (KT1)", note: "El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del temporizador neum\xE1tico: 55-56 (NC) y 67-68 (NA).", what: "Contactos que cambian de estado cuando termina el tiempo del temporizador." },
+  6: { name: THERMAL },
+  59: { name: THERMAL },
+  60: { name: THERMAL },
+  65: { name: THERMAL, part: "Bobina del contactor + rel\xE9 t\xE9rmico" },
+  7: { name: TRI },
+  61: { name: TRI },
+  64: { name: TRI, part: "Bobina del contactor trif\xE1sico" }
 };
 var LESSON_CADES = {
   simple: createCade(cadeLecciones_default.simple),
   inversion: createCade(cadeLecciones_default.inversion),
-  estrellaManual: createCade(withPanels(manualWiring(cadeEstrellaTriangulo_default), STAR_PANELS.estrellaManual)),
-  estrellaTimer: createCade(withPanels(cadeEstrellaTemporizador_default, STAR_PANELS.estrellaTimer))
+  estrellaManual: createCade(withPanels(cadeEstrellaTriangulo_default, STAR_PANELS.estrellaManual)),
+  estrellaTimer: createCade(withPanels(cadeEstrellaTemporizador_default, STAR_PANELS.estrellaTimer)),
+  // Preserve every original symbol, label and coordinate; annotate reference
+  // anchors separately from real bank-terminal mappings.
+  estrellaDosContactores: createCade({ ...cadeEstrellaTriangulo_default, objects: cadeEstrellaTriangulo_default.objects.map((o) => ({ ...o, ..."ports" in o && o.ports ? { ports: o.ports.map((p) => ({ ...p, anchor: referencePort(o.id, p.terminal) })) } : {} })) }, TWO_CONTACTOR_BANK_NAMES)
 };
 var CADE_DRAWINGS = [
   { id: "perfecto", title: "PERFECTO", cade: PERFECTO_CADE, guided: true },
   { id: "estrella", title: "Estrella-tri\xE1ngulo", cade: ESTRELLA_CADE, guided: false },
   { id: "simple", title: "Lecci\xF3n \xB7 Marcha y paro", cade: LESSON_CADES.simple, guided: false },
   { id: "inversion", title: "Lecci\xF3n \xB7 Inversi\xF3n de giro", cade: LESSON_CADES.inversion, guided: false },
-  { id: "estrellaTimer", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo con temporizador", cade: LESSON_CADES.estrellaTimer, guided: false }
+  { id: "estrellaTimer", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo con temporizador", cade: LESSON_CADES.estrellaTimer, guided: false },
+  { id: "estrellaDosContactores", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo \xB7 2 contactores", cade: LESSON_CADES.estrellaDosContactores, guided: false }
 ];
 var CADE_QUESTIONS = [
   { question: "Potencia: sigue L1 hasta la entrada 1 de -Q.", wire: 103, scope: "power", hint: "El primer conductor de la columna de potencia." },
@@ -10265,6 +10324,7 @@ var CADE_QUESTIONS = [
   ESTRELLA_CADE,
   LESSON_CADES,
   PERFECTO_CADE,
+  TWO_CONTACTOR_BANK_NAMES,
   cadeNetwork,
   cadePorts,
   createCade

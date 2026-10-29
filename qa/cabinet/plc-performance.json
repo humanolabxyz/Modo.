@@ -1,0 +1,8 @@
+{
+  "scope": "Chromium headless local, escritorio 1440x960; PLC, 16 equipos, 36 hilos y motor activo. No es medición de teléfono físico.",
+  "medianMs": 16.699999999999818,
+  "p95Ms": 16.800000000000182,
+  "maxMs": 16.800000000000182,
+  "samples": 99,
+  "svgNodes": 2570
+}

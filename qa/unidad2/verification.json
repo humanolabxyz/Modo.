@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Los tres PDF nuevos conservan sus bytes originales y están registrados con IDs distintos",
+    "Panel, laboratorio, materia y modelos anteriores conservados",
+    "Modelos contrastados con tablas, imágenes, preimágenes, umbral horario y datos originales",
+    "Inicio sin aviso de prueba; el repaso sigue accesible dentro de Estudio",
+    "Cinco temas: gráfica con control real, ejemplo resuelto y observación de la fórmula impresa",
+    "Diez respuestas: error, corrección, coma decimal, guardado, edición que retira comprobación y exportación",
+    "Avance incompatible conservado íntegro sin autosobrescritura",
+    "Unidad 2 abierta por defecto, tres actividades nuevas navegables y originales accesibles",
+    "Inicio, Estudio, Unidad 2 y repaso sin desbordamientos a 390 y 768 px",
+    "Repaso y PDF exponencial previamente consultado disponibles sin conexión"
+  ],
+  "errors": []
+}

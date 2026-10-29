@@ -1,0 +1,40 @@
+Nombre del proyecto
+Inicio
+Marcha y retención
+Tablero · PLC industrial
+Proyecto
+Guardado en este navegador
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+HMI
+Arrastra los elementos para diseñar la pantalla
+HMI 01
+modo.
+Tablero · PLC industrial
+DISEÑO DE PANTALLA
+Una pantalla para tu proyecto
+
+Añade controles e indicadores desde Elementos, en la barra inferior, y enlázalos a tus variables.
+
+113%
+Pantalla de operador
+
+Selecciona un elemento de la pantalla para editar su etiqueta y su señal. Añade más desde Elementos, en la barra inferior.
+
+Probar una pantalla

@@ -1,0 +1,42 @@
+.panel-meter-workspace .panel-clamp-instrument{--clamp-body-height:calc(351.82px * var(--clamp-scale,1));width:calc(180px * var(--clamp-scale,1))}
+.panel-meter-workspace .panel-clamp-instrument.is-collapsed{width:220px;max-width:calc(100% - 12px);padding:0;filter:none}
+.clamp-pill{box-sizing:border-box;min-width:0;width:100%}
+.clamp-pill .lab-dmm-pill-mode{font-size:10px;line-height:1.3}
+.clamp-pill button{display:grid;place-items:center;flex:none;width:36px;height:36px;padding:0;border:0;border-radius:9px;background:#263735;color:#f6d03e;cursor:pointer}
+.clamp-size-tools{display:flex;justify-content:flex-end;gap:6px;width:132px;margin-top:max(8px,calc(134px - var(--clamp-body-height)))}
+.panel-clamp-instrument:has(.instrument-options.is-expanded) .clamp-size-tools{margin-top:max(8px,calc(318px - var(--clamp-body-height)))}
+.panel-clamp-instrument.options-on-left .clamp-size-tools{margin-left:min(0px,calc(100% - 132px))}
+.clamp-size-tools button{display:grid;place-items:center;flex:none;width:40px;height:40px;border:1px solid #d9dfe6;border-radius:50%;background:#fff;color:#53606b;box-shadow:0 2px 7px #24334812;cursor:pointer}
+.clamp-size-tools button:disabled{opacity:.35;cursor:default}
+.clamp-size-tools button:active:not(:disabled){transform:scale(.94)}
+.measure-teaching .measure-mini-steps{display:flex;gap:5px;list-style:none;margin:0 0 10px;padding:0}
+.measure-mini-steps li{display:flex;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;padding:6px 3px;border-radius:8px;background:#edf0f5;color:#89919c;font-size:10px;line-height:1.4}
+.measure-mini-steps svg{flex:none}
+.measure-mini-steps .is-current{background:#e5ecff;color:#345db0;font-weight:650}
+.measure-mini-steps .is-done{background:#e8f3eb;color:#437b57}
+.measure-teaching .measure-next{border:0;margin:0;padding:0;font-size:12px;line-height:1.6;color:#344556}
+.measure-teaching.has-sample{background:#f2f8f3;border-color:#d8e9dd}
+.measure-teaching-more{display:grid;grid-template-columns:1fr 1fr;gap:4px;border-top:1px solid #e1e7ef;margin-top:10px;padding-top:4px}
+.measure-teaching-more details[open]{grid-column:1/-1}
+.measure-teaching .measure-teaching-more details{margin:0}
+.measure-teaching-more summary{font-size:11px;color:#738293;gap:7px}
+.measure-teaching-more summary::before{content:'+';font-size:15px;color:#698077}
+.measure-teaching-more details[open]>summary::before{content:'−'}
+.measure-connection{display:block;width:100%;height:auto;max-height:96px;margin:0 0 10px;border-radius:12px;background:#f7f9f7}
+.measure-drag-tip{display:block;margin:8px 0 0;line-height:1.5}
+.measure-lesson-footer .measure-sample{gap:9px;padding:12px;border:1px solid #e1e7e2;border-radius:13px;background:#f8faf8;margin-bottom:12px}
+.measure-sample .measure-section-label{margin:0;color:#758277}
+.measure-lesson-footer .measure-sample>p{display:grid;gap:4px;font-size:10px;color:#819087}
+.measure-sample>p>strong{font:600 25px/1.3 ui-monospace,Consolas,monospace;color:#364d40;font-variant-numeric:tabular-nums}
+.measure-lesson-footer .measure-sample>button{border-color:#cfdbd3;background:#fff;color:#365e45;min-height:44px}
+.measure-sample[data-reading-sampled=true]{border-color:#9cbea7;background:#f1f8f2}
+.measure-sample-meta summary{display:flex;align-items:center;min-height:36px;cursor:pointer;font-size:11px;color:#708074}
+.measure-sample-meta small{display:block;line-height:1.6}
+.current-tutorial .current-instructions{counter-reset:measure-action;list-style:none;padding:0;display:grid;gap:10px}
+.current-instructions>li{position:relative;padding:13px 12px 12px 44px;border:1px solid #e1e7e2;border-radius:13px;background:#fafcfb}
+.current-instructions>li::before{counter-increment:measure-action;content:counter(measure-action);position:absolute;left:11px;top:12px;display:grid;place-items:center;width:23px;height:23px;border-radius:8px;background:#e9f0eb;color:#497456;font-size:11px;font-weight:650}
+.current-instructions>li>strong{font-size:12px;color:#38513f}
+.current-tutorial .current-bank-controls{border:1px solid #e1e7e2;border-radius:11px;padding:0 10px;margin:10px 0}
+.current-bank-controls>.meter-lesson-controls{padding-bottom:10px}
+@media(max-width:700px){.panel-meter-workspace .panel-clamp-instrument{--clamp-body-height:calc(293.18px * var(--clamp-scale,1));width:calc(150px * var(--clamp-scale,1))}.panel-meter-workspace .panel-clamp-instrument.is-collapsed{width:210px}.measure-teaching-more summary{min-height:36px}.measure-lesson-panel .measure-mini-steps li{font-size:9px}.clamp-size-tools{gap:4px}}
+@media(prefers-reduced-motion:reduce){.clamp-size-tools button{transition:none}}

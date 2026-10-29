@@ -105,3 +105,67 @@ Publicada por solicitud expresa del usuario. Estado **READY**, destino **producc
 - Verificación pública: HTTP 200 en inicio, estudio, laboratorio, comunidad, el mapa de la lección y `sw.js`; el HTML publicado trae el arreglo de compatibilidad; `verify:compat` y `verify:modulos-extra-ui` pasaron contra producción.
 - Las instalaciones de la PWA recogen la versión nueva al abrirla con conexión: recargar dos veces o cerrar la app del todo y abrirla de nuevo.
 - Para actualizar: `npm run check`, `npm run build` y `npm exec --yes --package=vercel -- vercel deploy --prod --yes`.
+
+## Publicación 24 de octubre de 2026 · versión 2.4.0
+
+Publicada por solicitud expresa del usuario. Estado **READY**, destino **producción**: https://modo-lab.vercel.app/ (despliegue `dpl_De73mMT1c1DcUKc5t3Hm3DHwmzSS`, `modo-iyup3m7h7-humanolabxyz-9765s-projects.vercel.app`), proyecto `modo-lab`.
+
+- Identidad del Home en todas las interfaces, ventanas ajustables (bordes, maximizar, memoria de tamaño), menús convertidos en ventanas y estados con color. Detalle en `CHANGELOG.md` y `/versiones/`.
+- Antes de publicar: `npm run check`, `npm run build`, `verify:data` y `verify:wiring` correctos. `verify:routes` y `verify:study-unified` no se ejecutaron con éxito en este entorno (ya fallaban sin los cambios de esta versión) y no se presentan como aprobados.
+- En producción: HTTP 200 en rutas principales, `sw.js` y manifest; las hojas de estilo publicadas son idénticas a las del build local; la prueba de ventanas y la de estados (rayo, candado) pasaron contra el dominio público. Evidencia: `qa/release-2.4.0/deployment.json`.
+
+## Publicación 24 de octubre de 2026 · versión 2.4.1 (rendimiento)
+
+Publicada por solicitud expresa del usuario. Estado **READY**, destino **producción**: https://modo-lab.vercel.app/ (despliegue `dpl_A6nPokThjek5sKqvrhQWcK6Cj47X`, `modo-80jlxh7jz-humanolabxyz-9765s-projects.vercel.app`), proyecto `modo-lab`.
+
+- Mejoras de rendimiento sin cambios funcionales: ventanas ocultas fuera del layout, arrastre de ventanas por capa, animaciones decorativas de Estudio solo al apuntar, caché de fuentes e imágenes (`vercel.json`).
+- Antes de publicar: `npm run check`, `npm run build` y `verify:data` correctos; pruebas de ventanas, estados y contraste en local sin regresiones.
+- En producción: HTTP 200 en rutas principales, 32 de 32 archivos de `_astro` idénticos al build local, cabeceras de caché nuevas activas, prueba de ventanas sin errores de JavaScript y layout de Soldadura medido en 63 ms (476 ms antes, CPU 4×). Evidencia: `qa/release-2.4.1/deployment.json`.
+- Límites conocidos, sin resolver: pan/zoom del tablero del Panel y de la Protoboard, y el texto SVG de Temperatura y Detectores.
+
+
+## Publicación 24 de octubre de 2026 · lección del multímetro
+
+Producción actualizada por solicitud expresa: https://modo-lab.vercel.app/?view=simulator. Despliegue READY `dpl_22smn5Fh9kHnnJ4ZBT4HQ5hKgcU3`. Lección de la Actividad 2, acceso Medir y ventana movible/ajustable. Archivos públicos comparados por SHA-256 con el build local; menú abierto y arrastrado en producción. Detalles: `PUBLICACION_MULTIMETRO_2026-10-24.md`; evidencias: `qa/vercel-meter-lesson/`.
+
+
+## Publicación 25 de octubre de 2026 · simuladores sin conexión
+
+Producción actualizada por solicitud expresa del usuario: **https://modo-lab.vercel.app/**. Proyecto existente `modo-lab`; despliegue **READY** `dpl_36yDu4Jw4w8hAdi4RqpttAezMSxz`, URL `https://modo-87807ifzu-humanolabxyz-9765s-projects.vercel.app`.
+
+- Incluye GeoGebra Classic local, descarga completa de 506 recursos (~156 MiB), preparación del viaje, rangos de video/PDF, caché en las rutas principales y mejoras de carga/paneo.
+- Corrección de publicación: la exclusión heredada `offline` coincidía con `src/offline`; ahora está anclada a `/offline`. Se incluyen el controlador y los recursos de GeoGebra `web3d`; se excluyen los motores alternativos duplicados.
+- El cargador de GeoGebra usa el parámetro que desactiva su depuración solo en localhost. En el dominio público se omite para mantener las peticiones bajo el service worker.
+- `npm run check` y `npm run build` correctos. HTTP 200 sin autenticación en once rutas/recursos públicos; cinco archivos críticos comparados por SHA-256 con el build local.
+- **22/22 comprobaciones offline pasaron contra el dominio público**, con red desactivada y cierre/reapertura del navegador: diez herramientas, importación y persistencia del panel, edición PLC/HMI, operación de proceso, GeoGebra (gráfica/matrices/CAS/punto 3D), cuaderno integrado, PDF y video con rangos, y viewports 390/820 px. Sin peticiones externas ni errores inesperados.
+- Evidencias: `qa/offline-deployment/deployment.json`, `public-verification.json`, `verification.json` y capturas en esa carpeta. Uso: abrir `/sin-conexion/`, guardar todo y esperar «Listo para el viaje» en el mismo navegador antes de desconectar.
+
+
+## Publicación 27 de octubre de 2026 · protoboard y mediciones
+
+Desplegada por solicitud expresa del usuario. Proyecto `modo-lab`, equipo `humanolabxyz-9765s-projects`. Estado **READY**, entorno **producción**. Dominio: https://modo-lab.vercel.app/.
+
+- Despliegue: `dpl_CLM3pjzf2jP3okBHaPceYxk6Z2X8`; URL inmutable: https://modo-nqvc3b9jp-humanolabxyz-9765s-projects.vercel.app.
+- Se publicó la carpeta de trabajo actual mediante CLI (base Git a66b038 con cambios locales); no se hizo push ni se creó un commit.
+- Incluye canal central e–f, modo prueba con cables retirados/movidos, diagnósticos, guía de dos contactores y botón Color con paleta de nombres y selección visible.
+- `npm run check` y compilación local aprobados. Compilación remota READY, 19 segundos. Se comprobó el HTML autenticado del candidato antes de promoverlo al dominio público.
+- Producción: HTTP 200 sin sesión en inicio, laboratorio, estudio, sin-conexion, sw.js y manifest. Los 21 archivos JS/CSS referenciados en el HTML del laboratorio coinciden por SHA-256 con el build local.
+- Revisión visual pública: botón Color, paleta con nombres, canal central y entrada Modo prueba visibles. No se repitieron todas las suites offline ni pruebas de dispositivo físico durante la publicación.
+- Evidencia: `qa/release-2026-10-27/public-verification.json`, `qa/release-2026-10-27/public-color.png`.
+- Los pendientes de usabilidad de `REVISION_USO_PROTOBOARD_Y_COLOR_2026-10-27.md` siguen documentados; la publicación no los declara corregidos.
+
+## 28 de octubre de 2026 · guía del profesor y flujo de medición
+
+Por solicitud expresa del usuario, publicado en producción https://modo-lab.vercel.app/, despliegue dpl_4gr2RoqtZqJ5HALbZaB5PRuXYu9z, estado READY. Proyecto y equipo conservados: modo-lab / humanolabxyz-9765s-projects.
+
+Incluye el montaje completo con motor, vista compacta de medición con bornes visibles/localizables e iluminados, una acción por etapa, registro de la muestra sin transcripción, menú simplificado y correspondencia auditada de los 25 puntos del profesor. Resultados e informe conservan tablas 1, 3, 4, 5 y 6, con 15 lecturas. La referencia explica que el montaje de dos contactores y KT1 es una adaptación del original manual de tres contactores.
+
+Verificación pública: HTTP 200, PDF con SHA-256 idéntico al original revisado y 14 recursos iniciales idénticos al build local; 34/34 pasos en escritorio y móvil emulado; exportaciones JSON/CSV/HTML comprobadas y menú de siete vistas correcto. Evidencias y detalles en AUDITORIA_GUIA_PROFESOR_2026-10-28.md y qa/guide-audit-2026-10-28/. No hubo prueba en equipo físico.
+
+## 28 de octubre de 2026 · navegación de menús en teléfono
+
+Producción READY: dpl_7vZ9MV4pXZfYv5LsYMVTNXAzkLJh, https://modo-lab.vercel.app/. Se mantienen proyecto y equipo existentes.
+
+Ventanas limitadas al área visible del teléfono, cierre táctil sin doble acción sobre ventanas anidadas, bordes libres desactivados en teléfono y adaptación al giro. Diagrama con acceso al menú en la cabecera; Aprender a medir con desplazamiento completo en ajustes y horizontal, conservando bornes y captura de la guía.
+
+Pruebas locales con gestos táctiles emulados en cuatro tamaños y WebKit en dos orientaciones; regresión de 34 pasos y exportaciones correcta. Prueba pública de navegación táctil en ambas orientaciones y WebKit sin errores, 14 recursos iniciales idénticos al build local. Alcance y evidencias en REVISION_NAVEGACION_TELEFONO_2026-10-28.md y qa/mobile-menu-navigation/. Sin validación en dispositivo físico.

@@ -1,0 +1,26 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 7 
+ 
+ 
+4. Demostrar correcto funcionamiento al docente, activando el pulsador de arranque verde del HMI touch 
+y el pulsador de parada rojo. Visualice el encendido de la respectiva salida en el PLC. 
+ 
+5. Cambie ahora, el parámetro de comunicación en la pantalla en la opción “Configuración de comunicación 
+(Communication Settings)” mostrada en la figura 1.10 al valor de 115200 y vuelva a cargarlo. ¿Qué 
+sucede con la comunicación entre PLC-HMI y por qué?  
+ 
+ 
+Figura 1.12. Cambio de parámetro de velocidad en HMI. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

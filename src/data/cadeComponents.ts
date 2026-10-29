@@ -25,7 +25,12 @@ function device(o:CadeObject,kind:CadeKind){
 }
 /** Pares de bornes de un polo trifásico: 1-2, 3-4, 5-6. */
 const poles=(o:CadeObject)=>[0,1,2].map(i=>`${o.labels[i]}-${o.labels[i+3]}`).join(' · ');
+/** Ficha del símbolo; si el esquema anota el nombre que la pieza tiene en el banco (`bank`), se muestra junto a lo que dibuja el símbolo. */
 export function symbolInfo(o:CadeObject):SymbolInfo|null{
+ const base=baseSymbolInfo(o);if(!base||!o.bank)return base;
+ return {...base,device:o.bank.name,what:o.bank.what??`Pieza del módulo «${o.bank.name}» del banco.`,tag:o.bank.name,part:o.bank.part??`${base.part} · ${o.bank.name}`,note:o.bank.note??`${base.note} En el banco es: ${o.bank.name}.`};
+}
+function baseSymbolInfo(o:CadeObject):SymbolInfo|null{
  const kind=cadeKind(o);if(!kind)return null;
  const [,name,what]=device(o,kind),ref=o.reference||'';
  const base={kind,device:name,what,supply:kind.startsWith('supply')};

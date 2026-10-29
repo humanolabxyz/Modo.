@@ -178,3 +178,28 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
  .tool-dock .guide-menu-item,.add-panel-pop>button{min-height:56px}
  .module-remove-bg{r:18}
 }
+/* Keep the full cable finish at rest; paint only its outline and colour while navigating. */
+.board-svg:is([data-gesture=true],[data-dragging=true],[data-animating=true]) .wire-layer .cable-detail{display:none}
+
+/* Dynamic rotor and timer use the electrical model rather than independent CSS clocks. */
+.editor-workbench .board-svg .motor-rotor[data-dynamic=true],.editor-workbench .board-svg .timer-fill-synced{animation:none!important}
+
+/* Qué falta para energizar: una línea de ayuda sobre las pastillas de estado. */
+.power-status>p.power-next{margin:0;justify-self:stretch;padding:7px 10px;border:1px solid #ecd9a0;border-radius:12px;background:#fff8e3;color:#6a5316;font:600 12px/1.35 var(--ui-font,system-ui);white-space:normal;text-align:left}
+
+/* Lecciones: bloque de ayuda para quien llega por primera vez. */
+.guide-first-time{display:grid;gap:5px;padding:10px 12px;border:1px solid #cfe3ea;border-radius:12px;background:#f2f9fb;color:#33495a;font:500 12.5px/1.4 var(--ui-font,system-ui)}
+.guide-first-time small{font:700 10.5px/1.2 var(--ui-font,system-ui);letter-spacing:.5px;text-transform:uppercase;color:#2d6f86}
+.guide-first-time ol{margin:0;padding-left:18px;display:grid;gap:2px}.guide-first-time li svg{vertical-align:-2px}
+.guide-first-time p{margin:2px 0 0;color:#5d707c}
+
+/* Pieza elegida en el diagrama: sus bornes del banco se iluminan en amarillo luminoso. */
+.terminal-glow{filter:drop-shadow(0 0 5px #ffd60a) drop-shadow(0 0 12px #ffc400);animation:terminalGlow 1.1s ease-in-out infinite alternate}
+@keyframes terminalGlow{from{opacity:.78}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.terminal-glow{animation:none}}
+
+/* Tabletas y celulares: sin filtros de sombra ni brillo animado en el tablero. Cada módulo llevaba su propio filtro y en pantallas táctiles lentas el dibujo quedaba a medias. */
+@media (pointer:coarse){
+ .board-svg [filter="url(#moduleShadow)"],.board-svg [filter="url(#softDrop)"]{filter:none}
+ .terminal-glow{filter:none;animation:none}
+}

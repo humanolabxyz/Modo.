@@ -1,0 +1,21 @@
+{
+  "base": "http://127.0.0.1:4411",
+  "checks": [
+    "Perfil PLC crea un proyecto propio con 16 equipos y sin cargar el programa automáticamente",
+    "El controlador y los equipos se montan en el mismo gabinete y campo asociado",
+    "36 conexiones físicas de potencia, mando, entradas y salida del PLC",
+    "Programación accesible desde el propio PLC y desde una acción principal visible",
+    "El editor PLC completo y el taller comparten exactamente proyecto, programa y montaje",
+    "Prueba conjunta de programa y circuito: ocho condiciones funcionales",
+    "Entradas físicas, permisos y estado de Q se observan online y gobiernan el motor",
+    "Falla de programación reparada sin alterar cableado: diagnóstico y prueba posterior",
+    "Reducir el espacio asignado conserva posiciones y detecta equipos fuera del límite",
+    "El soporte real del modelo depende de la posición del riel, no de marcar una casilla",
+    "La verificación detecta una canaleta invadiendo un equipo",
+    "Distribución y área asignada se guardan con el proyecto",
+    "Relé programable en móvil sin red: Ladder, ocho pruebas y motor accionado",
+    "Sin errores de navegador ni recursos externos"
+  ],
+  "errors": [],
+  "external": []
+}

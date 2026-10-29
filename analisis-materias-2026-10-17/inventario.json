@@ -2477,5 +2477,95 @@
       1404
     ],
     "text_file": "texto/F36.txt"
+  },
+  {
+    "id": "F37",
+    "path": "matrices/Actividad tecnológica 1 Funciones exponenciales.pdf",
+    "bytes": 1749286,
+    "sha256": "baeb9ee1c850d87ff639d43961f49a66cc4f8f6ea5c0bae1edff5cfc7a08580d",
+    "page_count": 6,
+    "pages": [
+      {
+        "page": 1,
+        "text": " \nACTIVIDAD TECNOLÓGICA 1 \nFUNCIONES EXPONENCIALES \n \nEsta actividad tiene por objetivo familiarizar a los estudiantes, mediante la incorporación de \nGeoGebra, en el trabajo con las funciones exponenciales. \n \nACTIVIDAD 1: Ingresar a GeoGebra Clásico online \nIngresa a la siguiente dirección: \n \nhttps://www.geogebra.org/classic \n \n \n \nACTIVIDAD 2: Ingresar una función exponencial \nPara ingresar la función exponencial 𝑓(𝑥) = 2!, escribe en la barra de entrada lo siguiente: \n \n2^x .¿. \n \n \n",
+        "chars": 492,
+        "images": 5
+      },
+      {
+        "page": 2,
+        "text": " \nACTIVIDAD 3: Calcular una imagen de una función exponencial y visualizar un punto que \ncontiene la preimagen y la imagen de dicha función \nPara calcular la imagen de la función 𝑓(𝑥) = 2!, para 𝑥= 2, y visualizar el punto conformado \npor la preimagen e imagen, escribe en la barra de entrada lo siguiente: \n \nf(2) .¿. \n(2,a) .¿. \n \n \n \nACTIVIDAD 4: Calcular una preimagen de una función exponencial \nPara calcular la preimagen de la función 𝑓(𝑥) = 2!, para 𝑓(𝑥) = 5, escribe en la barra de entrada \nlo siguiente: \n \nResuelve(f=5) .¿. \n \n \n \n \n",
+        "chars": 544,
+        "images": 5
+      },
+      {
+        "page": 3,
+        "text": " \nTambién se podría utilizar el comando ResoluciónN que entrega sólo la solución aproximada, a \ndiferencia de Resuelve que primero la entrega como, por ejemplo, una fracción o con raíces y, \nposteriormente, puede hacerse el cambio para que entregue la aproximada. \n \nACTIVIDAD 5: Graficar una función exponencial y encontrar su intersección con una función \nlineal \nIngresa la función 𝑔(𝑥) = 𝑥+ 2. Para esto, escribe en la barra de entrada lo siguiente: \n \nx+2 .¿. \nInterseca(f,g) .¿. \n \n \n \nNota que en este caso, el comando entrega sólo una de las intersecciones, la de la izquierda que \nes (−1.69, 0.31). Esto sucede con algunas funciones como es el caso, por ejemplo, de las \nexponenciales y las logarítmicas. Para encontrar la segunda intersección debe agregarse al \ncomando el extremo inferior y el extremo superior del intervalo donde se encuentra la \nintersección, por ejemplo, el intervalo (1, 3). Para este ejemplo, ingresa \n \nInterseca(f,g,1,3) .¿. \n \n \n",
+        "chars": 965,
+        "images": 3
+      },
+      {
+        "page": 4,
+        "text": " \n \n \nDe esta manera se obtiene el punto de intersección de la derecha que es (2, 4). \n \nACTIVIDAD 6: Encontrar la intersección de una función exponencial con el eje de las 𝒚 \nPara encontrar la intersección con el eje de las 𝑦, escribe en la barra de entrada lo siguiente: \n \nInterseca(f,EjeY) .¿. \n \n \n \nUna manera más cómoda de obtener lo anterior es encontrando los puntos especiales: \n \n \n",
+        "chars": 393,
+        "images": 7
+      },
+      {
+        "page": 5,
+        "text": " \nentregando los siguientes resultados: \n \n \n \nNota que el único valor que entrega es la intersección con el eje de las 𝑦 ya que no tiene \nintersección con el eje de las 𝑥 ni extremos. \n \nACTIVIDAD 7: Ajustar un conjunto de puntos por una función exponencial \nPara encontrar la expresión algebraica de una función exponencial que mejor ajuste a los puntos \nA, B, C, y D, escribe en la barra de entrada lo siguiente: \n \n(1,1) .¿. \n(3,2) .¿. \n(5,4) .¿. \n(6,8) .¿. \n{A,B,C,D} .¿. \nAjusteBaseExp(l1) .¿. \n \n \n \n \n",
+        "chars": 509,
+        "images": 5
+      },
+      {
+        "page": 6,
+        "text": " \nO bien, ingresa \n \nAjusteExp(l1) .¿. \n \n \n \nNota que las gráficas de los modelos son iguales. Esto sucede porque las expresiones son \nequivalentes. Si la expresión de un modelo es 𝑓(𝑥) = 𝑎𝑏! y la del otro es 𝑔(𝑥) = 𝑎𝑒\"!, se tiene \nque 𝑏= 𝑒\". \n \nEn este ejemplo, la expresión del primer modelo es 𝑝(𝑥) = 0.63 ∙1.49!, la del segundo modelo \nes 𝑓(𝑥) = 0.63𝑒#.%!, y se cumple que 1.49 ≈𝑒#.%. Recuerda que los números están aproximados \npor redondeo a las centésimas, por eso no se obtiene la igualdad. \n \n \n",
+        "chars": 505,
+        "images": 3
+      }
+    ],
+    "text_file": "texto/F37.txt"
+  },
+  {
+    "id": "F38",
+    "path": "matrices/Situación de modelación 1 Crecimiento de bacterias.pdf",
+    "bytes": 556553,
+    "sha256": "f7b60bab31f2a89ff7ee4cfa7df066a017f270d1684426132b1273b2e9123e7a",
+    "page_count": 3,
+    "pages": [
+      {
+        "page": 1,
+        "text": " \n \n \n \nSITUACIÓN DE MODELACIÓN 1\nCRECIMIENTO DE \nBACTERIAS\nLos ecólogos de poblaciones usan varios métodos \nmatemáticos para modelar la dinámica de poblaciones \n(los cambios en el tamaño y la composición de las \npoblaciones a lo largo del tiempo). Algunos de estos \nmodelos representan el crecimiento sin restricciones \nambientales, mientras que otros incluyen \"topes\" \ndeterminados por los recursos limitados. Los modelos \nmatemáticos de las poblaciones pueden utilizarse para \ndescribir con precisión los cambios en una población y, \naún más importante, predecir los cambios futuros.\n",
+        "chars": 587,
+        "images": 2
+      },
+      {
+        "page": 2,
+        "text": " \n \nSITUACIÓN DE MODELACIÓN 1 \nCRECIMIENTO DE BACTERIAS \n \nSe realiza un experimento en un laboratorio para estudiar el crecimiento de una población de \nbacterias en un entorno controlado. Se sabe que el crecimiento de estas bacterias sigue un \nmodelo exponencial, donde el número de bacterias en un momento dado está relacionado con \nla tasa de crecimiento y el tiempo transcurrido desde el inicio del experimento. \n \nACTIVIDAD 1 (actividad generadora) \nLa persona que lleva a cabo el experimento registra, en cada una de las primeras cinco horas, el \nnúmero de bacterias existentes en la placa Petri. Al revisar los valores, se percata de que la tasa \nde crecimiento es de 20% respecto de la cantidad de bacterias en la hora anterior. \n \nCompleta la siguiente tabla, a partir de la información entregada: \n \nHora \nNúmero de bacterias \n0 \n100 \n1 \n \n2 \n \n3 \n \n4 \n \n5 \n \n \nACTIVIDAD 2 \na. ¿Cuál es la expresión algebraica que modela el número de bacterias en la placa Petri en \nfunción del tiempo? ¿Existe una única expresión? \nb. En la representación gráfica de la función en GeoGebra, identifica e interpreta cada una \nde las constantes en la expresión. \n \nACTIVIDAD 3 \nConsidera la función planteada en la actividad anterior cuya forma es 𝑓(𝑥) = 𝑎∙𝑏!. \na. ¿Cuál será la población de bacterias después de ocho horas? \nb. ¿A qué hora la población como mínimo será de 2800 bacterias? \nc. ¿Existe algún instante de tiempo específico en el que se alcance exactamente dicha \ncantidad de bacterias? \n \n \n",
+        "chars": 1499,
+        "images": 1
+      },
+      {
+        "page": 3,
+        "text": " \n \nACTIVIDAD 4 \nSi en el laboratorio desearan alcanzar una población de 5000 bacterias en 10 horas, responde \ncada una de las siguientes preguntas de manera independiente: \na. ¿Cuál tendría que ser la población inicial de bacterias? \nb. ¿Cuál tendría que ser la tasa de crecimiento óptima de las bacterias? \n \nACTIVIDAD 5 (actividad de cierre) \nEl crecimiento exponencial puede ocurrir durante un tiempo, si hay pocos individuos y muchos \nrecursos. Cuando el número de individuos es lo suficientemente grande, los recursos empiezan \na agotarse, haciendo que se desacelere la tasa de crecimiento y provocando, por tanto, que el \ntamaño de la población se nivele o se estabilice. \n \nEn este caso, el modelo exponencial es \n \n𝑃(𝑡) =\n𝐾𝑃\"𝑒#$\n𝐾+ 𝑃\"(𝑒#$ + 1) \n \ndonde \n𝑃(𝑡) es la población en el instante 𝑡 \n𝐾 es la capacidad de resistencia o de carga de la población o sistema, es decir, el valor \nmáximo que la población puede alcanzar \n𝑃\" es la población inicial \n𝑟 es la tasa de crecimiento de la población (en tanto por uno) \n𝑡 es el tiempo, en horas \n \nConsidera los mismos valores de la población inicial y la tasa de crecimiento del modelo de la \nactividad 3 y una capacidad de resistencia de 10000 bacterias. \na. ¿Cuál es la expresión algebraica que modela el número de bacterias en la placa Petri en \nfunción del tiempo? \nb. Representa gráficamente la función en GeoGebra. \nc. ¿Cuál será la población de bacterias transcurridas ocho horas? ¿Y transcurridas 40 horas? \nCompara con el modelo de la actividad 3.  \nd. ¿En qué tiempo aproximadamente se podría alcanzar la capacidad de resistencia de la \npoblación? \n \n \n",
+        "chars": 1619,
+        "images": 1
+      }
+    ],
+    "text_file": "texto/F38.txt"
+  },
+  {
+    "id": "F39",
+    "path": "matrices/ARPA 1 Eliminación de fármacos.pdf",
+    "bytes": 438974,
+    "sha256": "8e19deb09ddf74af00ea4f8ad0df257848216cba68414cd2c24719334f4f2726",
+    "page_count": 1,
+    "pages": [
+      {
+        "page": 1,
+        "text": " \n \nARPA 1 \nELIMINACIÓN DE FÁRMACOS \n \nLos analgésicos como, por ejemplo, el paracetamol, son los principales fármacos utilizados para \ntratar distintos tipos de dolores. Sus efectos comienzan cuando estos llegan al torrente \nsanguíneo, disminuyendo su concentración de forma permanente hasta que nuestro organismo \nprácticamente los elimina. \n \nLa dosis recomendada, por el médico, de uno de estos fármacos es una pastilla de 1000 mg al \ndía. Se sabe que la eliminación de este medicamento en el organismo es de 10% cada hora \nrespecto de la cantidad, en miligramos, que queda en el cuerpo en la hora anterior. \n¿Aproximadamente en qué tiempo la dosis inicial se reduce a la mitad? \n \n",
+        "chars": 686,
+        "images": 1
+      }
+    ],
+    "text_file": "texto/F39.txt"
   }
 ]

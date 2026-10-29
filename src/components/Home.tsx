@@ -1,87 +1,151 @@
-import {ArrowRight, BookOpen, ChevronDown, Clock3, FolderOpen, GitBranch, Play, Plug, Plus} from 'lucide-react';
-import {HomeTools} from '../lab/HomeTools';
+import {useEffect, useRef, useState, type CSSProperties, type FocusEvent} from 'react';
+import {ArrowRight, BookOpen, ChevronDown, FlaskConical, FolderOpen, PanelTop, Pause, Play, Plug, UsersRound} from 'lucide-react';
 import {InstallApp} from './InstallApp';
-import {CommunityCard} from './CommunityCard';
-import {CLASS_DIAGRAMS, type PracticeDocument, type StudyMode} from '../data/practice';
-import '../styles/modo-home.css';
+import {HumanoLabBand} from './HumanoLabBand';
+import type {PracticeDocument} from '../data/practice';
+import {APP_VERSION, releases} from '../data/releases';
+import '../styles/modo-home-approved.css';
 
-type HomeProps = {
-  practice: PracticeDocument;
-  onStart: (mode: StudyMode, diagramId: string) => void;
-  onContinue: () => void;
-  onImport: (file: File) => void;
-  ready: boolean;
-};
+type HomeProps = {practice: PracticeDocument; onEnterPanel: () => void; onContinue: () => void; onImport: (file: File) => void; ready: boolean};
+const words = ['ESTUDIO', 'LAB', 'CONTROL', 'ROBÓTICA', 'CIRCUITOS', 'PRÁCTICA'];
+const spaces = [
+  {id:'panel', name:'Panel de control', Icon:Plug, href:'', color:'dark'},
+  {id:'study', name:'Estudio', Icon:BookOpen, href:'/estudio/', color:'blue'},
+  {id:'lab', name:'Laboratorio', Icon:FlaskConical, href:'/laboratorio/', color:'dark'},
+  {id:'community', name:'Comunidad', Icon:UsersRound, href:'/comunidad/', color:'blue'},
+];
+const padded = (word: string) => word.padStart(word.length + Math.floor((9-word.length)/2), ' ').padEnd(9, ' ');
 
-export function Home({practice, onStart, onContinue, onImport, ready}: HomeProps) {
-  return <section className="home-view modo-home" aria-label="Inicio de modo.">
-    <div className="modo-workspace">
-      <div className="modo-intro">
-        <div>
-          <p className="modo-eyebrow">AUTOMATIZACIÓN · ROBÓTICA · APRENDIZAJE</p>
-          <h1>Tu espacio<br className="modo-title-break"/> de trabajo<span>.</span></h1>
-          <p className="modo-intro-description">Practica, estudia y construye a tu ritmo.</p>
-        </div>
-        <div className="modo-intro-aside" aria-hidden="true"><span>APRENDE</span><span>CONECTA</span><span>EXPERIMENTA</span><i>//</i></div>
-      </div>
-      <article className="modo-card modo-panel" aria-labelledby="panel-heading">
-        <img className="modo-card-photo" src="/images/modo/bornes.webp" srcSet="/images/modo/bornes-640.webp 640w, /images/modo/bornes-1024.webp 1024w, /images/modo/bornes.webp 1536w" sizes="(max-width: 760px) calc(100vw - 24px), 56vw" alt="" width="1536" height="1024" fetchPriority="high"/>
-        <div className="modo-card-heading">
-          <span className="modo-module-icon"><Plug aria-hidden="true"/></span>
-          <div><p className="modo-eyebrow">SIMULADOR</p><h2 id="panel-heading">Panel de control</h2><p>Conecta cables, interpreta diagramas y comprueba tus conexiones.</p></div>
-        </div>
-        <form className="modo-panel-form" onSubmit={event => {
-          event.preventDefault();
-          const data = new FormData(event.currentTarget);
-          onStart(data.get('mode') as StudyMode, String(data.get('diagram')));
-        }}>
-          <div className="modo-panel-fields">
-            <label htmlFor="learning-mode">Modo de aprendizaje</label>
-            <div className="modo-select"><GitBranch size={21} aria-hidden="true"/><select id="learning-mode" name="mode" defaultValue="free">
-              <option value="free">Práctica libre · conectar cables</option>
-              <option value="identify">Reconocimiento guiado · 9 retos con fotografías</option>
-              <option value="guided">Leer diagramas · líneas, símbolos y práctica</option>
-              <option value="explore">Explorar componentes</option>
-            </select><ChevronDown className="modo-select-chevron" size={18} aria-hidden="true"/></div>
-            <details className="modo-diagram">
-              <summary><Plus size={22} aria-hidden="true"/><span>Añadir un diagrama <span className="modo-optional">· opcional</span></span></summary>
-              <div className="modo-diagram-content"><label htmlFor="circuit">Material de estudio</label>
-                <select id="circuit" name="diagram" defaultValue={practice.diagram?.origin === 'class_photo' ? practice.diagram.id : 'none'}>
-                  <option value="none">Sin diagrama · cargar mi imagen en el simulador</option>
-                  {CLASS_DIAGRAMS.map(diagram => <option key={diagram.id} value={diagram.id}>{diagram.name}</option>)}
-                </select>
-                <small>Puedes usar una foto de clase o cargar tu imagen dentro de la práctica.</small>
-              </div>
-            </details>
-          </div>
-          <button className="modo-primary" disabled={!ready} type="submit">Abrir panel de control <ArrowRight size={22} aria-hidden="true"/></button>
-        </form>
-      </article>
-      <div className="modo-side">
-        <a className="modo-card modo-study" href="/estudio" aria-labelledby="study-heading">
-          <img className="modo-card-photo" src="/images/modo/protecciones.webp" srcSet="/images/modo/protecciones-640.webp 640w, /images/modo/protecciones-1024.webp 1024w, /images/modo/protecciones.webp 1536w" sizes="(max-width: 760px) calc(100vw - 24px), 38vw" alt="" width="1536" height="1024" decoding="async"/>
-          <div className="modo-card-heading"><span className="modo-module-icon"><BookOpen aria-hidden="true"/></span><div><p className="modo-eyebrow">ESTUDIO</p><h2 id="study-heading">Estudiar protecciones</h2><p>Teoría, componentes, cálculos y ejercicios. Revisa tus errores y prepárate con simulacros.</p></div></div>
-          <span className="modo-round-arrow" aria-hidden="true"><ArrowRight size={25}/></span>
-        </a>
-        <HomeTools/>
-      </div>
+function Flap({letter, index, reduced}: {letter:string; index:number; reduced:boolean}) {
+  const previous = useRef(letter);
+  // Keep the last settled glyph on screen until both rotating halves are ready.
+  // Rendering the incoming prop here causes a one-frame flash before useEffect.
+  const [settled, setSettled] = useState(letter);
+  const [turn, setTurn] = useState<{from:string; to:string}|null>(null);
+  useEffect(() => {
+    const from = previous.current;
+    previous.current = letter;
+    if (reduced || from === letter) {setSettled(letter);setTurn(null); return;}
+    setTurn({from, to:letter});
+    const timer = setTimeout(() => {setSettled(letter);setTurn(null);}, 760 + index*46);
+    return () => clearTimeout(timer);
+  }, [letter, index, reduced]);
+  const face = (value:string, className:string) => <span className={`flap-face ${className}`}><span className="flap-glyph">{value === ' ' ? '\u00a0' : value}</span></span>;
+  return <span className={`flap-cell${turn?' is-turning':''}`} style={{'--flap-delay':`${index*46}ms`} as CSSProperties}>
+    {face(turn?.to ?? settled,'flap-top')}{face(turn?.from ?? settled,'flap-bottom')}
+    {turn && <span className="flap-moving" key={`${turn.from}-${turn.to}`}>
+      {face(turn.from,'flap-top flap-out')}{face(turn.to,'flap-bottom flap-in')}
+    </span>}
+  </span>;
+}
+
+function SplitFlap() {
+  const [word, setWord] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const query = matchMedia('(prefers-reduced-motion: reduce)');
+    // MotionHead resolves the explicit app preference before the system default.
+    const sync = () => setReduced(!document.documentElement.classList.contains('modo-motion-full') && (query.matches || document.documentElement.classList.contains('modo-reduced')));
+    sync(); query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
+  }, []);
+  useEffect(() => {
+    if (paused || reduced) return;
+    const advance = () => {if (!document.hidden) setWord(value => (value+1)%words.length);};
+    let cycle:ReturnType<typeof setInterval>|undefined;
+    const first = setTimeout(() => {advance();cycle=setInterval(advance,4200);},1800);
+    return () => {clearTimeout(first);if(cycle)clearInterval(cycle);};
+  }, [paused, reduced]);
+  return <div className="home-clock-wrap">
+    <div className="home-clock" aria-label={`modo. ${words[word]}`} role="img">
+      <div className="home-clock-slots" aria-hidden="true">{[...padded(words[word])].map((letter,index) => <Flap key={index} letter={letter} index={index} reduced={reduced || paused}/>)}</div>
     </div>
-    <CommunityCard/>
-    <div className="modo-card modo-recent">
-      <span className="modo-module-icon"><Clock3 aria-hidden="true"/></span>
-      <div className="modo-recent-copy"><p className="modo-eyebrow">PRÁCTICA RECIENTE</p><h2>Tu última práctica</h2><p>{practice.wires.length} cables · {practice.steps.length} pasos</p></div>
-      <div className="modo-recent-actions">
-        <button className="modo-continue" disabled={!ready} onClick={onContinue}><Play size={22} aria-hidden="true"/><span className="modo-continue-desktop">Continuar práctica</span><span className="modo-continue-mobile">Continuar</span><ArrowRight className="modo-continue-mobile" size={22} aria-hidden="true"/></button>
-        <label className="modo-import"><FolderOpen size={23} aria-hidden="true"/><span>Abrir práctica guardada</span><input type="file" aria-label="Abrir práctica guardada" accept="application/json,.json" disabled={!ready} onChange={event => {
-          if (event.target.files?.[0]) onImport(event.target.files[0]);
-          event.target.value = '';
-        }}/></label>
+    {reduced?<a className="clock-enable" href="?movimiento=completo"><Play size={11} aria-hidden="true"/>Activar animaciones</a>:<button className="clock-pause" type="button" aria-label={paused?'Reanudar título animado':'Pausar título animado'} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused?<Play size={13}/>:<Pause size={13}/>}</button>}
+  </div>;
+}
+
+export function Home({practice, onEnterPanel, onContinue, onImport, ready}: HomeProps) {
+  const [selected, setSelected] = useState(1);
+  const [drag, setDrag] = useState(0);
+  const gesture = useRef<{x:number; y:number; pointer:number; horizontal:boolean; dx:number}|null>(null);
+  const selectionAtPointerDown = useRef(selected);
+  const suppressClick = useRef(false);
+  const versionMenu = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const closeOutside = (event:PointerEvent) => {if(versionMenu.current && !versionMenu.current.contains(event.target as Node)) versionMenu.current.open=false;};
+    const escape = (event:KeyboardEvent) => {if(event.key==='Escape' && versionMenu.current?.open){versionMenu.current.open=false;versionMenu.current.querySelector('summary')?.focus();}};
+    document.addEventListener('pointerdown', closeOutside);
+    document.addEventListener('keydown', escape);
+    return () => {document.removeEventListener('pointerdown',closeOutside);document.removeEventListener('keydown',escape);};
+  }, []);
+  const hasPractice = practice.wires.length>0 || practice.steps.length>0 || !!practice.learning || !!practice.assessment;
+  const select = (index:number) => setSelected((index+spaces.length)%spaces.length);
+  const finishGesture = (cancelled=false) => {
+    const current=gesture.current;
+    if (!current) return;
+    if (!cancelled && current.horizontal && Math.abs(current.dx)>40) {select(selectionAtPointerDown.current+(current.dx<0?1:-1)); suppressClick.current=true;}
+    gesture.current=null; setDrag(0);
+  };
+  return <section className="modo-reference-home" aria-label="Inicio de modo.">
+    <header className="home-hero">
+      <h1 className="home-brand"><img src="/brand/modo-logo-horizontal-negro.svg" alt="modo." width="316" height="90"/></h1>
+      <SplitFlap/>
+      <p className="home-description">Simulaciones, diagramas, prácticas y material de clase<br className="home-desktop-break"/> para entender y aplicar la automatización en el mundo real.</p>
+    </header>
+    <nav className={`home-carousel${gesture.current?.horizontal?' is-dragging':''}`} aria-label="Módulos de modo." aria-roledescription="carrusel" onKeyDown={event => {
+      const next=event.key==='ArrowRight'?selected+1:event.key==='ArrowLeft'?selected-1:event.key==='Home'?0:event.key==='End'?spaces.length-1:null;
+      if(next===null)return;
+      event.preventDefault();select(next);
+      if((event.target as HTMLElement).closest('.home-module'))event.currentTarget.querySelector<HTMLElement>(`[data-module="${spaces[(next+spaces.length)%spaces.length].id}"]`)?.focus({preventScroll:true});
+    }}>
+      <div className="home-carousel-stage" onPointerDown={event => {
+        suppressClick.current=false;
+        selectionAtPointerDown.current=selected;
+        if (event.button!==0) return;
+        gesture.current={x:event.clientX,y:event.clientY,pointer:event.pointerId,horizontal:false,dx:0};
+      }} onPointerMove={event => {
+        const start=gesture.current; if(!start || event.pointerId!==start.pointer) return;
+        const dx=event.clientX-start.x, dy=event.clientY-start.y;
+        if (!start.horizontal && Math.abs(dy)>Math.abs(dx) && Math.abs(dy)>10) {gesture.current=null;return;}
+        if (Math.abs(dx)>8 || start.horizontal) {
+          if(!start.horizontal && event.pointerType==='mouse')event.currentTarget.setPointerCapture(event.pointerId);
+          start.horizontal=true;start.dx=dx;suppressClick.current=true;setDrag(Math.max(-180,Math.min(180,dx)));
+          if(event.pointerType==='mouse')event.preventDefault();
+        }
+      }} onPointerUp={() => finishGesture()} onPointerCancel={() => finishGesture(true)} onLostPointerCapture={() => finishGesture(true)} onDragStart={event=>event.preventDefault()} onClickCapture={event => {
+        if (suppressClick.current) {event.preventDefault();event.stopPropagation();suppressClick.current=false;return;}
+        const card=(event.target as HTMLElement).closest<HTMLElement>('[data-module]');
+        const index=spaces.findIndex(space=>space.id===card?.dataset.module);
+        if(event.detail>0 && index>=0 && index!==selectionAtPointerDown.current && matchMedia('(max-width:1100px)').matches){event.preventDefault();event.stopPropagation();select(index);}
+      }}>
+        {spaces.map(({id,name,Icon,href,color},index) => {
+          let offset = (index-selected+spaces.length)%spaces.length;
+          if (offset===3) offset=-1;
+          const active=index===selected;
+          const style={'--offset':offset,'--distance':Math.abs(offset),'--drag':`${drag}px`,'--tilt':active?'0deg':`${-offset*4}deg`,zIndex:10-Math.abs(offset)} as CSSProperties;
+          const contents=<><span className="home-module-icon"><Icon strokeWidth={1.8} aria-hidden="true"/></span><img className={`home-module-art art-${id}`} src={`/images/home-approved/${id}.webp`} width="900" height="900" alt="" draggable="false" decoding="async"/><span className="home-module-bottom"><strong>{name}</strong><span className="home-module-arrow"><ArrowRight aria-hidden="true"/></span></span></>;
+          const className=`home-module module-${color}${active?' is-selected':''}`;
+          const common={className,style,'aria-label':`Abrir ${name}`,'aria-current':active?'true' as const:undefined,'data-module':id,onFocus:(event:FocusEvent<HTMLElement>)=>{if(!gesture.current && event.currentTarget.matches(':focus-visible'))select(index);}};
+          return id==='panel'?<button key={id} {...common} type="button" disabled={!ready} onClick={onEnterPanel}>{contents}</button>:<a key={id} {...common} href={href}>{contents}</a>;
+        })}
       </div>
+      <div className="home-carousel-dots" aria-label="Seleccionar módulo">{spaces.map((space,index) => <button key={space.id} type="button" aria-label={`Mostrar ${space.name}`} aria-pressed={selected===index} onClick={()=>select(index)}><span/></button>)}</div>
+      <p className="home-carousel-hint">Desliza para explorar · toca la tarjeta central para entrar</p>
+      <p className="home-sr-only" role="status" aria-live="polite">{spaces[selected].name} · {selected+1} de {spaces.length}</p>
+    </nav>
+    <div className={`home-practice-tools${hasPractice?' has-practice':''}`}>
+      <a className="home-cabinet-link" href="/laboratorio?tool=equipment&start=taller"><PanelTop size={17} aria-hidden="true"/><span>Tableros de control · montaje y PLC</span><ArrowRight size={14} aria-hidden="true"/></a>
+      {hasPractice && <button className="home-continue" type="button" disabled={!ready} onClick={onContinue}><Play size={15} aria-hidden="true"/>Continuar práctica <span>{practice.wires.length} cables · {practice.steps.length} pasos</span><ArrowRight size={16} aria-hidden="true"/></button>}
+      <label className="home-import" title="Carga un archivo .json que exportaste antes con «Exportar». Para seguir donde lo dejaste usa «Continuar práctica»."><FolderOpen size={15} aria-hidden="true"/><span>Abrir práctica guardada</span><input type="file" aria-label="Abrir práctica guardada" accept="application/json,.json" disabled={!ready} onChange={event=>{if(event.target.files?.[0])onImport(event.target.files[0]);event.target.value='';}}/></label>
+      <InstallApp/>
+      <a className="home-import" href="/sin-conexion/">Preparar viaje · sin conexión</a>
     </div>
-    <footer className="humano-credit" aria-label="Créditos de Humano Lab">
-      <p><strong>Una iniciativa de Humano Lab.</strong><br/>Creación y dirección: Félix Levancini · Jefe del laboratorio.</p>
-      <p>© 2026 Humano Lab · Aportes originales.<br/><a href="/legal/" target="_blank" rel="noopener noreferrer">Uso educativo, privacidad y créditos ↗</a></p>
-      <div className="install-row"><InstallApp/></div>
+    <footer className="home-approved-footer">
+      <p>© 2026 Félix Levancini Toledo.<span> Todos los derechos reservados.</span></p>
+      <div className="home-footer-links"><a href="/legal/">Créditos y políticas</a><a href="/versiones/">Changelog</a><a href="/comunidad/">Comunidad</a></div>
+      <details ref={versionMenu} className="home-version"><summary aria-label={`Historial de versiones, versión actual ${APP_VERSION}`}><i aria-hidden="true"/>v{APP_VERSION}<ChevronDown size={19} aria-hidden="true"/></summary><div className="home-version-popover"><strong>Historial de modo.</strong>{releases.slice(0,4).map(release=><a key={release.version} href={`/versiones/#v${release.version}`}><b>v{release.version}</b><span>{release.title}</span><small>{release.date}</small></a>)}<a className="home-all-releases" href="/versiones/">Ver todas las versiones<ArrowRight size={15}/></a></div></details>
     </footer>
+    <HumanoLabBand/>
   </section>;
 }

@@ -2,6 +2,7 @@ import {useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode} from '
 import {FloatingWindow} from './FloatingWindow';
 import type {Cade,CadeObject} from '../data/cade';
 import {cadeKind,legendGroups,nameTagAt,photoFor,symbolInfo,type SymbolInfo} from '../data/cadeComponents';
+import {MODULES} from '../data/panel';
 /** Nombre del aparato escrito junto a su referencia («Disyuntor 3P», «Contactor», «Pulsador NC»…). */
 export function CadeNameTag({o}:{o:CadeObject}){
  const kind=cadeKind(o),info=symbolInfo(o);
@@ -26,7 +27,9 @@ export function CadeDetail({o,info,onClose,children}:{o:CadeObject;info:SymbolIn
  const g=useRef<SVGGElement>(null),[box,setBox]=useState<{x:number;y:number;w:number;h:number}|null>(null),[photoOk,setPhotoOk]=useState(true);
  useLayoutEffect(()=>{const frame=requestAnimationFrame(()=>{const b=g.current?.getBBox();if(b&&b.width>0)setBox({x:b.x-3,y:b.y-3,w:b.width+6,h:b.height+6})});return ()=>cancelAnimationFrame(frame)},[o.id]);
  useEffect(()=>{setPhotoOk(true)},[o.id]);
- const photo=photoFor(info.kind);
+ /* Si la pieza es un módulo del banco con otro nombre, se muestra la foto de ese módulo y no la del símbolo dibujado. */
+ const bankModule=o.bank?MODULES.find(m=>m.title.toLowerCase()===o.bank!.name.toLowerCase()):undefined;
+ const photo=bankModule?{src:bankModule.image,alt:`Módulo ${bankModule.title} del banco`,caption:`${bankModule.title} del banco (foto).`}:photoFor(info.kind);
  const content=<div className="cade-sheet-content"><div className="cade-sheet-media">
    <figure><svg viewBox={box?`${box.x} ${box.y} ${box.w} ${box.h}`:'0 0 40 40'} role="img" aria-label={`Símbolo de ${info.part} en el esquema`}><g ref={g} color="#2f4f61">{children}</g></svg><figcaption>Así se dibuja en el esquema</figcaption></figure>
    {photoOk&&<figure><img src={photo.src} alt={photo.alt} loading="lazy" onError={()=>setPhotoOk(false)}/><figcaption>{photo.caption}</figcaption></figure>}
@@ -34,5 +37,5 @@ export function CadeDetail({o,info,onClose,children}:{o:CadeObject;info:SymbolIn
   <p>{info.note}</p>
   <p className="cade-sheet-device"><b>{info.device}.</b> {info.what}</p>
  </div>;
- return <FloatingWindow title={info.part} eyebrow={o.reference?`${o.reference} · ${info.device}`:info.device} onClose={onClose} closeLabel="Cerrar detalle">{content}</FloatingWindow>;
+ return <FloatingWindow title={info.part} eyebrow={o.reference?`${o.reference} · ${info.device}`:info.device} onClose={onClose} closeLabel="Cerrar detalle" anchor="bottom" side="left" width={340} dockFraction={.5}>{content}</FloatingWindow>;
 }

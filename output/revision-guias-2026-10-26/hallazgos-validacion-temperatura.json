@@ -1,0 +1,20 @@
+{
+  "recordsFrom": {
+    "tcType": "K",
+    "txMin": 0,
+    "txMax": 100
+  },
+  "allTcPointsAcceptedAfterSwitchToJ": true,
+  "allTxPointsAcceptedAfterRangeChange": true,
+  "txRecordKeys": [
+    "id",
+    "source",
+    "sensor",
+    "tcType",
+    "temp",
+    "value",
+    "unit",
+    "ambient",
+    "at"
+  ]
+}

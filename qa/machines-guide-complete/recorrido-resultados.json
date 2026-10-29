@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-27",
+  "base": "http://127.0.0.1:4327",
+  "checks": [
+    "Una lectura sin captura y una transcripción cercana pero distinta de la pantalla quedan rechazadas",
+    "control-rest: SB3/S3 desde reposo no arranca; figura 1 respetada",
+    "TEST desde reposo rechazado aunque pilotos y térmico coincidan; se exige la transición desde triángulo",
+    "powered-rest: SB3/S3 desde reposo no arranca; figura 1 respetada",
+    "Placas y protecciones comprobadas; mando separado, fuerza añadida; esquema propio SVG; 34 pasos, 15 mediciones, TEST/RESET, comparación, cierre y exportaciones CSV/JSON/HTML",
+    "Acceso a Actividad 2 desde las guías del panel en móvil 390 × 844"
+  ],
+  "errors": []
+}

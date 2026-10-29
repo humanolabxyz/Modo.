@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "name": "Todos los recorridos conservan los bornes y generan curvas finitas",
+      "pass": true
+    },
+    {
+      "name": "La salida inicial sigue la orientación del borne, sin invertir el cable dentro del equipo",
+      "pass": true
+    },
+    {
+      "name": "Los recorridos responden a canaletas desplazadas sin editar el circuito",
+      "pass": true
+    },
+    {
+      "name": "La guía manual tiene prioridad y se conserva con exportación/importación",
+      "pass": true
+    },
+    {
+      "name": "Mover un equipo mantiene ambos extremos adheridos a sus bornes",
+      "pass": true
+    },
+    {
+      "name": "Color y orientación de terminaciones son deterministas",
+      "pass": true
+    },
+    {
+      "name": "El dibujo no cambia el diseño ni el resultado de la simulación",
+      "pass": true
+    }
+  ],
+  "passed": 7,
+  "total": 7
+}

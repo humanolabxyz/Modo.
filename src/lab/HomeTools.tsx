@@ -16,7 +16,7 @@ export function HomeTools() {
   return <article className="modo-card modo-laboratory" aria-label="Laboratorio de herramientas">
     <a className="modo-laboratory-open" href="/laboratorio" aria-labelledby="laboratory-heading">
       <img className="modo-card-photo" src="/images/modo/laboratorio.webp" srcSet="/images/modo/laboratorio-640.webp 640w, /images/modo/laboratorio-1024.webp 1024w, /images/modo/laboratorio.webp 1536w" sizes="(max-width: 760px) calc(100vw - 24px), 38vw" alt="" width="1536" height="1024" decoding="async"/>
-      <div className="modo-card-heading"><span className="modo-module-icon"><FlaskConical aria-hidden="true"/></span><div><p className="modo-eyebrow">LABORATORIO</p><h2 id="laboratory-heading">Tu laboratorio</h2><p>Diseña, programa y experimenta con esquemas, PLC, HMI, procesos, protoboard, temperatura, detectores y GeoGebra.</p></div></div>
+      <div className="modo-card-heading"><span className="modo-module-icon"><FlaskConical aria-hidden="true"/></span><div><p className="modo-eyebrow">03 / EXPERIMENTA</p><h2 id="laboratory-heading">Tu laboratorio</h2><p>Diseña circuitos y experimenta con las herramientas del laboratorio.</p></div></div>
       <span className="modo-round-arrow modo-lab-arrow" aria-hidden="true"><ArrowRight size={25}/></span>
     </a>
     <nav className="modo-laboratory-tools" aria-label="Herramientas del laboratorio">

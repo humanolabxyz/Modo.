@@ -1,7 +1,7 @@
 {
   "result": "PASS",
   "checks": [
-    "47 original lines, grouped source nodes including repeated references",
+    "47 original lines, source nodes with separate power and control breakers",
     "Equivalent two-bridge chains accepted, removal invalidates progress",
     "Partial correct connections color real diagram paths",
     "Cross-net connections rejected; unknown endpoints and branches remain unevaluated",

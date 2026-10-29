@@ -1,13 +1,9 @@
 {
   "checks": [
     "Lienzo del banco ocupa todo el viewport, 94 bornes y sin scroll de página",
-    "El zoom interpola y termina estable, sin redibujar el inventario",
-    "El inspector flota y no reduce ni desplaza el lienzo",
-    "Ctrl+rueda mantiene el punto bajo el cursor; rueda normal desplaza",
-    "Espacio+arrastrar y botón central desplazan sin crear conexiones",
-    "Cableado, retirada y recuperación siguen funcionando sobre el lienzo"
+    "El zoom interpola y termina estable, sin redibujar el inventario"
   ],
   "errors": [
-    "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(r.x>=14&&r.y>=80&&r.width>1000&&r.height>=360)\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-canvas.cjs:15:230"
+    "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(await p.getByRole('complementary',{name:'Inspector de bornes'}).isVisible())\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-canvas.cjs:10:173"
   ]
 }

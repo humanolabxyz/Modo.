@@ -1,0 +1,1004 @@
+{
+  "version": 1,
+  "lessons": {
+    "ii-fundamentos": {
+      "step": 0,
+      "updated": "2026-10-18T14:47:12.722Z",
+      "steps": {
+        "automatizar": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "lazo": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "level": "1.05",
+            "_touched": "yes"
+          }
+        },
+        "nivel": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "level": "1.05",
+            "_touched": "yes"
+          }
+        },
+        "equipos": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "funciones": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "variables": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "tarea": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "desafio": {
+          "answer": "",
+          "checked": false,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "variant": "1"
+          }
+        }
+      }
+    },
+    "ii-metrologia": {
+      "step": 2,
+      "updated": "2026-10-18T14:47:07.322Z",
+      "steps": {
+        "cadena": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "precision": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "sample": "level",
+            "_touched": "yes"
+          }
+        },
+        "temp-media": {
+          "answer": "98,82",
+          "checked": true,
+          "attempts": 3,
+          "note": "",
+          "draft": {
+            "sample": "level",
+            "_touched": "yes",
+            "work": "Referencia externa 100 °C; no sustituir por la media.",
+            "rows": "[{\"origin\":\"real\",\"condition\":\"Termómetro de clase · baño 100 °C\",\"value\":\"98,7\",\"unit\":\"°C\"},{\"origin\":\"simulated\",\"condition\":\"Termómetro de clase · baño 100 °C\",\"value\":\"98,82\",\"unit\":\"°C\"}]"
+          }
+        },
+        "temp-error": {
+          "answer": "-1,18",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "sample": "level",
+            "_touched": "yes"
+          }
+        },
+        "temp-dispersion": {
+          "answer": "0,10327956",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "sample": "level",
+            "_touched": "yes"
+          }
+        },
+        "nivel-media": {
+          "answer": "1,497",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "sample": "level",
+            "_touched": "yes"
+          }
+        },
+        "nivel-dispersion": {
+          "answer": "0,01636392",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "sample": "level",
+            "_touched": "yes"
+          }
+        },
+        "conclusion": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ii-caudal": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:33.560Z",
+      "steps": {
+        "volumen": {
+          "answer": "4",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "dp": "26",
+            "_touched": "yes"
+          }
+        },
+        "dp": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "dp": "26",
+            "_touched": "yes"
+          }
+        },
+        "tecnologia": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ii-presion": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:34.842Z",
+      "steps": {
+        "referencia": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "height": "1.05",
+            "_touched": "yes"
+          }
+        },
+        "hidrostatica": {
+          "answer": "19,62",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "height": "1.05",
+            "_touched": "yes"
+          }
+        },
+        "transmisor": {
+          "answer": "12",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ii-nivel": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:36.093Z",
+      "steps": {
+        "discreto": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "level": "1.05",
+            "_touched": "yes"
+          }
+        },
+        "eco": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "level": "1.05",
+            "_touched": "yes"
+          }
+        },
+        "seleccion": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ii-temperatura-teoria": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:37.326Z",
+      "steps": {
+        "kelvin": {
+          "answer": "298,15",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "sensor": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "montaje": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ii-proximidad-teoria": {
+      "step": 1,
+      "updated": "2026-10-18T14:46:38.492Z",
+      "steps": {
+        "principios": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "salida": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ea-clase-1": {
+      "step": 0,
+      "updated": "2026-10-18T14:47:10.689Z",
+      "steps": {
+        "electronica": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "peak": "10.5",
+            "_touched": "yes"
+          }
+        },
+        "rms": {
+          "answer": "7,071",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "peak": "10.5",
+            "_touched": "yes"
+          }
+        },
+        "ficha": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "desafio": {
+          "answer": "",
+          "checked": false,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "variant": "1"
+          }
+        }
+      }
+    },
+    "ea-clase-2": {
+      "step": 3,
+      "updated": "2026-10-18T14:46:41.225Z",
+      "steps": {
+        "polaridad": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "voltage": "5.1",
+            "_touched": "yes"
+          }
+        },
+        "corriente": {
+          "answer": "4,3",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "voltage": "5.1",
+            "_touched": "yes"
+          }
+        },
+        "tarea-3": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "laboratorio": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ea-clase-3": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:42.542Z",
+      "steps": {
+        "regiones": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "base": "1.1",
+            "_touched": "yes"
+          }
+        },
+        "configuracion": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "bc337": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "base": "1.1",
+            "_touched": "yes"
+          }
+        }
+      }
+    },
+    "ea-clase-4": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:43.859Z",
+      "steps": {
+        "diagonales": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "direction": "forward",
+            "_touched": "yes"
+          }
+        },
+        "integrado": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "direction": "forward",
+            "_touched": "yes"
+          }
+        },
+        "practica": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ea-clase-5": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:45.274Z",
+      "steps": {
+        "abierto": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "1.1",
+            "_touched": "yes"
+          }
+        },
+        "ganancia": {
+          "answer": "6",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "1.1",
+            "_touched": "yes"
+          }
+        },
+        "acondicionar": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "2.05",
+            "_touched": "yes"
+          }
+        }
+      }
+    },
+    "ea-ajuste-cero": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:46.490Z",
+      "steps": {
+        "rango-1": {
+          "answer": "1168,2243",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "2.05",
+            "_touched": "yes"
+          }
+        },
+        "rango-2": {
+          "answer": "689,65517",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "2.05",
+            "_touched": "yes"
+          }
+        },
+        "offset": {
+          "answer": "-1,4068966",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ea-guia-ao": {
+      "step": 3,
+      "updated": "2026-10-18T14:46:47.874Z",
+      "steps": {
+        "ej1": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "1.1",
+            "_touched": "yes"
+          }
+        },
+        "ej2": {
+          "answer": "3",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "1.1",
+            "_touched": "yes"
+          }
+        },
+        "ej3": {
+          "answer": "1168,2243",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "input": "2.05",
+            "_touched": "yes"
+          }
+        },
+        "ej4": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "cm-cc": {
+      "step": 0,
+      "updated": "2026-10-18T14:47:11.706Z",
+      "steps": {
+        "excitacion": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "carga": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "evidencia": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "desafio": {
+          "answer": "",
+          "checked": false,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "variant": "1"
+          }
+        }
+      }
+    },
+    "cm-ca": {
+      "step": 3,
+      "updated": "2026-10-18T14:46:50.524Z",
+      "steps": {
+        "sincronismo": {
+          "answer": "1500",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "frequency": "51",
+            "_touched": "yes"
+          }
+        },
+        "estrella": {
+          "answer": "230,9401",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "frequency": "51",
+            "_touched": "yes"
+          }
+        },
+        "inversion": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "monofasico": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "cm-arranque-manual": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:51.792Z",
+      "steps": {
+        "mando": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "secuencia": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "frequency": "51",
+            "_touched": "yes"
+          }
+        },
+        "falla": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "ri-teoria": {
+      "step": 0,
+      "updated": "2026-10-18T14:47:13.755Z",
+      "steps": {
+        "red": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "codigos": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "code": "NRZ-L",
+            "_touched": "yes"
+          }
+        },
+        "errores": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "code": "NRZ-L",
+            "_touched": "yes"
+          }
+        },
+        "osi": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "desafio": {
+          "answer": "",
+          "checked": false,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "variant": "1"
+          }
+        }
+      }
+    },
+    "ri-cable": {
+      "step": 1,
+      "updated": "2026-10-18T14:47:08.521Z",
+      "steps": {
+        "leer": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "fabricar": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "cable": "{\"revision\":21,\"cut\":true,\"wires\":[{\"pin\":1,\"terminal\":1,\"stripped\":true,\"tinned\":true,\"soldered\":true,\"tight\":true,\"broken\":false,\"cold\":false},{\"pin\":6,\"terminal\":2,\"stripped\":true,\"tinned\":true,\"soldered\":true,\"tight\":true,\"broken\":false,\"cold\":false},{\"pin\":5,\"terminal\":3,\"stripped\":true,\"tinned\":true,\"soldered\":true,\"tight\":true,\"broken\":false,\"cold\":false}],\"bridge\":false,\"flex\":false,\"hmiBaud\":9600,\"plcBaud\":9600,\"hmiAddress\":1,\"plcAddress\":1,\"running\":false}",
+            "_touched": "yes",
+            "measurements": "[{\"a\":\"p1\",\"b\":\"t1\",\"connected\":true,\"signature\":\"{\\\"revision\\\":19,\\\"cut\\\":true,\\\"wires\\\":[{\\\"pin\\\":1,\\\"terminal\\\":1,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":6,\\\"terminal\\\":2,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":5,\\\"terminal\\\":3,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false}],\\\"bridge\\\":false,\\\"flex\\\":false}\"},{\"a\":\"p6\",\"b\":\"t2\",\"connected\":true,\"signature\":\"{\\\"revision\\\":19,\\\"cut\\\":true,\\\"wires\\\":[{\\\"pin\\\":1,\\\"terminal\\\":1,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":6,\\\"terminal\\\":2,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":5,\\\"terminal\\\":3,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false}],\\\"bridge\\\":false,\\\"flex\\\":false}\"},{\"a\":\"p5\",\"b\":\"t3\",\"connected\":true,\"signature\":\"{\\\"revision\\\":19,\\\"cut\\\":true,\\\"wires\\\":[{\\\"pin\\\":1,\\\"terminal\\\":1,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":6,\\\"terminal\\\":2,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":5,\\\"terminal\\\":3,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false}],\\\"bridge\\\":false,\\\"flex\\\":false}\"},{\"a\":\"p1\",\"b\":\"p6\",\"connected\":false,\"signature\":\"{\\\"revision\\\":19,\\\"cut\\\":true,\\\"wires\\\":[{\\\"pin\\\":1,\\\"terminal\\\":1,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":6,\\\"terminal\\\":2,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":5,\\\"terminal\\\":3,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false}],\\\"bridge\\\":false,\\\"flex\\\":false}\"},{\"a\":\"p1\",\"b\":\"p5\",\"connected\":false,\"signature\":\"{\\\"revision\\\":19,\\\"cut\\\":true,\\\"wires\\\":[{\\\"pin\\\":1,\\\"terminal\\\":1,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":6,\\\"terminal\\\":2,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":5,\\\"terminal\\\":3,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false}],\\\"bridge\\\":false,\\\"flex\\\":false}\"},{\"a\":\"p6\",\"b\":\"p5\",\"connected\":false,\"signature\":\"{\\\"revision\\\":19,\\\"cut\\\":true,\\\"wires\\\":[{\\\"pin\\\":1,\\\"terminal\\\":1,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":6,\\\"terminal\\\":2,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false},{\\\"pin\\\":5,\\\"terminal\\\":3,\\\"stripped\\\":true,\\\"tinned\\\":true,\\\"soldered\\\":true,\\\"tight\\\":true,\\\"broken\\\":false,\\\"cold\\\":false}],\\\"bridge\\\":false,\\\"flex\\\":false}\"}]"
+          }
+        },
+        "enlace": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "entrega": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "mt-piedra": {
+      "step": 0,
+      "updated": "2026-10-18T14:47:14.773Z",
+      "steps": {
+        "tabla": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "time": "0.01",
+            "_touched": "yes"
+          }
+        },
+        "vertice": {
+          "answer": "2,5",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "time": "0.01",
+            "_touched": "yes"
+          }
+        },
+        "altura": {
+          "answer": "71,25",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "desafio": {
+          "answer": "",
+          "checked": false,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "variant": "1"
+          }
+        }
+      }
+    },
+    "mt-piedra-extension": {
+      "step": 1,
+      "updated": "2026-10-18T14:46:57.857Z",
+      "steps": {
+        "tiempo": {
+          "answer": "3",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "time": "0.01",
+            "_touched": "yes"
+          }
+        },
+        "altura": {
+          "answer": "85",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "time": "0.01",
+            "_touched": "yes"
+          }
+        }
+      }
+    },
+    "mt-servicio": {
+      "step": 2,
+      "updated": "2026-10-18T14:46:59.091Z",
+      "steps": {
+        "columnas": {
+          "answer": "35020",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "slope": "145",
+            "_touched": "yes"
+          }
+        },
+        "ajuste": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        },
+        "chispita": {
+          "answer": "9973",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {}
+        }
+      }
+    },
+    "mt-energia": {
+      "step": 2,
+      "updated": "2026-10-18T14:47:00.307Z",
+      "steps": {
+        "pendiente": {
+          "answer": "200",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "slope": "201",
+            "_touched": "yes"
+          }
+        },
+        "fijo": {
+          "answer": "900",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "slope": "201",
+            "_touched": "yes"
+          }
+        },
+        "inversa": {
+          "answer": "37",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "slope": "201",
+            "_touched": "yes"
+          }
+        }
+      }
+    },
+    "mt-energia-extension": {
+      "step": 1,
+      "updated": "2026-10-18T14:47:01.555Z",
+      "steps": {
+        "pendiente": {
+          "answer": "133,33333333333334",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "slope": "134",
+            "_touched": "yes"
+          }
+        },
+        "fijo": {
+          "answer": "1133,3333333333333",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "slope": "134",
+            "_touched": "yes"
+          }
+        }
+      }
+    },
+    "mt-instagram": {
+      "step": 1,
+      "updated": "2026-10-18T14:47:02.739Z",
+      "steps": {
+        "dominio": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "month": "6.1",
+            "_touched": "yes"
+          }
+        },
+        "crecimiento": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "month": "6.1",
+            "_touched": "yes"
+          }
+        }
+      }
+    },
+    "mt-sueno": {
+      "step": 2,
+      "updated": "2026-10-18T14:47:03.988Z",
+      "steps": {
+        "ingreso": {
+          "answer": "8000000",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "units": "10001",
+            "_touched": "yes"
+          }
+        },
+        "costo": {
+          "answer": "805000000",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "units": "10001",
+            "_touched": "yes"
+          }
+        },
+        "utilidad": {
+          "answer": "0",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "units": "10001",
+            "_touched": "yes"
+          }
+        }
+      }
+    },
+    "mt-stock": {
+      "step": 1,
+      "updated": "2026-10-18T14:47:05.172Z",
+      "steps": {
+        "ajustes": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "day": "7.1",
+            "_touched": "yes"
+          }
+        },
+        "agotamiento": {
+          "answer": "1",
+          "checked": true,
+          "attempts": 1,
+          "note": "",
+          "draft": {
+            "day": "7.1",
+            "_touched": "yes"
+          }
+        }
+      }
+    }
+  }
+}

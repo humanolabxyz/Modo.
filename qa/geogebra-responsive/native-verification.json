@@ -1,0 +1,9 @@
+{
+  "base": "http://localhost:4350",
+  "checks": [
+    "390x844: toque nativo crea punto, entrada CAS crea filas sin sobrescribir y conserva resultados al recargar",
+    "844x390: toque nativo crea punto, entrada CAS crea filas sin sobrescribir y conserva resultados al recargar",
+    "820x1180: toque nativo crea punto, entrada CAS crea filas sin sobrescribir y conserva resultados al recargar"
+  ],
+  "errors": []
+}

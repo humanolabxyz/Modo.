@@ -1,0 +1,35 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 1 
+ 
+ 
+TFL AUTOMATIZACIÓN Y ROBÓTICA 
+ARRI02 – Redes Industriales 
+ 
+Unidad 1 – Fundamentos de las redes de comunicación industrial 
+Guía de Actividad N°1 
+Elaboración de cable conector RS485 
+Versión Primavera 2025 
+Docente elaborador: HERMAN AROCA A. 
+ 
+Presentación: 
+ 
+Algunos Protocolos de Comunicación Industriales clásicos. 
+En todos los procesos industriales es común encontrarse con diferentes equipos de automatización que permiten 
+comunicarse entre sí, como por ejemplo comunicación entre PLC’s, PLC con variadores de frecuencia, pantallas, 
+transmisores e instrumentación industrial en general. Esto se logra gracias a los protocolos de comunicación 
+industriales, por mencionar algunos: 
+ 
+Figura 1.1. Algunos protocolos industriales de comunicación. 
+Dependiendo del tipo de protocolo de comunicación utilizado en instalaciones industriales, es posible 
+implementarlos, teniendo los conectores y tipo de cables adecuados, como, por ejemplo: 
+ 
+  
+ 
+ 
+Figura 1.2. Cable y conectores (de izquierda derecha): Profibus, Profinet y Modbus. 
+ 
+Cables RS232 y RS485. 
+Es posible construir el cable para la comunicación serial RS232 o RS485, conociendo el pinout de los conectores 
+DB9 utilizados para tales efectos. Evidentemente, la disposición de pines es distinta. 

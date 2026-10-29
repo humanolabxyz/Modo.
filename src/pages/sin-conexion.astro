@@ -1,0 +1,24 @@
+---
+import MotionHead from '../components/motion/MotionHead.astro';
+import '../styles/global.css';
+import '../styles/modo-soft-ui.css';
+import '../styles/offline.css';
+---
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/><meta name="theme-color" content="#e6e7e8"/><link rel="manifest" href="/manifest.webmanifest"/><link rel="icon" href="/brand/modo-app-oscuro.svg"/><title>Prepara tu viaje · modo.</title><MotionHead/></head>
+<body class="modo-soft-ui"><main class="offline-page">
+ <a class="offline-back" href="/">← Volver a modo.</a>
+ <p class="offline-eyebrow">TU ESPACIO, DONDE VAYAS</p><h1>Estudia y simula<br/>sin conexión.</h1>
+ <p class="offline-intro">Guarda en este navegador los simuladores, las lecciones, los documentos y los videos. No necesitas abrir cada actividad antes de salir.</p>
+ <section class="offline-card" aria-labelledby="offline-heading">
+  <h2 id="offline-heading">Prepara este dispositivo</h2>
+  <p id="offline-status" role="status" aria-live="polite">Comprobando los archivos guardados…</p>
+  <progress id="offline-progress" max="100" value="0" aria-label="Contenido disponible sin conexión"></progress>
+  <p id="offline-detail">La copia completa incluye GeoGebra Classic con gráfica, matrices y CAS.</p>
+  <div class="offline-actions"><button id="offline-download" disabled>Guardar todo para el viaje</button><button id="offline-check" disabled>Comprobar archivos</button></div>
+  <p id="offline-error" role="alert" hidden></p>
+  <p class="offline-small">Deja esta página abierta mientras se prepara. Si se interrumpe, vuelve a pulsar el botón: se conservan los archivos ya descargados.</p>
+ </section>
+ <nav class="offline-destinations" aria-label="Abrir sin conexión"><a href="/?view=simulator">Panel y multímetro →</a><a href="/laboratorio?tool=plc">PLC y HMI →</a><a href="/laboratorio?tool=breadboard">Protoboard →</a><a href="/laboratorio?tool=temperature">Temperatura →</a><a href="/laboratorio?tool=detectors">Detectores →</a><a href="/laboratorio?tool=geogebra">GeoGebra Classic →</a><a href="/laboratorio?tool=soldering">Soldadura y cable HMI–PLC →</a><a href="/estudio/">Lecciones y práctica →</a></nav>
+ <section class="offline-notes"><h2>Para que tu viaje esté listo</h2><ul><li>Espera a ver «Listo para el viaje» y comprueba los simuladores en modo avión, en este mismo navegador y dirección.</li><li>En tu computador también puedes abrir <strong>ABRIR_MODO_SIN_CONEXION.cmd</strong>: utiliza la copia local, incluso sin descargarla al navegador.</li><li>Tu avance y proyectos se guardan en este navegador. Exporta las prácticas y proyectos que quieras respaldar.</li><li>Los enlaces a sitios externos, YouTube y actividades alojadas en geogebra.org requieren internet. El motor de GeoGebra y las actividades integradas de modo. están incluidos.</li><li>Conserva los datos del sitio. El navegador puede retirar descargas si falta espacio; «Comprobar archivos» revisa la copia de esta versión.</li></ul><p><a href="/legal/">Créditos y políticas</a> · <a href="/vendor/geogebra/README.txt">GeoGebra · avisos de uso educativo</a></p></section>
+</main><script>import '../offline/travel';</script></body></html>

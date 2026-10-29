@@ -1,0 +1,120 @@
+Herramienta del laboratorio
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+Tablero · PLC industrial
+Simular
+TU ESPACIO DE TRABAJO
+PLC
+PLC VIRTUAL · STOP
+1 segmentos · 9 variables
+001
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NC
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
++
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NC
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
+I0.0 · Marcha · S1
+I0.1 · Paro disponible · S0
+I0.2 · Disparo térmico · F1
+I0.3 · Permiso de proceso · B1
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+NA
+×
++
+×
+Q0.0 · Orden de contactor · K1
+M0.0 · Memoria auxiliar
+T1 · Temporizador
+C1 · Contador
+Bobina
+SET
+RESET
+TON
+TOF
+CTU
++ Rama en paralelo
++ Añadir segmento
+Sin errores de compilación
+
+La compilación es correcta. Prueba la secuencia para comprobar que cumple el objetivo.
+
+Variables y memoria

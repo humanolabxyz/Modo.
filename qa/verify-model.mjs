@@ -41,7 +41,7 @@ for(const s of [1,2,3]){
  assert.equal(port(`S${s}:3`).color,'white');assert.equal(port(`S${s}:4`).color,'white');
  assert.ok(port(`S${s}:1`).y<port(`S${s}:2`).y);
  assert.ok(port(`S${s}:3`).y<port(`S${s}:4`).y);
- assert.ok(s===3?port('S3:3').x<port('S3:1').x:port(`S${s}:1`).x<port(`S${s}:3`).x);
+ assert.ok(port(`S${s}:1`).x<port(`S${s}:3`).x);
 }
 for(const [query,count] of [['95',2],['96',2],['A1',3],['13',3],['S2:3',1],['BOTONERAS:S2:3',1]]){
  assert.equal(TERMINALS.filter(t=>matchesTerminal(t.module,t.terminal,query)).length,count,query);

@@ -1,6 +1,6 @@
 import {useLayoutEffect,useState} from 'react';
 export type LayoutMode={compact:boolean;portrait:boolean};
-export const COMPACT_QUERY='(max-width:900px), (max-height:600px) and (max-width:1000px)';
+export const COMPACT_QUERY='(max-width:1100px), (max-width:1366px) and (pointer:coarse), (max-height:600px) and (max-width:1000px)';
 export const PORTRAIT_QUERY='(orientation:portrait)';
 const read=(query:string):LayoutMode=>({compact:matchMedia(query).matches,portrait:matchMedia(PORTRAIT_QUERY).matches});
 export function useCompactLayout(query=COMPACT_QUERY):LayoutMode{

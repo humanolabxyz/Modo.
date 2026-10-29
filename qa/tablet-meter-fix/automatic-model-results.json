@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "Reloj común: la suspensión descarta tiempo oculto y reanuda sin saltos",
+    "Temporizador: reprogramación durante cuenta, enclavamiento terminado y reposición al caer bobina",
+    "Térmico automático: clase 10 a 7,2×Ir, memoria, enfriamiento sin rearme y corriente nominal sostenida",
+    "Contactos: retardo de cierre/apertura y transición Y–Δ sin solapamiento",
+    "Perfil: importación validada, protección siempre automática y exclusión de estado dinámico",
+    "Fase perdida por cable ausente: corriente nula en esa línea, arranque sin par neto y secuencia inversa al girar; desequilibrio eléctrico",
+    "Conmutación: RMS del transitorio RL reproducible y estabilización, sin variación aleatoria",
+    "Ω: bobina didáctica, referencia aportada, ausencia de datos y bloqueo con tensión"
+  ],
+  "tripAt": 7.51,
+  "loss": {
+    "lineAmps": {
+      "R": 12.316694422765291,
+      "S": 0,
+      "T": 12.316694422765293
+    },
+    "positiveVolts": 109.22160578055623,
+    "negativeVolts": 109.22160578055623
+  },
+  "unbalanced": {
+    "lineAmps": {
+      "R": 2.5068008108909816,
+      "S": 1.6873985121199286,
+      "T": 3.3159913993050303
+    },
+    "pct": 7.126584216847109
+  }
+}

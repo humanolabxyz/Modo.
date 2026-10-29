@@ -1,6 +1,6 @@
 import {useId,useState} from 'react';
 import {BookOpen,Check,X} from 'lucide-react';
-import {Chips,Field} from '../ValueEditor';
+import {Chips,EditorWindow,Field} from '../ValueEditor';
 import {DIST_MAX,GENERIC_RANGE,KINDS,KIND_NAMES,MATERIAL_NAMES,MODELS,OUTPUT_NAMES,type Kind,type Material,type Output,type Settings,type Spec} from './physics';
 import {formatMm,formatNumber,parseNumber} from './state';
 import type {Equipment} from './BenchScene';
@@ -26,9 +26,7 @@ function ObjectForm({settings:s,spec,onChange,onClose}:Pick<Props,'settings'|'sp
   </>;
 }
 export function DetectorEditor({id,settings:s,spec,pending,onChange,onClose,onSheet}:Props){
-  const heading=useId();
-  return <div className="lab-editor-pop temp-pop" role="dialog" aria-labelledby={heading} onKeyDown={e=>{if(e.key==='Escape'){e.stopPropagation();onClose();}}}>
-    <header><div><strong id={heading}>{TITLES[id]}</strong><small>{id==='supply'?'Tensión fija de 24 V':id==='sensor'?'3 hilos · salida todo/nada':'Material y posición'}</small></div><button type="button" className="lab-icon-button" aria-label="Cerrar edición" onClick={onClose}><X size={16}/></button></header>
+  return <EditorWindow title={TITLES[id]} subtitle={id==='supply'?'Tensión fija de 24 V':id==='sensor'?'3 hilos · salida todo/nada':'Material y posición'} onClose={onClose}><div className="lab-editor-pop temp-pop">
     {id==='supply'?<><Toggle pressed={s.supplyOn} onClick={()=>onChange({supplyOn:!s.supplyOn})}>{s.supplyOn?'Apagar la fuente':'Encender la fuente'}</Toggle><p className="lab-saved-as">Entrega 24 V entre +24 V y 0 V. Si unes esos dos bornes con un cable hay un cortocircuito.</p></>:null}
     {id==='sensor'?<>
       <label className="temp-select">Modelo<select aria-label="Modelo del detector" value={s.model} onChange={e=>onChange({model:e.target.value as Settings['model']})}><option value="generic">Genérico del banco</option>{MODELS.map(m=><option key={m} value={m}>{m} (según tu ficha)</option>)}</select></label>
@@ -40,5 +38,5 @@ export function DetectorEditor({id,settings:s,spec,pending,onChange,onClose,onSh
     </>:null}
     {id==='object'?<ObjectForm settings={s} spec={spec} onChange={onChange} onClose={onClose}/>:null}
     <footer><button type="button" onClick={()=>onSheet(id==='supply'?'psu':id==='object'?'target':s.model!=='generic'?s.model:s.kind)}><BookOpen size={15}/>Ver ficha del equipo</button></footer>
-  </div>;
+  </div></EditorWindow>;
 }

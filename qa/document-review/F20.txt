@@ -1,0 +1,83 @@
+ 
+ACTIVIDAD TECNOLÓGICA 2 
+FUNCIONES LOGARÍTMICAS 
+ 
+Esta actividad tiene por objetivo familiarizar a los estudiantes, mediante la incorporación de 
+GeoGebra, en el trabajo con las funciones logarítmicas. 
+ 
+ACTIVIDAD 1: Ingresar a GeoGebra Clásico online 
+Ingresa a la siguiente dirección: 
+ 
+https://www.geogebra.org/classic 
+ 
+ 
+ 
+ACTIVIDAD 2: Ingresar cuatro funciones logarítmicas con distintas bases 
+Para ingresar las funciones logarítmicas 𝑓(𝑥) = ln 𝑥, 𝑔(𝑥) = log 𝑥, ℎ(𝑥) = log! 𝑥 y 𝑝(𝑥) =
+log" 𝑥, escribe en la barra de entrada lo siguiente: 
+ 
+lnx .¿. 
+logx .¿. 
+log2x .¿. 
+log(4,x) .¿. 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 3: Calcular una imagen de una función logarítmica y visualizar un punto que 
+contiene la preimagen y la imagen de una función 
+Para calcular la imagen de la función 𝑓(𝑥) = ln 𝑥, para 𝑥= 3, y visualizar el punto conformado 
+por la preimagen e imagen, escribe en la barra de entrada lo siguiente: 
+ 
+f(3) .¿. 
+(3,a) .¿. 
+ 
+ 
+ 
+ 
+ 
+ 
+ACTIVIDAD 4: Calcular una preimagen de una función logarítmica 
+Para calcular la preimagen de la función 𝑓(𝑥) = ln 𝑥, para 𝑓(𝑥) = 2, escribe en la barra de 
+entrada lo siguiente: 
+ 
+Resuelve(f=2) .¿. 
+ 
+ 
+ 
+ACTIVIDAD 5: Graficar una función logarítmica y encontrar su intersección con una función 
+cuadrática 
+Ingresa la función 𝑞(𝑥) = 𝑥! −9𝑥+ 14. Para esto, escribe en la barra de entrada lo siguiente: 
+ 
+x^2-9x+14 .¿. 
+Interseca(f,q,0,8) .¿. 
+ 
+ 
+ 
+Nota en este caso que, a diferencia de la actividad tecnológica anterior, si ingresas un intervalo 
+que contenga las dos intersecciones, estas se obtendrán de manera inmediata. 
+ 
+ 
+ 
+ACTIVIDAD 6: Encontrar la intersección de una función logarítmica con el eje de las 𝒙 
+Para encontrar la intersección de la función 𝑓(𝑥) = ln 𝑥 con el eje de las 𝑥, de una manera más 
+cómoda, determina los puntos especiales: 
+ 
+ 
+ 
+Nota que el único valor que entrega es la intersección con el eje de las 𝑥 ya que no tiene 
+intersección con el eje de las 𝑦 ni extremos. 
+ 
+ACTIVIDAD 7: Ajustar un conjunto de puntos por una función logarítmica 
+Para encontrar la expresión algebraica de una función logarítmica que mejor ajuste a los puntos 
+A, B, C, y D, escribe en la barra de entrada lo siguiente: 
+ 
+(0.5,-2) .¿. 
+(1,1) .¿. 
+(3,3) .¿. 
+(6,4) .¿. 
+{A,B,C,D} .¿. 
+AjusteLog(l1) .¿. 
+ 
+ 

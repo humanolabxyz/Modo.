@@ -1,0 +1,197 @@
+{
+  "base": "http://127.0.0.1:4346/",
+  "cpuThrottle": 4,
+  "viewport": "820x1180",
+  "runs": 3,
+  "results": [
+    {
+      "name": "home",
+      "run": 0,
+      "readyMs": 759,
+      "jsBytes": 6613,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 2,
+      "heapMB": 4.8
+    },
+    {
+      "name": "home",
+      "run": 1,
+      "readyMs": 750,
+      "jsBytes": 6613,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.8
+    },
+    {
+      "name": "home",
+      "run": 2,
+      "readyMs": 667,
+      "jsBytes": 6613,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.7
+    },
+    {
+      "name": "panel",
+      "run": 0,
+      "readyMs": 1526,
+      "jsBytes": 7023,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 0,
+      "heapMB": 5.5
+    },
+    {
+      "name": "panel",
+      "run": 1,
+      "readyMs": 1522,
+      "jsBytes": 7023,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 0,
+      "heapMB": 5.5
+    },
+    {
+      "name": "panel",
+      "run": 2,
+      "readyMs": 1502,
+      "jsBytes": 7023,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 0,
+      "heapMB": 5.5
+    },
+    {
+      "name": "study",
+      "run": 0,
+      "readyMs": 499,
+      "jsBytes": 7427,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.1
+    },
+    {
+      "name": "study",
+      "run": 1,
+      "readyMs": 515,
+      "jsBytes": 7427,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.1
+    },
+    {
+      "name": "study",
+      "run": 2,
+      "readyMs": 513,
+      "jsBytes": 7427,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.1
+    },
+    {
+      "name": "plc",
+      "run": 0,
+      "readyMs": 1119,
+      "jsBytes": 5083,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 1,
+      "heapMB": 3.5
+    },
+    {
+      "name": "plc",
+      "run": 1,
+      "readyMs": 1132,
+      "jsBytes": 5083,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 1,
+      "heapMB": 3.5
+    },
+    {
+      "name": "plc",
+      "run": 2,
+      "readyMs": 1116,
+      "jsBytes": 5083,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 1,
+      "heapMB": 3.5
+    },
+    {
+      "name": "breadboard",
+      "run": 0,
+      "readyMs": 1006,
+      "jsBytes": 7801,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 15,
+      "heapMB": 5
+    },
+    {
+      "name": "breadboard",
+      "run": 1,
+      "readyMs": 988,
+      "jsBytes": 7801,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 13,
+      "heapMB": 5.1
+    },
+    {
+      "name": "breadboard",
+      "run": 2,
+      "readyMs": 989,
+      "jsBytes": 7801,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 15,
+      "heapMB": 5.1
+    },
+    {
+      "name": "temperature",
+      "run": 0,
+      "readyMs": 1118,
+      "jsBytes": 7421,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 2,
+      "heapMB": 4.6
+    },
+    {
+      "name": "temperature",
+      "run": 1,
+      "readyMs": 1012,
+      "jsBytes": 7421,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 2,
+      "heapMB": 4.6
+    },
+    {
+      "name": "temperature",
+      "run": 2,
+      "readyMs": 1122,
+      "jsBytes": 7421,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 2,
+      "heapMB": 4.6
+    },
+    {
+      "name": "detectors",
+      "run": 0,
+      "readyMs": 922,
+      "jsBytes": 7690,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 2,
+      "heapMB": 4.5
+    },
+    {
+      "name": "detectors",
+      "run": 1,
+      "readyMs": 1134,
+      "jsBytes": 7690,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 1,
+      "heapMB": 4.5
+    },
+    {
+      "name": "detectors",
+      "run": 2,
+      "readyMs": 1184,
+      "jsBytes": 7690,
+      "unusedSchematicLoaded": true,
+      "idleTaskMs": 2,
+      "heapMB": 4.5
+    }
+  ]
+}

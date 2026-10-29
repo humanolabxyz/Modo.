@@ -64,7 +64,11 @@ export function tick(project:LabProject,previous:Runtime,pressed:Record<string,b
     if(schematic.fault)return {...previous,...schematic,memory,blocks,fault:schematic.fault,pump:false};
     const pump=!!memory[config.pumpSignal];const delta=(pump?config.inflow:0)-(previous.drain?config.outflow:0);
     const level=Math.min(100,Math.max(0,previous.level+delta*dt/config.capacity*100));
-    memory[config.levelSignal]=level;memory[config.lowSignal]=level<=config.low;memory[config.highSignal]=level>=config.high;
+    memory[config.levelSignal]=level;
+    // Las entradas físicas conservan la imagen muestreada del PLC; la planta no las sobrescribe después del programa.
+    const physicalPLC=project.equipment?.parts.some(p=>p.kind==='plc');
+    if(!physicalPLC||!/^I0\.[0-7]$/.test(config.lowSignal))memory[config.lowSignal]=level<=config.low;
+    if(!physicalPLC||!/^I0\.[0-7]$/.test(config.highSignal))memory[config.highSignal]=level>=config.high;
     const equipment=project.equipment?stepEquipment(project.equipment,previous.equipment,memory,controls,pressed,dt):previous.equipment;
     return {...previous,...schematic,memory,blocks,level,pump,equipment,seconds:previous.seconds+dt,cycle:previous.cycle+1,fault:null};
   }catch(error){return {...previous,fault:error instanceof Error?error.message:'Error de simulación.',pump:false,active:[],relays:{}};}

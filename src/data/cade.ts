@@ -3,10 +3,11 @@ import estrella from './cadeEstrellaTriangulo.json';
 import lecciones from './cadeLecciones.json';
 import estrellaTemporizador from './cadeEstrellaTemporizador.json';
 import {STAR_PANELS,type PanelMap} from './starPanelMap';
+import {referencePort} from './twoContactorReference';
 /** `panel` (solo en los esquemas de las lecciones) es la clave del borne del banco que representa este borne del símbolo. */
-export type CadePort={objectId:number;reference:string;terminal:string;x:number;y:number;panel?:string};
+export type CadePort={objectId:number;reference:string;terminal:string;x:number;y:number;panel?:string;anchor?:string};
 /** Objeto de un dibujo CADe. Los dibujos nuevos traen `shape`, `ports` y `box`; PERFECTO usa los tipos numéricos de CADe. */
-export type CadeObject={id:number;type:number;reference:string;labels:string[];x:number;y:number;x2:number;y2:number;bounds?:number[];shape?:string;ports?:{terminal:string;x:number;y:number;panel?:string}[];box?:number[];color?:string;dashed?:boolean;pins?:string[];pitch?:number;ref?:boolean};
+export type CadeObject={id:number;type:number;reference:string;labels:string[];x:number;y:number;x2:number;y2:number;bounds?:number[];shape?:string;ports?:{terminal:string;x:number;y:number;panel?:string;anchor?:string}[];bank?:{name:string;part?:string;note?:string;what?:string};box?:number[];color?:string;dashed?:boolean;pins?:string[];pitch?:number;ref?:boolean};
 export type CadeView={x:number;y:number;w:number;h:number};
 export type CadeFrame={left:number;top:number;right:number;bottom:number;header:number;band:number;columns:{first:number;width:number;letters:string};rows:{first:number;height:number;count:number}};
 export type CadeDrawing={name:string;source:string;origin?:string;objects:CadeObject[];frame?:CadeFrame;views?:{all:CadeView;power:CadeView;control:CadeView};splitX?:number};
@@ -15,7 +16,7 @@ const onLine=(p:{x:number;y:number},w:CadeObject)=>Math.abs((w.x2-w.x)*(p.y-w.y)
 /** Bornes de un símbolo. Los dibujos nuevos los traen explícitos; PERFECTO se deriva de su tipo CADe. */
 export function cadePorts(o:CadeObject):CadePort[]{
  const port=(terminal:string,x:number,y:number)=>({objectId:o.id,reference:o.reference,terminal,x,y});
- if(o.ports)return o.ports.map(p=>({...port(p.terminal,p.x,p.y),...(p.panel?{panel:p.panel}:{})}));
+ if(o.ports)return o.ports.map(p=>({...port(p.terminal,p.x,p.y),...(p.panel?{panel:p.panel}:{}),...(p.anchor?{anchor:p.anchor}:{})}));
  if([6009,2001,6007].includes(o.type)){const h=o.type===6009?21:12;return [0,1,2].flatMap(i=>[port(o.labels[i],o.x+i*6,o.y),port(o.labels[i+3],o.x+i*6,o.y+h)])}
  if(o.type===1001)return [0,1,2].flatMap(i=>[port(o.labels[i],o.x+i*6,o.y),port(o.labels[i+4],o.x+i*6,o.y+24)]).concat(port('PE',o.x+18,o.y));
  if(o.type===3004)return [0,1,2].map(i=>port(['L1','L2','L3'][i],o.x+i*6,o.y));
@@ -24,10 +25,11 @@ export function cadePorts(o:CadeObject):CadePort[]{
  return [port(o.labels[0],o.x,o.y),port(o.labels[1],o.x,o.y+(o.type===6010?21:12))];
 }
 /** Conjunto de conductores, símbolos y bornes de un dibujo, con su grafo de conductores. */
-export function createCade(drawing:CadeDrawing){
+export function createCade(drawing:CadeDrawing,bank?:Record<number,NonNullable<CadeObject['bank']>>){
  const objects=drawing.objects;
  const WIRES=objects.filter(o=>WIRE_TYPES.includes(o.type));
- const SYMBOLS=objects.filter(o=>![...WIRE_TYPES,4001,20000].includes(o.type));
+ /* El nombre que una pieza tiene en el banco se agrega solo a los símbolos de la interfaz; el dibujo original queda intacto. */
+ const SYMBOLS=objects.filter(o=>![...WIRE_TYPES,4001,20000].includes(o.type)).map(o=>bank?.[o.id]?{...o,bank:bank[o.id]}:o);
  const JUNCTIONS=objects.filter(o=>o.type===4001);
  const PORTS=SYMBOLS.flatMap(cadePorts);
  /** Conductor graph only; contacts, coils and loads never join their terminals. */
@@ -54,25 +56,34 @@ export const ESTRELLA_CADE=createCade(estrella as unknown as CadeDrawing);
 /** Esquemas de las lecciones guiadas (ver data/lessons.ts y data/lessonSchematics.ts). */
 /** Copia del dibujo de estrella-triángulo con la correspondencia de sus bornes con el banco (ver starPanelMap.ts). */
 const withPanels=(drawing:CadeDrawing,map:PanelMap):CadeDrawing=>({...drawing,objects:drawing.objects.map(o=>o.ports&&map[o.id]?{...o,ports:o.ports.map(p=>map[o.id][p.terminal]?{...p,panel:map[o.id][p.terminal]}:p)}:o)});
-/** En la lección sin temporizador S3:3 sale de S2:2 (después del paro), no de la salida de S1: el conductor que bajaba a -S:13 desde la barra de S1 pasa a tomar S2:2. */
-const manualWiring=(d:CadeDrawing):CadeDrawing=>{
- const old=d.objects.find(o=>o.id===100&&o.type===4000);if(!old)return d;
- const w=(id:number,x:number,y:number,x2:number,y2:number):CadeObject=>({id,type:4000,reference:'',labels:[],x,y,x2,y2,color:old.color});
- return {...d,objects:[...d.objects.filter(o=>o!==old),{id:300,type:4001,reference:'',labels:[],x:331,y:129,x2:331,y2:129},w(301,331,129,366,129),w(302,366,129,366,168),w(303,366,168,344,168),w(304,344,168,344,174)]};
+/** Esquema recibido de 2 contactores: el dibujo conserva sus rótulos (KM1, KM2, KM3, -S), pero en el banco esas piezas son módulos con otro nombre.
+ *  Se anota el nombre del banco sin tocar el dibujo (ver bankTerminalsForSymbol en lessonSchematics.ts para la correspondencia de bornes). */
+const TIMER='Temporizador neumático',THERMAL='Contactor + relé térmico',TRI='Contactor trifásico';
+export const TWO_CONTACTOR_BANK_NAMES:Record<number,NonNullable<CadeObject['bank']>>={
+ 3:{name:TIMER},57:{name:TIMER},62:{name:TIMER},63:{name:TIMER,part:'Bobina del temporizador neumático'},
+ 58:{name:TIMER,part:'Contactos temporizados del temporizador neumático (KT1)',note:'El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del temporizador neumático: 55-56 (NC) y 67-68 (NA).',what:'Contactos que cambian de estado cuando termina el tiempo del temporizador.'},
+ 6:{name:THERMAL},59:{name:THERMAL},60:{name:THERMAL},65:{name:THERMAL,part:'Bobina del contactor + relé térmico'},
+ 7:{name:TRI},61:{name:TRI},64:{name:TRI,part:'Bobina del contactor trifásico'},
 };
+/** Manual guide: retain the original post-start feed of SB3, figure 1 (p.5). */
 export const LESSON_CADES={
  simple:createCade(lecciones.simple as unknown as CadeDrawing),
  inversion:createCade(lecciones.inversion as unknown as CadeDrawing),
- estrellaManual:createCade(withPanels(manualWiring(estrella as unknown as CadeDrawing),STAR_PANELS.estrellaManual)),
+ estrellaManual:createCade(withPanels(estrella as unknown as CadeDrawing,STAR_PANELS.estrellaManual)),
  estrellaTimer:createCade(withPanels(estrellaTemporizador as unknown as CadeDrawing,STAR_PANELS.estrellaTimer)),
+ // Preserve every original symbol, label and coordinate; annotate reference
+ // anchors separately from real bank-terminal mappings.
+ estrellaDosContactores:createCade({...estrella,objects:estrella.objects.map(o=>({...o,...('ports' in o&&o.ports?{ports:o.ports.map(p=>({...p,anchor:referencePort(o.id,p.terminal)}))}:{})}))} as CadeDrawing,TWO_CONTACTOR_BANK_NAMES),
 };
 export type LessonCadeId=keyof typeof LESSON_CADES;
+
 export const CADE_DRAWINGS=[
  {id:'perfecto',title:'PERFECTO',cade:PERFECTO_CADE,guided:true},
  {id:'estrella',title:'Estrella-triángulo',cade:ESTRELLA_CADE,guided:false},
  {id:'simple',title:'Lección · Marcha y paro',cade:LESSON_CADES.simple,guided:false},
  {id:'inversion',title:'Lección · Inversión de giro',cade:LESSON_CADES.inversion,guided:false},
  {id:'estrellaTimer',title:'Lección · Estrella-triángulo con temporizador',cade:LESSON_CADES.estrellaTimer,guided:false},
+ {id:'estrellaDosContactores',title:'Lección · Estrella-triángulo · 2 contactores',cade:LESSON_CADES.estrellaDosContactores,guided:false},
 ] as const;
 export const CADE_QUESTIONS=[
  {question:'Potencia: sigue L1 hasta la entrada 1 de -Q.',wire:103,scope:'power',hint:'El primer conductor de la columna de potencia.'},

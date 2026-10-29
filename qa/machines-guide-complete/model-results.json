@@ -1,0 +1,31 @@
+{
+  "checks": [
+    "Figura 1: S3 solo no arranca desde reposo ni después del paro; S2 prevalece; el esquema y los bornes coinciden",
+    "FR1 recibe corriente de cada devanado; pinza recibe corriente de línea; relación √3 en Δ equilibrado",
+    "Desequilibrio: corrientes térmicas por polo, sin aplicar un divisor fijo a la corriente de línea",
+    "TEST abre el mando: conexión correcta detiene y un puente incorrecto no recibe un corte de potencia ficticio",
+    "Mando aislado válido, ampliación a fuerza, equivalencia de derivaciones y rechazo de puentes indebidos",
+    "Pinza: suma vectorial de varios conductores; tres fases equilibradas se cancelan",
+    "Placas nominales por conexión, cálculo por ubicación y recuperación de perfiles anteriores",
+    "Todos los pares de bornes de mando/fuerza trazables coinciden con el esquema; las tierras del banco están representadas aparte",
+    "Ejercicios persistentes e informe integrado: cinco tablas, fórmulas, condiciones y esquema SVG propio"
+  ],
+  "thermal": {
+    "star": [
+      2.566212880795795,
+      2.5662128807957925,
+      2.5662128807957982
+    ],
+    "delta": [
+      4.431732578740983,
+      4.431732578740986,
+      4.43173257874099
+    ],
+    "line": {
+      "R": 7.675985991937628,
+      "S": 7.6759859919376225,
+      "T": 7.675985991937631
+    }
+  },
+  "unmappedDiagramTerminals": []
+}

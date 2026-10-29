@@ -1,0 +1,21 @@
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel{display:flex;flex-direction:column;max-height:calc(100% - 20px)}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel>.lab-card-toggle,body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel>.geo-command{flex:none}
+.geo-command-keyboard{flex:1 1 auto;min-height:0;max-height:40dvh;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;background:#eef3f7;border-top:1px solid #d2dfe8;padding:0 6px 6px;box-sizing:border-box}
+.geo-keyboard-tabs{position:sticky;top:0;z-index:1;display:flex;gap:5px;padding:6px 0;background:#eef3f7}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-keyboard-tabs button{flex:1;min-height:40px;padding:5px 10px;font-size:14px;border:1px solid transparent;box-shadow:none;background:transparent;color:#31546b;border-radius:8px}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-keyboard-tabs button[aria-selected=true]{background:#2b5067;color:#fff;border-color:#2b5067}
+.geo-keyboard-keys{display:grid;gap:4px}.geo-keyboard-row{display:flex;justify-content:center;gap:4px}.geo-keyboard-functions{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.geo-keyboard-actions{display:flex;gap:4px}
+body.modo-soft-ui .lab-page.lab-geogebra-mode :is(.geo-keyboard-row,.geo-keyboard-functions,.geo-keyboard-actions) button{display:flex;align-items:center;justify-content:center;gap:6px;flex:1;min-width:0;min-height:42px;padding:5px 2px;border:1px solid #d8e2e9;border-radius:7px;background:#fff;color:#243e51;box-shadow:none;font:500 16px/1.4 Inter,system-ui;cursor:pointer;touch-action:manipulation}
+body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-keyboard-actions .geo-keyboard-execute{flex:2;background:#2b5067;color:#fff;border-color:#2b5067;font-size:13px}
+.geo-keyboard-actions button:first-child{font-size:12px!important}.geo-command-keyboard button:focus-visible{outline:3px solid #1f819e;outline-offset:-3px}
+.geo-command-panel .geo-command-feedback{flex:none;max-height:48px;overflow:auto;padding:5px 10px;margin:0;font-size:12px;line-height:1.5;border-top:1px solid #d2dfe8}
+@media(max-height:500px){.geo-command-keyboard{max-height:45dvh}body.modo-soft-ui .lab-page.lab-geogebra-mode :is(.geo-keyboard-row,.geo-keyboard-functions,.geo-keyboard-actions) button{min-height:36px}.geo-keyboard-tabs{padding:3px 0}}
+@media(max-height:500px){
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel:has(.geo-command-keyboard){max-height:calc(100% - 4px);bottom:2px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel:has(.geo-command-keyboard)>.lab-card-toggle{display:none}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel:has(.geo-command-keyboard) .geo-command{min-height:44px;padding:2px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode .geo-command-panel:has(.geo-command-keyboard) .geo-command :is(input,button){min-height:40px;padding-block:6px}
+ .geo-command-keyboard{max-height:none;padding-bottom:3px}
+ body.modo-soft-ui .lab-page.lab-geogebra-mode :is(.geo-keyboard-row,.geo-keyboard-functions,.geo-keyboard-actions,.geo-keyboard-tabs) button{min-height:32px;padding-block:3px}
+ .geo-command-panel .geo-command-feedback[data-result=info]{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;padding:0}
+}

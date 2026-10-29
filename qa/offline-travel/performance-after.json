@@ -1,0 +1,197 @@
+{
+  "base": "http://127.0.0.1:4346/",
+  "cpuThrottle": 4,
+  "viewport": "820x1180",
+  "runs": 3,
+  "results": [
+    {
+      "name": "home",
+      "run": 0,
+      "readyMs": 721,
+      "jsBytes": 6613,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 2,
+      "heapMB": 4.8
+    },
+    {
+      "name": "home",
+      "run": 1,
+      "readyMs": 680,
+      "jsBytes": 6613,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 2,
+      "heapMB": 4.8
+    },
+    {
+      "name": "home",
+      "run": 2,
+      "readyMs": 675,
+      "jsBytes": 6613,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 2,
+      "heapMB": 4.8
+    },
+    {
+      "name": "panel",
+      "run": 0,
+      "readyMs": 1515,
+      "jsBytes": 7023,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 5.4
+    },
+    {
+      "name": "panel",
+      "run": 1,
+      "readyMs": 1244,
+      "jsBytes": 7023,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 5.4
+    },
+    {
+      "name": "panel",
+      "run": 2,
+      "readyMs": 1517,
+      "jsBytes": 7023,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 0,
+      "heapMB": 5.6
+    },
+    {
+      "name": "study",
+      "run": 0,
+      "readyMs": 502,
+      "jsBytes": 7427,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.1
+    },
+    {
+      "name": "study",
+      "run": 1,
+      "readyMs": 502,
+      "jsBytes": 7427,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.1
+    },
+    {
+      "name": "study",
+      "run": 2,
+      "readyMs": 514,
+      "jsBytes": 7427,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 4.1
+    },
+    {
+      "name": "plc",
+      "run": 0,
+      "readyMs": 1114,
+      "jsBytes": 3732,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 3.6
+    },
+    {
+      "name": "plc",
+      "run": 1,
+      "readyMs": 1115,
+      "jsBytes": 3732,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 3.4
+    },
+    {
+      "name": "plc",
+      "run": 2,
+      "readyMs": 1109,
+      "jsBytes": 3732,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 1,
+      "heapMB": 3.6
+    },
+    {
+      "name": "breadboard",
+      "run": 0,
+      "readyMs": 1053,
+      "jsBytes": 7484,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 14,
+      "heapMB": 5.8
+    },
+    {
+      "name": "breadboard",
+      "run": 1,
+      "readyMs": 1030,
+      "jsBytes": 7484,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 14,
+      "heapMB": 5.7
+    },
+    {
+      "name": "breadboard",
+      "run": 2,
+      "readyMs": 1055,
+      "jsBytes": 7484,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 13,
+      "heapMB": 5.8
+    },
+    {
+      "name": "temperature",
+      "run": 0,
+      "readyMs": 1117,
+      "jsBytes": 6676,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 3,
+      "heapMB": 4.7
+    },
+    {
+      "name": "temperature",
+      "run": 1,
+      "readyMs": 1118,
+      "jsBytes": 6676,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 2,
+      "heapMB": 4.7
+    },
+    {
+      "name": "temperature",
+      "run": 2,
+      "readyMs": 1116,
+      "jsBytes": 6676,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 3,
+      "heapMB": 4.7
+    },
+    {
+      "name": "detectors",
+      "run": 0,
+      "readyMs": 1117,
+      "jsBytes": 7373,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 0,
+      "heapMB": 4.6
+    },
+    {
+      "name": "detectors",
+      "run": 1,
+      "readyMs": 1117,
+      "jsBytes": 7373,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 2,
+      "heapMB": 4.6
+    },
+    {
+      "name": "detectors",
+      "run": 2,
+      "readyMs": 1118,
+      "jsBytes": 7373,
+      "unusedSchematicLoaded": false,
+      "idleTaskMs": 2,
+      "heapMB": 4.6
+    }
+  ]
+}

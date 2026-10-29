@@ -1,0 +1,1168 @@
+[
+  {
+    "url": "/?view=simulator",
+    "found": [
+      {
+        "text": "Elige una herramienta y trabaja sobre el banco.",
+        "class": "",
+        "parent": "",
+        "color": "rgb(102, 117, 130)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.19
+      },
+      {
+        "text": "Color",
+        "class": "",
+        "parent": "",
+        "color": "rgb(237, 244, 248)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 1.11
+      },
+      {
+        "text": "82",
+        "class": "",
+        "parent": "zoom-toolbar",
+        "color": "rgb(115, 126, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.13
+      },
+      {
+        "text": "%",
+        "class": "",
+        "parent": "zoom-toolbar",
+        "color": "rgb(115, 126, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.13
+      },
+      {
+        "text": "Guardado local",
+        "class": "save-state",
+        "parent": "workspace-caption",
+        "color": "rgb(127, 145, 139)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.94
+      }
+    ]
+  },
+  {
+    "url": "/estudio",
+    "found": [
+      {
+        "text": "Estudio",
+        "class": "study-header-context",
+        "parent": "topbar study-header",
+        "color": "rgb(114, 114, 114)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.25
+      },
+      {
+        "text": "/",
+        "class": "",
+        "parent": "study-header-context",
+        "color": "rgb(194, 204, 196)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 1.46
+      },
+      {
+        "text": "Automatización y Robótica",
+        "class": "study-header-context",
+        "parent": "topbar study-header",
+        "color": "rgb(114, 114, 114)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.25
+      }
+    ]
+  },
+  {
+    "url": "/estudio?curso=s2-4&clase=ri-teoria",
+    "found": [
+      {
+        "text": "Estudio",
+        "class": "study-header-context",
+        "parent": "topbar study-header",
+        "color": "rgb(114, 114, 114)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.25
+      },
+      {
+        "text": "/",
+        "class": "",
+        "parent": "study-header-context",
+        "color": "rgb(194, 204, 196)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 1.46
+      },
+      {
+        "text": "Automatización y Robótica",
+        "class": "study-header-context",
+        "parent": "topbar study-header",
+        "color": "rgb(114, 114, 114)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.25
+      }
+    ]
+  },
+  {
+    "url": "/estudio?curso=s2-5&clase=mtfm01-repaso-u2",
+    "found": [
+      {
+        "text": "Estudio",
+        "class": "study-header-context",
+        "parent": "topbar study-header",
+        "color": "rgb(114, 114, 114)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.25
+      },
+      {
+        "text": "/",
+        "class": "",
+        "parent": "study-header-context",
+        "color": "rgb(194, 204, 196)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 1.46
+      },
+      {
+        "text": "Automatización y Robótica",
+        "class": "study-header-context",
+        "parent": "topbar study-header",
+        "color": "rgb(114, 114, 114)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.25
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=schematic",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "Arrastra un componente · fondo para mover la hoja",
+        "class": "",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.7
+      },
+      {
+        "text": "6",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "componentes ·",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "8",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "cables",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "Selecciona un componente para editarlo. Añade más desde",
+        "class": "lab-muted",
+        "parent": "lab-sheet-body",
+        "color": "rgb(146, 161, 150)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": "Componentes",
+        "class": "",
+        "parent": "lab-muted",
+        "color": "rgb(146, 161, 150)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": ", en la barra inferior.",
+        "class": "lab-muted",
+        "parent": "lab-sheet-body",
+        "color": "rgb(146, 161, 150)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": "Cómo probar la retención",
+        "class": "",
+        "parent": "lab-help",
+        "color": "rgb(100, 126, 108)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.92
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=plc",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "PLC VIRTUAL · STOP",
+        "class": "lab-badge ",
+        "parent": "lab-stagebar",
+        "color": "rgb(126, 147, 136)",
+        "bg": [
+          247,
+          249,
+          247
+        ],
+        "ratio": 3.09
+      },
+      {
+        "text": "1 segmentos · 9 variables",
+        "class": "",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.7
+      },
+      {
+        "text": "001",
+        "class": "lab-rung-number",
+        "parent": "",
+        "color": "rgb(147, 162, 141)",
+        "bg": [
+          247,
+          249,
+          245
+        ],
+        "ratio": 2.54
+      },
+      {
+        "text": "+ Añadir segmento",
+        "class": "lab-outline-action",
+        "parent": "lab-rungs",
+        "color": "rgb(113, 136, 102)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.43
+      },
+      {
+        "text": "Programa listo",
+        "class": "",
+        "parent": "lab-diagnostics",
+        "color": "rgb(105, 131, 93)",
+        "bg": [
+          244,
+          248,
+          242
+        ],
+        "ratio": 3.91
+      },
+      {
+        "text": "Sin errores en el subconjunto admitido del PLC virtual.",
+        "class": "",
+        "parent": "lab-diagnostics",
+        "color": "rgb(145, 162, 134)",
+        "bg": [
+          244,
+          248,
+          242
+        ],
+        "ratio": 2.53
+      },
+      {
+        "text": "20.0",
+        "class": "",
+        "parent": "lab-memory-row",
+        "color": "rgb(113, 137, 104)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 3.83
+      },
+      {
+        "text": "Alcance del PLC virtual",
+        "class": "",
+        "parent": "lab-help",
+        "color": "rgb(100, 126, 108)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.92
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=hmi",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "Arrastra los elementos para diseñar la pantalla",
+        "class": "",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.7
+      },
+      {
+        "text": "HMI 01",
+        "class": "lab-badge",
+        "parent": "lab-stagebar",
+        "color": "rgb(126, 147, 136)",
+        "bg": [
+          247,
+          249,
+          247
+        ],
+        "ratio": 3.09
+      },
+      {
+        "text": "modo.",
+        "class": "",
+        "parent": "lab-hmi-heading",
+        "color": "rgb(139, 154, 145)",
+        "bg": [
+          243,
+          246,
+          243
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": "Marcha y retención",
+        "class": "",
+        "parent": "lab-hmi-heading",
+        "color": "rgb(108, 130, 116)",
+        "bg": [
+          243,
+          246,
+          243
+        ],
+        "ratio": 3.79
+      },
+      {
+        "text": "DISEÑO DE PANTALLA",
+        "class": "",
+        "parent": "lab-hmi-heading",
+        "color": "rgb(139, 154, 145)",
+        "bg": [
+          243,
+          246,
+          243
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": "Marcha",
+        "class": "",
+        "parent": "lab-widget toggle  ",
+        "color": "rgb(99, 125, 108)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.49
+      },
+      {
+        "text": "INTERRUPTOR",
+        "class": "lab-hmi-toggle",
+        "parent": "lab-widget toggle  ",
+        "color": "rgb(126, 146, 116)",
+        "bg": [
+          241,
+          244,
+          240
+        ],
+        "ratio": 3.03
+      },
+      {
+        "text": "I0.0",
+        "class": "",
+        "parent": "lab-widget toggle  ",
+        "color": "rgb(168, 181, 170)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.13
+      },
+      {
+        "text": "Paro",
+        "class": "",
+        "parent": "lab-widget toggle  ",
+        "color": "rgb(99, 125, 108)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.49
+      },
+      {
+        "text": "INTERRUPTOR",
+        "class": "lab-hmi-toggle",
+        "parent": "lab-widget toggle  ",
+        "color": "rgb(126, 146, 116)",
+        "bg": [
+          241,
+          244,
+          240
+        ],
+        "ratio": 3.03
+      },
+      {
+        "text": "I0.1",
+        "class": "",
+        "parent": "lab-widget toggle  ",
+        "color": "rgb(168, 181, 170)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.13
+      },
+      {
+        "text": "Bomba en marcha",
+        "class": "",
+        "parent": "lab-widget lamp  ",
+        "color": "rgb(99, 125, 108)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.49
+      },
+      {
+        "text": "Q0.0",
+        "class": "",
+        "parent": "lab-widget lamp  ",
+        "color": "rgb(168, 181, 170)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.13
+      },
+      {
+        "text": "Nivel del tanque",
+        "class": "",
+        "parent": "lab-widget bar  ",
+        "color": "rgb(99, 125, 108)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.49
+      },
+      {
+        "text": "AI0",
+        "class": "",
+        "parent": "lab-widget bar  ",
+        "color": "rgb(168, 181, 170)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.13
+      },
+      {
+        "text": "Nivel (%)",
+        "class": "",
+        "parent": "lab-widget number  ",
+        "color": "rgb(99, 125, 108)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.49
+      },
+      {
+        "text": "AI0",
+        "class": "",
+        "parent": "lab-widget number  ",
+        "color": "rgb(168, 181, 170)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.13
+      },
+      {
+        "text": "Selecciona un elemento de la pantalla para editar su etiqueta y su señal. A",
+        "class": "lab-muted",
+        "parent": "lab-sheet-body",
+        "color": "rgb(146, 161, 150)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": "Elementos",
+        "class": "",
+        "parent": "lab-muted",
+        "color": "rgb(146, 161, 150)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": ", en la barra inferior.",
+        "class": "lab-muted",
+        "parent": "lab-sheet-body",
+        "color": "rgb(146, 161, 150)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": "Probar una pantalla",
+        "class": "",
+        "parent": "lab-help",
+        "color": "rgb(100, 126, 108)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.92
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=process",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "BANCO DE PROCESO 01",
+        "class": "lab-badge",
+        "parent": "lab-stagebar",
+        "color": "rgb(126, 147, 136)",
+        "bg": [
+          247,
+          249,
+          247
+        ],
+        "ratio": 3.09
+      },
+      {
+        "text": "Tanque · bomba · sensores de nivel · válvula",
+        "class": "",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.7
+      },
+      {
+        "text": "0 L/s",
+        "class": "",
+        "parent": "",
+        "color": "rgb(73, 124, 89)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.31
+      },
+      {
+        "text": "Entrada por bomba",
+        "class": "",
+        "parent": "",
+        "color": "rgb(162, 175, 152)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.04
+      },
+      {
+        "text": "0 L/s",
+        "class": "",
+        "parent": "",
+        "color": "rgb(73, 124, 89)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.31
+      },
+      {
+        "text": "Salida por descarga",
+        "class": "",
+        "parent": "",
+        "color": "rgb(162, 175, 152)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.04
+      },
+      {
+        "text": "Llenado automático",
+        "class": "",
+        "parent": "lab-help",
+        "color": "rgb(100, 126, 108)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.92
+      },
+      {
+        "text": "Abre el menú de proyectos y crea «Llenado automático». El PLC memoriza la m",
+        "class": "",
+        "parent": "lab-help",
+        "color": "rgb(104, 125, 111)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.91
+      },
+      {
+        "text": "Alcance de este banco",
+        "class": "",
+        "parent": "lab-help",
+        "color": "rgb(100, 126, 108)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.92
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=breadboard",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=temperature",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "Todavía no hay datos",
+        "class": "temp-empty",
+        "parent": "lab-float-body",
+        "color": "rgb(109, 128, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.11
+      },
+      {
+        "text": "de preparación",
+        "class": "temp-empty",
+        "parent": "lab-float-body",
+        "color": "rgb(109, 128, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.11
+      },
+      {
+        "text": ".",
+        "class": "temp-empty",
+        "parent": "lab-float-body",
+        "color": "rgb(109, 128, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.11
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=detectors",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "Todavía no hay datos",
+        "class": "temp-empty",
+        "parent": "lab-float-body",
+        "color": "rgb(109, 128, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.11
+      },
+      {
+        "text": "de preparación",
+        "class": "temp-empty",
+        "parent": "lab-float-body",
+        "color": "rgb(109, 128, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.11
+      },
+      {
+        "text": ".",
+        "class": "temp-empty",
+        "parent": "lab-float-body",
+        "color": "rgb(109, 128, 139)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 4.11
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=equipment",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "Añade piezas desde el dock · arrastra para colocar · une dos bornes",
+        "class": "",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.7
+      },
+      {
+        "text": "0",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "equipos ·",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "0",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "cables",
+        "class": "lab-count-chip",
+        "parent": "lab-stagebar",
+        "color": "rgb(110, 128, 118)",
+        "bg": [
+          238,
+          243,
+          245
+        ],
+        "ratio": 3.75
+      },
+      {
+        "text": "Las piezas se incorporan al mismo proyecto y conservan su montaje al cambia",
+        "class": "lab-muted",
+        "parent": "lab-sheet-body",
+        "color": "rgb(146, 161, 150)",
+        "bg": [
+          255,
+          255,
+          255
+        ],
+        "ratio": 2.71
+      },
+      {
+        "text": "Alcance de estos equipos",
+        "class": "",
+        "parent": "lab-help",
+        "color": "rgb(100, 126, 108)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.92
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=geogebra",
+    "found": [
+      {
+        "text": "TU ESPACIO DE TRABAJO",
+        "class": "lab-eyebrow",
+        "parent": "",
+        "color": "rgb(141, 154, 151)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.58
+      },
+      {
+        "text": "Herramienta libre",
+        "class": "",
+        "parent": "",
+        "color": "rgb(97, 115, 107)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.45
+      }
+    ]
+  },
+  {
+    "url": "/comunidad/",
+    "found": [
+      {
+        "text": "Construimos juntos",
+        "class": "",
+        "parent": "community-section-heading",
+        "color": "rgb(122, 137, 131)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.24
+      },
+      {
+        "text": "Gracias, Matías, por aportar un montaje real del panel que nos ayudó a ense",
+        "class": "",
+        "parent": "recognition-thanks",
+        "color": "rgb(122, 135, 129)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.31
+      },
+      {
+        "text": "Las ideas se convierten en mejoras",
+        "class": "",
+        "parent": "community-closing",
+        "color": "rgb(116, 128, 120)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 3.64
+      },
+      {
+        "text": "Volver al inicio",
+        "class": "",
+        "parent": "community-closing",
+        "color": "rgb(62, 128, 107)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.12
+      },
+      {
+        "text": "Una iniciativa de",
+        "class": "",
+        "parent": "community-footer",
+        "color": "rgb(135, 145, 141)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.87
+      },
+      {
+        "text": "Humano Lab.",
+        "class": "",
+        "parent": "",
+        "color": "rgb(99, 119, 107)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.24
+      },
+      {
+        "text": "Créditos y políticas",
+        "class": "",
+        "parent": "community-footer",
+        "color": "rgb(135, 145, 141)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 2.87
+      }
+    ]
+  },
+  {
+    "url": "/legal/",
+    "found": []
+  }
+]

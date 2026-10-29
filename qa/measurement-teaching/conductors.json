@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Physical R/S/T conductors equal line RMS in star and delta",
+    "Three balanced conductors cancel vectorially",
+    "Open force gives zero current",
+    "Unknown or parallel ideal cable has no invented branch current"
+  ]
+}

@@ -1,0 +1,4772 @@
+{
+  "framework": {
+    "name": "Astro",
+    "slug": "astro"
+  },
+  "basePath": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP",
+  "fileCount": 753,
+  "totalSize": 163490313,
+  "ignoredCount": 136,
+  "ignored": [
+    ".astro",
+    ".cache",
+    ".env.local",
+    ".git",
+    ".gitignore",
+    ".vercel",
+    "00_FOTOS_DEL_LABORATORIO",
+    "ABRIR_MODO.cmd",
+    "ABRIR_MODO_SIN_CONEXION.cmd",
+    "ABRIR_PANELLAB_ACTUAL.cmd",
+    "ABRIR_SIMULADOR.html",
+    "AGENTS.md",
+    "APRENDIZAJE_GUIADO.md",
+    "ASSETS_ESTUDIO_V2.md",
+    "CHANGELOG.md",
+    "COLOR_DE_CABLES.md",
+    "COMUNIDAD.md",
+    "CONTINUAR_CON_CLAUDE.md",
+    "CONTINUAR_ELECTRODESK_CON_CLAUDE.md",
+    "CORRECCION_KM1.md",
+    "DESPLIEGUE_2.1.0.md",
+    "DESPLIEGUE_LECCIONES_2026-10-16.md",
+    "DESPLIEGUE_VERCEL.md",
+    "DIAGRAMA_SENCILLO_Y_ENCHUFE.md",
+    "DIAGRAMA_Y_MATERIA.md",
+    "ENTREGA_2.2.18.md",
+    "ENTREGA_2.2.19.md",
+    "ENTREGA_2.2.20.md",
+    "ENTREGA_2.2.21.md",
+    "ENTREGA_2.2.22.md",
+    "ENTREGA_2_2_0.md",
+    "ENTREGA_2_2_1.md",
+    "ENTREGA_CALCULADORA_GEOGEBRA.md",
+    "ENTREGA_CUADERNOS_MATRICES.md",
+    "ENTREGA_DETECTORES.md",
+    "ENTREGA_DIAGRAMAS_PANEL_2026-10-24.md",
+    "ENTREGA_ESTUDIO_AMPLIACION.md",
+    "ENTREGA_ESTUDIO_PROBLEMAS_Y_GEOGEBRA.md",
+    "ENTREGA_ESTUDIO_PROTECCIONES.md",
+    "ENTREGA_ESTUDIO_UNIFICADO.md",
+    "ENTREGA_ESTUDIO_VISUAL.md",
+    "ENTREGA_FALLOS_PANEL_2026-10-23.md",
+    "ENTREGA_GEOGEBRA_ESTUDIO.md",
+    "ENTREGA_GEOGEBRA_MOVIL_TABLET.md",
+    "ENTREGA_GEOGEBRA_UNIFICADO.md",
+    "ENTREGA_HOME_APROBADO.md",
+    "ENTREGA_INICIO_MEJORA.md",
+    "ENTREGA_INICIO_PALETA.md",
+    "ENTREGA_INICIO_REPLANTEADO.md",
+    "ENTREGA_INTERFAZ_ESTUDIO.md",
+    "ENTREGA_LABORATORIO_MANUAL.md",
+    "ENTREGA_LABORATORIO_TABLET.md",
+    "ENTREGA_LECCIONES_COMPRENSION.md",
+    "ENTREGA_LECCIONES_ESTRELLA_TRIANGULO.md",
+    "ENTREGA_LECCIONES_PROBLEMAS_PROFESOR.md",
+    "ENTREGA_LECCION_CLARA_Y_GEOGEBRA.md",
+    "ENTREGA_LECCION_FLOTANTE_GEOGEBRA.md",
+    "ENTREGA_MODO.md",
+    "ENTREGA_MOVIL_VERTICAL.md",
+    "ENTREGA_MULTIMETRO_ACTIVIDAD2_2026-10-24.md",
+    "ENTREGA_PRACTICA_FLUKE_G03.md",
+    "ENTREGA_REALISMO_PRACTICAS.md",
+    "ENTREGA_RENDIMIENTO_CABLES_2026-10-23.md",
+    "ENTREGA_RENDIMIENTO_SIMULACION.md",
+    "ENTREGA_REPASO_PRUEBA_UNIDAD2.md",
+    "ENTREGA_RESTAURACION_RAMOS_Y_AULA.md",
+    "ENTREGA_SOFT_UI_GLOBAL.md",
+    "ENTREGA_TEMPERATURA.md",
+    "ENTREGA_UNIDADES_MODULOS_INACAP.md",
+    "ENTREGA_UNIDAD_2.md",
+    "ENTREGA_V1_1.md",
+    "ENTREGA_V2.md",
+    "ENTREGA_VENTANAS_PRUEBA.md",
+    "ENTREGA_VENTILADOR_Y_VENTANAS.md",
+    "EQUIPOS_ELECTRICOS_ADAPTADOS.md",
+    "ESPECIFICACION_GENERAL.md",
+    "ESTRELLA_TRIANGULO.md",
+    "ESTUDIO_INTERACTIVO.md",
+    "FOTOS_LOTO_Y_GRABACION.md",
+    "HERRAMIENTAS_Y_CADE.md",
+    "HISTORIAL_Y_PANEL_JSON.md",
+    "INSTRUCCION_CODEX.md",
+    "INSTRUCCION_CODEX_V1_1.md",
+    "INVENTARIO_ORIGINAL.json",
+    "LABORATORIO_INTEGRADO.md",
+    "LEEME_PRIMERO.md",
+    "LICENSE.md",
+    "LIENZO_Y_MOVIMIENTO.md",
+    "LIMPIEZA_INTERFAZ.md",
+    "MANIFIESTO_PAQUETE.json",
+    "MEJORAS_CONTENIDO_ESTUDIO.md",
+    "MEJORAS_ESTUDIO_V2.md",
+    "MODO_MOVIL_PWA.md",
+    "PANELES_ADICIONALES.md",
+    "PANEL_LAB_INACAP.html",
+    "PEGAR_A_CODEX_CON_FOTOS.txt",
+    "PEGAR_EN_CODEX.txt",
+    "PIZARRON_PRACTICO.md",
+    "PROTECCION_HUMANO_LAB.md",
+    "PRUEBAS_Y_APROBACION_V1_1.md",
+    "PUBLICACION_2.3.0.md",
+    "PUBLICACION_2.3.1.md",
+    "PUBLICACION_EQUIPOS_ELECTRICOS.md",
+    "PUBLICACION_ESTUDIO_2026-10-19.md",
+    "PUBLICACION_MULTIMETRO_2026-10-24.md",
+    "README.md",
+    "README_INICIO_AQUI.md",
+    "RECORRIDOS_CADE.md",
+    "REFERENCIAS_FOTOGRAFICAS_V1_1.md",
+    "RENDIMIENTO_APERTURA.md",
+    "RENDIMIENTO_COMUNIDAD.md",
+    "REVISION_DOCUMENTOS_Y_GRAFICA_COMANDOS.md",
+    "REVISION_ESTUDIO_V4.md",
+    "REVISION_ESTUDIO_V7.md",
+    "REVISION_MATERIA_PROFESOR_V6.md",
+    "REVISION_ROTULOS.md",
+    "REVISION_SIMBOLOGIA_ESTUDIO.md",
+    "SIMULACION_MANDO.md",
+    "TABLA_DE_BORNES.csv",
+    "TABLA_TECNICA_PANEL_V1_1.md",
+    "TABLERO_ACOPLABLE_Y_MOTOR.md",
+    "VERIFICACION_VERCEL_2026-10-15.md",
+    "VIAJE_SIN_CONEXION.md",
+    "analisis-materias-2026-10-17",
+    "dist",
+    "docs",
+    "modo-offline.log",
+    "node_modules",
+    "offline",
+    "panellab-local.log",
+    "public\\vendor\\geogebra\\HTML5\\5.0\\web",
+    "public\\vendor\\geogebra\\HTML5\\5.0\\webSimple",
+    "qa",
+    "referencias",
+    "scripts",
+    "video-tutorial"
+  ],
+  "directories": [
+    {
+      "path": "public",
+      "fileCount": 389,
+      "size": 159756300
+    },
+    {
+      "path": "src",
+      "fileCount": 358,
+      "size": 3585137
+    },
+    {
+      "path": "package-lock.json",
+      "fileCount": 1,
+      "size": 134633
+    },
+    {
+      "path": "astro.config.mjs",
+      "fileCount": 1,
+      "size": 5057
+    },
+    {
+      "path": "package.json",
+      "fileCount": 1,
+      "size": 4687
+    },
+    {
+      "path": "vercel.json",
+      "fileCount": 1,
+      "size": 3919
+    },
+    {
+      "path": ".vercelignore",
+      "fileCount": 1,
+      "size": 423
+    },
+    {
+      "path": "tsconfig.json",
+      "fileCount": 1,
+      "size": 157
+    }
+  ],
+  "largestFiles": [
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-1.mp4",
+      "size": 11993909,
+      "mode": 33206,
+      "sha": "4270c0463ba4a42fbd9774ad2cbc58944574ebd9"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-1.mp4",
+      "size": 10709112,
+      "mode": 33206,
+      "sha": "3a200ca84ce29b0553f79f5f4b61487c29c92494"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-2.mp4",
+      "size": 10577048,
+      "mode": 33206,
+      "sha": "0f77f682c9ed52f666b1179b8952dd9474d15f3a"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/2.cache.js",
+      "size": 10185290,
+      "mode": 33206,
+      "sha": "53eb0a8bce9887fc2354d75b70190c9154c0a0f8"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-2.mp4",
+      "size": 9082876,
+      "mode": 33206,
+      "sha": "6696d825c388dd89b75585bbdeec5ad552a477f1"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/29EB0586CD5B749E221F6BB019F1B206.cache.js",
+      "size": 7929313,
+      "mode": 33206,
+      "sha": "571e583daef34fb5892ca2232fa015f0eef28310"
+    },
+    {
+      "path": "public/estudio/fuentes/F33.pdf",
+      "size": 3006468,
+      "mode": 33206,
+      "sha": "1a7337dfcc837c7abb1522cbbf7af198b214579a"
+    },
+    {
+      "path": "public/estudio/fuentes/F14.pptx",
+      "size": 2482856,
+      "mode": 33206,
+      "sha": "187836c111015f831c4e0dc2ca0144635c656c1b"
+    },
+    {
+      "path": "public/estudio/fuentes/F19.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-lineales.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    }
+  ],
+  "files": [
+    {
+      "path": ".vercelignore",
+      "size": 423,
+      "mode": 33206,
+      "sha": "1ab840346467fa1514a9f9a18056aff0c0ea9a3c"
+    },
+    {
+      "path": "astro.config.mjs",
+      "size": 5057,
+      "mode": 33206,
+      "sha": "cff14c903ceefacf4d08e6e54a40075300828814"
+    },
+    {
+      "path": "package-lock.json",
+      "size": 134633,
+      "mode": 33206,
+      "sha": "ef7638e571604aba9b53973c64df98a9574997d8"
+    },
+    {
+      "path": "package.json",
+      "size": 4687,
+      "mode": 33206,
+      "sha": "49e6b13a834f7ae39f24a77974ad11d19235724c"
+    },
+    {
+      "path": "public/activities/actividad-2-unidad-2.pdf",
+      "size": 727265,
+      "mode": 33206,
+      "sha": "3d844f2733ddb9e994932f8109393d1b4797adc9"
+    },
+    {
+      "path": "public/activities/proyecto-matias.json",
+      "size": 30682,
+      "mode": 33206,
+      "sha": "23d5a3fdadb5ae7c2e13fd1548442db9fa9d89e8"
+    },
+    {
+      "path": "public/brand/apple-touch-icon.png",
+      "size": 4229,
+      "mode": 33206,
+      "sha": "2396268440b941ceb1bbb84ac14baa2d4b5ddad6"
+    },
+    {
+      "path": "public/brand/favicon.ico",
+      "size": 2797,
+      "mode": 33206,
+      "sha": "3ea60ce31f8737d566733bd5faaab8683fc67055"
+    },
+    {
+      "path": "public/brand/humanolab-cierre.jpg",
+      "size": 18948,
+      "mode": 33206,
+      "sha": "d779238e128b3e89cea0d9312395280a79e12c7f"
+    },
+    {
+      "path": "public/brand/humanolab-cierre.mp4",
+      "size": 132604,
+      "mode": 33206,
+      "sha": "296c9147ecf27bf1fac1673c25d1e26e957f7e54"
+    },
+    {
+      "path": "public/brand/humanolab-loop.mp4",
+      "size": 215385,
+      "mode": 33206,
+      "sha": "28a3d5fa4d1f1b55a76ce8fe15ba2076ba39e723"
+    },
+    {
+      "path": "public/brand/icono-app-128.png",
+      "size": 3059,
+      "mode": 33206,
+      "sha": "4bbef7fac42ecc0e11cd500679b4a550daa1092c"
+    },
+    {
+      "path": "public/brand/icono-app-16.png",
+      "size": 390,
+      "mode": 33206,
+      "sha": "ec5e77fb9fb3bc8c3071fee5cd257db526ae057c"
+    },
+    {
+      "path": "public/brand/icono-app-180.png",
+      "size": 4229,
+      "mode": 33206,
+      "sha": "2396268440b941ceb1bbb84ac14baa2d4b5ddad6"
+    },
+    {
+      "path": "public/brand/icono-app-192.png",
+      "size": 4525,
+      "mode": 33206,
+      "sha": "e9e2ded2489955a72ebff19e4597d27799d659b8"
+    },
+    {
+      "path": "public/brand/icono-app-256.png",
+      "size": 6186,
+      "mode": 33206,
+      "sha": "09517975d55e8701c02244913d2180894c2af4ec"
+    },
+    {
+      "path": "public/brand/icono-app-32.png",
+      "size": 745,
+      "mode": 33206,
+      "sha": "b34fd36b1cff5eb23e6a60851acac48902a7196b"
+    },
+    {
+      "path": "public/brand/icono-app-48.png",
+      "size": 1145,
+      "mode": 33206,
+      "sha": "4810ace3f22785dac581d1ea6489f0eae4e7e0ba"
+    },
+    {
+      "path": "public/brand/icono-app-512.png",
+      "size": 13833,
+      "mode": 33206,
+      "sha": "ee98395e2414bcd7d7a4f1f51c9fe980d31b62c5"
+    },
+    {
+      "path": "public/brand/icono-app-64.png",
+      "size": 1525,
+      "mode": 33206,
+      "sha": "ed3a923a4bc873cc73f068643018338ed11074af"
+    },
+    {
+      "path": "public/brand/icono-app-96.png",
+      "size": 2292,
+      "mode": 33206,
+      "sha": "29e59e4e36ecd12ffd14d377a4a9d21813b26aa0"
+    },
+    {
+      "path": "public/brand/icono-app-claro-512.png",
+      "size": 12834,
+      "mode": 33206,
+      "sha": "12c382f7076c7ef8e3647352713c206946aad084"
+    },
+    {
+      "path": "public/brand/icono-app-verde-512.png",
+      "size": 13646,
+      "mode": 33206,
+      "sha": "96987d60f1ea59b1c9f8fd168cf33b58fc148452"
+    },
+    {
+      "path": "public/brand/icono-maskable-192.png",
+      "size": 2458,
+      "mode": 33206,
+      "sha": "8764baebb72d837233c0bf2204d6700a8ab7e243"
+    },
+    {
+      "path": "public/brand/icono-maskable-512.png",
+      "size": 7406,
+      "mode": 33206,
+      "sha": "ded5762104692ef3bf6901c52e05c4de60edd454"
+    },
+    {
+      "path": "public/brand/modo-app-claro.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "a2df75c79b8a15f52cee8937c2fc5e0b20275601"
+    },
+    {
+      "path": "public/brand/modo-app-oscuro.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "d9c202a66b4a88a0a0054395d7b1c75f45a67590"
+    },
+    {
+      "path": "public/brand/modo-app-verde.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "733f85196548df1e546f8d97f964f295ac02729d"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-blanco-mono.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "9457c87ace616ec8aa5c11dc0b0f0f7638c2a5e5"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-blanco.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "ce2459bbfc7473d569785759ab6be149fbadfb70"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-color.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "d202d87551322cacfb3d09b5ccc1485c9df414d5"
+    },
+    {
+      "path": "public/brand/modo-logo-horizontal-negro.svg",
+      "size": 1636,
+      "mode": 33206,
+      "sha": "3ae6a8dc9e7d28d2f8efe86c16e84cc4803c6ebd"
+    },
+    {
+      "path": "public/brand/modo-logo-vertical-blanco.svg",
+      "size": 1640,
+      "mode": 33206,
+      "sha": "2e6628c9c6203de9b44c5673df2e2eb696aecee7"
+    },
+    {
+      "path": "public/brand/modo-logo-vertical-color.svg",
+      "size": 1640,
+      "mode": 33206,
+      "sha": "91dbd5dfc98669b1148abed261d1adbe968d2708"
+    },
+    {
+      "path": "public/brand/modo-logotipo-blanco.svg",
+      "size": 1502,
+      "mode": 33206,
+      "sha": "d3de248670e21f0140eeefde9175efb31f28cd94"
+    },
+    {
+      "path": "public/brand/modo-logotipo-color.svg",
+      "size": 1502,
+      "mode": 33206,
+      "sha": "03fb82864abb0432949b879b662cc5509ac82326"
+    },
+    {
+      "path": "public/brand/modo-logotipo-negro.svg",
+      "size": 1502,
+      "mode": 33206,
+      "sha": "86bb44f96d0b6fb2850bb6e9e65e7fe97e17ba45"
+    },
+    {
+      "path": "public/brand/modo-maskable-oscuro.svg",
+      "size": 364,
+      "mode": 33206,
+      "sha": "354850022c7e070ca40719f95504bf8855895c37"
+    },
+    {
+      "path": "public/brand/modo-simbolo-blanco.svg",
+      "size": 285,
+      "mode": 33206,
+      "sha": "6bac01debd3500befc71dce760a5082d30375dbb"
+    },
+    {
+      "path": "public/brand/modo-simbolo-negro.svg",
+      "size": 285,
+      "mode": 33206,
+      "sha": "5dcd39579b3d91189fc639796a001fc04d27db64"
+    },
+    {
+      "path": "public/brand/modo-simbolo-verde.svg",
+      "size": 285,
+      "mode": 33206,
+      "sha": "e03c127d8c5cdff5f9ee7425c0a859cb27b1cd78"
+    },
+    {
+      "path": "public/brand/og-modo.jpg",
+      "size": 128351,
+      "mode": 33206,
+      "sha": "77c6503b9cafd1cd6a7ee9269ac9049288f0f98c"
+    },
+    {
+      "path": "public/diagrams/clase-1.jpg",
+      "size": 352812,
+      "mode": 33206,
+      "sha": "f9595f568a3d8afe159a475b2f711bf9a48066ff"
+    },
+    {
+      "path": "public/diagrams/clase-2.jpg",
+      "size": 370245,
+      "mode": 33206,
+      "sha": "a62721013e43c8328b1b24b4fd6372c7ed4f9d90"
+    },
+    {
+      "path": "public/diagrams/clase-3.jpg",
+      "size": 375927,
+      "mode": 33206,
+      "sha": "4d87d4ab005c5a00cd8f59c28ab4076a257825f2"
+    },
+    {
+      "path": "public/diagrams/clase-4-l293d-pines.webp",
+      "size": 60944,
+      "mode": 33206,
+      "sha": "f5508fcacc3537c4f478204943354117329e3e0c"
+    },
+    {
+      "path": "public/diagrams/clase-4-practica-1-transistores.webp",
+      "size": 71534,
+      "mode": 33206,
+      "sha": "7119692eb92f7e930ed5bcc32492987f2499ae3e"
+    },
+    {
+      "path": "public/diagrams/clase-4-practica-2-l293d.webp",
+      "size": 25122,
+      "mode": 33206,
+      "sha": "0da5451a5d599e78bd5046e7282c18f1fd2bfa08"
+    },
+    {
+      "path": "public/diagrams/leccion-estrella-manual.png",
+      "size": 58867,
+      "mode": 33206,
+      "sha": "f2d95426dd2dc11ba1b15592bd388e1a7a5a7c3a"
+    },
+    {
+      "path": "public/diagrams/leccion-estrella-temporizador.png",
+      "size": 58867,
+      "mode": 33206,
+      "sha": "f2d95426dd2dc11ba1b15592bd388e1a7a5a7c3a"
+    },
+    {
+      "path": "public/diagrams/leccion-inversion-giro.png",
+      "size": 139479,
+      "mode": 33206,
+      "sha": "e89c9e87f48b5ef9a767e44bb1318297a9043a3e"
+    },
+    {
+      "path": "public/diagrams/leccion-marcha-paro.png",
+      "size": 156598,
+      "mode": 33206,
+      "sha": "810b7356489998ec7402ddb3883350e0ca8c4a6e"
+    },
+    {
+      "path": "public/diagrams/PERFECTO.cad",
+      "size": 6111,
+      "mode": 33206,
+      "sha": "dc978f21891f94541e8587135be61b7dbfa2c993"
+    },
+    {
+      "path": "public/estudio/assets/fusibles-v2.webp",
+      "size": 223008,
+      "mode": 33206,
+      "sha": "e4dbbfa4bb8c0f0d8ecaef8832c2a7e490191b0f"
+    },
+    {
+      "path": "public/estudio/assets/lamina-04.png",
+      "size": 306736,
+      "mode": 33206,
+      "sha": "b6f7dff49d515472a56b8c14c33b671845ca8451"
+    },
+    {
+      "path": "public/estudio/assets/lamina-06.png",
+      "size": 60660,
+      "mode": 33206,
+      "sha": "c2685b14a5f851261b9f722ba47281983b38d71e"
+    },
+    {
+      "path": "public/estudio/assets/lamina-08.png",
+      "size": 232682,
+      "mode": 33206,
+      "sha": "078422c6ce03d26848a90ff79451279c027c4d19"
+    },
+    {
+      "path": "public/estudio/assets/lamina-10.png",
+      "size": 323670,
+      "mode": 33206,
+      "sha": "d364ffd89f61aa0097d0a8768f2d94b2b7f758dd"
+    },
+    {
+      "path": "public/estudio/assets/lamina-12.png",
+      "size": 90094,
+      "mode": 33206,
+      "sha": "cc2962535b16cde94ffc555ba4b4749a2d04c524"
+    },
+    {
+      "path": "public/estudio/assets/lamina-13.png",
+      "size": 77612,
+      "mode": 33206,
+      "sha": "e4cef73288c9e8f18a0748bb1fad9204237b3217"
+    },
+    {
+      "path": "public/estudio/assets/lamina-14.png",
+      "size": 277513,
+      "mode": 33206,
+      "sha": "13bed161cf08cc2d9330602e9db1332a6a9752e2"
+    },
+    {
+      "path": "public/estudio/assets/lamina-15.png",
+      "size": 334595,
+      "mode": 33206,
+      "sha": "93d52c8c4861eb2922e49269f875698e6dd1ceb5"
+    },
+    {
+      "path": "public/estudio/assets/motor-v2.webp",
+      "size": 326942,
+      "mode": 33206,
+      "sha": "04144963350461774e11286e2775c1f9be09cadd"
+    },
+    {
+      "path": "public/estudio/assets/spd-diferencial-v2.webp",
+      "size": 134472,
+      "mode": 33206,
+      "sha": "b3c022febbae6f4cf7e8749d549aa123a7dccc41"
+    },
+    {
+      "path": "public/estudio/assets/termomagnetico-v2.webp",
+      "size": 100788,
+      "mode": 33206,
+      "sha": "aa4ef9bc2b71734ed92997ce012171f9383d3fde"
+    },
+    {
+      "path": "public/estudio/fotos/01_tablero_electrico.jpg",
+      "size": 491383,
+      "mode": 33206,
+      "sha": "baa5a3c98309330beca9db7eb755d7511f097f1d"
+    },
+    {
+      "path": "public/estudio/fotos/02_motor_electrico.jpg",
+      "size": 147500,
+      "mode": 33206,
+      "sha": "9f8c48546202d435e4b236dd63259e9e7fa95948"
+    },
+    {
+      "path": "public/estudio/fotos/03_arco_electrico.jpg",
+      "size": 94947,
+      "mode": 33206,
+      "sha": "e042765bb409c9a2736900cd25df39a3c70a2566"
+    },
+    {
+      "path": "public/estudio/fotos/04_interruptor_termomagnetico.jpg",
+      "size": 68586,
+      "mode": 33206,
+      "sha": "81fd9348e8fd1b7d187647d79ef7ab40d20aa794"
+    },
+    {
+      "path": "public/estudio/fotos/05_fusibles.jpg",
+      "size": 132816,
+      "mode": 33206,
+      "sha": "10d8c8f523cffd5e5c909b6b44d70b45a18dab46"
+    },
+    {
+      "path": "public/estudio/fotos/06_spd_y_diferencial.jpg",
+      "size": 83758,
+      "mode": 33206,
+      "sha": "c613dd803066ca655025f9241363399730c1acf8"
+    },
+    {
+      "path": "public/estudio/fotos/07_motor_trifasico.jpg",
+      "size": 145227,
+      "mode": 33206,
+      "sha": "164edd9ec0909d3a2fd7eedd6d7a2017f066163c"
+    },
+    {
+      "path": "public/estudio/fuentes/F01.pdf",
+      "size": 516304,
+      "mode": 33206,
+      "sha": "3c15f11480db8b29d617a174ce67822136d9099f"
+    },
+    {
+      "path": "public/estudio/fuentes/F02.pdf",
+      "size": 1371059,
+      "mode": 33206,
+      "sha": "db8b70fdb0bca137acb981eaac0918179b16c813"
+    },
+    {
+      "path": "public/estudio/fuentes/F03.pdf",
+      "size": 1235954,
+      "mode": 33206,
+      "sha": "eb87007e9dcaf050fa2f1d3c132c3d23b6b21706"
+    },
+    {
+      "path": "public/estudio/fuentes/F04.pdf",
+      "size": 1355494,
+      "mode": 33206,
+      "sha": "fa05a810f001fc50b17e4489e167a17e4fdd7b3b"
+    },
+    {
+      "path": "public/estudio/fuentes/F05.pdf",
+      "size": 1140992,
+      "mode": 33206,
+      "sha": "e504500280cf85be847ce9cea08f44bb3541d591"
+    },
+    {
+      "path": "public/estudio/fuentes/F06.pdf",
+      "size": 1111703,
+      "mode": 33206,
+      "sha": "35d90a3f11eedc93dd4103ce0dca785c9c5f9beb"
+    },
+    {
+      "path": "public/estudio/fuentes/F07.pdf",
+      "size": 404062,
+      "mode": 33206,
+      "sha": "a48edd03fb41b732dde8f36d54072890c646057e"
+    },
+    {
+      "path": "public/estudio/fuentes/F08.png",
+      "size": 416439,
+      "mode": 33206,
+      "sha": "b69cf97a616a2e8ab8bbe524416c55fc0ca1eac6"
+    },
+    {
+      "path": "public/estudio/fuentes/F09.png",
+      "size": 447503,
+      "mode": 33206,
+      "sha": "24e12dbc6298405f4cf185b61e629ae729103923"
+    },
+    {
+      "path": "public/estudio/fuentes/F10.pdf",
+      "size": 1626983,
+      "mode": 33206,
+      "sha": "9c7ffdd8e43d6f7df788a494a5845b2e1c355c14"
+    },
+    {
+      "path": "public/estudio/fuentes/F11.pdf",
+      "size": 1547600,
+      "mode": 33206,
+      "sha": "3635eea7cde6307e8320423b95d088efa67b0350"
+    },
+    {
+      "path": "public/estudio/fuentes/F12.pdf",
+      "size": 1031901,
+      "mode": 33206,
+      "sha": "36250c8c258bd2b8ebc7138eb99a5209b18e7022"
+    },
+    {
+      "path": "public/estudio/fuentes/F13.txt",
+      "size": 200,
+      "mode": 33206,
+      "sha": "d5837fc2bff864e5c161887b3c145147320c89c6"
+    },
+    {
+      "path": "public/estudio/fuentes/F14.pptx",
+      "size": 2482856,
+      "mode": 33206,
+      "sha": "187836c111015f831c4e0dc2ca0144635c656c1b"
+    },
+    {
+      "path": "public/estudio/fuentes/F15.docx",
+      "size": 20854,
+      "mode": 33206,
+      "sha": "766df2cc2b2f570ae4121d22785494393b40e7b6"
+    },
+    {
+      "path": "public/estudio/fuentes/F16.xlsx",
+      "size": 22456,
+      "mode": 33206,
+      "sha": "49362b4c85de32959e920aec1888ba4b7eea649e"
+    },
+    {
+      "path": "public/estudio/fuentes/F17.png",
+      "size": 445661,
+      "mode": 33206,
+      "sha": "5c489c030c7f433b2b0e802f6dab3f880afaa3df"
+    },
+    {
+      "path": "public/estudio/fuentes/F18.docx",
+      "size": 57666,
+      "mode": 33206,
+      "sha": "979aea0745b44255a1bcc3ae506a0e263f420354"
+    },
+    {
+      "path": "public/estudio/fuentes/F19.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    },
+    {
+      "path": "public/estudio/fuentes/F20.pdf",
+      "size": 1438301,
+      "mode": 33206,
+      "sha": "df5c0b14136aaa3a308b23a44685f04ac3a40f5c"
+    },
+    {
+      "path": "public/estudio/fuentes/F21.pdf",
+      "size": 1740233,
+      "mode": 33206,
+      "sha": "c2ce6c841e493e8218c017e7980b8328ecf3ded4"
+    },
+    {
+      "path": "public/estudio/fuentes/F22.pdf",
+      "size": 527372,
+      "mode": 33206,
+      "sha": "97a84108c1df95045eb9602bc01b22a21cc475fa"
+    },
+    {
+      "path": "public/estudio/fuentes/F23.pdf",
+      "size": 508344,
+      "mode": 33206,
+      "sha": "b033a75dbeb7e7f2def6860c19bb1241763985c5"
+    },
+    {
+      "path": "public/estudio/fuentes/F24.pdf",
+      "size": 457105,
+      "mode": 33206,
+      "sha": "613d129b3ea92613bc43e1d8a0162f704dfd37c2"
+    },
+    {
+      "path": "public/estudio/fuentes/F25.pdf",
+      "size": 446208,
+      "mode": 33206,
+      "sha": "74859cb890725d807ed131263974003824f86e10"
+    },
+    {
+      "path": "public/estudio/fuentes/F26.txt",
+      "size": 154,
+      "mode": 33206,
+      "sha": "3306dc57f3efcec7ff0ce56fff8607a05d58ac46"
+    },
+    {
+      "path": "public/estudio/fuentes/F27.txt",
+      "size": 193,
+      "mode": 33206,
+      "sha": "90e0e10708aa20a21c4c5ba04cc68f507aec13de"
+    },
+    {
+      "path": "public/estudio/fuentes/F28.png",
+      "size": 666782,
+      "mode": 33206,
+      "sha": "913134257fdb79c98153474462a9c1a7e993561f"
+    },
+    {
+      "path": "public/estudio/fuentes/F29.pdf",
+      "size": 608683,
+      "mode": 33206,
+      "sha": "90ab53968cfb6e023cfca5a3bd73cbabd5dd2c3d"
+    },
+    {
+      "path": "public/estudio/fuentes/F30.pdf",
+      "size": 542680,
+      "mode": 33206,
+      "sha": "c4369088b18cc5e9e05b93baf2215f7b37a06d43"
+    },
+    {
+      "path": "public/estudio/fuentes/F31.pdf",
+      "size": 556936,
+      "mode": 33206,
+      "sha": "0c186712b79ed05ffac1d8e888785e144b4c5abf"
+    },
+    {
+      "path": "public/estudio/fuentes/F32.pdf",
+      "size": 597640,
+      "mode": 33206,
+      "sha": "4750100e0e6a44eeda1eaa3c494448ead2209846"
+    },
+    {
+      "path": "public/estudio/fuentes/F33.pdf",
+      "size": 3006468,
+      "mode": 33206,
+      "sha": "1a7337dfcc837c7abb1522cbbf7af198b214579a"
+    },
+    {
+      "path": "public/estudio/fuentes/F34.pdf",
+      "size": 809161,
+      "mode": 33206,
+      "sha": "2bb4e38659d045a3d9447e401b289e4753a1b889"
+    },
+    {
+      "path": "public/estudio/fuentes/F35.pdf",
+      "size": 199112,
+      "mode": 33206,
+      "sha": "9b7ce63d203b07a76aca4340e5202987e5c5e477"
+    },
+    {
+      "path": "public/estudio/fuentes/F36.png",
+      "size": 398490,
+      "mode": 33206,
+      "sha": "d3477ebb10897b1c9236378ce4aac19a1dfc637b"
+    },
+    {
+      "path": "public/estudio/fuentes/F37.pdf",
+      "size": 1749286,
+      "mode": 33206,
+      "sha": "a22795e8c900c7ad8dc22059c34f3ec6685d537f"
+    },
+    {
+      "path": "public/estudio/fuentes/F38.pdf",
+      "size": 556553,
+      "mode": 33206,
+      "sha": "4e7eeafe3d1a904dd4c0962759bf6bd969efef0b"
+    },
+    {
+      "path": "public/estudio/fuentes/F39.pdf",
+      "size": 438974,
+      "mode": 33206,
+      "sha": "2973259fac2fd18f20dee35b801ee729b36bdda5"
+    },
+    {
+      "path": "public/estudio/fuentes/I01.pdf",
+      "size": 502202,
+      "mode": 33206,
+      "sha": "967f7e3335cc64c65879c645fffee181b49362f3"
+    },
+    {
+      "path": "public/estudio/fuentes/I02.pdf",
+      "size": 1030605,
+      "mode": 33206,
+      "sha": "aed7866758ceef98280987c16bd764d128d06449"
+    },
+    {
+      "path": "public/estudio/fuentes/I03.pdf",
+      "size": 908979,
+      "mode": 33206,
+      "sha": "7013c64effd85a274fb7f0e5341ecccb68a70ea4"
+    },
+    {
+      "path": "public/estudio/fuentes/I04.pdf",
+      "size": 680948,
+      "mode": 33206,
+      "sha": "eeb9bfd4f2f5ffab39e510f84d5dab175ca804bf"
+    },
+    {
+      "path": "public/estudio/fuentes/I05.pdf",
+      "size": 550886,
+      "mode": 33206,
+      "sha": "aaa3009e15f07020bec1d5786d91af6a52c2d2ad"
+    },
+    {
+      "path": "public/estudio/fuentes/I06.pdf",
+      "size": 499919,
+      "mode": 33206,
+      "sha": "b4a46687eec40673e2337986df319490dd56b3fa"
+    },
+    {
+      "path": "public/estudio/fuentes/I07.pdf",
+      "size": 1236490,
+      "mode": 33206,
+      "sha": "61dfba84249b708a5da593288ff6a194e74f9234"
+    },
+    {
+      "path": "public/estudio/fuentes/I08.pdf",
+      "size": 428277,
+      "mode": 33206,
+      "sha": "25a51dda96b5d267a4f0d5cd932e06a2b9c8ecf7"
+    },
+    {
+      "path": "public/estudio/instrumentacion/guia-detectores-g01.docx",
+      "size": 114952,
+      "mode": 33206,
+      "sha": "6173f1a2f51d128810d8c0a67a4f315cbeb66c89"
+    },
+    {
+      "path": "public/estudio/instrumentacion/guia-proximidad-plc-g02.docx",
+      "size": 70390,
+      "mode": 33206,
+      "sha": "fe7313f55fbc642c83d5fd4b00c38c91eba627c5"
+    },
+    {
+      "path": "public/estudio/instrumentacion/guia-temperatura-g03.docx",
+      "size": 78141,
+      "mode": 33206,
+      "sha": "6e3ba566026aa08258333e49f9b8f6d5481da43c"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-cuadraticas.pdf",
+      "size": 1740233,
+      "mode": 33206,
+      "sha": "c2ce6c841e493e8218c017e7980b8328ecf3ded4"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-lineales.pdf",
+      "size": 1883809,
+      "mode": 33206,
+      "sha": "deb0350a488e1d0620f222e0e9cac09a7add5c0f"
+    },
+    {
+      "path": "public/estudio/matematicas/funciones-logaritmicas.pdf",
+      "size": 1438301,
+      "mode": 33206,
+      "sha": "df5c0b14136aaa3a308b23a44685f04ac3a40f5c"
+    },
+    {
+      "path": "public/estudio/practica-ispsoft-dopsoft.md",
+      "size": 6706,
+      "mode": 33206,
+      "sha": "6d1cbfe2f4befe4edaa6c592462ca334a0ca7c7c"
+    },
+    {
+      "path": "public/estudio/profesor.pdf",
+      "size": 1658593,
+      "mode": 33206,
+      "sha": "c8ab27bdae8552dacde5326b56dd92813ea4d228"
+    },
+    {
+      "path": "public/estudio/referencia-programa-profesor.jpeg",
+      "size": 70918,
+      "mode": 33206,
+      "sha": "bf9b544f57ae63fc560a6e888fbe08df86e6b6a6"
+    },
+    {
+      "path": "public/fonts/INTER-LICENSE.txt",
+      "size": 4380,
+      "mode": 33206,
+      "sha": "174b037934980ddcad39144da3ce7b0f9d73546c"
+    },
+    {
+      "path": "public/fonts/InterVariable.woff2",
+      "size": 105968,
+      "mode": 33206,
+      "sha": "8806db8cea32cdc426ebb4da3f329a97650496c5"
+    },
+    {
+      "path": "public/fonts/SOURCE-SANS-LICENSE.md",
+      "size": 4486,
+      "mode": 33206,
+      "sha": "f5e261a9c5aa2833520c9bedc2e0ac0f867cfb39"
+    },
+    {
+      "path": "public/fonts/SourceSans3-Bold.woff2",
+      "size": 31120,
+      "mode": 33206,
+      "sha": "50101947f3b04abb39eae501579ff2e641f5adc8"
+    },
+    {
+      "path": "public/fonts/SourceSans3-Regular.woff2",
+      "size": 31264,
+      "mode": 33206,
+      "sha": "e21b42670ff6ff9a03bbbc6158c13887e4aeb4b7"
+    },
+    {
+      "path": "public/fonts/SourceSans3-Semibold.woff2",
+      "size": 31196,
+      "mode": 33206,
+      "sha": "e4cc5a523e6f77a0fcb6d5fe03825ef948750b9c"
+    },
+    {
+      "path": "public/geogebra-frame.html",
+      "size": 449,
+      "mode": 33206,
+      "sha": "cb359735d24b74b088f36397af68e1fda220b1f9"
+    },
+    {
+      "path": "public/icons/apple-touch-icon.png",
+      "size": 4229,
+      "mode": 33206,
+      "sha": "2396268440b941ceb1bbb84ac14baa2d4b5ddad6"
+    },
+    {
+      "path": "public/icons/icon-192.png",
+      "size": 4525,
+      "mode": 33206,
+      "sha": "e9e2ded2489955a72ebff19e4597d27799d659b8"
+    },
+    {
+      "path": "public/icons/icon-512.png",
+      "size": 13833,
+      "mode": 33206,
+      "sha": "ee98395e2414bcd7d7a4f1f51c9fe980d31b62c5"
+    },
+    {
+      "path": "public/icons/icon-maskable-512.png",
+      "size": 7406,
+      "mode": 33206,
+      "sha": "ded5762104692ef3bf6901c52e05c4de60edd454"
+    },
+    {
+      "path": "public/icons/icon.svg",
+      "size": 379,
+      "mode": 33206,
+      "sha": "d9c202a66b4a88a0a0054395d7b1c75f45a67590"
+    },
+    {
+      "path": "public/images/home-approved/community.webp",
+      "size": 55608,
+      "mode": 33206,
+      "sha": "8a419cc721416d22af005b14e914f0cd995821e0"
+    },
+    {
+      "path": "public/images/home-approved/lab.webp",
+      "size": 86862,
+      "mode": 33206,
+      "sha": "d3f2605c9e8e570e8c2488f2356c0d02af43c1b2"
+    },
+    {
+      "path": "public/images/home-approved/panel.webp",
+      "size": 114264,
+      "mode": 33206,
+      "sha": "055072926a118faed513adddb01ccd1713cd29f8"
+    },
+    {
+      "path": "public/images/home-approved/study.webp",
+      "size": 98224,
+      "mode": 33206,
+      "sha": "bace84f170e8f5af596d75b2885f0c8b1b209f75"
+    },
+    {
+      "path": "public/images/modo/bornes-1024.webp",
+      "size": 43392,
+      "mode": 33206,
+      "sha": "9424e5f61bfdf274d4fc43e2b93531c97e03c582"
+    },
+    {
+      "path": "public/images/modo/bornes-640.webp",
+      "size": 25072,
+      "mode": 33206,
+      "sha": "4b1c8ab16db109602e8c33e7c253bc813cbae247"
+    },
+    {
+      "path": "public/images/modo/bornes.webp",
+      "size": 96652,
+      "mode": 33206,
+      "sha": "a9507ac4d973ee387a06f0aeb92c95753baafa14"
+    },
+    {
+      "path": "public/images/modo/laboratorio-1024.webp",
+      "size": 59652,
+      "mode": 33206,
+      "sha": "cbd47796faa7d742f6fa27a31df28359570f0a73"
+    },
+    {
+      "path": "public/images/modo/laboratorio-640.webp",
+      "size": 33256,
+      "mode": 33206,
+      "sha": "4de7242340f96e00f4f570f89e5b387c5b530539"
+    },
+    {
+      "path": "public/images/modo/laboratorio.webp",
+      "size": 130070,
+      "mode": 33206,
+      "sha": "418f83550355929ff45a0de3527d4574d5996597"
+    },
+    {
+      "path": "public/images/modo/protecciones-1024.webp",
+      "size": 56612,
+      "mode": 33206,
+      "sha": "c591aaf96ec4ac66734508096c9cebd8a6a7f929"
+    },
+    {
+      "path": "public/images/modo/protecciones-640.webp",
+      "size": 30684,
+      "mode": 33206,
+      "sha": "256a17a1d25b323eef77b957b4f4787b6730ec0b"
+    },
+    {
+      "path": "public/images/modo/protecciones.webp",
+      "size": 130562,
+      "mode": 33206,
+      "sha": "65cfeae866fd932e5f9afcd1f09c1466e10a85ec"
+    },
+    {
+      "path": "public/images/preview-home/lab.jpg",
+      "size": 74926,
+      "mode": 33206,
+      "sha": "c1fe14a84725a1e9465c570ebd1d0ba9beba93cc"
+    },
+    {
+      "path": "public/images/preview-home/panel.jpg",
+      "size": 118021,
+      "mode": 33206,
+      "sha": "5c2cf5f9d8b47b9039d5270a97741c7d55632a16"
+    },
+    {
+      "path": "public/images/preview-home/study.jpg",
+      "size": 74231,
+      "mode": 33206,
+      "sha": "af997b435a2cf874d5918f25a2dcf6ebb9dce368"
+    },
+    {
+      "path": "public/manifest.webmanifest",
+      "size": 694,
+      "mode": 33206,
+      "sha": "d7df4017ec110d369693ca0f217be1b2ca7dbc72"
+    },
+    {
+      "path": "public/materiales/actividad-1-u2.pdf",
+      "size": 1626983,
+      "mode": 33206,
+      "sha": "9c7ffdd8e43d6f7df788a494a5845b2e1c355c14"
+    },
+    {
+      "path": "public/materiales/bornes-estrella.png",
+      "size": 103769,
+      "mode": 33206,
+      "sha": "949ccab3b2bee1103a8285ff8df3f876cc9e80a7"
+    },
+    {
+      "path": "public/materiales/bornes-triangulo.png",
+      "size": 111919,
+      "mode": 33206,
+      "sha": "16b8f32f224fbf8db474e6e6b8e8415c98fb60a5"
+    },
+    {
+      "path": "public/materiales/circuito-fuerza.png",
+      "size": 12812,
+      "mode": 33206,
+      "sha": "8ae02a98de5073437ba8f2160dd9b28b21126cc6"
+    },
+    {
+      "path": "public/materiales/circuito-mando.png",
+      "size": 170391,
+      "mode": 33206,
+      "sha": "19b30c7a600825f48d2086a87887e83367e22570"
+    },
+    {
+      "path": "public/materiales/prueba-partida-directa.png",
+      "size": 907355,
+      "mode": 33206,
+      "sha": "dd148ca870a47a95bb938c28f241b8a93a631703"
+    },
+    {
+      "path": "public/panel-model.json",
+      "size": 32342,
+      "mode": 33206,
+      "sha": "5e34821e15342c76b9162fb6f52a3b8607de4e50"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-1.jpg",
+      "size": 1411212,
+      "mode": 33206,
+      "sha": "fc2f3a2983149358c2a2f2bacfa0caedd0133c43"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-2.jpg",
+      "size": 1391695,
+      "mode": 33206,
+      "sha": "3875db0df2edfff83464ab5486769b34dc978e5e"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-3.jpg",
+      "size": 1567990,
+      "mode": 33206,
+      "sha": "855d8ed70a368b2dd9d6c9c0c3fa8de81424fed6"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-4.jpg",
+      "size": 1533126,
+      "mode": 33206,
+      "sha": "e566fb1cc220cc0270657253836a78d3cd84a6f6"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-5.jpg",
+      "size": 1721918,
+      "mode": 33206,
+      "sha": "85a6db54ba6926622e84ee3b53fce2fe2926626e"
+    },
+    {
+      "path": "public/photos-2026-10-15/foto-6.jpg",
+      "size": 1587243,
+      "mode": 33206,
+      "sha": "7edecb8d5be504ec3aed95e0dccfa98945fa9511"
+    },
+    {
+      "path": "public/references/botoneras.jpg",
+      "size": 42382,
+      "mode": 33206,
+      "sha": "be7a9f1af0ae7b9338f8a21bf1355e22c1c04faf"
+    },
+    {
+      "path": "public/references/contactor-termico.jpg",
+      "size": 66067,
+      "mode": 33206,
+      "sha": "8296c7a895ea875746123d8282c4464543cda649"
+    },
+    {
+      "path": "public/references/contactor-trifasico.jpg",
+      "size": 55807,
+      "mode": 33206,
+      "sha": "75ecab57efcb14fed65f66ef4b967128b69c316c"
+    },
+    {
+      "path": "public/references/motor.jpg",
+      "size": 64917,
+      "mode": 33206,
+      "sha": "90763a2286316563b60ba492e6ab07abf9aecb18"
+    },
+    {
+      "path": "public/references/suministro.jpg",
+      "size": 44163,
+      "mode": 33206,
+      "sha": "30a6e872b6395af679c083b75242370b78f9a68e"
+    },
+    {
+      "path": "public/references/temporizador-1.jpg",
+      "size": 31570,
+      "mode": 33206,
+      "sha": "8887580269143065c87cfe773e71c39b918138b7"
+    },
+    {
+      "path": "public/references/temporizador-2.jpg",
+      "size": 59109,
+      "mode": 33206,
+      "sha": "4ae45ae7af6e72c7ad1308f4be5bc128d71a5982"
+    },
+    {
+      "path": "public/robots.txt",
+      "size": 176,
+      "mode": 33206,
+      "sha": "256c1ce90a961856d0bfb186f8a824b5bbe8afe3"
+    },
+    {
+      "path": "public/sw.js",
+      "size": 2743,
+      "mode": 33206,
+      "sha": "2a0d976b1b69b4e6d336dd2ae6ceeeff53604ab3"
+    },
+    {
+      "path": "public/tutoriales/laboratorio-1.webp",
+      "size": 16220,
+      "mode": 33206,
+      "sha": "002659dfc038c9c530fbb07f2247dddec0c86666"
+    },
+    {
+      "path": "public/tutoriales/laboratorio-2.webp",
+      "size": 17624,
+      "mode": 33206,
+      "sha": "5b5db45385ec8838c47fb09840192952c7672783"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-1.mp4",
+      "size": 11993909,
+      "mode": 33206,
+      "sha": "4270c0463ba4a42fbd9774ad2cbc58944574ebd9"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-laboratorio-2.mp4",
+      "size": 10577048,
+      "mode": 33206,
+      "sha": "0f77f682c9ed52f666b1179b8952dd9474d15f3a"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-1.mp4",
+      "size": 10709112,
+      "mode": 33206,
+      "sha": "3a200ca84ce29b0553f79f5f4b61487c29c92494"
+    },
+    {
+      "path": "public/tutoriales/modo-v3-practica-2.mp4",
+      "size": 9082876,
+      "mode": 33206,
+      "sha": "6696d825c388dd89b75585bbdeec5ad552a477f1"
+    },
+    {
+      "path": "public/tutoriales/practica-1.webp",
+      "size": 13754,
+      "mode": 33206,
+      "sha": "16967da6df52cd8af87a7899cdea30d10349d3ff"
+    },
+    {
+      "path": "public/tutoriales/practica-2.webp",
+      "size": 14038,
+      "mode": 33206,
+      "sha": "518edf9cfc55c8590977f1ae2bb0b5743ab76e9f"
+    },
+    {
+      "path": "public/vendor/geogebra/bundle-source.json",
+      "size": 386,
+      "mode": 33206,
+      "sha": "55b3afbd84f75ba3e0fa7cba5ab06eb5427b2525"
+    },
+    {
+      "path": "public/vendor/geogebra/deployggb.js",
+      "size": 37188,
+      "mode": 33206,
+      "sha": "8d44f522c9a137611fa9ed5854e9ce1168eef107"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/app-header.css",
+      "size": 6959,
+      "mode": 33206,
+      "sha": "c26a00b0c2597389b1ec16bac63cbe8ffe69ed2e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/av-styles.css",
+      "size": 15667,
+      "mode": 33206,
+      "sha": "001a109037b9988a26d2212f69f415229a20140e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/bundles/bundle.css",
+      "size": 232812,
+      "mode": 33206,
+      "sha": "c343b5fa62f3bbc1a3915d28563eaa996277d3fa"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/bundles/simple-bundle.css",
+      "size": 35505,
+      "mode": 33206,
+      "sha": "570f00f4d22d8c5bfc7a6539f83df0e9145eda07"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/colorMap.css",
+      "size": 1,
+      "mode": 33206,
+      "sha": "adc83b19e793491b1c6ea0fd8b46cd9f32e592fc"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/colors.css",
+      "size": 206,
+      "mode": 33206,
+      "sha": "da8566408a6a2060db5384047ee7aaded2f8d878"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/component-styles.css",
+      "size": 38413,
+      "mode": 33206,
+      "sha": "b423146907487bdf42be4dd5a84d729408c56f8d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/context-menu.css",
+      "size": 6055,
+      "mode": 33206,
+      "sha": "c4ff8497dbb9ba9f5ed3a501d3c8de7fc823434f"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/dialog-styles.css",
+      "size": 43319,
+      "mode": 33206,
+      "sha": "4d9b9a818ec7e15dd3bb8c85345f6bd216def243"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/dimens.css",
+      "size": 1,
+      "mode": 33206,
+      "sha": "adc83b19e793491b1c6ea0fd8b46cd9f32e592fc"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/editor.css",
+      "size": 17140,
+      "mode": 33206,
+      "sha": "52efc321e8b5879c5b6e6f58a217aec61402bf67"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/ev-styles.css",
+      "size": 13934,
+      "mode": 33206,
+      "sha": "798f001f0281dcf4f91e43f2ac627d050aca8907"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/evaluator-styles.css",
+      "size": 139,
+      "mode": 33206,
+      "sha": "b9568a0f53f7206280b8236323b714ac7771262c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/exam.css",
+      "size": 126,
+      "mode": 33206,
+      "sha": "5d1a43239fd285d54201e35faa89012b84014803"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/fonts.css",
+      "size": 7992,
+      "mode": 33206,
+      "sha": "f17dad9450cef7b221a39c1f02c1ea6d83f63c4b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/general.css",
+      "size": 2638,
+      "mode": 33206,
+      "sha": "41f63f1d377eb0799ccd9dc186573fd62bf89570"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/greek-font.css",
+      "size": 10753,
+      "mode": 33206,
+      "sha": "149afbaf9ef08c8f9bffef46f641f50684546757"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/header.css",
+      "size": 2151,
+      "mode": 33206,
+      "sha": "a24d4fd1ad2594a65fdb1d6583833bd0ea6ec465"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/headerbar.css",
+      "size": 11325,
+      "mode": 33206,
+      "sha": "fb7638d77a32c36aab1d17c14b5fd2eb5b619d75"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/info-card.css",
+      "size": 856,
+      "mode": 33206,
+      "sha": "5cf21dadfedde56f064ca3608b493786044aa229"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/keyboard-styles.css",
+      "size": 5630,
+      "mode": 33206,
+      "sha": "fca92273f19e968950ea0cebc8f7f1364ad8f443"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/layout.css",
+      "size": 4126,
+      "mode": 33206,
+      "sha": "e92826d7fc8133819c357c095091fec30177bcaf"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/menu-styles.css",
+      "size": 3406,
+      "mode": 33206,
+      "sha": "13d8c9287f9206927971470a53c9454a340298d8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/mow-toolbox.css",
+      "size": 2932,
+      "mode": 33206,
+      "sha": "a461e24e43f7db401d8db60376318dd728d6c3cd"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/mow-topbar.css",
+      "size": 725,
+      "mode": 33206,
+      "sha": "41fb9c3c2404b898739e81b9091a22a99e73f3c9"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/mow.css",
+      "size": 9888,
+      "mode": 33206,
+      "sha": "05a683e94c85107a3fa5b1b0d9d2c7125882bb87"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/open-screen.css",
+      "size": 16439,
+      "mode": 33206,
+      "sha": "62f86e78855e5509a5d29075d1c6e07292dae76b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/popup-styles.css",
+      "size": 8962,
+      "mode": 33206,
+      "sha": "b544d57a46292acbd3d84746c5009d2bf11fb662"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/print.css",
+      "size": 863,
+      "mode": 33206,
+      "sha": "3999eb325d446dfd89bdadde8e10e0b723e2b46e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/probability-layout.css",
+      "size": 2809,
+      "mode": 33206,
+      "sha": "072804eeece62d307578ff328d83dbcff0781c47"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/reset.css",
+      "size": 7232,
+      "mode": 33206,
+      "sha": "aba54ce3eb3ffdb2de899cce573a7f53d963025c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/scientific-layout.css",
+      "size": 2691,
+      "mode": 33206,
+      "sha": "99fbbfca41feb480f85560767b9d2f769e840a05"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/settings-styles.css",
+      "size": 9231,
+      "mode": 33206,
+      "sha": "28c129f71115b884b5ec079775e803521ed6c57e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/shared.css",
+      "size": 4364,
+      "mode": 33206,
+      "sha": "1ae5adf0c5465aa2ce7d30bda4da126ea0f2d58e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/snackbar.css",
+      "size": 3254,
+      "mode": 33206,
+      "sha": "29787b6ff6833dedfb9bcb4e97463996e08ccfe7"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/spreadsheet-tab.css",
+      "size": 340,
+      "mode": 33206,
+      "sha": "d87fbd580dc4b794a4bcba658b7f58371af0f3de"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/spreadsheet.css",
+      "size": 3663,
+      "mode": 33206,
+      "sha": "d79f52fc32bdadf9e5d3004b21a67b869c1707ba"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/tableview.css",
+      "size": 7403,
+      "mode": 33206,
+      "sha": "b05e3fe4424aed5d208e4f9b6c9151d2e04d8df4"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/text-styles.css",
+      "size": 524,
+      "mode": 33206,
+      "sha": "052c6fd7f8cbbb2aa5a13ab36bf5b796f9838031"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/toolbar-styles.css",
+      "size": 8284,
+      "mode": 33206,
+      "sha": "fcb2ef3b369575345b00abc8038bdd7dd69cf8c1"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/web-styles-global.css",
+      "size": 3420,
+      "mode": 33206,
+      "sha": "172fd57c797ecaecb2355863740f0ed9f10f503b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/web-styles.css",
+      "size": 51888,
+      "mode": 33206,
+      "sha": "9b4a3385de4979faa138fdba3ea81400d49a7e76"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/css/z-index.css",
+      "size": 1,
+      "mode": 33206,
+      "sha": "adc83b19e793491b1c6ea0fd8b46cd9f32e592fc"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/GeoGebra.html",
+      "size": 348870,
+      "mode": 33206,
+      "sha": "e5df62a6676cf4f9faa138c217c03912323c65cd"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/29EB0586CD5B749E221F6BB019F1B206.cache.js",
+      "size": 7929313,
+      "mode": 33206,
+      "sha": "571e583daef34fb5892ca2232fa015f0eef28310"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/clear.cache.gif",
+      "size": 43,
+      "mode": 33206,
+      "sha": "b80b11203d97fe01c5597ca3be70406ea48f5709"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/1.cache.js",
+      "size": 141886,
+      "mode": 33206,
+      "sha": "b2fd7b36c54eb91695f9013c887733bcfc19908d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/10.cache.js",
+      "size": 18636,
+      "mode": 33206,
+      "sha": "b1b313403ea3c22e1c3e5dac2fe11111a4a7ad24"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/11.cache.js",
+      "size": 83920,
+      "mode": 33206,
+      "sha": "0a7c2c7613e3960f4c4f75be8689fa9db8bc3c19"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/12.cache.js",
+      "size": 732808,
+      "mode": 33206,
+      "sha": "7512a4a3e0046de98132e1566d5a3ef8241008cf"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/13.cache.js",
+      "size": 495928,
+      "mode": 33206,
+      "sha": "01232135ace8ce310b9fd7737ab7e04405e42f0c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/14.cache.js",
+      "size": 1738862,
+      "mode": 33206,
+      "sha": "6935d96831b062868fe0fd8828a8ba071f7b4521"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/15.cache.js",
+      "size": 4118,
+      "mode": 33206,
+      "sha": "4255d0ef46218fc023a915f9163695333d34a9b4"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/2.cache.js",
+      "size": 10185290,
+      "mode": 33206,
+      "sha": "53eb0a8bce9887fc2354d75b70190c9154c0a0f8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/3.cache.js",
+      "size": 215555,
+      "mode": 33206,
+      "sha": "74c3442b13583820caade872b7d3461e966111ce"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/4.cache.js",
+      "size": 513814,
+      "mode": 33206,
+      "sha": "5a8e099e4830a11bce88244356e0afd19a0d141f"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/5.cache.js",
+      "size": 54362,
+      "mode": 33206,
+      "sha": "10d17e04d02599f38815699a2e2b5a871e7d3d91"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/6.cache.js",
+      "size": 160702,
+      "mode": 33206,
+      "sha": "a31e91306f178581b3346122e76bbd7e69683c55"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/7.cache.js",
+      "size": 59445,
+      "mode": 33206,
+      "sha": "2c4677b0f5ac7c8f6b8d9a916edffa28f19e8fb8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/8.cache.js",
+      "size": 163751,
+      "mode": 33206,
+      "sha": "2f631172d59dd5126fe9e2f32d216fffd72b78c6"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/deferredjs/29EB0586CD5B749E221F6BB019F1B206/9.cache.js",
+      "size": 181433,
+      "mode": 33206,
+      "sha": "6a89f6dc489ca89b117fb6c5db5eebeb9ed6f7e4"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/base/jlm_cmmi10.js",
+      "size": 71022,
+      "mode": 33206,
+      "sha": "ae810534e7ed76c79f78025d14140587912851e3"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/base/jlm_cmmib10.js",
+      "size": 83766,
+      "mode": 33206,
+      "sha": "76f04fd287605f2b5360a99027db3b11b6dc251b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnbx10.js",
+      "size": 90796,
+      "mode": 33206,
+      "sha": "7d8d2d982c35e886f1b29c847ea70ffc5ea28b3c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnbxti10.js",
+      "size": 156977,
+      "mode": 33206,
+      "sha": "1a2c9e9904dec7e0ed6c320ee609145aef6aba55"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnr10.js",
+      "size": 102118,
+      "mode": 33206,
+      "sha": "6754aae740fbf6028b022aab99669fe4142523b5"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnss10.js",
+      "size": 49509,
+      "mode": 33206,
+      "sha": "14a19e752bf46a0af42f5c51a99dc97ae3faff91"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnssbx10.js",
+      "size": 87228,
+      "mode": 33206,
+      "sha": "12cb1b74a6b963d412d088cdb2802af83047b3d8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnssi10.js",
+      "size": 69527,
+      "mode": 33206,
+      "sha": "62ddb1ace86d9df83b615605ec66ccf35b5fe220"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wnti10.js",
+      "size": 151215,
+      "mode": 33206,
+      "sha": "285ae8f7f920ffd0fd2307cf250df0129442cb3d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/cyrillic/jlm_wntt10.js",
+      "size": 94607,
+      "mode": 33206,
+      "sha": "4a3c6e6eafe429651b2cd5914212b165110f8788"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/euler/jlm_eufb10.js",
+      "size": 58932,
+      "mode": 33206,
+      "sha": "de454d7b2e2da43937b3020d7a9bf41308b9a78f"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/euler/jlm_eufm10.js",
+      "size": 57318,
+      "mode": 33206,
+      "sha": "4a853ac278a7999f0fb0e0d9c077be0e60b95103"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmbipg.js",
+      "size": 191184,
+      "mode": 33206,
+      "sha": "62a5b9749d52cd7e3906255a9e1504ada934d60c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmbpg.js",
+      "size": 187896,
+      "mode": 33206,
+      "sha": "b06d5b431a7547c0b499c820133a49eeba81ad27"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmripg.js",
+      "size": 198725,
+      "mode": 33206,
+      "sha": "4562584160ebf4ef3b982b82b6df4a133c5685e1"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcmrpg.js",
+      "size": 190616,
+      "mode": 33206,
+      "sha": "bb3ce6d67bfae6c2de2cde708bb54548cefe3dfe"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcsbpg.js",
+      "size": 141549,
+      "mode": 33206,
+      "sha": "1ac59f4e1b5c714802f51ced7d37c3474396e12c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcsropg.js",
+      "size": 160767,
+      "mode": 33206,
+      "sha": "5440dac2e691a2a433e8697df901860087ee26d2"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fcsrpg.js",
+      "size": 137603,
+      "mode": 33206,
+      "sha": "2198ee0550d1e49ba2c5eb02d5c7b21c14b23b11"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/greek/jlm_fctrpg.js",
+      "size": 171156,
+      "mode": 33206,
+      "sha": "c9d0032fd117608b041877a631baec408f6be84f"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_cmr10.js",
+      "size": 56137,
+      "mode": 33206,
+      "sha": "1bf6984baa287cc80339539440c5f679fd212777"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmbi10.js",
+      "size": 6800,
+      "mode": 33206,
+      "sha": "3c0bfac0abaf546a496cd6497a81bd3684186ed9"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmbx10.js",
+      "size": 6431,
+      "mode": 33206,
+      "sha": "e872e04c0173369dbc038a20fc624eb6cfbb5a7d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmi10.js",
+      "size": 6375,
+      "mode": 33206,
+      "sha": "681cf9482403a1b6d885a06cb94c02d88df07491"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmr10.js",
+      "size": 9165,
+      "mode": 33206,
+      "sha": "06754e9794ecd38da29d17c8c7fd1f64ae6153eb"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmsb10.js",
+      "size": 6169,
+      "mode": 33206,
+      "sha": "99b23416c19045defbd8441476acde2dfb6c0929"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmsbi10.js",
+      "size": 5863,
+      "mode": 33206,
+      "sha": "a1cb25140de4146d1d2156f61697513ae3bd28d0"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmsi10.js",
+      "size": 4704,
+      "mode": 33206,
+      "sha": "c8dbc0edcb0e8e675e6d374b5e30e24c8487667d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmss10.js",
+      "size": 4234,
+      "mode": 33206,
+      "sha": "e2b583546f3176bc52e3c46560d464169be8ff51"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/jlm_jlmtt10.js",
+      "size": 4514,
+      "mode": 33206,
+      "sha": "a03054704d83f55fd77fce16ef88df90bb83d2f7"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmbx10.js",
+      "size": 58085,
+      "mode": 33206,
+      "sha": "6ed59e4910d6e308cb7c9c58a3a2fce470bef1b0"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmbxti10.js",
+      "size": 85561,
+      "mode": 33206,
+      "sha": "2ca1e76e4a4e8dc509a4ab85ef239101bc57bfeb"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmssbx10.js",
+      "size": 61389,
+      "mode": 33206,
+      "sha": "cd1f1b6e435e6fdd502caf398a472c443db4d928"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmssi10.js",
+      "size": 36546,
+      "mode": 33206,
+      "sha": "c5221a6a1823f20476b42982df493c03e5d1941a"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmti10.js",
+      "size": 93348,
+      "mode": 33206,
+      "sha": "f745de7c8abddb238f2f8ffb5fd09e8a14e6f83c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/latin/optional/jlm_cmtt10.js",
+      "size": 68586,
+      "mode": 33206,
+      "sha": "a78491e51a8a2def67af0f861ad40d81d850f967"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/licences/Knuth_License.txt",
+      "size": 395,
+      "mode": 33206,
+      "sha": "2cf5d8fe3ec737243c925593c07aeff5e3b44230"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/licences/License_for_dsrom.txt",
+      "size": 260,
+      "mode": 33206,
+      "sha": "ca76b010e90c8f682433a6e388d313dcad3aba7e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/licences/OFL.txt",
+      "size": 4630,
+      "mode": 33206,
+      "sha": "874b0a7d878b525d00fb1ff36c1d5d3f864fdb06"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_cmbsy10.js",
+      "size": 67294,
+      "mode": 33206,
+      "sha": "c42837dd6560d4cac2f74c9f3c559040a63f5edb"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_msam10.js",
+      "size": 54230,
+      "mode": 33206,
+      "sha": "7e1ccf2789293d61a33babccd9a99733e9af6d6f"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_msbm10.js",
+      "size": 81054,
+      "mode": 33206,
+      "sha": "ad5dcdf15d703abcbf31f4840adfae9b0e387ad3"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_rsfs10.js",
+      "size": 30402,
+      "mode": 33206,
+      "sha": "cdf6e78e5c97cc920afc4c5cf12d7c3ebaa11528"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_special.js",
+      "size": 1785,
+      "mode": 33206,
+      "sha": "eba49201e8c7b79615b16c3bc93c6347f083e101"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/jlm_stmary10.js",
+      "size": 51376,
+      "mode": 33206,
+      "sha": "50d1148c356f4238c57db8f2f6e0351cc347c22e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/fonts/maths/optional/jlm_dsrom10.js",
+      "size": 23187,
+      "mode": 33206,
+      "sha": "ab859af6bb5a5a3a7e40da03ba3346e3dd58b650"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/html/ggtcallback.html",
+      "size": 708,
+      "mode": 33206,
+      "sha": "21a2e9ace6f47d8900b95f774910b9e57778cbd2"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/html/windowslive.html",
+      "size": 160,
+      "mode": 33206,
+      "sha": "db5dcdc1f7ac9b1a1cd692badd9384f7c194c107"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/canvas-to-svg.umd.min.js",
+      "size": 18496,
+      "mode": 33206,
+      "sha": "2520bcc28eae2554a9579d40bf5b77ab23635b3a"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/canvas2pdf.js",
+      "size": 40449,
+      "mode": 33206,
+      "sha": "a1e6c739ea9ea4337a8ee35ca9eaa56a04fb2d87"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/canvas2pdf.min.js",
+      "size": 31953,
+      "mode": 33206,
+      "sha": "d54148d69619ccf04f97c105a28d8fe1449c3368"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/gifshot.min.js",
+      "size": 26319,
+      "mode": 33206,
+      "sha": "646058b946d8e5256c146a417f64c3f2cdf5bcff"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_af.js",
+      "size": 177726,
+      "mode": 33206,
+      "sha": "4a02a621582afe8476b45cf060a33d01642dd12c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_am.js",
+      "size": 241819,
+      "mode": 33206,
+      "sha": "5d6ca927c07268ef489c0b00d578e49a54c7a7b2"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar-MA.js",
+      "size": 447039,
+      "mode": 33206,
+      "sha": "a1cd5f2eed3f4716b5ef9a6d25ed410a501ad3f5"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar-SY.js",
+      "size": 444937,
+      "mode": 33206,
+      "sha": "dc46fd79924fe163c171a3be69af59a23d5f218d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar-TN.js",
+      "size": 441823,
+      "mode": 33206,
+      "sha": "3b16518716c2cb2264ad07b9fcbdab6a6baa149a"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ar.js",
+      "size": 444925,
+      "mode": 33206,
+      "sha": "c2e8426e81d2a6f65846781f66959fe3043b2243"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_az.js",
+      "size": 238658,
+      "mode": 33206,
+      "sha": "370d909b47e8bc2599d30f7c6fb21d2f84453100"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_bg.js",
+      "size": 578395,
+      "mode": 33206,
+      "sha": "78439edac223e4d4fe546db8ee3f9561af4c6565"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_bn.js",
+      "size": 180506,
+      "mode": 33206,
+      "sha": "386f5a7c770ed8cbbfe21834bc5f8ac22967eae7"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_br.js",
+      "size": 186079,
+      "mode": 33206,
+      "sha": "1bd5c137ade2501cc1a516d45a9adc7eb5350575"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_bs.js",
+      "size": 201304,
+      "mode": 33206,
+      "sha": "d3b9d6974f6f7ce9f4a4a4a85bbf0d0cb4706088"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ca-XV.js",
+      "size": 206659,
+      "mode": 33206,
+      "sha": "46afa01a540d18c45986b653f58064d4b3b160e0"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ca.js",
+      "size": 204365,
+      "mode": 33206,
+      "sha": "9511f2ea55db4ddd9131e0054e11bda579367fed"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_cs.js",
+      "size": 228071,
+      "mode": 33206,
+      "sha": "0c225542b539ffd50bc5bd791f879851dd59166b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_cy.js",
+      "size": 181648,
+      "mode": 33206,
+      "sha": "dbf574de72840e680f169c70aa8acc462c4b1f36"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_da.js",
+      "size": 189202,
+      "mode": 33206,
+      "sha": "1864fee60b264c51c534e7fdcc83d77f0239f9e7"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_de-AT.js",
+      "size": 197310,
+      "mode": 33206,
+      "sha": "da379cb81e6fba40cf540049a94bce4166826ee3"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_de.js",
+      "size": 197295,
+      "mode": 33206,
+      "sha": "09e52502f02ddfcb53e6419187d09dcc1362104d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_el.js",
+      "size": 614552,
+      "mode": 33206,
+      "sha": "eb9e83501d114d1d38c755c2279963478f696dc0"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_en-AU.js",
+      "size": 177627,
+      "mode": 33206,
+      "sha": "8b60136ed62def2fa4cbce0943c61f193eec637f"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_en-GB.js",
+      "size": 177766,
+      "mode": 33206,
+      "sha": "2c8396cc7c1127e9894888676803fbd24c59a657"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_en.js",
+      "size": 177519,
+      "mode": 33206,
+      "sha": "10da2af9540181ce97881be5dfce3110711e48c1"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_eo.js",
+      "size": 180859,
+      "mode": 33206,
+      "sha": "443afba9ce6aba43065217995903ad598d2acb3b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_es-ES.js",
+      "size": 206480,
+      "mode": 33206,
+      "sha": "6caf25086b42b43b710b5aa8757658521e14cc37"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_es-UY.js",
+      "size": 202686,
+      "mode": 33206,
+      "sha": "3d72fff2179026a886d23fd8723c214ed60c63d7"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_es.js",
+      "size": 202695,
+      "mode": 33206,
+      "sha": "e7c35df8114bfef77f7a8191310e87c18b737f5d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_et.js",
+      "size": 197593,
+      "mode": 33206,
+      "sha": "c44747a7274b8a5c795a6649d642a4b067f02d94"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_eu.js",
+      "size": 194738,
+      "mode": 33206,
+      "sha": "6d64ffeea7ff9419f59b821a3aa49c0a8997efdb"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fa.js",
+      "size": 373384,
+      "mode": 33206,
+      "sha": "3a5ba85a224a100d49dcdb96b6f8da75ca3b47d1"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fi.js",
+      "size": 199498,
+      "mode": 33206,
+      "sha": "2e752569ce02405957d1b9fe3641f6fe78a260b3"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fil.js",
+      "size": 181227,
+      "mode": 33206,
+      "sha": "81ac7b822694ff2162a1e80196a918dbf11f2b91"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_fr.js",
+      "size": 200871,
+      "mode": 33206,
+      "sha": "111f1e242bc3ea1e2f2b1cc468a8a420ff542777"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_gl.js",
+      "size": 209620,
+      "mode": 33206,
+      "sha": "1563cfabc0ad68010534a992c5555982e7bd6c19"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_he.js",
+      "size": 360158,
+      "mode": 33206,
+      "sha": "bbdb1209ab649ff38404e4387a98506605c403b8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hi.js",
+      "size": 455822,
+      "mode": 33206,
+      "sha": "b35e7d41dbad51649c31cfcfa07672901b77245a"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hr.js",
+      "size": 201200,
+      "mode": 33206,
+      "sha": "e113d1c7d84ebc8762c64a33caebdc9c20b75bc5"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hu.js",
+      "size": 232122,
+      "mode": 33206,
+      "sha": "201d5dd0a8941200fb678d386c4d5827c2dfcd03"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_hy.js",
+      "size": 505787,
+      "mode": 33206,
+      "sha": "e0fc5b3e2a3bfedecb21f17ef5662b87eafe95a2"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_id.js",
+      "size": 181902,
+      "mode": 33206,
+      "sha": "448a7cc8d559f371745b3b432305b2cd87abe419"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_is.js",
+      "size": 212443,
+      "mode": 33206,
+      "sha": "dbf8de0d52e7ee06139b4fdc344dd4887771f5f4"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_it.js",
+      "size": 191228,
+      "mode": 33206,
+      "sha": "b38611e9c604f9a8922319ee620ed9393f627183"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ja.js",
+      "size": 306595,
+      "mode": 33206,
+      "sha": "d785260c14448aff9a36327b81695cebbde11bf8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ka.js",
+      "size": 545794,
+      "mode": 33206,
+      "sha": "cb310b5e91200332ed92aadd316f5229bd3202a7"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_kk.js",
+      "size": 486062,
+      "mode": 33206,
+      "sha": "bb9e870841e2f9d71349e15b377a0a56bb6a81e3"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_km.js",
+      "size": 187722,
+      "mode": 33206,
+      "sha": "cd9210b6036f9e48d743f470078f24b7ebb6b6a4"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_kn.js",
+      "size": 452618,
+      "mode": 33206,
+      "sha": "2662c2b6dd5f3925b3a8c420b4d53bdaf8cd0e17"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ko.js",
+      "size": 299191,
+      "mode": 33206,
+      "sha": "ee701317c9fb7ae041f3952a89bba0911841c77b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_lt.js",
+      "size": 217381,
+      "mode": 33206,
+      "sha": "de202305e996cccd03cfd4e0d4acfc9e45df27b8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_lv.js",
+      "size": 208889,
+      "mode": 33206,
+      "sha": "acb732e1038e5c2a39db4839e4f5fc58bc348d79"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mk.js",
+      "size": 507335,
+      "mode": 33206,
+      "sha": "71be4f4d1d1583d0ff83c59584033a6182c45b32"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ml.js",
+      "size": 199267,
+      "mode": 33206,
+      "sha": "17823fd481bc0146e3c13f1b50f60743325f0270"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mn-Mong.js",
+      "size": 586120,
+      "mode": 33206,
+      "sha": "b167c56437d9763f27926750effd5b3f37558afd"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mn.js",
+      "size": 586100,
+      "mode": 33206,
+      "sha": "37e1cf806e1ecbe2cf4991ec7f3945ac35f04f6b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_mr.js",
+      "size": 317565,
+      "mode": 33206,
+      "sha": "5178c710c62d370f53a24776e5eecd7bf45d00b5"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ms.js",
+      "size": 182385,
+      "mode": 33206,
+      "sha": "1f68ccf2f68ad9ea6b8b2efd6282e0b07ce8cdbc"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nb.js",
+      "size": 187100,
+      "mode": 33206,
+      "sha": "03bce0311dacfc7d45f0d6771ae08108a4fb2b51"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ne.js",
+      "size": 429723,
+      "mode": 33206,
+      "sha": "9c115999c8e9c5ed2aa41661c93f78f7138f22aa"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nl-NL.js",
+      "size": 186637,
+      "mode": 33206,
+      "sha": "ed52b31452f8f18d71a0da2d7b4b9fb37bc84515"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nl.js",
+      "size": 187787,
+      "mode": 33206,
+      "sha": "b49553b7a98581f7d3bbac62b738d3b1e2571a0b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_nn.js",
+      "size": 186417,
+      "mode": 33206,
+      "sha": "497abcf2be4403a5f895af9e0bda8de40ce966b9"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_pl.js",
+      "size": 215877,
+      "mode": 33206,
+      "sha": "c972303fef546f6a19e327d8272132d2d9daf099"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_pt-PT.js",
+      "size": 209737,
+      "mode": 33206,
+      "sha": "1a4084b2635fcfa5239abdf0d9a996ca1ceb974d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_pt.js",
+      "size": 210716,
+      "mode": 33206,
+      "sha": "b55255ec2483ae4fa6a162b990cc886c2f48ee72"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ro.js",
+      "size": 212100,
+      "mode": 33206,
+      "sha": "67a1091cc248a4a773b9cd206d0ac9688c89bd1f"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ru.js",
+      "size": 506749,
+      "mode": 33206,
+      "sha": "cc13bd56331e0a100bc3b92f109a5dc71b9315ec"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_si.js",
+      "size": 391300,
+      "mode": 33206,
+      "sha": "92fb11972f22dde3693251111f81e35bbcb0b9fa"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sk.js",
+      "size": 214524,
+      "mode": 33206,
+      "sha": "4714b8b312731fcae926b29f328f409e5c65889e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sl.js",
+      "size": 197213,
+      "mode": 33206,
+      "sha": "49595c267422964656cba58068258bc17b8cbc70"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sq.js",
+      "size": 184213,
+      "mode": 33206,
+      "sha": "9fcf81f03ab2d2bc7e7848c8a813cf87029a4feb"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sr.js",
+      "size": 194322,
+      "mode": 33206,
+      "sha": "d89b6b5e797df95c6260a099beba91ba393ff06c"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_sv.js",
+      "size": 201252,
+      "mode": 33206,
+      "sha": "946edb4a0d0d0c1818cb2b3d8b5c428918b57993"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ta.js",
+      "size": 359151,
+      "mode": 33206,
+      "sha": "ff918e431ec40566bf5ad3c25c082d83168cfb9d"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_tg.js",
+      "size": 324878,
+      "mode": 33206,
+      "sha": "d06616d58cddf2ff9ecaf421acfac3981dec0837"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_th.js",
+      "size": 499238,
+      "mode": 33206,
+      "sha": "7673e6aadc0464aecdd0d24dd46e7c82fad2ba85"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_tr.js",
+      "size": 231504,
+      "mode": 33206,
+      "sha": "3bb21473d90ecb6c792513c75b7306ea1da8bb7e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_ug.js",
+      "size": 553117,
+      "mode": 33206,
+      "sha": "502a19bb0a3237fccf9d7d8fc29f9ff1dd27def8"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_uk.js",
+      "size": 566674,
+      "mode": 33206,
+      "sha": "9beff7cd5d0258948bb46d455a8335bc68831984"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_uz.js",
+      "size": 196131,
+      "mode": 33206,
+      "sha": "6b06a00b9f3f2dd25244a0815d6a166858b5280b"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_vi.js",
+      "size": 267458,
+      "mode": 33206,
+      "sha": "15f1bb1a759095fe77b82d0d7e3317cfd607c1ed"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_xh.js",
+      "size": 189837,
+      "mode": 33206,
+      "sha": "bd1babe9a9d6f874c76082399d38cdbf81fe2681"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_yi.js",
+      "size": 373304,
+      "mode": 33206,
+      "sha": "07b0a70532ff48f98773073fe282ce9596aadd53"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_zh-CN.js",
+      "size": 261871,
+      "mode": 33206,
+      "sha": "876ebcbf64da7b570c9bcc1a4200a52e6ab83d91"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/properties_keys_zh-TW.js",
+      "size": 236531,
+      "mode": 33206,
+      "sha": "b5df4ee9bde26dc8b255ae62f8f7876654940c08"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/Roboto.js",
+      "size": 203810,
+      "mode": 33206,
+      "sha": "dddce44dce015b1f0a69854c5800ecec5928baf6"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/RobotoSerif.js",
+      "size": 153011,
+      "mode": 33206,
+      "sha": "1cda42e00e7159c068e6bfba393a3e2c0d052189"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/whammy.js",
+      "size": 5199,
+      "mode": 33206,
+      "sha": "5014bbe8edaf508e3f62f3bf4e7db0d9bea12474"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/js/whammy.min.js",
+      "size": 3836,
+      "mode": 33206,
+      "sha": "636be8cf83372d5b07ea636660941da2a4add05a"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/sworker-locked.js",
+      "size": 13611,
+      "mode": 33206,
+      "sha": "d2044f6cec26f22cf1efae9e3cebcdce46a0856e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/web3d.nocache.js",
+      "size": 5455,
+      "mode": 33206,
+      "sha": "4488fb9ec05a75d08530a83c2d88c2a0dfd6f05e"
+    },
+    {
+      "path": "public/vendor/geogebra/HTML5/5.0/web3d/web3d.nocache.mjs",
+      "size": 29416,
+      "mode": 33206,
+      "sha": "14f37900e07ddb14c01f020146092852b92d6c9c"
+    },
+    {
+      "path": "public/vendor/geogebra/README.txt",
+      "size": 1024,
+      "mode": 33206,
+      "sha": "fb6a46bc631ed6a5989f71be7f95e228e5837e62"
+    },
+    {
+      "path": "src/components/AddPanelMenu.tsx",
+      "size": 2414,
+      "mode": 33206,
+      "sha": "49930117481bcd79aacd76e8f5bab56e2eff34a2"
+    },
+    {
+      "path": "src/components/App.tsx",
+      "size": 56668,
+      "mode": 33206,
+      "sha": "3d71c5872a7f3e9c40f8f28e0342986aff831247"
+    },
+    {
+      "path": "src/components/AssessmentDraft.tsx",
+      "size": 1615,
+      "mode": 33206,
+      "sha": "6b7db485c44d6e1964c2e4bfbb8d03bfe2496f40"
+    },
+    {
+      "path": "src/components/AssessmentWindows.tsx",
+      "size": 18264,
+      "mode": 33206,
+      "sha": "198b7e7fb2ac8231e887b9d90d9412f27c232224"
+    },
+    {
+      "path": "src/components/BananaCable.tsx",
+      "size": 5218,
+      "mode": 33206,
+      "sha": "49b2546ba9f2e488760b73752b047e2b897ea7b7"
+    },
+    {
+      "path": "src/components/Board.tsx",
+      "size": 42096,
+      "mode": 33206,
+      "sha": "5950a46de7ba785d650a1b4f6b564836279b8e92"
+    },
+    {
+      "path": "src/components/CableColorPicker.tsx",
+      "size": 1486,
+      "mode": 33206,
+      "sha": "309f1dd45cb5cb2a5d03739fcb7e9f0c9a13a5c0"
+    },
+    {
+      "path": "src/components/CablesMenu.tsx",
+      "size": 769,
+      "mode": 33206,
+      "sha": "fbbc71f1dd3f6a529b2d3f5d549e1cd6b3f25c10"
+    },
+    {
+      "path": "src/components/CadeDiagram.tsx",
+      "size": 27927,
+      "mode": 33206,
+      "sha": "bef73110a7bebd761f4c17da7acd0689b91fdf8a"
+    },
+    {
+      "path": "src/components/CadeHelp.tsx",
+      "size": 4993,
+      "mode": 33206,
+      "sha": "843efc9916696e45370d001207bc487031e3e422"
+    },
+    {
+      "path": "src/components/CadeNames.tsx",
+      "size": 3378,
+      "mode": 33206,
+      "sha": "dcac5335e3ab87e906e9da0a1c20bd11ee25d545"
+    },
+    {
+      "path": "src/components/CadeRoute.tsx",
+      "size": 3840,
+      "mode": 33206,
+      "sha": "f601af638334d40b936498d479df129b6e134c91"
+    },
+    {
+      "path": "src/components/CadeSheet.tsx",
+      "size": 10599,
+      "mode": 33206,
+      "sha": "21c6365f854068fa0c12732d057d23fb20ca3f3a"
+    },
+    {
+      "path": "src/components/CommunityCard.tsx",
+      "size": 727,
+      "mode": 33206,
+      "sha": "432d177ab032f39ec2c3b751850fef872f1201bb"
+    },
+    {
+      "path": "src/components/CompactBar.tsx",
+      "size": 1014,
+      "mode": 33206,
+      "sha": "2235c1507c4229b54165929b0e74a6cc5a69a2c6"
+    },
+    {
+      "path": "src/components/Compat.astro",
+      "size": 6141,
+      "mode": 33206,
+      "sha": "24aba4b3e2ab1d0b5c188f97476a9c5144a5593e"
+    },
+    {
+      "path": "src/components/ConnectionLesson.tsx",
+      "size": 6873,
+      "mode": 33206,
+      "sha": "0992d73a2f41eb5ee36f6f14daf678191fc05a00"
+    },
+    {
+      "path": "src/components/ContextHint.tsx",
+      "size": 663,
+      "mode": 33206,
+      "sha": "91acbad90058f6eca3221c36971721faa5e4a7ec"
+    },
+    {
+      "path": "src/components/DevCacheReset.astro",
+      "size": 1153,
+      "mode": 33206,
+      "sha": "285c32f4b2f261e8860699686d27467a1446c6f2"
+    },
+    {
+      "path": "src/components/DiagramPane.tsx",
+      "size": 20082,
+      "mode": 33206,
+      "sha": "73e7e030378c70f9ca275eb3c97b35b4b74c00a3"
+    },
+    {
+      "path": "src/components/DiagramReader.tsx",
+      "size": 9387,
+      "mode": 33206,
+      "sha": "ce218cfa3ce7bcba89a27e9edcb69564bddc1f61"
+    },
+    {
+      "path": "src/components/DiagramWindow.tsx",
+      "size": 6111,
+      "mode": 33206,
+      "sha": "6c19e63d8858658302d589d9609582c107b97335"
+    },
+    {
+      "path": "src/components/ExamReference.tsx",
+      "size": 2497,
+      "mode": 33206,
+      "sha": "b02e892188b3c2ee88f17d459c916e1ed4359a28"
+    },
+    {
+      "path": "src/components/FloatingDisclosure.tsx",
+      "size": 1112,
+      "mode": 33206,
+      "sha": "dc6a07888860e3ed13e70b3ee862aabb6fd64f21"
+    },
+    {
+      "path": "src/components/FloatingWindow.tsx",
+      "size": 17797,
+      "mode": 33206,
+      "sha": "27b099e069b66213d1fbcac51bb791d395958413"
+    },
+    {
+      "path": "src/components/Home.tsx",
+      "size": 12290,
+      "mode": 33206,
+      "sha": "499f514aee8de2cd32c2d3448e32473c3fad0040"
+    },
+    {
+      "path": "src/components/HumanoLabBand.tsx",
+      "size": 4039,
+      "mode": 33206,
+      "sha": "086871c910f81f74af25c5edf6a5846b2ff5de04"
+    },
+    {
+      "path": "src/components/InstallApp.tsx",
+      "size": 8470,
+      "mode": 33206,
+      "sha": "cfa06adc35339c917b4de0333308d66023e21433"
+    },
+    {
+      "path": "src/components/LegalLink.tsx",
+      "size": 416,
+      "mode": 33206,
+      "sha": "e6ed37494e50d03a442a6125e50eac52988bc551"
+    },
+    {
+      "path": "src/components/LessonAssessment.tsx",
+      "size": 76,
+      "mode": 33206,
+      "sha": "4fefb094514831848de8272d7700db5d8a75f643"
+    },
+    {
+      "path": "src/components/LessonConnectionCard.tsx",
+      "size": 577,
+      "mode": 33206,
+      "sha": "d8c6b8f5557300b1f21c0aba6f6d05ab859f35da"
+    },
+    {
+      "path": "src/components/LessonReference.tsx",
+      "size": 2093,
+      "mode": 33206,
+      "sha": "6321162703df63b4f354fb10a6e9e52574c544ff"
+    },
+    {
+      "path": "src/components/LessonSchematic.tsx",
+      "size": 4428,
+      "mode": 33206,
+      "sha": "7da19c7cd1d6329b1159b9628dfd4acacadaebd5"
+    },
+    {
+      "path": "src/components/LessonUnderstanding.tsx",
+      "size": 3416,
+      "mode": 33206,
+      "sha": "2686950fe0496f7f45cf2dd94d458044ba50910d"
+    },
+    {
+      "path": "src/components/LogoModo.tsx",
+      "size": 318,
+      "mode": 33206,
+      "sha": "f6bad447f0c11f62042d6880015e88f076307c68"
+    },
+    {
+      "path": "src/components/LotoBox.tsx",
+      "size": 6467,
+      "mode": 33206,
+      "sha": "8b2de8fcb653e8ac88d8cbf99ebde25f729f402e"
+    },
+    {
+      "path": "src/components/motion/ModoSplash.astro",
+      "size": 4558,
+      "mode": 33206,
+      "sha": "53635c03518026b79b18168c19822b9dade6b522"
+    },
+    {
+      "path": "src/components/motion/MotionHead.astro",
+      "size": 3332,
+      "mode": 33206,
+      "sha": "5d799983cd7a2be35f428cf5e034cc9f7f8a7f4d"
+    },
+    {
+      "path": "src/components/OfflineRegistration.astro",
+      "size": 415,
+      "mode": 33206,
+      "sha": "bd535d30936420dd71799c3b85076a54d9b2b433"
+    },
+    {
+      "path": "src/components/PanelMeterLesson.tsx",
+      "size": 21394,
+      "mode": 33206,
+      "sha": "f2818a852674c6f9131af78c4158c3fa59575886"
+    },
+    {
+      "path": "src/components/PanelMultimeter.tsx",
+      "size": 11924,
+      "mode": 33206,
+      "sha": "35cca3d9359db43560cc0dd7cc2540adc26bcd54"
+    },
+    {
+      "path": "src/components/PowerStatus.tsx",
+      "size": 2410,
+      "mode": 33206,
+      "sha": "fcb937a5de8f6ae8e363a9371f026052b87c2ccd"
+    },
+    {
+      "path": "src/components/ProcedureTools.tsx",
+      "size": 14473,
+      "mode": 33206,
+      "sha": "410fe42a67d49749374946fb026937ea9c8e6cac"
+    },
+    {
+      "path": "src/components/SearchBox.tsx",
+      "size": 1091,
+      "mode": 33206,
+      "sha": "15703448840cde7273be3815fcda6e0f4581abf8"
+    },
+    {
+      "path": "src/components/SimulationControls.tsx",
+      "size": 7444,
+      "mode": 33206,
+      "sha": "6c5a887525d62b3a3f9002d1769046bcc169fe02"
+    },
+    {
+      "path": "src/components/SimulatorInspector.tsx",
+      "size": 4903,
+      "mode": 33206,
+      "sha": "9eebca221e21498c48fb7ac63ca5e72b9c669a1c"
+    },
+    {
+      "path": "src/components/StudyGuide.tsx",
+      "size": 7847,
+      "mode": 33206,
+      "sha": "1f2cfe7eb23cc35ed665b0eea1590292cdad8603"
+    },
+    {
+      "path": "src/components/TeacherMaterial.tsx",
+      "size": 3166,
+      "mode": 33206,
+      "sha": "a6fefb7beef2347bd6283bc0fadecbc3a1c2d7ca"
+    },
+    {
+      "path": "src/components/ToolDock.tsx",
+      "size": 6316,
+      "mode": 33206,
+      "sha": "6bf52ad3060d81e843ffa8766cb70b8f3f96613c"
+    },
+    {
+      "path": "src/components/TutorialHelp.tsx",
+      "size": 5956,
+      "mode": 33206,
+      "sha": "14b25b610644b5cec6ea02d4d2e6203c9802a0b8"
+    },
+    {
+      "path": "src/components/WireInspector.tsx",
+      "size": 1953,
+      "mode": 33206,
+      "sha": "bdabde3fc3178cc3213ca99f35289f048f4d33d1"
+    },
+    {
+      "path": "src/components/WireLayer.tsx",
+      "size": 7914,
+      "mode": 33206,
+      "sha": "eec02f9efeafb137386f7baa52b363174f6db8b6"
+    },
+    {
+      "path": "src/data/activity2Matias.json",
+      "size": 13539,
+      "mode": 33206,
+      "sha": "84b9379c2d0ab694ea4c08090ca66a7cc40a94e6"
+    },
+    {
+      "path": "src/data/assessmentState.ts",
+      "size": 1518,
+      "mode": 33206,
+      "sha": "477c11765394ddf73c56644eae8fcdb8b95c7ad3"
+    },
+    {
+      "path": "src/data/cade.ts",
+      "size": 8726,
+      "mode": 33206,
+      "sha": "c29a08fb2f6094abf07f375206a46ec2ef3fb6ee"
+    },
+    {
+      "path": "src/data/cadeComponents.ts",
+      "size": 15371,
+      "mode": 33206,
+      "sha": "2c2f482a94a0e71f3a1755ffb4c37eb603db0985"
+    },
+    {
+      "path": "src/data/cadeEstrellaTemporizador.json",
+      "size": 17368,
+      "mode": 33206,
+      "sha": "e9b3a73274e6728fd8b6a43b5e58d22543cca039"
+    },
+    {
+      "path": "src/data/cadeEstrellaTriangulo.json",
+      "size": 27359,
+      "mode": 33206,
+      "sha": "f6330465af3214c9be6273a345e525a4170be969"
+    },
+    {
+      "path": "src/data/cadeLearn.ts",
+      "size": 9775,
+      "mode": 33206,
+      "sha": "32939a71d35a52df5e424063b0c76270e7dc48a5"
+    },
+    {
+      "path": "src/data/cadeLecciones.json",
+      "size": 56828,
+      "mode": 33206,
+      "sha": "54c7ca9bc7c622110cc2f06f022c0fd1b5746829"
+    },
+    {
+      "path": "src/data/cadePerfecto.json",
+      "size": 57990,
+      "mode": 33206,
+      "sha": "1a5888df6967836bf70048c4a0ecc6fcca6035f1"
+    },
+    {
+      "path": "src/data/changes.ts",
+      "size": 2408,
+      "mode": 33206,
+      "sha": "78d9d7a4d6c519eeda407d6e0a0c3284018c6327"
+    },
+    {
+      "path": "src/data/community.ts",
+      "size": 675,
+      "mode": 33206,
+      "sha": "96f2d044438eb5577ad029c9ad56f526542e7253"
+    },
+    {
+      "path": "src/data/diagramReading.ts",
+      "size": 5466,
+      "mode": 33206,
+      "sha": "5a226658872e6615420fc547a29846d1d6b72039"
+    },
+    {
+      "path": "src/data/examReference.ts",
+      "size": 4228,
+      "mode": 33206,
+      "sha": "2d4d47dd5536e3b30fdb0052f5c0e8d8d818bae4"
+    },
+    {
+      "path": "src/data/layout.ts",
+      "size": 13588,
+      "mode": 33206,
+      "sha": "954e622c8918ab6ad5a1a1fb766821e0a9e10067"
+    },
+    {
+      "path": "src/data/learning.ts",
+      "size": 11912,
+      "mode": 33206,
+      "sha": "a837244d48c6703f6c8ac9017547b3d53b18e0bc"
+    },
+    {
+      "path": "src/data/leccionInversion.layout.json",
+      "size": 4292,
+      "mode": 33206,
+      "sha": "d5ed808c0453231e066a58c254b1c18edaf79eb7"
+    },
+    {
+      "path": "src/data/lessonAssessment.ts",
+      "size": 2237,
+      "mode": 33206,
+      "sha": "426b076e9557347eb8aa10153b00ea5fb1191c00"
+    },
+    {
+      "path": "src/data/lessonIds.ts",
+      "size": 138,
+      "mode": 33206,
+      "sha": "6278e6104127470ef49ca65e996fba4b4f11e02a"
+    },
+    {
+      "path": "src/data/lessons.ts",
+      "size": 15101,
+      "mode": 33206,
+      "sha": "0946d1770c329a0b05dc126a52116ec934253dcc"
+    },
+    {
+      "path": "src/data/lessonSchematics.ts",
+      "size": 5293,
+      "mode": 33206,
+      "sha": "e6d0cf3fdafd0300c683e3f43e58183b0e63537f"
+    },
+    {
+      "path": "src/data/lessonTeaching.ts",
+      "size": 15385,
+      "mode": 33206,
+      "sha": "a20ede75f76a57614dd2f226de69af72af334557"
+    },
+    {
+      "path": "src/data/meterActivity.ts",
+      "size": 18511,
+      "mode": 33206,
+      "sha": "54d6d518e8770666062107407425da44aec7ba90"
+    },
+    {
+      "path": "src/data/panel.ts",
+      "size": 15755,
+      "mode": 33206,
+      "sha": "a26b3b020e5d95126ec6a262000e6df2d904cd2c"
+    },
+    {
+      "path": "src/data/panelCorrespondence.ts",
+      "size": 3017,
+      "mode": 33206,
+      "sha": "e49737235c10fbff526c1c96d0c7f10198c6d823"
+    },
+    {
+      "path": "src/data/panelElectrical.ts",
+      "size": 4975,
+      "mode": 33206,
+      "sha": "e7d9c4799e24a7dea92fd4ca31de3594eede3300"
+    },
+    {
+      "path": "src/data/panelHistory.ts",
+      "size": 3366,
+      "mode": 33206,
+      "sha": "6bf75fb0f5325e62f04bfe5533c8846d8a0339a6"
+    },
+    {
+      "path": "src/data/panelMeter.ts",
+      "size": 7439,
+      "mode": 33206,
+      "sha": "17eb81d04e9ff35161f3a13358cd9cdca09c877f"
+    },
+    {
+      "path": "src/data/practice.ts",
+      "size": 4203,
+      "mode": 33206,
+      "sha": "95a977c9f8e0660dce2310e31fa79cdf5fb06549"
+    },
+    {
+      "path": "src/data/releases.ts",
+      "size": 27204,
+      "mode": 33206,
+      "sha": "af6cc3c8d1d6b8613f96a9e564ad19e9ac936403"
+    },
+    {
+      "path": "src/data/ropes.ts",
+      "size": 4322,
+      "mode": 33206,
+      "sha": "70ab29019d5647076be89c061ee8dbb63412ffa3"
+    },
+    {
+      "path": "src/data/session.ts",
+      "size": 7091,
+      "mode": 33206,
+      "sha": "a5cc00ad4a4788f90d7c160eac82082258309495"
+    },
+    {
+      "path": "src/data/simulation.ts",
+      "size": 16335,
+      "mode": 33206,
+      "sha": "ddffe51974e6125ff74f3f1d681c858def6ce7ce"
+    },
+    {
+      "path": "src/data/starDeltaSources.json",
+      "size": 6577,
+      "mode": 33206,
+      "sha": "cbb9b99d7ca4833e5c62e3608a58421f9a4d9ea4"
+    },
+    {
+      "path": "src/data/starDeltaTeaching.ts",
+      "size": 12925,
+      "mode": 33206,
+      "sha": "46b368b7c75f98896bec6f4775cd9392d09dc8c8"
+    },
+    {
+      "path": "src/data/starPanelMap.ts",
+      "size": 3073,
+      "mode": 33206,
+      "sha": "b1912e70233103fe16267607f8965d593242ef41"
+    },
+    {
+      "path": "src/data/tutorials.ts",
+      "size": 1051,
+      "mode": 33206,
+      "sha": "9ac336eb08ef6c9871d275524a15965d3ca26b41"
+    },
+    {
+      "path": "src/data/wireColors.ts",
+      "size": 921,
+      "mode": 33206,
+      "sha": "d5f33be14dc5cc7fe16d442902f5b66ca95c409c"
+    },
+    {
+      "path": "src/data/wiring.ts",
+      "size": 10056,
+      "mode": 33206,
+      "sha": "736c710a5008c5bfb0d157cb46ba3fbc1f351ff5"
+    },
+    {
+      "path": "src/hooks/useActionRecorder.ts",
+      "size": 4602,
+      "mode": 33206,
+      "sha": "0e7d7b959fe61647bec019daac662b5eeb2e1f26"
+    },
+    {
+      "path": "src/hooks/useCompactLayout.ts",
+      "size": 950,
+      "mode": 33206,
+      "sha": "c4616e77be3a94c4bb4a51e55df386706a634d7e"
+    },
+    {
+      "path": "src/hooks/usePractice.ts",
+      "size": 5658,
+      "mode": 33206,
+      "sha": "b25e75d3425ec58278f7b2ba7004edc6197c13f7"
+    },
+    {
+      "path": "src/hooks/useSimulation.ts",
+      "size": 6013,
+      "mode": 33206,
+      "sha": "34c3e4b7511eb5e899137babcba01705087f9f29"
+    },
+    {
+      "path": "src/hooks/useSvgNavigation.ts",
+      "size": 7872,
+      "mode": 33206,
+      "sha": "1b0b530f6b0e184d06542e5385115a4c2a4b16cc"
+    },
+    {
+      "path": "src/lab/BreadboardDiagnostics.tsx",
+      "size": 3334,
+      "mode": 33206,
+      "sha": "65a12c1b75601256545d6dc23e817d489173c7fc"
+    },
+    {
+      "path": "src/lab/BreadboardParts.tsx",
+      "size": 20115,
+      "mode": 33206,
+      "sha": "af6a6d27b6c6f6e9b01f4caf9cfbb472c782355c"
+    },
+    {
+      "path": "src/lab/BreadboardPractice.tsx",
+      "size": 13008,
+      "mode": 33206,
+      "sha": "875c847aae92f4e8370a4ef2d722c431808ca7d5"
+    },
+    {
+      "path": "src/lab/BreadboardSupply.tsx",
+      "size": 11565,
+      "mode": 33206,
+      "sha": "077508f90538e03d0a06988eec227a3dca9b0b8d"
+    },
+    {
+      "path": "src/lab/BreadboardView.tsx",
+      "size": 59433,
+      "mode": 33206,
+      "sha": "f9b5a5490b7a8124252ac5cf814c6ad54a7d745b"
+    },
+    {
+      "path": "src/lab/CableBench.tsx",
+      "size": 45546,
+      "mode": 33206,
+      "sha": "d0b670d5c28dadb93427d484ab40f242753ea74c"
+    },
+    {
+      "path": "src/lab/CanvasControls.tsx",
+      "size": 7736,
+      "mode": 33206,
+      "sha": "db73e1eb3a87e80147ebef17b8525b5020cf93a7"
+    },
+    {
+      "path": "src/lab/ClassCircuit.tsx",
+      "size": 7964,
+      "mode": 33206,
+      "sha": "05203cd510368373bcd97058992f45dc19e205d1"
+    },
+    {
+      "path": "src/lab/componentGeometry.ts",
+      "size": 1346,
+      "mode": 33206,
+      "sha": "668c33b62b469f6391a1ee3007d652e1997fd734"
+    },
+    {
+      "path": "src/lab/cords.ts",
+      "size": 3135,
+      "mode": 33206,
+      "sha": "1bb9b414d3b632adbbb485422b3d99372ee3f8a3"
+    },
+    {
+      "path": "src/lab/dc.ts",
+      "size": 23125,
+      "mode": 33206,
+      "sha": "1109637ddcef61f14c9a5e34c86b737f57adc1c7"
+    },
+    {
+      "path": "src/lab/detectors/BenchScene.tsx",
+      "size": 16547,
+      "mode": 33206,
+      "sha": "260561e2c9f3f1e4f949f48858960d1b92ab62a0"
+    },
+    {
+      "path": "src/lab/detectors/datasheets.ts",
+      "size": 17868,
+      "mode": 33206,
+      "sha": "736acce52583545a68f0dbd05662ffbd36c3d98b"
+    },
+    {
+      "path": "src/lab/detectors/DetectorChart.tsx",
+      "size": 1908,
+      "mode": 33206,
+      "sha": "708551570c2ff49751fe3158a4490637e117f3df"
+    },
+    {
+      "path": "src/lab/detectors/DetectorDatasheets.tsx",
+      "size": 1716,
+      "mode": 33206,
+      "sha": "40364adc181db26411cb4cc016be9a65e6c37943"
+    },
+    {
+      "path": "src/lab/detectors/DetectorEditor.tsx",
+      "size": 5500,
+      "mode": 33206,
+      "sha": "d279c5d1836e5bbd512d002288e5257d7bb0faf1"
+    },
+    {
+      "path": "src/lab/detectors/geometry.ts",
+      "size": 2018,
+      "mode": 33206,
+      "sha": "cf62ee32fb1fdf4f8d7a81faa53f31e47c32baf4"
+    },
+    {
+      "path": "src/lab/detectors/physics.ts",
+      "size": 11028,
+      "mode": 33206,
+      "sha": "0b6f3953676b7af47f8703d354b48b966fe37377"
+    },
+    {
+      "path": "src/lab/detectors/state.ts",
+      "size": 5224,
+      "mode": 33206,
+      "sha": "b72f1e2440b204c1fab656d478443758c94c13c8"
+    },
+    {
+      "path": "src/lab/DetectorsView.tsx",
+      "size": 27642,
+      "mode": 33206,
+      "sha": "4ff770ac48ce88c1f5ed546a42f994119bcf8090"
+    },
+    {
+      "path": "src/lab/DeviceIcons.tsx",
+      "size": 3036,
+      "mode": 33206,
+      "sha": "428b78eba5694ba539b77cb0b0020e474ae043b8"
+    },
+    {
+      "path": "src/lab/DiagramViewer.tsx",
+      "size": 4380,
+      "mode": 33206,
+      "sha": "9f00b3f08b3d83d12ae2a5fa450c109bef383ebd"
+    },
+    {
+      "path": "src/lab/engine.ts",
+      "size": 7518,
+      "mode": 33206,
+      "sha": "682ebef984ba6c686faed0dadbc7d8efdfd7293e"
+    },
+    {
+      "path": "src/lab/equipment/Art.tsx",
+      "size": 14296,
+      "mode": 33206,
+      "sha": "803ad8cdd229ca472ad76c9bb54ee9a75ded6a12"
+    },
+    {
+      "path": "src/lab/equipment/engine.ts",
+      "size": 17247,
+      "mode": 33206,
+      "sha": "cd5ef45b33929cfb0260d101cbe54a2ac07a76d7"
+    },
+    {
+      "path": "src/lab/equipment/model.ts",
+      "size": 16262,
+      "mode": 33206,
+      "sha": "8ebc410745c9b8eb7db3dd6eca1d47b3ba6ddec6"
+    },
+    {
+      "path": "src/lab/equipment/Thumbnail.tsx",
+      "size": 587,
+      "mode": 33206,
+      "sha": "76bfefdad026b4024c4768ce8b210a9fff864b4d"
+    },
+    {
+      "path": "src/lab/EquipmentView.tsx",
+      "size": 23034,
+      "mode": 33206,
+      "sha": "eff1a27a73c377cc404a75bdf056d08c7b02e199"
+    },
+    {
+      "path": "src/lab/GeoCommandKeyboard.tsx",
+      "size": 2394,
+      "mode": 33206,
+      "sha": "f2cba48efdc7993cb00aea8c90ce557f7d64d828"
+    },
+    {
+      "path": "src/lab/geogebra/api.ts",
+      "size": 3568,
+      "mode": 33206,
+      "sha": "aacfd4af7d9c65fc4cc41f7b56953943dbbde58e"
+    },
+    {
+      "path": "src/lab/GeoGebraView.tsx",
+      "size": 27798,
+      "mode": 33206,
+      "sha": "13639043afbf828c56d9806cd851114a23e7bd4f"
+    },
+    {
+      "path": "src/lab/HMIView.tsx",
+      "size": 8405,
+      "mode": 33206,
+      "sha": "85ea41c2c4137063513bed9d9e96ea1a749e4170"
+    },
+    {
+      "path": "src/lab/HomeTools.tsx",
+      "size": 1864,
+      "mode": 33206,
+      "sha": "8623f18e76617e32d68e9e9436f9b92503859b2b"
+    },
+    {
+      "path": "src/lab/InspectorSheet.tsx",
+      "size": 1758,
+      "mode": 33206,
+      "sha": "21b2aaf86f6e5883bd9e42dbc2a32d15f15d76f0"
+    },
+    {
+      "path": "src/lab/labels.ts",
+      "size": 3419,
+      "mode": 33206,
+      "sha": "80c98fcf743c584be5e7e7fb45be55e39e147bfa"
+    },
+    {
+      "path": "src/lab/LaboratoryApp.tsx",
+      "size": 11211,
+      "mode": 33206,
+      "sha": "919339fade2bb9dac0570b3f0de3392077eaa1a5"
+    },
+    {
+      "path": "src/lab/LaboratoryBar.tsx",
+      "size": 5224,
+      "mode": 33206,
+      "sha": "7b875eb72b5f9947077cfe637cafedf07f24027e"
+    },
+    {
+      "path": "src/lab/ManualBench.tsx",
+      "size": 6309,
+      "mode": 33206,
+      "sha": "2d67bdcdb83b0cd29f23b81a1bc66e1ebe5bc4db"
+    },
+    {
+      "path": "src/lab/MeterInstrument.tsx",
+      "size": 26707,
+      "mode": 33206,
+      "sha": "0666a9b42a772bcad6c25f44484bffb2c4332fb9"
+    },
+    {
+      "path": "src/lab/MeterPanel.tsx",
+      "size": 7278,
+      "mode": 33206,
+      "sha": "36bc4e0a7678e5a9f0b5ce6a2da0bb9d5b5eeb08"
+    },
+    {
+      "path": "src/lab/meterReadout.ts",
+      "size": 731,
+      "mode": 33206,
+      "sha": "bd80d06c8fb8d19d9a42c40a08d55a3ff38829f5"
+    },
+    {
+      "path": "src/lab/model.ts",
+      "size": 19826,
+      "mode": 33206,
+      "sha": "550760a809d5cbbca4e31041d136562041c530bf"
+    },
+    {
+      "path": "src/lab/PanStage.tsx",
+      "size": 10969,
+      "mode": 33206,
+      "sha": "a3ba10b7b2c2ab10cd99285090e647a4651db338"
+    },
+    {
+      "path": "src/lab/PLCView.tsx",
+      "size": 12005,
+      "mode": 33206,
+      "sha": "6a0da0d7b2dd02cc604f186d3cdbe02f551ec320"
+    },
+    {
+      "path": "src/lab/ProcessView.tsx",
+      "size": 7566,
+      "mode": 33206,
+      "sha": "5d0e39877fe2de14544454792c6e5bb68b4daefe"
+    },
+    {
+      "path": "src/lab/SchematicView.tsx",
+      "size": 18273,
+      "mode": 33206,
+      "sha": "cfc5de15958ad966ddf12ad1970f58d0dee6e63a"
+    },
+    {
+      "path": "src/lab/soldering/CommissionBench.tsx",
+      "size": 15911,
+      "mode": 33206,
+      "sha": "511db1e0a8b506bd785085b59d4825115045fba2"
+    },
+    {
+      "path": "src/lab/soldering/commissioning.ts",
+      "size": 10499,
+      "mode": 33206,
+      "sha": "c281c3f513ce5213b90514ce632a6e107c3bc2e1"
+    },
+    {
+      "path": "src/lab/soldering/DeltaHardware.tsx",
+      "size": 3986,
+      "mode": 33206,
+      "sha": "f65e9cb55eccc6856a6c34402343f26abdc5a8aa"
+    },
+    {
+      "path": "src/lab/soldering/DeltaProjectEditor.tsx",
+      "size": 10397,
+      "mode": 33206,
+      "sha": "a28f1c18f3567721471c7f6b20227052b9d19635"
+    },
+    {
+      "path": "src/lab/soldering/DeviceLever.tsx",
+      "size": 1001,
+      "mode": 33206,
+      "sha": "b732559c4fcd75a8d4532650e4b8800a20083128"
+    },
+    {
+      "path": "src/lab/soldering/LaptopDevice.tsx",
+      "size": 2446,
+      "mode": 33206,
+      "sha": "aa77569a8a7ceb63877d502af5fe4b803a0d473f"
+    },
+    {
+      "path": "src/lab/soldering/manual.ts",
+      "size": 635,
+      "mode": 33206,
+      "sha": "16f306072ccdb136f251e3d66c71195036d5f015"
+    },
+    {
+      "path": "src/lab/soldering/model.ts",
+      "size": 2995,
+      "mode": 33206,
+      "sha": "a9ea8d0eceb4674cbdb89ecb72f4cdaea72e3193"
+    },
+    {
+      "path": "src/lab/soldering/ProgrammingUsb.tsx",
+      "size": 4327,
+      "mode": 33206,
+      "sha": "a57397f00f4fcae724ecc31af88c132def08c5bd"
+    },
+    {
+      "path": "src/lab/soldering/TerminalWiring.tsx",
+      "size": 13074,
+      "mode": 33206,
+      "sha": "af6b1d849795d3bc705706e6f69f062e6c9e7cd4"
+    },
+    {
+      "path": "src/lab/soldering/Tools.tsx",
+      "size": 3728,
+      "mode": 33206,
+      "sha": "3858d77f2a8d61964969c44694c0fa2a6b8c426e"
+    },
+    {
+      "path": "src/lab/soldering/ToolShelf.tsx",
+      "size": 4413,
+      "mode": 33206,
+      "sha": "8e61c1031fdd941a7caf0223f68a1d71c5d9976e"
+    },
+    {
+      "path": "src/lab/soldering/workbench.ts",
+      "size": 4226,
+      "mode": 33206,
+      "sha": "e400a1a03966228df04038ec619f98422869c621"
+    },
+    {
+      "path": "src/lab/st.ts",
+      "size": 6445,
+      "mode": 33206,
+      "sha": "5496806c28cacf752acbefecfb4db0ad52c09a25"
+    },
+    {
+      "path": "src/lab/SurfaceDock.tsx",
+      "size": 689,
+      "mode": 33206,
+      "sha": "3668004e349488f78b77b580ab7e332cc31a9009"
+    },
+    {
+      "path": "src/lab/temperature/BenchScene.tsx",
+      "size": 15076,
+      "mode": 33206,
+      "sha": "1fdc412993986b8ab5e965356694ff5ddb7092a1"
+    },
+    {
+      "path": "src/lab/temperature/datasheets.ts",
+      "size": 9702,
+      "mode": 33206,
+      "sha": "b249ea46968b93ef9706e579da53a066162d43f1"
+    },
+    {
+      "path": "src/lab/temperature/geometry.ts",
+      "size": 2548,
+      "mode": 33206,
+      "sha": "81295c30b311ff1c97fd12a5cf787449b80780ce"
+    },
+    {
+      "path": "src/lab/temperature/instrument.ts",
+      "size": 1589,
+      "mode": 33206,
+      "sha": "d36ddd68922572088e94a27c19ad42e762c3cc1c"
+    },
+    {
+      "path": "src/lab/temperature/physics.ts",
+      "size": 9329,
+      "mode": 33206,
+      "sha": "687e10994a4d32888ec2143ab42610b68a8e2f91"
+    },
+    {
+      "path": "src/lab/temperature/state.ts",
+      "size": 6264,
+      "mode": 33206,
+      "sha": "284a7bcf74d46694a8d13bd23d503ae3df43bd21"
+    },
+    {
+      "path": "src/lab/temperature/TemperatureChart.tsx",
+      "size": 2085,
+      "mode": 33206,
+      "sha": "5fd23127590137fab381b7bad994b72fa7ba3186"
+    },
+    {
+      "path": "src/lab/temperature/TemperatureDatasheets.tsx",
+      "size": 1550,
+      "mode": 33206,
+      "sha": "24e2206fabb2772e705c5659b93a47cbf233a5ee"
+    },
+    {
+      "path": "src/lab/temperature/TemperatureEditor.tsx",
+      "size": 7426,
+      "mode": 33206,
+      "sha": "da7c49ad963f0b1977878e025d994b5a63ccb977"
+    },
+    {
+      "path": "src/lab/temperature/TemperatureNotebook.tsx",
+      "size": 4414,
+      "mode": 33206,
+      "sha": "c3b80445475d0290acb421bd897fbb7d20a3e268"
+    },
+    {
+      "path": "src/lab/TemperatureView.tsx",
+      "size": 23025,
+      "mode": 33206,
+      "sha": "c9a3d8e71fd2ba2679b95e7435a15f060885c5d4"
+    },
+    {
+      "path": "src/lab/TransistorPinout.tsx",
+      "size": 3320,
+      "mode": 33206,
+      "sha": "61a8d1035d80ff86d4e634ef7473c7cb2333cb95"
+    },
+    {
+      "path": "src/lab/units.ts",
+      "size": 8837,
+      "mode": 33206,
+      "sha": "60e8a9617d259b2c051b4eca13157c3fe83ea12c"
+    },
+    {
+      "path": "src/lab/useLaboratory.ts",
+      "size": 12490,
+      "mode": 33206,
+      "sha": "bde1aee3f9329c50d83b4e581fd4ed4594e86479"
+    },
+    {
+      "path": "src/lab/validation.ts",
+      "size": 10212,
+      "mode": 33206,
+      "sha": "115795c8858e3c19945ed5dded4c11f2433d1957"
+    },
+    {
+      "path": "src/lab/ValueEditor.tsx",
+      "size": 17953,
+      "mode": 33206,
+      "sha": "e16cc229a2b3840e55d2d6238b712da4210dace6"
+    },
+    {
+      "path": "src/lab/workspaceLayout.ts",
+      "size": 182,
+      "mode": 33206,
+      "sha": "14246eb8509ef923540b15b34983af7d8920a647"
+    },
+    {
+      "path": "src/layout/boardViewport.ts",
+      "size": 115,
+      "mode": 33206,
+      "sha": "33b094d3e03dd1c68141d48715f6e32d79ea4d05"
+    },
+    {
+      "path": "src/layout/floatRect.ts",
+      "size": 1403,
+      "mode": 33206,
+      "sha": "3a524f3a880348c41fcce4463acdd1d13c5fcef3"
+    },
+    {
+      "path": "src/layout/focusView.ts",
+      "size": 1710,
+      "mode": 33206,
+      "sha": "82092c3ab9b2fb81cb503acab2daf323238df85f"
+    },
+    {
+      "path": "src/layout/scaledWindow.ts",
+      "size": 538,
+      "mode": 33206,
+      "sha": "858a4548f7d0219d633f095a5f1b438a63ede9b5"
+    },
+    {
+      "path": "src/learning/breadboardLessons.ts",
+      "size": 20355,
+      "mode": 33206,
+      "sha": "b2a63b931a299e781cdb1d1795fe354ad05b8c43"
+    },
+    {
+      "path": "src/learning/detectorLessons.ts",
+      "size": 14722,
+      "mode": 33206,
+      "sha": "824984d51077d1bee91265014d6066fef3a2d7ba"
+    },
+    {
+      "path": "src/learning/functionProblems.ts",
+      "size": 19641,
+      "mode": 33206,
+      "sha": "25c4e3bcc7b0a6d61102abf19923d149bdebbde9"
+    },
+    {
+      "path": "src/learning/geogebraLessons.ts",
+      "size": 18930,
+      "mode": 33206,
+      "sha": "690555655856d7f4935877732ad38d6454058ab5"
+    },
+    {
+      "path": "src/learning/mathUnits.ts",
+      "size": 422,
+      "mode": 33206,
+      "sha": "f5dbc137ac140012a0b7105d85a33793f1c67346"
+    },
+    {
+      "path": "src/learning/temperatureLessons.ts",
+      "size": 12897,
+      "mode": 33206,
+      "sha": "8ac456944a9da2122c7223835b895ce18ec9e175"
+    },
+    {
+      "path": "src/learning/temperatureReview.ts",
+      "size": 15943,
+      "mode": 33206,
+      "sha": "be5c4399392b18611473dadcc76a4b692f838b2d"
+    },
+    {
+      "path": "src/learning/temperatureReviewStore.ts",
+      "size": 968,
+      "mode": 33206,
+      "sha": "1f32b93d2c74c9f459ebd7406a6bbb287ea69075"
+    },
+    {
+      "path": "src/motion/indicators.ts",
+      "size": 5310,
+      "mode": 33206,
+      "sha": "d756b78be819870884eaee9d26da384240e62292"
+    },
+    {
+      "path": "src/motion/opening.ts",
+      "size": 371,
+      "mode": 33206,
+      "sha": "8bf3eec72b6e14da7c52b2d4c9fda7e73e9d4129"
+    },
+    {
+      "path": "src/motion/surface.ts",
+      "size": 1408,
+      "mode": 33206,
+      "sha": "9839e2e106ab661beeb4b41b2392fdcca76019ba"
+    },
+    {
+      "path": "src/motion/transition.ts",
+      "size": 2322,
+      "mode": 33206,
+      "sha": "b4222d2e875f7bc5869d6aeb0149386b34f076b8"
+    },
+    {
+      "path": "src/offline/travel.ts",
+      "size": 5399,
+      "mode": 33206,
+      "sha": "de81430f40e92e44a7230385a34f4cef60e8e4f1"
+    },
+    {
+      "path": "src/pages/comunidad.astro",
+      "size": 4068,
+      "mode": 33206,
+      "sha": "388c64ac53d4a876f03b640a02426f09bf24d9a4"
+    },
+    {
+      "path": "src/pages/estudio.astro",
+      "size": 2018,
+      "mode": 33206,
+      "sha": "1288d8423c5203b1b01d6cd2ddab0f22c822c6bd"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "size": 3177,
+      "mode": 33206,
+      "sha": "b9fd6ac8d4cec6339d32e63eae00cf74095e8fb7"
+    },
+    {
+      "path": "src/pages/laboratorio.astro",
+      "size": 1823,
+      "mode": 33206,
+      "sha": "979dccd2dc81faa52d115fd4c9099708f1cb194b"
+    },
+    {
+      "path": "src/pages/legal.astro",
+      "size": 9990,
+      "mode": 33206,
+      "sha": "7eb0a6473cd68c7656e344168ea2737e4774b46b"
+    },
+    {
+      "path": "src/pages/sin-conexion.astro",
+      "size": 3300,
+      "mode": 33206,
+      "sha": "b3cb4e0fe05c647f65636f40a84fe22344cc4863"
+    },
+    {
+      "path": "src/pages/versiones.astro",
+      "size": 3189,
+      "mode": 33206,
+      "sha": "12c3f547adc7e71ccadb1bcb2598c3b3b6bd2afc"
+    },
+    {
+      "path": "src/pwa/install.ts",
+      "size": 2653,
+      "mode": 33206,
+      "sha": "5403debffda67f19a2888f1c1b669637b3b5479f"
+    },
+    {
+      "path": "src/study/AcademicBackup.tsx",
+      "size": 1573,
+      "mode": 33206,
+      "sha": "88af6048aaa330f80fefb417b82c955971be3775"
+    },
+    {
+      "path": "src/study/AcademicChallenge.tsx",
+      "size": 2118,
+      "mode": 33206,
+      "sha": "4deda732b4dc39ffe1bace254e2e69f52d2c3f3a"
+    },
+    {
+      "path": "src/study/academicChallenges.ts",
+      "size": 3115,
+      "mode": 33206,
+      "sha": "59898fcf66f971415f976eece6807096bddabd2f"
+    },
+    {
+      "path": "src/study/academicContent.ts",
+      "size": 45637,
+      "mode": 33206,
+      "sha": "c79fcbc4f840e034a40de59c2d9a5da5c4ca1580"
+    },
+    {
+      "path": "src/study/AcademicLessonView.tsx",
+      "size": 15868,
+      "mode": 33206,
+      "sha": "a093ee99af3f83875a3fb0a903827e9c49de2ed7"
+    },
+    {
+      "path": "src/study/academicModels.ts",
+      "size": 6033,
+      "mode": 33206,
+      "sha": "99311f85542871fd3806b6d11469b7809d979554"
+    },
+    {
+      "path": "src/study/AcademicScenes.tsx",
+      "size": 19793,
+      "mode": 33206,
+      "sha": "82a26dde957c6d90e95acc093fff381855c666c4"
+    },
+    {
+      "path": "src/study/academicState.ts",
+      "size": 4312,
+      "mode": 33206,
+      "sha": "2dedba3c42ad1d057787a8c6fc34a0fc9e5ffde1"
+    },
+    {
+      "path": "src/study/Activity.tsx",
+      "size": 35047,
+      "mode": 33206,
+      "sha": "af03c3ccaf9c91e5931449311c012cc0350fa449"
+    },
+    {
+      "path": "src/study/CableMeter.tsx",
+      "size": 2911,
+      "mode": 33206,
+      "sha": "c99179b1c869dd5445a1e4757dc1ee1d7117dfd0"
+    },
+    {
+      "path": "src/study/cableResistance.ts",
+      "size": 1003,
+      "mode": 33206,
+      "sha": "febb475fb8c5bae49d67496d2a42430e38e8d965"
+    },
+    {
+      "path": "src/study/CableWorkshop.tsx",
+      "size": 12952,
+      "mode": 33206,
+      "sha": "f36926675110a4619cf8b41d7d3b6c4c0af9d4c9"
+    },
+    {
+      "path": "src/study/calcEngine.ts",
+      "size": 4036,
+      "mode": 33206,
+      "sha": "1d15759b44b2fb2ab6a8851699a6056e3efafd3a"
+    },
+    {
+      "path": "src/study/CalcModule.tsx",
+      "size": 28700,
+      "mode": 33206,
+      "sha": "5043eb68f70747ea38d160aaae289d048ce42d69"
+    },
+    {
+      "path": "src/study/CalculationSteps.tsx",
+      "size": 1421,
+      "mode": 33206,
+      "sha": "b086a0b648a0bdf87262e171235cf20798eaeb33"
+    },
+    {
+      "path": "src/study/Calculator.tsx",
+      "size": 7395,
+      "mode": 33206,
+      "sha": "ea26e4f695e6bbd6c6f6a8155cae969e7a02281e"
+    },
+    {
+      "path": "src/study/CalculatorDock.tsx",
+      "size": 5324,
+      "mode": 33206,
+      "sha": "f311d08f147dd850d89320a1a1a200867e15d4e6"
+    },
+    {
+      "path": "src/study/classCatalog.ts",
+      "size": 6375,
+      "mode": 33206,
+      "sha": "556bf91effc75b3230c57d3d33257c9dce65bbf3"
+    },
+    {
+      "path": "src/study/content/academic-sources.json",
+      "size": 12592,
+      "mode": 33206,
+      "sha": "645b1628bfc72a6f8f00bde1f980910406e1bd70"
+    },
+    {
+      "path": "src/study/content/casos_interactivos_7.json",
+      "size": 3342,
+      "mode": 33206,
+      "sha": "3526c0c4ea225e25dcbdc5746fe819c1edef6e48"
+    },
+    {
+      "path": "src/study/content/lecciones.json",
+      "size": 7804,
+      "mode": 33206,
+      "sha": "14a8df7791cae316dcd88628e807ff2fbbfdde91"
+    },
+    {
+      "path": "src/study/content/preguntas_alternativas_32.json",
+      "size": 21218,
+      "mode": 33206,
+      "sha": "ae8dcce5635f1559c3105625c7d084043dbfde6c"
+    },
+    {
+      "path": "src/study/content/preguntas_desarrollo_12.json",
+      "size": 13005,
+      "mode": 33206,
+      "sha": "b415d992c5d531b45684e3daea55fa8d62a9920e"
+    },
+    {
+      "path": "src/study/content/preguntas-publicas.json",
+      "size": 16492,
+      "mode": 33206,
+      "sha": "338cea242024ffef655490fa66d319321e8089a2"
+    },
+    {
+      "path": "src/study/courseCatalog.ts",
+      "size": 3050,
+      "mode": 33206,
+      "sha": "5035466023b3de959f4e050a0ed724e96de32ffe"
+    },
+    {
+      "path": "src/study/CourseClassroom.tsx",
+      "size": 6099,
+      "mode": 33206,
+      "sha": "b5420c37448e3c8360c2553ba4a59d7c48871723"
+    },
+    {
+      "path": "src/study/CourseOutline.tsx",
+      "size": 9500,
+      "mode": 33206,
+      "sha": "b9f5b34aaca71ab5b542bdad637386507e7185ca"
+    },
+    {
+      "path": "src/study/DetectorLessonStudy.tsx",
+      "size": 8532,
+      "mode": 33206,
+      "sha": "bd5bf22df536450b614b09235a4c753c51480ac7"
+    },
+    {
+      "path": "src/study/dialog.ts",
+      "size": 1013,
+      "mode": 33206,
+      "sha": "8b41b5eb7e2630670cb6ddb12873d38e9814fed3"
+    },
+    {
+      "path": "src/study/ExamReviewContext.tsx",
+      "size": 387,
+      "mode": 33206,
+      "sha": "b1858b500578e8fdb549ce660633b51a83124a8b"
+    },
+    {
+      "path": "src/study/ExamView.tsx",
+      "size": 16672,
+      "mode": 33206,
+      "sha": "bbfa6a87e7e33dfe3140bb162d497a99f41b3965"
+    },
+    {
+      "path": "src/study/FormulaMeaning.tsx",
+      "size": 3177,
+      "mode": 33206,
+      "sha": "6df04be9aab2acad3daea33519a76a81d5428c79"
+    },
+    {
+      "path": "src/study/FormulaSheet.tsx",
+      "size": 1805,
+      "mode": 33206,
+      "sha": "5756019204017dbafeb55cefd2c0f911c5cf19d2"
+    },
+    {
+      "path": "src/study/FunctionProblemNotebook.tsx",
+      "size": 11812,
+      "mode": 33206,
+      "sha": "2c06e00a423fe8a081a254d64e64b51f1dc49504"
+    },
+    {
+      "path": "src/study/grading.ts",
+      "size": 371,
+      "mode": 33206,
+      "sha": "395d91adcf114c110bfece32af8a7343eff40e17"
+    },
+    {
+      "path": "src/study/GuidedLesson.tsx",
+      "size": 15569,
+      "mode": 33206,
+      "sha": "191d3d776999131179e842f0f34403e86fa0770c"
+    },
+    {
+      "path": "src/study/journeyContent.ts",
+      "size": 7032,
+      "mode": 33206,
+      "sha": "76fa676d926f91375d23430d93ab86283f7400e9"
+    },
+    {
+      "path": "src/study/lessonCards.ts",
+      "size": 25135,
+      "mode": 33206,
+      "sha": "a541e849659fba10f3acb67905c1de3824a1abf0"
+    },
+    {
+      "path": "src/study/lessonContent.ts",
+      "size": 7259,
+      "mode": 33206,
+      "sha": "37c9780fed063a77ad3c213e435719759a102d26"
+    },
+    {
+      "path": "src/study/LessonGuide.tsx",
+      "size": 7421,
+      "mode": 33206,
+      "sha": "b2d7a1bd5d3ac623b494889998e1c98d3490d779"
+    },
+    {
+      "path": "src/study/LessonJourney.tsx",
+      "size": 8068,
+      "mode": 33206,
+      "sha": "07b1e87cd8e36ec1764abf42aec46704ec81bc15"
+    },
+    {
+      "path": "src/study/LessonMedia.tsx",
+      "size": 15078,
+      "mode": 33206,
+      "sha": "107d87c59aa3a2436cbc6736e77fb2f34dcf8784"
+    },
+    {
+      "path": "src/study/lessonTeachings.ts",
+      "size": 58725,
+      "mode": 33206,
+      "sha": "73c3917e886d85706ffa352022d42bf35e1cfedc"
+    },
+    {
+      "path": "src/study/mathCourseModules.ts",
+      "size": 3339,
+      "mode": 33206,
+      "sha": "262abbce428b11874665099041e82d4676b20975"
+    },
+    {
+      "path": "src/study/mathUnit2.ts",
+      "size": 11822,
+      "mode": 33206,
+      "sha": "bff8c8daf3c4f14d7acbba089aa06d375e130dd5"
+    },
+    {
+      "path": "src/study/MathUnitReview.tsx",
+      "size": 12030,
+      "mode": 33206,
+      "sha": "880da3f5b67c6c91fb60e091f961e1d4d889fbc4"
+    },
+    {
+      "path": "src/study/MatrixNotebook.tsx",
+      "size": 5619,
+      "mode": 33206,
+      "sha": "b8b8be40b327c65ceab9049068cb1aa6af9ff8aa"
+    },
+    {
+      "path": "src/study/matrixNotebooks.ts",
+      "size": 10104,
+      "mode": 33206,
+      "sha": "649f896e65499719726d823ecea9e211b9f06606"
+    },
+    {
+      "path": "src/study/model.ts",
+      "size": 8165,
+      "mode": 33206,
+      "sha": "2c418aa0a13f4c609e6abf5f87df8c4548eb23f7"
+    },
+    {
+      "path": "src/study/Practice.tsx",
+      "size": 9568,
+      "mode": 33206,
+      "sha": "029fe26d50392df764bd07254454065532aca85e"
+    },
+    {
+      "path": "src/study/ProblemFormula.tsx",
+      "size": 432,
+      "mode": 33206,
+      "sha": "b479c91bf9d460e846ffa6b0bd86858d0392a5f0"
+    },
+    {
+      "path": "src/study/ProblemGeoWorkspace.tsx",
+      "size": 3732,
+      "mode": 33206,
+      "sha": "21a3be1af6c6085d04f126d6749607b4c3d014ea"
+    },
+    {
+      "path": "src/study/ProblemLessonIntro.tsx",
+      "size": 4806,
+      "mode": 33206,
+      "sha": "3106ca6fc2f05c8d9788bd9413f59d0bc44ebd3f"
+    },
+    {
+      "path": "src/study/ProfessorFaultView.tsx",
+      "size": 3118,
+      "mode": 33206,
+      "sha": "23151664a0514fad2396a72f95b9e349dd113212"
+    },
+    {
+      "path": "src/study/QuickExperiment.tsx",
+      "size": 9532,
+      "mode": 33206,
+      "sha": "3b248cbb7ff22dd6f0cc51aa974678b085388e9e"
+    },
+    {
+      "path": "src/study/RememberCard.tsx",
+      "size": 548,
+      "mode": 33206,
+      "sha": "662e75312cd8c8ac8d896039eee4e6113840ae01"
+    },
+    {
+      "path": "src/study/rememberContent.ts",
+      "size": 3057,
+      "mode": 33206,
+      "sha": "8f55a1f1bf95761f1b267d687e7f86ce0c50d163"
+    },
+    {
+      "path": "src/study/Rich.tsx",
+      "size": 1602,
+      "mode": 33206,
+      "sha": "7c817a5f0d2e2cf05a1fc849c200e81b902aa1a6"
+    },
+    {
+      "path": "src/study/SerialPractice.tsx",
+      "size": 3254,
+      "mode": 33206,
+      "sha": "885ed543cd6040ffe8c4ad89dc5aae127a9fab80"
+    },
+    {
+      "path": "src/study/serialProtocol.ts",
+      "size": 2548,
+      "mode": 33206,
+      "sha": "e7b28f619e345eb5258623c023f9d6c980131289"
+    },
+    {
+      "path": "src/study/StudyActivityProgress.tsx",
+      "size": 370,
+      "mode": 33206,
+      "sha": "60af147de9c59392bed6fdd37bcfaca30de68465"
+    },
+    {
+      "path": "src/study/StudyApp.tsx",
+      "size": 30182,
+      "mode": 33206,
+      "sha": "fe504d1d883b0d1e768571bb61d1c9da6a525bd7"
+    },
+    {
+      "path": "src/study/StudyArt.tsx",
+      "size": 10758,
+      "mode": 33206,
+      "sha": "345c1c71dc458f8f99f6b2facb31c4708734261c"
+    },
+    {
+      "path": "src/study/StudyClassContext.tsx",
+      "size": 3264,
+      "mode": 33206,
+      "sha": "55e4b2d94365f5caa600af89a769416b10bdc430"
+    },
+    {
+      "path": "src/study/studyFocus.ts",
+      "size": 170,
+      "mode": 33206,
+      "sha": "275b6ad8de845b9da8b6172d0d4c3e3b439968c2"
+    },
+    {
+      "path": "src/study/StudyFocusBanner.tsx",
+      "size": 695,
+      "mode": 33206,
+      "sha": "a24bae18571de3b7a63604d15ed484eb91ba1dd5"
+    },
+    {
+      "path": "src/study/StudyHub.tsx",
+      "size": 8869,
+      "mode": 33206,
+      "sha": "1d426980e3502f463fadffcc9aff7c63bf13499a"
+    },
+    {
+      "path": "src/study/StudyNavigation.tsx",
+      "size": 8363,
+      "mode": 33206,
+      "sha": "067b543b094aa789564ed62ef5e0e325e44d41ea"
+    },
+    {
+      "path": "src/study/StudyRoutePlanner.tsx",
+      "size": 9432,
+      "mode": 33206,
+      "sha": "dbcfdf067fa897811f9c4c0a1e55a1dd254bcc93"
+    },
+    {
+      "path": "src/study/StudySequence.tsx",
+      "size": 1060,
+      "mode": 33206,
+      "sha": "de24a2b82c88b307c142c71e58f8015ed0d615ae"
+    },
+    {
+      "path": "src/study/teacherProblemTeaching.ts",
+      "size": 8151,
+      "mode": 33206,
+      "sha": "24bee6923d486867d326c6c9c6efe4365e194739"
+    },
+    {
+      "path": "src/study/teachingContent.ts",
+      "size": 39255,
+      "mode": 33206,
+      "sha": "6a3074b181054de1fca309bd78fff71bbb023447"
+    },
+    {
+      "path": "src/study/TeachingReader.tsx",
+      "size": 4013,
+      "mode": 33206,
+      "sha": "c3ea41a1c60d24ff7fa49d4d5f962687e0bce928"
+    },
+    {
+      "path": "src/study/TeachingVisual.tsx",
+      "size": 22940,
+      "mode": 33206,
+      "sha": "85165319a6ae24defcdbe176fb59b0df40ccac50"
+    },
+    {
+      "path": "src/study/TemperatureLessonStudy.tsx",
+      "size": 9445,
+      "mode": 33206,
+      "sha": "1eb4e9b493418d5d6bffa3dbdbbdf9b06999f8ea"
+    },
+    {
+      "path": "src/study/TemperatureReviewStudy.tsx",
+      "size": 7047,
+      "mode": 33206,
+      "sha": "ebd1ec6cc06117f0c2a69939bde4a283cc6bbbf4"
+    },
+    {
+      "path": "src/study/TermExplorer.tsx",
+      "size": 6669,
+      "mode": 33206,
+      "sha": "3228cdce42dff9a682f74e0a19934d711caf00fc"
+    },
+    {
+      "path": "src/study/ToolLessonStudy.tsx",
+      "size": 7282,
+      "mode": 33206,
+      "sha": "34711db2daa05a26a24de9e5e2cb19a805d113ff"
+    },
+    {
+      "path": "src/study/ToolTeaching.tsx",
+      "size": 590,
+      "mode": 33206,
+      "sha": "5f42e0656dd7efb6e23dd3c92539dd856ee4d502"
+    },
+    {
+      "path": "src/study/TopicDone.tsx",
+      "size": 1675,
+      "mode": 33206,
+      "sha": "106c5faa3bebd70f350cd4ebc0958be5f755d24a"
+    },
+    {
+      "path": "src/study/Unit2ExamReview.tsx",
+      "size": 4397,
+      "mode": 33206,
+      "sha": "91581bcf16f9788e9cc5bf823c92e143135310af"
+    },
+    {
+      "path": "src/styles/academic.css",
+      "size": 7480,
+      "mode": 33206,
+      "sha": "e13fc33789dc89ad26f18a652b343174a021f18d"
+    },
+    {
+      "path": "src/styles/bench-practice.css",
+      "size": 5761,
+      "mode": 33206,
+      "sha": "62b7ada2960ab05c24473cb5a678aa5f1cfdc6b8"
+    },
+    {
+      "path": "src/styles/board-layout.css",
+      "size": 18330,
+      "mode": 33206,
+      "sha": "c32751588d6c2f6c0a335435f0dc511478bcba58"
+    },
+    {
+      "path": "src/styles/cable-color.css",
+      "size": 2196,
+      "mode": 33206,
+      "sha": "0cdf5af2efda8777133c4943bc7a15ea31f8c577"
+    },
+    {
+      "path": "src/styles/cade-help.css",
+      "size": 5560,
+      "mode": 33206,
+      "sha": "c23467fe1cd1fd6d976ff287d9bf8da09d001662"
+    },
+    {
+      "path": "src/styles/canvas.css",
+      "size": 26400,
+      "mode": 33206,
+      "sha": "c114435deebaf6d299b32407301ceed8cc6ff16f"
+    },
+    {
+      "path": "src/styles/commission-bench.css",
+      "size": 23173,
+      "mode": 33206,
+      "sha": "bfdbd638d518ed603467e0d7b31f632259ed0f32"
+    },
+    {
+      "path": "src/styles/community-card.css",
+      "size": 2078,
+      "mode": 33206,
+      "sha": "a67ef3dca2304ead2f72a4cf39791dcc366ebf72"
+    },
+    {
+      "path": "src/styles/community.css",
+      "size": 8145,
+      "mode": 33206,
+      "sha": "ea6ffeeb71fbb0afcc036ee8e117d6f12e4a7054"
+    },
+    {
+      "path": "src/styles/compact-ui.css",
+      "size": 3033,
+      "mode": 33206,
+      "sha": "b066e4d307321e4ad81215a9ab27012d6ffb6fd2"
+    },
+    {
+      "path": "src/styles/course-classroom.css",
+      "size": 5271,
+      "mode": 33206,
+      "sha": "fc3396b5a653d5b9d22917ad26b0e3feb79e1b78"
+    },
+    {
+      "path": "src/styles/detectors.css",
+      "size": 5824,
+      "mode": 33206,
+      "sha": "dfb41b51cc7ddb21a2001053e5bcd0f07c140e95"
+    },
+    {
+      "path": "src/styles/diagram-desktop-window.css",
+      "size": 3230,
+      "mode": 33206,
+      "sha": "e15490fbc99649ca013ab58da6d39c05713b1334"
+    },
+    {
+      "path": "src/styles/diagram-info-windows.css",
+      "size": 4398,
+      "mode": 33206,
+      "sha": "b418b2ecfbc376a7d43c6fc4139173403a2cf995"
+    },
+    {
+      "path": "src/styles/diagram-layout.css",
+      "size": 37976,
+      "mode": 33206,
+      "sha": "4b145b2fcaa25c77e13f8e5578ac0d89037b59a5"
+    },
+    {
+      "path": "src/styles/equipment.css",
+      "size": 3763,
+      "mode": 33206,
+      "sha": "6c50ac297678ab9cb2c34d0079420d693f45cea4"
+    },
+    {
+      "path": "src/styles/floating-window.css",
+      "size": 12758,
+      "mode": 33206,
+      "sha": "74b7043594c8736c6d7c07b34a81baf22d8a67d9"
+    },
+    {
+      "path": "src/styles/geo-command-keyboard.css",
+      "size": 3320,
+      "mode": 33206,
+      "sha": "61a51253ec3d049e73395abe2a391195a715cb3e"
+    },
+    {
+      "path": "src/styles/geogebra-responsive.css",
+      "size": 12497,
+      "mode": 33206,
+      "sha": "2cfb02f1c5fc16360485e6b1b831d067a1d32e7f"
+    },
+    {
+      "path": "src/styles/geogebra-workspace.css",
+      "size": 11821,
+      "mode": 33206,
+      "sha": "3f9b2697cf8c9158602972b1a52d689754992adc"
+    },
+    {
+      "path": "src/styles/geogebra.css",
+      "size": 10912,
+      "mode": 33206,
+      "sha": "dd700a059c029d232298fa9b0402089c8197c9ca"
+    },
+    {
+      "path": "src/styles/global.css",
+      "size": 59195,
+      "mode": 33206,
+      "sha": "f373abab8b93ba25a1b9fafc7e8e799ee6f92c4d"
+    },
+    {
+      "path": "src/styles/guide-confirmation.css",
+      "size": 3591,
+      "mode": 33206,
+      "sha": "8e9c70393df62ef3e1b5e3c8e4f4a3ba576e5499"
+    },
+    {
+      "path": "src/styles/home-laboratory.css",
+      "size": 2142,
+      "mode": 33206,
+      "sha": "6c2de685297c57f723298c19f287e30d68eecf7d"
+    },
+    {
+      "path": "src/styles/home-tools.css",
+      "size": 393,
+      "mode": 33206,
+      "sha": "49de53ba0330e29ec4e018d8fef1d2b5144e3f7e"
+    },
+    {
+      "path": "src/styles/humanolab-band.css",
+      "size": 1564,
+      "mode": 33206,
+      "sha": "c3bdbffac4f782ebd5aac7a24a0d1c609c6ef0ca"
+    },
+    {
+      "path": "src/styles/install.css",
+      "size": 4390,
+      "mode": 33206,
+      "sha": "b6e6026a305573ff92601bda646c04e352346f13"
+    },
+    {
+      "path": "src/styles/laboratory-canvas.css",
+      "size": 64731,
+      "mode": 33206,
+      "sha": "ab7e22cd034ee7db9b7bf022f3656531cbe703e9"
+    },
+    {
+      "path": "src/styles/laboratory-compact.css",
+      "size": 12246,
+      "mode": 33206,
+      "sha": "4ebd51ce5e260eaa8c9c70e799a58a24182eb8d3"
+    },
+    {
+      "path": "src/styles/laboratory.css",
+      "size": 27722,
+      "mode": 33206,
+      "sha": "85875c3df09ef35d586e6025f6ba9f9922c44f92"
+    },
+    {
+      "path": "src/styles/learning.css",
+      "size": 2032,
+      "mode": 33206,
+      "sha": "b48de16a7c9da11ca761097cacca8ebe6f60e375"
+    },
+    {
+      "path": "src/styles/legal-links.css",
+      "size": 1142,
+      "mode": 33206,
+      "sha": "3503de860c4682177674680d6aa40c30e01662f4"
+    },
+    {
+      "path": "src/styles/legal.css",
+      "size": 1798,
+      "mode": 33206,
+      "sha": "a4a1f32d001a5b087cbedcb6714db456a847dbbf"
+    },
+    {
+      "path": "src/styles/lesson-focus.css",
+      "size": 9093,
+      "mode": 33206,
+      "sha": "de688d08df2eac1f80b79b5e76ccfe12b32939a7"
+    },
+    {
+      "path": "src/styles/lesson-understanding.css",
+      "size": 14395,
+      "mode": 33206,
+      "sha": "c46083ee6d8612fa7b92e6536e7c21b3eecc832b"
+    },
+    {
+      "path": "src/styles/loto.css",
+      "size": 1005,
+      "mode": 33206,
+      "sha": "b9afac4603580c34c0069fbd2659698a6df997bc"
+    },
+    {
+      "path": "src/styles/manual-bench.css",
+      "size": 6327,
+      "mode": 33206,
+      "sha": "e7c76e9aa76825fe312cabde8ffb923144f019d1"
+    },
+    {
+      "path": "src/styles/matrix-notebook.css",
+      "size": 2134,
+      "mode": 33206,
+      "sha": "3019567e1bb2415b60fd9152ce957fc1762ff3dc"
+    },
+    {
+      "path": "src/styles/mobile.css",
+      "size": 10570,
+      "mode": 33206,
+      "sha": "6558e9f8c7a3411453946e0151bd8d1a7864835c"
+    },
+    {
+      "path": "src/styles/modo-brand.css",
+      "size": 508,
+      "mode": 33206,
+      "sha": "4f2e71ea89c4b78fa530df7b1d2f43b1db0eceeb"
+    },
+    {
+      "path": "src/styles/modo-home-approved.css",
+      "size": 17496,
+      "mode": 33206,
+      "sha": "342fe7fe6cd96171fad81548d011a1f2ed774728"
+    },
+    {
+      "path": "src/styles/modo-home-refinement.css",
+      "size": 15574,
+      "mode": 33206,
+      "sha": "50411a9cdef6262d5b47e2bb5869bb76d030cf1b"
+    },
+    {
+      "path": "src/styles/modo-home.css",
+      "size": 15073,
+      "mode": 33206,
+      "sha": "7b15c0307bbaeaa0d2f7b3cdf10edd3545a5bf78"
+    },
+    {
+      "path": "src/styles/modo-identity.css",
+      "size": 48054,
+      "mode": 33206,
+      "sha": "85ff2fd6d3b8261bd58607e7b7fc076d161e7d66"
+    },
+    {
+      "path": "src/styles/modo-launchpad.css",
+      "size": 23482,
+      "mode": 33206,
+      "sha": "3a454f85bb57d04310a7d4611d7f48a0b147f090"
+    },
+    {
+      "path": "src/styles/modo-motion.css",
+      "size": 15097,
+      "mode": 33206,
+      "sha": "599fd7ba7949f9d896a27922f5fccb6452aeaa73"
+    },
+    {
+      "path": "src/styles/modo-soft-ui.css",
+      "size": 41013,
+      "mode": 33206,
+      "sha": "6171a304c14e7e3f0b9b0c80f6e03163bef4beaa"
+    },
+    {
+      "path": "src/styles/modo-tokens.css",
+      "size": 975,
+      "mode": 33206,
+      "sha": "b3e3fe508c979bb28182d0ef0dcd1ae76b96ab15"
+    },
+    {
+      "path": "src/styles/offline.css",
+      "size": 1860,
+      "mode": 33206,
+      "sha": "8b340684dc262febc0783cf0595849b241e29c4d"
+    },
+    {
+      "path": "src/styles/panel-meter-lesson.css",
+      "size": 14626,
+      "mode": 33206,
+      "sha": "e72aab3d4a9c7d5d346f89c356d8412ca0499fda"
+    },
+    {
+      "path": "src/styles/panel-meter.css",
+      "size": 2103,
+      "mode": 33206,
+      "sha": "f35a9a4e3be14a967a3eebacb6c1e534ba45ec88"
+    },
+    {
+      "path": "src/styles/problem-geo-workspace.css",
+      "size": 7345,
+      "mode": 33206,
+      "sha": "c779e7557b2f9357fd7c5b182c0bc363bb4bcb59"
+    },
+    {
+      "path": "src/styles/problem-notebook.css",
+      "size": 9334,
+      "mode": 33206,
+      "sha": "efd9bec6735efd683010944871a5fb820a7f614f"
+    },
+    {
+      "path": "src/styles/procedures.css",
+      "size": 3777,
+      "mode": 33206,
+      "sha": "311d096fee10b43fa342b2eb85e3d6e48eaa5bba"
+    },
+    {
+      "path": "src/styles/simulation.css",
+      "size": 7561,
+      "mode": 33206,
+      "sha": "afffbbd70d2f287e6d19a3fd56078dc33a0d816a"
+    },
+    {
+      "path": "src/styles/solder-workshop.css",
+      "size": 10981,
+      "mode": 33206,
+      "sha": "4a99e17acb0ba09aed79038b824127434f45e702"
+    },
+    {
+      "path": "src/styles/study-calc.css",
+      "size": 28752,
+      "mode": 33206,
+      "sha": "3685fbc518f80633f8bc5a56cd3ebdb47517ac86"
+    },
+    {
+      "path": "src/styles/study-campus.css",
+      "size": 15313,
+      "mode": 33206,
+      "sha": "bdb8f3a2c3ce38463f48444f4c533adc027fb20d"
+    },
+    {
+      "path": "src/styles/study-experience.css",
+      "size": 55021,
+      "mode": 33206,
+      "sha": "beeab2e8dd6aac1374fbc4bfbba5e9d5b539e7c9"
+    },
+    {
+      "path": "src/styles/study-final.css",
+      "size": 5610,
+      "mode": 33206,
+      "sha": "60364a9b9e38015c211bb93ba6763cc72c66fc7b"
+    },
+    {
+      "path": "src/styles/study-focus-unit2.css",
+      "size": 12891,
+      "mode": 33206,
+      "sha": "6c1fff76b9194dfc2d6f7edf74af9e835255fef7"
+    },
+    {
+      "path": "src/styles/study-focus.css",
+      "size": 23379,
+      "mode": 33206,
+      "sha": "eca7ddcf343131523cc5ccbbbfdb1693dbefe80c"
+    },
+    {
+      "path": "src/styles/study-home.css",
+      "size": 5093,
+      "mode": 33206,
+      "sha": "a75b58b565d6dbd242366b3f4b9c96dd45870e74"
+    },
+    {
+      "path": "src/styles/study-interface.css",
+      "size": 45459,
+      "mode": 33206,
+      "sha": "2672b9e964ae1bb98f9d3d914869fb41782e11f9"
+    },
+    {
+      "path": "src/styles/study-learning.css",
+      "size": 20105,
+      "mode": 33206,
+      "sha": "95f55a40e1395b3d0dcbf40127bb7c50c2aad9a2"
+    },
+    {
+      "path": "src/styles/study-lesson.css",
+      "size": 13912,
+      "mode": 33206,
+      "sha": "614f75ce1816dfac33cff0e2b37d52eff5d3131a"
+    },
+    {
+      "path": "src/styles/study-navigation.css",
+      "size": 9589,
+      "mode": 33206,
+      "sha": "343ca4e6ac03cd524a7c71ac847fae59bb3cbe08"
+    },
+    {
+      "path": "src/styles/study-polish.css",
+      "size": 44126,
+      "mode": 33206,
+      "sha": "c2f3c2045a38dec93bcb4be6dfe4ad7667c5c190"
+    },
+    {
+      "path": "src/styles/study-professor.css",
+      "size": 2656,
+      "mode": 33206,
+      "sha": "984835cd0b1cd1d7c06e90b221baacabe6f65222"
+    },
+    {
+      "path": "src/styles/study-unified.css",
+      "size": 12746,
+      "mode": 33206,
+      "sha": "34dce980f67d96d9df8a798a300448986a99f551"
+    },
+    {
+      "path": "src/styles/study-v8.css",
+      "size": 20798,
+      "mode": 33206,
+      "sha": "5d0c1431536b2080bb26b2ce3ecf0b3a0d281b6c"
+    },
+    {
+      "path": "src/styles/study.css",
+      "size": 19388,
+      "mode": 33206,
+      "sha": "d000c0cee9316ae7dad84d8d4504e1b164151823"
+    },
+    {
+      "path": "src/styles/temperature-review.css",
+      "size": 1283,
+      "mode": 33206,
+      "sha": "ac0d0fd0935b6f0835acb6a64dba67d4b417ce79"
+    },
+    {
+      "path": "src/styles/temperature-sheets.css",
+      "size": 529,
+      "mode": 33206,
+      "sha": "03c7f8e1675c662eb17e5b5b7a6e4bdf40332498"
+    },
+    {
+      "path": "src/styles/temperature.css",
+      "size": 13242,
+      "mode": 33206,
+      "sha": "7554dabc4e22b6000a136b0d2e7361e35dbff20d"
+    },
+    {
+      "path": "src/styles/tool-lessons.css",
+      "size": 3224,
+      "mode": 33206,
+      "sha": "737f9e42472ddeb8cd5226bc4f914b4535952085"
+    },
+    {
+      "path": "src/styles/touch-portrait.css",
+      "size": 5072,
+      "mode": 33206,
+      "sha": "3552bc842c86955cf14a7a420208fb3bf7afb560"
+    },
+    {
+      "path": "src/styles/tutorials.css",
+      "size": 5663,
+      "mode": 33206,
+      "sha": "d59ddaff20b28560da4c1c067ea977eb91199171"
+    },
+    {
+      "path": "src/styles/unit2-exam-review.css",
+      "size": 2865,
+      "mode": 33206,
+      "sha": "608314d107c34470fff94dd23dffe719098e258e"
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 157,
+      "mode": 33206,
+      "sha": "5c21a5d40d8cb3918182d1c40b580ced81ca99d6"
+    },
+    {
+      "path": "vercel.json",
+      "size": 3919,
+      "mode": 33206,
+      "sha": "f186447e6be89d5a4974713956f90b875d98a6b4"
+    }
+  ]
+}

@@ -1,7 +1,38 @@
 {
-  "checks": [],
-  "errors": [
-    "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 94\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-practice.cjs:18:9"
+  "checks": [
+    "Inicio opens a clean free practice with 94 terminals, no sidebars and an empty cable model; reference opens on request",
+    "Four independent cables share one terminal, visible as a five-terminal cable-only node",
+    "Cable endpoint following, curve edit, z-order, individual removal, undo and redo",
+    "Visibility does not delete cables; reload and Continue recover the actual practice",
+    "Selecting a cable by clicking its actual curve works",
+    "Mark a diagram region, require explicit manual review, save step, three help levels, reject absent connection and accept the reviewed pair",
+    "Export/import round trip includes diagram, cables and steps; malformed import leaves the current work intact",
+    "Photograph-based recognition guide has real wrong/right feedback and advances to the next terminal",
+    "All nine photograph-based identification steps complete and restart",
+    "Image upload is embedded, associated annotations reset, independent diagram pan and image survives reload",
+    "Responsive 1440/768/390/360 with no horizontal page overflow and mobile panel/diagram tabs",
+    "Mobile touch connects 95 to 96 by tapping physical terminals"
   ],
-  "viewports": []
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 360,
+      "height": 800
+    }
+  ],
+  "knownIssues": [
+    "Paso manual: sin validación al conectar el par revisado"
+  ]
 }

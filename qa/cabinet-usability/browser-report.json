@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "Entrada desde Inicio explica el resultado, el recorrido y el uso para estudiar o enseñar",
+    "El usuario nuevo encuentra una tarea concreta y la primera comprobación",
+    "Guía de escritorio: arrastre, ajuste por borde, teclado y maximizar/restaurar reales",
+    "Cerrar y reabrir conserva tamaño y posición de la guía",
+    "Orientación, distribución y esquema del nuevo módulo usan ventanas ajustables",
+    "Terminaciones y marcadores en ambos extremos; editar el cable conserva bornes y funcionamiento",
+    "Móvil sin red: ventanas ajustables, mandos táctiles y cables conservan el funcionamiento",
+    "Sin errores ni peticiones externas del módulo",
+    "Primera visita móvil: explicación, roles y comienzo de actividad accesibles"
+  ],
+  "errors": [],
+  "external": [],
+  "frames": {
+    "medianMs": 16.699999999999818,
+    "p95Ms": 16.700000000000273,
+    "samples": 89
+  }
+}

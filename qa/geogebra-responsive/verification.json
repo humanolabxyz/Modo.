@@ -1,0 +1,12 @@
+{
+  "base": "http://localhost:4350",
+  "checks": [
+    "360x800: lectura y trabajo sin solapamiento, comandos sin autoejecutar, comprobación, giro sin reinicio, vistas y persistencia",
+    "390x844: lectura y trabajo sin solapamiento, comandos sin autoejecutar, comprobación, giro sin reinicio, vistas y persistencia",
+    "820x1180: lectura y trabajo sin solapamiento, comandos sin autoejecutar, comprobación, giro sin reinicio, vistas y persistencia",
+    "1180x820: lectura y trabajo sin solapamiento, comandos sin autoejecutar, comprobación, giro sin reinicio, vistas y persistencia",
+    "844x390: lectura y trabajo sin solapamiento, comandos sin autoejecutar, comprobación, giro sin reinicio, vistas y persistencia",
+    "1440x960: lectura y trabajo sin solapamiento, comandos sin autoejecutar, comprobación, giro sin reinicio, vistas y persistencia"
+  ],
+  "errors": []
+}

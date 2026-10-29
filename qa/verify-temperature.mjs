@@ -11,15 +11,17 @@ const tests=[];
 function test(name,run){try{run();tests.push({name,status:'PASS'});}catch(error){tests.push({name,status:'FAIL',error:error.message});}}
 const near=(a,b,tol,msg)=>assert.ok(Math.abs(a-b)<=tol,`${msg||''} esperado ${b} ± ${tol}, obtenido ${a}`);
 try{
-  for(const [file,out] of [['src/learning/temperatureReview.ts','review.mjs'],['src/lab/temperature/physics.ts','physics.mjs'],['src/lab/temperature/state.ts','state.mjs'],['src/learning/temperatureLessons.ts','lessons.mjs']]){
+  for(const [file,out] of [['src/learning/temperatureReview.ts','review.mjs'],['src/lab/temperature/physics.ts','physics.mjs'],['src/lab/temperature/instrument.ts','instrument.mjs'],['src/lab/temperature/state.ts','state.mjs'],['src/learning/temperatureLessons.ts','lessons.mjs']]){
     let source=await fs.readFile(path.join(root,file),'utf8');
-    source=source.replace(/from '(\.\.?\/[^']*?)(?:\.ts)?'/g,(m,p)=>`from '${p.endsWith('.mjs')?p:p.replace(/^.*\/(physics|state)$/,(x,n)=>`./${n}.mjs`)}'`);
+    source=source.replace(/from '(\.\.?\/[^']*?)(?:\.ts)?'/g,(m,p)=>`from '${p.endsWith('.mjs')?p:p.replace(/^.*\/(physics|state|instrument)$/,(x,n)=>`./${n}.mjs`)}'`);
     const result=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}});
     await fs.writeFile(path.join(directory,out),result.outputText);
   }
   const P=await import(pathToFileURL(path.join(directory,'physics.mjs')));
   const S=await import(pathToFileURL(path.join(directory,'state.mjs')));
   const L=await import(pathToFileURL(path.join(directory,'lessons.mjs')));
+  const I=await import(pathToFileURL(path.join(directory,'instrument.mjs')));
+  test('Fluke 87 V normal: resolución 0,1 mV y 0,1 Ω, autorango de V y signo',()=>{assert.equal(I.instrumentSample(3.059,'mV').value,3.1);assert.equal(I.instrumentSample(119.397,'Ω').value,119.4);assert.equal(I.instrumentSample(-3.059,'mV').value,-3.1);assert.equal(I.instrumentSample(5.12345,'V').value,5.123);assert.equal(I.instrumentSample(10.1234,'V').value,10.12);});
   const R=await import(pathToFileURL(path.join(directory,'review.mjs')));
 
   test('Termocupla K coincide con NIST (0, 50, 75, 100 y 200 °C)',()=>{
@@ -120,12 +122,12 @@ try{
     assert.throws(()=>S.parseBench(JSON.stringify({version:1,settings:{...base(),ambient:99},records:[]})));
   });
   test('Formato decimal con coma y lectura de números',()=>{
-    assert.equal(S.formatValue(3.0587,'mV'),'3,059 mV');assert.equal(S.formatValue(119.397,'Ω'),'119,40 Ω');assert.equal(S.formatValue(7.5,'V'),'7,500 V');
+    assert.equal(S.formatValue(3.0587,'mV'),'3,1 mV');assert.equal(S.formatValue(119.397,'Ω'),'119,4 Ω');assert.equal(S.formatValue(7.5,'V'),'7,50 V');
     assert.equal(S.parseNumber('4,5'),4.5);assert.equal(S.parseNumber(' 75 '),75);assert.equal(S.parseNumber('abc'),null);assert.equal(S.parseNumber(''),null);
   });
 
   /* Lecciones */
-  const points=(sensor,amb=22,extra={})=>[amb,50,75,100].map(temp=>rec({sensor,temp,...extra}));
+  const points=(sensor,amb=22,extra={})=>[amb,50,75,100].map(temp=>rec({sensor,temp,ambient:amb,tcType:sensor==='pt'?null:'K',...(sensor==='tx'?{txType:'K',txMin:0,txMax:100}:{}),...extra}));
   const lesson=id=>L.temperatureLessons.find(l=>l.id===id);
   test('Hay tres actividades conservadas de la guía G03',()=>{assert.deepEqual(L.temperatureLessons.map(l=>l.experience),[1,2,3]);});
   test('Experiencia 2: pasos que exigen sondas, lecturas válidas y los cuatro puntos',()=>{
@@ -152,6 +154,7 @@ try{
     assert.equal(l.steps[3].check(ctx({},[...points('tc'),...points('tx',22,{unit:'V',value:5})])),true);assert.equal(l.steps[3].check(ctx({},points('tx',22,{unit:'V'}))),false);
     near(l.steps[4].ask.expected(ctx({txMin:20,txMax:120})),5.5,1e-9);
   });
+  test('Cambiar tipo, ambiente o rango no reutiliza puntos de otra configuración',()=>{const s={...base(),txType:'K',txMin:0,txMax:100},ctx=(settings,records)=>({settings,records,temps:P.settledTemps(settings),reading:P.readMeter(settings,P.settledTemps(settings))});assert.equal(lesson('temperatura-experiencia-2').steps[2].check(ctx({...s,tcType:'J'},points('tc'))),false);assert.equal(lesson('temperatura-experiencia-3').steps[3].check(ctx({...s,txMax:120},[...points('tc'),...points('tx')])),false);assert.equal(lesson('temperatura-experiencia-3').steps[3].check(ctx(s,[...points('tc'),...points('tx').map(({txMin,txMax,txType,...r})=>r)])),false);assert.equal(S.matchesTempSeries(points('tc')[0],{...s,ambient:23}),false);});
   test('Experiencia 1: preguntas con una sola respuesta correcta y explicación',()=>{
     const l=lesson('temperatura-experiencia-1');assert.ok(l.steps.length>=4);
     for(const step of l.steps){assert.ok(step.quiz.options.length>=3);assert.ok(Number.isInteger(step.quiz.answer)&&step.quiz.answer<step.quiz.options.length);assert.ok(step.quiz.explanation.length>20);}

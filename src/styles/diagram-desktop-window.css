@@ -1,0 +1,21 @@
+/* Diagrama en escritorio: ventana flotante, movible por la cabecera y ajustable por sus bordes.
+   En móvil lo define mobile.css; la lectura a pantalla completa (.editor-reading) conserva su diseño. */
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window{display:flex;flex-direction:column;position:fixed;z-index:30;left:14px;top:200px;width:380px;height:calc(100dvh - 285px);min-width:280px;min-height:240px;box-sizing:border-box;background:var(--float-bg);border:1px solid var(--float-border);border-radius:22px;box-shadow:var(--float-shadow);contain:layout paint}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window[hidden]{display:none}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .practice-workspace .diagram-window .diagram-pane{position:static;flex:1 1 0;min-height:0;width:auto;height:auto;max-width:none;max-height:none;border:0;border-radius:0;box-shadow:none;background:transparent;animation:none;overflow:hidden}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .diagram-pane-actions{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .diagram-pane-actions:active{cursor:grabbing}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .diagram-pane-body{padding-bottom:14px}
+.app-shell.editor-workbench:not(.is-compact) .diagram-window .float-handle-e,.app-shell.editor-workbench:not(.is-compact) .diagram-window .float-handle-w{width:10px}
+.app-shell.editor-workbench:not(.is-compact) .diagram-window .float-handle-s{height:10px}
+/* El esquema ocupa todo el espacio disponible de la ventana: crece al agrandarla */
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .diagram-pane-body{display:flex;flex-direction:column;padding:0 14px 12px;overflow:auto}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .cade-reader{flex:1 1 0;min-height:0;display:flex;flex-direction:column}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .cade-reader>.reader-workspace{flex:1 1 0;min-height:0;display:flex;flex-direction:column}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .cade-artboard{flex:1 1 0;min-height:180px;height:auto!important}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .cade-artboard>svg{height:100%!important;width:100%}
+/* Sin textos de relleno: sólo el botón de práctica */
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .diagram-practice-entry{flex:none;margin:10px 0 0;padding:0;background:transparent}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .diagram-practice-entry>p{display:none}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window :is(.cade-reader,.cade-reader>.reader-workspace,.cade-artboard){width:100%;min-width:0;align-self:stretch;align-items:stretch}
+.app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .cade-artboard{position:relative}

@@ -1,6 +1,6 @@
 import {useId,useState} from 'react';
 import {BookOpen,Check,X} from 'lucide-react';
-import {Chips,Field} from '../ValueEditor';
+import {Chips,EditorWindow,Field} from '../ValueEditor';
 import {AMBIENT_MAX,AMBIENT_MIN,SET_MAX,type Settings,type TcType} from './physics';
 import {formatNumber,formatTemp,parseNumber} from './state';
 import type {Equipment} from './BenchScene';
@@ -42,14 +42,12 @@ function TxForm({settings:s,onChange,onClose}:Pick<Props,'settings'|'onChange'|'
   </>;
 }
 export function TemperatureEditor({id,settings:s,onChange,onClose,onSheet}:Props){
-  const heading=useId();
-  return <div className="lab-editor-pop temp-pop" role="dialog" aria-labelledby={heading} onKeyDown={e=>{if(e.key==='Escape'){e.stopPropagation();onClose();}}}>
-    <header><div><strong id={heading}>{TITLES[id]}</strong><small>{id==='tc'?`Tipo ${s.tcType}`:id==='bath'?`Ambiente ${formatTemp(s.ambient)}`:id==='tx'?'Salida en tensión':id==='psu'?'Alimenta al transmisor':'Platino · 100 Ω a 0 °C'}</small></div><button type="button" className="lab-icon-button" aria-label="Cerrar edición" onClick={onClose}><X size={16}/></button></header>
+  return <EditorWindow title={TITLES[id]} subtitle={id==='tc'?`Tipo ${s.tcType}`:id==='bath'?`Ambiente ${formatTemp(s.ambient)}`:id==='tx'?'Salida en tensión':id==='psu'?'Alimenta al transmisor':'Platino · 100 Ω a 0 °C'} onClose={onClose}><div className="lab-editor-pop temp-pop">
     {id==='bath'?<BathForm settings={s} onChange={onChange} onClose={onClose}/>:null}
     {id==='tx'?<TxForm settings={s} onChange={onChange} onClose={onClose}/>:null}
     {id==='tc'?<><TypePick label="Tipo de termocupla" value={s.tcType} onPick={t=>onChange({tcType:t})}/><Toggle pressed={s.inWell.tc} onClick={()=>onChange({inWell:{...s.inWell,tc:!s.inWell.tc}})}>{s.inWell.tc?'Sacar del pozo':'Introducir en el pozo'}</Toggle><p className="lab-saved-as">Genera milivoltios entre sus dos hilos (+ y −). Mídela con la función mV. K y J usan tablas distintas.</p></>:null}
     {id==='psu'?<><Toggle pressed={s.txPowered} onClick={()=>onChange({txPowered:!s.txPowered})}>{s.txPowered?'Apagar la fuente':'Encender la fuente'}</Toggle><p className="lab-saved-as">Rojo (+) a V + y negro (−) a V − del transmisor. El 24 V es el valor típico de estos transmisores; tu sala puede usar otro.</p></>:null}
     {id==='pt'?<><div className="lab-field"><label>Cable del sensor</label><div className="lab-chips" role="group" aria-label="Hilos del Pt100">{([3,4] as const).map(n=><button key={n} type="button" aria-pressed={s.ptWires===n} onClick={()=>onChange({ptWires:n})}>{n} hilos</button>)}</div></div><Toggle pressed={s.inWell.pt} onClick={()=>onChange({inWell:{...s.inWell,pt:!s.inWell.pt}})}>{s.inWell.pt?'Sacar del pozo':'Introducir en el pozo'}</Toggle><p className="lab-saved-as">Es una resistencia: a 0 °C vale 100 Ω y aumenta con la temperatura. Mídela con la función Ω entre un hilo rojo y uno blanco; entre dos del mismo color solo mides el cable.</p></>:null}
     <footer><button type="button" onClick={()=>onSheet(id)}><BookOpen size={15}/>Ver ficha del equipo</button></footer>
-  </div>;
+  </div></EditorWindow>;
 }

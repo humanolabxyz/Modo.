@@ -9,6 +9,7 @@ dist/
 
 # --- Repositorio privado: lo que no se sube ---
 .cache/
+public/vendor/geogebra/
 video-tutorial/
 *.zip
 *.rar

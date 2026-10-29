@@ -1,0 +1,15 @@
+ 
+ 
+ARPA 1 
+CONSUMO DE ENERGÍA 
+EXTENSIÓN 
+ 
+Considera la siguiente infografía del valor total a pagar en un mes determinado según el consumo 
+de energía: 
+ 
+ 
+ 
+De acuerdo a esta información, y considerando una regularidad lineal, ¿cuál es la expresión 
+algebraica que permite escribir el valor total a pagar en función de los kWh de energía 
+consumidos? 
+ 

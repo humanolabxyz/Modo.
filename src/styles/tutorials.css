@@ -43,3 +43,13 @@
 @media(max-width:560px){.study-focus-shell .topbar.study-header:has(.tutorial-trigger){gap:8px}}
 @media(max-width:900px){.tutorial-trigger:not(.menu-tile){width:44px;padding:0}.tutorial-trigger:not(.menu-tile)>span{display:none}.tutorial-layout{grid-template-columns:minmax(0,1fr) 260px;gap:18px}.tutorial-thumbnail{flex-basis:76px}}
 @media(max-width:680px){.tutorial-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px);padding:18px;border-radius:16px}.tutorial-heading{margin-bottom:18px;gap:10px}.tutorial-heading h2{font-size:25px}.tutorial-heading>div>p:last-child{font-size:12px}.tutorial-layout{display:flex;flex-direction:column;gap:24px}.tutorial-caption{padding-top:16px}.tutorial-caption h3{font-size:21px}.tutorial-thumbnail{flex-basis:98px}.tutorial-item{min-height:76px}.tutorial-welcome{right:16px;bottom:max(16px,env(safe-area-inset-bottom));padding:20px}.tutorial-welcome h2{font-size:22px}}
+
+/* La sugerencia de bienvenida no debe tapar la barra de herramientas ni el zoom: se coloca sobre ellos y es más compacta en pantallas pequeñas. */
+.tutorial-welcome{bottom:max(96px,calc(env(safe-area-inset-bottom) + 84px))}
+@media(max-width:680px){
+ .tutorial-welcome{right:12px;left:12px;width:auto;padding:14px 16px;border-radius:16px}
+ .tutorial-welcome-icon,.tutorial-welcome .tutorial-eyebrow{display:none}
+ .tutorial-welcome h2{font-size:17px;margin:0 0 4px;padding-right:30px}
+ .tutorial-welcome>p:not(.tutorial-eyebrow){font-size:13px;margin:0 0 10px}
+ .tutorial-welcome .tutorial-dismiss{top:6px;right:6px}
+}

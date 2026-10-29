@@ -1,0 +1,66 @@
+{
+  "cpuThrottle": 4,
+  "results": [
+    {
+      "width": 390,
+      "name": "meter-idle",
+      "frames": 120,
+      "p95": 16.800000000000182,
+      "longTasks": 0,
+      "longMs": 0,
+      "taskMs": 938.3080000000001,
+      "scriptMs": 356.932
+    },
+    {
+      "width": 390,
+      "name": "probe-drag",
+      "frames": 117,
+      "p95": 16.800000000000182,
+      "longTasks": 0,
+      "longMs": 0,
+      "taskMs": 1250.196,
+      "scriptMs": 482.0929999999999
+    },
+    {
+      "width": 390,
+      "name": "clamp-drag",
+      "frames": 92,
+      "p95": 33.399999999999636,
+      "longTasks": 0,
+      "longMs": 0,
+      "taskMs": 1822.826000000001,
+      "scriptMs": 1355.7240000000004
+    },
+    {
+      "width": 820,
+      "name": "meter-idle",
+      "frames": 119,
+      "p95": 16.800000000000182,
+      "longTasks": 0,
+      "longMs": 0,
+      "taskMs": 1014.5439999999999,
+      "scriptMs": 362.9689999999999
+    },
+    {
+      "width": 820,
+      "name": "probe-drag",
+      "frames": 115,
+      "p95": 16.800000000000182,
+      "longTasks": 0,
+      "longMs": 0,
+      "taskMs": 1256.2479999999994,
+      "scriptMs": 489.61699999999996
+    },
+    {
+      "width": 820,
+      "name": "clamp-drag",
+      "frames": 90,
+      "p95": 33.30000000000109,
+      "longTasks": 0,
+      "longMs": 0,
+      "taskMs": 1849.7800000000009,
+      "scriptMs": 1378.0979999999995
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "base": "https://modo-lab.vercel.app/",
+  "version": "2.2.14",
+  "checks": [
+    "inicio",
+    "?view=simulator",
+    "estudio/",
+    "laboratorio/",
+    "comunidad/",
+    "legal/",
+    "versiones/"
+  ],
+  "status": "PASS"
+}

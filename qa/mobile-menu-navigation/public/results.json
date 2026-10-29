@@ -1,0 +1,24 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "bodyHeight": 769,
+    "nativeTouchScroll": true,
+    "nestedFilters": true,
+    "diagramMenu": true,
+    "measurementMenus": true,
+    "rotation": true,
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "bodyHeight": 315,
+    "nativeTouchScroll": true,
+    "nestedFilters": true,
+    "diagramMenu": true,
+    "measurementMenus": true,
+    "rotation": true,
+    "errors": []
+  }
+]

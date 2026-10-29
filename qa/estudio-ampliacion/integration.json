@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "Tacto emulado: control de nivel, selección, comprobación y guardado al recargar",
+    "Accesos anteriores conservados: GeoGebra, temperatura, detectores y repaso G03",
+    "Protecciones mantiene sus ocho temas y entrada al recorrido anterior",
+    "Build estático sin conexión: clase, escena, avance y PDF previamente consultado disponibles"
+  ],
+  "errors": []
+}

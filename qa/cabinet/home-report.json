@@ -1,0 +1,6 @@
+{
+  "checks": [
+    "desktop: cuatro módulos conservados, acceso directo al taller y sin overflow",
+    "mobile: cuatro módulos conservados, acceso directo al taller y sin overflow"
+  ]
+}

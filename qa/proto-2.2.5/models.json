@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Modelos exportables con alimentación validada",
+    "Sin patas duplicadas en los dos montajes",
+    "15 o más puentes físicos en cada montaje",
+    "Pulsadores con cuatro pines y pares internos reales",
+    "Transistores en tres columnas",
+    "Corriente positiva y negativa sin fallas",
+    "Alimentación lógica L293D 5 V",
+    "Cada paso de alimentación es necesario"
+  ]
+}

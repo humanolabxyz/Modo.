@@ -1,0 +1,133 @@
+{
+  "project": "modo-lab",
+  "projectId": "prj_tqclHzAbuZzPqfAwvDETHjG8sa7L",
+  "target": "production",
+  "previousDeployment": "dpl_4gr2RoqtZqJ5HALbZaB5PRuXYu9z",
+  "gitHead": "a66b0389fa77d92a95fe6fa36e4e67207e64786b",
+  "source": "Current local working tree with uncommitted changes",
+  "hashes": {
+    "src/components/FloatingWindow.tsx": "b4c08fd17525fc0d87c018223d680d7d74f7d133d92cb2052393e0722ad8fa80",
+    "src/components/DiagramWindow.tsx": "e092af42f17c16feb1c30c44c22ddf600d6a68ff6930290c0e1360e3e58b4126",
+    "src/components/DiagramPane.tsx": "4ee01821d6ba93b5c10c7baaec99ae243b9fc5bc8b7a9ccfad327189a2885fe6",
+    "src/components/PanelMeterLesson.tsx": "bc79b114d9efc0ed12d2a322bd77a8c29c5af22924aeea7db2c25f3861865871",
+    "src/layout/phoneViewport.ts": "085ca95d712acad0524a5054baf955b3ab407e4ea261acd3ba99f5208b4884b6",
+    "src/styles/phone-window-navigation.css": "44f001b00a996a0b24366096c3e1008108c51bc936c6f23fe07c3c758552b9c4"
+  },
+  "localNavigation": [
+    {
+      "width": 390,
+      "height": 844,
+      "bodyHeight": 769,
+      "nativeTouchScroll": true,
+      "nestedFilters": true,
+      "diagramMenu": true,
+      "measurementMenus": true,
+      "rotation": true,
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "bodyHeight": 315,
+      "nativeTouchScroll": true,
+      "nestedFilters": true,
+      "diagramMenu": true,
+      "measurementMenus": true,
+      "rotation": true,
+      "errors": []
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "bodyHeight": 493,
+      "nativeTouchScroll": true,
+      "nestedFilters": true,
+      "diagramMenu": true,
+      "measurementMenus": true,
+      "rotation": true,
+      "errors": []
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "bodyHeight": 245,
+      "nativeTouchScroll": true,
+      "nestedFilters": true,
+      "diagramMenu": true,
+      "measurementMenus": true,
+      "rotation": true,
+      "errors": []
+    }
+  ],
+  "webkit": [
+    {
+      "engine": "WebKit",
+      "width": 390,
+      "height": 844,
+      "nestedClose": true,
+      "diagramMenu": true,
+      "measurementPreparation": true,
+      "rotation": true,
+      "errors": []
+    },
+    {
+      "engine": "WebKit",
+      "width": 844,
+      "height": 390,
+      "nestedClose": true,
+      "diagramMenu": true,
+      "measurementPreparation": true,
+      "rotation": true,
+      "errors": []
+    }
+  ],
+  "deploymentId": "dpl_7vZ9MV4pXZfYv5LsYMVTNXAzkLJh",
+  "productionUrl": "https://modo-lab.vercel.app",
+  "readyState": "READY",
+  "publicNavigation": [
+    {
+      "width": 390,
+      "height": 844,
+      "bodyHeight": 769,
+      "nativeTouchScroll": true,
+      "nestedFilters": true,
+      "diagramMenu": true,
+      "measurementMenus": true,
+      "rotation": true,
+      "errors": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "bodyHeight": 315,
+      "nativeTouchScroll": true,
+      "nestedFilters": true,
+      "diagramMenu": true,
+      "measurementMenus": true,
+      "rotation": true,
+      "errors": []
+    }
+  ],
+  "publicWebkit": [
+    {
+      "engine": "WebKit",
+      "width": 390,
+      "height": 844,
+      "nestedClose": true,
+      "diagramMenu": true,
+      "measurementPreparation": true,
+      "rotation": true,
+      "errors": []
+    },
+    {
+      "engine": "WebKit",
+      "width": 844,
+      "height": 390,
+      "nestedClose": true,
+      "diagramMenu": true,
+      "measurementPreparation": true,
+      "rotation": true,
+      "errors": []
+    }
+  ]
+}

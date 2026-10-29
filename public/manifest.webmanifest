@@ -4,7 +4,7 @@
   "short_name": "modo.",
   "description": "Práctica virtual de cableado con banco, diagrama y simulación de mando de 24 V.",
   "lang": "es",
-  "start_url": "/?view=simulator",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",

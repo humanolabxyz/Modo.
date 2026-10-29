@@ -1,0 +1,154 @@
+[
+  {
+    "url": "/",
+    "found": []
+  },
+  {
+    "url": "/?view=simulator",
+    "found": [
+      {
+        "text": "Elige una herramienta y trabaja sobre el banco.",
+        "class": "",
+        "parent": "",
+        "color": "rgb(102, 117, 130)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.19
+      }
+    ]
+  },
+  {
+    "url": "/estudio",
+    "found": []
+  },
+  {
+    "url": "/estudio?curso=s2-4&clase=ri-teoria",
+    "found": [
+      {
+        "text": "0",
+        "class": "",
+        "parent": "",
+        "color": "rgb(112, 112, 112)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.38
+      },
+      {
+        "text": "/",
+        "class": "",
+        "parent": "",
+        "color": "rgb(112, 112, 112)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.38
+      },
+      {
+        "text": "4",
+        "class": "",
+        "parent": "",
+        "color": "rgb(112, 112, 112)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.38
+      },
+      {
+        "text": "comprobaciones resueltas",
+        "class": "",
+        "parent": "",
+        "color": "rgb(112, 112, 112)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.38
+      }
+    ]
+  },
+  {
+    "url": "/estudio?curso=s2-5&clase=mtfm01-repaso-u2",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=schematic",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=plc",
+    "found": [
+      {
+        "text": "Programa listo",
+        "class": "",
+        "parent": "lab-diagnostics",
+        "color": "rgb(105, 131, 93)",
+        "bg": [
+          244,
+          248,
+          242
+        ],
+        "ratio": 3.91
+      }
+    ]
+  },
+  {
+    "url": "/laboratorio?tool=hmi",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=process",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=breadboard",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=temperature",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=detectors",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=equipment",
+    "found": []
+  },
+  {
+    "url": "/laboratorio?tool=geogebra",
+    "found": [
+      {
+        "text": "Herramienta libre",
+        "class": "",
+        "parent": "",
+        "color": "rgb(97, 115, 107)",
+        "bg": [
+          240,
+          241,
+          242
+        ],
+        "ratio": 4.45
+      }
+    ]
+  },
+  {
+    "url": "/comunidad/",
+    "found": []
+  },
+  {
+    "url": "/legal/",
+    "found": []
+  }
+]

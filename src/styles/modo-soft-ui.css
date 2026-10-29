@@ -1,0 +1,570 @@
+@font-face{font-family:'Source Sans 3';src:url('/fonts/SourceSans3-Regular.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap}
+@font-face{font-family:'Source Sans 3';src:url('/fonts/SourceSans3-Semibold.woff2') format('woff2');font-style:normal;font-weight:600 900;font-display:swap}
+/* Shared UI paint. Device drawings, wiring, feedback and canvas geometry keep
+   their own semantic colors, hit areas and positioning. */
+:root {
+  --ui-font:'Source Sans 3','Segoe UI',sans-serif;
+  --soft-surface:#e6e7e8;
+  --soft-ink:#242527;
+  --soft-muted:#595c61;
+  --soft-accent:#171819;
+  --soft-line:#ccced1;
+  --soft-shadow:#c5c7ca;
+  --soft-light:#fafafa;
+  --soft-raised:5px 5px 12px #c5c7ca,-5px -5px 12px #fafafa;
+  --soft-control:3px 3px 7px #c5c7ca,-3px -3px 7px #fafafa;
+  --soft-inset:inset 3px 3px 7px #c5c7ca,inset -3px -3px 7px #fafafa;
+  --soft-overlay:9px 12px 28px #24252726,inset 0 1px 0 #ffffff90;
+  --modo-ink:var(--soft-ink);
+  --modo-accent:var(--soft-accent);
+  --modo-bg:var(--soft-surface);
+  --modo-surface:var(--soft-surface);
+  --modo-border:var(--soft-line);
+  --modo-muted:var(--soft-muted);
+  --canvas-bg:var(--soft-surface);
+  --float-bg:var(--soft-surface);
+  --float-border:var(--soft-line);
+  --float-shadow:var(--soft-raised);
+}
+html body.modo-soft-ui {
+  margin:0;background:var(--soft-surface);color:var(--soft-ink);
+  -webkit-font-smoothing:antialiased;
+}
+.modo-soft-ui :is(.modo-logo,.modo-logo-img){filter:grayscale(1)}
+.modo-soft-ui :is(.study-shell.study-campus-shell,.lab-page,.editor-workbench){
+  --study-ink:var(--soft-ink);--study-muted:var(--soft-muted);
+  --study-green:var(--soft-accent);--study-line:var(--soft-line);
+  --accent:var(--soft-accent);--accent-ink:var(--soft-accent);--accent-soft:#dedfe1;
+  --ink:var(--soft-ink);--muted:var(--soft-muted);--line:var(--soft-line);--green:var(--soft-accent);
+  --canvas-bg:var(--soft-surface);--float-bg:var(--soft-surface);
+  --float-border:var(--soft-line);--float-shadow:var(--soft-raised);
+  background-color:var(--soft-surface);color:var(--soft-ink);
+}
+.modo-soft-ui :is(.study-shell,.lab-page,.editor-workbench,.community-page,.legal-main) :is(a,button,input,select,textarea,summary,[tabindex="0"]):focus-visible,
+.modo-soft-ui :is(.tutorial-dialog,.tutorial-welcome,.mobile-floating-window) :focus-visible {
+  outline:2px solid var(--soft-accent);outline-offset:4px;
+}
+/* Headers stay part of the continuous surface. */
+body.modo-soft-ui :is(.study-shell.study-campus-shell .topbar.study-header,.lab-page .lab-topbar,.lab-page .lab-compact-bar,.editor-workbench .topbar,.community-header,.legal-header){
+  background:var(--soft-surface);border-color:var(--soft-line);color:var(--soft-ink);
+}
+.modo-soft-ui :is(.study-header-context,.study-top-link,.humano-legal-link,.lab-back,.lab-header-links a){color:var(--soft-muted)}
+
+/* Study: a continuous reading surface, raised choices and inset fields. */
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+  .study-home-hero,.study-home-hero-art,.study-course-hero,.study-lesson-rail,
+  .study-class-context .study-context-controls,.study-card,.gl-card,.campus-course,
+  .campus-topic,.campus-resume,.academic-backup,.campus-options,
+  .teaching-reader,.teaching-visual-card,.teaching-reading-card,.tool-study-body,
+  .tool-teaching,.academic-notebook,.academic-challenge,.study-notebook-wrap,
+  .study-practice-prompt,.academic-question,.academic-reading,.academic-source,
+  .academic-overview,.class-unit,.unit-practice-scope,.study-activity-brief,
+  .calc-dock-panel,.study-reset,.study-details,.study-circuit,.study-output){
+  background:var(--soft-surface);border-color:var(--soft-line);color:var(--soft-ink);
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+  .study-home-hero,.campus-course,.campus-topic,.campus-resume,.study-card,
+  .study-class-context .study-context-controls,.teaching-visual-card,.teaching-reading-card,
+  .academic-notebook,.academic-challenge,.calc-dock-panel){
+  border-radius:18px;box-shadow:var(--soft-raised);
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.study-home-hero-copy){
+  background:linear-gradient(145deg,#303133,#171819);color:#f6f6f6;
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.campus-course-cover,.campus-course-code,.campus-topic-number,.class-unit-number,.class-row-number,.study-home-hero-art){
+  background:var(--soft-surface);color:var(--soft-muted);border-color:var(--soft-line);
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.campus-course-cover,.study-home-hero-art) .study-art{filter:grayscale(1)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+  .class-material-row,.academic-resource-row,
+  .study-learning-sequence,.academic-modes,.teaching-reading-nav,.teaching-reader-footer,
+  .study-lesson-workspace,.tool-teaching-nav,.study-footer,.academic-paging){
+  background:transparent;border-color:var(--soft-line);
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+  .lesson-title-row h1,.campus-course-name,.campus-heading h1,.class-unit h2,
+  .class-material-name,.study-course-hero h1,.teaching-reader h2,.academic-step-head h2,
+  .campus-topic-copy strong,.study-card h2,.study-card h3){color:var(--soft-ink)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+  .study-kicker,.study-breadcrumb,.study-context-path a,.study-context-path>span,
+  .class-material-name small,.campus-course-description,.campus-course-code,
+  .teaching-visual-note,.teaching-reader-intro,.teaching-reading-text,
+  .study-rail-label,.study-rail-source,.class-outline-note,.tool-study-intro,
+  .study-footer,.campus-course-status,.class-ready>span:last-child){color:var(--soft-muted)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+  button,.study-top-link,.campus-back,.study-context-back,.study-context-paging>a,
+  .class-start,.study-explore,.academic-paging>a,.tool-study-secondary,.study-import){
+  background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);
+  border-radius:14px;box-shadow:var(--soft-control);
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+  .study-primary,.study-solid,.academic-modes button[aria-pressed=true],
+  .academic-modes button[aria-selected=true],.tool-teaching-nav button[aria-pressed=true],
+  .study-segments button[aria-pressed=true],.study-explore,.class-start,
+  .journey-steps button.is-current,.study-lesson-rail button[aria-current=step]){
+  background:linear-gradient(145deg,#303133,#171819);color:#f6f6f6;
+  border-color:#242527;box-shadow:var(--soft-control),inset 0 1px 0 #ffffff20;
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(input:not(:where([type=radio],[type=checkbox],[type=range],[type=file])),select,textarea,.campus-search){
+  background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);
+  border-radius:12px;box-shadow:var(--soft-inset);
+}
+body.modo-soft-ui .study-shell.study-campus-shell .campus-search input{box-shadow:none;border:0;background:transparent}
+body.modo-soft-ui .study-shell.study-campus-shell :is(input[type=radio],input[type=checkbox],input[type=range],progress){accent-color:var(--soft-accent)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.study-progress-track>span,.gl-progress>span,.study-progress-track>i){background:var(--soft-accent)}
+body.modo-soft-ui .study-shell.study-campus-shell .study-activity-progress progress::-webkit-progress-value{background:var(--soft-accent)}
+body.modo-soft-ui .study-shell.study-campus-shell .study-activity-progress progress::-moz-progress-bar{background:var(--soft-accent)}
+
+/* Lab and panel: preserve full-canvas layouts and all scientific drawings. */
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(
+  .lab-projectbar,.lab-tool-nav,.lab-stagebar,.lab-stagefoot,.lab-inspector,
+  .lab-project-settings,.lab-property-content,.lab-split,.lab-stage,.lab-program,
+  .lab-float,.lab-float-body,.lab-card-toggle,.lab-left-stack,.lab-right-stack,
+  .lab-sheet,.lab-sheet-body,.lab-editor-pop,.lab-project-menu>div,
+  .lab-dock-menu,.lab-help,.lab-reading,.lab-explanation,.lab-diagram-viewer,
+  .temp-sheet,.temp-sheet-body,.temp-sheets,.temp-notes,.temp-note,.temp-guide,
+  .geo-guide,.geo-toolbar,.geo-footer,.geo-lessons,
+  .topbar,.workspace-navigation,.work-tools,.zoom-toolbar,.searchbox-wrap,
+  .search-results,.inspector,.guide-card,.practice-settings,.practice-menu>summary,
+  .procedure-drawer,.procedure-heading,.reviewed-steps,.diagram-pane,.reader-heading,
+  .cade-controls,.reading-explanation,.reading-challenge,.simulation-menu-body){
+  background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);
+}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(
+  .lab-topbar,.lab-projectbar,.lab-float,.lab-sheet,.lab-editor-pop,.lab-project-menu>div,
+  .lab-dock-menu,.lab-compact-bar,.lab-project-settings,.lab-zoombar,
+  .workspace-navigation,.topbar,.work-tools,.zoom-toolbar,.searchbox-wrap,
+  .inspector,.guide-card,.practice-menu>summary,.reviewed-steps){box-shadow:var(--soft-raised)}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(
+  button:not(:where(.lab-hmi-toggle,.lab-hmi-button,.lab-dock *,.tool-dock *,.lab-swatches *)),.lab-project-menu>summary,
+  .lab-project-menu>div>a,.lab-project-menu>div>label,.practice-settings>label,
+  .upload-button,.procedure-import,.lab-project-import){
+  background:var(--soft-surface);border-color:var(--soft-line);color:var(--soft-ink);
+  box-shadow:var(--soft-control);
+}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(
+  .lab-run:not(.running),.lab-compact-run:not(.running),.lab-apply,.geo-primary,
+  .primary-action,.cade-practice-button,.lab-tool-nav button.current,
+  .workspace-views button[aria-pressed=true],.lab-segmented button[aria-pressed=true],
+  .lab-chips button[aria-pressed=true]){
+  background:linear-gradient(145deg,#303133,#171819);color:#f6f6f6;
+  border-color:#242527;box-shadow:var(--soft-control),inset 0 1px 0 #ffffff20;
+}
+body.modo-soft-ui .lab-page .lab-tool-nav button.current :is(strong,span){color:#f6f6f6}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(
+  input:not(:where([type=radio],[type=checkbox],[type=range],[type=color],[type=file])),
+  select,textarea){
+  background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);
+  box-shadow:var(--soft-inset);
+}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) .searchbox-wrap input{background:transparent;box-shadow:none}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(
+  .lab-heading>span,.lab-tool-description,.lab-tool-number,.lab-state:not(.is-on),
+  .lab-inspector>p,.lab-inspector label,.lab-save-state,.lab-stagefoot,
+  .lab-memory-row small,.workspace-caption,.toolbar-label,.eyebrow,
+  .temp-eyebrow,.temp-select,.temp-back,.geo-eyebrow){color:var(--soft-muted)}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(.lab-editor h1,.lab-inspector h2,.temp-guide h2,.temp-right h2,.geo-guide h2){color:var(--soft-ink)}
+body.modo-soft-ui .lab-page .lab-canvas-workspace{background-color:var(--soft-surface)}
+body.modo-soft-ui .editor-workbench .practice-workspace .svg-surface{background-color:var(--soft-surface);background-image:radial-gradient(#b8babe80 .7px,transparent .7px)}
+/* Docks retain contrast as a single dark instrument strip. Color swatches and
+   device buttons are deliberately excluded from generic control paint. */
+body.modo-soft-ui :is(.lab-page .lab-dock,.editor-workbench .tool-dock){background:#242527;border-color:#3e4043;box-shadow:0 7px 18px #17181930}
+body.modo-soft-ui :is(.lab-page .lab-dock,.editor-workbench .tool-dock) button{background:transparent;color:#e6e7e8;border-color:transparent;box-shadow:none}
+body.modo-soft-ui :is(.lab-page .lab-dock,.editor-workbench .tool-dock) button.active{background:#e6e7e8;color:#171819;box-shadow:inset 0 1px 0 #fff}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) .lab-swatches button{box-shadow:none}
+
+/* Shared dialogs, tutorials, sheets and help opened above any workspace. */
+body.modo-soft-ui :is(.mobile-floating-window,.tutorial-dialog,.tutorial-welcome,.modal,.guide-window,.floating-menu,.calc-dock-panel){
+  background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);
+  border-radius:18px;box-shadow:var(--soft-overlay);
+}
+body.modo-soft-ui :is(.floating-window-header,.floating-window-footer,.tutorial-heading,.tutorial-card,.tutorial-list button,.modal-header){background:var(--soft-surface);border-color:var(--soft-line);color:var(--soft-ink)}
+body.modo-soft-ui :is(.tutorial-trigger,.floating-window-header button,.tutorial-close,.modal-close){background:var(--soft-surface);border-color:var(--soft-line);color:var(--soft-ink);box-shadow:var(--soft-control)}
+
+/* Community and policies use the same material without recoloring portraits. */
+body.modo-soft-ui.community-page{background:var(--soft-surface);color:var(--soft-ink)}
+body.modo-soft-ui :is(.recognition-card,.recognition-content,.community-closing,.legal-summary,.legal-nav){background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line)}
+body.modo-soft-ui :is(.recognition-card,.legal-summary){box-shadow:var(--soft-raised);border-radius:18px}
+body.modo-soft-ui :is(.recognition-portrait-label,.recognition-category,.community-eyebrow,.legal-eyebrow,.legal-date){color:var(--soft-muted)}
+body.modo-soft-ui :is(.community-panel-link,.legal-nav a){background:var(--soft-surface);color:var(--soft-ink);border:1px solid var(--soft-line);border-radius:14px;box-shadow:var(--soft-control)}
+body.modo-soft-ui :is(.legal-header a,.legal-main a,.legal-footer a){color:var(--soft-ink)}
+
+@media(hover:hover){
+  body.modo-soft-ui :is(.study-shell.study-campus-shell,.lab-page,.editor-workbench) button:not(:where(:disabled,[aria-pressed=true],.active,.current,.running,.lab-hmi-toggle,.lab-hmi-button,.lab-dock *,.tool-dock *,.study-home-hero-copy *)):hover{box-shadow:var(--soft-inset)}
+  body.modo-soft-ui .study-shell.study-campus-shell :is(.campus-course,.campus-topic):hover{border-color:#a4a7ab}
+}
+@media(max-width:800px){
+  :root{--soft-raised:3px 3px 8px #c5c7ca,-3px -3px 8px #fafafa;--soft-control:2px 2px 5px #c5c7ca,-2px -2px 5px #fafafa}
+}
+
+/* Remaining lesson navigation, revision activities and compact dialog controls. */
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+ .study-exam-focus,.unit-review-reader,.unit-review-practice,.unit-topic-nav,
+ .unit-key-idea,.unit-ideas,.unit-example,.unit-topic-footer,.unit-review-notice,
+ .academic-scene,.study-rail-source,.study-practice-visual,.teaching-focus,
+ .teaching-remember,.teaching-terms,.tool-study-concept,.tool-study-question,
+ .lesson-guide,.lesson-reading-panel,.lesson-worked-example,.journey-intro,
+ .journey-explore,.journey-challenge,.study-topic-dialog,.journey-reading-dialog,
+ .calc-card,.calc-block,.calc-picker,.calc-screen,.calc-side,.calc-history,
+ .formula-sheet,.lesson-surface,.lesson-context-card,.lesson-thought-card){
+ background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.study-exam-focus,.unit-review-reader,.unit-review-practice,.study-topic-dialog,.calc-card){box-shadow:var(--soft-raised);border-radius:18px}
+body.modo-soft-ui .study-shell.study-campus-shell :is(
+ .academic-paging button:last-child,.study-exam-focus>a,.unit-export,
+ .study-learning-sequence>button[aria-pressed=true],.unit-review-modes>button[aria-pressed=true],
+ .unit-topic-nav button[aria-current=step],.calc-eq,.journey-start){
+ background:linear-gradient(145deg,#303133,#171819);color:#f6f6f6;
+ border-color:#242527;box-shadow:var(--soft-control);
+}
+body.modo-soft-ui .study-shell.study-campus-shell .study-learning-sequence>button[aria-pressed=true]>span{background:#f6f6f6;color:#171819;border-color:#f6f6f6}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.academic-modes button[aria-pressed=true],.study-learning-sequence>button[aria-pressed=true]){border-bottom-color:var(--soft-accent)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.study-course-route,.campus-course-arrow,.study-live-dot,.study-progress-track){color:var(--soft-accent)}
+body.modo-soft-ui .study-shell.study-campus-shell .campus-course-arrow{background:var(--soft-surface);box-shadow:var(--soft-control)}
+body.modo-soft-ui .study-shell.study-campus-shell .study-live-dot{background:var(--soft-accent)}
+body.modo-soft-ui .study-shell.study-campus-shell .study-home-hero-copy{
+ --soft-control:3px 3px 8px #151617,-3px -3px 8px #393a3c;
+}
+body.modo-soft-ui .study-shell.study-campus-shell .study-home-hero-copy>.study-kicker{color:#c9cbce}
+body.modo-soft-ui .study-shell.study-campus-shell .study-home-hero-copy :is(.study-explore,.study-explore:hover){box-shadow:var(--soft-control);border-color:#4c4e51}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.academic-option,.unit-answer-choice,.study-options label){background:var(--soft-surface);border-color:var(--soft-line);color:var(--soft-ink)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.academic-option,.unit-answer-choice):has(input:checked){border-color:var(--soft-accent);box-shadow:var(--soft-inset)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.teaching-device,.teaching-device.selected){background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line)}
+body.modo-soft-ui .study-shell.study-campus-shell .teaching-device.selected{border-color:var(--soft-accent);box-shadow:var(--soft-inset)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.study-top-link,.campus-back,.study-context-back){padding-inline:12px}
+body.modo-soft-ui :is(.mobile-floating-window,.modal,.guide-window) :is(
+ .lesson-surface,.lesson-device-card,.lesson-context-card,.lesson-thought-card,
+ .lesson-effect-card,.lesson-main-idea,.assessment-result-card,.assessment-review-card,
+ .guide-lesson-choice,.lesson-topic-tabs,.lesson-filter-tabs,.assessment-counters){
+ background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);
+}
+body.modo-soft-ui :is(.mobile-floating-window,.modal,.guide-window) button{background:var(--soft-surface);color:var(--soft-ink);border-color:var(--soft-line);box-shadow:var(--soft-control)}
+body.modo-soft-ui :is(.mobile-floating-window,.modal,.guide-window) :is(.lesson-primary,.lesson-action.is-primary,.guide-learn-start,.guide-assessment-start){background:linear-gradient(145deg,#303133,#171819);color:#f6f6f6}
+body.modo-soft-ui :is(.tutorial-dialog,.tutorial-welcome) :is(.tutorial-heading h2>span,.tutorial-eyebrow){color:var(--soft-ink)}
+/* Run/stop and recording retain their meaning independently of the black theme. */
+
+body.modo-soft-ui .editor-workbench .procedure-trigger[data-recording]{background:#f3e3e0;border-color:#cda29b;color:#8c342b}
+
+/* Functional color takes precedence over neutral UI paint. These selectors
+   represent simulation, electrical or validation state, never navigation. */
+:root{
+ --soft-on:#18744f;--soft-on-surface:#dcefe3;--soft-on-line:#83b99b;
+ --soft-warning:#925a15;--soft-warning-surface:#faf0d9;--soft-warning-line:#d7b568;
+ --soft-error:#a3352d;--soft-error-surface:#f8e5e2;--soft-error-line:#d6a09a;
+}
+body.modo-soft-ui .editor-workbench :is(
+ .simulation-toggle[aria-pressed=true],.simulation-menu-body .sim-tile[aria-pressed=true]){
+ background:linear-gradient(145deg,#258660,#176c49);color:#fff;border-color:#176c49;
+ box-shadow:var(--soft-control),inset 0 1px 1px #ffffff30;
+}
+body.modo-soft-ui .lab-page :is(.lab-run.running,.lab-compact-run.running){
+ background:linear-gradient(145deg,#258660,#176c49);color:#fff;border-color:#176c49;
+ box-shadow:var(--soft-control),inset 0 1px 1px #ffffff30;
+}
+body.modo-soft-ui .lab-page :is(.lab-bit.is-on,.lab-process-controls>button.is-on){
+ background:var(--soft-on-surface);color:var(--soft-on);border-color:var(--soft-on-line);
+ box-shadow:inset 1px 1px 4px #176c4920;
+}
+body.modo-soft-ui .editor-workbench .simulation-toggle i.is-powered{
+ background:#6cffb2;box-shadow:0 0 0 3px #6cffb22b,0 0 7px #6cffb270;
+}
+body.modo-soft-ui .editor-workbench .simulation-menu-body .sim-icon[aria-pressed=true]{
+ background:var(--soft-warning-surface);color:var(--soft-warning);border-color:var(--soft-warning-line);
+}
+body.modo-soft-ui .editor-workbench .sim-state.is-powered,
+body.modo-soft-ui .lab-page .lab-badge.is-on{
+ background:var(--soft-on-surface);color:var(--soft-on);border-color:var(--soft-on-line);
+}
+body.modo-soft-ui .study-shell.study-campus-shell .teaching-section-dots>button{
+ background:transparent;box-shadow:none;color:var(--soft-muted);border-color:var(--soft-line);
+}
+body.modo-soft-ui .study-shell.study-campus-shell .teaching-section-dots>button[aria-current=step]{
+ background:transparent;color:var(--soft-accent);border-color:var(--soft-accent);
+}
+body.modo-soft-ui :is(.mobile-floating-window,.modal,.guide-window,.study-shell.study-campus-shell) :is(button.is-right,button.is-correct,button.is-matched,button.ok){
+ background:var(--soft-on-surface);color:var(--soft-on);border-color:var(--soft-on-line);
+}
+body.modo-soft-ui :is(.mobile-floating-window,.modal,.guide-window,.study-shell.study-campus-shell) :is(button.is-wrong,button.bad){
+ background:var(--soft-error-surface);color:var(--soft-error);border-color:var(--soft-error-line);
+}
+
+body.modo-soft-ui .study-shell.study-campus-shell nav.study-sequence{background:transparent;border-color:var(--soft-line)}
+body.modo-soft-ui .study-shell.study-campus-shell nav.study-sequence>button[aria-pressed=true]{background:linear-gradient(145deg,#303133,#171819);color:#f6f6f6;border-color:#242527;box-shadow:var(--soft-control)}
+
+/* Reference refinement: one light container, quiet icon controls, one selected
+   segment. Functional green/warning/error rules above remain authoritative. */
+:root{
+ --soft-surface:#f0f1f2;--soft-panel:#fff;--soft-line:#dddfe2;
+ --soft-shadow:#d4d6d9;--soft-light:#fff;
+ --soft-raised:0 3px 12px #1718190a,0 1px 3px #17181908;
+ --soft-control:0 1px 3px #17181912;
+ --soft-inset:inset 0 1px 3px #1718190b;
+ --soft-overlay:0 14px 40px #17181920,0 1px 3px #1718190c;
+}
+body.modo-soft-ui .modo-home-shell{
+ --home-surface:var(--soft-surface);--home-shadow:#d4d6d9;--home-light:#fff;
+}
+body.modo-soft-ui :is(.study-shell.study-campus-shell,.lab-page,.editor-workbench) :is(
+ .study-class-context .study-context-controls,.campus-course,.campus-topic,
+ .teaching-reading-card,.teaching-visual-card,.academic-question,.academic-notebook,
+ .study-exam-focus,.study-rail-source,.unit-review-reader,.unit-review-practice,
+ .lab-float,.lab-float-body,.lab-sheet,.lab-sheet-body,.lab-inspector,
+ .lab-editor-pop,.lab-project-settings,.geo-guide,.temp-sheet,.temp-sheet-body,
+ .inspector,.guide-card,.practice-settings,.reading-explanation,.procedure-drawer){
+ background:var(--soft-panel);border-color:var(--soft-line);
+}
+body.modo-soft-ui :is(.mobile-floating-window,.tutorial-dialog,.tutorial-welcome,.modal,
+ .floating-window-header,.floating-window-footer,.floating-window-body,.floating-window-content,
+ .simulation-menu-body,.lesson-surface,.tutorial-layout,.recognition-card,.legal-summary){background:var(--soft-panel)}
+/* The outer bar owns the border and shadow; ordinary inner buttons do not. */
+body.modo-soft-ui :is(.study-shell.study-campus-shell,.lab-page,.editor-workbench) :is(
+ nav.study-sequence,.academic-modes,.unit-review-modes,.tool-teaching-nav,
+ .study-segments,.study-section-tabs,.lab-segmented,.lab-chips,.temp-modes,.temp-tabs,
+ .lab-topbar,.lab-projectbar,.lab-tool-nav,.lab-compact-bar,.compact-bar,
+ .workspace-navigation,.topbar,.zoom-toolbar,.lab-zoombar,.lab-dock,.tool-dock){
+ background:var(--soft-panel);border-color:var(--soft-line);
+ border-radius:16px;box-shadow:var(--soft-raised);
+}
+body.modo-soft-ui .study-shell.study-campus-shell :is(nav.study-sequence,.academic-modes,.unit-review-modes,.tool-teaching-nav){padding:5px;gap:4px;border:1px solid var(--soft-line);border-radius:16px}
+body.modo-soft-ui :is(.study-shell.study-campus-shell,.lab-page,.editor-workbench) :is(
+ nav.study-sequence,.academic-modes,.unit-review-modes,.tool-teaching-nav,
+ .study-segments,.study-section-tabs,.lab-segmented,.lab-chips,.temp-modes,.temp-tabs,
+ .lab-topbar,.lab-projectbar,.lab-tool-nav,.lab-compact-bar,.compact-bar,
+ .workspace-navigation,.topbar,.zoom-toolbar,.lab-zoombar,.lab-dock,.tool-dock)
+ :is(button,a.tutorial-trigger,a.home-link):not(:where(
+ [aria-pressed=true],[aria-selected=true],[aria-checked=true],[aria-current=step],
+ .active,.current,.running,.is-on,.lab-run,.lab-compact-run,.lab-swatches *)){
+ background:transparent;border-color:transparent;box-shadow:none;color:var(--soft-muted);
+}
+body.modo-soft-ui :is(.study-shell.study-campus-shell,.lab-page,.editor-workbench) :is(
+ nav.study-sequence,.academic-modes,.unit-review-modes,.tool-teaching-nav,
+ .lab-tool-nav,.workspace-views,.lab-segmented,.lab-dock,.tool-dock)
+ :is(button[aria-pressed=true],button[aria-current=step],button.active,button.current){
+ background:linear-gradient(145deg,#303133,#171819);color:#fff;border-color:#242527;
+ box-shadow:0 2px 5px #17181920,inset 0 1px 0 #ffffff18;
+}
+body.modo-soft-ui :is(.lab-page .lab-dock,.editor-workbench .tool-dock) i{background:#dddfe2}
+body.modo-soft-ui .lab-page .lab-dock-caret{border-top-color:currentColor}
+body.modo-soft-ui :is(.study-shell.study-campus-shell,.lab-page,.editor-workbench) :is(
+ nav.study-sequence,.academic-modes,.unit-review-modes,.tool-teaching-nav,
+ .lab-topbar,.lab-projectbar,.lab-tool-nav,.lab-compact-bar,.compact-bar,.workspace-navigation,
+ .zoom-toolbar,.lab-zoombar,.lab-dock,.tool-dock) button:not(:where(:disabled,[aria-pressed=true],.active,.current,.running,.is-on,.lab-run,.lab-compact-run)):hover{
+ background:#f0f1f2;color:var(--soft-ink);box-shadow:none;
+}
+/* A single white menu with flat icon rows instead of separately raised tiles. */
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(.lab-project-menu>div,.lab-dock-menu,.practice-settings,.cables-menu>div){background:#fff;border-color:var(--soft-line);border-radius:18px;box-shadow:var(--soft-overlay)}
+body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(.lab-project-menu>div,.lab-dock-menu,.practice-settings,.cables-menu>div) :is(button,a,label):not(:where([aria-pressed=true],[aria-checked=true],.on,.is-on,.lab-swatches *)){
+ background:transparent;color:var(--soft-ink);border-color:transparent;box-shadow:none;
+}
+body.modo-soft-ui .lab-dock-menu button{width:auto;justify-content:flex-start;color:var(--soft-ink)}
+body.modo-soft-ui .lab-dock-menu button .lab-menu-icon{background:#f0f1f2;color:var(--soft-ink)}
+body.modo-soft-ui .lab-dock-menu button.on{background:#242527;color:#fff}
+body.modo-soft-ui .lab-dock-menu button.on .lab-menu-icon{background:#3d3f42;color:#fff}
+body.modo-soft-ui :is(.tutorial-list button,.floating-window-header button){box-shadow:none;border-color:transparent;background:transparent}
+body.modo-soft-ui .modo-home-shortcuts{padding:5px;gap:4px;background:#fff;border:1px solid var(--soft-line);border-radius:28px;box-shadow:var(--soft-raised)}
+body.modo-soft-ui .modo-home-shortcuts>a{background:transparent;box-shadow:none;border-radius:22px;color:var(--soft-ink)}
+body.modo-soft-ui .modo-home-shortcuts>a:hover{background:#f0f1f2;box-shadow:none}
+body.modo-soft-ui .study-shell.study-campus-shell .academic-paging>button:last-child{background:linear-gradient(145deg,#303133,#171819);color:#fff;border-color:#242527}
+body.modo-soft-ui .study-shell.study-campus-shell .study-lesson-rail>summary{background:#fff;border-color:var(--soft-line)}
+@media(min-width:1101px){
+ body.modo-soft-ui .lab-page:not(.lab-compact):not(.lab-math-mode)::before{
+  content:'';position:absolute;z-index:44;left:14px;right:14px;top:14px;height:54px;
+  background:#fff;border:1px solid var(--soft-line);border-radius:16px;box-shadow:var(--soft-raised);pointer-events:none;
+ }
+ body.modo-soft-ui .lab-page:not(.lab-compact):not(.lab-math-mode) :is(.lab-topbar,.lab-projectbar){background:transparent;border-color:transparent;box-shadow:none}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-header-links{display:none}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-topbar .humano-legal-link span{display:none}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-topbar .tutorial-trigger{width:38px;padding:7px}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-topbar .tutorial-trigger span{display:none}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-project-name input{width:160px;background:transparent;box-shadow:none}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-save-state{max-width:90px;font-size:10px}
+}
+@media(max-width:800px){
+ body.modo-soft-ui :is(.lab-page,.editor-workbench) :is(.compact-bar,.lab-compact-bar){border-radius:0;border:0;border-bottom:1px solid var(--soft-line)}
+ body.modo-soft-ui .modo-home-shortcuts{border-radius:24px}
+}
+
+body.modo-soft-ui .study-shell.study-campus-shell nav.study-sequence{background:#fff;border-color:var(--soft-line);border-radius:16px;box-shadow:var(--soft-raised)}
+
+body.modo-soft-ui .study-shell.study-campus-shell .academic-lesson .academic-paging>button:last-child:not(:disabled),
+body.modo-soft-ui .study-shell.study-campus-shell .academic-question>button,
+body.modo-soft-ui .study-shell.study-campus-shell .academic-challenge .academic-actions>button:first-child{
+ background:linear-gradient(145deg,#303133,#171819);color:#fff;border-color:#242527;box-shadow:var(--soft-control);
+}
+body.modo-soft-ui .study-shell.study-campus-shell .academic-lesson .academic-modes button[aria-pressed=true]{
+ background:linear-gradient(145deg,#303133,#171819);color:#fff;border-color:#242527;box-shadow:0 2px 5px #17181920;
+}
+body.modo-soft-ui .modo-home :is(.modo-recent-actions,.modo-laboratory-tools){
+ background:#fff;border:1px solid var(--soft-line);border-radius:24px;padding:6px;box-shadow:var(--soft-raised);
+}
+body.modo-soft-ui .modo-home :is(.modo-continue,.modo-import){background:transparent;box-shadow:none;border:0}
+body.modo-soft-ui .modo-home :is(.modo-continue,.modo-import):hover{background:#f0f1f2;box-shadow:none}
+body.modo-soft-ui .modo-home .modo-laboratory-tools>a{border-radius:18px;padding:6px 2px}
+body.modo-soft-ui .modo-home .modo-laboratory-tools>a>svg{background:transparent;box-shadow:none}
+body.modo-soft-ui .modo-home .modo-laboratory-tools>a:hover{background:#f0f1f2}
+
+body.modo-soft-ui .lab-dock-menu button>.lab-menu-icon{
+ display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;background:transparent;border-radius:8px;
+}
+@media(min-width:1101px) and (max-width:1250px){
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-topbar{gap:8px}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-project-name input{width:110px}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-save-state{display:none}
+ body.modo-soft-ui .lab-page:not(.lab-compact) .lab-back span{display:none}
+}
+
+/* Text contrast on white toolbars: retain the cable sample and state colors,
+   while labels and helper copy use a readable neutral ink. */
+body.modo-soft-ui .editor-workbench .tool-dock .dock-color>summary{
+ color:var(--soft-ink);background:transparent;
+}
+body.modo-soft-ui .editor-workbench .tool-dock .dock-color>summary:hover,
+body.modo-soft-ui .editor-workbench .tool-dock .dock-color[open]>summary{
+ background:#eceef0;color:var(--soft-ink);
+}
+body.modo-soft-ui .editor-workbench .tool-dock .dock-color>summary:focus-visible{outline-color:var(--soft-accent)}
+body.modo-soft-ui .editor-workbench .tool-dock .dock-color-preview{border-color:#858a9050}
+body.modo-soft-ui .editor-workbench .tool-dock .cable-color-presets button{color:var(--soft-ink)}
+body.modo-soft-ui .editor-workbench .tool-dock .cable-color-presets button[aria-pressed=true]{
+ color:var(--soft-ink);background:#e9ebed;border-color:var(--soft-accent);box-shadow:0 0 0 1px var(--soft-accent);
+}
+body.modo-soft-ui .editor-workbench :is(.dock-color-menu,.dock-color-menu>p,.zoom-toolbar>span,.workspace-caption .save-state,.tool-dock small){color:var(--soft-muted)}
+body.modo-soft-ui .study-shell.study-campus-shell :is(.study-header-context,.study-header-context>span){color:var(--soft-muted)}
+body.modo-soft-ui .lab-page :is(
+ .lab-eyebrow,.lab-muted,.lab-muted b,.lab-help>summary,.lab-help p,
+ .lab-stagebar>span:not(.is-on),.lab-badge:not(.is-on),.lab-count-chip,
+ .lab-rung-number,.lab-outline-action,.lab-memory-row output,
+ .lab-hmi-heading,.lab-hmi-heading>span,.lab-hmi-heading>strong,
+ .lab-widget>strong,.lab-widget>small,.lab-hmi-toggle:not(.is-on),
+ .lab-process-controls>div>span,.lab-process-controls>div>strong,
+ .temp-empty,.geo-footer,.lab-dock-menu small,.lab-dock-menu kbd){color:var(--soft-muted)}
+body.modo-soft-ui .lab-page .lab-diagnostics:not(:has(.lab-error)){color:#316344}
+body.modo-soft-ui .lab-page .lab-diagnostics:not(:has(.lab-error)) :is(strong,span,small,p){color:#316344}
+body.modo-soft-ui .lab-dock-menu button.on :is(small,kbd){color:#e6e7e8}
+body.modo-soft-ui :is(.community-section-heading,.recognition-thanks,.community-closing,.community-footer) :is(p,span,a,strong){color:var(--soft-muted)}
+body.modo-soft-ui .community-footer{color:var(--soft-muted)}
+
+body.modo-soft-ui .study-shell.study-campus-shell .study-home .study-home-hero .study-home-hero-copy>.study-kicker{color:#d0d3d7}
+body.modo-soft-ui .study-shell.study-campus-shell .academic-lesson :is(
+ .study-kicker>span,.study-activity-progress,.study-activity-progress span,
+ .study-rail-source>span,.academic-step-head>span,.teaching-reader-intro>p,
+ .teaching-visual-top>span,.teaching-part-count,.teaching-focus>span,
+ .teaching-terms span,.teaching-terms p,.teaching-remember p,
+ .teaching-reader-footer>p,.study-model-note>summary){color:var(--soft-muted)}
+body.modo-soft-ui .study-shell.study-campus-shell .academic-lesson .study-lesson-rail button>span{color:var(--soft-muted)}
+body.modo-soft-ui .study-shell.study-campus-shell .academic-lesson .teaching-network .teaching-message{color:#376345}
+body.modo-soft-ui .study-shell.study-campus-shell .unit-review :is(
+ .unit-review-heading>p,.unit-curve-caption>span,.unit-ideas p,.unit-ideas span,
+ .unit-key-idea p,.unit-key-idea,.unit-review-footnote){color:var(--soft-muted)}
+body.modo-soft-ui .lab-page .lab-sheet-body p.lab-muted,
+body.modo-soft-ui .lab-page .lab-rungs .lab-outline-action,
+body.modo-soft-ui .lab-page .geo-workbench .lab-state{color:var(--soft-muted)}
+body.modo-soft-ui .lab-page .lab-program .lab-diagnostics strong{color:#316344}
+body.modo-soft-ui .lab-page .lab-widget .lab-hmi-toggle:not(.is-on){color:var(--soft-muted)!important}
+
+/* Older lesson sheets lock helper text with !important; override only those
+   neutral text roles, without affecting status messages or selected controls. */
+body.modo-soft-ui .study-shell.study-campus-shell .academic-lesson :is(
+ .study-activity-progress,.study-activity-progress span,.study-activity-progress p,
+ .study-rail-source small,.study-rail-source p,.study-rail-source span,
+ .academic-step-head>span,.teaching-visual-top>small,.teaching-reader-footer){color:var(--soft-muted)!important}
+body.modo-soft-ui .lab-page :is(.lab-muted,.lab-outline-action){color:var(--soft-muted)!important}
+body.modo-soft-ui .lab-page .lab-diagnostics>strong{color:#316344!important}
+body.modo-soft-ui .lab-page .lab-state:not(.is-on)>span{color:var(--soft-muted)}
+
+body.modo-soft-ui .editor-workbench .content-header>div>p,
+body.modo-soft-ui .study-shell.study-campus-shell .academic-lesson .academic-overview>div>span:not(.study-progress-track){color:var(--soft-muted)!important}
+body.modo-soft-ui .lab-page .lab-diagnostics>h2{color:#316344!important}
+body.modo-soft-ui .lab-page .lab-editor-title .lab-state:not(.is-on){color:var(--soft-muted)!important}
+
+body.modo-soft-ui .dock-color-menu>p,
+body.modo-soft-ui .study-shell.study-campus-shell .academic-index>summary,
+body.modo-soft-ui .lab-page .geo-toolbar>div:first-child>span{color:var(--soft-muted)!important}
+
+/* Contextual help belongs to a readable card, aligned with the workspace UI,
+   rather than a translucent pill crossing the reference label of the board. */
+body.modo-soft-ui :is(.editor-workbench .connection-message,.lab-page .lab-hint){
+ box-sizing:border-box;background:#fff;color:var(--soft-muted);
+ border:1px solid var(--soft-line);border-radius:14px;box-shadow:var(--soft-raised);
+ padding:10px 14px;font:400 12px/1.5 var(--modo-font,Inter,system-ui,sans-serif);
+ text-align:left;white-space:normal;overflow-wrap:anywhere;word-break:normal;
+ align-items:center;justify-content:flex-start;gap:10px;
+}
+body.modo-soft-ui .editor-workbench:not(.is-compact) .connection-message{
+ left:18px;right:auto;top:auto;bottom:52px;transform:none;
+ width:300px;max-width:calc(100vw - 36px);min-height:48px;
+}
+body.modo-soft-ui .editor-workbench .connection-message:empty{display:none}
+body.modo-soft-ui .editor-workbench .connection-message>button{
+ flex:none;min-height:36px;padding:7px 10px;border-radius:10px;font-size:12px;
+}
+body.modo-soft-ui .editor-workbench:not(.is-compact) .workspace-caption{
+ left:18px;bottom:18px;gap:10px;max-width:300px;font-size:10px;line-height:1.4;
+}
+body.modo-soft-ui .editor-workbench:not(.is-compact) .workspace-caption .save-state{font-size:10px}
+body.modo-soft-ui .lab-page:not(.lab-compact) .lab-hint{
+ left:18px;right:auto;bottom:84px;transform:none;width:max-content;
+ max-width:min(340px,calc(100vw - 36px));
+}
+body.modo-soft-ui :is(.editor-workbench .dock-tooltip,.lab-page .lab-dock-tip){
+ max-width:min(260px,calc(100vw - 24px));white-space:normal;text-align:left;
+ font-size:12px;line-height:1.5;border-radius:10px;
+}
+body.modo-soft-ui :is(.editor-workbench .status-banner,.lab-page .lab-notice){
+ box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;
+ font-size:13px;line-height:1.5;text-align:left;align-items:center;
+}
+body.modo-soft-ui .app-shell.editor-workbench.is-compact .connection-message{
+ left:12px;right:12px;top:calc(var(--bar-total) + 54px);bottom:auto;
+ transform:none;width:auto;max-width:none;font-size:12px;text-align:left;
+}
+body.modo-soft-ui .lab-page.lab-compact .lab-hint{
+ display:flex;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom,0px));
+ transform:none;width:auto;max-width:none;font-size:12px;
+}
+
+body.modo-soft-ui .lab-page.lab-compact :is(.tool-temperature,.tool-detectors) .lab-hint{
+ top:calc(var(--lab-bar-height,50px) + 58px);bottom:auto;z-index:24;
+}
+/* Tooltips need their own intrinsic width so long labels do not collapse into
+   one-word columns above the icon. */
+body.modo-soft-ui :is(.editor-workbench .dock-tooltip,.lab-page .lab-dock-tip){width:max-content}
+
+body.modo-soft-ui .lab-page.lab-compact .lab-hint{
+ top:calc(var(--lab-bar-height,50px) + 108px);bottom:auto;
+}
+body.modo-soft-ui .lab-page.lab-compact :is(.tool-temperature,.tool-detectors) .lab-hint{
+ top:calc(var(--lab-bar-height,50px) + 58px);bottom:auto;
+}
+
+/* Portaled menus live directly under body, outside the workspace theme scope. */
+body.modo-soft-ui .lab-dock-menu[role=menu]{background:#fff;color:var(--soft-ink);border:1px solid var(--soft-line);border-radius:18px;box-shadow:var(--soft-overlay)}
+body.modo-soft-ui .lab-dock-menu[role=menu]>button{width:100%;background:transparent;color:var(--soft-ink);box-shadow:none;border:0}
+body.modo-soft-ui .lab-dock-menu[role=menu]>button.on{background:#242527;color:#fff}
+body.modo-soft-ui .lab-dock-menu[role=menu] :is(small,kbd){color:var(--soft-muted)}
+body.modo-soft-ui .lab-dock-menu[role=menu]>button.on :is(small,kbd){color:#e6e7e8}
+body.modo-soft-ui .lab-dock-menu[role=menu]>button:focus-visible{outline:2px solid #565b61;outline-offset:-3px}
+
+body.modo-soft-ui .floating-window-title :is(h3,small){color:var(--soft-ink)}
+body.modo-soft-ui .floating-window-title>svg{color:var(--soft-muted)}
+
+/* Native tap overlays draw rectangular bounds around rounded and SVG controls. */
+body.modo-soft-ui :is(button,a,summary,label,select,[role=button],[role=radio],[role=menuitem]){-webkit-tap-highlight-color:transparent}
+
+/* Optional help stays near the dock, never as a full-width strip over equipment. */
+body.modo-soft-ui :is(.lab-page .lab-hint,.lab-page.lab-compact .lab-hint,.editor-workbench .connection-message,.app-shell.editor-workbench.is-compact .connection-message).context-hint{
+ position:fixed;display:flex;left:12px;right:auto;top:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:none;
+ width:max-content;max-width:min(340px,calc(100vw - 24px));min-height:0;box-sizing:border-box;padding:4px 5px 4px 12px;gap:6px;
+ border-radius:12px;font:12px/1.4 var(--ui-font,system-ui);pointer-events:none;z-index:75;
+}
+.context-hint>span{min-width:0;overflow-wrap:anywhere}
+body.modo-soft-ui .context-hint>button{pointer-events:auto;flex:none;min-width:44px;min-height:44px;display:grid;place-items:center;padding:6px;border-radius:9px}
+@media(max-height:500px){body.modo-soft-ui :is(.lab-page .lab-hint,.lab-page.lab-compact .lab-hint,.app-shell.editor-workbench.is-compact .connection-message).context-hint{bottom:72px;max-width:min(300px,calc(100vw - 24px));font-size:11px}}
+
+/* Con el diagrama abierto, el aviso se corre para no tapar sus botones (p. ej. «Material de estudio»). */
+@media(min-width:901px){html body.modo-soft-ui .app-shell.editor-workbench:has(.diagram-pane:not([hidden])) .connection-message.context-hint{left:calc(var(--diagram-width) + 40px)}}
+html body.modo-soft-ui .app-shell.editor-workbench.is-compact.is-portrait.diagram-open .connection-message.context-hint{bottom:calc(54dvh + 8px)}
+html body.modo-soft-ui .app-shell.editor-workbench.is-compact.is-landscape.diagram-open .connection-message.context-hint{left:calc(min(40vw,360px) + 18px);max-width:min(300px,calc(60vw - 30px))}
+
+/* Tacto: la zona de toque de cada borne sube hasta 28 unidades cuando su vecino lo permite (ver touchRadius en Board.tsx). */
+@media(pointer:coarse){.terminal-hit{r:var(--hit-r,20px)}}

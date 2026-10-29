@@ -1,32 +1,11 @@
 {
-  "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4341/estudio?curso=s2-3&clase=instrumentacion-g01-exp2&paso=1\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4341/estudio?curso=s2-3&clase=instrumentacion-g01-exp2&paso=1\", waiting until \"load\"\u001b[22m\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-detectors-ui.cjs:192:11",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('group', { name: 'Función del multímetro' }).getByRole('button', { name: 'V', exact: true })\u001b[22m\n\n    at meter (C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-detectors-ui.cjs:23:146)\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-detectors-ui.cjs:60:9",
   "checks": [
     "El banco usa el pizarrón del simulador: lienzo con pan/zoom, dock oscuro flotante, barra de zoom y entrada «Detectores» en el laboratorio",
-    "Los cables se tienden pulsando dos bornes, un cable repetido se quita y la tarjeta «Conexiones» es el diagrama de conexión",
-    "Inductivo PNP: 24 V con metal dentro del alcance, 0 V sin objeto y con plástico; la tabla clasifica alto y bajo",
-    "El capacitivo y el fotoeléctrico detectan metal y plástico; fuera del alcance la salida vuelve a 0 V",
-    "NPN: contra 0 V queda en 0 V y los 24 V aparecen entre +V y OUT; invertir las puntas invierte el signo",
-    "Multímetro apagado, puntas fuera de la salida, polaridad invertida y cortocircuito se explican y no se pueden registrar",
-    "La gráfica muestra puntos simulados y reales por separado; las mediciones reales quedan en «En clase» y el CSV las distingue",
-    "Entrada de PLC: un PNP con COM a 0 V da X0 = 24 V (ON) y se apaga sin objeto; un NPN solo la activa con COM a +24 V",
-    "Los cuatro modelos de G02 aparecen pendientes de ficha técnica, sin ningún dato precargado, y no se pueden simular ni registrar",
-    "Con la ficha escrita por el estudiante el modelo se simula (aquí un NPN de 15 mm); con 2 hilos el banco avisa que no lo simula",
-    "Cada equipo tiene su ficha con fuentes y pendientes: «Ver ficha del equipo» abre la correcta, la ventana del dock lista las 11, y el dibujo cambia con el modelo (M30 capacitivo, M18 inductivo, fotoeléctrico con hilos pendientes)",
-    "Configuración, cables, fichas y registros se conservan al recargar",
-    "Un guardado incompatible se conserva sin sobrescribir",
-    "Protoboard, Temperatura y Procesos siguen abriendo",
-    "Estudio → Instrumentación → Unidad 2 muestra las tres clases de G01/G02 junto a las de temperatura; las unidades sin material siguen pendientes",
-    "G01 experiencia 1: una respuesta incorrecta no suma, las cinco correctas completan la actividad y el plan de la exposición se guarda aparte"
+    "Los cables se tienden pulsando dos bornes, un cable repetido se quita y la tarjeta «Conexiones» es el diagrama de conexión"
   ],
   "errors": [],
   "captures": [
-    "banco-inicial-desktop.png",
-    "banco-registros-desktop.png",
-    "banco-grafica-desktop.png",
-    "banco-plc-desktop.png",
-    "detector-br100-desktop.png",
-    "detector-cr30-desktop.png",
-    "estudio-unidad2-desktop.png",
-    "estudio-g01-exp1-desktop.png"
+    "banco-inicial-desktop.png"
   ]
 }

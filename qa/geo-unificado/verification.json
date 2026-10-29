@@ -1,0 +1,17 @@
+{
+  "base": "http://127.0.0.1:4344",
+  "checks": [
+    "Barra común, sin navegación lateral distinta, catálogo visible de funciones y matrices",
+    "Cambio de herramienta conserva el archivo; la guía existente de funciones sigue comprobando resultados",
+    "Matrices: datos y operaciones: 4 actividades comprobadas con GeoGebra real, rechazo de trabajo vacío, guardado y revisión en Estudio",
+    "Producto de matrices y orden: 3 actividades comprobadas con GeoGebra real, rechazo de trabajo vacío, guardado y revisión en Estudio",
+    "Determinante, inversa y sistemas: 4 actividades comprobadas con GeoGebra real, rechazo de trabajo vacío, guardado y revisión en Estudio",
+    "Archivo libre preservado e independiente de las tres lecciones",
+    "Móvil: comandos reales, guía reabrible y comprobación táctil de matrices",
+    "390x844: controles, catálogo y área de trabajo dentro de la pantalla",
+    "820x1180: controles, catálogo y área de trabajo dentro de la pantalla",
+    "1180x820: controles, catálogo y área de trabajo dentro de la pantalla",
+    "844x390: controles, catálogo y área de trabajo dentro de la pantalla"
+  ],
+  "errors": []
+}

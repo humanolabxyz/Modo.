@@ -1,0 +1,34 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),{chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const out='qa/guides-class';fs.mkdirSync(out,{recursive:true});
+await build({stdin:{resolveDir:process.cwd(),contents:"export * from './src/study/guideSpreadsheet';export * from './src/study/guideWorkbookData';export * from './src/lab/temperature/physics';export * from './src/learning/temperatureLessons';export * from './src/data/meterActivity';export * from './src/data/simulation';export * from './src/data/panel';export * from './src/data/layout';"},bundle:true,platform:'node',format:'esm',outfile:out+'/model.mjs',logLevel:'silent'});
+const m=await import('./guides-class/model.mjs?'+Date.now()),report={checks:[],errors:[]};
+m.addExtraModule('tri');
+const good=m.activityDocument('manual'),on={...m.emptySimulation(),enabled:true,plugged:true,forceBreaker:true,breakers:[true,true]};
+for(const [terminal,type] of [['CONTACTOR_TERMICO:96','control'],['CONTACTOR_TERMICO:14','hold'],['BOTONERAS:PILOTO_2','pilot'],['FUENTE:S','phase']]){const target=good.wires.find(w=>[w.from.terminalId,w.to.terminalId].includes(terminal)),w=good.wires.filter(x=>x.id!==target.id),rest=m.solveSimulation(w,on),start=m.solveSimulation(w,{...on,pressed:['S1']}),held=m.solveSimulation(w,on,start.relays);if(type==='control')assert.equal(start.motor.status,'off');if(type==='hold'){assert.equal(start.motor.status,'running');assert.equal(held.motor.status,'off');}if(type==='pilot')assert.equal(rest.pilots[1],false);if(type==='phase')assert.equal(start.motor.status,'fault');assert.equal(m.solveSimulation(good.wires,{...on,pressed:['S1']}).motor.status,'running');}
+report.checks.push('Cuatro fallas alteran realmente el circuito; restaurar el cable recupera la marcha');
+const settings={...m.defaultSettings(),inWell:{tc:true,pt:true},txConnected:true,txPowered:true};
+function records(exp){return (exp===2?['tc','pt']:['tc','tx']).flatMap(sensor=>[22,50,75,100].map((temp,i)=>({id:sensor+i,source:'simulada',sensor,tcType:sensor==='pt'?null:'K',temp,value:m.reference(settings,sensor,temp),unit:sensor==='tc'?'mV':sensor==='pt'?'Ω':'V',ambient:22,ptLeadOhms:0,...sensor==='tx'?{txType:'K',txMin:0,txMax:100}:{},at:1})));}
+fs.writeFileSync(out+'/curvas-modelo.xlsx',m.buildGuideSpreadsheet(m.temperatureSeries(records(2))));
+const base=(process.env.PANELLAB_URL||'http://127.0.0.1:4327').replace(/\/$/,'');
+const browser=await chromium.launch();try{
+ for(const width of [1440,390]){
+  const c=await browser.newContext({viewport:{width,height:width===390?844:1000},serviceWorkers:'block',hasTouch:width===390,reducedMotion:'reduce',acceptDownloads:true});
+  await c.addInitScript(({settings,series})=>{localStorage.setItem('modo-tutoriales-bienvenida-v1','seen');if(sessionStorage.getItem('guide-fixtures'))return;sessionStorage.setItem('guide-fixtures','yes');for(const exp of [2,3]){const id='temperatura-experiencia-'+exp,first=exp===2?6:5;localStorage.setItem('modo:temperature:bench:'+id+':v1',JSON.stringify({version:1,settings,records:series[exp]}));localStorage.setItem('modo:temperature:progress:'+id+':v1',JSON.stringify({version:1,step:first,completed:Array.from({length:first},(_,i)=>i),notes:'',reviewed:false}));}},{settings,series:{2:records(2),3:records(3)}});
+  const p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));p.setDefaultTimeout(15000);
+  await p.goto(base+'/estudio?curso=s2-2&clase=cm-actividad-2-u2');await p.getByRole('link',{name:'Abrir guía de mediciones en el panel',exact:false}).click();await p.locator('.panel-meter-lesson-window').waitFor();assert.equal(await p.locator('.interactive-wire').count(),0,'Abrir la guía no arma el banco');
+  const guide=p.locator('.panel-meter-lesson-window');await guide.getByRole('button',{name:'Fallas',exact:true}).click();await guide.getByRole('button',{name:'No arranca al pulsar marcha',exact:true}).click();assert.equal(await p.locator('.interactive-wire').count(),45);await guide.getByRole('button',{name:'Ver pista de diagnóstico',exact:true}).click();assert.match(await guide.innerText(),/96 del térmico/);
+  for(const exp of [2,3]){
+   await p.goto(base+'/laboratorio?tool=temperature&leccion=temperatura-experiencia-'+exp);await p.waitForSelector('[data-temperature-ready="true"]');const g=p.locator('.temp-guide');
+   await g.getByRole('button',{name:'Ver curva termocupla',exact:true}).click();await g.getByRole('button',{name:exp===2?'Ver curva Pt100':'Ver curva transmisor',exact:true}).click();await g.getByRole('button',{name:'Comprobar mi trabajo',exact:false}).click();await g.getByRole('button',{name:'Paso siguiente',exact:true}).click();
+   await g.getByLabel('Mis observaciones',{exact:true}).fill('La termocupla genera milivoltios y el Pt100 cambia su resistencia. El transmisor convierte la lectura con el rango configurado y permite comparar contra las tablas.');await g.getByRole('button',{name:'Comprobar mi trabajo',exact:false}).click();await g.getByRole('button',{name:'Paso siguiente',exact:true}).click();
+   const pending=p.waitForEvent('download');await g.getByRole('button',{name:'Descargar planilla con curvas',exact:true}).click();await (await pending).saveAs(out+`/curvas-${width}-${exp}.xlsx`);await g.getByRole('button',{name:'Comprobar mi trabajo',exact:false}).click();await g.getByRole('link',{name:'Práctica completada · volver a Estudio',exact:false}).waitFor();assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await p.screenshot({path:out+`/temperatura-${width}-${exp}.png`});
+  }
+  await p.goto(base+'/estudio?curso=s2-3&clase=instrumentacion-g03-exp2');await p.locator('.guide-workbook').evaluate(el=>{el.open=true;});await p.getByLabel('Resumen',{exact:true}).fill('Preparación de la guía para la clase.');await p.reload();await p.locator('.guide-workbook').evaluate(el=>{el.open=true;});assert.equal(await p.getByLabel('Resumen',{exact:true}).inputValue(),'Preparación de la guía para la clase.');const download=p.waitForEvent('download');await p.getByRole('button',{name:'Descargar informe con resultados',exact:true}).click();await (await download).saveAs(out+`/informe-${width}.html`);assert.match(fs.readFileSync(out+`/informe-${width}.html`,'utf8'),/Preparación de la guía para la clase/);
+  report.checks.push(`${width}px: acceso directo sin autoarmar; falla cargada; nuevos pasos de experiencias 2 y 3; Excel con curvas; persistencia y exportación del cuaderno`);await c.close();
+ }
+ assert.deepEqual(report.errors,[]);fs.writeFileSync(out+'/results.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+}finally{await browser.close();}

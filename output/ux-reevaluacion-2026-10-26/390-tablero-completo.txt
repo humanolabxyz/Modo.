@@ -1,0 +1,267 @@
+Herramienta del laboratorio
+Esquemas
+Tableros de control
+PLC
+HMI
+Procesos
+Protoboard
+Soldadura
+Temperatura
+Detectores
+GeoGebra
+TU ESPACIO DE TRABAJO
+Tableros de control
+Automatización
+16 equipos · 36 cables
+Vista
+Conjunto
+Placa
+Puerta
+Campo
+modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS
+GABINETE DE CONTROL
+PUERTA DE MANDO
+EQUIPO DE CAMPO
+ESPACIO DE RESERVA · AMPLIACIONES
+AREA UTIL ASIGNADA 720 x 780 · MODELO
+BOMBA AUXILIAR · M1
+ALIMENTACIÓN Y MOTOR EQUIVALENTES
+LED INTERIOR · MODELO
+0
+I
+QS1 · SECCIONADOR
+FILTRO-VENTILADOR
+ENVOLVENTE · MODELO
+IP66 · NEMA 4X EQUIVALENTE
+400 V · 50 Hz · didáctico
+BOMBA CENTRÍFUGA · MODELO
+Bandeja de equipos · selecciona y coloca cada pieza
+Modelo didáctico · representación industrial genérica · sin cotas de fabricación.
+G1
+DC POWER SUPPLY
+24 V DC
+DC OK
+G1 · ALIMENTACIÓN DE MANDO
++
+−
+Fuente DC regulada
+FU1
+FU1
+CARTUCHO INSERTADO
+1
+2
+Portafusible
+QM1
+AJUSTE DE PRÁCTICA
+I
+O
+MOTOR PROTECTION
+I · CERRADO
+1
+3
+5
+2
+4
+6
+Guardamotor
+K1
+CONTACTOR · K1
+O
+BOBINA 24 V DC
+L1
+L2
+L3
+T1
+T2
+T3
+A1
+A2
+13
+14
+21
+22
+Contactor de potencia
+F1
+RELÉ TÉRMICO · F1
+RESET
+TEST
+NORMAL
+L1
+L2
+L3
+T1
+T2
+T3
+95
+96
+97
+98
+Relé térmico
+X1:U
+U
+1
+2
+Bornera de paso
+X1:V
+V
+1
+2
+Bornera de paso
+X1:W
+W
+1
+2
+Bornera de paso
+PE1
+PE
+PE
+Tierra de protección
+S0
+O
+PARO
+1
+2
+Pulsador NC
+S1
+I
+MARCHA
+3
+4
+Pulsador NA
+H1
+MARCHA
+1
+2
+Piloto
+RED
+RED 3~
+400 V · RMS
+PUNTO DE ALIMENTACIÓN EQUIVALENTE
+L1
+L2
+L3
+N
+PE
+Fuente trifásica
+M1
+MOTOR 3~ · MODELO
+400 V · 50 Hz
+U1
+V1
+W1
+W2
+U2
+V2
+PE
+Motor trifásico de seis bornes
+PLC1
+PLC INDUSTRIAL · modo.
+PWR
+RUN
+ERR
+DI
+DO
+SALIDA Q1 · CONTACTOR K1
+SIN MANDO
+PROGRAMAR
+24 V DC · CONTROLADOR GENÉRICO
+L+
+M
+I1
+I2
+I3
+I4
+I5
+I6
+I7
+I8
+C1
+Q1
+C2
+Q2
+C3
+Q3
+C4
+Q4
+PLC del proyecto
+B1
+0
+I
+PERMISO I
+3
+4
+Selector de dos posiciones
+W01
+W01
+W02
+W02
+W03
+W03
+W04
+W04
+W05
+W05
+W06
+W06
+W07
+W07
+W08
+W08
+W09
+W09
+W10
+W10
+W11
+W11
+W12
+W12
+W13
+W13
+W14
+W14
+W15
+W15
+W16
+W16
+W17
+W17
+W18
+W18
+W19
+W19
+W20
+W20
+W21
+W21
+W22
+W22
+W23
+W23
+W24
+W24
+W25
+W25
+W26
+W26
+W27
+W27
+W28
+W28
+W29
+W29
+W30
+W30
+W31
+W31
+W32
+W32
+W33
+W33
+W34
+W34
+W35
+W35
+W36
+W36
+34%
+Actividad

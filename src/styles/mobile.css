@@ -71,8 +71,9 @@
 .app-shell.is-compact .board-svg[data-gesture=true] [filter],
 .app-shell.is-compact .board-svg[data-dragging=true] [filter],
 .app-shell.is-compact .board-svg[data-animating=true] [filter]{filter:none}
-.app-shell.is-compact .board-svg[data-gesture=true] *,
-.app-shell.is-compact .board-svg[data-dragging=true] *{animation-play-state:paused}
+/* Only animated elements need pausing. A universal descendant selector also
+   invalidates the SVG connector instances on every gesture-state change. */
+.app-shell.is-compact .board-svg:is([data-gesture=true],[data-dragging=true]) :is(.motor-rotor,.pilot-glow,.interactive-wire,.selected-ring,.plug-seat,.plug-ripple,.pending-cable-preview){animation-play-state:paused}
 .app-shell.is-compact .board-svg .pilot-glow[opacity="0"]{display:none}
 .app-shell.is-compact button,.app-shell.is-compact summary{transition:none}
 .app-shell.is-compact{touch-action:manipulation}
@@ -81,3 +82,7 @@
 
 /* La cabecera del diagrama debe recibir el arrastre aunque cubra su lanzador. */
 .app-shell.diagram-open.is-compact .procedure-tools{z-index:29}
+
+.diagram-pane-actions .diagram-move-handle{display:flex;align-items:center;gap:7px;min-width:0;margin-right:auto;color:var(--soft-ink,#344b59)}
+.diagram-move-handle>svg{display:none}.is-compact .diagram-move-handle>svg{display:block;flex:none}.is-compact .diagram-move-handle{cursor:grab;touch-action:none;min-height:38px}
+.is-compact .diagram-move-handle:focus-visible{outline:2px solid currentColor;outline-offset:2px;border-radius:5px}

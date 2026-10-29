@@ -1,0 +1,70 @@
+ 
+ 
+ 
+ARRI02 – Redes Industriales – Actividad nro. 01 – Página 8 
+ 
+ 
+Requerimientos de entrega: 
+ 
+Checklist  
+Requerimientos 
+Cumple  No cumple 
+El estudiante verifica la totalidad de los materiales requeridos para la 
+experiencia en su estación de trabajo. 
+ 
+ 
+Los cables se encuentran correctamente soldados en ambos extremos, 
+realizando comprobación mediante multitester. 
+ 
+ 
+Carga a los equipos de automatización correctamente los programas Ladder y 
+pantalla HMI otorgados.   
+ 
+ 
+Verifica la correcta comunicación en el puerto RS485 del HMI con el PLC (no se 
+escucha el beep). 
+ 
+ 
+Verifica funcionamiento correcto en la interacción entre HMI y PLC. 
+ 
+ 
+Comprueba la comunicación entre los equipos de automatización al cambiar 
+algún parámetro. 
+ 
+ 
+ 
+ 
+ 
+Equipos, materiales y software: por grupo 
+ 
+Materiales 
+Cantidad 
+Notebook con softwares instalados 
+DOPSoft, ISPSoft, COMMGR y driver USB-Sx2 
+1 
+Conector DB9 macho 
+1 
+Conector de tornillo para PLC Delta (RS 485) 
+1 
+Cable utp o cable telefónico 
+1 
+Alicate de punta 
+1 
+Estación de soldaje 
+1 
+Carrete soldadura de estaño 
+1 
+Maqueta Delta PLC+HMI y respectivos cables USB 
+1 
+Multitester 
+1 
+ 
+Identificación y evaluación de riesgos: 
+ 
+✓ Utilice cotona para esta actividad práctica. 
+✓ Utilice zapatos de seguridad dieléctrico. 
+✓ Evite tocar directamente con las manos el cautín para evitar quemaduras. Para eso está la estación. 
+✓ No energice la maqueta hasta que el docente lo indique, para evitar riesgos eléctricos. 
+✓ Manipule el multitester correctamente, para evitar daños al equipo (quema de fusibles). Si tiene dudas, 
+consúltelo al docente. 
+ 

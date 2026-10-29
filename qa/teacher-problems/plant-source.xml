@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<geogebra format="5.0" version="5.0.467.0" app="classic" platform="w" id="7ca4abd0-750b-4d9b-a872-bde0fa9a0321"  xsi:noNamespaceSchemaLocation="http://www.geogebra.org/ggb.xsd" xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+<gui>
+	<window width="1000" height="533" />
+	<perspectives>
+<perspective id="tmp">
+	<panes>
+		<pane location="" divider="0.378" orientation="1" />
+	</panes>
+	<views>
+		<view id="4097" visible="false" inframe="true" stylebar="true" location="1,1,1,1" size="400" window="301,91,700,550" />
+		<view id="512" toolbar="0 | 1 501 5 19 , 67 | 2 15 45 18 , 7 37 | 514 3 9 , 13 44 , 47 | 16 | 551 550 11 ,  20 22 21 23 , 55 56 57 , 12 | 69 | 510 511 , 512 513 | 533 531 , 534 532 , 522 523 , 537 536 , 535 | 521 520 | 36 , 38 49 560 | 571 30 29 570 31 33 | 17 | 540 40 41 42 , 27 28 35 , 6 , 502" visible="false" inframe="false" stylebar="false" location="1,1,1" size="500" window="100,100,600,400" />
+		<view id="4" toolbar="0 || 2020 , 2021 , 2022 , 66 || 2001 , 2003 , 2002 , 2004 , 2005 || 2040 , 2041 , 2042 , 2044 , 2043" visible="false" inframe="false" stylebar="true" location="1,1" size="300" window="100,100,600,400" />
+		<view id="8" toolbar="1001 | 1002 | 1003  || 1005 | 1004 || 1006 | 1007 | 1010 || 1008 1009 || 66 68 || 6" visible="false" inframe="false" stylebar="false" location="1,3" size="300" window="100,100,600,400" />
+		<view id="1" visible="true" inframe="false" stylebar="true" location="1" size="998" window="100,100,600,400" />
+		<view id="2" visible="false" inframe="false" stylebar="false" location="3" size="378" window="100,100,600,400" />
+		<view id="16" visible="false" inframe="false" stylebar="false" location="1" size="150" window="50,50,500,500" />
+		<view id="32" visible="false" inframe="false" stylebar="true" location="1" size="150" window="50,50,500,500" />
+		<view id="64" toolbar="0" visible="false" inframe="true" stylebar="true" location="1" size="150" window="50,50,500,500" />
+		<view id="128" visible="false" inframe="true" stylebar="false" location="1" size="480" window="50,50,500,500" />
+		<view id="70" toolbar="0 || 2020 || 2021 || 2022" visible="false" inframe="true" stylebar="true" location="1" size="150" window="50,50,500,500" />
+		<view id="43" visible="false" inframe="false" stylebar="false" location="1" size="450" window="50,50,500,500" />
+	</views>
+	<toolbar show="false" items="0 39 73 62 | 1 501 67 , 5 19 , 72 75 76 | 2 15 45 , 18 65 , 7 37 | 4 3 8 9 , 13 44 , 58 , 47 | 16 51 64 , 70 | 10 34 53 11 , 24  20 22 , 21 23 | 55 56 57 , 12 | 36 46 , 38 49  50 , 71  14  68 | 30 29 54 32 31 33 | 25 17 26 60 52 61 | 40 41 42 , 27 28 35 , 6" position="1" help="false" />
+	<input show="false" cmd="true" top="algebra" />
+	<dockBar show="false" east="false" />
+</perspective>
+	</perspectives>
+	<labelingStyle  val="0"/>
+	<font  size="16"/>
+</gui>
+<euclidianView>
+	<viewNumber viewNo="1"/>
+	<size  width="998" height="531"/>
+	<coordSystem xZero="559" yZero="474.9999999999993" scale="33.28220858895709" yscale="31.64495430682479"/>
+	<evSettings axes="true" grid="true" gridIsBold="false" pointCapturing="3" rightAngleStyle="1" checkboxSize="26" gridType="3"/>
+	<bgColor r="255" g="255" b="255"/>
+	<axesColor r="0" g="0" b="0"/>
+	<gridColor r="192" g="192" b="192"/>
+	<lineStyle axes="1" grid="0"/>
+	<axis id="0" show="true" label="" unitLabel="" tickStyle="1" showNumbers="true" positiveAxis="true"/>
+	<axis id="1" show="true" label="" unitLabel="" tickStyle="1" showNumbers="true"/>
+</euclidianView>
+<kernel>
+	<continuous val="false"/>
+	<usePathAndRegionParameters val="true"/>
+	<decimals val="2"/>
+	<angleUnit val="degree"/>
+	<algebraStyle val="0" spreadsheet="0"/>
+	<coordStyle val="0"/>
+</kernel>
+<scripting blocked="false" disabled="false"/>
+<construction title="U05 - PPMAT04" author="" date="">
+<element type="button" label="botón1">
+	<show object="true" label="true"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<bgColor r="255" g="255" b="0" alpha="255"/>
+	<layer val="0"/>
+	<labelOffset x="29" y="23"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<auxiliary val="true"/>
+	<ggbscript val="UpdateConstruction[]&#10;contador=1"/>
+	<font serif="false" sizeM="1" size="0" style="1"/>
+	<caption val="Nuevo Ejercicio"/>
+</element>
+<element type="button" label="botón2">
+	<show object="true" label="true"/>
+	<objColor r="0" g="0" b="0" alpha="1"/>
+	<bgColor r="0" g="153" b="0" alpha="255"/>
+	<layer val="0"/>
+	<labelOffset x="148" y="23"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<auxiliary val="true"/>
+	<ggbscript val="contador=2"/>
+	<font serif="false" sizeM="1" size="0" style="1"/>
+	<caption val="Ver respuesta"/>
+</element>
+<expression label="texto2" exp="&quot;\text{Altura en cm}&quot;"/>
+<element type="text" label="texto2">
+	<show object="true" label="true" ev="40"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="3"/>
+	<absoluteScreenLocation x="389" y="26"/>
+</element>
+<expression label="texto3" exp="&quot;\text{Tiempo en Años}&quot;"/>
+<element type="text" label="texto3">
+	<show object="true" label="true" ev="40"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="3"/>
+	<absoluteScreenLocation x="730" y="500"/>
+</element>
+<expression label="texto11" exp="&quot;\text{a) ¿Cuál es la altura inicial de la planta?} &quot;"/>
+<element type="text" label="texto11">
+	<show object="true" label="true" ev="40"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="33" y="179"/>
+</element>
+<command name="Random">
+	<input a0="1" a1="8"/>
+	<output a0="a"/>
+</command>
+<element type="numeric" label="a">
+	<value val="7"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<command name="Random">
+	<input a0="2" a1="8"/>
+	<output a0="b"/>
+</command>
+<element type="numeric" label="b">
+	<value val="8"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label ="contador" exp="1"/>
+<element type="numeric" label="contador">
+	<value val="1"/>
+	<show object="false" label="true"/>
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+	<layer val="0"/>
+	<labelMode val="1"/>
+	<animation step="1" speed="1" type="0" playing="false"/>
+</element>
+<expression label="h" exp="h(t) = If[t ≥ 0, a + (b * log(10, t + 1))]" />
+<element type="function" label="h">
+	<show object="true" label="false" ev="4"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="102" g="153" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<lineStyle thickness="7" type="0" typeHidden="1" opacity="178"/>
+</element>
+<command name="Intersect">
+	<input a0="h" a1="yAxis" a2="(0, 7)"/>
+	<output a0="A"/>
+</command>
+<element type="point" label="A">
+	<show object="true" label="true" ev="4"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="153" b="204" alpha="0"/>
+	<layer val="0"/>
+	<labelOffset x="11" y="22"/>
+	<labelMode val="2"/>
+	<coords x="0" y="7" z="1"/>
+	<pointSize val="4"/>
+	<pointStyle val="0"/>
+</element>
+<expression label="Ra" exp="h(0)" />
+<element type="numeric" label="Ra">
+	<value val="7"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<command name="Random">
+	<input a0="10" a1="100"/>
+	<output a0="dias"/>
+</command>
+<element type="numeric" label="dias">
+	<value val="22"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="Rb" exp="h(dias)" />
+<element type="numeric" label="Rb">
+	<value val="17.893822688140745"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="dias2" exp="(Random[1, 10] * 365)" />
+<element type="numeric" label="dias2">
+	<value val="3650"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="texto1" exp="&quot;\text{b) ¿Cuál es la altura de la planta a los &quot; + (LaTeX[dias]) + &quot; días de haber sido plantada ?} &quot;" />
+<element type="text" label="texto1">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="34" y="243"/>
+</element>
+<expression label="pc" exp="h(dias2)" />
+<element type="numeric" label="pc">
+	<value val="35.49929466359782"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="texto4" exp="&quot;\text{c) Si una planta tiene una altura de &quot; + (LaTeX[pc]) + &quot; cm, \\&#10;¿hace cuántos años fue plantada aproximádamente? ?} &quot;" />
+<element type="text" label="texto4">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="29" y="316"/>
+</element>
+<expression label="texto6" exp="&quot;\text{d) Grafique, indicando cortes y nombre  de los ejes&quot;"/>
+<element type="text" label="texto6">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="30" y="401"/>
+</element>
+<expression label="texto7" exp="&quot;\text{Resp. &quot; + (LaTeX[Ra]) + &quot; cm}&quot;" />
+<element type="text" label="texto7">
+	<show object="true" label="true" ev="8"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="3"/>
+	<absoluteScreenLocation x="33" y="210"/>
+</element>
+<expression label="texto8" exp="&quot;\text{Resp.&quot; + (LaTeX[Rb]) + &quot; cm}&quot;" />
+<element type="text" label="texto8">
+	<show object="true" label="true" ev="8"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="3"/>
+	<absoluteScreenLocation x="32" y="281"/>
+</element>
+<expression label="años2" exp="dias2 / 365" />
+<element type="numeric" label="años2">
+	<value val="10"/>
+	<symbolic val="true" />
+	<objColor r="0" g="0" b="0" alpha="0.10000000149011612"/>
+</element>
+<expression label="texto9" exp="&quot;\text{Resp.&quot; + (LaTeX[años2]) + &quot; años&quot;" />
+<element type="text" label="texto9">
+	<show object="true" label="true" ev="8"/>
+	<condition showObject="contador ≟ 2"/>
+	<objColor r="255" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="3"/>
+	<absoluteScreenLocation x="31" y="369"/>
+</element>
+<expression label ="Curve" exp="Curve(x) = NaN" type="function"/>
+<element type="function" label="Curve">
+	<show object="true" label="false" ev="4"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<lineStyle thickness="5" type="0" typeHidden="1" opacity="178"/>
+</element>
+<element type="point" label="Point (dependent)">
+	<show object="true" label="false"/>
+	<objColor r="68" g="68" b="68" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<animation step="1" speed="1" type="1" playing="false"/>
+	<coords x="NaN" y="NaN" z="NaN"/>
+	<pointSize val="4"/>
+	<pointStyle val="0"/>
+</element>
+<expression label="texto5" exp="&quot;\text{La altura de una planta, después de haber sido plantada, depende del \\agua proporcionada, &#10;y del clima en el cual se encuentre. Considerando \\que estas condiciones son las &#10;óptimas para su crecimiento, a medida que \\transcurran los días, &#10;la planta incrementará su altura de acuerdo a la función: \\h(t) =&quot; + (LaTeX[a]) + &quot;+&quot; + (LaTeX[b]) + &quot; log(t+1)}\\&#10;donde h(t) es la altura de la planta (en centímetros) y t es el tiempo en días.} &quot;" />
+<element type="text" label="texto5">
+	<show object="true" label="true" ev="8"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<fixed val="true"/>
+	<isLaTeX val="true"/>
+	<font serif="true" sizeM="0.7" size="-5" style="0"/>
+	<absoluteScreenLocation x="28" y="71"/>
+</element>
+</construction>
+</geogebra>

@@ -7,7 +7,7 @@ import {TeacherMaterial} from './TeacherMaterial';
 import {ExamReference} from './ExamReference';
 export function DiagramReader({onLocate}:{onLocate:(id:string)=>void}){
  const [view,setView]=useState({x:245,y:25,w:425,h:680}),svg=useRef<SVGSVGElement>(null),drag=useRef<{x:number;y:number;view:typeof view;scale:number}|null>(null);
- useSvgNavigation(svg,view,setView,{min:160,max:2000});
+ useSvgNavigation(svg,view,setView,{min:160,max:2000,wheelPan:false});
  const zoom=(factor:number)=>setView(v=>{const w=Math.max(160,Math.min(2000,v.w*factor)),h=w*v.h/v.w;return{x:v.x+(v.w-w)/2,y:v.y+(v.h-h)/2,w,h}});
  const [selected,setSelected]=useState<string|null>(null),[mode,setMode]=useState<'explore'|'practice'>('explore'),[index,setIndex]=useState(0),[feedback,setFeedback]=useState<'correct'|'wrong'|null>(null),[help,setHelp]=useState(false);
  const part=READING_PARTS.find(p=>p.id===selected),challenge=READING_CHALLENGES[index],done=index>=READING_CHALLENGES.length;

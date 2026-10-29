@@ -1,0 +1,45 @@
+{
+  "checks": [
+    "320×740: filas legibles al ajustar, controles sin solape, ventanas conservadas, identificación visual sin mutación, tarea visible y deshacer/rehacer",
+    "320×740: Ladder continuo y encuadrable, entradas en diseño neutras y borrador conservado al minimizar",
+    "390×844: filas legibles al ajustar, controles sin solape, ventanas conservadas, identificación visual sin mutación, tarea visible y deshacer/rehacer",
+    "390×844: Ladder continuo y encuadrable, entradas en diseño neutras y borrador conservado al minimizar",
+    "768×1024: filas legibles al ajustar, controles sin solape, ventanas conservadas, identificación visual sin mutación, tarea visible y deshacer/rehacer",
+    "768×1024: Ladder continuo y encuadrable, entradas en diseño neutras y borrador conservado al minimizar",
+    "844×390: filas legibles al ajustar, controles sin solape, ventanas conservadas, identificación visual sin mutación, tarea visible y deshacer/rehacer",
+    "844×390: Ladder continuo y encuadrable, entradas en diseño neutras y borrador conservado al minimizar",
+    "1440×960: filas legibles al ajustar, controles sin solape, ventanas conservadas, identificación visual sin mutación, tarea visible y deshacer/rehacer",
+    "1440×960: Ladder continuo y encuadrable, entradas en diseño neutras y borrador conservado al minimizar",
+    "Modo selección no cablea; modo conexión une bornes, deshacer/rehacer conserva el circuito y Mano no mueve equipos",
+    "Esquemas, HMI y Procesos comparten selección y mano con el mismo estado visible",
+    "Sin errores JavaScript en la evaluación ampliada"
+  ],
+  "errors": [],
+  "metrics": [
+    {
+      "width": 320,
+      "nameWidth": 154.15625,
+      "rowHeight": 83
+    },
+    {
+      "width": 390,
+      "nameWidth": 178.15625,
+      "rowHeight": 83
+    },
+    {
+      "width": 768,
+      "nameWidth": 163.15625,
+      "rowHeight": 83
+    },
+    {
+      "width": 844,
+      "nameWidth": 365.15625,
+      "rowHeight": 83
+    },
+    {
+      "width": 1440,
+      "nameWidth": 228.15625,
+      "rowHeight": 83
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import {StudyClassContext,studyClasses} from './StudyClassContext';
 import {LogoModo} from '../components/LogoModo';
 import {LegalLink} from '../components/LegalLink';
 import {TutorialHelp} from '../components/TutorialHelp';
@@ -125,6 +126,10 @@ export default function StudyApp() {
       setCatalog(false);
       setState((s) => ({ ...s, screen, lesson: topic }));
       const url = new URL(window.location.href);
+      url.searchParams.set("curso", "s2-2");
+      const material=studyClasses("s2-2").find(m=>m.topicIds?.includes(topic));
+      if(material)url.searchParams.set("clase",material.id);
+      url.searchParams.delete("paso");
       url.searchParams.set("tema", topic);
       url.searchParams.set("vista", screen);
       if (url.href !== window.location.href) window.history.pushState(null, "", url);
@@ -242,8 +247,9 @@ export default function StudyApp() {
               </div>
             )}
             {catalog ? <StudyHub state={state} onOpen={navigate} /> : <>
+            <StudyClassContext courseId="s2-2" classId={studyClasses("s2-2").find(m=>m.topicIds?.includes(state.lesson))?.id||""}/>
             <div className="campus-learning-heading">
-              <button onClick={openCatalog}><ArrowLeft size={18} /> Materias</button>
+              <button onClick={openCatalog}><ArrowLeft size={18} /> Todos los ramos</button>
               <div><span>CONTROL DE MÁQUINAS ELÉCTRICAS ROTATIVAS</span><h1>Protecciones eléctricas</h1></div>
               <span className="campus-learning-topic">Tema {lessons.indexOf(lesson) + 1} / {lessons.length}</span>
             </div>

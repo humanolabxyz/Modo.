@@ -1,0 +1,9 @@
+{
+  "passed": 20,
+  "checks": [
+    "Rangos normales de 6000 cuentas y cambio por redondeo",
+    "Toma A sin resolución ficticia de mA",
+    "Sobrerango, cero negativo y continuidad",
+    "REL y MIN/MAX conservan unidades base"
+  ]
+}

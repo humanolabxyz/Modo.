@@ -1,0 +1,18 @@
+{
+  "base": "https://modo-lab.vercel.app",
+  "checks": [
+    "1101 equipment: cabecera integrada, controles accesibles y desplegable anclado",
+    "1101 hmi: cabecera integrada, controles accesibles y desplegable anclado",
+    "1101 temperature: cabecera integrada, controles accesibles y desplegable anclado",
+    "1280 equipment: cabecera integrada, controles accesibles y desplegable anclado",
+    "1280 hmi: cabecera integrada, controles accesibles y desplegable anclado",
+    "1280 temperature: cabecera integrada, controles accesibles y desplegable anclado",
+    "1440 equipment: cabecera integrada, controles accesibles y desplegable anclado",
+    "1440 hmi: cabecera integrada, controles accesibles y desplegable anclado",
+    "1440 temperature: cabecera integrada, controles accesibles y desplegable anclado",
+    "1920 equipment: cabecera integrada, controles accesibles y desplegable anclado",
+    "1920 hmi: cabecera integrada, controles accesibles y desplegable anclado",
+    "1920 temperature: cabecera integrada, controles accesibles y desplegable anclado"
+  ],
+  "errors": []
+}

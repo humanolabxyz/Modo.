@@ -1,42 +1,14 @@
 {
-  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Borrar historial de repaso').first()\u001b[22m\n\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-temperature-ui.cjs:255:73",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'mV', exact: true })\u001b[22m\n\n    at wire (C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-temperature-ui.cjs:25:90)\n    at C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\qa\\verify-temperature-ui.cjs:65:9",
   "checks": [
     "El banco usa el pizarrón del simulador: lienzo con pan/zoom, dock oscuro flotante y barra de zoom",
     "Seis fichas con fuentes enlazadas (ventana del dock y desde cada equipo) y fuente de alimentación que enciende y apaga el transmisor",
     "Las sondas se introducen al pozo con su edición contextual y Escape la cierra",
     "Un valor inválido muestra el motivo junto al campo y Escape cancela sin cambiar el objetivo",
-    "El horno acepta 75 °C con Enter y muestra su temperatura junto al equipo",
-    "Termocupla K a 75 °C con referencia a 22 °C: 2,180 mV",
-    "Pt100 en Ω lee R(75 °C) y cada lectura estable se registra con su referencia de tabla",
-    "Ω en la termocupla o puntas en sensores distintos no producen un registro válido",
-    "Pt100 de 3 y 4 hilos: entre un rojo y un blanco mide R(T), entre dos del mismo color solo el cable, y pasar a 3 hilos suelta el cuarto",
-    "Las puntas roja y negra se conectan pulsando los bornes del lienzo (el orden se encadena solo)",
-    "Invertir las puntas invierte el signo de la lectura",
-    "Cuatro temperaturas por sensor: Pt100 a 100 °C = 138,51 Ω y ocho registros en total",
-    "La curva muestra los puntos simulados sobre la referencia",
-    "Transmisor 0–100 °C → 0–10 V entrega 7,500 V a 75 °C",
-    "Un transmisor con el tipo de termocupla equivocado avisa y entrega una lectura errónea",
-    "Las mediciones reales quedan separadas de las simuladas y el CSV las distingue (coma decimal, «;»)",
-    "Configuración y registros se conservan al recargar",
-    "Un guardado incompatible se conserva sin sobrescribir",
-    "Protoboard y Procesos siguen abriendo",
-    "Instrumentación → Unidad 2 muestra las tres experiencias de G03 y las tres clases de detectores; las unidades sin material siguen pendientes",
-    "Experiencia 1: una respuesta incorrecta no suma y la correcta guarda el avance",
-    "Un trabajo incompleto no marca el paso como comprobado",
-    "Experiencia 2: seis pasos comprobados con el banco real (sondas, funciones, cuatro puntos por sensor y cálculo con los datos propios)",
-    "El regreso recupera la clase en «Comprobar», con la comprobación conceptual y las observaciones del banco",
-    "Experiencia 3: transmisor conectado, configurado y medido; curva de ambos sensores y predicción con el rango elegido",
-    "Cada lección guarda su propio banco; el banco libre no se tocó",
-    "Los errores se anotan por concepto: una respuesta incorrecta (una sola vez por respuesta) y montajes sin sentido físico en el banco",
-    "El repaso empieza por los conceptos con errores, no repite preguntas, explica cada respuesta y marca «Repasado» tras dos aciertos seguidos"
+    "El horno acepta 75 °C con Enter y muestra su temperatura junto al equipo"
   ],
   "errors": [],
   "captures": [
-    "banco-inicial-desktop.png",
-    "banco-registros-desktop.png",
-    "leccion-banco-desktop.png",
-    "estudio-comprobar-desktop.png",
-    "repaso-resultado-desktop.png",
-    "repaso-estado-desktop.png"
+    "banco-inicial-desktop.png"
   ]
 }

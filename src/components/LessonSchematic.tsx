@@ -7,7 +7,7 @@ import type {Lesson} from '../data/lessons';
 import type {BananaCable,ManualStep} from '../data/practice';
 /** Esquema de la lección dentro de la ventana de la guía: se acerca a la línea del paso, la ilumina y marca en verde las ya armadas. */
 export function LessonSchematic({lesson,step,steps,wires,onOpenDiagram}:{lesson:Lesson;step:ManualStep;steps:ManualStep[];wires:BananaCable[];onOpenDiagram?:()=>void}){
- const cade=LESSON_SCHEMATICS[lesson.schematic],[full,setFull]=useState(false),originalReference=false;
+ const cade=LESSON_SCHEMATICS[lesson.schematic],[full,setFull]=useState(lesson.schematic==='estrellaDosContactores'),originalReference=lesson.schematic==='estrellaDosContactores';
  const index=steps.findIndex(x=>x.id===step.id),progress=useMemo(()=>lessonProgress(lesson,index,wires),[lesson,index,wires]);
  const active=progress.ends.length?progress:null,activeIds=useMemo(()=>new Set(progress.active),[progress]),doneIds=useMemo(()=>new Set(progress.done),[progress]);
  const all=cade.drawing.views?.all??{x:0,y:0,w:300,h:200};
@@ -36,6 +36,6 @@ export function LessonSchematic({lesson,step,steps,wires,onOpenDiagram}:{lesson:
    {cade.SYMBOLS.map(o=>o.shape?<g key={o.id} color="#3c4650"><CadeShape o={o}/></g>:null)}
    {active?.ends.map((p,i)=><circle key={i} data-lesson-end={i} cx={p.x} cy={p.y} r="2.7" fill="#fff6dc" stroke="#d98a0f" strokeWidth=".8" className="guide-schematic-end"/>)}
   </svg>
-  <figcaption>{originalReference?<span>Diagrama original · referencia del cambio manual</span>:<><span><i className="swatch active"/>Línea del paso</span><span><i className="swatch done"/>Ya armada</span>{!active&&<span>Este cable no está en el dibujo original</span>}</>}{onOpenDiagram&&<button type="button" className="guide-open-diagram" onClick={onOpenDiagram}><PanelLeftOpen size={13}/>Abrir en grande</button>}{!originalReference&&<button type="button" onClick={()=>setFull(!full)} aria-pressed={full}>{full?<><Minimize2 size={13}/>Acercar a la línea</>:<><Maximize2 size={13}/>Esquema completo</>}</button>}</figcaption>
+  <figcaption>{originalReference?<><span>Diagrama original · tramo relacionado</span><span><i className="swatch active"/>Paso actual</span><span><i className="swatch done"/>Ya armado</span></>:<><span><i className="swatch active"/>Línea del paso</span><span><i className="swatch done"/>Ya armada</span>{!active&&<span>Este cable no está en el dibujo original</span>}</>}{onOpenDiagram&&<button type="button" className="guide-open-diagram" onClick={onOpenDiagram}><PanelLeftOpen size={13}/>Abrir en grande</button>}{<button type="button" onClick={()=>setFull(!full)} aria-pressed={full}>{full?<><Minimize2 size={13}/>Acercar a la línea</>:<><Maximize2 size={13}/>Esquema completo</>}</button>}</figcaption>
  </figure>;
 }

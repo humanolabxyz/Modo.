@@ -1,5 +1,7 @@
 # Mapa de Estudio y formas de aprender en modo.
 
+**Actualización de implementación · 18/10/2026:** catálogo con los 44 originales F/I, 27 recorridos nuevos (90 pasos), modelos y cuaderno, repaso, desafíos y taller de Redes con continuidad y fallas. Se conservan las herramientas anteriores. El alcance implementado y los límites pendientes de equipos, fuentes y modelos físicos se detallan en [Entrega de ampliación de Estudio](../ENTREGA_ESTUDIO_AMPLIACION.md). Las secciones de propuesta siguientes son el plan histórico; no deben leerse como un inventario actualizado de funciones ausentes ni como afirmación de cobertura completa.
+
 Propuesta del 17 de octubre de 2026. Define el contenido académico, las formas de usarlo y las herramientas necesarias. Es una planificación sobre el proyecto actual; las funciones propuestas todavía no están implementadas.
 
 **Primera implementación posterior:** el usuario precisó integrar GeoGebra real. Se incorporó GeoGebra Classic al Laboratorio como herramienta libre y tres lecciones vinculadas a Estudio: constantes/lineales, cuadráticas y logaritmos, con 21 pasos en total. Cada lección abre desde la materia, guarda su archivo por separado y vuelve a Estudio. Esta entrega sustituye la idea de construir un motor de álgebra propio. Ver [entrega y verificación](../ENTREGA_GEOGEBRA_ESTUDIO.md). Los otros bancos y materias de este mapa siguen siendo planificación salvo las capacidades previas identificadas.
