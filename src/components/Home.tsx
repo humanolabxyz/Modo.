@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState, type CSSProperties, type FocusEvent} from 'react';
+import {useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type FocusEvent} from 'react';
 import {ArrowRight, Bot, BookOpen, ChevronDown, FlaskConical, FolderOpen, PanelTop, Pause, Play, Plug, UsersRound} from 'lucide-react';
 import {InstallApp} from './InstallApp';
 import {HumanoLabBand} from './HumanoLabBand';
@@ -69,6 +69,8 @@ function SplitFlap() {
 
 export function Home({practice, onEnterPanel, onContinue, onImport, ready}: HomeProps) {
   const [selected, setSelected] = useState(1);
+  // En escritorio hay cinco tarjetas: la inicial es Laboratorio para que todas queden centradas y en orden (en tablet/teléfono sigue Estudio).
+  useLayoutEffect(()=>{if(matchMedia('(min-width:1101px)').matches)setSelected(2);},[]);
   const [drag, setDrag] = useState(0);
   const gesture = useRef<{x:number; y:number; pointer:number; horizontal:boolean; dx:number}|null>(null);
   const selectionAtPointerDown = useRef(selected);

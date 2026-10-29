@@ -16,7 +16,7 @@ function watch(p){p.on('pageerror',e=>report.errors.push(e.message));p.on('conso
   assert.equal(await p.locator('.home-module').count(),5);assert.equal(await p.locator('.flap-cell').count(),9);
   assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   assert.equal(await p.locator('.home-clock').getAttribute('aria-label'),'modo. ESTUDIO');
-  assert.equal(await p.locator('.home-module.is-selected').getAttribute('data-module'),'study');
+  assert.equal(await p.locator('.home-module.is-selected').getAttribute('data-module'),await p.evaluate(()=>innerWidth>1100)?'lab':'study');
   assert.equal(await p.locator('.clock-pause').count(),0);
   if(w<=1100){const box=await p.locator('.home-module.is-selected').boundingBox();assert.ok(Math.abs(box.x+box.width/2-w/2)<1);}
   await p.locator('.home-version summary').click();assert.ok(await p.locator('.home-version-popover').isVisible());

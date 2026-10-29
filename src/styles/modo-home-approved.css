@@ -97,8 +97,10 @@
 .home-carousel-hint{display:none}
 .home-cabinet-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 15px;border:1px solid #bbcabd;border-radius:24px;background:#f4f8f1;color:#3f6748;font-size:11px;font-weight:600;line-height:1.4;text-decoration:none;min-height:40px;box-sizing:border-box}.home-cabinet-link:hover{background:#e6f0e3}.home-cabinet-link:focus-visible{outline:2px solid #4f8759;outline-offset:3px}@media(max-width:600px){.home-cabinet-link{flex-basis:100%;max-width:310px;margin:2px auto 7px;font-size:11px}}
 /* Center all four desktop cards as a group; keep both outer cards equally sized. */
-@media(min-width:1101px){.modo-reference-home .home-module{left:calc(50% - var(--card-step)*.5);transform:translateX(calc(-50% + var(--offset)*var(--card-step) + var(--drag))) translateY(calc(min(var(--distance),1)*12px)) rotateY(clamp(-4deg,var(--tilt),4deg)) rotateZ(calc(clamp(-4deg,var(--tilt),4deg)*-.4)) scale(calc(1 - min(var(--distance),1)*.075))}}
+@media(min-width:1101px){.modo-reference-home .home-module{left:50%;transform:translateX(calc(-50% + var(--offset)*var(--card-step) + var(--drag))) translateY(calc(min(var(--distance),1)*12px)) rotateY(clamp(-4deg,var(--tilt),4deg)) rotateZ(calc(clamp(-4deg,var(--tilt),4deg)*-.4)) scale(calc(1 - min(var(--distance),1)*.075))}}
 @media(max-width:1100px){.home-carousel-hint{display:block;text-align:center;font-size:10px;line-height:1.5;color:var(--home-muted);margin:-7px 18px 16px}.home-carousel-stage{cursor:grab}.is-dragging .home-carousel-stage{cursor:grabbing}}
 /* Tarjeta de Robótica (Beta): sin ilustración, el icono de robot ocupa el centro de la tarjeta. */
 .home-module-badge{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:#ffffff26;color:#fff;font-size:.5em;font-style:normal;font-weight:700;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
 .modo-reference-home .home-module[data-module=robotics] .home-module-icon{top:32%;left:50%;width:34%;transform:translateX(-50%);border-radius:30%}
+/* Cinco tarjetas en escritorio: la seleccionada queda al centro (-2…+2) y el conjunto cabe en pantalla. */
+@media(min-width:1101px){.home-carousel{--card-w:clamp(200px,18.6vw,384px);--card-step:calc(var(--card-w)*1.02)}}
