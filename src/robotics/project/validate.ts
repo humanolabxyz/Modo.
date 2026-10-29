@@ -5,6 +5,8 @@ export type ParseResult = {ok: true; project: RobotProject} | {ok: false; error:
 export type ParseOptions = {
   /** Definiciones del catálogo que existen. Si se omite (etapa 1: catálogo vacío) no se comprueba la existencia. */
   knownDefinitions?: ReadonlySet<string>;
+  /** Forma del catálogo: si se da, también se comprueba que los pines y anclajes existan en la definición de ESA instancia. */
+  catalog?: ReadonlyMap<string, {pins: ReadonlySet<string>; anchors: ReadonlySet<string>}>;
 };
 
 class Invalid extends Error {}
@@ -77,6 +79,9 @@ function build(data: Record<string, unknown>, options: ParseOptions): RobotProje
   unique(parts.map(p => p.instanceId), 'Piezas');
   const ids = new Set(parts.map(p => p.instanceId));
   const mustExist = (id: string, what: string) => { if (!ids.has(id)) fail(`${what}: la pieza «${id}» no existe en el proyecto.`); };
+  const defOf = new Map(parts.map(x => [x.instanceId, x.definitionId]));
+  const checkAnchor = (r: {instanceId: string; anchorId: string}, what: string) => { const d = options.catalog?.get(defOf.get(r.instanceId) ?? ''); if (d && !d.anchors.has(r.anchorId)) fail(`${what}: el anclaje «${r.anchorId}» no existe en esa pieza.`); };
+  const checkPin = (r: PinRef, what: string) => { const d = options.catalog?.get(defOf.get(r.instanceId) ?? ''); if (d && !d.pins.has(r.pinId)) fail(`${what}: el pin «${r.pinId}» no existe en esa pieza.`); };
 
   const attachments = list(data.attachments, 'Uniones', LIMITS.attachments).map((raw, i): Attachment => {
     if (!isObject(raw) || !isObject(raw.parent) || !isObject(raw.child)) return fail(`Unión ${i + 1}: formato inválido.`);
@@ -87,18 +92,23 @@ function build(data: Record<string, unknown>, options: ParseOptions): RobotProje
       child: {instanceId: text(raw.child.instanceId, `Unión ${i + 1}.hijo`, 80), anchorId: text(raw.child.anchorId, `Unión ${i + 1}.ancla`, 40)},
     };
     if (raw.axis !== undefined) a.axis = vec3(raw.axis, `Unión ${i + 1}.eje`);
-    mustExist(a.parent.instanceId, `Unión ${i + 1}`); mustExist(a.child.instanceId, `Unión ${i + 1}`);
+    mustExist(a.parent.instanceId, `Unión ${i + 1}`); mustExist(a.child.instanceId, `Unión ${i + 1}`); checkAnchor(a.parent, `Unión ${i + 1}`); checkAnchor(a.child, `Unión ${i + 1}`);
     if (a.parent.instanceId === a.child.instanceId) fail(`Unión ${i + 1}: una pieza no se une a sí misma.`);
     return a;
   });
   unique(attachments.map(a => a.id), 'Uniones');
+  unique(attachments.map(a => a.child.instanceId), 'Uniones (una pieza solo puede tener un padre)');
+  for (const a of attachments) { // sin ciclos: subiendo por los padres nunca se vuelve a la pieza
+    let cur = a.parent.instanceId; const seen = new Set([a.child.instanceId]);
+    while (cur) { if (seen.has(cur)) fail('Uniones: hay una unión en círculo.'); seen.add(cur); cur = attachments.find(x => x.child.instanceId === cur)?.parent.instanceId ?? ''; }
+  }
 
   const seen = new Set<string>();
   const connections = list(data.connections, 'Conexiones', LIMITS.connections).map((raw, i): Connection => {
     if (!isObject(raw)) return fail(`Conexión ${i + 1}: formato inválido.`);
     const c: Connection = {id: text(raw.id, `Conexión ${i + 1}.id`, 80), a: pinRef(raw.a, `Conexión ${i + 1}.a`), b: pinRef(raw.b, `Conexión ${i + 1}.b`), color: text(raw.color, `Conexión ${i + 1}.color`, 30)};
     if (raw.route !== undefined) c.route = list(raw.route, `Conexión ${i + 1}.ruta`, 200).map(p => vec3(p, `Conexión ${i + 1}.ruta`));
-    mustExist(c.a.instanceId, `Conexión ${i + 1}`); mustExist(c.b.instanceId, `Conexión ${i + 1}`);
+    mustExist(c.a.instanceId, `Conexión ${i + 1}`); mustExist(c.b.instanceId, `Conexión ${i + 1}`); checkPin(c.a, `Conexión ${i + 1}`); checkPin(c.b, `Conexión ${i + 1}`);
     const ka = `${c.a.instanceId}:${c.a.pinId}`, kb = `${c.b.instanceId}:${c.b.pinId}`;
     if (ka === kb) fail(`Conexión ${i + 1}: un pin no se conecta consigo mismo.`);
     const pair = ka < kb ? `${ka}|${kb}` : `${kb}|${ka}`;

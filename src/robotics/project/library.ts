@@ -1,6 +1,7 @@
 // Biblioteca de proyectos: lógica pura (sin React) para poder probarla en Node.
 import {newId, newRobotProject} from './defaults.ts';
 import {parseRobotProject, parseRobotProjectText} from './validate.ts';
+import {catalogShape} from '../catalog/index.ts';
 import {LIMITS, type RobotLibrary, type RobotProject} from './types.ts';
 
 export const STORAGE_KEY = 'modo-robotica-v1';
@@ -21,7 +22,7 @@ export function readLibrary(raw: string | null): StoredRead {
   if (stored.projects.length === 0 || stored.projects.length > LIMITS.projects) return {status: 'unreadable', reason: 'La biblioteca guardada tiene un número de proyectos inválido.'};
   const projects: RobotProject[] = [];
   for (const item of stored.projects) {
-    const result = parseRobotProject(item);
+    const result = parseRobotProject(item, {catalog: catalogShape});
     if (!result.ok) return {status: 'unreadable', reason: result.error};
     projects.push(result.project);
   }
@@ -77,7 +78,7 @@ export function selectProject(library: RobotLibrary, id: string): RobotLibrary {
 /** Importa como copia con id nuevo. */
 export function importProject(library: RobotLibrary, source: string): {library: RobotLibrary} | {error: string} {
   if (library.projects.length >= LIMITS.projects) return {error: `La biblioteca admite hasta ${LIMITS.projects} proyectos.`};
-  const result = parseRobotProjectText(source);
+  const result = parseRobotProjectText(source, {catalog: catalogShape});
   if (!result.ok) return {error: result.error};
   const now = new Date().toISOString();
   const project: RobotProject = {...result.project, id: newId(), updatedAt: now};

@@ -1,0 +1,159 @@
+// Operaciones PURAS e inmutables sobre el proyecto (docs/robotica/02 §6). Cada una devuelve un proyecto nuevo.
+import {getDefinition} from '../catalog/index.ts';
+import type {AnchorDefinition} from '../catalog/types.ts';
+import {newId} from './defaults.ts';
+import {len, motion, qFromEuler, qNorm, sub, tInv, tMul, tPoint, qRotate, scale} from './math.ts';
+import {LIMITS, type Attachment, type PartInstance, type Quat, type RobotProject, type Transform, type Vec3} from './types.ts';
+
+export type CommandResult = {project: RobotProject; /** Avisos para mostrar al usuario (p. ej. uniones rotas). */ notes: string[]};
+export type CommandError = {error: string};
+
+const part = (p: RobotProject, id: string) => p.parts.find(x => x.instanceId === id);
+const replaceParts = (p: RobotProject, parts: PartInstance[]): RobotProject => ({...p, parts});
+
+/** Piezas que cuelgan (directa o indirectamente) de las dadas, incluidas ellas mismas. */
+export function closure(p: RobotProject, ids: readonly string[]): Set<string> {
+  const out = new Set(ids);
+  let grew = true;
+  while (grew) {
+    grew = false;
+    for (const a of p.attachments) if (out.has(a.parent.instanceId) && !out.has(a.child.instanceId)) { out.add(a.child.instanceId); grew = true; }
+  }
+  return out;
+}
+export const parentAttachment = (p: RobotProject, id: string): Attachment | undefined => p.attachments.find(a => a.child.instanceId === id);
+export const childAttachments = (p: RobotProject, id: string): Attachment[] => p.attachments.filter(a => a.parent.instanceId === id);
+
+/** Etiqueta única «Motor DC TT 2». */
+function nextLabel(p: RobotProject, definitionName: string): string {
+  const taken = new Set(p.parts.map(x => x.label));
+  for (let n = 1; ; n++) { const label = `${definitionName} ${n}`; if (!taken.has(label)) return label; }
+}
+
+export function addPart(p: RobotProject, definitionId: string, position: Vec3 = [0, 0, 0], rotation: Quat = [0, 0, 0, 1]): CommandResult | CommandError {
+  const def = getDefinition(definitionId);
+  if (!def) return {error: `La pieza «${definitionId}» no existe en el catálogo.`};
+  if (p.parts.length >= LIMITS.parts) return {error: `Un proyecto admite hasta ${LIMITS.parts} piezas.`};
+  const props = def.props ? Object.fromEntries(def.props.map(x => [x.id, x.default as number | string | boolean])) : undefined;
+  const instance: PartInstance = {instanceId: newId(), definitionId, label: nextLabel(p, def.name), transform: {position, rotation: qNorm(rotation)}, ...(props ? {props} : {})};
+  return {project: replaceParts(p, [...p.parts, instance]), notes: []};
+}
+
+/** Quita piezas y todo lo que dependía de ellas. Las piezas unidas a las quitadas quedan sueltas (con aviso). */
+export function removeParts(p: RobotProject, ids: readonly string[]): CommandResult {
+  const gone = new Set(ids.filter(id => part(p, id) && !part(p, id)!.locked));
+  const notes: string[] = [];
+  if (ids.length > gone.size) notes.push('Las piezas bloqueadas no se borran. Desbloquéalas primero.');
+  const lostAttachments = p.attachments.filter(a => gone.has(a.parent.instanceId) || gone.has(a.child.instanceId));
+  const lostConnections = p.connections.filter(c => gone.has(c.a.instanceId) || gone.has(c.b.instanceId));
+  const lostFirmware = p.firmware.filter(f => gone.has(f.targetInstanceId));
+  if (lostAttachments.length) notes.push(`Se rompieron ${lostAttachments.length} unión(es) mecánica(s).`);
+  if (lostConnections.length) notes.push(`Se quitaron ${lostConnections.length} cable(s).`);
+  if (lostFirmware.length) notes.push('Se quitó el programa de la placa borrada.');
+  return {
+    project: {...p, parts: p.parts.filter(x => !gone.has(x.instanceId)), attachments: p.attachments.filter(a => !lostAttachments.includes(a)), connections: p.connections.filter(c => !lostConnections.includes(c)), firmware: p.firmware.filter(f => !lostFirmware.includes(f))},
+    notes,
+  };
+}
+
+/**
+ * Aplica un movimiento rígido (en coordenadas del mundo) a las piezas indicadas y a todo lo que cuelga de ellas.
+ * Una pieza unida a un padre que NO se mueve se separa de él (con aviso): una unión no admite que el hijo se desplace por su cuenta.
+ */
+export function moveParts(p: RobotProject, ids: readonly string[], m: Transform): CommandResult {
+  const notes: string[] = [];
+  const movable = ids.filter(id => part(p, id) && !part(p, id)!.locked);
+  if (movable.length < ids.length) notes.push('Las piezas bloqueadas no se mueven.');
+  const moving = closure(p, movable);
+  const broken = p.attachments.filter(a => moving.has(a.child.instanceId) && !moving.has(a.parent.instanceId));
+  for (const a of broken) notes.push(`${part(p, a.child.instanceId)?.label} se separó de ${part(p, a.parent.instanceId)?.label}.`);
+  return {
+    project: {...replaceParts(p, p.parts.map(x => (moving.has(x.instanceId) ? {...x, transform: tMul(m, x.transform)} : x))), attachments: p.attachments.filter(a => !broken.includes(a))},
+    notes,
+  };
+}
+
+/** Fija la transformación absoluta de una pieza (ventana Propiedades). Arrastra a sus hijos. */
+export function setPartTransform(p: RobotProject, id: string, next: Transform): CommandResult {
+  const current = part(p, id);
+  if (!current) return {project: p, notes: []};
+  return moveParts(p, [id], tMul(next, tInv(current.transform)));
+}
+
+export const translateParts = (p: RobotProject, ids: readonly string[], delta: Vec3) => moveParts(p, ids, motion(delta));
+export const rotatePartsAround = (p: RobotProject, ids: readonly string[], q: Quat, center: Vec3) => moveParts(p, ids, motion([0, 0, 0], q, center));
+export const eulerToQuat = (deg: Vec3): Quat => qFromEuler([deg[0] * Math.PI / 180, deg[1] * Math.PI / 180, deg[2] * Math.PI / 180]);
+
+export const renamePart = (p: RobotProject, id: string, label: string): RobotProject => replaceParts(p, p.parts.map(x => (x.instanceId === id ? {...x, label: label.slice(0, LIMITS.label) || x.label} : x)));
+export const setLocked = (p: RobotProject, ids: readonly string[], locked: boolean): RobotProject => replaceParts(p, p.parts.map(x => (ids.includes(x.instanceId) ? {...x, locked: locked || undefined} : x)));
+export const setPartProp = (p: RobotProject, id: string, key: string, value: number | string | boolean): RobotProject => replaceParts(p, p.parts.map(x => (x.instanceId === id ? {...x, props: {...x.props, [key]: value}} : x)));
+
+/** Duplica las piezas (con lo que cuelga de ellas), conserva las uniones y cables internos y las desplaza un poco. */
+export function duplicateParts(p: RobotProject, ids: readonly string[], offset: Vec3 = [0.03, 0, 0.03]): CommandResult | CommandError {
+  const set = closure(p, ids.filter(id => part(p, id)));
+  if (!set.size) return {project: p, notes: []};
+  if (p.parts.length + set.size > LIMITS.parts) return {error: `Un proyecto admite hasta ${LIMITS.parts} piezas.`};
+  const map = new Map<string, string>();
+  let draft = p;
+  const copies: PartInstance[] = [];
+  for (const orig of p.parts.filter(x => set.has(x.instanceId))) {
+    const def = getDefinition(orig.definitionId);
+    const id = newId(); map.set(orig.instanceId, id);
+    copies.push({...structuredClone(orig), instanceId: id, label: nextLabel({...draft, parts: [...draft.parts, ...copies]}, def?.name ?? orig.label), locked: undefined, groupId: undefined, transform: {...orig.transform, position: [orig.transform.position[0] + offset[0], orig.transform.position[1] + offset[1], orig.transform.position[2] + offset[2]]}});
+  }
+  draft = {...p, parts: [...p.parts, ...copies]};
+  const attachments = p.attachments.filter(a => set.has(a.parent.instanceId) && set.has(a.child.instanceId)).map(a => ({...structuredClone(a), id: newId(), parent: {...a.parent, instanceId: map.get(a.parent.instanceId)!}, child: {...a.child, instanceId: map.get(a.child.instanceId)!}}));
+  const connections = p.connections.filter(c => set.has(c.a.instanceId) && set.has(c.b.instanceId)).map(c => ({...structuredClone(c), id: newId(), a: {...c.a, instanceId: map.get(c.a.instanceId)!}, b: {...c.b, instanceId: map.get(c.b.instanceId)!}, route: undefined}));
+  return {project: {...draft, attachments: [...draft.attachments, ...attachments], connections: [...draft.connections, ...connections]}, notes: []};
+}
+
+// ───── Uniones ─────
+export const anchorOf = (instance: PartInstance, anchorId: string): AnchorDefinition | undefined => getDefinition(instance.definitionId)?.anchors.find(a => a.id === anchorId);
+export function anchorWorld(instance: PartInstance, anchorId: string): {position: Vec3; normal: Vec3} | undefined {
+  const a = anchorOf(instance, anchorId);
+  return a ? {position: tPoint(instance.transform, a.position), normal: qRotate(instance.transform.rotation, a.normal)} : undefined;
+}
+/** Un anclaje es el anfitrión del otro si lista su etiqueta entre las que acepta. */
+export const hosts = (host: AnchorDefinition, guest: AnchorDefinition): boolean => host.accepts.includes(guest.tag);
+
+export type Ref = {instanceId: string; anchorId: string};
+
+/** Une `child` a `parent`: coloca al hijo (y lo que cuelga de él) de modo que los dos anclajes coincidan. */
+export function attach(p: RobotProject, parent: Ref, child: Ref, kind?: Attachment['kind']): CommandResult | CommandError {
+  const pp = part(p, parent.instanceId), cc = part(p, child.instanceId);
+  if (!pp || !cc) return {error: 'La pieza ya no existe.'};
+  if (pp.instanceId === cc.instanceId) return {error: 'Una pieza no se une a sí misma.'};
+  const pa = anchorOf(pp, parent.anchorId), ca = anchorOf(cc, child.anchorId);
+  if (!pa || !ca) return {error: 'Ese anclaje no existe.'};
+  if (!hosts(pa, ca)) return {error: `«${ca.label}» de ${cc.label} no encaja en «${pa.label}» de ${pp.label}.`};
+  if (parentAttachment(p, cc.instanceId)) return {error: `${cc.label} ya está unida a otra pieza. Sepárala primero.`};
+  if (p.attachments.some(a => a.parent.instanceId === pp.instanceId && a.parent.anchorId === parent.anchorId)) return {error: `«${pa.label}» de ${pp.label} ya está ocupado.`};
+  if (closure(p, [cc.instanceId]).has(pp.instanceId)) return {error: 'No se pueden unir en círculo.'};
+  if (p.attachments.length >= LIMITS.attachments) return {error: `Un proyecto admite hasta ${LIMITS.attachments} uniones.`};
+  if (cc.locked) return {error: `${cc.label} está bloqueada.`};
+  const wanted = anchorWorld(pp, parent.anchorId)!.position, have = anchorWorld(cc, child.anchorId)!.position;
+  const moved = moveParts(p, [cc.instanceId], motion(sub(wanted, have)));
+  const isWheel = getDefinition(cc.definitionId)?.anchors.find(a => a.id === child.anchorId)?.tag === 'wheel-hub';
+  const attachment: Attachment = {id: newId(), kind: kind ?? (isWheel ? 'wheel-hinge' : 'rigid'), parent, child, ...((kind ?? (isWheel ? 'wheel-hinge' : 'rigid')) === 'wheel-hinge' ? {axis: pa.normal} : {})};
+  return {project: {...moved.project, attachments: [...moved.project.attachments, attachment]}, notes: moved.notes};
+}
+export const detach = (p: RobotProject, attachmentId: string): RobotProject => ({...p, attachments: p.attachments.filter(a => a.id !== attachmentId)});
+
+export function setGroup(p: RobotProject, ids: readonly string[], grouped: boolean): RobotProject {
+  const groupId = grouped ? newId() : undefined;
+  return replaceParts(p, p.parts.map(x => (ids.includes(x.instanceId) ? {...x, groupId} : x)));
+}
+/** Expande una selección a todo su grupo (clic en una pieza agrupada selecciona el grupo). */
+export function expandGroups(p: RobotProject, ids: readonly string[]): string[] {
+  const groups = new Set(p.parts.filter(x => ids.includes(x.instanceId) && x.groupId).map(x => x.groupId));
+  return Array.from(new Set([...ids, ...p.parts.filter(x => x.groupId && groups.has(x.groupId)).map(x => x.instanceId)]));
+}
+
+/** Centro de la selección (promedio de posiciones) para colocar el gizmo. */
+export function centroid(p: RobotProject, ids: readonly string[]): Vec3 | null {
+  const list = p.parts.filter(x => ids.includes(x.instanceId));
+  if (!list.length) return null;
+  const sum = list.reduce<Vec3>((s, x) => [s[0] + x.transform.position[0], s[1] + x.transform.position[1], s[2] + x.transform.position[2]], [0, 0, 0]);
+  return scale(sum, 1 / list.length);
+}
+export const distance = (a: Vec3, b: Vec3) => len(sub(a, b));
