@@ -1,7 +1,7 @@
 {
   "checks": [
     "Archivos src protegidos conservan SHA-256; excepciones autorizadas: Home y registro de versiones",
-    "Nueve tamaños responsive: sin overflow; reloj fijo, cuatro tarjetas, móvil centrado y versiones legibles",
+    "Nueve tamaños responsive: sin overflow; reloj fijo, cinco tarjetas, móvil centrado y versiones legibles",
     "Sin flechas visibles ni estadísticas; teclado, Home/End y vuelta circular mantienen el selector accesible",
     "Panel real abre con su banco y regresa al Home",
     "Estudio, Laboratorio, Comunidad e historial abren sus rutas reales",

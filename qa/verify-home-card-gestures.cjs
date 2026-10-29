@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const {chromium,webkit}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const report={checks:[],errors:[]},pass=s=>{report.checks.push(s);console.log('PASS',s)};
-const base='http://127.0.0.1:4344/';
+const base=(process.env.HOME_QA_URL||'http://127.0.0.1:4344').replace(/\/$/,'')+'/';
 async function home(p){await p.goto(base);await p.locator('[data-module=panel]:not(:disabled)').waitFor();}
 const selected=p=>p.locator('.home-module.is-selected').getAttribute('data-module');
 (async()=>{for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){const b=await engine.launch();try{const c=await b.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce',serviceWorkers:'block'});await c.addInitScript(()=>{localStorage.setItem('modo-tutoriales-bienvenida-v1','seen');sessionStorage.setItem('modo-opened-v2','1')});const p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));await home(p);

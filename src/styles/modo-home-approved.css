@@ -99,3 +99,6 @@
 /* Center all four desktop cards as a group; keep both outer cards equally sized. */
 @media(min-width:1101px){.modo-reference-home .home-module{left:calc(50% - var(--card-step)*.5);transform:translateX(calc(-50% + var(--offset)*var(--card-step) + var(--drag))) translateY(calc(min(var(--distance),1)*12px)) rotateY(clamp(-4deg,var(--tilt),4deg)) rotateZ(calc(clamp(-4deg,var(--tilt),4deg)*-.4)) scale(calc(1 - min(var(--distance),1)*.075))}}
 @media(max-width:1100px){.home-carousel-hint{display:block;text-align:center;font-size:10px;line-height:1.5;color:var(--home-muted);margin:-7px 18px 16px}.home-carousel-stage{cursor:grab}.is-dragging .home-carousel-stage{cursor:grabbing}}
+/* Tarjeta de Robótica (Beta): sin ilustración, el icono de robot ocupa el centro de la tarjeta. */
+.home-module-badge{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:#ffffff26;color:#fff;font-size:.5em;font-style:normal;font-weight:700;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
+.modo-reference-home .home-module[data-module=robotics] .home-module-icon{top:32%;left:50%;width:34%;transform:translateX(-50%);border-radius:30%}
