@@ -27,15 +27,16 @@ export type SimulationResult={powered:boolean;fault:'short'|'unstable'|'phase-sh
 export function simulationContacts(input:SimulationInput,relays:RelayState,timed:readonly string[]=[]):[string,string][]{
  const pairs:[string,string][]=[];
  for(const s of ['S1','S2','S3'])pairs.push(input.pressed.includes(s)?[`BOTONERAS:${s}:3`,`BOTONERAS:${s}:4`]:[`BOTONERAS:${s}:1`,`BOTONERAS:${s}:2`]);
+ // With `powerContacts`, a pole still in its pickup delay or open-transition gap is open: never fall back to the coil.
  for(const id of contactorIds()){
   const closed=!!relays[id];
   for(const [a,b] of closed?[['13','14'],['63','64'],['93','94']]:[['71','72'],['81','82']])pairs.push([`${id}:${a}`,`${id}:${b}`]);
-  if(input.powerContacts?.[id]??closed)for(const i of [1,2,3])pairs.push([`${id}:L${i}`,`${id}:T${i}`]);
+  if(input.powerContacts?!!input.powerContacts[id]:closed)for(const i of [1,2,3])pairs.push([`${id}:L${i}`,`${id}:T${i}`]);
  }
  for(const id of timerIds()){
   const on=!!relays[id],done=on&&timed.includes(id);
   // This bank module is a contactor with a pneumatic timing attachment: its power poles act immediately.
-  if(input.powerContacts?.[id]??on)for(const i of [1,2,3])pairs.push([`${id}:L${i}`,`${id}:T${i}`]);
+  if(input.powerContacts?!!input.powerContacts[id]:on)for(const i of [1,2,3])pairs.push([`${id}:L${i}`,`${id}:T${i}`]);
   if(on)pairs.push([`${id}:13`,`${id}:14`]);
   pairs.push(done?[`${id}:67`,`${id}:68`]:[`${id}:55`,`${id}:56`]);
  }

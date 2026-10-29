@@ -285,8 +285,10 @@ export function Board({omitExtraContactors=false,modulesLocked=true,selected,onS
   if(r)setModulePos(mod.id,r.pos,true);
  };
  /* El marco y los rieles se calculan con el módulo ya en su hueco, para que no salten mientras se arrastra. */
- const frameLayout=dragId&&preview?{...layout,...preview.moves}:layout,frame=boardFrame(frameLayout);
- const drawOrder=dragId?[...modules.filter(m=>m.id!==dragId),...modules.filter(m=>m.id===dragId)]:modules;
+ /* Un contactor añadido que la práctica deja fuera se oculta entero: cuerpo, números de bornes y su espacio en el marco. */
+ const shown=omitExtraContactors?modules.filter(m=>!m.extra||m.kind!=='tri'):modules;
+ const frameLayout=dragId&&preview?{...layout,...preview.moves}:layout,frame=boardFrame(frameLayout,shown);
+ const drawOrder=dragId?[...shown.filter(m=>m.id!==dragId),...shown.filter(m=>m.id===dragId)]:shown;
  const dragModule=dragId?modules.find(m=>m.id===dragId):undefined,targetModule=preview?.target?modules.find(m=>m.id===preview.target):undefined;
  const pointerFrame=useRef(0),pointerNext=useRef<{x:number;y:number}|null>(null);
  const clearPointer=()=>{cancelAnimationFrame(pointerFrame.current);pointerFrame.current=0;pointerNext.current=null;pointerPath.current?.setAttribute('visibility','hidden');};
@@ -332,7 +334,7 @@ export function Board({omitExtraContactors=false,modulesLocked=true,selected,onS
  {dragModule&&preview&&<g data-drop-preview pointerEvents="none">{targetModule&&<rect data-drop-target={targetModule.id} x={modulePos(targetModule,layout).x-6} y={modulePos(targetModule,layout).y-6} width={targetModule.w+12} height={targetModule.h+12} rx="8" fill="#1c8fb512" stroke="#1c8fb5" strokeWidth="3"/>}<rect x={preview.pos.x} y={preview.pos.y} width={dragModule.w} height={dragModule.h} rx="5" fill="#1c8fb51f" stroke="#1c8fb5" strokeWidth="3.5" strokeDasharray="14 9"/>{preview.kind==='swap'&&targetModule&&preview.moves[targetModule.id]&&<g data-swap-preview={targetModule.id}><rect x={preview.moves[targetModule.id].x} y={preview.moves[targetModule.id].y} width={targetModule.w} height={targetModule.h} rx="5" fill="#e0953a1f" stroke="#d4891f" strokeWidth="3.5" strokeDasharray="14 9"/><text x={preview.moves[targetModule.id].x+targetModule.w/2} y={preview.moves[targetModule.id].y+targetModule.h/2} textAnchor="middle" fontSize="34" fontWeight="800" fill="#b8700f" style={textStyle}>⇄ INTERCAMBIO</text></g>}</g>}
  {dragId&&preview?.guides.x!=null&&<line data-snap-guide="x" x1={preview!.guides.x} x2={preview!.guides.x} y1="28" y2={frame.bottom} stroke="#1c8fb5" strokeWidth="2.5" strokeDasharray="10 8" opacity=".8" pointerEvents="none"/>}
  {dragId&&preview?.guides.y!=null&&<line data-snap-guide="y" x1="29" x2={frame.right} y1={preview!.guides.y} y2={preview!.guides.y} stroke="#1c8fb5" strokeWidth="2.5" strokeDasharray="10 8" opacity=".8" pointerEvents="none"/>}
- {drawOrder.filter(m=>!omitExtraContactors||!m.extra||m.kind!=='tri').map(m=>{
+ {drawOrder.map(m=>{
    const faded=group!=='todos'&&m.category!==group;
    const byQuery=query.trim()&&m.terminals.some(t=>matchesTerminal(m,t,query,aliases[m.id]));
    const pos=modulePos(m,layout);

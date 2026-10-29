@@ -169,3 +169,13 @@ Producción READY: dpl_7vZ9MV4pXZfYv5LsYMVTNXAzkLJh, https://modo-lab.vercel.app
 Ventanas limitadas al área visible del teléfono, cierre táctil sin doble acción sobre ventanas anidadas, bordes libres desactivados en teléfono y adaptación al giro. Diagrama con acceso al menú en la cabecera; Aprender a medir con desplazamiento completo en ajustes y horizontal, conservando bornes y captura de la guía.
 
 Pruebas locales con gestos táctiles emulados en cuatro tamaños y WebKit en dos orientaciones; regresión de 34 pasos y exportaciones correcta. Prueba pública de navegación táctil en ambas orientaciones y WebKit sin errores, 14 recursos iniciales idénticos al build local. Alcance y evidencias en REVISION_NAVEGACION_TELEFONO_2026-10-28.md y qa/mobile-menu-navigation/. Sin validación en dispositivo físico.
+
+## 29 de octubre de 2026 · tester en serie en el cambio a triángulo y KM3 oculto
+
+Por solicitud expresa del usuario, publicado en producción https://modo-lab.vercel.app/, despliegue `dpl_DwickQ6nqZZrAzt3MiQB2yHmQtkz` (`modo-abitzekgu-humanolabxyz-9765s-projects.vercel.app`), estado READY. Proyecto y equipo conservados: modo-lab / humanolabxyz-9765s-projects. Sin commit ni push.
+
+- `src/data/simulation.ts`: con `powerContacts`, un polo que espera su retardo de cierre o la pausa de transición cuenta como abierto (antes tomaba el estado de la bobina). Estrella y triángulo ya no quedan cerrados a la vez y el tester en serie no ve el cortocircuito (subía a 15–26 A y quemaba el fusible).
+- `src/components/Board.tsx`: el contactor añadido que la práctica de dos contactores deja fuera se oculta entero; antes quedaban sus números de bornes flotando y el marco reservaba su espacio.
+- Verificación: `npm run check`, `npm run build` y siete scripts de modelo correctos. Interfaz con el tester entre FUENTE:R y L1 de KT1, temporizador 4 s, en 1440, 820 (táctil) y 390 (táctil): estrella 1,701 A, triángulo 3,694 A con pico breve de 4,5–4,7 A, 0 etiquetas del KM3 y sin errores de JavaScript. Repetido contra producción en 1440 y 390 con el mismo resultado.
+- Producción: HTTP 200 en `/`, `/laboratorio/` y `sw.js`; 116 de 117 JS de `_astro` idénticos por SHA-256 al build local. El restante, `RoboticsApp`, pertenece a la Beta de Robótica protegida por contraseña y no se pudo comparar.
+- Evidencias: `qa/serie-triangulo-2026-10-29/`. Sin prueba en dispositivo físico.
