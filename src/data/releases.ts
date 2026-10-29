@@ -1,6 +1,12 @@
-export const APP_VERSION='2.6.0';
+export const APP_VERSION='2.6.1';
 export const releases=[
- {version:APP_VERSION,date:'29 de octubre de 2026',title:'Robótica (Beta): construye, cablea y programa un robot de 2 ruedas en 3D',groups:[
+ {version:APP_VERSION,date:'29 de octubre de 2026',title:'Robótica (Beta): el robot se mueve por física real y evita obstáculos',groups:[
+  {title:'Simulación física',items:['El robot que armas, cableas y programas ahora se mueve en un cuarto blanco de 4 × 4 m: cada motor empuja su rueda según la tensión que le llega del driver, sin animaciones prediseñadas.','El sensor HC-SR04 mide con rayos desde donde está montado: si lo giras, mide otra cosa. Quitar una rueda, invertir los cables de un motor o dejar sin GND común cambia el resultado.','Cámara que sigue al robot (botón «Seguir»), estado de ruedas y distancia en la Consola, y el proyecto guardado repite el mismo comportamiento.']},
+  {title:'Escenario',items:['Nueva ventana «Escenario» con cajas y cilindros (posición, tamaño y giro en cm y grados) y fricción del suelo. Se edita con la simulación detenida.']},
+  {title:'Cambios en piezas',items:['La rueda loca ahora es más alta (43 mm con separador) y va al frente del chasis: así el robot armado queda equilibrado y apoyado en tres puntos.']},
+  {title:'Límites de esta Beta',items:['La física es aproximada (motor TT y pilas supuestos, sin freno eléctrico). Falta medir el rendimiento en una tablet y un teléfono reales. El compilador en línea sigue sin estar disponible: se importa un .hex.']}
+ ]},
+ {version:'2.6.0',date:'29 de octubre de 2026',title:'Robótica (Beta): construye, cablea y programa un robot de 2 ruedas en 3D',groups:[
   {title:'Nuevo modo. Robótica (Beta, con contraseña)',items:['Quinta tarjeta del inicio. Se abre en /robotica/ y pide una contraseña de prueba. Está en desarrollo: puede cambiar o fallar.','Pizarra 3D con herramientas contextuales (seleccionar, mover, rotar, cable, medir, mano, encuadrar e imán). Los proyectos se guardan en el navegador y se pueden exportar e importar.','Cámara en primera persona con WASD (solo PC) para acomodarte mejor entre las piezas.']},
   {title:'Construcción 3D',items:['Catálogo de 12 piezas: chasis, motor TT, ruedas, Arduino UNO, driver L298N, sensor HC-SR04, portapilas, soportes, LED y resistencia.','Las piezas se acoplan por anclajes, avisan cuando se interfieren y se mueven con gizmo o con números exactos.']},
   {title:'Cableado y diagnóstico',items:['Cables entre pines con diagnóstico de cortos, polaridad, falta de alimentación y voltaje (batería con voltaje editable, 6 V por defecto, supuesto sin confirmar).']},

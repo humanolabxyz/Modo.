@@ -2,7 +2,7 @@
 
 Preparado el 28 de octubre de 2026 con Claude Opus, a partir de los cinco documentos de `fuentes/` (paquete `MODO_ROBOTICA_DOCUMENTACION_COMPLETA.zip`) y de la lectura del código real de este repositorio (versión 2.5.4).
 
-**Estado (29/10/2026): las etapas 1, 2, 3 y 4 están implementadas** en la rama `robotica/etapa-1` (informes en `cierres/ETAPA_1.md` … `ETAPA_4.md`, pendientes de validación del usuario). La etapa 3 se hizo con D-11 resuelta por un supuesto (batería con voltaje editable, 6 V por defecto); la 4 con el compilador solo en desarrollo local (no se desplegó). La etapa 5 no está implementada ni aprobada.
+**Estado (29/10/2026): las etapas 1 a 5 están implementadas** en la rama `robotica/etapa-1` (informes en `cierres/ETAPA_1.md` … `ETAPA_5.md`). Las etapas 1–4 están aprobadas; la 5 (física con Rapier, escenario y sensor con rayos) espera tu validación. Publicado: 2.6.0 Beta con contraseña (`PUBLICACION_2.6.0_BETA.md`); la 2.6.1 con la física está preparada y **sin publicar**. Falta medir el rendimiento en tablet y teléfono reales.
 
 **Revisión 2 (28/10/2026):** decisiones revisadas por el usuario (ver `03`). La etapa 1 está ajustada y **aprobada (28/10/2026)**. Las etapas 2–5 siguen sin aprobar. Los cambios principales:
 - emulación real del ATmega328P con avr8js, en lugar de un intérprete propio;
