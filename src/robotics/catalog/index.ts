@@ -23,7 +23,9 @@ unoPins.push(pin('3V3', '3,3V', [-hx, mm(7.5), mm(10) + 5 * pitch], 'power-out',
 
 const arduino: ComponentDefinition = {
   id: 'arduino-uno-r3', name: 'Arduino UNO R3', category: 'control', dimensions: [mm(53.4), mm(15), mm(68.6)], dimensionsSource: 'datasheet', massKg: 0.025,
-  pins: unoPins, anchors: [anchor('base', 'Base', [0, -mm(7.5), 0], DOWN, 'board-mount')], scalable: false, model: 'procedural',
+  pins: unoPins, anchors: [anchor('base', 'Base', [0, -mm(7.5), 0], DOWN, 'board-mount')],
+  props: [{id: 'usb', label: 'Alimentada por USB (virtual, 5 V)', type: 'boolean', default: false}],
+  scalable: false, model: 'procedural',
   summary: 'Placa de control con el microcontrolador ATmega328P.', keywords: ['arduino', 'uno', 'placa', 'microcontrolador', 'atmega'],
 };
 
@@ -95,8 +97,11 @@ const chassis: ComponentDefinition = {
 // El portapilas es solo una pieza mecánica (volumen, masa, anclaje): sus pines eléctricos esperan la decisión D-11.
 const battery: ComponentDefinition = {
   id: 'battery-holder-4aa', name: 'Portapilas 4×AA', category: 'power', dimensions: [mm(63), mm(16), mm(58)], dimensionsSource: 'approximate', massKg: 0.08,
-  pins: [], anchors: [anchor('base', 'Base', [0, mm(8), 0], UP, 'battery-mount')],
-  scalable: false, model: 'procedural', summary: 'Soporte de pilas. Por ahora solo pieza mecánica: la alimentación eléctrica llega en una etapa posterior.', keywords: ['portapilas', 'bateria', 'pilas', 'aa', 'alimentacion'],
+  // D-11 (resuelta con un supuesto): el voltaje es una propiedad editable. 4 pilas AA alcalinas ≈ 6 V; se corrige con el kit real.
+  pins: [pin('B+', 'Positivo (+)', [mm(-26), mm(8.5), mm(-27)], 'power-out', {electrical: {vMax: 24, iMax: 2}}), pin('B-', 'Negativo (−)', [mm(26), mm(8.5), mm(-27)], 'ground')],
+  props: [{id: 'voltage', label: 'Voltaje (V) — supuesto de 4×AA; verifícalo con el kit', type: 'number', min: 1.5, max: 24, default: 6}],
+  anchors: [anchor('base', 'Base', [0, mm(8), 0], UP, 'battery-mount')],
+  scalable: false, model: 'procedural', summary: 'Portapilas con terminales + y −. Voltaje editable (por defecto 6 V, 4×AA: supuesto a verificar con el kit).', keywords: ['portapilas', 'bateria', 'pilas', 'aa', 'alimentacion', 'voltaje'],
 };
 
 const sensorBracket: ComponentDefinition = {

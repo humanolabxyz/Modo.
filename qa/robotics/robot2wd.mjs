@@ -20,3 +20,22 @@ export function buildRobot2wd(name = 'Robot 2 ruedas (prueba)') {
   const sensor = put('hc-sr04'); join(bracket, 'sensor', sensor, 'base');
   return {project: p, ids: {chassis, motorL, motorR, wheelL, wheelR, caster, uno, driver, battery, bracket, sensor}};
 }
+
+/** Cablea el robot de `buildRobot2wd` como lo haría un estudiante: potencia, señales del puente H y del sensor. Devuelve un proyecto nuevo. */
+export async function wireRobot2wd({project, ids}, {jumpers = false} = {}) {
+  const {connect, setPartProp} = await import('../../src/robotics/project/commands.ts');
+  let p = project;
+  const pin = (id, pinId) => ({instanceId: id, pinId});
+  const wire = (a, b, color) => { const r = connect(p, a, b, color); if ('error' in r) throw new Error(r.error); p = r.project; };
+  if (!jumpers) { p = setPartProp(p, ids.driver, 'jumperENA', false); p = setPartProp(p, ids.driver, 'jumperENB', false); }
+  const {uno, driver, battery, sensor, motorL, motorR} = ids;
+  wire(pin(battery, 'B+'), pin(driver, '+12V'), '#d64545'); wire(pin(battery, 'B+'), pin(uno, 'VIN'), '#d64545');
+  wire(pin(battery, 'B-'), pin(driver, 'GND'), '#222222'); wire(pin(driver, 'GND'), pin(uno, 'GND.1'), '#222222');
+  for (const [d, i] of [['D4', 'IN1'], ['D7', 'IN2'], ['D8', 'IN3'], ['D12', 'IN4']]) wire(pin(uno, d), pin(driver, i), '#2a67a3');
+  wire(pin(uno, 'D5'), pin(driver, 'ENA'), '#e0a52a'); wire(pin(uno, 'D6'), pin(driver, 'ENB'), '#e0a52a');
+  wire(pin(driver, 'OUT1'), pin(motorL, 'M+'), '#d64545'); wire(pin(driver, 'OUT2'), pin(motorL, 'M-'), '#222222');
+  wire(pin(driver, 'OUT3'), pin(motorR, 'M+'), '#d64545'); wire(pin(driver, 'OUT4'), pin(motorR, 'M-'), '#222222');
+  wire(pin(sensor, 'VCC'), pin(uno, '5V'), '#d64545'); wire(pin(sensor, 'GND'), pin(uno, 'GND.2'), '#222222');
+  wire(pin(sensor, 'TRIG'), pin(uno, 'D9'), '#2a8f4f'); wire(pin(sensor, 'ECHO'), pin(uno, 'D10'), '#2a8f4f');
+  return p;
+}

@@ -157,3 +157,26 @@ export function centroid(p: RobotProject, ids: readonly string[]): Vec3 | null {
   return scale(sum, 1 / list.length);
 }
 export const distance = (a: Vec3, b: Vec3) => len(sub(a, b));
+
+// ───── Cables (conexiones lógicas entre pines) ─────
+export const pinWorld = (p: RobotProject, ref: {instanceId: string; pinId: string}): Vec3 | undefined => {
+  const part = part_(p, ref.instanceId), pin = part && getDefinition(part.definitionId)?.pins.find(x => x.id === ref.pinId);
+  return part && pin ? tPoint(part.transform, pin.position) : undefined;
+};
+function part_(p: RobotProject, id: string) { return p.parts.find(x => x.instanceId === id); }
+const pairKey = (a: {instanceId: string; pinId: string}, b: {instanceId: string; pinId: string}) => [`${a.instanceId}:${a.pinId}`, `${b.instanceId}:${b.pinId}`].sort().join('|');
+
+/** Crea un cable entre dos pines. Solo se rechaza lo imposible (pin inexistente, consigo mismo, repetido, tope); los errores de cableado se permiten y se diagnostican. */
+export function connect(p: RobotProject, a: {instanceId: string; pinId: string}, b: {instanceId: string; pinId: string}, color = '#d64545'): CommandResult | CommandError {
+  const pa = part_(p, a.instanceId), pb = part_(p, b.instanceId);
+  if (!pa || !pb) return {error: 'La pieza ya no existe.'};
+  if (!getDefinition(pa.definitionId)?.pins.some(x => x.id === a.pinId) || !getDefinition(pb.definitionId)?.pins.some(x => x.id === b.pinId)) return {error: 'Ese pin no existe.'};
+  if (a.instanceId === b.instanceId && a.pinId === b.pinId) return {error: 'Un cable no puede empezar y terminar en el mismo pin.'};
+  if (p.connections.some(c => pairKey(c.a, c.b) === pairKey(a, b))) return {error: 'Esos dos pines ya están unidos por un cable.'};
+  if (p.connections.length >= LIMITS.connections) return {error: `Un proyecto admite hasta ${LIMITS.connections} cables.`};
+  return {project: {...p, connections: [...p.connections, {id: newId(), a: {instanceId: a.instanceId, pinId: a.pinId}, b: {instanceId: b.instanceId, pinId: b.pinId}, color}]}, notes: []};
+}
+export const disconnect = (p: RobotProject, connectionId: string): RobotProject => ({...p, connections: p.connections.filter(c => c.id !== connectionId)});
+export const setConnectionColor = (p: RobotProject, connectionId: string, color: string): RobotProject => ({...p, connections: p.connections.map(c => (c.id === connectionId ? {...c, color: color.slice(0, 30)} : c))});
+/** Puntos de control del cable (coordenadas del mundo, solo presentación). */
+export const setConnectionRoute = (p: RobotProject, connectionId: string, route: Vec3[]): RobotProject => ({...p, connections: p.connections.map(c => (c.id === connectionId ? {...c, route: route.length ? route.slice(0, 20) : undefined} : c))});

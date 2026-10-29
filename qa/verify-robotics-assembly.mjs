@@ -28,7 +28,7 @@ assert.deepEqual(getDefinition('l298n-module').pins.map(x => x.id).sort(), ['+12
 assert.deepEqual(getDefinition('l298n-module').props.map(x => x.id), ['jumperENA', 'jumperENB', 'jumper5V']);
 assert.deepEqual(getDefinition('hc-sr04').pins.map(x => x.id), ['VCC', 'TRIG', 'ECHO', 'GND']);
 assert.deepEqual(getDefinition('dc-motor-tt').pins.map(x => x.id), ['M+', 'M-']);
-assert.deepEqual(getDefinition('battery-holder-4aa').pins, [], 'el portapilas es solo mecánico (D-11 pendiente)');
+assert.deepEqual(getDefinition('battery-holder-4aa').pins.map(x => x.id), ['B+', 'B-'], 'portapilas con terminales + y − (D-11 resuelta con un voltaje editable)'); assert.equal(getDefinition('battery-holder-4aa').props[0].default, 6);
 assert.equal(uno.dimensionsSource, 'datasheet'); assert.equal(getDefinition('l298n-module').dimensionsSource, 'approximate');
 for (const d of CATALOG) { assert.ok(d.dimensions.every(v => v > 0 && v < 0.5), d.id); assert.equal(new Set(d.pins.map(x => x.id)).size, d.pins.length, d.id + ' pines únicos'); assert.equal(new Set(d.anchors.map(x => x.id)).size, d.anchors.length); assert.equal(d.scalable, false); }
 assert.equal(searchCatalog('ultrasónico').at(0).id, 'hc-sr04'); assert.ok(searchCatalog('motor').some(x => x.id === 'dc-motor-tt')); assert.deepEqual(searchCatalog('xyz'), []); assert.ok(searchCatalog('', 'sensor').every(x => x.category === 'sensor'));
