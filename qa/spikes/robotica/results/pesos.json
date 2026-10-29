@@ -1,0 +1,17 @@
+{
+  "worker": {
+    "kB": 4280.5,
+    "gzipKB": 1618.4,
+    "brotliKB": 1179.3
+  },
+  "solo-avr8js": {
+    "kB": 53.1,
+    "gzipKB": 13.2,
+    "brotliKB": 11.7
+  },
+  "solo-rapier": {
+    "kB": 4233.1,
+    "gzipKB": 1604.6,
+    "brotliKB": 1167.5
+  }
+}

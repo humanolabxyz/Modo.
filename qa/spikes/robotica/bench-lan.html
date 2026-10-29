@@ -1,0 +1,26 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Banco de Robótica · tablet</title>
+<style>body{font:15px system-ui;margin:16px;max-width:640px}button{font:inherit;padding:12px 18px;margin:6px 6px 6px 0}pre{background:#f1f3f5;padding:12px;overflow:auto;font-size:12px}td,th{padding:4px 10px;text-align:left;border-bottom:1px solid #ddd}</style>
+<h1>Banco de Robótica (spikes E1 y E3)</h1>
+<p>Mide avr8js (emulador ATmega328P) y Rapier (física) en este dispositivo. Tarda ~20 s. Cierra otras pestañas antes de empezar.</p>
+<button id="go">Medir en este dispositivo</button><p id="status"></p><table id="t"></table><pre id="raw"></pre>
+<script>
+const $ = s => document.querySelector(s);
+$('#go').onclick = async () => {
+  $('#status').textContent = 'Cargando…';
+  const [code, hex] = await Promise.all([fetch('worker.js').then(r => r.text()), fetch('hex.json').then(r => r.json())]);
+  const worker = new Worker(URL.createObjectURL(new Blob([code])));
+  const ask = msg => new Promise((ok, no) => { worker.onmessage = e => { if (e.data.cmd === 'ready') return; e.data.error ? no(new Error(e.data.error)) : ok(e.data.result); }; worker.onerror = e => no(new Error(e.message)); worker.postMessage(msg); });
+  const rows = [];
+  try {
+    $('#status').textContent = 'Midiendo avr8js…'; const e1 = await ask({cmd: 'e1', hex});
+    $('#status').textContent = 'Midiendo Rapier (60 s simulados)…'; const e3 = await ask({cmd: 'e3', seconds: 60});
+    rows.push(['avr8js: velocidad (virtual/real, umbral ≥ 1×)', e1.blink.speed + '×', e1.blink.speed >= 1], ['avr8js: robot completo (virtual/real)', e1.robot.speed + '×', e1.robot.speed >= 1],
+      ['avr8js: desvío de Blink', '±' + e1.blink.maxDeviationMs + ' ms', e1.blink.maxDeviationMs <= 1], ['Rapier: inicio del WASM (umbral < 2500 ms)', e3.initMs + ' ms', e3.initMs < 2500],
+      ['Rapier: paso p95 (umbral < 3 ms)', e3.run1.stepMs.p95 + ' ms', e3.run1.stepMs.p95 < 3], ['Rapier: paso máximo tras calentar', e3.run1.stepMs.warmMax + ' ms', null], ['Rapier: determinista', String(e3.deterministic), e3.deterministic]);
+    $('#raw').textContent = JSON.stringify({ua: navigator.userAgent, cores: navigator.hardwareConcurrency, memGB: navigator.deviceMemory, e1: {blink: e1.blink, robot: e1.robot}, e3: e3.run1.stepMs}, null, 1);
+    $('#status').textContent = 'Listo.';
+  } catch (e) { $('#status').textContent = 'Error: ' + e.message; }
+  $('#t').innerHTML = rows.map(([a, b, ok]) => `<tr><td>${a}</td><td><b>${b}</b></td><td>${ok === null ? '' : ok ? '✅' : '❌'}</td></tr>`).join('');
+};
+</script></html>

@@ -1,0 +1,502 @@
+{
+  "url": "http://127.0.0.1:4330",
+  "date": "2026-10-29T03:15:22.192Z",
+  "runs": [
+    {
+      "label": "robotica · escritorio",
+      "page": "/robotica/",
+      "cpuThrottle": 1,
+      "csp": "script-src 'self' 'wasm-unsafe-eval' 'sha256-uaMFX4nW2dTRWH3P5Ch4C6xdfLx7REF970QbQKldwhs=' 'sha256-0O8HSzo4N22+aixqZzK8DrCr5DoRZVViKridqyqRAJs=' 'sha256-C+pa/uIitXOp2U6w7JcwP6ufnjNFVhGvSYRLgotDGHQ=' 'sha256-jb6eukrnid8pvOZfbjOilRJMGq2BrKYHKuPgK1BCuls=' 'sha256-fsmN+MSpuJYBeJoPbgHCCu1tyVfzQGBamhIjeVaQsQk=' 'sha256-6Z/skjNDBc+hd+lfcdJxz0nHNFtlV8ZvaYHqY9M0+SY=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='",
+      "e1": {
+        "blink": {
+          "toggles": 5,
+          "firstMs": 0.014,
+          "gapsMs": [
+            1000.008,
+            1000.008,
+            1000.009,
+            1000.014
+          ],
+          "maxDeviationMs": 0.014,
+          "virtualS": 5,
+          "wallMs": 2662.9,
+          "speed": 1.9
+        },
+        "pwm": {
+          "64": {
+            "D5": 25.09,
+            "D6": 25.09,
+            "D9": 25.15,
+            "D10": 25.15,
+            "expected": 25.1,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          },
+          "128": {
+            "D5": 50.18,
+            "D6": 50.18,
+            "D9": 50.24,
+            "D10": 50.24,
+            "expected": 50.2,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          },
+          "192": {
+            "D5": 75.06,
+            "D6": 75.06,
+            "D9": 75.33,
+            "D10": 75.33,
+            "expected": 75.29,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          }
+        },
+        "pulse": {
+          "injectedUs": 1749,
+          "readUs": 1730,
+          "errorPct": -1.09,
+          "micros1000": [
+            1008,
+            1016,
+            1016,
+            1016
+          ],
+          "lines": [
+            "pulse=0 dt=1008",
+            "pulse=1730 dt=1016",
+            "pulse=0 dt=1016"
+          ]
+        },
+        "serialAdc": {
+          "greeting": "hola",
+          "reads": {
+            "0 V": {
+              "leido": 0,
+              "esperado": 0
+            },
+            "1.25 V": {
+              "leido": 256,
+              "esperado": 256
+            },
+            "2.5 V": {
+              "leido": 512,
+              "esperado": 512
+            },
+            "5 V": {
+              "leido": 1023,
+              "esperado": 1023
+            }
+          }
+        },
+        "robot": {
+          "phases": [
+            {
+              "label": "libre a 1,00 m",
+              "distanceM": 1,
+              "dutyENA": 70.3,
+              "dutyENB": 70.3,
+              "serialCm": "100"
+            },
+            {
+              "label": "obstáculo a 0,10 m",
+              "distanceM": 0.1,
+              "dutyENA": 0,
+              "dutyENB": 0,
+              "serialCm": "9"
+            },
+            {
+              "label": "libre a 0,60 m",
+              "distanceM": 0.6,
+              "dutyENA": 70.3,
+              "dutyENB": 70.3,
+              "serialCm": "59"
+            }
+          ],
+          "expectedDutyAvanzar": 70.6,
+          "wallMs": 1247.2,
+          "speed": 1.7
+        }
+      },
+      "workerStartAndE1Ms": 4572,
+      "e3": {
+        "version": "0.21.0",
+        "initMs": 58.5,
+        "buildWorldMs": 10.3,
+        "bodies": 10,
+        "joints": 9,
+        "obstacles": 5,
+        "raysPerStep": 5,
+        "hz": 240,
+        "seconds": 60,
+        "run1": {
+          "steps": 14400,
+          "bad": null,
+          "stepMs": {
+            "mean": 0.1549,
+            "p50": 0.1,
+            "p95": 0.2,
+            "p99": 0.7,
+            "max": 92.4,
+            "warmP95": 0.2,
+            "warmMax": 7.6,
+            "maxAtStep": 0
+          },
+          "realtimeFactor": 26.9,
+          "final": {
+            "x": -0.0525,
+            "y": 0.0324,
+            "z": 12.0781,
+            "yawDeg": 0.55,
+            "travelledM": 12.078,
+            "meanSpeed": 0.2013
+          },
+          "minWheelBottomY": -0.00113,
+          "maxSpeed": 0.264,
+          "rays": {
+            "rays": 72000,
+            "hit": 13864
+          }
+        },
+        "deterministic": true,
+        "run2Final": {
+          "x": -0.0525,
+          "y": 0.0324,
+          "z": 12.0781,
+          "yawDeg": 0.55,
+          "travelledM": 12.078,
+          "meanSpeed": 0.2013
+        },
+        "traceSeconds": 60
+      },
+      "e3TotalMs": 4243,
+      "throttleLabel": "robotica · escritorio",
+      "cspConsole": []
+    },
+    {
+      "label": "robotica · tablet (CPU ×4, proxy)",
+      "page": "/robotica/",
+      "cpuThrottle": 4,
+      "csp": "script-src 'self' 'wasm-unsafe-eval' 'sha256-uaMFX4nW2dTRWH3P5Ch4C6xdfLx7REF970QbQKldwhs=' 'sha256-0O8HSzo4N22+aixqZzK8DrCr5DoRZVViKridqyqRAJs=' 'sha256-C+pa/uIitXOp2U6w7JcwP6ufnjNFVhGvSYRLgotDGHQ=' 'sha256-jb6eukrnid8pvOZfbjOilRJMGq2BrKYHKuPgK1BCuls=' 'sha256-fsmN+MSpuJYBeJoPbgHCCu1tyVfzQGBamhIjeVaQsQk=' 'sha256-6Z/skjNDBc+hd+lfcdJxz0nHNFtlV8ZvaYHqY9M0+SY=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='",
+      "e1": {
+        "blink": {
+          "toggles": 5,
+          "firstMs": 0.014,
+          "gapsMs": [
+            1000.008,
+            1000.008,
+            1000.009,
+            1000.014
+          ],
+          "maxDeviationMs": 0.014,
+          "virtualS": 5,
+          "wallMs": 2527.5,
+          "speed": 2
+        },
+        "pwm": {
+          "64": {
+            "D5": 25.09,
+            "D6": 25.09,
+            "D9": 25.15,
+            "D10": 25.15,
+            "expected": 25.1,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          },
+          "128": {
+            "D5": 50.18,
+            "D6": 50.18,
+            "D9": 50.24,
+            "D10": 50.24,
+            "expected": 50.2,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          },
+          "192": {
+            "D5": 75.06,
+            "D6": 75.06,
+            "D9": 75.33,
+            "D10": 75.33,
+            "expected": 75.29,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          }
+        },
+        "pulse": {
+          "injectedUs": 1749,
+          "readUs": 1730,
+          "errorPct": -1.09,
+          "micros1000": [
+            1008,
+            1016,
+            1016,
+            1016
+          ],
+          "lines": [
+            "pulse=0 dt=1008",
+            "pulse=1730 dt=1016",
+            "pulse=0 dt=1016"
+          ]
+        },
+        "serialAdc": {
+          "greeting": "hola",
+          "reads": {
+            "0 V": {
+              "leido": 0,
+              "esperado": 0
+            },
+            "1.25 V": {
+              "leido": 256,
+              "esperado": 256
+            },
+            "2.5 V": {
+              "leido": 512,
+              "esperado": 512
+            },
+            "5 V": {
+              "leido": 1023,
+              "esperado": 1023
+            }
+          }
+        },
+        "robot": {
+          "phases": [
+            {
+              "label": "libre a 1,00 m",
+              "distanceM": 1,
+              "dutyENA": 70.3,
+              "dutyENB": 70.3,
+              "serialCm": "100"
+            },
+            {
+              "label": "obstáculo a 0,10 m",
+              "distanceM": 0.1,
+              "dutyENA": 0,
+              "dutyENB": 0,
+              "serialCm": "9"
+            },
+            {
+              "label": "libre a 0,60 m",
+              "distanceM": 0.6,
+              "dutyENA": 70.3,
+              "dutyENB": 70.3,
+              "serialCm": "59"
+            }
+          ],
+          "expectedDutyAvanzar": 70.6,
+          "wallMs": 1149.2,
+          "speed": 1.8
+        }
+      },
+      "workerStartAndE1Ms": 4345,
+      "e3": {
+        "version": "0.21.0",
+        "initMs": 45.5,
+        "buildWorldMs": 4.1,
+        "bodies": 10,
+        "joints": 9,
+        "obstacles": 5,
+        "raysPerStep": 5,
+        "hz": 240,
+        "seconds": 60,
+        "run1": {
+          "steps": 14400,
+          "bad": null,
+          "stepMs": {
+            "mean": 0.145,
+            "p50": 0.1,
+            "p95": 0.2,
+            "p99": 0.5,
+            "max": 8.5,
+            "warmP95": 0.2,
+            "warmMax": 8.5,
+            "maxAtStep": 1065
+          },
+          "realtimeFactor": 28.7,
+          "final": {
+            "x": -0.0525,
+            "y": 0.0324,
+            "z": 12.0781,
+            "yawDeg": 0.55,
+            "travelledM": 12.078,
+            "meanSpeed": 0.2013
+          },
+          "minWheelBottomY": -0.00113,
+          "maxSpeed": 0.264,
+          "rays": {
+            "rays": 72000,
+            "hit": 13864
+          }
+        },
+        "deterministic": true,
+        "run2Final": {
+          "x": -0.0525,
+          "y": 0.0324,
+          "z": 12.0781,
+          "yawDeg": 0.55,
+          "travelledM": 12.078,
+          "meanSpeed": 0.2013
+        },
+        "traceSeconds": 60
+      },
+      "e3TotalMs": 3887,
+      "throttleLabel": "robotica · tablet (CPU ×4, proxy)",
+      "cspConsole": []
+    },
+    {
+      "label": "laboratorio · control negativo (sin wasm-unsafe-eval)",
+      "page": "/laboratorio/",
+      "cpuThrottle": 1,
+      "csp": "script-src 'self' 'sha256-uaMFX4nW2dTRWH3P5Ch4C6xdfLx7REF970QbQKldwhs=' 'sha256-0O8HSzo4N22+aixqZzK8DrCr5DoRZVViKridqyqRAJs=' 'sha256-C+pa/uIitXOp2U6w7JcwP6ufnjNFVhGvSYRLgotDGHQ=' 'sha256-jb6eukrnid8pvOZfbjOilRJMGq2BrKYHKuPgK1BCuls=' 'sha256-fsmN+MSpuJYBeJoPbgHCCu1tyVfzQGBamhIjeVaQsQk=' 'sha256-6Z/skjNDBc+hd+lfcdJxz0nHNFtlV8ZvaYHqY9M0+SY=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='",
+      "e1": {
+        "blink": {
+          "toggles": 5,
+          "firstMs": 0.014,
+          "gapsMs": [
+            1000.008,
+            1000.008,
+            1000.009,
+            1000.014
+          ],
+          "maxDeviationMs": 0.014,
+          "virtualS": 5,
+          "wallMs": 1685,
+          "speed": 3
+        },
+        "pwm": {
+          "64": {
+            "D5": 25.09,
+            "D6": 25.09,
+            "D9": 25.15,
+            "D10": 25.15,
+            "expected": 25.1,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          },
+          "128": {
+            "D5": 50.18,
+            "D6": 50.18,
+            "D9": 50.24,
+            "D10": 50.24,
+            "expected": 50.2,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          },
+          "192": {
+            "D5": 75.06,
+            "D6": 75.06,
+            "D9": 75.33,
+            "D10": 75.33,
+            "expected": 75.29,
+            "freqHz": {
+              "D5": 980,
+              "D6": 980,
+              "D9": 500,
+              "D10": 500
+            }
+          }
+        },
+        "pulse": {
+          "injectedUs": 1749,
+          "readUs": 1730,
+          "errorPct": -1.09,
+          "micros1000": [
+            1008,
+            1016,
+            1016,
+            1016
+          ],
+          "lines": [
+            "pulse=0 dt=1008",
+            "pulse=1730 dt=1016",
+            "pulse=0 dt=1016"
+          ]
+        },
+        "serialAdc": {
+          "greeting": "hola",
+          "reads": {
+            "0 V": {
+              "leido": 0,
+              "esperado": 0
+            },
+            "1.25 V": {
+              "leido": 256,
+              "esperado": 256
+            },
+            "2.5 V": {
+              "leido": 512,
+              "esperado": 512
+            },
+            "5 V": {
+              "leido": 1023,
+              "esperado": 1023
+            }
+          }
+        },
+        "robot": {
+          "phases": [
+            {
+              "label": "libre a 1,00 m",
+              "distanceM": 1,
+              "dutyENA": 70.3,
+              "dutyENB": 70.3,
+              "serialCm": "100"
+            },
+            {
+              "label": "obstáculo a 0,10 m",
+              "distanceM": 0.1,
+              "dutyENA": 0,
+              "dutyENB": 0,
+              "serialCm": "9"
+            },
+            {
+              "label": "libre a 0,60 m",
+              "distanceM": 0.6,
+              "dutyENA": 70.3,
+              "dutyENB": 70.3,
+              "serialCm": "59"
+            }
+          ],
+          "expectedDutyAvanzar": 70.6,
+          "wallMs": 801.8,
+          "speed": 2.6
+        }
+      },
+      "workerStartAndE1Ms": 2871,
+      "e3Error": "CompileError: WebAssembly.instantiate(): Compiling or instantiating WebAssembly module violates the following Content Security policy directive because 'unsafe-eval' is not an allowed source of script in the following Content Security Policy directive: \"script-src 'self' 'sha256-uaMFX4nW2dTRWH3P5Ch4C6xdfLx7REF970QbQKldwhs=' 'sha256-0O8HSzo4N22+aixqZzK8DrCr5DoRZVViKridqyqRAJs=' 'sha256-C+pa/uIitXOp2U6w7JcwP6ufnjNFVhGvSYRLgotDGHQ=' 'sha256-jb6eukrnid8pvOZfbjOilRJMGq2BrKYHKuPgK1BCuls=' 'sha256-fsmN+MSpuJYBeJoPbgHCCu1tyVfzQGBamhIjeVaQsQk=' 'sha256-6Z/skjNDBc+hd+lfcdJxz0nHNFtlV8ZvaYHqY9M0+SY=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ='\".\n    at blob:http://127.0.0.1:4330/36703f84-bbbc-459e-bbe6-a268c58f3f57:3:124626\n    at _B (blob:http://127.0.0.1:4330/36703f84-bbbc-459e-bbe6-a268c58f3f57:3:124710)",
+      "throttleLabel": "laboratorio · control negativo (sin wasm-unsafe-eval)",
+      "cspConsole": []
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-29T03:11:09.607Z",
+  "cli": "arduino-cli 1.5.1 · arduino:avr 1.8.8",
+  "compiles": [
+    {
+      "sketch": "blink.hex",
+      "ms": 3242,
+      "flashBytes": 924,
+      "hexBytes": 2615,
+      "warnings": 0
+    },
+    {
+      "sketch": "pwm_64.hex",
+      "ms": 3244,
+      "flashBytes": 944,
+      "hexBytes": 2668,
+      "warnings": 0
+    },
+    {
+      "sketch": "pwm_128.hex",
+      "ms": 3220,
+      "flashBytes": 942,
+      "hexBytes": 2664,
+      "warnings": 0
+    },
+    {
+      "sketch": "pwm_192.hex",
+      "ms": 3274,
+      "flashBytes": 942,
+      "hexBytes": 2664,
+      "warnings": 0
+    },
+    {
+      "sketch": "pulse.hex",
+      "ms": 3315,
+      "flashBytes": 2202,
+      "hexBytes": 6224,
+      "warnings": 0
+    },
+    {
+      "sketch": "serial_adc.hex",
+      "ms": 3274,
+      "flashBytes": 1922,
+      "hexBytes": 5430,
+      "warnings": 0
+    },
+    {
+      "sketch": "robot_like.hex",
+      "ms": 3368,
+      "flashBytes": 2770,
+      "hexBytes": 7815,
+      "warnings": 0
+    },
+    {
+      "sketch": "blink.hex",
+      "ms": 3254,
+      "flashBytes": 924,
+      "hexBytes": 2615,
+      "warnings": 0
+    }
+  ],
+  "errors": {
+    "ms": 731,
+    "errors": [
+      {
+        "line": 3,
+        "column": 3,
+        "message": "expected ',' or ';' before 'pinMode'"
+      },
+      {
+        "line": 5,
+        "column": 38,
+        "message": "expected ';' before '}' token"
+      }
+    ]
+  },
+  "security": [
+    {
+      "case": "include de ruta del sistema",
+      "result": "rechazado",
+      "http": 400
+    },
+    {
+      "case": "include con comillas y ..",
+      "result": "rechazado",
+      "http": 400
+    },
+    {
+      "case": "include de librería fuera de la lista",
+      "result": "rechazado",
+      "http": 400
+    },
+    {
+      "case": "include por macro",
+      "result": "rechazado",
+      "http": 400
+    },
+    {
+      "case": "ensamblador en línea",
+      "result": "rechazado",
+      "http": 400
+    },
+    {
+      "case": "código demasiado grande",
+      "result": "rechazado",
+      "http": 400
+    },
+    {
+      "case": "código vacío",
+      "result": "rechazado",
+      "http": 400
+    },
+    {
+      "case": "tiempo máximo (400 ms de prueba)",
+      "result": "cancelado",
+      "http": 504,
+      "ms": 555
+    }
+  ],
+  "http": {
+    "single": {
+      "ms": 3294,
+      "status": 200
+    },
+    "parallel3": {
+      "codes": [
+        200,
+        200,
+        429
+      ],
+      "ms": 3728
+    },
+    "rateLimit": "tras 20 peticiones/min → 429"
+  },
+  "toolchain": {
+    "arduino-cli.exe (MB)": 37.7,
+    "packages instalados (MB)": 279,
+    "datos totales con índices (MB)": 341,
+    "arduino/tools/avr-gcc (MB)": 220,
+    "arduino/tools/avrdude (MB)": 7,
+    "arduino/hardware/avr (MB)": 24
+  }
+}

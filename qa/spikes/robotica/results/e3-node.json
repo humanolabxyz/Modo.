@@ -1,0 +1,48 @@
+{
+  "version": "0.21.0",
+  "initMs": 59.4,
+  "buildWorldMs": 6.03,
+  "bodies": 10,
+  "joints": 9,
+  "obstacles": 5,
+  "raysPerStep": 5,
+  "hz": 240,
+  "seconds": 60,
+  "run1": {
+    "steps": 14400,
+    "bad": null,
+    "stepMs": {
+      "mean": 0.105,
+      "p50": 0.0889,
+      "p95": 0.164,
+      "p99": 0.2703,
+      "max": 68.0379,
+      "warmP95": 0.1505
+    },
+    "realtimeFactor": 39.7,
+    "final": {
+      "x": -0.0525,
+      "y": 0.0324,
+      "z": 12.0781,
+      "yawDeg": 0.55,
+      "travelledM": 12.078,
+      "meanSpeed": 0.2013
+    },
+    "minWheelBottomY": -0.00113,
+    "maxSpeed": 0.264,
+    "rays": {
+      "rays": 72000,
+      "hit": 13864
+    }
+  },
+  "deterministic": true,
+  "run2Final": {
+    "x": -0.0525,
+    "y": 0.0324,
+    "z": 12.0781,
+    "yawDeg": 0.55,
+    "travelledM": 12.078,
+    "meanSpeed": 0.2013
+  },
+  "traceSeconds": 60
+}

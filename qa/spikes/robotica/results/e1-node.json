@@ -1,0 +1,122 @@
+{
+  "blink": {
+    "toggles": 5,
+    "firstMs": 0.014,
+    "gapsMs": [
+      1000.008,
+      1000.008,
+      1000.009,
+      1000.014
+    ],
+    "maxDeviationMs": 0.014,
+    "virtualS": 5,
+    "wallMs": 1908.2,
+    "speed": 2.6
+  },
+  "pwm": {
+    "64": {
+      "D5": 25.09,
+      "D6": 25.09,
+      "D9": 25.15,
+      "D10": 25.15,
+      "expected": 25.1,
+      "freqHz": {
+        "D5": 980,
+        "D6": 980,
+        "D9": 500,
+        "D10": 500
+      }
+    },
+    "128": {
+      "D5": 50.18,
+      "D6": 50.18,
+      "D9": 50.24,
+      "D10": 50.24,
+      "expected": 50.2,
+      "freqHz": {
+        "D5": 980,
+        "D6": 980,
+        "D9": 500,
+        "D10": 500
+      }
+    },
+    "192": {
+      "D5": 75.06,
+      "D6": 75.06,
+      "D9": 75.33,
+      "D10": 75.33,
+      "expected": 75.29,
+      "freqHz": {
+        "D5": 980,
+        "D6": 980,
+        "D9": 500,
+        "D10": 500
+      }
+    }
+  },
+  "pulse": {
+    "injectedUs": 1749,
+    "readUs": 1730,
+    "errorPct": -1.09,
+    "micros1000": [
+      1008,
+      1016,
+      1016,
+      1016
+    ],
+    "lines": [
+      "pulse=0 dt=1008",
+      "pulse=1730 dt=1016",
+      "pulse=0 dt=1016"
+    ]
+  },
+  "serialAdc": {
+    "greeting": "a0=1023",
+    "reads": {
+      "0 V": {
+        "leido": 0,
+        "esperado": 0
+      },
+      "1.25 V": {
+        "leido": 256,
+        "esperado": 256
+      },
+      "2.5 V": {
+        "leido": 512,
+        "esperado": 512
+      },
+      "5 V": {
+        "leido": 1023,
+        "esperado": 1023
+      }
+    }
+  },
+  "robot": {
+    "phases": [
+      {
+        "label": "libre a 1,00 m",
+        "distanceM": 1,
+        "dutyENA": 70.3,
+        "dutyENB": 70.3,
+        "serialCm": "100"
+      },
+      {
+        "label": "obstáculo a 0,10 m",
+        "distanceM": 0.1,
+        "dutyENA": 0,
+        "dutyENB": 0,
+        "serialCm": "9"
+      },
+      {
+        "label": "libre a 0,60 m",
+        "distanceM": 0.6,
+        "dutyENA": 70.3,
+        "dutyENB": 70.3,
+        "serialCm": "59"
+      }
+    ],
+    "expectedDutyAvanzar": 70.6,
+    "wallMs": 884,
+    "speed": 2.4
+  }
+}
