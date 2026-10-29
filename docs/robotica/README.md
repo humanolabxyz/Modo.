@@ -2,7 +2,7 @@
 
 Preparado el 28 de octubre de 2026 con Claude Opus, a partir de los cinco documentos de `fuentes/` (paquete `MODO_ROBOTICA_DOCUMENTACION_COMPLETA.zip`) y de la lectura del código real de este repositorio (versión 2.5.4).
 
-**Estado (29/10/2026): la etapa 1 está implementada** en la rama `robotica/etapa-1` (informe en `cierres/ETAPA_1.md`, pendiente de validación del usuario). Las etapas 2–5 no están implementadas ni aprobadas.
+**Estado (29/10/2026): las etapas 1 y 2 están implementadas** en la rama `robotica/etapa-1` (informes en `cierres/ETAPA_1.md` y `cierres/ETAPA_2.md`, pendientes de validación del usuario). Las etapas 3–5 no están implementadas ni aprobadas; la 3 además espera D-11.
 
 **Revisión 2 (28/10/2026):** decisiones revisadas por el usuario (ver `03`). La etapa 1 está ajustada y **aprobada (28/10/2026)**. Las etapas 2–5 siguen sin aprobar. Los cambios principales:
 - emulación real del ATmega328P con avr8js, en lugar de un intérprete propio;

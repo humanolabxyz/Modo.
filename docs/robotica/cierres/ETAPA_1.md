@@ -46,10 +46,10 @@ Playwright (Chromium con SwiftShader) sobre **el build servido con `astro previe
 | `qa/verify-approved-home.cjs` (5 tarjetas) | ✅ con `SKIP_PROTECTED_HASHES=1` (ver Desviaciones) |
 | `qa/verify-home-card-gestures.cjs` (Chromium y WebKit, 5 tarjetas) | ✅ |
 | `npm run verify:float` | ✅ |
-| `npm run verify:lab-ui` | ✅ |
+| `npm run verify:lab-ui` | ❌ **falla también antes de mis cambios** (corrección del 29/10, ver abajo): se detiene en `getByLabel('Poner las puntas en')` del multímetro; construí el commit de respaldo `c744273` en un worktree aparte y falla igual. Antes lo di por pasado por leer mal su código de salida. |
 | `npm run verify:pwa` | ✅ |
 | `npm run verify:modo` | ❌ **falla también antes de mis cambios**: espera `.modo-home`, una clase que el Inicio ya no produce desde el rediseño aprobado (el selector no existe en el `HEAD` previo). No lo toqué. |
-| «Mi proyecto» del Laboratorio conserva su posición guardada | ✅ por construcción (sin `storageId` la clave sigue siendo el título) y por `verify:lab-ui`. Verificación manual con una posición real guardada: **no hecha**. |
+| «Mi proyecto» del Laboratorio conserva su posición guardada | ✅ solo por construcción (sin `storageId` la clave sigue siendo el título); no hay prueba automática que lo confirme. Verificación manual con una posición real guardada: **no hecha**. |
 
 ## Spikes (números)
 
@@ -113,7 +113,7 @@ Máquina de medición: AMD Ryzen 5 3600 (6 núcleos/12 hilos), 32 GB, Windows 10
 | Ventanas con el `FloatingWindow` existente, sin gestor nuevo | ✅ | un solo cambio (`storageId`, `forgetWindowLayout`); `verify-robotics-ui` |
 | La pizarra responde como Figma, sin conflictos ventana/cámara/selección | ✅ | tabla de gestos + `verify-robotics-interaction` + UI |
 | Proyecto vacío: guardar, recargar, exportar, reimportar | ✅ | `verify-robotics-project` y UI |
-| Los `.modo.json` del Laboratorio siguen abriendo en el Laboratorio | ✅ | no se tocó `src/lab/`; `verify:lab-ui` |
+| Los `.modo.json` del Laboratorio siguen abriendo en el Laboratorio | ✅ | no se tocó `src/lab/`; el importador del Laboratorio es independiente. (`verify:lab-ui` ya fallaba antes: no sirve como evidencia en ningún sentido) |
 | Responsive sin ventanas inaccesibles; en teléfono, láminas | ✅* | UI en 3 viewports y al girar. *En teléfono la lámina cubre la barra y el dock hasta cerrarla (es el comportamiento de `FloatingWindow`). |
 | Informe de spikes con recomendación para D-04 y D-06 | ✅ | arriba |
 
