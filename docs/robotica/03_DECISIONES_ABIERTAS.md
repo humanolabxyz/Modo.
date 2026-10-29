@@ -15,9 +15,9 @@ Revisión del usuario: 28/10/2026. Sonnet no cambia ninguna decisión por su cue
 | D-01 | Dónde vive Robótica | ✅ Aprobada | Página propia `/robotica/` (`client:only="react"`). |
 | D-02 | Stack 3D | ✅ Aprobada | three 0.186.1 + @react-three/fiber 9.8.2 + @react-three/drei 10.7.9, versiones exactas. No subir React a 19.4 mientras R3F no lo admita. |
 | D-03 | Cambios en `FloatingWindow` | ✅ Aprobada | `storageId` opcional + exportar `forgetWindowLayout`. Ventanas de herramientas con `passive`. |
-| D-04 | Ejecución del código Arduino | 🔬 **Investigar (spike en etapa 1)** | El usuario prefiere **emulación real del ATmega328P** en lugar de un intérprete propio. Ver detalle abajo. |
+| D-04 | Ejecución del código Arduino | ✅ Aprobada (29/10/2026) | avr8js + compilador remoto + importar .hex (spike E1–E4 superado; implementada en etapa 4). El compilador solo existe en desarrollo: su alojamiento y despliegue siguen pendientes. Contexto: el usuario prefiere **emulación real del ATmega328P** en lugar de un intérprete propio. Ver detalle abajo. |
 | D-05 | Editor de código | ✅ Aprobada | CodeMirror 6. |
-| D-06 | Física | ✅ Aprobada **con verificación** | Rapier (`@dimforge/rapier3d-compat` 0.21.0). La etapa 1 incluye un banco de rendimiento e integración; si no cumple los umbrales, se vuelve a decidir. |
+| D-06 | Física | ✅ Confirmada (29/10/2026) | Rapier (`@dimforge/rapier3d-compat` 0.21.0). La etapa 1 incluye un banco de rendimiento e integración; el banco de la etapa 1 cumplió los umbrales. Criterio del usuario: que funcione, sea realista y rinda bien; se carga solo al pulsar Simular, con reloj fijo 1/240 s, y se mide en tablet real. |
 | D-07 | Modelos 3D | ✅ Aprobada | Geometría procedural en v1. |
 | D-08 | Medidas de piezas | ✅ Aprobada | Ficha técnica o medición del kit; si no, `approximate` declarado. |
 | D-09 | Arte de la tarjeta del inicio | ⏸ Pendiente | La tarjeta usa el icono `Bot` sin ilustración hasta que llegue el recurso. El carrusel no debe depender de la imagen. |

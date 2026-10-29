@@ -1,6 +1,7 @@
 # Cierre de Etapa 4 — Programación Arduino y coordinación temporal
 
 **Estado:** IMPLEMENTADA, con **tres límites declarados**: (1) el servicio de compilación solo existe en el servidor de **desarrollo** local (no se desplegó nada); (2) el HC-SR04 funciona solo en banco de prueba (distancia fija configurable), como pedía la etapa; (3) el reloj virtual a ×4 no se alcanza en este equipo con el lienzo dibujando (la interfaz lo dice con «LENTA»). Probada en Chromium con la GPU simulada; **no** en una tablet real.
+**Etapa aprobada por el usuario el 29/10/2026; D-06 (Rapier) confirmada.**
 **Fecha:** 29/10/2026 · **Rama:** `robotica/etapa-1` (sigue la misma) · **Commits:** ver al final.
 **Aprobación y suposiciones:** el usuario escribió «ya ahora sigue con la etapa 4» (29/10/2026), después de que le dejé la recomendación de D-04 (avr8js + compilador remoto + importar .hex) y D-06 (Rapier). Tomé esa frase como aprobación de la etapa y de esa recomendación. **El despliegue del compilador NO está autorizado y no se hizo** (la etapa lo exigía; `AGENTS.md` lo prohíbe sin permiso): dónde alojarlo sigue siendo una decisión pendiente. Sin push, sin despliegue, 2.6.0 sin publicar.
 
