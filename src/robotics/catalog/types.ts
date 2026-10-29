@@ -21,7 +21,7 @@ export type AnchorDefinition = {id: string; label: string; position: Vec3; norma
 export type ComponentDefinition = {
   id: string;
   name: string;
-  category: 'control' | 'driver' | 'sensor' | 'actuator' | 'power' | 'structure';
+  category: 'control' | 'driver' | 'sensor' | 'actuator' | 'power' | 'structure' | 'passive';
   /** Caja envolvente [x, y, z] en metros. */
   dimensions: Vec3;
   dimensionsSource: 'datasheet' | 'measured' | 'approximate';

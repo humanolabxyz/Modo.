@@ -54,6 +54,8 @@ const hcsr04: ComponentDefinition = {
   id: 'hc-sr04', name: 'Sensor HC-SR04', category: 'sensor', dimensions: [mm(45), mm(20), mm(15)], dimensionsSource: 'datasheet', massKg: 0.009,
   pins: [pin('VCC', 'VCC', [-mm(3.8), -mm(7), -mm(7.5)], 'power-in', {electrical: {vMax: 5.5}}), pin('TRIG', 'TRIG', [-mm(1.3), -mm(7), -mm(7.5)], 'digital'), pin('ECHO', 'ECHO', [mm(1.3), -mm(7), -mm(7.5)], 'digital'), pin('GND', 'GND', [mm(3.8), -mm(7), -mm(7.5)], 'ground')],
   anchors: [anchor('base', 'Base', [0, -mm(10), 0], DOWN, 'sensor-mount')],
+  // Banco de pruebas controlado (etapa 4): la física con obstáculos llega en la etapa 5.
+  props: [{id: 'testDistance', label: 'Distancia de prueba (m) — banco controlado', type: 'number', min: 0.02, max: 4, default: 0.3}],
   scalable: false, model: 'procedural', summary: 'Mide distancia con ultrasonido (2–400 cm).', keywords: ['hc-sr04', 'ultrasonico', 'ultrasonido', 'distancia', 'sensor', 'trig', 'echo'],
 };
 
@@ -116,11 +118,25 @@ const genericBracket: ComponentDefinition = {
   scalable: false, model: 'procedural', summary: 'Bloque para elevar o fijar cualquier placa o módulo.', keywords: ['soporte', 'separador', 'bloque', 'generico'],
 };
 
-export const CATALOG: readonly ComponentDefinition[] = [chassis, motor, wheel, caster, arduino, l298n, hcsr04, battery, sensorBracket, genericBracket];
+// ───── Piezas sueltas para probar el programa (etapa 4): se cablean, no se unen mecánicamente.
+const led: ComponentDefinition = {
+  id: 'led-5mm', name: 'LED 5 mm', category: 'actuator', dimensions: [mm(5.8), mm(9), mm(5.8)], dimensionsSource: 'approximate', massKg: 0.0005,
+  pins: [pin('A', 'Ánodo (+)', [-mm(1.27), -mm(4.5), 0], 'signal'), pin('K', 'Cátodo (−)', [mm(1.27), -mm(4.5), 0], 'signal')],
+  props: [{id: 'color', label: 'Color', type: 'enum', options: ['rojo', 'verde', 'amarillo', 'azul'], default: 'rojo'}],
+  anchors: [], scalable: false, model: 'procedural', summary: 'Diodo emisor de luz. Sin resistencia en serie se puede quemar.', keywords: ['led', 'diodo', 'luz', 'indicador'],
+};
+const resistor: ComponentDefinition = {
+  id: 'resistor', name: 'Resistencia', category: 'passive', dimensions: [mm(6.3), mm(2.4), mm(2.4)], dimensionsSource: 'approximate', massKg: 0.0002,
+  pins: [pin('P1', 'Pata 1', [-mm(4.5), 0, 0], 'signal'), pin('P2', 'Pata 2', [mm(4.5), 0, 0], 'signal')],
+  props: [{id: 'ohms', label: 'Resistencia (Ω)', type: 'number', min: 1, max: 1000000, default: 220}],
+  anchors: [], scalable: false, model: 'procedural', summary: 'Resistencia de 1/4 W; por defecto 220 Ω, la de un LED con 5 V.', keywords: ['resistencia', 'resistor', 'ohm', 'pasivo'],
+};
+
+export const CATALOG: readonly ComponentDefinition[] = [chassis, motor, wheel, caster, arduino, l298n, hcsr04, battery, sensorBracket, genericBracket, led, resistor];
 const byId = new Map(CATALOG.map(d => [d.id, d]));
 export const getDefinition = (id: string): ComponentDefinition | undefined => byId.get(id);
 export const definitionIds: ReadonlySet<string> = new Set(CATALOG.map(d => d.id));
-export const CATEGORY_LABELS: Record<ComponentDefinition['category'], string> = {control: 'Control', driver: 'Drivers', sensor: 'Sensores', actuator: 'Actuadores', power: 'Energía', structure: 'Estructura'};
+export const CATEGORY_LABELS: Record<ComponentDefinition['category'], string> = {control: 'Control', driver: 'Drivers', sensor: 'Sensores', actuator: 'Actuadores', power: 'Energía', structure: 'Estructura', passive: 'Pasivos'};
 
 /** Forma mínima del catálogo para el validador: qué pines y anclajes tiene cada definición. */
 export const catalogShape: ReadonlyMap<string, {pins: ReadonlySet<string>; anchors: ReadonlySet<string>}> = new Map(CATALOG.map(d => [d.id, {pins: new Set(d.pins.map(p => p.id)), anchors: new Set(d.anchors.map(a => a.id))}]));

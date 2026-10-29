@@ -1,0 +1,53 @@
+{
+  "generatedWith": "arduino-cli 1.5.1 · arduino:avr 1.8.8 (arduino:avr:uno)",
+  "note": "Compilados con scripts/robotica-compile-service.mjs. Contienen el núcleo de Arduino (LGPL-2.1); solo se usan como datos de prueba.",
+  "files": {
+    "analog_a0": {
+      "flashBytes": 1890,
+      "ms": 3400
+    },
+    "bad_syntax": {
+      "errors": 2
+    },
+    "blink_1000": {
+      "flashBytes": 924,
+      "ms": 3417
+    },
+    "blink_200": {
+      "flashBytes": 922,
+      "ms": 3446
+    },
+    "hcsr04_read": {
+      "flashBytes": 2390,
+      "ms": 3445
+    },
+    "motors_fwd": {
+      "flashBytes": 968,
+      "ms": 3466
+    },
+    "motors_off": {
+      "flashBytes": 786,
+      "ms": 3407
+    },
+    "motors_pwm64": {
+      "flashBytes": 968,
+      "ms": 3362
+    },
+    "motors_rev": {
+      "flashBytes": 968,
+      "ms": 3478
+    },
+    "pwm9_128": {
+      "flashBytes": 868,
+      "ms": 3413
+    },
+    "serial_count": {
+      "flashBytes": 1902,
+      "ms": 3453
+    },
+    "stuck_while1": {
+      "flashBytes": 700,
+      "ms": 3501
+    }
+  }
+}

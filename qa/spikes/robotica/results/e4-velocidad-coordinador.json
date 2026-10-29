@@ -1,0 +1,26 @@
+{
+  "maquina": "AMD Ryzen 5 3600, Node 24",
+  "pasoCircuitoUs": 2000,
+  "rows": [
+    {
+      "programa": "blink_1000",
+      "ms": 4346,
+      "vezTiempoReal": 2.3
+    },
+    {
+      "programa": "hcsr04_read",
+      "ms": 4187,
+      "vezTiempoReal": 2.4
+    },
+    {
+      "programa": "motors_fwd",
+      "ms": 2911,
+      "vezTiempoReal": 3.4
+    },
+    {
+      "programa": "stuck_while1",
+      "ms": 2653,
+      "vezTiempoReal": 3.8
+    }
+  ]
+}

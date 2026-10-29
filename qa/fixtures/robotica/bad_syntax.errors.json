@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "errors": [
+    {
+      "line": 3,
+      "column": 3,
+      "message": "expected ',' or ';' before 'pinMode'"
+    },
+    {
+      "line": 5,
+      "column": 38,
+      "message": "expected ';' before '}' token"
+    }
+  ]
+}

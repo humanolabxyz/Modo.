@@ -39,3 +39,14 @@ export async function wireRobot2wd({project, ids}, {jumpers = false} = {}) {
   wire(pin(sensor, 'TRIG'), pin(uno, 'D9'), '#2a8f4f'); wire(pin(sensor, 'ECHO'), pin(uno, 'D10'), '#2a8f4f');
   return p;
 }
+
+/** Añade un LED rojo con su resistencia de 220 Ω entre D13 y GND del UNO y sube la batería a 9 V (el UNO por VIN necesita ≥ 7 V). */
+export async function withLedAnd9V({project, ids}) {
+  const {connect, setPartProp} = await import('../../src/robotics/project/commands.ts');
+  let p = setPartProp(project, ids.battery, 'voltage', 9);
+  const mk = (def, pos, props) => { const part = {instanceId: `t-${def}`, definitionId: def, label: def === 'led-5mm' ? 'LED 5 mm 1' : 'Resistencia 1', transform: {position: pos, rotation: [0, 0, 0, 1]}, props}; p = {...p, parts: [...p.parts, part]}; return part.instanceId; };
+  const led = mk('led-5mm', [0.2, 0.0045, 0.2], {color: 'rojo'}), res = mk('resistor', [0.25, 0.0012, 0.2], {ohms: 220});
+  const wire = (a, b) => { const r = connect(p, a, b, '#2a67a3'); if ('error' in r) throw new Error(r.error); p = r.project; };
+  wire({instanceId: ids.uno, pinId: 'D13'}, {instanceId: res, pinId: 'P1'}); wire({instanceId: res, pinId: 'P2'}, {instanceId: led, pinId: 'A'}); wire({instanceId: led, pinId: 'K'}, {instanceId: ids.uno, pinId: 'GND.3'});
+  return {project: p, led, res};
+}

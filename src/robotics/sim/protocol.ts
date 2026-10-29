@@ -1,0 +1,19 @@
+// Mensajes entre la interfaz y el worker de la simulación (docs/robotica/02 §5).
+import type {SimModel, Snapshot} from './coordinator.ts';
+
+export type ToWorker =
+  | {t: 'load'; model: SimModel}
+  | {t: 'start'}
+  | {t: 'pause'}
+  | {t: 'speed'; factor: number}
+  | {t: 'ping'; n: number};
+
+export type FromWorker =
+  | {t: 'ready'}
+  | {t: 'loaded'; status: Snapshot['status']; message?: string}
+  /** `ratio`: tiempo virtual / tiempo real logrado; `lag`: no alcanza la velocidad pedida. */
+  | {t: 'snapshot'; snapshot: Snapshot; ratio: number; lag: boolean}
+  | {t: 'pong'; n: number}
+  | {t: 'error'; message: string};
+
+export const SPEEDS = [0.25, 0.5, 1, 2, 4] as const;

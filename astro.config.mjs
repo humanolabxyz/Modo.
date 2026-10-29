@@ -4,6 +4,7 @@ import {readdirSync,readFileSync,statSync,writeFileSync} from 'node:fs';
 import {join,relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
+import {roboticaCompiler} from './scripts/robotica-compile-service.mjs';
 const walk=d=>readdirSync(d).flatMap(n=>{const p=join(d,n);return statSync(p).isDirectory()?walk(p):[p]});
 /** Scripts propios y hashes de Astro; el marco de GeoGebra tiene su propia política. */
 const protectStaticPages=()=>({name:'humano-static-security',hooks:{'astro:build:done':({dir})=>{
@@ -28,7 +29,7 @@ const protectStaticPages=()=>({name:'humano-static-security',hooks:{'astro:build
   writeFileSync(file,html.replace(/<head>/i,`<head><meta http-equiv="Content-Security-Policy" content="${policy}"/>`));
  }
  // Se entregan los avisos completos de los componentes principales y del runtime de React.
- const packages=['astro','@astrojs/react','react','react-dom','scheduler','lucide-react','three','@react-three/fiber','@react-three/drei'];
+ const packages=['astro','@astrojs/react','react','react-dom','scheduler','lucide-react','three','@react-three/fiber','@react-three/drei','avr8js','codemirror','@codemirror/state','@codemirror/view','@codemirror/lint','@codemirror/language','@codemirror/commands','@codemirror/autocomplete','@codemirror/search','@codemirror/lang-cpp','@lezer/cpp','@lezer/common','@lezer/highlight','@lezer/lr','style-mod','w3c-keyname','crelt','@marijn/find-cluster-break'];
  const notices=packages.map(name=>{
   const folder=join('node_modules',name),info=JSON.parse(readFileSync(join(folder,'package.json'),'utf8'));
   const license=['LICENSE','LICENSE.md','LICENSE.txt'].find(name=>{try{return statSync(join(folder,name)).isFile()}catch{return false}});
@@ -47,8 +48,8 @@ const roboticsOnlyChunks=(root,files)=>{
   while(queue.length){
    const url=queue.pop();if(seen.has(url)||!byUrl.has(url))continue;seen.add(url);
    const text=readFileSync(byUrl.get(url),'utf8');
-   for(const m of text.matchAll(/["'(]((?:\.{1,2}\/|\/_astro\/)[^"'()\s]+\.(?:js|mjs))["')]/g)){
-    queue.push(m[1].startsWith('/')?m[1]:'/_astro/'+m[1].replace(/^(?:\.{1,2}\/)+/,''));
+   for(const m of text.matchAll(/["'(`]((?:\.{1,2}\/|\/?_astro\/)[^"'()`\s]+\.(?:js|mjs))["')`]/g)){
+    queue.push(m[1].startsWith('/')?m[1]:m[1].startsWith('_astro/')?'/'+m[1]:'/_astro/'+m[1].replace(/^(?:\.{1,2}\/)+/,''));
    }
   }
   return seen;
@@ -68,4 +69,4 @@ const stampServiceWorker=()=>({name:'panellab-stamp-sw',hooks:{'astro:build:done
  const body=readFileSync(sw,'utf8').replace('__BUILD__',build).replace('__PRECACHE__',JSON.stringify([...new Set([...urls,'/offline-assets.json'])]));
  writeFileSync(sw,body);
 }}});
-export default defineConfig({integrations:[react(),protectStaticPages(),stampServiceWorker()],output:'static',devToolbar:{enabled:false}});
+export default defineConfig({integrations:[react(),protectStaticPages(),stampServiceWorker(),roboticaCompiler()],output:'static',devToolbar:{enabled:false}});

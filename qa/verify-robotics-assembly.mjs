@@ -17,7 +17,7 @@ const near = (a, b, eps, msg) => assert.ok(Math.abs(a - b) <= eps, `${msg}: ${a}
 const close = (a, b, eps, msg) => a.forEach((v, i) => assert.ok(Math.abs(v - b[i]) <= eps, `${msg}: ${a} vs ${b}`));
 
 // ───── Catálogo
-assert.equal(CATALOG.length, 10);
+assert.equal(CATALOG.length, 12);
 for (const id of ['chassis-2wd', 'dc-motor-tt', 'wheel-65', 'caster-ball', 'arduino-uno-r3', 'l298n-module', 'hc-sr04', 'battery-holder-4aa', 'sensor-bracket', 'bracket-generic']) assert.ok(getDefinition(id), id);
 const uno = getDefinition('arduino-uno-r3'), pinIds = new Set(uno.pins.map(x => x.id));
 for (let i = 0; i <= 13; i++) assert.ok(pinIds.has(`D${i}`), `D${i}`);
@@ -32,7 +32,7 @@ assert.deepEqual(getDefinition('battery-holder-4aa').pins.map(x => x.id), ['B+',
 assert.equal(uno.dimensionsSource, 'datasheet'); assert.equal(getDefinition('l298n-module').dimensionsSource, 'approximate');
 for (const d of CATALOG) { assert.ok(d.dimensions.every(v => v > 0 && v < 0.5), d.id); assert.equal(new Set(d.pins.map(x => x.id)).size, d.pins.length, d.id + ' pines únicos'); assert.equal(new Set(d.anchors.map(x => x.id)).size, d.anchors.length); assert.equal(d.scalable, false); }
 assert.equal(searchCatalog('ultrasónico').at(0).id, 'hc-sr04'); assert.ok(searchCatalog('motor').some(x => x.id === 'dc-motor-tt')); assert.deepEqual(searchCatalog('xyz'), []); assert.ok(searchCatalog('', 'sensor').every(x => x.category === 'sensor'));
-ok('catálogo: 10 piezas, pines reales del UNO/L298N/HC-SR04/motor, GND con internalNet, portapilas sin pines, búsqueda sin tildes');
+ok('catálogo: 12 piezas, pines reales del UNO/L298N/HC-SR04/motor, GND con internalNet, portapilas sin pines, búsqueda sin tildes');
 
 // ───── Añadir / borrar
 let p = newRobotProject('T');

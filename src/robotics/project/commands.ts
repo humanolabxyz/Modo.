@@ -180,3 +180,30 @@ export const disconnect = (p: RobotProject, connectionId: string): RobotProject 
 export const setConnectionColor = (p: RobotProject, connectionId: string, color: string): RobotProject => ({...p, connections: p.connections.map(c => (c.id === connectionId ? {...c, color: color.slice(0, 30)} : c))});
 /** Puntos de control del cable (coordenadas del mundo, solo presentación). */
 export const setConnectionRoute = (p: RobotProject, connectionId: string, route: Vec3[]): RobotProject => ({...p, connections: p.connections.map(c => (c.id === connectionId ? {...c, route: route.length ? route.slice(0, 20) : undefined} : c))});
+
+// ───── Programa (firmware) de cada placa ─────
+export const SKETCH_TEMPLATE = `// Programa para el Arduino UNO.
+void setup() {
+  // Se ejecuta una sola vez al encender.
+}
+
+void loop() {
+  // Se repite sin parar.
+}
+`;
+export const firmwareOf = (p: RobotProject, targetId: string) => p.firmware.find(f => f.targetInstanceId === targetId);
+
+/** Crea el programa de una placa con la plantilla si todavía no tiene. */
+export function ensureFirmware(p: RobotProject, targetId: string): RobotProject {
+  if (!part_(p, targetId) || firmwareOf(p, targetId) || p.firmware.length >= LIMITS.firmware) return p;
+  return {...p, firmware: [...p.firmware, {id: newId(), targetInstanceId: targetId, board: 'arduino-uno-r3', source: SKETCH_TEMPLATE, updatedAt: new Date().toISOString()}]};
+}
+/** Guarda el texto del sketch. No toca el artefacto: si el hash ya no coincide, la interfaz pide recompilar. */
+export function setFirmwareSource(p: RobotProject, targetId: string, source: string): RobotProject {
+  const base = ensureFirmware(p, targetId);
+  return {...base, firmware: base.firmware.map(f => (f.targetInstanceId === targetId ? {...f, source: source.slice(0, LIMITS.sketchBytes), updatedAt: new Date().toISOString()} : f))};
+}
+export function setFirmwareArtifact(p: RobotProject, targetId: string, artifact: NonNullable<RobotProject['firmware'][number]['artifact']> | undefined): RobotProject {
+  const base = ensureFirmware(p, targetId);
+  return {...base, firmware: base.firmware.map(f => (f.targetInstanceId === targetId ? {...f, artifact} : f))};
+}
