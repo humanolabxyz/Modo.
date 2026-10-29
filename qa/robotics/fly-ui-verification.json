@@ -1,0 +1,15 @@
+{
+  "url": "http://127.0.0.1:4326",
+  "checks": [
+    "el botón activa la primera persona sin mover la cámara; el objetivo queda a 5 cm y el aviso explica las teclas",
+    "W avanza hacia donde miras, S retrocede, D/A van a los lados; W no activa la herramienta Cable",
+    "E sube, Q baja (Mayús corre) y la cámara se detiene a 2 cm del suelo",
+    "clic derecho y arrastrar gira la mirada sobre el sitio (la cámara no se desplaza); la rueda avanza",
+    "en un campo de texto WASD escribe y la cámara no se mueve",
+    "C sale: la cámara se queda donde estaba, el objetivo vuelve a distancia útil, la órbita y el zoom funcionan y W vuelve a ser el atajo del cable",
+    "Esc y el botón «Salir» también desactivan la primera persona",
+    "recargar vuelve a la órbita (no se guarda la mirada de 5 cm)",
+    "sin errores de consola ni de página"
+  ],
+  "errors": []
+}

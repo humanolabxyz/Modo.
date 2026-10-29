@@ -78,3 +78,14 @@ Con el supuesto de **4×AA = 6 V**, el robot bien cableado **no arranca**: el Ar
 - **Etapa 4 — Programación** (`etapas/ETAPA_4_PROGRAMACION.md`): CodeMirror, avr8js en el worker y `RemoteCompiler`/`HexImport`. **Antes:** decidir **D-04** (recomendada: avr8js + compilador remoto en contenedor propio + HexImport) y **D-06**, medir en tablet real, y aprobar la etapa.
 - **D-11** sigue abierta: verifica el voltaje real de la batería del kit (si es 4×AA/6 V, el aula necesita 7–12 V para alimentar el UNO por VIN, o el robot se alimenta por USB/5 V).
 - Pendientes heredados: D-09 (arte de la tarjeta), D-10 (publicar la 2.6.0 Beta, solo con tu aprobación), validar las etapas 1–3.
+
+## Adenda (29/10/2026): cámara en primera persona
+
+Pedida por el usuario después del cierre, **solo para PC** (teclado y ratón; sin cruceta táctil). Botón **Primera persona** en el dock o tecla **C**; se activa y se desactiva cuando quieras.
+- **W A S D** mueven la cámara (adelante, izquierda, atrás, derecha) en horizontal, siguiendo hacia donde miras; **E** sube, **Q** baja, **Mayús** corre (≈ 0,35 m/s, 1,2 m/s con Mayús; el robot mide ~0,2 m). La cámara se detiene a **2 cm del suelo**.
+- **Clic derecho y arrastrar** gira la mirada **sobre el sitio** (no orbita); la **rueda** avanza por donde miras.
+- Mientras está activa, W/A/S/D/Q/E **no son atajos** (W deja de activar Cable); el resto de atajos sigue. En un campo de texto, las teclas escriben normal.
+- **Salir** (botón, **C** o **Esc**, que sale solo si no hay nada más que cancelar): la cámara se queda donde estabas y la órbita y el zoom vuelven a funcionar alrededor de un punto delante de ti (o del suelo si miras hacia abajo).
+- La mirada de primera persona **no se guarda**: al recargar la cámara arranca en modo órbita.
+- Cómo funciona: el «objetivo» de la cámara se coloca a 5 cm delante de ella; tras cada giro la cámara se vuelve a poner en su sitio con la nueva dirección. Prueba: `qa/verify-robotics-fly-ui.cjs` (9 comprobaciones: activar sin mover, W/S/A/D, E/Q con Mayús y suelo, mirar y rueda, campo de texto, salir con C/Esc/botón, recargar).
+- Límites: solo ratón y teclado (en táctil el botón existe pero no hay forma de moverse, porque no hay WASD); sin colisiones con las piezas (se puede atravesar el robot).

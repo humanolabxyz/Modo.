@@ -3,6 +3,7 @@ import {Canvas, useFrame, useThree} from '@react-three/fiber';
 import {CameraControls, Grid, Line, TransformControls} from '@react-three/drei';
 import {Box3, CanvasTexture, CatmullRomCurve3, Float32BufferAttribute, Matrix4, Plane, Quaternion, Raycaster, Sphere, Vector2, Vector3, type BufferGeometry, type Group, type Object3D, type PerspectiveCamera} from 'three';
 import type CameraControlsImpl from 'camera-controls';
+import {describeTarget, shortcutsDisabled} from '../interaction/shortcuts.ts';
 import {classifyRelease, LONG_PRESS_MS, MOVE_THRESHOLD_PX, nextSelection, rectFromPoints, rectsIntersect, startGesture, type Gesture, type Rect2, type ToolId} from '../interaction/tools.ts';
 import {getDefinition} from '../catalog/index.ts';
 import type {PartInstance, PinRef, Transform, Vec3} from '../project/types.ts';
@@ -68,6 +69,8 @@ type Props = {
   onAnchor(point: {x: number; y: number} | null): void;
   onContextLost(): void;
   onCameraRest(camera: CameraState): void;
+  /** Cámara en primera persona: WASD mueve, Q/E baja/sube y el botón derecho (o un dedo) mira. */
+  flying: boolean;
   initialCamera?: CameraState;
   reducedMotion: boolean;
   lowQuality: boolean;
@@ -97,6 +100,8 @@ export function BuildCanvas(props: Props) {
   const [marquee, setMarquee] = useState<Rect2 | null>(null);
   const [failure, setFailure] = useState('');
   const [cursor, setCursor] = useState<Vec3 | null>(null);
+  const flyInput = useRef(new Set<string>());
+
   const latest = useRef({tool, selection, onSelect, onMenu, props});
   latest.current = {tool, selection, onSelect, onMenu, props};
   const partsRef = useRef(parts);
@@ -239,22 +244,25 @@ export function BuildCanvas(props: Props) {
         onCreated={({gl}) => { gl.domElement.addEventListener('webglcontextlost', ev => { ev.preventDefault(); setFailure('El navegador perdió el contexto gráfico (WebGL). Pasa a veces con poca memoria de video.'); }); }}
         onError={() => setFailure('Falló el motor gráfico.')}>
         <color attach="background" args={['#eef1f4']} />
-        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool}} />
+        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput}} />
       </Canvas>
     </Boundary>
     {marquee && <div className="rb-marquee" style={{left: marquee.x, top: marquee.y, width: marquee.w, height: marquee.h}} />}
     <ViewCube cubeRef={cube} onView={viewTo} />
+
   </div>;
 }
 
 type TransformControlsLike = {object?: Object3D; axis: string | null; dragging: boolean; pointerHover(p: {x: number; y: number; button: number}): void};
 
-function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool}: {
+function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool, flying, flyInput}: {
   parts: PartInstance[]; selection: string[]; sceneRef: MutableRefObject<SceneApi | null>; controlsRef: MutableRefObject<CameraControlsImpl | null>; cube: MutableRefObject<HTMLDivElement | null>;
   onAnchor(p: {x: number; y: number} | null): void; onCameraRest(c: CameraState): void; initialCamera?: CameraState; debug: boolean; wrap: MutableRefObject<HTMLDivElement | null>;
   interfering: ReadonlySet<string>; joinPoints: Vec3[]; ghost: Ghost | null; gizmo: GizmoState | null; onGizmoDrag(m: Transform): void; onGizmoCommit(m: Transform): void;
-  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId;
+  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId; flying: boolean; flyInput: MutableRefObject<Set<string>>;
 }) {
+  const flyingRef = useRef(flying); flyingRef.current = flying;
+  const eye = useRef(new Vector3());
   const {camera, gl, scene} = useThree();
   const group = useRef<Group>(null);
   const wiresGroup = useRef<Group>(null);
@@ -279,7 +287,7 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
     controls.touches.one = A.NONE; controls.touches.two = A.TOUCH_DOLLY_TRUCK; controls.touches.three = A.NONE;
     const start = initialCamera ?? DEFAULT_CAMERA;
     void controls.setLookAt(...start.position, ...start.target, false);
-    const rest = () => { const p = new Vector3(), t = new Vector3(); controls.getPosition(p); controls.getTarget(t); const r = (v: Vector3): Vec3 => [Math.round(v.x * 1000) / 1000, Math.round(v.y * 1000) / 1000, Math.round(v.z * 1000) / 1000]; onCameraRest({position: r(p), target: r(t)}); };
+    const rest = () => { const p = new Vector3(), t = new Vector3(); controls.getPosition(p); controls.getTarget(t); const r = (v: Vector3): Vec3 => [Math.round(v.x * 1000) / 1000, Math.round(v.y * 1000) / 1000, Math.round(v.z * 1000) / 1000]; if (!flyingRef.current) onCameraRest({position: r(p), target: r(t)}); }; // en primera persona el objetivo está a 5 cm: no se guarda
     controls.addEventListener('sleep', rest);
     return () => controls.removeEventListener('sleep', rest);
   }, []);
@@ -407,6 +415,62 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
     };
     return () => { delete (window as unknown as {__modoRobotics?: unknown}).__modoRobotics; };
   }, [debug, camera, gl, scene]);
+
+  // ───── Cámara en primera persona ─────
+  // Truco: el «objetivo» de camera-controls se coloca a 5 cm delante de la cámara; así girar con el botón derecho es mirar alrededor
+  // y la rueda avanza/retrocede por donde miras. Al salir, el objetivo vuelve a un punto de la escena para que órbita y zoom funcionen igual.
+  useEffect(() => {
+    const controls = controlsRef.current;
+    if (!controls || !flying) return;
+    const pos = new Vector3(), tgt = new Vector3();
+    controls.getPosition(pos); controls.getTarget(tgt);
+    const dir = tgt.clone().sub(pos).normalize();
+    eye.current.copy(pos); controls.minDistance = 0.02; controls.dollyToCursor = false;
+    void controls.setLookAt(pos.x, pos.y, pos.z, pos.x + dir.x * 0.05, pos.y + dir.y * 0.05, pos.z + dir.z * 0.05, false);
+    const keys = flyInput.current;
+    const map: Record<string, string> = {KeyW: 'f', KeyS: 'b', KeyA: 'l', KeyD: 'r', KeyE: 'u', KeyQ: 'd'};
+    const key = (down: boolean) => (e: KeyboardEvent) => {
+      if (e.shiftKey) keys.add('fast'); else keys.delete('fast');
+      const k = map[e.code];
+      if (!k || e.ctrlKey || e.metaKey || e.altKey || shortcutsDisabled(describeTarget(e.target as Element))) return;
+      e.preventDefault(); if (down) keys.add(k); else keys.delete(k);
+    };
+    const kd = key(true), ku = key(false), clear = () => keys.clear();
+    addEventListener('keydown', kd); addEventListener('keyup', ku); addEventListener('blur', clear);
+    return () => {
+      removeEventListener('keydown', kd); removeEventListener('keyup', ku); removeEventListener('blur', clear); keys.clear();
+      const p = new Vector3(), t = new Vector3(); controls.getPosition(p); controls.getTarget(t);
+      const d = t.clone().sub(p).normalize(); let far = 0.6;
+      if (d.y < -0.05) far = Math.min(3, Math.max(0.3, (0.02 - p.y) / d.y)); // si miras al suelo, el objetivo cae en el suelo
+      controls.minDistance = 0.12; controls.dollyToCursor = true;
+      void controls.setLookAt(p.x, p.y, p.z, p.x + d.x * far, p.y + d.y * far, p.z + d.z * far, false);
+    };
+  }, [flying]);
+  useFrame((_, delta) => {
+    const controls = controlsRef.current, keys = flyInput.current;
+    if (!flyingRef.current || !controls) return;
+    const pos = new Vector3(), tgt = new Vector3(); controls.getPosition(pos); controls.getTarget(tgt);
+    // Mirar = girar sobre el sitio: camera-controls orbita alrededor del objetivo (a 5 cm), así que se vuelve a poner la cámara en su sitio
+    // con la nueva dirección. Si la distancia cambió es la rueda (avanzar): esa posición pasa a ser la nueva.
+    const dir = tgt.clone().sub(pos), d = dir.length();
+    if (d > 1e-9) {
+      dir.divideScalar(d);
+      if (Math.abs(d - 0.05) > 1e-4) { eye.current.copy(pos); void controls.setLookAt(pos.x, pos.y, pos.z, pos.x + dir.x * 0.05, pos.y + dir.y * 0.05, pos.z + dir.z * 0.05, false); }
+      else if (pos.distanceTo(eye.current) > 1e-5) { const e = eye.current; void controls.setLookAt(e.x, e.y, e.z, e.x + dir.x * 0.05, e.y + dir.y * 0.05, e.z + dir.z * 0.05, false); pos.copy(e); tgt.set(e.x + dir.x * 0.05, e.y + dir.y * 0.05, e.z + dir.z * 0.05); }
+    }
+    if (!keys.size) return;
+    const forward = new Vector3(tgt.x - pos.x, 0, tgt.z - pos.z);
+    if (forward.lengthSq() < 1e-10) return;
+    forward.normalize();
+    const right = new Vector3().crossVectors(forward, new Vector3(0, 1, 0)).normalize(), move = new Vector3();
+    if (keys.has('f')) move.add(forward); if (keys.has('b')) move.sub(forward); if (keys.has('r')) move.add(right); if (keys.has('l')) move.sub(right);
+    if (keys.has('u')) move.y += 1; if (keys.has('d')) move.y -= 1;
+    if (!move.lengthSq()) return;
+    move.normalize().multiplyScalar((keys.has('fast') ? 1.2 : 0.35) * Math.min(delta, 0.05)); // m/s: el robot mide ~0,2 m
+    if (pos.y + move.y < 0.02) move.y = 0.02 - pos.y; // no se atraviesa el suelo
+    pos.add(move); tgt.add(move); eye.current.copy(pos);
+    void controls.setLookAt(pos.x, pos.y, pos.z, tgt.x, tgt.y, tgt.z, false);
+  });
 
   // Movimiento del gizmo: se calcula a partir del pivote y se entrega al proyecto (vista previa al arrastrar, confirmación al soltar).
   const motionOf = (): Transform | null => {

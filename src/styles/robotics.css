@@ -182,3 +182,8 @@ body.rb-dragging,body.rb-dragging *{cursor:grabbing!important;user-select:none!i
 .rb-reading-card strong{font-size:20px;color:#1f3b4c}.rb-reading-card strong small{font-size:12px;font-weight:600;color:#1d7a46}.rb-reading-card em{font-style:normal;color:#8a9ba6}
 .rb-wire-label{display:flex;flex-direction:column;gap:3px;margin:0;font-size:13px;color:#35566a}.rb-wire-label span{color:#1f3b4c;font-weight:600}
 .rb-route-row{display:flex;align-items:center;gap:4px;width:100%}.rb-route-row .rb-num{flex:1 1 60px}
+
+/* ───── Cámara en primera persona (solo PC: teclado y ratón) ───── */
+.rb-fly-bar{left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;max-width:calc(100% - 24px);padding:8px 12px;border:1px solid #bcd7c9;border-radius:12px;background:#f1f8f4;box-shadow:var(--rb-shadow);font-size:13px;color:#35566a;z-index:30}
+.rb-fly-bar b{color:#1d7a46}
+.rb-fly-bar button{min-height:32px;padding:0 12px;border:1px solid #bcd7c9;border-radius:9px;background:#fff;color:#1d7a46;font-weight:700;cursor:pointer}

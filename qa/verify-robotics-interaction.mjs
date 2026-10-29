@@ -28,7 +28,7 @@ assert.equal(escapeAction(st({gesture: 'marquee', menuOpen: true, selection: 2})
 assert.equal(escapeAction(st({menuOpen: true, selection: 2})), 'close-menu');
 assert.equal(escapeAction(st({tool: 'hand', selection: 2})), 'reset-tool'); assert.equal(escapeAction(st({tool: 'move', selection: 2})), 'reset-tool');
 assert.equal(escapeAction(st({selection: 2})), 'clear-selection'); assert.equal(escapeAction(st({tool: 'wire', pending: true, selection: 2})), 'cancel-pending', 'Esc cancela primero el cable a medias'); assert.equal(escapeAction(st({tool: 'wire', selection: 2})), 'reset-tool'); assert.equal(escapeAction(st({pending: true, menuOpen: true})), 'close-menu'); assert.equal(escapeAction(st({pending: true, gesture: 'panning'})), 'cancel-gesture');
-assert.equal(escapeAction(st()), 'none');
+assert.equal(escapeAction(st({flying: true})), 'exit-fly'); assert.equal(escapeAction(st({flying: true, selection: 1})), 'clear-selection', 'Esc deselecciona antes de salir de la primera persona'); assert.equal(escapeAction(st({flying: true, tool: 'wire'})), 'reset-tool'); assert.equal(escapeAction(st()), 'none');
 // Clic derecho sin mover = menú; moviéndolo = órbita
 assert.equal(classifyRelease(2, 0), 'context-menu'); assert.equal(classifyRelease(2, 30), 'drag'); assert.equal(classifyRelease(0, 2), 'click');
 // Selección múltiple y rectángulo
@@ -42,7 +42,7 @@ assert.equal(k('v'), 'tool-select'); assert.equal(k('h'), 'tool-hand'); assert.e
 assert.equal(k('1'), 'view-front'); assert.equal(k('3'), 'view-side'); assert.equal(k('7'), 'view-top'); assert.equal(k('0'), 'view-iso');
 assert.equal(k('!', {code: 'Digit1', shift: true}), 'frame-all');
 assert.equal(k('z', {ctrl: true}), 'undo'); assert.equal(k('z', {ctrl: true, shift: true}), 'redo'); assert.equal(k('z', {meta: true}), 'undo'); assert.equal(k('d', {ctrl: true}), 'duplicate');
-assert.equal(k('g'), 'tool-move'); assert.equal(k('r'), 'tool-rotate'); assert.equal(k('u'), 'join'); assert.equal(k('w'), 'tool-wire'); assert.equal(k('m'), 'tool-measure'); assert.equal(k('g', {ctrl: true}), 'group'); assert.equal(k('g', {ctrl: true, shift: true}), 'ungroup'); assert.equal(k('r', {ctrl: true}), null, 'Ctrl+R no se intercepta');
+assert.equal(k('g'), 'tool-move'); assert.equal(k('r'), 'tool-rotate'); assert.equal(k('u'), 'join'); assert.equal(k('w'), 'tool-wire'); assert.equal(k('c'), 'toggle-fly'); assert.equal(k('c', {ctrl: true}), null, 'Ctrl+C no se intercepta'); for (const key of ['w', 'a', 's', 'd', 'q', 'e']) assert.equal(k(key, {flying: true}), null, `en primera persona «${key}» mueve la cámara, no es atajo`); assert.equal(k('c', {flying: true}), 'toggle-fly', 'C también sale de la primera persona'); assert.equal(k('v', {flying: true}), 'tool-select', 'el resto de atajos sigue vivo'); assert.equal(k('m'), 'tool-measure'); assert.equal(k('g', {ctrl: true}), 'group'); assert.equal(k('g', {ctrl: true, shift: true}), 'ungroup'); assert.equal(k('r', {ctrl: true}), null, 'Ctrl+R no se intercepta');
 assert.equal(k('Delete', {code: 'Delete'}), 'delete'); assert.equal(k('q'), null); assert.equal(k('v', {alt: true}), null);
 for (const target of [{...body, tag: 'INPUT'}, {...body, tag: 'TEXTAREA'}, {...body, tag: 'SELECT'}, {...body, editable: true}, {...body, insideWindow: true}, {...body, insideEditor: true}]) {
   assert.equal(k('v', {target}), null, `ignorado con foco en ${JSON.stringify(target)}`); assert.equal(k('z', {ctrl: true, target}), null);

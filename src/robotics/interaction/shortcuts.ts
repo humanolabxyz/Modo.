@@ -1,6 +1,6 @@
 // Atajos de la pizarra. Puros: reciben un resumen del evento y devuelven una orden o null.
 export type ShortcutCommand =
-  | 'tool-select' | 'tool-hand' | 'tool-move' | 'tool-rotate' | 'tool-wire' | 'tool-measure' | 'join' | 'group' | 'ungroup' | 'frame-selection' | 'frame-all'
+  | 'toggle-fly' | 'tool-select' | 'tool-hand' | 'tool-move' | 'tool-rotate' | 'tool-wire' | 'tool-measure' | 'join' | 'group' | 'ungroup' | 'frame-selection' | 'frame-all'
   | 'view-front' | 'view-side' | 'view-top' | 'view-iso'
   | 'undo' | 'redo' | 'delete' | 'duplicate';
 
@@ -11,6 +11,8 @@ export type ShortcutEvent = {
   meta: boolean;
   shift: boolean;
   alt: boolean;
+  /** Cámara en primera persona: W A S D Q E pasan a mover la cámara y dejan de ser atajos de herramienta. */
+  flying?: boolean;
   /** Información del elemento que tiene el foco. */
   target: {tag: string; editable: boolean; insideWindow: boolean; insideEditor: boolean};
 };
@@ -36,6 +38,8 @@ export function resolveShortcut(e: ShortcutEvent): ShortcutCommand | null {
     return null;
   }
   if (e.alt) return null;
+  if (e.flying && ['w', 'a', 's', 'd', 'q', 'e'].includes(key)) return null;
+  if (key === 'c' && !e.shift) return 'toggle-fly';
   if (e.code === 'Digit1' && e.shift) return 'frame-all';
   if (e.shift) return null;
   if (VIEWS[e.code]) return VIEWS[e.code];

@@ -31,8 +31,8 @@ export function startGesture(current: Gesture, e: PointerStart): Gesture {
 export const endGesture = (_current: Gesture): Gesture => 'idle';
 
 /** `pending`: hay un cable a medio hacer o una medición con un solo pin elegido. */
-export type EditorState = {gesture: Gesture; tool: ToolId; selection: number; menuOpen: boolean; pending?: boolean};
-export type EscapeAction = 'cancel-gesture' | 'close-menu' | 'cancel-pending' | 'reset-tool' | 'clear-selection' | 'none';
+export type EditorState = {gesture: Gesture; tool: ToolId; selection: number; menuOpen: boolean; pending?: boolean; /** Cámara en primera persona activa. */ flying?: boolean};
+export type EscapeAction = 'cancel-gesture' | 'close-menu' | 'cancel-pending' | 'reset-tool' | 'clear-selection' | 'exit-fly' | 'none';
 
 /** Esc deshace lo más reciente primero y nunca cierra ventanas (las ventanas son `passive`). */
 export function escapeAction(s: EditorState): EscapeAction {
@@ -41,6 +41,7 @@ export function escapeAction(s: EditorState): EscapeAction {
   if (s.pending) return 'cancel-pending';
   if (s.tool !== 'select') return 'reset-tool';
   if (s.selection > 0) return 'clear-selection';
+  if (s.flying) return 'exit-fly';
   return 'none';
 }
 

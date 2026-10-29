@@ -1,5 +1,5 @@
 import {useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent} from 'react';
-import {Boxes, Cable, Check, Code2, Copy, Eye, Focus, Gauge, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Redo2, Rotate3d, SlidersHorizontal, Terminal, Trash2, Undo2, Ungroup, X} from 'lucide-react';
+import {Boxes, Cable, Check, Code2, Copy, Eye, Focus, Footprints, Gauge, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Redo2, Rotate3d, SlidersHorizontal, Terminal, Trash2, Undo2, Ungroup, X} from 'lucide-react';
 import {BuildCanvas, type CameraState, type CanvasHandle, type Ghost, type GizmoState, type PinMarker, type WireView} from './build/BuildCanvas';
 import {findInterferences, findJoinCandidates, placementCheck} from './build/interference.ts';
 import {ContextToolbar, type ContextAction} from './interaction/ContextToolbar';
@@ -56,6 +56,7 @@ export default function RoboticsApp() {
   const [pendingPin, setPendingPin] = useState<PinRef | null>(null);
   const [probe, setProbe] = useState<{a: PinRef | null; b: PinRef | null}>({a: null, b: null});
   const [highlight, setHighlight] = useState<ReadonlySet<string>>(new Set());
+  const [flying, setFlying] = useState(false);
   const [pinTip, setPinTip] = useState<{text: string; x: number; y: number} | null>(null);
   const [anchor, setAnchor] = useState<{x: number; y: number} | null>(null);
   const [menu, setMenu] = useState<{at: {x: number; y: number}; targetId: string | null} | null>(null);
@@ -79,8 +80,8 @@ export default function RoboticsApp() {
   const pinList = useMemo<PinMarker[]>(() => (wiring || highlight.size ? shown.parts.flatMap(part => (getDefinition(part.definitionId)?.pins ?? []).map(pin => ({ref: {instanceId: part.instanceId, pinId: pin.id}, pos: pinWorld(shown, {instanceId: part.instanceId, pinId: pin.id})!, role: pin.role, connected: shown.connections.some(c => (c.a.instanceId === part.instanceId && c.a.pinId === pin.id) || (c.b.instanceId === part.instanceId && c.b.pinId === pin.id))}))) : []), [shown.parts, shown.connections, wiring, highlight]);
   const wireViews = useMemo<WireView[]>(() => shown.connections.flatMap(c => { const a = pinWorld(shown, c.a), b = pinWorld(shown, c.b); return a && b ? [{id: c.id, color: c.color, points: [a, ...(c.route ?? []), b], selected: c.id === wireSel}] : []; }), [shown.parts, shown.connections, wireSel]);
   const posOf = (r: PinRef | null) => (r ? pinWorld(shown, r) ?? null : null);
-  const live = useRef({tool, selection, menu, proj, snapOn, snapMm, candidates, pendingPin, probe, wireColor, wireSel, solution});
-  live.current = {tool, selection, menu, proj, snapOn, snapMm, candidates, pendingPin, probe, wireColor, wireSel, solution};
+  const live = useRef({tool, selection, menu, proj, snapOn, snapMm, candidates, pendingPin, probe, wireColor, wireSel, solution, flying});
+  live.current = {tool, selection, menu, proj, snapOn, snapMm, candidates, pendingPin, probe, wireColor, wireSel, solution, flying};
 
   // La selección nunca apunta a piezas que ya no existen (deshacer, borrar, importar).
   useEffect(() => { setSelection(s => (s.every(id => proj.parts.some(x => x.instanceId === id)) ? s : s.filter(id => proj.parts.some(x => x.instanceId === id)))); }, [proj.parts]);
@@ -162,7 +163,8 @@ export default function RoboticsApp() {
 
   useEffect(() => {
     const command = (c: ShortcutCommand) => {
-      if (c === 'tool-select') setTool('select');
+      if (c === 'toggle-fly') setFlying(f => !f);
+      else if (c === 'tool-select') setTool('select');
       else if (c === 'tool-hand') setTool('hand');
       else if (c === 'tool-wire') setTool(live.current.tool === 'wire' ? 'select' : 'wire');
       else if (c === 'tool-measure') setTool(live.current.tool === 'measure' ? 'select' : 'measure');
@@ -183,17 +185,18 @@ export default function RoboticsApp() {
       const cur = live.current;
       if (e.key === 'Escape') {
         if (document.querySelector('dialog[open]')) return;
-        const todo = escapeAction({gesture: handle.current?.gesture() ?? 'idle', tool: cur.tool, selection: cur.selection.length + (cur.wireSel ? 1 : 0), menuOpen: !!cur.menu, pending: !!cur.pendingPin || !!cur.probe.a});
+        const todo = escapeAction({gesture: handle.current?.gesture() ?? 'idle', tool: cur.tool, selection: cur.selection.length + (cur.wireSel ? 1 : 0), menuOpen: !!cur.menu, pending: !!cur.pendingPin || !!cur.probe.a, flying: cur.flying});
         if (todo === 'none') return;
         e.preventDefault();
         if (todo === 'cancel-gesture') handle.current?.cancelGesture();
         else if (todo === 'close-menu') setMenu(null);
         else if (todo === 'cancel-pending') { setPendingPin(null); setProbe({a: null, b: null}); }
         else if (todo === 'reset-tool') setTool('select');
+        else if (todo === 'exit-fly') setFlying(false);
         else { setSelection([]); setWireSel(null); }
         return;
       }
-      const c = resolveShortcut({key: e.key, code: e.code, ctrl: e.ctrlKey, meta: e.metaKey, shift: e.shiftKey, alt: e.altKey, target: describeTarget(e.target as Element)});
+      const c = resolveShortcut({key: e.key, code: e.code, ctrl: e.ctrlKey, meta: e.metaKey, shift: e.shiftKey, alt: e.altKey, flying: cur.flying, target: describeTarget(e.target as Element)});
       if (!c) return;
       if (['undo', 'redo', 'duplicate', 'delete', 'group', 'ungroup', 'tool-wire', 'tool-measure'].includes(c)) e.preventDefault();
       command(c);
@@ -276,12 +279,13 @@ export default function RoboticsApp() {
       {supported
         ? <BuildCanvas key={`${proj.id}-${glKey}`} handleRef={handle} tool={tool} parts={shown.parts} selection={selection} interfering={interfering} joinPoints={joinPoints} ghost={ghost} gizmo={gizmo} onGizmoDrag={onGizmoDrag} onGizmoCommit={onGizmoCommit}
             wires={wireViews} pins={pinList} highlight={highlight} pending={posOf(pendingPin)} probes={{a: posOf(probe.a), b: posOf(probe.b)}} onPinClick={onPinClick} onPinHover={onPinHover} onSelectWire={id => { setWireSel(id); setSelection([]); }}
-            debug={debug} reducedMotion={reducedMotion} lowQuality={lowQuality} initialCamera={proj.workspace.camera} onCameraRest={onCameraRest} onAnchor={setAnchor} onContextLost={() => setGlKey(k => k + 1)}
+            flying={flying} debug={debug} reducedMotion={reducedMotion} lowQuality={lowQuality} initialCamera={proj.workspace.camera} onCameraRest={onCameraRest} onAnchor={setAnchor} onContextLost={() => setGlKey(k => k + 1)}
             onSelect={selectIds} onMenu={(at, targetId) => { if (targetId && !live.current.selection.includes(targetId)) selectIds([targetId]); setMenu({at, targetId}); }} />
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Robótica necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>}
       {anchor && selection.length > 0 && !preview && <ContextToolbar at={anchor} count={selection.length} locked={allLocked} tool={tool} canJoin={candidates.length > 0} onAction={act} />}
       {empty && supported && <div className="rb-empty rb-canvas-overlay"><strong>Tu robot empieza aquí</strong><p>Abre <b>Piezas</b> para empezar.</p><button type="button" onClick={() => windows.open('parts')}><Boxes size={16} /> Abrir Piezas</button></div>}
       {mode === 'simulate' && <div className="rb-sim-note rb-canvas-overlay" role="status"><strong>Simulación</strong> disponible en una próxima etapa. Por ahora puedes seguir construyendo.</div>}
+      {flying && <div className="rb-fly-bar rb-canvas-overlay" role="status"><b>Primera persona</b><span>W A S D mover · Q bajar · E subir · Mayús correr · clic derecho mirar · rueda avanzar</span><button type="button" onClick={() => setFlying(false)}>Salir (C)</button></div>}
       {tool === 'wire' && <div className="rb-tool-bar rb-canvas-overlay" role="group" aria-label="Cable"><span>{pendingPin ? `Desde ${pinLabel(pendingPin)}: elige el pin de destino` : 'Pulsa un pin para empezar el cable'}</span>
         <span className="rb-swatches-inline" role="group" aria-label="Color del cable nuevo">{WIRE_COLORS.map(c => <button type="button" key={c.value} className="rb-swatch" style={{background: c.value}} aria-label={`Nuevo cable ${c.name}`} aria-pressed={wireColor === c.value} onClick={() => setWireColor(c.value)} />)}</span></div>}
       {tool === 'measure' && <div className="rb-tool-bar rb-canvas-overlay" role="status">{ctx.reading ? <><b>{ctx.reading.reading.volts === null ? '— V' : `${ctx.reading.reading.volts.toFixed(2).replace('.', ',')} V`}</b><span>{ctx.reading.reading.continuity ? 'continuidad ✔' : 'sin continuidad'} · {ctx.reading.labelA} ↔ {ctx.reading.labelB}</span></> : <span>{probe.a ? `Punta roja en ${pinLabel(probe.a)}: elige el segundo pin` : 'Pulsa un pin para la punta roja y otro para la negra'}</span>}</div>}
@@ -295,6 +299,7 @@ export default function RoboticsApp() {
       <button type="button" aria-label="Rotar" title="Rotar: gizmo de la selección (R)" aria-pressed={tool === 'rotate'} onClick={() => setTool(tool === 'rotate' ? 'select' : 'rotate')}><Rotate3d size={20} /></button>
       <button type="button" aria-label="Cable" title="Cable: une dos pines (W)" aria-pressed={tool === 'wire'} onClick={() => setTool(tool === 'wire' ? 'select' : 'wire')}><Cable size={20} /></button>
       <button type="button" aria-label="Medir" title="Medir: tensión y continuidad entre dos pines (M)" aria-pressed={tool === 'measure'} onClick={() => setTool(tool === 'measure' ? 'select' : 'measure')}><Gauge size={20} /></button>
+      <button type="button" aria-label="Primera persona" title="Cámara en primera persona: W A S D para moverte (C)" aria-pressed={flying} onClick={() => setFlying(f => !f)}><Footprints size={20} /></button>
       <button type="button" aria-label="Mano" title="Mano: desplazar (H)" aria-pressed={tool === 'hand'} onClick={() => setTool('hand')}><Hand size={20} /></button>
       <button type="button" aria-label="Encuadrar" title="Encuadrar selección o todo (F)" onClick={() => (selection.length ? act('frame') : act('frame-all'))}><Focus size={20} /></button>
       <button type="button" aria-label="Imán" title={`Imán: pasos de ${snapMm} mm y 15° (se cambia en Propiedades)`} aria-pressed={snapOn} onClick={() => setSnapOn(v => !v)}><Magnet size={20} /></button>
