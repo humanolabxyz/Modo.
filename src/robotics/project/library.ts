@@ -53,6 +53,13 @@ export function createProject(library: RobotLibrary, name = 'Robot sin nombre'):
   return {library: {projects: [...library.projects, project], active: project.id}};
 }
 
+/** Agrega un proyecto ya armado (una plantilla) como proyecto nuevo y lo deja activo. */
+export function addProject(library: RobotLibrary, project: RobotProject): {library: RobotLibrary} | {error: string} {
+  if (library.projects.length >= LIMITS.projects) return {error: `La biblioteca admite hasta ${LIMITS.projects} proyectos.`};
+  const now = new Date().toISOString(), added: RobotProject = {...project, id: newId(), createdAt: now, updatedAt: now};
+  return {library: {projects: [...library.projects, added], active: added.id}};
+}
+
 export function duplicateProject(library: RobotLibrary): {library: RobotLibrary} | {error: string} {
   if (library.projects.length >= LIMITS.projects) return {error: `La biblioteca admite hasta ${LIMITS.projects} proyectos.`};
   const source = activeProject(library), now = new Date().toISOString();

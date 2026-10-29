@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {activeProject, createProject, deleteProject, duplicateProject, emptyHistory, emptyLibrary, exportProject, importProject, pushHistory, readLibrary, redo as redoStep, renameProject, selectProject, STORAGE_KEY, undo as undoStep, updateActive, type History} from './library.ts';
+import {buildTemplate} from './templates.ts';
+import {activeProject, addProject, createProject, deleteProject, duplicateProject, emptyHistory, emptyLibrary, exportProject, importProject, pushHistory, readLibrary, redo as redoStep, renameProject, selectProject, STORAGE_KEY, undo as undoStep, updateActive, type History} from './library.ts';
 import {LIMITS, type RobotLibrary, type RobotProject} from './types.ts';
 
 export type UpdateOptions = {
@@ -87,6 +88,8 @@ export function useRoboticsProjects() {
     update,
     rename: (name: string) => { setHistory(h => pushHistory(h, project)); setLibrary(l => renameProject(l, name)); },
     create: () => notify(createProject(library)),
+    /** Crea un proyecto desde una plantilla (p. ej. el robot armado y programado). */
+    createFromTemplate: (id: string) => { const t = buildTemplate(id); return t ? notify(addProject(library, t)) : false; },
     duplicate: () => notify(duplicateProject(library)),
     remove: (id: string) => replace(deleteProject(library, id)),
     select: (id: string) => replace(selectProject(library, id)),

@@ -4,6 +4,15 @@ Versión actual: 2.6.1 Beta. Registro público: /versiones/.
 
 Las versiones antiguas se resumen a partir de sus entregas documentadas; no se inventan versiones intermedias ni fechas de publicación. La publicación de esta entrega se registra por separado en qa/release-2.1.0/.
 
+## 2.6.1 · Robótica (Beta): física y robot de ejemplo
+
+29 de octubre de 2026.
+
+- El robot se mueve por física real (Rapier): motores con par, ruedas, suelo, obstáculos y HC-SR04 con rayos.
+- Ventana Escenario (cajas, cilindros, fricción), cámara de seguimiento y estado de ruedas y distancia en la Consola.
+- Plantilla «Robot 2 ruedas · listo para usar»: armado, cableado y programado, con caja de ejemplo.
+- Rueda loca más alta y al frente del chasis para que el robot quede equilibrado.
+
 ## 2.4.1 · Más fluido en todo el sitio
 
 24 de octubre de 2026.

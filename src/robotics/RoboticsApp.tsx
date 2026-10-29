@@ -1,5 +1,5 @@
 import {useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent} from 'react';
-import {Boxes, Cable, Check, Code2, Copy, Eye, Focus, Footprints, Gauge, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Pause, Play, Redo2, Rotate3d, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Ungroup, X, Box} from 'lucide-react';
+import {Boxes, Cable, Check, Code2, Copy, Eye, Focus, Footprints, Gauge, Group, Hammer, Hand, Home, Link, Link2Off, ListTree, Lock, LockOpen, Magnet, MousePointer2, MoreHorizontal, Move3d, Pause, Play, Redo2, Rotate3d, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Ungroup, X, Box, Bot} from 'lucide-react';
 import {BuildCanvas, type CameraState, type CanvasHandle, type Ghost, type GizmoState, type PinMarker, type RoomView, type WireView} from './build/BuildCanvas';
 import {findInterferences, findJoinCandidates, placementCheck} from './build/interference.ts';
 import {ContextToolbar, type ContextAction} from './interaction/ContextToolbar';
@@ -20,6 +20,7 @@ import {SKETCH_TEMPLATE, addObstacle, removeObstacle, setFriction, updateObstacl
 import {DEG} from './project/math.ts';
 import type {PinRef, RobotProject, Transform, Vec3} from './project/types.ts';
 import {useRoboticsProjects} from './project/useRoboticsProjects';
+import {TEMPLATE_READY_ROBOT} from './project/templates.ts';
 import {useRoboticsWindows, WINDOW_IDS, type RoboticsWindowId} from './windows/useRoboticsWindows';
 import {ProjectOptionsWindow, ProjectsWindow, RoboticsToolWindows, WINDOW_LABELS} from './windows/RoboticsWindows';
 import {WIRE_COLORS, type BuildContext} from './windows/BuildWindows';
@@ -388,7 +389,7 @@ export default function RoboticsApp() {
             onSelect={selectIds} onMenu={(at, targetId) => { if (targetId && !live.current.selection.includes(targetId)) selectIds([targetId]); setMenu({at, targetId}); }} />
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Robótica necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>}
       {anchor && selection.length > 0 && !preview && <ContextToolbar at={anchor} count={selection.length} locked={allLocked} tool={tool} canJoin={candidates.length > 0} onAction={act} />}
-      {empty && supported && <div className="rb-empty rb-canvas-overlay"><strong>Tu robot empieza aquí</strong><p>Abre <b>Piezas</b> para empezar.</p><button type="button" onClick={() => windows.open('parts')}><Boxes size={16} /> Abrir Piezas</button></div>}
+      {empty && supported && <div className="rb-empty rb-canvas-overlay"><strong>Tu robot empieza aquí</strong><p>Abre <b>Piezas</b> para empezar, o parte de un robot ya armado.</p><button type="button" onClick={() => windows.open('parts')}><Boxes size={16} /> Abrir Piezas</button><button type="button" className="rb-template-btn" onClick={() => projects.createFromTemplate(TEMPLATE_READY_ROBOT)}><Bot size={16} /> Robot de ejemplo listo para usar</button></div>}
       {mode === 'simulate' && <div className="rb-sim-note rb-canvas-overlay" role="status" aria-label="Estado de la simulación">{framePhysics
         ? <><button type="button" className="rb-follow" aria-pressed={follow} onClick={() => setFollow(f => !f)}>Seguir</button><strong>{fmtM(framePhysics.main?.speed ?? 0)} m/s</strong>{Object.keys(framePhysics.sensors).map(id => { const d = framePhysics.sensors[id].distance; return <span key={id}>{ctx.sim.labelOf(id)}: {d === null ? 'sin obstáculo (≥ 4 m)' : `${fmtM(d)} m`}</span>; })}</>
         : <><strong>Escenario</strong>: cuarto blanco de 4 × 4 m. Agrega obstáculos en <b>Escenario</b> y pulsa ▶: el robot se mueve solo por lo que armaste, cableaste y programaste.</>}</div>}

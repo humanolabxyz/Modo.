@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import {Copy, Download, FilePlus2, LayoutGrid, Trash2, Upload} from 'lucide-react';
+import {Bot, Copy, Download, FilePlus2, LayoutGrid, Trash2, Upload} from 'lucide-react';
 import {FloatingWindow} from '../../components/FloatingWindow';
 import type {RoboticsProjects} from '../project/useRoboticsProjects';
+import {TEMPLATES} from '../project/templates.ts';
 import {CodePanel} from './CodePanel';
 import {ConsolePanel, PartsPanel, PropertiesPanel, ScenePanel, StructurePanel, type BuildContext} from './BuildWindows';
 import {storageIdOf, WINDOW_IDS, type RoboticsWindowId, type RoboticsWindows} from './useRoboticsWindows';
@@ -52,6 +53,7 @@ export function ProjectOptionsWindow({projects, windows, onClose, onOpenProjects
       <p className="rb-save-status" role="status">{!projects.ready ? 'Abriendo biblioteca…' : projects.storageBlocked ? 'Guardado desactivado' : projects.saved ? 'Guardado en este navegador' : 'Guardando…'}</p>
       <button type="button" className="rb-row" onClick={() => { onClose(); onOpenProjects(); }}><LayoutGrid size={18} /><span><strong>Mis proyectos</strong><small>{projects.projects.length} en este navegador</small></span></button>
       <button type="button" className="rb-row" aria-label="Nuevo proyecto vacío" disabled={!projects.ready} onClick={() => { if (projects.create()) onClose(); }}><FilePlus2 size={18} /><span><strong>Nuevo proyecto vacío</strong><small>Empieza desde cero</small></span></button>
+      {TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" aria-label={`Nuevo desde plantilla: ${t.name}`} disabled={!projects.ready} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small>Plantilla armada, cableada y programada</small></span></button>)}
       <button type="button" className="rb-row" aria-label="Duplicar proyecto" disabled={!projects.ready} onClick={() => { if (projects.duplicate()) onClose(); }}><Copy size={18} /><span><strong>Duplicar proyecto</strong></span></button>
       <button type="button" className="rb-row" aria-label="Exportar proyecto" onClick={projects.exportActive}><Download size={18} /><span><strong>Exportar proyecto</strong><small>Archivo .modo.json</small></span></button>
       <label className="rb-row rb-import"><Upload size={18} /><span><strong>Importar proyecto</strong><small>Se agrega como copia</small></span><input aria-label="Importar proyecto" type="file" accept=".json,.modo.json,application/json" onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) void projects.importFile(f).then(ok => ok && done(ok)); }} /></label>
@@ -64,6 +66,7 @@ export function ProjectOptionsWindow({projects, windows, onClose, onOpenProjects
 export function ProjectsWindow({projects, onClose}: {projects: RoboticsProjects; onClose(): void}) {
   const [confirm, setConfirm] = useState<string | null>(null);
   return <FloatingWindow storageId={storageIdOf('projects')} title="Mis proyectos" eyebrow="Robótica" width={420} side="center" className="rb-window rb-projects-window" closeLabel="Cerrar mis proyectos" onClose={onClose}>
+    <div className="rb-templates" aria-label="Plantillas">{TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" aria-label={`Nuevo desde plantilla: ${t.name}`} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small>{t.summary}</small></span></button>)}</div>
     <ul className="rb-project-list" aria-label="Proyectos guardados">
       {projects.projects.map(p => <li key={p.id} className={p.id === projects.project.id ? 'is-active' : undefined}>
         <button type="button" className="rb-project-open" aria-current={p.id === projects.project.id ? 'true' : undefined} onClick={() => { projects.select(p.id); onClose(); }}><strong>{p.name || 'Sin nombre'}</strong><small>{p.parts.length} piezas · {new Date(p.updatedAt).toLocaleDateString('es-CL')}</small></button>

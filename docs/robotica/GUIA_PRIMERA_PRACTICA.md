@@ -1,5 +1,7 @@
 # Guía de primera práctica — «Robot que evita obstáculos»
 
+> **Ahora hay un ejemplo listo.** Si quieres ver el resultado antes de armar, crea la plantilla **«Robot 2 ruedas · listo para usar»** (estado vacío de la pizarra, «Mi proyecto» o «Mis proyectos»), pulsa ▶ y observa cómo avanza y esquiva la caja. Después puedes duplicarlo para modificarlo o **seguir armando desde cero** con esta guía, que es lo recomendado para aprender.
+
 Pensada para que la persona que aprende **arme, cablee y programe ella misma**. Esta guía solo da el orden, las preguntas que conviene hacerse y cómo comprobar cada paso; no entrega el robot hecho. El programa de referencia está al final, aparte, para comparar cuando ya se intentó.
 
 **Tiempo:** 60–90 min. **Requisitos:** abrir Robótica (Beta) en un computador o tablet.
