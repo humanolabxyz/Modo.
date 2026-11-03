@@ -4,7 +4,7 @@ import {CATALOG, CATEGORY_LABELS, getDefinition, searchCatalog} from '../catalog
 import type {ComponentDefinition} from '../catalog/types.ts';
 import {DEG, qFromEuler, qToEuler} from '../project/math.ts';
 import {childAttachments, parentAttachment} from '../project/commands.ts';
-import type {Obstacle, PartInstance, PinRef, RobotProject, Transform, Vec3} from '../project/types.ts';
+import type {Obstacle, PartInstance, PinRef, RobotProject, Transform, Vec3, LineTrack} from '../project/types.ts';
 import type {Diagnostic} from '../circuit/diagnostics.ts';
 import type {Reading} from '../circuit/solve.ts';
 import type {CompileResult} from '../mcu/types.ts';
@@ -55,9 +55,13 @@ export type BuildContext = {
     compilerAvailable: boolean | null;
     compile(text: string): Promise<CompileResult>;
     importHex(file: File): Promise<{ok: boolean; error?: string}>;
+    /** Código del paso que se está escribiendo con ayuda (se ve en gris en el editor); vacío si no hay. */
+    ghost: string;
+    stopGhost(): void;
   };
   // ───── etapa 5: escenario de la simulación
   scene: {
+    lineTrack?: LineTrack; setTrack(preset: 'none' | 'oval' | 'curves' | 'arena'): void;
     obstacles: Obstacle[]; friction: number; selected: string | null;
     /** Solo se edita con la simulación detenida. */
     editable: boolean;
@@ -67,7 +71,7 @@ export type BuildContext = {
     remove(id: string): void;
     setFriction(value: number): void;
   };
-  sim: {status: SimStatus; snapshot: Snapshot | null; serial: string; message: string; ratio: number; lag: boolean; clearSerial(): void; labelOf(id: string): string};
+  sim: {status: SimStatus; snapshot: Snapshot | null; serial: string; message: string; ratio: number; lag: boolean; clearSerial(): void; setControl(id: string, value: number): void; kindOf(id: string): string | undefined; labelOf(id: string): string};
 };
 export const WIRE_COLORS: {name: string; value: string}[] = [{name: 'Rojo', value: '#d64545'}, {name: 'Negro', value: '#222222'}, {name: 'Azul', value: '#2a67a3'}, {name: 'Amarillo', value: '#e0a52a'}, {name: 'Verde', value: '#2a8f4f'}, {name: 'Blanco', value: '#e8e8e8'}];
 
@@ -85,12 +89,12 @@ export function PartsPanel({ctx}: {ctx: BuildContext}) {
     <div className="rb-chips" role="group" aria-label="Categorías">
       {(['all', ...Array.from(new Set(CATALOG.map(d => d.category)))] as const).map(c => <button key={c} type="button" aria-pressed={category === c} onClick={() => setCategory(c)}>{c === 'all' ? 'Todas' : CATEGORY_LABELS[c]}</button>)}
     </div>
-    <p className="rb-hint-line">Arrastra una pieza a la pizarra, o pulsa <b>Agregar</b>.</p>
+    <p className="rb-hint-line">Arrastra una pieza a la pizarra, o pulsa <b>+</b> para agregarla.</p>
     <ul className="rb-part-list" aria-label="Catálogo de piezas">
       {found.map(d => <li key={d.id} data-definition={d.id}>
         <div className="rb-part-card" onPointerDown={e => ctx.startDrag(d.id, e)}>
-          <span className="rb-part-swatch" data-category={d.category} aria-hidden="true" />
-          <span className="rb-part-text"><strong>{d.name}</strong><small>{d.summary}</small><small className="rb-part-dim">{d.dimensions.map(v => Math.round(v * 1000)).join(' × ')} mm · medidas {SOURCE_LABEL[d.dimensionsSource]}</small></span>
+          <span className="rb-part-preview" aria-hidden="true"><img src={`/robotics/components/${d.id}.webp`} alt="" width={320} height={240} loading="lazy" decoding="async" draggable={false} /></span>
+          <span className="rb-part-text" title={d.summary}><strong>{d.name}</strong><small>{d.summary}</small><small className="rb-part-dim">{d.dimensions.map(v => Math.round(v * 1000)).join(' × ')} mm · medidas {SOURCE_LABEL[d.dimensionsSource]}</small></span>
           <button data-inline-action="" type="button" className="rb-part-add" aria-label={`Agregar ${d.name}`} disabled={full} title={full ? 'Ya hay 200 piezas, el máximo del proyecto.' : 'Agregar a la pizarra'} onPointerDown={e => e.stopPropagation()} onClick={() => ctx.add(d.id)}><Plus size={17} /><span>Agregar</span></button>
         </div>
       </li>)}
@@ -230,6 +234,8 @@ export function ScenePanel({ctx}: {ctx: BuildContext}) {
   const sc = ctx.scene, sel = sc.obstacles.find(o => o.id === sc.selected) ?? null, cm = (m: number) => Math.round(m * 1000) / 10;
   return <div className="rb-scene">
     <p className="rb-hint-line">Cuarto blanco de 4 × 4 m. El robot sale de donde lo armaste{sc.editable ? '.' : '; detén la simulación (■) para cambiar el escenario.'}</p>
+    <label className="rb-track-select">Pista de línea<select aria-label="Pista de línea" disabled={!sc.editable} value={!sc.lineTrack ? 'none' : sc.lineTrack.name === 'Arena minisumo' ? 'arena' : sc.lineTrack.closed ? 'oval' : 'curves'} onChange={e => sc.setTrack(e.target.value as 'none' | 'oval' | 'curves' | 'arena')}><option value="none">Sin pista</option><option value="oval">Circuito ovalado</option><option value="curves">Curvas suaves</option><option value="arena">Arena minisumo · borde negro</option></select></label>
+    {sc.lineTrack && <p className="rb-hint-line">Línea negra de {Math.round(sc.lineTrack.width * 1000)} mm. Los sensores infrarrojos leen la superficie bajo el robot.</p>}
     <div className="rb-scene-add">
       <button data-inline-action="" type="button" disabled={!sc.editable} onClick={() => sc.add('box')}><Plus size={14} /> Caja</button>
       <button data-inline-action="" type="button" disabled={!sc.editable} onClick={() => sc.add('cylinder')}><Plus size={14} /> Cilindro</button>
@@ -262,6 +268,14 @@ function SerialPanel({ctx}: {ctx: BuildContext}) {
     <h4 className="rb-subhead">Monitor serie</h4>
     <pre className="rb-serial-out" aria-label="Salida serie" tabIndex={0}>{sim.serial || (off ? '' : '(sin salida todavía)')}</pre>
     <button data-inline-action="" type="button" className="rb-clear-highlight" onClick={sim.clearSerial}>Limpiar</button>
+    {snap && Object.keys(snap.controls ?? {}).length > 0 && <><h4 className="rb-subhead">Controles del banco</h4>
+      <ul className="rb-controls" aria-label="Controles del banco">
+        {Object.entries(snap.controls).map(([id, value]) => sim.kindOf(id) === 'potentiometer-10k'
+          ? <li key={id} data-control={id}><label>{sim.labelOf(id)}<input type="range" min={0} max={100} step={1} value={Math.round(value * 100)} aria-label={`${sim.labelOf(id)}: posición del cursor`} aria-valuetext={`${Math.round(value * 100)} %`} onChange={e => sim.setControl(id, Number(e.target.value) / 100)} /></label><output>{Math.round(value * 100)} % · ≈ {fmt(value * 5, 2)} V</output></li>
+          : <li key={id} data-control={id}><span>{sim.labelOf(id)}</span><button type="button" className="rb-hold" aria-pressed={value >= 0.5}
+              onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); sim.setControl(id, 1); }} onPointerUp={() => sim.setControl(id, 0)} onPointerCancel={() => sim.setControl(id, 0)} onLostPointerCapture={() => sim.setControl(id, 0)}
+              onKeyDown={e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); sim.setControl(id, 1); } }} onKeyUp={e => { if (e.key === ' ' || e.key === 'Enter') sim.setControl(id, 0); }} onBlur={() => sim.setControl(id, 0)}>{value >= 0.5 ? 'Pulsado' : 'Mantén para pulsar'}</button></li>)}
+      </ul></>}
     {snap && <><h4 className="rb-subhead">Estado</h4>
       <ul className="rb-state-list">
         <li>Placa: {snap.uno.powered ? `alimentada (${snap.uno.via === 'vin' ? 'por VIN' : snap.uno.via === 'usb' ? 'por USB virtual' : 'por el pin 5V'})` : 'SIN alimentación'}</li>
@@ -269,6 +283,9 @@ function SerialPanel({ctx}: {ctx: BuildContext}) {
         {Object.entries(snap.leds).map(([id, l]) => <li key={id}>{sim.labelOf(id)}: {l.on ? `encendido (${fmt(l.amps * 1000, 1)} mA)` : 'apagado'}{l.overcurrent ? ' · ¡sobrecorriente!' : ''}</li>)}
         {snap.physics?.wheels.map(w => <li key={w.wheelId}>{sim.labelOf(w.wheelId)}: {fmt(w.omega, 1)} rad/s · par {fmt(w.torque * 1000, 0)} mN·m</li>)}
         {Object.entries(snap.motors).map(([id, m]) => <li key={id}>{sim.labelOf(id)}: {fmt(m.volts)} V {Math.abs(m.volts) < 0.05 ? '(parado)' : m.volts > 0 ? '(adelante)' : '(atrás)'}</li>)}
+        {Object.entries(snap.reflectance ?? {}).map(([id, s]) => <li key={id}>{sim.labelOf(id)}: {!s.powered ? 'SIN alimentación' : !s.linked ? 'DO sin conexión a la placa' : `${s.black ? 'negro' : 'blanco'} · DO ${s.level ? 'ALTO' : 'BAJO'} · ${s.measured ? 'leído del suelo' : 'banco de pruebas'}${s.height !== null ? ` · altura ${fmt(s.height * 1000, 1)} mm` : ''}`}</li>)}
+        {Object.entries(snap.displays ?? {}).map(([id, d]) => <li key={id} data-display={id}>{sim.labelOf(id)}: {d.reason ? d.reason : !d.on ? 'conectada, apagada (el programa aún no la enciende)' : `mostrando una imagen · ${d.dataBytes} bytes recibidos por I²C (0x${d.address.toString(16).toUpperCase()})`}</li>)}
+        {Object.entries(snap.servos ?? {}).map(([id, s]) => <li key={id} data-servo={id}>{sim.labelOf(id)}: {!s.linked ? 'SIG sin conexión a la placa' : !s.powered ? 'SIN alimentación (no se mueve)' : s.reason ? s.reason : s.target === null ? `en reposo, ${fmt(s.angle, 0)}° (aún sin pulsos)` : `${fmt(s.angle, 0)}° → pide ${fmt(s.target, 0)}° · pulso ${s.pulseUs} µs`}</li>)}
         {Object.entries(snap.sensors).map(([id, s]) => <li key={id}>{sim.labelOf(id)}: {s.linked && s.powered ? `distancia ${snap.physics?.sensors[id] ? 'medida' : 'de prueba'} ${Number.isFinite(s.distance) ? `${fmt(s.distance)} m` : '(sin obstáculo a la vista)'} · ecos ${s.echoes}${s.lastEchoUs ? ` · último ${Math.round(s.lastEchoUs)} µs` : ''}` : `no responde — ${s.reason ?? 'sin conexión'}`}</li>)}
       </ul></>}
   </div>;

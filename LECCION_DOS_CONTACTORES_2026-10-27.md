@@ -1,5 +1,15 @@
 # Lección del montaje recibido
 
+> **Actualización (2-11-2026).** Este documento nació el 27-10 con 37 cables y arranque con S3. La lección vigente tiene **40 cables** y arranca con **S1** (detalle en `qa/two-contactor-lesson/orden-y-conexionado.md`). Cambios respecto al texto original de abajo:
+> - Marcha S1, paro S2; S3 no interviene. KT1 (temporizador) es el contactor principal y lleva la retención 13–14; KM2 hace la estrella y KM1 el triángulo.
+> - El triángulo (KM1) toma L1, L2 y L3 de KT1, no U1, V1 y W1 (figura Nº2 de la guía).
+> - Se añaden el piloto rojo P2 (en reposo, vía KM1 81–82 y KM2 81–82) y el aviso térmico 97–98 → P3. El mando es idéntico al «tablero bien armado» del autor (`referencias/lecciones-estrella-triangulo/modo-panel-tablero-bien-armado-2026-10-29.json`).
+> - El ejemplo virtual «Estrella-triángulo · 2 contactores» de `SIMULATION_EXAMPLES.starDelta` usa ahora estos mismos 40 cables.
+> - Los 37 cables originales siguen en `src/data/twoContactorSource.json` como fuente íntegra. La tierra (BORNERA_MOTOR:TP → FUENTE:TP) no forma parte de los 40: la añade la actividad de mediciones (41 cables).
+> - Pendiente de verificar en el panel físico: tipo y contactos del cabezal temporizado (55–56 NC, 67–68 NO), tensión del motor (380 V en triángulo) y que el térmico solo protege en triángulo.
+>
+> Lo que sigue es el texto original del 27-10-2026; donde mencione 37 cables, S3 o «42 pasos», rige la nota anterior.
+
 Actualización: publicada en producción por petición expresa del usuario en https://modo-lab.vercel.app. Despliegue `dpl_5Y4Djgv2cKNqtQvvokzQko39jLBG`, estado READY; verificaciones públicas en `qa/deploy-2026-10-27/`.
 
 Acceso local: `http://127.0.0.1:4327/?view=simulator`, Guía paso a paso → Estrella-triángulo · 2 contactores → Aprender.

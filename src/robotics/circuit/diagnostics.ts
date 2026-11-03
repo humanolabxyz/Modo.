@@ -17,6 +17,8 @@ export function diagnose(p: RobotProject, solution: Solution = solve(p)): Diagno
   const g = solution.graph;
   const net = (r: PinRef) => g.netOf.get(pinKey(r));
   const hasCable = (r: PinRef) => p.connections.some(c => pinKey(c.a) === pinKey(r) || pinKey(c.b) === pinKey(r));
+  /** ¿El pin está en la misma red que el pin `unoPin` del Arduino UNO? (el I²C solo existe en A4 y A5) */
+  const wiredToUnoPin = (r: PinRef, unoPin: string) => { const n = net(r), uno = p.parts.find(x => x.definitionId === 'arduino-uno-r3'); return !!n && !!uno && net({instanceId: uno.instanceId, pinId: unoPin}) === n; };
   const roleOf = (part: PartInstance, pinId: string) => {
     const role = getDefinition(part.definitionId)?.pins.find(x => x.id === pinId)?.role;
     if (part.definitionId === 'l298n-module' && pinId === '+5V') return (part.props?.jumper5V ?? true) ? 'power-out' : 'power-in'; // sin el puente, +5V es una entrada
@@ -71,11 +73,21 @@ export function diagnose(p: RobotProject, solution: Solution = solve(p)): Diagno
       if (st.enableAHeld && hasCable(ena)) out.push({severity: 'info', code: 'enable-jumper', message: `${part.label}: ENA tiene el puente puesto (siempre activado); el PWM que le conectes no controlará la velocidad. Quita el puente en Propiedades.`, refs: [ena]});
       if (st.enableBHeld && hasCable(enb)) out.push({severity: 'info', code: 'enable-jumper', message: `${part.label}: ENB tiene el puente puesto (siempre activado); el PWM que le conectes no controlará la velocidad. Quita el puente en Propiedades.`, refs: [enb]});
     }
+    if ((st.kind === 'regulator-5v' || st.kind === 'tcrt5000') && !st.powered) out.push({severity: 'warning', code: 'unpowered-device', message: `${part.label}: alimentación ausente o fuera del rango ${st.kind === 'regulator-5v' ? '2,7–11,8 V en VIN' : '4,5–5,5 V en VCC'}.`, refs: [{instanceId: part.instanceId, pinId: st.kind === 'regulator-5v' ? 'VIN' : 'VCC'}, {instanceId: part.instanceId, pinId: 'GND'}]});
+    if (st.kind === 'tcrt5000' && !hasCable({instanceId: part.instanceId, pinId: 'DO'})) out.push({severity: 'warning', code: 'sensor-pin-unconnected', message: `${part.label}: DO sin conectar; no llega información a la placa.`, refs: [{instanceId: part.instanceId, pinId: 'DO'}]});
+    if (st.kind === 'oled-ssd1306' && !st.powered) out.push({severity: 'warning', code: 'unpowered-device', message: `${part.label}: la pantalla necesita 3–5,5 V entre VCC y GND${st.supply === null ? ' (sin referencia común)' : ` (hay ${st.supply.toFixed(1)} V)`}.`, refs: [{instanceId: part.instanceId, pinId: 'VCC'}, {instanceId: part.instanceId, pinId: 'GND'}]});
+    if (st.kind === 'oled-ssd1306') for (const [pinId, unoPin, name] of [['SDA', 'A4', 'datos'], ['SCL', 'A5', 'reloj']] as const) {
+      const ref = {instanceId: part.instanceId, pinId};
+      if (!hasCable(ref)) out.push({severity: 'warning', code: 'sensor-pin-unconnected', message: `${part.label}: ${pinId} (${name} del I²C) sin conectar; el Arduino no podrá hablar con la pantalla.`, refs: [ref]});
+      else if (!wiredToUnoPin(ref, unoPin)) out.push({severity: 'warning', code: 'i2c-wrong-pin', message: `${part.label}: ${pinId} debe ir al pin ${unoPin} del Arduino UNO (el I²C de la placa usa A4 para SDA y A5 para SCL); con otro pin la biblioteca Wire no la encuentra.`, refs: [ref]});
+    }
+    if (st.kind === 'servo-sg90' && !st.powered) out.push({severity: 'warning', code: 'unpowered-device', message: `${part.label}: el servo necesita 4–6,5 V entre VCC y GND${st.supply === null ? ' (sin referencia común)' : ` (hay ${st.supply.toFixed(1)} V)`}; sin ellos no se mueve.`, refs: [{instanceId: part.instanceId, pinId: 'VCC'}, {instanceId: part.instanceId, pinId: 'GND'}]});
+    if (st.kind === 'servo-sg90' && !hasCable({instanceId: part.instanceId, pinId: 'SIG'})) out.push({severity: 'warning', code: 'sensor-pin-unconnected', message: `${part.label}: la señal SIG no está conectada; el programa no podrá moverlo.`, refs: [{instanceId: part.instanceId, pinId: 'SIG'}]});
     if (st.kind === 'hc-sr04' && !st.powered) out.push({severity: 'warning', code: 'unpowered-device', message: `${part.label} no tiene 5 V entre VCC y GND${st.supply === null ? ' (sin referencia común)' : ` (hay ${st.supply.toFixed(1)} V)`}.`, refs: [{instanceId: part.instanceId, pinId: 'VCC'}, {instanceId: part.instanceId, pinId: 'GND'}]});
   }
 
   // Masas no comunes entre dispositivos que se comunican por cables
-  const grounds: Record<string, string> = {'arduino-uno-r3': 'GND.1', 'l298n-module': 'GND', 'hc-sr04': 'GND'};
+  const grounds: Record<string, string> = {'arduino-uno-r3': 'GND.1', 'l298n-module': 'GND', 'hc-sr04': 'GND', 'tcrt5000-module': 'GND', 'servo-sg90': 'GND', 'oled-ssd1306': 'GND', 'regulator-5v': 'GND'};
   const seenPairs = new Set<string>();
   for (const c of p.connections) {
     const a = pins(c.a.instanceId), b = pins(c.b.instanceId);

@@ -1,0 +1,6 @@
+{
+  "checks": [
+    "mobile: célula 3D, controles, atasco, sensor sin detección, pausa y emergencia durante transporte; lote de tres colores con brazo, física de liberación, guardado y recarga con servos apagados."
+  ],
+  "errors": []
+}

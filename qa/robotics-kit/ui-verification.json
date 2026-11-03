@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "escritorio robot-2-ruedas-listo: crear, piezas y cables, ejecutar con física, consola, guardar/recargar y sin desbordamiento",
+    "escritorio robot-seguidor-linea: crear, piezas y cables, ejecutar con física, consola, guardar/recargar y sin desbordamiento",
+    "escritorio robot-explorador-luces: crear, piezas y cables, ejecutar con física, consola, guardar/recargar y sin desbordamiento",
+    "movil robot-2-ruedas-listo: crear, piezas y cables, ejecutar con física, consola, guardar/recargar y sin desbordamiento",
+    "movil robot-seguidor-linea: crear, piezas y cables, ejecutar con física, consola, guardar/recargar y sin desbordamiento",
+    "movil robot-explorador-luces: crear, piezas y cables, ejecutar con física, consola, guardar/recargar y sin desbordamiento"
+  ],
+  "errors": [],
+  "requests": [],
+  "screens": [
+    "robot-2-ruedas-listo-escritorio-armado.png",
+    "robot-2-ruedas-listo-escritorio-simulando.png",
+    "robot-seguidor-linea-escritorio-armado.png",
+    "robot-seguidor-linea-escritorio-simulando.png",
+    "robot-explorador-luces-escritorio-armado.png",
+    "robot-explorador-luces-escritorio-simulando.png",
+    "robot-2-ruedas-listo-movil-armado.png",
+    "robot-2-ruedas-listo-movil-simulando.png",
+    "robot-seguidor-linea-movil-armado.png",
+    "robot-seguidor-linea-movil-simulando.png",
+    "robot-explorador-luces-movil-armado.png",
+    "robot-explorador-luces-movil-simulando.png"
+  ]
+}

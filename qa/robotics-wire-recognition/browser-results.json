@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "robot-explorador-luces: reconoce el armado pese a guía antigua y muestra próximo cable durante ajustes",
+    "robot-explorador-luces: esquema seleccionable, cable real, avance, lista de pasos y limpieza al cerrar",
+    "robot-rover-4wd: reconoce el armado pese a guía antigua y muestra próximo cable durante ajustes",
+    "robot-rover-4wd: esquema seleccionable, cable real, avance, lista de pasos y limpieza al cerrar"
+  ],
+  "errors": []
+}

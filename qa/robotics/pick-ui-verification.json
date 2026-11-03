@@ -1,0 +1,12 @@
+{
+  "url": "http://localhost:4326",
+  "checks": [
+    "el botón de sonido está en la barra de simulación y viene activado",
+    "el audio del navegador arrancó al pulsar ▶",
+    "el sonido sigue a la simulación: servos hasta 157 °/s, 2 cubos sostenidos, 21 golpes y clics",
+    "el botón silencia y recuerda la elección",
+    "tras recargar sigue silenciado",
+    "sin errores de consola"
+  ],
+  "errors": []
+}

@@ -6,8 +6,11 @@ import {TEMPLATES} from '../project/templates.ts';
 import {CodePanel} from './CodePanel';
 import {ConsolePanel, PartsPanel, PropertiesPanel, ScenePanel, StructurePanel, type BuildContext} from './BuildWindows';
 import {storageIdOf, WINDOW_IDS, type RoboticsWindowId, type RoboticsWindows} from './useRoboticsWindows';
+import {ArmControls, ArmTransportControls} from '../arm/ArmControls';
+import type {ArmController} from '../arm/useArmController';
 
 export const WINDOW_LABELS: Record<RoboticsWindowId, {title: string; eyebrow: string}> = {
+  arm: {title: 'Brazo robótico', eyebrow: 'Control y práctica'},
   parts: {title: 'Piezas', eyebrow: 'Catálogo'},
   structure: {title: 'Estructura', eyebrow: 'Proyecto'},
   properties: {title: 'Propiedades', eyebrow: 'Selección'},
@@ -17,6 +20,7 @@ export const WINDOW_LABELS: Record<RoboticsWindowId, {title: string; eyebrow: st
 };
 
 const EMPTY: Record<RoboticsWindowId, {headline: string; body: string; stage: string}> = {
+  arm: {headline: '', body: '', stage: ''},
   parts: {headline: '', body: '', stage: ''},
   structure: {headline: '', body: '', stage: ''},
   properties: {headline: '', body: '', stage: ''},
@@ -25,14 +29,23 @@ const EMPTY: Record<RoboticsWindowId, {headline: string; body: string; stage: st
   console: {headline: 'Sin salida todavía', body: 'Aquí verás lo que tu programa escriba por Serial y los avisos del circuito.', stage: 'Etapa 4'},
 };
 
-type Props = {windows: RoboticsWindows; ctx: BuildContext};
+type Props = {windows: RoboticsWindows; ctx: BuildContext; armController: ArmController; armVisible: boolean};
+
+function ArmToolWindow({windows,controller,visible}:{windows:RoboticsWindows;controller:ArmController;visible:boolean}) {
+  const [tab,setTab]=useState('Empezar'),w=windows.state.arm;
+  return <FloatingWindow passive scope=".rb-app" storageId={storageIdOf('arm')} title="Brazo robótico" eyebrow={controller.line.belt?'E6 · cinta y clasificación':'E6 · recoger y depositar'} width={420} anchor="bottom" side="right" top={60} dockFraction={.57} heightFraction={.84} phoneFraction={.62} showControlsHint visible={w.visible&&visible} activation={w.activation} onClose={()=>windows.close('arm')} onMinimize={()=>windows.minimize('arm')} closeLabel="Cerrar Brazo robótico" className="rb-window rb-window-arm" actions={<ArmTransportControls controller={controller} showStart={tab==='Empezar'}/>}> <ArmControls controller={controller} selected={tab} onTabChange={setTab}/> </FloatingWindow>;
+}
 
 /** Las cinco ventanas de herramientas. Piezas, Estructura y Propiedades son reales (etapa 2); Programación y Consola siguen siendo marcadores honestos hasta la etapa 4. */
-export function RoboticsToolWindows({windows, ctx}: Props) {
+export function RoboticsToolWindows({windows, ctx, armController, armVisible}: Props) {
   return <>
     {WINDOW_IDS.map(id => {
       const w = windows.state[id];
       if (!w.open) return null;
+      if (id === 'arm') {
+        if (!armController.project.parts.some(p=>p.definitionId==='educational-arm-e6')) return null;
+        return <ArmToolWindow key={`arm-${windows.epoch}-${armController.project.id}`} windows={windows} controller={armController} visible={armVisible}/>;
+      }
       const label = WINDOW_LABELS[id], empty = EMPTY[id];
       return <FloatingWindow key={`${id}-${windows.epoch}`} passive storageId={storageIdOf(id)} title={label.title} eyebrow={label.eyebrow} width={id === 'code' ? 480 : id === 'parts' ? 340 : 320} side={id === 'parts' || id === 'structure' ? 'left' : 'right'} top={id === 'console' ? 120 : 0} visible={w.visible} activation={w.activation} onClose={() => windows.close(id)} onMinimize={() => windows.minimize(id)} closeLabel={`Cerrar ${label.title}`} className={`rb-window rb-window-${id}`}>
         {id === 'parts' ? <PartsPanel ctx={ctx} /> : id === 'structure' ? <StructurePanel ctx={ctx} /> : id === 'properties' ? <PropertiesPanel ctx={ctx} /> : id === 'scene' ? <ScenePanel ctx={ctx} /> : id === 'console' ? <ConsolePanel ctx={ctx} /> : id === 'code' ? <CodePanel ctx={ctx} />
@@ -42,18 +55,19 @@ export function RoboticsToolWindows({windows, ctx}: Props) {
   </>;
 }
 
-type ProjectsProps = {projects: RoboticsProjects; windows: RoboticsWindows; onClose(): void; onOpenProjects(): void};
+type ProjectsProps = {projects: RoboticsProjects; windows: RoboticsWindows; onClose(): void; onOpenProjects(): void; onArena?(): void};
 
 /** Menú del proyecto: nombre, nuevo/duplicar, exportar/importar y restablecer la disposición de ventanas. */
-export function ProjectOptionsWindow({projects, windows, onClose, onOpenProjects}: ProjectsProps) {
+export function ProjectOptionsWindow({projects, windows, onClose, onOpenProjects, onArena}: ProjectsProps) {
   const done = <T,>(ok: T) => { onClose(); return ok; };
   return <FloatingWindow storageId={storageIdOf('options')} title="Mi proyecto" eyebrow="Robótica" width={380} side="right" className="rb-window rb-project-window" closeLabel="Cerrar opciones del proyecto" onClose={onClose}>
     <div className="rb-project-menu">
       <label>Nombre del proyecto<input aria-label="Nombre del proyecto" value={projects.project.name} maxLength={100} disabled={!projects.ready} onChange={e => projects.rename(e.target.value)} /></label>
       <p className="rb-save-status" role="status">{!projects.ready ? 'Abriendo biblioteca…' : projects.storageBlocked ? 'Guardado desactivado' : projects.saved ? 'Guardado en este navegador' : 'Guardando…'}</p>
       <button type="button" className="rb-row" onClick={() => { onClose(); onOpenProjects(); }}><LayoutGrid size={18} /><span><strong>Mis proyectos</strong><small>{projects.projects.length} en este navegador</small></span></button>
+      {onArena && <button type="button" className="rb-row" aria-label="Entrar a la arena de sumo" onClick={() => {onClose(); onArena();}}><Bot size={18} /><span><strong>Arena de sumo</strong><small>Enfrenta dos robots guardados o prueba ejemplos</small></span></button>}
       <button type="button" className="rb-row" aria-label="Nuevo proyecto vacío" disabled={!projects.ready} onClick={() => { if (projects.create()) onClose(); }}><FilePlus2 size={18} /><span><strong>Nuevo proyecto vacío</strong><small>Empieza desde cero</small></span></button>
-      {TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" aria-label={`Nuevo desde plantilla: ${t.name}`} disabled={!projects.ready} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small>Plantilla armada, cableada y programada</small></span></button>)}
+      {TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" data-template={t.id} aria-label={`Nuevo desde plantilla: ${t.name}`} disabled={!projects.ready} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small className="rb-template-layout">{t.layout}</small><small>{t.summary}</small></span></button>)}
       <button type="button" className="rb-row" aria-label="Duplicar proyecto" disabled={!projects.ready} onClick={() => { if (projects.duplicate()) onClose(); }}><Copy size={18} /><span><strong>Duplicar proyecto</strong></span></button>
       <button type="button" className="rb-row" aria-label="Exportar proyecto" onClick={projects.exportActive}><Download size={18} /><span><strong>Exportar proyecto</strong><small>Archivo .modo.json</small></span></button>
       <label className="rb-row rb-import"><Upload size={18} /><span><strong>Importar proyecto</strong><small>Se agrega como copia</small></span><input aria-label="Importar proyecto" type="file" accept=".json,.modo.json,application/json" onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) void projects.importFile(f).then(ok => ok && done(ok)); }} /></label>
@@ -66,7 +80,7 @@ export function ProjectOptionsWindow({projects, windows, onClose, onOpenProjects
 export function ProjectsWindow({projects, onClose}: {projects: RoboticsProjects; onClose(): void}) {
   const [confirm, setConfirm] = useState<string | null>(null);
   return <FloatingWindow storageId={storageIdOf('projects')} title="Mis proyectos" eyebrow="Robótica" width={420} side="center" className="rb-window rb-projects-window" closeLabel="Cerrar mis proyectos" onClose={onClose}>
-    <div className="rb-templates" aria-label="Plantillas">{TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" aria-label={`Nuevo desde plantilla: ${t.name}`} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small>{t.summary}</small></span></button>)}</div>
+    <div className="rb-templates" aria-label="Plantillas">{TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" data-template={t.id} aria-label={`Nuevo desde plantilla: ${t.name}`} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small className="rb-template-layout">{t.layout}</small><small>{t.summary}</small></span></button>)}</div>
     <ul className="rb-project-list" aria-label="Proyectos guardados">
       {projects.projects.map(p => <li key={p.id} className={p.id === projects.project.id ? 'is-active' : undefined}>
         <button type="button" className="rb-project-open" aria-current={p.id === projects.project.id ? 'true' : undefined} onClick={() => { projects.select(p.id); onClose(); }}><strong>{p.name || 'Sin nombre'}</strong><small>{p.parts.length} piezas · {new Date(p.updatedAt).toLocaleDateString('es-CL')}</small></button>

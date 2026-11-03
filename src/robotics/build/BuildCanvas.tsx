@@ -1,14 +1,17 @@
 import {Component, useEffect, useImperativeHandle, useMemo, useRef, useState, type MutableRefObject, type ReactNode, type Ref} from 'react';
 import {Canvas, useFrame, useThree} from '@react-three/fiber';
-import {CameraControls, Grid, Line, TransformControls} from '@react-three/drei';
-import {Box3, CanvasTexture, CatmullRomCurve3, Float32BufferAttribute, Matrix4, Plane, Quaternion, Raycaster, Sphere, Vector2, Vector3, type BufferGeometry, type Group, type Object3D, type PerspectiveCamera} from 'three';
+import {CameraControls, Grid, Html, Line, TransformControls} from '@react-three/drei';
+import {Box3, CanvasTexture, MeshBasicMaterial, CatmullRomCurve3, Float32BufferAttribute, Matrix4, Plane, Quaternion, Raycaster, Sphere, Vector2, Vector3, type BufferGeometry, type Mesh, type Group, type Object3D, type PerspectiveCamera} from 'three';
 import type CameraControlsImpl from 'camera-controls';
 import {describeTarget, shortcutsDisabled} from '../interaction/shortcuts.ts';
 import {classifyRelease, LONG_PRESS_MS, MOVE_THRESHOLD_PX, nextSelection, rectFromPoints, rectsIntersect, startGesture, type Gesture, type Rect2, type ToolId} from '../interaction/tools.ts';
+import {createWheelRouter, NAV_LABEL, nextNavMode, ORBIT_PER_HEIGHT, parseNavMode, zoomFactor, type NavMode} from '../interaction/navigation.ts';
 import {getDefinition} from '../catalog/index.ts';
-import type {Obstacle, PartInstance, PinRef, Transform, Vec3} from '../project/types.ts';
+import type {Obstacle, PartInstance, PinRef, Transform, Vec3, LineTrack} from '../project/types.ts';
 import {ROOM_HALF, WALL_H} from '../sim/physics.ts';
-import {PartMesh, GhostMesh} from './PartMesh';
+import {PartMesh, GhostMesh, AssemblyGhost} from './PartMesh';
+import {renderThumbnail} from './renderThumbnail';
+import {LineTrackMesh} from './LineTrackMesh';
 import {ViewCube} from './ViewCube';
 
 export type ViewName = 'front' | 'back' | 'side' | 'left' | 'top' | 'bottom' | 'iso';
@@ -16,10 +19,11 @@ export type CameraState = {position: Vec3; target: Vec3};
 export type GizmoState = {pivot: Vec3; mode: 'translate' | 'rotate'; snapM: number | null; snapRad: number | null; key: number};
 export type Ghost = {definitionId: string; position: Vec3; valid: boolean};
 /** Un pin dibujable/seleccionable: posición en el mundo, función y si ya tiene cable. */
-export type PinMarker = {ref: PinRef; pos: Vec3; role: string; connected: boolean};
+export type GhostWireView = {points: Vec3[]; color: string};
+export type PinMarker = {ref: PinRef; pos: Vec3; role: string; label?: string; connected: boolean};
 /** El cubo blanco de la simulación: obstáculos del proyecto y el haz del sensor de distancia. */
-export type RoomView = {obstacles: Obstacle[]; beams: {origin: Vec3; dir: Vec3; distance: number | null}[]; selected: string | null};
-export type WireView = {id: string; color: string; points: Vec3[]; selected: boolean};
+export type RoomView = {lineTrack?: LineTrack; obstacles: Obstacle[]; beams: {origin: Vec3; dir: Vec3; distance: number | null}[]; selected: string | null};
+export type WireView = {connectorEnds?: [boolean, boolean]; id: string; color: string; points: Vec3[]; selected: boolean};
 export const pinColor = (role: string) => ({'power-in': '#d94b4b', 'power-out': '#e08a3c', ground: '#3b3f45', digital: '#c9a83a', pwm: '#2f8fd0', analog: '#2fb07f', motor: '#9b5fd0', signal: '#c9a83a'} as Record<string, string>)[role] ?? '#888888';
 export type CanvasHandle = {
   frameSelection(): void;
@@ -43,6 +47,7 @@ const VIEW_DIRECTIONS: Record<ViewName, Vec3> = {front: [0, 0.0001, 1], back: [0
 
 type SceneApi = {
   pick(x: number, y: number): string | null;
+  pickParts(x: number, y: number): string[];
   boxSelect(rect: Rect2): string[];
   gizmoHot(x: number, y: number): boolean;
   configure(gesture: Gesture, button: number, pointerType: string): void;
@@ -53,6 +58,9 @@ type SceneApi = {
 };
 
 type Props = {
+  assemblyGhosts?: PartInstance[];
+  assemblyNext?: string;
+  onInspectParts?(ids: string[]): void;
   tool: ToolId;
   parts: PartInstance[];
   selection: string[];
@@ -64,6 +72,8 @@ type Props = {
   onGizmoCommit(m: Transform): void;
   /** Cables y pines: los pines solo se dibujan con la herramienta Cable/Medir (o si hay diagnósticos resaltados). */
   wires: WireView[];
+  /** Cable «espectro» del paso actual de la guía de cableado: translúcido, entre los dos pines que hay que unir. */
+  ghostWire?: GhostWireView | null;
   pins: PinMarker[];
   highlight: ReadonlySet<string>;
   pending: Vec3 | null;
@@ -79,7 +89,7 @@ type Props = {
   /** Cámara en primera persona: WASD mueve, Q/E baja/sube y el botón derecho (o un dedo) mira. */
   flying: boolean;
   /** Estado vivo de la simulación (brillo de los LED, 0–1). */
-  live?: {leds: Record<string, number>};
+  live?: {leds: Record<string, number>; /** Ángulo (°) de cada servo simulado. */ servos?: Record<string, number>; /** Valor vivo de potenciómetros (0–1) y pulsadores (0/1). */ controls?: Record<string, number>; displays?: Record<string, {frame: Uint8Array; on: boolean}>};
   /** Escenario de la simulación (se dibuja en el modo Simular). */
   room?: RoomView;
   initialCamera?: CameraState;
@@ -97,6 +107,7 @@ class Boundary extends Component<{children: ReactNode; onError(message: string):
 }
 
 const ZERO: Vec3 = [0, 0, 0];
+const NAV_KEY = 'modo.robotics.navMode';
 
 export function BuildCanvas(props: Props) {
   const {tool, parts, selection, onSelect, onMenu, onAnchor, onContextLost, onCameraRest, initialCamera, reducedMotion, lowQuality, debug, handleRef} = props;
@@ -112,6 +123,7 @@ export function BuildCanvas(props: Props) {
   const [failure, setFailure] = useState('');
   const [cursor, setCursor] = useState<Vec3 | null>(null);
   const flyInput = useRef(new Set<string>());
+  const invalidateRef = useRef<(() => void) | null>(null);
 
   const latest = useRef({tool, selection, onSelect, onMenu, props});
   latest.current = {tool, selection, onSelect, onMenu, props};
@@ -173,7 +185,10 @@ export function BuildCanvas(props: Props) {
     frameRobot: points => {
       const c = controlsRef.current; if (!c || !points.length) return;
       const box = new Box3(); for (const q of points) box.expandByPoint(new Vector3(...q)); const ctr = box.getCenter(new Vector3()), r = Math.max(0.2, box.getSize(new Vector3()).length() / 2);
-      const back = new Vector3(0.35, 0.55, -1).normalize().multiplyScalar(r * 3.4);
+      const viewport = wrap.current?.getBoundingClientRect();
+      const aspect = viewport && viewport.height > 0 ? viewport.width / viewport.height : 1;
+      const portraitScale = Math.max(1, 0.8 / Math.max(0.2, aspect));
+      const back = new Vector3(0.35, 0.55, -1).normalize().multiplyScalar(r * 3.4 * portraitScale);
       void c.setLookAt(ctr.x + back.x, ctr.y + back.y, ctr.z + back.z, ctr.x, ctr.y, ctr.z, !reducedMotion);
     },
     framePoints: points => { const box = new Box3(); for (const q of points) box.expandByPoint(new Vector3(...q)); box.expandByScalar(0.03); framing(box); },
@@ -188,6 +203,35 @@ export function BuildCanvas(props: Props) {
     addEventListener('keydown', down); addEventListener('keyup', up); addEventListener('blur', blur);
     return () => { removeEventListener('keydown', down); removeEventListener('keyup', up); removeEventListener('blur', blur); };
   }, []);
+
+  // Trackpad: dos dedos orbitan (Shift: desplazan) y el pellizco hace zoom. El ratón sigue con la rueda = zoom (camera-controls).
+  const [navMode, setNavMode] = useState<NavMode>(() => { try { return parseNavMode(localStorage.getItem(NAV_KEY)); } catch { return 'auto'; } });
+  const navModeRef = useRef(navMode); navModeRef.current = navMode;
+  useEffect(() => {
+    const el = wrap.current; if (!el) return;
+    const route = createWheelRouter(() => navModeRef.current);
+    const wheel = (e: WheelEvent) => {
+      const controls = controlsRef.current;
+      if ((e.target as Element).closest?.('.rb-canvas-overlay') || !controls || !controls.enabled) return;
+      const action = route(e, performance.now());
+      if (action === 'native') return;
+      e.preventDefault(); e.stopPropagation();
+      const height = Math.max(1, el.clientHeight);
+      if (action === 'zoom') {
+        const distance = controls.distance, to = Math.min(controls.maxDistance, Math.max(controls.minDistance, distance * zoomFactor(e)));
+        void controls.dolly(distance - to, false);
+      } else if (action === 'orbit') {
+        void controls.rotate(ORBIT_PER_HEIGHT * e.deltaX / height, ORBIT_PER_HEIGHT * e.deltaY / height, false);
+      } else if (!latest.current.props.flying) {
+        const cam = controls.camera as PerspectiveCamera, k = controls.distance * Math.tan(cam.fov * Math.PI / 360) * 2 / height;
+        void controls.truck(e.deltaX * k, e.deltaY * k, false);
+      }
+      invalidateRef.current?.(); // la escena se dibuja solo cuando cambia algo: avisa del movimiento de cámara
+    };
+    el.addEventListener('wheel', wheel, {capture: true, passive: false});
+    return () => el.removeEventListener('wheel', wheel, {capture: true});
+  }, []);
+  const cycleNav = () => setNavMode(m => { const n = nextNavMode(m); try { localStorage.setItem(NAV_KEY, n); } catch { /* sin almacenamiento: queda solo en esta sesión */ } return n; });
 
   const finish = (e: PointerEvent) => {
     const start = press.current, api = scene.current;
@@ -237,6 +281,7 @@ export function BuildCanvas(props: Props) {
   const down = (e: React.PointerEvent<HTMLDivElement>) => {
     const api = scene.current, el = wrap.current;
     if (!api || !el || (e.target as Element).closest('.rb-canvas-overlay')) return;
+    if (!e.isPrimary) { if (longPress.current) { clearTimeout(longPress.current); longPress.current = null; } return; }
     const box = el.getBoundingClientRect(), x = e.clientX - box.left, y = e.clientY - box.top;
     if (e.button === 0 && (latest.current.tool === 'wire' || latest.current.tool === 'measure')) { const pin = api.pickPin(x, y); if (pin) { latest.current.props.onPinClick(pin); return; } }
     if (e.button === 0 && api.gizmoHot(x, y)) return; // el gizmo se queda con el gesto: la cámara y la selección no intervienen
@@ -247,46 +292,56 @@ export function BuildCanvas(props: Props) {
     gesture.current = next;
     press.current = {x, y, id, button: e.button, shift: e.shiftKey, pointer: e.pointerId, pointerType};
     api.configure(next, e.button, pointerType);
-    if (pointerType === 'touch' && e.isPrimary) {
+    if (!latest.current.props.flying && (pointerType === 'touch' || (id && e.button === 0 && !space.current && (latest.current.tool === 'select' || latest.current.tool === 'move'))) && e.isPrimary) {
       longPress.current = setTimeout(() => {
         longPress.current = null;
         const start = press.current;
+        const hits = api.pickParts(x, y);
         cancelGesture();
+        if (hits.length && latest.current.props.onInspectParts) { latest.current.props.onInspectParts(hits); return; }
         latest.current.onMenu({x: e.clientX, y: e.clientY}, start?.id ?? id);
       }, LONG_PRESS_MS);
     }
   };
 
+  // Con la escena quieta (armando, sin simulación) no se dibuja en cada cuadro: R3F repinta solo cuando cambia algo (piezas, selección, cámara).
+  // Siguen en continuo la simulación (LED, servos, escenario), la primera persona y los fantasmas con pulso.
+  const animated = !!(props.flying || props.live || props.room || props.ghostWire || props.assemblyGhosts?.length);
   if (failure) return <div className="rb-gl-error" role="alert"><strong>No se pudo mostrar la pizarra 3D</strong><p>{failure}</p><button type="button" onClick={() => { setFailure(''); onContextLost(); }}>Reintentar</button></div>;
   return <div ref={wrap} className={`rb-canvas${tool === 'hand' ? ' is-hand' : ''}`} data-gesture-state="idle" onPointerDownCapture={down} onPointerMove={onWrapMove} onPointerLeave={() => props.onPinHover(null, {x: 0, y: 0})} onContextMenu={e => e.preventDefault()}>
     <Boundary onError={setFailure}>
       <Canvas
+        frameloop={animated ? 'always' : 'demand'}
         dpr={lowQuality ? 1 : [1, 1.75]}
         camera={{fov: 45, near: 0.01, far: 200, position: initialCamera?.position ?? DEFAULT_CAMERA.position}}
         gl={{antialias: !lowQuality, powerPreference: 'high-performance', alpha: false}}
         onCreated={({gl}) => { gl.domElement.addEventListener('webglcontextlost', ev => { ev.preventDefault(); setFailure('El navegador perdió el contexto gráfico (WebGL). Pasa a veces con poca memoria de video.'); }); }}
         onError={() => setFailure('Falló el motor gráfico.')}>
         <color attach="background" args={['#eef1f4']} />
-        <Scene {...{parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput, live: props.live, room: props.room}} />
+        <Scene {...{invalidateRef, parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, ghostWire: props.ghostWire, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput, live: props.live, room: props.room, assemblyGhosts: props.assemblyGhosts, assemblyNext: props.assemblyNext}} />
       </Canvas>
     </Boundary>
     {marquee && <div className="rb-marquee" style={{left: marquee.x, top: marquee.y, width: marquee.w, height: marquee.h}} />}
     <ViewCube cubeRef={cube} onView={viewTo} />
+    <button type="button" className="rb-nav-mode rb-canvas-overlay" data-nav-mode={navMode} onClick={cycleNav} title="Control de cámara. Auto reconoce el trackpad: dos dedos orbitan, Shift + dos dedos desplaza, pellizcar acerca. Clic para cambiar." aria-label={`Control de cámara: ${NAV_LABEL[navMode]}. Cambiar`}>{NAV_LABEL[navMode]}</button>
 
   </div>;
 }
 
 type TransformControlsLike = {object?: Object3D; axis: string | null; dragging: boolean; pointerHover(p: {x: number; y: number; button: number}): void};
 
-function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, pins, highlight, pending, probes, cursor, tool, flying, flyInput, live, room}: {
+function Scene({invalidateRef, parts, selection, sceneRef, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering, joinPoints, ghost, gizmo, onGizmoDrag, onGizmoCommit, wires, ghostWire, pins, highlight, pending, probes, cursor, tool, flying, flyInput, live, room, assemblyGhosts, assemblyNext}: {
+  invalidateRef: MutableRefObject<(() => void) | null>;
+  assemblyGhosts?: PartInstance[]; assemblyNext?: string;
   parts: PartInstance[]; selection: string[]; sceneRef: MutableRefObject<SceneApi | null>; controlsRef: MutableRefObject<CameraControlsImpl | null>; cube: MutableRefObject<HTMLDivElement | null>;
   onAnchor(p: {x: number; y: number} | null): void; onCameraRest(c: CameraState): void; initialCamera?: CameraState; debug: boolean; wrap: MutableRefObject<HTMLDivElement | null>;
   interfering: ReadonlySet<string>; joinPoints: Vec3[]; ghost: Ghost | null; gizmo: GizmoState | null; onGizmoDrag(m: Transform): void; onGizmoCommit(m: Transform): void;
-  wires: WireView[]; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId; flying: boolean; flyInput: MutableRefObject<Set<string>>; live?: {leds: Record<string, number>}; room?: RoomView;
+  wires: WireView[]; ghostWire?: GhostWireView | null; pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}; cursor: Vec3 | null; tool: ToolId; flying: boolean; flyInput: MutableRefObject<Set<string>>; live?: {leds: Record<string, number>; servos?: Record<string, number>; controls?: Record<string, number>; displays?: Record<string, {frame: Uint8Array; on: boolean}>}; room?: RoomView;
 }) {
   const flyingRef = useRef(flying); flyingRef.current = flying;
   const eye = useRef(new Vector3());
-  const {camera, gl, scene} = useThree();
+  const {camera, gl, scene, invalidate} = useThree();
+  invalidateRef.current = invalidate;
   const group = useRef<Group>(null);
   const wiresGroup = useRef<Group>(null);
   const pinsRef = useRef(pins); pinsRef.current = pins;
@@ -321,6 +376,10 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
     const idOf = (o: Object3D | null): string | null => { for (let n = o; n; n = n.parent) { if (n.userData.partId) return n.userData.partId as string; if (n.userData.wireId) return `wire:${n.userData.wireId as string}`; } return null; };
     const floor = new Plane(new Vector3(0, 1, 0), 0);
     sceneRef.current = {
+      pickParts: (x, y) => {
+        raycaster.current.setFromCamera(ndc(x, y), camera);
+        return [...new Set(raycaster.current.intersectObjects(group.current?.children ?? [], true).map(h => idOf(h.object)).filter((id): id is string => !!id))];
+      },
       pick: (x, y) => {
         if (!group.current) return null;
         raycaster.current.setFromCamera(ndc(x, y), camera);
@@ -419,12 +478,23 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
       gizmoRaw: () => tc.current,
       gizmoState: () => { const t = tc.current; return t ? {dragging: t.dragging, axis: t.axis, hasObject: !!t.object, pivot: pivot.current?.position.toArray(), drag: !!drag.current, camEnabled: controlsRef.current?.enabled} : null; },
       partIds: () => (group.current?.children ?? []).map(c => c.userData.partId as string),
+      thumbnail: (id: string) => { const object = group.current?.children.find(c => c.userData.partId === id); return object ? renderThumbnail(gl, object) : null; },
       /** Posición mundial real de la pieza dibujada (para comprobar que el 3D sigue a la física). */
       partWorld: (id: string) => { const o = group.current?.children.find(c => c.userData.partId === id); return o ? o.getWorldPosition(new Vector3()).toArray() : null; },
       pinScreen: (instanceId: string, pinId: string) => { const m = pinsRef.current.find(q => q.ref.instanceId === instanceId && q.ref.pinId === pinId); if (!m) return null; const v = new Vector3(...m.pos).project(camera), r = gl.domElement.getBoundingClientRect(); return {x: r.left + ((v.x + 1) / 2) * r.width, y: r.top + ((1 - v.y) / 2) * r.height}; },
+      /** Cable fantasma de la guía de cableado (null si no hay): puntos y color. */
+      ghostWire: () => { let v: {points: number[][]; color: string} | null = null; scene.traverse(o => { if (o.userData.ghostWire) v = {points: o.userData.points as number[][], color: o.userData.color as string}; }); return v; },
+      /** Píxeles encendidos en la textura de la pantalla OLED dibujada (null si no hay). */
+      oledLit: (id: string) => { const g = group.current?.children.find(c => c.userData.partId === id); let v: number | null = null; g?.traverse(o => { if (o.userData.oledScreen) v = o.userData.oledLit as number; }); return v; },
+      /** Giro horizontal (°) de la pieza dibujada, medido desde su eje +z: sirve para comprobar que la cabeza gira con el cuello. */
+      partYaw: (id: string) => { const o = group.current?.children.find(c => c.userData.partId === id); if (!o) return null; const f = new Vector3(0, 0, 1).applyQuaternion(o.getWorldQuaternion(new Quaternion())); return Math.atan2(f.x, f.z) * 180 / Math.PI; },
       wireCount: () => wiresGroup.current?.children.length ?? 0,
       /** Intensidad emisiva real del LED dibujado (para comprobar que el 3D refleja el modelo). */
       ledGlow: (id: string) => { const g = group.current?.children.find(c => c.userData.partId === id); let v: number | null = null; g?.traverse(o => { if (o.userData.glowMesh) v = ((o as unknown as {material: {emissiveIntensity: number}}).material.emissiveIntensity); }); return v; },
+      /** Ángulo (°) del eje del servo tal como está dibujado (para comprobar que el 3D sigue al modelo). */
+      servoHorn: (id: string) => { const g = group.current?.children.find(c => c.userData.partId === id); let v: number | null = null; g?.traverse(o => { if (o.userData.servoHorn) v = o.rotation.y * 180 / Math.PI + 90; }); return v; },
+      /** Posición del cursor (0–1) del potenciómetro tal como está dibujado. */
+      potKnob: (id: string) => { const g = group.current?.children.find(c => c.userData.partId === id); let v: number | null = null; g?.traverse(o => { if (o.userData.potKnob) v = 0.5 - o.rotation.y * 180 / Math.PI / 270; }); return v; },
       wires: () => (wiresGroup.current?.children ?? []).map(c => ({id: c.userData.wireId as string, points: c.userData.points as number[][]})),
       /** Busca en pantalla un punto sobre un asa del gizmo (X, Y, Z, XY…), para poder arrastrarla en las pruebas. */
       findGizmoPoint: (axis: string) => {
@@ -516,15 +586,18 @@ function Scene({parts, selection, sceneRef, controlsRef, cube, onAnchor, onCamer
     <directionalLight position={[-2, 2, -1]} intensity={0.35} />
     <Grid position={[0, 0, 0]} args={[10, 10]} cellSize={0.1} cellThickness={0.6} cellColor="#c9d1d8" sectionSize={0.5} sectionThickness={1} sectionColor="#9fb0bc" fadeDistance={6} fadeStrength={1.5} infiniteGrid />
     {room && <RoomLayer room={room} />}
+    {room?.lineTrack && <LineTrackMesh track={room.lineTrack} />}
     <CameraControls ref={controlsRef as never} makeDefault />
     <group ref={group}>
-      {parts.map(p => <PartMesh key={p.instanceId} part={p} selected={selection.includes(p.instanceId)} interfering={interfering.has(p.instanceId)} glow={live?.leds[p.instanceId]} />)}
+      {parts.map(p => <PartMesh key={p.instanceId} part={p} selected={selection.includes(p.instanceId)} interfering={interfering.has(p.instanceId)} glow={live?.leds[p.instanceId]} servoAngle={live?.servos?.[p.instanceId]} control={live?.controls?.[p.instanceId]} display={live?.displays?.[p.instanceId]} showPins={tool === 'wire' || tool === 'measure'} />)}
     </group>
+    {assemblyGhosts?.map(p => <AssemblyGhost key={p.instanceId} part={p} active={p.instanceId === assemblyNext} />)}
     <group ref={wiresGroup}>{wires.map(w => <WireTube key={w.id} wire={w} />)}</group>
+    {ghostWire && <GhostWire wire={ghostWire} />}
     {(tool === 'wire' || tool === 'measure' || highlight.size > 0) && <PinPoints pins={tool === 'wire' || tool === 'measure' ? pins : pins.filter(m => highlight.has(`${m.ref.instanceId}:${m.ref.pinId}`))} highlight={highlight} pending={pending} probes={probes} />}
-    {pending && cursor && <Line points={[pending, cursor]} color="#27ae60" lineWidth={2} dashed dashSize={0.008} gapSize={0.005} depthTest={false} />}
+    {pending && cursor && <Line points={[pending, cursor]} color="#2563eb" lineWidth={2} dashed dashSize={0.008} gapSize={0.005} depthTest={false} />}
     {ghost && <GhostMesh definitionId={ghost.definitionId} position={ghost.position} valid={ghost.valid} />}
-    {joinPoints.map((p, i) => <mesh key={i} position={p} raycast={() => null}><sphereGeometry args={[0.006, 16, 12]} /><meshBasicMaterial color="#27ae60" transparent opacity={0.85} depthTest={false} /></mesh>)}
+    {joinPoints.map((p, i) => <mesh key={i} position={p} raycast={() => null}><sphereGeometry args={[0.006, 16, 12]} /><meshBasicMaterial color="#2563eb" transparent opacity={0.85} depthTest={false} /></mesh>)}
     {gizmo && <>
       <group ref={pivot} key={`pv${gizmo.key}`} position={gizmo.pivot} />
       <TransformControls key={`tc${gizmo.key}-${gizmo.mode}`} ref={tc as never} object={pivot as never} mode={gizmo.mode} space="world" size={0.8}
@@ -551,14 +624,51 @@ function RoomLayer({room}: {room: RoomView}) {
   </>;
 }
 
+/** Misma curva para el cable real y para su espectro: pasa por los pines y, si solo hay dos puntos, se arquea hacia arriba. */
+function wireCurve(points: Vec3[]) {
+  const pts = points.map(q => new Vector3(...q));
+  if (pts.length === 2 && pts[0].distanceTo(pts[1]) > 0.003) { const mid = pts[0].clone().add(pts[1]).multiplyScalar(0.5); mid.y += 0.02 + 0.18 * pts[0].distanceTo(pts[1]); pts.splice(1, 0, mid); }
+  return new CatmullRomCurve3(pts, false, 'catmullrom', 0.5);
+}
+
+/** Cable fantasma de la guía: tubo translúcido del color que hay que usar, con un pulso suave y un anillo en cada pin (como las piezas fantasma del armado). */
+function GhostWire({wire}: {wire: GhostWireView}) {
+  const key = JSON.stringify(wire.points), curve = useMemo(() => wireCurve(wire.points), [key]);
+  const tube = useRef<Mesh>(null), halo = useRef<Mesh>(null);
+  useFrame(({clock}) => {
+    const k = 0.5 + 0.5 * Math.sin(clock.getElapsedTime() * 3.2);
+    const a = tube.current?.material as MeshBasicMaterial | undefined, b = halo.current?.material as MeshBasicMaterial | undefined;
+    if (a) a.opacity = 0.35 + 0.3 * k; if (b) b.opacity = 0.08 + 0.12 * k;
+  });
+  if (wire.points.length < 2 || new Vector3(...wire.points[0]).distanceToSquared(new Vector3(...wire.points[wire.points.length - 1])) < 1e-10) return null;
+  const ends = [wire.points[0], wire.points[wire.points.length - 1]];
+  return <group userData={{ghostWire: true, points: wire.points, color: wire.color}} raycast={() => null}>
+    <mesh ref={tube} raycast={() => null} renderOrder={15}><tubeGeometry args={[curve, 32, 0.0016, 8, false]} /><meshBasicMaterial color={wire.color} transparent opacity={0.5} depthWrite={false} depthTest={false} /></mesh>
+    <mesh ref={halo} raycast={() => null} renderOrder={14}><tubeGeometry args={[curve, 24, 0.0042, 8, false]} /><meshBasicMaterial color="#2563eb" transparent opacity={0.15} depthWrite={false} depthTest={false} /></mesh>
+    {ends.map((at, i) => <mesh key={i} position={at} raycast={() => null} renderOrder={16}><sphereGeometry args={[0.0042, 16, 12]} /><meshBasicMaterial color="#2563eb" transparent opacity={0.55} depthWrite={false} depthTest={false} /></mesh>)}
+  </group>;
+}
+
 /** Cable: tubo que pasa por las posiciones mundiales de sus pines y por los puntos de control; sin puntos, hace una curva suave hacia arriba. */
 function WireTube({wire}: {wire: WireView}) {
-  const key = JSON.stringify(wire.points), curve = useMemo(() => {
-    const pts = wire.points.map(q => new Vector3(...q));
-    if (pts.length === 2) { const mid = pts[0].clone().add(pts[1]).multiplyScalar(0.5); mid.y += 0.02 + 0.18 * pts[0].distanceTo(pts[1]); pts.splice(1, 0, mid); }
-    return new CatmullRomCurve3(pts, false, 'catmullrom', 0.5);
-  }, [key]);
+  const key = JSON.stringify(wire.points), curve = useMemo(() => wireCurve(wire.points), [key]);
+  if (wire.points.length === 2 && new Vector3(...wire.points[0]).distanceToSquared(new Vector3(...wire.points[1])) < 1e-10) return <group userData={{wireId: wire.id, points: wire.points}} />;
+  // Dupont sleeves only on header connections, never over the screw terminals.
+  const plugs = [0, 1].flatMap(end => {
+    if (wire.points.length === 2 && new Vector3(...wire.points[0]).distanceToSquared(new Vector3(...wire.points[1])) < 0.000009) return [];
+    const pos = wire.points[end === 0 ? 0 : wire.points.length - 1];
+    if (!pos) return [];
+    if (!wire.connectorEnds?.[end]) return [];
+    const dir = curve.getTangent(end).multiplyScalar(end === 0 ? 1 : -1);
+    if (dir.lengthSq() < 1e-12) return [];
+    const rotation = new Quaternion().setFromUnitVectors(new Vector3(0, 1, 0), dir.normalize());
+    return [<group key={end} position={pos} quaternion={rotation}>
+      <mesh position={[0, 0.003, 0]}><boxGeometry args={[0.0022, 0.006, 0.0022]} /><meshStandardMaterial color="#24282c" roughness={0.65} /></mesh>
+      <mesh position={[0, 0.0012, 0.00111]}><boxGeometry args={[0.0007, 0.0015, 0.00012]} /><meshStandardMaterial color="#b29a62" metalness={0.55} roughness={0.4} /></mesh>
+    </group>];
+  });
   return <group userData={{wireId: wire.id, points: wire.points}}>
+    {plugs}
     <mesh><tubeGeometry args={[curve, 32, wire.selected ? 0.0017 : 0.0011, 8, false]} /><meshStandardMaterial color={wire.color} roughness={0.5} emissive={wire.selected ? wire.color : '#000000'} emissiveIntensity={wire.selected ? 0.5 : 0} /></mesh>
     <mesh><tubeGeometry args={[curve, 24, 0.004, 5, false]} /><meshBasicMaterial transparent opacity={0} depthWrite={false} /></mesh>
   </group>;
@@ -578,16 +688,20 @@ function Points2({positions, colors, size}: {positions: number[]; colors: number
 }
 const rgb = (hex: string): [number, number, number] => { const n = parseInt(hex.slice(1), 16); return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255]; };
 
-/** Pines como puntos de tamaño constante en pantalla (11–14 px; el blanco de toque es el radio de 15 px de `pickPin`). */
+/** Small markers on dense boards; the 15 px picking radius stays the same for touch. */
 function PinPoints({pins, highlight, pending, probes}: {pins: PinMarker[]; highlight: ReadonlySet<string>; pending: Vec3 | null; probes: {a: Vec3 | null; b: Vec3 | null}}) {
   const isHi = (m: PinMarker) => highlight.has(`${m.ref.instanceId}:${m.ref.pinId}`);
-  const plain = useMemo(() => { const list = pins.filter(m => !m.connected && !isHi(m)); return {pos: list.flatMap(m => m.pos), col: list.flatMap(m => rgb(pinColor(m.role)))}; }, [pins, highlight]);
+  const denseInstances = useMemo(() => { const counts = new Map<string, number>(); for (const p of pins) counts.set(p.ref.instanceId, (counts.get(p.ref.instanceId) ?? 0) + 1); return new Set([...counts].filter(([, n]) => n > 100).map(([id]) => id)); }, [pins]);
+  const dense = useMemo(() => { const list = pins.filter(m => denseInstances.has(m.ref.instanceId) && !m.connected && !isHi(m)); return {pos: list.flatMap(m => m.pos), col: list.flatMap(m => rgb(pinColor(m.role)))}; }, [pins, highlight, denseInstances]);
+  const plain = useMemo(() => { const list = pins.filter(m => !denseInstances.has(m.ref.instanceId) && !m.connected && !isHi(m)); return {pos: list.flatMap(m => m.pos), col: list.flatMap(m => rgb(pinColor(m.role)))}; }, [pins, highlight, denseInstances]);
   const linked = useMemo(() => { const list = pins.filter(m => m.connected && !isHi(m)); return {pos: list.flatMap(m => m.pos), col: list.flatMap(m => rgb(pinColor(m.role)))}; }, [pins, highlight]);
   const hi = useMemo(() => { const list = pins.filter(isHi); return {pos: list.flatMap(m => m.pos), col: list.flatMap(() => rgb('#ff8a00'))}; }, [pins, highlight]);
-  const special = useMemo(() => { const items: {p: Vec3; c: string}[] = []; if (pending) items.push({p: pending, c: '#27ae60'}); if (probes.a) items.push({p: probes.a, c: '#d64545'}); if (probes.b) items.push({p: probes.b, c: '#111111'}); return {pos: items.flatMap(i => i.p), col: items.flatMap(i => rgb(i.c))}; }, [pending, probes]);
+  const special = useMemo(() => { const items: {p: Vec3; c: string}[] = []; if (pending) items.push({p: pending, c: '#2563eb'}); if (probes.a) items.push({p: probes.a, c: '#d64545'}); if (probes.b) items.push({p: probes.b, c: '#111111'}); return {pos: items.flatMap(i => i.p), col: items.flatMap(i => rgb(i.c))}; }, [pending, probes]);
   return <>
+    {dense.pos.length > 0 && <Points2 positions={dense.pos} colors={dense.col} size={4} />}
     {plain.pos.length > 0 && <Points2 positions={plain.pos} colors={plain.col} size={11} />}
     {linked.pos.length > 0 && <Points2 positions={linked.pos} colors={linked.col} size={14} />}
+    {pins.filter(isHi).map((m,i)=><Html key={`${m.ref.instanceId}:${m.ref.pinId}`} position={m.pos} center style={{pointerEvents:'none'}} zIndexRange={[35,30]}><span className={`rb-guide-pin-label rb-guide-pin-${i}`}>{i+1}. {m.label??m.ref.pinId}</span></Html>)}
     {hi.pos.length > 0 && <Points2 positions={hi.pos} colors={hi.col} size={20} />}
     {special.pos.length > 0 && <Points2 positions={special.pos} colors={special.col} size={22} />}
   </>;

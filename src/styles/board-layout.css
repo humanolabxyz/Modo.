@@ -3,7 +3,7 @@
 .module-grip .grip-dots{fill:#9aa4ab;opacity:.75;transition:fill .15s,opacity .15s}
 .module-grip:hover .grip-dots,.module-grip:focus-visible .grip-dots{fill:#1c8fb5;opacity:1}
 .module-grip:focus-visible>rect{stroke:#1c8fb5;stroke-width:3;stroke-dasharray:8 6}
-.board-module.is-dragging{cursor:grabbing;filter:drop-shadow(0 16px 24px #1c354544)}
+.board-module.is-dragging{cursor:grabbing}
 .board-module.is-dragging .module-grip{cursor:grabbing}
 .board-module.is-dragging .module-grip .grip-dots{fill:#1c8fb5;opacity:1}
 svg[data-dragging=true] .module-grip{cursor:grabbing}
@@ -180,6 +180,11 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 }
 /* Keep the full cable finish at rest; paint only its outline and colour while navigating. */
 .board-svg:is([data-gesture=true],[data-dragging=true],[data-animating=true]) .wire-layer .cable-detail{display:none}
+/* Rendimiento al mover el tablero (en todas las pantallas, no solo en compactas): los filtros SVG (sombras de módulos y cables, brillo de pilotos)
+   se vuelven a calcular en cada cuadro y hacían que el tablero parpadeara en blanco. Durante el gesto se apagan y la sombra vuelve al soltar. */
+.board-svg:is([data-gesture=true],[data-dragging=true],[data-animating=true]) [filter]{filter:none}
+.board-svg:is([data-gesture=true],[data-dragging=true]){shape-rendering:optimizeSpeed;text-rendering:optimizeSpeed}
+.board-svg:is([data-gesture=true],[data-dragging=true]) :is(.motor-rotor,.pilot-glow,.interactive-wire,.selected-ring,.plug-seat,.plug-ripple,.pending-cable-preview){animation-play-state:paused}
 
 /* Dynamic rotor and timer use the electrical model rather than independent CSS clocks. */
 .editor-workbench .board-svg .motor-rotor[data-dynamic=true],.editor-workbench .board-svg .timer-fill-synced{animation:none!important}

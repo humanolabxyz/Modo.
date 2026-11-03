@@ -18,16 +18,29 @@
 
 /* ── 1 · Entrada de marca ───────────────────────────────────────────────── */
 .modo-splash{display:none}
-html.modo-splash-on .modo-splash{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:var(--modo-bg,#F7F8FA);pointer-events:none;contain:strict;animation:modo-splash-exit 130ms ease-out 700ms both}
-.modo-splash-logo{display:block;width:min(160px,34vw);height:auto;overflow:visible}
-.modo-splash-a,.modo-splash-b{transform-box:view-box;animation-duration:460ms;animation-timing-function:cubic-bezier(.2,.75,.2,1);animation-fill-mode:both}
+/* Secuencia (≈1,5 s): las dos mitades del rayo llegan (0–0,6 s) → impacto con descarga eléctrica azul y onda (0,4 s) → aparece «modo.» (0,7 s) → la pantalla se aleja y revela la app (1,15–1,55 s). */
+html.modo-splash-on .modo-splash{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:var(--modo-bg,#F7F8FA);pointer-events:none;contain:strict;animation:modo-splash-exit 400ms cubic-bezier(.4,0,.2,1) 1150ms both}
+.modo-splash-stack{display:grid;justify-items:center;gap:20px}
+.modo-splash-logo{display:block;width:min(190px,40vw);height:auto;overflow:visible}
+.modo-splash-a,.modo-splash-b{transform-box:view-box;animation-duration:600ms;animation-timing-function:cubic-bezier(.2,.75,.2,1);animation-fill-mode:both}
 .modo-splash-a{animation-name:modo-bolt-top}
 .modo-splash-b{animation-name:modo-bolt-bottom}
-.modo-splash-impact{transform-origin:66px 71px;animation:modo-bolt-impact 460ms linear both}
-@keyframes modo-bolt-top{0%{opacity:0;transform:translate(-58px,-88px)}18%{opacity:1}66%{transform:translate(2px,3px)}84%,100%{opacity:1;transform:translate(0,0)}}
-@keyframes modo-bolt-bottom{0%{opacity:0;transform:translate(58px,88px)}18%{opacity:1}66%{transform:translate(-2px,-3px)}84%,100%{opacity:1;transform:translate(0,0)}}
-@keyframes modo-bolt-impact{0%,62%{transform:scale(1)}72%{transform:scale(1.065)}100%{transform:scale(1)}}
-@keyframes modo-splash-exit{to{opacity:0}}
+.modo-splash-impact{transform-origin:66px 71px;animation:modo-bolt-impact 600ms linear both,modo-bolt-charge 600ms linear both}
+.modo-splash-arcs{filter:drop-shadow(0 0 3px #073cff) drop-shadow(0 0 9px #3d6bff)}
+.modo-splash-arc{fill:none;stroke:#073cff;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:modo-splash-arc 460ms linear calc(365ms + var(--d,0ms)) both}
+.modo-splash::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 44%,rgba(7,60,255,.3),rgba(7,60,255,.08) 38%,transparent 62%);opacity:0;animation:modo-splash-flash 560ms ease-out 365ms both}
+.modo-splash-ring{transform-box:view-box;transform-origin:66px 71px;fill:none;stroke:#073cff;stroke-width:3;opacity:0;animation:modo-splash-ring 620ms cubic-bezier(.15,.7,.3,1) 370ms both}
+.modo-splash-word{margin:0;font:800 clamp(30px,6vw,40px)/1 Inter,system-ui,sans-serif;letter-spacing:-.035em;color:#101215;animation:modo-splash-word 480ms cubic-bezier(.16,1,.3,1) 640ms both}
+.modo-splash-word i{font-style:normal;color:#073cff}
+@keyframes modo-bolt-top{0%{opacity:0;transform:translate(-80px,-120px)}18%{opacity:1}66%{transform:translate(2px,3px)}84%,100%{opacity:1;transform:translate(0,0)}}
+@keyframes modo-bolt-bottom{0%{opacity:0;transform:translate(80px,120px)}18%{opacity:1}66%{transform:translate(-2px,-3px)}84%,100%{opacity:1;transform:translate(0,0)}}
+@keyframes modo-bolt-impact{0%,62%{transform:scale(1)}72%{transform:scale(1.1)}100%{transform:scale(1)}}
+@keyframes modo-bolt-charge{0%,58%{fill:#101215}68%,76%{fill:#073cff}100%{fill:#101215}}
+@keyframes modo-splash-arc{0%{opacity:1;stroke-dashoffset:1}28%{opacity:1;stroke-dashoffset:0}40%{opacity:.35}52%{opacity:1}66%{opacity:.4}78%{opacity:.9}100%{opacity:0;stroke-dashoffset:0}}
+@keyframes modo-splash-flash{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+@keyframes modo-splash-ring{0%{opacity:.7;transform:scale(.3)}100%{opacity:0;transform:scale(6.5)}}
+@keyframes modo-splash-word{from{opacity:0;transform:translateY(14px);letter-spacing:.08em}to{opacity:1;transform:none;letter-spacing:-.035em}}
+@keyframes modo-splash-exit{to{opacity:0;transform:scale(1.07)}}
 /* El panel abierto desde otra herramienta (/?view=simulator) no enseña el inicio un instante. */
 html.modo-boot-simulator .modo-home-shell main{visibility:hidden}
 
@@ -138,7 +151,7 @@ html.modo-opening-on .modo-opening{display:grid}
 .modo-opening-logo{display:block;animation:modo-opening-pop .32s cubic-bezier(.2,.8,.3,1) both}
 .modo-opening-late{display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:modo-opening-late .25s ease .4s forwards}
 .modo-opening-bar{position:relative;display:block;width:168px;height:3px;border-radius:3px;background:#e6e9ec;overflow:hidden}
-.modo-opening-bar i{position:absolute;inset:0 auto 0 0;width:42%;border-radius:3px;background:#3e806b;animation:modo-opening-run 1.1s cubic-bezier(.45,0,.35,1) infinite}
+.modo-opening-bar i{position:absolute;inset:0 auto 0 0;width:42%;border-radius:3px;background:#073cff;animation:modo-opening-run 1.1s cubic-bezier(.45,0,.35,1) infinite}
 .modo-opening-label{margin:0;font-size:14px;font-weight:600;letter-spacing:-.005em;color:#5b6570}
 @keyframes modo-opening-pop{from{opacity:0;scale:.9}to{opacity:1;scale:1}}
 @keyframes modo-opening-late{to{opacity:1}}

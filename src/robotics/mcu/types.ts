@@ -41,5 +41,6 @@ export const MCU_SUPPORT: {feature: string; status: 'soportado' | 'parcial' | 'n
   {feature: 'Serial.print / println (salida)', status: 'soportado', note: 'USART a 9 600 baudios u otra velocidad.'},
   {feature: 'pulseIn con HC-SR04', status: 'soportado', note: 'ECHO = 2·d/343 s medido con el reloj virtual.'},
   {feature: 'Serial.read / available (entrada)', status: 'no soportado', note: 'Todavía no hay forma de escribir en el monitor.'},
-  {feature: 'attachInterrupt, Servo, tone, I²C, SPI, EEPROM', status: 'no soportado', note: 'avr8js los incluye pero no están verificados ni conectados a dispositivos.'},
+  {feature: 'Servo (biblioteca Servo.h)', status: 'soportado', note: 'Los pulsos de 544–2400 µs que genera el emulador mueven el eje del SG90 (≈ 600°/s).'},
+  {feature: 'attachInterrupt, tone, I²C, SPI, EEPROM', status: 'no soportado', note: 'avr8js los incluye pero no están verificados ni conectados a dispositivos.'},
 ];

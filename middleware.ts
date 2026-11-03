@@ -2,8 +2,9 @@
 // La clave NO está en el repositorio: se define en la variable de entorno ROBOTICA_BETA_PASSWORD. Sin ella la ruta se cierra (503).
 // Límite conocido: los archivos con hash de /_astro/ que usa Robótica no se protegen (no contienen datos, y no se pueden abrir sin la página).
 import {next} from '@vercel/functions';
+declare const process: {env: {ROBOTICA_BETA_PASSWORD?: string}};
 
-export const config = {matcher: ['/robotica', '/robotica/:path*']};
+export const config = {matcher: ['/robotica', '/robotica/:path*', '/arena', '/arena/:path*']};
 
 const COOKIE = 'modo-beta';
 const MAX_AGE = 60 * 60 * 24 * 30;

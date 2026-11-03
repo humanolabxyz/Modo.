@@ -1,8 +1,8 @@
 {
   "checks": [
-    "Fuente íntegra y 37 cables exactos; 42 pasos heredados sustituidos; sin KM3",
-    "Diagrama original íntegro y misma imagen del archivo; 37 tramos relacionados en líneas originales, sin mover ni redibujar elementos; explicación y preguntas en 37 pasos",
+    "Fuente íntegra; 40 cables: el mando (23) idéntico al tablero bien armado, con piloto rojo y aviso, y la fuerza (17) del archivo recibido; sin KM3",
+    "Diagrama = recibido con rótulos del banco y triángulo corregido, misma imagen del archivo; 40 tramos relacionados en líneas del dibujo (también los 3 cables del piloto rojo), sin mover ni redibujar elementos; explicación y preguntas en 40 pasos",
     "Evaluación reconoce el montaje y rechaza el vacío; práctica y exportación/historial conservan la nueva lección",
-    "S1: estrella KM2 + KT1, retención, cambio a triángulo KM1; S3 no da marcha; S2 y TEST detienen en ambas etapas y P3 avisa"
+    "S1: estrella KM2 + KT1, retención, cambio a triángulo KM1; S3 no da marcha; S2 y TEST detienen en ambas etapas y P3 avisa; el rojo P2 se enciende en reposo y con TEST y se apaga en estrella y triángulo"
   ]
 }

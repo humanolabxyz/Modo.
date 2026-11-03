@@ -1,72 +1,10 @@
 {
   "checks": [
-    "OMITIDO (SKIP_PROTECTED_HASHES): 203 de 344 hashes ya no coinciden con el HEAD previo a Robótica",
-    "Nueve tamaños responsive: sin overflow; reloj fijo, cinco tarjetas, móvil centrado y versiones legibles",
-    "Sin flechas visibles ni estadísticas; teclado, Home/End y vuelta circular mantienen el selector accesible",
-    "Panel real abre con su banco y regresa al Home",
-    "Estudio, Laboratorio, Comunidad e historial abren sus rutas reales",
-    "Importar y continuar conserva los cables y el documento guardado",
-    "Gesto táctil real de Chromium desplaza sin navegar por accidente; puntos y toque abren el módulo",
-    "Seis palabras con tildes, láminas individuales, dimensiones invariantes y pausa funcional",
-    "Cero errores de JavaScript/consola y cero respuestas HTTP fallidas",
-    "WebKit móvil: Home, assets y selector táctil"
+    "OMITIDO (SKIP_PROTECTED_HASHES): 203 de 344 hashes ya no coinciden con el HEAD previo a Robótica"
   ],
   "errors": [],
   "requests": [],
-  "viewports": [
-    {
-      "width": 320,
-      "height": 740,
-      "overflow": false
-    },
-    {
-      "width": 360,
-      "height": 800,
-      "overflow": false
-    },
-    {
-      "width": 390,
-      "height": 844,
-      "overflow": false
-    },
-    {
-      "width": 430,
-      "height": 932,
-      "overflow": false
-    },
-    {
-      "width": 768,
-      "height": 1024,
-      "overflow": false
-    },
-    {
-      "width": 1024,
-      "height": 768,
-      "overflow": false
-    },
-    {
-      "width": 1440,
-      "height": 900,
-      "overflow": false
-    },
-    {
-      "width": 1672,
-      "height": 941,
-      "overflow": false
-    },
-    {
-      "width": 1920,
-      "height": 1080,
-      "overflow": false
-    }
-  ],
-  "words": [
-    "ESTUDIO",
-    "LAB",
-    "CONTROL",
-    "ROBÓTICA",
-    "CIRCUITOS",
-    "PRÁCTICA"
-  ],
+  "viewports": [],
+  "words": [],
   "assets": []
 }

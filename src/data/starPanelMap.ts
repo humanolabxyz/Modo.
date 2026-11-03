@@ -24,9 +24,9 @@ const common=():PanelMap=>({
 /** Sin temporizador: KM3 es la estrella (dibujo: KM3) y KM2 el triángulo (dibujo: KM2). El cambio se hace con S3. */
 const manual=():PanelMap=>({
  ...common(),
- 6:power(K2,['6','4','2']),7:power(K3,['2','4','6']),
+ 6:power(K2,['2','4','6']),7:power(K3,['2','4','6']),
  58:seq(BT+'S3:',['11','12','13','14'],['1','2','3','4']),
- 59:seq(K2,['11','12'],['71','72']),60:{'13':K2+'13','12':K2+'14'},61:seq(K3,['11','12'],['71','72']),
+ 59:seq(K2,['11','12'],['71','72']),60:{'13':K2+'13','14':K2+'14'},61:seq(K3,['11','12'],['71','72']),
  62:seq(K1,['11','12'],['71','72']),
  64:seq(K3,['A1','A2'],['A1','A2']),65:seq(K2,['A1','A2'],['A1','A2']),
  66:{X1:BT+'PILOTO_2',X2:BT+'N'},67:{X1:BT+'PILOTO_1',X2:BT+'N'},68:{X1:BT+'PILOTO_4',X2:BT+'N'},69:{X1:BT+'PILOTO_3',X2:BT+'N'},
@@ -34,7 +34,7 @@ const manual=():PanelMap=>({
 /** Con temporizador (dibujo cadeEstrellaTemporizador.json, ver qa/build-cade-timer.cjs): KM2 es la estrella (objeto 7) y KM3 el triángulo (objeto 6). */
 const timer=():PanelMap=>({
  ...common(),
- 6:power(K3,['6','4','2']),7:power(K2,['2','4','6']),
+ 6:power(K3,['2','4','6']),7:power(K2,['2','4','6']),
  204:seq(K1,['81','82'],['81','82']),207:seq(K2,['81','82'],['81','82']),209:seq(K3,['81','82'],['81','82']),
  211:{X1:BT+'PILOTO_2',X2:BT+'N'},216:{X1:BT+'PILOTO_1',X2:BT+'N'},218:{X1:BT+'PILOTO_3',X2:BT+'N'},
  222:seq(KT,['A1','A2'],['A1','A2']),226:seq(KT,['55','56'],['55','56']),234:seq(KT,['67','68'],['67','68']),

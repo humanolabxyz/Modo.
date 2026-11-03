@@ -52,6 +52,7 @@ ctx.onmessage = ({data}) => {
   else if (data.t === 'start') { running = true; last = performance.now(); }
   else if (data.t === 'pause') { running = false; post(true); }
   else if (data.t === 'speed') speed = Math.max(0.1, Math.min(8, data.factor));
+  else if (data.t === 'control') coordinator?.setControl(data.id, data.value);
   else if (data.t === 'ping') ctx.postMessage({t: 'pong', n: data.n});
   else if (data.t === 'warm') void loadRapier().then(() => ctx.postMessage({t: 'warmed'}), () => ctx.postMessage({t: 'warmed'}));
 };

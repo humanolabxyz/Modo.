@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "Cinemática de posición y orientación coincide con tres referencias independientes calculadas desde el URDF oficial.",
+    "Plantilla y catálogo válidos; no inventa firmware; comandos inválidos y agarre lejano no alteran la práctica.",
+    "Acercamiento, agarre por proximidad y seguimiento de la herramienta; liberación en altura conserva la posición antes de caer.",
+    "Práctica completa solo al soltar dentro de zona; estado y articulaciones sobreviven al guardado junto a un robot anterior.",
+    "MovJ respeta velocidad; MovL sigue una recta; colisión rechaza trayectoria; carga cambia el par; programa serializa y valida.",
+    "Carga excesiva, límite articular, brazo inexistente y penetración del suelo comprobados."
+  ]
+}

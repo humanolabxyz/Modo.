@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "mobile: referencia opcional, progreso y piezas reales sin cablear ni programar",
+    "mobile: mover el dedo fuera del botón cancela la separación",
+    "mobile: pieza por nombre, toque corto y Escape cancelan, mantener suelta solo esa unión y Deshacer restaura",
+    "mobile: píldora de cámara, progreso tras recarga y regreso a construcción libre",
+    "tablet: mantener sobre dos figuras superpuestas muestra dos nombres y permite resaltar la pieza exacta"
+  ],
+  "errors": []
+}

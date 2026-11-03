@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "wedge: 18 piezas, 2 ruedas, fijación real, sin interferencias, circuito, exportación/importación y entrada a la arena.",
+    "scoop: 22 piezas, 4 ruedas, fijación real, sin interferencias, circuito, exportación/importación y entrada a la arena.",
+    "bumper: 18 piezas, 2 ruedas, fijación real, sin interferencias, circuito, exportación/importación y entrada a la arena.",
+    "Contactos convexos: rampa inclinada, pala abierta con base/respaldo/laterales y defensa vertical; misma geometría que la vista.",
+    "Cuña contra pala 4WD: dos circuitos/programas, contacto estable, seis motores y resultado sin modificar las construcciones."
+  ],
+  "gap": 0.3946030307990336,
+  "peak": [
+    0.045486174523830414,
+    0.04567141830921173
+  ],
+  "result": {
+    "winner": null,
+    "reason": "tiempo agotado"
+  }
+}

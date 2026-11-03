@@ -18,7 +18,7 @@ export const LIMITS = {
   timeoutMs: Number(process.env.COMPILE_TIMEOUT_MS || 30000),
   parallel: 2,
   perMinutePerIp: 30,
-  allowedIncludes: ['Arduino.h', 'Servo.h', 'Wire.h', 'SoftwareSerial.h', 'EEPROM.h', 'math.h', 'stdlib.h', 'string.h', 'stdint.h', 'avr/pgmspace.h'],
+  allowedIncludes: ['Arduino.h', 'Servo.h', 'Wire.h', 'Adafruit_GFX.h', 'Adafruit_SSD1306.h', 'SoftwareSerial.h', 'EEPROM.h', 'math.h', 'stdlib.h', 'string.h', 'stdint.h', 'avr/pgmspace.h'],
 };
 export const available = () => existsSync(cliExe);
 

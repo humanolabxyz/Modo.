@@ -1,0 +1,256 @@
+{
+  "url": "http://127.0.0.1:4330",
+  "checks": [
+    "Arrastrar desde la miniatura real permite colocar la pieza; Esc cancela sin agregar.",
+    "escritorio: 35 miniaturas reales, búsqueda, categorías, agregar con ratón/tacto, modelos en pizarra y sin desbordamiento",
+    "movil: 35 miniaturas reales, búsqueda, categorías, agregar con ratón/tacto, modelos en pizarra y sin desbordamiento"
+  ],
+  "errors": [],
+  "images": [
+    {
+      "src": "/robotics/components/chassis-2wd.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 5068,
+      "sha256": "f3a9547333830fb1fe3b213e2e7641a43f3e7ad636e5df7679c267bc671ad187"
+    },
+    {
+      "src": "/robotics/components/dc-motor-tt.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 6350,
+      "sha256": "5dc0ff5da8ed6bdffb9fc03adcb1f99e1af39da1edaff5cba23aa4dbcd90c1ae"
+    },
+    {
+      "src": "/robotics/components/wheel-65.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 6156,
+      "sha256": "7566d40acee9fe486e4f91347762e63e2e2b2a5918e54d9724e31caec618866a"
+    },
+    {
+      "src": "/robotics/components/caster-ball.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 3962,
+      "sha256": "db3c144aa861a3fbb31565f92a4da20a9f1161d75ca2f79b711a6c708d560fd1"
+    },
+    {
+      "src": "/robotics/components/arduino-uno-r3.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 10496,
+      "sha256": "90a7a78d21eacadf93210ec3610933d2be7c1472769f91aadb8f322869082a1e"
+    },
+    {
+      "src": "/robotics/components/l298n-module.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 8496,
+      "sha256": "c0f93ed644804fada07ed05296f9b14780078363b68e571d2bacc7fa82fc0f25"
+    },
+    {
+      "src": "/robotics/components/hc-sr04.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 8782,
+      "sha256": "3656f86f4ad184ad15ce1eca11dd044afa9b7b55226ce2b7d749ba41c86fd297"
+    },
+    {
+      "src": "/robotics/components/battery-holder-4aa.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 7902,
+      "sha256": "e9231fd217ba9fa58da4520b439b4cd84d59fdbc3dbc1194eb93296d3f8b8e0d"
+    },
+    {
+      "src": "/robotics/components/sensor-bracket.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4802,
+      "sha256": "7fbae56404835e2c492a220f2b3e57d71a7581a78e91deaf092297a1620eea95"
+    },
+    {
+      "src": "/robotics/components/bracket-generic.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4248,
+      "sha256": "4a2d78c0539ed56e4b06faa3bb12181a5329d0038bf915f56831c6c2623d7c90"
+    },
+    {
+      "src": "/robotics/components/led-5mm.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 3612,
+      "sha256": "0fb2fd0dde34dbe31242e9b1bd6f805dc976c429d376c0f0efa1de7a93f458d5"
+    },
+    {
+      "src": "/robotics/components/resistor.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 6814,
+      "sha256": "bfdda1fc9f38f1de3cbfca861019c32de96d2053f70910b97d7c2c860ed1ab50"
+    },
+    {
+      "src": "/robotics/components/breadboard-400.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 17082,
+      "sha256": "30d7fb44840fd5de68acab5c5b3c8befd485a2bba3da4e5c7e34cc0c960a1485"
+    },
+    {
+      "src": "/robotics/components/tcrt5000-module.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4904,
+      "sha256": "750427ee1b0135c70b357f601508e39748df69b6be4608be225f3a3a8cc9acaf"
+    },
+    {
+      "src": "/robotics/components/servo-sg90.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 5510,
+      "sha256": "ba5bd389217a1ce3dca8d302f4fa87585a142f4b09fb4c432f34b2ede508fb12"
+    },
+    {
+      "src": "/robotics/components/oled-ssd1306.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4158,
+      "sha256": "99843fcefe8bb9fd28af1668bc13ea9b0c624a9769ec47b3ff7950a23a44fea9"
+    },
+    {
+      "src": "/robotics/components/robot-head.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4230,
+      "sha256": "fb9d04ff9d92961ce9e4cfb942c4c7b6203c18de9e05295a764c647fe4f7767c"
+    },
+    {
+      "src": "/robotics/components/track-sprocket.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4254,
+      "sha256": "7115dc6f08759242d2a6a107752767058b9e32b6f690b067d7ecc0f4123d46d7"
+    },
+    {
+      "src": "/robotics/components/track-belt.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 6994,
+      "sha256": "58b291a39c56f2b9dd7be28b6e4483cf1a9e1340014deab7bd9c1e2e1ff0a256"
+    },
+    {
+      "src": "/robotics/components/robot-torso.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 7746,
+      "sha256": "d47bbe85e8ed58825ea8e4d3e3eb230a726286028a780da74ed75d25b5a6ddbb"
+    },
+    {
+      "src": "/robotics/components/robot-arm.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4548,
+      "sha256": "5807398375ce45d508ce6164d01761a837adf08d14e5c2470dd07136d58a9213"
+    },
+    {
+      "src": "/robotics/components/robot-forearm.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 3276,
+      "sha256": "870979cc8836aef871a609683cfb73a7548cbd78e3032cbb0b792be91fa41844"
+    },
+    {
+      "src": "/robotics/components/robot-claw.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4712,
+      "sha256": "db4474c2dcfc687f85004ef39be26bcdec75000fe977d928fa6f6a02875db128"
+    },
+    {
+      "src": "/robotics/components/push-button-6mm.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 5578,
+      "sha256": "274b16fd34dcdda5784c82add38169386bec0bb47d63dc8620292ef73bc46368"
+    },
+    {
+      "src": "/robotics/components/potentiometer-10k.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 6842,
+      "sha256": "f754305d44d51b149cc533dc0c007fed7157e4dd8ccd77249e7559ab62b7ff3d"
+    },
+    {
+      "src": "/robotics/components/ir-double-bracket.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 3968,
+      "sha256": "c873143209e9dc13238045ffd939ade1696f322c43448a0dc9174999981cc84c"
+    },
+    {
+      "src": "/robotics/components/power-switch.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 3958,
+      "sha256": "73ef4d0406dec1e2093e56ad852a65e9ad324a06d7369b34873310877f186927"
+    },
+    {
+      "src": "/robotics/components/regulator-5v.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 8558,
+      "sha256": "a04afa87bec0bb4dd7c9d18a6b1bee81c1b0974af7021e18665c6f6de5f31eef"
+    },
+    {
+      "src": "/robotics/components/educational-arm-e6.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 5562,
+      "sha256": "fa1173f43f54ef29adc1095cacdc760c6e16ba0bc93b68e6c86da0e1c6d885e9"
+    },
+    {
+      "src": "/robotics/components/arm-practice-block.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 3874,
+      "sha256": "ac8192aaa53f06e07aab8e172c92672623ad9a1b869875a8fc630a23aff56c01"
+    },
+    {
+      "src": "/robotics/components/arm-drop-zone.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 5106,
+      "sha256": "7e00b1d23f65438f137b33b0ebafc1c51648fa221df4603b18597e6d7b8e3ce5"
+    },
+    {
+      "src": "/robotics/components/sumo-wedge.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 3930,
+      "sha256": "5befb4dae1298fade7cb886f09e3d05d9903ab819aa99c214db5be180a675aa6"
+    },
+    {
+      "src": "/robotics/components/sumo-scoop.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 5544,
+      "sha256": "da31edcddd09f0c5d55d3b833fbb6a2937105e4ceac5d852e181d911ac818e02"
+    },
+    {
+      "src": "/robotics/components/sumo-bumper.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 4274,
+      "sha256": "c4476b1a3e685e8824c0685c6a03ef14c068f45710bc85e3d55fc083fb8c042b"
+    },
+    {
+      "src": "/robotics/components/educational-conveyor.webp",
+      "w": 320,
+      "h": 240,
+      "bytes": 8928,
+      "sha256": "56748667ca96fd42ff1e88bc2dd8ddad1716cb2a689eeb2d56f2932b568fb979"
+    }
+  ]
+}

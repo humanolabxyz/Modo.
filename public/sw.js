@@ -22,7 +22,7 @@ self.addEventListener('message',event=>{
 });
 function pageKey(url){
  const path=url.pathname.replace(/\/index\.html$/,'/').replace(/\/+$/,'')||'/';
- return path==='/'?'/':/^\/(estudio|laboratorio|robotica|legal|comunidad|versiones|sin-conexion)$/.test(path)?path+'/':url.pathname;
+ return path==='/'?'/':/^\/(estudio|laboratorio|robotica|arena|legal|comunidad|versiones|sin-conexion)$/.test(path)?path+'/':url.pathname;
 }
 async function rangeResponse(request,cached){
  const range=request.headers.get('range');

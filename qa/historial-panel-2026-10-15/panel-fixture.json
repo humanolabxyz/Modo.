@@ -14,9 +14,9 @@
   "format": "modo-panel",
   "panelHistory": {
     "version": 1,
-    "id": "bee57d5d-a4ab-4912-8ee9-47f6ce75f85b",
+    "id": "489abcfd-6ab5-4d34-a108-e20b8d899a52",
     "name": "Historial del panel",
-    "createdAt": "2026-10-28T18:56:46.844Z",
+    "createdAt": "2026-10-31T15:52:26.165Z",
     "initial": {
       "practice": {
         "version": 2,
@@ -47,7 +47,7 @@
     },
     "steps": [
       {
-        "at": 11,
+        "at": 12,
         "label": "Conectar CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96",
         "targets": [
           "CONTACTOR_TERMICO:95",
@@ -59,7 +59,7 @@
             "title": "Mi práctica INACAP",
             "wires": [
               {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -99,7 +99,7 @@
         "changes": {
           "added": [
             {
-              "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+              "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
               "from": {
                 "terminalId": "CONTACTOR_TERMICO:95"
               },
@@ -134,7 +134,7 @@
             "title": "Mi práctica INACAP",
             "wires": [
               {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -176,9 +176,9 @@
           "removed": [],
           "modified": [
             {
-              "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+              "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
               "before": {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -192,7 +192,7 @@
                 "layer": 1
               },
               "after": {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -217,7 +217,7 @@
         "operation": "edit"
       },
       {
-        "at": 12,
+        "at": 13,
         "label": "Modificar cable CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96 · recorrido",
         "targets": [
           "CONTACTOR_TERMICO:95",
@@ -229,7 +229,7 @@
             "title": "Mi práctica INACAP",
             "wires": [
               {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -271,9 +271,9 @@
           "removed": [],
           "modified": [
             {
-              "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+              "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
               "before": {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -287,7 +287,7 @@
                 "layer": 1
               },
               "after": {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -312,7 +312,7 @@
         "operation": "edit"
       },
       {
-        "at": 12,
+        "at": 13,
         "label": "Retirar CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96",
         "targets": [
           "CONTACTOR_TERMICO:95",
@@ -350,7 +350,7 @@
           "added": [],
           "removed": [
             {
-              "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+              "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
               "from": {
                 "terminalId": "CONTACTOR_TERMICO:95"
               },
@@ -372,7 +372,7 @@
         "operation": "edit"
       },
       {
-        "at": 13,
+        "at": 14,
         "label": "Deshacer · Conectar CONTACTOR_TERMICO:95 → CONTACTOR_TERMICO:96",
         "targets": [
           "CONTACTOR_TERMICO:95",
@@ -384,7 +384,7 @@
             "title": "Mi práctica INACAP",
             "wires": [
               {
-                "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+                "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
                 "from": {
                   "terminalId": "CONTACTOR_TERMICO:95"
                 },
@@ -424,7 +424,7 @@
         "changes": {
           "added": [
             {
-              "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+              "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
               "from": {
                 "terminalId": "CONTACTOR_TERMICO:95"
               },
@@ -485,7 +485,7 @@
           "added": [],
           "removed": [
             {
-              "id": "b4e4ed07-7d3f-4e18-a073-7549760ba6db",
+              "id": "1e8aaccd-b289-4d2c-890d-296d41878fee",
               "from": {
                 "terminalId": "CONTACTOR_TERMICO:95"
               },

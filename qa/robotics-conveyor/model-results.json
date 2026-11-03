@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "Banda desplaza las piezas a la velocidad elegida sin mutar el origen; presencia y selección de destino provienen de posición y RGB, incluso al cambiar el color sin cambiar el ID.",
+    "Lote completo: tres transportes, detecciones, agarres y trayectorias progresivas, liberaciones Rapier y destinos por color; reinicio devuelve las piezas a la banda elevada.",
+    "Fallas observables: atasco, obstáculo delgado, sensor sin detección con parada de salida, cinta vacía, color desconocido, destino ausente, cinta inclinada e importación inválida; ninguna inventa entregas."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "url": "http://localhost:4326",
+  "checks": [
+    "la guía sugerida para el robot es «Evitar obstáculos»; probar sin código explica que falta ponerlo",
+    "paso 1: «Poner este código» → «Probar este paso» → «¡Paso superado!» (D4, D7, D8, D12 y D9 son salidas)",
+    "probar el paso 2 con el código del paso 1: «Todavía no» y explica qué falla (✗ D4 está en ALTO: está en BAJO)",
+    "pasos 2, 3 y 4 (motores, medir con el HC-SR04, decidir) superados en el simulador: «Programa completo»",
+    "el programa puesto por la guía corre en Simular (EN MARCHA)",
+    "armar: «Base · paso 1 de 14», con qué pieza, dónde encaja y por qué",
+    "«Encajarla por mí» coloca el chasis y la guía pasa a «Tracción · paso 2 de 14» (el motor encaja en el chasis)",
+    "14 pasos con «Encajarla por mí»: 14 piezas en el 3D, «Armado de referencia completo» y la lista marca los 14",
+    "en teléfono (390 px) el panel de programación cabe sin desbordar",
+    "sin errores de consola"
+  ],
+  "errors": []
+}

@@ -34,14 +34,17 @@ export type Firmware = {
   updatedAt: string;
 };
 
-export type Obstacle = {id: string; shape: 'box' | 'cylinder'; transform: Transform; size: Vec3};
-export type Scene = {obstacles: Obstacle[]; robotStart: Transform; physics: {gravity: number; friction: number}};
-export type Workspace = {camera?: {position: Vec3; target: Vec3}; mode?: 'build' | 'simulate'};
+/** `movable`: un objeto que se puede empujar y recoger con una pinza (cuerpo dinámico con masa `massKg`); si no, es fijo. */
+export type Obstacle = {id: string; shape: 'box' | 'cylinder'; transform: Transform; size: Vec3; movable?: boolean; massKg?: number};
+export type LineTrack = {name: string; points: Vec3[]; width: number; closed: boolean};
+export type Scene = {lineTrack?: LineTrack; obstacles: Obstacle[]; robotStart: Transform; physics: {gravity: number; friction: number}};
+export type Workspace = {camera?: {position: Vec3; target: Vec3}; mode?: 'build' | 'simulate'; assemblyTemplate?: string; /** Guía de cableado paso a paso elegida (id de `guide/guides.ts`). */ wiringGuide?: string; /** Guía de programación paso a paso elegida (id de `guide/programGuides.ts`). */ programGuide?: string; welcomeDismissed?: boolean};
 
 export const ROBOTICS_FORMAT = 'modo-robotica' as const;
 export const ROBOTICS_VERSION = 1 as const;
 
 export type RobotProject = {
+  armProgram?: {armId: string; points: {name: string; angles: number[]; gripperOpen: boolean; kind: 'MovJ' | 'MovL'; expectedHeld?: string}[]};
   format: typeof ROBOTICS_FORMAT;
   version: typeof ROBOTICS_VERSION;
   id: string;

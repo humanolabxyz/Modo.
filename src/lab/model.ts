@@ -42,8 +42,8 @@ export function devicePinLabel(kind:DeviceKind,pin:0|1):string {
 export type End = {device:string;pin:0|1};
 export type Wire = {id:string;from:End;to:End};
 export type Contact = {address:string;negated:boolean};
-export type CoilMode = 'coil'|'set'|'reset'|'ton'|'tof'|'ctu';
-export type Rung = {id:string;comment:string;branches:Contact[][];output:string;mode:CoilMode;preset:number};
+export type CoilMode = 'coil'|'set'|'reset'|'ton'|'tof'|'tp'|'ctu'|'ctd'|'ctud'|'rise'|'fall';
+export type Rung = {id:string;comment:string;branches:Contact[][];output:string;mode:CoilMode;preset:number;resetSignal?:string;loadSignal?:string;downSignal?:string};
 export type Tag = {address:string;name:string;type:'bool'|'number';initial:boolean|number};
 export type Widget = {id:string;kind:'toggle'|'lamp'|'number'|'bar';label:string;address:string;x:number;y:number;max:number};
 export type ProtoKind = 'wire'|'resistor'|'led'|'switch'|'button'|'motor'|'l293d'|'bjt'|'diode';
@@ -52,10 +52,12 @@ export type Measurement = {id:string;kind:'voltage'|'current'|'resistance'|'cont
 export type BreadboardPower={plugged:boolean;enabled:boolean;redConnected:boolean;blackConnected:boolean};
 export const DEFAULT_BOARD_POWER:BreadboardPower={plugged:false,enabled:false,redConnected:false,blackConnected:false};
 export const boardPowered=(p:BreadboardPower)=>p.plugged&&p.enabled&&p.redConnected&&p.blackConnected;
+export type PLCProgram = {language:'ladder'|'st';tags:Tag[];rungs:Rung[];source:string};
 export type LabProject = {
   format:'panellab-laboratory';version:2;id:string;name:string;
   schematic:{devices:Device[];wires:Wire[]};
-  plc:{language:'ladder'|'st';tags:Tag[];rungs:Rung[];source:string};
+  /** `active` es el programa aplicado (el que corre en RUN); el resto es el borrador. Sin `active` corre el programa del proyecto. */
+  plc:PLCProgram & {active?:PLCProgram};
   hmi:{widgets:Widget[]};
   process:{capacity:number;initialLevel:number;inflow:number;outflow:number;low:number;high:number;pumpSignal:string;lowSignal:string;highSignal:string;levelSignal:string};
   breadboard:{power?:BreadboardPower;voltage:number;positive:string;negative:string;components:ProtoComponent[];realistic?:boolean;log?:Measurement[];notes?:string};

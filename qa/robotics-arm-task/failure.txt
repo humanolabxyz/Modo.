@@ -1,0 +1,108 @@
+E6 · transferencia de tres piezas
+Guardado
+Dobot E6 · operación del brazo
+SERVOS OFF
+Habilitar servos
+EMERGENCIA
+
+Modelo mecánico oficial de Dobot · simulación local. Pinza de práctica añadida; sin conexión al equipo físico.
+
+Velocidad 50 %
+Articulaciones
+Cartesiano
+Programa
+Práctica
+Movimiento
+MovJ · interpolación articular
+MovL · trayectoria lineal TCP
+Preparar ciclo completo
+Enseñar punto
+Reproducir puntos
+
+Preparar genera un recorrido desde las piezas y destinos de esta escena y reemplaza los puntos del programa; puedes deshacer el cambio. Después, reproduce el ciclo con los servos habilitados.
+
+Aproximación inicial · MovJ · pinza abierta
+NombreRecorrido
+MovJ
+MovL
+↑
+↓
+Actualizar con postura actual
+×
+1 · Descender · MovL · pinza abierta
+NombreRecorrido
+MovJ
+MovL
+↑
+↓
+Actualizar con postura actual
+×
+1 · Sujetar · MovJ · pinza cerrada
+×
+1 · Levantar · MovL · pinza cerrada
+×
+1 · Sobre destino · MovJ · pinza cerrada
+×
+1 · Depositar · MovL · pinza cerrada
+×
+1 · Soltar · MovJ · pinza abierta
+×
+1 · Retirar · MovL · pinza abierta
+×
+2 · Sobre pieza · MovJ · pinza abierta
+×
+2 · Descender · MovL · pinza abierta
+×
+2 · Sujetar · MovJ · pinza cerrada
+×
+2 · Levantar · MovL · pinza cerrada
+×
+2 · Sobre destino · MovJ · pinza cerrada
+×
+2 · Depositar · MovL · pinza cerrada
+×
+2 · Soltar · MovJ · pinza abierta
+×
+2 · Retirar · MovL · pinza abierta
+×
+3 · Sobre pieza · MovJ · pinza abierta
+×
+3 · Descender · MovL · pinza abierta
+×
+3 · Sujetar · MovJ · pinza cerrada
+×
+3 · Levantar · MovL · pinza cerrada
+×
+3 · Sobre destino · MovJ · pinza cerrada
+×
+3 · Depositar · MovL · pinza cerrada
+×
+3 · Soltar · MovJ · pinza abierta
+×
+3 · Retirar · MovL · pinza abierta
+×
+Volver a inicio · MovJ · pinza abierta
+×
+
+Base · X -84.4 · Y 344.2 · Z 256.9 mm
+
+Cerrar pinza
+Posición inicial / levantar
+
+Entregas verificadas: 0 de 3. Cada pieza debe soltarse y quedar en su destino.
+
+Ciclo preparado: 25 puntos, aproximadamente 184 s de movimiento a 50 %. Habilita servos y reproduce el programa.
+
+Carga y par del modelo
+Reiniciar práctica
+Modelo y licencia del fabricante ↗
+Frente
+Atrás
+Lateral
+Izq.
+Arriba
+Abajo
+ISO
+Órbita
+1.ª persona
+DEPURACIÓN

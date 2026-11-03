@@ -1,0 +1,15 @@
+{
+  "url": "http://localhost:4326",
+  "checks": [
+    "escritorio robot-rover-4wd: armado distinto, selección, simulación, consola, guardado/recarga y encuadre",
+    "movil robot-rover-4wd: armado distinto, selección, simulación, consola, guardado/recarga y encuadre"
+  ],
+  "errors": [],
+  "compilerPosts": 0,
+  "screens": [
+    "robot-rover-4wd-escritorio-armado.png",
+    "robot-rover-4wd-escritorio-simulando.png",
+    "robot-rover-4wd-movil-armado.png",
+    "robot-rover-4wd-movil-simulando.png"
+  ]
+}

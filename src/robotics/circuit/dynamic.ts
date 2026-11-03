@@ -13,10 +13,12 @@ export type DriveMap = Map<string, Map<string, PinDrive>>; // instanceId del UNO
 
 export const LED_VF: Record<string, number> = {rojo: 1.9, verde: 2.1, amarillo: 2.0, azul: 3.0};
 export const R_PIN_OUT = 25, R_LED_ON = 5, R_MOTOR = 8, R_BATTERY = 0.3, R_REGULATOR = 1, R_BRIDGE = 1.5, V_BRIDGE_DROP = 2, LOGIC_HIGH = 2.5, GMIN = 1e-9;
+export const R_BUTTON_ON = 0.1, R_POT_TOTAL = 10_000, R_POT_MIN = 1;
 export const LED_FULL_A = 0.015, LED_BURN_A = 0.03;
 
 export type LedState = {on: boolean; amps: number; brightness: number; overcurrent: boolean};
-export type MotorState = {volts: number; amps: number; speed: number};
+/** `braking`: sus dos terminales están unidos a masa por el puente H (freno rápido): se opone al giro aunque la tensión sea 0 V. */
+export type MotorState = {volts: number; amps: number; speed: number; braking: boolean};
 export type BridgeState = {logic: boolean; motorSupply: number; channelA: {enable: number; direction: -1 | 0 | 1}; channelB: {enable: number; direction: -1 | 0 | 1}};
 export type DynamicResult = {
   voltages: Map<NetId, number>;
@@ -43,7 +45,7 @@ function gauss(n: number, g: number[][], rhs: number[]): number[] {
 }
 
 /** Resuelve el circuito con el comportamiento actual de los pines. `previous` aporta las tensiones del paso anterior (entradas del L298N). */
-export function solveDynamic(project: RobotProject, drive: DriveMap, previous?: DynamicResult, solution: Solution = solve(project)): DynamicResult {
+export function solveDynamic(project: RobotProject, drive: DriveMap, previous?: DynamicResult, solution: Solution = solve(project), sensorOutputs: ReadonlyMap<string, number> = new Map(), controls: ReadonlyMap<string, number> = new Map()): DynamicResult {
   const graph: CircuitGraph = solution.graph;
   const net = (part: PartInstance, pin: string) => netOfPin(graph, part.instanceId, pin);
   // Referencia (0 V): la red del negativo de la batería, si no la del GND del primer UNO, si no la del primer GND que haya.
@@ -66,8 +68,13 @@ export function solveDynamic(project: RobotProject, drive: DriveMap, previous?: 
       else if (d.pullup) source(net(uno, pinId), gnd, 5, 20000);
     }
   }
+  // The IR comparator drives its own DO net; MCU inputs still receive it through actual wiring.
+  for (const part of project.parts.filter(p => p.definitionId === 'tcrt5000-module')) {
+    const st = solution.devices.get(part.instanceId), level = sensorOutputs.get(part.instanceId);
+    if (st?.kind === 'tcrt5000' && st.powered && level !== undefined) source(net(part, 'DO'), net(part, 'GND'), level, 1000);
+  }
   // Puente H: cada canal reproduce la tabla de verdad con las tensiones del paso anterior
-  const bridges = new Map<string, BridgeState>();
+  const bridges = new Map<string, BridgeState>(), braked = new Set<NetId>();
   for (const part of project.parts.filter(p => p.definitionId === 'l298n-module')) {
     const st = solution.devices.get(part.instanceId);
     if (!st || st.kind !== 'l298n') continue;
@@ -78,7 +85,7 @@ export function solveDynamic(project: RobotProject, drive: DriveMap, previous?: 
       if (enable > 0.02 && direction !== 0) { // con ENA/ENB activos y un solo IN en alto: un lado conduce a Vs−2 V y el otro a 0 V
         const high = Math.max(0, vs - V_BRIDGE_DROP) * enable;
         source(net(part, o1), gnd, direction === 1 ? high : 0, R_BRIDGE); source(net(part, o2), gnd, direction === -1 ? high : 0, R_BRIDGE);
-      } else if (enable > 0.02 && a && b) { source(net(part, o1), gnd, 0, R_BRIDGE); source(net(part, o2), gnd, 0, R_BRIDGE); } // freno: ambas salidas a masa
+      } else if (enable > 0.02 && a === b) { source(net(part, o1), gnd, 0, R_BRIDGE); source(net(part, o2), gnd, 0, R_BRIDGE); const n1 = net(part, o1), n2 = net(part, o2); if (n1) braked.add(n1); if (n2) braked.add(n2); } // freno rápido (hoja de datos del L298): IN1 = IN2 con enable alto, ya sea ambos en alto o ambos en bajo; ambas salidas a masa
       return {enable, direction};
     };
     bridges.set(part.instanceId, {logic: st.logicPowered, motorSupply: vs, channelA: channel('ENA', 'IN1', 'IN2', 'OUT1', 'OUT2'), channelB: channel('ENB', 'IN3', 'IN4', 'OUT3', 'OUT4')});
@@ -87,6 +94,12 @@ export function solveDynamic(project: RobotProject, drive: DriveMap, previous?: 
   for (const part of project.parts) {
     if (part.definitionId === 'resistor') conduct(net(part, 'P1'), net(part, 'P2'), 1 / Math.max(1, num(part, 'ohms', 220)));
     if (part.definitionId === 'dc-motor-tt') conduct(net(part, 'M+'), net(part, 'M-'), 1 / R_MOTOR);
+    // Pulsador: pulsado une sus terminales (valor vivo 0/1). Potenciómetro: el cursor reparte los 10 kΩ en dos tramos (valor vivo 0–1).
+    if (part.definitionId === 'push-button-6mm' && (controls.get(part.instanceId) ?? (part.props?.pressed ? 1 : 0)) >= 0.5) conduct(net(part, 'P1'), net(part, 'P2'), 1 / R_BUTTON_ON);
+    if (part.definitionId === 'potentiometer-10k') {
+      const pos = Math.min(1, Math.max(0, controls.get(part.instanceId) ?? num(part, 'position', 0.5)));
+      conduct(net(part, 'VCC'), net(part, 'OUT'), 1 / Math.max(R_POT_MIN, R_POT_TOTAL * (1 - pos))); conduct(net(part, 'OUT'), net(part, 'GND'), 1 / Math.max(R_POT_MIN, R_POT_TOTAL * pos)); // 0 = cursor en GND (0 V), 1 = en VCC
+    }
   }
   const leds = project.parts.filter(p => p.definitionId === 'led-5mm'), ledOn = new Map<string, boolean>(leds.map(l => [l.instanceId, false]));
   const vf = (l: PartInstance) => LED_VF[String(l.props?.color ?? 'rojo')] ?? 1.9;
@@ -129,7 +142,7 @@ export function solveDynamic(project: RobotProject, drive: DriveMap, previous?: 
   const ledResult = new Map<string, LedState>();
   for (const l of leds) { const on = ledOn.get(l.instanceId)!, i = on ? Math.max(0, amps(l)) : 0; ledResult.set(l.instanceId, {on: on && i > 1e-6, amps: i, brightness: on ? Math.min(1, i / LED_FULL_A) : 0, overcurrent: i > LED_BURN_A}); }
   const motors = new Map<string, MotorState>();
-  for (const m of project.parts.filter(p => p.definitionId === 'dc-motor-tt')) { const vm = volt(net(m, 'M+')) - volt(net(m, 'M-')); motors.set(m.instanceId, {volts: vm, amps: Math.abs(vm) / R_MOTOR, speed: Math.max(-1, Math.min(1, vm / 6))}); }
+  for (const m of project.parts.filter(p => p.definitionId === 'dc-motor-tt')) { const vm = volt(net(m, 'M+')) - volt(net(m, 'M-')); const n1 = net(m, 'M+'), n2 = net(m, 'M-'); motors.set(m.instanceId, {volts: vm, amps: Math.abs(vm) / R_MOTOR, speed: Math.max(-1, Math.min(1, vm / 6)), braking: !!n1 && !!n2 && braked.has(n1) && braked.has(n2)}); }
   return {
     voltages, leds: ledResult, motors, bridges,
     pinVolts(unoId, ref) {

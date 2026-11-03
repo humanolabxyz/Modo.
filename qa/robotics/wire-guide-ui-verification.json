@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4326",
+  "checks": [
+    "elegir «Robot 2 ruedas · evita obstáculos»: 0 de 21 pasos y el primero es subir la batería a 9 V",
+    "«Hacerlo por mí» aplica los 3 ajustes y la guía pasa sola al primer cable (batería + → driver +12V, rojo)",
+    "el paso muestra un cable espectro translúcido en el 3D entre los dos pines (rojo, 7.7 cm en línea recta)",
+    "al poner el cable, el espectro salta solo al cable del paso siguiente",
+    "los 21 pasos aplicados en orden: «¡Cableado completo!» y 18 cables dibujados en 3D",
+    "la lista de pasos marca los 21 como hechos",
+    "al recargar, la guía recuerda la elección y sigue completa",
+    "cable equivocado D5→ENB: aviso «Cable por revisar» aunque haya pasos anteriores pendientes; nombra ENB (donde está) y ENA (donde debe ir)",
+    "guía generada del Rover 4WD (48 pasos): 12 pasos aplicados con las piezas emparejadas (2 drivers, 4 motores) y el espectro sigue al cable actual",
+    "en teléfono (390 px) el panel cabe sin desbordar",
+    "sin errores de consola"
+  ],
+  "errors": []
+}

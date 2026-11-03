@@ -1,6 +1,6 @@
 {
   "date": "2026-10-28",
-  "base": "http://127.0.0.1:4330",
+  "base": "http://127.0.0.1:4410",
   "checks": [
     "Una sola acción por etapa; la lectura se conserva directamente sin transcripción manual",
     "control-rest: S3 desde reposo no arranca; se conserva S1 como marcha",

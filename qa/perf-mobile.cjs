@@ -21,7 +21,7 @@ const MAX_RENDERS=Number(process.env.MAX_RENDERS||3);
  };
  const pan=await measure('pan 60 moves',async()=>{await page.mouse.move(x,y);await page.mouse.down();for(let i=1;i<=60;i++)await page.mouse.move(x+i*3,y-i*2);await page.mouse.up()});
  const wheel=await measure('ctrl+wheel 30 ticks',async()=>{await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.keyboard.down('Control');for(let i=0;i<30;i++)await page.mouse.wheel(0,-40);await page.keyboard.up('Control')});
- const filterOf=()=>page.evaluate(()=>{const el=document.querySelector('.board-svg [filter]');return el?getComputedStyle(el).filter:'none'});
+ const filterOf=()=>page.evaluate(()=>{const el=document.querySelector('.board-svg [filter="url(#pilotGlow)"]');return el?getComputedStyle(el).filter:'none'});
  await page.waitForTimeout(300);const filterAtRestBefore=await filterOf();
  await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+40,y-30);await page.mouse.move(x+80,y-60);const filterDuringPan=await filterOf();await page.mouse.up();
  await page.waitForTimeout(400);const filterAfter=await filterOf();

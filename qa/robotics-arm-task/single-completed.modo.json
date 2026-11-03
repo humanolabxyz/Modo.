@@ -1,0 +1,247 @@
+{
+  "format": "modo-robotica",
+  "version": 1,
+  "id": "27bffc6f-60a8-4cbc-8018-aa2555617084",
+  "name": "Brazo educativo · práctica de pinza",
+  "createdAt": "2026-10-31T03:56:58.923Z",
+  "updatedAt": "2026-10-31T03:56:58.923Z",
+  "parts": [
+    {
+      "instanceId": "81138057-13d2-4583-a325-6a1f7a1ecffb",
+      "definitionId": "educational-arm-e6",
+      "label": "Brazo educativo · referencia E6",
+      "transform": {
+        "position": [
+          0,
+          0.0515,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "j1": 0,
+        "j2": 30.578757526132033,
+        "j3": 41.6884091737187,
+        "j4": 20.32854257124161,
+        "j5": -90.80235137233286,
+        "j6": 0,
+        "gripperOpen": true,
+        "held": "",
+        "modelRevision": "e6-urdf-v1"
+      }
+    },
+    {
+      "instanceId": "039990c9-1a0b-4809-8c03-d05644ce0711",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza de práctica · 50 g",
+      "transform": {
+        "position": [
+          0.2796017527580261,
+          0.017431112006306648,
+          -0.14023937284946442
+        ],
+        "rotation": [
+          -0.7071091532707214,
+          6.983333378229872e-7,
+          0.000001953761966433376,
+          -0.707104504108429
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "depositedBy": "81138057-13d2-4583-a325-6a1f7a1ecffb"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "76749667-a54a-49d5-90cb-c532f6c1d522",
+      "definitionId": "arm-drop-zone",
+      "label": "Zona de entrega",
+      "transform": {
+        "position": [
+          0.28,
+          0.002,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true
+    }
+  ],
+  "attachments": [],
+  "connections": [],
+  "firmware": [],
+  "scene": {
+    "obstacles": [],
+    "robotStart": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "physics": {
+      "gravity": 9.81,
+      "friction": 0.7
+    }
+  },
+  "workspace": {
+    "mode": "simulate",
+    "welcomeDismissed": true,
+    "camera": {
+      "position": [
+        1,
+        0.8,
+        1.1
+      ],
+      "target": [
+        0.15,
+        0.12,
+        0
+      ]
+    }
+  },
+  "armProgram": {
+    "armId": "81138057-13d2-4583-a325-6a1f7a1ecffb",
+    "points": [
+      {
+        "name": "1 · Sobre pieza",
+        "angles": [
+          -126.48368072878147,
+          8.46707334629209,
+          94.90611270722671,
+          -13.385265388840137,
+          -89.99699373897226,
+          53.513190072460254
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Descender",
+        "angles": [
+          -126.46616915688877,
+          47.03829195817409,
+          116.5707230037198,
+          -73.59886791734736,
+          -90.00038111265111,
+          53.533534824130875
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Sujetar",
+        "angles": [
+          -126.46616915688877,
+          47.03829195817409,
+          116.5707230037198,
+          -73.59886791734736,
+          -90.00038111265111,
+          53.533534824130875
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+      },
+      {
+        "name": "1 · Levantar",
+        "angles": [
+          -126.46764135391997,
+          8.386730608876958,
+          94.8627665106147,
+          -13.262428749907757,
+          -89.9990434463284,
+          53.53211533497207
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+      },
+      {
+        "name": "1 · Sobre destino",
+        "angles": [
+          -79.35920288237412,
+          13.311991386107845,
+          88.92639833779786,
+          -12.254966076123782,
+          -89.99624384926005,
+          100.63834338126965
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+      },
+      {
+        "name": "1 · Depositar",
+        "angles": [
+          -79.38019119783566,
+          48.83570992919396,
+          110.0398165413257,
+          -68.8758290068939,
+          -89.99952038082229,
+          100.6196007426377
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+      },
+      {
+        "name": "1 · Soltar",
+        "angles": [
+          -79.38019119783566,
+          48.83570992919396,
+          110.0398165413257,
+          -68.8758290068939,
+          -89.99952038082229,
+          100.6196007426377
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Retirar",
+        "angles": [
+          -79.38038674703348,
+          13.332653159612688,
+          88.85588127080621,
+          -12.189285135422626,
+          -89.9994260979511,
+          100.61939939493712
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "Volver a inicio",
+        "angles": [
+          0,
+          30.578757526132033,
+          41.6884091737187,
+          20.32854257124161,
+          -90.80235137233286,
+          0
+        ],
+        "gripperOpen": true,
+        "kind": "MovJ"
+      }
+    ]
+  }
+}

@@ -36,9 +36,9 @@ KM3.forEach(x=>wire(x,111,x,104,POWER));wire(165,104,183,104,POWER);dot(174,104)
 wire(81,192,81,201,POWER);wire(81,201,165,201,POWER);
 wire(72,196,72,207,POWER);wire(72,207,174,207,POWER);
 wire(63,192,63,213,POWER);wire(63,213,183,213,POWER);
-wire(117,129,117,201,POWER);wire(126,129,126,207,POWER);wire(135,129,135,213,POWER);
+wire(117,129,117,213,POWER);wire(126,129,126,207,POWER);wire(135,129,135,201,POWER);
 wire(165,129,165,201,POWER);wire(174,129,174,207,POWER);wire(183,129,183,213,POWER);
-dot(117,201);dot(126,207);dot(135,213);
+dot(117,213);dot(126,207);dot(135,201);
 
 /* ───────── Mando ───────── */
 const XL=339,XN=351,XLEFT=265,XSB=305,XKM1=331,XS_NC=331,XS_NO=344,XF1NO=352.5,XBUS=391,XH2=352,XH3=417,XH4=440,XNR=456;
@@ -52,7 +52,7 @@ sym('push-no','SB2',XSB,135,[P('13',XSB,135),P('14',XSB,153)],[XSB-24,134,XSB+8,
 sym('contact-no','KM1',XKM1,135,[P('13',XKM1,135),P('14',XKM1,153)],[XKM1-14,134,XKM1+8,154]);
 sym('double-push','-S',XS_NC,174,[P('11',XS_NC,174),P('12',XS_NC,192),P('13',XS_NO,174),P('14',XS_NO,192)],[XS_NC-24,173,XS_NO+8,193]);
 sym('contact-nc','KM2',XS_NC,201,[P('11',XS_NC,201),P('12',XS_NC,219)],[XS_NC-14,200,XS_NC+8,220]);
-sym('contact-no','KM2',XBUS,171,[P('13',XBUS,171),P('12',XBUS,189)],[XBUS-14,170,XBUS+8,190]);
+sym('contact-no','KM2',XBUS,171,[P('13',XBUS,171),P('14',XBUS,189)],[XBUS-14,170,XBUS+8,190]);
 sym('contact-nc','KM3',XBUS,201,[P('11',XBUS,201),P('12',XBUS,219)],[XBUS-14,200,XBUS+8,220]);
 sym('contact-nc','KM1',XLEFT,129,[P('11',XLEFT,129),P('12',XLEFT,147)],[XLEFT-14,128,XLEFT+8,148]);
 sym('coil','KM1',XSB,198,[P('A1',XSB,198),P('A2',XSB,216)],[XSB-16,197,XSB+8,217]);
@@ -78,7 +78,7 @@ wire(XSB,165,XBUS,165,RED);wire(XS_NC,165,XS_NC,174,RED);wire(XS_NO,165,XS_NO,17
 // -S:12 → -KM2(11-12) → bobina KM3 (+H2)
 wire(XS_NC,192,XS_NC,201,RED);wire(XS_NC,219,XS_NC,222,RED);wire(XS_NC,240,XS_NC,RAIL,BLUE);
 poly(RED,[[XS_NC,222],[XH2,222],[XH2,224]]);wire(XH2,242,XH2,RAIL,BLUE);
-// -S:14 y -KM2(13-12) → nudo → -KM3(11-12) → bobina KM2 (+H3)
+// -S:14 y -KM2(13-14) → nudo → -KM3(11-12) → bobina KM2 (+H3)
 poly(RED,[[XS_NO,192],[XBUS,192]]);dot(XBUS,192);wire(XBUS,189,XBUS,192,RED);wire(XBUS,192,XBUS,201,RED);wire(XBUS,219,XBUS,222,RED);wire(XBUS,240,XBUS,RAIL,BLUE);
 poly(RED,[[XBUS,222],[XH3,222],[XH3,224]]);wire(XH3,242,XH3,RAIL,BLUE);
 // Neutro: borne N → derecha → bajada → carril inferior
@@ -86,7 +86,7 @@ poly(BLUE,[[XN,26],[XN,36],[XNR,36],[XNR,RAIL]]);wire(XLEFT,RAIL,XNR,RAIL,BLUE);
 [XSB,XKM1,XH2,XBUS,XH3,XH4].forEach(x=>dot(x,RAIL));
 
 const drawing={
- name:'CAMBIO DELTA, ESTRELLA',source:'Transcripción de una fotografía de CADe_SIMU · «CAMBIO DELTA, ESTRELLA.cad»',origin:'photo',
+ name:'CAMBIO DELTA, ESTRELLA',source:'Transcripción de una fotografía de CADe_SIMU · «CAMBIO DELTA, ESTRELLA.cad» · salidas del contactor de triángulo corregidas según la figura Nº2 de la guía (2→W2, 4→U2, 6→V2)',origin:'photo',
  frame:{left:30,top:12,right:539,bottom:270,header:5,band:4,columns:{first:31,width:63.5,letters:'ABCDEFGH'},rows:{first:18,height:60,count:4}},
  views:{all:{x:20,y:6,w:535,h:272},power:{x:26,y:8,w:190,h:222},control:{x:252,y:8,w:216,h:250}},splitX:225,
  objects

@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 const {default: mw, config} = await import('../middleware.ts');
 const url = 'https://ejemplo.test/robotica/', clave = 'clave-de-prueba';
-assert.deepEqual(config.matcher, ['/robotica', '/robotica/:path*']);
+assert.deepEqual(config.matcher, ['/robotica', '/robotica/:path*', '/arena', '/arena/:path*']);
 delete process.env.ROBOTICA_BETA_PASSWORD;
 assert.equal((await mw(new Request(url))).status, 503, 'sin variable de entorno la ruta se cierra');
 process.env.ROBOTICA_BETA_PASSWORD = clave;
@@ -14,3 +14,6 @@ const cookie = ok.headers.get('set-cookie'); assert.match(cookie, /HttpOnly/); a
 const pasa = await mw(new Request(url, {headers: {cookie: cookie.split(';')[0]}})); assert.equal(pasa.headers.get('x-middleware-next'), '1', 'con la cookie continúa a la página');
 assert.equal((await mw(new Request(url, {headers: {cookie: 'modo-beta=falsa'}}))).status, 401, 'cookie falsa');
 console.log('PASS contraseña de la Beta: cierra sin configurar, rechaza clave/cookie falsas, entra con la correcta y no guarda la clave en la cookie');
+
+assert.equal((await mw(new Request('https://ejemplo.test/arena/'))).status,401);
+assert.equal((await mw(new Request('https://ejemplo.test/arena/',{headers:{cookie:cookie.split(';')[0]}}))).headers.get('x-middleware-next'),'1');

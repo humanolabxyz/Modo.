@@ -1,12 +1,12 @@
 {
   "date": "2026-10-27",
-  "base": "http://127.0.0.1:4327",
+  "base": "http://127.0.0.1:4420",
   "checks": [
-    "Una lectura sin captura y una transcripción cercana pero distinta de la pantalla quedan rechazadas",
-    "control-rest: SB3/S3 desde reposo no arranca; figura 1 respetada",
+    "La lectura se captura del instrumento; no hay transcripción manual que pueda diferir de la pantalla",
+    "control-rest: en reposo ningún contactor actúa y el motor está detenido",
     "TEST desde reposo rechazado aunque pilotos y térmico coincidan; se exige la transición desde triángulo",
-    "powered-rest: SB3/S3 desde reposo no arranca; figura 1 respetada",
-    "Placas y protecciones comprobadas; mando separado, fuerza añadida; esquema propio SVG; 34 pasos, 15 mediciones, TEST/RESET, comparación, cierre y exportaciones CSV/JSON/HTML",
+    "powered-rest: en reposo ningún contactor actúa y el motor está detenido",
+    "Placas y protecciones comprobadas; 40 cables desde el inicio (mando y fuerza); esquema copiado del cableado y explicado; 34 pasos, 15 mediciones, TEST/RESET, comparación, cierre y exportaciones CSV/JSON/HTML",
     "Acceso a Actividad 2 desde las guías del panel en móvil 390 × 844"
   ],
   "errors": []

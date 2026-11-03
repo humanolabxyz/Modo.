@@ -1,0 +1,556 @@
+{
+  "format": "modo-robotica",
+  "version": 1,
+  "id": "6a570a04-e677-447e-91b5-b46c7a856a76",
+  "name": "E6 · transferencia de tres piezas",
+  "createdAt": "2026-10-31T03:56:59.563Z",
+  "updatedAt": "2026-10-31T03:56:59.563Z",
+  "parts": [
+    {
+      "instanceId": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa",
+      "definitionId": "educational-arm-e6",
+      "label": "Brazo educativo · referencia E6",
+      "transform": {
+        "position": [
+          0,
+          0.0515,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "j1": 0,
+        "j2": 30.578757526132033,
+        "j3": 41.6884091737187,
+        "j4": 20.32854257124161,
+        "j5": -90.80235137233286,
+        "j6": 0,
+        "gripperOpen": true,
+        "held": "",
+        "modelRevision": "e6-urdf-v1"
+      }
+    },
+    {
+      "instanceId": "4c066743-bd8d-4800-9e16-2dc69fe4edef",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza 1 · 50 g",
+      "transform": {
+        "position": [
+          0.24960866570472717,
+          0.017431115731596947,
+          -0.14024271070957184
+        ],
+        "rotation": [
+          -0.7071090936660767,
+          7.121888643268903e-7,
+          0.0000019515923668222968,
+          -0.7071045637130737
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.25,
+        "startZ": 0.1,
+        "targetZone": "b8ae2941-08d9-446a-aa46-590e11e21108",
+        "depositedBy": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "b8ae2941-08d9-446a-aa46-590e11e21108",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino 1",
+      "transform": {
+        "position": [
+          0.25,
+          0.002,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true
+    },
+    {
+      "instanceId": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza 2 · 50 g",
+      "transform": {
+        "position": [
+          0.379537969827652,
+          0.017431138083338737,
+          -0.1401451677083969
+        ],
+        "rotation": [
+          -0.7071079015731812,
+          4.642379280994646e-7,
+          0.0000024350890726054786,
+          -0.7071056962013245
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.38,
+        "startZ": 0.1,
+        "targetZone": "671cda38-35d2-4f4d-b5d7-dd837f36e9e3",
+        "depositedBy": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "671cda38-35d2-4f4d-b5d7-dd837f36e9e3",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino 2",
+      "transform": {
+        "position": [
+          0.38,
+          0.002,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true
+    },
+    {
+      "instanceId": "be2a94de-2987-434b-a395-bc9244d95424",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza 3 · 50 g",
+      "transform": {
+        "position": [
+          0.24954889714717865,
+          0.0174311101436615,
+          -0.2696981430053711
+        ],
+        "rotation": [
+          -0.7071043848991394,
+          0.000001985700691875536,
+          5.949284513917519e-7,
+          -0.7071092128753662
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.25,
+        "startZ": 0.23,
+        "targetZone": "04b0a697-672c-4f94-b60a-925a76093fcf",
+        "depositedBy": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "04b0a697-672c-4f94-b60a-925a76093fcf",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino 3",
+      "transform": {
+        "position": [
+          0.25,
+          0.002,
+          -0.27
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true
+    }
+  ],
+  "attachments": [],
+  "connections": [],
+  "firmware": [],
+  "scene": {
+    "obstacles": [],
+    "robotStart": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "physics": {
+      "gravity": 9.81,
+      "friction": 0.7
+    }
+  },
+  "workspace": {
+    "mode": "simulate",
+    "welcomeDismissed": true,
+    "camera": {
+      "position": [
+        1,
+        0.8,
+        1.1
+      ],
+      "target": [
+        0.15,
+        0.12,
+        0
+      ]
+    }
+  },
+  "armProgram": {
+    "armId": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa",
+    "points": [
+      {
+        "name": "1 · Sobre pieza",
+        "angles": [
+          -130.42734222858155,
+          -0.3227771663593497,
+          104.38153165128166,
+          -14.061226103359283,
+          -89.9989039024952,
+          49.571806784062105
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Descender",
+        "angles": [
+          -130.42785681711803,
+          44.9252699694895,
+          127.66620947411758,
+          -82.5904700857471,
+          -89.99962003683217,
+          49.57193761557947
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Sujetar",
+        "angles": [
+          -130.42785681711803,
+          44.9252699694895,
+          127.66620947411758,
+          -82.5904700857471,
+          -89.99962003683217,
+          49.57193761557947
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+      },
+      {
+        "name": "1 · Levantar",
+        "angles": [
+          -130.42838568963214,
+          -0.3272340636733111,
+          104.3913139849827,
+          -14.065290321428522,
+          -89.99927483260244,
+          49.57140028644623
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+      },
+      {
+        "name": "1 · Sobre destino",
+        "angles": [
+          -78.21829822763445,
+          5.13272197319729,
+          98.64780239252426,
+          -13.782932157249443,
+          -89.99960206265877,
+          101.78172519166179
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+      },
+      {
+        "name": "1 · Depositar",
+        "angles": [
+          -78.217199473283,
+          46.10612423521149,
+          120.8624907792611,
+          -76.96878194320705,
+          -89.99972137073956,
+          101.78259225181317
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+      },
+      {
+        "name": "1 · Soltar",
+        "angles": [
+          -78.217199473283,
+          46.10612423521149,
+          120.8624907792611,
+          -76.96878194320705,
+          -89.99972137073956,
+          101.78259225181317
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Retirar",
+        "angles": [
+          -78.21742378155044,
+          5.134742320914031,
+          98.64246993637795,
+          -13.777591892509248,
+          -89.99963364508962,
+          101.7823637084019
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "2 · Sobre pieza",
+        "angles": [
+          -117.38616927893646,
+          40.391965538375445,
+          47.38923197078587,
+          2.2149437184292564,
+          -89.99930844420919,
+          62.6136186827299
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "2 · Descender",
+        "angles": [
+          -117.3863860498089,
+          62.60897983364598,
+          71.71675749003052,
+          -44.326982968124824,
+          -89.99896356892427,
+          62.613390527067295
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "2 · Sujetar",
+        "angles": [
+          -117.3863860498089,
+          62.60897983364598,
+          71.71675749003052,
+          -44.326982968124824,
+          -89.99896356892427,
+          62.613390527067295
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+      },
+      {
+        "name": "2 · Levantar",
+        "angles": [
+          -117.38672641874506,
+          40.376067129786854,
+          47.426352826210774,
+          2.1883644599043115,
+          -89.99860231720193,
+          62.61304420194649
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+      },
+      {
+        "name": "2 · Sobre destino",
+        "angles": [
+          -82.03727960130786,
+          45.88193271728073,
+          37.46502344702745,
+          6.640158556248476,
+          -89.9979458319961,
+          97.96251722372543
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+      },
+      {
+        "name": "2 · Depositar",
+        "angles": [
+          -82.03691880797214,
+          65.54042053988279,
+          64.53343665039783,
+          -40.0776543187505,
+          -89.99827461394587,
+          97.96286097856262
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+      },
+      {
+        "name": "2 · Soltar",
+        "angles": [
+          -82.03691880797214,
+          65.54042053988279,
+          64.53343665039783,
+          -40.0776543187505,
+          -89.99827461394587,
+          97.96286097856262
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "2 · Retirar",
+        "angles": [
+          -82.03754807830717,
+          45.86141715381453,
+          37.511292928706204,
+          6.610280142680263,
+          -89.99754790338146,
+          97.96222515061368
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "3 · Sobre pieza",
+        "angles": [
+          -147.26142506350237,
+          21.5873422501933,
+          77.63920385573176,
+          -9.220204187353353,
+          -89.9872787229115,
+          32.73195034477602
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "3 · Descender",
+        "angles": [
+          -147.27856729301303,
+          52.49888994429162,
+          98.46913934060885,
+          -60.96863182522939,
+          -89.99967770831941,
+          32.72122315269562
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "3 · Sujetar",
+        "angles": [
+          -147.27856729301303,
+          52.49888994429162,
+          98.46913934060885,
+          -60.96863182522939,
+          -89.99967770831941,
+          32.72122315269562
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+      },
+      {
+        "name": "3 · Levantar",
+        "angles": [
+          -147.27869009973324,
+          21.629912024911786,
+          77.55875502148172,
+          -9.189503922853017,
+          -89.99966054967794,
+          32.72109667356119
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+      },
+      {
+        "name": "3 · Sobre destino",
+        "angles": [
+          -56.32587581460061,
+          30.876189063654152,
+          63.50043294167691,
+          -4.398626075040691,
+          -90.00006624222661,
+          123.6743759422257
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+      },
+      {
+        "name": "3 · Depositar",
+        "angles": [
+          -56.31332547597919,
+          57.31730238077294,
+          85.1145070977185,
+          -52.426458348051185,
+          -89.99970986095428,
+          123.68641491223225
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+      },
+      {
+        "name": "3 · Soltar",
+        "angles": [
+          -56.31332547597919,
+          57.31730238077294,
+          85.1145070977185,
+          -52.426458348051185,
+          -89.99970986095428,
+          123.68641491223225
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "3 · Retirar",
+        "angles": [
+          -56.31416078250411,
+          30.906138650790165,
+          63.38999912411737,
+          -4.308386414494828,
+          -89.99890547819163,
+          123.68550032096675
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "Volver a inicio",
+        "angles": [
+          0,
+          30.578757526132033,
+          41.6884091737187,
+          20.32854257124161,
+          -90.80235137233286,
+          0
+        ],
+        "gripperOpen": true,
+        "kind": "MovJ"
+      }
+    ]
+  }
+}

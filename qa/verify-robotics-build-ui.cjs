@@ -43,11 +43,11 @@ async function select(p, label) { await pick(p, label); await openWin(p, 'Propie
       await p.locator('input[aria-label="Buscar pieza"]').fill('ultrasónico'); assert.equal(await p.locator('.rb-part-list li[data-definition]').count(), 1); assert.equal(await p.locator('.rb-part-list li').first().getAttribute('data-definition'), 'hc-sr04');
       await p.locator('input[aria-label="Buscar pieza"]').fill('xyz'); assert.match(await p.locator('.rb-part-none').textContent(), /No hay piezas/);
       await p.locator('input[aria-label="Buscar pieza"]').fill('');
-      await p.locator('.rb-chips button', {hasText: 'Sensores'}).click(); assert.equal(await p.locator('.rb-part-list li[data-definition]').count(), 1);
-      await p.locator('.rb-chips button', {hasText: 'Todas'}).click(); assert.equal(await p.locator('.rb-part-list li[data-definition]').count(), 12);
+      await p.locator('.rb-chips button', {hasText: 'Sensores'}).click(); assert.equal(await p.locator('.rb-part-list li[data-definition]').count(), 4);
+      await p.locator('.rb-chips button', {hasText: 'Todas'}).click(); assert.equal(await p.locator('.rb-part-list li[data-definition]').count(), 35);
       for (const n of ['Chasis 2WD', 'Motor DC TT', 'Arduino UNO R3']) await add(p, n);
       assert.equal((await saved(p)).parts.length, 3);
-      step('catálogo con 12 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas');
+      step('catálogo con 20 piezas: búsqueda sin tildes, categorías y «Agregar» con etiquetas únicas');
 
       // 2) Arrastrar desde el catálogo con fantasma (solo con ratón)
       if (!phone) {

@@ -2,7 +2,7 @@ import {Nets,deviceClosed,initialMemory,pinKey,type LabProject,type Memory,type 
 import {compileST,runST,type Diagnostic,type STProgram} from './st';
 import {solveDC} from './dc';
 import {freshEquipment,stepEquipment,type State as EquipmentState} from './equipment/engine';
-export type BlockState={elapsed:number;previous:boolean;count:number;timing:boolean};
+export type BlockState={elapsed:number;previous:boolean;count:number;timing:boolean;downPrevious?:boolean;initialized?:boolean};
 export type Runtime={memory:Memory;relays:Record<string,boolean>;active:string[];livePins:string[];blocks:Record<string,BlockState>;level:number;seconds:number;cycle:number;fault:string|null;pump:boolean;drain:boolean;equipment:EquipmentState};
 export function emptyRuntime(project:LabProject):Runtime{return {memory:initialMemory(project),relays:{},active:[],livePins:[],blocks:{},level:project.process.initialLevel,seconds:0,cycle:0,fault:null,pump:false,drain:false,equipment:freshEquipment()};}
 export function compilePLC(project:LabProject):{diagnostics:Diagnostic[];st:STProgram|null}{
@@ -12,9 +12,11 @@ export function compilePLC(project:LabProject):{diagnostics:Diagnostic[];st:STPr
     const output=tags.get(rung.output);
     if(!output)diagnostics.push({code:'L001',message:`Salida no declarada: ${rung.output||'(vacía)'}`,rung:rung.id});
     else if(output.type!=='bool'||/^(I|AI)/.test(output.address))diagnostics.push({code:'L002',message:'La bobina necesita una salida o memoria booleana.',rung:rung.id});
+    for(const field of ['resetSignal','loadSignal','downSignal'] as const)if(rung[field]&&tags.get(rung[field]!)?.type!=='bool')diagnostics.push({code:'L006',message:`Entrada del bloque no declarada: ${rung[field]}`,rung:rung.id});
+    if(['ctu','ctd','ctud'].includes(rung.mode)&&!Number.isInteger(rung.preset))diagnostics.push({code:'L007',message:'El contador necesita un ajuste entero.',rung:rung.id});
     if(rung.branches.length===0)diagnostics.push({code:'L003',message:'El segmento necesita al menos una rama.',rung:rung.id});
     for(const branch of rung.branches)for(const contact of branch)if(tags.get(contact.address)?.type!=='bool')diagnostics.push({code:'L004',message:`Contacto sin variable booleana: ${contact.address||'(vacía)'}`,rung:rung.id});
-    if(['ton','tof','ctu'].includes(rung.mode)&&(!Number.isFinite(rung.preset)||rung.preset<=0))diagnostics.push({code:'L005',message:'El ajuste del bloque debe ser mayor que cero.',rung:rung.id});
+    if(['ton','tof','tp','ctu','ctd','ctud'].includes(rung.mode)&&(!Number.isFinite(rung.preset)||rung.preset<=0))diagnostics.push({code:'L005',message:'El ajuste del bloque debe ser mayor que cero.',rung:rung.id});
   }
   return {diagnostics,st:null};
 }
@@ -25,7 +27,25 @@ function runRung(rung:Rung,memory:Memory,state:BlockState,dt:number):BlockState{
     case'coil':result=powered;break;case'set':if(powered)result=true;break;case'reset':if(powered)result=false;break;
     case'ton':next.elapsed=powered?state.elapsed+dt:0;result=powered&&next.elapsed+1e-9>=rung.preset;break;
     case'tof':if(powered){next.elapsed=0;next.timing=false;result=true;}else{if(state.previous){next.elapsed=0;next.timing=true;}if(next.timing){next.elapsed+=dt;if(next.elapsed+1e-9>=rung.preset)next.timing=false;}result=next.timing;}break;
-    case'ctu':if(powered&&!state.previous)next.count++;result=next.count>=rung.preset;break;
+    case'tp':{
+      if(powered&&!state.previous&&!state.timing){next.timing=true;next.elapsed=0;}
+      if(next.timing){next.elapsed+=dt;if(next.elapsed>=rung.preset-1e-9)next.timing=false;}
+      result=next.timing;break;
+    }
+    case'rise':result=powered&&!state.previous;break;
+    case'fall':result=!powered&&state.previous;break;
+    case'ctu':case'ctd':case'ctud':{
+      const down=!!memory[rung.downSignal??''];
+      if(!state.initialized){next.count=rung.mode==='ctd'?rung.preset:0;next.initialized=true;}
+      if(memory[rung.resetSignal??''])next.count=0;
+      else if(memory[rung.loadSignal??''])next.count=rung.preset;
+      else {const up=powered&&!state.previous,fall=down&&!state.downPrevious;
+        if(rung.mode==='ctu'&&up)next.count=Math.min(1e9,next.count+1);
+        if(rung.mode==='ctd'&&up)next.count=Math.max(0,next.count-1);
+        if(rung.mode==='ctud'&&up!==fall)next.count=Math.max(0,Math.min(1e9,next.count+(up?1:-1)));
+      }
+      next.downPrevious=down;result=rung.mode==='ctd'?next.count<=0:next.count>=rung.preset;break;
+    }
   }
   next.previous=powered;memory[rung.output]=result;return next;
 }

@@ -1,5 +1,5 @@
 import {useState,type ReactNode} from 'react';
-import {BookOpen,Check,CircuitBoard,Copy,Cpu,Download,Droplets,FilePlus2,Home,Layers,MoreHorizontal,Pause,Play,Upload,Zap} from 'lucide-react';
+import {BookOpen,Check,CircuitBoard,Copy,Cpu,Download,Droplets,FilePlus2,Home,Layers,MoreHorizontal,Pause,Play,Square,Upload,Zap} from 'lucide-react';
 import '../styles/project-form.css';
 import {FloatingWindow} from '../components/FloatingWindow';
 import {LegalLink} from '../components/LegalLink';
@@ -17,7 +17,7 @@ export function LaboratoryBar({lab,tool,onTool,onHelp}:{lab:Laboratory;tool:Tool
    <a href="/" aria-label="Inicio"><Home size={20}/></a>
    <LabModuleNavigator tool={tool} onTool={onTool}/>
    <span className="lab-compact-project" title={lab.project.name}>{lab.project.name}</span>
-   <button type="button" className={`lab-compact-run ${lab.running?'running':''}`} aria-label={lab.running?'Detener':'Simular proyecto'} aria-pressed={lab.running} disabled={!lab.ready} onClick={()=>{if(lab.running)lab.stop();else if(!lab.start())onTool('plc')}}>{lab.running?<Pause size={19}/>:<Play size={19}/>}<span>{lab.running?'Detener':'Simular'}</span></button>
+   <button type="button" className={`lab-compact-run ${lab.running?'running':''}`} aria-label={lab.running?'Detener':'Simular proyecto'} aria-pressed={lab.running} disabled={!lab.ready} onClick={()=>{if(lab.running)lab.stop();else if(!lab.start())onTool('plc')}}>{lab.running?<Square size={17}/>:<Play size={19}/>}<span>{lab.running?'Detener':'Simular'}</span></button>{lab.running?<button type="button" className="lab-compact-run" aria-label={lab.paused?'Reanudar la simulación':'Pausar la simulación'} aria-pressed={lab.paused} onClick={()=>lab.setPaused(!lab.paused)}>{lab.paused?<Play size={19}/>:<Pause size={19}/>}<span>{lab.paused?'Reanudar':'Pausa'}</span></button>:null}
    <TutorialHelp context="laboratory"/>
    <button type="button" aria-label="Opciones del proyecto" aria-haspopup="dialog" aria-expanded={projectOpen} onClick={()=>setProjectOpen(true)}><MoreHorizontal size={22}/></button>
   </header>

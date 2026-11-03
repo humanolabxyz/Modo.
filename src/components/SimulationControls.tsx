@@ -1,15 +1,18 @@
 import {useRef} from 'react';
 import {FloatingDisclosure} from './FloatingDisclosure';
-import {ChevronDown,FlaskConical,Flame,Info,Plug,RotateCcw,ToggleRight,Zap} from 'lucide-react';
+import {ChevronDown,FlaskConical,Flame,Info,Plug,RotateCcw,ToggleRight,Volume2,VolumeX,Zap} from 'lucide-react';
+import {setSoundsEnabled,useSoundsEnabled} from '../audio/panelSounds';
 import {MODULES} from '../data/panel';
 import {useModules} from '../data/layout';
 import type {SimulationController} from '../hooks/useSimulation';
+import {earthGapText} from '../data/panelEarth';
 import type {SIMULATION_EXAMPLES} from '../data/simulation';
 type ExampleId=keyof typeof SIMULATION_EXAMPLES;
 export function SimulationControls({simulation:s,onExample,hasWires,compact=false}:{simulation:SimulationController;onExample:(id:ExampleId)=>void;hasWires:boolean;compact?:boolean}){
- const state=s.fault==='phase-short'?'Protección: cortocircuito entre fases. FUERZA abierta. Corrige el cableado y restablece.':s.fault==='short'?'Protección: F y N unidos. Corrige el cableado y restablece.':s.fault==='unstable'?'El cableado hace oscilar un contactor. Corrige el circuito y restablece.':s.result.powered?'Mando virtual: 24 V disponibles entre F y N.':s.input.enabled&&!s.input.plugged?'Enchufa la corriente virtual en el módulo de alimentación.':s.input.enabled?'Cierra ambos interruptores CONTROL para alimentar F y N.':'Simulación detenida.';
+ const state=s.fault==='phase-short'?'Protección: cortocircuito entre fases. FUERZA abierta. Corrige el cableado y restablece.':s.fault==='short'?'Protección: F y N unidos. Corrige el cableado y restablece.':s.fault==='unstable'?'El cableado hace oscilar un contactor. Corrige el circuito y restablece.':s.input.enabled&&s.input.plugged&&s.earthGaps.length?earthGapText(s.earthGaps):s.result.powered?'Mando virtual: 24 V disponibles entre F y N.':s.input.enabled&&!s.input.plugged?'Enchufa la corriente virtual en el módulo de alimentación.':s.input.enabled?'Cierra ambos interruptores CONTROL para alimentar F y N.':'Simulación detenida.';
  const menu=useRef<HTMLDetailsElement>(null);
  useModules();
+ const sounds=useSoundsEnabled();
  const load=(id:ExampleId)=>{onExample(id);if(menu.current)menu.current.open=false;};
  return <div className="simulation-controls">
   <button className="simulation-toggle" aria-label="Simular mando de 24 V" title={s.input.enabled?'Detener simulación 24 V':'Simular 24 V'} aria-pressed={s.input.enabled} onClick={()=>s.enable(!s.input.enabled)}><Zap size={18} aria-hidden="true"/><span className="sr-label">{s.input.enabled?'Detener 24 V':'Simular 24 V'}</span><i className={s.result.powered?'is-powered':''}/></button>
@@ -22,7 +25,8 @@ export function SimulationControls({simulation:s,onExample,hasWires,compact=fals
    </div>
    <div className="sim-line"><span className={`sim-chip ${s.result.relays.CONTACTOR_TERMICO?'on':''}`}>KM1 · {s.result.relays.CONTACTOR_TERMICO?'activo':'en reposo'}</span><span className={`sim-chip ${s.result.relays.CONTACTOR_TRIFASICO?'on':''}`}>KM2 · {s.result.relays.CONTACTOR_TRIFASICO?'activo':'en reposo'}</span>{MODULES.filter(m=>m.category==='temporizadores').map(m=><span key={m.id} className={`sim-chip ${s.timed.includes(m.id)?'on':''}`}>{m.defaultAlias||'KT1'} · {s.timed.includes(m.id)?'temporizado':s.result.relays[m.id]?'contando':'en reposo'}</span>)}{MODULES.filter(m=>m.kind==='tri'&&m.extra).map(m=><span key={m.id} className={`sim-chip ${s.result.relays[m.id]?'on':''}`}>{m.defaultAlias} · {s.result.relays[m.id]?'activo':'en reposo'}</span>)}
     <button className="sim-icon" aria-label={s.input.thermalTripped?'Rearmar térmico':'Disparar térmico'} title={s.input.thermalTripped?'Rearmar térmico':'Disparar térmico'} disabled={!s.enabled} aria-pressed={s.input.thermalTripped} onClick={s.trip}><Flame size={18}/></button>
-    <button className="sim-icon" aria-label="Restablecer control" title="Restablecer control" disabled={!s.input.enabled} onClick={s.reset}><RotateCcw size={18}/></button></div>
+    <button className="sim-icon" aria-label="Restablecer control" title="Restablecer control" disabled={!s.input.enabled} onClick={s.reset}><RotateCcw size={18}/></button>
+    <button className="sim-icon" aria-label={sounds?'Silenciar los sonidos de los elementos':'Activar los sonidos de los elementos'} title={sounds?'Sonidos de los elementos: activados (pulsa para silenciar)':'Sonidos de los elementos: silenciados (pulsa para activar)'} aria-pressed={sounds} onClick={()=>setSoundsEnabled(!sounds)}>{sounds?<Volume2 size={18}/>:<VolumeX size={18}/>}</button></div>
    <label className="sim-delay"><span>Retardo del temporizador</span><select aria-label="Retardo del temporizador" value={s.timerSeconds} onChange={e=>s.setTimerSeconds(Number(e.target.value))}>{[2,4,6,10].map(n=><option key={n} value={n}>{n} s</option>)}</select></label>
    {s.result.powered?<p className={`simulation-motor ${s.result.motor.status}`} role="status"><b>Motor</b> {s.result.motor.message}</p>:null}
    <FloatingDisclosure className="simulation-examples" title="Ejemplos virtuales" summary={<><FlaskConical size={16}/>Probar con un ejemplo virtual</>}><div className="simulation-examples"><p>{hasWires?'Reemplaza los cables actuales; Deshacer los recupera.':'Los interruptores empiezan abiertos. Enchufa, cierra CONTROL y prueba los pulsadores.'}</p><button onClick={()=>load('lamp')}>Cargar piloto con pulsador</button><button onClick={()=>load('hold')}>Cargar marcha y parada con KM1</button><button onClick={()=>load('motor')}>Cargar arranque del motor con KM1</button><button onClick={()=>load('motorDelta')}>Cargar motor en triángulo</button><button onClick={()=>load('simple')}>Cargar marcha y paro con retención (simple)</button><button onClick={()=>load('inversion')}>Cargar inversión de giro con enclavamiento</button><button onClick={()=>load('starDelta')}>Cargar arranque estrella-triángulo automático</button><button onClick={()=>load('starDeltaThree')}>Cargar variante con 3 contactores y temporizador separado</button><button onClick={()=>load('motorRev')}>Cargar giro invertido (cruza dos fases)</button></div></FloatingDisclosure>

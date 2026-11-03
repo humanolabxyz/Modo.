@@ -153,7 +153,7 @@ export const FAULTS:{id:CabinetFault;title:string;symptom:string;wire:string;pro
  {id:'return',title:'Retorno de bobina abierto',symptom:'Al pulsar marcha, la bobina no actúa y la bomba sigue detenida.',wire:'W25',probe:'coil',explanation:'La ruta de retorno de A2 no llega al polo negativo del mando.'},
  {id:'holding',title:'Ruta de retención abierta',symptom:'La bomba funciona mientras mantienes marcha, pero se detiene al soltar.',wire:'W27',probe:'retention',explanation:'El auxiliar no completa la ruta que mantiene alimentada la bobina.'},
  {id:'phase',title:'Salida de una fase abierta',symptom:'La bobina actúa, pero el modelo detecta alimentación incompleta del motor.',wire:'W14',probe:'windings',explanation:'La salida V de la bornera no llega al devanado correspondiente.'},
- {id:'earth',title:'Protección PE incompleta',symptom:'La función parece responder, pero no se supera la comprobación de protección.',wire:'W19',probe:'pe',explanation:'El motor queda sin el enlace PE previsto. La marcha no acredita esta conexión.'},
+ {id:'earth',title:'Protección PE incompleta',symptom:'El tablero no se energiza y avisa que falta la tierra de protección del motor.',wire:'W19',probe:'pe',explanation:'El motor queda sin el enlace PE previsto. La tierra es una sola: basta un cable entre la PE del motor y la PE de la alimentación. Sin él el tablero no se energiza.'},
  {id:'program',title:'Retención ausente del programa',symptom:'Las conexiones están completas, pero la salida del controlador se pierde al soltar marcha.',wire:'',probe:'retention',explanation:'El programa debe conservar la orden mientras se cumplan los permisos.'},
 ];
 export const faultsFor=(b:Board)=>FAULTS.filter(f=>programmed(b)?f.id!=='holding':f.id!=='program');

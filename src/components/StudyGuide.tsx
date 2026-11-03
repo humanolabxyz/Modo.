@@ -3,6 +3,7 @@ import {CheckCircle2,ArrowRight,ArrowLeft,BookOpen} from 'lucide-react';
 import {IDENTIFICATION_STEPS,type AssistanceLevel,type PracticeDocument} from '../data/practice';
 import {connectedByCables} from '../data/wiring';
 import {LESSONS,terminalLabel} from '../data/lessons';
+import {labelScopeFor} from '../data/twoContactorNames';
 import {LessonSchematic} from './LessonSchematic';
 import '../styles/guide-confirmation.css';
 import {motionReduced} from '../motion/surface';
@@ -38,7 +39,7 @@ export function StudyGuide({studyOpen,onStudyOpen,practice,selected,assistance,o
   <h3>{step.title}</h3>
   {lessonDef&&manual&&<button type="button" className="lesson-study-launch" aria-haspopup="dialog" aria-expanded={studyOpen} onClick={()=>onStudyOpen(true)}><BookOpen size={17}/><span><b>Comprender este paso</b><small>Componentes, conexión y funcionamiento</small></span><ArrowRight size={16}/></button>}
   {lessonDef&&manual&&<LessonSchematic lesson={lessonDef} step={manual} steps={practice.steps} wires={practice.wires} onOpenDiagram={onOpenDiagram}/>}
-  {lesson&&manual&&assistance>=2&&<p className="guide-connect" data-guide-connect><b>{terminalLabel(manual.from)}</b><ArrowRight size={14} aria-hidden="true"/><b>{terminalLabel(manual.to)}</b></p>}
+  {lesson&&manual&&assistance>=2&&<p className="guide-connect" data-guide-connect><b>{terminalLabel(manual.from,labelScopeFor(practice.diagram?.id))}</b><ArrowRight size={14} aria-hidden="true"/><b>{terminalLabel(manual.to,labelScopeFor(practice.diagram?.id))}</b></p>}
   <details className="disclosure guide-hints" open><summary>Ayuda · nivel {assistance}/3</summary><div className="assistance-levels" aria-label="Nivel de ayuda">{([1,2,3] as const).map(level=><button key={level} aria-pressed={assistance===level} onClick={()=>onAssistance(level)}>{identify?(level===1?'Consigna':level===2?'Componentes':'Bornes'):(level===1?'Esquema':level===2?'Módulos':'Cable')}</button>)}</div>
   {lesson&&<p className="guide-level-note">{assistance===1?'Solo el esquema: busca tú los bornes en el banco.':assistance===2?'Se resaltan los módulos y se nombran los bornes.':'Se dibuja el cable que falta y se marcan sus bornes.'}</p>}
   {assistance>=2&&<button className="text-action" onClick={onLocate}>{identify?'Acercar componente':'Ver el cable en el banco'}</button>}

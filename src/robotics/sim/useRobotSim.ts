@@ -60,6 +60,7 @@ export function useRobotSim() {
     resume: () => { beat.current = Date.now(); send({t: 'start'}); setStatus('running'); },
     stop: (why?: string) => kill(why),
     setSpeed: (factor: number) => { speedRef.current = factor; setSpeedState(factor); send({t: 'speed', factor}); },
+    setControl: (id: string, value: number) => send({t: 'control', id, value}),
     clearSerial: () => setSerial(''),
     setMessage,
   };

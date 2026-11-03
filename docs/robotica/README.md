@@ -1,5 +1,25 @@
 # modo. Robótica — Hoja de ruta de implementación
 
+**Robot de orugas con radar, cara, brazos que recogen y sonidos (31/10/2026):** [Etapas 2 y 3](ROBOT_ORUGAS_RADAR_Y_CARA_2026-10-30.md): robot de pie con orugas, cuerpo con vidrio, cuello con servo que gira la cabeza y el radar, pantalla OLED real por I²C con la biblioteca Adafruit, freno del L298N, **dos brazos largos con hombro, codo y pinza que agarran, levantan y sueltan cubos** (variante «recoge cubos»), **sonidos sintetizados de motores, orugas, servos y pinzas** con botón para silenciar, y guías de armado, cableado y programación. El catálogo llega a 35 piezas. Implementación local, sin publicar desde la 2.7.0.
+
+**Cableado paso a paso (30/10/2026):** [Guía dentro de la app](GUIA_CABLEADO_PASO_A_PASO_2026-10-30.md): botón «Cableado» en Construir, pasos con su porqué, pines resaltados en 3D, aviso de cable equivocado y «Poner el cable por mí». Cable espectro en el 3D y guías para **todos** los robots con plantilla (generadas desde su cableado). **Etapa 1 completa:** además [Programar paso a paso y Armar por pasos](GUIAS_PROGRAMAR_Y_ARMAR_2026-10-30.md): de un proyecto vacío a un robot que funciona usando solo las tres guías.
+
+**Servo y sensores (30/10/2026):** [Servo SG90, potenciómetro y pulsador](SERVO_Y_SENSORES_2026-10-30.md), con controles en vivo en la Consola y medición de rendimiento de la simulación. Implementación local, sin publicar.
+
+**Ventana del brazo (30/10/2026):** [Entrada guiada y ventana movible/ajustable](VENTANAS_BRAZO_UX_2026-10-30.md), con el gestor existente, inicio directo, control manual preparado y emergencia accesible con la ventana minimizada.
+
+**Cinta y clasificación (30/10/2026):** [Célula E6 con transporte, presencia y RGB](CELULA_CINTA_CLASIFICADORA_2026-10-30.md). Recogida coordinada, destinos por color y fallas de atasco/sensor, dentro del taller actual. Implementación local.
+
+**Ciclos E6 (30/10/2026):** [Recoger, depositar y transferir tres piezas](FASE_2_BRAZO_E6_CICLOS.md), preparación desde la escena, puntos editables, comprobación de agarre y entregas por posición física. Implementación local.
+
+**Modo combate independiente (30/10/2026):** [Arena 2.6.4](MODO_COMBATE_2_6_4.md), pantalla propia `/arena/`, cámara y cuenta regresiva animadas, efectos de contactos reales, sonido opcional y carga separada del taller.
+
+**Robots de empuje (30/10/2026):** [Cuña, pala 4WD y defensa frontal](AMPLIACION_SUMO_PALAS_CUNAS_2026-10-30.md), tres construcciones editables y tres accesorios sueltos con geometría de contacto, disponibles en el taller y la arena.
+
+**Arena de sumo (30/10/2026):** [Fase 2 · construir y enfrentar dos robots](FASE_2_ARENA_SUMO.md), con programas independientes, física compartida, resultado, pausa y revancha. Implementación local; combate con daño pendiente para la siguiente fase.
+
+**Ampliación de brazos (29/10/2026):** [Fase 1 · operación del Dobot E6](FASE_1_BRAZO_E6_OPERACION.md), con modelo oficial, Jog, MovJ/MovL, puntos enseñados, colisiones y liberación física. Implementación local; ver en ese informe las pruebas y los límites de fidelidad.
+
 Preparado el 28 de octubre de 2026 con Claude Opus, a partir de los cinco documentos de `fuentes/` (paquete `MODO_ROBOTICA_DOCUMENTACION_COMPLETA.zip`) y de la lectura del código real de este repositorio (versión 2.5.4).
 
 **Estado (29/10/2026): las etapas 1 a 5 están implementadas** en la rama `robotica/etapa-1` (informes en `cierres/ETAPA_1.md` … `ETAPA_5.md`). Las etapas 1–4 están aprobadas; la 5 (física con Rapier, escenario y sensor con rayos) espera tu validación. Publicado: 2.6.0 Beta con contraseña (`PUBLICACION_2.6.0_BETA.md`); la 2.6.1 con la física está preparada y **sin publicar**. Falta medir el rendimiento en tablet y teléfono reales.

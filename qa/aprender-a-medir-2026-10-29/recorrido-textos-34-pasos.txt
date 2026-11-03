@@ -1,0 +1,324 @@
+WALK 1 thermal
+  tarea: 
+    [x] Banco desenchufado
+    [ ] Función «Continuidad» elegida en el multímetro ~ Es la función del símbolo •)).
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en KM1 · 95 y la otra en KM1 · 96 ~ El botón «Ver estos bornes en el panel» te los muestra.
+1/34 thermal
+WALK 2 stop
+  tarea: 
+    [x] Banco desenchufado
+    [x] Función «Continuidad» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Botoneras · S2 borne 1 y la otra en Botoneras · S2 borne 2 ~ El botón «Ver estos bornes en el panel» te los muestra.
+2/34 stop
+WALK 3 start-open
+  tarea: 
+    [x] Banco desenchufado
+    [x] Función «Continuidad» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en KM2 · 63 y la otra en KM2 · 64 ~ El botón «Ver estos bornes en el panel» te los muestra.
+3/34 start-open
+WALK 4 contact-ohms
+  tarea: 
+    [x] Banco desenchufado
+    [ ] Función «Ω» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en KM1 · 95 y la otra en KM1 · 96 ~ El botón «Ver estos bornes en el panel» te los muestra.
+4/34 contact-ohms
+WALK 5 control-volts
+  tarea: 
+    [ ] Banco enchufado ~ Botón «Conectar corriente» de abajo.
+    [ ] CONTROL 1 y CONTROL 2 en ON
+    [x] FUERZA en OFF
+    [ ] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Fuente · F y la otra en Fuente · N ~ El botón «Ver estos bornes en el panel» te los muestra.
+5/34 control-volts
+WALK 6 control-rest
+  tarea: Alimenta solo el mando, con FUERZA en OFF. Comprueba que las bobinas no tienen energía y que ninguna lámpara piloto está encendida.
+    [x] Banco enchufado
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] FUERZA en OFF
+    [x] Relé térmico sin disparo
+    [x] KT1, KM2 y KM1: sin energía
+    [x] Ninguna lámpara piloto encendida
+    [x] Sin pulsadores mantenidos
+6/34 control-rest
+WALK 7 control-star
+  tarea: Desde reposo, pulsa y suelta S1 con un toque corto. El circuito debe quedarse solo en estrella: no hace falta mantener el pulsador.
+    [x] Banco enchufado
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] FUERZA en OFF
+    [ ] KT1 y KM2: bobinas con energía ~ En el panel, cada contactor muestra «ACTIVO» y el temporizador cuenta «FALTAN … s» y luego «TEMPORIZADO».
+    [x] KM1: sin energía
+    [ ] Piloto P1 (verde de estrella) encendido ~ Las lámparas están en el módulo Luces piloto.
+    [x] Lámparas P2, P3 y P4 apagadas
+    [x] Sin pulsadores mantenidos
+    [ ] Pulsa y suelta S1 durante este paso, con el mando en reposo ~ Si ya lo hiciste antes de llegar a este paso, detén con S2 y vuelve a empezar desde el reposo.
+7/34 control-star
+WALK 8 control-delta
+  tarea: Primero inicia estrella con S1 y espera el cambio del temporizador en este paso.
+    [x] Banco enchufado
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] FUERZA en OFF
+    [ ] KT1 y KM1: bobinas con energía ~ En el panel, cada contactor muestra «ACTIVO» y el temporizador cuenta «FALTAN … s» y luego «TEMPORIZADO».
+    [ ] KM2: sin energía ~ El contactor muestra «REPOSO».
+    [ ] Piloto P4 (verde de triángulo) encendido ~ Las lámparas están en el módulo Luces piloto.
+    [ ] Lámparas P1, P2 y P3 apagadas
+    [x] Sin pulsadores mantenidos
+    [ ] Espera, durante este paso, a que el temporizador cambie de estrella a triángulo ~ Si ya lo hiciste antes de llegar a este paso, detén con S2 y vuelve a empezar desde el reposo.
+8/34 control-delta
+WALK 9 control-trip
+  tarea: Con el circuito en triángulo, pulsa TEST del relé. Un disparo automático o cortar la alimentación no sustituye esta prueba.
+    [x] Banco enchufado
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] FUERZA en OFF
+    [ ] Relé térmico disparado ~ Se dispara con el botón TEST de abajo.
+    [ ] KT1, KM2 y KM1: sin energía ~ El contactor muestra «REPOSO».
+    [ ] Piloto P3 (amarillo de sobrecarga) encendido ~ Las lámparas están en el módulo Luces piloto.
+    [ ] Lámparas P1, P2 y P4 apagadas
+    [x] Sin pulsadores mantenidos
+    [ ] Pulsa TEST durante este paso, con el mando en triángulo (P4 encendido) ~ Si ya lo hiciste antes de llegar a este paso, rearma con RESET, vuelve a triángulo y repite.
+9/34 control-trip
+WALK 10 control-reset
+  tarea: Con el relé disparado y las bobinas sin energía, pulsa RESET. El mando debe seguir alimentado y el motor no debe arrancar solo.
+    [x] Banco enchufado
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] FUERZA en OFF
+    [ ] Relé térmico sin disparo ~ Si salta, se rearma con RESET.
+    [x] KT1, KM2 y KM1: sin energía
+    [ ] Ninguna lámpara piloto encendida
+    [x] Sin pulsadores mantenidos
+    [ ] Pulsa RESET durante este paso, con el relé disparado ~ Si ya rearmaste antes de llegar a este paso, vuelve a probar TEST y luego RESET.
+10/34 control-reset
+WALK 11 force-continuity
+  tarea: 
+    [ ] Banco desenchufado ~ Botón «Desenchufar» de abajo.
+    [x] FUERZA en OFF
+    [ ] CONTROL 1 y CONTROL 2 en OFF
+    [ ] Función «Continuidad» elegida en el multímetro ~ Es la función del símbolo •)).
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Fuente · R y la otra en KT1 · L1 ~ El botón «Ver estos bornes en el panel» te los muestra.
+11/34 force-continuity
+WALK 12 line-RS
+  tarea: 
+    [ ] Banco enchufado ~ Botón «Conectar corriente» de abajo.
+    [ ] FUERZA en ON ~ FUERZA alimenta el motor (380 V).
+    [x] Motor detenido
+    [ ] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Fuente · R y la otra en Fuente · S ~ El botón «Ver estos bornes en el panel» te los muestra.
+12/34 line-RS
+WALK 13 line-RT
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] Motor detenido
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Fuente · R y la otra en Fuente · T ~ El botón «Ver estos bornes en el panel» te los muestra.
+13/34 line-RT
+WALK 14 line-ST
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] Motor detenido
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Fuente · S y la otra en Fuente · T ~ El botón «Ver estos bornes en el panel» te los muestra.
+14/34 line-ST
+WALK 15 powered-rest
+  tarea: Pon FUERZA y ambos CONTROL en ON, sin pulsar marcha. Comprueba que el motor sigue detenido y que las bobinas no tienen energía.
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [ ] CONTROL 1 y CONTROL 2 en ON
+    [x] Relé térmico sin disparo
+    [x] KT1, KM2 y KM1: sin energía
+    [x] Ninguna lámpara piloto encendida
+    [x] Sin pulsadores mantenidos
+15/34 powered-rest
+WALK 16 start-star
+  tarea: Desde reposo, pulsa y suelta S1 con un toque corto. El circuito debe quedarse solo en estrella: no hace falta mantener el pulsador.
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [ ] Motor girando en estrella ~ El módulo Motor muestra «ESTRELLA» o «TRIÁNGULO» con sus rpm.
+    [x] Sin pulsadores mantenidos
+    [ ] Pulsa y suelta S1 durante este paso, con el motor detenido ~ Si ya lo hiciste antes de llegar a este paso, detén con S2 y vuelve a empezar desde el reposo.
+16/34 start-star
+WALK 17 star-U
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en estrella
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Motor · U1 y la otra en Motor · U2 ~ El botón «Ver estos bornes en el panel» te los muestra.
+17/34 star-U
+WALK 18 star-V
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en estrella
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Motor · V1 y la otra en Motor · V2 ~ El botón «Ver estos bornes en el panel» te los muestra.
+18/34 star-V
+WALK 19 star-W
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en estrella
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Motor · W1 y la otra en Motor · W2 ~ El botón «Ver estos bornes en el panel» te los muestra.
+19/34 star-W
+WALK 20 star-current-R
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en estrella
+    [ ] Pinza abrazando solo el cable de entrada de la fase R ~ Usa los botones «Pinza en R / S / T» de esta ventana.
+20/34 star-current-R
+WALK 21 star-current-S
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en estrella
+    [ ] Pinza abrazando solo el cable de entrada de la fase S ~ Usa los botones «Pinza en R / S / T» de esta ventana.
+21/34 star-current-S
+WALK 22 star-current-T
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en estrella
+    [ ] Pinza abrazando solo el cable de entrada de la fase T ~ Usa los botones «Pinza en R / S / T» de esta ventana.
+22/34 star-current-T
+WALK 23 change-delta
+  tarea: Primero inicia estrella con S1 y espera el cambio del temporizador en este paso.
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [ ] Motor girando en triángulo ~ El módulo Motor muestra «ESTRELLA» o «TRIÁNGULO» con sus rpm.
+    [x] Sin pulsadores mantenidos
+    [ ] Espera, durante este paso, a que el temporizador cambie de estrella a triángulo ~ Si ya lo hiciste antes de llegar a este paso, detén con S2 y vuelve a empezar desde el reposo.
+23/34 change-delta
+WALK 24 delta-U
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en triángulo
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Motor · U1 y la otra en Motor · U2 ~ El botón «Ver estos bornes en el panel» te los muestra.
+24/34 delta-U
+WALK 25 delta-V
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en triángulo
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Motor · V1 y la otra en Motor · V2 ~ El botón «Ver estos bornes en el panel» te los muestra.
+25/34 delta-V
+WALK 26 delta-W
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en triángulo
+    [x] Función «V~» elegida en el multímetro
+    [x] Cable rojo en la entrada V Ω del multímetro (el negro en COM)
+    [ ] Una punta en Motor · W1 y la otra en Motor · W2 ~ El botón «Ver estos bornes en el panel» te los muestra.
+26/34 delta-W
+WALK 27 delta-current-R
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en triángulo
+    [ ] Pinza abrazando solo el cable de entrada de la fase R ~ Usa los botones «Pinza en R / S / T» de esta ventana.
+27/34 delta-current-R
+WALK 28 delta-current-S
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en triángulo
+    [ ] Pinza abrazando solo el cable de entrada de la fase S ~ Usa los botones «Pinza en R / S / T» de esta ventana.
+28/34 delta-current-S
+WALK 29 delta-current-T
+  tarea: 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en triángulo
+    [ ] Pinza abrazando solo el cable de entrada de la fase T ~ Usa los botones «Pinza en R / S / T» de esta ventana.
+29/34 delta-current-T
+WALK 30 compare
+  tarea: Mira tus tablas: en estrella cada bobina recibe unos 220 V y en triángulo unos 380 V. Anota cuántas veces mayor es la tensión (VΔ / VY) y cuántas veces mayor es la corriente (IΔ / IY). En términos técnicos: VY ≈ VL/√3 y VΔ ≈ VL. La relación 3 solo corresponde 
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [x] Motor girando en triángulo
+30/34 compare
+WALK 31 overload
+  tarea: Con el circuito en triángulo, pulsa TEST del relé. Un disparo automático o cortar la alimentación no sustituye esta prueba.
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [ ] Relé térmico disparado ~ Se dispara con el botón TEST de abajo.
+    [ ] KT1, KM2 y KM1: sin energía ~ El contactor muestra «REPOSO».
+    [ ] Piloto P3 (amarillo de sobrecarga) encendido ~ Las lámparas están en el módulo Luces piloto.
+    [ ] Lámparas P1, P2 y P4 apagadas
+    [ ] Motor detenido
+    [x] Sin pulsadores mantenidos
+    [ ] Pulsa TEST durante este paso, con el motor en triángulo ~ Si ya lo hiciste antes de llegar a este paso, rearma con RESET, vuelve a triángulo y repite.
+31/34 overload
+WALK 32 reset
+  tarea: Con el relé disparado y las bobinas sin energía, pulsa RESET. El mando debe seguir alimentado y el motor no debe arrancar solo.
+    [x] Banco enchufado
+    [x] FUERZA en ON
+    [x] CONTROL 1 y CONTROL 2 en ON
+    [ ] Relé térmico sin disparo ~ Si salta, se rearma con RESET.
+    [x] KT1, KM2 y KM1: sin energía
+    [ ] Ninguna lámpara piloto encendida
+    [x] Motor detenido
+    [x] Sin pulsadores mantenidos
+    [ ] Pulsa RESET durante este paso, con el relé disparado ~ Si ya rearmaste antes de llegar a este paso, vuelve a probar TEST y luego RESET.
+32/34 reset
+WALK 33 shutdown
+  tarea: Pon FUERZA y ambos CONTROL en OFF y desconecta el enchufe virtual. Descarga tus resultados en la pestaña Resultados.
+    [ ] Banco desenchufado ~ Botón «Desenchufar» de abajo.
+    [ ] FUERZA en OFF
+    [ ] CONTROL 1 y CONTROL 2 en OFF
+33/34 shutdown
+WALK 34 dismantle
+  tarea: Con el banco sin alimentación, retira todos los cables o usa «Desmontar circuito». Después comprueba el cierre.
+    [x] Banco desenchufado
+    [x] FUERZA en OFF
+    [x] CONTROL 1 y CONTROL 2 en OFF
+    [ ] Todos los cables retirados
+34/34 dismantle
+{
+  "date": "2026-10-28",
+  "base": "http://127.0.0.1:4410",
+  "checks": [
+    "Una sola acción por etapa; la lectura se conserva directamente sin transcripción manual",
+    "control-rest: S3 desde reposo no arranca; se conserva S1 como marcha",
+    "TEST desde reposo rechazado aunque pilotos y térmico coincidan; se exige la transición desde triángulo",
+    "powered-rest: S3 desde reposo no arranca; se conserva S1 como marcha",
+    "Placas y protecciones comprobadas; montaje completo con motor desde el inicio, fuerza abierta durante mando; conexiones guardadas del montaje de dos contactores; 34 pasos, 15 mediciones, TEST/RESET, comparación, cierre y exportaciones CSV/JSON/HTML",
+    "Acceso a Actividad 2 desde las guías del panel en móvil 390 × 844"
+  ],
+  "errors": []
+}

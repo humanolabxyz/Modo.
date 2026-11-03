@@ -12,10 +12,10 @@ export function validActionProof(v:unknown){const p=v as ActionProof;return !!p&
 
 function mode(s:TraceState,profile:ActivityProfile){const r=activityRoles(profile);return s.tripped?'disparo':s.relays[r.main]&&s.relays[r.star]&&!s.relays[r.delta]?'estrella':s.relays[r.main]&&s.relays[r.delta]&&!s.relays[r.star]?'triángulo':Object.values(s.relays).every(v=>!v)?'reposo':'otro estado';}
 export function actionRequirement(step:ActivityStep,profile:ActivityProfile):{kind:TraceAction['kind'];control?:string;from:string;to:string;message:string}|null{
- if(['control-star','start-star'].includes(step.id))return {kind:'press',control:activityRoles(profile).start,from:'reposo',to:'estrella',message:`Desde reposo, pulsa y suelta ${activityRoles(profile).start}. Deben mantenerse el conjunto principal y estrella sin sostener el pulsador.`};
+ if(['control-star','start-star'].includes(step.id))return {kind:'press',control:activityRoles(profile).start,from:'reposo',to:'estrella',message:`Desde reposo, pulsa y suelta ${activityRoles(profile).start} con un toque corto. El circuito debe quedarse solo en estrella: no hace falta mantener el pulsador.`};
  if(['control-delta','change-delta'].includes(step.id))return {kind:profile==='manual'?'press':'timer',control:profile==='manual'?'S3':'TEMPORIZADOR_1',from:'estrella',to:'triángulo',message:profile==='manual'?'Primero deja el circuito en estrella. Después pulsa y suelta S3 (SB3) para comprobar el cambio a triángulo.':`Primero inicia estrella con ${activityRoles(profile).start} y espera el cambio del temporizador en este paso.`};
  if(['control-trip','overload'].includes(step.id))return {kind:'test',from:'triángulo',to:'disparo',message:'Con el circuito en triángulo, pulsa TEST del relé. Un disparo automático o cortar la alimentación no sustituye esta prueba.'};
- if(['control-reset','reset'].includes(step.id))return {kind:'thermalReset',from:'disparo',to:'reposo',message:'Con el relé disparado y las bobinas desactivadas, pulsa RESET. El mando debe seguir alimentado y no debe dar marcha.'};
+ if(['control-reset','reset'].includes(step.id))return {kind:'thermalReset',from:'disparo',to:'reposo',message:'Con el relé disparado y las bobinas sin energía, pulsa RESET. El mando debe seguir alimentado y el motor no debe arrancar solo.'};
  return null;
 }
 export function checkActionEvidence(step:ActivityStep,c:ActivityContext,events:SimulationEvent[],since:number){

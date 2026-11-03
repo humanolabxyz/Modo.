@@ -1,0 +1,18 @@
+{
+  "source": "http://127.0.0.1:4330",
+  "models": [
+    {
+      "id": "robot-arm",
+      "bytes": 4548
+    },
+    {
+      "id": "robot-forearm",
+      "bytes": 3276
+    },
+    {
+      "id": "robot-claw",
+      "bytes": 4712
+    }
+  ],
+  "totalBytes": 12536
+}

@@ -1,0 +1,8 @@
+{
+  "url": "http://localhost:4326",
+  "checks": [
+    "desktop: dos proyectos guardados, rechazo de vacío, pausa, victoria física, marcador, revancha/cancelación, fuentes intactas, copia editable y regreso al taller sin desborde.",
+    "mobile: dos proyectos guardados, rechazo de vacío, pausa, victoria física, marcador, revancha/cancelación, fuentes intactas, copia editable y regreso al taller sin desborde."
+  ],
+  "errors": []
+}

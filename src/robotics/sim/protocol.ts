@@ -7,6 +7,8 @@ export type ToWorker =
   | {t: 'pause'}
   | {t: 'speed'; factor: number}
   | {t: 'ping'; n: number}
+  /** Valor vivo de un control del banco: potenciómetro (0–1) o pulsador (0/1). */
+  | {t: 'control'; id: string; value: number}
   /** Descarga (sin iniciar) el motor de física, para que quede en la caché y funcione sin conexión. */
   | {t: 'warm'};
 

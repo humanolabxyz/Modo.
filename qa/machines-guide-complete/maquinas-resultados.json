@@ -2,7 +2,7 @@
   "activity": "ARCM02 · Actividad 2 · Unidad 2",
   "guide": "/activities/actividad-2-unidad-2.pdf",
   "version": 1,
-  "profile": "manual",
+  "profile": "twoContactors",
   "index": 33,
   "records": [
     {
@@ -12,14 +12,14 @@
       "value": 0.4,
       "red": "CONTACTOR_TERMICO:95",
       "black": "CONTACTOR_TERMICO:96",
-      "at": "2026-10-27T21:26:07.336Z",
+      "at": "2026-10-30T22:34:48.730Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:07.450Z",
+      "capturedAt": "2026-10-30T22:34:48.793Z",
       "conditions": {
-        "simulationSeconds": 3.082199999999254,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -34,14 +34,14 @@
       "value": 0.4,
       "red": "BOTONERAS:S2:1",
       "black": "BOTONERAS:S2:2",
-      "at": "2026-10-27T21:26:10.722Z",
+      "at": "2026-10-30T22:34:50.539Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:10.879Z",
+      "capturedAt": "2026-10-30T22:34:50.854Z",
       "conditions": {
-        "simulationSeconds": 5.853999999998137,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -56,14 +56,14 @@
       "value": null,
       "red": "CONTACTOR_TRIFASICO:63",
       "black": "CONTACTOR_TRIFASICO:64",
-      "at": "2026-10-27T21:26:12.804Z",
+      "at": "2026-10-30T22:34:52.125Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:12.847Z",
+      "capturedAt": "2026-10-30T22:34:52.178Z",
       "conditions": {
-        "simulationSeconds": 7.905099999999628,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -78,14 +78,14 @@
       "value": 0.4,
       "red": "CONTACTOR_TERMICO:95",
       "black": "CONTACTOR_TERMICO:96",
-      "at": "2026-10-27T21:26:16.010Z",
+      "at": "2026-10-30T22:34:53.616Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:16.064Z",
+      "capturedAt": "2026-10-30T22:34:53.696Z",
       "conditions": {
-        "simulationSeconds": 10.73559999999776,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -100,14 +100,14 @@
       "value": 24,
       "red": "FUENTE:F",
       "black": "FUENTE:N",
-      "at": "2026-10-27T21:26:19.805Z",
+      "at": "2026-10-30T22:34:55.837Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:19.866Z",
+      "capturedAt": "2026-10-30T22:34:56.119Z",
       "conditions": {
-        "simulationSeconds": 14.21029999999888,
+        "simulationSeconds": 8.061699999958277,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -120,7 +120,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:20.595Z",
+      "at": "2026-10-30T22:34:56.421Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction"
@@ -130,16 +130,16 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:20.929Z",
+      "at": "2026-10-30T22:34:56.754Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 2,
+        "eventId": 1,
         "kind": "press",
         "control": "S1",
-        "seconds": 15.128199999997392,
+        "seconds": 8.766499999970199,
         "from": "reposo",
         "to": "estrella"
       }
@@ -149,16 +149,16 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:21.306Z",
+      "at": "2026-10-30T22:34:59.086Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 3,
-        "kind": "press",
-        "control": "S3",
-        "seconds": 15.489699999997393,
+        "eventId": 2,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 11.207099999964237,
         "from": "estrella",
         "to": "triángulo"
       }
@@ -168,15 +168,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:23.196Z",
+      "at": "2026-10-30T22:35:02.285Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 9,
+        "eventId": 8,
         "kind": "test",
-        "seconds": 17.455699999997393,
+        "seconds": 14.366699999958279,
         "from": "triángulo",
         "to": "disparo"
       }
@@ -186,15 +186,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:23.563Z",
+      "at": "2026-10-30T22:35:02.536Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 10,
+        "eventId": 9,
         "kind": "thermalReset",
-        "seconds": 17.80639999999851,
+        "seconds": 14.658399999976158,
         "from": "disparo",
         "to": "reposo"
       }
@@ -205,15 +205,15 @@
       "text": "0,4 Ω",
       "value": 0.4,
       "red": "FUENTE:R",
-      "black": "CONTACTOR_TERMICO:L1",
-      "at": "2026-10-27T21:26:27.984Z",
+      "black": "TEMPORIZADOR_1:L1",
+      "at": "2026-10-30T22:35:05.222Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:28.032Z",
+      "capturedAt": "2026-10-30T22:35:05.519Z",
       "conditions": {
-        "simulationSeconds": 21.870099999997773,
+        "simulationSeconds": 15.261899999976158,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -228,14 +228,14 @@
       "value": 380,
       "red": "FUENTE:R",
       "black": "FUENTE:S",
-      "at": "2026-10-27T21:26:30.412Z",
+      "at": "2026-10-30T22:35:06.271Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:30.454Z",
+      "capturedAt": "2026-10-30T22:35:06.303Z",
       "conditions": {
-        "simulationSeconds": 23.680699999997394,
+        "simulationSeconds": 17.882499999970207,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -250,14 +250,14 @@
       "value": 380,
       "red": "FUENTE:R",
       "black": "FUENTE:T",
-      "at": "2026-10-27T21:26:30.762Z",
+      "at": "2026-10-30T22:35:06.627Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:30.847Z",
+      "capturedAt": "2026-10-30T22:35:06.769Z",
       "conditions": {
-        "simulationSeconds": 24.04189999999851,
+        "simulationSeconds": 18.240999999970214,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -272,14 +272,14 @@
       "value": 380,
       "red": "FUENTE:S",
       "black": "FUENTE:T",
-      "at": "2026-10-27T21:26:31.116Z",
+      "at": "2026-10-30T22:35:07.111Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:31.230Z",
+      "capturedAt": "2026-10-30T22:35:07.272Z",
       "conditions": {
-        "simulationSeconds": 24.39789999999851,
+        "simulationSeconds": 18.724799999952335,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -292,7 +292,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:32.378Z",
+      "at": "2026-10-30T22:35:07.921Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction"
@@ -302,35 +302,35 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:32.747Z",
-      "rpm": 44.01577252310318,
+      "at": "2026-10-30T22:35:08.278Z",
+      "rpm": 14.995251306074493,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 12,
+        "eventId": 10,
         "kind": "press",
         "control": "S1",
-        "seconds": 25.798699999997385,
+        "seconds": 19.677299999952346,
         "from": "reposo",
         "to": "estrella"
       }
     },
     {
       "id": "star-U",
-      "observed": "219,2",
-      "text": "219,2 V",
-      "value": 219.2,
+      "observed": "218,3",
+      "text": "218,3 V",
+      "value": 218.3,
       "red": "BORNERA_MOTOR:U1",
       "black": "BORNERA_MOTOR:U2",
-      "at": "2026-10-27T21:26:35.919Z",
-      "rpm": 1473.0219103185902,
+      "at": "2026-10-30T22:35:09.955Z",
+      "rpm": 713.5769335662383,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:36.034Z",
+      "capturedAt": "2026-10-30T22:35:09.987Z",
       "conditions": {
-        "simulationSeconds": 28.651799999995156,
+        "simulationSeconds": 21.250399999946374,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -340,19 +340,19 @@
     },
     {
       "id": "star-V",
-      "observed": "219,2",
-      "text": "219,2 V",
-      "value": 219.2,
+      "observed": "218,3",
+      "text": "218,3 V",
+      "value": 218.3,
       "red": "BORNERA_MOTOR:V1",
       "black": "BORNERA_MOTOR:V2",
-      "at": "2026-10-27T21:26:36.411Z",
-      "rpm": 1473.4501033814563,
+      "at": "2026-10-30T22:35:10.193Z",
+      "rpm": 797.2605745309775,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:36.463Z",
+      "capturedAt": "2026-10-30T22:35:10.242Z",
       "conditions": {
-        "simulationSeconds": 29.12989999999665,
+        "simulationSeconds": 21.368699999958295,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -367,14 +367,14 @@
       "value": 219.2,
       "red": "BORNERA_MOTOR:W1",
       "black": "BORNERA_MOTOR:W2",
-      "at": "2026-10-27T21:26:38.964Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:11.582Z",
+      "rpm": 1473.423723217922,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:39.161Z",
+      "capturedAt": "2026-10-30T22:35:11.753Z",
       "conditions": {
-        "simulationSeconds": 31.472099999995912,
+        "simulationSeconds": 22.881299999952333,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -388,14 +388,14 @@
       "text": "1,702 A",
       "value": 1.702,
       "phase": "R",
-      "at": "2026-10-27T21:26:39.318Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:11.952Z",
+      "rpm": 1473.4532962703242,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:39.379Z",
+      "capturedAt": "2026-10-30T22:35:11.960Z",
       "conditions": {
-        "simulationSeconds": 31.82649999999442,
+        "simulationSeconds": 23.25059999996426,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -409,14 +409,14 @@
       "text": "1,702 A",
       "value": 1.702,
       "phase": "S",
-      "at": "2026-10-27T21:26:39.646Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:12.071Z",
+      "rpm": 1473.4538713580312,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:39.730Z",
+      "capturedAt": "2026-10-30T22:35:12.102Z",
       "conditions": {
-        "simulationSeconds": 32.13549999999442,
+        "simulationSeconds": 23.369599999964258,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -430,14 +430,14 @@
       "text": "1,702 A",
       "value": 1.702,
       "phase": "T",
-      "at": "2026-10-27T21:26:39.880Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:12.205Z",
+      "rpm": 1473.454048547234,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:39.901Z",
+      "capturedAt": "2026-10-30T22:35:12.253Z",
       "conditions": {
-        "simulationSeconds": 32.38929999999517,
+        "simulationSeconds": 23.482599999964258,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -450,16 +450,16 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:40.296Z",
-      "rpm": 1490.9862322083643,
+      "at": "2026-10-30T22:35:14.691Z",
+      "rpm": 1485.6278393059604,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 13,
-        "kind": "press",
-        "control": "S3",
-        "seconds": 32.58969999999553,
+        "eventId": 11,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 25.810699999958313,
         "from": "estrella",
         "to": "triángulo"
       }
@@ -471,14 +471,14 @@
       "value": 379.7,
       "red": "BORNERA_MOTOR:U1",
       "black": "BORNERA_MOTOR:U2",
-      "at": "2026-10-27T21:26:43.136Z",
+      "at": "2026-10-30T22:35:16.165Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:43.220Z",
+      "capturedAt": "2026-10-30T22:35:16.254Z",
       "conditions": {
-        "simulationSeconds": 35.00929999999702,
+        "simulationSeconds": 27.449099999964268,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -493,14 +493,14 @@
       "value": 379.7,
       "red": "BORNERA_MOTOR:V1",
       "black": "BORNERA_MOTOR:V2",
-      "at": "2026-10-27T21:26:43.550Z",
+      "at": "2026-10-30T22:35:16.662Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:43.695Z",
+      "capturedAt": "2026-10-30T22:35:16.786Z",
       "conditions": {
-        "simulationSeconds": 35.398499999996275,
+        "simulationSeconds": 27.93029999995235,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -515,14 +515,14 @@
       "value": 379.7,
       "red": "BORNERA_MOTOR:W1",
       "black": "BORNERA_MOTOR:W2",
-      "at": "2026-10-27T21:26:46.417Z",
+      "at": "2026-10-30T22:35:18.133Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:46.597Z",
+      "capturedAt": "2026-10-30T22:35:18.204Z",
       "conditions": {
-        "simulationSeconds": 38.127699999995535,
+        "simulationSeconds": 29.417399999946394,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -536,14 +536,14 @@
       "text": "3,704 A",
       "value": 3.704,
       "phase": "R",
-      "at": "2026-10-27T21:26:46.918Z",
+      "at": "2026-10-30T22:35:18.350Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:46.941Z",
+      "capturedAt": "2026-10-30T22:35:18.356Z",
       "conditions": {
-        "simulationSeconds": 38.628399999994784,
+        "simulationSeconds": 29.648599999964276,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -557,14 +557,14 @@
       "text": "3,704 A",
       "value": 3.704,
       "phase": "S",
-      "at": "2026-10-27T21:26:47.096Z",
+      "at": "2026-10-30T22:35:18.472Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:47.146Z",
+      "capturedAt": "2026-10-30T22:35:18.503Z",
       "conditions": {
-        "simulationSeconds": 38.758199999995526,
+        "simulationSeconds": 29.770299999952353,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -578,14 +578,14 @@
       "text": "3,704 A",
       "value": 3.704,
       "phase": "T",
-      "at": "2026-10-27T21:26:47.294Z",
+      "at": "2026-10-30T22:35:18.604Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:47.347Z",
+      "capturedAt": "2026-10-30T22:35:18.656Z",
       "conditions": {
-        "simulationSeconds": 38.98899999999627,
+        "simulationSeconds": 29.881899999946395,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -598,7 +598,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:47.591Z",
+      "at": "2026-10-30T22:35:18.802Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction"
@@ -608,15 +608,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:48.129Z",
-      "rpm": 1481.244778827855,
+      "at": "2026-10-30T22:35:19.119Z",
+      "rpm": 1479.5721334082434,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 14,
+        "eventId": 12,
         "kind": "test",
-        "seconds": 39.63239999999476,
+        "seconds": 30.28269999995832,
         "from": "triángulo",
         "to": "disparo"
       }
@@ -626,15 +626,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:48.463Z",
-      "rpm": 1390.6733572066055,
+      "at": "2026-10-30T22:35:19.535Z",
+      "rpm": 1389.0665420352964,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 15,
+        "eventId": 13,
         "kind": "thermalReset",
-        "seconds": 40.03759999999588,
+        "seconds": 30.60099999994044,
         "from": "disparo",
         "to": "reposo"
       }
@@ -644,8 +644,8 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:49.379Z",
-      "rpm": 1152.6560332083243,
+      "at": "2026-10-30T22:35:20.200Z",
+      "rpm": 1211.7013240356446,
       "loadTorqueNm": 4,
       "motorMode": "induction"
     },
@@ -654,8 +654,8 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:49.567Z",
-      "rpm": 1113.827316882612,
+      "at": "2026-10-30T22:35:20.335Z",
+      "rpm": 1181.8971307650684,
       "loadTorqueNm": 4,
       "motorMode": "induction"
     }
@@ -663,7 +663,7 @@
   "reflection": "Las bobinas reciben VL dividido por raíz de tres en estrella y VL en triángulo. La relación de corrientes depende de la velocidad y carga registradas; ambas conexiones se comparan con sus condiciones.",
   "complete": true,
   "analysis": {
-    "voltage": "1.732",
+    "voltage": "1.739",
     "current": "2.176"
   },
   "preparation": {
@@ -679,35 +679,7 @@
     "diagram": {
       "wires": [
         {
-          "id": "307bd4da-6fae-4ebf-a9fa-d18c9bf23248",
-          "from": {
-            "terminalId": "FUENTE:F"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TERMICO:71"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 1
-        },
-        {
-          "id": "3c683c73-bc47-499e-909f-9bac46f94127",
-          "from": {
-            "terminalId": "CONTACTOR_TERMICO:72"
-          },
-          "to": {
-            "terminalId": "BOTONERAS:PILOTO_2"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 2
-        },
-        {
-          "id": "f675f23d-e136-4b5a-bead-e928184d79f3",
+          "id": "a32eae99-36db-43fa-a069-11f29d28393c",
           "from": {
             "terminalId": "FUENTE:F"
           },
@@ -718,10 +690,10 @@
           "route": {
             "sag": 130
           },
-          "layer": 3
+          "layer": 1
         },
         {
-          "id": "c9f74f45-2f31-4876-acb0-620f50e04db4",
+          "id": "77d612ec-2a59-4909-ad5e-a42b9440deb8",
           "from": {
             "terminalId": "CONTACTOR_TERMICO:96"
           },
@@ -732,10 +704,10 @@
           "route": {
             "sag": 130
           },
-          "layer": 4
+          "layer": 2
         },
         {
-          "id": "bba07cb1-68db-40b9-9ba7-ae63cc580087",
+          "id": "57862579-666f-46ef-adde-389f67f02f7d",
           "from": {
             "terminalId": "BOTONERAS:S2:2"
           },
@@ -746,15 +718,43 @@
           "route": {
             "sag": 130
           },
-          "layer": 5
+          "layer": 3
         },
         {
-          "id": "c92d426f-ecfd-4db2-8799-ad25a956b985",
+          "id": "d707adcf-3f43-4a08-bce0-f7461a62cb63",
           "from": {
             "terminalId": "BOTONERAS:S1:4"
           },
           "to": {
-            "terminalId": "CONTACTOR_TERMICO:A1"
+            "terminalId": "TEMPORIZADOR_1:A1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 4
+        },
+        {
+          "id": "41cfaeba-4bed-44a1-8d47-062efcbec8b3",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:A2"
+          },
+          "to": {
+            "terminalId": "FUENTE:N"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 5
+        },
+        {
+          "id": "2b78c66b-278d-4eeb-a5fe-0256b88167d9",
+          "from": {
+            "terminalId": "BOTONERAS:N"
+          },
+          "to": {
+            "terminalId": "FUENTE:N"
           },
           "color": "#145650",
           "route": {
@@ -763,12 +763,12 @@
           "layer": 6
         },
         {
-          "id": "700c23ff-f1ae-40ed-9571-b1dec7c8c916",
+          "id": "b7f98cda-5755-4629-a8bc-c99d81de9ae0",
           "from": {
             "terminalId": "BOTONERAS:S2:2"
           },
           "to": {
-            "terminalId": "CONTACTOR_TERMICO:13"
+            "terminalId": "TEMPORIZADOR_1:13"
           },
           "color": "#145650",
           "route": {
@@ -777,9 +777,9 @@
           "layer": 7
         },
         {
-          "id": "f7deff94-e675-4c86-90cd-b452acc77212",
+          "id": "1dde5a89-b4d9-4037-a30c-ebda02d02c2c",
           "from": {
-            "terminalId": "CONTACTOR_TERMICO:14"
+            "terminalId": "TEMPORIZADOR_1:14"
           },
           "to": {
             "terminalId": "BOTONERAS:S1:4"
@@ -791,12 +791,12 @@
           "layer": 8
         },
         {
-          "id": "2ab71c0b-7b77-4896-a12a-ce4b2c822f48",
+          "id": "ffcbc15f-8588-4b9e-96c4-5043bd5bac51",
           "from": {
             "terminalId": "BOTONERAS:S1:4"
           },
           "to": {
-            "terminalId": "BOTONERAS:S3:1"
+            "terminalId": "TEMPORIZADOR_1:55"
           },
           "color": "#145650",
           "route": {
@@ -805,12 +805,12 @@
           "layer": 9
         },
         {
-          "id": "29504c51-32d7-4bf5-813a-7ced1622c335",
+          "id": "0a178fad-49ce-4ffb-85e6-98cdcc73067f",
           "from": {
-            "terminalId": "BOTONERAS:S3:2"
+            "terminalId": "TEMPORIZADOR_1:56"
           },
           "to": {
-            "terminalId": "CONTACTOR_TRIFASICO:71"
+            "terminalId": "CONTACTOR_TERMICO:71"
           },
           "color": "#145650",
           "route": {
@@ -819,12 +819,12 @@
           "layer": 10
         },
         {
-          "id": "94e962d8-4f4f-4c77-8974-716009bf58b2",
+          "id": "d194440a-55c9-438b-8572-46968520daee",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:72"
+            "terminalId": "CONTACTOR_TERMICO:72"
           },
           "to": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:A1"
+            "terminalId": "CONTACTOR_TRIFASICO:A1"
           },
           "color": "#145650",
           "route": {
@@ -833,161 +833,7 @@
           "layer": 11
         },
         {
-          "id": "fd069d05-0954-4f0b-ae0f-263c9163ff66",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:A1"
-          },
-          "to": {
-            "terminalId": "BOTONERAS:PILOTO_1"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 12
-        },
-        {
-          "id": "1dbb185d-e141-44d9-8bdd-9dae6ecf0cea",
-          "from": {
-            "terminalId": "BOTONERAS:S1:4"
-          },
-          "to": {
-            "terminalId": "BOTONERAS:S3:3"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 13
-        },
-        {
-          "id": "3ba507a7-9efb-41fa-bf5f-ee100fa8dbe8",
-          "from": {
-            "terminalId": "BOTONERAS:S3:4"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:71"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 14
-        },
-        {
-          "id": "ff8540bc-5281-4534-a67a-03803984e5e9",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:72"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TRIFASICO:A1"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 15
-        },
-        {
-          "id": "eab40ad3-9214-41ea-8d82-636df88d1991",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:A1"
-          },
-          "to": {
-            "terminalId": "BOTONERAS:PILOTO_4"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 16
-        },
-        {
-          "id": "eabd9b6a-1b83-409d-97e5-7ea7c3583d58",
-          "from": {
-            "terminalId": "BOTONERAS:S1:4"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TRIFASICO:13"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 17
-        },
-        {
-          "id": "aefa26b8-261f-4bd7-bfd8-41035a2b3aeb",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:14"
-          },
-          "to": {
-            "terminalId": "BOTONERAS:S3:4"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 18
-        },
-        {
-          "id": "4fb7ded0-7390-46f9-8be0-6699e6c89e22",
-          "from": {
-            "terminalId": "FUENTE:F"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TERMICO:97"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 19
-        },
-        {
-          "id": "c5fd9ab7-55c2-45e9-b038-f95bc84e5cd8",
-          "from": {
-            "terminalId": "CONTACTOR_TERMICO:98"
-          },
-          "to": {
-            "terminalId": "BOTONERAS:PILOTO_3"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 20
-        },
-        {
-          "id": "21a39b71-bb0e-4909-abf2-88ee68d0aa74",
-          "from": {
-            "terminalId": "CONTACTOR_TERMICO:A2"
-          },
-          "to": {
-            "terminalId": "FUENTE:N"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 21
-        },
-        {
-          "id": "7e7942c9-ad43-4f0f-be2e-4866dc8936c9",
-          "from": {
-            "terminalId": "BOTONERAS:N"
-          },
-          "to": {
-            "terminalId": "FUENTE:N"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 22
-        },
-        {
-          "id": "c10a2446-f01a-47ca-aadd-fd94489e4a31",
+          "id": "651e7a08-ace8-4845-b182-7a892beb365f",
           "from": {
             "terminalId": "CONTACTOR_TRIFASICO:A2"
           },
@@ -998,12 +844,54 @@
           "route": {
             "sag": 130
           },
-          "layer": 23
+          "layer": 12
         },
         {
-          "id": "d57e672d-7eb5-48c3-b408-18cf913acacf",
+          "id": "6790551b-6f6d-43a4-b9d9-7077004a9a9e",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:A2"
+            "terminalId": "BOTONERAS:S1:4"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:67"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 13
+        },
+        {
+          "id": "0fd0c148-32e1-4eab-a4ae-9cc4bddcf452",
+          "from": {
+            "terminalId": "TEMPORIZADOR_1:68"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:71"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 14
+        },
+        {
+          "id": "063ef3e4-93b1-4842-ba97-37df281ac448",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:72"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:A1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 15
+        },
+        {
+          "id": "de68d5e3-284d-47d6-85ab-ae19978519c7",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:A2"
           },
           "to": {
             "terminalId": "FUENTE:N"
@@ -1012,15 +900,127 @@
           "route": {
             "sag": 130
           },
-          "layer": 24
+          "layer": 16
         },
         {
-          "id": "d70178d6-79a9-473b-9389-7dacee308f78",
+          "id": "7d4aba41-b553-48ce-8c7b-de308ab3c549",
+          "from": {
+            "terminalId": "FUENTE:F"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:81"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 17
+        },
+        {
+          "id": "e77d9659-01d1-4c84-aad6-2037e565b8cf",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:82"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:81"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 18
+        },
+        {
+          "id": "f0169910-1e25-4b15-a0f3-a7df5c2b43a4",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:82"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:PILOTO_2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 19
+        },
+        {
+          "id": "f61903ab-ff2b-413d-9d58-d86c262d1321",
+          "from": {
+            "terminalId": "FUENTE:F"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TERMICO:97"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 20
+        },
+        {
+          "id": "077e6ca0-ca33-4c10-aa51-c910bbb2f3d5",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:98"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:PILOTO_3"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 21
+        },
+        {
+          "id": "25eb14fb-88c6-4d37-b6bd-a9f73509580a",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:A1"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:PILOTO_1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 22
+        },
+        {
+          "id": "5d5e1372-dbb6-45f9-ab99-0908de5d6255",
+          "from": {
+            "terminalId": "CONTACTOR_TERMICO:A1"
+          },
+          "to": {
+            "terminalId": "BOTONERAS:PILOTO_4"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 23
+        },
+        {
+          "id": "ad37ca31-41e0-467a-a08a-f24e1229ef34",
           "from": {
             "terminalId": "FUENTE:R"
           },
           "to": {
-            "terminalId": "CONTACTOR_TERMICO:L1"
+            "terminalId": "TEMPORIZADOR_1:L1"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 24
+        },
+        {
+          "id": "b375ff83-d9a7-4165-b853-068811646708",
+          "from": {
+            "terminalId": "FUENTE:S"
+          },
+          "to": {
+            "terminalId": "TEMPORIZADOR_1:L2"
           },
           "color": "#145650",
           "route": {
@@ -1029,12 +1029,12 @@
           "layer": 25
         },
         {
-          "id": "7ce1378b-6122-4677-94ea-1a9e80bae931",
+          "id": "3382cf5d-45d9-48fd-aa8d-e5303165d6de",
           "from": {
-            "terminalId": "FUENTE:S"
+            "terminalId": "FUENTE:T"
           },
           "to": {
-            "terminalId": "CONTACTOR_TERMICO:L2"
+            "terminalId": "TEMPORIZADOR_1:L3"
           },
           "color": "#145650",
           "route": {
@@ -1043,23 +1043,9 @@
           "layer": 26
         },
         {
-          "id": "63fbc0fc-60d3-4018-81cb-7ce2f91db64a",
+          "id": "301cf94d-b118-4f86-b34e-46f089436133",
           "from": {
-            "terminalId": "FUENTE:T"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TERMICO:L3"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 27
-        },
-        {
-          "id": "c7850d61-d164-4ee3-88d1-ff63420632fb",
-          "from": {
-            "terminalId": "CONTACTOR_TERMICO:T1"
+            "terminalId": "TEMPORIZADOR_1:T1"
           },
           "to": {
             "terminalId": "BORNERA_MOTOR:U1"
@@ -1068,12 +1054,12 @@
           "route": {
             "sag": 130
           },
-          "layer": 28
+          "layer": 27
         },
         {
-          "id": "08f731bb-bcd6-4694-b1fe-60f4015bb8d2",
+          "id": "5a65560d-b624-4256-9b30-3aab3d04672c",
           "from": {
-            "terminalId": "CONTACTOR_TERMICO:T2"
+            "terminalId": "TEMPORIZADOR_1:T2"
           },
           "to": {
             "terminalId": "BORNERA_MOTOR:V1"
@@ -1082,12 +1068,12 @@
           "route": {
             "sag": 130
           },
-          "layer": 29
+          "layer": 28
         },
         {
-          "id": "7a569c27-eb6c-4a28-b10d-3d17637b6b10",
+          "id": "08868458-ea23-4a50-bd5a-29df0fc3a859",
           "from": {
-            "terminalId": "CONTACTOR_TERMICO:T3"
+            "terminalId": "TEMPORIZADOR_1:T3"
           },
           "to": {
             "terminalId": "BORNERA_MOTOR:W1"
@@ -1096,12 +1082,12 @@
           "route": {
             "sag": 130
           },
-          "layer": 30
+          "layer": 29
         },
         {
-          "id": "b5a5f8f6-6250-4dcd-b85c-5cb9dc7844af",
+          "id": "d117e914-3697-4a42-b78d-4257dfed5da9",
           "from": {
-            "terminalId": "CONTACTOR_TERMICO:L1"
+            "terminalId": "BORNERA_MOTOR:W2"
           },
           "to": {
             "terminalId": "CONTACTOR_TRIFASICO:L1"
@@ -1110,12 +1096,12 @@
           "route": {
             "sag": 130
           },
-          "layer": 31
+          "layer": 30
         },
         {
-          "id": "2e02cf45-335c-4283-ba8e-81e318e86a7f",
+          "id": "362372ab-bffe-4563-8893-5d7a617d6849",
           "from": {
-            "terminalId": "CONTACTOR_TERMICO:L2"
+            "terminalId": "BORNERA_MOTOR:U2"
           },
           "to": {
             "terminalId": "CONTACTOR_TRIFASICO:L2"
@@ -1124,12 +1110,12 @@
           "route": {
             "sag": 130
           },
-          "layer": 32
+          "layer": 31
         },
         {
-          "id": "8bf11fbd-80d1-4791-af7b-d42427b3a830",
+          "id": "feb9a042-158a-4954-b66b-85025731aef7",
           "from": {
-            "terminalId": "CONTACTOR_TERMICO:L3"
+            "terminalId": "BORNERA_MOTOR:V2"
           },
           "to": {
             "terminalId": "CONTACTOR_TRIFASICO:L3"
@@ -1138,15 +1124,29 @@
           "route": {
             "sag": 130
           },
-          "layer": 33
+          "layer": 32
         },
         {
-          "id": "2ca4b7ae-171a-4ba4-a1a4-fcb189b3d57e",
+          "id": "23d9ed20-cff5-4db4-9540-ca88ef1e6656",
           "from": {
             "terminalId": "CONTACTOR_TRIFASICO:T1"
           },
           "to": {
-            "terminalId": "BORNERA_MOTOR:W2"
+            "terminalId": "CONTACTOR_TRIFASICO:T2"
+          },
+          "color": "#145650",
+          "route": {
+            "sag": 130
+          },
+          "layer": 33
+        },
+        {
+          "id": "d80a2236-708b-4db6-84ab-845e3ae7d405",
+          "from": {
+            "terminalId": "CONTACTOR_TRIFASICO:T2"
+          },
+          "to": {
+            "terminalId": "CONTACTOR_TRIFASICO:T3"
           },
           "color": "#145650",
           "route": {
@@ -1155,12 +1155,12 @@
           "layer": 34
         },
         {
-          "id": "8932c27f-475e-4850-8434-f80a8baeaefe",
+          "id": "033d78cd-92e7-43f2-8ccc-9076af094a42",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:T2"
+            "terminalId": "TEMPORIZADOR_1:L1"
           },
           "to": {
-            "terminalId": "BORNERA_MOTOR:U2"
+            "terminalId": "CONTACTOR_TERMICO:L1"
           },
           "color": "#145650",
           "route": {
@@ -1169,12 +1169,12 @@
           "layer": 35
         },
         {
-          "id": "e9a7c33d-5814-4172-b87c-1c0e0face479",
+          "id": "91c5e1ac-2def-4b1b-9e14-c2c7b8441d60",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:T3"
+            "terminalId": "TEMPORIZADOR_1:L2"
           },
           "to": {
-            "terminalId": "BORNERA_MOTOR:V2"
+            "terminalId": "CONTACTOR_TERMICO:L2"
           },
           "color": "#145650",
           "route": {
@@ -1183,12 +1183,12 @@
           "layer": 36
         },
         {
-          "id": "624f1fef-c4d3-49c7-b094-85aae928044d",
+          "id": "a3725018-95d2-4d6b-9c98-fee095b1b0e1",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:T1"
+            "terminalId": "TEMPORIZADOR_1:L3"
           },
           "to": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:T3"
+            "terminalId": "CONTACTOR_TERMICO:L3"
           },
           "color": "#145650",
           "route": {
@@ -1197,12 +1197,12 @@
           "layer": 37
         },
         {
-          "id": "9ceaecec-b5ac-47a7-956a-2bbdc8277bb8",
+          "id": "0089741f-ef13-423a-b2a9-4c29c23f7daf",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:T2"
+            "terminalId": "CONTACTOR_TERMICO:T1"
           },
           "to": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:T2"
+            "terminalId": "BORNERA_MOTOR:W2"
           },
           "color": "#145650",
           "route": {
@@ -1211,12 +1211,12 @@
           "layer": 38
         },
         {
-          "id": "747adc35-8bc8-4f2f-b03b-81dd01aed696",
+          "id": "5c9d74a5-4eb7-4bcb-a28a-c89eaf68f172",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:T3"
+            "terminalId": "CONTACTOR_TERMICO:T2"
           },
           "to": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:T1"
+            "terminalId": "BORNERA_MOTOR:U2"
           },
           "color": "#145650",
           "route": {
@@ -1225,106 +1225,22 @@
           "layer": 39
         },
         {
-          "id": "510201bc-e9d3-4757-97af-f19dd3e5a6d2",
+          "id": "ed8db3f5-06a5-452d-a0e7-006935034593",
           "from": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:L1"
+            "terminalId": "CONTACTOR_TERMICO:T3"
           },
           "to": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:L2"
+            "terminalId": "BORNERA_MOTOR:V2"
           },
           "color": "#145650",
           "route": {
             "sag": 130
           },
           "layer": 40
-        },
-        {
-          "id": "78dc57af-5422-4246-bf58-7e6db5394417",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:L3"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:L2"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 41
-        },
-        {
-          "id": "a1c9d2b7-07ee-4a5c-98f1-be4eaa8233be",
-          "from": {
-            "terminalId": "FUENTE:TP"
-          },
-          "to": {
-            "terminalId": "BOTONERAS:TP_IZQ"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 42
-        },
-        {
-          "id": "10b31008-0e2f-4cc7-a783-3fafee04fcca",
-          "from": {
-            "terminalId": "CONTACTOR_TERMICO:TP_DER"
-          },
-          "to": {
-            "terminalId": "FUENTE:TP"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 43
-        },
-        {
-          "id": "1141a5c7-a787-45a9-a597-11db63d10543",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:TP_IZQ"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TERMICO:TP_DER"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 44
-        },
-        {
-          "id": "e2a25038-d59b-461d-a1ae-f6fd077e5bf2",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO:TP_DER"
-          },
-          "to": {
-            "terminalId": "BORNERA_MOTOR:TP"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 45
-        },
-        {
-          "id": "7488a148-a9c9-46db-addf-8f5a469d9f13",
-          "from": {
-            "terminalId": "CONTACTOR_TRIFASICO_3:TP_IZQ"
-          },
-          "to": {
-            "terminalId": "CONTACTOR_TRIFASICO:TP_DER"
-          },
-          "color": "#145650",
-          "route": {
-            "sag": 130
-          },
-          "layer": 46
         }
       ],
       "positions": {},
-      "explanation": "KM1 retiene la marcha; KM3 forma estrella y KM2 triángulo. Los NC cruzados impiden su actuación simultánea y 95–96 interrumpe el mando."
+      "explanation": "KT1 retiene la marcha con 13–14; KM2 forma estrella y KM1 triángulo. Los NC 71–72 cruzados impiden su actuación simultánea y 95–96 interrumpe el mando."
     }
   },
   "model": {
@@ -1335,6 +1251,8 @@
       "source": "Ejemplo didáctico; no corresponde a la placa del laboratorio"
     },
     "lineVolts": 380,
+    "supplyVariationPct": 0,
+    "supplyVariationEnabled": false,
     "coilOhms": 240,
     "pilotOhms": 480,
     "windingOhms": 100,
@@ -1352,10 +1270,10 @@
       "inertia": 0.18,
       "friction": 0.005
     },
-    "rotorRpm": 1053.5038353045497,
+    "rotorRpm": 1123.4176241657713,
     "motorDirection": 1,
-    "simulationSeconds": 41.47569999999551,
-    "lastMakeSeconds": 32.6680999999959,
+    "simulationSeconds": 31.801599999964285,
+    "lastMakeSeconds": 25.930699999958314,
     "resistanceMode": "model",
     "providedResistances": {}
   },
@@ -1371,6 +1289,8 @@
         "source": "Ejemplo didáctico; no corresponde a la placa del laboratorio"
       },
       "lineVolts": 380,
+      "supplyVariationPct": 0,
+      "supplyVariationEnabled": false,
       "coilOhms": 240,
       "pilotOhms": 480,
       "windingOhms": 100,
@@ -1412,14 +1332,14 @@
       "value": 0.4,
       "red": "CONTACTOR_TERMICO:95",
       "black": "CONTACTOR_TERMICO:96",
-      "at": "2026-10-27T21:26:07.336Z",
+      "at": "2026-10-30T22:34:48.730Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:07.450Z",
+      "capturedAt": "2026-10-30T22:34:48.793Z",
       "conditions": {
-        "simulationSeconds": 3.082199999999254,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1448,14 +1368,14 @@
       "value": 0.4,
       "red": "BOTONERAS:S2:1",
       "black": "BOTONERAS:S2:2",
-      "at": "2026-10-27T21:26:10.722Z",
+      "at": "2026-10-30T22:34:50.539Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:10.879Z",
+      "capturedAt": "2026-10-30T22:34:50.854Z",
       "conditions": {
-        "simulationSeconds": 5.853999999998137,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1484,14 +1404,14 @@
       "value": null,
       "red": "CONTACTOR_TRIFASICO:63",
       "black": "CONTACTOR_TRIFASICO:64",
-      "at": "2026-10-27T21:26:12.804Z",
+      "at": "2026-10-30T22:34:52.125Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:12.847Z",
+      "capturedAt": "2026-10-30T22:34:52.178Z",
       "conditions": {
-        "simulationSeconds": 7.905099999999628,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1507,7 +1427,7 @@
         "mode": "C",
         "red": "CONTACTOR_TRIFASICO:63",
         "black": "CONTACTOR_TRIFASICO:64",
-        "why": "El auxiliar NA de reserva 63–64 de KM2 está sin cablear en ambos montajes y abierto en reposo. Así evitas confundir el contacto abierto con rutas paralelas del circuito: OL no significa un fallo del instrumento.",
+        "why": "El auxiliar NA 63–64 de KM2, el contactor de estrella, queda libre en los 40 cables de este montaje y está abierto en reposo. Comprueba OL sin confundirlo con una falla del instrumento.",
         "expected": "open",
         "kind": "meter",
         "task": "Selecciona continuidad. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
@@ -1520,14 +1440,14 @@
       "value": 0.4,
       "red": "CONTACTOR_TERMICO:95",
       "black": "CONTACTOR_TERMICO:96",
-      "at": "2026-10-27T21:26:16.010Z",
+      "at": "2026-10-30T22:34:53.616Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:16.064Z",
+      "capturedAt": "2026-10-30T22:34:53.696Z",
       "conditions": {
-        "simulationSeconds": 10.73559999999776,
+        "simulationSeconds": 1.2165,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1556,14 +1476,14 @@
       "value": 24,
       "red": "FUENTE:F",
       "black": "FUENTE:N",
-      "at": "2026-10-27T21:26:19.805Z",
+      "at": "2026-10-30T22:34:55.837Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:19.866Z",
+      "capturedAt": "2026-10-30T22:34:56.119Z",
       "conditions": {
-        "simulationSeconds": 14.21029999999888,
+        "simulationSeconds": 8.061699999958277,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1589,19 +1509,19 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:20.595Z",
+      "at": "2026-10-30T22:34:56.421Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "task": {
         "id": "control-rest",
-        "title": "Mando · piloto de motor detenido",
+        "title": "Mando · reposo del montaje de dos contactores",
         "page": 6,
         "point": "6",
         "stage": "control-rest",
         "kind": "action",
-        "why": "La guía comprueba primero el circuito de mando, sin habilitar fuerza. El piloto rojo P2 debe indicar reposo.",
-        "task": "Mantén FUERZA abierta. Con el mando alimentado y sin pulsar marcha, observa P2 rojo encendido."
+        "why": "KT1, KM1 y KM2 están desactivados: los contactos NC 81–82 de KM1 y KM2 dejan pasar la fase al piloto rojo P2. En reposo solo P2 está encendido.",
+        "task": "Alimenta solo el mando, con FUERZA en OFF. Comprueba que las bobinas no tienen energía y que solo la lámpara roja P2 está encendida."
       }
     },
     {
@@ -1609,16 +1529,16 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:20.929Z",
+      "at": "2026-10-30T22:34:56.754Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 2,
+        "eventId": 1,
         "kind": "press",
         "control": "S1",
-        "seconds": 15.128199999997392,
+        "seconds": 8.766499999970199,
         "from": "reposo",
         "to": "estrella"
       },
@@ -1629,8 +1549,8 @@
         "point": "7",
         "stage": "control-star",
         "kind": "action",
-        "why": "En el esquema del profesor, SB2 activa KM1 y KM3. Se apaga el rojo y se enciende el verde de estrella; con FUERZA abierta el motor aún no gira.",
-        "task": "Sin cerrar FUERZA, pulsa y suelta S1 (SB2 del profesor). Comprueba las bobinas y el piloto de estrella."
+        "why": "S1 alimenta y retiene KT1, el contactor principal. El contacto temporizado KT1 55–56 da la orden a KM2, que conecta estrella; P1 indica esa orden. Con FUERZA en OFF el motor todavía no gira.",
+        "task": "Con FUERZA en OFF, pulsa y suelta S1. Comprueba que KT1 y KM2 reciben energía, que KM1 no, que P1 (verde) se enciende y que P2 (rojo) se apaga."
       }
     },
     {
@@ -1638,16 +1558,16 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:21.306Z",
+      "at": "2026-10-30T22:34:59.086Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 3,
-        "kind": "press",
-        "control": "S3",
-        "seconds": 15.489699999997393,
+        "eventId": 2,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 11.207099999964237,
         "from": "estrella",
         "to": "triángulo"
       },
@@ -1658,8 +1578,8 @@
         "point": "8",
         "stage": "control-delta",
         "kind": "action",
-        "why": "En la guía, KM1 se mantiene, KM3 cae y entra KM2. La señal pasa del verde de estrella al de triángulo, todavía sin fuerza.",
-        "task": "En el manual pulsa S3 (SB3). En la variante opcional de Matías espera el temporizador. Mantén FUERZA abierta."
+        "why": "KT1 se mantiene y el retardo KT1 abre estrella KM2 y ordena triángulo KM1. P1 se apaga y P4 se enciende; FUERZA sigue en OFF.",
+        "task": "Espera a que el temporizador cambie solo (o bájalo a 2 segundos en «Controles»). Comprueba que KT1 y KM1 reciben energía, que KM2 no y que P4 (verde de triángulo) se enciende."
       }
     },
     {
@@ -1667,15 +1587,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:23.196Z",
+      "at": "2026-10-30T22:35:02.285Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 9,
+        "eventId": 8,
         "kind": "test",
-        "seconds": 17.455699999997393,
+        "seconds": 14.366699999958279,
         "from": "triángulo",
         "to": "disparo"
       },
@@ -1686,8 +1606,8 @@
         "point": "9",
         "stage": "control-trip",
         "kind": "action",
-        "why": "El profesor comprueba el disparo antes de montar fuerza: caen las bobinas, se apagan los verdes y se encienden amarillo y rojo.",
-        "task": "Pulsa TEST del térmico y verifica el corte de las bobinas y los dos pilotos de aviso."
+        "why": "TEST abre 95–96 y desactiva las bobinas. El contacto 97–98 enciende P3 amarillo y, con KM1 y KM2 en reposo, vuelve a encenderse el rojo P2: la guía pide las dos lámparas.",
+        "task": "Pulsa TEST: deben caer KT1, KM1 y KM2, apagarse P1/P4 y encenderse P3 amarillo y P2 rojo."
       }
     },
     {
@@ -1695,15 +1615,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:23.563Z",
+      "at": "2026-10-30T22:35:02.536Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 10,
+        "eventId": 9,
         "kind": "thermalReset",
-        "seconds": 17.80639999999851,
+        "seconds": 14.658399999976158,
         "from": "disparo",
         "to": "reposo"
       },
@@ -1714,8 +1634,8 @@
         "point": "10",
         "stage": "control-reset",
         "kind": "action",
-        "why": "RESET apaga el amarillo y mantiene el rojo. Rearmar no es una nueva orden de marcha.",
-        "task": "Rearma el térmico. Comprueba que solo el piloto rojo queda encendido y las bobinas siguen desactivadas."
+        "why": "RESET rearma el térmico y apaga P3. No da marcha: queda encendido solo el rojo P2 de reposo.",
+        "task": "Pulsa RESET en los controles. Comprueba que las bobinas no tienen energía y que solo queda encendida la lámpara roja P2."
       }
     },
     {
@@ -1724,15 +1644,15 @@
       "text": "0,4 Ω",
       "value": 0.4,
       "red": "FUENTE:R",
-      "black": "CONTACTOR_TERMICO:L1",
-      "at": "2026-10-27T21:26:27.984Z",
+      "black": "TEMPORIZADOR_1:L1",
+      "at": "2026-10-30T22:35:05.222Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "Ω",
-      "capturedAt": "2026-10-27T21:26:28.032Z",
+      "capturedAt": "2026-10-30T22:35:05.519Z",
       "conditions": {
-        "simulationSeconds": 21.870099999997773,
+        "simulationSeconds": 15.261899999976158,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1747,11 +1667,11 @@
         "stage": "cold",
         "mode": "C",
         "red": "FUENTE:R",
-        "black": "CONTACTOR_TERMICO:L1",
-        "why": "Con las alimentaciones desconectadas, comprueba el cable desde R a la entrada L1 del contactor principal. No confundas este cable con el polo interno L1–T1.",
+        "black": "TEMPORIZADOR_1:L1",
+        "why": "El cable de entrada R llega a L1 de KT1, el contactor principal. Comprueba ese conductor sin confundirlo con el polo interno L1–T1.",
         "expected": "low",
         "kind": "meter",
-        "task": "Selecciona continuidad. Coloca las puntas en los dos bornes indicados y escribe lo que lees."
+        "task": "Desenchufa y pon FUERZA y los dos CONTROL en OFF. Mide continuidad entre R y KT1:L1."
       }
     },
     {
@@ -1761,14 +1681,14 @@
       "value": 380,
       "red": "FUENTE:R",
       "black": "FUENTE:S",
-      "at": "2026-10-27T21:26:30.412Z",
+      "at": "2026-10-30T22:35:06.271Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:30.454Z",
+      "capturedAt": "2026-10-30T22:35:06.303Z",
       "conditions": {
-        "simulationSeconds": 23.680699999997394,
+        "simulationSeconds": 17.882499999970207,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1797,14 +1717,14 @@
       "value": 380,
       "red": "FUENTE:R",
       "black": "FUENTE:T",
-      "at": "2026-10-27T21:26:30.762Z",
+      "at": "2026-10-30T22:35:06.627Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:30.847Z",
+      "capturedAt": "2026-10-30T22:35:06.769Z",
       "conditions": {
-        "simulationSeconds": 24.04189999999851,
+        "simulationSeconds": 18.240999999970214,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1833,14 +1753,14 @@
       "value": 380,
       "red": "FUENTE:S",
       "black": "FUENTE:T",
-      "at": "2026-10-27T21:26:31.116Z",
+      "at": "2026-10-30T22:35:07.111Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:31.230Z",
+      "capturedAt": "2026-10-30T22:35:07.272Z",
       "conditions": {
-        "simulationSeconds": 24.39789999999851,
+        "simulationSeconds": 18.724799999952335,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1867,7 +1787,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:32.378Z",
+      "at": "2026-10-30T22:35:07.921Z",
       "rpm": 0,
       "loadTorqueNm": 4,
       "motorMode": "induction",
@@ -1878,8 +1798,8 @@
         "point": "13",
         "stage": "powered-rest",
         "kind": "action",
-        "why": "Después de medir la alimentación trifásica, el profesor vuelve a habilitar el mando y verifica el piloto rojo antes de arrancar.",
-        "task": "Mantén FUERZA cerrada, vuelve a cerrar ambos CONTROL y verifica P2 rojo y el motor detenido."
+        "why": "Con las alimentaciones habilitadas, el montaje permanece detenido hasta dar marcha con S1. Solo está encendido el piloto rojo P2 (motor detenido).",
+        "task": "Pon FUERZA y ambos CONTROL en ON, sin pulsar marcha. Comprueba que el motor sigue detenido, que las bobinas no tienen energía y que solo P2 rojo está encendido."
       }
     },
     {
@@ -1887,16 +1807,16 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:32.747Z",
-      "rpm": 44.01577252310318,
+      "at": "2026-10-30T22:35:08.278Z",
+      "rpm": 14.995251306074493,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 12,
+        "eventId": 10,
         "kind": "press",
         "control": "S1",
-        "seconds": 25.798699999997385,
+        "seconds": 19.677299999952346,
         "from": "reposo",
         "to": "estrella"
       },
@@ -1907,25 +1827,25 @@
         "point": "14",
         "stage": "star",
         "kind": "action",
-        "why": "Reconoce primero qué contactores actúan. La lectura siguiente solo es válida cuando el motor está en estrella.",
-        "task": "Conecta la corriente virtual, cierra FUERZA y los dos CONTROL. Pulsa y suelta S1 (SB2 en la guía)."
+        "why": "En este montaje S1 inicia KT1 y KM2 (estrella). KM1 permanece desactivado hasta el cambio temporizado.",
+        "task": "Conecta la corriente y pon FUERZA y los dos CONTROL en ON. Pulsa y suelta S1; comprueba la retención en estrella."
       }
     },
     {
       "id": "star-U",
-      "observed": "219,2",
-      "text": "219,2 V",
-      "value": 219.2,
+      "observed": "218,3",
+      "text": "218,3 V",
+      "value": 218.3,
       "red": "BORNERA_MOTOR:U1",
       "black": "BORNERA_MOTOR:U2",
-      "at": "2026-10-27T21:26:35.919Z",
-      "rpm": 1473.0219103185902,
+      "at": "2026-10-30T22:35:09.955Z",
+      "rpm": 713.5769335662383,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:36.034Z",
+      "capturedAt": "2026-10-30T22:35:09.987Z",
       "conditions": {
-        "simulationSeconds": 28.651799999995156,
+        "simulationSeconds": 21.250399999946374,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1949,19 +1869,19 @@
     },
     {
       "id": "star-V",
-      "observed": "219,2",
-      "text": "219,2 V",
-      "value": 219.2,
+      "observed": "218,3",
+      "text": "218,3 V",
+      "value": 218.3,
       "red": "BORNERA_MOTOR:V1",
       "black": "BORNERA_MOTOR:V2",
-      "at": "2026-10-27T21:26:36.411Z",
-      "rpm": 1473.4501033814563,
+      "at": "2026-10-30T22:35:10.193Z",
+      "rpm": 797.2605745309775,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:36.463Z",
+      "capturedAt": "2026-10-30T22:35:10.242Z",
       "conditions": {
-        "simulationSeconds": 29.12989999999665,
+        "simulationSeconds": 21.368699999958295,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -1990,14 +1910,14 @@
       "value": 219.2,
       "red": "BORNERA_MOTOR:W1",
       "black": "BORNERA_MOTOR:W2",
-      "at": "2026-10-27T21:26:38.964Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:11.582Z",
+      "rpm": 1473.423723217922,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:39.161Z",
+      "capturedAt": "2026-10-30T22:35:11.753Z",
       "conditions": {
-        "simulationSeconds": 31.472099999995912,
+        "simulationSeconds": 22.881299999952333,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2025,14 +1945,14 @@
       "text": "1,702 A",
       "value": 1.702,
       "phase": "R",
-      "at": "2026-10-27T21:26:39.318Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:11.952Z",
+      "rpm": 1473.4532962703242,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:39.379Z",
+      "capturedAt": "2026-10-30T22:35:11.960Z",
       "conditions": {
-        "simulationSeconds": 31.82649999999442,
+        "simulationSeconds": 23.25059999996426,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2058,14 +1978,14 @@
       "text": "1,702 A",
       "value": 1.702,
       "phase": "S",
-      "at": "2026-10-27T21:26:39.646Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:12.071Z",
+      "rpm": 1473.4538713580312,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:39.730Z",
+      "capturedAt": "2026-10-30T22:35:12.102Z",
       "conditions": {
-        "simulationSeconds": 32.13549999999442,
+        "simulationSeconds": 23.369599999964258,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2091,14 +2011,14 @@
       "text": "1,702 A",
       "value": 1.702,
       "phase": "T",
-      "at": "2026-10-27T21:26:39.880Z",
-      "rpm": 1473.4541367138795,
+      "at": "2026-10-30T22:35:12.205Z",
+      "rpm": 1473.454048547234,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:39.901Z",
+      "capturedAt": "2026-10-30T22:35:12.253Z",
       "conditions": {
-        "simulationSeconds": 32.38929999999517,
+        "simulationSeconds": 23.482599999964258,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2123,16 +2043,16 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:40.296Z",
-      "rpm": 1490.9862322083643,
+      "at": "2026-10-30T22:35:14.691Z",
+      "rpm": 1485.6278393059604,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 13,
-        "kind": "press",
-        "control": "S3",
-        "seconds": 32.58969999999553,
+        "eventId": 11,
+        "kind": "timer",
+        "control": "TEMPORIZADOR_1",
+        "seconds": 25.810699999958313,
         "from": "estrella",
         "to": "triángulo"
       },
@@ -2143,8 +2063,8 @@
         "point": "17",
         "stage": "delta",
         "kind": "action",
-        "why": "La guía manual mantiene KM1, desactiva KM3 y activa KM2. En Matías, KT1 permanece y el temporizador cambia de KM1 a KM2.",
-        "task": "En el montaje manual pulsa y suelta S3 (SB3). En Matías, reduce el retardo del temporizador y espera el cambio automático."
+        "why": "El retardo KT1 mantiene KT1, desactiva KM2 (estrella) y activa KM1 (triángulo).",
+        "task": "Espera a que el temporizador cambie solo de estrella a triángulo (o bájalo a 2 segundos en «Controles»). Comprueba que estrella queda sin energía y triángulo con energía."
       }
     },
     {
@@ -2154,14 +2074,14 @@
       "value": 379.7,
       "red": "BORNERA_MOTOR:U1",
       "black": "BORNERA_MOTOR:U2",
-      "at": "2026-10-27T21:26:43.136Z",
+      "at": "2026-10-30T22:35:16.165Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:43.220Z",
+      "capturedAt": "2026-10-30T22:35:16.254Z",
       "conditions": {
-        "simulationSeconds": 35.00929999999702,
+        "simulationSeconds": 27.449099999964268,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2190,14 +2110,14 @@
       "value": 379.7,
       "red": "BORNERA_MOTOR:V1",
       "black": "BORNERA_MOTOR:V2",
-      "at": "2026-10-27T21:26:43.550Z",
+      "at": "2026-10-30T22:35:16.662Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:43.695Z",
+      "capturedAt": "2026-10-30T22:35:16.786Z",
       "conditions": {
-        "simulationSeconds": 35.398499999996275,
+        "simulationSeconds": 27.93029999995235,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2226,14 +2146,14 @@
       "value": 379.7,
       "red": "BORNERA_MOTOR:W1",
       "black": "BORNERA_MOTOR:W2",
-      "at": "2026-10-27T21:26:46.417Z",
+      "at": "2026-10-30T22:35:18.133Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "V",
-      "capturedAt": "2026-10-27T21:26:46.597Z",
+      "capturedAt": "2026-10-30T22:35:18.204Z",
       "conditions": {
-        "simulationSeconds": 38.127699999995535,
+        "simulationSeconds": 29.417399999946394,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2261,14 +2181,14 @@
       "text": "3,704 A",
       "value": 3.704,
       "phase": "R",
-      "at": "2026-10-27T21:26:46.918Z",
+      "at": "2026-10-30T22:35:18.350Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:46.941Z",
+      "capturedAt": "2026-10-30T22:35:18.356Z",
       "conditions": {
-        "simulationSeconds": 38.628399999994784,
+        "simulationSeconds": 29.648599999964276,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2294,14 +2214,14 @@
       "text": "3,704 A",
       "value": 3.704,
       "phase": "S",
-      "at": "2026-10-27T21:26:47.096Z",
+      "at": "2026-10-30T22:35:18.472Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:47.146Z",
+      "capturedAt": "2026-10-30T22:35:18.503Z",
       "conditions": {
-        "simulationSeconds": 38.758199999995526,
+        "simulationSeconds": 29.770299999952353,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2327,14 +2247,14 @@
       "text": "3,704 A",
       "value": 3.704,
       "phase": "T",
-      "at": "2026-10-27T21:26:47.294Z",
+      "at": "2026-10-30T22:35:18.604Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "displayUnit": "A",
-      "capturedAt": "2026-10-27T21:26:47.347Z",
+      "capturedAt": "2026-10-30T22:35:18.656Z",
       "conditions": {
-        "simulationSeconds": 38.98899999999627,
+        "simulationSeconds": 29.881899999946395,
         "lineVolts": 380,
         "frequencyHz": 50,
         "relayAmps": 6,
@@ -2359,7 +2279,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:47.591Z",
+      "at": "2026-10-30T22:35:18.802Z",
       "rpm": 1491.437127142557,
       "loadTorqueNm": 4,
       "motorMode": "induction",
@@ -2371,7 +2291,7 @@
         "stage": "delta",
         "kind": "compare",
         "why": "Usa tus tablas para explicar cómo cambia la tensión de cada bobina y la corriente de entrada. El motor de inducción cambia su corriente con velocidad, carga y conexión. Registra en qué condición hiciste cada medición.",
-        "task": "Explica la relación VY ≈ VL/√3 y VΔ ≈ VL. Calcula IΔ/IY con tus datos. La relación 3 solo corresponde a la misma impedancia y tensión de red; no es universal entre dos estados de marcha."
+        "task": "Mira tus tablas: en estrella cada bobina recibe unos 220 V y en triángulo unos 380 V. Anota cuántas veces mayor es la tensión (VΔ / VY) y cuántas veces mayor es la corriente (IΔ / IY). En términos técnicos: VY ≈ VL/√3 y VΔ ≈ VL. La relación 3 solo corresponde a la misma impedancia y tensión de red; no es universal entre dos estados de marcha."
       }
     },
     {
@@ -2379,15 +2299,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:48.129Z",
-      "rpm": 1481.244778827855,
+      "at": "2026-10-30T22:35:19.119Z",
+      "rpm": 1479.5721334082434,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 14,
+        "eventId": 12,
         "kind": "test",
-        "seconds": 39.63239999999476,
+        "seconds": 30.28269999995832,
         "from": "triángulo",
         "to": "disparo"
       },
@@ -2398,8 +2318,8 @@
         "point": "21",
         "stage": "trip",
         "kind": "action",
-        "why": "TEST abre 95–96, corta el mando y debe detener el motor. El contacto 97–98 señaliza el disparo.",
-        "task": "Activa TEST del térmico y observa la parada y el aviso de sobrecarga."
+        "why": "TEST abre 95–96 y corta el mando. P3 señaliza el disparo mediante 97–98 y P2 rojo indica motor detenido.",
+        "task": "Desde triángulo, pulsa TEST y comprueba la parada y que se encienden P3 amarillo y P2 rojo."
       }
     },
     {
@@ -2407,15 +2327,15 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:48.463Z",
-      "rpm": 1390.6733572066055,
+      "at": "2026-10-30T22:35:19.535Z",
+      "rpm": 1389.0665420352964,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "action": {
         "version": 1,
-        "eventId": 15,
+        "eventId": 13,
         "kind": "thermalReset",
-        "seconds": 40.03759999999588,
+        "seconds": 30.60099999994044,
         "from": "disparo",
         "to": "reposo"
       },
@@ -2435,8 +2355,8 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:49.379Z",
-      "rpm": 1152.6560332083243,
+      "at": "2026-10-30T22:35:20.200Z",
+      "rpm": 1211.7013240356446,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "task": {
@@ -2447,7 +2367,7 @@
         "stage": "off",
         "kind": "action",
         "why": "Guarda los resultados para revisión docente y deja el banco sin alimentación. La revisión del profesor se registra por separado en el cuaderno de entrega.",
-        "task": "Abre FUERZA y ambos CONTROL y desconecta el enchufe virtual. Descarga tus resultados en la pestaña Resultados."
+        "task": "Pon FUERZA y ambos CONTROL en OFF y desconecta el enchufe virtual. Descarga tus resultados en la pestaña Resultados."
       }
     },
     {
@@ -2455,8 +2375,8 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-27T21:26:49.567Z",
-      "rpm": 1113.827316882612,
+      "at": "2026-10-30T22:35:20.335Z",
+      "rpm": 1181.8971307650684,
       "loadTorqueNm": 4,
       "motorMode": "induction",
       "task": {

@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "desktop: entrada guiada, ventana nativa, minimizar/cerrar/reabrir, emergencia con ventana minimizada, práctica automática, postura preparada antes de mover y programa editable. Arrastre, tamaño, maximizar/restaurar y persistencia de geometría comprobados.",
+    "mobile: entrada guiada, ventana nativa, minimizar/cerrar/reabrir, emergencia con ventana minimizada, práctica automática, postura preparada antes de mover y programa editable. Se conservan visibles el robot y el dock."
+  ],
+  "errors": []
+}

@@ -1,0 +1,7 @@
+{
+  "errors": [],
+  "checks": [
+    "escritorio: buscar, agregar, 3D, etiquetas, cablear filas y rieles, guardar y recargar sin desbordamiento",
+    "movil: buscar, agregar, 3D, etiquetas, cablear filas y rieles, guardar y recargar sin desbordamiento"
+  ]
+}

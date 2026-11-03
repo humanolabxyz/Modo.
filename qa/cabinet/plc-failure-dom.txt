@@ -1,0 +1,45 @@
+Tableros de control
+Nombre del proyecto
+Inicio
+Marcha y retención
+Proyecto
+Guardado en este navegador
+Velocidad de simulación
+×0.2
+×0.5
+×1
+×2
+×5
+Simular proyecto
+TU ESPACIO DE TRABAJO
+Tableros de control
+TABLEROS DE CONTROL
+¿Qué quieres construir?
+
+Construye un sistema libre o aprende a montar un tablero dentro de un gabinete.
+
+Armar un tablero en gabinete
+Crea el gabinete, monta rieles y equipos y cablea una bomba paso a paso.
+Usar una plantilla
+Explora un circuito listo para modificar.
+Construir un sistema libre
+Coloca gabinetes, rieles, canaletas y equipos. También puedes crear sistemas sin gabinete.
+Para construir libremente
+
+1. Crear gabinete → 2. Rieles y canaletas → 3. Equipos → 4. Cableado y prueba
+
+Entra en «Construir un sistema libre» → Gabinetes, rieles y canaletas. La opción guiada conserva la práctica de la bomba.
+modo. · MONTAJE DE EQUIPOS · MODELOS DIDÁCTICOS
+Tu montaje empieza con una pieza
+Mando y protecciones · Automatización · Medición y energía
+También puedes añadir uno de los tres ejemplos desde Montajes y archivos.
+77%
+Seleccionar
+Mover vista
+Conectar
+Deshacer
+Rehacer
+Equipos
+Gabinete
+Más
+Equipo y conexiones

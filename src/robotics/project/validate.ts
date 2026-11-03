@@ -74,10 +74,31 @@ function build(data: Record<string, unknown>, options: ParseOptions): RobotProje
       }
       part.props = props;
     }
+    if (definitionId === 'educational-conveyor') {
+      for (const key of ['jammed', 'sensorFault']) if (part.props?.[key] !== undefined && typeof part.props[key] !== 'boolean') fail(`Cinta: ${key} debe ser booleano.`);
+      const speed = part.props?.speedMps;
+      if (speed !== undefined && (typeof speed !== 'number' || speed < .02 || speed > .12)) fail('Cinta: velocidad fuera de 0,02–0,12 m/s.');
+    }
     return part;
   });
   unique(parts.map(p => p.instanceId), 'Piezas');
   const ids = new Set(parts.map(p => p.instanceId));
+  let armProgram: RobotProject['armProgram'];
+  if (data.armProgram !== undefined) {
+    if (!isObject(data.armProgram)) fail('Programa de brazo inválido.');
+    const program = data.armProgram as Record<string, unknown>;
+    const armId = text(program.armId, 'Brazo del programa', 80);
+    if (!parts.some(p => p.instanceId === armId && p.definitionId === 'educational-arm-e6')) fail('El programa no corresponde a un brazo del proyecto.');
+    const points = list(program.points, 'Puntos del brazo', 40).map(raw => {
+      if (!isObject(raw) || (raw.kind !== 'MovJ' && raw.kind !== 'MovL') || typeof raw.gripperOpen !== 'boolean') return fail('Punto del brazo inválido.');
+      const angles = list(raw.angles, 'Ángulos del punto', 6).map(v => num(v, 'Ángulo', 360));
+      if (angles.length !== 6) fail('El punto necesita seis ángulos.');
+      const expectedHeld = raw.expectedHeld === undefined ? undefined : text(raw.expectedHeld, 'Pieza prevista', 80);
+      if (expectedHeld && !parts.some(p => p.instanceId === expectedHeld && p.definitionId === 'arm-practice-block')) fail('El punto hace referencia a una pieza inexistente.');
+      return {name: text(raw.name, 'Nombre del punto', 60), angles, gripperOpen: raw.gripperOpen, kind: raw.kind as 'MovJ' | 'MovL', ...(expectedHeld ? {expectedHeld} : {})};
+    });
+    armProgram = {armId, points};
+  }
   const mustExist = (id: string, what: string) => { if (!ids.has(id)) fail(`${what}: la pieza «${id}» no existe en el proyecto.`); };
   const defOf = new Map(parts.map(x => [x.instanceId, x.definitionId]));
   const checkAnchor = (r: {instanceId: string; anchorId: string}, what: string) => { const d = options.catalog?.get(defOf.get(r.instanceId) ?? ''); if (d && !d.anchors.has(r.anchorId)) fail(`${what}: el anclaje «${r.anchorId}» no existe en esa pieza.`); };
@@ -140,7 +161,7 @@ function build(data: Record<string, unknown>, options: ParseOptions): RobotProje
     if (raw.shape !== 'box' && raw.shape !== 'cylinder') fail(`Obstáculo ${i + 1}: forma desconocida.`);
     const size = vec3(raw.size, `Obstáculo ${i + 1}.tamaño`);
     if (size.some(s => s <= 0)) fail(`Obstáculo ${i + 1}: el tamaño debe ser positivo.`);
-    return {id: text(raw.id, `Obstáculo ${i + 1}.id`, 80), shape: raw.shape as Obstacle['shape'], transform: transform(raw.transform, `Obstáculo ${i + 1}`), size};
+    return {id: text(raw.id, `Obstáculo ${i + 1}.id`, 80), shape: raw.shape as Obstacle['shape'], transform: transform(raw.transform, `Obstáculo ${i + 1}`), size, ...(raw.movable === true ? {movable: true, massKg: typeof raw.massKg === 'number' && raw.massKg > 0 && raw.massKg <= 5 ? raw.massKg : 0.05} : {})};
   });
   unique(obstacles.map(o => o.id), 'Obstáculos');
   const workspace = isObject(data.workspace) ? data.workspace : {};
@@ -152,8 +173,21 @@ function build(data: Record<string, unknown>, options: ParseOptions): RobotProje
     scene: {obstacles, robotStart: transform(scene.robotStart, 'Inicio del robot'), physics: {gravity: num(scene.physics.gravity, 'Gravedad', 100), friction: num(scene.physics.friction, 'Fricción', 10)}},
     workspace: {},
   };
+  if (scene.lineTrack !== undefined) {
+    const track = scene.lineTrack;
+    if (!isObject(track) || typeof track.closed !== 'boolean') return fail('Pista: formato inválido.');
+    const points = list(track.points, 'Pista.puntos', 120).map((v, i) => vec3(v, `Pista.punto ${i + 1}`));
+    const width = num(track.width, 'Pista.ancho', 0.15);
+    if (points.length < 2 || width < 0.01 || points.some(v => Math.abs(v[0]) > 1.9 || Math.abs(v[2]) > 1.9 || Math.abs(v[1]) > 0.001)) fail('Pista: puntos fuera del suelo o ancho inválido.');
+    out.scene.lineTrack = {name: text(track.name, 'Pista.nombre', 80), points, width, closed: track.closed};
+  }
   if (workspace.mode === 'build' || workspace.mode === 'simulate') out.workspace.mode = workspace.mode;
+  if (typeof workspace.assemblyTemplate === 'string') out.workspace.assemblyTemplate = text(workspace.assemblyTemplate, 'Guía de armado', 80);
+  if (typeof workspace.wiringGuide === 'string') out.workspace.wiringGuide = text(workspace.wiringGuide, 'Guía de cableado', 80);
+  if (typeof workspace.programGuide === 'string') out.workspace.programGuide = text(workspace.programGuide, 'Guía de programación', 80);
+  if (typeof workspace.welcomeDismissed === 'boolean') out.workspace.welcomeDismissed = workspace.welcomeDismissed;
   if (isObject(workspace.camera)) out.workspace.camera = {position: vec3(workspace.camera.position, 'Cámara.posición'), target: vec3(workspace.camera.target, 'Cámara.objetivo')};
+  if (armProgram) out.armProgram = armProgram;
   return out;
 }
 

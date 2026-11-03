@@ -1,0 +1,11 @@
+{
+  "base": "http://127.0.0.1:4410",
+  "checks": [
+    "Enchufe e interruptores FUERZA/CONTROL suenan: enchufe · interruptor:FUERZA · interruptor:CONTROL1 · interruptor:CONTROL2",
+    "S1: pulsador, cierre de KT1 y KM2 y pulsador al soltar: pulsador-abajo:S1 · contactor-cierra:CONTACTOR_TRIFASICO · contactor-cierra:TEMPORIZADOR_1 · motor:arranca · pulsador-arriba:S1",
+    "Cambio a triángulo: temporizador, KM2 abre y KM1 cierra: temporizado:TEMPORIZADOR_1 · contactor-abre:CONTACTOR_TRIFASICO · contactor-cierra:CONTACTOR_TERMICO",
+    "TEST: chasquido del térmico y caída de los contactores: termico-dispara · contactor-abre:TEMPORIZADOR_1 · contactor-abre:CONTACTOR_TERMICO",
+    "El botón de sonido silencia todo y se recuerda"
+  ],
+  "errors": []
+}

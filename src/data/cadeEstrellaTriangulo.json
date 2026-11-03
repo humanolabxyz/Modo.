@@ -1,6 +1,6 @@
 {
  "name": "CAMBIO DELTA, ESTRELLA",
- "source": "Transcripción de una fotografía de CADe_SIMU · «CAMBIO DELTA, ESTRELLA.cad»",
+ "source": "Transcripción de una fotografía de CADe_SIMU · «CAMBIO DELTA, ESTRELLA.cad» · salidas del contactor de triángulo corregidas según la figura Nº2 de la guía (2→W2, 4→U2, 6→V2)",
  "origin": "photo",
  "frame": {
   "left": 30,
@@ -815,7 +815,7 @@
    "x": 117,
    "y": 129,
    "x2": 117,
-   "y2": 201,
+   "y2": 213,
    "color": "#2f343a"
   },
   {
@@ -837,7 +837,7 @@
    "x": 135,
    "y": 129,
    "x2": 135,
-   "y2": 213,
+   "y2": 201,
    "color": "#2f343a"
   },
   {
@@ -879,9 +879,9 @@
    "reference": "",
    "labels": [],
    "x": 117,
-   "y": 201,
+   "y": 213,
    "x2": 117,
-   "y2": 201
+   "y2": 213
   },
   {
    "id": 49,
@@ -899,9 +899,9 @@
    "reference": "",
    "labels": [],
    "x": 135,
-   "y": 213,
+   "y": 201,
    "x2": 135,
-   "y2": 213
+   "y2": 201
   },
   {
    "id": 51,
@@ -1217,7 +1217,7 @@
    "reference": "KM2",
    "labels": [
     "13",
-    "12"
+    "14"
    ],
    "x": 391,
    "y": 171,
@@ -1230,7 +1230,7 @@
      "y": 171
     },
     {
-     "terminal": "12",
+     "terminal": "14",
      "x": 391,
      "y": 189
     }

@@ -1,0 +1,10 @@
+{
+  "base": "http://127.0.0.1:4410",
+  "checks": [
+    "Un cable que se conecta suena: cable-conecta",
+    "Motor bien conectado: arranca sin sonido áspero: pulsador-abajo:S1 · contactor-cierra:CONTACTOR_TRIFASICO · contactor-cierra:TEMPORIZADOR_1 · motor:arranca · pulsador-arriba:S1",
+    "Al parar el motor se apaga su sonido: termico-dispara · contactor-abre:TEMPORIZADOR_1 · contactor-abre:CONTACTOR_TERMICO · motor:para",
+    "Motor con una fase abierta: suena áspero: pulsador-abajo:S1 · contactor-cierra:CONTACTOR_TRIFASICO · contactor-cierra:TEMPORIZADOR_1 · motor:falla · pulsador-arriba:S1"
+  ],
+  "errors": []
+}

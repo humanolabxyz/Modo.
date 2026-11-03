@@ -1,0 +1,24 @@
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const base=(process.env.PANELLAB_URL||'http://127.0.0.1:4326').replace(/\/$/,''),out='qa/robotics-models';
+(async()=>{fs.mkdirSync(out,{recursive:true});const b=await chromium.launch({args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});const report={errors:[],checks:[]};
+try{for(const [name,w,h] of [['escritorio',1440,900],['movil',390,844]]){
+ const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:w<600,isMobile:w<600,serviceWorkers:'block',reducedMotion:'reduce'}),p=await ctx.newPage();p.on('pageerror',e=>report.errors.push(e.message));
+ await p.goto(base+'/robotica/?debug=1');await p.locator('.rb-app[data-ready=true]').waitFor();await p.waitForFunction(()=>!!window.__modoRobotics?.partIds);
+ await p.locator('.rb-dock button[aria-label="Piezas"]').click();await p.locator('input[aria-label="Buscar pieza"]').fill('protoboard');
+ await p.getByRole('button',{name:'Agregar Protoboard 400 puntos',exact:true}).click();await p.locator('button[aria-label="Cerrar Piezas"]').click();await p.keyboard.press('Escape');await p.locator('.rb-dock button[aria-label="Encuadrar"]').click();await p.waitForTimeout(800);
+ const id=await p.evaluate(()=>window.__modoRobotics.partIds()[0]);assert.ok(id);await p.screenshot({path:out+'/protoboard-'+name+'.png'});
+ await p.locator('.rb-dock button[aria-label="Cable"]').click();
+ const point=pin=>p.evaluate(({id,pin})=>window.__modoRobotics.pinScreen(id,pin),{id,pin});
+ const click=async pin=>{const q=await point(pin);assert.ok(q);await p.mouse.click(q.x,q.y);};
+ const a=await point('A1');await p.mouse.move(a.x,a.y);await p.locator('.rb-pin-tip').waitFor();assert.match(await p.locator('.rb-pin-tip').textContent(),/A1/);
+ await click('A1');await click('F1');await p.waitForTimeout(200);assert.equal(await p.evaluate(()=>window.__modoRobotics.wireCount()),1);
+ await click('L+1');await click('R+25');await p.waitForTimeout(200);assert.equal(await p.evaluate(()=>window.__modoRobotics.wireCount()),2);
+ await p.screenshot({path:out+'/protoboard-cableada-'+name+'.png'});assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ await p.waitForFunction(()=>/Guardado/.test(document.querySelector('.rb-name small')?.textContent||''));
+ const saved=await p.evaluate(()=>{const l=JSON.parse(localStorage.getItem('modo-robotica-v1'));return l.projects.find(x=>x.id===l.active);});
+ assert.equal(saved.parts[0].definitionId,'breadboard-400');assert.equal(saved.connections.length,2);
+ assert.deepEqual(saved.connections.map(c=>[c.a.pinId,c.b.pinId]),[['A1','F1'],['L+1','R+25']]);
+ await p.reload();await p.locator('.rb-app[data-ready=true]').waitFor();await p.waitForFunction(()=>window.__modoRobotics?.wireCount?.()===2);
+ report.checks.push(name+': buscar, agregar, 3D, etiquetas, cablear filas y rieles, guardar y recargar sin desbordamiento');console.log('PASS',report.checks.at(-1));await ctx.close();
+}assert.deepEqual(report.errors,[]);}finally{await b.close();fs.writeFileSync(out+'/breadboard-ui-report.json',JSON.stringify(report,null,2));}})().catch(e=>{console.error(e);process.exit(1)});

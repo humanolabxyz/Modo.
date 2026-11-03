@@ -1,10 +1,10 @@
 {
-  "base": "https://modo-lab.vercel.app",
+  "base": "http://127.0.0.1:4420",
   "checks": [
-    "chromium 820px: errores de placa y ajuste rechazados, ejemplo aplicado, esquema editable/persistente y SVG descargado; solo mando al comenzar",
+    "chromium 820px: errores de placa y ajuste rechazados, ejemplo aplicado, explicación del esquema guardada y 40 cables al comenzar",
     "chromium: pinza dentro de la pizarra, conductor real seleccionado; registro bloqueado al quedar sin conductor o elegir fase equivocada",
     "chromium: diagnóstico con mando del térmico anulado mantiene el motor alimentado y señala el error",
-    "webkit 390px: errores de placa y ajuste rechazados, ejemplo aplicado, esquema editable/persistente y SVG descargado; solo mando al comenzar",
+    "webkit 390px: errores de placa y ajuste rechazados, ejemplo aplicado, explicación del esquema guardada y 40 cables al comenzar",
     "webkit: pinza dentro de la pizarra, conductor real seleccionado; registro bloqueado al quedar sin conductor o elegir fase equivocada",
     "webkit: diagnóstico con mando del térmico anulado mantiene el motor alimentado y señala el error"
   ],

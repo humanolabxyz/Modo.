@@ -10,6 +10,8 @@
       "source": "Ejemplo didáctico; no corresponde a la placa del laboratorio"
     },
     "lineVolts": 380,
+    "supplyVariationPct": 0,
+    "supplyVariationEnabled": false,
     "coilOhms": 240,
     "pilotOhms": 480,
     "windingOhms": 100,

@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {getDefinition, catalogShape, searchCatalog} from '../src/robotics/catalog/index.ts';
+import {newRobotProject} from '../src/robotics/project/defaults.ts';
+import {addPart, connect, removeParts, setPartProp, translateParts, pinWorld} from '../src/robotics/project/commands.ts';
+import {parseRobotProject} from '../src/robotics/project/validate.ts';
+import {buildGraph, netOfPin} from '../src/robotics/circuit/graph.ts';
+import {solve, measure} from '../src/robotics/circuit/solve.ts';
+const def=getDefinition('breadboard-400'); assert.equal(def.pins.length,400); assert.equal(new Set(def.pins.map(p=>p.id)).size,400);
+assert.ok(searchCatalog('protoboard').some(p=>p.id===def.id)); assert.ok(searchCatalog('breadboard').some(p=>p.id===def.id));
+let p=newRobotProject('Protoboard');
+const add=id=>{const r=addPart(p,id,[p.parts.length*0.1,0,0]);assert.ok(!r.error);p=r.project;return p.parts.at(-1).instanceId;};
+const bb=add(def.id), other=add(def.id), uno=add('arduino-uno-r3');
+const ref=(pin,id=bb)=>({instanceId:id,pinId:pin});
+const same=(a,b)=>{const g=buildGraph(p);return netOfPin(g,a.instanceId,a.pinId)===netOfPin(g,b.instanceId,b.pinId);};
+for(let row=1;row<=30;row++) {
+  assert.ok(same(ref('A'+row),ref('E'+row))); assert.ok(same(ref('F'+row),ref('J'+row)));
+  assert.ok(!same(ref('E'+row),ref('F'+row))); if(row<30)assert.ok(!same(ref('A'+row),ref('A'+(row+1))));
+}
+for(const rail of ['L+','L-','R+','R-'])assert.ok(same(ref(rail+'1'),ref(rail+'25')));
+for(const [a,b] of [['L+1','L-1'],['L+1','R+1'],['R+1','R-1']])assert.ok(!same(ref(a),ref(b)));
+assert.ok(!same(ref('A1'),ref('A1',other))); assert.ok(!same(ref('L+1'),ref('L+1',other)));
+assert.equal(buildGraph({...p,parts:p.parts.filter(x=>x.instanceId===bb)}).nets.size,64);
+console.log('PASS 400 puntos; 60 grupos de cinco y cuatro rieles aislados; canal y filas separados; dos protoboards independientes.');
+assert.equal(solve(p).sources.length,0,'la protoboard no genera tensión por sus marcas +/-');
+const wire=(a,b)=>{const r=connect(p,a,b);assert.ok(!r.error,r.error);p=r.project;};
+p=setPartProp(p,uno,'usb',true); wire(ref('5V',uno),ref('L+1')); wire(ref('GND.1',uno),ref('L-1')); wire(ref('L+25'),ref('A10'));
+assert.equal(measure(solve(p),ref('E10'),ref('L-25')).volts,5);
+assert.equal(measure(solve(p),ref('F10'),ref('L-25')).volts,null);
+assert.equal(measure(solve(p),ref('A10'),ref('E10')).continuity,true);
+assert.equal(measure(solve(p),ref('A10'),ref('F10')).continuity,false);
+wire(ref('E10'),ref('F10'));assert.equal(measure(solve(p),ref('J10'),ref('L-25')).volts,5);
+console.log('PASS 5 V del UNO atraviesan riel y fila; el canal solo conduce tras agregar un puente.');
+const before=pinWorld(p,ref('A10'));p=translateParts(p,[bb],[0.05,0.02,0]).project;const after=pinWorld(p,ref('A10'));
+assert.ok(Math.abs(after[0]-before[0]-0.05)<1e-9);assert.ok(Math.abs(after[1]-before[1]-0.02)<1e-9);
+const parsed=parseRobotProject(JSON.parse(JSON.stringify(p)),{catalog:catalogShape});assert.ok(parsed.ok);assert.deepEqual(parsed.project,p);
+const deleted=removeParts(p,[bb]).project;assert.ok(!deleted.connections.some(c=>c.a.instanceId===bb||c.b.instanceId===bb));
+console.log('PASS mover, serializar, importar y borrar la protoboard conserva las reglas del proyecto.');

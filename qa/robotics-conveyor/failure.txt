@@ -1,0 +1,52 @@
+Célula E6 · cinta y clasificación
+Guardado
+Frente
+Atrás
+Lateral
+Izq.
+Arriba
+Abajo
+ISO
+Órbita
+1.ª persona
+DEPURACIÓN
+E6 · CINTA Y CLASIFICACIÓN
+Brazo robótico
+1 · Enciende el brazo
+Motores apagados
+Encender motores
+
+Para comenzar, pulsa «Encender motores». Después elige una práctica automática o mueve el brazo a mano.
+
+Empezar
+Mover a mano
+Programa
+Cinta
+2 · Prueba el recorrido
+De la cinta a su color
+
+La cinta acerca cada cubo. El brazo lo recoge y lo deja en la zona del mismo color.
+
+Recoger
+Levantar
+Trasladar
+Soltar
+Iniciar clasificación
+Primero pulsa «Encender motores». No necesitas configurar ni enseñar puntos para esta primera prueba.
+
+Objetivo logrado. Reinicia la práctica para repetirla.
+
+Mover yo el brazo
+Controlar ejes y pinza
+Crear mi recorrido
+Guardar y ordenar posiciones
+Hacerlo paso a paso
+Velocidad del brazo · 50 %
+Reduce la velocidad para seguir cada movimiento.
+Entregas verificadas: 3 de 3
+
+✓ Práctica completada: todas las piezas depositadas en sus destinos.
+
+Reiniciar práctica
+Posición y datos del modelo
+EMERGENCIA

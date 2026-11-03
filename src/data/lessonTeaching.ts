@@ -2,6 +2,7 @@ import type {ManualStep} from './practice';
 import type {LessonId} from './lessonIds';
 import {starTeaching} from './starDeltaTeaching';
 import {twoContactorDetail} from './twoContactorTeaching';
+import {TIMER_HEAD_TERMINALS,twoContactorModuleName,type LabelScope} from './twoContactorNames';
 
 export type ComponentTeaching={name:string;role:string};
 export type StepTeaching={components:ComponentTeaching[];why:string;behavior:string;without:string;question:string;criteria:string[]};
@@ -25,8 +26,8 @@ const functions:Record<string,FunctionTeaching>={
  earth:{why:'TP representa el conductor de protección, separado de N y de los conductores que hacen funcionar el circuito.',behavior:'La continuidad de protección forma parte del montaje de referencia. El simulador no calcula fallas a masa ni acredita la protección de un equipo real.',without:'El montaje queda sin la unión de protección prevista, aunque la simulación pueda seguir mostrando funcionamiento.',question:'¿Qué función tiene esta unión de protección y por qué un circuito que funciona en la simulación todavía puede estar incompleto?',criteria:['Distinguir TP de N y del retorno de funcionamiento.','Reconocer que la simulación no verifica la protección física.']}
 };
 
-export function componentForTerminal(id:string):ComponentTeaching{
- const [module,...rest]=id.split(':'),t=rest.join(':'),km=module==='CONTACTOR_TERMICO'?'KM1':module==='CONTACTOR_TRIFASICO'?'KM2':`KM${module.match(/_(\d+)$/)?.[1]??'?'}`;
+export function componentForTerminal(id:string,scope?:LabelScope):ComponentTeaching{
+ const [module,...rest]=id.split(':'),t=rest.join(':'),km=(scope==='dosContactores'?twoContactorModuleName(module,t):undefined)??(module==='CONTACTOR_TERMICO'?'KM1':module==='CONTACTOR_TRIFASICO'?'KM2':`KM${module.match(/_(\d+)$/)?.[1]??'?'}`);
  if(t.startsWith('TP'))return {name:'Tierra de protección · TP',role:'Unión de protección prevista en la referencia; no es el neutro ni el retorno de una bobina.'};
  if(module==='FUENTE')return t==='N'?{name:'Neutro · N',role:'Retorno de los circuitos de mando y señalización de esta lección.'}:t==='F'?{name:'Alimentación de mando · F',role:'Punto de alimentación del mando virtual de 24 V, condicionado por sus interruptores.'}:{name:'Alimentación de fuerza',role:'R, S y T identifican las tres fases representadas en el circuito de fuerza.'};
  if(module==='BOTONERAS'){
@@ -35,6 +36,7 @@ export function componentForTerminal(id:string):ComponentTeaching{
   const nc=/:[12]$/.test(t);return {name:t.startsWith('S2:')?'Pulsador de paro · S2':`Pulsador ${t.slice(0,2)} · ${nc?'NC 1–2':'NA 3–4'}`,role:nc?'Su contacto 1–2 está cerrado en reposo y abre al pulsarlo en el modelo de esta lección.':'Su contacto 3–4 está abierto en reposo y cierra mientras se mantiene pulsado en el modelo de esta lección.'};
  }
  if(module==='BORNERA_MOTOR')return {name:'Bobinados del motor',role:'U1, V1, W1 y W2, U2, V2 representan los extremos de los tres bobinados; se conectan según el esquema de la lección.'};
+ if(scope==='dosContactores'&&module==='TEMPORIZADOR_1'&&!TIMER_HEAD_TERMINALS.includes(t))return t==='A1'||t==='A2'?{name:'Bobina de KT1',role:'Al alimentarse entre A1 y A2 cierra los tres polos de línea del contactor principal KT1 e inicia el retardo del cabezal neumático montado sobre él.'}:t==='13'||t==='14'?{name:'Auxiliar NA de KT1 · 13–14',role:'Abierto con KT1 en reposo; cierra al actuar y forma la retención de la marcha.'}:{name:'Contactos de fuerza de KT1',role:'Polos L–T del contactor principal: llevan R, S y T hacia los extremos U1, V1 y W1 del motor.'};
  if(module==='TEMPORIZADOR_1')return {name:`Temporizador KT1 · ${t==='55'||t==='56'?'55–56':t==='67'||t==='68'?'67–68':'bobina'}`,role:t==='55'||t==='56'?'En el modelo de retardo a la conexión, este contacto permanece cerrado durante el tiempo y después abre.':t==='67'||t==='68'?'En el mismo modelo, este contacto permanece abierto durante el tiempo y después cierra.':'Alimentado entre A1 y A2 inicia el retardo virtual; al quitar la alimentación se reinicia.'};
  if(['95','96','97','98'].includes(t)&&module==='CONTACTOR_TERMICO')return {name:'Relé térmico',role:'En el modelo: 95–96 corta el mando al dispararse y 97–98 permite señalizar ese disparo.'};
  if(t==='A1'||t==='A2')return {name:`Bobina de ${km}`,role:'Al alimentarse entre A1 y A2 acciona los contactos principales y auxiliares del contactor ideal.'};
@@ -45,7 +47,7 @@ export function componentForTerminal(id:string):ComponentTeaching{
 
 export function teachingForStep(step:Pick<ManualStep,'from'|'to'>,schematic:LessonId):StepTeaching{
  const a=step.from,b=step.to,ends=[a,b];
- if(schematic==='estrellaDosContactores')return {...twoContactorDetail(a,b),components:[...new Map(ends.map(id=>{const c=componentForTerminal(id);if(id.startsWith('TEMPORIZADOR_1:'))return ['Conjunto temporizado · KT1',{name:'Conjunto temporizado · KT1',role:'En este montaje reúne bobina, auxiliar 13–14, contactos temporizados 55–56 / 67–68 y tres polos de línea L–T. No es KM3.'}];return [c.name,c];})).values()]};
+ if(schematic==='estrellaDosContactores')return {...twoContactorDetail(a,b),components:[...new Map(ends.map(id=>{const c=componentForTerminal(id,'dosContactores');return [c.name,c];})).values()]};
  if(schematic==='estrellaManual'||schematic==='estrellaTimer')return {...starTeaching(schematic,a,b),components:[...new Map(ends.map(id=>{const c=componentForTerminal(id);return [c.name,c]})).values()]};
  let kind:string;
  if(ends.some(id=>id.includes(':TP')))kind='earth';

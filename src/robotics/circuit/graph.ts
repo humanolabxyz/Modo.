@@ -9,6 +9,7 @@ export const pinKey = (r: PinRef): string => `${r.instanceId}:${r.pinId}`;
 
 /** Uniones internas de una pieza según sus propiedades (p. ej. los puentes ENA/ENB del L298N conectan ese pin a +5V). */
 export function internalLinks(part: PartInstance): [string, string][] {
+  if (part.definitionId === 'power-switch') return (part.props?.closed ?? true) ? [['IN', 'OUT']] : [];
   if (part.definitionId !== 'l298n-module') return [];
   const links: [string, string][] = [];
   if (part.props?.jumperENA ?? true) links.push(['ENA', '+5V']);

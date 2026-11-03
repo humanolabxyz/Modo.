@@ -1,14 +1,15 @@
 // Emulación real del ATmega328P con avr8js (D-04). Corre dentro del worker: el sketch compilado (.hex) se ejecuta instrucción a instrucción
 // a 16 MHz; los timers, el USART y el ADC son los de avr8js. Probado en la etapa 1 (spike E1): Blink ±0,014 ms, PWM ±0,3 puntos,
 // pulseIn −1,1 %, analogRead exacto, ≈ 1,7–1,9× el tiempo real en el worker.
-import {CPU, avrInstruction, AVRTimer, timer0Config, timer1Config, timer2Config, AVRIOPort, portBConfig, portCConfig, portDConfig, AVRUSART, usart0Config, AVRADC, adcConfig, PinState} from 'avr8js';
+import {CPU, avrInstruction, AVRTimer, timer0Config, timer1Config, timer2Config, AVRIOPort, portBConfig, portCConfig, portDConfig, AVRUSART, usart0Config, AVRADC, adcConfig, AVRTWI, twiConfig, PinState} from 'avr8js';
 import type {McuRuntime, PinBus, PinMode} from '../types.ts';
 import {parseHex} from './hex.ts';
 import {PIN_BY_PORT_BIT, UNO_PINS, type AvrPort} from './pins.ts';
+import {I2cBus, type I2cDevice} from '../i2c/bus.ts';
 
 export const CPU_HZ = 16_000_000, CYCLES_PER_US = 16;
 
-type Machine = {cpu: CPU; ports: Record<AvrPort, AVRIOPort>; adc: AVRADC};
+type Machine = {cpu: CPU; ports: Record<AvrPort, AVRIOPort>; adc: AVRADC; i2c: I2cBus};
 
 export class AvrRuntime implements McuRuntime {
   private words: Uint16Array | null = null;
@@ -16,6 +17,8 @@ export class AvrRuntime implements McuRuntime {
   private bus: PinBus | null = null;
   private level = new Map<string, 0 | 1>();
   private mode = new Map<string, PinMode>();
+  /** Dispositivos I²C (dirección de 7 bits → dispositivo): sobreviven a un reinicio del chip. */
+  private i2cDevices = new Map<number, I2cDevice>();
 
   load(hex: string): {ok: true} | {ok: false; error: string} {
     const parsed = parseHex(hex);
@@ -29,11 +32,12 @@ export class AvrRuntime implements McuRuntime {
     new AVRTimer(cpu, timer0Config); new AVRTimer(cpu, timer1Config); new AVRTimer(cpu, timer2Config);
     const ports = {B: new AVRIOPort(cpu, portBConfig), C: new AVRIOPort(cpu, portCConfig), D: new AVRIOPort(cpu, portDConfig)};
     const usart = new AVRUSART(cpu, usart0Config, CPU_HZ), adc = new AVRADC(cpu, adcConfig);
+    const i2c = new I2cBus(new AVRTWI(cpu, twiConfig, CPU_HZ)); for (const [address, device] of this.i2cDevices) i2c.attach(address, device);
     this.level.clear(); this.mode.clear();
     for (const pin of Object.keys(UNO_PINS)) { this.level.set(pin, 0); this.mode.set(pin, 'in'); } // al arrancar todos los pines son entradas en bajo
     usart.onByteTransmit = byte => this.bus?.serial(byte, cpu.cycles / CYCLES_PER_US);
     for (const name of ['B', 'C', 'D'] as const) ports[name].addListener(() => this.sync(name, ports[name], cpu));
-    this.machine = {cpu, ports, adc};
+    this.machine = {cpu, ports, adc, i2c};
   }
 
   /** Traduce los cambios de un puerto a eventos por pin (modo y flancos), con el instante virtual exacto. */
@@ -70,6 +74,9 @@ export class AvrRuntime implements McuRuntime {
     if (!this.machine) return;
     this.machine.cpu.addClockEvent(fn, Math.max(1, Math.round(atUs * CYCLES_PER_US - this.machine.cpu.cycles)));
   }
+  /** Conecta un dispositivo al bus I²C (A4 = SDA, A5 = SCL). Sin dispositivo en una dirección, el bus responde NACK. */
+  attachI2c(address: number, device: I2cDevice): void { this.i2cDevices.set(address & 0x7f, device); this.machine?.i2c.attach(address, device); }
+  detachI2c(address: number): void { this.i2cDevices.delete(address & 0x7f); this.machine?.i2c.detach(address); }
   pinMode(pin: string): PinMode { return this.mode.get(pin) ?? 'in'; }
   reset(): void { if (this.words) this.build(); }
   get nowUs(): number { return this.machine ? this.machine.cpu.cycles / CYCLES_PER_US : 0; }

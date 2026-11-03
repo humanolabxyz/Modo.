@@ -1,5 +1,10 @@
 {
-  "checks": [],
+  "checks": [
+    "chromium 1440: 6 módulos; estrella→triángulo automático; 380/400 V; libreta; retirar cable e insertar A/COM; 0,050 A; sobrecarga; retorno V Ω; continuidad; sin overflow",
+    "chromium 390: 6 módulos; estrella→triángulo automático; 380/400 V; libreta; retirar cable e insertar A/COM; 0,050 A; sobrecarga; retorno V Ω; continuidad; sin overflow",
+    "webkit 1440: 6 módulos; estrella→triángulo automático; 380/400 V; libreta; retirar cable e insertar A/COM; 0,050 A; sobrecarga; retorno V Ω; continuidad; sin overflow",
+    "webkit 390: 6 módulos; estrella→triángulo automático; 380/400 V; libreta; retirar cable e insertar A/COM; 0,050 A; sobrecarga; retorno V Ω; continuidad; sin overflow"
+  ],
   "errors": [],
-  "failure": "TimeoutError: page.waitForFunction: Timeout 15000ms exceeded."
+  "result": "PASS"
 }

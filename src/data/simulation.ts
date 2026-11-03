@@ -1,6 +1,9 @@
 import {MODULES,TERMINALS} from './panel';
 import type {BananaCable} from './practice';
-import {INVERSION_LESSON,SIMPLE_LESSON} from './lessons';
+import {INVERSION_LESSON,SIMPLE_LESSON,TWO_CONTACTOR_LESSON} from './lessons';
+import {applyContactFaults,coilHolds,effectiveWires,faultsOf,hasFault,needsNumericControl,type PanelFault} from './panelFaults';
+import {controlVoltages} from './panelFaultControl';
+import {earthGaps,earthGapText} from './panelEarth';
 
 /** Contactores del banco: KM1, KM2 y los que se añadan (KM3…). Se consulta cada vez porque el usuario puede añadir paneles. */
 export const contactorIds=():string[]=>MODULES.filter(m=>m.category==='contactores').map(m=>m.id);
@@ -9,7 +12,7 @@ export const timerIds=():string[]=>MODULES.filter(m=>m.category==='temporizadore
 /** Bobinas del banco: contactores y temporizadores. Los dos siguen el mismo ciclo de energizado. */
 export const relayIds=():string[]=>[...contactorIds(),...timerIds()];
 export type ContactorId=string;
-export type SimulationInput={enabled:boolean;plugged:boolean;forceBreaker:boolean;breakers:[boolean,boolean];pressed:string[];thermalTripped:boolean;powerContacts?:RelayState};
+export type SimulationInput={enabled:boolean;plugged:boolean;forceBreaker:boolean;breakers:[boolean,boolean];pressed:string[];thermalTripped:boolean;powerContacts?:RelayState;/** El banco no energiza mientras la TP de algún módulo no llegue a la de la fuente. */earthRequired?:boolean;/** Fallas de laboratorio inyectadas (ya resueltas en el tiempo). */faults?:readonly PanelFault[]};
 export type RelayState=Record<ContactorId,boolean>;
 export const OFF_RELAYS=():RelayState=>Object.fromEntries(relayIds().map(id=>[id,false]));
 export const sameRelays=(a:RelayState,b:RelayState)=>relayIds().every(id=>!!a[id]===!!b[id]);
@@ -43,13 +46,13 @@ export function simulationContacts(input:SimulationInput,relays:RelayState,timed
  pairs.push(input.thermalTripped?['CONTACTOR_TERMICO:97','CONTACTOR_TERMICO:98']:['CONTACTOR_TERMICO:95','CONTACTOR_TERMICO:96']);
  // KM2 95/96 presence is user-confirmed; their internal function remains unmodelled.
  // Pilot returns are loads against BOTONERAS:N, never a conductor shorting a lamp.
- return pairs;
+ return applyContactFaults(pairs,faultsOf(input));
 }
-function graph(wires:BananaCable[],pairs:[string,string][]){
+function graph(wires:BananaCable[],pairs:[string,string][],faults:readonly PanelFault[]=[]){
  const parent=new Map(TERMINALS.map(t=>[t.key,t.key]));
  const root=(id:string):string=>{const p=parent.get(id);if(!p)return id;if(p!==id)parent.set(id,root(p));return parent.get(id)!};
  const join=(a:string,b:string)=>{if(parent.has(a)&&parent.has(b))parent.set(root(b),root(a))};
- wires.forEach(w=>join(w.from.terminalId,w.to.terminalId));pairs.forEach(([a,b])=>join(a,b));
+ const eff=effectiveWires(wires,faults);eff.ideal.forEach(w=>join(w.from.terminalId,w.to.terminalId));eff.resistive.forEach(w=>join(w.a,w.b));pairs.forEach(([a,b])=>join(a,b));
  const phase=root('FUENTE:F'),neutral=root('FUENTE:N'),phases=['FUENTE:R','FUENTE:S','FUENTE:T'].map(root);
  const voltage=(a:string,b:string)=>phase!==neutral&&((root(a)===phase&&root(b)===neutral)||(root(a)===neutral&&root(b)===phase));
  return {root,phase,neutral,phases,voltage};
@@ -58,15 +61,18 @@ type ControlResult=Omit<SimulationResult,'motor'>;
 function solveControl(wires:BananaCable[],input:SimulationInput,previous:RelayState=OFF_RELAYS(),timed:readonly string[]=[]):ControlResult{
  const off=(fault:ControlResult['fault']=null):ControlResult=>({powered:false,fault,relays:OFF_RELAYS(),pilots:[false,false,false,false],liveTerminals:[],liveWireIds:[],closedContacts:[]});
  if(!input.enabled||!input.plugged||!input.breakers.every(Boolean))return off();
- let relays={...previous};const seen=new Set<string>();
+ let relays={...previous};const seen=new Set<string>(),faults=faultsOf(input);
  for(let i=0;i<16;i++){
   const ids=relayIds(),signature=ids.map(id=>Number(!!relays[id])).join('');
   if(seen.has(signature))return off('unstable');seen.add(signature);
-  const contacts=simulationContacts(input,relays,timed),g=graph(wires,contacts);
+  const contacts=simulationContacts(input,relays,timed),g=graph(wires,contacts,faults);
   if(g.phase===g.neutral)return off('short');
   const next=Object.fromEntries(ids.map(id=>[id,g.voltage(`${id}:A1`,`${id}:A2`)])) as RelayState;
+  /* Fallas de bobina: abierta no cierra nunca; con tensión degradada cierra solo si alcanza (≈85 %) y se mantiene hasta ≈50 %. */
+  let lamps:(number|null)[]|null=null;
+  if(faults.length){for(const f of faults)if(f.kind==='coil-open')next[f.relay]=false;if(needsNumericControl(faults)){const v=controlVoltages(wires,input,relays,timed);lamps=v.pilot;for(const id of ids)if(next[id])next[id]=coilHolds(v.relay[id],!!relays[id]);}}
   if(ids.every(id=>next[id]===!!relays[id])){
-   const pilots=[1,2,3,4].map(n=>g.voltage(`BOTONERAS:PILOTO_${n}`,'BOTONERAS:N'));
+   const pilots=[1,2,3,4].map(n=>g.voltage(`BOTONERAS:PILOTO_${n}`,'BOTONERAS:N')&&!faults.some(f=>f.kind==='pilot-burnt'&&f.n===n)&&(!lamps||coilHolds(lamps[n-1],true)));
    const liveTerminals=TERMINALS.filter(t=>g.root(t.key)===g.phase).map(t=>t.key);
    return {powered:true,fault:null,relays,pilots,liveTerminals,liveWireIds:wires.filter(w=>liveTerminals.includes(w.from.terminalId)).map(w=>w.id),closedContacts:contacts};
   }
@@ -83,7 +89,7 @@ function solveMotor(wires:BananaCable[],input:SimulationInput,relays:RelayState,
  if(!input.enabled)return idle('Simulación detenida.');
  if(!input.plugged)return idle('Enchufa la corriente virtual en el módulo de alimentación.');
  if(!input.forceBreaker)return idle('Cierra el interruptor FUERZA para energizar R, S y T.');
- const g=graph(wires,simulationContacts(input,relays,timed)),[r,s,t]=g.phases;
+ const faults=faultsOf(input),g=graph(wires,simulationContacts(input,relays,timed),faults),[r,s,t]=g.phases;
  if(new Set([r,s,t]).size<3)return {...idle('Cortocircuito entre fases: algún cable une R, S o T. Retíralo.','fault'),short:true};
  const label=(id:string):'R'|'S'|'T'|null=>{const x=g.root(MOTOR+id);return x===r?'R':x===s?'S':x===t?'T':null};
  const live=TERMINALS.filter(x=>[r,s,t].includes(g.root(x.key))).map(x=>x.key);
@@ -93,14 +99,17 @@ function solveMotor(wires:BananaCable[],input:SimulationInput,relays:RelayState,
  if(!fed&&!ends.some(Boolean))return {motor:{...IDLE_MOTOR,message:'El motor no recibe tensión: lleva R, S y T al contactor y su salida a U1, V1 y W1.'},live};
  if(fed<3)return {motor:{...IDLE_MOTOR,status:'fault',lines,message:`Falta una fase: solo ${fed} de los 3 bornes U1, V1 y W1 reciben tensión.`},live};
  if(new Set(lines).size<3)return {motor:{...IDLE_MOTOR,status:'fault',lines,message:'Dos bornes reciben la misma fase: el motor necesita R, S y T distintas.'},live};
- const direction=SEQUENCES.includes(lines.join(''))?1:-1;
+ const direction=(SEQUENCES.includes(lines.join(''))?1:-1)*(hasFault(faults,'sequence-reversed')?-1:1) as 1|-1;
  const star=same('U2','V2')&&same('V2','W2')&&ends.every(e=>e===null);
  const delta=same('U1','W2')&&same('V1','U2')&&same('W1','V2');
+ const openWinding=faults.find(f=>f.kind==='winding-open');
+ if(openWinding&&openWinding.kind==='winding-open'&&(star||delta))return {motor:{status:'fault',connection:star?'star':'delta',direction,speed:0,message:`Devanado ${openWinding.phase}1–${openWinding.phase}2 abierto: el motor zumba, no gira y las otras dos bobinas se recalientan.`,lines},live};
  if(star)return {motor:{status:'running',connection:'star',direction,speed:.55,message:'Girando en estrella: cada bobina recibe tensión reducida.',lines},live};
  if(delta)return {motor:{status:'running',connection:'delta',direction,speed:1,message:'Girando en triángulo: cada bobina recibe la tensión de línea.',lines},live};
  return {motor:{...IDLE_MOTOR,status:'fault',lines,message:'Bobinas sin cerrar: une W2-U2-V2 (estrella) o U1-W2, V1-U2 y W1-V2 (triángulo).'},live};
 }
 export function solveSimulation(wires:BananaCable[],input:SimulationInput,previous:RelayState=OFF_RELAYS(),timed:readonly string[]=[]):SimulationResult{
+ if(input.earthRequired&&input.enabled&&input.plugged){const gaps=earthGaps(wires,faultsOf(input));if(gaps.length)return {powered:false,fault:null,relays:OFF_RELAYS(),pilots:[false,false,false,false],liveTerminals:[],liveWireIds:[],closedContacts:[],motor:{...IDLE_MOTOR,message:earthGapText(gaps)}};}
  const base=solveControl(wires,input,previous,timed),force=solveMotor(wires,input,base.relays,timed);
  if(force.short)return {...base,powered:false,fault:'phase-short',relays:OFF_RELAYS(),pilots:[false,false,false,false],liveTerminals:[],liveWireIds:[],closedContacts:[],motor:force.motor};
  if(!force.live.length)return {...base,motor:force.motor};
@@ -136,20 +145,8 @@ export const SIMULATION_EXAMPLES={
  ]},
  simple:{title:'Marcha y paro con retención (el más simple, de un compañero)',pairs:SIMPLE_LESSON.pairs},
  inversion:{title:'Inversión de giro con enclavamiento y paro (circuito de un compañero)',pairs:INVERSION_LESSON.pairs},
- starDelta:{title:'Estrella-triángulo · 2 contactores + conjunto temporizado',pairs:[
-  // KT1 is the line contactor with pneumatic block. KM2 = star; KM1 = delta.
-  ['FUENTE:F','CONTACTOR_TERMICO:95'],['CONTACTOR_TERMICO:96','BOTONERAS:S2:1'],['BOTONERAS:S2:2','BOTONERAS:S3:3'],
-  ['BOTONERAS:S3:3','TEMPORIZADOR_1:13'],['BOTONERAS:S3:4','TEMPORIZADOR_1:14'],['TEMPORIZADOR_1:14','TEMPORIZADOR_1:A1'],['TEMPORIZADOR_1:A2','FUENTE:N'],
-  ['TEMPORIZADOR_1:14','TEMPORIZADOR_1:55'],['TEMPORIZADOR_1:56','CONTACTOR_TERMICO:71'],['CONTACTOR_TERMICO:72','CONTACTOR_TRIFASICO:A1'],['CONTACTOR_TRIFASICO:A2','FUENTE:N'],
-  ['TEMPORIZADOR_1:14','TEMPORIZADOR_1:67'],['TEMPORIZADOR_1:68','CONTACTOR_TRIFASICO:71'],['CONTACTOR_TRIFASICO:72','CONTACTOR_TERMICO:A1'],['CONTACTOR_TERMICO:A2','FUENTE:N'],
-  ['FUENTE:R','TEMPORIZADOR_1:L1'],['FUENTE:S','TEMPORIZADOR_1:L2'],['FUENTE:T','TEMPORIZADOR_1:L3'],
-  ['TEMPORIZADOR_1:T1','BORNERA_MOTOR:U1'],['TEMPORIZADOR_1:T2','BORNERA_MOTOR:V1'],['TEMPORIZADOR_1:T3','BORNERA_MOTOR:W1'],
-  ['BORNERA_MOTOR:W2','CONTACTOR_TRIFASICO:L1'],['BORNERA_MOTOR:U2','CONTACTOR_TRIFASICO:L2'],['BORNERA_MOTOR:V2','CONTACTOR_TRIFASICO:L3'],
-  ['CONTACTOR_TRIFASICO:T1','CONTACTOR_TRIFASICO:T2'],['CONTACTOR_TRIFASICO:T2','CONTACTOR_TRIFASICO:T3'],
-  ['BORNERA_MOTOR:U1','CONTACTOR_TERMICO:L1'],['BORNERA_MOTOR:V1','CONTACTOR_TERMICO:L2'],['BORNERA_MOTOR:W1','CONTACTOR_TERMICO:L3'],
-  ['CONTACTOR_TERMICO:T1','BORNERA_MOTOR:W2'],['CONTACTOR_TERMICO:T2','BORNERA_MOTOR:U2'],['CONTACTOR_TERMICO:T3','BORNERA_MOTOR:V2'],
-  ['FUENTE:N','BOTONERAS:N'],['CONTACTOR_TRIFASICO:A1','BOTONERAS:PILOTO_1'],['CONTACTOR_TERMICO:A1','BOTONERAS:PILOTO_4']
- ]},
+ /* Mismo montaje que la lección «Estrella-triángulo · 2 contactores» (40 cables): una sola versión correcta. KT1 = principal con temporizador; KM2 = estrella; KM1 = triángulo. */
+ starDelta:{title:'Estrella-triángulo · 2 contactores + conjunto temporizado',pairs:TWO_CONTACTOR_LESSON.pairs.map(([a,b])=>[a,b] as [string,string])},
  starDeltaThree:{title:'Estrella-triángulo · 3 contactores + temporizador separado',needs:['CONTACTOR_TRIFASICO_3'],pairs:[
   // Mando: F → térmico → parada → marcha con retención en KM1. KM1:14 alimenta al temporizador y a los dos contactores de conmutación.
   ['FUENTE:F','CONTACTOR_TERMICO:95'],['CONTACTOR_TERMICO:96','BOTONERAS:S2:1'],['BOTONERAS:S2:2','BOTONERAS:S3:3'],

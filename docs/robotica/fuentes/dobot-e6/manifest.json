@@ -1,0 +1,64 @@
+{
+  "repository": "https://github.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4",
+  "revision": "ec201c40d5db63185a3593ec9c39f80fe25aa527",
+  "license": "MIT",
+  "visualGridMetres": 0.0006,
+  "meshes": [
+    {
+      "file": "base_link.STL",
+      "url": "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/ec201c40d5db63185a3593ec9c39f80fe25aa527/dobot_rviz/meshes/me6/base_link.STL",
+      "sourceSha256": "0f08154e7a7423536bb2457da772be222d687f1f553943bc7e85652a8a52059d",
+      "sourceTriangles": 143072,
+      "visualTriangles": 52010,
+      "bytes": 2600584
+    },
+    {
+      "file": "Link1.STL",
+      "url": "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/ec201c40d5db63185a3593ec9c39f80fe25aa527/dobot_rviz/meshes/me6/Link1.STL",
+      "sourceSha256": "9778d3fdcd58b9fba2753c441e6ea9787db3f1af48e5d0d4c39776a655372a36",
+      "sourceTriangles": 28960,
+      "visualTriangles": 20901,
+      "bytes": 1045134
+    },
+    {
+      "file": "Link2.STL",
+      "url": "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/ec201c40d5db63185a3593ec9c39f80fe25aa527/dobot_rviz/meshes/me6/Link2.STL",
+      "sourceSha256": "647e98aad0d533c13ac7d0bc9bfd1fca2b131fa4e8959b8d1af4efc63b1939e9",
+      "sourceTriangles": 48690,
+      "visualTriangles": 34184,
+      "bytes": 1709284
+    },
+    {
+      "file": "Link3.STL",
+      "url": "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/ec201c40d5db63185a3593ec9c39f80fe25aa527/dobot_rviz/meshes/me6/Link3.STL",
+      "sourceSha256": "a50c83cf4bfcefe91cda0391e1840866348ce4960d98293b3f0e1fe978d00ac0",
+      "sourceTriangles": 44194,
+      "visualTriangles": 30996,
+      "bytes": 1549884
+    },
+    {
+      "file": "Link4.STL",
+      "url": "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/ec201c40d5db63185a3593ec9c39f80fe25aa527/dobot_rviz/meshes/me6/Link4.STL",
+      "sourceSha256": "0115d78951a9e887265da27ac7d7d4b6c570f11ed6afd080ed08ae28ca16f2f9",
+      "sourceTriangles": 28852,
+      "visualTriangles": 20732,
+      "bytes": 1036684
+    },
+    {
+      "file": "Link5.STL",
+      "url": "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/ec201c40d5db63185a3593ec9c39f80fe25aa527/dobot_rviz/meshes/me6/Link5.STL",
+      "sourceSha256": "21b0d7fe1f8da62144cfec7b185241d8cd96ab75d0f9fa5d3e77846d5713ca63",
+      "sourceTriangles": 37528,
+      "visualTriangles": 25195,
+      "bytes": 1259834
+    },
+    {
+      "file": "Link6.STL",
+      "url": "https://raw.githubusercontent.com/Dobot-Arm/DOBOT_6Axis_ROS2_V4/ec201c40d5db63185a3593ec9c39f80fe25aa527/dobot_rviz/meshes/me6/Link6.STL",
+      "sourceSha256": "318b57a9cfc1f86099c98f836bda099dfd13026aeac193e7158173e9cf4a0626",
+      "sourceTriangles": 36836,
+      "visualTriangles": 9503,
+      "bytes": 475234
+    }
+  ]
+}

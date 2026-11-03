@@ -1,0 +1,8 @@
+{
+  "src/robotics/RoboticsApp.tsx": "b49ab02c9402f39538a235cf74bb3aef652cae785a5ef97ec201d26a57592220",
+  "src/styles/robotics.css": "b65674074de7caf71038007ed188f7a6ff26be66f20cd650dfdd5ed03aa922e7",
+  "public/images/home-approved/lab.webp": "fdbccd7afeab52138e8524c78b3c13f54bed4c1605e32510ddccf6617bf31896",
+  "public/images/home-approved/study.webp": "f355a995bfa3a39c13ece554681985678b48842f84b607f5a851d0322583401e",
+  "public/images/home-approved/panel.webp": "c2f4b22ff63ea51dec326aeec1c71262b027bd484331facc4464f431521157f7",
+  "public/images/home-approved/community.webp": "2a5b688891d2e2a5202b02d2922b823abab43e7d1877b676a5b3d16c4dbf4bd4"
+}

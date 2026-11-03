@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "Entrada: exige robot unido, ruedas, una placa y programa vigente; rechaza vacío, piezas sueltas y HEX desactualizado.",
+    "Dos copias del mismo robot tienen IDs separados y cableados aislados, sin modificar los originales.",
+    "Árbitro: salida sostenida, caída, reentrada, salida simultánea y límite de tiempo.",
+    "Un interruptor abierto impide el combate; no se inventa potencia para mover el robot.",
+    "El HC-SR04 mide al rival en el mundo compartido y excluye su propio robot.",
+    "Dos programas independientes: cuenta regresiva inmóvil, choque sin atravesarse, reloj compartido y detención al terminar.",
+    "Empuje real saca al rival sin motores del círculo y otorga victoria; proyectos fuente intactos."
+  ],
+  "gap": 0.20612583044795443,
+  "pushResult": {
+    "winner": 0,
+    "reason": "salida"
+  }
+}

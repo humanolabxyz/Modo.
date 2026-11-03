@@ -1,7 +1,7 @@
 {
   "profile": "twoContactors",
-  "fullWires": 37,
-  "controlWires": 20,
+  "fullWires": 41,
+  "controlWires": 23,
   "steps": 34,
   "tableReadings": 15,
   "records": [
@@ -9,50 +9,50 @@
       "id": "thermal",
       "observed": "Estado comprobado",
       "text": "0,4 Ω",
-      "value": 0.42000000000000004,
-      "at": "2026-10-28T20:54:16.025Z"
+      "value": 0.42,
+      "at": "2026-11-02T12:16:30.838Z"
     },
     {
       "id": "stop",
       "observed": "Estado comprobado",
       "text": "0,4 Ω",
-      "value": 0.42000000000000004,
-      "at": "2026-10-28T20:54:16.026Z"
+      "value": 0.42,
+      "at": "2026-11-02T12:16:30.839Z"
     },
     {
       "id": "start-open",
       "observed": "Estado comprobado",
       "text": "OL",
       "value": null,
-      "at": "2026-10-28T20:54:16.027Z"
+      "at": "2026-11-02T12:16:30.840Z"
     },
     {
       "id": "contact-ohms",
       "observed": "Estado comprobado",
       "text": "0,4 Ω",
-      "value": 0.42000000000000004,
-      "at": "2026-10-28T20:54:16.027Z"
+      "value": 0.42,
+      "at": "2026-11-02T12:16:30.841Z"
     },
     {
       "id": "control-volts",
       "observed": "Estado comprobado",
       "text": "24,00 V",
       "value": 24,
-      "at": "2026-10-28T20:54:16.030Z"
+      "at": "2026-11-02T12:16:30.845Z"
     },
     {
       "id": "control-rest",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.030Z"
+      "at": "2026-11-02T12:16:30.846Z"
     },
     {
       "id": "control-star",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.031Z",
+      "at": "2026-11-02T12:16:30.846Z",
       "action": {
         "version": 1,
         "eventId": 1,
@@ -68,7 +68,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.031Z",
+      "at": "2026-11-02T12:16:30.847Z",
       "action": {
         "version": 1,
         "eventId": 2,
@@ -84,7 +84,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.032Z",
+      "at": "2026-11-02T12:16:30.848Z",
       "action": {
         "version": 1,
         "eventId": 3,
@@ -99,7 +99,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.032Z",
+      "at": "2026-11-02T12:16:30.848Z",
       "action": {
         "version": 1,
         "eventId": 4,
@@ -114,42 +114,42 @@
       "observed": "Estado comprobado",
       "text": "0,4 Ω",
       "value": 0.41000000000000003,
-      "at": "2026-10-28T20:54:16.033Z"
+      "at": "2026-11-02T12:16:30.849Z"
     },
     {
       "id": "line-RS",
       "observed": "Estado comprobado",
       "text": "380,0 V",
       "value": 380,
-      "at": "2026-10-28T20:54:16.034Z"
+      "at": "2026-11-02T12:16:30.850Z"
     },
     {
       "id": "line-RT",
       "observed": "Estado comprobado",
       "text": "380,0 V",
       "value": 380.00000000000006,
-      "at": "2026-10-28T20:54:16.034Z"
+      "at": "2026-11-02T12:16:30.851Z"
     },
     {
       "id": "line-ST",
       "observed": "Estado comprobado",
       "text": "380,0 V",
       "value": 379.99999999999994,
-      "at": "2026-10-28T20:54:16.035Z"
+      "at": "2026-11-02T12:16:30.851Z"
     },
     {
       "id": "powered-rest",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.035Z"
+      "at": "2026-11-02T12:16:30.852Z"
     },
     {
       "id": "start-star",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.036Z",
+      "at": "2026-11-02T12:16:30.853Z",
       "action": {
         "version": 1,
         "eventId": 5,
@@ -165,49 +165,49 @@
       "observed": "Estado comprobado",
       "text": "219,3 V",
       "value": 219.25635474264683,
-      "at": "2026-10-28T20:54:16.037Z"
+      "at": "2026-11-02T12:16:30.854Z"
     },
     {
       "id": "star-V",
       "observed": "Estado comprobado",
       "text": "219,3 V",
       "value": 219.25635474264686,
-      "at": "2026-10-28T20:54:16.037Z"
+      "at": "2026-11-02T12:16:30.856Z"
     },
     {
       "id": "star-W",
       "observed": "Estado comprobado",
       "text": "219,3 V",
       "value": 219.2563547426469,
-      "at": "2026-10-28T20:54:16.038Z"
+      "at": "2026-11-02T12:16:30.856Z"
     },
     {
       "id": "star-current-R",
       "observed": "Estado comprobado",
       "text": "1,497 A",
       "value": 1.4968116848937587,
-      "at": "2026-10-28T20:54:16.038Z"
+      "at": "2026-11-02T12:16:30.857Z"
     },
     {
       "id": "star-current-S",
       "observed": "Estado comprobado",
       "text": "1,497 A",
       "value": 1.4968116848937583,
-      "at": "2026-10-28T20:54:16.039Z"
+      "at": "2026-11-02T12:16:30.858Z"
     },
     {
       "id": "star-current-T",
       "observed": "Estado comprobado",
       "text": "1,497 A",
       "value": 1.4968116848937616,
-      "at": "2026-10-28T20:54:16.039Z"
+      "at": "2026-11-02T12:16:30.858Z"
     },
     {
       "id": "change-delta",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.040Z",
+      "at": "2026-11-02T12:16:30.859Z",
       "action": {
         "version": 1,
         "eventId": 6,
@@ -223,56 +223,56 @@
       "observed": "Estado comprobado",
       "text": "379,3 V",
       "value": 379.2895758123652,
-      "at": "2026-10-28T20:54:16.041Z"
+      "at": "2026-11-02T12:16:30.860Z"
     },
     {
       "id": "delta-V",
       "observed": "Estado comprobado",
       "text": "379,3 V",
       "value": 379.2895758123651,
-      "at": "2026-10-28T20:54:16.041Z"
+      "at": "2026-11-02T12:16:30.861Z"
     },
     {
       "id": "delta-W",
       "observed": "Estado comprobado",
       "text": "379,3 V",
       "value": 379.28957581236523,
-      "at": "2026-10-28T20:54:16.042Z"
+      "at": "2026-11-02T12:16:30.862Z"
     },
     {
       "id": "delta-current-R",
       "observed": "Estado comprobado",
       "text": "4,485 A",
       "value": 4.48483541310455,
-      "at": "2026-10-28T20:54:16.043Z"
+      "at": "2026-11-02T12:16:30.862Z"
     },
     {
       "id": "delta-current-S",
       "observed": "Estado comprobado",
       "text": "4,485 A",
       "value": 4.484835413104534,
-      "at": "2026-10-28T20:54:16.043Z"
+      "at": "2026-11-02T12:16:30.863Z"
     },
     {
       "id": "delta-current-T",
       "observed": "Estado comprobado",
       "text": "4,485 A",
       "value": 4.484835413104545,
-      "at": "2026-10-28T20:54:16.043Z"
+      "at": "2026-11-02T12:16:30.864Z"
     },
     {
       "id": "compare",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.044Z"
+      "at": "2026-11-02T12:16:30.864Z"
     },
     {
       "id": "overload",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.044Z",
+      "at": "2026-11-02T12:16:30.864Z",
       "action": {
         "version": 1,
         "eventId": 7,
@@ -287,7 +287,7 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.044Z",
+      "at": "2026-11-02T12:16:30.865Z",
       "action": {
         "version": 1,
         "eventId": 8,
@@ -302,14 +302,14 @@
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.044Z"
+      "at": "2026-11-02T12:16:30.865Z"
     },
     {
       "id": "dismantle",
       "observed": "Estado comprobado",
       "text": "Estado comprobado",
       "value": null,
-      "at": "2026-10-28T20:54:16.044Z"
+      "at": "2026-11-02T12:16:30.865Z"
     }
   ]
 }

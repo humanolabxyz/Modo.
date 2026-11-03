@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "desktop: CAD oficial, servos, Jog, movimiento progresivo, pausa, emergencia enclavada, agarre, traslado, caída física, enseñanza/reproducción de cuatro puntos, guardado y recarga sin habilitación automática.",
+    "mobile: CAD oficial, servos, Jog, movimiento progresivo, pausa, emergencia enclavada, agarre, traslado, caída física, enseñanza/reproducción de cuatro puntos, guardado y recarga sin habilitación automática."
+  ],
+  "errors": []
+}

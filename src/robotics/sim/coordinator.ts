@@ -6,6 +6,7 @@ import {solve, type Solution} from '../circuit/solve.ts';
 import {solveDynamic, type BridgeState, type DriveMap, type DynamicResult, type LedState, type MotorState, type PinDrive} from '../circuit/dynamic.ts';
 import {netOfPin} from '../circuit/graph.ts';
 import {AvrRuntime} from '../mcu/avr/runtime.ts';
+import {Ssd1306} from '../mcu/i2c/ssd1306.ts';
 import {UNO_PINS} from '../mcu/avr/pins.ts';
 import type {PinBus, PinMode} from '../mcu/types.ts';
 import type {RobotProject} from '../project/types.ts';
@@ -15,23 +16,25 @@ export const STEP_US = 2000;          // el circuito se resuelve cada 2 ms virtu
 export const ECHO_LATENCY_US = 450;   // el HC-SR04 tarda ~450 µs en emitir y empezar a escuchar
 export const SPEED_OF_SOUND = 343;    // m/s
 export const SENSOR_MAX_M = 4, SENSOR_MIN_M = 0.02;
+/** Servo SG90 con la biblioteca Servo de Arduino: 544 µs = 0°, 2400 µs = 180°; los pulsos fuera de 400–2700 µs se ignoran. Velocidad ≈ 0,1 s por cada 60°. */
+const clamp01 = (v: number) => (Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : 0);
+export const SERVO_US_MIN = 544, SERVO_US_MAX = 2400, SERVO_VALID_MIN = 400, SERVO_VALID_MAX = 2700, SERVO_DEG_PER_S = 600, SERVO_REST_DEG = 90;
 
 export type SimModel = {project: RobotProject; targetId: string; hex: string; /** Con física (Rapier): ruedas, obstáculos y rayos del HC-SR04. */ physics?: boolean};
-/** Lo que el coordinador necesita de la física (la implementa `RobotPhysics`; en las pruebas de solo emulación no hay). */
+/** The physics port supplies measurements; outputs still propagate through the circuit. */
 export interface PhysicsPort {
-  step(motorVolts: ReadonlyMap<string, number>): void;
-  /** Distancia (m) que ve un HC-SR04; `null` fuera de alcance; `undefined` si ese sensor no está sobre un cuerpo simulado. */
+  step(motorVolts: ReadonlyMap<string, number>, brakes?: ReadonlySet<string>): void;
+  /** Ángulo de cada servo (el cuello gira la cabeza y el radar). */
+  setServos?(angles: ReadonlyMap<string, number>): void;
   distance(sensorId: string): number | null | undefined;
+  reflectance?(sensorId: string): {black: boolean; origin: [number, number, number]; height: number} | undefined;
   frame(): PhysicsFrame;
 }
-/** Lo que el coordinador necesita de la física (la implementa `RobotPhysics`; en las pruebas de solo emulación no hay). */
-export interface PhysicsPort {
-  step(motorVolts: ReadonlyMap<string, number>): void;
-  /** Distancia (m) que ve un HC-SR04; `null` fuera de alcance; `undefined` si ese sensor no está sobre un cuerpo simulado. */
-  distance(sensorId: string): number | null | undefined;
-  frame(): PhysicsFrame;
-}
+export type ReflectanceState = {powered: boolean; linked: boolean; black: boolean; level: 0 | 1; height: number | null; measured: boolean};
 export type SensorState = {powered: boolean; linked: boolean; distance: number; echoes: number; lastEchoUs: number | null; reason?: string};
+export type ServoSimState = {powered: boolean; linked: boolean; /** Ángulo actual del eje (°), con la velocidad del SG90. */ angle: number; /** Ángulo que pide el último pulso válido (°), o null si aún no llegó ninguno. */ target: number | null; pulseUs: number | null; pulses: number; reason?: string};
+export type DisplaySimState = {powered: boolean; /** SDA en A4, SCL en A5 y GND común: el bus lo ve. */ linked: boolean; reason?: string; on: boolean; version: number; dataBytes: number; address: number;
+  /** Imagen final (64 filas × 16 bytes, bit 7 = píxel izquierdo); la misma referencia mientras no cambie. */ frame: Uint8Array};
 export type Snapshot = {
   simTimeUs: number;
   status: 'running' | 'unpowered' | 'error';
@@ -44,11 +47,19 @@ export type Snapshot = {
   sensors: Record<string, SensorState>;
   /** Texto nuevo del puerto serie desde la última vez que se pidió. */
   serial: string;
+  reflectance: Record<string, ReflectanceState>;
+  servos: Record<string, ServoSimState>;
+  /** Pantallas OLED por I²C: lo que el programa dibujó. */
+  displays: Record<string, DisplaySimState>;
+  /** Valor vivo de cada control: potenciómetro 0–1, pulsador 0/1. */
+  controls: Record<string, number>;
   /** Poses, ruedas y rayos de la física (solo si hay física). */
   physics?: PhysicsFrame;
 };
 
 type Stat = {mode: PinMode; level: 0 | 1; since: number; highUs: number; avg: number};
+type Display = {id: string; device: Ssd1306; address: number; powered: boolean; linked: boolean; reason?: string};
+type Servo = {id: string; pin: string | undefined; powered: boolean; gndShared: boolean; rise: number | null; state: ServoSimState};
 type Sensor = {id: string; trig: string; echo: string; distance: number; fromPhysics: boolean; powered: boolean; gndShared: boolean; t0: number | null; busyUntil: number; state: SensorState};
 
 export class Coordinator {
@@ -56,6 +67,10 @@ export class Coordinator {
   private runtime = new AvrRuntime();
   private stats = new Map<string, Stat>();
   private sensors: Sensor[] = [];
+  private servos: Servo[] = [];
+  private displays: Display[] = [];
+  private controls = new Map<string, number>();
+  private reflectance: Record<string, ReflectanceState> = {};
   private dynamic: DynamicResult | null = null;
   private time = 0;
   private serialBuf = '';
@@ -86,8 +101,17 @@ export class Coordinator {
     if (!loaded.ok) { this.status = 'error'; this.message = loaded.error; return; }
     if (!st.powered) { this.status = 'unpowered'; this.message = `${uno.label} no tiene alimentación: el programa no corre.`; }
     this.buildSensors();
+    this.buildServos();
+    this.buildDisplays();
+    for (const part of model.project.parts) {
+      if (part.definitionId === 'potentiometer-10k') this.controls.set(part.instanceId, clamp01(Number(part.props?.position ?? 0.5)));
+      if (part.definitionId === 'push-button-6mm') this.controls.set(part.instanceId, part.props?.pressed ? 1 : 0);
+    }
     this.refresh(STEP_US);
   }
+
+  /** Cambia en vivo un control del banco (deslizador del potenciómetro o pulsador). Ignora ids que no son controles. */
+  setControl(id: string, value: number): void { if (this.controls.has(id)) this.controls.set(id, clamp01(value)); }
 
   private uno() { return this.model.project.parts.find(p => p.instanceId === this.model.targetId && p.definitionId === 'arduino-uno-r3'); }
 
@@ -98,6 +122,52 @@ export class Coordinator {
     if (!s) return;
     this.close(s, at); s.level = level; this.trace?.(pin, level, at);
     for (const sensor of this.sensors) if (sensor.trig === pin) this.trigger(sensor, level, at);
+    for (const servo of this.servos) if (servo.pin === pin) this.servoPulse(servo, level, at);
+  }
+
+  /** Mide el ancho de cada pulso de la señal (flanco de subida → bajada), como lo ve el servo real. */
+  private servoPulse(s: Servo, level: 0 | 1, at: number) {
+    if (level === 1) { s.rise = at; return; }
+    if (s.rise === null) return;
+    const width = at - s.rise; s.rise = null;
+    if (width < SERVO_VALID_MIN || width > SERVO_VALID_MAX) return;
+    s.state.pulseUs = Math.round(width); s.state.pulses++;
+    s.state.target = Math.min(180, Math.max(0, (width - SERVO_US_MIN) / (SERVO_US_MAX - SERVO_US_MIN) * 180));
+  }
+
+  /** Pantallas OLED: solo responden en el bus I²C si tienen alimentación, GND común y SDA/SCL en A4/A5 (lo único que Wire sabe usar en el UNO). */
+  private buildDisplays() {
+    const graph = this.solution.graph, uno = this.uno()!, unoGnd = netOfPin(graph, uno.instanceId, 'GND.1');
+    const sda = netOfPin(graph, uno.instanceId, 'A4'), scl = netOfPin(graph, uno.instanceId, 'A5');
+    for (const part of this.model.project.parts.filter(p => p.definitionId === 'oled-ssd1306')) {
+      const st = this.solution.devices.get(part.instanceId), powered = st?.kind === 'oled-ssd1306' && st.powered;
+      const sdaOk = !!sda && netOfPin(graph, part.instanceId, 'SDA') === sda, sclOk = !!scl && netOfPin(graph, part.instanceId, 'SCL') === scl, gndOk = netOfPin(graph, part.instanceId, 'GND') === unoGnd;
+      const reason = !powered ? 'Sin 3–5,5 V entre VCC y GND.' : !gndOk ? 'El GND de la pantalla no está unido al de la placa.' : !sdaOk ? 'SDA debe ir al pin A4 del Arduino UNO.' : !sclOk ? 'SCL debe ir al pin A5 del Arduino UNO.' : undefined;
+      const device = new Ssd1306(), address = Number(part.props?.address) === 61 ? 0x3d : 0x3c;
+      if (!reason) this.runtime.attachI2c(address, device);
+      this.displays.push({id: part.instanceId, device, address, powered, linked: !reason, reason});
+    }
+  }
+
+  private buildServos() {
+    const graph = this.solution.graph, uno = this.uno()!, unoGnd = netOfPin(graph, uno.instanceId, 'GND.1');
+    for (const part of this.model.project.parts.filter(p => p.definitionId === 'servo-sg90')) {
+      const st = this.solution.devices.get(part.instanceId), net = netOfPin(graph, part.instanceId, 'SIG');
+      const pin = (graph.nets.get(net ?? '') ?? []).filter(r => r.instanceId === uno.instanceId && r.pinId in UNO_PINS).map(r => r.pinId)[0];
+      const powered = st?.kind === 'servo-sg90' && st.powered, gndShared = netOfPin(graph, part.instanceId, 'GND') === unoGnd, linked = !!pin;
+      const reason = !linked ? 'SIG no llega a un pin de la placa.' : !powered ? 'Sin 4–6,5 V entre VCC y GND.' : !gndShared ? 'El GND del servo no está unido al de la placa.' : undefined;
+      this.servos.push({id: part.instanceId, pin, powered, gndShared, rise: null, state: {powered, linked, angle: SERVO_REST_DEG, target: null, pulseUs: null, pulses: 0, reason}});
+    }
+  }
+
+  /** El eje se acerca al ángulo pedido a la velocidad del SG90; sin alimentación o sin masa común no se mueve. */
+  private moveServos(stepUs: number) {
+    const max = SERVO_DEG_PER_S * stepUs / 1e6;
+    for (const s of this.servos) {
+      const t = s.state.target;
+      if (t === null || !s.powered || !s.gndShared) continue;
+      s.state.angle += Math.max(-max, Math.min(max, t - s.state.angle));
+    }
   }
 
   private buildSensors() {
@@ -138,10 +208,23 @@ export class Coordinator {
       pins.set(id, s.mode === 'out' ? {mode: 'out', level: s.avg} : {mode: 'in', pullup: s.mode === 'pullup'});
     }
     drive.set(uno.instanceId, pins);
-    this.dynamic = solveDynamic(this.model.project, drive, this.dynamic ?? undefined, this.solution);
+    const sensorOutputs = new Map<string, number>(), graph = this.solution.graph;
+    for (const part of this.model.project.parts.filter(p => p.definitionId === 'tcrt5000-module')) {
+      const st = this.solution.devices.get(part.instanceId), reading = this.physics?.reflectance?.(part.instanceId);
+      const black = reading ? reading.black : this.physics ? false : !!part.props?.testBlack;
+      const powered = st?.kind === 'tcrt5000' && st.powered;
+      const level: 0 | 1 = black !== !!part.props?.activeLow ? 1 : 0;
+      const net = netOfPin(graph, part.instanceId, 'DO');
+      const linked = (graph.nets.get(net ?? '') ?? []).some(r => r.instanceId === uno.instanceId && r.pinId in UNO_PINS);
+      this.reflectance[part.instanceId] = {powered, linked, black, level, height: reading?.height ?? null, measured: !!reading};
+      if (powered) sensorOutputs.set(part.instanceId, level * 5);
+    }
+    this.moveServos(step);
+    this.dynamic = solveDynamic(this.model.project, drive, this.dynamic ?? undefined, this.solution, sensorOutputs, this.controls);
     if (this.physics) {
       const volts = new Map<string, number>(); for (const [id, m] of this.dynamic.motors) volts.set(id, m.volts);
-      this.physics.step(volts);
+      this.physics.setServos?.(new Map(this.servos.map(sv => [sv.id, sv.state.angle])));
+      this.physics.step(volts, new Set([...this.dynamic.motors].filter(([, m]) => m.braking).map(([id]) => id)));
     }
     if (this.status !== 'running') return;
     for (const [id, s] of this.stats) {
@@ -150,7 +233,7 @@ export class Coordinator {
       if (s.mode === 'out' || this.echoPins.has(id)) continue; // el eco lo gobierna el sensor, con el instante exacto
       const high = this.highInputs.has(id) ? volts > 1.5 : volts > 3;  // histéresis 1,5 V / 3 V
       high ? this.highInputs.add(id) : this.highInputs.delete(id);
-      this.runtime.setInput(id, high ? 1 : 0);
+      this.runtime.setInput(id, high ? 1 : 0); s.level = high ? 1 : 0;
     }
   }
 
@@ -178,7 +261,7 @@ export class Coordinator {
     return {
       simTimeUs: this.time, status: this.status, message: this.message, uno: {powered: st?.kind === 'uno' && st.powered, via: st?.kind === 'uno' ? st.via : null}, pins: out,
       leds: Object.fromEntries(this.dynamic?.leds ?? []), motors: Object.fromEntries(this.dynamic?.motors ?? []), bridges: Object.fromEntries(this.dynamic?.bridges ?? []),
-      sensors: Object.fromEntries(this.sensors.map(s => [s.id, {...s.state}])), serial, physics: this.physics?.frame(),
+      sensors: Object.fromEntries(this.sensors.map(s => [s.id, {...s.state}])), serial, reflectance: {...this.reflectance}, servos: Object.fromEntries(this.servos.map(s => [s.id, {...s.state}])), displays: Object.fromEntries(this.displays.map(d => [d.id, {powered: d.powered, linked: d.linked, reason: d.reason, on: d.device.on, version: d.device.version, dataBytes: d.device.dataBytes, address: d.address, frame: d.device.frame()}])), physics: this.physics?.frame(), controls: Object.fromEntries(this.controls),
     };
   }
 }

@@ -1,5 +1,21 @@
 # PanelLab en Vercel
 
+## Publicación 31/10/2026 · 2.8.0 · brazos que recogen cubos y sonidos de los robots
+
+Producción: https://modo-lab.vercel.app. Despliegue `modo-ln5alck5t` (proyecto existente `modo-lab`), estado Ready, publicado por solicitud expresa del usuario. Incluye brazos con hombro, codo y pinza, plantilla «Robot de orugas recoge cubos», sonidos sintetizados con botón de silencio y guías actualizadas (catálogo de 35 piezas). El inicio publicado muestra la versión 2.8.0; `/robotica/` responde 401 sin sesión (protección del proyecto), así que no se probó el taller público.
+
+## Publicación 31/10/2026 · 2.7.0 · robot de orugas con radar, cara y brazos y guías paso a paso
+
+Producción: https://modo-lab.vercel.app. Despliegue `modo-8fkqjvik4` (proyecto existente `modo-lab`), publicado por solicitud expresa del usuario. Incluye servo, potenciómetro, pulsador, pantalla OLED por I²C, cuello con servo, robot de orugas con cabeza, radar y brazos (33 componentes), freno del L298N, y las guías de armado, cableado (cable espectro) y programación. Verificación pública: `/`, `/estudio/` y `/versiones/` responden 200 y muestran la 2.7.0; `/robotica/` y `/arena/` siguen protegidas (401, contraseña conservada); las miniaturas nuevas se sirven con el mismo SHA-256 que las locales. La interfaz de Robótica no se pudo recorrer en producción por la contraseña: se probó en local (`npm run verify:robotics-*`). El compilador de Arduino sigue siendo solo del servidor de desarrollo. Detalle: [robot](docs/robotica/ROBOT_ORUGAS_RADAR_Y_CARA_2026-10-30.md), [guías](docs/robotica/GUIAS_PROGRAMAR_Y_ARMAR_2026-10-30.md).
+
+## Publicación 30/10/2026 · 2.6.4 · modo de combate independiente
+
+Producción: https://modo-lab.vercel.app/arena/. Despliegue `dpl_HTbjfYvA4vpw7sUKPDMuKZZtc8ZC`, READY, mismo proyecto y contraseña. Arena con pantalla propia, carga separada del taller, cámara/entrada/victoria animadas, sonido opcional y efectos derivados del contacto físico. Verificación pública de 190 recursos y ambas rutas protegidas; interfaz probada localmente en escritorio/móvil emulado. [Informe](docs/robotica/MODO_COMBATE_2_6_4.md).
+
+## Publicación 30/10/2026 · 2.6.3 · brazo y arena de sumo
+
+Producción actualizada por solicitud expresa del usuario: https://modo-lab.vercel.app/robotica/. Proyecto existente `modo-lab`; despliegue `dpl_8X6ojACA3PNJbwjCddz1bLM6y4Qk`, estado READY. Incluye brazo E6, arena con dos robots y construcciones con cuña, pala 4WD y defensa. La contraseña de Robótica se conserva. [Informe y verificación](docs/robotica/PUBLICACION_2_6_3.md).
+
 Publicado el 14 de octubre de 2026 por solicitud expresa del usuario, que autoriza el despliegue de este proyecto pese a la restricción local de las instrucciones originales.
 
 - Sitio: https://panellab-inacap.vercel.app
@@ -179,3 +195,46 @@ Por solicitud expresa del usuario, publicado en producción https://modo-lab.ver
 - Verificación: `npm run check`, `npm run build` y siete scripts de modelo correctos. Interfaz con el tester entre FUENTE:R y L1 de KT1, temporizador 4 s, en 1440, 820 (táctil) y 390 (táctil): estrella 1,701 A, triángulo 3,694 A con pico breve de 4,5–4,7 A, 0 etiquetas del KM3 y sin errores de JavaScript. Repetido contra producción en 1440 y 390 con el mismo resultado.
 - Producción: HTTP 200 en `/`, `/laboratorio/` y `sw.js`; 116 de 117 JS de `_astro` idénticos por SHA-256 al build local. El restante, `RoboticsApp`, pertenece a la Beta de Robótica protegida por contraseña y no se pudo comparar.
 - Evidencias: `qa/serie-triangulo-2026-10-29/`. Sin prueba en dispositivo físico.
+
+## 29 de octubre de 2026 (2) · Aprender a medir con lista en vivo y bornes de la lección
+
+Por solicitud expresa del usuario, publicado en producción https://modo-lab.vercel.app/, despliegue `dpl_7TKJK3oJCtNEgcqtxLvZQo4o1ATR` (`modo-7zrqjdg1h-humanolabxyz-9765s-projects.vercel.app`), estado READY. Proyecto y equipo conservados: modo-lab / humanolabxyz-9765s-projects. Sin commit ni push.
+
+- `src/data/meterActivity.ts` (`stepChecklist`), `src/components/PanelMeterLesson.tsx` y `src/styles/panel-meter-lesson.css`: cada uno de los 34 pasos muestra «Para completar este paso», con cada condición en vivo (✓/○) y el punto y la página de la guía del profesor. Repite las condiciones de `checkActivity`. En los pasos de operación avisa «En este paso no mides con el tester», e indica que S1, el temporizador, TEST o RESET deben ocurrir en ese mismo paso. Se retiró el desplegable plegado de condiciones del paso 5. Contrastado con los puntos 1–25 de la guía (Actividad 2, UA2): orden y condiciones coinciden.
+- `src/components/App.tsx`: en la guía paso a paso, al terminar un cable se limpia la selección, así que ya no queda iluminada la red recién armada; solo los bornes del paso siguiente.
+- Verificación: `npm run check`, `npm run build` y siete scripts de modelo correctos. Recorrido completo de 34 pasos con descargas en 1440, 820 y 390 sobre la versión compilada, y en 1440 y 390 contra producción, sin errores de JavaScript. Bornes de la lección comprobados en dos lecciones en local y en una en producción.
+- Producción: HTTP 200 en `/`, `/laboratorio/` y `sw.js`; 116 de 117 JS idénticos al build local. El restante es `RoboticsApp` (Beta protegida).
+- Evidencias: `qa/aprender-a-medir-2026-10-29/`. Sin prueba en dispositivo físico.
+
+## 29 de octubre de 2026 (3) · lección de dos contactores igual al tablero bien armado
+
+Por solicitud expresa del usuario, publicado en producción https://modo-lab.vercel.app/, despliegue `dpl_9kVNJWEkLB353BpdCEjYpkpmoN2x` (`modo-bn6yeo761-humanolabxyz-9765s-projects.vercel.app`), estado READY. Proyecto y equipo conservados: modo-lab / humanolabxyz-9765s-projects. Sin commit ni push.
+
+- Cableado de «Estrella-triángulo · 2 contactores»: 40 cables. El mando (23) es idéntico al tablero bien armado por el autor (`referencias/lecciones-estrella-triangulo/modo-panel-tablero-bien-armado-2026-10-29.json`): mismos bornes, sentido entrada→salida y orden. Nodo de marcha S1:4; retención S2:2 → KT1:13; común de pilotos BOTONERAS:N → FUENTE:N; aviso F → 97 y 98 → P3; piloto rojo P2 por los NC 81–82 de KM1 y KM2. La fuerza (17 cables) se conserva del archivo recibido, que no se modifica.
+- Orden de los pasos en `src/data/twoContactorOrder.ts`; ajustes en `twoContactorTeaching.ts`; anclas del esquema en `twoContactorReference.ts`. Los pasos 18 y 19 (cables del rojo) no tienen línea propia en el dibujo recibido.
+- Simulador: en reposo solo se enciende P2 rojo; en estrella solo P1; en triángulo solo P4; con TEST, P2 y P3. «Aprender a medir» y los textos de la guía (40 cables, P2 cableado) se actualizaron.
+- Incluye también el cambio a ON/OFF y las pistas de «Aprender a medir».
+- Verificación: `npm run check`, `npm run build` y nueve pruebas de modelo correctas; lección armada completa (23 pasos de mando y 17 de fuerza) y 34 pasos de medición en 1440 y 390 sin errores sobre la versión compilada. En producción: HTTP 200 en `/`, `/laboratorio/` y `sw.js`; 116 de 117 JS idénticos al build local (el restante es `RoboticsApp`, Beta protegida) y orden nuevo de la lección comprobado.
+- Las prácticas guardadas con el cableado anterior (37 cables) deben agregar los 3 cables del piloto rojo. La prueba `verify-two-contactor-lesson-ui.cjs` ya fallaba antes (clic en «Guía paso a paso» con contexto táctil).
+
+## 2026-10-29 · Estrella-triángulo 2 contactores con nombres del profesor
+
+- Lección «Estrella-triángulo · 2 contactores» rotulada con los nombres de la guía del profesor: KM1 (principal, parte contactor del temporizador), KT1 (cabezal de retardo 55–56 / 67–68), KM2 (triángulo, contactor + relé térmico) y KM3 (estrella, contactor trifásico); bornes R, S, T primero. Los demás módulos y lecciones conservan los nombres del banco.
+- Diagrama: segundo contacto NC (81–82) de KM3 en la rama del piloto rojo; salidas de triángulo corregidas en el dibujo compartido (2→W2, 4→U2, 6→V2).
+- Auditoría completa de cableado de las cinco lecciones (`qa/verify-all-wiring.mjs`).
+- Sonidos sintetizados de pulsadores, contactores, temporizador, térmico, interruptores y enchufe, con botón para silenciar.
+- Las prácticas guardadas con el cableado anterior piden pulsar «Continuar» para actualizarse.
+- Producción: https://modo-lab.vercel.app (dpl_BRTex95T62Gmr9rDsFg2dNkZDRmk).
+- Verificación: `npm run check`, build y pruebas de modelo correctas; navegador (mediciones 1440/390 y sonidos) sin errores. Producción: HTTP 200 en `/`, `/laboratorio/` y `sw.js`; 117 de 118 JS idénticos por SHA-256 (el restante es `RoboticsApp`, Beta protegida).
+
+## Publicación 31/10/2026 · 2.8.1 · tierra de protección, PLC completo y guías de robótica en ventanas
+
+Producción: https://modo-lab.vercel.app. Despliegue `modo-9kgf0165z` (proyecto existente `modo-lab`), estado Ready, publicado por solicitud expresa del usuario con `vercel deploy --prod` desde esta carpeta (sin commit ni push a GitHub). Incluye el bloqueo sin tierra del banco y del tablero, las fugas de aislación, las variantes de iconos, el PLC con TP/CTD/CTUD/flancos, programa aplicado y pausa, y las guías de robótica como ventanas con espectro del código. Detalle en `ENTREGA_TIERRA_PROTECCION_2026-10-31.md`.
+
+Verificación: `/`, `/estudio` y `/laboratorio` responden 200; `/robotica/` responde 401 (clave de beta, esperado). No se probó en producción con navegador ni en teléfono o tablet reales; el compilador de robótica sigue siendo solo del servidor de desarrollo.
+
+## Publicación 01/11/2026 · 2.8.2 · robot humanoide con armadura, protoboard y brazos colgando
+
+Producción: https://modo-lab.vercel.app. Despliegue `dpl_7zEEsFgkMnG2mDWGy23f2V52CBS8` (proyecto `modo-lab`), estado Ready, publicado por solicitud expresa del usuario con `vercel deploy --prod` desde esta carpeta (sin commit ni push). Incluye: torso con armadura por capas, brazos esbeltos colgando con hombros anchos, manos con dedos, servos con carcasa blanca, cableado con protoboard y dos reguladores, programas y guías recompilados.
+
+Verificación: `npm run check`, build y `verify-robotics-tracked` correctos; `/`, `/estudio` y `/laboratorio` responden 200 y `/robotica/` 401 (clave de beta). No se probó en producción con navegador ni en teléfono o tablet reales. Pendiente: armado más corto (agrupar piezas).

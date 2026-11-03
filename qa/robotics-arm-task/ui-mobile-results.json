@@ -1,0 +1,6 @@
+{
+  "checks": [
+    "mobile: preparar sin habilitar, editar/reordenar y recargar 25 puntos; pausa, parada, emergencia y ciclo completo de tres entregas con persistencia."
+  ],
+  "errors": []
+}

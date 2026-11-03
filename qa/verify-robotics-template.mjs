@@ -19,11 +19,11 @@ await RAPIER.init();
 
 const p = buildReadyRobot();
 assert.equal(TEMPLATES[0].id, TEMPLATE_READY_ROBOT); assert.equal(buildTemplate('no-existe'), null);
-assert.equal(p.parts.length, 11); assert.equal(p.attachments.filter(a => a.kind === 'rigid').length, 8); assert.equal(p.attachments.filter(a => a.kind === 'wheel-hinge').length, 2);
-assert.equal(p.connections.length, 18); assert.equal(p.scene.obstacles.length, 1);
+assert.equal(p.parts.length, 14); assert.equal(p.attachments.filter(a => a.kind === 'rigid').length, 11); assert.equal(p.attachments.filter(a => a.kind === 'wheel-hinge').length, 2);
+assert.equal(p.connections.length, 28); assert.equal(p.scene.obstacles.length, 1);
 const parsed = parseRobotProject(JSON.parse(JSON.stringify(p)), {knownDefinitions: definitionIds, catalog: catalogShape});
 assert.ok(parsed.ok, parsed.error);
-pass('la plantilla es un proyecto válido (11 piezas, 8 uniones rígidas, 2 de rueda, 18 cables, 1 obstáculo) y pasa parseRobotProject con el catálogo');
+pass('la plantilla es un proyecto válido (14 piezas, 11 uniones rígidas, 2 de rueda, 28 cables, 1 obstáculo) y pasa parseRobotProject con el catálogo');
 
 const diags = diagnose(p, solve(p)), errors = diags.filter(d => d.severity === 'error');
 assert.deepEqual(errors, [], `sin errores de circuito: ${errors.map(d => d.message).join(' | ')}`);

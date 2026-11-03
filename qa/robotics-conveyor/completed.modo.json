@@ -1,0 +1,269 @@
+{
+  "format": "modo-robotica",
+  "version": 1,
+  "id": "d6b40a86-8793-493b-b213-4ddd8c992904",
+  "name": "Célula E6 · cinta y clasificación",
+  "createdAt": "2026-10-31T04:06:16.440Z",
+  "updatedAt": "2026-10-31T04:06:16.440Z",
+  "parts": [
+    {
+      "instanceId": "e4a3c646-accb-431b-842b-49fd1a452bc5",
+      "definitionId": "educational-arm-e6",
+      "label": "Brazo educativo · referencia E6",
+      "transform": {
+        "position": [
+          0,
+          0.0515,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "j1": 0,
+        "j2": 30.578757526132033,
+        "j3": 41.6884091737187,
+        "j4": 20.32854257124161,
+        "j5": -90.80235137233286,
+        "j6": 0,
+        "gripperOpen": true,
+        "held": "",
+        "modelRevision": "e6-urdf-v1"
+      }
+    },
+    {
+      "instanceId": "9d1db349-4189-4cb4-a249-7e1b26552203",
+      "definitionId": "educational-conveyor",
+      "label": "Cinta · presencia y color",
+      "transform": {
+        "position": [
+          0.28,
+          0.04,
+          0.4
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "speedMps": 0.08,
+        "jammed": false,
+        "sensorFault": false,
+        "phaseM": 0.4755999999999997
+      }
+    },
+    {
+      "instanceId": "0c55e530-a372-4b31-aa81-39a2ad393406",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza rojo",
+      "transform": {
+        "position": [
+          0.24960868060588837,
+          0.017431112006306648,
+          -0.14024269580841064
+        ],
+        "rotation": [
+          -0.7071091532707214,
+          7.191301847342402e-7,
+          0.0000019586218513722997,
+          -0.7071044445037842
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.28,
+        "startY": 0.046,
+        "startZ": 0.28,
+        "surfaceR": 220,
+        "surfaceG": 55,
+        "surfaceB": 55,
+        "targetZone": "5f79e9a9-a878-43fa-874f-0038f7a67daf",
+        "depositedBy": "e4a3c646-accb-431b-842b-49fd1a452bc5"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "5f79e9a9-a878-43fa-874f-0038f7a67daf",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino rojo",
+      "transform": {
+        "position": [
+          0.25,
+          0.002,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "acceptColor": "rojo",
+        "surfaceR": 220,
+        "surfaceG": 55,
+        "surfaceB": 55
+      }
+    },
+    {
+      "instanceId": "1304e82c-bf02-49a2-9405-734c2ba75db3",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza verde",
+      "transform": {
+        "position": [
+          0.3795599639415741,
+          0.017431143671274185,
+          -0.1401515007019043
+        ],
+        "rotation": [
+          -0.7071080207824707,
+          3.0139582918309316e-7,
+          0.000002612551497804816,
+          -0.7071055769920349
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.28,
+        "startY": 0.046,
+        "startZ": 0.45000000000000007,
+        "surfaceR": 50,
+        "surfaceG": 180,
+        "surfaceB": 95,
+        "targetZone": "078052c7-a7a2-4f60-adf5-fa5813f2e9a9",
+        "depositedBy": "e4a3c646-accb-431b-842b-49fd1a452bc5"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "078052c7-a7a2-4f60-adf5-fa5813f2e9a9",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino verde",
+      "transform": {
+        "position": [
+          0.38,
+          0.002,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "acceptColor": "verde",
+        "surfaceR": 50,
+        "surfaceG": 180,
+        "surfaceB": 95
+      }
+    },
+    {
+      "instanceId": "97475f8a-d645-48e4-b8c8-e1a5afd63ace",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza azul",
+      "transform": {
+        "position": [
+          0.2495478242635727,
+          0.01743110828101635,
+          -0.2696962058544159
+        ],
+        "rotation": [
+          -0.7071044445037842,
+          0.0000019744720702874474,
+          6.016343832015991e-7,
+          -0.7071091532707214
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.28,
+        "startY": 0.046,
+        "startZ": 0.6200000000000001,
+        "surfaceR": 55,
+        "surfaceG": 115,
+        "surfaceB": 225,
+        "targetZone": "5d4303bf-bbad-4843-b2e8-89814488b9b6",
+        "depositedBy": "e4a3c646-accb-431b-842b-49fd1a452bc5"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "5d4303bf-bbad-4843-b2e8-89814488b9b6",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino azul",
+      "transform": {
+        "position": [
+          0.25,
+          0.002,
+          -0.27
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "acceptColor": "azul",
+        "surfaceR": 55,
+        "surfaceG": 115,
+        "surfaceB": 225
+      }
+    }
+  ],
+  "attachments": [],
+  "connections": [],
+  "firmware": [],
+  "scene": {
+    "obstacles": [],
+    "robotStart": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "physics": {
+      "gravity": 9.81,
+      "friction": 0.7
+    }
+  },
+  "workspace": {
+    "mode": "simulate",
+    "welcomeDismissed": true,
+    "camera": {
+      "position": [
+        1.25,
+        1,
+        1.45
+      ],
+      "target": [
+        0.2,
+        0.1,
+        0.25
+      ]
+    }
+  }
+}

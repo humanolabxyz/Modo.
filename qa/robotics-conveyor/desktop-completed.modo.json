@@ -1,0 +1,395 @@
+{
+  "format": "modo-robotica",
+  "version": 1,
+  "id": "b788cb60-c4f9-440a-99b5-5c1a02df7449",
+  "name": "Célula E6 · cinta y clasificación",
+  "createdAt": "2026-10-31T04:06:19.976Z",
+  "updatedAt": "2026-10-31T04:08:31.079Z",
+  "parts": [
+    {
+      "instanceId": "27cd91bd-8326-4337-a8f9-b43aff6bb6a1",
+      "definitionId": "educational-arm-e6",
+      "label": "Brazo educativo · referencia E6",
+      "transform": {
+        "position": [
+          0,
+          0.0515,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "j1": -56.314248669018625,
+        "j2": 30.910385948042766,
+        "j3": 63.465049488200734,
+        "j4": -4.388739910073205,
+        "j5": -89.99880351191234,
+        "j6": 123.68541258023316,
+        "gripperOpen": true,
+        "held": "",
+        "modelRevision": "e6-urdf-v1"
+      }
+    },
+    {
+      "instanceId": "28467595-4e81-491c-a43b-c918c3e4b279",
+      "definitionId": "educational-conveyor",
+      "label": "Cinta · presencia y color",
+      "transform": {
+        "position": [
+          0.28,
+          0.04,
+          0.4
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "speedMps": 0.12,
+        "jammed": false,
+        "sensorFault": false,
+        "phaseM": 0.7024220000001046
+      }
+    },
+    {
+      "instanceId": "83d8e20e-27ed-4659-a0e8-ffadb53318bc",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza rojo",
+      "transform": {
+        "position": [
+          0.24960868060588837,
+          0.017431112006306648,
+          -0.14024269580841064
+        ],
+        "rotation": [
+          -0.7071091532707214,
+          7.19186630249169e-7,
+          0.000001958683469638345,
+          -0.7071044445037842
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.28,
+        "startY": 0.046,
+        "startZ": 0.28,
+        "surfaceR": 220,
+        "surfaceG": 55,
+        "surfaceB": 55,
+        "targetZone": "02efe7c3-758c-43c6-84d9-814cab66ded0",
+        "depositedBy": "27cd91bd-8326-4337-a8f9-b43aff6bb6a1"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "02efe7c3-758c-43c6-84d9-814cab66ded0",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino rojo",
+      "transform": {
+        "position": [
+          0.25,
+          0.002,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "acceptColor": "rojo",
+        "surfaceR": 220,
+        "surfaceG": 55,
+        "surfaceB": 55
+      }
+    },
+    {
+      "instanceId": "b03b29d3-2d31-40ce-ab9f-f3ac26319d1f",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza verde",
+      "transform": {
+        "position": [
+          0.3795596957206726,
+          0.017431136220693588,
+          -0.1401512324810028
+        ],
+        "rotation": [
+          -0.7071080803871155,
+          1.2803829463337024e-7,
+          0.000002635777264003991,
+          -0.7071055173873901
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.28,
+        "startY": 0.046,
+        "startZ": 0.45000000000000007,
+        "surfaceR": 50,
+        "surfaceG": 180,
+        "surfaceB": 95,
+        "targetZone": "74021a21-30da-4c81-9783-015611570a63",
+        "depositedBy": "27cd91bd-8326-4337-a8f9-b43aff6bb6a1"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "74021a21-30da-4c81-9783-015611570a63",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino verde",
+      "transform": {
+        "position": [
+          0.38,
+          0.002,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "acceptColor": "verde",
+        "surfaceR": 50,
+        "surfaceG": 180,
+        "surfaceB": 95
+      }
+    },
+    {
+      "instanceId": "fd7c0993-8670-4b58-af5f-386042d56aac",
+      "definitionId": "arm-practice-block",
+      "label": "Pieza azul",
+      "transform": {
+        "position": [
+          0.2495478093624115,
+          0.017431113868951797,
+          -0.2696961760520935
+        ],
+        "rotation": [
+          -0.7071044445037842,
+          0.000001981633204195532,
+          6.081440915295389e-7,
+          -0.7071092128753662
+        ]
+      },
+      "props": {
+        "massKg": 0.05,
+        "startX": 0.28,
+        "startY": 0.046,
+        "startZ": 0.6200000000000001,
+        "surfaceR": 55,
+        "surfaceG": 115,
+        "surfaceB": 225,
+        "targetZone": "15e7bb31-6e9e-47d5-99bc-e89118ce3721",
+        "depositedBy": "27cd91bd-8326-4337-a8f9-b43aff6bb6a1"
+      },
+      "locked": false
+    },
+    {
+      "instanceId": "15e7bb31-6e9e-47d5-99bc-e89118ce3721",
+      "definitionId": "arm-drop-zone",
+      "label": "Destino azul",
+      "transform": {
+        "position": [
+          0.25,
+          0.002,
+          -0.27
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "locked": true,
+      "props": {
+        "acceptColor": "azul",
+        "surfaceR": 55,
+        "surfaceG": 115,
+        "surfaceB": 225
+      }
+    }
+  ],
+  "attachments": [],
+  "connections": [],
+  "firmware": [],
+  "scene": {
+    "obstacles": [],
+    "robotStart": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "physics": {
+      "gravity": 9.81,
+      "friction": 0.7
+    }
+  },
+  "workspace": {
+    "mode": "simulate",
+    "welcomeDismissed": true,
+    "camera": {
+      "position": [
+        1.25,
+        1,
+        1.45
+      ],
+      "target": [
+        0.2,
+        0.1,
+        0.25
+      ]
+    }
+  },
+  "armProgram": {
+    "armId": "27cd91bd-8326-4337-a8f9-b43aff6bb6a1",
+    "points": [
+      {
+        "name": "1 · Sobre pieza",
+        "angles": [
+          -133.0720766779686,
+          13.056963088086652,
+          82.87716852145203,
+          -5.94222174426751,
+          -89.99729779767505,
+          46.92599187398369
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Descender",
+        "angles": [
+          -133.0810919215565,
+          27.592224800675105,
+          106.87301527707982,
+          -44.451931748571845,
+          -90.00025908984412,
+          46.91860013678753
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Sujetar",
+        "angles": [
+          -133.0810919215565,
+          27.592224800675105,
+          106.87301527707982,
+          -44.451931748571845,
+          -90.00025908984412,
+          46.91860013678753
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "fd7c0993-8670-4b58-af5f-386042d56aac"
+      },
+      {
+        "name": "1 · Levantar",
+        "angles": [
+          -133.08178396026653,
+          13.905921612198744,
+          88.11685383867089,
+          -12.023471509264988,
+          -89.9995174750331,
+          46.918002355830964
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "fd7c0993-8670-4b58-af5f-386042d56aac"
+      },
+      {
+        "name": "1 · Sobre destino",
+        "angles": [
+          -56.31727266858456,
+          30.919068371625105,
+          63.40109866329464,
+          -4.329466799222207,
+          -89.99919233012247,
+          123.68314248631548
+        ],
+        "kind": "MovJ",
+        "gripperOpen": false,
+        "expectedHeld": "fd7c0993-8670-4b58-af5f-386042d56aac"
+      },
+      {
+        "name": "1 · Depositar",
+        "angles": [
+          -56.31331631761768,
+          57.315286152023305,
+          85.11686077368726,
+          -52.426565133997045,
+          -89.99972314605156,
+          123.68642193302142
+        ],
+        "kind": "MovL",
+        "gripperOpen": false,
+        "expectedHeld": "fd7c0993-8670-4b58-af5f-386042d56aac"
+      },
+      {
+        "name": "1 · Soltar",
+        "angles": [
+          -56.31331631761768,
+          57.315286152023305,
+          85.11686077368726,
+          -52.426565133997045,
+          -89.99972314605156,
+          123.68642193302142
+        ],
+        "kind": "MovJ",
+        "gripperOpen": true
+      },
+      {
+        "name": "1 · Retirar",
+        "angles": [
+          -56.314160734704295,
+          30.90613075498369,
+          63.39000316311687,
+          -4.308382506189528,
+          -89.99890552441781,
+          123.68550038829545
+        ],
+        "kind": "MovL",
+        "gripperOpen": true
+      },
+      {
+        "name": "Volver a inicio",
+        "angles": [
+          0,
+          30.578757526132033,
+          41.6884091737187,
+          20.32854257124161,
+          -90.80235137233286,
+          0
+        ],
+        "gripperOpen": true,
+        "kind": "MovJ"
+      }
+    ]
+  }
+}

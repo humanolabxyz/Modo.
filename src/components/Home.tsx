@@ -13,8 +13,7 @@ const spaces = [
   {id:'study', name:'Estudio', Icon:BookOpen, href:'/estudio/', color:'blue'},
   {id:'lab', name:'Laboratorio', Icon:FlaskConical, href:'/laboratorio/', color:'dark'},
   {id:'community', name:'Comunidad', Icon:UsersRound, href:'/comunidad/', color:'blue'},
-  // Sin ilustración hasta resolver D-09: la tarjeta se ve completa solo con el icono y el fondo.
-  {id:'robotics', name:'Robótica', Icon:Bot, href:'/robotica/', color:'dark', badge:'Beta', art:false},
+  {id:'robotics', name:'Robótica', Icon:Bot, href:'/robotica/', color:'dark', badge:'Beta'},
 ];
 const padded = (word: string) => word.padStart(word.length + Math.floor((9-word.length)/2), ' ').padEnd(9, ' ');
 
@@ -123,12 +122,12 @@ export function Home({practice, onEnterPanel, onContinue, onImport, ready}: Home
         const index=spaces.findIndex(space=>space.id===card?.dataset.module);
         if(event.detail>0 && index>=0 && index!==selectionAtPointerDown.current && matchMedia('(max-width:1100px)').matches){event.preventDefault();event.stopPropagation();select(index);}
       }}>
-        {spaces.map(({id,name,Icon,href,color,badge,art},index) => {
+        {spaces.map(({id,name,Icon,href,color,badge},index) => {
           let offset = (index-selected+spaces.length)%spaces.length;
           if (offset>spaces.length/2) offset-=spaces.length;
           const active=index===selected;
           const style={'--offset':offset,'--distance':Math.abs(offset),'--drag':`${drag}px`,'--tilt':active?'0deg':`${-offset*4}deg`,zIndex:10-Math.abs(offset)} as CSSProperties;
-          const contents=<><span className="home-module-icon"><Icon strokeWidth={1.8} aria-hidden="true"/></span>{art!==false&&<img className={`home-module-art art-${id}`} src={`/images/home-approved/${id}.webp`} width="900" height="900" alt="" draggable="false" decoding="async"/>}<span className="home-module-bottom"><strong>{name}{badge&&<em className="home-module-badge">{badge}</em>}</strong><span className="home-module-arrow"><ArrowRight aria-hidden="true"/></span></span></>;
+          const contents=<><span className="home-module-icon"><Icon strokeWidth={1.8} aria-hidden="true"/></span><img className={`home-module-art art-${id}`} src={`/images/home-approved/${id}.webp`} width="900" height="900" alt="" draggable="false" decoding="async"/><span className="home-module-bottom"><strong>{name}{badge&&<em className="home-module-badge">{badge}</em>}</strong><span className="home-module-arrow"><ArrowRight aria-hidden="true"/></span></span></>;
           const className=`home-module module-${color}${active?' is-selected':''}`;
           const common={className,style,'aria-label':`Abrir ${name}${badge?` · ${badge}`:''}`,'aria-current':active?'true' as const:undefined,'data-module':id,onFocus:(event:FocusEvent<HTMLElement>)=>{if(!gesture.current && event.currentTarget.matches(':focus-visible'))select(index);}};
           return id==='panel'?<button key={id} {...common} type="button" disabled={!ready} onClick={onEnterPanel}>{contents}</button>:<a key={id} {...common} href={href}>{contents}</a>;

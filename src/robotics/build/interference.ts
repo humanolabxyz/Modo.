@@ -1,7 +1,9 @@
 // Interferencia entre piezas por cajas orientadas (OBB, teorema del eje separador) y candidatos de unión. Puro: se prueba en Node.
 import {getDefinition} from '../catalog/index.ts';
+import {combatHulls} from '../catalog/combat.ts';
+import {TORSO_BOXES, TORSO_ID} from '../catalog/torso.ts';
 import {anchorWorld, closure, hosts, anchorOf} from '../project/commands.ts';
-import {cross, dist, dot, len, qRotate, sub} from '../project/math.ts';
+import {cross, dist, dot, len, qRotate, sub, tPoint} from '../project/math.ts';
 import type {PartInstance, RobotProject, Vec3} from '../project/types.ts';
 
 export type Obb = {center: Vec3; axes: [Vec3, Vec3, Vec3]; half: Vec3};
@@ -12,6 +14,22 @@ export function obbOf(part: PartInstance, shrink = 0): Obb | null {
   if (!def) return null;
   const q = part.transform.rotation;
   return {center: part.transform.position, axes: [qRotate(q, [1, 0, 0]), qRotate(q, [0, 1, 0]), qRotate(q, [0, 0, 1])], half: [Math.max(0, def.dimensions[0] / 2 - shrink), Math.max(0, def.dimensions[1] / 2 - shrink), Math.max(0, def.dimensions[2] / 2 - shrink)]};
+}
+
+/** Compound blades have open spaces; a single enclosing box would fill their scoop and mounting tabs. */
+function boxesOf(part: PartInstance, shrink: number): Obb[] {
+  // Delivery zones are painted targets, not solid assembly components.
+  if (part.definitionId === 'arm-drop-zone') return [];
+  // El torso es un armazón abierto (placa y columnas): la electrónica de abajo no cuenta como interferencia.
+  if (part.definitionId === TORSO_ID) { const q = part.transform.rotation; return TORSO_BOXES.map(b => ({center: tPoint(part.transform, b.center), axes: [qRotate(q, [1, 0, 0]), qRotate(q, [0, 1, 0]), qRotate(q, [0, 0, 1])] as [Vec3, Vec3, Vec3], half: b.half.map(h => Math.max(0, h - shrink)) as Vec3})); }
+  const hulls = combatHulls(part.definitionId);
+  if (!hulls) {const box = obbOf(part, shrink); return box ? [box] : [];}
+  return hulls.map(hull => {
+    const min: Vec3 = [Infinity,Infinity,Infinity], max: Vec3 = [-Infinity,-Infinity,-Infinity];
+    for (let i=0;i<hull.vertices.length;i++) {const axis=i%3; min[axis]=Math.min(min[axis],hull.vertices[i]); max[axis]=Math.max(max[axis],hull.vertices[i]);}
+    const q=part.transform.rotation;
+    return {center:tPoint(part.transform,min.map((v,i)=>(v+max[i])/2) as Vec3),axes:[qRotate(q,[1,0,0]),qRotate(q,[0,1,0]),qRotate(q,[0,0,1])] as [Vec3,Vec3,Vec3],half:min.map((v,i)=>Math.max(0,(max[i]-v)/2-shrink)) as Vec3};
+  });
 }
 
 /** ¿Se solapan dos cajas orientadas? (SAT con los 15 ejes candidatos). */
@@ -25,15 +43,16 @@ export function obbIntersect(a: Obb, b: Obb): boolean {
 }
 
 /** Piezas que se atraviesan sin estar unidas directamente. Las que solo se tocan (menos de 1 mm) no cuentan. */
+/** Solapes que son parte del diseño y no una interferencia. */
+const nested = (p: RobotProject, a: string, b: string) => { const d = [p.parts.find(x => x.instanceId === a)?.definitionId, p.parts.find(x => x.instanceId === b)?.definitionId].sort().join('|'); return d === 'track-belt|track-sprocket' || d === 'robot-arm|robot-forearm'; }; // la banda rodea la rueda y el antebrazo entra en el extremo del brazo (articulación del codo)
 export function findInterferences(p: RobotProject, shrink = 0.0005): [string, string][] {
-  const boxes = p.parts.map(x => ({id: x.instanceId, box: obbOf(x, shrink)}));
+  const boxes = p.parts.map(x => ({id: x.instanceId, boxes: boxesOf(x, shrink)}));
   const joined = new Set(p.attachments.flatMap(a => [`${a.parent.instanceId}|${a.child.instanceId}`, `${a.child.instanceId}|${a.parent.instanceId}`]));
   const out: [string, string][] = [];
   for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
     const a = boxes[i], b = boxes[j];
-    if (!a.box || !b.box || joined.has(`${a.id}|${b.id}`)) continue;
-    if (dist(a.box.center, b.box.center) > len(a.box.half) + len(b.box.half)) continue; // descarte rápido por esferas
-    if (obbIntersect(a.box, b.box)) out.push([a.id, b.id]);
+    if (joined.has(`${a.id}|${b.id}`) || nested(p, a.id, b.id)) continue;
+    if (a.boxes.some(x=>b.boxes.some(y=>dist(x.center,y.center)<=len(x.half)+len(y.half) && obbIntersect(x,y)))) out.push([a.id, b.id]);
   }
   return out;
 }
@@ -76,7 +95,7 @@ export function placementCheck(p: RobotProject, definitionId: string, position: 
   if (!def) return {ok: false, reason: 'La pieza no existe en el catálogo.', overlaps: []};
   if (p.parts.length >= limit) return {ok: false, reason: `Ya hay ${limit} piezas, el máximo del proyecto.`, overlaps: []};
   if (Math.abs(position[0]) > WORK_AREA || Math.abs(position[2]) > WORK_AREA) return {ok: false, reason: `Fuera del área de trabajo (±${WORK_AREA} m).`, overlaps: []};
-  const box = obbOf({instanceId: 'ghost', definitionId, label: '', transform: {position, rotation: [0, 0, 0, 1]}}, 0.0005)!;
-  const overlaps = p.parts.filter(x => { const o = obbOf(x, 0.0005); return !!o && obbIntersect(box, o); }).map(x => x.instanceId);
+  const boxes = boxesOf({instanceId: 'ghost', definitionId, label: '', transform: {position, rotation: [0, 0, 0, 1]}}, 0.0005);
+  const overlaps = p.parts.filter(x => boxesOf(x,0.0005).some(o=>boxes.some(box=>obbIntersect(box,o)))).map(x => x.instanceId);
   return {ok: true, overlaps};
 }

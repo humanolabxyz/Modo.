@@ -50,8 +50,10 @@ export function removeParts(p: RobotProject, ids: readonly string[]): CommandRes
   if (lostAttachments.length) notes.push(`Se rompieron ${lostAttachments.length} unión(es) mecánica(s).`);
   if (lostConnections.length) notes.push(`Se quitaron ${lostConnections.length} cable(s).`);
   if (lostFirmware.length) notes.push('Se quitó el programa de la placa borrada.');
+  const lostArmProgram = p.armProgram && (gone.has(p.armProgram.armId) || p.armProgram.points.some(point => point.expectedHeld && gone.has(point.expectedHeld)));
+  if (lostArmProgram) notes.push('Se quitó el programa del brazo porque se borró una pieza requerida. Puedes preparar un ciclo nuevo.');
   return {
-    project: {...p, parts: p.parts.filter(x => !gone.has(x.instanceId)), attachments: p.attachments.filter(a => !lostAttachments.includes(a)), connections: p.connections.filter(c => !lostConnections.includes(c)), firmware: p.firmware.filter(f => !lostFirmware.includes(f))},
+    project: {...p, ...(lostArmProgram ? {armProgram: undefined} : {}), parts: p.parts.filter(x => !gone.has(x.instanceId)).map(x => typeof x.props?.held === 'string' && gone.has(x.props.held) ? {...x, props: {...x.props, held: '', gripperOpen: true}} : x), attachments: p.attachments.filter(a => !lostAttachments.includes(a)), connections: p.connections.filter(c => !lostConnections.includes(c)), firmware: p.firmware.filter(f => !lostFirmware.includes(f))},
     notes,
   };
 }

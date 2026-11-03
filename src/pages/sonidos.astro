@@ -1,0 +1,43 @@
+---
+---
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex"/><title>Prueba de sonidos</title>
+<style is:global>
+:root{color-scheme:light dark;--bg:#f2f4f3;--ink:#16302d;--card:#fff;--line:#cfd9d6;--acc:#145650}
+@media (prefers-color-scheme:dark){:root{--bg:#101a19;--ink:#e3efec;--card:#18262a;--line:#2d4244;--acc:#6cc8b8}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,sans-serif;padding:16px;max-width:640px;margin-inline:auto}
+h1{font-size:1.3rem;margin:.2em 0}h2{font-size:1rem;margin:1.2em 0 .4em;color:var(--acc)}p{margin:.3em 0 .8em;opacity:.85}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+button{font:inherit;padding:14px 10px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-height:48px}
+button:active{transform:scale(.97)}button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+</style></head><body>
+<h1>Prueba de sonidos</h1>
+<p>Toca cada botón y dime cuáles suenan poco reales. Sube el volumen del teléfono y quita el modo silencio.</p>
+<h2>Cables</h2><div class="grid" id="cables"></div>
+<h2>Pulsadores, interruptores y enchufe</h2><div class="grid" id="mando"></div>
+<h2>Contactores y temporizador</h2><div class="grid" id="fuerza"></div>
+<h2>Relé térmico</h2><div class="grid" id="termico"></div>
+<h2>Motor</h2><p>Se queda sonando hasta que toques «Parar motor».</p><div class="grid" id="motor"></div>
+<script>
+import {playElementSound,setMotorSound,setSoundsEnabled} from '../audio/panelSounds';
+setSoundsEnabled(true);
+const sec=(id,items)=>{const box=document.getElementById(id);for(const [label,fn] of items){const b=document.createElement('button');b.textContent=label;b.onclick=()=>fn(b);box.append(b);}};
+const p=(kind,el)=>()=>playElementSound(kind,el);
+sec('cables',[['Conectar cable',p('cable-conecta')],['Desconectar cable',p('cable-desconecta')],['Paso correcto (guía)',p('paso-correcto')]]);
+sec('mando',[['Pulsador: apretar',p('pulsador-abajo','S1')],['Pulsador: soltar',p('pulsador-arriba','S1')],['Interruptor FUERZA',p('interruptor','FUERZA')],['Enchufar',p('enchufe')]]);
+sec('fuerza',[['Contactor cierra (KT1)',p('contactor-cierra','TEMPORIZADOR_1')],['Contactor cierra (KM1)',p('contactor-cierra','CONTACTOR_TERMICO')],['Contactor abre',p('contactor-abre','CONTACTOR_TERMICO')],['Temporizador: fin de retardo',p('temporizado','TEMPORIZADOR_1')]]);
+sec('termico',[['Térmico dispara (TEST)',p('termico-dispara')],['Térmico rearma',p('termico-rearma')]]);
+let timer=0,buttons=[];
+const stop=()=>{clearInterval(timer);timer=0;setMotorSound(null);buttons.forEach(b=>b.classList.remove('on'));};
+const run=(label,fn)=>b=>{stop();b.classList.add('on');let t=0;timer=setInterval(()=>{t+=.04;setMotorSound(fn(t));},40);};
+const sync=1500;
+sec('motor',[
+ ['Motor sano (arranque y régimen)',run('',t=>({fed:true,rpm:Math.min(1480,t*420),syncRpm:sync,rough:0,stalled:false}))],
+ ['Falta una fase',run('',t=>({fed:true,rpm:Math.min(900,t*200),syncRpm:sync,rough:.9,stalled:false}))],
+ ['Rotor frenado (bloqueado)',run('',()=>({fed:true,rpm:0,syncRpm:sync,rough:1,stalled:true}))],
+ ['Desequilibrio leve',run('',t=>({fed:true,rpm:Math.min(1450,t*420),syncRpm:sync,rough:.45,stalled:false}))],
+ ['Parar motor',()=>stop()],
+]);
+buttons=[...document.querySelectorAll('#motor button')];
+</script>
+</body></html>

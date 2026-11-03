@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4344",
+  "url": "http://127.0.0.1:4330",
   "checks": [
     "el botón activa la primera persona sin mover la cámara; el objetivo queda a 5 cm y el aviso explica las teclas",
     "W avanza hacia donde miras, S retrocede, D/A van a los lados; W no activa la herramienta Cable",

@@ -5,13 +5,17 @@ import {getDefinition} from '../catalog/index.ts';
 import type {PartInstance, PinRef, RobotProject} from '../project/types.ts';
 import {buildGraph, netOfPin, pinKey, type CircuitGraph, type NetId} from './graph.ts';
 
-export type Source = {id: string; owner: string; kind: 'battery' | 'uno-5v' | 'l298n-5v'; plus: NetId; minus: NetId; volts: number; plusPin: PinRef};
+export type Source = {id: string; owner: string; kind: 'battery' | 'uno-5v' | 'l298n-5v' | 'buck-boost-5v'; plus: NetId; minus: NetId; volts: number; plusPin: PinRef};
 export type Potential = {component: number; volts: number};
 
 export type UnoState = {kind: 'uno'; powered: boolean; via: 'usb' | 'vin' | '5v' | null; vin: number | null; overvoltage: boolean};
 export type L298nState = {kind: 'l298n'; motorSupply: number | null; regulatorOn: boolean; logicPowered: boolean; motorPowered: boolean; enableAHeld: boolean; enableBHeld: boolean};
 export type SensorState = {kind: 'hc-sr04'; powered: boolean; supply: number | null};
-export type DeviceState = UnoState | L298nState | SensorState;
+export type RegulatorState = {kind: 'regulator-5v'; powered: boolean; supply: number | null};
+export type IrState = {kind: 'tcrt5000'; powered: boolean; supply: number | null};
+export type ServoState = {kind: 'servo-sg90'; powered: boolean; supply: number | null};
+export type OledState = {kind: 'oled-ssd1306'; powered: boolean; supply: number | null};
+export type DeviceState = UnoState | L298nState | SensorState | RegulatorState | IrState | ServoState | OledState;
 
 export type Solution = {
   graph: CircuitGraph;
@@ -22,6 +26,8 @@ export type Solution = {
   conflicts: {sources: [string, string]; nets: NetId[]}[];
 };
 
+export const OLED_MIN = 3, OLED_MAX = 5.5; // los módulos de 4 pines llevan regulador: admiten 3,3 V y 5 V
+export const SERVO_MIN = 4, SERVO_MAX = 6.5; // el SG90 admite 4,8–6 V nominales; por debajo de ~4 V no se mueve y por encima de ~6,5 V se daña
 export const LOGIC_MIN = 4.5, LOGIC_MAX = 5.5, REGULATOR_MIN_IN = 7, VIN_MIN = 7, VIN_MAX = 12, MOTOR_MIN = 5;
 const EPS = 1e-6;
 
@@ -72,6 +78,18 @@ function evalDevices(g: CircuitGraph, parts: PartInstance[], potentials: Map<Net
       const regulatorOn = (part.props?.jumper5V ?? true) === true && vs !== null && vs >= REGULATOR_MIN_IN;
       const logicPowered = regulatorOn || (v5 !== null && v5 >= LOGIC_MIN && v5 <= LOGIC_MAX);
       out.set(part.instanceId, {kind: 'l298n', motorSupply: vs, regulatorOn, logicPowered, motorPowered: vs !== null && vs >= MOTOR_MIN, enableAHeld: !!(part.props?.jumperENA ?? true), enableBHeld: !!(part.props?.jumperENB ?? true)});
+    } else if (part.definitionId === 'regulator-5v') {
+      const supply = pd(potentials, net(g, part, 'VIN'), net(g, part, 'GND'));
+      out.set(part.instanceId, {kind: 'regulator-5v', powered: supply !== null && supply >= 2.7 && supply <= 11.8, supply});
+    } else if (part.definitionId === 'tcrt5000-module') {
+      const supply = pd(potentials, net(g, part, 'VCC'), net(g, part, 'GND'));
+      out.set(part.instanceId, {kind: 'tcrt5000', powered: supply !== null && supply >= LOGIC_MIN && supply <= LOGIC_MAX, supply});
+    } else if (part.definitionId === 'oled-ssd1306') {
+      const supply = pd(potentials, net(g, part, 'VCC'), net(g, part, 'GND'));
+      out.set(part.instanceId, {kind: 'oled-ssd1306', powered: supply !== null && supply >= OLED_MIN && supply <= OLED_MAX, supply});
+    } else if (part.definitionId === 'servo-sg90') {
+      const supply = pd(potentials, net(g, part, 'VCC'), net(g, part, 'GND'));
+      out.set(part.instanceId, {kind: 'servo-sg90', powered: supply !== null && supply >= SERVO_MIN && supply <= SERVO_MAX, supply});
     } else if (part.definitionId === 'hc-sr04') {
       const supply = pd(potentials, net(g, part, 'VCC'), net(g, part, 'GND'));
       out.set(part.instanceId, {kind: 'hc-sr04', powered: supply !== null && supply >= LOGIC_MIN && supply <= LOGIC_MAX, supply});
@@ -98,6 +116,10 @@ export function solve(p: RobotProject): Solution {
       if (st?.kind === 'uno' && (st.via === 'usb' || st.via === 'vin')) {
         const plus = net(graph, part, '5V'), minus = net(graph, part, 'GND.1');
         if (plus && minus && plus !== minus) derived.push({id: `uno5v:${part.instanceId}`, owner: part.instanceId, kind: 'uno-5v', plus, minus, volts: 5, plusPin: {instanceId: part.instanceId, pinId: '5V'}});
+      }
+      if (st?.kind === 'regulator-5v' && st.powered) {
+        const plus = net(graph, part, '5V'), minus = net(graph, part, 'GND');
+        if (plus && minus && plus !== minus) derived.push({id: `buck5v:${part.instanceId}`, owner: part.instanceId, kind: 'buck-boost-5v', plus, minus, volts: 5, plusPin: {instanceId: part.instanceId, pinId: '5V'}});
       }
       if (st?.kind === 'l298n' && st.regulatorOn) {
         const plus = net(graph, part, '+5V'), minus = net(graph, part, 'GND');

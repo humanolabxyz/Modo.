@@ -55,8 +55,9 @@ const roboticsOnlyChunks=(root,files)=>{
   return seen;
  };
  const entries=page=>{const f=byUrl.get(page);if(!f)return [];return [...readFileSync(f,'utf8').matchAll(/(?:src|href|component-url|renderer-url)="(\/_astro\/[^"]+\.js)"/g)].map(m=>m[1])};
- const others=reach([...byUrl.keys()].filter(u=>u.endsWith('.html')&&!u.startsWith('/robotica/')).flatMap(entries));
- return new Set([...reach(entries('/robotica/index.html'))].filter(u=>!others.has(u)));
+ const heavyPages=['/robotica/','/arena/'];
+ const others=reach([...byUrl.keys()].filter(u=>u.endsWith('.html')&&!heavyPages.some(page=>u.startsWith(page))).flatMap(entries));
+ return new Set([...reach(heavyPages.flatMap(page=>entries(page+'index.html')))].filter(u=>!others.has(u)));
 };
 const stampServiceWorker=()=>({name:'panellab-stamp-sw',hooks:{'astro:build:done':({dir})=>{
  const root=fileURLToPath(dir),sw=join(root,'sw.js');

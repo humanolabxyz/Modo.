@@ -72,7 +72,7 @@
     {
       "point": 6,
       "title": "Comprobar reposo y señalización",
-      "where": "En dos contactores las bobinas y pilotos están apagados; P2 no está cableado.",
+      "where": "En dos contactores las bobinas están sin energía y solo se enciende el piloto rojo P2 (motor detenido).",
       "steps": [
         "control-rest"
       ]
@@ -80,7 +80,7 @@
     {
       "point": 7,
       "title": "Dar marcha en estrella, solo mando",
-      "where": "S1 activa KT1 y KM2; P1 indica estrella.",
+      "where": "S1 activa KM1 y KM3; P1 indica estrella.",
       "steps": [
         "control-star"
       ]
@@ -88,7 +88,7 @@
     {
       "point": 8,
       "title": "Cambiar el mando a triángulo",
-      "where": "Cambio temporizado a KM1 y piloto P4, en vez de SB3 manual.",
+      "where": "Cambio temporizado (KT1) a KM2 y piloto P4, en vez de SB3 manual.",
       "steps": [
         "control-delta"
       ]
@@ -96,7 +96,7 @@
     {
       "point": 9,
       "title": "TEST del térmico en el mando",
-      "where": "Corte de bobinas y P3 de disparo; P2 no está cableado.",
+      "where": "Corte de bobinas, P3 amarillo de disparo y P2 rojo de motor detenido.",
       "steps": [
         "control-trip"
       ]
@@ -104,7 +104,7 @@
     {
       "point": 10,
       "title": "RESET del mando",
-      "where": "Rearme sin marcha automática; pilotos apagados en este montaje.",
+      "where": "Rearme sin marcha automática; queda encendido solo el rojo P2.",
       "steps": [
         "control-reset"
       ]
@@ -138,7 +138,7 @@
     {
       "point": 14,
       "title": "Arrancar el motor en estrella",
-      "where": "S1 activa KT1 y KM2, con el circuito de fuerza habilitado.",
+      "where": "S1 activa KM1 y KM3, con el circuito de fuerza habilitado.",
       "steps": [
         "start-star"
       ]

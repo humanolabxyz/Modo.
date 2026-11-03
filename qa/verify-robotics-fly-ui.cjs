@@ -18,7 +18,7 @@ const dist2 = (a, b) => Math.hypot(a[0] - b[0], a[2] - b[2]);
     const p = await ctx.newPage(); p.on('pageerror', e => report.errors.push(e.message)); p.on('console', m => { if (m.type() === 'error' && !/favicon|Failed to load resource/.test(m.text())) report.errors.push(m.text()); });
     await p.goto(base + '/robotica/?debug=1'); await p.locator('.rb-app[data-ready=true]').waitFor(); await p.waitForFunction(() => window.__modoRobotics?.partIds?.().length === 11, null, {timeout: 20000});
     const cam = () => p.evaluate(() => window.__modoRobotics.camera());
-    const fly = p.locator('.rb-dock button[aria-label="Primera persona"]');
+    const fly = p.locator('.rb-camera-pill button[aria-label="Primera persona"]');
     await p.locator('.rb-dock button[aria-label="Encuadrar"]').click(); await p.waitForTimeout(900);
     const orbit = await cam(); assert.ok(orbit.distance > 0.2, 'en modo órbita el objetivo está lejos de la cámara');
 

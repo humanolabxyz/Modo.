@@ -1,0 +1,48 @@
+{
+  "url": "http://127.0.0.1:4330",
+  "checks": [
+    "desktop: ruta independiente, un lienzo, cámara animada, reducción de movimiento, cuenta regresiva, sonido opcional, contacto físico, pausa, victoria animada y biblioteca intacta.",
+    "mobile: ruta independiente, un lienzo, cámara animada, reducción de movimiento, cuenta regresiva, sonido opcional, contacto físico, pausa, victoria animada y biblioteca intacta."
+  ],
+  "errors": [],
+  "resources": [
+    {
+      "view": "desktop",
+      "initialRequests": [
+        "/arena/",
+        "/fonts/SourceSans3-Regular.woff2",
+        "/_astro/modo-identity.HqKwNqhy.css",
+        "/_astro/ArenaApp.bdSfVNYX.css",
+        "/_astro/ArenaApp.DOioMqFX.js",
+        "/_astro/client.D3rscqr8.js",
+        "/_astro/react.B6PPDU_E.js",
+        "/_astro/preload-helper.DysAGyHq.js",
+        "/_astro/library.UAxHNPWi.js",
+        "/_astro/scheduler.BVhibwDs.js",
+        "/_astro/react-dom.CrS9GtLq.js",
+        "/fonts/InterVariable.woff2"
+      ],
+      "noEditor": true,
+      "noE6": true
+    },
+    {
+      "view": "mobile",
+      "initialRequests": [
+        "/arena/",
+        "/fonts/SourceSans3-Regular.woff2",
+        "/_astro/modo-identity.HqKwNqhy.css",
+        "/_astro/ArenaApp.bdSfVNYX.css",
+        "/_astro/ArenaApp.DOioMqFX.js",
+        "/_astro/client.D3rscqr8.js",
+        "/_astro/react.B6PPDU_E.js",
+        "/_astro/preload-helper.DysAGyHq.js",
+        "/_astro/library.UAxHNPWi.js",
+        "/_astro/scheduler.BVhibwDs.js",
+        "/_astro/react-dom.CrS9GtLq.js",
+        "/fonts/InterVariable.woff2"
+      ],
+      "noEditor": true,
+      "noE6": true
+    }
+  ]
+}

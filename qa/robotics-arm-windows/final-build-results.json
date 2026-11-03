@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "desktop/arm: inicio visible en pie fijo, emergencia roja, encendido, ejecución, pausa, emergencia con ventana minimizada, restauración y pestaña manual accesible.",
+    "desktop/conveyor: inicio visible en pie fijo, emergencia roja, encendido, ejecución, pausa, emergencia con ventana minimizada, restauración y pestaña manual accesible.",
+    "mobile/arm: inicio visible en pie fijo, emergencia roja, encendido, ejecución, pausa, emergencia con ventana minimizada, restauración y pestaña manual accesible.",
+    "mobile/conveyor: inicio visible en pie fijo, emergencia roja, encendido, ejecución, pausa, emergencia con ventana minimizada, restauración y pestaña manual accesible."
+  ],
+  "errors": []
+}

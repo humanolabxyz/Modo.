@@ -50,7 +50,8 @@ report.checks.push('Archivo incoherente rechazado sin cambiar el panel; JSON ant
 await other.close();
 await open();await button('Historial del panel').click();await p.locator('.history-step-list>summary').click();await button('Ver paso 4').click();
 for(const viewport of [{width:1920,height:1080},{width:390,height:844},{width:360,height:800},{width:844,height:390}]){
- await p.setViewportSize(viewport);const r=await drawer().boundingBox();assert.ok(r.x>=0&&r.x+r.width<=viewport.width+1&&r.y+r.height<=viewport.height+1);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await p.locator('.step-changes').scrollIntoViewIfNeeded();if(viewport.width===390)await p.screenshot({path:out+'/cambios-mobile.png'});report.viewports.push(viewport);
+ await p.setViewportSize(viewport);/* El cajón ahora vive dentro de una ventana flotante con scroll propio: los límites que deben caber en pantalla son los de esa ventana. */
+ const r=await (await drawer().evaluateHandle(el=>el.closest('.mobile-floating-window')||el)).asElement().boundingBox();assert.ok(r.x>=0&&r.x+r.width<=viewport.width+1&&r.y+r.height<=viewport.height+1);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await p.locator('.step-changes').scrollIntoViewIfNeeded();if(viewport.width===390)await p.screenshot({path:out+'/cambios-mobile.png'});report.viewports.push(viewport);
 }
 assert.deepEqual(report.errors,[]);report.result='PASS';
 }finally{await browser.close();fs.writeFileSync(out+'/browser-verification.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}})().catch(e=>{console.error(e);process.exitCode=1;});

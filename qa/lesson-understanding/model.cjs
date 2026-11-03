@@ -1508,6 +1508,7 @@ __export(stdin_exports, {
   STAR_MANUAL_LESSON: () => STAR_MANUAL_LESSON,
   STAR_TIMER_LESSON: () => STAR_TIMER_LESSON,
   TERMINAL_BY_ID: () => TERMINAL_BY_ID,
+  TWO_CONTACTOR_LESSON: () => TWO_CONTACTOR_LESSON,
   answerFor: () => answerFor,
   appendPanelHistory: () => appendPanelHistory,
   assessLesson: () => assessLesson,
@@ -1520,6 +1521,7 @@ __export(stdin_exports, {
   connectionKey: () => connectionKey,
   createCable: () => createCable,
   emptyPractice: () => emptyPractice,
+  indexCableEndpoints: () => indexCableEndpoints,
   networkFor: () => networkFor,
   newAssessment: () => newAssessment,
   newFrame: () => newFrame,
@@ -2280,6 +2282,288 @@ var starDeltaSources_default = {
   }
 };
 
+// src/data/twoContactorSource.json
+var twoContactorSource_default = {
+  source: "modo-panel-dos-contactores-original.json",
+  sha256: "aec6c2de15663dd8273f6785b9303cd01e46881fcf3732399f92b61ec84b4676",
+  receivedTitle: "Ejemplo virtual \xB7 Estrella-tri\xE1ngulo \xB7 2 contactores + conjunto temporizado",
+  receivedDiagram: {
+    id: "leccion-estrellaTimer",
+    name: "Estrella-tri\xE1ngulo con temporizador",
+    src: "/diagrams/leccion-estrella-temporizador.png",
+    origin: "class_photo"
+  },
+  receivedStepCount: 42,
+  pairs: [
+    [
+      "FUENTE:F",
+      "CONTACTOR_TERMICO:95"
+    ],
+    [
+      "CONTACTOR_TERMICO:96",
+      "BOTONERAS:S2:1"
+    ],
+    [
+      "BOTONERAS:S2:2",
+      "BOTONERAS:S3:3"
+    ],
+    [
+      "BOTONERAS:S3:3",
+      "TEMPORIZADOR_1:13"
+    ],
+    [
+      "BOTONERAS:S3:4",
+      "TEMPORIZADOR_1:14"
+    ],
+    [
+      "TEMPORIZADOR_1:14",
+      "TEMPORIZADOR_1:A1"
+    ],
+    [
+      "TEMPORIZADOR_1:A2",
+      "FUENTE:N"
+    ],
+    [
+      "TEMPORIZADOR_1:14",
+      "TEMPORIZADOR_1:55"
+    ],
+    [
+      "TEMPORIZADOR_1:56",
+      "CONTACTOR_TERMICO:71"
+    ],
+    [
+      "CONTACTOR_TERMICO:72",
+      "CONTACTOR_TRIFASICO:A1"
+    ],
+    [
+      "CONTACTOR_TRIFASICO:A2",
+      "FUENTE:N"
+    ],
+    [
+      "TEMPORIZADOR_1:14",
+      "TEMPORIZADOR_1:67"
+    ],
+    [
+      "TEMPORIZADOR_1:68",
+      "CONTACTOR_TRIFASICO:71"
+    ],
+    [
+      "CONTACTOR_TRIFASICO:72",
+      "CONTACTOR_TERMICO:A1"
+    ],
+    [
+      "CONTACTOR_TERMICO:A2",
+      "FUENTE:N"
+    ],
+    [
+      "FUENTE:S",
+      "TEMPORIZADOR_1:L2"
+    ],
+    [
+      "FUENTE:T",
+      "TEMPORIZADOR_1:L3"
+    ],
+    [
+      "TEMPORIZADOR_1:T1",
+      "BORNERA_MOTOR:U1"
+    ],
+    [
+      "TEMPORIZADOR_1:T2",
+      "BORNERA_MOTOR:V1"
+    ],
+    [
+      "TEMPORIZADOR_1:T3",
+      "BORNERA_MOTOR:W1"
+    ],
+    [
+      "BORNERA_MOTOR:W2",
+      "CONTACTOR_TRIFASICO:L1"
+    ],
+    [
+      "BORNERA_MOTOR:U2",
+      "CONTACTOR_TRIFASICO:L2"
+    ],
+    [
+      "BORNERA_MOTOR:V2",
+      "CONTACTOR_TRIFASICO:L3"
+    ],
+    [
+      "CONTACTOR_TRIFASICO:T1",
+      "CONTACTOR_TRIFASICO:T2"
+    ],
+    [
+      "CONTACTOR_TRIFASICO:T2",
+      "CONTACTOR_TRIFASICO:T3"
+    ],
+    [
+      "BORNERA_MOTOR:U1",
+      "CONTACTOR_TERMICO:L1"
+    ],
+    [
+      "BORNERA_MOTOR:V1",
+      "CONTACTOR_TERMICO:L2"
+    ],
+    [
+      "BORNERA_MOTOR:W1",
+      "CONTACTOR_TERMICO:L3"
+    ],
+    [
+      "CONTACTOR_TERMICO:T1",
+      "BORNERA_MOTOR:W2"
+    ],
+    [
+      "CONTACTOR_TERMICO:T2",
+      "BORNERA_MOTOR:U2"
+    ],
+    [
+      "CONTACTOR_TERMICO:T3",
+      "BORNERA_MOTOR:V2"
+    ],
+    [
+      "FUENTE:N",
+      "BOTONERAS:N"
+    ],
+    [
+      "CONTACTOR_TRIFASICO:A1",
+      "BOTONERAS:PILOTO_1"
+    ],
+    [
+      "CONTACTOR_TERMICO:A1",
+      "BOTONERAS:PILOTO_4"
+    ],
+    [
+      "FUENTE:R",
+      "TEMPORIZADOR_1:L1"
+    ],
+    [
+      "CONTACTOR_TERMICO:97",
+      "FUENTE:F"
+    ],
+    [
+      "CONTACTOR_TERMICO:98",
+      "BOTONERAS:PILOTO_3"
+    ]
+  ]
+};
+
+// src/data/twoContactorOrder.ts
+var TWO_CONTACTOR_STEP_ORDER = [
+  0,
+  1,
+  2,
+  5,
+  6,
+  31,
+  3,
+  4,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  37,
+  38,
+  39,
+  35,
+  36,
+  32,
+  33,
+  34,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30
+];
+
+// src/data/twoContactorTeaching.ts
+var onS1 = (id) => id.replace("BOTONERAS:S3:", "BOTONERAS:S1:");
+var TWO_CONTACTOR_ADDED_PAIRS = [
+  ["FUENTE:F", "CONTACTOR_TERMICO:81"],
+  ["CONTACTOR_TERMICO:82", "CONTACTOR_TRIFASICO:81"],
+  ["CONTACTOR_TRIFASICO:82", "BOTONERAS:PILOTO_2"]
+];
+var ADJUSTED = {
+  3: ["BOTONERAS:S2:2", "TEMPORIZADOR_1:13"],
+  4: ["TEMPORIZADOR_1:14", "BOTONERAS:S1:4"],
+  5: ["BOTONERAS:S1:4", "TEMPORIZADOR_1:A1"],
+  7: ["BOTONERAS:S1:4", "TEMPORIZADOR_1:55"],
+  11: ["BOTONERAS:S1:4", "TEMPORIZADOR_1:67"],
+  25: ["TEMPORIZADOR_1:L1", "CONTACTOR_TERMICO:L1"],
+  26: ["TEMPORIZADOR_1:L2", "CONTACTOR_TERMICO:L2"],
+  27: ["TEMPORIZADOR_1:L3", "CONTACTOR_TERMICO:L3"],
+  31: ["BOTONERAS:N", "FUENTE:N"],
+  35: ["FUENTE:F", "CONTACTOR_TERMICO:97"]
+};
+var bySource = [...twoContactorSource_default.pairs.map(([a, b], i) => ADJUSTED[i] ?? [onS1(a), onS1(b)]), ...TWO_CONTACTOR_ADDED_PAIRS];
+var TWO_CONTACTOR_PAIRS = TWO_CONTACTOR_STEP_ORDER.map((i) => bySource[i]);
+var entry = (title, why, behavior, without, question, criteria) => ({ title, why, behavior, without, question, criteria });
+var control = [
+  entry("Protecci\xF3n del mando \xB7 F a 95", "F alimenta la entrada 95 del rel\xE9 t\xE9rmico, que en el banco est\xE1 en el m\xF3dulo \xABContactor + rel\xE9 t\xE9rmico\xBB (KM1, el contactor de tri\xE1ngulo). El t\xE9rmico es una protecci\xF3n, no otro contactor.", "Con el t\xE9rmico sano, 95\u201396 permite alimentar el mando; TEST abre 95\u201396 y corta esta cadena.", "El mando no recibe alimentaci\xF3n por la ruta protegida.", "\xBFQu\xE9 diferencia hay entre el contactor KM1 y su rel\xE9 t\xE9rmico, y qu\xE9 cambia al disparar este \xFAltimo?", ["Distinguir contactor y rel\xE9 t\xE9rmico.", "Explicar la apertura de 95\u201396."]),
+  entry("Del t\xE9rmico al paro \xB7 96 a S2:1", "La salida 96 lleva la fase protegida al NC del pulsador rojo S2.", "El paro queda en serie con la marcha S1 y con la retenci\xF3n de KT1.", "La cadena de marcha y retenci\xF3n queda sin alimentaci\xF3n.", "\xBFPor qu\xE9 el paro debe recibir fase despu\xE9s de 95\u201396?", ["Seguir F \u2192 95\u201396 \u2192 S2.", "Relacionar el disparo t\xE9rmico con la p\xE9rdida de mando."]),
+  entry("Salida del paro a marcha \xB7 S1", "S2:2 alimenta el borne 3 del pulsador verde izquierdo S1. En este archivo S1 da marcha; S3 no se utiliza.", "Pulsar S1 cierra 3\u20134, siempre que S2 y el t\xE9rmico permitan el paso.", "S1 no puede dar la orden inicial por esta rama.", "\xBFQu\xE9 pulsador inicia este montaje y por qu\xE9 no se debe seguir aqu\xED la orden S1 de la otra lecci\xF3n?", ["Identificar S1 como marcha y S2 como paro.", "Reconocer que los pasos heredados no describ\xEDan estos cables."]),
+  entry("Retenci\xF3n de KT1 \xB7 entrada 13", "El auxiliar 13\u201314 de KT1, el contactor principal, recibe fase directamente de la salida del paro, S2:2, igual que S1:3: las dos ramas de marcha cuelgan despu\xE9s del paro.", "Cuando act\xFAa KT1 su NA 13\u201314 cierra y ofrece una ruta en paralelo con S1.", "Sin esta entrada no se alimenta la rama de retenci\xF3n.", "\xBFQu\xE9 dos ramas reciben fase despu\xE9s de S2 y c\xF3mo conserva el paro su prioridad?", ["Explicar el paralelo S1 / KT1 13\u201314.", "Situar ambas ramas despu\xE9s del paro."]),
+  entry("Retenci\xF3n de KT1 \xB7 salida 14", "S1:4 se une con KT1:14; las dos rutas de marcha llegan al mismo nodo.", "Despu\xE9s de dar marcha, el auxiliar mantiene ese nodo alimentado al soltar S1.", "Sin otra ruta equivalente, el conjunto depender\xEDa de mantener S1 pulsado.", "\xBFC\xF3mo sigue alimentado KT1 cuando sueltas el pulsador verde izquierdo?", ["Seguir la ruta de retenci\xF3n 13\u201314.", "Distinguir contacto auxiliar y pulsador."]),
+  entry("Bobina de KT1 \xB7 A1", "El nodo de marcha y retenci\xF3n alimenta A1 de KT1, el contactor principal. En el banco es el m\xF3dulo \xABTemporizador neum\xE1tico\xBB: el cabezal de retardo KT1 va montado sobre este contactor.", "En el modelo KT1 cierra sus tres polos de l\xEDnea y empieza el retardo de KT1; los contactos temporizados 55\u201356 y 67\u201368 de KT1 realizan el cambio.", "No se acciona el contactor principal ni comienza el retardo.", "\xBFQu\xE9 funciones cumplen KT1 y KT1 al alimentarse esta bobina en este montaje?", ["Identificar bobina, polos de fuerza y retardo.", "No confundir KT1 (contactor) con KT1 (su retardo) ni con KM2."]),
+  entry("Retorno de KT1 \xB7 A2 a N", "A2 completa el circuito de la bobina de KT1 con el neutro de mando.", "La bobina necesita tensi\xF3n entre A1 y A2 para actuar y para que KT1 cuente el tiempo.", "Alimentar A1 sin retorno no completa el circuito de la bobina.", "\xBFPor qu\xE9 necesita KT1 un retorno a N y por qu\xE9 no se sustituye por TP?", ["Explicar circuito cerrado A1\u2013A2.", "Distinguir N y TP."]),
+  entry("Alimentaci\xF3n de la etapa estrella \xB7 KT1 55", "El nodo de marcha y retenci\xF3n (S1:4, unido a KT1:14) alimenta la entrada 55 del contacto temporizado NC de KT1.", "KT1 55\u201356 permite la primera etapa mientras transcurre el retardo.", "La rama inicial de estrella no recibe fase por esta ruta.", "\xBFPor qu\xE9 esta rama se alimenta desde el nodo retenido y no directamente desde F?", ["Relacionar la etapa con la marcha retenida.", "Identificar 55\u201356 como contacto inicial del retardo KT1."]),
+  entry("Salida temporizada de estrella \xB7 56 a KM1:71", "La salida 56 pasa por el NC 71\u201372 de KM1 (el contactor de tri\xE1ngulo) antes de llegar a KM2, el de estrella.", "Durante el tiempo, KT1 55\u201356 permite la estrella si KM1 de tri\xE1ngulo est\xE1 abierto. Al terminar abre.", "KM2 no recibe la orden inicial por esta rama.", "\xBFQu\xE9 dos condiciones deben permitir el paso para activar KM2 en estrella?", ["Nombrar KT1 55\u201356 y KM1 71\u201372.", "Explicar temporizaci\xF3n y enclavamiento."]),
+  entry("Enclavamiento de estrella \xB7 KM1:72 a KM2:A1", "La salida del NC de KM1 alimenta la bobina de KM2, que en este archivo hace estrella.", "Si act\xFAa KM1, su 71\u201372 abre e impide mantener la rama de KM2.", "Queda interrumpida la alimentaci\xF3n de la bobina de estrella.", "\xBFQu\xE9 contactor hace estrella y cu\xE1l debe estar abierto para que pueda entrar?", ["Identificar KM2 como estrella.", "Explicar el NC de KM1 en la rama contraria."]),
+  entry("Retorno de KM2 \xB7 A2 a N", "La bobina del contactor de estrella (KM2) completa su retorno a N.", "KM2 act\xFAa cuando su rama temporizada alimenta A1 y A2 dispone de retorno.", "La bobina de estrella queda sin circuito cerrado.", "Sigue el recorrido completo desde F hasta el retorno de KM2: \xBFqu\xE9 condiciones encuentras?", ["Incluir t\xE9rmico, paro, retenci\xF3n, retardo KT1 y enclavamiento.", "Terminar en A2 y N."]),
+  entry("Alimentaci\xF3n de la etapa tri\xE1ngulo \xB7 KT1 67", "El mismo nodo retenido alimenta 67 del contacto temporizado NA de KT1.", "KT1 67\u201368 espera abierto y cierra cuando termina el retardo.", "La rama de tri\xE1ngulo no recibe su alimentaci\xF3n prevista.", "\xBFEn qu\xE9 se diferencian 55\u201356 y 67\u201368 durante y despu\xE9s del tiempo?", ["Describir el NC inicial y el NA final.", "Relacionar ambos con una \xFAnica marcha de KT1."]),
+  entry("Salida temporizada de tri\xE1ngulo \xB7 68 a KM2:71", "La salida 68 pasa por el NC 71\u201372 de KM2 antes de alimentar KM1.", "Al terminar el retardo, la orden llega a tri\xE1ngulo cuando KM2 de estrella ha ca\xEDdo y su NC permite el paso.", "No llega la orden temporizada de tri\xE1ngulo por esta rama.", "\xBFPor qu\xE9 KT1 67\u201368 no alimenta directamente la bobina de KM1?", ["Explicar el enclavamiento por KM2.", "Describir la exclusi\xF3n entre estrella y tri\xE1ngulo."]),
+  entry("Enclavamiento de tri\xE1ngulo \xB7 KM2:72 a KM1:A1", "El NC de KM2 entrega la orden a KM1, el contactor con rel\xE9 t\xE9rmico que aqu\xED realiza tri\xE1ngulo.", "KM1 cierra sus polos para formar U1\u2013W2, V1\u2013U2 y W1\u2013V2; KM2 debe estar abierto.", "No act\xFAa el contactor que completa tri\xE1ngulo.", "\xBFPor qu\xE9 KM1 y KM2 no deben cerrar juntos en este esquema?", ["Relacionar polos y conexi\xF3n de bobinados.", "Explicar la funci\xF3n de los NC cruzados."]),
+  entry("Retorno de KM1 \xB7 A2 a N", "La bobina del contactor de tri\xE1ngulo completa su retorno a N.", "KM1 puede actuar tras el tiempo si se cumplen marcha, protecci\xF3n y enclavamiento.", "La orden sobre A1 no completa por s\xED sola el circuito de KM1.", "\xBFQu\xE9 recorrido alimenta KM1 despu\xE9s del retardo y c\xF3mo se detiene?", ["Incluir KT1 67\u201368 y KM2 71\u201372.", "Explicar paro S2 y corte por 95\u201396."])
+];
+var power = (i) => {
+  const [from, to] = bySource[i];
+  if (from.startsWith("FUENTE:")) return entry(`Fuerza \xB7 fase ${from.split(":")[1]} a KT1`, "Esta fase entra en un polo de l\xEDnea de KT1, el contactor principal (m\xF3dulo \xABTemporizador neum\xE1tico\xBB), tal como est\xE1 cableado en el archivo.", "Al actuar KT1, su polo L\u2013T deja pasar esta fase hacia U1, V1 o W1.", "Queda una fase de fuerza sin su recorrido previsto; las bobinas pueden actuar aunque el motor no tenga alimentaci\xF3n completa.", "\xBFQu\xE9 polo de KT1 lleva esta fase al motor y qu\xE9 diferencia hay entre mando y fuerza?", ["Seguir entrada L y salida T correspondientes.", "No deducir giro solo del estado de una bobina."]);
+  if (from.startsWith("TEMPORIZADOR_1:T")) return entry("De KT1 al motor \xB7 " + to.split(":")[1], "Los polos de l\xEDnea de KT1 alimentan los extremos U1, V1 y W1 del motor.", "Esta alimentaci\xF3n permanece durante estrella y tri\xE1ngulo; el cambio se realiza en los otros extremos de las bobinas.", "Falta una de las alimentaciones principales de los bobinados.", "\xBFPor qu\xE9 esta conexi\xF3n permanece igual durante las dos etapas?", ["Identificar el extremo del motor.", "Distinguir alimentaci\xF3n de l\xEDnea y cambio de conexi\xF3n."]);
+  if (to.startsWith("CONTACTOR_TRIFASICO:L")) return entry(`Extremo del motor hacia KM2 \xB7 estrella \xB7 ${from.split(":")[1]}`, "Un extremo W2, U2 o V2 va a una entrada L de KM2, el contactor de estrella. En este archivo el puente com\xFAn se hace en las salidas T.", "Al cerrar KM2, cada polo une su extremo de motor con el nodo com\xFAn T1\u2013T2\u2013T3.", "Queda incompleto el recorrido de uno de los extremos hacia el punto estrella.", "Sigue este extremo: \xBFc\xF3mo llega al nodo com\xFAn cuando act\xFAa KM2?", ["Situar W2, U2 o V2.", "Identificar el puente en T, no en L."]);
+  if (from.startsWith("CONTACTOR_TRIFASICO:T")) return entry(`Puente del punto estrella \xB7 KM2 \xB7 ${from.split(":")[1]}\u2013${to.split(":")[1]}`, "Los puentes unen T1, T2 y T3 de KM2 en un nodo com\xFAn.", "Con KM2 cerrado quedan reunidos W2, U2 y V2. Con KM2 abierto los puentes no unen por s\xED solos esos extremos del motor.", "Sin todos los puentes falta parte del punto estrella.", "\xBFPor qu\xE9 los puentes en T forman estrella solo cuando cierran los polos de KM2?", ["Identificar T1\u2013T2\u2013T3 como nodo com\xFAn.", "Relacionar el puente con los polos L\u2013T."]);
+  return entry(`Rama de tri\xE1ngulo \xB7 KM1 \xB7 ${from.split(":")[1]} a ${to.split(":")[1]}`, "KM1 toma R, S y T por L1, L2 y L3 (las mismas entradas de KT1) y las lleva a W2, U2 y V2 por T1, T2 y T3 del m\xF3dulo con t\xE9rmico.", "Con KM1 cerrado, R llega a W2, S a U2 y T a V2 y, con U1, V1 y W1 alimentados por KT1, se forman U1\u2013W2, V1\u2013U2 y W1\u2013V2. KM2 de estrella debe estar abierto.", "Falta uno de los recorridos de la conexi\xF3n tri\xE1ngulo.", "\xBFQu\xE9 pareja de extremos se une por este polo de KM1 y por qu\xE9 debe estar abierto KM2?", ["Seguir L\u2013T y la pareja de extremos del motor.", "Distinguir el rel\xE9 t\xE9rmico de un tercer contactor."]);
+};
+var extras = {
+  25: entry("Tri\xE1ngulo \xB7 L1 de KT1 a L1 de KM1", "KM1 (tri\xE1ngulo) toma la fase R antes del contactor principal: su L1 se une a la L1 de KT1, que es la misma entrada de R. Es la derivaci\xF3n hacia el contactor 2 (tri\xE1ngulo) de la figura N\xBA2 de la gu\xEDa.", "Al cerrar KM1, la fase R sale por su polo L1\u2013T1 hacia W2.", "KM1 no recibe la fase R y el tri\xE1ngulo queda incompleto.", "\xBFPor qu\xE9 KM1 se alimenta de la entrada de KT1 y no de los bornes del motor?", ["Seguir R \u2192 L1 de KT1 \u2192 L1 de KM1.", "Relacionarlo con la derivaci\xF3n de la figura N\xBA2."]),
+  26: entry("Tri\xE1ngulo \xB7 L2 de KT1 a L2 de KM1", "La fase S llega a L2 de KT1 y se deriva a L2 de KM1, tambi\xE9n antes del contactor principal.", "Al cerrar KM1, la fase S sale por su polo L2\u2013T2 hacia U2.", "KM1 no recibe la fase S y el tri\xE1ngulo queda incompleto.", "\xBFQu\xE9 fase se lleva por este cable y hacia qu\xE9 extremo del motor sale por KM1?", ["Seguir S \u2192 L2 de KT1 \u2192 L2 de KM1.", "Distinguir esta derivaci\xF3n de la alimentaci\xF3n del motor."]),
+  27: entry("Tri\xE1ngulo \xB7 L3 de KT1 a L3 de KM1", "La fase T llega a L3 de KT1 y se deriva a L3 de KM1, antes del contactor principal.", "Al cerrar KM1, la fase T sale por su polo L3\u2013T3 hacia V2.", "KM1 no recibe la fase T y el tri\xE1ngulo queda incompleto.", "\xBFPor qu\xE9 las tres derivaciones de KM1 salen de L1, L2 y L3 de KT1?", ["Seguir T \u2192 L3 de KT1 \u2192 L3 de KM1.", "Comprobar que cada fase llega a su extremo distinto del motor."]),
+  31: entry("Neutro com\xFAn de los pilotos", "BOTONERAS:N conecta el retorno modelado de los pilotos a N de la fuente.", "Las se\xF1ales pueden encenderse cuando su rama recibe fase y este retorno est\xE1 completo.", "Los pilotos quedan sin retorno aunque el mando pueda funcionar.", "\xBFQu\xE9 circuitos cierra este cable y por qu\xE9 no se une N a TP?", ["Identificar el retorno com\xFAn de pilotos.", "Separar neutro y protecci\xF3n."]),
+  32: entry("Piloto P1 \xB7 estrella", "P1 recibe la misma alimentaci\xF3n de mando que A1 de KM2.", "Indica la orden sobre la bobina de estrella, con el retorno de pilotos conectado.", "Se pierde la se\xF1al verde de estrella; esto no prueba por s\xED solo un fallo del circuito de fuerza.", "\xBFQu\xE9 indica P1 y por qu\xE9 no demuestra por s\xED solo que gira un motor f\xEDsico?", ["Relacionar P1 con KM2.", "Distinguir se\xF1al de mando y giro."]),
+  33: entry("Piloto P4 \xB7 tri\xE1ngulo", "P4 toma la se\xF1al de A1 de KM1, el contactor que hace tri\xE1ngulo en este montaje.", "Se enciende con la orden de tri\xE1ngulo tras el retardo, si dispone del retorno com\xFAn.", "Se pierde esta indicaci\xF3n de tri\xE1ngulo aunque la bobina pueda actuar.", "\xBFPor qu\xE9 P4 se conecta a KM1:A1 y P1 a KM2:A1?", ["Relacionar cada piloto con su etapa.", "No trasladar los papeles de la lecci\xF3n de tres contactores."]),
+  35: entry("Alimentaci\xF3n del aviso t\xE9rmico \xB7 97", "El NA 97\u201398 toma fase directamente de F, antes del corte 95\u201396.", "As\xED el aviso puede seguir recibiendo alimentaci\xF3n cuando el t\xE9rmico interrumpe el mando.", "No se alimenta el circuito de alarma por esta ruta.", "\xBFPor qu\xE9 97 se alimenta antes del contacto que abre al dispararse?", ["Distinguir aviso y corte de mando.", "Seguir F \u2192 97\u201398."]),
+  36: entry("Aviso de disparo \xB7 98 a P3", "La salida 98 alimenta el piloto amarillo P3.", "En el modelo, TEST abre 95\u201396 y cierra 97\u201398: cae el mando y se enciende P3 con N conectado.", "Falta el aviso luminoso de disparo aunque pueda cortarse el mando.", "\xBFQu\xE9 diferencias observar\xEDas entre un paro por S2 y un disparo t\xE9rmico?", ["Comparar S2 y TEST.", "Identificar 95\u201396 de corte y 97\u201398 de se\xF1al."]),
+  37: entry("Piloto rojo \xB7 F a KM1:81", "F alimenta el NC 81\u201382 de KM1 (el contactor de tri\xE1ngulo), el primer contacto de la cadena del piloto rojo \xABmotor detenido\xBB. Toma fase directamente de F, antes del corte 95\u201396.", "Con KM1 en reposo, 81\u201382 est\xE1 cerrado y deja pasar la fase hacia KM2.", "La cadena del piloto rojo no recibe fase.", "\xBFPor qu\xE9 el piloto rojo se alimenta desde F y no despu\xE9s de 95\u201396?", ["Seguir F \u2192 81\u201382.", "Distinguir se\xF1alizaci\xF3n y mando."]),
+  38: entry("Piloto rojo \xB7 KM1:82 a KM2:81", "La salida 82 de KM1 entra al NC 81\u201382 de KM2: el rojo solo puede encenderse si KM1 y KM2 est\xE1n en reposo. En la gu\xEDa el piloto rojo pasa por un NC de KT1, el principal; aqu\xED KT1 es el contactor del m\xF3dulo temporizador y no tiene un NC instant\xE1neo libre, por eso se usan los NC 81\u201382 de los contactores de tri\xE1ngulo y de estrella en serie, que adem\xE1s hacen que se apague en estrella y en tri\xE1ngulo.", "Si act\xFAa estrella (KM2) o tri\xE1ngulo (KM1), su NC abre y corta la cadena.", "La cadena queda interrumpida y el rojo no se enciende nunca.", "\xBFQu\xE9 contactores deben estar en reposo para que se encienda el piloto rojo?", ["Nombrar KM1 81\u201382 y KM2 81\u201382 en serie.", "Relacionarlos con tri\xE1ngulo y estrella."]),
+  39: entry("Piloto rojo P2 \xB7 KM2:82 a P2", "La salida 82 de KM2 alimenta el piloto rojo P2 \xABmotor detenido\xBB; su retorno es el com\xFAn N de los pilotos.", "Se enciende en reposo, se apaga en estrella y en tri\xE1ngulo y vuelve a encenderse con el disparo t\xE9rmico, junto con P3.", "Falta el aviso luminoso de motor detenido que pide la gu\xEDa (puntos 6, 9 y 10).", "\xBFPor qu\xE9 el rojo sigue encendido con TEST aunque el mando se corte?", ["Relacionar P2 con el reposo de KM1 y KM2.", "Distinguir el rojo de P3 amarillo."])
+};
+var TWO_CONTACTOR_DETAILS = TWO_CONTACTOR_STEP_ORDER.map((i) => control[i] ?? extras[i] ?? power(i));
+function twoContactorDetail(from, to) {
+  const i = TWO_CONTACTOR_PAIRS.findIndex(([a, b]) => a === from && b === to || a === to && b === from);
+  if (i < 0) return entry("Conexi\xF3n fuera de la referencia", "Esta uni\xF3n no corresponde a un par de la lecci\xF3n recibida. Revisa su prop\xF3sito antes de continuar.", "La evaluaci\xF3n compara las redes del montaje con la referencia, sin atribuir a este cable una funci\xF3n confirmada.", "La ausencia de una uni\xF3n ajena no permite deducir por s\xED sola un fallo del circuito de referencia.", "\xBFQu\xE9 funci\xF3n pretendes conseguir y qu\xE9 bornes del esquema respaldan tu decisi\xF3n?", ["Justificar el recorrido.", "Contrastar la conexi\xF3n con el esquema."]);
+  return TWO_CONTACTOR_DETAILS[i];
+}
+
+// src/data/twoContactorNames.ts
+var TWO_CONTACTOR_MODULE_NAMES = {};
+var TIMER_HEAD_TERMINALS = ["55", "56", "67", "68"];
+function twoContactorModuleName(module2, terminal = "") {
+  return TWO_CONTACTOR_MODULE_NAMES[module2];
+}
+
 // src/data/starDeltaTeaching.ts
 var item = (title, why, behavior, without, question, criteria) => ({ title, why, behavior, without, question, criteria });
 function starDetail(id, from, to) {
@@ -2299,6 +2583,7 @@ function starDetail(id, from, to) {
   }
   if (has("BOTONERAS:S3:1") || has("BOTONERAS:S3:2")) return item("Cambio manual \xB7 S3 abre la estrella", "La alimentaci\xF3n de la rama de " + star + " atraviesa el contacto NC 1\u20132 de S3.", "Al pulsar S3, 1\u20132 abre y cae " + star + ". Al soltarlo, el enclavamiento de " + delta + " impide volver a estrella mientras siga activo.", "La rama de estrella queda abierta; un puente impedir\xEDa que S3 la corte por este contacto.", "\xBFPor qu\xE9 S3 debe abrir esta rama antes de mantener el tri\xE1ngulo?", ["Relacionar el NC de S3 con la ca\xEDda de " + star + ".", "Explicar el papel del enclavamiento despu\xE9s del cambio."]);
   if (has("BOTONERAS:S3:3") || has("BOTONERAS:S3:4")) {
+    if (!timed && has("BOTONERAS:S3:3")) return item("Permiso de cambio \xB7 despu\xE9s de la partida", "El NA 3\u20134 de S3 toma la alimentaci\xF3n de S1:4, despu\xE9s de la partida y del auxiliar de retenci\xF3n de KM1, como SB3 en la figura 1 de la gu\xEDa.", "Pulsar S3 desde reposo no alimenta KM1 ni KM2. Primero S1 inicia estrella y luego S3 solicita tri\xE1ngulo.", "Falta la orden de cambio; tomarla antes de S1 permitir\xEDa una partida directa en tri\xE1ngulo que no corresponde a este esquema.", "\xBFPor qu\xE9 SB3 se alimenta despu\xE9s de SB2 y qu\xE9 ocurre si lo pulsas con el banco en reposo?", ["Seguir la salida de S1 y la retenci\xF3n de KM1.", "Distinguir partida y cambio de conexi\xF3n."]);
     if (match(/:14$/)) return item(`Retenci\xF3n del tri\xE1ngulo \xB7 ${delta}`, "El auxiliar NA 13\u201314 de " + delta + " forma una ruta en paralelo con la orden 3\u20134 de S3.", "Despu\xE9s del cambio, mantiene " + delta + " al soltar S3, mientras KM1 siga alimentando esa rama.", "Sin otra ruta equivalente, el tri\xE1ngulo depende de mantener pulsado S3.", "\xBFC\xF3mo mantiene este cable la marcha en tri\xE1ngulo despu\xE9s de soltar S3?", ["Explicar el paralelo con S3.", "Considerar el paro, KM1 y el enclavamiento."]);
     return item("Cambio manual \xB7 S3 ordena tri\xE1ngulo", "El contacto NA 3\u20134 de S3 da la orden de cambio a " + delta + " a trav\xE9s del NC de " + star + ".", "Al pulsar S3, abre la rama de estrella y cierra la orden de tri\xE1ngulo. El NC de " + star + " debe permitir el paso.", "Falta una parte de la orden manual de tri\xE1ngulo; la retenci\xF3n no sustituye la orden inicial.", "\xBFQu\xE9 dos acciones realiza S3 y c\xF3mo se evita activar estrella y tri\xE1ngulo juntos?", ["Distinguir 1\u20132 NC y 3\u20134 NA de S3.", "Explicar el enclavamiento cruzado."]);
   }
@@ -2445,16 +2730,16 @@ var SIMPLE_LESSON = buildLesson(
 );
 function buildStarLesson(id) {
   const source2 = starDeltaSources_default[id];
-  const pairs = source2.pairs;
+  const pairs2 = source2.pairs.map(([from, to]) => [id === "estrellaManual" && from === "BOTONERAS:S2:2" && to === "BOTONERAS:S3:3" ? "BOTONERAS:S1:4" : from, to]);
   return {
     id,
     schematic: id,
-    title: `Lecci\xF3n \xB7 ${source2.title}`,
+    title: `Lecci\xF3n \xB7 ${source2.title} \xB7 3 contactores`,
     summary: source2.summary,
     needs: ["CONTACTOR_TRIFASICO_3"],
     diagram: { id: `leccion-${id}`, name: source2.title, src: `/diagrams/leccion-${id === "estrellaManual" ? "estrella-manual" : "estrella-temporizador"}.png`, origin: "class_photo" },
-    pairs,
-    steps: pairs.map(([from, to], i) => {
+    pairs: pairs2,
+    steps: pairs2.map(([from, to], i) => {
       const detail = starDetail(id, from, to);
       return { id: `${id}-${String(i + 1).padStart(2, "0")}`, from, to, title: detail.title, explanation: detail.why, review: "user_reviewed", region: { x: 0, y: 0, w: 1e3, h: 1e3 } };
     })
@@ -2462,10 +2747,19 @@ function buildStarLesson(id) {
 }
 var STAR_MANUAL_LESSON = buildStarLesson("estrellaManual");
 var STAR_TIMER_LESSON = buildStarLesson("estrellaTimer");
-var LESSONS = { simple: SIMPLE_LESSON, inversion: INVERSION_LESSON, estrellaManual: STAR_MANUAL_LESSON, estrellaTimer: STAR_TIMER_LESSON };
+var TWO_CONTACTOR_LESSON = {
+  id: "estrellaDosContactores",
+  schematic: "estrellaDosContactores",
+  title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo \xB7 2 contactores",
+  summary: "Con los nombres del banco: KT1 es el contactor principal (m\xF3dulo temporizador neum\xE1tico), KM1 el de tri\xE1ngulo (m\xF3dulo con rel\xE9 t\xE9rmico), KM2 el de estrella (m\xF3dulo trif\xE1sico); KT1 tambi\xE9n da el retardo. S1 da marcha; S2 para; el piloto rojo indica motor detenido. 40 cables, paso a paso desde el banco vac\xEDo.",
+  diagram: { id: "leccion-estrellaDosContactores", name: twoContactorSource_default.receivedDiagram.name, src: twoContactorSource_default.receivedDiagram.src, origin: "class_photo" },
+  pairs: TWO_CONTACTOR_PAIRS.map(([a, b]) => [a, b]),
+  steps: TWO_CONTACTOR_PAIRS.map(([from, to], i) => ({ id: `estrellaDosContactores-${String(i + 1).padStart(2, "0")}`, from, to, title: TWO_CONTACTOR_DETAILS[i].title, explanation: TWO_CONTACTOR_DETAILS[i].why, review: "user_reviewed", region: { x: 0, y: 0, w: 1e3, h: 1e3 } }))
+};
+var LESSONS = { simple: SIMPLE_LESSON, inversion: INVERSION_LESSON, estrellaManual: STAR_MANUAL_LESSON, estrellaTimer: STAR_TIMER_LESSON, estrellaDosContactores: TWO_CONTACTOR_LESSON };
 var MODULE_NAMES = { FUENTE: "Fuente", BOTONERAS: "Botoneras", CONTACTOR_TERMICO: "KM1", CONTACTOR_TRIFASICO: "KM2", CONTACTOR_TRIFASICO_3: "KM3", TEMPORIZADOR_1: "KT1", BORNERA_MOTOR: "Motor" };
-function terminalLabel(id) {
-  const [module2, ...rest] = id.split(":"), terminal = rest.join(":"), name = MODULE_NAMES[module2] ?? module2, pushbutton = terminal.match(/^(S[123]):([1-4])$/);
+function terminalLabel(id, scope) {
+  const [module2, ...rest] = id.split(":"), terminal = rest.join(":"), name = (scope === "dosContactores" ? twoContactorModuleName(module2, terminal) : void 0) ?? MODULE_NAMES[module2] ?? module2, pushbutton = terminal.match(/^(S[123]):([1-4])$/);
   return `${name} \xB7 ${pushbutton ? `${pushbutton[1]} borne ${pushbutton[2]}` : terminal.replace("PILOTO_", "piloto ").replace(/^TP_.+$/, "TP")}`;
 }
 var LESSON_MAP_RATIO = leccionInversion_layout_default.height / leccionInversion_layout_default.width;
@@ -2489,8 +2783,8 @@ var functions = {
   star: { why: "Los puentes re\xFAnen W2, U2 y V2 en un nodo com\xFAn para representar la conexi\xF3n estrella del esquema.", behavior: "Los otros extremos U1, V1 y W1 reciben las fases por los contactores. La elecci\xF3n real estrella/tri\xE1ngulo depende de la placa y de la alimentaci\xF3n del motor.", without: "Un solo puente no completa el nodo de las tres bobinas; debe comprobarse el conjunto de uniones previsto.", question: "\xBFQu\xE9 nodo est\xE1s formando con este puente y qu\xE9 otras uniones se necesitan para completar la estrella del esquema?", criteria: ["Nombrar el nodo com\xFAn W2\u2013U2\u2013V2.", "Distinguir este puente del cableado de mando."] },
   earth: { why: "TP representa el conductor de protecci\xF3n, separado de N y de los conductores que hacen funcionar el circuito.", behavior: "La continuidad de protecci\xF3n forma parte del montaje de referencia. El simulador no calcula fallas a masa ni acredita la protecci\xF3n de un equipo real.", without: "El montaje queda sin la uni\xF3n de protecci\xF3n prevista, aunque la simulaci\xF3n pueda seguir mostrando funcionamiento.", question: "\xBFQu\xE9 funci\xF3n tiene esta uni\xF3n de protecci\xF3n y por qu\xE9 un circuito que funciona en la simulaci\xF3n todav\xEDa puede estar incompleto?", criteria: ["Distinguir TP de N y del retorno de funcionamiento.", "Reconocer que la simulaci\xF3n no verifica la protecci\xF3n f\xEDsica."] }
 };
-function componentForTerminal(id) {
-  const [module2, ...rest] = id.split(":"), t = rest.join(":"), km = module2 === "CONTACTOR_TERMICO" ? "KM1" : module2 === "CONTACTOR_TRIFASICO" ? "KM2" : `KM${module2.match(/_(\d+)$/)?.[1] ?? "?"}`;
+function componentForTerminal(id, scope) {
+  const [module2, ...rest] = id.split(":"), t = rest.join(":"), km = (scope === "dosContactores" ? twoContactorModuleName(module2, t) : void 0) ?? (module2 === "CONTACTOR_TERMICO" ? "KM1" : module2 === "CONTACTOR_TRIFASICO" ? "KM2" : `KM${module2.match(/_(\d+)$/)?.[1] ?? "?"}`);
   if (t.startsWith("TP")) return { name: "Tierra de protecci\xF3n \xB7 TP", role: "Uni\xF3n de protecci\xF3n prevista en la referencia; no es el neutro ni el retorno de una bobina." };
   if (module2 === "FUENTE") return t === "N" ? { name: "Neutro \xB7 N", role: "Retorno de los circuitos de mando y se\xF1alizaci\xF3n de esta lecci\xF3n." } : t === "F" ? { name: "Alimentaci\xF3n de mando \xB7 F", role: "Punto de alimentaci\xF3n del mando virtual de 24 V, condicionado por sus interruptores." } : { name: "Alimentaci\xF3n de fuerza", role: "R, S y T identifican las tres fases representadas en el circuito de fuerza." };
   if (module2 === "BOTONERAS") {
@@ -2500,6 +2794,7 @@ function componentForTerminal(id) {
     return { name: t.startsWith("S2:") ? "Pulsador de paro \xB7 S2" : `Pulsador ${t.slice(0, 2)} \xB7 ${nc ? "NC 1\u20132" : "NA 3\u20134"}`, role: nc ? "Su contacto 1\u20132 est\xE1 cerrado en reposo y abre al pulsarlo en el modelo de esta lecci\xF3n." : "Su contacto 3\u20134 est\xE1 abierto en reposo y cierra mientras se mantiene pulsado en el modelo de esta lecci\xF3n." };
   }
   if (module2 === "BORNERA_MOTOR") return { name: "Bobinados del motor", role: "U1, V1, W1 y W2, U2, V2 representan los extremos de los tres bobinados; se conectan seg\xFAn el esquema de la lecci\xF3n." };
+  if (scope === "dosContactores" && module2 === "TEMPORIZADOR_1" && !TIMER_HEAD_TERMINALS.includes(t)) return t === "A1" || t === "A2" ? { name: "Bobina de KT1", role: "Al alimentarse entre A1 y A2 cierra los tres polos de l\xEDnea del contactor principal KT1 e inicia el retardo del cabezal neum\xE1tico montado sobre \xE9l." } : t === "13" || t === "14" ? { name: "Auxiliar NA de KT1 \xB7 13\u201314", role: "Abierto con KT1 en reposo; cierra al actuar y forma la retenci\xF3n de la marcha." } : { name: "Contactos de fuerza de KT1", role: "Polos L\u2013T del contactor principal: llevan R, S y T hacia los extremos U1, V1 y W1 del motor." };
   if (module2 === "TEMPORIZADOR_1") return { name: `Temporizador KT1 \xB7 ${t === "55" || t === "56" ? "55\u201356" : t === "67" || t === "68" ? "67\u201368" : "bobina"}`, role: t === "55" || t === "56" ? "En el modelo de retardo a la conexi\xF3n, este contacto permanece cerrado durante el tiempo y despu\xE9s abre." : t === "67" || t === "68" ? "En el mismo modelo, este contacto permanece abierto durante el tiempo y despu\xE9s cierra." : "Alimentado entre A1 y A2 inicia el retardo virtual; al quitar la alimentaci\xF3n se reinicia." };
   if (["95", "96", "97", "98"].includes(t) && module2 === "CONTACTOR_TERMICO") return { name: "Rel\xE9 t\xE9rmico", role: "En el modelo: 95\u201396 corta el mando al dispararse y 97\u201398 permite se\xF1alizar ese disparo." };
   if (t === "A1" || t === "A2") return { name: `Bobina de ${km}`, role: "Al alimentarse entre A1 y A2 acciona los contactos principales y auxiliares del contactor ideal." };
@@ -2509,6 +2804,10 @@ function componentForTerminal(id) {
 }
 function teachingForStep(step, schematic) {
   const a = step.from, b = step.to, ends = [a, b];
+  if (schematic === "estrellaDosContactores") return { ...twoContactorDetail(a, b), components: [...new Map(ends.map((id) => {
+    const c = componentForTerminal(id, "dosContactores");
+    return [c.name, c];
+  })).values()] };
   if (schematic === "estrellaManual" || schematic === "estrellaTimer") return { ...starTeaching(schematic, a, b), components: [...new Map(ends.map((id) => {
     const c = componentForTerminal(id);
     return [c.name, c];
@@ -2546,14 +2845,14 @@ var source = { id: "FUENTE", title: "ALIMENTACI\xD3N Y TRANSFORMADOR", subtitle:
   port("F", 493, 230, "red", "Borne marcado F: funci\xF3n interna por confirmar", void 0, "bottom", "no_verificado"),
   port("TP", 550, 242, "green", "Tierra de protecci\xF3n")
 ] };
-var btn = { id: "BOTONERAS", title: "LUCES PILOTO 24 V A.C. / BOTONERAS", x: 712, y: 76, w: 615, h: 300, image: "/references/botoneras.jpg", category: "botoneras", summary: "Cuatro pilotos y tres pulsadores. Pares rojos 1\u20132; pares claros 3\u20134. En el pulsador derecho las columnas est\xE1n invertidas. NA/NC por convenci\xF3n, pendiente de verificaci\xF3n.", labelBands: [1, 2, 3].flatMap((s) => [[`S${s}:1`, `S${s}:3`], [`S${s}:2`, `S${s}:4`]]), terminals: [
+var btn = { id: "BOTONERAS", title: "LUCES PILOTO 24 V A.C. / BOTONERAS", x: 712, y: 76, w: 615, h: 300, image: "/references/botoneras.jpg", category: "botoneras", summary: "Cuatro pilotos y tres pulsadores. Pares rojos 1\u20132; pares claros 3\u20134. NA/NC por convenci\xF3n, pendiente de verificaci\xF3n.", labelBands: [1, 2, 3].flatMap((s) => [[`S${s}:1`, `S${s}:3`], [`S${s}:2`, `S${s}:4`]]), terminals: [
   ...[78, 228, 378, 530].map((x, i) => port(`PILOTO_${i + 1}`, x, 105, "red", `Conector visible bajo piloto ${i + 1}; retorno a\xFAn no verificado`, void 0, "bottom", "no_verificado")),
   ...[115, 303, 488].flatMap((cx, i) => [
-    // IMG_4737 and IMG_4536: the right-hand button has its columns reversed.
-    port(`S${i + 1}:1`, cx + (i === 2 ? 29 : -29), 196, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
-    port(`S${i + 1}:2`, cx + (i === 2 ? 29 : -29), 250, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
-    port(`S${i + 1}:3`, cx + (i === 2 ? -29 : 29), 196, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
-    port(`S${i + 1}:4`, cx + (i === 2 ? -29 : 29), 250, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar")
+    // Los tres pulsadores se leen de izquierda a derecha: rojos 1–2 a la izquierda y claros 3–4 a la derecha. (Las fotos IMG_4737 e IMG_4536 muestran el derecho con las columnas invertidas; se normaliza a petición del autor.)
+    port(`S${i + 1}:1`, cx - 29, 196, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
+    port(`S${i + 1}:2`, cx - 29, 250, "red", `Pulsador ${i + 1} \xB7 contacto 1\u20132`, "NC por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
+    port(`S${i + 1}:3`, cx + 29, 196, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar"),
+    port(`S${i + 1}:4`, cx + 29, 250, "white", `Pulsador ${i + 1} \xB7 contacto 3\u20134`, "NA por convenci\xF3n \xB7 por confirmar", "bottom", "convencion_por_confirmar")
   ]),
   port("N", 571, 132, "white", "Borne N visible del m\xF3dulo; conexi\xF3n interna no verificada", void 0, "bottom", "no_verificado"),
   port("TP_IZQ", 40, 260, "green", "Tierra de protecci\xF3n"),
@@ -2665,9 +2964,9 @@ function registerModule(m) {
   if (MODULES.some((x) => x.id === m.id)) return false;
   MODULES.push(m);
   for (const terminal of m.terminals) {
-    const entry = { key: terminalKey(m, terminal), module: m, terminal };
-    TERMINALS.push(entry);
-    TERMINAL_BY_ID.set(entry.key, entry);
+    const entry2 = { key: terminalKey(m, terminal), module: m, terminal };
+    TERMINALS.push(entry2);
+    TERMINAL_BY_ID.set(entry2.key, entry2);
   }
   return true;
 }
@@ -2682,7 +2981,7 @@ var IDENTIFICATION_STEPS = [
   { terminalId: "CONTACTOR_TERMICO:96", title: "Encuentra su pareja: 96", explanation: "96 est\xE1 a la derecha de 95 en la misma franja. Reconocer la pareja no equivale a unirla con un cable." },
   { terminalId: "CONTACTOR_TERMICO:97", title: "Localiza el borne 97", explanation: "97 inicia la \xFAltima fila azul de la columna derecha del m\xF3dulo t\xE9rmico; 98 est\xE1 a su derecha." },
   { terminalId: "CONTACTOR_TRIFASICO:A1", title: "Distingue A1 en el contactor trif\xE1sico", explanation: "A1 aparece en crema bajo A2. El ID del m\xF3dulo evita confundirlo con la bobina de otro dispositivo." },
-  { terminalId: "BOTONERAS:S3:3", title: "Busca el borne 3 del pulsador derecho", explanation: "En el pulsador derecho, la columna crema 3\u20134 queda a la izquierda de la columna roja 1\u20132." },
+  { terminalId: "BOTONERAS:S3:3", title: "Busca el borne 3 del pulsador derecho", explanation: "En el pulsador derecho, igual que en los otros dos, la columna crema 3\u20134 queda a la derecha de la columna roja 1\u20132." },
   { terminalId: "TEMPORIZADOR_1:55", title: "Reconoce 55 en el temporizador 1", explanation: "55 y 56 son el par negro a la izquierda del mecanismo. El tipo de retardo no est\xE1 confirmado." },
   { terminalId: "TEMPORIZADOR_1:68", title: "Reconoce 68 en el temporizador", explanation: "68 es el borne derecho del par azul 67\u201368 del \xFAnico temporizador." },
   { terminalId: "BORNERA_MOTOR:U2", title: "Encuentra U2 en el motor", explanation: "La fila inferior es W2, U2, V2: U2 es azul y ocupa la posici\xF3n central." },
@@ -6651,7 +6950,7 @@ var cadePerfecto_default = {
 // src/data/cadeEstrellaTriangulo.json
 var cadeEstrellaTriangulo_default = {
   name: "CAMBIO DELTA, ESTRELLA",
-  source: "Transcripci\xF3n de una fotograf\xEDa de CADe_SIMU \xB7 \xABCAMBIO DELTA, ESTRELLA.cad\xBB",
+  source: "Transcripci\xF3n de una fotograf\xEDa de CADe_SIMU \xB7 \xABCAMBIO DELTA, ESTRELLA.cad\xBB \xB7 salidas del contactor de tri\xE1ngulo corregidas seg\xFAn la figura N\xBA2 de la gu\xEDa (2\u2192W2, 4\u2192U2, 6\u2192V2)",
   origin: "photo",
   frame: {
     left: 30,
@@ -7466,7 +7765,7 @@ var cadeEstrellaTriangulo_default = {
       x: 117,
       y: 129,
       x2: 117,
-      y2: 201,
+      y2: 213,
       color: "#2f343a"
     },
     {
@@ -7488,7 +7787,7 @@ var cadeEstrellaTriangulo_default = {
       x: 135,
       y: 129,
       x2: 135,
-      y2: 213,
+      y2: 201,
       color: "#2f343a"
     },
     {
@@ -7530,9 +7829,9 @@ var cadeEstrellaTriangulo_default = {
       reference: "",
       labels: [],
       x: 117,
-      y: 201,
+      y: 213,
       x2: 117,
-      y2: 201
+      y2: 213
     },
     {
       id: 49,
@@ -7550,9 +7849,9 @@ var cadeEstrellaTriangulo_default = {
       reference: "",
       labels: [],
       x: 135,
-      y: 213,
+      y: 201,
       x2: 135,
-      y2: 213
+      y2: 201
     },
     {
       id: 51,
@@ -12759,12 +13058,152 @@ var cadeLecciones_default = {
   }
 };
 
+// src/data/cadeEstrellaTemporizador.json
+var cadeEstrellaTemporizador_default = { name: "ESTRELLA-TRI\xC1NGULO CON TEMPORIZADOR", source: "Redibujado al estilo de CADe_SIMU a partir del montaje con temporizador (KT1) y del dibujo \xABCAMBIO DELTA, ESTRELLA\xBB; no es una copia de un archivo .cad", origin: "lesson", frame: { left: 30, top: 12, right: 539, bottom: 270, header: 5, band: 4, columns: { first: 31, width: 63.5, letters: "ABCDEFGH" }, rows: { first: 18, height: 60, count: 4 } }, views: { all: { x: 20, y: 6, w: 535, h: 272 }, power: { x: 26, y: 8, w: 190, h: 222 }, control: { x: 238, y: 8, w: 285, h: 250 } }, splitX: 225, objects: [{ id: 1, type: 9100, shape: "terminal-round", reference: "-X", labels: ["L1", "L2", "L3", "PE"], x: 63, y: 24, x2: 0, y2: 0, ports: [{ terminal: "L1", x: 63, y: 26 }, { terminal: "L2", x: 72, y: 26 }, { terminal: "L3", x: 81, y: 26 }, { terminal: "PE", x: 90, y: 26 }], box: [54, 18, 94, 27], pins: ["L1", "L2", "L3", "PE"] }, { id: 2, type: 9100, shape: "breaker3", reference: "Q1", labels: ["1", "3", "5", "2", "4", "6"], x: 63, y: 45, x2: 0, y2: 0, ports: [{ terminal: "1", x: 63, y: 45 }, { terminal: "3", x: 72, y: 45 }, { terminal: "5", x: 81, y: 45 }, { terminal: "2", x: 63, y: 69 }, { terminal: "4", x: 72, y: 69 }, { terminal: "6", x: 81, y: 69 }], box: [44, 43, 88, 71] }, { id: 3, type: 9100, shape: "contactor3", reference: "KM1", labels: ["1", "3", "5", "2", "4", "6"], x: 63, y: 96, x2: 0, y2: 0, ports: [{ terminal: "1", x: 63, y: 96 }, { terminal: "3", x: 72, y: 96 }, { terminal: "5", x: 81, y: 96 }, { terminal: "2", x: 63, y: 114 }, { terminal: "4", x: 72, y: 114 }, { terminal: "6", x: 81, y: 114 }], box: [52, 95, 86, 115] }, { id: 4, type: 9100, shape: "thermal3", reference: "F1", labels: ["1", "3", "5", "2", "4", "6"], x: 63, y: 137, x2: 0, y2: 0, ports: [{ terminal: "1", x: 63, y: 137 }, { terminal: "3", x: 72, y: 137 }, { terminal: "5", x: 81, y: 137 }, { terminal: "2", x: 63, y: 146 }, { terminal: "4", x: 72, y: 146 }, { terminal: "6", x: 81, y: 146 }], box: [50, 134, 88, 149] }, { id: 5, type: 9100, shape: "motor", reference: "M1", labels: ["U1", "V1", "W1", "W2", "U2", "V2", "PE"], x: 72, y: 184, x2: 0, y2: 0, ports: [{ terminal: "U1", x: 63, y: 176 }, { terminal: "V1", x: 72, y: 172 }, { terminal: "W1", x: 81, y: 176 }, { terminal: "W2", x: 63, y: 192 }, { terminal: "U2", x: 72, y: 196 }, { terminal: "V2", x: 81, y: 192 }, { terminal: "PE", x: 84, y: 184 }], box: [56, 168, 92, 200] }, { id: 6, type: 9100, shape: "contactor3", reference: "KM3", labels: ["1", "3", "5", "2", "4", "6"], x: 117, y: 111, x2: 0, y2: 0, ports: [{ terminal: "1", x: 117, y: 111 }, { terminal: "3", x: 126, y: 111 }, { terminal: "5", x: 135, y: 111 }, { terminal: "2", x: 117, y: 129 }, { terminal: "4", x: 126, y: 129 }, { terminal: "6", x: 135, y: 129 }], box: [105, 110, 140, 130], pitch: 9 }, { id: 7, type: 9100, shape: "contactor3", reference: "KM2", labels: ["1", "3", "5", "2", "4", "6"], x: 165, y: 111, x2: 0, y2: 0, ports: [{ terminal: "1", x: 165, y: 111 }, { terminal: "3", x: 174, y: 111 }, { terminal: "5", x: 183, y: 111 }, { terminal: "2", x: 165, y: 129 }, { terminal: "4", x: 174, y: 129 }, { terminal: "6", x: 183, y: 129 }], box: [153, 110, 188, 130], pitch: 9 }, { id: 8, type: 4e3, reference: "", labels: [], x: 63, y: 26, x2: 63, y2: 45, color: "#2f343a" }, { id: 9, type: 4e3, reference: "", labels: [], x: 72, y: 26, x2: 72, y2: 45, color: "#2f343a" }, { id: 10, type: 4e3, reference: "", labels: [], x: 81, y: 26, x2: 81, y2: 45, color: "#2f343a" }, { id: 11, type: 4e3, reference: "", labels: [], x: 90, y: 26, x2: 90, y2: 184, color: "#2f343a", dashed: true }, { id: 12, type: 4e3, reference: "", labels: [], x: 90, y: 184, x2: 84, y2: 184, color: "#2f343a" }, { id: 13, type: 4e3, reference: "", labels: [], x: 63, y: 69, x2: 63, y2: 96, color: "#2f343a" }, { id: 14, type: 4e3, reference: "", labels: [], x: 63, y: 114, x2: 63, y2: 137, color: "#2f343a" }, { id: 15, type: 4e3, reference: "", labels: [], x: 72, y: 69, x2: 72, y2: 96, color: "#2f343a" }, { id: 16, type: 4e3, reference: "", labels: [], x: 72, y: 114, x2: 72, y2: 137, color: "#2f343a" }, { id: 17, type: 4e3, reference: "", labels: [], x: 81, y: 69, x2: 81, y2: 96, color: "#2f343a" }, { id: 18, type: 4e3, reference: "", labels: [], x: 81, y: 114, x2: 81, y2: 137, color: "#2f343a" }, { id: 19, type: 4e3, reference: "", labels: [], x: 63, y: 146, x2: 63, y2: 176, color: "#2f343a" }, { id: 20, type: 4e3, reference: "", labels: [], x: 72, y: 146, x2: 72, y2: 172, color: "#2f343a" }, { id: 21, type: 4e3, reference: "", labels: [], x: 81, y: 146, x2: 81, y2: 176, color: "#2f343a" }, { id: 22, type: 4001, reference: "", labels: [], x: 63, y: 78, x2: 63, y2: 78 }, { id: 23, type: 4001, reference: "", labels: [], x: 72, y: 87, x2: 72, y2: 87 }, { id: 24, type: 4001, reference: "", labels: [], x: 81, y: 90, x2: 81, y2: 90 }, { id: 25, type: 4e3, reference: "", labels: [], x: 63, y: 78, x2: 117, y2: 78, color: "#2f343a" }, { id: 26, type: 4e3, reference: "", labels: [], x: 117, y: 78, x2: 117, y2: 111, color: "#2f343a" }, { id: 27, type: 4e3, reference: "", labels: [], x: 72, y: 87, x2: 126, y2: 87, color: "#2f343a" }, { id: 28, type: 4e3, reference: "", labels: [], x: 126, y: 87, x2: 126, y2: 111, color: "#2f343a" }, { id: 29, type: 4e3, reference: "", labels: [], x: 81, y: 90, x2: 135, y2: 90, color: "#2f343a" }, { id: 30, type: 4e3, reference: "", labels: [], x: 135, y: 90, x2: 135, y2: 111, color: "#2f343a" }, { id: 31, type: 4e3, reference: "", labels: [], x: 165, y: 111, x2: 165, y2: 104, color: "#2f343a" }, { id: 32, type: 4e3, reference: "", labels: [], x: 174, y: 111, x2: 174, y2: 104, color: "#2f343a" }, { id: 33, type: 4e3, reference: "", labels: [], x: 183, y: 111, x2: 183, y2: 104, color: "#2f343a" }, { id: 34, type: 4e3, reference: "", labels: [], x: 165, y: 104, x2: 183, y2: 104, color: "#2f343a" }, { id: 35, type: 4001, reference: "", labels: [], x: 174, y: 104, x2: 174, y2: 104 }, { id: 36, type: 4e3, reference: "", labels: [], x: 81, y: 192, x2: 81, y2: 201, color: "#2f343a" }, { id: 37, type: 4e3, reference: "", labels: [], x: 81, y: 201, x2: 165, y2: 201, color: "#2f343a" }, { id: 38, type: 4e3, reference: "", labels: [], x: 72, y: 196, x2: 72, y2: 207, color: "#2f343a" }, { id: 39, type: 4e3, reference: "", labels: [], x: 72, y: 207, x2: 174, y2: 207, color: "#2f343a" }, { id: 40, type: 4e3, reference: "", labels: [], x: 63, y: 192, x2: 63, y2: 213, color: "#2f343a" }, { id: 41, type: 4e3, reference: "", labels: [], x: 63, y: 213, x2: 183, y2: 213, color: "#2f343a" }, { id: 42, type: 4e3, reference: "", labels: [], x: 117, y: 129, x2: 117, y2: 213, color: "#2f343a" }, { id: 43, type: 4e3, reference: "", labels: [], x: 126, y: 129, x2: 126, y2: 207, color: "#2f343a" }, { id: 44, type: 4e3, reference: "", labels: [], x: 135, y: 129, x2: 135, y2: 201, color: "#2f343a" }, { id: 45, type: 4e3, reference: "", labels: [], x: 165, y: 129, x2: 165, y2: 201, color: "#2f343a" }, { id: 46, type: 4e3, reference: "", labels: [], x: 174, y: 129, x2: 174, y2: 207, color: "#2f343a" }, { id: 47, type: 4e3, reference: "", labels: [], x: 183, y: 129, x2: 183, y2: 213, color: "#2f343a" }, { id: 48, type: 4001, reference: "", labels: [], x: 117, y: 213, x2: 117, y2: 213 }, { id: 49, type: 4001, reference: "", labels: [], x: 126, y: 207, x2: 126, y2: 207 }, { id: 50, type: 4001, reference: "", labels: [], x: 135, y: 201, x2: 135, y2: 201 }, { id: 51, type: 9100, shape: "terminal-diamond", reference: "-X", labels: ["L"], x: 339, y: 24, x2: 0, y2: 0, ports: [{ terminal: "L", x: 339, y: 26 }], box: [330, 18, 342, 28], pins: ["L"], ref: true }, { id: 52, type: 9100, shape: "terminal-diamond", reference: "", labels: ["N"], x: 351, y: 24, x2: 0, y2: 0, ports: [{ terminal: "N", x: 351, y: 26 }], box: [348, 18, 354, 28], pins: ["N"] }, { id: 53, type: 9100, shape: "breaker1", reference: "-Q", labels: ["1", "2"], x: 339, y: 42, x2: 0, y2: 0, ports: [{ terminal: "1", x: 339, y: 42 }, { terminal: "2", x: 339, y: 67.5 }], box: [315, 41, 347, 69] }, { id: 54, type: 9100, shape: "f1aux", reference: "F1", labels: ["95", "96", "97", "98"], x: 339, y: 81, x2: 0, y2: 0, ports: [{ terminal: "95", x: 339, y: 81 }, { terminal: "96", x: 339, y: 99 }, { terminal: "97", x: 352.5, y: 81 }, { terminal: "98", x: 352.5, y: 99 }], box: [321, 80, 360.5, 100] }, { id: 55, type: 9100, shape: "push-nc", reference: "SB1", labels: ["11", "12"], x: 305, y: 105, x2: 0, y2: 0, ports: [{ terminal: "11", x: 305, y: 105 }, { terminal: "12", x: 305, y: 123 }], box: [281, 104, 313, 124] }, { id: 56, type: 9100, shape: "push-no", reference: "SB2", labels: ["13", "14"], x: 305, y: 135, x2: 0, y2: 0, ports: [{ terminal: "13", x: 305, y: 135 }, { terminal: "14", x: 305, y: 153 }], box: [281, 134, 313, 154] }, { id: 57, type: 9100, shape: "contact-no", reference: "KM1", labels: ["13", "14"], x: 331, y: 135, x2: 0, y2: 0, ports: [{ terminal: "13", x: 331, y: 135 }, { terminal: "14", x: 331, y: 153 }], box: [317, 134, 339, 154] }, { id: 63, type: 9100, shape: "coil", reference: "KM1", labels: ["A1", "A2"], x: 305, y: 198, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 305, y: 198 }, { terminal: "A2", x: 305, y: 216 }], box: [289, 197, 313, 217] }, { id: 70, type: 4e3, reference: "", labels: [], x: 339, y: 26, x2: 339, y2: 42, color: "#a64a4a" }, { id: 71, type: 4e3, reference: "", labels: [], x: 339, y: 67.5, x2: 339, y2: 75, color: "#a64a4a" }, { id: 72, type: 4001, reference: "", labels: [], x: 339, y: 75, x2: 339, y2: 75 }, { id: 77, type: 4e3, reference: "", labels: [], x: 339, y: 75, x2: 339, y2: 81, color: "#a64a4a" }, { id: 78, type: 4e3, reference: "", labels: [], x: 339, y: 75, x2: 352.5, y2: 75, color: "#a64a4a" }, { id: 79, type: 4e3, reference: "", labels: [], x: 352.5, y: 75, x2: 352.5, y2: 81, color: "#a64a4a" }, { id: 80, type: 4e3, reference: "", labels: [], x: 339, y: 99, x2: 305, y2: 99, color: "#a64a4a" }, { id: 81, type: 4e3, reference: "", labels: [], x: 305, y: 99, x2: 305, y2: 105, color: "#a64a4a" }, { id: 85, type: 4e3, reference: "", labels: [], x: 305, y: 123, x2: 305, y2: 129, color: "#a64a4a" }, { id: 86, type: 4001, reference: "", labels: [], x: 305, y: 129, x2: 305, y2: 129 }, { id: 87, type: 4e3, reference: "", labels: [], x: 305, y: 129, x2: 305, y2: 135, color: "#a64a4a" }, { id: 88, type: 4e3, reference: "", labels: [], x: 305, y: 153, x2: 305, y2: 156, color: "#a64a4a" }, { id: 89, type: 4001, reference: "", labels: [], x: 305, y: 156, x2: 305, y2: 156 }, { id: 90, type: 4e3, reference: "", labels: [], x: 305, y: 129, x2: 331, y2: 129, color: "#a64a4a" }, { id: 91, type: 4e3, reference: "", labels: [], x: 331, y: 129, x2: 331, y2: 135, color: "#a64a4a" }, { id: 92, type: 4e3, reference: "", labels: [], x: 331, y: 153, x2: 331, y2: 156, color: "#a64a4a" }, { id: 93, type: 4e3, reference: "", labels: [], x: 331, y: 156, x2: 305, y2: 156, color: "#a64a4a" }, { id: 94, type: 4e3, reference: "", labels: [], x: 305, y: 156, x2: 305, y2: 165, color: "#a64a4a" }, { id: 95, type: 4001, reference: "", labels: [], x: 305, y: 165, x2: 305, y2: 165 }, { id: 96, type: 4e3, reference: "", labels: [], x: 305, y: 165, x2: 305, y2: 198, color: "#a64a4a" }, { id: 97, type: 4e3, reference: "", labels: [], x: 305, y: 216, x2: 305, y2: 249, color: "#3d6fae" }, { id: 200, type: 4e3, reference: "", labels: [], x: 339, y: 75, x2: 250, y2: 75, color: "#a64a4a" }, { id: 201, type: 4e3, reference: "", labels: [], x: 352.5, y: 99, x2: 490, y2: 99, color: "#a64a4a" }, { id: 202, type: 4e3, reference: "", labels: [], x: 490, y: 99, x2: 490, y2: 166, color: "#a64a4a" }, { id: 203, type: 4e3, reference: "", labels: [], x: 490, y: 184, x2: 490, y2: 249, color: "#a64a4a" }, { id: 204, type: 9100, shape: "contact-nc", reference: "KM1", labels: ["81", "82"], x: 250, y: 90, x2: 0, y2: 0, ports: [{ terminal: "81", x: 250, y: 90 }, { terminal: "82", x: 250, y: 108 }], box: [236, 89, 258, 109] }, { id: 205, type: 4e3, reference: "", labels: [], x: 250, y: 75, x2: 250, y2: 90, color: "#a64a4a" }, { id: 206, type: 4e3, reference: "", labels: [], x: 250, y: 108, x2: 250, y2: 118, color: "#a64a4a" }, { id: 207, type: 9100, shape: "contact-nc", reference: "KM2", labels: ["81", "82"], x: 250, y: 118, x2: 0, y2: 0, ports: [{ terminal: "81", x: 250, y: 118 }, { terminal: "82", x: 250, y: 136 }], box: [236, 117, 258, 137] }, { id: 208, type: 4e3, reference: "", labels: [], x: 250, y: 136, x2: 250, y2: 146, color: "#a64a4a" }, { id: 209, type: 9100, shape: "contact-nc", reference: "KM3", labels: ["81", "82"], x: 250, y: 146, x2: 0, y2: 0, ports: [{ terminal: "81", x: 250, y: 146 }, { terminal: "82", x: 250, y: 164 }], box: [236, 145, 258, 165] }, { id: 210, type: 4e3, reference: "", labels: [], x: 250, y: 164, x2: 250, y2: 174, color: "#a64a4a" }, { id: 211, type: 9100, shape: "lamp", reference: "H2", labels: ["X1", "X2"], x: 250, y: 174, x2: 0, y2: 0, ports: [{ terminal: "X1", x: 250, y: 174 }, { terminal: "X2", x: 250, y: 192 }], box: [234, 173, 259, 193] }, { id: 212, type: 4e3, reference: "", labels: [], x: 250, y: 192, x2: 250, y2: 249, color: "#a64a4a" }, { id: 213, type: 4001, reference: "", labels: [], x: 305, y: 186, x2: 305, y2: 186 }, { id: 214, type: 4e3, reference: "", labels: [], x: 305, y: 186, x2: 272, y2: 186, color: "#a64a4a" }, { id: 215, type: 4e3, reference: "", labels: [], x: 272, y: 186, x2: 272, y2: 190, color: "#a64a4a" }, { id: 216, type: 9100, shape: "lamp", reference: "H1", labels: ["X1", "X2"], x: 272, y: 190, x2: 0, y2: 0, ports: [{ terminal: "X1", x: 272, y: 190 }, { terminal: "X2", x: 272, y: 208 }], box: [256, 189, 281, 209] }, { id: 217, type: 4e3, reference: "", labels: [], x: 272, y: 208, x2: 272, y2: 249, color: "#a64a4a" }, { id: 218, type: 9100, shape: "lamp", reference: "H3", labels: ["X1", "X2"], x: 490, y: 166, x2: 0, y2: 0, ports: [{ terminal: "X1", x: 490, y: 166 }, { terminal: "X2", x: 490, y: 184 }], box: [474, 165, 499, 185] }, { id: 219, type: 4e3, reference: "", labels: [], x: 305, y: 165, x2: 440, y2: 165, color: "#a64a4a" }, { id: 220, type: 4001, reference: "", labels: [], x: 345, y: 165, x2: 345, y2: 165 }, { id: 221, type: 4e3, reference: "", labels: [], x: 345, y: 165, x2: 345, y2: 198, color: "#a64a4a" }, { id: 222, type: 9100, shape: "coil-timer", reference: "KT1", labels: ["A1", "A2"], x: 345, y: 198, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 345, y: 198 }, { terminal: "A2", x: 345, y: 216 }], box: [325, 197, 357, 217] }, { id: 223, type: 4e3, reference: "", labels: [], x: 345, y: 216, x2: 345, y2: 249, color: "#a64a4a" }, { id: 224, type: 4001, reference: "", labels: [], x: 390, y: 165, x2: 390, y2: 165 }, { id: 225, type: 4e3, reference: "", labels: [], x: 390, y: 165, x2: 390, y2: 174, color: "#a64a4a" }, { id: 226, type: 9100, shape: "contact-nc-timed", reference: "KT1", labels: ["55", "56"], x: 390, y: 174, x2: 0, y2: 0, ports: [{ terminal: "55", x: 390, y: 174 }, { terminal: "56", x: 390, y: 192 }], box: [364, 173, 398, 193] }, { id: 227, type: 4e3, reference: "", labels: [], x: 390, y: 192, x2: 390, y2: 201, color: "#a64a4a" }, { id: 228, type: 9100, shape: "contact-nc", reference: "KM3", labels: ["71", "72"], x: 390, y: 201, x2: 0, y2: 0, ports: [{ terminal: "71", x: 390, y: 201 }, { terminal: "72", x: 390, y: 219 }], box: [376, 200, 398, 220] }, { id: 229, type: 4e3, reference: "", labels: [], x: 390, y: 219, x2: 390, y2: 222, color: "#a64a4a" }, { id: 230, type: 9100, shape: "coil", reference: "KM2", labels: ["A1", "A2"], x: 390, y: 222, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 390, y: 222 }, { terminal: "A2", x: 390, y: 240 }], box: [374, 221, 398, 241] }, { id: 231, type: 4e3, reference: "", labels: [], x: 390, y: 240, x2: 390, y2: 249, color: "#a64a4a" }, { id: 232, type: 4001, reference: "", labels: [], x: 440, y: 165, x2: 440, y2: 165 }, { id: 233, type: 4e3, reference: "", labels: [], x: 440, y: 165, x2: 440, y2: 174, color: "#a64a4a" }, { id: 234, type: 9100, shape: "contact-no-timed", reference: "KT1", labels: ["67", "68"], x: 440, y: 174, x2: 0, y2: 0, ports: [{ terminal: "67", x: 440, y: 174 }, { terminal: "68", x: 440, y: 192 }], box: [414, 173, 448, 193] }, { id: 235, type: 4e3, reference: "", labels: [], x: 440, y: 192, x2: 440, y2: 201, color: "#a64a4a" }, { id: 236, type: 9100, shape: "contact-nc", reference: "KM2", labels: ["71", "72"], x: 440, y: 201, x2: 0, y2: 0, ports: [{ terminal: "71", x: 440, y: 201 }, { terminal: "72", x: 440, y: 219 }], box: [426, 200, 448, 220] }, { id: 237, type: 4e3, reference: "", labels: [], x: 440, y: 219, x2: 440, y2: 222, color: "#a64a4a" }, { id: 238, type: 9100, shape: "coil", reference: "KM3", labels: ["A1", "A2"], x: 440, y: 222, x2: 0, y2: 0, ports: [{ terminal: "A1", x: 440, y: 222 }, { terminal: "A2", x: 440, y: 240 }], box: [424, 221, 448, 241] }, { id: 239, type: 4e3, reference: "", labels: [], x: 440, y: 240, x2: 440, y2: 249, color: "#a64a4a" }, { id: 240, type: 4e3, reference: "", labels: [], x: 351, y: 26, x2: 351, y2: 36, color: "#3d6fae" }, { id: 241, type: 4e3, reference: "", labels: [], x: 351, y: 36, x2: 510, y2: 36, color: "#3d6fae" }, { id: 242, type: 4e3, reference: "", labels: [], x: 510, y: 36, x2: 510, y2: 249, color: "#3d6fae" }, { id: 243, type: 4e3, reference: "", labels: [], x: 250, y: 249, x2: 510, y2: 249, color: "#3d6fae" }, { id: 244, type: 4001, reference: "", labels: [], x: 250, y: 249, x2: 250, y2: 249 }, { id: 245, type: 4001, reference: "", labels: [], x: 272, y: 249, x2: 272, y2: 249 }, { id: 246, type: 4001, reference: "", labels: [], x: 305, y: 249, x2: 305, y2: 249 }, { id: 247, type: 4001, reference: "", labels: [], x: 345, y: 249, x2: 345, y2: 249 }, { id: 248, type: 4001, reference: "", labels: [], x: 390, y: 249, x2: 390, y2: 249 }, { id: 249, type: 4001, reference: "", labels: [], x: 440, y: 249, x2: 440, y2: 249 }, { id: 250, type: 4001, reference: "", labels: [], x: 490, y: 249, x2: 490, y2: 249 }] };
+
+// src/data/starPanelMap.ts
+var K12 = "CONTACTOR_TERMICO:";
+var K22 = "CONTACTOR_TRIFASICO:";
+var K3 = "CONTACTOR_TRIFASICO_3:";
+var BT2 = "BOTONERAS:";
+var KT = "TEMPORIZADOR_1:";
+var seq = (prefix, terminals, names) => Object.fromEntries(terminals.map((t, i) => [t, prefix + names[i]]));
+var power2 = (prefix, outs) => ({ ...seq(prefix, ["1", "3", "5"], ["L1", "L2", "L3"]), ...seq(prefix, outs, ["T1", "T2", "T3"]) });
+var common = () => ({
+  2: { "2": "FUENTE:R", "4": "FUENTE:S", "6": "FUENTE:T" },
+  3: seq(K12, ["1", "3", "5"], ["L1", "L2", "L3"]),
+  4: seq(K12, ["2", "4", "6"], ["T1", "T2", "T3"]),
+  5: { U1: "BORNERA_MOTOR:U1", V1: "BORNERA_MOTOR:V1", W1: "BORNERA_MOTOR:W1", W2: "BORNERA_MOTOR:W2", U2: "BORNERA_MOTOR:U2", V2: "BORNERA_MOTOR:V2", PE: "BORNERA_MOTOR:TP" },
+  52: { N: "FUENTE:N" },
+  53: { "2": "FUENTE:F" },
+  54: seq(K12, ["95", "96", "97", "98"], ["95", "96", "97", "98"]),
+  55: { "11": BT2 + "S2:1", "12": BT2 + "S2:2" },
+  56: { "13": BT2 + "S1:3", "14": BT2 + "S1:4" },
+  57: seq(K12, ["13", "14"], ["13", "14"]),
+  63: seq(K12, ["A1", "A2"], ["A1", "A2"])
+});
+var manual = () => ({
+  ...common(),
+  6: power2(K22, ["2", "4", "6"]),
+  7: power2(K3, ["2", "4", "6"]),
+  58: seq(BT2 + "S3:", ["11", "12", "13", "14"], ["1", "2", "3", "4"]),
+  59: seq(K22, ["11", "12"], ["71", "72"]),
+  60: { "13": K22 + "13", "12": K22 + "14" },
+  61: seq(K3, ["11", "12"], ["71", "72"]),
+  62: seq(K12, ["11", "12"], ["71", "72"]),
+  64: seq(K3, ["A1", "A2"], ["A1", "A2"]),
+  65: seq(K22, ["A1", "A2"], ["A1", "A2"]),
+  66: { X1: BT2 + "PILOTO_2", X2: BT2 + "N" },
+  67: { X1: BT2 + "PILOTO_1", X2: BT2 + "N" },
+  68: { X1: BT2 + "PILOTO_4", X2: BT2 + "N" },
+  69: { X1: BT2 + "PILOTO_3", X2: BT2 + "N" }
+});
+var timer2 = () => ({
+  ...common(),
+  6: power2(K3, ["2", "4", "6"]),
+  7: power2(K22, ["2", "4", "6"]),
+  204: seq(K12, ["81", "82"], ["81", "82"]),
+  207: seq(K22, ["81", "82"], ["81", "82"]),
+  209: seq(K3, ["81", "82"], ["81", "82"]),
+  211: { X1: BT2 + "PILOTO_2", X2: BT2 + "N" },
+  216: { X1: BT2 + "PILOTO_1", X2: BT2 + "N" },
+  218: { X1: BT2 + "PILOTO_3", X2: BT2 + "N" },
+  222: seq(KT, ["A1", "A2"], ["A1", "A2"]),
+  226: seq(KT, ["55", "56"], ["55", "56"]),
+  234: seq(KT, ["67", "68"], ["67", "68"]),
+  228: seq(K3, ["71", "72"], ["71", "72"]),
+  236: seq(K22, ["71", "72"], ["71", "72"]),
+  230: seq(K22, ["A1", "A2"], ["A1", "A2"]),
+  238: seq(K3, ["A1", "A2"], ["A1", "A2"])
+});
+var STAR_PANELS = { estrellaManual: manual(), estrellaTimer: timer2() };
+
+// src/data/twoContactorReference.ts
+var referencePort = (object, terminal) => `reference:${object}:${terminal}`;
+var pairs = [
+  [53, "2", 54, "95"],
+  [54, "96", 55, "11"],
+  [55, "12", 56, "13"],
+  [55, "12", 57, "13"],
+  [57, "14", 56, "14"],
+  [56, "14", 63, "A1"],
+  [63, "A2", 52, "N"],
+  [56, "14", 58, "11"],
+  [58, "12", 59, "11"],
+  [59, "12", 64, "A1"],
+  [64, "A2", 52, "N"],
+  [56, "14", 58, "13"],
+  [58, "14", 61, "11"],
+  [61, "12", 65, "A1"],
+  [65, "A2", 52, "N"],
+  [2, "4", 3, "3"],
+  [2, "6", 3, "5"],
+  [4, "2", 5, "U1"],
+  [4, "4", 5, "V1"],
+  [4, "6", 5, "W1"],
+  [5, "W2", 7, "6"],
+  [5, "U2", 7, "4"],
+  [5, "V2", 7, "2"],
+  [7, "1", 7, "3"],
+  [7, "3", 7, "5"],
+  [3, "1", 6, "1"],
+  [3, "3", 6, "3"],
+  [3, "5", 6, "5"],
+  [6, "2", 5, "W2"],
+  [6, "4", 5, "U2"],
+  [6, "6", 5, "V2"],
+  [69, "X2", 52, "N"],
+  [64, "A1", 67, "X1"],
+  [65, "A1", 68, "X1"],
+  [2, "2", 3, "1"],
+  [53, "2", 54, "97"],
+  [54, "98", 69, "X1"],
+  // Piloto rojo: NC de KM1 (62) y NC de KM2 (1001, agregado en el dibujo de la lección) en serie hacia H1 (66).
+  [53, "2", 62, "11"],
+  [62, "12", 1001, "11"],
+  [1001, "12", 66, "X1"]
+];
+var TWO_CONTACTOR_REFERENCE_PAIRS = TWO_CONTACTOR_STEP_ORDER.map((i) => {
+  const p = pairs[i];
+  return p ? [referencePort(p[0], p[1]), referencePort(p[2], p[3])] : void 0;
+});
+
+// src/data/twoContactorDrawing.ts
+var BANK_REFERENCE = { KM1: "KT1", KM2: "KM1", KM3: "KM2" };
+var TWO_CONTACTOR_LABELS = { 58: "KT1", 62: "KM1", 1001: "KM2" };
+var RED_PILOT_NC_KM2 = 1001;
+var RED_PILOT_WIRE = 1002;
+var RED_PILOT_SHIFT = 13;
+function redPilotObjects(estrella) {
+  const nc = estrella.objects.find((o) => o.id === 62), wire = estrella.objects.find((o) => o.id === 75);
+  const second = { ...nc, id: RED_PILOT_NC_KM2, reference: "KM2", y: 152, box: nc.box?.map((v, i) => i % 2 ? v + 23 : v), ports: nc.ports?.map((p) => ({ ...p, y: p.y + 23, anchor: referencePort(RED_PILOT_NC_KM2, p.terminal) })) };
+  const link = { ...wire, id: RED_PILOT_WIRE, x: 265, y: 170, x2: 265, y2: 175 };
+  return [second, link];
+}
+function twoContactorDrawing(estrella) {
+  return { ...estrella, source: estrella.source + " \xB7 rotulado con los nombres del banco (KT1, KM1, KM2) y bornes R, S, T", objects: estrella.objects.map((o) => {
+    const n = { ...o };
+    if (o.reference && BANK_REFERENCE[o.reference]) n.reference = BANK_REFERENCE[o.reference];
+    if (TWO_CONTACTOR_LABELS[o.id]) n.reference = TWO_CONTACTOR_LABELS[o.id];
+    if (o.id === 1) n.pins = ["R", "S", "T", "PE"];
+    if (o.id === 75) n.y2 = 152;
+    if (o.id === 66) {
+      n.y = o.y + RED_PILOT_SHIFT;
+      n.box = o.box?.map((v, i) => i % 2 ? v + RED_PILOT_SHIFT : v);
+      n.ports = o.ports?.map((p) => ({ ...p, y: p.y + RED_PILOT_SHIFT }));
+    }
+    if (o.id === 76) n.y = o.y + RED_PILOT_SHIFT;
+    if (n.ports) n.ports = n.ports.map((p) => ({ ...p, anchor: referencePort(o.id, p.terminal) }));
+    return n;
+  }).concat(redPilotObjects(estrella)) };
+}
+
 // src/data/cade.ts
 var WIRE_TYPES = [4e3, 4009, 4010];
 var onLine = (p, w) => Math.abs((w.x2 - w.x) * (p.y - w.y) - (w.y2 - w.y) * (p.x - w.x)) < 1e-3 && p.x >= Math.min(w.x, w.x2) && p.x <= Math.max(w.x, w.x2) && p.y >= Math.min(w.y, w.y2) && p.y <= Math.max(w.y, w.y2);
 function cadePorts(o) {
   const port2 = (terminal, x, y) => ({ objectId: o.id, reference: o.reference, terminal, x, y });
-  if (o.ports) return o.ports.map((p) => ({ ...port2(p.terminal, p.x, p.y), ...p.panel ? { panel: p.panel } : {} }));
+  if (o.ports) return o.ports.map((p) => ({ ...port2(p.terminal, p.x, p.y), ...p.panel ? { panel: p.panel } : {}, ...p.anchor ? { anchor: p.anchor } : {} }));
   if ([6009, 2001, 6007].includes(o.type)) {
     const h = o.type === 6009 ? 21 : 12;
     return [0, 1, 2].flatMap((i) => [port2(o.labels[i], o.x + i * 6, o.y), port2(o.labels[i + 3], o.x + i * 6, o.y + h)]);
@@ -12775,10 +13214,10 @@ function cadePorts(o) {
   if (o.type === 8018) return [port2(o.labels[0], o.x, o.y), port2(o.labels[2], o.x, o.y + 12), port2(o.labels[1], o.x + 9, o.y), port2(o.labels[3], o.x + 9, o.y + 12)];
   return [port2(o.labels[0], o.x, o.y), port2(o.labels[1], o.x, o.y + (o.type === 6010 ? 21 : 12))];
 }
-function createCade(drawing) {
+function createCade(drawing, bank) {
   const objects = drawing.objects;
   const WIRES = objects.filter((o) => WIRE_TYPES.includes(o.type));
-  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type));
+  const SYMBOLS = objects.filter((o) => ![...WIRE_TYPES, 4001, 2e4].includes(o.type)).map((o) => bank?.[o.id] ? { ...o, bank: bank[o.id] } : o);
   const JUNCTIONS = objects.filter((o) => o.type === 4001);
   const PORTS = SYMBOLS.flatMap(cadePorts);
   function network(wireId) {
@@ -12811,20 +13250,53 @@ var CADE_JUNCTIONS = PERFECTO_CADE.JUNCTIONS;
 var CADE_PORTS = PERFECTO_CADE.PORTS;
 var cadeNetwork = PERFECTO_CADE.network;
 var ESTRELLA_CADE = createCade(cadeEstrellaTriangulo_default);
+var withPanels = (drawing, map) => ({ ...drawing, objects: drawing.objects.map((o) => o.ports && map[o.id] ? { ...o, ports: o.ports.map((p) => map[o.id][p.terminal] ? { ...p, panel: map[o.id][p.terminal] } : p) } : o) });
+var TIMER = "Temporizador neum\xE1tico";
+var THERMAL = "Contactor + rel\xE9 t\xE9rmico";
+var TRI = "Contactor trif\xE1sico";
+var TWO_CONTACTOR_BANK_NAMES = {
+  3: { name: TIMER, part: "Contactor principal KT1 (parte contactor del m\xF3dulo temporizador neum\xE1tico)" },
+  57: { name: TIMER, part: "Auxiliar 13\u201314 del contactor principal KT1 (retenci\xF3n)" },
+  62: { name: THERMAL, part: "Contacto NC 81\u201382 de KM1 (piloto rojo)" },
+  1001: { name: TRI, part: "Contacto NC 81\u201382 de KM2 (piloto rojo)" },
+  63: { name: TIMER, part: "Bobina del contactor principal KT1 (m\xF3dulo temporizador neum\xE1tico)" },
+  58: { name: TIMER, part: "Contactos temporizados 55\u201356 y 67\u201368 del cabezal de retardo KT1 (m\xF3dulo temporizador neum\xE1tico)", note: "El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del cabezal de retardo KT1: 55-56 (NC) y 67-68 (NA).", what: "Contactos que cambian de estado cuando termina el tiempo del temporizador." },
+  6: { name: THERMAL, part: "Contactor de tri\xE1ngulo KM1 (m\xF3dulo contactor + rel\xE9 t\xE9rmico)" },
+  59: { name: THERMAL },
+  60: { name: THERMAL },
+  65: { name: THERMAL, part: "Bobina del contactor de tri\xE1ngulo KM1 (m\xF3dulo contactor + rel\xE9 t\xE9rmico)" },
+  7: { name: TRI, part: "Contactor de estrella KM2 (m\xF3dulo contactor trif\xE1sico)" },
+  61: { name: TRI },
+  64: { name: TRI, part: "Bobina del contactor de estrella KM2 (m\xF3dulo contactor trif\xE1sico)" }
+};
 var LESSON_CADES = {
   simple: createCade(cadeLecciones_default.simple),
   inversion: createCade(cadeLecciones_default.inversion),
-  estrellaManual: ESTRELLA_CADE,
-  estrellaTimer: ESTRELLA_CADE
+  estrellaManual: createCade(withPanels(cadeEstrellaTriangulo_default, STAR_PANELS.estrellaManual)),
+  estrellaTimer: createCade(withPanels(cadeEstrellaTemporizador_default, STAR_PANELS.estrellaTimer)),
+  // Dibujo propio de la lección (ver twoContactorDrawing.ts): rótulos del banco y salidas del triángulo según la guía; el original no se modifica.
+  estrellaDosContactores: createCade(twoContactorDrawing(cadeEstrellaTriangulo_default), TWO_CONTACTOR_BANK_NAMES)
 };
 var CADE_DRAWINGS = [
   { id: "perfecto", title: "PERFECTO", cade: PERFECTO_CADE, guided: true },
   { id: "estrella", title: "Estrella-tri\xE1ngulo", cade: ESTRELLA_CADE, guided: false },
   { id: "simple", title: "Lecci\xF3n \xB7 Marcha y paro", cade: LESSON_CADES.simple, guided: false },
-  { id: "inversion", title: "Lecci\xF3n \xB7 Inversi\xF3n de giro", cade: LESSON_CADES.inversion, guided: false }
+  { id: "inversion", title: "Lecci\xF3n \xB7 Inversi\xF3n de giro", cade: LESSON_CADES.inversion, guided: false },
+  { id: "estrellaTimer", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo con temporizador", cade: LESSON_CADES.estrellaTimer, guided: false },
+  { id: "estrellaDosContactores", title: "Lecci\xF3n \xB7 Estrella-tri\xE1ngulo \xB7 2 contactores", cade: LESSON_CADES.estrellaDosContactores, guided: false }
 ];
 
 // src/data/panelCorrespondence.ts
+var cadePortKey = (p) => `${p.reference === "-Q" && p.objectId === 3 ? "-Q.potencia" : p.reference}:${p.terminal}`;
+function migrateCadeBindings(bindings) {
+  const next = { ...bindings };
+  for (const key of Object.keys(next)) if (/^-Q:[3-6]$/.test(key)) {
+    const scoped = key.replace("-Q:", "-Q.potencia:");
+    if (!Object.hasOwn(next, scoped)) next[scoped] = next[key];
+    delete next[key];
+  }
+  return next;
+}
 var DEFAULT_CADE_BINDINGS = {
   "-F:95": "CONTACTOR_TERMICO:95",
   "-F:96": "CONTACTOR_TERMICO:96",
@@ -12842,9 +13314,37 @@ var DEFAULT_CADE_BINDINGS = {
   "-KM1:14": "CONTACTOR_TERMICO:14",
   "-KM1:11": "CONTACTOR_TERMICO:71",
   "-KM1:12": "CONTACTOR_TERMICO:72",
-  "-SB2:13": "BOTONERAS:S3:3",
-  "-SB2:14": "BOTONERAS:S3:4"
+  "-SB1:11": "BOTONERAS:S2:1",
+  "-SB1:12": "BOTONERAS:S2:2",
+  "-SB2:13": "BOTONERAS:S1:3",
+  "-SB2:14": "BOTONERAS:S1:4",
+  "-H1:X1": "BOTONERAS:PILOTO_1",
+  "-H2:X1": "BOTONERAS:PILOTO_3",
+  "-H3:X1": "BOTONERAS:PILOTO_2",
+  "-H1:X2": "BOTONERAS:N",
+  "-H2:X2": "BOTONERAS:N",
+  "-H3:X2": "BOTONERAS:N",
+  "-X:L": "FUENTE:F",
+  "-X:N": "FUENTE:N",
+  "-X:PE": "FUENTE:TP",
+  "-M:PE": "BORNERA_MOTOR:TP",
+  "-Q:1": "FUENTE:F",
+  "-Q:2": "FUENTE:F",
+  "-X:L1": "FUENTE:R",
+  "-X:L2": "FUENTE:S",
+  "-X:L3": "FUENTE:T",
+  ...Object.fromEntries(["R", "S", "T"].flatMap((phase, i) => [
+    [`-Q.potencia:${i * 2 + 1}`, `FUENTE:${phase}`],
+    [`-Q.potencia:${i * 2 + 2}`, `FUENTE:${phase}`],
+    [`-KM1:${i * 2 + 1}`, `CONTACTOR_TERMICO:L${i + 1}`],
+    [`-KM1:${i * 2 + 2}`, `CONTACTOR_TERMICO:T${i + 1}`],
+    [`-F:${i * 2 + 1}`, `CONTACTOR_TERMICO:T${i + 1}`],
+    [`-F:${i * 2 + 2}`, `CONTACTOR_TERMICO:T${i + 1}`]
+  ]))
 };
+function bindingConflict(key, id, bindings) {
+  return !!id && Object.entries({ ...DEFAULT_CADE_BINDINGS, ...bindings }).some(([other, value]) => other !== key && value === id && !(DEFAULT_CADE_BINDINGS[key] === id && DEFAULT_CADE_BINDINGS[other] === id));
+}
 
 // src/data/layout.ts
 var import_react = __toESM(require_react(), 1);
@@ -12881,7 +13381,7 @@ function freeSlot(layout, me, modules = MODULES) {
 var VIEW_ASPECT = 1680 / 1460;
 
 // src/data/lessonIds.ts
-var LESSON_IDS = ["simple", "inversion", "estrellaManual", "estrellaTimer"];
+var LESSON_IDS = ["simple", "inversion", "estrellaManual", "estrellaTimer", "estrellaDosContactores"];
 
 // src/data/assessmentState.ts
 var newAssessment = (lessonId) => ({ version: 1, id: crypto.randomUUID(), lessonId, answers: [], reflection: "", submitted: false });
@@ -12934,13 +13434,24 @@ function createCable(from, to, wires, color = BANANA_COLOR) {
   if (!TERMINAL_BY_ID.has(from) || !TERMINAL_BY_ID.has(to) || from === to) throw new Error("Selecciona dos bornes distintos del inventario.");
   return { id: crypto.randomUUID(), from: { terminalId: from }, to: { terminalId: to }, color, route: { sag: 130 }, layer: wires.reduce((n, w) => Math.max(n, w.layer), 0) + 1 };
 }
-function cableGeometry(wire, wires) {
+function indexCableEndpoints(wires) {
+  const ordered = [...wires].sort((a, b) => a.layer - b.layer || a.id.localeCompare(b.id)), slots = /* @__PURE__ */ new Map();
+  for (const w of ordered) for (const id of [w.from.terminalId, w.to.terminalId]) {
+    let siblings = slots.get(id);
+    if (!siblings) {
+      siblings = /* @__PURE__ */ new Map();
+      slots.set(id, siblings);
+    }
+    siblings.set(w.id, siblings.size);
+  }
+  return { ordered, slots };
+}
+function cableGeometry(wire, wires, index) {
   const endpoint = (end) => {
     const id = wire[end].terminalId;
     const point2 = terminalPoint(id);
-    const siblings = wires.filter((w) => w.from.terminalId === id || w.to.terminalId === id).sort((a, b) => a.layer - b.layer || a.id.localeCompare(b.id));
-    const index = siblings.findIndex((w) => w.id === wire.id);
-    const stack = wire[end].stackOffset || { x: Math.max(0, index) * 8, y: Math.max(0, index) * -5 };
+    const position = index?.slots.get(id)?.get(wire.id) ?? wires.filter((w) => w.from.terminalId === id || w.to.terminalId === id).sort((a, b) => a.layer - b.layer || a.id.localeCompare(b.id)).findIndex((w) => w.id === wire.id);
+    const stack = wire[end].stackOffset || { x: Math.max(0, position) * 8, y: Math.max(0, position) * -5 };
     const offset = end === "from" ? wire.route?.fromOffset : wire.route?.toOffset;
     return { point: point2, head: { x: point2.x + stack.x, y: point2.y + stack.y }, offset: offset || { x: 0, y: 0 } };
   };
@@ -12979,14 +13490,14 @@ function readPractice(value) {
     return s;
   });
   if (allSteps.length && !diagram) throw new Error("Los pasos necesitan su imagen de referencia.");
-  const learning = v.learning;
+  let learning = v.learning;
   if (learning) {
     if (!["guided", "free", "exam"].includes(learning.mode) || !Number.isInteger(learning.index) || learning.index < 0 || learning.index >= 47 || ![1, 2, 3].includes(learning.assistance) || !learning.bindings || typeof learning.bindings !== "object" || Array.isArray(learning.bindings) || typeof learning.examFinished !== "boolean" || !learning.answers || typeof learning.answers !== "object" || Array.isArray(learning.answers) || Object.values(learning.answers).some((s) => typeof s !== "string" || s.length > 3e3) || Object.entries(learning.bindings).some(([key, id]) => !key.startsWith("-") || typeof id !== "string" || id !== "" && !knownTerminal(id))) throw new Error("El progreso o las correspondencias de PERFECTO no son v\xE1lidos.");
-    const known = new Set(CADE_PORTS.map((p) => `${p.reference}:${p.terminal}`));
+    learning = { ...learning, bindings: migrateCadeBindings(learning.bindings) };
+    const known = new Set(CADE_PORTS.map(cadePortKey));
     if (Object.keys(learning.bindings).some((k) => !known.has(k))) throw new Error("La correspondencia no pertenece a PERFECTO.");
-    const defaults = DEFAULT_CADE_BINDINGS;
-    const assigned = Object.values({ ...defaults, ...learning.bindings }).filter(Boolean);
-    if (new Set(assigned).size !== assigned.length) throw new Error("Dos bornes del esquema no pueden asignarse al mismo borne f\xEDsico.");
+    const personalBindings = learning.bindings;
+    if (Object.entries(personalBindings).some(([key, id]) => bindingConflict(key, id, personalBindings))) throw new Error("Dos bornes independientes del esquema no pueden asignarse al mismo borne f\xEDsico.");
   }
   const retired = (a, b) => RETIRED_TERMINAL_IDS.has(a) || RETIRED_TERMINAL_IDS.has(b);
   const wires = allWires.filter((w) => !retired(w.from.terminalId, w.to.terminalId)), steps = allSteps.filter((s) => !retired(s.from, s.to));
@@ -13101,7 +13612,45 @@ var SIMULATION_EXAMPLES = {
   ] },
   simple: { title: "Marcha y paro con retenci\xF3n (el m\xE1s simple, de un compa\xF1ero)", pairs: SIMPLE_LESSON.pairs },
   inversion: { title: "Inversi\xF3n de giro con enclavamiento y paro (circuito de un compa\xF1ero)", pairs: INVERSION_LESSON.pairs },
-  starDelta: { title: "Arranque estrella-tri\xE1ngulo con temporizador", needs: ["CONTACTOR_TRIFASICO_3"], pairs: [
+  starDelta: { title: "Estrella-tri\xE1ngulo \xB7 2 contactores + conjunto temporizado", pairs: [
+    // KT1 is the line contactor with pneumatic block. KM2 = star; KM1 = delta.
+    ["FUENTE:F", "CONTACTOR_TERMICO:95"],
+    ["CONTACTOR_TERMICO:96", "BOTONERAS:S2:1"],
+    ["BOTONERAS:S2:2", "BOTONERAS:S3:3"],
+    ["BOTONERAS:S3:3", "TEMPORIZADOR_1:13"],
+    ["BOTONERAS:S3:4", "TEMPORIZADOR_1:14"],
+    ["TEMPORIZADOR_1:14", "TEMPORIZADOR_1:A1"],
+    ["TEMPORIZADOR_1:A2", "FUENTE:N"],
+    ["TEMPORIZADOR_1:14", "TEMPORIZADOR_1:55"],
+    ["TEMPORIZADOR_1:56", "CONTACTOR_TERMICO:71"],
+    ["CONTACTOR_TERMICO:72", "CONTACTOR_TRIFASICO:A1"],
+    ["CONTACTOR_TRIFASICO:A2", "FUENTE:N"],
+    ["TEMPORIZADOR_1:14", "TEMPORIZADOR_1:67"],
+    ["TEMPORIZADOR_1:68", "CONTACTOR_TRIFASICO:71"],
+    ["CONTACTOR_TRIFASICO:72", "CONTACTOR_TERMICO:A1"],
+    ["CONTACTOR_TERMICO:A2", "FUENTE:N"],
+    ["FUENTE:R", "TEMPORIZADOR_1:L1"],
+    ["FUENTE:S", "TEMPORIZADOR_1:L2"],
+    ["FUENTE:T", "TEMPORIZADOR_1:L3"],
+    ["TEMPORIZADOR_1:T1", "BORNERA_MOTOR:U1"],
+    ["TEMPORIZADOR_1:T2", "BORNERA_MOTOR:V1"],
+    ["TEMPORIZADOR_1:T3", "BORNERA_MOTOR:W1"],
+    ["BORNERA_MOTOR:W2", "CONTACTOR_TRIFASICO:L1"],
+    ["BORNERA_MOTOR:U2", "CONTACTOR_TRIFASICO:L2"],
+    ["BORNERA_MOTOR:V2", "CONTACTOR_TRIFASICO:L3"],
+    ["CONTACTOR_TRIFASICO:T1", "CONTACTOR_TRIFASICO:T2"],
+    ["CONTACTOR_TRIFASICO:T2", "CONTACTOR_TRIFASICO:T3"],
+    ["BORNERA_MOTOR:U1", "CONTACTOR_TERMICO:L1"],
+    ["BORNERA_MOTOR:V1", "CONTACTOR_TERMICO:L2"],
+    ["BORNERA_MOTOR:W1", "CONTACTOR_TERMICO:L3"],
+    ["CONTACTOR_TERMICO:T1", "BORNERA_MOTOR:W2"],
+    ["CONTACTOR_TERMICO:T2", "BORNERA_MOTOR:U2"],
+    ["CONTACTOR_TERMICO:T3", "BORNERA_MOTOR:V2"],
+    ["FUENTE:N", "BOTONERAS:N"],
+    ["CONTACTOR_TRIFASICO:A1", "BOTONERAS:PILOTO_1"],
+    ["CONTACTOR_TERMICO:A1", "BOTONERAS:PILOTO_4"]
+  ] },
+  starDeltaThree: { title: "Estrella-tri\xE1ngulo \xB7 3 contactores + temporizador separado", needs: ["CONTACTOR_TRIFASICO_3"], pairs: [
     // Mando: F → térmico → parada → marcha con retención en KM1. KM1:14 alimenta al temporizador y a los dos contactores de conmutación.
     ["FUENTE:F", "CONTACTOR_TERMICO:95"],
     ["CONTACTOR_TERMICO:96", "BOTONERAS:S2:1"],
@@ -13274,6 +13823,7 @@ function readPanelFile(raw) {
   STAR_MANUAL_LESSON,
   STAR_TIMER_LESSON,
   TERMINAL_BY_ID,
+  TWO_CONTACTOR_LESSON,
   answerFor,
   appendPanelHistory,
   assessLesson,
@@ -13286,6 +13836,7 @@ function readPanelFile(raw) {
   connectionKey,
   createCable,
   emptyPractice,
+  indexCableEndpoints,
   networkFor,
   newAssessment,
   newFrame,

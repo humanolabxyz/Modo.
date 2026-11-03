@@ -17,7 +17,7 @@ const near = (a, b, eps, msg) => assert.ok(Math.abs(a - b) <= eps, `${msg}: ${a}
 const close = (a, b, eps, msg) => a.forEach((v, i) => assert.ok(Math.abs(v - b[i]) <= eps, `${msg}: ${a} vs ${b}`));
 
 // ───── Catálogo
-assert.equal(CATALOG.length, 12);
+assert.equal(CATALOG.length, 35);
 for (const id of ['chassis-2wd', 'dc-motor-tt', 'wheel-65', 'caster-ball', 'arduino-uno-r3', 'l298n-module', 'hc-sr04', 'battery-holder-4aa', 'sensor-bracket', 'bracket-generic']) assert.ok(getDefinition(id), id);
 const uno = getDefinition('arduino-uno-r3'), pinIds = new Set(uno.pins.map(x => x.id));
 for (let i = 0; i <= 13; i++) assert.ok(pinIds.has(`D${i}`), `D${i}`);
@@ -30,9 +30,9 @@ assert.deepEqual(getDefinition('hc-sr04').pins.map(x => x.id), ['VCC', 'TRIG', '
 assert.deepEqual(getDefinition('dc-motor-tt').pins.map(x => x.id), ['M+', 'M-']);
 assert.deepEqual(getDefinition('battery-holder-4aa').pins.map(x => x.id), ['B+', 'B-'], 'portapilas con terminales + y − (D-11 resuelta con un voltaje editable)'); assert.equal(getDefinition('battery-holder-4aa').props[0].default, 6);
 assert.equal(uno.dimensionsSource, 'datasheet'); assert.equal(getDefinition('l298n-module').dimensionsSource, 'approximate');
-for (const d of CATALOG) { assert.ok(d.dimensions.every(v => v > 0 && v < 0.5), d.id); assert.equal(new Set(d.pins.map(x => x.id)).size, d.pins.length, d.id + ' pines únicos'); assert.equal(new Set(d.anchors.map(x => x.id)).size, d.anchors.length); assert.equal(d.scalable, false); }
+for (const d of CATALOG) { assert.ok(d.dimensions.every(v => v > 0 && v < (d.id === 'educational-conveyor' ? 1 : .5)), d.id); assert.equal(new Set(d.pins.map(x => x.id)).size, d.pins.length, d.id + ' pines únicos'); assert.equal(new Set(d.anchors.map(x => x.id)).size, d.anchors.length); assert.equal(d.scalable, false); }
 assert.equal(searchCatalog('ultrasónico').at(0).id, 'hc-sr04'); assert.ok(searchCatalog('motor').some(x => x.id === 'dc-motor-tt')); assert.deepEqual(searchCatalog('xyz'), []); assert.ok(searchCatalog('', 'sensor').every(x => x.category === 'sensor'));
-ok('catálogo: 12 piezas, pines reales del UNO/L298N/HC-SR04/motor, GND con internalNet, portapilas sin pines, búsqueda sin tildes');
+ok('catálogo: 35 piezas, pines reales del UNO/L298N/HC-SR04/motor, GND con internalNet, portapilas con terminales, búsqueda sin tildes');
 
 // ───── Añadir / borrar
 let p = newRobotProject('T');
@@ -152,8 +152,8 @@ j = add(j, 'arduino-uno-r3', [0, 0.0075 + 0.002 + 0.01, 0.04]); const ja = last(
 let cands = findJoinCandidates(j, [ja]); assert.equal(cands.length, 1); assert.deepEqual([cands[0].parent.anchorId, cands[0].child.anchorId], ['board', 'base']); assert.ok(Math.abs(cands[0].distance - 0.01) < 1e-9);
 assert.equal(findJoinCandidates(j, [jc]).length, 1, 'también se detecta desde el anfitrión');
 j = {...j, parts: j.parts.map(x => (x.instanceId === ja ? {...x, transform: {...x.transform, position: [0, 0.05, 0.04]}} : x))}; assert.equal(findJoinCandidates(j, [ja]).length, 0, 'a 40 mm no hay candidato');
-j = add(j, 'l298n-module', [0, 0.0135 + 0.002, -0.045]); const jl = last(j); j = add(j, 'l298n-module', [0, 0.0135 + 0.002, -0.045]); assert.equal(findJoinCandidates(j, [jl]).length, 1);
-const joined = attach(j, {instanceId: jc, anchorId: 'driver'}, {instanceId: jl, anchorId: 'base'}).project; assert.equal(findJoinCandidates(joined, [last(j)]).length, 0, 'un anclaje ocupado no se ofrece');
+j = add(j, 'l298n-module', [0, 0.0135 + 0.002, -0.045]); const jl = last(j); j = add(j, 'l298n-module', [0, 0.0135 + 0.002, -0.045]); assert.deepEqual(findJoinCandidates(j, [jl]).map(c => c.parent.anchorId).sort(), ['driver', 'tower-driver'], 'se ofrecen los dos anclajes compatibles que quedan a menos de 15 mm');
+const joined = attach(j, {instanceId: jc, anchorId: 'driver'}, {instanceId: jl, anchorId: 'base'}).project; assert.deepEqual(findJoinCandidates(joined, [last(j)]).map(c => c.parent.anchorId), ['tower-driver'], 'el anclaje ocupado no se ofrece; el alternativo libre sigue disponible');
 assert.ok(parentAttachment(joined, jl));
 ok('candidatos de unión a ≤ 15 mm: compatibles y libres; no se ofrecen anclajes ocupados ni piezas ya unidas');
 

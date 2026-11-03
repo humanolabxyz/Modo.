@@ -3,7 +3,8 @@ import type {DiagramReference,DiagramRegion,ManualStep} from './practice';
 import type {LessonId} from './lessonIds';
 import sources from './starDeltaSources.json';
 import twoContactorSource from './twoContactorSource.json';
-import {TWO_CONTACTOR_DETAILS} from './twoContactorTeaching';
+import {TWO_CONTACTOR_DETAILS,TWO_CONTACTOR_PAIRS} from './twoContactorTeaching';
+import {twoContactorModuleName,type LabelScope} from './twoContactorNames';
 import {starDetail,type StarLessonId} from './starDeltaTeaching';
 /** Lecciones guiadas a partir de los montajes aportados. Las variantes estrella-triángulo conservan cada cable y el orden
  * del montaje final recibido; su historial está recortado y no se presenta como una secuencia cronológica completa. */
@@ -52,7 +53,7 @@ const INVERSION:Seed[]=[
  [MO+'W2',MO+'U2','Motor en estrella (1)','Unir W2 con U2 es la primera mitad del puente de estrella.'],
  [MO+'V2',MO+'U2','Motor en estrella (2)','Con W2, U2 y V2 unidos las tres bobinas quedan en estrella y el motor puede girar en los dos sentidos.'],
  // — Tierras de protección —
- [MO+'TP',K2+'TP_DER','Tierra del motor','Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. No cambian el funcionamiento del simulador.'],
+ [MO+'TP',K2+'TP_DER','Tierra del motor','Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. El motor gira igual sin ellas, pero son las que protegen a las personas: si una aislación falla, la corriente vuelve por TP y la carcasa queda a 0 V.'],
  [K2+'TP_IZQ',K1+'TP_DER','Tierra entre KM2 y KM1','Continúa la cadena de tierras: la tierra izquierda de KM2 se une con la tierra derecha de KM1.'],
  [K1+'TP_DER',FU+'TP','Tierra de KM1 a la fuente','La cadena llega a la tierra de protección de la fuente.'],
  [K2+'TP_DER',K2+'TP_IZQ','Tierra de KM2: lado derecho','Une las dos tierras del módulo de KM2 entre sí, de modo que toda la hilera de tierras queda unida.'],
@@ -84,7 +85,7 @@ const SIMPLE:Seed[]=[
  [MO+'W2',MO+'U2','Motor en estrella (1)','Unir W2 con U2 es la primera mitad del puente de estrella.'],
  [MO+'V2',MO+'U2','Motor en estrella (2)','Con W2, U2 y V2 unidos las tres bobinas quedan en estrella y el motor puede girar.'],
  // — Tierras de protección —
- [MO+'TP',K1+'TP_DER','Tierra del motor','Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. No cambian el funcionamiento del simulador.'],
+ [MO+'TP',K1+'TP_DER','Tierra del motor','Las tierras de protección (TP, verdes) se unen entre los módulos y terminan en la tierra de la fuente. El motor gira igual sin ellas, pero son las que protegen a las personas: si una aislación falla, la corriente vuelve por TP y la carcasa queda a 0 V.'],
  [K1+'TP_DER',FU+'TP','Tierra de KM1 a la fuente','La cadena llega a la tierra de protección de la fuente.'],
  [BT+'TP_DER',FU+'TP','Tierra de las botoneras','Última conexión: las botoneras también quedan a tierra.'],
 ];
@@ -119,13 +120,10 @@ function buildStarLesson(id:StarLessonId):Lesson{
 }
 export const STAR_MANUAL_LESSON=buildStarLesson('estrellaManual');
 export const STAR_TIMER_LESSON=buildStarLesson('estrellaTimer');
-/* Ajuste pedido por el autor: la marcha del montaje recibido se da con el pulsador verde izquierdo (S1), no con S3.
- * El archivo recibido y su extracción (twoContactorSource.json) se conservan tal cual; aquí solo se traslada S3 → S1. */
-const startOnS1=(id:string)=>id.replace('BOTONERAS:S3:','BOTONERAS:S1:');
-const TWO_CONTACTOR_PAIRS=twoContactorSource.pairs.map(([a,b])=>[startOnS1(a),startOnS1(b)] as [string,string]);
+/* El cableado de esta lección parte del archivo recibido (twoContactorSource.json, que se conserva tal cual) con los ajustes del autor: ver TWO_CONTACTOR_PAIRS en twoContactorTeaching.ts. */
 export const TWO_CONTACTOR_LESSON:Lesson={
  id:'estrellaDosContactores',schematic:'estrellaDosContactores',title:'Lección · Estrella-triángulo · 2 contactores',
- summary:'Tu montaje: KM1 con relé térmico, KM2 y conjunto temporizado KT1. S1 da marcha; S2 para. 37 cables, paso a paso desde el banco vacío.',
+ summary:'Con los nombres del banco: KT1 es el contactor principal (módulo temporizador neumático), KM1 el de triángulo (módulo con relé térmico), KM2 el de estrella (módulo trifásico); KT1 también da el retardo. S1 da marcha; S2 para; el piloto rojo indica motor detenido. 40 cables, paso a paso desde el banco vacío.',
  diagram:{id:'leccion-estrellaDosContactores',name:twoContactorSource.receivedDiagram.name,src:twoContactorSource.receivedDiagram.src,origin:'class_photo'},
  pairs:TWO_CONTACTOR_PAIRS.map(([a,b])=>[a,b]),
  steps:TWO_CONTACTOR_PAIRS.map(([from,to],i)=>({id:`estrellaDosContactores-${String(i+1).padStart(2,'0')}`,from,to,title:TWO_CONTACTOR_DETAILS[i].title,explanation:TWO_CONTACTOR_DETAILS[i].why,review:'user_reviewed',region:{x:0,y:0,w:1000,h:1000}})),
@@ -133,8 +131,9 @@ export const TWO_CONTACTOR_LESSON:Lesson={
 export const LESSONS={simple:SIMPLE_LESSON,inversion:INVERSION_LESSON,estrellaManual:STAR_MANUAL_LESSON,estrellaTimer:STAR_TIMER_LESSON,estrellaDosContactores:TWO_CONTACTOR_LESSON} as const;
 /** «CONTACTOR_TERMICO:95» → «KM1 · 95»; «BOTONERAS:S1:3» → «Botoneras · S1 borne 3». */
 const MODULE_NAMES:Record<string,string>={FUENTE:'Fuente',BOTONERAS:'Botoneras',CONTACTOR_TERMICO:'KM1',CONTACTOR_TRIFASICO:'KM2',CONTACTOR_TRIFASICO_3:'KM3',TEMPORIZADOR_1:'KT1',BORNERA_MOTOR:'Motor'};
-export function terminalLabel(id:string){
- const [module,...rest]=id.split(':'),terminal=rest.join(':'),name=MODULE_NAMES[module]??module,pushbutton=terminal.match(/^(S[123]):([1-4])$/);
+/** `scope` aplica los nombres de una lección; en «dosContactores» son los del banco (ver twoContactorNames.ts). */
+export function terminalLabel(id:string,scope?:LabelScope){
+ const [module,...rest]=id.split(':'),terminal=rest.join(':'),name=(scope==='dosContactores'?twoContactorModuleName(module,terminal):undefined)??MODULE_NAMES[module]??module,pushbutton=terminal.match(/^(S[123]):([1-4])$/);
  return `${name} · ${pushbutton?`${pushbutton[1]} borne ${pushbutton[2]}`:terminal.replace('PILOTO_','piloto ').replace(/^TP_.+$/,'TP')}`;
 }
 /** Proporción alto/ancho del mapa de bornes de las lecciones (para recortarlo en la ventana de la guía). */

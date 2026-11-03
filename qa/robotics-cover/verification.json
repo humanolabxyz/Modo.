@@ -1,0 +1,154 @@
+{
+  "checks": [
+    "chromium 390: portada enlaza al simulador existente",
+    "chromium 1440: portada enlaza al simulador existente",
+    "webkit 390: portada enlaza al simulador existente",
+    "Cinco tarjetas y cinco ilustraciones; nueva portada solo en Robótica.",
+    "Chromium en seis tamaños y WebKit móvil: encuadre, rótulo, insignia Beta y sin desbordamiento.",
+    "Se conservan las otras cuatro imágenes, la interfaz de Robótica y su CSS por SHA-256."
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 740,
+      "overflow": false,
+      "geometry": {
+        "art": {
+          "x": 66.3203125,
+          "y": 329.9375,
+          "w": 187.375,
+          "h": 150.53125,
+          "bottom": 480.46875
+        },
+        "labelTop": 469.359375,
+        "iconBottom": 341.828125,
+        "w": 900,
+        "h": 900,
+        "pointer": "none"
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "geometry": {
+        "art": {
+          "x": 80.53125,
+          "y": 330.890625,
+          "w": 228.9375,
+          "h": 183.75,
+          "bottom": 514.640625
+        },
+        "labelTop": 504.5625,
+        "iconBottom": 345.46875,
+        "w": 900,
+        "h": 900,
+        "pointer": "none"
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "geometry": {
+        "art": {
+          "x": 215.5859375,
+          "y": 427.859375,
+          "w": 336.828125,
+          "h": 250.765625,
+          "bottom": 678.625
+        },
+        "labelTop": 673.953125,
+        "iconBottom": 447.984375,
+        "w": 900,
+        "h": 900,
+        "pointer": "none"
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "geometry": {
+        "art": {
+          "x": 287,
+          "y": 83.078125,
+          "w": 450,
+          "h": 334.8125,
+          "bottom": 417.890625
+        },
+        "labelTop": 411.609375,
+        "iconBottom": 109.96875,
+        "w": 900,
+        "h": 900,
+        "pointer": "none"
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "geometry": {
+        "art": {
+          "x": 547.2265625,
+          "y": 406.46875,
+          "w": 345.5625,
+          "h": 202.96875,
+          "bottom": 609.4375
+        },
+        "labelTop": 593.15625,
+        "iconBottom": 445.203125,
+        "w": 900,
+        "h": 900,
+        "pointer": "none"
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "geometry": {
+        "art": {
+          "x": 729.1796875,
+          "y": 441.296875,
+          "w": 461.640625,
+          "h": 271.109375,
+          "bottom": 712.40625
+        },
+        "labelTop": 690.65625,
+        "iconBottom": 493.046875,
+        "w": 900,
+        "h": 900,
+        "pointer": "none"
+      }
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "geometry": {
+        "art": {
+          "x": 80.328125,
+          "y": 330.890625,
+          "w": 228.9375,
+          "h": 183.75,
+          "bottom": 514.640625
+        },
+        "labelTop": 504.5625,
+        "iconBottom": 345.46875,
+        "w": 900,
+        "h": 900,
+        "pointer": "none"
+      }
+    }
+  ],
+  "url": "http://127.0.0.1:4325"
+}

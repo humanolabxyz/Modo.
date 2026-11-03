@@ -1,4 +1,5 @@
 import React, {useEffect,useLayoutEffect,useRef,useState} from 'react';
+import {TWO_CONTACTOR_MODULE_NAMES} from '../data/twoContactorNames';
 import { COLOR_HEX, matchesTerminal, terminalDisplay, terminalLabelPosition, type PanelModule, type Terminal } from '../data/panel';
 import type {BananaCable} from '../data/practice';
 import {terminalPoint,cablePath} from '../data/wiring';
@@ -206,10 +207,11 @@ function Face({m,aliases,simulation}:{m:PanelModule;aliases:Record<string,string
     {isThermal?<g data-contactor-assembly="KM1" aria-label="Conjunto de contactor y relé térmico KM1"><ModelContactor x={288} y={110} w={125} h={138} thermal/></g>:<ModelContactor x={230} y={124} w={142} h={146}/>}
     <rect x={isThermal?505:500} y="37" width="69" height="29" rx="2" fill="#e4e1d9" stroke="#b7b7af"/>
     <text x={isThermal?540:534} y="57" textAnchor="middle" fontSize="13" fontWeight="700" fill="#49515a">{aliases[m.id]||m.defaultAlias||'KM ?'}</text>
-    <text x={isThermal?540:534} y="80" textAnchor="middle" fontSize="10" fill="#626b70">{!!CONFIRMED_MODULE_ALIASES[m.id]&&aliases[m.id]===CONFIRMED_MODULE_ALIASES[m.id]?'confirmado':'por confirmar'}</text>
+    <text x={isThermal?540:534} y="80" textAnchor="middle" fontSize="10" fill="#626b70">{TWO_CONTACTOR_MODULE_NAMES[m.id]&&aliases[m.id]===TWO_CONTACTOR_MODULE_NAMES[m.id]&&aliases[m.id]!==CONFIRMED_MODULE_ALIASES[m.id]?'del profesor':!!CONFIRMED_MODULE_ALIASES[m.id]&&aliases[m.id]===CONFIRMED_MODULE_ALIASES[m.id]?'confirmado':'por confirmar'}</text>
   </g>}
   {simulation?.input.enabled&&(isThermal||isTri)&&<g data-sim-relay={m.id} data-active={!!simulation.result.relays[m.id]}><rect x={isThermal?505:500} y="86" width="70" height="19" rx="3" fill={simulation.result.relays[m.id]?'#ccf0da':'#e5e9e7'}/><text x={isThermal?540:535} y="99" textAnchor="middle" fontSize="10" fontWeight="700" fill="#355e49">{simulation.result.relays[m.id]?'ACTIVO':'REPOSO'}</text></g>}
   {isTimer&&<g><ModelContactor x={188} y={100} w={128} h={105} delayed variant={m.id==='TEMPORIZADOR_1'||m.kind==='timer'?1:2}/><TimerStatus id={m.id} simulation={simulation}/></g>}
+  {isTimer&&/^KM\d/.test(aliases[m.id]||'')&&<g data-timer-contactor-name={aliases[m.id]} aria-label={`Este módulo es el contactor ${aliases[m.id]} con su retardo KT1`}><rect x="392" y="20" width="67" height="34" rx="2" fill="#e4e1d9" stroke="#b7b7af"/><text x="425.5" y="37" textAnchor="middle" fontSize="13" fontWeight="700" fill="#49515a">{aliases[m.id]}</text><text x="425.5" y="49" textAnchor="middle" fontSize="9" fill="#626b70">con retardo KT1</text></g>}
   {isMotor&&<MotorFace m={m} simulation={simulation}/>}
   {<Brand x={isSource?65:isButtons?174:m.w-121} y={isSource||isButtons?m.h-11:m.h-15}/>}
  </g>;

@@ -1,8 +1,8 @@
 {
-  "url": "http://127.0.0.1:4326",
+  "url": "http://localhost:4326",
   "checks": [
-    "el estado vacío ofrece el robot de ejemplo: aparece armado (11 piezas) y cableado (18 cables)",
-    "▶ sin tocar nada más: el robot avanza, gira y esquiva la caja (frente a 0.12 m de ella)",
+    "el estado vacío ofrece el robot de ejemplo: aparece armado (14 piezas) y cableado (28 cables)",
+    "▶ sin tocar nada más: el robot avanza, gira y esquiva la caja (frente a 0.14 m de ella)",
     "la plantilla también se crea desde «Mi proyecto» y se ofrece en «Mis proyectos»",
     "sin errores de consola ni de página"
   ],

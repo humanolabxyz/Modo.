@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "desktop: referencia opcional, progreso y piezas reales sin cablear ni programar",
+    "desktop: arrastre de pieza con gizmo encaja en el anclaje de referencia",
+    "desktop: pieza por nombre, toque corto y Escape cancelan, mantener suelta solo esa unión y Deshacer restaura",
+    "desktop: píldora de cámara, progreso tras recarga y regreso a construcción libre",
+    "tablet: referencia opcional, progreso y piezas reales sin cablear ni programar",
+    "tablet: pieza por nombre, toque corto y Escape cancelan, mantener suelta solo esa unión y Deshacer restaura",
+    "tablet: píldora de cámara, progreso tras recarga y regreso a construcción libre",
+    "mobile: referencia opcional, progreso y piezas reales sin cablear ni programar",
+    "mobile: pieza por nombre, toque corto y Escape cancelan, mantener suelta solo esa unión y Deshacer restaura",
+    "mobile: píldora de cámara, progreso tras recarga y regreso a construcción libre",
+    "tablet: mantener sobre dos figuras superpuestas muestra dos nombres y permite resaltar la pieza exacta"
+  ],
+  "errors": []
+}

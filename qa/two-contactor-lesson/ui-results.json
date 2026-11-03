@@ -1,5 +1,5 @@
 {
-  "base": "http://127.0.0.1:4399",
+  "base": "http://127.0.0.1:4420",
   "checks": [
     "Recorrido de conexión y persistencia; montaje completo recibido: S1 inicia estrella y cambia a triángulo en 2 s; S2 detiene",
     "chromium 1440px: lección de 37 pasos, explicación, diagrama original, persistencia y evaluación; sin añadir KM3",

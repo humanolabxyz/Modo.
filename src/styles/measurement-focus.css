@@ -356,3 +356,7 @@ body.modo-soft-ui.modo-identity .measure-lesson-panel .meter-lesson-primary:not(
     padding-block: 12px;
   }
 }
+.measure-lesson-panel .measure-fault-quiz { border: 1px solid #d9dfe5; border-radius: 8px; padding: 10px 12px; margin: 10px 0 0; display: grid; gap: 8px; }
+.measure-lesson-panel .measure-fault-quiz legend { font-size: 12px; font-weight: 600; padding-inline: 4px; }
+.measure-lesson-panel .measure-fault-quiz label { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; line-height: 1.5; cursor: pointer; }
+.measure-lesson-panel .measure-fault-quiz input { margin-top: 3px; }

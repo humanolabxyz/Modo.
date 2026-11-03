@@ -3,7 +3,7 @@ import estrella from './cadeEstrellaTriangulo.json';
 import lecciones from './cadeLecciones.json';
 import estrellaTemporizador from './cadeEstrellaTemporizador.json';
 import {STAR_PANELS,type PanelMap} from './starPanelMap';
-import {referencePort} from './twoContactorReference';
+import {twoContactorDrawing} from './twoContactorDrawing';
 /** `panel` (solo en los esquemas de las lecciones) es la clave del borne del banco que representa este borne del símbolo. */
 export type CadePort={objectId:number;reference:string;terminal:string;x:number;y:number;panel?:string;anchor?:string};
 /** Objeto de un dibujo CADe. Los dibujos nuevos traen `shape`, `ports` y `box`; PERFECTO usa los tipos numéricos de CADe. */
@@ -60,10 +60,11 @@ const withPanels=(drawing:CadeDrawing,map:PanelMap):CadeDrawing=>({...drawing,ob
  *  Se anota el nombre del banco sin tocar el dibujo (ver bankTerminalsForSymbol en lessonSchematics.ts para la correspondencia de bornes). */
 const TIMER='Temporizador neumático',THERMAL='Contactor + relé térmico',TRI='Contactor trifásico';
 export const TWO_CONTACTOR_BANK_NAMES:Record<number,NonNullable<CadeObject['bank']>>={
- 3:{name:TIMER},57:{name:TIMER},62:{name:TIMER},63:{name:TIMER,part:'Bobina del temporizador neumático'},
- 58:{name:TIMER,part:'Contactos temporizados del temporizador neumático (KT1)',note:'El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del temporizador neumático: 55-56 (NC) y 67-68 (NA).',what:'Contactos que cambian de estado cuando termina el tiempo del temporizador.'},
- 6:{name:THERMAL},59:{name:THERMAL},60:{name:THERMAL},65:{name:THERMAL,part:'Bobina del contactor + relé térmico'},
- 7:{name:TRI},61:{name:TRI},64:{name:TRI,part:'Bobina del contactor trifásico'},
+ 3:{name:TIMER,part:'Contactor principal KT1 (parte contactor del módulo temporizador neumático)'},57:{name:TIMER,part:'Auxiliar 13–14 del contactor principal KT1 (retención)'},
+ 62:{name:THERMAL,part:'Contacto NC 81–82 de KM1 (piloto rojo)'},1001:{name:TRI,part:'Contacto NC 81–82 de KM2 (piloto rojo)'},63:{name:TIMER,part:'Bobina del contactor principal KT1 (módulo temporizador neumático)'},
+ 58:{name:TIMER,part:'Contactos temporizados 55–56 y 67–68 del cabezal de retardo KT1 (módulo temporizador neumático)',note:'El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del cabezal de retardo KT1: 55-56 (NC) y 67-68 (NA).',what:'Contactos que cambian de estado cuando termina el tiempo del temporizador.'},
+ 6:{name:THERMAL,part:'Contactor de triángulo KM1 (módulo contactor + relé térmico)'},59:{name:THERMAL},60:{name:THERMAL},65:{name:THERMAL,part:'Bobina del contactor de triángulo KM1 (módulo contactor + relé térmico)'},
+ 7:{name:TRI,part:'Contactor de estrella KM2 (módulo contactor trifásico)'},61:{name:TRI},64:{name:TRI,part:'Bobina del contactor de estrella KM2 (módulo contactor trifásico)'},
 };
 /** Manual guide: retain the original post-start feed of SB3, figure 1 (p.5). */
 export const LESSON_CADES={
@@ -71,9 +72,8 @@ export const LESSON_CADES={
  inversion:createCade(lecciones.inversion as unknown as CadeDrawing),
  estrellaManual:createCade(withPanels(estrella as unknown as CadeDrawing,STAR_PANELS.estrellaManual)),
  estrellaTimer:createCade(withPanels(estrellaTemporizador as unknown as CadeDrawing,STAR_PANELS.estrellaTimer)),
- // Preserve every original symbol, label and coordinate; annotate reference
- // anchors separately from real bank-terminal mappings.
- estrellaDosContactores:createCade({...estrella,objects:estrella.objects.map(o=>({...o,...('ports' in o&&o.ports?{ports:o.ports.map(p=>({...p,anchor:referencePort(o.id,p.terminal)}))}:{})}))} as CadeDrawing,TWO_CONTACTOR_BANK_NAMES),
+ // Dibujo propio de la lección (ver twoContactorDrawing.ts): rótulos del banco y salidas del triángulo según la guía; el original no se modifica.
+ estrellaDosContactores:createCade(twoContactorDrawing(estrella as unknown as CadeDrawing),TWO_CONTACTOR_BANK_NAMES),
 };
 export type LessonCadeId=keyof typeof LESSON_CADES;
 

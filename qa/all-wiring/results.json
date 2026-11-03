@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Las 5 lecciones: bornes existentes, sin cables repetidos y un paso por cable",
+    "Nombres del banco: KT1 temporizador (principal y retardo), KM1 contactor + relé térmico (triángulo), KM2 contactor trifásico (estrella); sin KM3",
+    "simple: esquema y banco son la misma red y los polos de cada contactor son coherentes",
+    "inversion: esquema y banco son la misma red y los polos de cada contactor son coherentes",
+    "estrellaManual: esquema y banco son la misma red y los polos de cada contactor son coherentes",
+    "estrellaTimer: esquema y banco son la misma red y los polos de cada contactor son coherentes",
+    "simple: marcha, retención, paro y TEST; motor en estrella con 219 V por devanado",
+    "inversion: KM1 directo, KM2 inverso, enclavamiento cruzado y paro",
+    "estrellaManual: estrella 219 V y triángulo 380 V por devanado; R→U1/W2, S→V1/U2, T→W1/V2; retención, paro y TEST",
+    "estrellaTimer: estrella 219 V y triángulo 380 V por devanado; R→U1/W2, S→V1/U2, T→W1/V2; retención, paro y TEST",
+    "estrellaDosContactores: estrella 219 V y triángulo 380 V por devanado; R→U1/W2, S→V1/U2, T→W1/V2; retención, paro y TEST"
+  ]
+}

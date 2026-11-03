@@ -1,0 +1,11 @@
+# Interfaz de Tableros · revisión local
+
+La entrada distingue construir un sistema libre, explorar una plantilla y armar un tablero dentro de un gabinete. El montaje libre incorpora gabinete con placa, riel DIN y canaletas horizontales/verticales. El taller de bombeo (mando cableado, PLC o relé programable) conserva su recorrido independiente.
+
+Se conservan los controles del proyecto en escritorio. Las herramientas del montaje tienen nombres; Equipos abre un catálogo con búsqueda por nombre y detalle, filtro por categoría y estado vacío. Gabinete añade directamente una estructura libre al proyecto actual. La selección del taller está en la entrada inicial y en Más. Deshacer/Rehacer quedan visibles en escritorio y disponibles en Más en móvil. Las opciones de archivo, revisión y materiales se conservan en Más. Se quita el aviso repetido de Automatización y el panel inicial ya no enumera todo el inventario.
+
+Fuentes modificadas: src/lab/EquipmentView.tsx, src/lab/LaboratoryApp.tsx, src/lab/equipment/EquipmentStart.tsx, src/styles/equipment-start.css; src/lab/equipment/model.ts, Art.tsx y engine.ts. Pruebas: qa/verify-tableros-clean.cjs, qa/verify-free-cabinet.cjs y qa/verify-equipment.mjs (27 comprobaciones del modelo). Capturas: qa/tableros-clean/ (antes-usuario.png contiene la referencia recibida).
+
+Verificación: npm install; npm run check; npm run build; prueba de navegador desktop 1440×960 y móvil emulado 390×844. El build conserva el aviso de paquetes mayores de 500 kB. Consultar qa/tableros-clean/results.json para el último resultado de navegación. No representa validación en un teléfono físico. Sin despliegue.
+
+El gabinete libre usa una placa de tamaño fijo en unidades del modelo. Las piezas pueden distribuirse con arrastre o flechas. Mover el gabinete traslada las piezas completamente contenidas, incluyendo rieles y canaletas, sin alterar bornes ni conexiones. Se dibujan estructuras debajo de los equipos. Los soportes no introducen continuidad eléctrica ni certifican un montaje real. Guardar/importar/exportar usa el mismo modelo del proyecto. La prueba de navegador crea gabinete, riel, dos canaletas y contactor; mueve el conjunto y recarga para comprobar persistencia en escritorio y móvil emulado.

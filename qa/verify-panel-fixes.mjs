@@ -51,9 +51,10 @@ test('2 contactores + conjunto temporizado: estrella → triángulo, polos de KT
  assert.equal(examples.starDelta.needs,undefined);assert.ok(!ws.some(w=>JSON.stringify(w).includes('CONTACTOR_TRIFASICO_3')));
  let r=solve(ws,{...on,pressed:['S3']});assert.equal(r.fault,null);assert.equal(r.motor.connection,'star');assert.ok(r.relays.TEMPORIZADOR_1);assert.ok(r.relays.CONTACTOR_TRIFASICO);assert.equal(r.relays.CONTACTOR_TERMICO,false);
  r=solve(ws,on,r.relays);assert.equal(r.motor.connection,'star');
- near(read(ws,on,r,[],'V','BORNERA_MOTOR:U1','BORNERA_MOTOR:U2',model).value,380/Math.sqrt(3));
+ /* Con el motor cargando la red, la impedancia de línea del modelo (0,15 Ω) baja la tensión de bobina hasta ≈1,5 % bajo la nominal. */
+ near(read(ws,on,r,[],'V','BORNERA_MOTOR:U1','BORNERA_MOTOR:U2',model).value,380/Math.sqrt(3),380/Math.sqrt(3)*.015);
  const delta=solve(ws,on,r.relays,['TEMPORIZADOR_1']);assert.equal(delta.fault,null);assert.equal(delta.motor.connection,'delta');assert.ok(delta.relays.CONTACTOR_TERMICO);assert.equal(delta.relays.CONTACTOR_TRIFASICO,false);
- near(read(ws,on,delta,['TEMPORIZADOR_1'],'V','BORNERA_MOTOR:U1','BORNERA_MOTOR:U2',model).value,380);
+ near(read(ws,on,delta,['TEMPORIZADOR_1'],'V','BORNERA_MOTOR:U1','BORNERA_MOTOR:U2',model).value,380,380*.015);
  for(const patch of [{pressed:['S2']},{thermalTripped:true},{plugged:false},{breakers:[false,false]}]){const off=solve(ws,{...on,...patch},delta.relays,['TEMPORIZADOR_1']);assert.notEqual(off.motor.status,'running');assert.ok(!Object.values(off.relays).some(Boolean));assert.equal(solve(ws,on,off.relays).motor.status,'off');}
  assert.equal(solve(ws,{...on,forceBreaker:false},delta.relays,['TEMPORIZADOR_1']).motor.status,'off');assert.equal(JSON.stringify(ws),snapshot);
 });
@@ -62,7 +63,9 @@ test('Corriente de línea trifásica: abrir una fase e insertar A conserva el gi
  const meter={red:'TEMPORIZADOR_1:T1',black:'BORNERA_MOTOR:U1'};
  const bridge=panelAmmeterBridge(ws,on,OFF_RELAYS(),[],model,meter);assert.ok(bridge);
  const r=solve([...ws,bridge],{...on,pressed:['S3']});assert.equal(r.motor.connection,'star');
- near(read(ws,on,r,[],'A',meter.red,meter.black,model,'a10').value,(380/Math.sqrt(3))/(100+.1/1.5));
+ /* Esta comprobación es de la rama resistiva (devanado de 100 Ω): el perfil por defecto es de inducción, así que se pide el modelo resistivo explícitamente. */
+ const resistive={...model,motorMode:'resistive',lineOhms:0};
+ near(read(ws,on,r,[],'A',meter.red,meter.black,resistive,'a10').value,(380/Math.sqrt(3))/(100+.1/1.5));
 });
 test('Los valores ajustados cambian el cálculo; la variante previa de 3 contactores sigue disponible',()=>{
  const adjusted={...model,lineVolts:400};near(read([],on,solve([],on),[],'V','FUENTE:R','FUENTE:T',adjusted).value,400);

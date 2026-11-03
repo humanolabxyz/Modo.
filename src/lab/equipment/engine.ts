@@ -20,6 +20,16 @@ const zero:Complex={r:0,i:0},mag=(v:Complex)=>Math.hypot(v.r,v.i),sub=(a:Complex
 const phase=(v:number,angle:number):Complex=>({r:v*Math.cos(angle),i:v*Math.sin(angle)});
 const pkey=(p:Part,port:string)=>key({part:p.id,port});
 const mains=(kind:string)=>kind==='ac'||kind==='threephase';
+/** Motores del tablero cuya PE no llega a la PE de la alimentación. Solo se exige en el tablero (gabinete): la tierra es una sola, basta un cable. */
+function motorsWithoutEarth(board:Board):string[]{
+ if(!board.cabinet)return [];
+ const net=new Nets();for(const p of board.parts)for(const port of ports(p.kind))net.find(pkey(p,port.id));
+ for(const w of board.wires)net.join(key(w.from),key(w.to));
+ for(const p of board.parts){if(p.kind==='terminal')net.join(pkey(p,'1'),pkey(p,'2'));if(p.kind==='busbar')for(const port of ['2','3','4'])net.join(pkey(p,'1'),pkey(p,port));}
+ const feeds=board.parts.filter(p=>mains(p.kind));if(!feeds.length)return [];
+ const ground=new Set(feeds.map(p=>net.find(pkey(p,'PE'))));
+ return board.parts.filter(p=>ports(p.kind).some(x=>x.id==='PE')&&(p.kind==='motor3'||p.kind==='motor')&&!ground.has(net.find(pkey(p,'PE')))).map(p=>p.tag);
+}
 export const freshEquipment=():State=>({readings:{},contacts:{},hz:{},reverse:{},soc:{},energy:{},volts:{},live:[],warnings:[],fault:null,tripped:{},heat:{},timers:{},leak:{}});
 
 /** Nodal resistive equivalents with complex RMS sources. No inductance, PWM or certified protection curves. */
@@ -55,6 +65,7 @@ export function stepEquipment(board:Board,previous:State,memory:Memory,controls:
  let lastVolts=previous.volts,lastPower:Record<string,number>={},stable=false,net=new Nets(),amps:Record<string,Complex>={},sources:Source[]=[],frequency:Record<string,number>={};
  const read=(p:Part,a:string,b:string,values=lastVolts)=>sub(values[pkey(p,a)]??zero,values[pkey(p,b)]??zero);
  const warnings=new Set<string>(),conversionScale:Record<string,number>={};
+ const earthBlocked=motorsWithoutEarth(board);if(earthBlocked.length)warnings.add(`Falta la tierra de protección (PE) de ${earthBlocked.join(', ')}. Une su PE con la PE de la alimentación (basta un cable) antes de energizar.`);
  try {
   for(let pass=0;pass<12;pass++){
    net=new Nets();for(const p of board.parts)for(const port of ports(p.kind))net.find(pkey(p,port.id));for(const w of board.wires)net.join(key(w.from),key(w.to));
@@ -78,7 +89,7 @@ export function stepEquipment(board:Board,previous:State,memory:Memory,controls:
    const branches:Branch[]=[],fixed:Record<string,Complex>={};sources=[];frequency={};
    const branch=(id:string,a:string,b:string,r:number)=>branches.push({id,a,b,r:Math.max(.000001,r)});
    const load=(p:Part,a:string,b:string,r:number,id=p.id)=>branch(id,root(p,a),root(p,b),r);
-   const source=(p:Part,plus:string,minus:string,v:Complex,resistance=.000001,f=0)=>{const positive=root(p,plus),negative=root(p,minus);if(positive===negative&&mag(v)>1)throw new Error(`${p.tag}: cortocircuito entre los polos de la fuente.`);sources.push({owner:p.id,positive,negative,v,r:resistance,frequency:f});};
+   const source=(p:Part,plus:string,minus:string,v:Complex,resistance=.000001,f=0)=>{if(earthBlocked.length)return;const positive=root(p,plus),negative=root(p,minus);if(positive===negative&&mag(v)>1)throw new Error(`${p.tag}: cortocircuito entre los polos de la fuente.`);sources.push({owner:p.id,positive,negative,v,r:resistance,frequency:f});};
    for(const p of board.parts){const q=p.params,kind=p.kind;
     if(guarded(kind)&&(kind==='thermal'||(control(p)&&!state.tripped[p.id])))for(const [a,b] of POLES[kind])load(p,a,b,.002,p.id+':'+a);
     if(kind==='dc')source(p,'+','−',{r:q.voltage,i:0});
@@ -171,6 +182,7 @@ export function stepEquipment(board:Board,previous:State,memory:Memory,controls:
    if(kind==='inverter'||kind==='dcdc'||kind.startsWith('micro')||kind==='controller'){r.power=lastPower[p.id]??0;r.active=r.power>.01;r.status=r.active?'Conversión equivalente':'En espera';}
    if(kind==='dc'||mains(kind))r.status='Fuente ideal';
    if(kind==='plc'){r.active=mag(read(p,'L+','M'))>=18&&mag(read(p,'L+','M'))<=30;r.status=r.active?'Programa del proyecto':'Sin 24 V de mando';}
+   if(['enclosure','rail','duct','duct-v','text'].includes(kind))r.status='Soporte de montaje';
    state.readings[p.id]=r;
   }
   state.volts=lastVolts;state.live=board.wires.filter(w=>mag(lastVolts[key(w.from)]??zero)>1).map(w=>w.id);state.warnings=[...warnings];

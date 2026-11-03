@@ -1,13 +1,13 @@
 {
-  "base": "http://127.0.0.1:4327",
+  "base": "http://127.0.0.1:4420",
   "checks": [
     "Perfil didáctico configurable sin interruptores para desactivar leyes o protección; inicio de montaje explícito",
     "Suspender y continuar conserva juntos motor, hélice, temporizador y memoria térmica",
     "Carga sostenida dispara el térmico automáticamente, abre el mando y bloquea RESET mientras está caliente",
     "Perfil: impide aplicarlo energizado y exporta una copia válida",
     "Informe de dispositivo distingue eventos observados de pruebas físicas pendientes",
-    "390px: falta de fase por cable retirado impide el arranque y genera calentamiento; ventana Banco cabe en pantalla",
-    "1440px: falta de fase por cable retirado impide el arranque y genera calentamiento; ventana Banco cabe en pantalla"
+    "390px: falta de fase por cable retirado impide el arranque (motor en falla, 0 rpm); ventana Banco cabe en pantalla",
+    "1440px: falta de fase por cable retirado impide el arranque (motor en falla, 0 rpm); ventana Banco cabe en pantalla"
   ],
   "errors": []
 }

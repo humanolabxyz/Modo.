@@ -1,5 +1,5 @@
-export type Family='mando'|'automatizacion'|'energia';
-export type Kind='dc'|'ac'|'threephase'|'earth'|'terminal'|'busbar'|'breaker'|'breaker2'|'breaker3'|'fuse'|'differential'|'guard'|'thermal'|'contactor'|'timer'|'aux-no'|'aux-nc'|'push-no'|'push-nc'|'emergency'|'selector'|'lamp'|'buzzer'|'motor'|'motor3'|'plc'|'vfd'|'vfd3'|'softstart'|'voltmeter'|'ammeter'|'wattmeter'|'energy'|'pv'|'battery'|'controller'|'inverter'|'micro300'|'micro600'|'micro1200'|'dcdc'|'rail'|'text';
+export type Family='estructura'|'mando'|'automatizacion'|'energia';
+export type Kind='dc'|'ac'|'threephase'|'earth'|'terminal'|'busbar'|'breaker'|'breaker2'|'breaker3'|'fuse'|'differential'|'guard'|'thermal'|'contactor'|'timer'|'aux-no'|'aux-nc'|'push-no'|'push-nc'|'emergency'|'selector'|'lamp'|'buzzer'|'motor'|'motor3'|'plc'|'vfd'|'vfd3'|'softstart'|'voltmeter'|'ammeter'|'wattmeter'|'energy'|'pv'|'battery'|'controller'|'inverter'|'micro300'|'micro600'|'micro1200'|'dcdc'|'rail'|'enclosure'|'duct'|'duct-v'|'text';
 export type Params={voltage:number;power:number;current:number;capacity:number;soc:number;irradiance:number;frequency:number;target:number;ramp:number;poles:number;tariff:number;text:string};
 export type Part={id:string;kind:Kind;tag:string;x:number;y:number;closed:boolean;params:Params};
 export type End={part:string;port:string};
@@ -19,6 +19,9 @@ export type Board={version:1;parts:Part[];wires:Wire[];cabinet?:Cabinet};
 export type Port={id:string;x:number;y:number};
 export type Definition={kind:Kind;name:string;family:Family;prefix:string;detail:string};
 export const CATALOG:Definition[]=[
+ {kind:'enclosure',name:'Gabinete con placa de montaje',family:'estructura',prefix:'TAB',detail:'Base libre para organizar equipos. Arrastra el borde para mover el gabinete con las piezas de su interior.'},
+ {kind:'duct',name:'Canaleta horizontal',family:'estructura',prefix:'CH',detail:'Canalización visual para organizar el cableado; no crea conexiones eléctricas.'},
+ {kind:'duct-v',name:'Canaleta vertical',family:'estructura',prefix:'CV',detail:'Canalización vertical para organizar el cableado; no crea conexiones eléctricas.'},
  {kind:'dc',name:'Fuente DC regulada',family:'mando',prefix:'G',detail:'Alimentación de mando con polos + y −.'},
  {kind:'ac',name:'Fuente monofásica',family:'mando',prefix:'G',detail:'Fuente AC ideal, valores eficaces.'},
  {kind:'threephase',name:'Fuente trifásica',family:'automatizacion',prefix:'G',detail:'Tres fases a 120°, neutro y PE separado.'},
@@ -60,16 +63,29 @@ export const CATALOG:Definition[]=[
  {kind:'micro600',name:'Microinversor 600 W',family:'energia',prefix:'MI',detail:'Inyección idealizada limitada a 600 W.'},
  {kind:'micro1200',name:'Microinversor 1200 W',family:'energia',prefix:'MI',detail:'Inyección idealizada limitada a 1200 W.'},
  {kind:'dcdc',name:'Regulador DC/DC',family:'energia',prefix:'DC',detail:'Salida DC regulada equivalente.'},
- {kind:'rail',name:'Riel DIN',family:'mando',prefix:'DIN',detail:'Soporte visual; no crea conexiones eléctricas.'},
+ {kind:'rail',name:'Riel DIN',family:'estructura',prefix:'DIN',detail:'Soporte visual; no crea conexiones eléctricas.'},
  {kind:'text',name:'Rótulo de montaje',family:'mando',prefix:'TXT',detail:'Anotación independiente del circuito.'},
 ];
 export const definition=(kind:Kind)=>CATALOG.find(d=>d.kind===kind)!;
+/** Variantes visuales de un mismo tipo (color del piloto, interruptor de pared, barra de neutro, riel de posiciones, disyuntor DC). Se guardan en `params.text`; no cambian el modelo eléctrico. */
+export const VARIANTS:Partial<Record<Kind,{label:string;options:{value:string;label:string}[]}>>={
+ lamp:{label:'Piloto',options:[{value:'',label:'Verde (estándar)'},{value:'rojo',label:'Rojo'},{value:'ambar',label:'Ámbar'},{value:'amarillo',label:'Amarillo'},{value:'azul',label:'Azul'},{value:'blanco',label:'Blanco'},{value:'bombillo',label:'Bombillo'}]},
+ 'push-no':{label:'Color del pulsador',options:[{value:'',label:'Verde (estándar)'},{value:'rojo',label:'Rojo'},{value:'amarillo',label:'Amarillo'},{value:'azul',label:'Azul'},{value:'blanco',label:'Blanco'},{value:'negro',label:'Negro'}]},
+ 'push-nc':{label:'Color del pulsador',options:[{value:'',label:'Rojo (estándar)'},{value:'verde',label:'Verde'},{value:'amarillo',label:'Amarillo'},{value:'azul',label:'Azul'},{value:'blanco',label:'Blanco'},{value:'negro',label:'Negro'}]},
+ selector:{label:'Aspecto',options:[{value:'',label:'Selector de panel'},{value:'pared',label:'Interruptor de pared'}]},
+ busbar:{label:'Barra',options:[{value:'',label:'De paso'},{value:'neutro',label:'De neutro'},{value:'tierra',label:'De tierra'}]},
+ rail:{label:'Riel',options:[{value:'',label:'Liso'},{value:'8',label:'8 posiciones'},{value:'12',label:'12 posiciones'}]},
+ breaker:{label:'Corriente',options:[{value:'',label:'Alterna (CA)'},{value:'dc',label:'Continua (CC)'}]},
+ breaker2:{label:'Corriente',options:[{value:'',label:'Alterna (CA)'},{value:'dc',label:'Continua (CC)'}]}
+};
+
 export const key=(end:End)=>`${end.part}:${end.port}`;
 export const maintained=(kind:Kind)=>['breaker','breaker2','breaker3','fuse','differential','guard','thermal','emergency','selector'].includes(kind);
 export const momentary=(kind:Kind)=>kind==='push-no'||kind==='push-nc';
 export const converter=(kind:Kind)=>['controller','inverter','dcdc','micro300','micro600','micro1200'].includes(kind);
 export const defaults=(kind:Kind):Params=>({voltage:kind==='ac'||kind==='vfd'||kind==='motor'?230:kind==='threephase'||kind==='vfd3'||kind==='softstart'||kind==='motor3'?400:kind==='pv'?36:24,power:kind==='micro1200'?1200:kind==='micro600'?600:kind==='inverter'?1000:kind==='motor3'?1500:kind==='pv'||kind==='micro300'?300:kind==='lamp'?2:kind==='buzzer'?1:100,current:10,capacity:100,soc:50,irradiance:1000,frequency:50,target:30,ramp:3,poles:4,tariff:0,text:kind==='text'?'Mi montaje':''});
 export function dimensions(kind:Kind):{w:number;h:number}{
+ if(kind==='enclosure')return {w:900,h:760};if(kind==='duct')return {w:680,h:42};if(kind==='duct-v')return {w:42,h:620};
  if(kind==='rail')return {w:270,h:44};if(kind==='text')return {w:190,h:50};if(kind==='plc')return {w:260,h:156};
  if(['contactor','thermal','vfd','vfd3','softstart','controller'].includes(kind))return {w:180,h:178};
  if(['inverter','micro300','micro600','micro1200','dcdc','pv','battery','motor3'].includes(kind))return {w:166,h:150};
@@ -79,7 +95,7 @@ function rows(top:string[],bottom:string[],w:number,h:number):Port[]{return [...
 export function ports(kind:Kind):Port[]{
  const {w,h}=dimensions(kind);
  switch(kind){
-  case'rail':case'text':return [];
+  case'enclosure':case'duct':case'duct-v':case'rail':case'text':return [];
   case'dc':case'battery':case'pv':return rows([],['+','−'],w,h);
   case'ac':return rows([],['L','N','PE'],w,h);
   case'threephase':return rows([],['L1','L2','L3','N','PE'],w,h);
@@ -171,4 +187,14 @@ export function exampleBoard(kind:'control'|'drive'|'solar'|'soft'):Board{
  else if(kind==='solar'){const pv=add('pv',90,100),controller=add('controller',410,100),battery=add('battery',420,480),lamp=add('lamp',850,480),meter=add('energy',840,100);wire(pv,'+',controller,'PV+');wire(pv,'−',controller,'PV−');wire(controller,'BAT+',battery,'+');wire(controller,'BAT−',battery,'−');wire(controller,'LOAD+',meter,'I1');wire(meter,'I2',lamp,'1');wire(lamp,'2',controller,'LOAD−');wire(meter,'V+',lamp,'1');wire(meter,'V−',lamp,'2');}
  else{const supply=add('dc',90,100),breaker=add('breaker',300,100),stop=add('emergency',510,100),start=add('push-no',730,100),coil=add('contactor',950,100),aux=add('aux-no',730,460),lamp=add('lamp',1130,460);breaker.closed=true;wire(supply,'+',breaker,'1');wire(breaker,'2',stop,'1');wire(stop,'2',start,'3');wire(start,'4',coil,'A1');wire(coil,'A2',supply,'−');aux.tag=coil.tag;wire(stop,'2',aux,'13');wire(aux,'14',coil,'A1');wire(coil,'A1',lamp,'1');wire(lamp,'2',supply,'−');}
  return board;
+}
+
+/** El gabinete libre traslada las piezas completamente contenidas, sin modificar conexiones. */
+export function moveEquipment(board:Board,id:string,x:number,y:number):Board{
+ const parent=board.parts.find(p=>p.id===id);if(!parent)return board;
+ const size=dimensions(parent.kind);if(parent.kind==='enclosure'){x=Math.max(20,Math.min(2380-size.w,x));y=Math.max(40,Math.min(1630-size.h,y));}const dx=x-parent.x,dy=y-parent.y;
+ const inside=(p:Part)=>{const d=dimensions(p.kind);return p.kind!=='enclosure'&&p.x>=parent.x+20&&p.y>=parent.y+30&&p.x+d.w<=parent.x+size.w-20&&p.y+d.h<=parent.y+size.h-20;};
+ const members=new Set(board.parts.filter(p=>p.id===id||parent.kind==='enclosure'&&inside(p)).map(p=>p.id));
+ if(board.parts.some(p=>members.has(p.id)&&(p.x+dx<20||p.y+dy<35||p.x+dx>2200||p.y+dy>1400)))return board;
+ return {...board,parts:board.parts.map(p=>members.has(p.id)?{...p,x:p.x+dx,y:p.y+dy}:p)};
 }

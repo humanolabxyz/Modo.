@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4344",
+  "url": "http://localhost:4326",
   "checks": [
     "[escritorio] herramienta Cable (W): pines visibles con etiqueta al pasar, previsualización, Esc cancela el cable y luego la herramienta",
     "[escritorio] cablear D5 → ENA: el cable existe y su etiqueta es «Arduino UNO R3 1 · D5 → Driver L298N 1 · ENA»",

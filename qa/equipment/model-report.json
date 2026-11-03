@@ -5,6 +5,10 @@
       "passed": true
     },
     {
+      "name": "Free cabinets and supports save without ports; moving the cabinet preserves contents, external parts and wires",
+      "passed": true
+    },
+    {
       "name": "Old projects round trip unchanged; equipment, positions and parameters share the project file",
       "passed": true
     },
@@ -105,6 +109,6 @@
       "passed": true
     }
   ],
-  "passed": 26,
-  "total": 26
+  "passed": 27,
+  "total": 27
 }
