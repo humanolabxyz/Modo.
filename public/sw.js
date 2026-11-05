@@ -55,17 +55,21 @@ self.addEventListener('fetch',event=>{
  event.respondWith((async()=>{
   const cache=await caches.open(CACHE),key=pageKey(url);
   const cached=await cache.match(key,{ignoreVary:true});
-  if(cached)return rangeResponse(request,cached);
+  // Al navegar en línea, usa el HTML de la versión publicada. Un HTML
+  // anterior puede apuntar a módulos con hash que ya no existen en el servidor.
+  if(cached&&request.mode!=='navigate')return rangeResponse(request,cached);
   let response;
   try {
-   response=await fetch(request);
+   response=await fetch(request.mode==='navigate'?new Request(request,{cache:'no-cache'}):request);
   } catch(error) {
    if(request.mode!=='navigate')throw error;
+   if(cached)return cached;
    // Serve the cached recovery page at the requested URL so retry keeps its query.
    const fallback=await cache.match('/sin-conexion/');
    if(fallback)return fallback;
    return new Response('<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>modo. · Sin conexión</title><h1>Sin conexión</h1><p>Conéctate a internet y vuelve a cargar esta página.</p><a href="/">Volver a modo.</a></html>',{status:503,headers:{'Content-Type':'text/html; charset=utf-8'}});
   }
+  if(request.mode==='navigate'&&(response.status===401||response.status===403))event.waitUntil(cache.delete(key));
   if(response.status===200&&!request.headers.has('range'))event.waitUntil(cache.put(key,response.clone()).catch(()=>{}));
   return response;
  })());
