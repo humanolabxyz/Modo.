@@ -96,7 +96,7 @@ const report={checks:[],errors:[]},pass=s=>report.checks.push(s);
  await page.getByLabel('Opciones de simulación',{exact:true}).click();
  await page.getByLabel('Retardo del temporizador').selectOption('2');
  await page.locator('.simulation-examples').first().evaluate(e=>{if(e.tagName==='DETAILS')e.open=true});
- await page.getByRole('button',{name:'Cargar arranque estrella-triángulo automático'}).click();
+ await page.getByRole('button',{name:'Cargar estrella-triángulo de Matías · 2 contactores y temporizador'}).click();
  await page.waitForFunction(()=>document.querySelector('[data-module-id="CONTACTOR_TRIFASICO_3"]'));
  assert.equal(await modules(),7,'el ejemplo añadió KM3');
  assert.ok(await page.locator('.interactive-wire').count()>=30,'el ejemplo coloca sus 35 cables');

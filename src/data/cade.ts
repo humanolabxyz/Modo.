@@ -56,15 +56,14 @@ export const ESTRELLA_CADE=createCade(estrella as unknown as CadeDrawing);
 /** Esquemas de las lecciones guiadas (ver data/lessons.ts y data/lessonSchematics.ts). */
 /** Copia del dibujo de estrella-triángulo con la correspondencia de sus bornes con el banco (ver starPanelMap.ts). */
 const withPanels=(drawing:CadeDrawing,map:PanelMap):CadeDrawing=>({...drawing,objects:drawing.objects.map(o=>o.ports&&map[o.id]?{...o,ports:o.ports.map(p=>map[o.id][p.terminal]?{...p,panel:map[o.id][p.terminal]}:p)}:o)});
-/** Esquema recibido de 2 contactores: el dibujo conserva sus rótulos (KM1, KM2, KM3, -S), pero en el banco esas piezas son módulos con otro nombre.
- *  Se anota el nombre del banco sin tocar el dibujo (ver bankTerminalsForSymbol en lessonSchematics.ts para la correspondencia de bornes). */
+/** Nombres y funciones de los módulos en el montaje de Matías. */
 const TIMER='Temporizador neumático',THERMAL='Contactor + relé térmico',TRI='Contactor trifásico';
 export const TWO_CONTACTOR_BANK_NAMES:Record<number,NonNullable<CadeObject['bank']>>={
  3:{name:TIMER,part:'Contactor principal KT1 (parte contactor del módulo temporizador neumático)'},57:{name:TIMER,part:'Auxiliar 13–14 del contactor principal KT1 (retención)'},
  62:{name:THERMAL,part:'Contacto NC 81–82 de KM1 (piloto rojo)'},1001:{name:TRI,part:'Contacto NC 81–82 de KM2 (piloto rojo)'},63:{name:TIMER,part:'Bobina del contactor principal KT1 (módulo temporizador neumático)'},
- 58:{name:TIMER,part:'Contactos temporizados 55–56 y 67–68 del cabezal de retardo KT1 (módulo temporizador neumático)',note:'El dibujo original los muestra como un pulsador doble. En el banco son los contactos temporizados del cabezal de retardo KT1: 55-56 (NC) y 67-68 (NA).',what:'Contactos que cambian de estado cuando termina el tiempo del temporizador.'},
- 6:{name:THERMAL,part:'Contactor de triángulo KM1 (módulo contactor + relé térmico)'},59:{name:THERMAL},60:{name:THERMAL},65:{name:THERMAL,part:'Bobina del contactor de triángulo KM1 (módulo contactor + relé térmico)'},
- 7:{name:TRI,part:'Contactor de estrella KM2 (módulo contactor trifásico)'},61:{name:TRI},64:{name:TRI,part:'Bobina del contactor de estrella KM2 (módulo contactor trifásico)'},
+ 58:{name:TIMER,part:'Contacto temporizado NC 55–56 de KT1 (estrella)'},1003:{name:TIMER,part:'Contacto temporizado NA 67–68 de KT1 (triángulo)'},54:{name:THERMAL,part:'Contactos de corte y aviso del relé térmico de KM1'},
+ 6:{name:THERMAL,part:'Contactor de triángulo KM1 (módulo contactor + relé térmico)'},59:{name:THERMAL,part:'Contacto NC 71–72 de KM1 (enclavamiento de estrella)'},65:{name:THERMAL,part:'Bobina del contactor de triángulo KM1 (módulo contactor + relé térmico)'},
+ 7:{name:TRI,part:'Contactor de estrella KM2 (módulo contactor trifásico)'},61:{name:TRI,part:'Contacto NC 71–72 de KM2 (enclavamiento de triángulo)'},64:{name:TRI,part:'Bobina del contactor de estrella KM2 (módulo contactor trifásico)'},
 };
 /** Manual guide: retain the original post-start feed of SB3, figure 1 (p.5). */
 export const LESSON_CADES={
@@ -72,7 +71,7 @@ export const LESSON_CADES={
  inversion:createCade(lecciones.inversion as unknown as CadeDrawing),
  estrellaManual:createCade(withPanels(estrella as unknown as CadeDrawing,STAR_PANELS.estrellaManual)),
  estrellaTimer:createCade(withPanels(estrellaTemporizador as unknown as CadeDrawing,STAR_PANELS.estrellaTimer)),
- // Dibujo propio de la lección (ver twoContactorDrawing.ts): rótulos del banco y salidas del triángulo según la guía; el original no se modifica.
+ // Montaje de Matías con el formato de la guía.
  estrellaDosContactores:createCade(twoContactorDrawing(estrella as unknown as CadeDrawing),TWO_CONTACTOR_BANK_NAMES),
 };
 export type LessonCadeId=keyof typeof LESSON_CADES;
@@ -83,7 +82,7 @@ export const CADE_DRAWINGS=[
  {id:'simple',title:'Lección · Marcha y paro',cade:LESSON_CADES.simple,guided:false},
  {id:'inversion',title:'Lección · Inversión de giro',cade:LESSON_CADES.inversion,guided:false},
  {id:'estrellaTimer',title:'Lección · Estrella-triángulo con temporizador',cade:LESSON_CADES.estrellaTimer,guided:false},
- {id:'estrellaDosContactores',title:'Lección · Estrella-triángulo · 2 contactores',cade:LESSON_CADES.estrellaDosContactores,guided:false},
+ {id:'estrellaDosContactores',title:'Lección · Estrella-triángulo · 2 contactores y temporizador',cade:LESSON_CADES.estrellaDosContactores,guided:false},
 ] as const;
 export const CADE_QUESTIONS=[
  {question:'Potencia: sigue L1 hasta la entrada 1 de -Q.',wire:103,scope:'power',hint:'El primer conductor de la columna de potencia.'},

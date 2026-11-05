@@ -1,6 +1,6 @@
 import {traceState,type TraceAction,type SimulationEvent,type TraceState} from '../data/activityTrace';
 import {useCallback,useEffect,useMemo,useRef,useState,type SetStateAction} from 'react';
-import {emptySimulation,OFF_RELAYS,sameRelays,solveSimulation,timerIds,type RelayState,type SimulationInput} from '../data/simulation';
+import {createSimulationSolver,emptySimulation,OFF_RELAYS,sameRelays,solveSimulation,timerIds,type RelayState,type SimulationInput} from '../data/simulation';
 import type {BananaCable} from '../data/practice';
 import {earthAdvice,earthGaps} from '../data/panelEarth';
 import {panelAmmeterBridge,panelElectrical,type PanelAmmeter,type PanelMeterModel} from '../data/panelElectrical';
@@ -13,12 +13,14 @@ const timedIds=(bank:TimerBank)=>Object.entries(bank).filter(([,v])=>v.done).map
 const freshRuntime=()=>({clock:newClock(),events:[] as SimulationEvent[],actionSeq:0,timers:{} as TimerBank,power:openPowerContacts(),motion:stoppedMotion(),thermal:coldThermal(),relays:OFF_RELAYS(),direction:1 as 1|-1,lastFeed:false,lastMake:null as number|null,unbalancePct:0,thermalAmps:[0,0,0],protectionWarning:'',peakAmps:0,peakAt:0,result:solveSimulation([],emptySimulation()),fault:null as ReturnType<typeof solveSimulation>['fault']});
 function appendEvent(s:ReturnType<typeof freshRuntime>,action:TraceAction,before:TraceState,after:TraceState){s.actionSeq++;s.events=[...s.events,{...action,id:s.actionSeq,seconds:s.clock.seconds,before,after}].slice(-128);}
 export function useSimulation(wires:BananaCable[],active:boolean,onAction?:(input:SimulationInput,label:string)=>void,live=true){
+ const logicalSolver=useRef<ReturnType<typeof createSimulationSolver>|null>(null);
+ if(!logicalSolver.current)logicalSolver.current=createSimulationSolver();
  const [input,setInput]=useState<SimulationInput>(emptySimulation),current=useRef(input),listener=useRef(onAction);listener.current=onAction;
  const [calibration,setCalibration]=useState<PanelCalibration>(defaultCalibration),[loaded,setLoaded]=useState(false),storageBlocked=useRef(false);
  const [message,setMessage]=useState(''),[fault,setFault]=useState<ReturnType<typeof solveSimulation>['fault']>(null),[meter,setMeter]=useState<PanelAmmeter|null>(null);
  const [earthRequired,setEarthRequiredState]=useState(()=>{try{return localStorage.getItem('modo:require-earth:v1')!=='0';}catch{return true;}});
  const [timerSeconds,setTimerValue]=useState(4),[manualPaused,setManualPaused]=useState(false),pauseRef=useRef(false),[background,setBackground]=useState(false);
- const state=useRef(freshRuntime()),[snapshot,setSnapshot]=useState(state.current),publish=useRef(0);
+ const [snapshot,setSnapshot]=useState(freshRuntime),state=useRef(snapshot),publish=useRef(0);
  /* Fallas de laboratorio inyectadas: viven aparte de las entradas del banco para sobrevivir a «Detener» y a salir de la vista. */
  const faultsRef=useRef<PanelFault[]>([]),[faultList,setFaultList]=useState<PanelFault[]>([]);
  const config=useRef({wires,active,live,calibration,timerSeconds,meter,earthRequired});config.current={wires,active,live,calibration,timerSeconds,meter,earthRequired};
@@ -30,7 +32,7 @@ export function useSimulation(wires:BananaCable[],active:boolean,onAction?:(inpu
   const before=traceState(current.current,state.current.relays,state.current.motion.rpm);
   soundsForInputChange(current.current,next);
   current.current=next;const c=config.current,logical={...next,enabled:next.enabled&&c.active&&!state.current.fault&&c.live,earthRequired:c.earthRequired,faults:resolveFaults(faultsRef.current,state.current.clock.seconds)};
-  const bridge=panelAmmeterBridge(c.wires,{...logical,powerContacts:state.current.power.positions},state.current.relays,timedIds(state.current.timers),{...c.calibration.model,rotorRpm:state.current.motion.rpm,motorDirection:state.current.direction},c.meter);state.current.relays=solveSimulation(bridge?[...c.wires,bridge]:c.wires,logical,state.current.relays,timedIds(state.current.timers)).relays;
+  const bridge=panelAmmeterBridge(c.wires,{...logical,powerContacts:state.current.power.positions},state.current.relays,timedIds(state.current.timers),{...c.calibration.model,rotorRpm:state.current.motion.rpm,motorDirection:state.current.direction},c.meter);state.current.relays=logicalSolver.current!(bridge?[...c.wires,bridge]:c.wires,logical,state.current.relays,timedIds(state.current.timers)).relays;
   if(action)appendEvent(state.current,action,before,traceState(logical,state.current.relays,state.current.motion.rpm));
   setInput(next);listener.current?.(next,label);
  },[]);
@@ -50,14 +52,15 @@ export function useSimulation(wires:BananaCable[],active:boolean,onAction?:(inpu
    resting.current=null;
    let model:PanelMeterModel={...settings.model,loadTorqueNm:loadTorqueWithFaults(settings.model.loadTorqueNm,base.faults),rotorRpm:s.motion.rpm,motorDirection:s.direction,resistanceMode:settings.resistanceMode,providedResistances:settings.resistances,simulationSeconds:t,lastMakeSeconds:s.lastMake};
    const logicalBridge=panelAmmeterBridge(c.wires,{...base,powerContacts:s.power.positions},s.relays,timedIds(s.timers),model,c.meter),logicalWires=logicalBridge?[...c.wires,logicalBridge]:c.wires;
-   let command=solveSimulation(logicalWires,base,s.relays,timedIds(s.timers));
-   const previouslyTimed=timedIds(s.timers),timerBefore=traceState(base,command.relays,s.motion.rpm);
-   s.timers=advanceTimers(s.timers,base.enabled?command.relays:OFF_RELAYS(),timerIds(),t,timerDuration(c.timerSeconds,base.faults));command=solveSimulation(logicalWires,base,command.relays,timedIds(s.timers));s.relays=command.relays;
+   let command=logicalSolver.current!(logicalWires,base,s.relays,timedIds(s.timers));
+   const previousTimers=s.timers,previouslyTimed=timedIds(previousTimers),timerBefore=traceState(base,command.relays,s.motion.rpm);
+   s.timers=advanceTimers(s.timers,base.enabled?command.relays:OFF_RELAYS(),timerIds(),t,timerDuration(c.timerSeconds,base.faults));command=logicalSolver.current!(logicalWires,base,command.relays,timedIds(s.timers));s.relays=command.relays;
+   for(const id of Object.keys(s.timers))if(!previousTimers[id])playElementSound('temporizador-inicia',id);
    for(const id of timedIds(s.timers))if(!previouslyTimed.includes(id)){appendEvent(s,{kind:'timer',control:id},timerBefore,traceState(base,command.relays,s.motion.rpm));playElementSound('temporizado',id);}
    const oldPositions=s.power.positions;s.power=advancePowerContacts(s.power,base.enabled?command.relays:OFF_RELAYS(),command.motor.connection,t,settings.contacts);
    /* Cada polo que cambia de posición suena como su contactor: golpe al cerrar y «clac» al abrir. */
    for(const id of new Set([...Object.keys(oldPositions),...Object.keys(s.power.positions)])){const was=!!oldPositions[id],now=!!s.power.positions[id];if(was!==now)playElementSound(now?'contactor-cierra':'contactor-abre',id);}
-   const physical={...base,powerContacts:s.power.positions},timed=timedIds(s.timers);let actual=solveSimulation(logicalWires,physical,command.relays,timed);
+   const physical={...base,powerContacts:s.power.positions},timed=timedIds(s.timers);let actual=logicalSolver.current!(logicalWires,physical,command.relays,timed);
    if(command.fault&&!s.fault){s.fault=command.fault;setFault(command.fault);update(v=>({...v,forceBreaker:false,breakers:[false,false],pressed:[]}),'Protección virtual · '+command.fault,true);}
    if(s.power.gapUntil>t&&actual.motor.status!=='running')actual={...actual,motor:{...actual.motor,status:'off',message:'Transición abierta: espera antes del cierre de la siguiente conexión.'}};
    if(command.motor.status==='running')s.direction=command.motor.direction;model={...model,motorDirection:s.direction};
@@ -68,7 +71,11 @@ export function useSimulation(wires:BananaCable[],active:boolean,onAction?:(inpu
    const motionModel={...model,positiveVolts:net.positiveVolts,negativeVolts:net.negativeVolts};let motion=s.motion;const steps=Math.max(1,Math.ceil(dt/.02));for(let i=0;i<steps;i++)motion=advanceMotor(motion,motionModel,phase,fed,direction,dt/steps);s.motion=motion;
    s.unbalancePct=fed?net.unbalancePct:0;
    /* Sonido del motor: sano mientras gira bien; áspero con desequilibrio, falta de fase o rotor frenado. */
-   {const phasing=base.enabled&&raw.plugged&&raw.forceBreaker&&actual.motor.status==='fault'&&actual.motor.lines.some(Boolean);setMotorSound({fed:fed||phasing,rpm:motion.rpm,syncRpm:motorEquivalent(model).syncRpm,rough:phasing?.9:Math.min(1,(fed?net.unbalancePct:0)/20),stalled:fed&&motion.stalled});}const amps=Math.max(...Object.values(net.lineAmps));if(amps>s.peakAmps||t-s.peakAt>5){s.peakAmps=amps;s.peakAt=t;}
+   const phasing=base.enabled&&raw.plugged&&raw.forceBreaker&&actual.motor.status==='fault'&&actual.motor.lines.some(Boolean);
+   setMotorSound({fed:fed||phasing,rpm:motion.rpm,syncRpm:motorEquivalent(model).syncRpm,
+    rough:phasing?.9:Math.min(1,(fed?net.unbalancePct:0)/20),stalled:fed&&motion.stalled,
+    missingPhase:phasing&&actual.motor.lines.some(line=>line===null),connection:fed?net.connection:null});
+   const amps=Math.max(...Object.values(net.lineAmps));if(amps>s.peakAmps||t-s.peakAt>5){s.peakAmps=amps;s.peakAt=t;}
    s.thermalAmps=net.thermalAmps;s.protectionWarning=raw.thermalTripped&&(actual.relays.CONTACTOR_TERMICO||actual.motor.status==='running')?(actual.relays.CONTACTOR_TERMICO?'El térmico está disparado y KM1 sigue energizado: revisa el circuito de mando 95–96.':'El térmico está disparado y el motor sigue alimentado: revisa el circuito de mando 95–96.'):net.thermalBypassed?'Hay una ruta paralela a los polos del térmico: la protección no queda validada.':earthAdvice(net.earth,base.enabled&&raw.plugged&&(raw.forceBreaker||raw.breakers.every(Boolean)));
    const thermal=advanceThermal(s.thermal,base.enabled&&raw.forceBreaker&&!net.fault?Math.max(...net.thermalAmps):0,thermalWithFaults(settings.thermal,base.faults),dt);s.thermal=thermal;
    if(thermal.tripped&&!raw.thermalTripped){update(v=>({...v,thermalTripped:true,pressed:[]}),'Relé térmico · sobrecorriente sostenida',true);setMessage('Disparo térmico automático. Corrige la causa y espera a que la memoria térmica permita rearmar.');}

@@ -2,7 +2,6 @@ import layout from './leccionInversion.layout.json';
 import type {DiagramReference,DiagramRegion,ManualStep} from './practice';
 import type {LessonId} from './lessonIds';
 import sources from './starDeltaSources.json';
-import twoContactorSource from './twoContactorSource.json';
 import {TWO_CONTACTOR_DETAILS,TWO_CONTACTOR_PAIRS} from './twoContactorTeaching';
 import {twoContactorModuleName,type LabelScope} from './twoContactorNames';
 import {starDetail,type StarLessonId} from './starDeltaTeaching';
@@ -120,11 +119,11 @@ function buildStarLesson(id:StarLessonId):Lesson{
 }
 export const STAR_MANUAL_LESSON=buildStarLesson('estrellaManual');
 export const STAR_TIMER_LESSON=buildStarLesson('estrellaTimer');
-/* El cableado de esta lección parte del archivo recibido (twoContactorSource.json, que se conserva tal cual) con los ajustes del autor: ver TWO_CONTACTOR_PAIRS en twoContactorTeaching.ts. */
+/* Secuencia del último armado completo del historial de Matías. */
 export const TWO_CONTACTOR_LESSON:Lesson={
- id:'estrellaDosContactores',schematic:'estrellaDosContactores',title:'Lección · Estrella-triángulo · 2 contactores',
- summary:'Con los nombres del banco: KT1 es el contactor principal (módulo temporizador neumático), KM1 el de triángulo (módulo con relé térmico), KM2 el de estrella (módulo trifásico); KT1 también da el retardo. S1 da marcha; S2 para; el piloto rojo indica motor detenido. 40 cables, paso a paso desde el banco vacío.',
- diagram:{id:'leccion-estrellaDosContactores',name:twoContactorSource.receivedDiagram.name,src:twoContactorSource.receivedDiagram.src,origin:'class_photo'},
+ id:'estrellaDosContactores',schematic:'estrellaDosContactores',title:'Lección · Estrella-triángulo · 2 contactores y temporizador',
+ summary:'Con los nombres del banco: KT1 es el contactor principal (módulo temporizador neumático), KM1 el de triángulo (módulo con relé térmico), KM2 el de estrella (módulo trifásico); KT1 también da el retardo. S1 da marcha; S2 para; el piloto rojo indica motor detenido. 41 cables en el orden en que Matías armó su versión final desde el banco vacío.',
+ diagram:{id:'leccion-estrellaDosContactores',name:'Montaje de Matías · mando y fuerza',src:'/diagrams/leccion-matias.svg',origin:'class_photo'},
  pairs:TWO_CONTACTOR_PAIRS.map(([a,b])=>[a,b]),
  steps:TWO_CONTACTOR_PAIRS.map(([from,to],i)=>({id:`estrellaDosContactores-${String(i+1).padStart(2,'0')}`,from,to,title:TWO_CONTACTOR_DETAILS[i].title,explanation:TWO_CONTACTOR_DETAILS[i].why,review:'user_reviewed',region:{x:0,y:0,w:1000,h:1000}})),
 };

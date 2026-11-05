@@ -11,7 +11,8 @@ import type {SimulationController} from '../hooks/useSimulation';
 import {boardFrame,clampFree,dropModule,fitView,getLayout,modulePos,setModulePos,snapModule,useLayout,useModules,type Pos} from '../data/layout';
 
 type View = {x:number;y:number;w:number;h:number};
-type Props={omitExtraContactors?:boolean;modulesLocked?:boolean;selected:string|null;onSelect:(id:string)=>void;group:string;query:string;view:View;setView:(v:View)=>void;aliases:Record<string,string>;wires?:BananaCable[];selectedWire?:string|null;onSelectWire?:(id:string)=>void;highlightedTerminals?:string[];glowTerminals?:string[];highlightedModules?:string[];pendingTerminal?:string|null;hitConnectors?:boolean;ghost?:{from:string;to:string};ghosts?:{from:string;to:string}[];routeWireIds?:string[];errorWires?:string[];simulation?:SimulationController;overlay?:React.ReactNode;liveWireIds?:string[];onRemoveModule?:(id:string)=>void;};
+type CableGhost={from:string;to:string;color?:string};
+type Props={omitExtraContactors?:boolean;modulesLocked?:boolean;selected:string|null;onSelect:(id:string)=>void;group:string;query:string;view:View;setView:(v:View)=>void;aliases:Record<string,string>;wires?:BananaCable[];selectedWire?:string|null;onSelectWire?:(id:string)=>void;highlightedTerminals?:string[];glowTerminals?:string[];highlightedModules?:string[];pendingTerminal?:string|null;hitConnectors?:boolean;ghost?:CableGhost;ghosts?:CableGhost[];routeWireIds?:string[];errorWires?:string[];simulation?:SimulationController;overlay?:React.ReactNode;liveWireIds?:string[];onRemoveModule?:(id:string)=>void;};
 const textStyle:React.CSSProperties={userSelect:'none'};
 
 function Tag({x,y,children,small=false}:{x:number;y:number;children:React.ReactNode;small?:boolean}){
@@ -124,7 +125,21 @@ function MotorFace({m,simulation}:{m:PanelModule;simulation?:SimulationControlle
  const motor=simulation?.result.motor,running=motor?.status==='running',fault=motor?.status==='fault';
  const dynamic=simulation?.meterModel.motorMode==='induction',rpm=dynamic?(simulation?.motorMotion.rpm??0):(running?1500*(motor?.speed??1)*(motor?.direction??1):0),moving=Math.abs(rpm)>1,stalled=!!simulation?.motorMotion.stalled;
  const rotor=useRef<SVGGElement>(null),speed=useRef(rpm),angle=useRef(0);speed.current=simulation?.paused?0:rpm;
- useEffect(()=>{if(!dynamic||!moving||simulation?.paused||matchMedia('(prefers-reduced-motion:reduce)').matches)return;let frame=0,last=0;const tick=(now:number)=>{const dt=last?Math.min(.05,(now-last)/1000):0;last=now;if(!document.hidden){angle.current=(angle.current+speed.current*6*dt*.06)%360;if(rotor.current)rotor.current.style.transform=`rotate(${angle.current}deg)`;}frame=requestAnimationFrame(tick);};frame=requestAnimationFrame(tick);return()=>cancelAnimationFrame(frame);},[dynamic,moving,simulation?.paused]);
+ useEffect(()=>{
+  if(!dynamic||!moving||simulation?.paused||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  let frame=0,last=0;
+  const tick=(now:number)=>{
+   const dt=last?Math.min(.05,(now-last)/1000):0;last=now;
+   const node=rotor.current,viewport=node?.ownerSVGElement?.dataset;
+   // Pause the decorative rotor during gestures, which already repaint the board.
+   if(node&&!document.hidden&&viewport?.gesture!=='true'&&viewport?.dragging!=='true'&&viewport?.animating!=='true'){
+    angle.current=(angle.current+speed.current*6*dt*.06)%360;
+    node.style.transform=`rotate(${angle.current}deg)`;
+   }
+   frame=requestAnimationFrame(tick);
+  };
+  frame=requestAnimationFrame(tick);return()=>cancelAnimationFrame(frame);
+ },[dynamic,moving,simulation?.paused]);
  const cx=240,cy=150,spin=running?`${(.6/(motor!.speed||1)).toFixed(2)}s`:'0s',dir=(moving?Math.sign(rpm):motor?.direction??1) as 1|-1,arrow=moving?turnArrow(cx,cy,60,dir):null;
  const label=dynamic&&simulation?.input.enabled?(fault?`REVISAR · ${Math.round(Math.abs(rpm))} rpm`:stalled?'BLOQUEADO · CARGA EXCESIVA':running?`${motor!.connection==='star'?'ESTRELLA':'TRIÁNGULO'} · ${Math.round(Math.abs(rpm))} rpm ${dir===1?'↻':'↺'}`:moving?`SIN TENSIÓN · ${Math.round(Math.abs(rpm))} rpm`:'MOTOR EN REPOSO'):!simulation?.input.enabled?'MOTOR EN REPOSO':running?`GIRANDO · ${motor!.connection==='star'?'ESTRELLA':'TRIÁNGULO'} · ${dir===1?'HORARIO ↻':'ANTIHORARIO ↺'}`:fault?'REVISAR CONEXIÓN':'SIN TENSIÓN';
  return <g data-motor-status={motor?.status||'off'} data-motor-connection={motor?.connection||''} data-motor-direction={moving?dir:0} data-motor-rpm={Math.round(rpm)} data-motor-stalled={stalled} data-simulation-paused={simulation?.paused} data-simulation-seconds={simulation?.simulationSeconds.toFixed(3)} data-thermal-memory={simulation?.thermal.heat.toFixed(5)} data-transitioning={simulation?.transitioning}>
@@ -228,7 +243,17 @@ function TimerStatus({id,simulation}:{id:string;simulation?:SimulationController
   <text x="397" y="83" textAnchor="middle" fontSize="11" fontWeight="700" fill={done?'#1e6a49':'#4c585f'} style={textStyle}>{label}</text>
  </g>;
 }
-const MemoFace=React.memo(Face),MemoPorts=React.memo(Ports),MemoLabels=React.memo(TerminalLabels),MemoWireLayer=React.memo(WireLayer);
+// The simulation clock and motor RPM change at every publication. Other modules
+// only need their own switches, lamps, coils and timer state, not that clock.
+const MemoFace=React.memo(Face,(a,b)=>{
+ if(a.m!==b.m||a.aliases!==b.aliases)return false;
+ const x=a.simulation,y=b.simulation;
+ if(x===y)return true;if(!x||!y||a.m.category==='motor')return false;
+ if(x.enabled!==y.enabled||x.input.enabled!==y.input.enabled||x.input.plugged!==y.input.plugged||x.input.forceBreaker!==y.input.forceBreaker||x.input.breakers.join()!==y.input.breakers.join()||x.input.pressed.join()!==y.input.pressed.join())return false;
+ if(x.plug!==y.plug||x.press!==y.press||x.switchForce!==y.switchForce||x.switchBreaker!==y.switchBreaker)return false;
+ if(x.result.powered!==y.result.powered||x.result.pilots.join()!==y.result.pilots.join()||!!x.result.relays[a.m.id]!==!!y.result.relays[a.m.id])return false;
+ return a.m.category!=='temporizadores'||(x.timerSeconds===y.timerSeconds&&x.timed.includes(a.m.id)===y.timed.includes(a.m.id)&&x.timerStatus[a.m.id]?.remaining===y.timerStatus[a.m.id]?.remaining&&x.timerStatus[a.m.id]?.progress===y.timerStatus[a.m.id]?.progress);
+}),MemoPorts=React.memo(Ports),MemoLabels=React.memo(TerminalLabels),MemoWireLayer=React.memo(WireLayer);
 export {FULL} from '../layout/boardViewport';
 export function Board({omitExtraContactors=false,modulesLocked=true,selected,onSelect,group,query,view,setView,aliases,wires=[],selectedWire=null,onSelectWire=()=>{},highlightedTerminals=[],glowTerminals=[],highlightedModules=[],pendingTerminal=null,hitConnectors=true,ghost,ghosts=ghost?[ghost]:[],routeWireIds=[],errorWires=[],simulation,liveWireIds=[],onRemoveModule,overlay}:Props){
  const pointerPath=useRef<SVGPathElement>(null);
@@ -354,7 +379,7 @@ export function Board({omitExtraContactors=false,modulesLocked=true,selected,onS
    </g>;
  })}
   {pendingTerminal&&<path ref={pointerPath} visibility="hidden" className="pending-cable-preview" fill="none" stroke="#258cb2" strokeWidth="5" strokeDasharray="10 7" opacity=".7" pointerEvents="none"/>}
- {ghosts.map((g,i)=>terminalPoint(g.from)&&terminalPoint(g.to)&&<g key={`${g.from}-${g.to}`} className="ghost-cable" data-ghost-from={g.from} data-ghost-to={g.to} opacity=".48" pointerEvents="none" aria-hidden="true"><BananaCableVisual id={`lesson-ghost-${i}`} from={terminalPoint(g.from)!} to={terminalPoint(g.to)!} sag={80+(i%4)*24} color="#168cac"/></g>)}
+ {ghosts.map((g,i)=>terminalPoint(g.from)&&terminalPoint(g.to)&&<g key={`${g.from}-${g.to}`} className="ghost-cable" data-ghost-from={g.from} data-ghost-to={g.to} opacity=".48" pointerEvents="none" aria-hidden="true"><BananaCableVisual id={`lesson-ghost-${i}`} from={terminalPoint(g.from)!} to={terminalPoint(g.to)!} sag={80+(i%4)*24} color={g.color??"#168cac"}/></g>)}
  <MemoWireLayer layoutKey={layout} liveWireIds={liveWireIds} routeWireIds={routeWireIds} hitConnectors={hitConnectors} wires={wires} selected={selectedWire} onSelect={onSelectWire} errorWires={errorWires}/>
  {drawOrder.map(m=><g key={m.id} data-module-labels={m.id} transform={`translate(${modulePos(m,layout).x} ${modulePos(m,layout).y})`} opacity={group!=='todos'&&m.category!==group ? .2 : 1}>
   {m.terminals.filter(t=>glowTerminals.includes(`${m.id}:${t.id}`)).map(t=><g key={`glow-${t.id}`} className="terminal-glow" data-glow-terminal={`${m.id}:${t.id}`} pointerEvents="none"><circle cx={t.x} cy={t.y} r="36" fill="#ffe84d" fillOpacity=".32"/><circle cx={t.x} cy={t.y} r="27" fill="none" stroke="#ffd60a" strokeWidth="6"/><circle cx={t.x} cy={t.y} r="27" fill="none" stroke="#fffbd0" strokeWidth="2"/></g>)}

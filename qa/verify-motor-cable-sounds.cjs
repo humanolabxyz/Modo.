@@ -4,17 +4,17 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
 const {chromium}=require('C:/Users/HUMANO LAB/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const base=(process.env.PANELLAB_URL||'http://127.0.0.1:4410').replace(/\/$/,''),out=process.env.PANELLAB_QA_OUTPUT||'qa/motor-cable-sounds',report={base,checks:[],errors:[]};
 fs.mkdirSync(out,{recursive:true});
-const m=require('./two-contactor-lesson/model.cjs');
+const {pairs:matiasPairs}=require('../src/data/twoContactorMatias.json');
 async function session(browser,pairs){
  const c=await browser.newContext({viewport:{width:1440,height:1000},serviceWorkers:'block',reducedMotion:'reduce'});
  await c.addInitScript(()=>{localStorage.setItem('modo-tutoriales-bienvenida-v1','seen');localStorage.removeItem('panellab.sonidos.v1');});
  const p=await c.newPage();p.setDefaultTimeout(20000);p.on('pageerror',e=>{report.errors.push(e.message);console.log('PAGEERROR',e.message);});
- await p.goto(base+'/?view=simulator');await p.locator('.board-svg').waitFor();await p.waitForFunction(()=>!document.getElementById('modo-splash'));
- await p.getByRole('button',{name:'Guía paso a paso',exact:true}).click();
- await p.getByRole('button',{name:'Aprender: Estrella-triángulo · 2 contactores',exact:true}).click();await p.locator('.guide-window').waitFor();
+ await p.goto(base+'/?view=simulator');await p.locator('.board-svg').waitFor();await p.waitForFunction(()=>!document.documentElement.matches('.modo-splash-on,.modo-opening-on'));
+ await p.getByRole('button',{name:'Guía paso a paso',exact:true}).dispatchEvent('click');
+ await p.getByRole('button',{name:'Aprender: Estrella-triángulo · 2 contactores y temporizador',exact:true}).dispatchEvent('click');await p.locator('.guide-window').waitFor();
  const wires=pairs.map(([a,b],i)=>({id:'lw'+i,from:{terminalId:a},to:{terminalId:b},color:'#145650',route:{sag:130},layer:i+1}));
- await p.evaluate(([w,n])=>{const k='panellab-practice-v2',d=JSON.parse(localStorage.getItem(k));d.wires=w;d.stepIndex=n;localStorage.setItem(k,JSON.stringify(d));},[wires,wires.length]);
- await p.reload();await p.locator('.board-svg').waitFor();await p.waitForFunction(()=>!document.getElementById('modo-splash'));
+ await p.evaluate(w=>{const k='panellab-practice-v2',d=JSON.parse(localStorage.getItem(k));d.wires=w;d.stepIndex=d.steps.length;localStorage.setItem(k,JSON.stringify(d));},wires);
+ await p.reload();await p.locator('.board-svg').waitFor();await p.waitForFunction(()=>!document.documentElement.matches('.modo-splash-on,.modo-opening-on'));
  await p.getByRole('button',{name:/Ocultar la guía/}).click().catch(()=>{});
  return p;
 }
@@ -34,7 +34,7 @@ async function power(p){
   const c=await browser.newContext({viewport:{width:1440,height:1000},serviceWorkers:'block',reducedMotion:'reduce'});
   await c.addInitScript(()=>{localStorage.setItem('modo-tutoriales-bienvenida-v1','seen');localStorage.removeItem('panellab.sonidos.v1');});
   const p=await c.newPage();p.setDefaultTimeout(20000);p.on('pageerror',e=>report.errors.push(e.message));
-  await p.goto(base+'/?view=simulator');await p.locator('.board-svg').waitFor();await p.waitForFunction(()=>!document.getElementById('modo-splash'));
+  await p.goto(base+'/?view=simulator');await p.locator('.board-svg').waitFor();await p.waitForFunction(()=>!document.documentElement.matches('.modo-splash-on,.modo-opening-on'));
   await p.getByRole('button',{name:'Conectar cables',exact:true}).click();
   for(const id of ['FUENTE:F','CONTACTOR_TERMICO:95'])await p.locator(`[data-terminal-id="${id}"]`).dispatchEvent('click');
   await p.waitForTimeout(300);
@@ -44,7 +44,7 @@ async function power(p){
  }
  /* 2 · Motor sano: arranca, gira y se detiene */
  {
-  const p=await session(browser,m.TWO_CONTACTOR_LESSON.pairs);await power(p);await clear(p);
+  const p=await session(browser,matiasPairs);await power(p);await clear(p);
   const start=p.getByRole('button',{name:'Pulsador verde izquierdo',exact:true});
   await start.focus();await p.keyboard.down('Space');await p.waitForTimeout(500);await p.keyboard.up('Space');
   await p.waitForTimeout(800);
@@ -63,8 +63,8 @@ async function power(p){
  }
  /* 3 · Motor mal conectado: falta una fase de fuerza */
  {
-  const broken=m.TWO_CONTACTOR_LESSON.pairs.filter(([a,b])=>!(a==='TEMPORIZADOR_1:T3'&&b==='BORNERA_MOTOR:W1')&&!(b==='TEMPORIZADOR_1:T3'&&a==='BORNERA_MOTOR:W1'));
-  assert.equal(broken.length,m.TWO_CONTACTOR_LESSON.pairs.length-1,'se quitó un cable de fuerza');
+  const broken=matiasPairs.filter(([a,b])=>!(a==='TEMPORIZADOR_1:T3'&&b==='BORNERA_MOTOR:W1')&&!(b==='TEMPORIZADOR_1:T3'&&a==='BORNERA_MOTOR:W1'));
+  assert.equal(broken.length,matiasPairs.length-1,'se quitó un cable de fuerza');
   const p=await session(browser,broken);await power(p);await clear(p);
   const start=p.getByRole('button',{name:'Pulsador verde izquierdo',exact:true});
   await start.focus();await p.keyboard.down('Space');await p.waitForTimeout(500);await p.keyboard.up('Space');

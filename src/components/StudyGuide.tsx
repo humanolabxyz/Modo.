@@ -4,6 +4,7 @@ import {IDENTIFICATION_STEPS,type AssistanceLevel,type PracticeDocument} from '.
 import {connectedByCables} from '../data/wiring';
 import {LESSONS,terminalLabel} from '../data/lessons';
 import {labelScopeFor} from '../data/twoContactorNames';
+import {MATIAS_CHECKPOINTS} from '../data/twoContactorTeaching';
 import {LessonSchematic} from './LessonSchematic';
 import '../styles/guide-confirmation.css';
 import {motionReduced} from '../motion/surface';
@@ -25,19 +26,24 @@ export function StudyGuide({studyOpen,onStudyOpen,practice,selected,assistance,o
   const animation=content.current?.animate([{opacity:0,transform:'translateY(3px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'cubic-bezier(.2,.7,.3,1)'});
   return()=>animation?.cancel();
  },[stepKey,lesson]);
- if(!step)return <section className="guide-card" aria-label="Guía de estudio"><strong>{steps.length?'Recorrido terminado':'Crea tu primer paso'}</strong><p>{steps.length?'Puedes repetir el recorrido o seguir practicando libremente.':'Carga una referencia, marca una zona del diagrama y revisa sus dos terminales. Después podrás comprobar tu cableado frente a ese par.'}</p>{!!steps.length&&<button className="outline-full" onClick={onAdvance}>Repetir recorrido</button>}</section>;
+ const lessonDef=lesson?Object.values(LESSONS).find(l=>l.diagram.id===practice.diagram?.id&&(l.id!=='estrellaDosContactores'||l.diagram.src===practice.diagram.src)):undefined;
+ const matias=lessonDef?.id==='estrellaDosContactores';
+ const checkpoint=matias?MATIAS_CHECKPOINTS[index+1]:undefined;
+ if(!step)return <section className="guide-card" aria-label="Guía de estudio"><strong>{steps.length?'Recorrido terminado':'Crea tu primer paso'}</strong><p>{steps.length?'Puedes repetir el recorrido o seguir practicando libremente.':'Carga una referencia, marca una zona del diagrama y revisa sus dos terminales. Después podrás comprobar tu cableado frente a ese par.'}</p>{matias&&<p>Al terminar, Matías habilitó FUERZA en el simulador y probó S1 y S2. Con el montaje completo, comprueba que S1 inicia en estrella, KT1 cambia a triángulo y S2 detiene el motor virtual.</p>}{!!steps.length&&<button className="outline-full" onClick={onAdvance}>Repetir recorrido</button>}</section>;
  const validate=()=>{
   if(identify){const target=IDENTIFICATION_STEPS[index];onFeedback(selected===target.terminalId?'correct':'Selecciona el borne que pide este reto. Puedes aumentar la ayuda.');}
   else {const target=practice.steps[index];onFeedback(connectedByCables(target.from,target.to,practice.wires)?'correct':'Todavía no hay una red de cables que una el par revisado de este paso.');}
  };
  const stillMatches=identify?selected===IDENTIFICATION_STEPS[index].terminalId:connectedByCables(practice.steps[index].from,practice.steps[index].to,practice.wires);
  const manual=!identify?practice.steps[index]:undefined;
- const lessonDef=lesson?Object.values(LESSONS).find(l=>l.diagram.id===practice.diagram?.id):undefined;
+
  return <section className="guide-card" aria-label="Guía de estudio" data-lesson={lesson||undefined} data-guide-phase="waiting">
   <div ref={content} className="guide-step-content">
   <div className="guide-top"><span>{identify?'RECONOCIMIENTO GUIADO':lesson?'LECCIÓN':'GUÍA MANUAL'} · {index+1}/{steps.length}</span><span>Ayuda {assistance}/3</span></div>
   <h3>{step.title}</h3>
+  {checkpoint&&<details className="disclosure guide-why" open><summary>{checkpoint.title}</summary><p>{checkpoint.description}</p></details>}
   {lessonDef&&manual&&<button type="button" className="lesson-study-launch" aria-haspopup="dialog" aria-expanded={studyOpen} onClick={()=>onStudyOpen(true)}><BookOpen size={17}/><span><b>Comprender este paso</b><small>Componentes, conexión y funcionamiento</small></span><ArrowRight size={16}/></button>}
+  {lesson&&!lessonDef&&manual&&<p>{manual.explanation}</p>}
   {lessonDef&&manual&&<LessonSchematic lesson={lessonDef} step={manual} steps={practice.steps} wires={practice.wires} onOpenDiagram={onOpenDiagram}/>}
   {lesson&&manual&&assistance>=2&&<p className="guide-connect" data-guide-connect><b>{terminalLabel(manual.from,labelScopeFor(practice.diagram?.id))}</b><ArrowRight size={14} aria-hidden="true"/><b>{terminalLabel(manual.to,labelScopeFor(practice.diagram?.id))}</b></p>}
   <details className="disclosure guide-hints" open><summary>Ayuda · nivel {assistance}/3</summary><div className="assistance-levels" aria-label="Nivel de ayuda">{([1,2,3] as const).map(level=><button key={level} aria-pressed={assistance===level} onClick={()=>onAssistance(level)}>{identify?(level===1?'Consigna':level===2?'Componentes':'Bornes'):(level===1?'Esquema':level===2?'Módulos':'Cable')}</button>)}</div>

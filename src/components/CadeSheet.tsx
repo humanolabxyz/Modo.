@@ -51,7 +51,7 @@ export function CadeShape({o}:{o:CadeObject}){
     <T x={x} y={y-4.2} anchor="middle" size={3.2} bold>M</T><T x={x-6.5} y={y+3.9} anchor="middle" size={3}>3</T><path {...S} strokeWidth={.45} d={`M${x+1} ${y+4} q1.6 -2.6 3.2 0 t3.2 0`}/>
     {o.ports?.slice(0,3).map(p=><T key={p.terminal} x={p.x+1.6} y={y-14} >{p.terminal}</T>)}
     {o.ports?.slice(3,6).map(p=><T key={p.terminal} x={p.x+1.2} y={y+15} >{p.terminal}</T>)}
-    <path {...S} strokeWidth={.9} d={`M${x+11.7} ${y-2.7} V${y+2.7}`}/><T x={x+18.4} y={y-14}>PE</T><T x={x-14} y={y+1.5} anchor="end" bold>{reference}</T></>;
+    <path {...S} strokeWidth={.9} d={`M${x+11.7} ${y-2.7} V${y+2.7}`}/><T x={x+18.4} y={y-14}>{o.ports?.[6]?.terminal??'PE'}</T><T x={x-14} y={y+1.5} anchor="end" bold>{reference}</T></>;
   }
   case 'breaker1':
    return <><path {...S} d={`M${x} ${y} V${y+5.2} M${x-5} ${y+5.2} L${x} ${y+13.7} M${x} ${y+13.7} V${y+18} M${x} ${y+18} V${y+25.5}`}/>

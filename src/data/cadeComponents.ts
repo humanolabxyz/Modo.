@@ -115,12 +115,13 @@ export const WIRE_ROLES:Record<WireRole,{label:string;colorName:string;note:stri
  power:{label:'Potencia',colorName:'negro',note:'Conductor del circuito de potencia: lleva L1, L2 y L3 desde la red hasta el motor.'},
 };
 export function wireRole(w:CadeObject):WireRole{
+ if(w.type===4010)return 'pe';
  if(w.color)return w.color==='#3d6fae'?'neutral':w.color==='#a64a4a'?'phase':'power';
- return w.type===4009?'neutral':w.type===4010?'pe':'phase';
+ return w.type===4009?'neutral':'phase';
 }
 /** Color con que se dibuja un conductor. */
 export const wireColor=(w:CadeObject)=>w.color??(w.type===4009?'#5a89b9':w.type===4010?'#719359':'#a36264');
 /** Nombre de la alimentación a la que llega una red de conductores («L1», «L», «N»…), si la hay. */
 export function supplyName(cade:Cade,wireId:number){
- return cade.network(wireId).ports.find(p=>/^-?X$/.test(p.reference)&&['L1','L2','L3','L','N','PE'].includes(p.terminal))?.terminal;
+ return cade.network(wireId).ports.find(p=>/^-?X$/.test(p.reference)&&['L1','L2','L3','L','N','PE','R','S','T','F','TP'].includes(p.terminal))?.terminal;
 }

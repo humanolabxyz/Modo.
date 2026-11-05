@@ -34,7 +34,7 @@ function GuideMenu({guide,open,setOpen}:{guide:GuideDock;open:boolean;setOpen:(o
   </div></FloatingWindow>}
  </div>;
 }
-export function ToolDock({tool,onTool,canUndo,canRedo,onUndo,onRedo,selectedWire,onDelete,hasWires,onClearWires,color,onColor,connectingDisabled=false,guide,meterOpen=false,onMeter,clampOpen=false,onClamp,measurementOpen=false}:{tool:BoardTool;onTool:(t:BoardTool)=>void;canUndo:boolean;canRedo:boolean;onUndo:()=>void;onRedo:()=>void;selectedWire:boolean;onDelete:()=>void;hasWires:boolean;onClearWires:()=>void;color:string;onColor:(color:string)=>void;connectingDisabled?:boolean;guide?:GuideDock;meterOpen?:boolean;onMeter?:()=>void;clampOpen?:boolean;onClamp?:()=>void;measurementOpen?:boolean}){
+export function ToolDock({tool,onTool,canUndo,canRedo,onUndo,onRedo,selectedWire,onDelete,hasWires,onClearWires,color,onColor,autoCableColor,connectingDisabled=false,guide,meterOpen=false,onMeter,clampOpen=false,onClamp,measurementOpen=false}:{tool:BoardTool;onTool:(t:BoardTool)=>void;canUndo:boolean;canRedo:boolean;onUndo:()=>void;onRedo:()=>void;selectedWire:boolean;onDelete:()=>void;hasWires:boolean;onClearWires:()=>void;color:string;onColor:(color:string)=>void;autoCableColor?:boolean;connectingDisabled?:boolean;guide?:GuideDock;meterOpen?:boolean;onMeter?:()=>void;clampOpen?:boolean;onClamp?:()=>void;measurementOpen?:boolean}){
  const [pickerOpen,setPickerOpen]=useState(false);
  const [eraseOpen,setEraseOpen]=useState(false),eraseGroup=useRef<HTMLDivElement>(null);
  const eraseGesture=useRef<{x:number;y:number;swiped:boolean}|null>(null),eraseSwiped=useRef(false);
@@ -53,7 +53,7 @@ export function ToolDock({tool,onTool,canUndo,canRedo,onUndo,onRedo,selectedWire
   </div>:<button key={id} type="button" className={tool===id?'active':''} aria-label={label} aria-pressed={tool===id} disabled={id==='connect'&&connectingDisabled} title={`${label} (${key})`} onClick={()=>{setEraseOpen(false);onTool(id);}}><Icon size={20}/><span className="dock-tooltip">{label} <kbd>{key}</kbd></span></button>)}
   {onMeter&&<button type="button" className={meterOpen||clampOpen?'active':''} aria-label="Multímetro del panel" aria-pressed={meterOpen||clampOpen} title="Multímetro" onClick={()=>{setPickerOpen(false);onMeter();}}><Gauge size={20}/><span className="dock-tooltip">Multímetro</span></button>}
 
-  <CableColorPicker value={color} onChange={onColor} selected={selectedWire}/>
+  <CableColorPicker value={color} onChange={onColor} selected={selectedWire} auto={autoCableColor}/>
   {guide&&<><i/><GuideMenu guide={guide} open={pickerOpen} setOpen={setPickerOpen}/></>}
   <i/><button aria-label="Deshacer" title="Deshacer (Ctrl+Z)" disabled={!canUndo} onClick={onUndo}><Undo2 size={19}/></button><button aria-label="Rehacer" title="Rehacer (Ctrl+Shift+Z)" disabled={!canRedo} onClick={onRedo}><Redo2 size={19}/></button>
   {selectedWire&&<><i/><button className="dock-delete" aria-label="Eliminar cable seleccionado" title="Eliminar cable seleccionado (Supr)" onClick={onDelete}><Trash2 size={19}/></button></>}

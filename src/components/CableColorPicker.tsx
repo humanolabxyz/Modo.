@@ -3,7 +3,7 @@ import {WIRE_PALETTE} from '../data/wireColors';
 import {FloatingDisclosure} from './FloatingDisclosure';
 
 const COLORS=WIRE_PALETTE.map(c=>[c.name,c.hex]);
-export function CableColorPicker({value,onChange,selected=false}:{value:string;onChange:(color:string)=>void;selected?:boolean}){
+export function CableColorPicker({value,onChange,selected=false,auto=false}:{value:string;onChange:(color:string)=>void;selected?:boolean;auto?:boolean}){
  const menu=useRef<HTMLDetailsElement>(null);
  const title=selected?'Color del cable seleccionado':'Color para nuevos cables';
  const choose=(color:string)=>{onChange(color);if(menu.current)menu.current.open=false};
@@ -12,7 +12,7 @@ export function CableColorPicker({value,onChange,selected=false}:{value:string;o
    <strong>{selected?'Este cable':'Nuevos cables'}</strong>
    <div className="cable-color-presets" role="group" aria-label="Colores de cable">{COLORS.map(([name,color])=><button key={color} type="button" aria-label={`Cable ${name.toLocaleLowerCase('es')}`} aria-pressed={value.toLowerCase()===color} title={name} onClick={()=>choose(color)}><span style={{background:color}}/><small>{name}</small></button>)}</div>
    <label>Otro color<input aria-label={`Personalizar ${title.toLocaleLowerCase('es')}`} type="color" value={value} onChange={e=>choose(e.target.value)}/></label>
-   <p>{selected?'Cambia solo el cable seleccionado.':'Elige el color antes de unir dos bornes.'}</p>
+   <p>{selected?'Cambia solo el cable seleccionado.':auto?'La guía asigna un color a cada cable. Aquí puedes cambiar el del próximo.':'Elige el color antes de unir dos bornes.'}</p>
   </div>
  </FloatingDisclosure>;
 }

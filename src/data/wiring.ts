@@ -67,7 +67,7 @@ export function readPractice(value:unknown):PracticeDocument{
   ids.add(w.id);return w;
  });
  const diagram=v.diagram as PracticeDocument['diagram'];
- if(diagram&&(!['class_photo','user_image'].includes(diagram.origin)||typeof diagram.name!=='string'||typeof diagram.src!=='string'||!(/^\/diagrams\/(?:clase-[123]\.jpg|leccion-[a-z0-9-]+\.png)$/.test(diagram.src)||/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(diagram.src))))throw new Error('La referencia de diagrama no es una imagen admitida.');
+ if(diagram&&(!['class_photo','user_image'].includes(diagram.origin)||typeof diagram.name!=='string'||typeof diagram.src!=='string'||!(/^\/diagrams\/(?:clase-[123]\.jpg|leccion-[a-z0-9-]+\.png|leccion-matias\.svg)$/.test(diagram.src)||/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(diagram.src))))throw new Error('La referencia de diagrama no es una imagen admitida.');
  const stepIds=new Set<string>();
  const allSteps=[...keepSteps,...(archive?.steps||[])].map((raw:unknown)=>{
   const s=raw as PracticeDocument['steps'][number],r=s?.region;

@@ -1,33 +1,24 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
 const out='qa/two-contactor-lesson';fs.mkdirSync(out,{recursive:true});
 await build({stdin:{resolveDir:process.cwd(),contents:"export * from './src/data/lessons';export * from './src/data/lessonTeaching';export * from './src/data/lessonSchematics';export * from './src/data/lessonAssessment';export * from './src/data/assessmentState';export * from './src/data/wiring';export * from './src/data/simulation';export * from './src/data/panel';export * from './src/data/practice';export * from './src/data/panelElectrical';export * from './src/data/panelHistory';"},bundle:true,platform:'node',format:'cjs',outfile:out+'/model.cjs',logLevel:'silent'});
 const m=await import('./two-contactor-lesson/model.cjs?'+Date.now()),checks=[];
-const source=JSON.parse(fs.readFileSync('src/data/twoContactorSource.json','utf8')),raw=fs.readFileSync('referencias/lecciones-estrella-triangulo/'+source.source),original=JSON.parse(raw),lesson=m.TWO_CONTACTOR_LESSON,cade=m.LESSON_SCHEMATICS.estrellaDosContactores;
-assert.equal(createHash('sha256').update(raw).digest('hex'),source.sha256);assert.equal(original.steps.length,42);assert.equal(original.wires.length,37);assert.equal(lesson.steps.length,40);
-const board=JSON.parse(fs.readFileSync('referencias/lecciones-estrella-triangulo/modo-panel-tablero-bien-armado-2026-10-29.json','utf8')),isForce=id=>/^FUENTE:[RST]$|^BORNERA_MOTOR:|:[LT][123]$|:TP/.test(id);
-const boardPairs=board.wires.map(w=>[w.from.terminalId,w.to.terminalId]),lessonControl=lesson.pairs.filter(([a,b])=>!isForce(a)&&!isForce(b)),lessonForce=lesson.pairs.filter(([a,b])=>isForce(a)||isForce(b));
-assert.equal(boardPairs.length,23);assert.deepEqual(lessonControl,boardPairs,'El mando de la lección es idéntico al tablero bien armado por el autor: mismos bornes, mismo sentido y mismo orden');
-assert.deepEqual(lesson.pairs.slice(0,23),boardPairs,'Los 23 primeros pasos son el mando, en el orden del tablero');
-const normal=([a,b])=>[a,b].map(id=>id.replace('BOTONERAS:S3:','BOTONERAS:S1:')).sort().join('|');
-const feedFix=([a,b])=>/^BORNERA_MOTOR:[UVW]1$/.test(a)&&/^CONTACTOR_TERMICO:L[123]$/.test(b)?['TEMPORIZADOR_1:'+b.split(':')[1],b]:[a,b];
-assert.deepEqual(lessonForce.map(normal).sort(),original.wires.map(w=>[w.from.terminalId,w.to.terminalId]).filter(([a,b])=>isForce(a)||isForce(b)).map(feedFix).map(normal).sort(),'Los 17 cables de fuerza son los del archivo recibido, salvo que KM1 (triángulo) toma L1, L2 y L3 de KT1 y no U1, V1 y W1 (figura Nº2 de la guía)');
-assert.deepEqual(lesson.pairs.slice(23),lessonForce,'La fuerza va después del mando');
-checks.push('Fuente íntegra; 40 cables: el mando (23) idéntico al tablero bien armado, con piloto rojo y aviso, y la fuerza (17) del archivo recibido; sin KM3');
-const wires=lesson.pairs.map(([a,b])=>m.createCable(a,b,[])),nets=m.cableNodes(wires);
-const originalDrawing=JSON.parse(fs.readFileSync('src/data/cadeEstrellaTriangulo.json','utf8'));
-const labels={58:'KT1',62:'KM1'},bankRef={KM1:'KT1',KM2:'KM1',KM3:'KM2'};
-const lampShift=o=>({...o,y:o.y+13,box:o.box.map((v,i)=>i%2?v+13:v),ports:o.ports.map(p=>({...p,y:p.y+13}))}),nc=originalDrawing.objects.find(o=>o.id===62),link=originalDrawing.objects.find(o=>o.id===75);
-const expectedDrawing={...originalDrawing,source:originalDrawing.source+' · rotulado con los nombres del banco (KT1, KM1, KM2) y bornes R, S, T',objects:originalDrawing.objects.map(o=>{let n={...o,...(bankRef[o.reference]?{reference:bankRef[o.reference]}:{}),...(labels[o.id]?{reference:labels[o.id]}:{}),...(o.id===1?{pins:['R','S','T','PE']}:{})};if(o.id===75)n.y2=152;if(o.id===66)n=lampShift(n);if(o.id===76)n.y=o.y+13;return n;}).concat([{...nc,id:1001,reference:'KM2',y:152,box:nc.box.map((v,i)=>i%2?v+23:v),ports:nc.ports.map(p=>({...p,y:p.y+23}))},{...link,id:1002,x:265,y:170,x2:265,y2:175}])};
-assert.deepEqual({...cade.drawing,objects:cade.drawing.objects.map(o=>({...o,...(o.ports?{ports:o.ports.map(({panel,anchor,...p})=>p)}:{})}))},expectedDrawing,'El dibujo es el base con tres adaptaciones: rótulos del banco (KT1, KM1, KM2), bornes R, S, T y el segundo NC del piloto rojo (el triángulo ya viene corregido; ver qa/verify-power-diagram.mjs)');
-assert.equal(originalDrawing.objects.find(o=>o.id===6).reference,'KM2','El dibujo base conserva sus rótulos');assert.equal(cade.SYMBOLS.find(o=>o.id===3).reference,'KT1','El contactor principal del dibujo es KT1 (temporizador)');assert.equal(cade.SYMBOLS.find(o=>o.id===57).reference,'KT1','La retención 13–14 es de KT1');assert.equal(cade.SYMBOLS.find(o=>o.id===58).reference,'KT1','Los contactos temporizados son KT1');
-assert.equal(lesson.diagram.src,original.diagram.src);
-const traces=m.lessonTraces(lesson);for(let i=0;i<traces.length;i++)assert.ok(traces[i]?.wires.length,`Tramo de referencia para paso ${i+1}`);
-for(const t of traces.filter(Boolean))for(const id of t.wires)assert.ok(id===1002||originalDrawing.objects.some(o=>o.id===id&&o.type===4000),'Solo se iluminan líneas originales, más el tramo agregado del piloto rojo (1002)');
+const source=JSON.parse(fs.readFileSync('src/data/twoContactorMatias.json','utf8'));
+const lesson=m.TWO_CONTACTOR_LESSON,cade=m.LESSON_SCHEMATICS.estrellaDosContactores;
+assert.deepEqual(lesson.pairs,source.pairs);
+assert.equal(lesson.steps.length,41);
+assert.equal(fs.existsSync('public'+lesson.diagram.src),true);
+const wires=lesson.pairs.map(([a,b])=>m.createCable(a,b,[]));
+const terminals=[...new Set(lesson.pairs.flat())];
+assert.deepEqual(cade.PORTS.flatMap(p=>p.panel?[p.panel]:[]).sort(),terminals.sort());
+const traces=m.lessonTraces(lesson);
+for(const [i,trace] of traces.entries())assert.ok(trace?.wires.length,`Tramo de referencia para paso ${i+1}`);
+for(const [i,a] of terminals.entries())for(const b of terminals.slice(i+1)){
+ assert.equal(Boolean(m.traceStep(cade,a,b)),m.connectedByCables(a,b,wires),a+' ↔ '+b);
+}
+checks.push('41 pares en el orden de Matías. Cada paso tiene trazo y las redes del esquema coinciden con el cableado.');
 for(const s of lesson.steps){const t=m.teachingForStep(s,lesson.schematic);for(const k of ['why','behavior','without','question'])assert.ok(t[k].length>30);assert.ok(t.criteria.length>=2);assert.ok(t.components.length>0);}
-checks.push('Diagrama = recibido con rótulos del banco y triángulo corregido, misma imagen del archivo; 40 tramos relacionados en líneas del dibujo (también los 3 cables del piloto rojo), sin mover ni redibujar elementos; explicación y preguntas en 40 pasos');
 const assessment=m.newAssessment('estrellaDosContactores');assert.ok(m.assessLesson(assessment,wires).complete);assert.equal(m.assessLesson(assessment,[]).complete,false);
 const practice={...m.emptyPractice(),title:lesson.title,mode:'guided',wires,steps:lesson.steps,diagram:lesson.diagram,stepIndex:5};assert.deepEqual(m.readPractice(practice),practice);assert.deepEqual(m.readPanelFile(m.panelExport(practice,m.newPanelHistory(practice))).practice,practice);
 checks.push('Evaluación reconoce el montaje y rechaza el vacío; práctica y exportación/historial conservan la nueva lección');

@@ -1,5 +1,5 @@
 import {TERMINALS} from './panel';
-import {relayIds,simulationContacts,type RelayState,type SimulationInput} from './simulation';
+import {relayIds,simulationContacts,type MotorState,type RelayState,type SimulationInput} from './simulation';
 import type {BananaCable} from './practice';
 import {solvePanelAC,type ACBranch} from './panelAC';
 import {motorEquivalent,type MotorModelSettings} from './panelMotorDynamics';
@@ -56,7 +56,8 @@ export function panelElectrical(wires:BananaCable[],input:SimulationInput,relays
  // Propagate source family through loads without joining their terminals as conductors.
  for(let i=0;i<branches.length+1;i++){let changed=false;for(const b of branches){const both=new Set([...(families.get(b.a)??[]),...(families.get(b.b)??[])]);for(const id of [b.a,b.b])if(both.size>(families.get(id)?.size??0)){families.set(id,new Set(both));changed=true;}}if(!changed)break;}
  if([...families.values()].some(f=>f.size>1))fault='Mando y fuerza unidos: revisa la separación de las fuentes.';
- const same=(a:string,b:string)=>root(`BORNERA_MOTOR:${a}`)===root(`BORNERA_MOTOR:${b}`),connection=same('U2','V2')&&same('V2','W2')?'star':same('U1','W2')&&same('V1','U2')&&same('W1','V2')?'delta':null;
+ const same=(a:string,b:string)=>root(`BORNERA_MOTOR:${a}`)===root(`BORNERA_MOTOR:${b}`);
+ const connection:MotorState['connection']=same('U2','V2')&&same('V2','W2')?'star':same('U1','W2')&&same('V1','U2')&&same('W1','V2')?'delta':null;
  const coupled=model.motorMode==='induction'&&connection?[{ids:['winding-U','winding-V','winding-W'],ports:['U','V','W'].map(p=>[root(`BORNERA_MOTOR:${p}1`),root(`BORNERA_MOTOR:${p}2`)] as [string,string]),admittance:openIndex>=0?openWindingAdmittance(motorAdmittance(model),openIndex):motorAdmittance(model)}]:[];
  const solved=solvePanelAC(coupled.length?branches.filter(b=>!b.id.startsWith('winding-')):branches,Object.fromEntries(Object.keys(fixedRe).map(id=>[id,{re:fixedRe[id],im:fixedIm[id]}])),coupled);
  fault??=solved.fault;

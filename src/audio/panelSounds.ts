@@ -4,7 +4,7 @@
  *  · pulsador: «tac» seco al apretar y un «tic» más suave al soltar;
  *  · contactor: golpe del núcleo y choque de la armadura al cerrar, y un «clac» más corto al abrir; cada módulo tiene su tono
  *    (el temporizador es el más grave, por ser el más pesado);
- *  · temporizador neumático: microinterruptor y soplido de aire cuando termina el retardo;
+ *  · temporizador neumático: golpe de carcasa y chasquido seco del mecanismo al conmutar;
  *  · relé térmico: chasquido metálico al dispararse (TEST) y clic al rearmarse (RESET);
  *  · interruptores FUERZA y CONTROL: golpe grave y clic doble; enchufe: clac de plástico.
  *  · cables banana: «tuc» del plástico al entrar en el borne con el resorte metálico, y un «plop» más suave al sacarlo;
@@ -12,9 +12,9 @@
  * Se puede silenciar (se recuerda en el navegador). Los sonidos solo se emiten cuando la persona actúa o cuando el circuito cambia de estado.
  */
 import {useSyncExternalStore} from 'react';
-import type {SimulationInput} from '../data/simulation';
+import type {MotorState,SimulationInput} from '../data/simulation';
 
-export type ElementSound='pulsador-abajo'|'pulsador-arriba'|'contactor-cierra'|'contactor-abre'|'temporizado'|'termico-dispara'|'termico-rearma'|'interruptor'|'enchufe'|'cable-conecta'|'cable-desconecta'|'paso-correcto';
+export type ElementSound='pulsador-abajo'|'pulsador-arriba'|'contactor-cierra'|'contactor-abre'|'temporizador-inicia'|'temporizador-ajuste'|'temporizado'|'termico-dispara'|'termico-rearma'|'interruptor'|'enchufe'|'cable-conecta'|'cable-desconecta'|'paso-correcto';
 
 const KEY='panellab.sonidos.v1';
 let enabled=true;
@@ -49,18 +49,6 @@ function audio():AudioContext|null{
  return ctx;
 }
 
-/** Tono con barrido de frecuencia y envolvente que cae rápido. */
-function tone(c:AudioContext,at:number,from:number,to:number,duration:number,gain:number,type:OscillatorType='sine'){
- const osc=c.createOscillator(),g=c.createGain();
- osc.type=type;
- osc.frequency.setValueAtTime(from,at);
- osc.frequency.exponentialRampToValueAtTime(Math.max(20,to),at+duration);
- g.gain.setValueAtTime(.0001,at);
- g.gain.exponentialRampToValueAtTime(gain,at+.002);
- g.gain.exponentialRampToValueAtTime(.0001,at+duration);
- osc.connect(g);g.connect(bus!);
- osc.start(at);osc.stop(at+duration+.02);
-}
 /** Ráfaga de ruido filtrado: el «golpe» de los choques mecánicos. */
 function burst(c:AudioContext,at:number,duration:number,gain:number,filter:BiquadFilterType,freq:number,q=1){
  const src=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();
@@ -95,29 +83,53 @@ function slide(c:AudioContext,at:number,duration:number,from:number,to:number,ga
 }
 
 /** `k` desplaza el tono: cada módulo y cada pulsador suena un poco distinto. Todos suenan como objetos reales golpeados (plástico, metal, bobina). */
-const SOUNDS:Record<ElementSound,(c:AudioContext,t:number,k:number)=>void>={
+const SOUNDS:Record<ElementSound,(c:AudioContext,t:number,k:number,element?:string)=>void>={
  /* Pulsador industrial: chasquido del resorte, tope del émbolo y golpe del plástico contra la base. */
  'pulsador-abajo':(c,t,k)=>{
-  burst(c,t,.004,.5,'highpass',3200);rings(c,t,k,[[2650,.014,.22],[4350,.009,.12]]);
-  rings(c,t+.006,k,[[215,.045,.4],[470,.03,.22],[980,.02,.12]]);
+  burst(c,t,.007,.46,'bandpass',1700*k,1);
+  rings(c,t,k,[[460,.006,.17],[1140,.004,.12],[2690,.003,.10],[4310,.0018,.05]]);
+  burst(c,t+.006,.004,.15,'highpass',2700*k);
  },
- 'pulsador-arriba':(c,t,k)=>{burst(c,t,.003,.3,'highpass',3600);rings(c,t,k,[[3100,.01,.14],[330,.03,.16]]);},
+ 'pulsador-arriba':(c,t,k)=>{
+  burst(c,t,.004,.27,'bandpass',2500*k,1);
+  rings(c,t,k,[[690,.004,.095],[1960,.003,.09],[3620,.002,.055]]);
+ },
  /* Contactor que cierra: el núcleo y la armadura chocan (golpe grave que retumba en la carcasa), «clac» metálico y rebote de los contactos. */
- 'contactor-cierra':(c,t,k)=>{
+ 'contactor-cierra':(c,t,k,element)=>{
+  if(element?.startsWith('TEMPORIZADOR_')){
+   burst(c,t,.012,.58,'bandpass',910*k,.8);
+   rings(c,t,k,[[155,.018,.40],[376,.011,.32],[880,.007,.23],[2140,.004,.14]]);
+   burst(c,t+.008,.005,.32,'bandpass',2850*k,1);
+   return;
+  }
   rings(c,t,k,[[66,.17,.75],[132,.12,.5],[305,.07,.32],[640,.05,.26],[1180,.05,.22]]);
   burst(c,t,.018,.75,'bandpass',1700*k,.9);
   rings(c,t,k,[[2300,.035,.2],[3700,.022,.13]]);
   rings(c,t+.006,k,[[4300,.012,.1]]);rings(c,t+.012,k,[[4800,.01,.07]]);rings(c,t+.017,k,[[5200,.008,.05]]);
  },
  /* Al abrir: el resorte devuelve la armadura, más seco y ligero. */
- 'contactor-abre':(c,t,k)=>{
+ 'contactor-abre':(c,t,k,element)=>{
+  if(element?.startsWith('TEMPORIZADOR_')){
+   burst(c,t,.008,.34,'bandpass',1360*k,.9);
+   rings(c,t,k,[[225,.011,.24],[708,.007,.15],[1990,.004,.11]]);
+   return;
+  }
   burst(c,t,.012,.4,'bandpass',1100*k,1);
   rings(c,t,k,[[95,.07,.38],[210,.045,.22],[900,.04,.3],[2100,.022,.18]]);
  },
- /* Temporizador neumático: el aire se escapa de la membrana y el microinterruptor del cabezal conmuta. */
+ /* Temporizador: el ajuste tiene un pequeño trinquete y la conmutación golpea la carcasa. */
+ 'temporizador-ajuste':(c,t,k)=>{
+  burst(c,t,.004,.19,'bandpass',2800*k,1.2);
+  rings(c,t+.003,k,[[1130,.004,.075],[2620,.002,.055]]);
+ },
+ 'temporizador-inicia':(c,t,k)=>{
+  burst(c,t,.006,.27,'bandpass',1250*k,1);
+  rings(c,t,k,[[290,.009,.15],[810,.006,.12],[2270,.003,.065]]);
+ },
  'temporizado':(c,t,k)=>{
-  slide(c,t,.1,5200,2600,.1);
-  burst(c,t+.085,.004,.55,'highpass',3000);rings(c,t+.085,k,[[3150,.012,.3],[5200,.007,.17],[260,.03,.22]]);
+  burst(c,t,.009,.52,'bandpass',1620*k,1);
+  rings(c,t,k,[[235,.012,.29],[595,.009,.25],[1470,.006,.19],[3320,.003,.12]]);
+  burst(c,t+.011,.005,.22,'highpass',2340*k);
  },
  /* Relé térmico: la lámina bimetálica salta de golpe — chasquido agudo y metálico. */
  'termico-dispara':(c,t,k)=>{
@@ -172,7 +184,7 @@ export function playElementSound(kind:ElementSound,element?:string){
  if(!c)return;
  if(c.state==='suspended')void c.resume().catch(()=>{});
  const k=(PITCH[element??'']??1)*(.97+Math.random()*.06);
- try{SOUNDS[kind](c,c.currentTime+.005,k);}catch{record('error:'+kind);/* un sonido que falla no debe afectar al simulador */}
+ try{SOUNDS[kind](c,c.currentTime+.005,k,element);}catch{record('error:'+kind);/* un sonido que falla no debe afectar al simulador */}
 }
 
 /** Sonidos de las acciones de la persona sobre el banco: pulsadores, interruptores, enchufe y relé térmico. */
@@ -188,10 +200,11 @@ export function soundsForInputChange(prev:SimulationInput,next:SimulationInput){
 
 /* ── Motor ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
  * Un solo motor sintetizado que sigue al simulador cada 40 ms: el zumbido magnético de 100 Hz (el doble de la frecuencia de red), el silbido de las ranuras
- * que sube con las revoluciones y el soplo del ventilador. Cuando el montaje es incorrecto se vuelve áspero: más grave y fuerte, con un gruñido que vibra. */
-export type MotorSoundState={fed:boolean;rpm:number;syncRpm:number;/** 0 = sano, 1 = muy mal conectado */rough:number;stalled:boolean};
-type Engine={master:GainNode;humG:GainNode;amp:GainNode;whineG:GainNode;whine:OscillatorNode;fanG:GainNode;fanF:BiquadFilterNode;buzzG:GainNode;lfoDepth:GainNode;hum:OscillatorNode;lfo:OscillatorNode;nodes:AudioScheduledSourceNode[]};
+ * que sube con las revoluciones y el soplo del ventilador. La falta de fase produce un traqueteo pulsante y el rotor frenado un zumbido grave sostenido. */
+export type MotorSoundState={fed:boolean;rpm:number;syncRpm:number;/** 0 = sano, 1 = muy mal conectado */rough:number;stalled:boolean;missingPhase?:boolean;connection?:MotorState['connection']};
+type Engine={master:GainNode;humG:GainNode;humFilter:BiquadFilterNode;amp:GainNode;whineG:GainNode;whine:OscillatorNode;fanG:GainNode;fanF:BiquadFilterNode;buzzG:GainNode;buzzFilter:BiquadFilterNode;lfoDepth:GainNode;hum:OscillatorNode;lfo:OscillatorNode;nodes:AudioScheduledSourceNode[]};
 let engine:Engine|null=null,motorMode:'off'|'ok'|'rough'='off',stallTime=0,lastMotorAt=0,quietSince=0;
+let lastConnection:MotorState['connection']=null,lastFeedAt=0,deltaMakeAt=-Infinity;
 
 function buildEngine(c:AudioContext):Engine{
  const master=c.createGain(),humG=c.createGain(),amp=c.createGain(),whineG=c.createGain(),fanG=c.createGain(),buzzG=c.createGain(),lfoDepth=c.createGain();
@@ -207,7 +220,7 @@ function buildEngine(c:AudioContext):Engine{
  lfo.connect(lfoDepth);lfoDepth.connect(amp.gain);master.connect(bus!);
  const nodes:AudioScheduledSourceNode[]=[hum,sub,whine,buzz,lfo,src];
  nodes.forEach(n=>n.start());
- return {master,humG,amp,whineG,whine,fanG,fanF,buzzG,lfoDepth,hum,lfo,nodes};
+ return {master,humG,humFilter:lp,amp,whineG,whine,fanG,fanF,buzzG,buzzFilter:buzzBp,lfoDepth,hum,lfo,nodes};
 }
 function stopEngine(){
  if(!engine)return;
@@ -221,10 +234,13 @@ export function setMotorSound(state:MotorSoundState|null){
  const k=state?Math.min(1,Math.abs(state.rpm)/Math.max(1,state.syncRpm)):0;
  const audible=!!state&&enabled&&typeof document!=='undefined'&&!document.hidden&&(state.fed||Math.abs(state.rpm)>25);
  stallTime=state?.fed&&state.stalled?stallTime+dt:0;
+ const missingPhase=!!(state?.fed&&state.missingPhase);
+ const blocked=stallTime>=.30&&!missingPhase;
  const rough=state?.fed?Math.max(state.rough,Math.min(1,(stallTime-.35)/.5)):0;
  const mode:'off'|'ok'|'rough'=!audible?'off':rough>.35?'rough':'ok';
  if(mode!==motorMode){if(enabled)record(mode==='off'?'motor:para':mode==='rough'?'motor:falla':motorMode==='off'?'motor:arranca':'motor:normal');motorMode=mode;}
  if(!audible){
+  lastConnection=null;deltaMakeAt=-Infinity;
   if(engine){engine.master.gain.setTargetAtTime(0,ctx!.currentTime,.12);quietSince||=now;if(now-quietSince>1500){stopEngine();quietSince=0;}}
   return;
  }
@@ -232,17 +248,49 @@ export function setMotorSound(state:MotorSoundState|null){
  const c=audio();if(!c)return;
  if(c.state==='suspended')void c.resume().catch(()=>{});
  if(!engine)engine=buildEngine(c);
- const e=engine,t=c.currentTime,fed=!!state!.fed;
+ const e=engine,t=c.currentTime,fed=!!state!.fed,connection=fed?state!.connection:null;
+ if(connection){
+  // El motor sigue girando durante el intervalo abierto entre contactores.
+  if(connection==='delta'&&lastConnection==='star'&&now-lastFeedAt<1000){
+   deltaMakeAt=now;record('motor:cambio-triangulo');
+  }
+  lastConnection=connection;lastFeedAt=now;
+ }
+ const make=connection==='delta'?Math.exp(-(now-deltaMakeAt)/145):0;
  const set=(p:AudioParam,v:number,tc=.07)=>p.setTargetAtTime(v,t,tc);
  /* sano: el zumbido es más fuerte al arrancar (corriente de arranque) y se aplaca cuando el motor toma velocidad */
  const load=fed?1-.45*k:.55*k;
  set(e.master.gain,.2*(fed?1:.7)*(.5+.5*Math.max(k,.35))*(1+.7*rough));
- set(e.humG.gain,(.35+.45*load)*(1+.5*rough));
- set(e.hum.frequency,100+rough*Math.sin(now/260)*3);
+ // En estrella hay menos cuerpo magnético. Al entrar triángulo se oye un
+ // refuerzo breve, separado del sonido de giro y de la velocidad del ventilador.
+ const magneticBody=connection==='star'?.66:1+.40*make;
  set(e.whine.frequency,90+k*640+rough*Math.sin(now/180)*25);
- set(e.whineG.gain,(.015+.09*k)*(1-.5*rough),.08);
- set(e.fanF.frequency,350+k*1700);set(e.fanG.gain,.02+.14*k*k,.1);
- /* áspero: gruñido cuadrado que vibra (modulación de amplitud 6–14 Hz) y sube el zumbido */
- set(e.buzzG.gain,rough*(.5+.3*Math.sin(now/310)),.06);
- set(e.lfo.frequency,6+rough*8);set(e.lfoDepth.gain,rough*.65,.1);
+ set(e.whineG.gain,blocked?0:(.015+.09*k)*(1-.5*rough),.08);
+ set(e.fanF.frequency,350+k*1700);
+ set(e.fanG.gain,blocked?0:.02+.14*k*k,.1);
+ if(missingPhase){
+  // Pulsos irregulares de par: sobresale el traqueteo metálico por encima del giro.
+  const pulse=(.5+.5*Math.sin(now/83+.28*Math.sin(now/197)))**2;
+  set(e.humG.gain,.33+.24*pulse,.023);
+  set(e.humFilter.frequency,570,.045);
+  set(e.hum.frequency,100+2*pulse);
+  set(e.buzzFilter.frequency,1110,.045);
+  set(e.buzzG.gain,.07+.87*pulse,.018);
+  set(e.lfo.frequency,13);set(e.lfoDepth.gain,.48,.1);
+ }else if(blocked){
+  // Corriente con el eje quieto: cuerpo grave fijo, sin cadencia ni ventilador.
+  set(e.humG.gain,.98,.055);
+  set(e.humFilter.frequency,260,.045);
+  set(e.hum.frequency,100);
+  set(e.buzzFilter.frequency,310,.045);
+  set(e.buzzG.gain,.34,.05);
+  set(e.lfoDepth.gain,0,.05);
+ }else{
+  set(e.humG.gain,(.35+.45*load)*(1+.5*rough)*magneticBody,.035);
+  set(e.humFilter.frequency,connection==='star'?395:520+230*make,.045);
+  set(e.hum.frequency,100+rough*Math.sin(now/260)*3);
+  set(e.buzzFilter.frequency,850,.045);
+  set(e.buzzG.gain,rough*(.5+.3*Math.sin(now/310)),.06);
+  set(e.lfo.frequency,6+rough*8);set(e.lfoDepth.gain,rough*.65,.1);
+ }
 }

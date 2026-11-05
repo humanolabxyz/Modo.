@@ -45,7 +45,7 @@ export function stepRope(rope:Rope):boolean{
  n[0]={x:rope.a.x,y:rope.a.y,px:rope.a.x,py:rope.a.y};n[last]={x:rope.b.x,y:rope.b.y,px:rope.b.x,py:rope.b.y};
  for(let k=0;k<iterations;k++){
   for(let i=0;i<last;i++){
-   const p=n[i],q=n[i+1],dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy)||1e-6,diff=(d-seg)/d,wp=i===0?0:1,wq=i+1===last?0:1,w=wp+wq;
+   const p=n[i],q=n[i+1],dx=q.x-p.x,dy=q.y-p.y,d=Math.sqrt(dx*dx+dy*dy)||1e-6,diff=(d-seg)/d,wp=i===0?0:1,wq=i+1===last?0:1,w=wp+wq;
    if(!w)continue;
    p.x+=dx*diff*wp/w;p.y+=dy*diff*wp/w;q.x-=dx*diff*wq/w;q.y-=dy*diff*wq/w;
   }

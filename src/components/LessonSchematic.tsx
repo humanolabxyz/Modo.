@@ -7,7 +7,7 @@ import type {Lesson} from '../data/lessons';
 import type {BananaCable,ManualStep} from '../data/practice';
 /** Esquema de la lección dentro de la ventana de la guía: se acerca a la línea del paso, la ilumina y marca en verde las ya armadas. */
 export function LessonSchematic({lesson,step,steps,wires,onOpenDiagram}:{lesson:Lesson;step:ManualStep;steps:ManualStep[];wires:BananaCable[];onOpenDiagram?:()=>void}){
- const cade=LESSON_SCHEMATICS[lesson.schematic],[full,setFull]=useState(lesson.schematic==='estrellaDosContactores'),originalReference=lesson.schematic==='estrellaDosContactores';
+ const cade=LESSON_SCHEMATICS[lesson.schematic],[full,setFull]=useState(lesson.schematic==='estrellaDosContactores');
  const index=steps.findIndex(x=>x.id===step.id),progress=useMemo(()=>lessonProgress(lesson,index,wires),[lesson,index,wires]);
  const active=progress.ends.length?progress:null,activeIds=useMemo(()=>new Set(progress.active),[progress]),doneIds=useMemo(()=>new Set(progress.done),[progress]);
  const all=cade.drawing.views?.all??{x:0,y:0,w:300,h:200};
@@ -24,7 +24,7 @@ export function LessonSchematic({lesson,step,steps,wires,onOpenDiagram}:{lesson:
  useSvgNavigation(svg,view,()=>{},{duration:360,interactive:false});
  const lit=(j:{x:number;y:number})=>cade.WIRES.some(w=>activeIds.has(w.id)&&(Math.hypot(w.x-j.x,w.y-j.y)<.01||Math.hypot(w.x2-j.x,w.y2-j.y)<.01));
  return <figure className="guide-schematic" data-guide-schematic data-active-wires={activeIds.size}>
-  <svg ref={svg} viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`} role="img" aria-label={originalReference?'Diagrama original de estrella-triángulo':`Esquema del circuito: se ilumina la línea que une ${step.from} con ${step.to}`} preserveAspectRatio="xMidYMid meet" color="#3c4650">
+  <svg ref={svg} viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`} role="img" aria-label={`Esquema del circuito: se ilumina la línea que une ${step.from} con ${step.to}`} preserveAspectRatio="xMidYMid meet" color="#3c4650">
    <rect x={all.x-50} y={all.y-50} width={all.w+100} height={all.h+100} fill="#fff"/>
    {cade.drawing.frame&&<CadeSheetFrame frame={cade.drawing.frame}/>}
    {cade.WIRES.filter(w=>activeIds.has(w.id)).map(w=><line key={`g${w.id}`} x1={w.x} y1={w.y} x2={w.x2} y2={w.y2} stroke="#f7c35f" strokeOpacity=".5" strokeWidth="4.6" strokeLinecap="round" pointerEvents="none"/>)}
@@ -36,6 +36,6 @@ export function LessonSchematic({lesson,step,steps,wires,onOpenDiagram}:{lesson:
    {cade.SYMBOLS.map(o=>o.shape?<g key={o.id} color="#3c4650"><CadeShape o={o}/></g>:null)}
    {active?.ends.map((p,i)=><circle key={i} data-lesson-end={i} cx={p.x} cy={p.y} r="2.7" fill="#fff6dc" stroke="#d98a0f" strokeWidth=".8" className="guide-schematic-end"/>)}
   </svg>
-  <figcaption>{originalReference?<><span>Diagrama original · tramo relacionado</span><span><i className="swatch active"/>Paso actual</span><span><i className="swatch done"/>Ya armado</span></>:<><span><i className="swatch active"/>Línea del paso</span><span><i className="swatch done"/>Ya armada</span>{!active&&<span>Este cable no está en el dibujo original</span>}</>}{onOpenDiagram&&<button type="button" className="guide-open-diagram" onClick={onOpenDiagram}><PanelLeftOpen size={13}/>Abrir en grande</button>}{<button type="button" onClick={()=>setFull(!full)} aria-pressed={full}>{full?<><Minimize2 size={13}/>Acercar a la línea</>:<><Maximize2 size={13}/>Esquema completo</>}</button>}</figcaption>
+  <figcaption><span><i className="swatch active"/>Línea del paso</span><span><i className="swatch done"/>Ya armada</span>{!active&&<span>Sin trazo para este paso</span>}{onOpenDiagram&&<button type="button" className="guide-open-diagram" onClick={onOpenDiagram}><PanelLeftOpen size={13}/>Abrir en grande</button>}{<button type="button" onClick={()=>setFull(!full)} aria-pressed={full}>{full?<><Minimize2 size={13}/>Acercar a la línea</>:<><Maximize2 size={13}/>Esquema completo</>}</button>}</figcaption>
  </figure>;
 }

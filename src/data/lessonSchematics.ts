@@ -1,5 +1,4 @@
 import {LESSON_CADES,type Cade,type CadePort} from './cade';
-import {TWO_CONTACTOR_REFERENCE_PAIRS} from './twoContactorReference';
 /** Esquemas (estilo CADe) de las lecciones guiadas. Cada borne del esquema sabe qué borne del banco representa (`panel`), así que
  *  para un cable del banco se puede hallar el conductor del esquema que lo representa y encenderlo mientras se arma. */
 export type LessonSchematicId=keyof typeof LESSON_CADES;
@@ -53,7 +52,7 @@ const traceCache=new Map<string,StepTrace[]>();
 /** Trazado en el esquema de cada paso de la lección (se calcula una vez). */
 export function lessonTraces(lesson:Lesson):StepTrace[]{
  let traces=traceCache.get(lesson.id);
- if(!traces){const cade=LESSON_SCHEMATICS[lesson.schematic];traces=lesson.steps.map((s,i)=>{const pair=lesson.schematic==='estrellaDosContactores'?TWO_CONTACTOR_REFERENCE_PAIRS[i]:[s.from,s.to];return pair?traceStep(cade,pair[0],pair[1]):null;});traceCache.set(lesson.id,traces)}
+ if(!traces){const cade=LESSON_SCHEMATICS[lesson.schematic];traces=lesson.steps.map(s=>traceStep(cade,s.from,s.to));traceCache.set(lesson.id,traces)}
  return traces;
 }
 export type LessonProgress={active:number[];done:number[];ends:Pt[]};
@@ -73,23 +72,13 @@ export function stepsForNet(lesson:Lesson,wireId:number):ManualStep[]{
  const ids=new Set(LESSON_SCHEMATICS[lesson.schematic].network(wireId).wires.map(w=>w.id)),traces=lessonTraces(lesson);
  return lesson.steps.filter((_,i)=>traces[i]?.wires.some(id=>ids.has(id)));
 }
-/** Bornes del banco que representa un símbolo del esquema (se iluminan al pulsarlo). En el esquema recibido de 2 contactores los bornes del dibujo son solo anclas:
- *  la correspondencia con el banco sale de los pasos de la lección (el extremo del trazo que cae sobre el símbolo es el borne de ese paso). */
+/** Bornes del banco que se iluminan al seleccionar el símbolo. */
 export function bankTerminalsForSymbol(lesson:Lesson,symbolId:number):string[]{
  const ports=LESSON_SCHEMATICS[lesson.schematic].PORTS.filter(p=>p.objectId===symbolId);
- if(lesson.schematic!=='estrellaDosContactores')return [...new Set(ports.filter(p=>p.panel).map(p=>p.panel!))];
- const traces=lessonTraces(lesson),on=(e:Pt)=>ports.some(p=>Math.abs(e.x-p.x)<.01&&Math.abs(e.y-p.y)<.01),found=new Set<string>();
- lesson.steps.forEach((s,i)=>{const t=traces[i];if(!t)return;if(on(t.ends[0]))found.add(s.from);if(on(t.ends[1]))found.add(s.to)});
- /* La lección pasa por los bornes del motor como punto intermedio de otras conexiones: esos bornes solo se iluminan al pulsar el motor. */
- const isMotor=/^-?M\d*$/.test(LESSON_SCHEMATICS[lesson.schematic].SYMBOLS.find(o=>o.id===symbolId)?.reference??'');
- return [...found].filter(id=>isMotor||!id.startsWith('BORNERA_MOTOR:'));
+ return [...new Set(ports.flatMap(p=>p.panel?[p.panel]:[]))];
 }
 /** Cables de la lección que salen o llegan a algún borne de un símbolo del esquema. */
 export function stepsForSymbol(lesson:Lesson,symbolId:number):ManualStep[]{
- if(lesson.schematic==='estrellaDosContactores'){
-  const ports=LESSON_SCHEMATICS[lesson.schematic].PORTS.filter(p=>p.objectId===symbolId),traces=lessonTraces(lesson);
-  return lesson.steps.filter((_,i)=>traces[i]?.ends.some(e=>ports.some(p=>Math.abs(e.x-p.x)<.01&&Math.abs(e.y-p.y)<.01)));
- }
  const cade=LESSON_SCHEMATICS[lesson.schematic],keys=new Set(cade.PORTS.filter(p=>p.objectId===symbolId&&p.panel).map(p=>p.panel!));
  return lesson.steps.filter(s=>keys.has(s.from)||keys.has(s.to));
 }

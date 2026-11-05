@@ -117,6 +117,23 @@ export function solveSimulation(wires:BananaCable[],input:SimulationInput,previo
  return {...base,motor:force.motor,liveTerminals,liveWireIds:wires.filter(w=>liveTerminals.includes(w.from.terminalId)).map(w=>w.id)};
 }
 
+/** Per-session cache for the immutable cable arrays used by the React runtime.
+ * The logical circuit does not depend on RPM or elapsed time. Resolved faults,
+ * switches, timers, physical contacts and module inventory are all part of the key.
+ * AC currents, motor dynamics and thermal integration continue at every tick. */
+export function createSimulationSolver(){
+ let topology:BananaCable[]|null=null;
+ const cache=new Map<string,SimulationResult>();
+ return (wires:BananaCable[],input:SimulationInput,previous:RelayState=OFF_RELAYS(),timed:readonly string[]=[]):SimulationResult=>{
+  if(topology!==wires){topology=wires;cache.clear();}
+  const key=JSON.stringify([input,previous,timed,MODULES.map(m=>[m.id,m.category]),TERMINALS.length]);
+  const cached=cache.get(key);if(cached)return cached;
+  const result=solveSimulation(wires,input,previous,timed);
+  if(cache.size>=16)cache.delete(cache.keys().next().value!);
+  cache.set(key,result);return result;
+ };
+}
+
 /** Optional example: user-installed cables remain untouched unless this is explicitly loaded. */
 export const SIMULATION_EXAMPLES={
  lamp:{title:'Piloto con pulsador',pairs:[['FUENTE:F','BOTONERAS:S3:3'],['BOTONERAS:S3:4','BOTONERAS:PILOTO_4'],['FUENTE:N','BOTONERAS:N']]},
@@ -145,8 +162,8 @@ export const SIMULATION_EXAMPLES={
  ]},
  simple:{title:'Marcha y paro con retención (el más simple, de un compañero)',pairs:SIMPLE_LESSON.pairs},
  inversion:{title:'Inversión de giro con enclavamiento y paro (circuito de un compañero)',pairs:INVERSION_LESSON.pairs},
- /* Mismo montaje que la lección «Estrella-triángulo · 2 contactores» (40 cables): una sola versión correcta. KT1 = principal con temporizador; KM2 = estrella; KM1 = triángulo. */
- starDelta:{title:'Estrella-triángulo · 2 contactores + conjunto temporizado',pairs:TWO_CONTACTOR_LESSON.pairs.map(([a,b])=>[a,b] as [string,string])},
+ /* Mismo montaje que la lección de dos contactores y temporizador (41 cables del armado final de Matías). KT1 = principal con temporizador; KM2 = estrella; KM1 = triángulo. */
+ starDelta:{title:'Estrella-triángulo de Matías · 2 contactores y temporizador',pairs:TWO_CONTACTOR_LESSON.pairs},
  starDeltaThree:{title:'Estrella-triángulo · 3 contactores + temporizador separado',needs:['CONTACTOR_TRIFASICO_3'],pairs:[
   // Mando: F → térmico → parada → marcha con retención en KM1. KM1:14 alimenta al temporizador y a los dos contactores de conmutación.
   ['FUENTE:F','CONTACTOR_TERMICO:95'],['CONTACTOR_TERMICO:96','BOTONERAS:S2:1'],['BOTONERAS:S2:2','BOTONERAS:S3:3'],

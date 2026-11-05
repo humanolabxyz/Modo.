@@ -35,21 +35,24 @@ export function CableMaterial({id,color}:{id:string;color:string}){
 }
 /** Dibujo puro. Las posiciones las da quien llama; nunca une nodos eléctricos.
  *  Capas estáticas (sin filtros ni animación): halo, sombra, contorno, cuerpo, brillo; ligero incluso con muchos cables. */
-export function BananaCableVisual({id,from,to,color=BANANA_COLOR,sag=100,offsets,fresh=false,path,materialId}:{
+export function BananaCableVisual({id,from,to,color=BANANA_COLOR,sag=100,offsets,fresh=false,path,materialId,detailed=true}:{
  id:string;from:Point;to:Point;color?:string;sag?:number;fresh?:boolean;/** Trazo ya calculado (cuerda con peso); si falta se usa la curva fija. */path?:string;
  offsets?:{from?:Point;to?:Point};
  materialId?:string;
+ detailed?:boolean;
 }){
  const d=path??cablePath(from,to,sag,offsets),safe=/^#[\da-f]{6}$/i.test(color)?color:BANANA_COLOR,gradient=materialId??`cg-${id.replace(/[^\w-]/g,'')}`;
  return <g data-cable-id={id} pointerEvents="none">
   {!materialId&&<CableMaterial id={gradient} color={safe}/>}
+  {detailed&&<>
   <path data-wp className="cable-detail" d={d} fill="none" stroke="#ffffff" strokeWidth="10.5" strokeLinecap="round" opacity=".6"/>
   <path data-wp className="cable-detail" d={d} fill="none" stroke="#10202a" strokeWidth="9" strokeLinecap="round" opacity=".12" transform="translate(5 12)"/>
   <path data-wp className="cable-detail" d={d} fill="none" stroke="#10202a" strokeWidth="6" strokeLinecap="round" opacity=".22" transform="translate(3 8)"/>
+  </>}
   <path data-wp d={d} fill="none" stroke={shade(safe,-.6)} strokeWidth="7.2" strokeLinecap="round"/>
   <path data-wp d={d} fill="none" stroke={safe} strokeWidth="5.2" strokeLinecap="round"/>
-  <path data-wp className="cable-detail" d={d} fill="none" stroke={shade(safe,.45)} strokeWidth="2.2" strokeLinecap="round" opacity=".85" transform="translate(-.7 -1.1)"/>
-  <path data-wp className="cable-detail" d={d} fill="none" stroke="#ffffff" strokeWidth=".9" strokeLinecap="round" opacity=".55" transform="translate(-1.1 -1.8)"/>
+  {detailed&&<path data-wp className="cable-detail" d={d} fill="none" stroke={shade(safe,.45)} strokeWidth="2.2" strokeLinecap="round" opacity=".85" transform="translate(-.7 -1.1)"/>}
+  {detailed&&<path data-wp className="cable-detail" d={d} fill="none" stroke="#ffffff" strokeWidth=".9" strokeLinecap="round" opacity=".55" transform="translate(-1.1 -1.8)"/>}
   {[from,to].map((point,index)=><Plug key={index} point={point} gradient={gradient} color={safe} fresh={fresh} materialId={gradient}/>)}
  </g>;
 }
