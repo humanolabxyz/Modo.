@@ -27,7 +27,21 @@ export function useLaboratory(){
   useEffect(()=>{try{const raw=localStorage.getItem(STORAGE);if(raw){const stored:unknown=JSON.parse(raw);if(typeof stored!=='object'||stored===null||!('projects'in stored)||!Array.isArray(stored.projects)||stored.projects.length===0||stored.projects.length>30)throw new Error('Biblioteca local incompatible.');const projects=stored.projects.map(p=>{const read=parseProject(p);if(!read.ok)throw new Error(read.error);return read.project;});if(new Set(projects.map(p=>p.id)).size!==projects.length)throw new Error('Identidades de proyecto duplicadas.');const active='active'in stored&&typeof stored.active==='string'&&projects.some(p=>p.id===stored.active)?stored.active:projects[0].id;setLibrary({projects,active});}}catch(error){setStorageBlocked(true);setMessage(`No se sobrescribió el guardado anterior. Exporta tu trabajo para conservarlo. ${error instanceof Error?error.message:''}`);}setReady(true);},[]);
   useEffect(()=>{if(!ready||storageBlocked)return;setSaved(false);const persist=()=>{try{localStorage.setItem(STORAGE,JSON.stringify(library));setSaved(true);}catch{setMessage('El navegador no pudo guardar. Exporta el proyecto para conservar tu trabajo.');}};const timer=setTimeout(persist,350);window.addEventListener('pagehide',persist);window.addEventListener('beforeunload',persist);return()=>{clearTimeout(timer);window.removeEventListener('pagehide',persist);window.removeEventListener('beforeunload',persist);};},[library,ready,storageBlocked]);
   useEffect(()=>{pendingPresses.current={};setRuntime(emptyRuntime(project));setPressed({});setWrites({});setControls({});setProtoSwitches({});setDamaged({});},[project.id]);
-  useEffect(()=>{if(!running||paused)return;let last=performance.now();const timer=setInterval(()=>{const now=performance.now();const dt=Math.min((now-last)/1000,.25)*speed;last=now;const presses={...pressedRef.current,...pendingPresses.current};pendingPresses.current={};setRuntime(previous=>tick(executionProject,previous,presses,writesRef.current,dt,activeCompiled.st,controlsRef.current));},100);return()=>clearInterval(timer);},[running,paused,executionProject,speed,activeCompiled]);
+  useEffect(()=>{
+    if(!running||paused)return;
+    let last=performance.now();
+    const resetClock=()=>{last=performance.now();};
+    document.addEventListener('visibilitychange',resetClock);
+    const timer=setInterval(()=>{
+      const now=performance.now(),dt=Math.min((now-last)/1000,.25)*speed;
+      last=now;
+      if(document.hidden)return;
+      const presses={...pressedRef.current,...pendingPresses.current};
+      pendingPresses.current={};
+      setRuntime(previous=>tick(executionProject,previous,presses,writesRef.current,dt,activeCompiled.st,controlsRef.current));
+    },100);
+    return()=>{clearInterval(timer);document.removeEventListener('visibilitychange',resetClock);};
+  },[running,paused,executionProject,speed,activeCompiled]);
   useEffect(()=>{if(runtime.fault&&running){setRunning(false);setMessage(runtime.fault);}},[runtime.fault,running]);
   useEffect(()=>{const release=()=>{setPressed({});setProtoSwitches(s=>{const buttons=new Set(projectRef.current.breadboard.components.filter(c=>c.kind==='button').map(c=>c.id));const next={...s};let changed=false;for(const id of buttons)if(next[id]){next[id]=false;changed=true;}return changed?next:s;});},key=(event:KeyboardEvent)=>{if(event.key===' '||event.key==='Enter')release();};window.addEventListener('pointerup',release);window.addEventListener('pointercancel',release);window.addEventListener('blur',release);window.addEventListener('keyup',key);return()=>{window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);window.removeEventListener('blur',release);window.removeEventListener('keyup',key);};},[]);
   const update=useCallback((change:(p:LabProject)=>LabProject)=>{if(running||!ready)return;const next=change(project);if(next===project)return;setHistory(h=>({past:[...h.past.slice(-49),project],future:[]}));setLibrary(lib=>({...lib,projects:lib.projects.map(p=>p.id===project.id?next:p)}));},[running,ready,project]);

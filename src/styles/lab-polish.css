@@ -24,3 +24,6 @@
 .lab-page .lab-eyebrow,.lab-page .lab-save-state,.lab-page .lab-badge,.lab-page .lab-hmi-heading span{font-size:11px}
 .lab-page .lab-contact-actions button{font-size:11px}
 .lab-page small{font-size:11px}
+
+.lab-opening{position:fixed;z-index:980;top:max(12px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:grid;gap:8px;width:min(320px,calc(100vw - 24px));box-sizing:border-box;padding:14px 16px;border:1px solid #dce4f4;border-radius:16px;background:#f7f9ff;box-shadow:0 12px 28px #1a39662b;color:#1b3973;font-size:14px;font-weight:650;pointer-events:none}
+.lab-opening progress{width:100%;height:8px;accent-color:#073cff}

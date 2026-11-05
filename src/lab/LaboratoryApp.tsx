@@ -40,12 +40,20 @@ export default function LaboratoryApp(){
   const OUTSIDE_PROJECT:readonly Tool[]=['temperature','detectors','soldering','geogebra'];
   const changeTool=(id:Tool)=>{if(lab.running&&OUTSIDE_PROJECT.includes(id))lab.stop();setTool(id);const url=new URL(location.href);url.searchParams.set('tool',id);if(id!=='geogebra'&&id!=='temperature'&&id!=='detectors'&&id!=='breadboard')url.searchParams.delete('leccion');history.replaceState(null,'',url);};
   const toolRequest=useRef(0);
+  const [opening,setOpening]=useState<Tool|null>(null);
   const geoNavigation=useRef<GeoGebraHandle>(null);
   const openTool=async(id:Tool,index:number)=>{
     const request=++toolRequest.current;
-    if(id===tool)return;
-    try{await LOADERS[id]();if(tool==='geogebra'&&geoNavigation.current)await new Promise<void>(resolve=>geoNavigation.current!.save(resolve));if(request===toolRequest.current)motion(()=>changeTool(id),'stage',direction(TOOLS.findIndex(x=>x.id===tool),index))}
-    catch{lab.setMessage('No se pudo abrir la herramienta. Vuelve a intentarlo.')}
+    if(id===tool){setOpening(null);return;}
+    setOpening(id);
+    try{
+      await Promise.all([LOADERS[id](),new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve())))]);
+      if(request!==toolRequest.current)return;
+      if(tool==='geogebra'&&geoNavigation.current)await new Promise<void>(resolve=>geoNavigation.current!.save(resolve));
+      if(request===toolRequest.current)motion(()=>{changeTool(id);setOpening(null);},'stage',direction(TOOLS.findIndex(x=>x.id===tool),index));
+    }catch{
+      if(request===toolRequest.current){setOpening(null);lab.setMessage('No se pudo abrir la herramienta. Vuelve a intentarlo.');}
+    }
   };
   /* Tableros, PLC, HMI y Procesos comparten un mismo proyecto: se muestran como un grupo que se abre al estar dentro de él. */
   const inGroup=TOOL_GROUPS[0].tools.includes(tool);
@@ -58,10 +66,11 @@ export default function LaboratoryApp(){
     </div>}
     </div>}<div className="lab-workspace">
       <div className="lab-editor"><div className="lab-editor-title"><div><span className="lab-eyebrow">TU ESPACIO DE TRABAJO</span><h1>{TOOLS.find(t=>t.id===tool)!.name}</h1></div><div className={`lab-state ${lab.running?'is-on':''}`}><i/>{tool==='geogebra'||tool==='temperature'||tool==='detectors'?'Herramienta libre':lab.running?'Simulación activa':'Modo diseño'}{lab.running?<small>{lab.runtime.seconds.toFixed(1)} s</small>:null}</div></div>
+        {opening&&<div className="lab-opening" role="status"><span>Abriendo {TOOLS.find(t=>t.id===opening)?.name}…</span><progress aria-label="Cargando herramienta"/></div>}
         {lab.message?<div className="lab-notice" role="status"><span>{lab.message}</span><button aria-label="Cerrar aviso" onClick={()=>lab.setMessage('')}><X size={16}/></button></div>:null}
         {help?<section className="lab-explanation"><button aria-label="Cerrar explicación" onClick={()=>setHelp(false)}><X size={16}/></button><h2>Un proyecto, varias herramientas</h2><p>El esquema prueba la maniobra de relés. El PLC controla la bomba; la planta devuelve el nivel y la HMI permite operar las mismas señales. La protoboard utiliza un modelo DC separado y se guarda en el mismo proyecto.</p><p>Tu panel de práctica y el material de estudio conservan sus recorridos. Puedes volver a ellos desde la barra superior.</p></section>:null}
         {inGroup?<div className="automation-context" role="note"><strong>Automatización</strong><span>{lab.project.equipment?.cabinet?'Control de una bomba · Tablero y PLC comparten el montaje. HMI y Procesos son vistas complementarias.':'Un proyecto compartido · Montaje, programa, pantalla y proceso.'}</span></div>:null}
-        <Suspense fallback={<div className="lab-loading" role="status">Abriendo herramienta…</div>}>{View?<View key={`${lab.project.id}:${tool}`} lab={lab}/>:tool==='geogebra'?<GeoGebraView navigationRef={geoNavigation}/>:tool==='temperature'?<TemperatureView/>:tool==='detectors'?<DetectorsView/>:tool==='soldering'?<CableBenchView standalone onClose={()=>changeTool('breadboard')}/>:<BreadboardView key={`${lab.project.id}:breadboard`} lab={lab.board}/>}</Suspense>
+        <Suspense fallback={<div className="lab-loading" role="status">Abriendo {TOOLS.find(t=>t.id===tool)?.name}…</div>}>{View?<View key={`${lab.project.id}:${tool}`} lab={lab}/>:tool==='geogebra'?<GeoGebraView navigationRef={geoNavigation}/>:tool==='temperature'?<TemperatureView/>:tool==='detectors'?<DetectorsView/>:tool==='soldering'?<CableBenchView standalone onClose={()=>changeTool('breadboard')}/>:<BreadboardView key={`${lab.project.id}:breadboard`} lab={lab.board}/>}</Suspense>
       </div>
     </div>
   </div>;

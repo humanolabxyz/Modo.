@@ -6,7 +6,11 @@
     }).catch(error => {
       console.warn('modo.: no se pudo preparar la caché sin conexión.', error);
     });
-    if (document.readyState === 'complete') void register();
-    else window.addEventListener('load', register, {once: true});
+    const schedule = () => window.setTimeout(() => {
+      if ('requestIdleCallback' in window) window.requestIdleCallback(register, {timeout: 2500});
+      else void register();
+    }, 750);
+    if (document.readyState === 'complete') schedule();
+    else window.addEventListener('load', schedule, {once: true});
   }
 </script>

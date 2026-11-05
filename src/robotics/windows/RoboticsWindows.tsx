@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Bot, Copy, Download, FilePlus2, LayoutGrid, Trash2, Upload} from 'lucide-react';
+import {Bot, Copy, Download, FilePlus2, LayoutGrid, Monitor, Trash2, Upload} from 'lucide-react';
 import {FloatingWindow} from '../../components/FloatingWindow';
 import type {RoboticsProjects} from '../project/useRoboticsProjects';
 import {TEMPLATES} from '../project/templates.ts';
@@ -55,19 +55,21 @@ export function RoboticsToolWindows({windows, ctx, armController, armVisible}: P
   </>;
 }
 
-type ProjectsProps = {projects: RoboticsProjects; windows: RoboticsWindows; onClose(): void; onOpenProjects(): void; onArena?(): void};
+type Prepare = (label: string, action: () => void) => void;
+type ProjectsProps = {prepare: Prepare; projects: RoboticsProjects; windows: RoboticsWindows; lightGraphics: boolean; toggleGraphics(): void; onClose(): void; onOpenProjects(): void; onArena?(): void};
 
 /** Menú del proyecto: nombre, nuevo/duplicar, exportar/importar y restablecer la disposición de ventanas. */
-export function ProjectOptionsWindow({projects, windows, onClose, onOpenProjects, onArena}: ProjectsProps) {
+export function ProjectOptionsWindow({prepare, projects, windows, lightGraphics, toggleGraphics, onClose, onOpenProjects, onArena}: ProjectsProps) {
   const done = <T,>(ok: T) => { onClose(); return ok; };
   return <FloatingWindow storageId={storageIdOf('options')} title="Mi proyecto" eyebrow="Robótica" width={380} side="right" className="rb-window rb-project-window" closeLabel="Cerrar opciones del proyecto" onClose={onClose}>
     <div className="rb-project-menu">
       <label>Nombre del proyecto<input aria-label="Nombre del proyecto" value={projects.project.name} maxLength={100} disabled={!projects.ready} onChange={e => projects.rename(e.target.value)} /></label>
       <p className="rb-save-status" role="status">{!projects.ready ? 'Abriendo biblioteca…' : projects.storageBlocked ? 'Guardado desactivado' : projects.saved ? 'Guardado en este navegador' : 'Guardando…'}</p>
       <button type="button" className="rb-row" onClick={() => { onClose(); onOpenProjects(); }}><LayoutGrid size={18} /><span><strong>Mis proyectos</strong><small>{projects.projects.length} en este navegador</small></span></button>
+      <button type="button" className="rb-row" aria-pressed={lightGraphics} onClick={toggleGraphics}><Monitor size={18} /><span><strong>Gráficos ligeros</strong><small>{lightGraphics ? 'Activados · menor resolución en la pizarra 3D' : 'Desactivados · actívalos si mover la cámara va lento'}</small></span></button>
       {onArena && <button type="button" className="rb-row" aria-label="Entrar a la arena de sumo" onClick={() => {onClose(); onArena();}}><Bot size={18} /><span><strong>Arena de sumo</strong><small>Enfrenta dos robots guardados o prueba ejemplos</small></span></button>}
       <button type="button" className="rb-row" aria-label="Nuevo proyecto vacío" disabled={!projects.ready} onClick={() => { if (projects.create()) onClose(); }}><FilePlus2 size={18} /><span><strong>Nuevo proyecto vacío</strong><small>Empieza desde cero</small></span></button>
-      {TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" data-template={t.id} aria-label={`Nuevo desde plantilla: ${t.name}`} disabled={!projects.ready} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small className="rb-template-layout">{t.layout}</small><small>{t.summary}</small></span></button>)}
+      {TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" data-template={t.id} aria-label={`Nuevo desde plantilla: ${t.name}`} disabled={!projects.ready} onClick={() => prepare('Cargando robot…', () => { if (projects.createFromTemplate(t.id)) onClose(); })}><Bot size={18} /><span><strong>{t.name}</strong><small className="rb-template-layout">{t.layout}</small><small>{t.summary}</small></span></button>)}
       <button type="button" className="rb-row" aria-label="Duplicar proyecto" disabled={!projects.ready} onClick={() => { if (projects.duplicate()) onClose(); }}><Copy size={18} /><span><strong>Duplicar proyecto</strong></span></button>
       <button type="button" className="rb-row" aria-label="Exportar proyecto" onClick={projects.exportActive}><Download size={18} /><span><strong>Exportar proyecto</strong><small>Archivo .modo.json</small></span></button>
       <label className="rb-row rb-import"><Upload size={18} /><span><strong>Importar proyecto</strong><small>Se agrega como copia</small></span><input aria-label="Importar proyecto" type="file" accept=".json,.modo.json,application/json" onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) void projects.importFile(f).then(ok => ok && done(ok)); }} /></label>
@@ -77,13 +79,13 @@ export function ProjectOptionsWindow({projects, windows, onClose, onOpenProjects
 }
 
 /** Biblioteca de proyectos guardados. */
-export function ProjectsWindow({projects, onClose}: {projects: RoboticsProjects; onClose(): void}) {
+export function ProjectsWindow({prepare, projects, onClose}: {prepare: Prepare; projects: RoboticsProjects; onClose(): void}) {
   const [confirm, setConfirm] = useState<string | null>(null);
   return <FloatingWindow storageId={storageIdOf('projects')} title="Mis proyectos" eyebrow="Robótica" width={420} side="center" className="rb-window rb-projects-window" closeLabel="Cerrar mis proyectos" onClose={onClose}>
-    <div className="rb-templates" aria-label="Plantillas">{TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" data-template={t.id} aria-label={`Nuevo desde plantilla: ${t.name}`} onClick={() => { if (projects.createFromTemplate(t.id)) onClose(); }}><Bot size={18} /><span><strong>{t.name}</strong><small className="rb-template-layout">{t.layout}</small><small>{t.summary}</small></span></button>)}</div>
+    <div className="rb-templates" aria-label="Plantillas">{TEMPLATES.map(t => <button key={t.id} type="button" className="rb-row" data-template={t.id} aria-label={`Nuevo desde plantilla: ${t.name}`} onClick={() => prepare('Cargando robot…', () => { if (projects.createFromTemplate(t.id)) onClose(); })}><Bot size={18} /><span><strong>{t.name}</strong><small className="rb-template-layout">{t.layout}</small><small>{t.summary}</small></span></button>)}</div>
     <ul className="rb-project-list" aria-label="Proyectos guardados">
       {projects.projects.map(p => <li key={p.id} className={p.id === projects.project.id ? 'is-active' : undefined}>
-        <button type="button" className="rb-project-open" aria-current={p.id === projects.project.id ? 'true' : undefined} onClick={() => { projects.select(p.id); onClose(); }}><strong>{p.name || 'Sin nombre'}</strong><small>{p.parts.length} piezas · {new Date(p.updatedAt).toLocaleDateString('es-CL')}</small></button>
+        <button type="button" className="rb-project-open" aria-current={p.id === projects.project.id ? 'true' : undefined} onClick={() => prepare('Abriendo proyecto…', () => { projects.select(p.id); onClose(); })}><strong>{p.name || 'Sin nombre'}</strong><small>{p.parts.length} piezas · {new Date(p.updatedAt).toLocaleDateString('es-CL')}</small></button>
         <button type="button" aria-label={`Exportar ${p.name}`} title="Exportar" onClick={() => projects.exportOne(p.id)}><Download size={16} /></button>
         {confirm === p.id
           ? <button type="button" className="is-danger" aria-label={`Confirmar borrar ${p.name}`} onClick={() => { projects.remove(p.id); setConfirm(null); }}>¿Borrar?</button>

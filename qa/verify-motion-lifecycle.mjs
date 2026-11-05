@@ -4,7 +4,7 @@ import vm from 'node:vm';
 
 const inline=path=>fs.readFileSync(path,'utf8').match(/<script is:inline>([\s\S]*?)<\/script>/)[1];
 const head=inline('src/components/motion/MotionHead.astro');
-const splashScript=inline('src/components/motion/ModoSplash.astro');
+const splashScript=[...fs.readFileSync('src/components/motion/ModoSplash.astro','utf8').matchAll(/<script is:inline>([\s\S]*?)<\/script>/g)].map(m=>m[1]).find(s=>s.includes('function joinSound()'));
 const checks=[];
 const pass=message=>{checks.push(message);console.log('PASS',message)};
 
@@ -15,7 +15,7 @@ function boot({session=new Map(),referrer='',navigation='navigate',hidden=false,
  const splash={remove:()=>{removed++},addEventListener:(name,fn)=>listeners.set('splash:'+name,new Set([fn]))};
  const storage=values=>({getItem:key=>{if(blockedStorage)throw Error('blocked');return values.get(key)??null},setItem:(key,value)=>{if(blockedStorage)throw Error('blocked');values.set(key,value)}});
  const document={documentElement:root,visibilityState:hidden?'hidden':'visible',referrer,getElementById:()=>removed?null:splash,addEventListener:(name,fn)=>{if(!listeners.has(name))listeners.set(name,new Set());listeners.get(name).add(fn)},removeEventListener:(name,fn)=>listeners.get(name)?.delete(fn)};
- const context={document,location:new URL('http://localhost/'),performance:{getEntriesByType:()=>[{type:navigation}]},sessionStorage:storage(session),localStorage:storage(new Map([['modo-movimiento',mode]])),matchMedia:()=>({matches:reduce}),URL,URLSearchParams,addEventListener:()=>{},setTimeout:fn=>timers.push(fn)};
+ const context={document,location:new URL('http://localhost/'),performance:{getEntriesByType:()=>[{type:navigation}]},sessionStorage:storage(session),localStorage:storage(new Map([['modo-movimiento',mode]])),matchMedia:()=>({matches:reduce}),URL,URLSearchParams,addEventListener:()=>{},setTimeout:fn=>timers.push(fn),clearTimeout:()=>{}};
  vm.runInNewContext(head,context);
  vm.runInNewContext(splashScript,context);
  return {classes,root,get removed(){return removed},finish:()=>timers.forEach(fn=>fn()),visibility:value=>{document.visibilityState=value;for(const fn of [...listeners.get('visibilitychange')??[]])fn()}};

@@ -44,15 +44,23 @@ export function obbIntersect(a: Obb, b: Obb): boolean {
 
 /** Piezas que se atraviesan sin estar unidas directamente. Las que solo se tocan (menos de 1 mm) no cuentan. */
 /** Solapes que son parte del diseño y no una interferencia. */
-const nested = (p: RobotProject, a: string, b: string) => { const d = [p.parts.find(x => x.instanceId === a)?.definitionId, p.parts.find(x => x.instanceId === b)?.definitionId].sort().join('|'); return d === 'track-belt|track-sprocket' || d === 'robot-arm|robot-forearm'; }; // la banda rodea la rueda y el antebrazo entra en el extremo del brazo (articulación del codo)
-export function findInterferences(p: RobotProject, shrink = 0.0005): [string, string][] {
-  const boxes = p.parts.map(x => ({id: x.instanceId, boxes: boxesOf(x, shrink)}));
+const nested = (a: string, b: string) =>
+  (a === 'track-belt' && b === 'track-sprocket') || (b === 'track-belt' && a === 'track-sprocket') ||
+  (a === 'robot-arm' && b === 'robot-forearm') || (b === 'robot-arm' && a === 'robot-forearm');
+export function findInterferences(p: Pick<RobotProject, 'parts' | 'attachments'>, shrink = 0.0005): [string, string][] {
+  const boxes = p.parts.map(part => ({
+    id: part.instanceId,
+    definition: part.definitionId,
+    boxes: boxesOf(part, shrink).map(box => ({box, radius: len(box.half)})),
+  }));
   const joined = new Set(p.attachments.flatMap(a => [`${a.parent.instanceId}|${a.child.instanceId}`, `${a.child.instanceId}|${a.parent.instanceId}`]));
   const out: [string, string][] = [];
   for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
     const a = boxes[i], b = boxes[j];
-    if (joined.has(`${a.id}|${b.id}`) || nested(p, a.id, b.id)) continue;
-    if (a.boxes.some(x=>b.boxes.some(y=>dist(x.center,y.center)<=len(x.half)+len(y.half) && obbIntersect(x,y)))) out.push([a.id, b.id]);
+    if (nested(a.definition, b.definition) || joined.has(`${a.id}|${b.id}`)) continue;
+    if (a.boxes.some(x => b.boxes.some(y => dist(x.box.center, y.box.center) <= x.radius + y.radius && obbIntersect(x.box, y.box)))) {
+      out.push([a.id, b.id]);
+    }
   }
   return out;
 }

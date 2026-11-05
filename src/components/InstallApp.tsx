@@ -18,7 +18,7 @@ function Instructions({platform, canInstall, onInstall}: {platform: Platform; ca
       <li><span>Abre <strong>modo-lab.vercel.app</strong> en <strong>Safari</strong>. Si llegaste desde WhatsApp o Instagram, toca el ícono de la brújula (o «Abrir en Safari») para salir de ese visor.</span></li>
       <li><span>Toca <strong>Compartir</strong> <Share size={16} aria-hidden="true"/> (el cuadro con la flecha hacia arriba, en la barra de abajo; en iPad, arriba a la derecha).</span></li>
       <li><span>Desliza el menú y elige <strong>Añadir a pantalla de inicio</strong> <SquarePlus size={16} aria-hidden="true"/>.</span></li>
-      <li><span>Toca <strong>Añadir</strong>. Abre modo. desde su ícono nuevo: se ve a pantalla completa, sin la barra de Safari.</span></li>
+      <li><span>Activa <strong>Abrir como app web</strong> si aparece esa opción y toca <strong>Añadir</strong>. Luego abre modo. desde su nuevo ícono.</span></li>
     </Steps>}
     {platform === 'android' && <>
       {direct && <button type="button" className="install-primary" onClick={onInstall}><Download size={18} aria-hidden="true"/> Instalar ahora</button>}
@@ -34,9 +34,9 @@ function Instructions({platform, canInstall, onInstall}: {platform: Platform; ca
       <Steps>
         <li><span>Abre <strong>modo-lab.vercel.app</strong> en <strong>Chrome</strong> o <strong>Edge</strong>.</span></li>
         <li><span>Pulsa el ícono de instalar <Download size={16} aria-hidden="true"/> al final de la barra de direcciones. Si no aparece, abre el menú <EllipsisVertical size={16} aria-hidden="true"/> y busca <strong>Instalar modo.</strong> (en Edge: Aplicaciones → Instalar este sitio como aplicación).</span></li>
-        <li><span>Confirma con <strong>Instalar</strong>. modo. se abre en su propia ventana y queda en el menú de inicio.</span></li>
+        <li><span>Confirma con <strong>Instalar</strong>. modo. se abre en su propia ventana y queda disponible desde el lanzador de aplicaciones.</span></li>
       </Steps>
-      <p className="install-note">En Safari de Mac: menú Archivo → Añadir al Dock. Firefox no permite instalar.</p>
+      <p className="install-note">En Safari con macOS Sonoma 14 o posterior, usa Archivo → Añadir al Dock. Si tu Mac usa un sistema anterior, revisa la opción de instalación en Chrome o Edge.</p>
     </>}
   </>;
 }
@@ -60,10 +60,11 @@ function InstallDialog({onClose, canInstall, onInstall}: {onClose: () => void; c
   const close = () => {dialog.current?.close(); onClose();};
   return <dialog ref={dialog} className="install-dialog" aria-labelledby={titleId} onCancel={event => {event.preventDefault(); close();}}>
     <header className="install-heading">
+      <span className="install-banner-icon"><Download size={22} aria-hidden="true"/></span>
       <div>
         <p className="install-eyebrow">INSTALAR MODO.</p>
-        <h2 id={titleId}>Llévate modo. contigo<span>.</span></h2>
-        <p>Se abre como una app, sin la barra del navegador. Para llevar todos los simuladores y materiales sin internet, completa «Preparar viaje» en Inicio.</p>
+        <h2 id={titleId}>Instala modo. en este dispositivo<span>.</span></h2>
+        <p>Abre modo. desde su propio ícono. Para usar los simuladores y materiales sin internet, abre «Preparar viaje» desde Inicio y guarda el contenido en este dispositivo.</p>
       </div>
       <button type="button" className="install-close" aria-label="Cerrar instrucciones" autoFocus onClick={close}><X size={22} aria-hidden="true"/></button>
     </header>
@@ -82,6 +83,7 @@ export function InstallApp() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [banner, setBanner] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
   const standalone = mounted && isStandalone();
   const canInstall = mounted && canPrompt();
   const platform = mounted ? detectPlatform() : 'desktop';
@@ -90,20 +92,27 @@ export function InstallApp() {
 
   // El aviso espera unos segundos y no tapa la bienvenida de los tutoriales.
   useEffect(() => {
-    if (!mounted || isStandalone() || dismissedRecently()) return;
-    const timer = window.setInterval(() => {
-      if (isStandalone()) {setBanner(false); return;}
-      if (document.querySelector('.tutorial-welcome') || document.querySelector('dialog[open]')) return;
-      if (canPrompt() || detectPlatform() === 'ios') setBanner(true);
-    }, 2500);
-    return () => window.clearInterval(timer);
-  }, [mounted]);
+    if (!mounted || standalone || open || banner || dismissed || dismissedRecently()) return;
+    if (!canInstall && platform !== 'ios') return;
 
-  const dismiss = () => {rememberDismissal(); setBanner(false);};
+    let retries = 4;
+    let timer = window.setTimeout(showWhenAvailable, 2500);
+    function showWhenAvailable() {
+      if (dismissedRecently() || isStandalone()) return;
+      if (document.hidden || document.querySelector('.tutorial-welcome, dialog[open]')) {
+        if (retries-- > 0) timer = window.setTimeout(showWhenAvailable, 2500);
+        return;
+      }
+      setBanner(true);
+    }
+    return () => window.clearTimeout(timer);
+  }, [mounted, standalone, open, banner, dismissed, canInstall, platform]);
+
+  const dismiss = () => {rememberDismissal(); setDismissed(true); setBanner(false);};
   const install = async () => {
     const outcome = await promptInstall();
     if (outcome === 'unavailable') setOpen(true);
-    else setBanner(false);
+    else if (outcome === 'dismissed') dismiss();
   };
 
   if (!mounted || standalone) return null;
@@ -113,15 +122,15 @@ export function InstallApp() {
       <button type="button" className="install-banner-x" aria-label="Cerrar aviso" onClick={dismiss}><X size={18} aria-hidden="true"/></button>
       <span className="install-banner-icon"><Download size={22} aria-hidden="true"/></span>
       <div>
-        <h2>{platform === 'ios' ? 'Instala modo. en tu iPhone' : '¿Instalar modo. en este equipo?'}</h2>
-        <p>{platform === 'ios' ? 'Añádela a tu pantalla de inicio para abrirla a pantalla completa.' : 'Se abre como una app, sin la barra del navegador, y funciona sin conexión.'}</p>
+        <h2>{platform === 'ios' ? 'modo. en tu pantalla de inicio' : 'Abre modo. como app'}</h2>
+        <p>{platform === 'ios' ? 'Añade el ícono para abrir modo. directamente desde tu iPhone o iPad.' : 'Instálala para abrirla desde el lanzador de aplicaciones.'}</p>
         <div className="install-banner-actions">
-          {canInstall ? <button type="button" className="install-primary" onClick={install}>Instalar</button> : <button type="button" className="install-primary" onClick={() => setOpen(true)}>Ver cómo</button>}
-          {canInstall && <button type="button" className="install-secondary" onClick={() => setOpen(true)}>Cómo instalar</button>}
+          {canInstall ? <button type="button" className="install-primary" onClick={install}>Instalar</button> : <button type="button" className="install-primary" onClick={() => setOpen(true)}>Ver pasos</button>}
+          {canInstall && <button type="button" className="install-secondary" onClick={() => setOpen(true)}>Ver pasos</button>}
           <button type="button" className="install-secondary" onClick={dismiss}>Ahora no</button>
         </div>
       </div>
     </aside>}
-    {open && <InstallDialog canInstall={canInstall} onInstall={async () => {await promptInstall(); setOpen(false);}} onClose={() => {setOpen(false); setBanner(false); rememberDismissal();}}/>}
+    {open && <InstallDialog canInstall={canInstall} onInstall={async () => {await promptInstall(); setOpen(false);}} onClose={() => {setOpen(false); dismiss();}}/>}
   </>;
 }

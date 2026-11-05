@@ -161,7 +161,7 @@ function build(data: Record<string, unknown>, options: ParseOptions): RobotProje
     if (raw.shape !== 'box' && raw.shape !== 'cylinder') fail(`Obstáculo ${i + 1}: forma desconocida.`);
     const size = vec3(raw.size, `Obstáculo ${i + 1}.tamaño`);
     if (size.some(s => s <= 0)) fail(`Obstáculo ${i + 1}: el tamaño debe ser positivo.`);
-    return {id: text(raw.id, `Obstáculo ${i + 1}.id`, 80), shape: raw.shape as Obstacle['shape'], transform: transform(raw.transform, `Obstáculo ${i + 1}`), size, ...(raw.movable === true ? {movable: true, massKg: typeof raw.massKg === 'number' && raw.massKg > 0 && raw.massKg <= 5 ? raw.massKg : 0.05} : {})};
+    return {id: text(raw.id, `Obstáculo ${i + 1}.id`, 80), shape: raw.shape as Obstacle['shape'], ...(raw.kind === 'tree' || raw.kind === 'rock' || raw.kind === 'log' || raw.kind === 'branch' || raw.kind === 'post' ? {kind: raw.kind} : {}), transform: transform(raw.transform, `Obstáculo ${i + 1}`), size, ...(raw.movable === true ? {movable: true, massKg: typeof raw.massKg === 'number' && raw.massKg > 0 && raw.massKg <= 5 ? raw.massKg : 0.05} : {})};
   });
   unique(obstacles.map(o => o.id), 'Obstáculos');
   const workspace = isObject(data.workspace) ? data.workspace : {};
@@ -170,7 +170,7 @@ function build(data: Record<string, unknown>, options: ParseOptions): RobotProje
     id: text(data.id, 'Id del proyecto', 80), name: text(data.name, 'Nombre', LIMITS.name),
     createdAt: text(data.createdAt, 'Fecha de creación', 40), updatedAt: text(data.updatedAt, 'Fecha de edición', 40),
     parts, attachments, connections, firmware,
-    scene: {obstacles, robotStart: transform(scene.robotStart, 'Inicio del robot'), physics: {gravity: num(scene.physics.gravity, 'Gravedad', 100), friction: num(scene.physics.friction, 'Fricción', 10)}},
+    scene: {obstacles, ...(scene.theme === 'forest' || scene.theme === 'factory' ? {theme: scene.theme} : {}), ...(scene.sizeM === 4 || scene.sizeM === 8 || scene.sizeM === 12 || scene.sizeM === 16 ? {sizeM: scene.sizeM} : scene.theme === 'forest' ? {sizeM: 8} : {}), robotStart: transform(scene.robotStart, 'Inicio del robot'), physics: {gravity: num(scene.physics.gravity, 'Gravedad', 100), friction: num(scene.physics.friction, 'Fricción', 10)}},
     workspace: {},
   };
   if (scene.lineTrack !== undefined) {

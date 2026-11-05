@@ -41,7 +41,7 @@ export const TEMPLATES = [...KIT_TEMPLATES.filter(t => t.id !== TEMPLATE_TOWER),
   ...COMBAT_TEMPLATES,
   {id: ARM_TEMPLATE, layout: 'Modelo oficial E6 · 6 ejes · enseñanza de puntos', name: 'Brazo educativo · referencia E6', summary: 'Operación con servos, Jog, MovJ/MovL, pausa, emergencia y pinza de práctica. Trayectorias comprobadas y caída de piezas con física.'},
   {id: ARM_TRANSFER_TEMPLATE, layout: 'E6 · 3 piezas · 3 destinos · ciclo editable', name: 'E6 · transferencia de tres piezas', summary: 'Prepara y ejecuta un ciclo de recogida y entrega por pieza. Agarre comprobado, descenso lineal y resultado por posición física.'},
-  {id: CONVEYOR_TEMPLATE, layout: 'Cinta · presencia · lectura RGB · brazo E6', name: 'Célula E6 · cinta y clasificación', summary: 'Transporta tres piezas, detiene la banda por presencia, lee su color y coordina la recogida y entrega con el brazo. Incluye fallas de sensor y atasco.'},
+  {id: CONVEYOR_TEMPLATE, layout: 'Cinta · presencia · lectura RGB · brazo E6', name: 'Fábrica E6 · cinta y clasificación', summary: 'Transporta tres piezas, detiene la banda por presencia, lee su color y coordina la recogida y entrega con el brazo. Incluye fallas de sensor y atasco.'},
 ];
 const fail = (msg: string): never => {throw new Error(`Plantilla inválida: ${msg}`);};
 

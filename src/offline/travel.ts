@@ -7,6 +7,12 @@ const errorBox=document.querySelector<HTMLElement>('#offline-error')!;
 const progress=document.querySelector<HTMLProgressElement>('#offline-progress')!;
 const download=document.querySelector<HTMLButtonElement>('#offline-download')!;
 const check=document.querySelector<HTMLButtonElement>('#offline-check')!;
+const recovery=document.querySelector<HTMLElement>('#offline-recovery')!;
+const retry=recovery.querySelector<HTMLAnchorElement>('a')!;
+if(!/^\/sin-conexion(?:\/|$)/.test(location.pathname)){
+ retry.href=location.href;
+ recovery.hidden=false;
+}
 let pack:Pack,cache:Cache,busy=false;
 const mb=(bytes:number)=>`${(bytes/1048576).toFixed(1)} MiB`;
 const fail=(message:string)=>{errorBox.textContent=message;errorBox.hidden=false;};
@@ -37,8 +43,10 @@ async function prepare(){
   await Promise.all(Array.from({length:3},async()=>{
    while(pending.length){
     const asset=pending.shift()!;
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),90000);
     try{
-     const response=await fetch(asset.url,{cache:'no-store',signal:AbortSignal.timeout(90000)});
+     const response=await fetch(asset.url,{cache:'no-store',signal:controller.signal});
      if(response.status!==200)throw new Error(`HTTP ${response.status}`);
      const blob=await response.blob();
      if(blob.size!==asset.bytes)throw new Error('Descarga incompleta o versión cambiada');
@@ -47,6 +55,7 @@ async function prepare(){
      status.textContent=`Preparando el viaje · ${completed} de ${pack.assets.length} archivos`;
      detail.textContent=`${mb(downloaded)} de ${mb(pack.bytes)} · puedes seguir al terminar.`;
     }catch(error){failures.push(asset.url);if(error instanceof DOMException&&error.name==='QuotaExceededError')pending=[];}
+    finally{clearTimeout(timer);}
    }
   }));
   await audit();
@@ -57,7 +66,7 @@ async function prepare(){
 download.addEventListener('click',()=>{void prepare();});
 check.addEventListener('click',async()=>{if(busy)return;check.disabled=true;try{await audit();}catch{fail('No se pudo revisar el almacenamiento del navegador.');}finally{check.disabled=false;}});
 async function start(){
- if(!('serviceWorker'in navigator)||!('caches'in window))throw new Error('Abre la copia local con ABRIR_MODO_SIN_CONEXION.cmd o utiliza un navegador con almacenamiento sin conexión.');
+ if(!('serviceWorker'in navigator)||!('caches'in window))throw new Error('Abre modo. en un navegador con almacenamiento sin conexión. En Windows también puedes usar la copia local con ABRIR_MODO_SIN_CONEXION.cmd.');
  const registration=await navigator.serviceWorker.register('/sw.js',{updateViaCache:'none'});
  const ready=await Promise.race([navigator.serviceWorker.ready,new Promise<never>((_,reject)=>setTimeout(()=>reject(new Error('No terminó la preparación inicial. Recarga la página para volver a intentarlo.')),60000))]);
  const info=await workerInfo(navigator.serviceWorker.controller||ready.active||registration.active!);

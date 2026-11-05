@@ -41,6 +41,7 @@
 
 /* Barra superior: lleva la clase compact-bar para que FloatingWindow no la tape. */
 .rb-bar{position:fixed;inset:0 0 auto;z-index:100;height:var(--rb-bar);box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:env(safe-area-inset-top,0px) max(10px,env(safe-area-inset-right,0px)) 0 max(10px,env(safe-area-inset-left,0px));background:#fffffff2;border-bottom:1px solid var(--rb-line);backdrop-filter:blur(8px)}
+.rb-app[data-mode=simulate] .rb-bar{background:#fff;backdrop-filter:none}
 .rb-bar>a,.rb-bar>button,.rb-mode button{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:none;min-width:38px;height:38px;padding:0 8px;border:1px solid transparent;border-radius:10px;background:transparent;color:#35566a;text-decoration:none;cursor:pointer}
 .rb-bar>button:hover:not(:disabled),.rb-bar>a:hover{background:#eef2f5}
 .rb-bar button:disabled{opacity:.38;cursor:default}
@@ -454,3 +455,13 @@ body.modo-soft-ui.modo-identity .mobile-floating-window.rb-window .floating-wind
 .rb-assembly-guide.rb-guide-in-window{position:static;left:auto;top:auto;bottom:auto;width:auto;max-height:none;overflow:visible;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
 .rb-code-ghost{display:grid;gap:6px;margin:8px 0;padding:8px 10px;border:1px solid #b7d3f5;border-radius:10px;background:#eef6ff;color:#1f3b4c;font-size:12px}.rb-code-ghost p{margin:0}.rb-code-ghost[data-ghost=diverged]{border-color:#e8c27a;background:#fff7e6}.rb-code-ghost[data-ghost=done]{border-color:#9bd3b4;background:#effaf3}.rb-code-ghost div{display:flex;flex-wrap:wrap;gap:6px}
 .rb-guide-window .rb-guide-actions{display:flex;flex-wrap:wrap;gap:6px}.rb-guide-window .rb-guide-actions button{flex:1 1 130px;min-width:0}
+
+.rb-mobile-speed,.rb-mobile-sim-status{display:none}
+@media (max-width:900px){
+  .rb-mobile-speed{display:inline-flex;align-items:center;gap:5px;margin-inline-end:8px;font-weight:650}
+  .rb-mobile-speed select{min-height:36px;padding:4px 6px;border:1px solid var(--rb-line);border-radius:8px;background:#f4f7fd;color:#215eb6;font:inherit}
+  .rb-mobile-sim-status:not(:empty){display:block;flex-basis:100%;margin:4px 0;color:#435d74}
+}
+
+.rb-preparing{position:fixed;z-index:980;top:calc(var(--rb-bar) + 12px);left:50%;transform:translateX(-50%);display:grid;gap:8px;box-sizing:border-box;width:min(320px,calc(100vw - 24px));padding:14px 16px;border:1px solid #dce4f4;border-radius:16px;background:#f7f9ff;box-shadow:0 12px 28px #1a39662b;color:#1b3973;font-size:14px;pointer-events:none}
+.rb-preparing progress{width:100%;height:8px;accent-color:#073cff}

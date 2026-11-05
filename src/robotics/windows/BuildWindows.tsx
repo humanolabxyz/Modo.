@@ -1,3 +1,4 @@
+import {OBSTACLE_LABEL} from '../project/forest.ts';
 import {useEffect, useRef, useState, type PointerEvent as ReactPointerEvent} from 'react';
 import {CircleAlert, CircleCheck, Info, Link2Off, Lock, LockOpen, Pencil, Plus, Search, Trash2, TriangleAlert} from 'lucide-react';
 import {CATALOG, CATEGORY_LABELS, getDefinition, searchCatalog} from '../catalog/index.ts';
@@ -61,12 +62,19 @@ export type BuildContext = {
   };
   // ───── etapa 5: escenario de la simulación
   scene: {
+    theme?: 'forest' | 'factory'; loadForest(): void;
+    sizeM: 4 | 8 | 12 | 16;
+    setSize(size: 4 | 8 | 12 | 16): void;
+    frameArea(): void;
+    addRobot?: () => void;
+    programmed: number;
+    openFactory(): void;
     lineTrack?: LineTrack; setTrack(preset: 'none' | 'oval' | 'curves' | 'arena'): void;
     obstacles: Obstacle[]; friction: number; selected: string | null;
     /** Solo se edita con la simulación detenida. */
     editable: boolean;
     select(id: string | null): void;
-    add(shape: 'box' | 'cylinder'): void;
+    add(shape: 'box' | 'cylinder' | 'branch' | 'post'): void;
     update(id: string, patch: {size?: Vec3; x?: number; z?: number; yawDeg?: number}): void;
     remove(id: string): void;
     setFriction(value: number): void;
@@ -233,16 +241,32 @@ const yawOf = (o: Obstacle) => { const [, y, , w] = o.transform.rotation; return
 export function ScenePanel({ctx}: {ctx: BuildContext}) {
   const sc = ctx.scene, sel = sc.obstacles.find(o => o.id === sc.selected) ?? null, cm = (m: number) => Math.round(m * 1000) / 10;
   return <div className="rb-scene">
-    <p className="rb-hint-line">Cuarto blanco de 4 × 4 m. El robot sale de donde lo armaste{sc.editable ? '.' : '; detén la simulación (■) para cambiar el escenario.'}</p>
+    <p className="rb-hint-line">{sc.theme === 'forest' ? 'Bosque de exploración' : sc.theme === 'factory' ? 'Nave industrial' : 'Cuarto de pruebas'} de {sc.sizeM} × {sc.sizeM} m. El robot sale de donde lo armaste{sc.editable ? '.' : '; detén la simulación (■) para cambiar el escenario.'}</p>
+    <label className="rb-track-select">Tamaño del área<select aria-label="Tamaño del área" disabled={!sc.editable} value={sc.sizeM} onChange={e => sc.setSize(Number(e.target.value) as 4 | 8 | 12 | 16)}>
+      {[4, 8, 12, 16].map(size => <option key={size} value={size}>{size} × {size} m</option>)}
+    </select></label>
+    <div className="rb-scene-add">
+      <button type="button" onClick={sc.frameArea}>Ver área completa</button>
+      <button type="button" disabled={!sc.editable || !sc.addRobot || sc.programmed >= 3} onClick={sc.addRobot}><Plus size={14} /> Añadir copia del robot</button>
+      <button type="button" disabled={!sc.editable} onClick={sc.openFactory}>Nueva fábrica</button>
+    </div>
+    <p className="rb-hint-line">«Nueva fábrica» crea un proyecto separado con una cinta y un brazo E6. En ese proyecto, abre «Cinta», habilita los servos y pulsa «Clasificar lote».</p>
+    <p className="rb-hint-line">{sc.programmed} de 3 placas listas para ejecutar. Al iniciar, la consola serie queda asociada a la placa elegida en Programación.</p>
+    <div className="rb-scene-add"><button type="button" disabled={!sc.editable} onClick={sc.loadForest}>{sc.theme === 'forest' ? 'Restablecer bosque' : 'Cargar bosque'}</button></div>
+    <p className="rb-hint-line">El bosque reemplaza la pista y los obstáculos actuales. Puedes recuperar el montaje anterior con Deshacer.</p>
     <label className="rb-track-select">Pista de línea<select aria-label="Pista de línea" disabled={!sc.editable} value={!sc.lineTrack ? 'none' : sc.lineTrack.name === 'Arena minisumo' ? 'arena' : sc.lineTrack.closed ? 'oval' : 'curves'} onChange={e => sc.setTrack(e.target.value as 'none' | 'oval' | 'curves' | 'arena')}><option value="none">Sin pista</option><option value="oval">Circuito ovalado</option><option value="curves">Curvas suaves</option><option value="arena">Arena minisumo · borde negro</option></select></label>
     {sc.lineTrack && <p className="rb-hint-line">Línea negra de {Math.round(sc.lineTrack.width * 1000)} mm. Los sensores infrarrojos leen la superficie bajo el robot.</p>}
     <div className="rb-scene-add">
       <button data-inline-action="" type="button" disabled={!sc.editable} onClick={() => sc.add('box')}><Plus size={14} /> Caja</button>
       <button data-inline-action="" type="button" disabled={!sc.editable} onClick={() => sc.add('cylinder')}><Plus size={14} /> Cilindro</button>
     </div>
+    {sc.theme === 'forest' && <div className="rb-scene-add">
+      <button type="button" disabled={!sc.editable} onClick={() => sc.add('branch')}><Plus size={14} /> Rama suelta</button>
+      <button type="button" disabled={!sc.editable} onClick={() => sc.add('post')}><Plus size={14} /> Baliza</button>
+    </div>}
     {sc.obstacles.length === 0 ? <div className="rb-window-empty"><strong>Sin obstáculos</strong><p>Agrega una caja delante del robot para probar un programa que la evite.</p></div>
       : <ul className="rb-wire-list" aria-label="Obstáculos">{sc.obstacles.map((o, i) => <li key={o.id} className={o.id === sc.selected ? 'is-selected' : undefined}>
-        <button data-inline-action="" type="button" className="rb-wire-pick" onClick={() => sc.select(o.id === sc.selected ? null : o.id)}><span>{o.shape === 'box' ? 'Caja' : 'Cilindro'} {i + 1}</span></button>
+        <button data-inline-action="" type="button" className="rb-wire-pick" onClick={() => sc.select(o.id === sc.selected ? null : o.id)}><span>{o.kind ? OBSTACLE_LABEL[o.kind] : o.shape === 'box' ? 'Caja' : 'Cilindro'} {i + 1}{o.movable ? ' · móvil' : ''}</span></button>
         <button data-inline-action="" type="button" className="rb-tree-btn" aria-label={`Borrar obstáculo ${i + 1}`} disabled={!sc.editable} onClick={() => sc.remove(o.id)}><Trash2 size={14} /></button></li>)}</ul>}
     {sel && <fieldset className="rb-fields" disabled={!sc.editable}><legend>Posición y tamaño</legend>
       <NumberField label="X" unit="cm" step={1} value={cm(sel.transform.position[0])} disabled={!sc.editable} onCommit={v => sc.update(sel.id, {x: v / 100})} />

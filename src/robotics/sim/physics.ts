@@ -44,7 +44,7 @@ export type PhysicsFrame = {
   main: {p: Vec3; speed: number} | null;
 };
 /** Arena-only collision layers keep each robot's wheels clear of its own chassis. */
-export type PhysicsOptions = {arenaRadius?: number; teams?: Record<string, 0 | 1>};
+export type PhysicsOptions = {arenaRadius?: number; teams?: Record<string, 0 | 1>; fleet?: ReadonlyMap<string, number>; fleetMask?: number};
 
 type Body = {id: string; body: RBody; frame: Transform; parts: {id: string; local: Transform}[]};
 type Hinge = {motorId: string; wheelId: string; wheel: Body; chassis: Body; axisLocal: Vec3};
@@ -112,11 +112,12 @@ export class RobotPhysics {
       if (rot) d.setRotation({x: rot[0], y: rot[1], z: rot[2], w: rot[3]});
       world.createCollider(d);
     };
-    fixed(ROOM_HALF + 1, 0.1, ROOM_HALF + 1, [0, this.options.arenaRadius ? -0.4 : -0.1, 0]);
+    const half = this.options.arenaRadius ? ROOM_HALF : (this.project.scene.sizeM ?? 4) / 2;
+    fixed(half + 1, 0.1, half + 1, [0, this.options.arenaRadius ? -0.4 : -0.1, 0]);
     if (this.options.arenaRadius) world.createCollider(R.ColliderDesc.cylinder(0.025, this.options.arenaRadius).setTranslation(0, -0.025, 0).setFriction(friction).setRestitution(0).setCollisionGroups(groups(G_GROUND, 0xffff)));
     const t = 0.1, h = WALL_H / 2;
-    fixed(ROOM_HALF + t, h, t / 2, [0, h, ROOM_HALF + t / 2], undefined, G_OBST); fixed(ROOM_HALF + t, h, t / 2, [0, h, -ROOM_HALF - t / 2], undefined, G_OBST);
-    fixed(t / 2, h, ROOM_HALF + t, [ROOM_HALF + t / 2, h, 0], undefined, G_OBST); fixed(t / 2, h, ROOM_HALF + t, [-ROOM_HALF - t / 2, h, 0], undefined, G_OBST);
+    fixed(half + t, h, t / 2, [0, h, half + t / 2], undefined, G_OBST); fixed(half + t, h, t / 2, [0, h, -half - t / 2], undefined, G_OBST);
+    fixed(t / 2, h, half + t, [half + t / 2, h, 0], undefined, G_OBST); fixed(t / 2, h, half + t, [-half - t / 2, h, 0], undefined, G_OBST);
     for (const o of obstacles) {
       const [sx, sy, sz] = o.size, rot = o.transform.rotation, p = o.transform.position;
       const desc = o.shape === 'cylinder' ? R.ColliderDesc.cylinder(sy / 2, sx / 2) : R.ColliderDesc.cuboid(sx / 2, sy / 2, sz / 2);
@@ -266,6 +267,8 @@ export class RobotPhysics {
   private refreshQueries() { (this.world as unknown as {updateSceneQueries?: () => void}).updateSceneQueries?.(); }
 
   private partGroups(id: string, fallback: number) {
+    const fleetBit = this.options.fleet?.get(id);
+    if (fleetBit) return groups(fleetBit, G_GROUND | G_OBST | ((this.options.fleetMask ?? 0) & ~fleetBit));
     const team = this.options.teams?.[id];
     return team === undefined ? groups(fallback, G_GROUND) : groups(team === 0 ? 0x10 : 0x20, G_GROUND | G_OBST | (team === 0 ? 0x20 : 0x10));
   }
@@ -336,7 +339,9 @@ export class RobotPhysics {
       const yaw = (-BEAM.halfAngleDeg + (2 * BEAM.halfAngleDeg * i) / (BEAM.rays - 1)) * DEG, dir = qRotate(qMul(t.rotation, qFromAxisAngle([0, 1, 0], yaw)), [0, 0, 1]);
       if (i === (BEAM.rays - 1) / 2) centerDir = dir;
       const team = this.options.teams?.[s.part.instanceId];
-      const hit = world.castRay(new R.Ray({x: origin[0], y: origin[1], z: origin[2]}, {x: dir[0], y: dir[1], z: dir[2]}), BEAM.maxM, true, undefined, groups(0xffff, G_OBST | (team === undefined ? 0 : team === 0 ? 0x20 : 0x10)));
+      const fleetBit = this.options.fleet?.get(s.part.instanceId) ?? 0;
+      const otherRobots = (this.options.fleetMask ?? 0) & ~fleetBit;
+      const hit = world.castRay(new R.Ray({x: origin[0], y: origin[1], z: origin[2]}, {x: dir[0], y: dir[1], z: dir[2]}), BEAM.maxM, true, undefined, groups(0xffff, G_OBST | otherRobots | (team === undefined ? 0 : team === 0 ? 0x20 : 0x10)));
       const toi = hit ? ((hit as unknown as {timeOfImpact?: number; toi?: number}).timeOfImpact ?? (hit as unknown as {toi?: number}).toi) : undefined;
       if (toi !== undefined && (best === null || toi < best)) best = toi;
     }

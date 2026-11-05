@@ -14,7 +14,7 @@ export type SoundTargets = {
   /** Objetos que sostiene alguna pinza. */
   held: string[];
 };
-export type SoundEvent = {kind: 'power-on' | 'brake' | 'grasp' | 'release' | 'servo-start' | 'servo-stop'; id?: string};
+export type SoundEvent = {kind: 'power-on' | 'brake' | 'grasp' | 'release' | 'servo-start' | 'servo-stop' | 'surprise' | 'turn-left' | 'turn-right' | 'recover' | 'push-wood' | 'ui-run' | 'ui-pause' | 'ui-stop' | 'speed-up' | 'speed-down'; id?: string};
 
 /** Un metro por segundo sería muy rápido para estos robots: con 0,25 m/s las orugas ya suenan a pleno. */
 export const FULL_TRACK_SPEED = 0.25, MIN_TRACK_SPEED = 0.03; // por debajo de 3 cm/s es solo el temblor de los brazos
@@ -54,4 +54,38 @@ export function soundEvents(prev: SoundTargets | null, next: SoundTargets): Soun
     else if (before >= SERVO_MOVING && s.rate < SERVO_STILL) out.push({kind: 'servo-stop', id: s.id});
   }
   return out;
+}
+
+/** Serial markers are opt-in cues emitted by the radar sketch. Preserve incomplete lines across snapshots. */
+export function readRobotCues(chunk: string, tail: string): {tail: string; events: SoundEvent[]} {
+  if (!chunk) return {tail, events: []};
+  const lines = (tail + chunk).split('\n');
+  const rest = (lines.pop() ?? '').slice(-32);
+  const events: SoundEvent[] = [];
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (line === '@robot:surprise') events.push({kind: 'surprise'});
+    else if (line === '@robot:recover') events.push({kind: 'recover'});
+    else if (line === '@robot:left') events.push({kind: 'turn-left'});
+    else if (line === '@robot:right') events.push({kind: 'turn-right'});
+  }
+  return {tail: rest, events: events.slice(-4)};
+}
+
+/** A wooden object displaced near the robot makes one cue per run. Vertical settling is ignored. */
+export function woodPushEvents(project: RobotProject, snapshot: Snapshot, reported: Set<string>): SoundEvent[] {
+  const physics = snapshot.physics;
+  if (!physics?.main || !physics.objects) return [];
+  const [x, , z] = physics.main.p;
+  const events: SoundEvent[] = [];
+  for (const obstacle of project.scene.obstacles) {
+    if (!obstacle.movable || (obstacle.kind !== 'branch' && obstacle.kind !== 'log') || reported.has(obstacle.id)) continue;
+    const pose = physics.objects[obstacle.id];
+    if (!pose || pose.heldBy || Math.hypot(pose.p[0] - x, pose.p[2] - z) > .42) continue;
+    const [startX, , startZ] = obstacle.transform.position;
+    if (Math.hypot(pose.p[0] - startX, pose.p[2] - startZ) < .04) continue;
+    reported.add(obstacle.id);
+    events.push({kind: 'push-wood', id: obstacle.id});
+  }
+  return events;
 }

@@ -19,12 +19,16 @@ export function useRoboticsProjects() {
   const [saved, setSaved] = useState(false);
   const [message, setMessage] = useState('');
   const libraryRef = useRef(library);
-  libraryRef.current = library;
+  const persisted = useRef<RobotLibrary | null>(null);
+  const commit = useCallback((next: RobotLibrary) => {
+    libraryRef.current = next;
+    setLibrary(next);
+  }, []);
 
   useEffect(() => {
     try {
       const read = readLibrary(localStorage.getItem(STORAGE_KEY));
-      if (read.status === 'ok') setLibrary(read.library);
+      if (read.status === 'ok') commit(read.library);
       else if (read.status === 'unreadable') {
         setStorageBlocked(true);
         setMessage(`No se pudo leer la biblioteca guardada (${read.reason}). Se desactivó el guardado para no borrarla; exporta tu trabajo desde el menú del proyecto.`);
@@ -34,14 +38,23 @@ export function useRoboticsProjects() {
       setMessage('Este navegador no permite guardar. Exporta tu proyecto para conservarlo.');
     }
     setReady(true);
-  }, []);
+  }, [commit]);
 
   useEffect(() => {
     if (!ready || storageBlocked) return;
     setSaved(false);
     const persist = () => {
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(libraryRef.current)); setSaved(true); }
-      catch { setMessage('El navegador no pudo guardar. Exporta tu proyecto para no perderlo.'); }
+      const current = libraryRef.current;
+      try {
+        if (persisted.current !== current) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
+          persisted.current = current;
+        }
+        setSaved(true);
+      } catch {
+        setSaved(false);
+        setMessage('El navegador no pudo guardar. Exporta tu proyecto para no perderlo.');
+      }
     };
     const timer = setTimeout(persist, 350);
     const flush = () => { clearTimeout(timer); persist(); };
@@ -53,17 +66,16 @@ export function useRoboticsProjects() {
 
   const update = useCallback((change: (p: RobotProject) => RobotProject, options: UpdateOptions = {}) => {
     const {history: record = true, touch = true} = options;
-    const before = activeProject(libraryRef.current);
+    const current = libraryRef.current;
+    const before = activeProject(current);
+    const next = change(before);
+    if (next === before) return;
     if (record) setHistory(h => pushHistory(h, before));
-    setLibrary(l => {
-      if (touch) return updateActive(l, change);
-      const current = activeProject(l);
-      const next = change(current);
-      return {...l, projects: l.projects.map(p => (p.id === current.id ? next : p))};
-    });
-  }, []);
+    commit(touch ? updateActive(current, () => next) :
+      {...current, projects: current.projects.map(p => p.id === before.id ? next : p)});
+  }, [commit]);
 
-  const replace = (next: RobotLibrary) => { setLibrary(next); setHistory(emptyHistory()); };
+  const replace = (next: RobotLibrary) => { commit(next); setHistory(emptyHistory()); };
   const notify = (result: {library: RobotLibrary} | {error: string}) => {
     if ('error' in result) { setMessage(result.error); return false; }
     replace(result.library); return true;
@@ -72,7 +84,8 @@ export function useRoboticsProjects() {
   const apply = (step: {history: History; project: RobotProject} | null) => {
     if (!step) return;
     setHistory(step.history);
-    setLibrary(l => ({...l, projects: l.projects.map(p => (p.id === step.project.id ? step.project : p))}));
+    const current = libraryRef.current;
+    commit({...current, projects: current.projects.map(p => p.id === step.project.id ? step.project : p)});
   };
 
   const download = (p: RobotProject) => {
@@ -86,19 +99,20 @@ export function useRoboticsProjects() {
   return {
     library, project, projects: library.projects, ready, saved, storageBlocked, message, setMessage,
     update,
-    rename: (name: string) => { setHistory(h => pushHistory(h, project)); setLibrary(l => renameProject(l, name)); },
-    create: () => notify(createProject(library)),
+    rename: (name: string) => { setHistory(h => pushHistory(h, project)); commit(renameProject(libraryRef.current, name)); },
+    create: () => notify(createProject(libraryRef.current)),
     /** Crea un proyecto desde una plantilla (p. ej. el robot armado y programado). */
-    createFromTemplate: (id: string) => { const t = buildTemplate(id); return t ? notify(addProject(library, t)) : false; },
-    duplicate: () => notify(duplicateProject(library)),
-    remove: (id: string) => replace(deleteProject(library, id)),
-    select: (id: string) => replace(selectProject(library, id)),
+    createFromTemplate: (id: string) => { const t = buildTemplate(id); return t ? notify(addProject(libraryRef.current, t)) : false; },
+    duplicate: () => notify(duplicateProject(libraryRef.current)),
+    remove: (id: string) => replace(deleteProject(libraryRef.current, id)),
+    select: (id: string) => replace(selectProject(libraryRef.current, id)),
     importFile: async (file: File) => {
       if (file.size > LIMITS.importBytes) { setMessage('El archivo supera el límite de 2 MB.'); return false; }
-      return notify(importProject(library, await file.text()));
+      const text = await file.text();
+      return notify(importProject(libraryRef.current, text));
     },
-    exportActive: () => download(project),
-    exportOne: (id: string) => { const p = library.projects.find(x => x.id === id); if (p) download(p); },
+    exportActive: () => download(activeProject(libraryRef.current)),
+    exportOne: (id: string) => { const p = libraryRef.current.projects.find(x => x.id === id); if (p) download(p); },
     undo: () => apply(undoStep(history, project)),
     redo: () => apply(redoStep(history, project)),
     canUndo: history.past.length > 0,

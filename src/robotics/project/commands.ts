@@ -1,6 +1,7 @@
 // Operaciones PURAS e inmutables sobre el proyecto (docs/robotica/02 §6). Cada una devuelve un proyecto nuevo.
 import {getDefinition} from '../catalog/index.ts';
 import type {AnchorDefinition} from '../catalog/types.ts';
+import {forestObstacle} from './forest.ts';
 import {newId} from './defaults.ts';
 import {len, motion, qFromEuler, qNorm, sub, tInv, tMul, tPoint, qRotate, scale} from './math.ts';
 import {LIMITS, type Attachment, type PartInstance, type Quat, type RobotProject, type Transform, type Vec3} from './types.ts';
@@ -91,7 +92,7 @@ export const setLocked = (p: RobotProject, ids: readonly string[], locked: boole
 export const setPartProp = (p: RobotProject, id: string, key: string, value: number | string | boolean): RobotProject => replaceParts(p, p.parts.map(x => (x.instanceId === id ? {...x, props: {...x.props, [key]: value}} : x)));
 
 /** Duplica las piezas (con lo que cuelga de ellas), conserva las uniones y cables internos y las desplaza un poco. */
-export function duplicateParts(p: RobotProject, ids: readonly string[], offset: Vec3 = [0.03, 0, 0.03]): CommandResult | CommandError {
+export function duplicateParts(p: RobotProject, ids: readonly string[], offset: Vec3 = [0.03, 0, 0.03], copyProgram = false): CommandResult | CommandError {
   const set = closure(p, ids.filter(id => part(p, id)));
   if (!set.size) return {project: p, notes: []};
   if (p.parts.length + set.size > LIMITS.parts) return {error: `Un proyecto admite hasta ${LIMITS.parts} piezas.`};
@@ -106,7 +107,10 @@ export function duplicateParts(p: RobotProject, ids: readonly string[], offset: 
   draft = {...p, parts: [...p.parts, ...copies]};
   const attachments = p.attachments.filter(a => set.has(a.parent.instanceId) && set.has(a.child.instanceId)).map(a => ({...structuredClone(a), id: newId(), parent: {...a.parent, instanceId: map.get(a.parent.instanceId)!}, child: {...a.child, instanceId: map.get(a.child.instanceId)!}}));
   const connections = p.connections.filter(c => set.has(c.a.instanceId) && set.has(c.b.instanceId)).map(c => ({...structuredClone(c), id: newId(), a: {...c.a, instanceId: map.get(c.a.instanceId)!}, b: {...c.b, instanceId: map.get(c.b.instanceId)!}, route: undefined}));
-  return {project: {...draft, attachments: [...draft.attachments, ...attachments], connections: [...draft.connections, ...connections]}, notes: []};
+  const programs = copyProgram ? p.firmware.filter(f => map.has(f.targetInstanceId)) : [];
+  if (p.firmware.length + programs.length > LIMITS.firmware) return {error: 'Se alcanzó el máximo de placas programadas.'};
+  const firmware = [...p.firmware, ...programs.map(f => ({...f, id: newId(), targetInstanceId: map.get(f.targetInstanceId)!}))];
+  return {project: {...draft, firmware, attachments: [...draft.attachments, ...attachments], connections: [...draft.connections, ...connections]}, notes: []};
 }
 
 // ───── Uniones ─────
@@ -215,20 +219,27 @@ export const OBSTACLE_LIMITS = {size: {min: 0.02, max: 2}, room: 2} as const;
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, Number.isFinite(v) ? v : lo));
 
 /** Agrega una caja o un cilindro a 0,75 m por delante del inicio del robot (si ya hay otro ahí, lo corre a un lado). */
-export function addObstacle(p: RobotProject, shape: 'box' | 'cylinder'): CommandResult | CommandError {
+export function addObstacle(p: RobotProject, shape: 'box' | 'cylinder' | 'branch' | 'post'): CommandResult | CommandError {
   if (p.scene.obstacles.length >= LIMITS.obstacles) return {error: `Una escena admite hasta ${LIMITS.obstacles} obstáculos.`};
+  if (shape === 'branch' || shape === 'post') {
+    const position = Array.from({length: 81}, (_, i) => [((i % 9) - 4) * .4, (Math.floor(i / 9) - 4) * .4])
+      .find(([x, z]) => Math.hypot(x, z) > .4 && p.scene.obstacles.every(o => Math.hypot(x - o.transform.position[0], z - o.transform.position[2]) > .32));
+    if (!position) return {error: 'No queda espacio libre. Mueve o retira un obstáculo.'};
+    const obstacle = forestObstacle(newId(), shape, position[0], position[1], shape === 'branch' ? [.24, .1, .075] : [.16, .48, .16], shape === 'branch');
+    return {project: {...p, scene: {...p.scene, obstacles: [...p.scene.obstacles, obstacle]}}, notes: []};
+  }
   const size: Vec3 = shape === 'box' ? [0.3, 0.2, 0.1] : [0.2, 0.2, 0.2], n = p.scene.obstacles.length;
   const o = {id: newId(), shape, transform: {position: [((n % 5) - 2) * 0.35, size[1] / 2, 0.75 + Math.floor(n / 5) * 0.4] as Vec3, rotation: [0, 0, 0, 1] as Quat}, size};
   return {project: {...p, scene: {...p.scene, obstacles: [...p.scene.obstacles, o]}}, notes: []};
 }
 /** Cambia medidas, posición (x, z en metros, dentro del cuarto de 4 × 4 m) o giro (grados sobre el eje vertical). El obstáculo siempre apoya en el suelo. */
 export function updateObstacle(p: RobotProject, id: string, patch: {size?: Vec3; x?: number; z?: number; yawDeg?: number}): RobotProject {
-  const lim = OBSTACLE_LIMITS;
+  const lim = OBSTACLE_LIMITS, room = (p.scene.sizeM ?? 4) / 2;
   return {...p, scene: {...p.scene, obstacles: p.scene.obstacles.map(o => {
     if (o.id !== id) return o;
     const size = (patch.size ?? o.size).map(v => clamp(v, lim.size.min, lim.size.max)) as Vec3, pos = o.transform.position;
     const yaw = patch.yawDeg === undefined ? o.transform.rotation : qFromEuler([0, patch.yawDeg * Math.PI / 180, 0]);
-    return {...o, size, transform: {...o.transform, position: [clamp(patch.x ?? pos[0], -lim.room, lim.room), size[1] / 2, clamp(patch.z ?? pos[2], -lim.room, lim.room)] as Vec3, rotation: yaw}};
+    return {...o, size, transform: {...o.transform, position: [clamp(patch.x ?? pos[0], -room, room), size[1] / 2, clamp(patch.z ?? pos[2], -room, room)] as Vec3, rotation: yaw}};
   })}};
 }
 export const removeObstacle = (p: RobotProject, id: string): RobotProject => ({...p, scene: {...p.scene, obstacles: p.scene.obstacles.filter(o => o.id !== id)}});

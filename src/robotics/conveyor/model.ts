@@ -82,7 +82,12 @@ export function buildConveyorCell(now=new Date().toISOString()):RobotProject {
   const p=buildArmPractice(now),arm=p.parts.find(x=>x.definitionId===ARM_ID)!;
   const belt:PartInstance={instanceId:newId(),definitionId:CONVEYOR_ID,label:'Cinta · presencia y color',transform:{...tIdentity(),position:[.28,.04,.40]},locked:true,props:{speedMps:.08,jammed:false,sensorFault:false,phaseM:0}};
   const destinations:[[number,number],[number,number],[number,number]]=[[.25,-.14],[.38,-.14],[.25,-.27]];
-  return {...p,name:'Célula E6 · cinta y clasificación',parts:[arm,belt,...SORT_COLORS.flatMap((color,i):PartInstance[]=>{
+  return {...p,name:'Fábrica E6 · cinta y clasificación',
+    scene:{...p.scene,theme:'factory',sizeM:8,obstacles:[
+      {id:'almacen-entrada',shape:'box',size:[.7,.55,.55],transform:{position:[-1.5,.275,.8],rotation:[0,0,0,1]}},
+      {id:'almacen-salida',shape:'box',size:[.7,.55,.55],transform:{position:[1.5,.275,-.85],rotation:[0,0,0,1]}},
+    ]},
+    parts:[arm,belt,...SORT_COLORS.flatMap((color,i):PartInstance[]=>{
     const zoneId=newId(),[r,g,b]=COLOR_RGB[color],z=.28+i*.17,[x,dz]=destinations[i];
     return [
       {instanceId:newId(),definitionId:BLOCK_ID,label:`Pieza ${color}`,transform:{...tIdentity(),position:[.28,.0975,z]},props:{massKg:.05,startX:.28,startY:.046,startZ:z,surfaceR:r,surfaceG:g,surfaceB:b,targetZone:zoneId}},

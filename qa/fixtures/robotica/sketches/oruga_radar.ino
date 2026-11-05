@@ -52,6 +52,7 @@ void mirar(int angulo) { cuello.write(angulo); delay(300); }   // el servo tarda
 void brazos(int angulo) { brazoIzq.write(angulo); brazoDer.write(180 - angulo); }
 
 void setup() {
+  Serial.begin(9600);
   pinMode(4, OUTPUT); pinMode(7, OUTPUT); pinMode(8, OUTPUT); pinMode(12, OUTPUT);
   pinMode(9, OUTPUT); pinMode(10, INPUT);
   cuello.attach(3); cuello.write(CENTRO);
@@ -62,18 +63,60 @@ void setup() {
   cara(0);
 }
 
+
+const int LIBRE_CM = 29;
+unsigned long ultimaManiobra = 0, avanceDesde = 0, lecturaEstableDesde = 0;
+long distanciaReferencia = 0;
+int intentos = 0;
+bool ultimoGiroIzquierda = false;
+
 void loop() {
-  if (distanciaCm() > 25) {
-    motores(true, true, 200);                // camino libre: avanza
-  } else {
-    parar(); cara(1); brazos(40);            // algo cerca: se sorprende y levanta los brazos
-    mirar(IZQUIERDA); long izq = distanciaCm(); cara(2);
-    mirar(DERECHA);   long der = distanciaCm(); cara(3);
-    mirar(CENTRO);
-    bool haciaIzquierda = izq > der;
-    motores(!haciaIzquierda, haciaIzquierda, 200);   // gira en el sitio hacia el lado mas libre
-    delay(520);
-    parar(); cara(0); brazos(90);            // vuelve a la calma: brazos colgando
+  const long frente = distanciaCm();
+  const unsigned long ahora = millis();
+  if (frente > LIBRE_CM) {
+    if (!avanceDesde) {
+      avanceDesde = ahora;
+      lecturaEstableDesde = ahora;
+      distanciaReferencia = frente;
+    }
+    if (abs(frente - distanciaReferencia) > 4) {
+      distanciaReferencia = frente;
+      lecturaEstableDesde = ahora;
+    }
+    // Si la distancia no cambia al ordenar avance, puede estar trabado contra
+    // un obstáculo bajo o lateral. Sin eco, hace una maniobra de exploración más tarde.
+    const unsigned long espera = frente == 400 ? 4600 : 1350;
+    if (ahora - lecturaEstableDesde < espera) {
+      motores(true, true, frente < 45 ? 165 : 200);
+      if (ahora - avanceDesde > 1600 && ahora - lecturaEstableDesde < 650) intentos = 0;
+      delay(35);
+      return;
+    }
   }
-  delay(30);
+
+  const bool recuperar = frente > LIBRE_CM || (ultimaManiobra && ahora - ultimaManiobra < 1800);
+  if (recuperar) intentos = min(intentos + 1, 4); else intentos = 0;
+  avanceDesde = 0;
+  parar();
+  Serial.println(recuperar ? F("@robot:recover") : F("@robot:surprise"));
+  cara(1); brazos(40);
+  delay(150);
+  // La marcha atrás deja espacio para que el cuerpo y los brazos puedan pivotar.
+  motores(false, false, 185);
+  delay(220 + 135 * intentos);
+  parar(); delay(100);
+
+  cara(2); mirar(IZQUIERDA); const long izq = distanciaCm();
+  cara(3); mirar(DERECHA); const long der = distanciaCm();
+  const bool parejo = abs(izq - der) < 12;
+  const bool izquierda = (parejo || intentos >= 2) ? !ultimoGiroIzquierda : izq > der;
+  ultimoGiroIzquierda = izquierda;
+  mirar(CENTRO);
+  cara(izquierda ? 2 : 3);
+  Serial.println(izquierda ? F("@robot:left") : F("@robot:right"));
+  motores(!izquierda, izquierda, 205);
+  delay(550 + 150 * intentos);
+  parar(); delay(100);
+  ultimaManiobra = millis();
+  cara(0); brazos(90);
 }

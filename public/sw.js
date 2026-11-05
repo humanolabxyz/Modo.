@@ -6,7 +6,19 @@ self.addEventListener('install',event=>{
  event.waitUntil((async()=>{
   const cache=await caches.open(CACHE),pending=[...PRECACHE];
   try {
-   await Promise.all(Array.from({length:8},async()=>{while(pending.length)await cache.add(new Request(pending.shift(),{cache:'reload'}))}));
+   const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true}).catch(()=>[]);
+   let saved=0,lastNotice=0;
+   await Promise.all(Array.from({length:4},async()=>{
+    while(pending.length){
+     await cache.add(new Request(pending.shift(),{cache:'reload'}));
+     saved++;
+     const now=Date.now();
+     if(saved===PRECACHE.length||now-lastNotice>=120){
+      lastNotice=now;
+      for(const client of clients)client.postMessage({type:'UPDATE_PROGRESS',saved,total:PRECACHE.length});
+     }
+    }
+   }));
    await self.skipWaiting();
   } catch(error) {await caches.delete(CACHE);throw error;}
  })());
@@ -39,12 +51,21 @@ self.addEventListener('fetch',event=>{
  const request=event.request;if(request.method!=='GET')return;
  const url=new URL(request.url);if(url.origin!==location.origin)return;
  // The explicit downloader verifies complete bodies before storing them.
- if(request.cache==='no-store')return;
+ if(request.cache==='no-store'&&request.mode!=='navigate')return;
  event.respondWith((async()=>{
   const cache=await caches.open(CACHE),key=pageKey(url);
   const cached=await cache.match(key,{ignoreVary:true});
   if(cached)return rangeResponse(request,cached);
-  const response=await fetch(request);
+  let response;
+  try {
+   response=await fetch(request);
+  } catch(error) {
+   if(request.mode!=='navigate')throw error;
+   // Serve the cached recovery page at the requested URL so retry keeps its query.
+   const fallback=await cache.match('/sin-conexion/');
+   if(fallback)return fallback;
+   return new Response('<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>modo. · Sin conexión</title><h1>Sin conexión</h1><p>Conéctate a internet y vuelve a cargar esta página.</p><a href="/">Volver a modo.</a></html>',{status:503,headers:{'Content-Type':'text/html; charset=utf-8'}});
+  }
   if(response.status===200&&!request.headers.has('range'))event.waitUntil(cache.put(key,response.clone()).catch(()=>{}));
   return response;
  })());

@@ -1,7 +1,7 @@
-import {Component, useEffect, useImperativeHandle, useMemo, useRef, useState, type MutableRefObject, type ReactNode, type Ref} from 'react';
+import {Component, memo, useEffect, useLayoutEffect, useImperativeHandle, useMemo, useRef, useState, type MutableRefObject, type ReactNode, type Ref} from 'react';
 import {Canvas, useFrame, useThree} from '@react-three/fiber';
 import {CameraControls, Grid, Html, Line, TransformControls} from '@react-three/drei';
-import {Box3, CanvasTexture, MeshBasicMaterial, CatmullRomCurve3, Float32BufferAttribute, Matrix4, Plane, Quaternion, Raycaster, Sphere, Vector2, Vector3, type BufferGeometry, type Mesh, type Group, type Object3D, type PerspectiveCamera} from 'three';
+import {Box3, CanvasTexture, MeshBasicMaterial, CatmullRomCurve3, Float32BufferAttribute, Matrix4, Plane, Quaternion, Raycaster, Sphere, Vector2, Vector3, type BufferGeometry, type InstancedMesh, type Mesh, type Group, type Object3D, type PerspectiveCamera} from 'three';
 import type CameraControlsImpl from 'camera-controls';
 import {describeTarget, shortcutsDisabled} from '../interaction/shortcuts.ts';
 import {classifyRelease, LONG_PRESS_MS, MOVE_THRESHOLD_PX, nextSelection, rectFromPoints, rectsIntersect, startGesture, type Gesture, type Rect2, type ToolId} from '../interaction/tools.ts';
@@ -13,6 +13,7 @@ import {PartMesh, GhostMesh, AssemblyGhost} from './PartMesh';
 import {renderThumbnail} from './renderThumbnail';
 import {LineTrackMesh} from './LineTrackMesh';
 import {ViewCube} from './ViewCube';
+import {CableTube} from './CableTube';
 
 export type ViewName = 'front' | 'back' | 'side' | 'left' | 'top' | 'bottom' | 'iso';
 export type CameraState = {position: Vec3; target: Vec3};
@@ -22,7 +23,7 @@ export type Ghost = {definitionId: string; position: Vec3; valid: boolean};
 export type GhostWireView = {points: Vec3[]; color: string};
 export type PinMarker = {ref: PinRef; pos: Vec3; role: string; label?: string; connected: boolean};
 /** El cubo blanco de la simulación: obstáculos del proyecto y el haz del sensor de distancia. */
-export type RoomView = {lineTrack?: LineTrack; obstacles: Obstacle[]; beams: {origin: Vec3; dir: Vec3; distance: number | null}[]; selected: string | null};
+export type RoomView = {theme?: 'forest' | 'factory'; sizeM?: number; lineTrack?: LineTrack; obstacles: Obstacle[]; beams: {origin: Vec3; dir: Vec3; distance: number | null}[]; selected: string | null};
 export type WireView = {connectorEnds?: [boolean, boolean]; id: string; color: string; points: Vec3[]; selected: boolean};
 export const pinColor = (role: string) => ({'power-in': '#d94b4b', 'power-out': '#e08a3c', ground: '#3b3f45', digital: '#c9a83a', pwm: '#2f8fd0', analog: '#2fb07f', motor: '#9b5fd0', signal: '#c9a83a'} as Record<string, string>)[role] ?? '#888888';
 export type CanvasHandle = {
@@ -58,6 +59,7 @@ type SceneApi = {
 };
 
 type Props = {
+  projectId: string;
   assemblyGhosts?: PartInstance[];
   assemblyNext?: string;
   onInspectParts?(ids: string[]): void;
@@ -86,6 +88,7 @@ type Props = {
   onAnchor(point: {x: number; y: number} | null): void;
   onContextLost(): void;
   onCameraRest(camera: CameraState): void;
+  onNavigate(): void;
   /** Cámara en primera persona: WASD mueve, Q/E baja/sube y el botón derecho (o un dedo) mira. */
   flying: boolean;
   /** Estado vivo de la simulación (brillo de los LED, 0–1). */
@@ -95,6 +98,7 @@ type Props = {
   initialCamera?: CameraState;
   reducedMotion: boolean;
   lowQuality: boolean;
+  lightGraphics?: boolean;
   debug: boolean;
   handleRef: Ref<CanvasHandle>;
 };
@@ -142,6 +146,7 @@ export function BuildCanvas(props: Props) {
     return box;
   };
   const framing = (box: Box3 | null) => {
+    latest.current.props.onNavigate();
     const controls = controlsRef.current;
     if (!controls) return;
     if (!box || box.isEmpty()) { void controls.setLookAt(...DEFAULT_CAMERA.position, ...DEFAULT_CAMERA.target, !reducedMotion); return; }
@@ -161,6 +166,7 @@ export function BuildCanvas(props: Props) {
     press.current = null; gesture.current = 'idle'; setMarquee(null); scene.current?.cancel();
   };
   const viewTo = (view: ViewName) => {
+    latest.current.props.onNavigate();
     const controls = controlsRef.current;
     if (!controls) return;
     const target = new Vector3(); controls.getTarget(target);
@@ -213,6 +219,7 @@ export function BuildCanvas(props: Props) {
     const wheel = (e: WheelEvent) => {
       const controls = controlsRef.current;
       if ((e.target as Element).closest?.('.rb-canvas-overlay') || !controls || !controls.enabled) return;
+      latest.current.props.onNavigate();
       const action = route(e, performance.now());
       if (action === 'native') return;
       e.preventDefault(); e.stopPropagation();
@@ -304,21 +311,20 @@ export function BuildCanvas(props: Props) {
     }
   };
 
-  // Con la escena quieta (armando, sin simulación) no se dibuja en cada cuadro: R3F repinta solo cuando cambia algo (piezas, selección, cámara).
-  // Siguen en continuo la simulación (LED, servos, escenario), la primera persona y los fantasmas con pulso.
-  const animated = !!(props.flying || props.live || props.room || props.ghostWire || props.assemblyGhosts?.length);
+  // Live snapshots already invalidate R3F. A room or a paused simulation is not an animation.
+  const animated = !!(props.flying || props.ghostWire || props.assemblyGhosts?.length);
   if (failure) return <div className="rb-gl-error" role="alert"><strong>No se pudo mostrar la pizarra 3D</strong><p>{failure}</p><button type="button" onClick={() => { setFailure(''); onContextLost(); }}>Reintentar</button></div>;
-  return <div ref={wrap} className={`rb-canvas${tool === 'hand' ? ' is-hand' : ''}`} data-gesture-state="idle" onPointerDownCapture={down} onPointerMove={onWrapMove} onPointerLeave={() => props.onPinHover(null, {x: 0, y: 0})} onContextMenu={e => e.preventDefault()}>
+  return <div ref={wrap} className={`rb-canvas${tool === 'hand' ? ' is-hand' : ''}`} data-gesture-state="idle" onPointerDownCapture={e => { if (!(e.target as Element).closest?.('.rb-canvas-overlay')) props.onNavigate(); down(e); }} onPointerMove={onWrapMove} onPointerLeave={() => props.onPinHover(null, {x: 0, y: 0})} onContextMenu={e => e.preventDefault()}>
     <Boundary onError={setFailure}>
       <Canvas
         frameloop={animated ? 'always' : 'demand'}
-        dpr={lowQuality ? 1 : [1, 1.75]}
+        dpr={props.lightGraphics ? 0.75 : 1}
         camera={{fov: 45, near: 0.01, far: 200, position: initialCamera?.position ?? DEFAULT_CAMERA.position}}
         gl={{antialias: !lowQuality, powerPreference: 'high-performance', alpha: false}}
         onCreated={({gl}) => { gl.domElement.addEventListener('webglcontextlost', ev => { ev.preventDefault(); setFailure('El navegador perdió el contexto gráfico (WebGL). Pasa a veces con poca memoria de video.'); }); }}
         onError={() => setFailure('Falló el motor gráfico.')}>
-        <color attach="background" args={['#eef1f4']} />
-        <Scene {...{invalidateRef, parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, ghostWire: props.ghostWire, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput, live: props.live, room: props.room, assemblyGhosts: props.assemblyGhosts, assemblyNext: props.assemblyNext}} />
+        <color attach="background" args={[props.room?.theme === 'forest' ? '#c5d8cb' : '#eef1f4']} />
+        <Scene key={props.projectId} {...{invalidateRef, parts, selection, sceneRef: scene, controlsRef, cube, onAnchor, onCameraRest, initialCamera, debug, wrap, interfering: props.interfering, joinPoints: props.joinPoints, ghost: props.ghost, gizmo: props.gizmo, onGizmoDrag: props.onGizmoDrag, onGizmoCommit: props.onGizmoCommit, wires: props.wires, ghostWire: props.ghostWire, pins: props.pins, highlight: props.highlight, pending: props.pending, probes: props.probes, cursor, tool, flying: props.flying, flyInput, live: props.live, room: props.room, assemblyGhosts: props.assemblyGhosts, assemblyNext: props.assemblyNext}} />
       </Canvas>
     </Boundary>
     {marquee && <div className="rb-marquee" style={{left: marquee.x, top: marquee.y, width: marquee.w, height: marquee.h}} />}
@@ -474,6 +480,7 @@ function Scene({invalidateRef, parts, selection, sceneRef, controlsRef, cube, on
       camera: () => { const c = controlsRef.current!, p = new Vector3(), t = new Vector3(); c.getPosition(p); c.getTarget(t); return {position: p.toArray(), target: t.toArray(), distance: c.distance}; },
       screenOf: (id: string) => { const o = group.current?.children.find(c => c.userData.partId === id); if (!o) return null; const v = new Vector3(); new Box3().setFromObject(o).getCenter(v); v.project(camera); const r = gl.domElement.getBoundingClientRect(); return {x: r.left + ((v.x + 1) / 2) * r.width, y: r.top + ((1 - v.y) / 2) * r.height}; },
       renderer: () => { const g = gl.getContext(); const ext = g.getExtension('WEBGL_debug_renderer_info'); return ext ? String(g.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : 'desconocido'; },
+      renderStats: () => ({...gl.info.render, geometries: gl.info.memory.geometries, dpr: gl.getPixelRatio()}),
       objects: () => scene.children.length,
       gizmoRaw: () => tc.current,
       gizmoState: () => { const t = tc.current; return t ? {dragging: t.dragging, axis: t.axis, hasObject: !!t.object, pivot: pivot.current?.position.toArray(), drag: !!drag.current, camEnabled: controlsRef.current?.enabled} : null; },
@@ -584,7 +591,7 @@ function Scene({invalidateRef, parts, selection, sceneRef, controlsRef, cube, on
     <ambientLight intensity={0.9} />
     <directionalLight position={[2, 4, 3]} intensity={1.4} />
     <directionalLight position={[-2, 2, -1]} intensity={0.35} />
-    <Grid position={[0, 0, 0]} args={[10, 10]} cellSize={0.1} cellThickness={0.6} cellColor="#c9d1d8" sectionSize={0.5} sectionThickness={1} sectionColor="#9fb0bc" fadeDistance={6} fadeStrength={1.5} infiniteGrid />
+    {room?.theme !== 'forest' && <Grid position={[0, 0, 0]} args={[10, 10]} cellSize={0.1} cellThickness={0.6} cellColor="#c9d1d8" sectionSize={0.5} sectionThickness={1} sectionColor="#9fb0bc" fadeDistance={6} fadeStrength={1.5} infiniteGrid />}
     {room && <RoomLayer room={room} />}
     {room?.lineTrack && <LineTrackMesh track={room.lineTrack} />}
     <CameraControls ref={controlsRef as never} makeDefault />
@@ -610,13 +617,72 @@ function Scene({invalidateRef, parts, selection, sceneRef, controlsRef, cube, on
 }
 
 /** Cubo blanco: suelo claro, paredes translúcidas, obstáculos y el haz del HC-SR04 (todo sale del proyecto y de la física, nada decorativo). */
-function RoomLayer({room}: {room: RoomView}) {
-  const wall = (key: string, at: Vec3, size: Vec3) => <mesh key={key} position={at} raycast={() => null}><boxGeometry args={size} /><meshStandardMaterial color="#ffffff" transparent opacity={0.28} roughness={0.9} depthWrite={false} /></mesh>;
-  const h = ROOM_HALF, t = 0.1, w = WALL_H;
+function ForestObstacle({obstacle: o, selected}: {obstacle: Obstacle; selected: boolean}) {
+  const [w, h, d] = o.size;
+  const bark = selected ? '#438bba' : o.kind === 'branch' ? '#98704b' : '#69513d';
+  return <group position={o.transform.position} quaternion={o.transform.rotation}>
+    {o.kind === 'tree' ? <>
+      <mesh raycast={() => null}><cylinderGeometry args={[w / 2, w / 2, h, 10]} /><meshStandardMaterial color={bark} /></mesh>
+      <mesh position={[0, h * .53, 0]} raycast={() => null}><coneGeometry args={[w * 1.32, h * .74, 7]} /><meshStandardMaterial color="#416950" /></mesh>
+      <mesh position={[0, h * .79, 0]} raycast={() => null}><coneGeometry args={[w, h * .62, 7]} /><meshStandardMaterial color="#608362" /></mesh>
+    </> : o.kind === 'post' ? <>
+      <mesh raycast={() => null}><boxGeometry args={o.size} /><meshStandardMaterial color={selected ? '#438bba' : '#a5773b'} /></mesh>
+      <mesh position={[0, h * .36, 0]} raycast={() => null}><boxGeometry args={[w * 1.015, h * .14, d * 1.015]} /><meshStandardMaterial color="#f4d477" /></mesh>
+      <mesh position={[0, h * .12, 0]} raycast={() => null}><boxGeometry args={[w * 1.015, h * .09, d * 1.015]} /><meshStandardMaterial color="#f7eed9" /></mesh>
+    </> : o.kind === 'rock' ? (
+      <mesh scale={[w * .58, h * .58, d * .58]} raycast={() => null}>
+        <dodecahedronGeometry args={[1, 0]} /><meshStandardMaterial color={selected ? '#438bba' : '#7b8580'} flatShading />
+      </mesh>
+    ) : <>
+      <mesh rotation={[0, 0, Math.PI / 2]} scale={[h, 1, d]} raycast={() => null}>
+        <cylinderGeometry args={[.5, .5, w, 10]} /><meshStandardMaterial color={bark} />
+      </mesh>
+      {[-1, 1].map(side => <group key={side} position={[side * (w / 2 + .001), 0, 0]} rotation={[0, side * Math.PI / 2, 0]} scale={[d, h, 1]}>
+        <mesh raycast={() => null}><circleGeometry args={[.44, 10]} /><meshStandardMaterial color="#c7a575" /></mesh>
+        <mesh position={[0, 0, .001]} raycast={() => null}><ringGeometry args={[.24, .27, 10]} /><meshStandardMaterial color="#96744e" /></mesh>
+      </group>)}
+    </>}
+  </group>;
+}
+
+const ForestFloor = memo(function ForestFloor({half}: {half: number}) {
+  const grass = useRef<InstancedMesh>(null);
+  useLayoutEffect(() => {
+    const mesh = grass.current;
+    if (!mesh) return;
+    const matrix = new Matrix4();
+    for (let i = 0; i < mesh.count; i++) {
+      const x = (i % 2 ? 1 : -1) * (.67 + (i * 37 % 110) / 110 * (half - .95));
+      const z = -half + .2 + (i * 67 % 359) / 359 * (2 * half - .4);
+      const height = .55 + (i * 7 % 8) / 10;
+      matrix.makeScale(.7 + i % 4 * .15, height, 1);
+      matrix.setPosition(x, .038 * height, z);
+      mesh.setMatrixAt(i, matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+    mesh.computeBoundingSphere();
+  }, [half]);
   return <>
-    <mesh position={[0, -0.002, 0]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => null}><planeGeometry args={[h * 2, h * 2]} /><meshStandardMaterial color="#ffffff" roughness={0.95} /></mesh>
+    <mesh position={[0, -.001, 0]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => null}>
+      <planeGeometry args={[1.03, half * 2]} /><meshStandardMaterial color="#b5a183" />
+    </mesh>
+    <instancedMesh ref={grass} args={[undefined, undefined, 52]} raycast={() => null}>
+      <coneGeometry args={[.036, .085, 3]} /><meshStandardMaterial color="#566d43" flatShading />
+    </instancedMesh>
+  </>;
+});
+
+function RoomLayer({room}: {room: RoomView}) {
+  const wall = (key: string, at: Vec3, size: Vec3) => <mesh key={key} position={at} raycast={() => null}><boxGeometry args={size} /><meshStandardMaterial color={room.theme === 'forest' ? '#69947b' : '#ffffff'} transparent opacity={room.theme === 'forest' ? .17 : .28} roughness={0.9} depthWrite={false} /></mesh>;
+  const h = (room.sizeM ?? ROOM_HALF * 2) / 2, t = 0.1, w = WALL_H;
+  return <>
+    <mesh position={[0, -0.002, 0]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => null}><planeGeometry args={[h * 2, h * 2]} /><meshStandardMaterial color={room.theme === 'forest' ? '#83916b' : room.theme === 'factory' ? '#afb8bf' : '#ffffff'} roughness={0.95} /></mesh>
     {wall('n', [0, w / 2, h + t / 2], [h * 2 + t * 2, w, t])}{wall('s', [0, w / 2, -h - t / 2], [h * 2 + t * 2, w, t])}{wall('e', [h + t / 2, w / 2, 0], [t, w, h * 2])}{wall('w', [-h - t / 2, w / 2, 0], [t, w, h * 2])}
-    {room.obstacles.map(o => <mesh key={o.id} position={o.transform.position} quaternion={o.transform.rotation} raycast={() => null}>
+    {room.theme === 'forest' && <ForestFloor half={h} />}
+    {room.theme === 'factory' && [-1, 1].map(side => <mesh key={side} position={[side * .84, -.001, 0]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => null}>
+      <planeGeometry args={[.035, h * 2]} /><meshBasicMaterial color="#eeb532" />
+    </mesh>)}
+    {room.obstacles.map(o => o.kind ? <ForestObstacle key={o.id} obstacle={o} selected={o.id === room.selected} /> : <mesh key={o.id} position={o.transform.position} quaternion={o.transform.rotation} raycast={() => null}>
       {o.shape === 'cylinder' ? <cylinderGeometry args={[o.size[0] / 2, o.size[0] / 2, o.size[1], 32]} /> : <boxGeometry args={o.size} />}
       <meshStandardMaterial color={o.id === room.selected ? '#2f8fd0' : '#e6a23c'} roughness={0.7} /></mesh>)}
     {room.beams.map((b, i) => { const d = b.distance ?? 4, end: Vec3 = [b.origin[0] + b.dir[0] * d, b.origin[1] + b.dir[1] * d, b.origin[2] + b.dir[2] * d];
@@ -651,6 +717,18 @@ function GhostWire({wire}: {wire: GhostWireView}) {
 
 /** Cable: tubo que pasa por las posiciones mundiales de sus pines y por los puntos de control; sin puntos, hace una curva suave hacia arriba. */
 function WireTube({wire}: {wire: WireView}) {
+  // Robots move on the floor: keep the tube in local coordinates instead of allocating
+  // two new TubeGeometries per wire and snapshot for a translation or yaw rotation.
+  const origin = wire.points[0] ?? ZERO, end = wire.points.at(-1) ?? origin;
+  const yaw = Math.atan2(end[0] - origin[0], end[2] - origin[2]);
+  const rotation = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), yaw);
+  const inverse = rotation.clone().invert();
+  const key = JSON.stringify(wire.points.map(p => new Vector3(...p).sub(new Vector3(...origin)).applyQuaternion(inverse).toArray().map(v => Math.round(v * 1e7) / 1e7)));
+  const points = useMemo<Vec3[]>(() => JSON.parse(key) as Vec3[], [key]);
+  return <group position={origin} quaternion={rotation} userData={{wireId: wire.id, points: wire.points}}><WireShape wire={{...wire, points}} /></group>;
+}
+
+function WireShape({wire}: {wire: WireView}) {
   const key = JSON.stringify(wire.points), curve = useMemo(() => wireCurve(wire.points), [key]);
   if (wire.points.length === 2 && new Vector3(...wire.points[0]).distanceToSquared(new Vector3(...wire.points[1])) < 1e-10) return <group userData={{wireId: wire.id, points: wire.points}} />;
   // Dupont sleeves only on header connections, never over the screw terminals.
@@ -669,8 +747,8 @@ function WireTube({wire}: {wire: WireView}) {
   });
   return <group userData={{wireId: wire.id, points: wire.points}}>
     {plugs}
-    <mesh><tubeGeometry args={[curve, 32, wire.selected ? 0.0017 : 0.0011, 8, false]} /><meshStandardMaterial color={wire.color} roughness={0.5} emissive={wire.selected ? wire.color : '#000000'} emissiveIntensity={wire.selected ? 0.5 : 0} /></mesh>
-    <mesh><tubeGeometry args={[curve, 24, 0.004, 5, false]} /><meshBasicMaterial transparent opacity={0} depthWrite={false} /></mesh>
+    <CableTube curve={curve} radius={wire.selected?0.0017:0.0011} color={wire.color} selected={wire.selected}/>
+    <CableTube curve={curve} radius={.004} color={wire.color} hit/>
   </group>;
 }
 

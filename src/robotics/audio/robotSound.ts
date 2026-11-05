@@ -107,9 +107,20 @@ export class RobotSound {
     src.connect(f); f.connect(g); g.connect(this.master!); src.start(t, Math.random() * 0.5); src.stop(t + length + 0.02);
   }
 
-  private play(e: SoundEvent) {
+  play(e: SoundEvent) {
+    if (!this.running || !this.master) return;
     switch (e.kind) {
+      case 'ui-run': this.tone(620, .065, {to: 820, volume: .045}); break;
+      case 'ui-pause': this.tone(600, .06, {to: 480, volume: .04}); break;
+      case 'ui-stop': this.tone(360, .10, {to: 180, volume: .05}); break;
+      case 'speed-up': this.tone(510, .09, {to: 830, volume: .045}); break;
+      case 'speed-down': this.tone(700, .09, {to: 420, volume: .045}); break;
+      case 'push-wood': this.burst(.035, {filter: 'lowpass', freq: 1350, volume: .065}); this.tone(260, .072, {to: 130, volume: .04}); break;
       case 'power-on': this.tone(660, 0.09, {volume: 0.04}); this.tone(990, 0.14, {volume: 0.04, delay: 0.1}); break;
+      case 'surprise': this.tone(470, .13, {to: 840, volume: .07}); this.tone(980, .12, {delay: .11, to: 690, volume: .055}); break;
+      case 'recover': this.tone(380, .14, {to: 220, volume: .065}); this.tone(340, .18, {delay: .15, to: 560, volume: .055}); break;
+      case 'turn-left': this.tone(590, .10, {to: 430, volume: .045}); break;
+      case 'turn-right': this.tone(590, .10, {to: 790, volume: .045}); break;
       case 'brake': this.tone(120, 0.18, {type: 'sine', volume: 0.16, to: 42}); this.burst(0.05, {filter: 'lowpass', freq: 500, volume: 0.1}); break;
       case 'grasp': this.burst(0.035, {freq: 2200, volume: 0.1}); this.tone(880, 0.05, {type: 'square', volume: 0.025}); this.tone(180, 0.07, {type: 'sine', volume: 0.07, to: 110, delay: 0.02}); break;
       case 'release': this.burst(0.03, {freq: 1500, volume: 0.07}); this.tone(520, 0.05, {type: 'square', volume: 0.02}); break;

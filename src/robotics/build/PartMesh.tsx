@@ -11,6 +11,7 @@ import {clawGap} from '../catalog/claw.ts';
 import {CONVEYOR_ID} from '../conveyor/constants.ts';
 import {ConveyorMesh} from '../conveyor/ConveyorMesh';
 import {pieceSurface} from '../conveyor/color.ts';
+import {StaticMeshes} from './StaticMeshes';
 
 type V3 = [number, number, number];
 const mm = (v: number) => v / 1000;
@@ -465,8 +466,15 @@ function Body({id, color, glow = 0, ohms = 220, closed = true, angle = 90, contr
 }
 
 // Static detail meshes do not need to rerender when only the parent transform moves.
-const DetailedBody = memo(Body);
-const PhysicalConnectors = memo(Connectors);
+const STATIC_BODIES = new Set(['robot-torso', 'robot-arm', 'robot-forearm', 'robot-head', 'chassis-2wd', 'dc-motor-tt', 'wheel-65', 'caster-ball', 'arduino-uno-r3', 'l298n-module', 'hc-sr04', 'battery-holder-4aa', 'sensor-bracket', 'track-sprocket', 'track-belt', 'regulator-5v']);
+const DetailedBody = memo(function DetailedBody(props: Parameters<typeof Body>[0]) {
+  return STATIC_BODIES.has(props.id)
+    ? <StaticMeshes cacheKey={`${props.id}:${String(props.color)}`}><Body {...props} /></StaticMeshes>
+    : <Body {...props} />;
+});
+const PhysicalConnectors = memo(function PhysicalConnectors(props: Parameters<typeof Connectors>[0]) {
+  return <StaticMeshes cacheKey={`${props.id}:${props.showPins}`}><Connectors {...props} /></StaticMeshes>;
+});
 
 /** Appearance only: preserve catalog IDs, electrical endpoints, transforms and selection. */
 export function PartMesh({part, selected, interfering, glow, servoAngle, control, display, showPins = true}: {part: PartInstance; selected: boolean; interfering: boolean; glow?: number; servoAngle?: number; control?: number; display?: DisplayView; showPins?: boolean}) {

@@ -5,6 +5,7 @@ export type ToWorker =
   | {t: 'load'; model: SimModel}
   | {t: 'start'}
   | {t: 'pause'}
+  | {t: 'visibility'; visible: boolean}
   | {t: 'speed'; factor: number}
   | {t: 'ping'; n: number}
   /** Valor vivo de un control del banco: potenciómetro (0–1) o pulsador (0/1). */

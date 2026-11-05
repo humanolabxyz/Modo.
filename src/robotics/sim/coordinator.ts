@@ -20,7 +20,7 @@ export const SENSOR_MAX_M = 4, SENSOR_MIN_M = 0.02;
 const clamp01 = (v: number) => (Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : 0);
 export const SERVO_US_MIN = 544, SERVO_US_MAX = 2400, SERVO_VALID_MIN = 400, SERVO_VALID_MAX = 2700, SERVO_DEG_PER_S = 600, SERVO_REST_DEG = 90;
 
-export type SimModel = {project: RobotProject; targetId: string; hex: string; /** Con física (Rapier): ruedas, obstáculos y rayos del HC-SR04. */ physics?: boolean};
+export type SimModel = {project: RobotProject; targetId: string; hex: string; programs?: {targetId: string; hex: string}[]; /** Con física (Rapier): ruedas, obstáculos y rayos del HC-SR04. */ physics?: boolean};
 /** The physics port supplies measurements; outputs still propagate through the circuit. */
 export interface PhysicsPort {
   step(motorVolts: ReadonlyMap<string, number>, brakes?: ReadonlySet<string>): void;
@@ -28,7 +28,7 @@ export interface PhysicsPort {
   setServos?(angles: ReadonlyMap<string, number>): void;
   distance(sensorId: string): number | null | undefined;
   reflectance?(sensorId: string): {black: boolean; origin: [number, number, number]; height: number} | undefined;
-  frame(): PhysicsFrame;
+  frame?(): PhysicsFrame;
 }
 export type ReflectanceState = {powered: boolean; linked: boolean; black: boolean; level: 0 | 1; height: number | null; measured: boolean};
 export type SensorState = {powered: boolean; linked: boolean; distance: number; echoes: number; lastEchoUs: number | null; reason?: string};
@@ -261,7 +261,7 @@ export class Coordinator {
     return {
       simTimeUs: this.time, status: this.status, message: this.message, uno: {powered: st?.kind === 'uno' && st.powered, via: st?.kind === 'uno' ? st.via : null}, pins: out,
       leds: Object.fromEntries(this.dynamic?.leds ?? []), motors: Object.fromEntries(this.dynamic?.motors ?? []), bridges: Object.fromEntries(this.dynamic?.bridges ?? []),
-      sensors: Object.fromEntries(this.sensors.map(s => [s.id, {...s.state}])), serial, reflectance: {...this.reflectance}, servos: Object.fromEntries(this.servos.map(s => [s.id, {...s.state}])), displays: Object.fromEntries(this.displays.map(d => [d.id, {powered: d.powered, linked: d.linked, reason: d.reason, on: d.device.on, version: d.device.version, dataBytes: d.device.dataBytes, address: d.address, frame: d.device.frame()}])), physics: this.physics?.frame(), controls: Object.fromEntries(this.controls),
+      sensors: Object.fromEntries(this.sensors.map(s => [s.id, {...s.state}])), serial, reflectance: {...this.reflectance}, servos: Object.fromEntries(this.servos.map(s => [s.id, {...s.state}])), displays: Object.fromEntries(this.displays.map(d => [d.id, {powered: d.powered, linked: d.linked, reason: d.reason, on: d.device.on, version: d.device.version, dataBytes: d.device.dataBytes, address: d.address, frame: d.device.frame()}])), physics: this.physics?.frame?.(), controls: Object.fromEntries(this.controls),
     };
   }
 }

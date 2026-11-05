@@ -5,7 +5,7 @@ import RAPIER from '@dimforge/rapier3d-compat';
 import {buildTemplate} from '../src/robotics/project/templates.ts';
 import {Coordinator} from '../src/robotics/sim/coordinator.ts';
 import {RobotPhysics} from '../src/robotics/sim/physics.ts';
-import {soundEvents, soundTargets} from '../src/robotics/audio/soundModel.ts';
+import {readRobotCues, soundEvents, soundTargets} from '../src/robotics/audio/soundModel.ts';
 await RAPIER.init();
 const pass = s => console.log('PASS', s);
 
@@ -13,9 +13,11 @@ const pass = s => console.log('PASS', s);
 function listen(id, seconds, step = 20) {
   const p = buildTemplate(id), uno = p.parts.find(x => x.definitionId === 'arduino-uno-r3'), phys = RobotPhysics.create(RAPIER, p), c = new Coordinator({project: p, targetId: uno.instanceId, hex: p.firmware[0].artifact.hex, physics: true}, phys);
   assert.equal(c.snapshot().status, 'running', c.snapshot().message);
-  const rows = []; let prevSnap = null, prevT = null;
+  const rows = []; let prevSnap = null, prevT = null, tail = '';
   for (let t = 0; t < seconds * 1000; t += step) {
     c.advance(step * 1000); const snap = c.snapshot(), targets = soundTargets(p, snap, prevSnap), events = soundEvents(prevT, targets);
+    const cues = readRobotCues(snap.serial, tail); tail = cues.tail;
+    events.push(...cues.events);
     rows.push({t, targets, events}); prevSnap = snap; prevT = targets;
   }
   phys.dispose(); return {p, rows};
@@ -25,10 +27,11 @@ function listen(id, seconds, step = 20) {
   const {p, rows} = listen('robot-oruga-radar', 10);
   const kinds = k => rows.flatMap(r => r.events.filter(e => e.kind === k));
   const cruising = rows.filter(r => r.t > 600 && r.t < 1300);
-  assert.ok(cruising.every(r => r.targets.motors.length === 2 && r.targets.motors.every(m => m.level > 0.55)), 'los dos motores suenan fuerte al avanzar');
+  assert.ok(cruising.every(r => r.targets.motors.length === 2 && r.targets.motors.every(m => m.level > 0.43)), 'los dos motores suenan al avanzar, incluida la aproximación lenta');
   assert.ok(Math.max(...cruising.map(r => r.targets.tracks)) > 0.25, `las orugas suenan al avanzar (${Math.max(...cruising.map(r => r.targets.tracks)).toFixed(2)})`);
   const quiet = rows.filter(r => r.targets.motors.every(m => m.braking)); assert.ok(quiet.length > 20 && quiet.every(r => r.targets.motors.every(m => m.level === 0)), 'frenado en corto: el motor no zumba');
   assert.equal(kinds('power-on').length, 1, 'un solo pitido de encendido'); assert.ok(rows[0].events.some(e => e.kind === 'power-on'), 'suena al encender');
+  assert.ok(kinds('surprise').length >= 1 && kinds('turn-right').length >= 1, 'la sorpresa y el giro emiten sonidos distintos');
   assert.ok(kinds('brake').length >= 1, 'el freno hace un golpe seco');
   const neck = p.parts.filter(x => x.definitionId === 'servo-sg90')[0], neckRates = rows.map(r => r.targets.servos.find(s => s.id === neck.instanceId)?.rate ?? 0);
   assert.ok(Math.max(...neckRates) > 100, `el servo del cuello zumba al girar (${Math.max(...neckRates).toFixed(0)} °/s)`);

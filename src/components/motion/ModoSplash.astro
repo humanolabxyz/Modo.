@@ -1,19 +1,10 @@
 ---
-/* Entrada de marca: el rayo llega en dos piezas, una onda verde marca el impacto y aparece «modo.»; luego la pantalla se aleja y revela la app. */
+/* Dos mitades del rayo encajan y dan paso a la aplicación. */
 ---
 <div id="modo-splash" class="modo-splash" aria-hidden="true">
  <div class="modo-splash-stack">
   <svg class="modo-splash-logo" viewBox="0 0 132 142" width="132" height="142" focusable="false">
-   <circle class="modo-splash-ring" cx="66" cy="71" r="10"/>
-   <g class="modo-splash-arcs" aria-hidden="true">
-    <path class="modo-splash-arc" pathLength="1" style="--d:0ms" d="M66 71 L77.9 72.9 L82.7 59.5 L91.2 54.1 L103.8 57.4 L111.5 50.3 L119.2 43.2 L129.4 41.4"/>
-    <path class="modo-splash-arc" pathLength="1" style="--d:28ms" d="M66 71 L76.4 79.2 L86.0 88.6 L97.3 95.6 L106.5 105.5 L122.6 105.6 L132.2 114.9 L141.9 124.1"/>
-    <path class="modo-splash-arc" pathLength="1" style="--d:56ms" d="M66 71 L72.0 84.6 L60.8 96.6 L63.1 109.9 L54.7 122.2 L55.4 135.3 L65.2 149.2 L58.1 161.6"/>
-    <path class="modo-splash-arc" pathLength="1" style="--d:84ms" d="M66 71 L52.4 75.4 L40.7 83.0 L29.1 90.9 L14.4 93.2 L2.3 100.2 L-5.5 114.6 L-18.6 119.8"/>
-    <path class="modo-splash-arc" pathLength="1" style="--d:112ms" d="M66 71 L52.9 66.5 L39.7 62.2 L29.1 53.4 L18.4 44.8 L5.5 39.9 L-1.1 24.2 L-16.4 23.4"/>
-    <path class="modo-splash-arc" pathLength="1" style="--d:140ms" d="M66 71 L73.2 58.5 L61.3 44.2 L65.8 31.5 L71.5 18.8 L71.9 5.6 L71.6 -7.6 L74.0 -20.5"/>
-   </g>
-   <g class="modo-splash-impact" fill="#101215">
+   <g fill="#101215">
     <g class="modo-splash-a"><path d="M0 70 L78 0 L55 70 Z" transform="translate(6 6)"/></g>
     <g class="modo-splash-b"><path d="M74 55 L120 55 L41 130 Z" transform="translate(6 6)"/></g>
    </g>
@@ -44,18 +35,18 @@ addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__m
  var d=document.documentElement,el=document.getElementById('modo-opening'),KEY='modo-opening';
  if(!el)return;
  var label=el.querySelector('.modo-opening-label'),shownAt=0,timer=0,fail=0,out=0;
- function pending(){return document.readyState!=='complete'||!!document.querySelector('astro-island[ssr],.lab-loading,.modo-pending')}
- function check(){if(Date.now()-shownAt>=450&&!pending())hide()}
+ function pending(){return document.readyState==='loading'||!!document.querySelector('astro-island[ssr],.lab-loading,.modo-pending')}
+ function check(){if(Date.now()-shownAt>=140&&!pending())hide()}
  function show(text){
   if(label)label.textContent=(text||'Abriendo')+'…';
   clearTimeout(out);
-  if(!d.classList.contains('modo-opening-on')){shownAt=Date.now();el.classList.remove('is-out');d.classList.add('modo-opening-on');el.setAttribute('aria-hidden','false')}
-  clearInterval(timer);timer=setInterval(check,120);
+  if(!d.classList.contains('modo-opening-on')||el.classList.contains('is-out')){shownAt=Date.now();el.classList.remove('is-out');d.classList.add('modo-opening-on');el.setAttribute('aria-hidden','false')}
+  clearInterval(timer);timer=setInterval(check,80);
   clearTimeout(fail);fail=setTimeout(hide,12000);
  }
  function hide(){
   clearInterval(timer);clearTimeout(fail);
-  if(!d.classList.contains('modo-opening-on'))return;
+  if(!d.classList.contains('modo-opening-on')||el.classList.contains('is-out'))return;
   el.classList.add('is-out');
   out=setTimeout(function(){d.classList.remove('modo-opening-on');el.classList.remove('is-out');el.setAttribute('aria-hidden','true')},220);
  }
@@ -83,38 +74,44 @@ addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__m
 </script>
 <script is:inline>
 (function(){
- var d=document.documentElement,splash=document.getElementById('modo-splash'),started=false,done=false;
+ var d=document.documentElement,splash=document.getElementById('modo-splash'),started=false,done=false,timer=0;
  if(!splash)return;
- function finish(){if(done)return;done=true;d.classList.remove('modo-splash-on');splash.remove();document.removeEventListener('visibilitychange',visible)}
- /* Sonido del rayo (Web Audio, sin archivos). Respeta el silencio de la app y no suena si el navegador aún no permite audio (no se reproduce tarde). */
- function zap(){
+ function finish(){if(done)return;done=true;if(timer)clearTimeout(timer);d.classList.remove('modo-splash-on');splash.remove();document.removeEventListener('visibilitychange',visible)}
+ // Two short tones make the click and body of a single contact.
+ function joinSound(){
   try{if(localStorage.getItem('panellab.sonidos.v1')==='0')return}catch(x){}
-  if(document.hidden)return;
-  var C=window.AudioContext||window.webkitAudioContext;if(!C)return;
-  var c;try{c=new C()}catch(x){return}
-  var stale=false;setTimeout(function(){stale=true},180);
-  function play(){
-   var t=c.currentTime+.02,hit=t+.37,out=c.createGain(),comp=c.createDynamicsCompressor(),nb=c.createBuffer(1,c.sampleRate,c.sampleRate),d=nb.getChannelData(0),i;
-   out.gain.value=.5;out.connect(comp);comp.connect(c.destination);
-   for(i=0;i<d.length;i++)d[i]=Math.random()*2-1;
-   function noise(at,dur,gain,type,f0,f1,q){var s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();s.buffer=nb;f.type=type;f.Q.value=q||1;f.frequency.setValueAtTime(f0,at);if(f1)f.frequency.exponentialRampToValueAtTime(f1,at+dur);g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(gain,at+Math.min(.004,dur/2));g.gain.exponentialRampToValueAtTime(.0001,at+dur);s.connect(f);f.connect(g);g.connect(out);s.start(at,Math.random()*.4);s.stop(at+dur+.02)}
-   function osc(at,type,f0,f1,dur,gain){var o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f0,at);o.frequency.exponentialRampToValueAtTime(f1,at+dur);g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(gain,at+.003);g.gain.exponentialRampToValueAtTime(.0001,at+dur);o.connect(g);g.connect(out);o.start(at);o.stop(at+dur+.02)}
-   /* carga: zumbido eléctrico que sube mientras llegan las dos mitades */
-   noise(t,.37,.22,'bandpass',300,3800,1.4);osc(t,'sawtooth',90,420,.37,.05);
-   /* impacto: chasquido, golpe grave y descarga que cae en tono */
-   noise(hit,.07,.9,'highpass',1400,0,.7);osc(hit,'sine',150,38,.32,.7);osc(hit,'sawtooth',2600,160,.2,.2);
-   /* chisporroteo de los arcos y zumbido que se apaga */
-   for(i=0;i<9;i++)noise(hit+.02+i*.045+Math.random()*.03,.012+Math.random()*.012,.25*(1-i/12),'highpass',2200+Math.random()*3000,0,2);
-   osc(hit,'sawtooth',100,70,.4,.08);
-   setTimeout(function(){try{c.close()}catch(x){}},1800);
-  }
-  function go(){if(stale||c.state!=='running'){try{c.close()}catch(x){}return}play()}
-  if(c.state==='running')go();else c.resume().then(go,function(){try{c.close()}catch(x){}});
+  if(document.visibilityState==='hidden')return;
+  var Context=window.AudioContext||window.webkitAudioContext,c;
+  if(!Context)return;
+  try{
+   c=new Context();
+   var close=function(){c.close().catch(function(){})};
+   // A suspended context must not play the intro on a later gesture.
+   if(c.state!=='running'){close();return}
+   var at=c.currentTime+.006;
+   function voice(type,from,to,duration,level){
+    var oscillator=c.createOscillator(),gain=c.createGain();
+    oscillator.type=type;oscillator.frequency.setValueAtTime(from,at);
+    oscillator.frequency.exponentialRampToValueAtTime(to,at+duration);
+    gain.gain.setValueAtTime(.0001,at);
+    gain.gain.exponentialRampToValueAtTime(level,at+.006);
+    gain.gain.exponentialRampToValueAtTime(.0001,at+duration);
+    oscillator.connect(gain);gain.connect(c.destination);
+    oscillator.start(at);oscillator.stop(at+duration);
+    return oscillator;
+   }
+   voice('triangle',920,620,.042,.037);
+   voice('sine',240,126,.135,.105).onended=close;
+  }catch(x){if(c)c.close().catch(function(){})}
  }
- function start(){if(started||done)return;started=true;d.classList.add('modo-splash-on');zap();setTimeout(finish,1800)}
+ function start(){if(started||done)return;started=true;d.classList.add('modo-splash-on');timer=setTimeout(finish,850)}
  function visible(){if(document.visibilityState==='visible'){if(!started)start()}else if(started)finish()}
  if(d.dataset.modoLaunch!=='1'||d.classList.contains('modo-reduced')){finish();return}
- splash.addEventListener('animationend',function(e){if(e.animationName==='modo-splash-exit')finish()});
+ splash.addEventListener('animationend',function(e){
+  if(done)return;
+  if(e.animationName==='modo-bolt-top')joinSound();
+  if(e.animationName==='modo-splash-exit')finish();
+ });
  document.addEventListener('visibilitychange',visible);
  if(document.visibilityState!=='hidden')start();
 })();

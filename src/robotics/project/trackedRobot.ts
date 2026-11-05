@@ -4,13 +4,14 @@
 import {addPart, attach, connect, ensureFirmware, renamePart, setFirmwareArtifact, setPartProp} from './commands.ts';
 import {newRobotProject} from './defaults.ts';
 import {hashSource} from '../mcu/compiler/state.ts';
+import {forestScene} from './forest.ts';
 import {PICK_HEX, PICK_SKETCH, TRACKED_HEX, TRACKED_SKETCH} from './trackedSketch.ts';
 import type {Quat, RobotProject, Vec3} from './types.ts';
 
 export const TEMPLATE_TRACKED = 'robot-oruga-radar';
 export const TRACKED_TEMPLATE_INFO = {
   id: TEMPLATE_TRACKED, name: 'Robot de orugas con radar y cara', layout: '2 orugas · cuerpo · cuello con servo · cabeza con pantalla y radar · 2 brazos con pinza',
-  summary: 'Un robot de pie, difícil y simpático: base de orugas, cuerpo con carcasa de vidrio, cabeza con pantalla (ojos y boca) y radar sobre un cuello con servo, y dos brazos completos (hombro, codo y pinza) que recogen objetos. Se arma, se cablea (44 cables) y se programa.',
+  summary: 'Un robot de pie, difícil y simpático: base de orugas, cuerpo con carcasa de vidrio, cabeza con pantalla (ojos y boca) y radar sobre un cuello con servo, y dos brazos completos (hombro, codo y pinza) que recogen objetos. Explora un bosque, reacciona al radar y retrocede para salir de un atasco.',
 } as const;
 
 export const TEMPLATE_PICK = 'robot-oruga-recoger';
@@ -104,11 +105,7 @@ export function buildTrackedRobot(now = new Date().toISOString(), pick = false):
 
   p = ensureFirmware(p, uno); p = {...p, firmware: p.firmware.map(f => (f.targetInstanceId === uno ? {...f, source: sketch, updatedAt: now} : f))};
   p = setFirmwareArtifact(p, uno, {hex, origin: 'remote-compiler', sourceHash: hashSource(sketch), compiledAt: now});
-  // Escenario: una caja al frente y una pared a la izquierda, así el robot tiene que elegir girar a la derecha. Son de 40 cm de alto: el radar va en la cabeza, a ~25 cm del suelo, y pasaría por encima de una caja más baja.
   const cubes = (): RobotProject['scene']['obstacles'] => [-1, 1].map(side => ({id: side > 0 ? 'cubo-izquierdo' : 'cubo-derecho', shape: 'box' as const, transform: {position: [0.146 * side, 0.015, 0.078] as Vec3, rotation: [0, 0, 0, 1] as Quat}, size: [0.03, 0.03, 0.03] as Vec3, movable: true, massKg: 0.04})); // quedan justo entre los dedos con hombro y codo a 28°
-  p = {...p, scene: {...p.scene, obstacles: pick ? cubes() : [
-    {id: 'caja-frente', shape: 'box', transform: {position: [0, 0.2, 0.95], rotation: [0, 0, 0, 1]}, size: [0.5, 0.4, 0.1]},
-    {id: 'pared-izquierda', shape: 'box', transform: {position: [0.32, 0.2, 0.75], rotation: [0, 0, 0, 1]}, size: [0.08, 0.4, 0.7]},
-  ]}};
-  return {...p, name: info.name, workspace: {mode: 'build', camera: {position: [0.62, 0.42, 0.72], target: [0, 0.07, 0.04]}}};
+  p = {...p, scene: pick ? {...p.scene, obstacles: cubes()} : forestScene(p.scene)};
+  return {...p, name: info.name, workspace: {mode: 'build', camera: pick ? {position: [0.62, 0.42, 0.72], target: [0, 0.07, 0.04]} : {position: [1.28, 1.14, -1.56], target: [0, 0.23, 0.4]}}};
 }
