@@ -1,12 +1,13 @@
 import {useEffect, useMemo, useRef, useState, type MutableRefObject, type ElementRef, type ReactNode} from 'react';
 import {Canvas, useFrame, useThree, type ThreeEvent} from '@react-three/fiber';
 import {Grid, Html, Line, OrbitControls, RoundedBox} from '@react-three/drei';
-import {CatmullRomCurve3, DirectionalLight, Plane, TubeGeometry, Vector2, Vector3} from 'three';
+import {CatmullRomCurve3, DirectionalLight, DoubleSide, Plane, TubeGeometry, Vector2, Vector3, type Group} from 'three';
 import type {IndustryProject, Pose, TerminalRef, Vec3} from '../model/types.ts';
 import type {CameraState} from '../model/ui.ts';
 import {shapeOf, type AnchorDef, type TerminalDef} from '../build/shapes.ts';
 import {refKey, type Evaluation} from '../wiring/engine.ts';
 import {CABLE_RADIUS, collisionBoxes, routeAll, segmentHits} from '../wiring/route.ts';
+import {hallBounds, hallParts, hasHall, type HallBounds, type HallPart} from './hall.ts';
 import {flexCable, insertWaypoint, interiorOf, midpointsOf, moveWaypoint, removeWaypoint} from '../wiring/curve.ts';
 import {operableKind, type SimResult} from '../sim/engine.ts';
 import {modelParts, type Detail} from './models.ts';
@@ -197,6 +198,32 @@ function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlappin
   </group>;
 }
 
+/** Nave industrial alrededor de la planta (decorado). Las paredes que quedan entre la cámara y la planta se ocultan para ver el interior desde fuera. */
+type Side = 'n' | 's' | 'e' | 'w' | 'all';
+function Hall({bounds}: {bounds: HallBounds}) {
+  const groups = useMemo(() => {
+    const {cx, cz, w, d} = bounds, x0 = cx - w / 2, x1 = cx + w / 2, z0 = cz - d / 2, z1 = cz + d / 2, g: Record<Side, HallPart[]> = {n: [], s: [], e: [], w: [], all: []};
+    for (const p of hallParts(bounds)) {
+      const near: [Side, number][] = [['n', Math.abs(p.pos[2] - z0)], ['s', Math.abs(p.pos[2] - z1)], ['e', Math.abs(p.pos[0] - x1)], ['w', Math.abs(p.pos[0] - x0)]];
+      const [side, dist] = near.reduce((a, b) => (b[1] < a[1] ? b : a));
+      const onWall = p.kind === 'wall' || p.kind === 'glass' || p.kind === 'door' || (p.kind === 'sign' && dist < 0.3);
+      g[onWall && dist < 0.4 ? side : 'all'].push(p);
+    }
+    return g;
+  }, [bounds]);
+  const refs = useRef<Partial<Record<Side, Group | null>>>({});
+  useFrame(({camera}) => {
+    const {cx, cz, w, d} = bounds, x = camera.position.x, z = camera.position.z, r = refs.current;
+    if (r.n) r.n.visible = z > cz - d / 2 - 0.1; if (r.s) r.s.visible = z < cz + d / 2 + 0.1; if (r.w) r.w.visible = x > cx - w / 2 - 0.1; if (r.e) r.e.visible = x < cx + w / 2 + 0.1;
+  });
+  return <group>{(Object.keys(groups) as Side[]).map(side => <group key={side} ref={g => { refs.current[side] = g; }}>
+    {groups[side].map((p, i) => <mesh key={i} position={p.pos} rotation={p.shape === 'cyl' ? (p.axis === 'x' ? [0, 0, Math.PI / 2] : p.axis === 'z' ? [Math.PI / 2, 0, 0] : [0, 0, 0]) : [0, 0, 0]} raycast={() => null} receiveShadow={p.kind === 'floor'}>
+      {p.shape === 'box' ? <boxGeometry args={p.size} /> : <cylinderGeometry args={[p.size[0], p.size[0], p.size[1], 14]} />}
+      <meshStandardMaterial color={p.color} emissive={p.emissive ?? '#000000'} emissiveIntensity={p.emissive ? (p.kind === 'lamp' ? 1.1 : 0.35) : 0} roughness={p.kind === 'floor' ? 0.9 : p.kind === 'glass' ? 0.1 : 0.7} metalness={p.kind === 'steel' ? 0.35 : 0.02} transparent={p.opacity !== undefined} opacity={p.opacity ?? 1} side={p.kind === 'glass' ? DoubleSide : undefined} />
+    </mesh>)}
+  </group>)}</group>;
+}
+
 /** Luz principal con sombras: encuadra la escena (centro y tamaño) y mira al centro. */
 function KeyLight({c, r, shadow}: {c: Vec3; r: number; shadow: boolean}) {
   const light = useMemo(() => new DirectionalLight('#ffffff', 1.25), []);
@@ -216,6 +243,8 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
   latest.current = {project, magnet, onDrop};
   const [preview, setPreview] = useState<Preview | null>(null);
   const [hover, setHover] = useState<string | null>(null);
+  const hallOn = useMemo(() => hasHall(project.entities.map(e => e.definitionId)), [project.entities]);
+  const hallB = useMemo(() => hallBounds(Object.values(project.poses).map(p => p.position)), [project.poses]);
   const [liveCable, setLiveCable] = useState<{id: string; interior: Vec3[]} | null>(null);
   const dist = cam.position.distanceTo(controls.current?.target ?? new Vector3(0, 0.8, 0));
   const coarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches; // dedo: puntos de terminal más grandes
@@ -289,7 +318,8 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
     <KeyLight c={focus.c} r={focus.r} shadow={project.entities.length <= 80} />
     <directionalLight position={[-focus.r * 1.2, focus.r * 0.8 + 0.3, -focus.r * 0.6]} intensity={0.4} />
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.002, 0]} receiveShadow raycast={() => null}><planeGeometry args={[80, 80]} /><shadowMaterial opacity={0.2} /></mesh>
-    <Grid args={[40, 40]} cellSize={0.5} cellThickness={0.6} cellColor="#d5dae1" sectionSize={5} sectionThickness={1} sectionColor="#bcc4cf" fadeDistance={40} fadeStrength={1} infiniteGrid />
+    {hallOn ? <Hall bounds={hallB} /> : null}
+    {!hallOn && <Grid args={[40, 40]} cellSize={0.5} cellThickness={0.6} cellColor="#d5dae1" sectionSize={5} sectionThickness={1} sectionColor="#bcc4cf" fadeDistance={40} fadeStrength={1} infiniteGrid />}
     {project.entities.map(e => {
       const pose = poses[e.id]; if (!pose) return null;
       return <Piece key={e.id} id={e.id} definitionId={e.definitionId} pose={pose} selected={selection.includes(e.id)} showAnchors={dragging || selection.includes(e.id)}

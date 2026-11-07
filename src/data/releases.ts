@@ -1,6 +1,10 @@
-export const APP_VERSION='2.20.0';
+export const APP_VERSION='2.21.0';
 export const releases=[
- {version:APP_VERSION,date:'7 de noviembre de 2026',title:'Industria (Beta): mini fábrica con 14 piezas nuevas de planta',groups:[
+ {version:APP_VERSION,date:'7 de noviembre de 2026',title:'Industria (Beta): nave industrial alrededor de la planta',groups:[
+  {title:'Industria',items:['La planta ya no flota sobre una rejilla: cuando el proyecto tiene un piso de planta aparece una nave industrial amplia (24 × 16 m como mínimo, y crece con la planta) con suelo de hormigón y franjas de seguridad, paredes con zócalo y ventanas, portón enrollable y puerta de personal, columnas de acero con protección, cerchas con lámparas, bandeja de cables, tubería de aire, estanterías con cajas, palets, extintor y señales.','Las paredes que quedan entre la cámara y la planta se ocultan solas para ver el interior desde fuera.']},
+  {title:'Alcance',items:['La nave es decorado de ejemplo: no se guarda, no se puede editar ni interfiere con el montaje ni los cables, y sus medidas no son de una instalación real.']}
+ ]},
+ {version:'2.20.0',date:'7 de noviembre de 2026',title:'Industria (Beta): mini fábrica con 14 piezas nuevas de planta',groups:[
   {title:'Industria',items:['Nuevo ejemplo «mini fábrica» (Proyecto → Ejemplo: mini fábrica): el tablero con PLC de marcha/paro rodeado de una planta con piso y franjas de seguridad, cinta transportadora con su motor y cajas de producto, brazo robótico, vallas de seguridad, mesa de estación con electroválvula, cilindro neumático, sensores y paro de emergencia, compresor, tanque y torre luminosa.','14 piezas nuevas en el catálogo con forma propia y montaje: piso de planta, mesa de trabajo, valla, cinta transportadora, caja de producto, brazo robótico, compresor, electroválvula de cinco vías, cilindro neumático, tanque, sensor inductivo, sensor fotoeléctrico, torre luminosa y paro de emergencia. La familia Neumática ya tiene piezas.','Las cajas, sensores, válvula y cilindro se montan sobre su soporte con el imán de anclajes; los conductos de aire y los cables de sensores se tienden como cables normales.']},
   {title:'Alcance',items:['Las piezas nuevas son escenario: forma, montaje y cableado de topología, sin simulación propia (el motor y los pilotos que ya se simulaban siguen igual; la cinta no gira sola, la válvula no mueve el cilindro, el robot no tiene cinemática). Son formas por tipo de equipo, no réplicas de un fabricante, y el catálogo sigue siendo genérico y sin verificar.']}
  ]},
