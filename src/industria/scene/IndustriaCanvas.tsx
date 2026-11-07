@@ -10,6 +10,7 @@ import {CABLE_RADIUS, collisionBoxes, routeAll, segmentHits} from '../wiring/rou
 import {hallBounds, hallParts, hasHall, type HallBounds, type HallPart} from './hall.ts';
 import {flexCable, insertWaypoint, interiorOf, midpointsOf, moveWaypoint, removeWaypoint} from '../wiring/curve.ts';
 import {operableKind, type SimResult} from '../sim/engine.ts';
+import {productOffset, robotAngle, ROD_STROKE, type ProcessState} from '../sim/process.ts';
 import {modelParts, type Detail} from './models.ts';
 import {findSnapCandidates, movedPoses, overlapsOf, parentMountOf, snapToGrid, type SnapCandidate} from '../build/snap.ts';
 
@@ -36,6 +37,8 @@ export type IndustriaCanvasProps = {
   onTerminal(ref: TerminalRef): void;
   /** Resultado de la simulación (null si está detenida) y si se puede operar con el ratón. */
   sim: SimResult | null;
+  /** Estado mecánico del proceso (cajas sobre la cinta, vástagos, robot); null si la simulación está detenida. */
+  proc: ProcessState | null;
   simRunning: boolean;
   onOperate(id: string, down: boolean): void;
   /** El usuario intentó arrastrar una pieza montada: la interfaz explica cómo moverla. */
@@ -161,8 +164,9 @@ function SpinMarker({y}: {y: number}) {
 }
 
 /** Forma real de la pieza (cuerpo, frente, palancas, tornillos, LED…). La caja del catálogo queda debajo, invisible, solo para seleccionar y arrastrar. */
-function ModelMesh({definitionId, detail, selected, overlapping, glow}: {definitionId: string; detail: Detail; selected: boolean; overlapping?: boolean; glow?: string}) {
-  const parts = useMemo(() => modelParts(definitionId, detail), [definitionId, detail]);
+function ModelMesh({definitionId, detail, selected, overlapping, glow, only}: {definitionId: string; detail: Detail; selected: boolean; overlapping?: boolean; glow?: string; only?: (y: number) => boolean}) {
+  const all = useMemo(() => modelParts(definitionId, detail), [definitionId, detail]);
+  const parts = only ? all.filter(p => only(p.pos[1])) : all;
   return <>{parts.map((p, i) => {
     const bodyLike = p.role === 'body' || p.role === 'front';
     const glowing = glow !== undefined && (definitionId === 'piloto' ? p.role === 'lens' : p.role === 'body' || p.role === 'front');
@@ -171,7 +175,7 @@ function ModelMesh({definitionId, detail, selected, overlapping, glow}: {definit
     const color = overlapping && bodyLike ? '#d9534f' : p.color;
     const rotation: [number, number, number] = p.shape === 'cyl' ? (p.axis === 'x' ? [0, 0, Math.PI / 2] : p.axis === 'z' ? [Math.PI / 2, 0, 0] : [0, 0, 0]) : [0, 0, 0];
     const shiny = p.role === 'metal' || p.role === 'screw', soft = detail === 'high' && p.shape === 'box' && !p.fine && Math.min(p.size[0], p.size[1], p.size[2]) > 0.012;
-    const mat = <meshStandardMaterial color={color} emissive={emissive} emissiveIntensity={intensity} roughness={shiny ? 0.28 : p.role === 'lens' ? 0.15 : p.role === 'trim' ? 0.45 : 0.55} metalness={shiny ? 0.85 : 0.04} transparent={p.role === 'lens'} opacity={p.role === 'lens' ? 0.92 : 1} />;
+    const mat = <meshStandardMaterial color={color} emissive={emissive} emissiveIntensity={intensity} roughness={shiny ? 0.28 : p.role === 'lens' ? 0.15 : p.role === 'trim' ? 0.45 : 0.55} metalness={shiny ? 0.85 : 0.04} transparent={p.role === 'lens'} opacity={p.role === 'lens' ? p.opacity ?? 0.92 : 1} />;
     const shadowed = detail === 'high' && !p.fine;
     if (soft) return <RoundedBox key={i} args={p.size} radius={Math.min(0.004, Math.min(p.size[0], p.size[1], p.size[2]) * 0.18)} smoothness={3} position={p.pos} raycast={() => null} castShadow={shadowed} receiveShadow>{mat}</RoundedBox>;
     return <mesh key={i} position={p.pos} rotation={rotation} raycast={() => null} castShadow={shadowed} receiveShadow={detail === 'high'}>
@@ -181,13 +185,25 @@ function ModelMesh({definitionId, detail, selected, overlapping, glow}: {definit
   })}</>;
 }
 
-function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlapping, draggable, onDown, xray, terminals, glow, extra, detail}: {
-  id: string; definitionId: string; pose: Pose; selected: boolean; ghost?: boolean; showAnchors: boolean; overlapping?: boolean; draggable: boolean; onDown?(e: ThreeEvent<PointerEvent>): void; xray?: boolean; terminals?: ReactNode; glow?: string; extra?: ReactNode; detail?: Detail;
+/** Partes que se mueven o se encienden con el proceso: vástago del cilindro, listones de la banda y lámparas de la torre. */
+function ProcessExtra({definitionId, id, proc, sim}: {definitionId: string; id: string; proc: ProcessState | null; sim: SimResult | null}) {
+  if (definitionId === 'cilindro-neumatico' && proc) { const ext = (proc.rods[id] ?? 0) * ROD_STROKE; return ext > 0.0005 ? <mesh position={[0.2 + ext / 2, 0.035, 0]} rotation={[0, 0, Math.PI / 2]} raycast={() => null}><cylinderGeometry args={[0.008, 0.008, ext, 16]} /><meshStandardMaterial color="#c4cad2" metalness={0.85} roughness={0.25} /></mesh> : null; }
+  if (definitionId === 'cinta-transportadora' && proc) { const phase = proc.belts[id] ?? 0, L = 1.44, out = []; for (let i = 0; i < 8; i++) { const u = ((i * 0.18 + phase) % L) - L / 2; out.push(<mesh key={i} position={[u, 0.8 - 0.0006, 0]} raycast={() => null}><boxGeometry args={[0.014, 0.002, 0.34]} /><meshStandardMaterial color="#6b7480" roughness={0.8} /></mesh>); } return <>{out}</>; }
+  if (definitionId === 'torre-luminosa' && sim) return <>{(['R', 'Y', 'G'] as const).map((c, i) => sim.energized[`${id}:${c}`] ? <mesh key={c} position={[0, [0.22, 0.16, 0.1][i], 0]} raycast={() => null}><cylinderGeometry args={[0.0325, 0.0325, 0.062, 20]} /><meshStandardMaterial color={['#ff4d4d', '#ffc233', '#3dff8a'][i]} emissive={['#ff2a2a', '#ffb000', '#1fff6a'][i]} emissiveIntensity={1.4} transparent opacity={0.9} /></mesh> : null)}</>;
+  return null;
+}
+
+function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlapping, draggable, onDown, xray, terminals, glow, extra, detail, swing}: {
+  swing?: number; id: string; definitionId: string; pose: Pose; selected: boolean; ghost?: boolean; showAnchors: boolean; overlapping?: boolean; draggable: boolean; onDown?(e: ThreeEvent<PointerEvent>): void; xray?: boolean; terminals?: ReactNode; glow?: string; extra?: ReactNode; detail?: Detail;
 }) {
   const shape = shapeOf(definitionId);
   const color = ghost ? '#2d6ff4' : overlapping ? '#d9534f' : selected ? '#2d6ff4' : shape.color;
   return <group position={pose.position} rotation={pose.rotation} name={ghost ? undefined : id} userData={{entityId: id}}>
-    {!ghost && <ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} />}
+    {!ghost && swing === undefined && <ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} />}
+    {!ghost && swing !== undefined && <>
+      <ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} only={y => y < 0.12} />
+      <group position={[-0.12, 0, 0]} rotation={[0, swing, 0]}><group position={[0.12, 0, 0]}><ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} only={y => y >= 0.12} /></group></group>
+    </>}
     <mesh position={shape.center} onPointerDown={ghost ? undefined : onDown} raycast={ghost || xray ? () => null : undefined}>
       <boxGeometry args={shape.size} />
       {!ghost ? <meshBasicMaterial transparent opacity={0} depthWrite={false} colorWrite={false} /> : <meshStandardMaterial color={color} transparent={ghost} opacity={ghost ? 0.4 : 1} depthWrite={!ghost} emissive={glow ?? (selected && !ghost ? '#1b4fc4' : '#000000')} emissiveIntensity={glow ? 0.75 : selected && !ghost ? 0.35 : 0} />}
@@ -235,7 +251,7 @@ function KeyLight({c, r, shadow}: {c: Vec3; r: number; shadow: boolean}) {
   return <><primitive object={light} /><primitive object={light.target} /></>;
 }
 
-function Scene({project, selection, camera, cameraNonce, editable, magnet, wiring, pending, evaluation, highlight, editCable, onRoute, onTerminal, sim, simRunning, onOperate, onBlockedDrag, onSelect, onDrop, onCameraRest, justDragged}: IndustriaCanvasProps & {justDragged: MutableRefObject<boolean>}) {
+function Scene({project, selection, camera, cameraNonce, editable, magnet, wiring, pending, evaluation, highlight, editCable, onRoute, onTerminal, sim, proc, simRunning, onOperate, onBlockedDrag, onSelect, onDrop, onCameraRest, justDragged}: IndustriaCanvasProps & {justDragged: MutableRefObject<boolean>}) {
   const {gl, camera: cam, raycaster, invalidate, scene} = useThree();
   const controls = useRef<Controls | null>(null);
   const drag = useRef<Drag | null>(null);
@@ -321,12 +337,13 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
     {hallOn ? <Hall bounds={hallB} /> : null}
     {!hallOn && <Grid args={[40, 40]} cellSize={0.5} cellThickness={0.6} cellColor="#d5dae1" sectionSize={5} sectionThickness={1} sectionColor="#bcc4cf" fadeDistance={40} fadeStrength={1} infiniteGrid />}
     {project.entities.map(e => {
-      const pose = poses[e.id]; if (!pose) return null;
-      return <Piece key={e.id} id={e.id} definitionId={e.definitionId} pose={pose} selected={selection.includes(e.id)} showAnchors={dragging || selection.includes(e.id)}
+      const base = poses[e.id]; if (!base) return null;
+      const off = proc && e.definitionId === 'caja-producto' ? productOffset(project, proc, e.id) : null, pose: Pose = off ? {...base, position: [base.position[0] + off[0], base.position[1] + off[1], base.position[2] + off[2]]} : base;
+      return <Piece key={e.id} swing={proc && e.definitionId === 'brazo-robot' ? robotAngle(proc, e.id) : undefined} id={e.id} definitionId={e.definitionId} pose={pose} selected={selection.includes(e.id)} showAnchors={dragging || selection.includes(e.id)}
         overlapping={!!preview && (preview.overlaps.includes(e.id) || (preview.id === e.id && preview.overlaps.length > 0))} draggable={editable && !wiring && !e.locked && !parentMountOf(project, e.id)} xray={wiring}
         terminals={(wiring || selection.includes(e.id)) && shapeOf(e.definitionId).terminals ? <Terminals entityId={e.id} terminals={shapeOf(e.definitionId).terminals!} dot={dot} pending={pending} hover={hover} onTerminal={wiring ? onTerminal : () => {}} onHover={wiring ? setHover : () => {}} /> : null}
         detail={project.entities.length > 80 ? 'low' : 'high'}
-        extra={e.definitionId === 'motor-3p' && sim?.energized[e.id] ? <SpinMarker y={shapeOf(e.definitionId).size[1] + 0.012} /> : null}
+        extra={e.definitionId === 'motor-3p' && sim?.energized[e.id] ? <SpinMarker y={shapeOf(e.definitionId).size[1] + 0.012} /> : <ProcessExtra definitionId={e.definitionId} id={e.id} proc={proc} sim={sim} />}
         glow={sim ? (sim.energized[e.id] ? (e.definitionId === 'piloto' ? '#ffd54f' : '#ff9800') : sim.closed[e.id] ? '#1f9d55' : undefined) : undefined}
         onDown={ev => { ev.stopPropagation(); onSelect([e.id]); if (simRunning && operableKind(e.definitionId)) { onOperate(e.id, true); const release = () => { removeEventListener('pointerup', release); removeEventListener('pointercancel', release); onOperate(e.id, false); }; addEventListener('pointerup', release); addEventListener('pointercancel', release); return; }
           if (editable && !wiring && parentMountOf(project, e.id)) { const sx = ev.nativeEvent.clientX, sy = ev.nativeEvent.clientY; const stop = () => { removeEventListener('pointermove', mv); removeEventListener('pointerup', stop); removeEventListener('pointercancel', stop); }; const mv = (m: PointerEvent) => { if (Math.hypot(m.clientX - sx, m.clientY - sy) > 8) { stop(); onBlockedDrag(e.id); } }; addEventListener('pointermove', mv); addEventListener('pointerup', stop); addEventListener('pointercancel', stop); }

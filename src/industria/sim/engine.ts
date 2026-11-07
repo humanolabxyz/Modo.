@@ -28,7 +28,10 @@ export const CLOSED_PAIRS: Record<string, [string, string][]> = {
   'breaker-1p': [['1', '2']], 'breaker-3p': [['1', '2'], ['3', '4'], ['5', '6']],
   'contactor-3p': [['1', '2'], ['3', '4'], ['5', '6'], ['13', '14']], 'pulsador-na': [['3', '4']], 'pulsador-nc': [['1', '2']],
   'rele-termico': [['1', '2'], ['3', '4'], ['5', '6'], ['95', '96']],
+  'sensor-inductivo': [['BN', 'BK']], 'sensor-fotoelectrico': [['BN', 'BK']],
 };
+/** Sensores de tres hilos: cierran BN–BK (salida tipo PNP) cuando el proceso les dice que detectan algo (`inputs[id]`). El usuario no los opera; los alimenta el motor de proceso. */
+export const SENSOR_DEFINITIONS = ['sensor-inductivo', 'sensor-fotoelectrico'] as const;
 const PHASES = ['L1', 'L2', 'L3'];
 
 export type Reading = {kind: 'continuity' | 'voltage'; ok: boolean; text: string; value?: number; unit?: string};
@@ -80,7 +83,7 @@ export function simulate(p: IndustryProject, inputs: SimInputs, previous: Record
     closed = {};
     const pairs: [string, string][] = [];
     for (const e of p.entities) {
-      const kind = operableKind(e.definitionId), isClosed = e.definitionId === 'contactor-3p' ? !!coil[e.id] : e.definitionId === 'pulsador-nc' || e.definitionId === 'rele-termico' ? !inputs[e.id] : kind ? !!inputs[e.id] : false;
+      const kind = operableKind(e.definitionId), isClosed = (SENSOR_DEFINITIONS as readonly string[]).includes(e.definitionId) ? !!inputs[e.id] : e.definitionId === 'contactor-3p' ? !!coil[e.id] : e.definitionId === 'pulsador-nc' || e.definitionId === 'rele-termico' ? !inputs[e.id] : kind ? !!inputs[e.id] : false;
       if (isClosed) { closed[e.id] = true; if (!hasFault('contact-open', e.id)) for (const [x, y] of CLOSED_PAIRS[e.definitionId] ?? []) pairs.push([`${e.id}:${x}`, `${e.id}:${y}`]); }
     }
     // 2) redes: cables + puentes + contactos cerrados
@@ -128,6 +131,10 @@ export function simulate(p: IndustryProject, inputs: SimInputs, previous: Record
     if (e.definitionId === 'contactor-3p') energized[e.id] = !!coil[e.id];
     if (e.definitionId === 'piloto') energized[e.id] = !hasFault('lamp-open', e.id) && !!livePair(find(`${e.id}:X1`), find(`${e.id}:X2`));
     if (e.definitionId === 'fuente-cc') energized[e.id] = dc.has(e.id);
+    // Escenario de planta: bobina de la electroválvula, alimentación del robot y lámparas de la torre (una clave por color: `torre:R`, `torre:Y`, `torre:G`)
+    if (e.definitionId === 'valvula-5-2') energized[e.id] = !hasFault('coil-open', e.id) && !!livePair(find(`${e.id}:A1`), find(`${e.id}:A2`));
+    if (e.definitionId === 'brazo-robot') energized[e.id] = !!livePair(find(`${e.id}:A1`), find(`${e.id}:A2`));
+    if (e.definitionId === 'torre-luminosa') { for (const c of ['R', 'Y', 'G']) energized[`${e.id}:${c}`] = !!livePair(find(`${e.id}:${c}`), find(`${e.id}:COM`)); energized[e.id] = ['R', 'Y', 'G'].some(c => energized[`${e.id}:${c}`]); }
     if (e.definitionId === PLC_DEFINITION) energized[e.id] = !!plcPowered[e.id];
     if (e.definitionId === 'motor-3p') {
       const seen = new Set<string>();

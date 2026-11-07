@@ -99,9 +99,9 @@ export function examplePlcStartStop(): Result<IndustryProject> {
   return {ok: true, value: p};
 }
 
-/** Mini fábrica: el marcha/paro con PLC del tablero más una planta alrededor: piso con franjas, cinta con su motor, cajas, sensores, brazo robótico, vallas,
- *  compresor con electroválvula y cilindro, tanque, mesa de estación, torre luminosa y paro de emergencia. Solo el motor y los pilotos se simulan; el resto es
- *  escenario (forma, montaje y cableado de topología). Las medidas son de ejemplo. */
+/** Mini fábrica: el marcha/paro con PLC del tablero más una planta que de verdad opera. El motor mueve la cinta con tres cajas; el sensor fotoeléctrico detecta cada caja
+ *  y el PLC acciona la electroválvula (el cilindro sale con aire del compresor) mientras el sensor inductivo vigila el vástago; el brazo trabaja y la torre se enciende
+ *  mientras la línea corre. Los cables viajan por canaletas en el tablero y por canales de piso hasta las máquinas. Velocidades, carreras y medidas son de ejemplo. */
 export function exampleMiniFactory(): Result<IndustryProject> {
   const base = examplePlcStartStop(); if (!base.ok) return base;
   let p = base.value, fail = '';
@@ -117,11 +117,16 @@ export function exampleMiniFactory(): Result<IndustryProject> {
   };
   if (!add('piso', 'piso-planta', 'Piso de planta', pose(0.6, -0.05, 0.8))) return {ok: false, error: fail};
   if (!add('cinta', 'cinta-transportadora', 'Cinta', pose(1.75, 0, 0.75)) || !add('mesa', 'mesa-trabajo', 'Mesa de estación', pose(0.45, 0, 1.45)) || !add('robot', 'brazo-robot', 'Brazo robótico', pose(1.75, 0, 1.5))
-    || !add('comp', 'compresor', 'Compresor', pose(-0.5, 0, 1.35)) || !add('tanque', 'tanque', 'Tanque', pose(-1.1, 0, 0.6)) || !add('torre', 'torre-luminosa', 'Torre', pose(-0.55, 0, 0.45))) return {ok: false, error: fail};
-  for (const [i, x] of [1.4, 1.75, 2.1].entries()) if (!put(`prod${i + 1}`, 'caja-producto', `Producto ${i + 1}`, pose(x, 0.8, 0.75), 'cinta')) return {ok: false, error: fail};
-  if (!put('foto', 'sensor-fotoelectrico', 'Sensor de cinta', pose(2.3, 0.8, 0.9), 'cinta') || !put('ind', 'sensor-inductivo', 'Sensor de mesa', pose(0.15, 0.8, 1.45), 'mesa') || !put('valvula', 'valvula-5-2', 'Electroválvula', pose(0.45, 0.8, 1.45), 'mesa')
+    || !add('comp', 'compresor', 'Compresor', pose(-0.75, 0, 1.35)) || !add('tanque', 'tanque', 'Tanque', pose(-1.1, 0, 0.6)) || !add('torre', 'torre-luminosa', 'Torre', pose(-0.55, 0, 0.45))) return {ok: false, error: fail};
+  for (const [i, x] of [1.15, 1.55, 1.95].entries()) if (!put(`prod${i + 1}`, 'caja-producto', `Producto ${i + 1}`, pose(x, 0.8, 0.75), 'cinta')) return {ok: false, error: fail};
+  if (!put('foto', 'sensor-fotoelectrico', 'Sensor de cinta', pose(2.2, 0.8, 0.9), 'cinta') || !put('ind', 'sensor-inductivo', 'Sensor de cilindro', pose(0.88, 0.8, 1.6), 'mesa') || !put('valvula', 'valvula-5-2', 'Electroválvula', pose(0.45, 0.8, 1.45), 'mesa')
     || !put('cil', 'cilindro-neumatico', 'Cilindro', pose(0.65, 0.8, 1.6), 'mesa') || !put('paro', 'paro-emergencia', 'Paro de emergencia', pose(0.8, 0.8, 1.3), 'mesa')) return {ok: false, error: fail};
   for (const [id, x, z, ry] of [['valla1', 1.25, 2.1, 0], ['valla2', 2.25, 2.1, 0], ['valla3', 2.55, 1.55, Math.PI / 2]] as const) if (!add(id, 'valla-seguridad', 'Valla', {position: [x, 0, z], rotation: [0, ry, 0]})) return {ok: false, error: fail};
+  // Canaletas del tablero (sobre la placa, junto a cada riel) y canales de piso hacia las máquinas
+  for (const [id, def, x, y] of [['cn1', 'canaleta', -0.08, 0.86], ['cn2', 'canaleta', -0.08, 0.635], ['cn3', 'canaleta', -0.08, 0.56], ['cn4', 'canaleta', -0.08, 0.335], ['cv1', 'canaleta-vertical', -0.34, 0.6]] as const)
+    if (!put(id, def, 'Canaleta', pose(x, y, 0.055), 'placa')) return {ok: false, error: fail};
+  for (const [id, x, z, ry] of [['pz1', 0.4, 0.3, 0], ['pz2', 1.6, 0.3, 0], ['pz3', -0.25, 1.05, Math.PI / 2], ['pz4', 0.35, 1.95, 0], ['pz5', 1.55, 1.95, 0]] as const)
+    if (!put(id, 'canal-piso', 'Canal de piso', {position: [x, 0, z], rotation: [0, ry, 0]}, 'piso')) return {ok: false, error: fail};
   const T = (entityId: string, terminalId: string) => ({entityId, terminalId});
   const cables: [[string, string], [string, string]][] = [
     // sensores de tres hilos: cada terminal admite 2 cables, así que la alimentación se encadena entre sensores
@@ -130,10 +135,14 @@ export function exampleMiniFactory(): Result<IndustryProject> {
     // electroválvula: bobina desde una salida del PLC; aire del compresor al cilindro
     [['plc', 'DO1'], ['valvula', 'A1']], [['valvula', 'A2'], ['km1', 'A2']],
     [['comp', 'P'], ['valvula', 'P']], [['valvula', 'A'], ['cil', 'A']], [['valvula', 'B'], ['cil', 'B']],
-    // torre: luz verde desde el PLC y común con la bobina de la válvula
-    [['plc', 'DO2'], ['torre', 'G']], [['torre', 'COM'], ['valvula', 'A2']],
+    // torre (luz verde) y robot, también desde el PLC; el común de ambos comparte la bobina de la válvula
+    [['plc', 'DO2'], ['torre', 'G']], [['torre', 'COM'], ['valvula', 'A2']], [['plc', 'DO3'], ['robot', 'A1']], [['robot', 'A2'], ['torre', 'COM']],
   ];
   for (const [a, b] of cables) if (!step(wire(p, T(...a), T(...b)))) return {ok: false, error: fail};
-  for (const [terminal, name] of [['DI2', 'SENSOR_CINTA'], ['DI3', 'SENSOR_MESA'], ['DO1', 'VALVULA'], ['DO2', 'LUZ_VERDE']] as const) if (!step(setTerminalTag(p, 'plc', terminal, name))) return {ok: false, error: fail};
+  for (const [terminal, name] of [['DI2', 'SENSOR_CINTA'], ['DI3', 'SENSOR_CILINDRO'], ['DO1', 'VALVULA'], ['DO2', 'LUZ_VERDE'], ['DO3', 'ROBOT']] as const) if (!step(setTerminalTag(p, 'plc', terminal, name))) return {ok: false, error: fail};
+  // Programa de la planta: la válvula sigue al sensor de la cinta; la luz y el robot trabajan mientras la línea corre
+  for (const [coil, contact, note] of [['VALVULA', 'SENSOR_CINTA', 'El cilindro sale mientras hay una caja frente al sensor'], ['LUZ_VERDE', 'MOTOR', 'Luz verde con la línea en marcha'], ['ROBOT', 'MOTOR', 'El brazo trabaja con la línea en marcha']] as const)
+    if (!step(addRung(p, 'plc', {tag: coil}, [{tag: contact}], note))) return {ok: false, error: fail};
+  for (const w of [{kind: 'lamp', label: 'CAJA EN SENSOR', plcId: 'plc', tag: 'SENSOR_CINTA'}, {kind: 'lamp', label: 'CILINDRO ATRÁS', plcId: 'plc', tag: 'SENSOR_CILINDRO'}, {kind: 'lamp', label: 'VÁLVULA', plcId: 'plc', tag: 'VALVULA'}] as const) if (!step(addWidget(p, w))) return {ok: false, error: fail};
   return {ok: true, value: p};
 }

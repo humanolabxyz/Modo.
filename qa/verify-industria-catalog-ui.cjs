@@ -29,7 +29,7 @@ const LIB = 'modo:industria:library:v1';
     // 2) Búsqueda sin tildes y por terminal; sin resultados avisa
     await search.fill('contactor'); assert.equal(await items.count(), 1);
     await search.fill('automatizacion'); assert.equal(await items.count(), 1); assert.match(await items.first().innerText(), /PLC/);
-    await search.fill('A1'); assert.equal(await items.count(), 2); // terminal A1: contactor y electroválvula
+    await search.fill('A1'); assert.equal(await items.count(), 3); // terminal A1: contactor, electroválvula y robot
     await search.fill('zzz'); assert.equal(await items.count(), 0); assert.match(await p.locator('[role=status]', {hasText: 'Ninguna pieza'}).innerText(), /zzz/);
     await search.fill('');
     pass('La búsqueda ignora tildes, encuentra por terminal y avisa cuando no hay resultados');

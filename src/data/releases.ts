@@ -1,6 +1,10 @@
-export const APP_VERSION='2.21.0';
+export const APP_VERSION='2.22.0';
 export const releases=[
- {version:APP_VERSION,date:'7 de noviembre de 2026',title:'Industria (Beta): nave industrial alrededor de la planta',groups:[
+ {version:APP_VERSION,date:'7 de noviembre de 2026',title:'Industria (Beta): planta que opera y cables por canaleta',groups:[
+  {title:'Industria',items:['La mini fábrica ahora opera de verdad: al dar marcha, el motor mueve la banda con las cajas encima, el sensor fotoeléctrico detecta cada caja, el PLC acciona la electroválvula, el cilindro sale con el aire del compresor y el sensor inductivo vigila el vástago; el brazo trabaja y la torre muestra luz verde mientras la línea corre. Un paro lo detiene todo. Los sensores devuelven su señal al PLC: el circuito cierra el lazo con el proceso.','Los cables van por canaletas: tres piezas nuevas (canaleta ranurada horizontal y vertical para el tablero y canal de piso con rejilla) y los cables entran por la ranura más cercana, viajan por dentro y salen junto al destino, en vez de ir sueltos por el aire. En la mini fábrica 33 de 37 cables van por canaleta.','El brazo robótico tiene ahora alimentación A1/A2 y las lámparas de la torre se encienden de forma independiente.']},
+  {title:'Alcance',items:['El proceso es ilustrativo: velocidades, carreras y distancias de detección son de ejemplo, el brazo no tiene cinemática real y la neumática solo distingue aire/sin aire (sin presión ni caudal). Los cables dentro de la canaleta se ven a través de la tapa translúcida; no se modela el llenado ni el calor.']}
+ ]},
+ {version:'2.21.0',date:'7 de noviembre de 2026',title:'Industria (Beta): nave industrial alrededor de la planta',groups:[
   {title:'Industria',items:['La planta ya no flota sobre una rejilla: cuando el proyecto tiene un piso de planta aparece una nave industrial amplia (24 × 16 m como mínimo, y crece con la planta) con suelo de hormigón y franjas de seguridad, paredes con zócalo y ventanas, portón enrollable y puerta de personal, columnas de acero con protección, cerchas con lámparas, bandeja de cables, tubería de aire, estanterías con cajas, palets, extintor y señales.','Las paredes que quedan entre la cámara y la planta se ocultan solas para ver el interior desde fuera.']},
   {title:'Alcance',items:['La nave es decorado de ejemplo: no se guarda, no se puede editar ni interfiere con el montaje ni los cables, y sus medidas no son de una instalación real.']}
  ]},

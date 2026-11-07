@@ -10,6 +10,7 @@ import {allTerminals, evaluate, MAX_WIRES_PER_TERMINAL, refKey, terminalDef} fro
 import {routeWire, tidyWires, unwire, wire} from './wiring/commands.ts';
 import {withStatuses} from './wiring/engine.ts';
 import {operableKind, simulate as runSimulation, SIM_ASSUMPTIONS, type SimInputs, type SimResult} from './sim/engine.ts';
+import {emptyProcess, hasProcess, sensorStates, stepProcess, type ProcessState} from './sim/process.ts';
 import {exampleDirectStart, exampleMiniFactory, examplePlcStartStop} from './sim/examples.ts';
 import {moveSymbol, moveToPage, arrangeAll} from './diagram/commands.ts';
 import {ErrorBoundary} from './ErrorBoundary';
@@ -199,8 +200,15 @@ export default function IndustriaApp() {
     return () => { removeEventListener('pointerdown', wake); removeEventListener('keydown', wake); };
   }, [ui.sound]);
   const hasTimers = useMemo(() => Object.values(project.plc).some(pr => pr.rungs.some(r => r.coil.mode === 'ton')), [project.plc]);
-  useEffect(() => { if (simStatus !== 'running' || !hasTimers) return; const t = setInterval(() => setClock(c => c + 1), 100); return () => clearInterval(t); }, [simStatus, hasTimers]);
-  const sim = useMemo(() => (simStatus === 'stopped' ? null : runSimulation(project, inputs, prevSim.current.energized, prevSim.current.plc, clock !== handledClock.current ? 100 : 0)), [project, inputs, simStatus, clock]);
+  // Proceso de planta: cinta, cajas, sensores, cilindro y robot avanzan con el mismo reloj de 100 ms y devuelven los sensores al circuito
+  const hasProc = useMemo(() => hasProcess(project), [project.entities]);
+  const [proc, setProc] = useState<ProcessState>(emptyProcess);
+  const sensors = useMemo(() => (simStatus === 'stopped' || !hasProc ? {} : sensorStates(project, proc)), [project, proc, simStatus, hasProc]);
+  const sensorsKey = JSON.stringify(sensors);
+  useEffect(() => { if (simStatus !== 'running' || !(hasTimers || hasProc)) return; const t = setInterval(() => setClock(c => c + 1), 100); return () => clearInterval(t); }, [simStatus, hasTimers, hasProc]);
+  const sim = useMemo(() => (simStatus === 'stopped' ? null : runSimulation(project, {...inputs, ...sensors}, prevSim.current.energized, prevSim.current.plc, clock !== handledClock.current ? 100 : 0)), [project, inputs, sensorsKey, simStatus, clock]);
+  const simRef = useRef<SimResult | null>(null); simRef.current = sim;
+  useEffect(() => { if (simStatus === 'running' && hasProc && clock > 0) setProc(st => stepProcess(project, simRef.current, st, 0.1)); }, [clock]);
   useEffect(() => { handledClock.current = clock; }, [clock, sim]);
   useEffect(() => {
     const next: Snapshot = {energized: sim?.energized ?? {}, inputs: simStatus === 'stopped' ? {} : inputs};
@@ -212,9 +220,9 @@ export default function IndustriaApp() {
     if (events.length) setSoundCount(c => c + events.length);
   }, [sim, inputs, simStatus, ui.sound, project.entities]);
   useEffect(() => { prevSim.current = sim ? {energized: sim.energized, plc: sim.plc} : {energized: {}, plc: {}}; }, [sim]);
-  const runSim = () => { if (simStatus === 'stopped') { setInputs({}); prevSim.current = {energized: {}, plc: {}}; setWiring(false); setPending(null); patchUi({operation: 'simulate'}); log('Simulación en marcha'); } else log('Simulación reanudada'); setSimStatus('running'); };
+  const runSim = () => { if (simStatus === 'stopped') { setProc(emptyProcess()); setInputs({}); prevSim.current = {energized: {}, plc: {}}; setWiring(false); setPending(null); patchUi({operation: 'simulate'}); log('Simulación en marcha'); } else log('Simulación reanudada'); setSimStatus('running'); };
   const pauseSim = () => { if (simStatus === 'running') { setSimStatus('paused'); log('Simulación en pausa'); } };
-  const stopSim = () => { if (simStatus !== 'stopped') log('Simulación detenida'); setSimStatus('stopped'); setInputs({}); prevSim.current = {energized: {}, plc: {}}; };
+  const stopSim = () => { if (simStatus !== 'stopped') log('Simulación detenida'); setSimStatus('stopped'); setProc(emptyProcess()); setInputs({}); prevSim.current = {energized: {}, plc: {}}; };
   const operate = (id: string, down: boolean) => {
     if (simStatus !== 'running') return;
     const kind = operableKind(project.entities.find(e => e.id === id)?.definitionId ?? '');
@@ -489,7 +497,7 @@ export default function IndustriaApp() {
     <main className="rb-stage" aria-label="Escenario industrial">
       {ui.view === 'plant' && (supported
         ? <ErrorBoundary label="Escenario 3D" resetKey={project.id} onRetry={() => location.reload()}><Suspense fallback={<div className="ind-loading" role="status">Abriendo el escenario…</div>}>
-          <IndustriaCanvas key={glKey} project={project} selection={ui.selection} camera={ui.camera} cameraNonce={cameraNonce} editable={!simulate} magnet={ui.magnet} wiring={wiring} pending={pending} evaluation={evaluation} sim={sim} simRunning={simStatus === 'running'} onOperate={operate} onBlockedDrag={id => api.setMessage(`«${project.entities.find(e => e.id === id)?.label ?? id}» está montada y no se arrastra: suéltala en Propiedades (botón Soltar) o mueve el soporte al que está unida.`)} highlight={highlightIds} editCable={pickedConn} onRoute={(id, interior) => { if (guardEdit()) { api.run(p => routeWire(p, id, interior)); log(interior.length ? 'Cable reubicado' : 'Cable con ruta automática'); } }} onTerminal={onTerminal} onSelect={select} onDrop={onDrop} onCameraRest={camera => patchUi({camera})} onContextLost={() => setGlKey(k => k + 1)} />
+          <IndustriaCanvas key={glKey} project={project} selection={ui.selection} camera={ui.camera} cameraNonce={cameraNonce} proc={simStatus === 'stopped' ? null : proc} editable={!simulate} magnet={ui.magnet} wiring={wiring} pending={pending} evaluation={evaluation} sim={sim} simRunning={simStatus === 'running'} onOperate={operate} onBlockedDrag={id => api.setMessage(`«${project.entities.find(e => e.id === id)?.label ?? id}» está montada y no se arrastra: suéltala en Propiedades (botón Soltar) o mueve el soporte al que está unida.`)} highlight={highlightIds} editCable={pickedConn} onRoute={(id, interior) => { if (guardEdit()) { api.run(p => routeWire(p, id, interior)); log(interior.length ? 'Cable reubicado' : 'Cable con ruta automática'); } }} onTerminal={onTerminal} onSelect={select} onDrop={onDrop} onCameraRest={camera => patchUi({camera})} onContextLost={() => setGlKey(k => k + 1)} />
         </Suspense></ErrorBoundary>
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Industria necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>)}
       {ui.view !== 'plant' && <ErrorBoundary label={VIEWS.find(v => v.id === ui.view)?.label ?? 'Vista'} resetKey={project.id + ui.view}>{viewBody(ui.view)}</ErrorBoundary>}

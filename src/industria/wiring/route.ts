@@ -7,6 +7,7 @@ import {obbOfEntity} from '../build/snap.ts';
 import type {Connection, IndustryProject, TerminalRef, Vec3} from '../model/types.ts';
 import {terminalDef, terminalWorld} from './engine.ts';
 import {toTransform} from '../build/snap.ts';
+import {ductRoute, ductSegments, type DuctSeg} from './ducts.ts';
 
 export const CABLE_RADIUS = 0.0017; // m (≈ 3,4 mm de diámetro, de ejemplo)
 const STUB = 0.026;
@@ -47,7 +48,7 @@ export function collisionBoxes(p: IndustryProject): Map<string, Obb> {
   return out;
 }
 
-export function routeCable(p: IndustryProject, c: Connection, lane = 0, boxes = collisionBoxes(p)): Vec3[] | null {
+export function routeCable(p: IndustryProject, c: Connection, lane = 0, boxes = collisionBoxes(p), segs: readonly DuctSeg[] = ductSegments(p)): Vec3[] | null {
   const a = terminalWorld(p, c.a), b = terminalWorld(p, c.b);
   if (!a || !b) return null;
   if (c.route?.length) return [a, ...c.route, b];
@@ -56,6 +57,15 @@ export function routeCable(p: IndustryProject, c: Connection, lane = 0, boxes = 
   const others = (skip: string[]) => [...boxes].filter(([id]) => !skip.includes(id)).map(([, o]) => o);
   const all = others([]), exceptA = others([c.a.entityId]), exceptB = others([c.b.entityId]);
   const clear = (path: Vec3[]) => path.every((q, i) => i === 0 || (i === 1 ? !segmentHits(path[0], q, exceptA) : i === path.length - 1 ? !segmentHits(path[i - 1], q, exceptB) : !segmentHits(path[i - 1], q, all)));
+  // Con canaletas en el proyecto el cable viaja por dentro de ellas (salvo un puente muy corto entre terminales vecinos)
+  if (segs.length && Math.hypot(b[0] - a[0], b[1] - a[1], b[2] - a[2]) > 0.09) {
+    const duct = new Set(segs.map(s => s.id)), solid = [...boxes].filter(([id]) => !duct.has(id));
+    // El primer tramo del cable puede cruzar su propia pieza y los soportes donde está montada (un sensor sobre la cinta baja por la estructura de la cinta)
+    const skipOf = (id: string) => { const out = new Set([id]); for (let cur = id, g = 0; g < 8; g++) { const m = p.mounts.find(x => x.child.entityId === cur); if (!m) break; out.add(m.parent.entityId); cur = m.parent.entityId; } return out; };
+    const hits = (skip: Set<string>) => (u: Vec3, v: Vec3, first: boolean) => segmentHits(u, v, solid.filter(([id]) => !(first && skip.has(id))).map(([, o]) => o));
+    const inDuct = ductRoute(segs, a, a1, b, b1, lane, hits(skipOf(c.a.entityId)), hits(skipOf(c.b.entityId)));
+    if (inDuct) return inDuct;
+  }
   // Puente corto entre terminales vecinos
   const direct: Vec3[] = [a, a1, b1, b];
   if (Math.hypot(b1[0] - a1[0], b1[1] - a1[1], b1[2] - a1[2]) < 0.14 && clear(direct)) return direct;
@@ -82,7 +92,7 @@ export function routeCable(p: IndustryProject, c: Connection, lane = 0, boxes = 
 
 /** Rutas de todos los cables (se calculan las cajas una sola vez). */
 export function routeAll(p: IndustryProject): Map<string, Vec3[]> {
-  const boxes = collisionBoxes(p), out = new Map<string, Vec3[]>();
-  p.connections.forEach((c, i) => { const r = routeCable(p, c, i % 5, boxes); if (r) out.set(c.id, r); });
+  const boxes = collisionBoxes(p), segs = ductSegments(p), out = new Map<string, Vec3[]>();
+  p.connections.forEach((c, i) => { const r = routeCable(p, c, i % 5, boxes, segs); if (r) out.set(c.id, r); });
   return out;
 }

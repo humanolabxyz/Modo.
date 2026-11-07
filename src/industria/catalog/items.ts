@@ -40,13 +40,22 @@ const term = (id: string, position: Vec3, kind: TerminalDef['kind'], group: stri
 const PNEUMATIC_SOURCE = 'Puertos P (presión), A/B (trabajo) y terminales A1/A2 de bobina según la convención habitual de neumática y aparamenta. No contrastado con el documento de la norma.';
 const SENSOR_SOURCE = 'Colores/marcado BN (+), BU (−) y BK (salida) de sensores de tres hilos, convención habitual. No contrastado con la norma.';
 
+/** Canaleta ranurada para tablero: los cables viajan por dentro y salen por las ranuras laterales. Se monta sobre la placa. */
+const DORSO: AnchorDef = {id: 'dorso', label: 'Dorso', role: 'child', kind: 'surface', position: [0, 0, -0.025], normal: [0, 0, -1], up: [0, 1, 0]};
+const DUCTS: readonly ShapeDef[] = [
+  {id: 'canaleta', name: 'Canaleta ranurada horizontal', family: 'Electricidad industrial', subfamily: 'Conducción', description: 'Canaleta de tablero con ranuras laterales y tapa: los cables entran por las ranuras y viajan por dentro hasta la ranura más cercana al destino.', size: [0.6, 0.06, 0.05], center: [0, 0, 0], color: '#c9ced6', status: 'generic', anchors: [DORSO]},
+  {id: 'canaleta-vertical', name: 'Canaleta ranurada vertical', family: 'Electricidad industrial', subfamily: 'Conducción', description: 'Canaleta de tablero vertical con ranuras y tapa: une las canaletas horizontales y baja hacia el canal de piso.', size: [0.06, 0.6, 0.05], center: [0, 0, 0], color: '#c9ced6', status: 'generic', anchors: [DORSO]},
+  {id: 'canal-piso', name: 'Canal de piso', family: 'Infraestructura', subfamily: 'Conducción', description: 'Canal enterrado con rejilla para llevar los cables del tablero a las máquinas sin dejarlos a la vista por el piso.', size: [1.2, 0.04, 0.2], center: [0, 0.02, 0], color: '#8d96a3', status: 'generic', anchors: [BASE]},
+];
+
 const FACTORY: readonly ShapeDef[] = [
   {id: 'piso-planta', name: 'Piso de planta', family: 'Infraestructura', subfamily: 'Estructura', description: 'Losa de planta con franjas de seguridad: base del escenario donde se colocan las máquinas.' + NOSIM, size: [4, 0.05, 3], center: [0, 0.025, 0], color: '#8f98a3', status: 'generic', anchors: [BASE, topHost(0.05, 1.9, 1.4)]},
   {id: 'mesa-trabajo', name: 'Mesa de trabajo', family: 'Infraestructura', subfamily: 'Estructura', description: 'Mesa de estación con repisa: sirve de apoyo a sensores, cajas y pequeños equipos.' + NOSIM, size: [1, 0.8, 0.6], center: [0, 0.4, 0], color: '#6f7b89', status: 'generic', anchors: [BASE, topHost(0.8, 0.45, 0.25)]},
   {id: 'valla-seguridad', name: 'Valla de seguridad', family: 'Infraestructura', subfamily: 'Seguridad', description: 'Panel de malla con marco para delimitar la zona de una máquina.' + NOSIM, size: [1, 1.2, 0.04], center: [0, 0.6, 0], color: '#e0a800', status: 'generic', anchors: [BASE]},
   {id: 'cinta-transportadora', name: 'Cinta transportadora', family: 'Mecánica y movimiento', subfamily: 'Transporte', description: 'Cinta de banda con rodillos y estructura. Se mueve con un motor trifásico colocado junto a su cabezal; la cinta no gira sola en la simulación.' + NOSIM, size: [1.6, 0.8, 0.5], center: [0, 0.4, 0], color: '#5d7288', status: 'generic', anchors: [BASE, topHost(0.8, 0.6, 0.1, 'cinta', 'Superficie de la cinta')]},
   {id: 'caja-producto', name: 'Caja de producto', family: 'Procesos industriales', subfamily: 'Producto', description: 'Caja de cartón que representa la pieza que viaja por la línea.' + NOSIM, size: [0.2, 0.15, 0.2], center: [0, 0.075, 0], color: '#c9a26b', status: 'generic', anchors: [BASE]},
-  {id: 'brazo-robot', name: 'Brazo robótico', family: 'Robótica industrial', subfamily: 'Manipuladores', description: 'Brazo articulado de una estación de manipulación, con base, hombro, codo, muñeca y pinza. Sin cinemática: la pose es fija.' + NOSIM, size: [0.7, 1.1, 0.5], center: [0, 0.55, 0], color: '#e8741e', status: 'generic', anchors: [BASE]},
+  {id: 'brazo-robot', name: 'Brazo robótico', family: 'Robótica industrial', subfamily: 'Manipuladores', description: 'Brazo articulado de una estación de manipulación, con base, hombro, codo, muñeca y pinza. Trabaja (gira el hombro y mueve la pinza) mientras recibe alimentación entre A1 y A2; es un movimiento ilustrativo, sin cinemática real.', size: [0.7, 1.1, 0.5], center: [0, 0.55, 0], color: '#e8741e', status: 'generic', anchors: [BASE],
+    terminals: [term('A1', [-0.2, 0.12, 0.25], 'control', 'alimentación'), term('A2', [-0.04, 0.12, 0.25], 'control', 'alimentación')], terminalSource: TERMINAL_SOURCE},
   {id: 'compresor', name: 'Compresor de aire', family: 'Neumática', subfamily: 'Generación', description: 'Compresor con depósito horizontal, cabezal y motor. Su salida de aire es el puerto P.' + NOSIM, size: [0.7, 0.8, 0.35], center: [0, 0.4, 0], color: '#2f7aa8', status: 'generic', anchors: [BASE],
     terminals: [term('P', [0.25, 0.2, 0.175], 'pipe', 'aire')], terminalSource: PNEUMATIC_SOURCE},
   {id: 'valvula-5-2', name: 'Electroválvula de cinco vías', family: 'Neumática', subfamily: 'Distribución', description: 'Válvula de cinco vías y dos posiciones con bobina: puertos P, A y B y terminales A1/A2.' + NOSIM, size: [0.09, 0.07, 0.05], center: [0, 0.035, 0], color: '#3c6e91', status: 'generic', anchors: [BASE],
@@ -136,4 +145,5 @@ export const ITEMS: readonly ShapeDef[] = [
   },
   // — Escenario de planta (fase 13): piezas de forma y montaje. Sin simulación salvo el motor y los pilotos que ya existían —
   ...FACTORY,
+  ...DUCTS,
 ];
