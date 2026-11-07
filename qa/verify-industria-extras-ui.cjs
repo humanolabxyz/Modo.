@@ -34,7 +34,7 @@ const op = (p, name) => p.getByRole('list', {name: 'Mandos'}).getByRole('button'
     await panel(p, 'Piezas'); await panel(p, 'Conexiones');
     const form = p.getByRole('group', {name: 'Nueva conexión'});
     await form.getByLabel('Desde').selectOption('fuente:L+'); await form.getByLabel('Hasta').selectOption('km1:A1'); await form.getByRole('button', {name: 'Conectar', exact: true}).click(); await p.waitForTimeout(800);
-    const m1 = await meshes(p); assert.equal(m1, m0 + 3, 'un cable es un tubo con dos casquillos en las puntas');
+    const m1 = await meshes(p); assert.equal(m1, m0 + 5, 'un cable es un tubo con dos punteras (manguito y punta) en cada extremo');
     await panel(p, 'Conexiones'); await p.screenshot({path: out + '/extras-1-formas.png'});
     pass(`Las 3 piezas se dibujan con su forma (${m0} mallas: carcasa, frente, tornillos, LED…) y cada cable es un tubo con grosor`);
     await c.close();

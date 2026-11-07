@@ -55,11 +55,11 @@ p = must(addEntity(p, {id: 'placa', definitionId: 'placa', label: 'Placa', pose:
 p = must(addEntity(p, {id: 'riel', definitionId: 'riel', label: 'Riel', pose: pose(0, 0.5, 0.06)}));
 p = must(snapMount(p, findSnapCandidates(p, 'riel')[0]));
 const railZ = p.poses.riel.position[2];
-let x = -0.25, count = 0;
+let x = -0.27, count = 0;
 for (const i of ITEMS.filter(i => i.anchors.some(a => a.role === 'child' && a.kind === 'din-rail'))) {
   const id = 'd-' + i.id; p = must(addEntity(p, {id, definitionId: i.id, label: i.name, pose: pose(x, 0.5, railZ + 0.005 + i.size[2] / 2 + 0.02)}));
   const cand = findSnapCandidates(p, id, undefined, {range: 0.2})[0]; assert.ok(cand, `${i.id}: no encuentra el riel`); assert.equal(cand.parent.entityId, 'riel');
-  p = must(snapMount(p, cand)); x += i.size[0] + 0.02; count++;
+  p = must(snapMount(p, cand)); x += i.size[0] + 0.004; count++;
 }
 assert.ok(count >= 6); assert.equal(p.mounts.length, 1 + count); ok(`los ${count} aparatos de riel se montan sobre el riel`);
 // Motor sobre el suelo: base (surface) sobre bloque

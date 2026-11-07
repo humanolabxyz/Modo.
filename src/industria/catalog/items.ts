@@ -40,6 +40,14 @@ const term = (id: string, position: Vec3, kind: TerminalDef['kind'], group: stri
 const PNEUMATIC_SOURCE = 'Puertos P (presión), A/B (trabajo) y terminales A1/A2 de bobina según la convención habitual de neumática y aparamenta. No contrastado con el documento de la norma.';
 const SENSOR_SOURCE = 'Colores/marcado BN (+), BU (−) y BK (salida) de sensores de tres hilos, convención habitual. No contrastado con la norma.';
 
+/** Bornes de protección y de neutro: como el borne de paso, pero con su función eléctrica (el módulo colorea el cable y comprueba la tierra por esa función). */
+const BORNES: readonly ShapeDef[] = [
+  {id: 'borne-tierra', name: 'Borne de tierra', family: 'Electricidad industrial', subfamily: 'Conexión', description: 'Borne de protección (PE) genérico: dos terminales de tierra unidos entre sí y al riel. Verde y amarillo.', size: [0.006, 0.05, 0.04], center: [0, 0, 0], color: '#6fae3a', status: 'generic', anchors: [clip(0.04)],
+    terminals: [{id: '1', label: '1', position: [0, 0.017, 0.02], kind: 'earth', group: 'superior', role: 'ground'}, {id: '2', label: '2', position: [0, -0.017, 0.02], kind: 'earth', group: 'inferior', role: 'ground'}], terminalSource: TERMINAL_SOURCE, bridges: [['1', '2']]},
+  {id: 'borne-neutro', name: 'Borne de neutro', family: 'Electricidad industrial', subfamily: 'Conexión', description: 'Borne de neutro genérico: dos terminales de neutro unidos entre sí. Azul claro.', size: [0.006, 0.05, 0.04], center: [0, 0, 0], color: '#3a86c8', status: 'generic', anchors: [clip(0.04)],
+    terminals: [{id: '1', label: '1', position: [0, 0.017, 0.02], kind: 'power', group: 'superior', role: 'neutral'}, {id: '2', label: '2', position: [0, -0.017, 0.02], kind: 'power', group: 'inferior', role: 'neutral'}], terminalSource: TERMINAL_SOURCE, bridges: [['1', '2']]},
+];
+
 /** Canaleta ranurada para tablero: los cables viajan por dentro y salen por las ranuras laterales. Se monta sobre la placa. */
 const DORSO: AnchorDef = {id: 'dorso', label: 'Dorso', role: 'child', kind: 'surface', position: [0, 0, -0.025], normal: [0, 0, -1], up: [0, 1, 0]};
 const DUCTS: readonly ShapeDef[] = [
@@ -144,6 +152,7 @@ export const ITEMS: readonly ShapeDef[] = [
     terminalSource: 'Marcado U1/V1/W1 y PE según la convención habitual de motores trifásicos. No contrastado con el documento de la norma.',
   },
   // — Escenario de planta (fase 13): piezas de forma y montaje. Sin simulación salvo el motor y los pilotos que ya existían —
+  ...BORNES,
   ...FACTORY,
   ...DUCTS,
 ];

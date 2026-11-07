@@ -8,6 +8,7 @@ import {GENERIC_NOTE, shapeOf, STATUS_LABEL} from './build/shapes.ts';
 import {countByFamily, FAMILIES, searchItems} from './catalog/search.ts';
 import {allTerminals, evaluate, MAX_WIRES_PER_TERMINAL, refKey, terminalDef} from './wiring/engine.ts';
 import {routeWire, tidyWires, unwire, wire} from './wiring/commands.ts';
+import {WIRE_COLORS, WIRE_COLOR_NOTE, wireLook, wireName} from './wiring/colors.ts';
 import {withStatuses} from './wiring/engine.ts';
 import {operableKind, simulate as runSimulation, SIM_ASSUMPTIONS, type SimInputs, type SimResult} from './sim/engine.ts';
 import {emptyProcess, hasProcess, sensorStates, stepProcess, type ProcessState} from './sim/process.ts';
@@ -392,6 +393,9 @@ export default function IndustriaApp() {
         </div>
         {terms.length === 0 && <p className="ind-note">Coloca piezas con terminales (contactor, PLC, fuente…) para poder cablearlas.</p>}
         <p className="ind-note">También puedes pulsar «Cablear» en el dock y tocar dos terminales en el escenario. Límite didáctico: {MAX_WIRES_PER_TERMINAL} cables por terminal.</p>
+        <details className="ind-item-info"><summary>Colores de cable y punteras</summary>
+          <ul className="ind-legend" aria-label="Colores de cable">{Object.values(WIRE_COLORS).map(w => <li key={w.name}><i className="ind-swatch" style={{background: w.color}} aria-hidden="true" /> {w.name}</li>)}</ul>
+          <p className="ind-note">Punteras de ejemplo: 2,5 mm² azul (fuerza), 0,75 mm² gris (mando y 24 V), 0,5 mm² blanco (señal). {WIRE_COLOR_NOTE}</p></details>
         <h4>Conexiones ({project.connections.length})</h4>
         {project.connections.length > 0 && <div className="ind-wire-tools" role="group" aria-label="Organizar cables">
           <button type="button" disabled={simulate || !project.connections.some(c => c.route?.length)} onClick={() => { if (guardEdit()) { api.run(p => tidyWires(p)); log('Cables ordenados: rutas manuales borradas'); } }} title="Borra las rutas manuales y reparte los cables en carriles">Ordenar todos</button>
@@ -400,7 +404,7 @@ export default function IndustriaApp() {
         {pickedConn && !simulate && <p className="ind-note">Cable elegido: en el escenario arrastra los puntos azules para moverlo, arrastra un punto claro para añadir uno y haz doble clic en uno azul para quitarlo.</p>}
         {project.connections.length === 0 ? <p className="ind-note">Aún no hay cables.</p>
           : <ul className="ind-wires" aria-label="Conexiones">{project.connections.map(c => { const st = evaluation.status[c.id] ?? c.status, why = evaluation.reasons[c.id];
-            return <li key={c.id} data-status={st} data-picked={pickedConn === c.id}><button type="button" className="ind-wire-main" onClick={() => setPickedConn(pickedConn === c.id ? null : c.id)} title="Resaltar en el escenario"><strong>{name(c.a)} → {name(c.b)}</strong><small><span className="ind-status" data-status={st}>{CHIP[st]}</span> {c.kind}{why && policy.showIssues ? ` · ${why.join(' ')}` : ''}</small></button>
+            return <li key={c.id} data-status={st} data-picked={pickedConn === c.id}><button type="button" className="ind-wire-main" onClick={() => setPickedConn(pickedConn === c.id ? null : c.id)} title="Resaltar en el escenario"><strong><i className="ind-swatch" style={{background: wireLook(project, c).color}} title={`${wireName(project, c)} · ${wireLook(project, c).name}`} aria-hidden="true" />{name(c.a)} → {name(c.b)}</strong><small><span className="ind-status" data-status={st}>{CHIP[st]}</span> {c.kind}{why && policy.showIssues ? ` · ${why.join(' ')}` : ''}</small></button>
               <button type="button" aria-label={`Desconectar ${name(c.a)} → ${name(c.b)}`} disabled={simulate} onClick={() => { if (guardEdit()) { api.run(p => unwire(p, c.id)); log(`Cable ${name(c.a)} → ${name(c.b)} desconectado`); } }}><Unlink size={14} /></button></li>; })}</ul>}
         {policy.showIssues && evaluation.issues.length > 0 && <div className="ind-issues" role="alert"><h4>Avisos ({evaluation.issues.length})</h4><ul>{evaluation.issues.map((i, k) => <li key={k} data-severity={i.severity}>{i.message}</li>)}</ul></div>}
         <h4>Redes ({evaluation.nets.length})</h4>

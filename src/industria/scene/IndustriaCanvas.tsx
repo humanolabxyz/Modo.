@@ -1,12 +1,13 @@
 import {useEffect, useMemo, useRef, useState, type MutableRefObject, type ElementRef, type ReactNode} from 'react';
 import {Canvas, useFrame, useThree, type ThreeEvent} from '@react-three/fiber';
 import {Grid, Html, Line, OrbitControls, RoundedBox} from '@react-three/drei';
-import {CatmullRomCurve3, DirectionalLight, DoubleSide, Plane, TubeGeometry, Vector2, Vector3, type Group} from 'three';
+import {CanvasTexture, CatmullRomCurve3, DirectionalLight, DoubleSide, Plane, Quaternion, SRGBColorSpace, TubeGeometry, Vector2, Vector3, type Group} from 'three';
 import type {IndustryProject, Pose, TerminalRef, Vec3} from '../model/types.ts';
 import type {CameraState} from '../model/ui.ts';
 import {shapeOf, type AnchorDef, type TerminalDef} from '../build/shapes.ts';
 import {refKey, type Evaluation} from '../wiring/engine.ts';
 import {CABLE_RADIUS, collisionBoxes, routeAll, segmentHits} from '../wiring/route.ts';
+import {wireLook, wireName} from '../wiring/colors.ts';
 import {hallBounds, hallParts, hasHall, type HallBounds, type HallPart} from './hall.ts';
 import {flexCable, insertWaypoint, interiorOf, midpointsOf, moveWaypoint, removeWaypoint} from '../wiring/curve.ts';
 import {operableKind, type SimResult} from '../sim/engine.ts';
@@ -73,7 +74,6 @@ function AnchorDots({definitionId, only}: {definitionId: string; only?: AnchorDe
     <mesh key={a.id} position={a.position} renderOrder={5}><sphereGeometry args={[0.014, 12, 8]} /><meshBasicMaterial color={a.role === 'host' ? '#1f9d55' : '#2d6ff4'} depthTest={false} transparent opacity={0.95} /></mesh>)}</>;
 }
 
-const CABLE_COLOR: Record<string, string> = {power: '#c0392b', control: '#2d6ff4', signal: '#8e5bd6', earth: '#b8a100', pipe: '#555f6d'};
 
 function Terminals({entityId, terminals, dot, pending, hover, onTerminal, onHover}: {entityId: string; terminals: readonly TerminalDef[]; dot: number; pending: TerminalRef | null; hover: string | null; onTerminal(ref: TerminalRef): void; onHover(key: string | null): void}) {
   return <>{terminals.map(t => {
@@ -98,9 +98,24 @@ function CableTube({points, color, radius, emissive}: {points: Vec3[]; color: st
   return geom ? <mesh geometry={geom} raycast={() => null} renderOrder={4}><meshStandardMaterial color={color} roughness={0.42} metalness={0.08} emissive={emissive ?? '#000000'} emissiveIntensity={emissive ? 0.6 : 0} /></mesh> : null;
 }
 
-/** Punta del cable: casquillo metálico corto en cada extremo. */
-function Ferrule({at, radius}: {at: Vec3; radius: number}) {
-  return <mesh position={at} raycast={() => null} renderOrder={4}><sphereGeometry args={[radius * 1.35, 10, 8]} /><meshStandardMaterial color="#c9ced6" metalness={0.8} roughness={0.3} /></mesh>;
+/** Etiqueta de cable (W1, W2…) dibujada como sprite con su propio lienzo: sin DOM ni fuentes externas, funciona sin conexión. */
+function WireTag({at, text}: {at: Vec3; text: string}) {
+  const tex = useMemo(() => {
+    const cv = document.createElement('canvas'); cv.width = 128; cv.height = 48; const g = cv.getContext('2d');
+    if (g) { g.fillStyle = '#fffbe6'; g.strokeStyle = '#9a7b00'; g.lineWidth = 4; g.beginPath(); g.roundRect(3, 3, 122, 42, 10); g.fill(); g.stroke(); g.fillStyle = '#1b1f27'; g.font = 'bold 26px sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(text, 64, 26); }
+    const t = new CanvasTexture(cv); t.colorSpace = SRGBColorSpace; return t;
+  }, [text]);
+  useEffect(() => () => tex.dispose(), [tex]);
+  return <sprite position={at} scale={[0.075, 0.028, 1]} renderOrder={8} raycast={() => null}><spriteMaterial map={tex} depthTest={false} transparent /></sprite>;
+}
+
+/** Puntera del cable: manguito de plástico con el color de su sección y punta metálica, orientado hacia dentro del cable. */
+function Ferrule({at, toward, radius, color}: {at: Vec3; toward: Vec3; radius: number; color: string}) {
+  const q = useMemo(() => new Quaternion().setFromUnitVectors(new Vector3(0, 1, 0), new Vector3(toward[0] - at[0], toward[1] - at[1], toward[2] - at[2]).normalize()), [at, toward]);
+  return <group position={at} quaternion={q}>
+    <mesh position={[0, 0.0105, 0]} raycast={() => null} renderOrder={4}><cylinderGeometry args={[radius * 1.6, radius * 1.6, 0.013, 14]} /><meshStandardMaterial color={color} roughness={0.5} /></mesh>
+    <mesh position={[0, 0.0015, 0]} raycast={() => null} renderOrder={4}><cylinderGeometry args={[radius * 1.1, radius * 1.1, 0.005, 12]} /><meshStandardMaterial color="#c9ced6" metalness={0.85} roughness={0.3} /></mesh>
+  </group>;
 }
 
 function Cables({project, evaluation, highlight, sim, live: liveRoute}: {project: IndustryProject; evaluation: Evaluation; highlight: readonly string[]; sim: SimResult | null; live: {id: string; interior: Vec3[]} | null}) {
@@ -111,11 +126,12 @@ function Cables({project, evaluation, highlight, sim, live: liveRoute}: {project
   return <>{project.connections.map(c => {
     const route = liveRoute?.id === c.id && liveFlex ? liveFlex : flexed.get(c.id); if (!route) return null;
     const status = evaluation.status[c.id] ?? c.status, strong = highlight.includes(c.id), live = !!sim?.liveConnections.has(c.id);
-    const color = live ? '#ff9800' : status === 'invalid' ? '#d9302c' : sim ? '#8d98a8' : CABLE_COLOR[c.kind] ?? '#555f6d';
-    const r = CABLE_RADIUS * (strong ? 1.8 : live ? 1.25 : 1);
+    const look = wireLook(project, c), color = live ? '#ff9800' : status === 'invalid' ? '#d9302c' : sim ? '#8d98a8' : look.color;
+    const r = CABLE_RADIUS * (strong ? 1.8 : live ? 1.25 : 1), tube = look.role === 'PIPE' ? r * 1.7 : r;
     return <group key={c.id}>
-      <CableTube points={route} color={color} radius={r} emissive={live ? '#ff9800' : status === 'invalid' ? '#d9302c' : undefined} />
-      <Ferrule at={route[0]} radius={r} /><Ferrule at={route[route.length - 1]} radius={r} />
+      <CableTube points={route} color={color} radius={tube} emissive={live ? '#ff9800' : status === 'invalid' ? '#d9302c' : undefined} />
+      {look.role !== 'PIPE' && <><Ferrule at={route[0]} toward={route[1]} radius={r} color={look.ferrule.color} /><Ferrule at={route[route.length - 1]} toward={route[route.length - 2]} radius={r} color={look.ferrule.color} /></>}
+      {strong && <>{[route[0], route[route.length - 1]].map((q, k) => <WireTag key={k} at={[q[0], q[1] + 0.035, q[2]]} text={wireName(project, c)} />)}</>}
     </group>;
   })}</>;
 }

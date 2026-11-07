@@ -8,7 +8,7 @@ export type HallPart = {shape: 'box' | 'cyl'; pos: Vec3; size: Vec3; axis?: 'x' 
 export type HallBounds = {cx: number; cz: number; w: number; d: number; h: number};
 
 export const HALL_HEIGHT = 5.5;
-const MARGIN = 6, MIN_W = 24, MIN_D = 16;
+const MARGIN = 4.5, MIN_W = 24, MIN_D = 16;
 
 /** Tamaño de la nave: cubre toda la planta con un margen de paso, con un mínimo para que se sienta amplia. */
 export function hallBounds(positions: readonly Vec3[]): HallBounds {

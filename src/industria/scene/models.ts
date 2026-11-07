@@ -237,6 +237,11 @@ function buttonExtra(s: ShapeDef, mark: 'I' | 'O'): Part[] {
     ...(mark === 'I' ? [box(0, y, z, r * 0.16, r * 0.9, 0.001, WHITE, 'label', true)] : [cyl(0, y, z, r * 0.4, 0.001, 'z', WHITE, 'label', true), cyl(0, y, z + 0.0006, r * 0.26, 0.001, 'z', '#c0392b', 'label', true)])];
 }
 
+// Bornes de tierra y de neutro: el cuerpo del borne de paso con su color y una franja que los distingue (amarilla en la tierra, blanca en el neutro)
+BUILDERS['borne-tierra'] = s => [...BUILDERS['borne-paso'](s), box(0, -s.size[1] * 0.36, s.size[2] * 0.5 + 0.0006, s.size[0] * 0.8, s.size[1] * 0.1, 0.0012, '#f2c200', 'label', true)];
+BUILDERS['borne-neutro'] = s => [...BUILDERS['borne-paso'](s), box(0, -s.size[1] * 0.36, s.size[2] * 0.5 + 0.0006, s.size[0] * 0.8, s.size[1] * 0.1, 0.0012, WHITE, 'label', true)];
+ENRICH['borne-tierra'] = ENRICH['borne-paso']; ENRICH['borne-neutro'] = ENRICH['borne-paso'];
+
 /** Primitivas de una pieza en el sistema local del origen de su pose (ya desplazadas al centro de la caja del catálogo). */
 export function modelParts(definitionId: string, detail: Detail = 'high'): Part[] {
   const shape = shapeOf(definitionId), build = BUILDERS[definitionId];
