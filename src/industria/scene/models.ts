@@ -8,8 +8,10 @@ import type {Vec3} from '../model/types.ts';
 
 export type PartRole = 'body' | 'front' | 'trim' | 'metal' | 'screw' | 'lens' | 'led' | 'dark' | 'label';
 /** box: size = [ancho, alto, fondo]; cyl: size = [radio, largo, 0] a lo largo de `axis`; sphere: size = [radio, 0, 0]. */
-export type Part = {shape: 'box' | 'cyl' | 'sphere'; pos: Vec3; size: Vec3; axis?: 'x' | 'y' | 'z'; color: string; role: PartRole; emissive?: string; /** detalle fino: se omite con muchas piezas en escena */ fine?: boolean; /** transparencia de una pieza `lens` (por defecto 0,92) */ opacity?: number};
+export type Part = {shape: 'box' | 'cyl' | 'sphere'; pos: Vec3; size: Vec3; axis?: 'x' | 'y' | 'z'; color: string; role: PartRole; emissive?: string; /** detalle fino: se omite con muchas piezas en escena */ fine?: boolean; /** transparencia de una pieza `lens` (por defecto 0,92) */ opacity?: number; /** `door`: parte de la puerta del gabinete (se vuelve transparente o se deja cerrada según la propiedad «puerta») */ tag?: 'door'};
 export type Detail = 'high' | 'low';
+/** `door`: el mando está montado en la puerta de un gabinete (frente redondo asomando, cuerpo y contactos dentro). */
+export type Variant = 'din' | 'door';
 
 const clamp = (v: number) => Math.max(0, Math.min(255, Math.round(v)));
 /** Aclara (f > 0) u oscurece (f < 0) un color #rrggbb. */
@@ -81,6 +83,23 @@ const BUILDERS: Record<string, Builder> = {
   'canal-piso': s => { const [w, h, d] = s.size, bars: Part[] = []; for (let x = -w / 2 + 0.05; x < w / 2 - 0.02; x += 0.05) bars.push(box(x, h / 2 - 0.004, 0, 0.014, 0.008, d - 0.02, '#4a525c', 'dark', true)); return [
     box(0, -h / 2 + 0.003, 0, w, 0.006, d, s.color, 'body'), box(0, 0, d / 2 - 0.006, w, h, 0.012, shade(s.color, 0.15), 'body'), box(0, 0, -d / 2 + 0.006, w, h, 0.012, shade(s.color, 0.15), 'body'), box(w / 2 - 0.006, 0, 0, 0.012, h, d, shade(s.color, 0.1), 'body'), box(-w / 2 + 0.006, 0, 0, 0.012, h, d, shade(s.color, 0.1), 'body'),
     box(0, h / 2 - 0.0035, 0, w - 0.03, 0.007, d - 0.03, '#2a2f36', 'lens', false), ...bars]; },
+
+  // — Tablero (fase 18): gabinete con puerta —
+  gabinete: s => { const [w, h, d] = s.size, c = s.color, dk = shade(c, -0.4), t = 0.02, door = (p: Part): Part => ({...p, tag: 'door'}); return [
+    box(-(w / 2 - t / 2), 0, 0, t, h, d, c, 'body'), box(w / 2 - t / 2, 0, 0, t, h, d, c, 'body'), box(0, h / 2 - t / 2, 0, w, t, d, shade(c, 0.08), 'body'), box(0, 0, -d / 2 + t / 2, w, h, t, shade(c, -0.08), 'body'), box(0, -h / 2 + 0.05, 0, w, 0.1, d, dk, 'body'),
+    door(box(0, 0.05, d / 2 - t / 2, w - 0.02, h - 0.1, t, c, 'body')),
+    cyl(w * 0.36, 0.08, d / 2 + 0.01, 0.011, 0.02, 'z', METAL, 'metal'), box(w * 0.36, 0.08, d / 2 + 0.012, 0.03, 0.12, 0.012, '#2a2f36', 'trim', true), cyl(w * 0.36, 0.08, d / 2 + 0.003, 0.02, 0.003, 'z', '#20262d', 'dark', true),
+    ...[0.42, 0.05, -0.32].map(y => cyl(-(w / 2 - 0.006), y, d / 2 - 0.004, 0.011, 0.09, 'y', METAL, 'metal', true)),
+    box(0, 0.05 + (h - 0.1) / 2 - 0.006, d / 2 + 0.0004, w - 0.04, 0.012, 0.0008, dk, 'dark', true), box(0, 0.05 - (h - 0.1) / 2 + 0.006, d / 2 + 0.0004, w - 0.04, 0.012, 0.0008, dk, 'dark', true),
+    ...Array.from({length: 7}, (_, i) => box(0, -h / 2 + 0.16 + i * 0.013, d / 2 + 0.0008, 0.26, 0.007, 0.0016, '#20262d', 'dark', true)),
+    cyl(-w * 0.3, h * 0.36, d / 2 + 0.003, 0.07, 0.004, 'z', '#20262d', 'dark', true), cyl(-w * 0.3, h * 0.36, d / 2 + 0.0055, 0.05, 0.002, 'z', '#3a424d', 'dark', true), cyl(-w * 0.3, h * 0.36, d / 2 + 0.0078, 0.012, 0.002, 'z', METAL, 'metal', true),
+    box(0, h * 0.4, d / 2 + 0.001, 0.22, 0.045, 0.0018, WHITE, 'label', true), box(w * 0.32, h * 0.4, d / 2 + 0.001, 0.05, 0.045, 0.0018, '#f2c200', 'label', true),
+    ...[-0.32, -0.2, -0.08, 0.04].map(x => cyl(x, -h / 2 - 0.005, 0.02, 0.016, 0.02, 'y', '#3a4250', 'metal', true)), cyl(w * 0.36, 0.0, d / 2 + 0.0105, 0.008, 0.003, 'z', '#c9ced6', 'metal', true),
+    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * (w / 2 - 0.05), h / 2 + 0.008, sz * (d / 2 - 0.05), 0.012, 0.016, 'y', METAL, 'metal', true))), box(-(w / 2 - 0.03), -0.3, d / 2 - 0.03, 0.012, 0.2, 0.004, '#b87333', 'metal', true)]; },
+
+  'plinto-tablero': s => { const [w, h, d] = s.size; return [
+    box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.004, 0, w - 0.02, 0.008, d - 0.02, shade(s.color, 0.12), 'front', true), box(0, -0.01, d / 2 + 0.0006, w * 0.5, h * 0.55, 0.0012, '#2a2f36', 'dark', true),
+    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * (w / 2 - 0.05), h / 2 + 0.008, sz * (d / 2 - 0.05), 0.009, 0.016, 'y', METAL, 'metal', true))), box(0, -h / 2 + 0.006, d / 2 + 0.0006, w, 0.012, 0.0012, shade(s.color, -0.2), 'dark', true)]; },
 
   // — Escenario de planta (fase 13): formas por tipo de equipo, en el sistema local centrado en la caja del catálogo —
   'piso-planta': s => { const [w, h, d] = s.size, y = h / 2 - 0.0004, line = '#f2c200', joint = shade(s.color, -0.28); return [
@@ -250,10 +269,20 @@ BUILDERS['piso-nave'] = s => { const [w, h, d] = s.size, y = h / 2 - 0.0004, joi
   for (let z = -d / 2 + 4; z < d / 2 - 0.5; z += 4) out.push(box(0, y, z, w, 0.001, 0.03, joint, 'dark', true));
   return out; };
 
+/** Mandos de panel en la puerta de un gabinete: aro y cabeza redondos por fuera, tuerca de fijación y bloque de contactos por dentro. */
+const DOOR_OPERATORS = new Set(['pulsador-na', 'pulsador-nc', 'piloto']);
+function doorOperator(s: ShapeDef): Part[] {
+  // El plano de la puerta está en z = 0,035 del mando (el ancla «agujero»): por delante asoma el frente, por detrás quedan la tuerca, el bloque de contactos y los terminales.
+  const Z = 0.035, out: Part[] = [cyl(0, 0, Z + 0.0015, 0.0165, 0.003, 'z', shade(METAL, -0.2), 'metal'), cyl(0, 0, Z - 0.0055, 0.0165, 0.004, 'z', '#20262d', 'dark', true), box(0, 0, Z - 0.0215, 0.03, 0.04, 0.026, '#2a2f36', 'body'), box(0, 0, Z - 0.0345, 0.026, 0.036, 0.002, '#3a424d', 'dark', true)];
+  if (s.id === 'piloto') out.push(ball(0, 0, Z + 0.0035, 0.0125, s.color, 'lens'), ball(-0.004, 0.004, Z + 0.0135, 0.0025, WHITE, 'label', true));
+  else { out.push(cyl(0, 0, Z + 0.009, 0.0125, 0.011, 'z', s.id === 'pulsador-na' ? '#2f9e5b' : '#c0392b', 'trim')); if (s.id === 'pulsador-na') out.push(box(0, 0, Z + 0.0146, 0.002, 0.011, 0.001, WHITE, 'label', true)); else out.push(cyl(0, 0, Z + 0.0146, 0.0052, 0.001, 'z', WHITE, 'label', true)); }
+  return [...out, ...screws(s)];
+}
+
 /** Primitivas de una pieza en el sistema local del origen de su pose (ya desplazadas al centro de la caja del catálogo). */
-export function modelParts(definitionId: string, detail: Detail = 'high'): Part[] {
+export function modelParts(definitionId: string, detail: Detail = 'high', variant: Variant = 'din'): Part[] {
   const shape = shapeOf(definitionId), build = BUILDERS[definitionId];
-  const parts = build ? [...build(shape), ...(ENRICH[definitionId]?.(shape) ?? [])] : [box(0, 0, 0, shape.size[0], shape.size[1], shape.size[2], shape.color, 'body')];
+  const parts = variant === 'door' && DOOR_OPERATORS.has(definitionId) ? doorOperator(shape) : build ? [...build(shape), ...(ENRICH[definitionId]?.(shape) ?? [])] : [box(0, 0, 0, shape.size[0], shape.size[1], shape.size[2], shape.color, 'body')];
   return parts.filter(p => detail === 'high' || !p.fine).map(p => ({...p, pos: [p.pos[0] + shape.center[0], p.pos[1] + shape.center[1], p.pos[2] + shape.center[2]] as Vec3}));
 }
 

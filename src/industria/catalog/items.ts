@@ -17,15 +17,17 @@ const poles = (n: number, w: number): number[] => Array.from({length: n}, (_, i)
 const clip = (depth: number): AnchorDef => ({id: 'clip', label: 'Clip de riel', role: 'child', kind: 'din-rail', position: [0, 0, -depth / 2], normal: [0, 0, -1], up: [0, 1, 0]});
 
 /** Aparato modular de riel: dorso con clip; terminales arriba (impares) y abajo (pares). */
-function dinDevice(spec: {id: string; name: string; subfamily: string; description: string; size: Vec3; color: string; top: string[]; bottom: string[]; kind?: TerminalDef['kind']; extra?: TerminalDef[]; family?: string; roles?: Record<string, TerminalDef['role']>}): ShapeDef {
+/** Agujero de puerta de un mando de panel (pulsador, piloto): el frente asoma por la puerta y el cuerpo queda dentro. */
+const PANEL_HOLE: AnchorDef = {id: 'agujero', label: 'Agujero de puerta', role: 'child', kind: 'panel', position: [0, 0, 0.035], normal: [0, 0, -1], up: [0, 1, 0]};
+function dinDevice(spec: {id: string; name: string; subfamily: string; description: string; size: Vec3; color: string; top: string[]; bottom: string[]; kind?: TerminalDef['kind']; extra?: TerminalDef[]; family?: string; roles?: Record<string, TerminalDef['role']>; /** profundidad de los terminales (por defecto el frente del aparato) */ termZ?: number; panel?: boolean}): ShapeDef {
   const [w, h, d] = spec.size;
   const row = (labels: string[], y: number, group: string): TerminalDef[] => {
     const xs = poles(labels.length, labels.length > 1 ? Math.min(0.0175, (w - 0.006) / (labels.length - 1)) : 0);
-    return labels.map((label, i) => ({id: label, label, position: [xs[i], y + (y > 0 ? -0.008 : 0.008), d / 2] as Vec3, kind: spec.kind ?? 'power', group, ...(spec.roles?.[label] ? {role: spec.roles[label]} : {})}));
+    return labels.map((label, i) => ({id: label, label, position: [xs[i], y + (y > 0 ? -0.008 : 0.008), spec.termZ ?? d / 2] as Vec3, kind: spec.kind ?? 'power', group, ...(spec.roles?.[label] ? {role: spec.roles[label]} : {})}));
   };
   return {
     id: spec.id, name: spec.name, family: spec.family ?? 'Electricidad industrial', subfamily: spec.subfamily, description: spec.description, size: spec.size, center: [0, 0, 0], color: spec.color,
-    anchors: [clip(d)], terminals: [...row(spec.top, h / 2, 'superior'), ...row(spec.bottom, -h / 2, 'inferior'), ...(spec.extra ?? [])], terminalSource: TERMINAL_SOURCE, status: 'generic',
+    anchors: [clip(d), ...(spec.panel ? [PANEL_HOLE] : [])], terminals: [...row(spec.top, h / 2, 'superior'), ...row(spec.bottom, -h / 2, 'inferior'), ...(spec.extra ?? [])], terminalSource: TERMINAL_SOURCE, status: 'generic',
   };
 }
 
@@ -48,6 +50,16 @@ const BORNES: readonly ShapeDef[] = [
     terminals: [{id: '1', label: '1', position: [0, 0.017, 0.02], kind: 'power', group: 'superior', role: 'neutral'}, {id: '2', label: '2', position: [0, -0.017, 0.02], kind: 'power', group: 'inferior', role: 'neutral'}], terminalSource: TERMINAL_SOURCE, bridges: [['1', '2']]},
 ];
 
+/** Gabinete de tablero (fase 18): caja metálica con puerta, placa de montaje interior y entrada de cables por abajo. Los mandos (pulsadores, pilotos) se montan en la PUERTA, los aparatos de fuerza y el PLC en el riel de la placa. */
+const GABINETE: ShapeDef = {id: 'gabinete', name: 'Gabinete de tablero', family: 'Infraestructura', subfamily: 'Tablero', description: 'Caja metálica con puerta, manija, bisagras, ventilación y prensaestopas inferiores. La placa de montaje va dentro y los pulsadores y pilotos en la puerta (puerta transparente o cerrada, en Propiedades).' + NOSIM,
+  size: [1, 1.2, 0.35], center: [0, 0.6, 0], color: '#d3d7db', status: 'generic', anchors: [BASE,
+    {id: 'puerta', label: 'Puerta (mandos)', role: 'host', kind: 'panel', position: [0, 0.6, 0.175], normal: [0, 0, 1], up: [0, 1, 0], multi: true, slide: {axes: [[1, 0, 0], [0, 1, 0]], limits: [[-0.42, 0.42], [-0.5, 0.5]]}},
+    {id: 'interior', label: 'Fondo interior', role: 'host', kind: 'surface', position: [0, 0.03, -0.12], normal: [0, 1, 0], multi: true, slide: {axes: [[1, 0, 0], [0, 0, 1]], limits: [[-0.1, 0.1], [-0.04, 0.04]]}}]};
+
+/** Plinto de tablero (fase 19): el gabinete no se apoya en el piso de trabajo, va sobre una estructura de hormigón que lo eleva y lo separa del agua y la limpieza. */
+const PLINTO: ShapeDef = {id: 'plinto-tablero', name: 'Plinto de tablero', family: 'Infraestructura', subfamily: 'Tablero', description: 'Base de hormigón con pernos de anclaje y boca de entrada de cables: el gabinete se monta encima, en la zona eléctrica y no en el área de trabajo.' + NOSIM,
+  size: [1.2, 0.12, 0.5], center: [0, 0.06, 0], color: '#9ea4ab', status: 'generic', anchors: [BASE, {id: 'top', label: 'Cara superior', role: 'host', kind: 'surface', position: [0, 0.12, 0], normal: [0, 1, 0], multi: true, slide: {axes: [[1, 0, 0], [0, 0, 1]], limits: [[-0.1, 0.1], [-0.1, 0.1]]}}]};
+
 /** Canaleta ranurada para tablero: los cables viajan por dentro y salen por las ranuras laterales. Se monta sobre la placa. */
 const DORSO: AnchorDef = {id: 'dorso', label: 'Dorso', role: 'child', kind: 'surface', position: [0, 0, -0.025], normal: [0, 0, -1], up: [0, 1, 0]};
 const DUCTS: readonly ShapeDef[] = [
@@ -59,7 +71,7 @@ const DUCTS: readonly ShapeDef[] = [
 /** Línea larga y piso de nave (fase 17): la planta real es una sola línea continua sobre un solo piso, no losas ni tramos sueltos. */
 const LINE: readonly ShapeDef[] = [
   {id: 'cinta-larga', name: 'Línea transportadora', family: 'Mecánica y movimiento', subfamily: 'Transporte', description: 'Cinta continua de ocho metros con patas cada dos metros y guías laterales: una sola línea para toda la estación. Se mueve con un motor trifásico junto a su cabezal; la cinta no gira sola en la simulación.' + NOSIM, size: [8, 0.8, 0.5], center: [0, 0.4, 0], color: '#8d9aa8', status: 'generic', anchors: [BASE, topHost(0.8, 3.7, 0.1, 'cinta', 'Superficie de la cinta')]},
-  {id: 'piso-nave', name: 'Piso de nave', family: 'Infraestructura', subfamily: 'Estructura', description: 'Losa continua de hormigón de catorce por ocho metros: el piso de toda la planta, con sus juntas de dilatación.' + NOSIM, size: [14, 0.05, 8], center: [0, 0.025, 0], color: '#b4bac3', status: 'generic', anchors: [BASE, topHost(0.05, 6.9, 3.9)]},
+  {id: 'piso-nave', name: 'Piso de nave', family: 'Infraestructura', subfamily: 'Estructura', description: 'Losa continua de hormigón de veinte por diez metros: el piso de toda la planta, con sus juntas de dilatación.' + NOSIM, size: [20, 0.05, 10], center: [0, 0.025, 0], color: '#b4bac3', status: 'generic', anchors: [BASE, topHost(0.05, 9.9, 4.9)]},
 ];
 
 const FACTORY: readonly ShapeDef[] = [
@@ -133,9 +145,9 @@ export const ITEMS: readonly ShapeDef[] = [
     extra: [{id: '95', label: '95', position: [-0.0115, 0.0225, 0.035], kind: 'control', group: 'auxiliar'}, {id: '96', label: '96', position: [-0.0115, -0.0225, 0.035], kind: 'control', group: 'auxiliar'}]}),
   dinDevice({id: 'fuente-cc', name: 'Fuente de alimentación CC', subfamily: 'Alimentación', description: 'Fuente conmutada genérica (sin tensión ni corriente de salida definidas).', size: [0.054, 0.09, 0.06], color: '#4a6a4a', top: ['L', 'N'], bottom: ['L+', 'M'], roles: {L: 'line', N: 'neutral', 'L+': 'positive', M: 'negative'}}),
   // — Mando y señalización —
-  dinDevice({id: 'pulsador-na', name: 'Pulsador NA', subfamily: 'Mando', description: 'Pulsador de contacto normalmente abierto, genérico: cierra mientras se mantiene pulsado.', size: [0.0225, 0.06, 0.05], color: '#2f7d4f', kind: 'control', top: ['3'], bottom: ['4']}),
-  dinDevice({id: 'pulsador-nc', name: 'Pulsador NC', subfamily: 'Mando', description: 'Pulsador de contacto normalmente cerrado, genérico: conduce en reposo y abre mientras se mantiene pulsado.', size: [0.0225, 0.06, 0.05], color: '#b5473a', kind: 'control', top: ['1'], bottom: ['2']}),
-  dinDevice({id: 'piloto', name: 'Piloto luminoso', subfamily: 'Señalización', description: 'Indicador luminoso genérico: se enciende cuando hay tensión entre X1 y X2.', size: [0.0225, 0.06, 0.05], color: '#c9a400', kind: 'control', top: ['X1'], bottom: ['X2']}),
+  dinDevice({id: 'pulsador-na', name: 'Pulsador NA', subfamily: 'Mando', description: 'Pulsador de contacto normalmente abierto, genérico: cierra mientras se mantiene pulsado.', size: [0.0225, 0.06, 0.05], color: '#2f7d4f', kind: 'control', top: ['3'], bottom: ['4'], panel: true}),
+  dinDevice({id: 'pulsador-nc', name: 'Pulsador NC', subfamily: 'Mando', description: 'Pulsador de contacto normalmente cerrado, genérico: conduce en reposo y abre mientras se mantiene pulsado.', size: [0.0225, 0.06, 0.05], color: '#b5473a', kind: 'control', top: ['1'], bottom: ['2'], panel: true}),
+  dinDevice({id: 'piloto', name: 'Piloto luminoso', subfamily: 'Señalización', description: 'Indicador luminoso genérico: se enciende cuando hay tensión entre X1 y X2.', size: [0.0225, 0.06, 0.05], color: '#c9a400', kind: 'control', top: ['X1'], bottom: ['X2'], panel: true}),
   // — Alimentación —
   {
     id: 'red-3f', name: 'Red trifásica', family: 'Electricidad industrial', subfamily: 'Alimentación', description: 'Fuente de red genérica con tres fases, neutro y tierra. Su tensión es un dato que configura quien simula; no es de una red real.', size: [0.3, 0.3, 0.12], center: [0, 0.15, 0], color: '#6b4f8a', status: 'generic',
@@ -159,6 +171,8 @@ export const ITEMS: readonly ShapeDef[] = [
   },
   // — Escenario de planta (fase 13): piezas de forma y montaje. Sin simulación salvo el motor y los pilotos que ya existían —
   ...BORNES,
+  GABINETE,
+  PLINTO,
   ...LINE,
   ...FACTORY,
   ...DUCTS,

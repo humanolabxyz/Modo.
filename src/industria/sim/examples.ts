@@ -2,7 +2,7 @@
 // (colocar, montar, cablear), así que sirve también de prueba de que el motor de anclajes y el de cableado trabajan juntos.
 // Las tensiones (230 y 24) son valores de ejemplo configurables en las fuentes; no representan un equipo real.
 import {newIndustryProject} from '../model/defaults.ts';
-import {addEntity, setEntityProp, setPose} from '../model/commands.ts';
+import {addEntity, release, setEntityProp, setPose} from '../model/commands.ts';
 import {snapMount} from '../build/commands.ts';
 import {findSnapCandidates} from '../build/snap.ts';
 import {shapeOf} from '../build/shapes.ts';
@@ -120,7 +120,21 @@ export function exampleMiniFactory(): Result<IndustryProject> {
   };
   const cut = (a: [string, string], b: [string, string]): boolean => { const c = p.connections.find(x => (x.a.entityId === a[0] && x.a.terminalId === a[1] && x.b.entityId === b[0] && x.b.terminalId === b[1]) || (x.b.entityId === a[0] && x.b.terminalId === a[1] && x.a.entityId === b[0] && x.a.terminalId === b[1])); return !!c && step(unwire(p, c.id)); };
   // Un solo piso de nave y una sola línea continua
-  if (!add('piso', 'piso-nave', 'Piso de nave', pose(4.5, -0.05, 2.5)) || !add('cinta', 'cinta-larga', 'Línea transportadora', pose(6, 0, 2.2))) return {ok: false, error: fail};
+  if (!add('piso', 'piso-nave', 'Piso de nave', pose(4, -0.05, 2.5)) || !add('cinta', 'cinta-larga', 'Línea transportadora', pose(6, 0, 2.2))) return {ok: false, error: fail};
+  // ZONA ELÉCTRICA: el tablero no está en el área de trabajo, va en una zona aparte sobre un plinto de hormigón. Se traslada la placa con sus rieles y aparatos.
+  const X0 = -3.2, Y0 = 0.12, Z0 = 0;
+  if (!add('plinto', 'plinto-tablero', 'Plinto del tablero', pose(X0, 0, Z0 + 0.15))) return {ok: false, error: fail};
+  for (const id of ['placa', 'riel1', 'riel2', 'qf1', 'qf2', 'fuente', 'km1', 'plc', 'b1', 's1', 's2']) { const q = p.poses[id].position; if (!step(setPose(p, id, {...p.poses[id], position: [q[0] + X0, q[1] + Y0, q[2] + Z0]}))) return {ok: false, error: fail}; }
+  if (!step(setPose(p, 'red', pose(X0 - 0.9, 0, Z0)))) return {ok: false, error: fail};
+  // Gabinete de tablero alrededor de la placa; los mandos (marcha, paro y piloto) pasan del riel a la PUERTA, como en un tablero real
+  if (!put('gab', 'gabinete', 'Gabinete de tablero', pose(X0, Y0, Z0 + 0.15), 'plinto')) return {ok: false, error: fail};
+  for (const id of ['s1', 's2']) { const m = p.mounts.find(x => x.child.entityId === id); if (m && !step(release(p, m.id))) return {ok: false, error: fail}; }
+  if (!add('h1', 'piloto', 'H1', pose(X0 + 0.2, Y0 + 0.95, Z0 + 0.29))) return {ok: false, error: fail};
+  for (const [id, x] of [['s1', 0.3], ['s2', 0.4], ['h1', 0.2]] as const) {
+    if (!step(setPose(p, id, pose(X0 + x, Y0 + 0.95, Z0 + 0.29)))) return {ok: false, error: fail};
+    const c = findSnapCandidates(p, id, undefined, {range: 0.3}).find(k => k.parent.entityId === 'gab' && k.child.anchorId === 'agujero');
+    if (!c || !step(snapMount(p, c))) return {ok: false, error: fail || `No se pudo montar ${id} en la puerta.`};
+  }
   // El motor del tablero se lleva al cabezal de la línea
   if (!step(setPose(p, 'motor', pose(1.65, 0, 2.2)))) return {ok: false, error: fail};
   if (!add('mesa', 'mesa-trabajo', 'Mesa de estación', pose(3.4, 0, 1.4)) || !add('robot', 'brazo-robot', 'Brazo robótico 1', pose(6.2, 0, 1.3)) || !add('robot2', 'brazo-robot', 'Brazo robótico 2', pose(8, 0, 1.3))
@@ -134,12 +148,15 @@ export function exampleMiniFactory(): Result<IndustryProject> {
   for (const [id, x, z, parent] of [['pk1', 6.8, 4.4, 'mesa2'], ['pk2', 7.2, 4.4, 'mesa2'], ['pk3', 8.2, 4.4, 'mesa3'], ['pk4', 8.6, 4.4, 'mesa3']] as const) if (!put(id, 'caja-producto', 'Caja de empaque', pose(x, 0.8, z), parent)) return {ok: false, error: fail};
   for (const [id, x] of [['valla1', 5.5], ['valla2', 6.5], ['valla3', 7.5], ['valla4', 8.5]] as const) if (!add(id, 'valla-seguridad', 'Valla', pose(x, 0, 3.05))) return {ok: false, error: fail};
   // Bornes de tierra y de neutro en el riel del PLC
-  const railZ = p.poses.s2.position[2];
-  if (!put('pe1', 'borne-tierra', 'PE', pose(0.09, 0.45, railZ), 'riel2') || !put('ne1', 'borne-neutro', 'N', pose(0.125, 0.45, railZ), 'riel2')) return {ok: false, error: fail};
+  const railZ = p.poses.plc.position[2];
+  if (!put('pe1', 'borne-tierra', 'PE', pose(X0 + 0.09, Y0 + 0.45, railZ), 'riel2') || !put('ne1', 'borne-neutro', 'N', pose(X0 + 0.125, Y0 + 0.45, railZ), 'riel2')) return {ok: false, error: fail};
   // Canaletas del tablero (sobre la placa, junto a cada riel) y un canal de piso corrido a lo largo de toda la línea
   for (const [id, def, x, y] of [['cn1', 'canaleta', -0.08, 0.86], ['cn2', 'canaleta', -0.08, 0.635], ['cn3', 'canaleta', -0.08, 0.56], ['cn4', 'canaleta', -0.08, 0.335], ['cv1', 'canaleta-vertical', -0.34, 0.6]] as const)
-    if (!put(id, def, 'Canaleta', pose(x, y, 0.055), 'placa')) return {ok: false, error: fail};
-  for (const [i, x] of [0.2, 1.4, 2.6, 3.8, 5, 6.2, 7.4, 8.6].entries()) if (!put(`pz${i + 1}`, 'canal-piso', 'Canal de piso', pose(x, 0, 0.3), 'piso')) return {ok: false, error: fail};
+    if (!put(id, def, 'Canaleta', pose(X0 + x, Y0 + y, Z0 + 0.055), 'placa')) return {ok: false, error: fail};
+  for (const [i, x] of [-3.4, -2.2, -1, 0.2, 1.4, 2.6, 3.8, 5, 6.2, 7.4, 8.6].entries()) if (!put(`pz${i + 1}`, 'canal-piso', 'Canal de piso', pose(x, 0, 0.15), 'piso')) return {ok: false, error: fail};
+  // La zona eléctrica va cercada por tres lados (el cuarto lado queda abierto hacia el canal de piso)
+  for (const [id, x, z, ry] of [['vz1', -4.5, 1.2, 0], ['vz2', -3.5, 1.2, 0], ['vz3', -2.5, 1.2, 0], ['vz4', -4.5, -0.9, 0], ['vz5', -3.5, -0.9, 0], ['vz6', -2.5, -0.9, 0], ['vz7', -5, -0.4, Math.PI / 2], ['vz8', -5, 0.6, Math.PI / 2]] as const)
+    if (!add(id, 'valla-seguridad', 'Valla de zona eléctrica', {position: [x, 0, z], rotation: [0, ry, 0]})) return {ok: false, error: fail};
   // Tierra y neutro pasan por sus bornes (se quitan los cables directos del ejemplo base)
   if (!cut(['red', 'PE'], ['motor', 'PE']) || !cut(['red', 'N'], ['fuente', 'N'])) return {ok: false, error: fail || 'No se encontraron los cables base de tierra y neutro.'};
   const T = (entityId: string, terminalId: string) => ({entityId, terminalId});
@@ -154,6 +171,8 @@ export function exampleMiniFactory(): Result<IndustryProject> {
     // torre (luz verde) y robots, también desde el PLC; el común de ambos comparte la bobina de la válvula
     [['plc', 'DO2'], ['torre', 'G']], [['torre', 'COM'], ['valvula', 'A2']], [['plc', 'DO3'], ['robot', 'A1']], [['robot', 'A2'], ['torre', 'COM']],
     [['plc', 'DO3'], ['robot2', 'A1']], [['robot2', 'A2'], ['robot', 'A2']],
+    // piloto de la puerta: se enciende con la luz verde
+    [['plc', 'DO2'], ['h1', 'X1']], [['robot2', 'A2'], ['h1', 'X2']],
   ];
   for (const [a, b] of cables) if (!step(wire(p, T(...a), T(...b)))) return {ok: false, error: fail};
   for (const [terminal, name] of [['DI2', 'SENSOR_CINTA'], ['DI3', 'SENSOR_CILINDRO'], ['DO1', 'VALVULA'], ['DO2', 'LUZ_VERDE'], ['DO3', 'ROBOT']] as const) if (!step(setTerminalTag(p, 'plc', terminal, name))) return {ok: false, error: fail};

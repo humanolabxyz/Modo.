@@ -24,8 +24,8 @@ export type Entity = {
   locked?: boolean;
 };
 
-export type MountKind = 'din-rail' | 'surface' | 'structural' | 'mechanical' | 'pipe' | 'modular';
-export const MOUNT_KINDS: readonly MountKind[] = ['din-rail', 'surface', 'structural', 'mechanical', 'pipe', 'modular'];
+export type MountKind = 'din-rail' | 'surface' | 'structural' | 'mechanical' | 'pipe' | 'modular' | 'panel';
+export const MOUNT_KINDS: readonly MountKind[] = ['din-rail', 'surface', 'structural', 'mechanical', 'pipe', 'modular', 'panel'];
 
 export type AnchorRef = {entityId: string; anchorId: string};
 export type TerminalRef = {entityId: string; terminalId: string};

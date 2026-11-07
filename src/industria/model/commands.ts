@@ -58,7 +58,7 @@ export function mount(p: IndustryProject, parent: AnchorRef, child: AnchorRef, k
   if (parent.entityId === child.entityId) return fail('Un componente no puede montarse sobre sí mismo.');
   if (entity(p, child.entityId)?.locked) return fail('El componente está bloqueado.');
   if (p.mounts.some(m => m.child.entityId === child.entityId)) return fail('El componente ya está montado; libéralo antes de volver a montarlo.');
-  if (p.mounts.some(m => m.parent.entityId === parent.entityId && m.parent.anchorId === parent.anchorId && m.kind !== 'din-rail' && m.kind !== 'surface')) return fail('Ese anclaje ya está ocupado.');
+  if (p.mounts.some(m => m.parent.entityId === parent.entityId && m.parent.anchorId === parent.anchorId && m.kind !== 'din-rail' && m.kind !== 'surface' && m.kind !== 'panel')) return fail('Ese anclaje ya está ocupado.');
   const next: Mount = {id: newId('m'), kind, parent: {...parent}, child: {...child}};
   if (hasMountCycle([...p.mounts, next])) return fail('Ese montaje crearía un ciclo.');
   return ok({...p, mounts: [...p.mounts, next]});

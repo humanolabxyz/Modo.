@@ -12,7 +12,7 @@ import {hallBounds, hallParts, hasHall, type HallBounds, type HallPart} from './
 import {flexCable, insertWaypoint, interiorOf, midpointsOf, moveWaypoint, removeWaypoint} from '../wiring/curve.ts';
 import {operableKind, type SimResult} from '../sim/engine.ts';
 import {productOffset, robotAngle, ROD_STROKE, type ProcessState} from '../sim/process.ts';
-import {modelParts, type Detail} from './models.ts';
+import {modelParts, type Detail, type Variant} from './models.ts';
 import {findSnapCandidates, movedPoses, overlapsOf, parentMountOf, snapToGrid, type SnapCandidate} from '../build/snap.ts';
 
 /** Escenario de la fase 3: rejilla, cámara orbital, piezas con su forma, anclajes visibles, arrastre con vista previa translúcida alineada.
@@ -180,8 +180,8 @@ function SpinMarker({y}: {y: number}) {
 }
 
 /** Forma real de la pieza (cuerpo, frente, palancas, tornillos, LED…). La caja del catálogo queda debajo, invisible, solo para seleccionar y arrastrar. */
-function ModelMesh({definitionId, detail, selected, overlapping, glow, only}: {definitionId: string; detail: Detail; selected: boolean; overlapping?: boolean; glow?: string; only?: (y: number) => boolean}) {
-  const all = useMemo(() => modelParts(definitionId, detail), [definitionId, detail]);
+function ModelMesh({definitionId, detail, selected, overlapping, glow, only, variant, doorMode}: {definitionId: string; detail: Detail; selected: boolean; overlapping?: boolean; glow?: string; only?: (y: number) => boolean; variant?: Variant; doorMode?: string}) {
+  const all = useMemo(() => modelParts(definitionId, detail, variant ?? 'din'), [definitionId, detail, variant]);
   const parts = only ? all.filter(p => only(p.pos[1])) : all;
   return <>{parts.map((p, i) => {
     const bodyLike = p.role === 'body' || p.role === 'front';
@@ -191,8 +191,10 @@ function ModelMesh({definitionId, detail, selected, overlapping, glow, only}: {d
     const color = overlapping && bodyLike ? '#d9534f' : p.color;
     const rotation: [number, number, number] = p.shape === 'cyl' ? (p.axis === 'x' ? [0, 0, Math.PI / 2] : p.axis === 'z' ? [Math.PI / 2, 0, 0] : [0, 0, 0]) : [0, 0, 0];
     const shiny = p.role === 'metal' || p.role === 'screw', soft = detail === 'high' && p.shape === 'box' && !p.fine && Math.min(p.size[0], p.size[1], p.size[2]) > 0.012;
-    const mat = <meshStandardMaterial color={color} emissive={emissive} emissiveIntensity={intensity} roughness={shiny ? 0.28 : p.role === 'lens' ? 0.15 : p.role === 'trim' ? 0.45 : 0.55} metalness={shiny ? 0.85 : 0.04} transparent={p.role === 'lens'} opacity={p.role === 'lens' ? p.opacity ?? 0.92 : 1} />;
-    const shadowed = detail === 'high' && !p.fine;
+    // Puerta del gabinete: transparente (se ven los aparatos de dentro) o cerrada
+    const ghost = p.tag === 'door' && doorMode !== 'cerrada';
+    const mat = <meshStandardMaterial color={color} emissive={emissive} emissiveIntensity={intensity} roughness={shiny ? 0.28 : p.role === 'lens' ? 0.15 : p.role === 'trim' ? 0.45 : 0.55} metalness={shiny ? 0.85 : 0.04} transparent={p.role === 'lens' || ghost} opacity={ghost ? 0.13 : p.role === 'lens' ? p.opacity ?? 0.92 : 1} depthWrite={!ghost} />;
+    const shadowed = detail === 'high' && !p.fine && !ghost;
     if (soft) return <RoundedBox key={i} args={p.size} radius={Math.min(0.004, Math.min(p.size[0], p.size[1], p.size[2]) * 0.18)} smoothness={3} position={p.pos} raycast={() => null} castShadow={shadowed} receiveShadow>{mat}</RoundedBox>;
     return <mesh key={i} position={p.pos} rotation={rotation} raycast={() => null} castShadow={shadowed} receiveShadow={detail === 'high'}>
       {p.shape === 'box' ? <boxGeometry args={p.size} /> : p.shape === 'cyl' ? <cylinderGeometry args={[p.size[0], p.size[0], p.size[1], detail === 'high' ? 32 : 16]} /> : <sphereGeometry args={[p.size[0], detail === 'high' ? 20 : 12, detail === 'high' ? 14 : 8]} />}
@@ -209,19 +211,19 @@ function ProcessExtra({definitionId, id, proc, sim}: {definitionId: string; id: 
   return null;
 }
 
-function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlapping, draggable, onDown, xray, terminals, glow, extra, detail, swing}: {
-  swing?: number; id: string; definitionId: string; pose: Pose; selected: boolean; ghost?: boolean; showAnchors: boolean; overlapping?: boolean; draggable: boolean; onDown?(e: ThreeEvent<PointerEvent>): void; xray?: boolean; terminals?: ReactNode; glow?: string; extra?: ReactNode; detail?: Detail;
+function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlapping, draggable, onDown, xray, terminals, glow, extra, detail, swing, variant, doorMode}: {
+  swing?: number; variant?: Variant; doorMode?: string; id: string; definitionId: string; pose: Pose; selected: boolean; ghost?: boolean; showAnchors: boolean; overlapping?: boolean; draggable: boolean; onDown?(e: ThreeEvent<PointerEvent>): void; xray?: boolean; terminals?: ReactNode; glow?: string; extra?: ReactNode; detail?: Detail;
 }) {
   const shape = shapeOf(definitionId);
   const color = ghost ? '#2d6ff4' : overlapping ? '#d9534f' : selected ? '#2d6ff4' : shape.color;
   return <group position={pose.position} rotation={pose.rotation} name={ghost ? undefined : id} userData={{entityId: id}}>
-    {!ghost && swing === undefined && <ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} />}
+    {!ghost && swing === undefined && <ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} variant={variant} doorMode={doorMode} />}
     {!ghost && swing !== undefined && <>
       <ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} only={y => y < 0.12} />
       <group position={[-0.12, 0, 0]} rotation={[0, swing, 0]}><group position={[0.12, 0, 0]}><ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} only={y => y >= 0.12} /></group></group>
     </>}
-    <mesh position={shape.center} onPointerDown={ghost ? undefined : onDown} raycast={ghost || xray ? () => null : undefined}>
-      <boxGeometry args={shape.size} />
+    <mesh position={definitionId === 'gabinete' ? [shape.center[0], 0.05, shape.center[2]] : shape.center} onPointerDown={ghost ? undefined : onDown} raycast={ghost || xray ? () => null : undefined}>
+      <boxGeometry args={definitionId === 'gabinete' ? [shape.size[0], 0.1, shape.size[2]] : shape.size} />
       {!ghost ? <meshBasicMaterial transparent opacity={0} depthWrite={false} colorWrite={false} /> : <meshStandardMaterial color={color} transparent={ghost} opacity={ghost ? 0.4 : 1} depthWrite={!ghost} emissive={glow ?? (selected && !ghost ? '#1b4fc4' : '#000000')} emissiveIntensity={glow ? 0.75 : selected && !ghost ? 0.35 : 0} />}
     </mesh>
     {showAnchors && !ghost && <AnchorDots definitionId={definitionId} />}
@@ -275,6 +277,7 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
   latest.current = {project, magnet, onDrop};
   const [preview, setPreview] = useState<Preview | null>(null);
   const [hover, setHover] = useState<string | null>(null);
+  const doorKids = useMemo(() => new Set(project.mounts.filter(m => m.child.anchorId === 'agujero').map(m => m.child.entityId)), [project.mounts]);
   const hallOn = useMemo(() => hasHall(project.entities.map(e => e.definitionId)), [project.entities]);
   const hallB = useMemo(() => hallBounds(Object.values(project.poses).map(p => p.position)), [project.poses]);
   const [liveCable, setLiveCable] = useState<{id: string; interior: Vec3[]} | null>(null);
@@ -355,7 +358,7 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
     {project.entities.map(e => {
       const base = poses[e.id]; if (!base) return null;
       const off = proc && e.definitionId === 'caja-producto' ? productOffset(project, proc, e.id) : null, pose: Pose = off ? {...base, position: [base.position[0] + off[0], base.position[1] + off[1], base.position[2] + off[2]]} : base;
-      return <Piece key={e.id} swing={proc && e.definitionId === 'brazo-robot' ? robotAngle(proc, e.id) : undefined} id={e.id} definitionId={e.definitionId} pose={pose} selected={selection.includes(e.id)} showAnchors={dragging || selection.includes(e.id)}
+      return <Piece key={e.id} variant={doorKids.has(e.id) ? 'door' : 'din'} doorMode={String(e.props.puerta ?? 'transparente')} swing={proc && e.definitionId === 'brazo-robot' ? robotAngle(proc, e.id) : undefined} id={e.id} definitionId={e.definitionId} pose={pose} selected={selection.includes(e.id)} showAnchors={dragging || selection.includes(e.id)}
         overlapping={!!preview && (preview.overlaps.includes(e.id) || (preview.id === e.id && preview.overlaps.length > 0))} draggable={editable && !wiring && !e.locked && !parentMountOf(project, e.id)} xray={wiring}
         terminals={(wiring || selection.includes(e.id)) && shapeOf(e.definitionId).terminals ? <Terminals entityId={e.id} terminals={shapeOf(e.definitionId).terminals!} dot={dot} pending={pending} hover={hover} onTerminal={wiring ? onTerminal : () => {}} onHover={wiring ? setHover : () => {}} /> : null}
         detail={project.entities.length > 80 ? 'low' : 'high'}

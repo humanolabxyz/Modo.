@@ -37,4 +37,17 @@ for (const id of kinds) { const s = shapeOf(id); assert.ok(s.size.every(v => v >
 const fl = shapeOf('piso-nave').size, floors = [p.poses.piso.position];
 for (const e of p.entities) { if (e.id.startsWith('piso')) continue; const q = p.poses[e.id].position; assert.ok(floors.some(f => Math.abs(q[0] - f[0]) <= fl[0] / 2 + 1e-6 && Math.abs(q[2] - f[2]) <= fl[2] / 2 + 1e-6), `${e.id} dentro de un piso`); }
 ok('todas las piezas están dentro del piso de planta');
-console.log(`\n${n} comprobaciones de la mini fábrica OK`);
+// Tablero real: gabinete con puerta; marcha, paro y piloto van en la PUERTA y la placa con el riel queda dentro
+const {modelParts} = await import('../src/industria/scene/models.ts');
+assert.ok(p.entities.some(e => e.definitionId === 'gabinete'), 'hay gabinete');
+for (const id of ['s1', 's2', 'h1']) assert.ok(p.mounts.some(m => m.child.entityId === id && m.child.anchorId === 'agujero' && m.parent.entityId === 'gab' && m.kind === 'panel'), `${id} montado en la puerta`);
+assert.ok(p.mounts.some(m => m.child.entityId === 'plc' && m.parent.entityId === 'riel2'), 'el PLC sigue en el riel');
+assert.ok(p.mounts.some(m => m.child.entityId === 'gab' && m.parent.entityId === 'plinto'), 'el gabinete va sobre un plinto');
+const gx = p.poses.gab.position[0], lx = p.poses.cinta.position[0]; assert.ok(gx < lx - 4, 'el tablero está en una zona eléctrica aparte, lejos de la línea de trabajo');
+assert.ok(p.entities.filter(e => e.id.startsWith('vz')).length >= 6, 'la zona eléctrica está cercada');
+const din = modelParts('pulsador-na', 'high', 'din'), door = modelParts('pulsador-na', 'high', 'door'); assert.notDeepEqual(din.map(x => x.pos), door.map(x => x.pos), 'el mando de puerta tiene su propia forma');
+const g = modelParts('gabinete', 'high'); assert.ok(g.some(x => x.tag === 'door') && g.some(x => x.role === 'metal') && g.length > 20, 'el gabinete lleva puerta, manija, bisagras y detalles');
+assert.deepEqual(mountProblems(p), [], 'los montajes en la puerta coinciden con la geometría');
+ok('el gabinete tiene puerta; marcha, paro y piloto están montados en ella y el PLC dentro, en el riel');
+console.log(`
+${n} comprobaciones de la mini fábrica OK`);

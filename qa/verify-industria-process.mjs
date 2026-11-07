@@ -14,10 +14,10 @@ const ok = name => { n++; console.log('PASS', name); };
 const r = exampleMiniFactory(); assert.ok(r.ok, r.error); const p = r.value;
 
 // ——— Canaletas ———
-const ducts = p.entities.filter(e => isDuct(e.definitionId)); assert.equal(ducts.length, 13, 'cinco canaletas de tablero y ocho canales de piso');
-const segs = ductSegments(p); assert.equal(segs.length, 13);
+const ducts = p.entities.filter(e => isDuct(e.definitionId)); assert.equal(ducts.length, 16, 'cinco canaletas de tablero y once canales de piso');
+const segs = ductSegments(p); assert.equal(segs.length, 16);
 for (const id of ['cn1', 'cn2', 'cn3', 'cn4', 'cv1']) assert.ok(p.mounts.some(m => m.child.entityId === id && m.parent.entityId === 'placa'), `${id} montada en la placa`);
-for (const id of ['pz1', 'pz2', 'pz3', 'pz4', 'pz5', 'pz6', 'pz7', 'pz8']) assert.ok(p.mounts.some(m => m.child.entityId === id && m.parent.entityId === 'piso'), `${id} montado en el piso`);
+for (const id of ['pz1', 'pz2', 'pz3', 'pz4', 'pz5', 'pz6', 'pz7', 'pz8', 'pz9', 'pz10', 'pz11']) assert.ok(p.mounts.some(m => m.child.entityId === id && m.parent.entityId === 'piso'), `${id} montado en el piso`);
 const routes = routeAll(p);
 const insideDuct = pt => segs.some(s => project(s, pt).dist < 0.04);
 let ducted = 0, long = 0;

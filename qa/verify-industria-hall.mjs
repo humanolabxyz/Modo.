@@ -25,7 +25,7 @@ assert.ok(parts.filter(p => p.kind === 'lamp').length >= 8 && parts.filter(p => 
 ok('hay suelo con marcas, paredes, ventanas, portón, columnas, lámparas, estanterías y señalética');
 
 // El decorado no se mete en la planta: nada de la nave ocupa la zona de trabajo (piso de planta) por encima del suelo
-const floor = f.poses.piso.position, fx0 = floor[0] - 7, fx1 = floor[0] + 7, fz0 = floor[2] - 4, fz1 = floor[2] + 4;
+const floor = f.poses.piso.position, fx0 = floor[0] - 10, fx1 = floor[0] + 10, fz0 = floor[2] - 5, fz1 = floor[2] + 5;
 for (const p of parts) if (['prop', 'steel'].includes(p.kind) && p.pos[1] < 3) assert.ok(!(p.pos[0] > fx0 && p.pos[0] < fx1 && p.pos[2] > fz0 && p.pos[2] < fz1), `${p.kind} dentro de la zona de trabajo`);
 ok('estanterías, palets y columnas quedan fuera de la zona de trabajo');
 
