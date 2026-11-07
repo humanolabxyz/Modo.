@@ -146,3 +146,17 @@
 .ind-steps li>button{margin-left:auto;border:0;background:none;cursor:pointer;color:#667487}
 .ind-wire-tools{display:flex;gap:6px;flex-wrap:wrap}.ind-wire-tools button{min-height:36px;padding:4px 12px;border:1px solid #cfd6e1;border-radius:12px;background:#f3f5f9;font:inherit;color:inherit;cursor:pointer}.ind-wire-tools button:disabled{opacity:.5;cursor:default}
 .ind-swatch{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;border:1px solid #0003;vertical-align:baseline}.ind-legend{list-style:none;margin:6px 0;padding:0;display:grid;gap:4px;font-size:12.5px}
+/* Menú inferior agrupado por tarea (fase 17): cada grupo lleva su título, los botones su nombre visible y un tamaño de letra legible */
+.ind-app .ind-dock{align-items:flex-end;gap:10px;padding:8px 12px 7px;max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:thin}
+.ind-app .ind-dock-group{display:grid;gap:3px;justify-items:center;padding:0 8px;border-left:1px solid var(--rb-line,#dde3ea)}
+.ind-app .ind-dock-group:first-child{border-left:0}
+.ind-app .ind-dock-group>small{font:700 10px/1 var(--ui-font,system-ui);letter-spacing:.08em;text-transform:uppercase;color:#7a8896}
+.ind-app .ind-dock-row{display:flex;gap:3px}
+.ind-app .ind-dock button{flex-direction:column;gap:2px;height:52px;min-width:58px;padding:5px 6px}
+.ind-app .ind-dock button span{display:block;font-size:11.5px;font-weight:600;line-height:1.1}
+@media(max-width:1100px){.ind-app .ind-dock button span{display:block}}
+@media(max-width:700px){.ind-app .ind-dock{justify-content:flex-start;flex-wrap:nowrap}.ind-app .ind-dock button{min-width:50px}.ind-app .ind-dock-group>small{display:none}}
+.ind-steps{list-style:none;margin:6px 0 10px;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:6px;font-size:13px;color:#3f5365}
+.ind-steps li{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:10px;background:#f3f6fa}
+.ind-steps b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#2d6ff4;color:#fff;font-size:12px}
+.ind-app .rb-start-options{display:grid;gap:8px}

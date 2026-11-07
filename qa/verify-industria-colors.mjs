@@ -38,10 +38,10 @@ assert.ok(shapeOf('borne-tierra').terminals.every(t => t.role === 'ground' && t.
 assert.ok(p.mounts.some(m => m.child.entityId === 'pe1' && m.parent.entityId === 'riel2') && p.mounts.some(m => m.child.entityId === 'ne1' && m.parent.entityId === 'riel2'), 'bornes montados en el riel');
 // La tierra llega a los dos motores a través del borne y el neutro a la fuente
 const sim = simulate(p, {qf1: true, qf2: true, s1: true});
-assert.ok(sim.sameNet({entityId: 'red', terminalId: 'PE'}, {entityId: 'motor', terminalId: 'PE'}) && sim.sameNet({entityId: 'red', terminalId: 'PE'}, {entityId: 'motor2', terminalId: 'PE'}), 'tierra continua por el borne');
+assert.ok(sim.sameNet({entityId: 'red', terminalId: 'PE'}, {entityId: 'motor', terminalId: 'PE'}), 'tierra continua por el borne');
 assert.ok(sim.sameNet({entityId: 'red', terminalId: 'N'}, {entityId: 'fuente', terminalId: 'N'}), 'neutro continuo por el borne');
 assert.ok(!evaluate(p).issues.some(i => /tierra/i.test(i.message) && i.severity === 'error'), 'sin avisos de tierra');
-ok('tierra y neutro pasan por sus bornes de riel y siguen conectando motores y fuente');
+ok('tierra y neutro pasan por sus bornes de riel y siguen conectando motor y fuente');
 
 // El ejemplo de arranque directo sigue con los colores por función (sin bornes)
 const d = exampleDirectStart().value; assert.ok(d.connections.every(c => wireLook(d, c).role));

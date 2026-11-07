@@ -80,4 +80,4 @@ function pallet(x: number, z: number, n: number): HallPart[] {
 }
 
 /** ¿Debe dibujarse la nave? Cuando hay un piso de planta en el proyecto (así se activa con la mini fábrica y con cualquier planta que armes con piso). */
-export const hasHall = (definitionIds: readonly string[]): boolean => definitionIds.includes('piso-planta');
+export const hasHall = (definitionIds: readonly string[]): boolean => definitionIds.includes('piso-planta') || definitionIds.includes('piso-nave');

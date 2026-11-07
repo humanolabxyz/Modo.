@@ -13,8 +13,8 @@ const ok = name => { n++; console.log('PASS', name); };
 const r = exampleMiniFactory(); assert.ok(r.ok, r.error); const p = r.value;
 
 const kinds = new Set(p.entities.map(e => e.definitionId));
-for (const id of ['piso-planta', 'cinta-transportadora', 'caja-producto', 'brazo-robot', 'compresor', 'valvula-5-2', 'cilindro-neumatico', 'tanque', 'sensor-inductivo', 'sensor-fotoelectrico', 'torre-luminosa', 'paro-emergencia', 'mesa-trabajo', 'valla-seguridad', 'motor-3p', 'plc-generico']) assert.ok(kinds.has(id), `falta ${id}`);
-assert.ok(p.entities.length >= 55, `${p.entities.length} piezas`);
+for (const id of ['piso-nave', 'cinta-larga', 'caja-producto', 'brazo-robot', 'compresor', 'valvula-5-2', 'cilindro-neumatico', 'tanque', 'sensor-inductivo', 'sensor-fotoelectrico', 'torre-luminosa', 'paro-emergencia', 'mesa-trabajo', 'valla-seguridad', 'motor-3p', 'plc-generico']) assert.ok(kinds.has(id), `falta ${id}`);
+assert.ok(p.entities.length >= 55 && p.entities.filter(e => e.definitionId.startsWith('cinta')).length === 1, `${p.entities.length} piezas`);
 ok(`la mini fábrica reúne ${p.entities.length} piezas de ${kinds.size} tipos (tablero, cinta, robot, neumática, sensores, vallas…)`);
 
 assert.ok(parseIndustryProject(JSON.parse(JSON.stringify(p))).ok, 'guardar y abrir');
@@ -34,7 +34,7 @@ assert.ok(on.energized.motor && on.energized.km1, 'con QF1, QF2 y marcha el moto
 ok('la simulación del tablero arranca el motor de la cinta con la planta en escena');
 
 for (const id of kinds) { const s = shapeOf(id); assert.ok(s.size.every(v => v > 0), id); }
-const fl = shapeOf('piso-planta').size, floors = ['piso', 'piso2', 'piso3', 'piso4'].map(id => p.poses[id].position);
+const fl = shapeOf('piso-nave').size, floors = [p.poses.piso.position];
 for (const e of p.entities) { if (e.id.startsWith('piso')) continue; const q = p.poses[e.id].position; assert.ok(floors.some(f => Math.abs(q[0] - f[0]) <= fl[0] / 2 + 1e-6 && Math.abs(q[2] - f[2]) <= fl[2] / 2 + 1e-6), `${e.id} dentro de un piso`); }
 ok('todas las piezas están dentro del piso de planta');
 console.log(`\n${n} comprobaciones de la mini fábrica OK`);

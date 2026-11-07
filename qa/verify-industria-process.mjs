@@ -6,6 +6,7 @@ import {simulate} from '../src/industria/sim/engine.ts';
 import {emptyProcess, stepProcess, sensorStates, driveOf, valveOf, productPosition, robotAngle, hasProcess} from '../src/industria/sim/process.ts';
 import {routeAll} from '../src/industria/wiring/route.ts';
 import {ductSegments, project, isDuct} from '../src/industria/wiring/ducts.ts';
+import {shapeOf} from '../src/industria/build/shapes.ts';
 import {parseIndustryProject} from '../src/industria/model/validate.ts';
 
 let n = 0;
@@ -13,10 +14,10 @@ const ok = name => { n++; console.log('PASS', name); };
 const r = exampleMiniFactory(); assert.ok(r.ok, r.error); const p = r.value;
 
 // ——— Canaletas ———
-const ducts = p.entities.filter(e => isDuct(e.definitionId)); assert.equal(ducts.length, 16, 'cinco canaletas de tablero y once canales de piso');
-const segs = ductSegments(p); assert.equal(segs.length, 16);
+const ducts = p.entities.filter(e => isDuct(e.definitionId)); assert.equal(ducts.length, 13, 'cinco canaletas de tablero y ocho canales de piso');
+const segs = ductSegments(p); assert.equal(segs.length, 13);
 for (const id of ['cn1', 'cn2', 'cn3', 'cn4', 'cv1']) assert.ok(p.mounts.some(m => m.child.entityId === id && m.parent.entityId === 'placa'), `${id} montada en la placa`);
-for (const id of ['pz1', 'pz2', 'pz3', 'pz4', 'pz5', 'pz6', 'pz7', 'pz8', 'pz9', 'pz10', 'pz11']) assert.ok(p.mounts.some(m => m.child.entityId === id && ['piso', 'piso2'].includes(m.parent.entityId)), `${id} montado en un piso`);
+for (const id of ['pz1', 'pz2', 'pz3', 'pz4', 'pz5', 'pz6', 'pz7', 'pz8']) assert.ok(p.mounts.some(m => m.child.entityId === id && m.parent.entityId === 'piso'), `${id} montado en el piso`);
 const routes = routeAll(p);
 const insideDuct = pt => segs.some(s => project(s, pt).dist < 0.04);
 let ducted = 0, long = 0;
@@ -82,7 +83,7 @@ const frozen = stopped.slice(-20).map(h => h.s2.belts.cinta); assert.ok(frozen.e
 ok('el paro detiene el motor, la banda y el robot');
 
 // Las cajas dan la vuelta (no se salen de la cinta)
-for (const e of p.entities.filter(x => x.definitionId === 'caja-producto' && p.mounts.some(m => m.child.entityId === x.id && m.parent.entityId.startsWith('cinta')))) { const belt = p.mounts.find(m => m.child.entityId === e.id).parent.entityId, cx = p.poses[belt].position[0]; for (const h of hist) { const q = productPosition(p, h.st, e.id); assert.ok(q[0] > cx - 0.8 && q[0] < cx + 0.8, `${e.id} fuera de la cinta (${q[0].toFixed(2)})`); } }
-assert.ok(hist.at(-1).st.belts.cinta2 > 5, 'la segunda cinta también corre (motor en paralelo)'); assert.ok(hist.at(-1).sim.energized.motor2 && hist.at(-1).sim.energized.robot2, 'segundo motor y segundo robot alimentados');
+for (const e of p.entities.filter(x => x.definitionId === 'caja-producto' && p.mounts.some(m => m.child.entityId === x.id && m.parent.entityId.startsWith('cinta')))) { const belt = p.mounts.find(m => m.child.entityId === e.id).parent.entityId, cx = p.poses[belt].position[0], half = shapeOf(p.entities.find(x => x.id === belt).definitionId).size[0] / 2; for (const h of hist) { const q = productPosition(p, h.st, e.id); assert.ok(q[0] > cx - half && q[0] < cx + half, `${e.id} fuera de la cinta (${q[0].toFixed(2)})`); } }
+assert.ok(hist.at(-1).sim.energized.robot2, 'segundo robot alimentado'); assert.ok(p.entities.filter(e => e.definitionId.startsWith('cinta')).length === 1, 'una sola línea continua');
 ok('las cajas dan la vuelta al llegar al final y nunca salen de la cinta');
 console.log(`\n${n} comprobaciones del proceso y las canaletas OK`);

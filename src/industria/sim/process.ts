@@ -23,7 +23,10 @@ const END_MARGIN = 0.08, DRIVE_REACH = 0.7;
 export type ProcessState = {t: number; /** recorrido acumulado de cada banda (para animarla), m */ belts: Record<string, number>; /** desplazamiento de cada caja sobre su cinta, m */ products: Record<string, number>; /** extensión del vástago 0..1 */ rods: Record<string, number>; /** fase del ciclo del robot, rad */ swing: Record<string, number>};
 export const emptyProcess = (): ProcessState => ({t: 0, belts: {}, products: {}, rods: {}, swing: {}});
 
-const PROCESS_DEFS = ['caja-producto', 'cilindro-neumatico', 'brazo-robot', 'sensor-inductivo', 'sensor-fotoelectrico', 'cinta-transportadora'];
+/** Cintas: tramo corto y línea larga (misma lógica, distinta longitud). */
+export const CONVEYOR_DEFS = ['cinta-transportadora', 'cinta-larga'];
+const PROCESS_DEFS = ['caja-producto', 'cilindro-neumatico', 'brazo-robot', 'sensor-inductivo', 'sensor-fotoelectrico', ...CONVEYOR_DEFS];
+const defOfEntity = (p: IndustryProject, id: string) => p.entities.find(e => e.id === id)?.definitionId ?? '';
 /** ¿Tiene el proyecto algo que se mueva o detecte? (activa el reloj del proceso al simular). */
 export const hasProcess = (p: IndustryProject): boolean => p.entities.some(e => PROCESS_DEFS.includes(e.definitionId));
 
@@ -31,12 +34,12 @@ const axisOf = (p: IndustryProject, id: string): Vec3 => qRotate(toTransform(p.p
 const xz = (a: Vec3, b: Vec3) => Math.hypot(a[0] - b[0], a[2] - b[2]);
 
 /** Cinta sobre la que está montada una caja. */
-export const conveyorOf = (p: IndustryProject, productId: string): string | null => p.mounts.find(m => m.child.entityId === productId && p.entities.find(e => e.id === m.parent.entityId)?.definitionId === 'cinta-transportadora')?.parent.entityId ?? null;
+export const conveyorOf = (p: IndustryProject, productId: string): string | null => p.mounts.find(m => m.child.entityId === productId && CONVEYOR_DEFS.includes(defOfEntity(p, m.parent.entityId)))?.parent.entityId ?? null;
 
 /** Motor trifásico que mueve la cinta: el más cercano a su rectángulo (junto al cabezal). */
 export function driveOf(p: IndustryProject, conveyorId: string): string | null {
   const pose = p.poses[conveyorId]; if (!pose) return null;
-  const rot = toTransform(pose).rotation, size = shapeOf('cinta-transportadora').size;
+  const rot = toTransform(pose).rotation, size = shapeOf(defOfEntity(p, conveyorId)).size;
   let best: string | null = null, bestD = DRIVE_REACH;
   for (const e of p.entities) {
     if (e.definitionId !== 'motor-3p') continue;
@@ -71,13 +74,13 @@ export function valveOf(p: IndustryProject, sim: SimResult, cylinderId: string):
 /** Avanza el proceso `dt` segundos con el estado eléctrico `sim`. */
 export function stepProcess(p: IndustryProject, sim: SimResult | null, st: ProcessState, dt: number): ProcessState {
   const next: ProcessState = {t: st.t + dt, belts: {...st.belts}, products: {...st.products}, rods: {...st.rods}, swing: {...st.swing}};
-  for (const e of p.entities) if (e.definitionId === 'cinta-transportadora') { const drive = driveOf(p, e.id); next.belts[e.id] = (st.belts[e.id] ?? 0) + (drive && sim?.energized[drive] ? BELT_SPEED * dt : 0); }
+  for (const e of p.entities) if (CONVEYOR_DEFS.includes(e.definitionId)) { const drive = driveOf(p, e.id); next.belts[e.id] = (st.belts[e.id] ?? 0) + (drive && sim?.energized[drive] ? BELT_SPEED * dt : 0); }
   // Cintas y cajas
   for (const e of p.entities) {
     if (e.definitionId !== 'caja-producto') continue;
     const c = conveyorOf(p, e.id); if (!c) continue;
     const drive = driveOf(p, c), running = !!(drive && sim?.energized[drive]);
-    const half = shapeOf('cinta-transportadora').size[0] / 2 - END_MARGIN, u0 = (p.poses[e.id].position[0] - p.poses[c].position[0]) * axisOf(p, c)[0] + (p.poses[e.id].position[2] - p.poses[c].position[2]) * axisOf(p, c)[2];
+    const half = shapeOf(defOfEntity(p, c)).size[0] / 2 - END_MARGIN, u0 = (p.poses[e.id].position[0] - p.poses[c].position[0]) * axisOf(p, c)[0] + (p.poses[e.id].position[2] - p.poses[c].position[2]) * axisOf(p, c)[2];
     let x = (st.products[e.id] ?? 0) + (running ? BELT_SPEED * dt : 0); const u = u0 + x;
     if (u > half) x -= half * 2; // vuelve al principio
     next.products[e.id] = x;

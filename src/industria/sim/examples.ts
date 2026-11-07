@@ -2,7 +2,7 @@
 // (colocar, montar, cablear), así que sirve también de prueba de que el motor de anclajes y el de cableado trabajan juntos.
 // Las tensiones (230 y 24) son valores de ejemplo configurables en las fuentes; no representan un equipo real.
 import {newIndustryProject} from '../model/defaults.ts';
-import {addEntity, setEntityProp} from '../model/commands.ts';
+import {addEntity, setEntityProp, setPose} from '../model/commands.ts';
 import {snapMount} from '../build/commands.ts';
 import {findSnapCandidates} from '../build/snap.ts';
 import {shapeOf} from '../build/shapes.ts';
@@ -99,16 +99,16 @@ export function examplePlcStartStop(): Result<IndustryProject> {
   return {ok: true, value: p};
 }
 
-/** Mini fábrica: el marcha/paro con PLC del tablero más una planta de dos estaciones que de verdad opera.
- *  Estación 1: el motor mueve la cinta con tres cajas; el sensor fotoeléctrico detecta cada caja y el PLC acciona la electroválvula (el cilindro sale con aire del compresor)
- *  mientras el sensor inductivo vigila el vástago; el brazo trabaja y la torre se enciende mientras la línea corre.
- *  Estación 2: segunda cinta con su motor (en paralelo con el primero, desde el mismo contactor) y otro brazo, tras sus vallas.
- *  Tierra y neutro pasan por sus bornes; los cables viajan por canaletas en el tablero y por canales de piso hasta las máquinas, con el color de cada función.
+/** Línea de producción (mini fábrica): el marcha/paro con PLC del tablero más una línea CONTINUA de ocho metros sobre un solo piso de nave, como en una planta real
+ *  (una sola cinta larga con el equipo a su lado, no tramos sueltos). Al dar marcha el motor mueve la banda con seis cajas; el sensor fotoeléctrico detecta cada caja y el PLC
+ *  acciona la electroválvula (el cilindro sale con aire del compresor) mientras el sensor inductivo vigila el vástago; los dos brazos trabajan y la torre se enciende
+ *  mientras la línea corre. Al otro lado de la línea hay un área de proceso (tanques), mesas de empaque y un segundo compresor, sin alimentación.
+ *  Tierra y neutro pasan por sus bornes; los cables viajan por canaletas en el tablero y por un canal de piso corrido a lo largo de la línea, con el color de cada función.
  *  Velocidades, carreras y medidas son de ejemplo. */
 export function exampleMiniFactory(): Result<IndustryProject> {
   const base = examplePlcStartStop(); if (!base.ok) return base;
   let p = base.value, fail = '';
-  p = {...p, name: 'Ejemplo · mini fábrica'};
+  p = {...p, name: 'Ejemplo · línea de producción'};
   const step = (r: Result<IndustryProject>): boolean => { if (!r.ok) { fail = r.error; return false; } p = r.value; return true; };
   const add = (id: string, definitionId: string, label: string, at: Pose) => step(addEntity(p, {id, definitionId, label, pose: at}));
   /** Coloca la pieza cerca de su soporte y la monta con el imán del modelo; si no hay montaje posible se deja en su sitio. */
@@ -119,37 +119,32 @@ export function exampleMiniFactory(): Result<IndustryProject> {
     return true;
   };
   const cut = (a: [string, string], b: [string, string]): boolean => { const c = p.connections.find(x => (x.a.entityId === a[0] && x.a.terminalId === a[1] && x.b.entityId === b[0] && x.b.terminalId === b[1]) || (x.b.entityId === a[0] && x.b.terminalId === a[1] && x.a.entityId === b[0] && x.a.terminalId === b[1])); return !!c && step(unwire(p, c.id)); };
-  if (!add('piso', 'piso-planta', 'Piso de planta 1', pose(0.6, -0.05, 0.8)) || !add('piso2', 'piso-planta', 'Piso de planta 2', pose(4.6, -0.05, 0.8))) return {ok: false, error: fail};
-  if (!add('cinta', 'cinta-transportadora', 'Cinta 1', pose(1.75, 0, 0.75)) || !add('mesa', 'mesa-trabajo', 'Mesa de estación', pose(0.45, 0, 1.45)) || !add('robot', 'brazo-robot', 'Brazo robótico 1', pose(1.75, 0, 1.5))
-    || !add('comp', 'compresor', 'Compresor', pose(-0.75, 0, 1.35)) || !add('tanque', 'tanque', 'Tanque', pose(-1.1, 0, 0.6)) || !add('torre', 'torre-luminosa', 'Torre', pose(-0.55, 0, 0.45))) return {ok: false, error: fail};
-  if (!add('cinta2', 'cinta-transportadora', 'Cinta 2', pose(5.4, 0, 0.75)) || !add('motor2', 'motor-3p', 'M2', pose(4.45, 0, -0.1)) || !add('robot2', 'brazo-robot', 'Brazo robótico 2', pose(5.4, 0, 1.5))) return {ok: false, error: fail};
-  for (const [i, x] of [1.15, 1.55, 1.95].entries()) if (!put(`prod${i + 1}`, 'caja-producto', `Producto ${i + 1}`, pose(x, 0.8, 0.75), 'cinta')) return {ok: false, error: fail};
-  for (const [i, x] of [4.85, 5.25, 5.65].entries()) if (!put(`prod${i + 4}`, 'caja-producto', `Producto ${i + 4}`, pose(x, 0.8, 0.75), 'cinta2')) return {ok: false, error: fail};
-  if (!put('foto', 'sensor-fotoelectrico', 'Sensor de cinta', pose(2.2, 0.8, 0.9), 'cinta') || !put('ind', 'sensor-inductivo', 'Sensor de cilindro', pose(0.88, 0.8, 1.6), 'mesa') || !put('valvula', 'valvula-5-2', 'Electroválvula', pose(0.45, 0.8, 1.45), 'mesa')
-    || !put('cil', 'cilindro-neumatico', 'Cilindro', pose(0.65, 0.8, 1.6), 'mesa') || !put('paro', 'paro-emergencia', 'Paro de emergencia', pose(0.8, 0.8, 1.3), 'mesa')) return {ok: false, error: fail};
-  for (const [id, x, z, ry] of [['valla1', 1.25, 2.1, 0], ['valla2', 2.25, 2.1, 0], ['valla3', 2.55, 1.55, Math.PI / 2], ['valla4', 4.75, 2.1, 0], ['valla5', 5.75, 2.1, 0], ['valla6', 6.25, 1.55, Math.PI / 2]] as const) if (!add(id, 'valla-seguridad', 'Valla', {position: [x, 0, z], rotation: [0, ry, 0]})) return {ok: false, error: fail};
-  // Segunda fila de la nave: área de proceso (tanques), mesas de empaque con cajas y un robot de reserva. Son equipos de escenario sin alimentación.
-  if (!add('piso3', 'piso-planta', 'Piso de planta 3', pose(0.6, -0.05, 3.8)) || !add('piso4', 'piso-planta', 'Piso de planta 4', pose(4.6, -0.05, 3.8))) return {ok: false, error: fail};
-  if (!add('tanque2', 'tanque', 'Tanque 2', pose(-0.5, 0, 4.5)) || !add('tanque3', 'tanque', 'Tanque 3', pose(0.5, 0, 4.5)) || !add('mesa2', 'mesa-trabajo', 'Mesa de empaque 1', pose(1.8, 0, 4.4)) || !add('mesa3', 'mesa-trabajo', 'Mesa de empaque 2', pose(3.7, 0, 4.4))
-    || !add('robot3', 'brazo-robot', 'Brazo robótico 3', pose(5.4, 0, 4.4)) || !add('comp2', 'compresor', 'Compresor 2', pose(6.2, 0, 3.4))) return {ok: false, error: fail};
-  for (const [id, x, z, parent] of [['pk1', 1.6, 4.4, 'mesa2'], ['pk2', 2.0, 4.4, 'mesa2'], ['pk3', 3.5, 4.4, 'mesa3'], ['pk4', 3.9, 4.4, 'mesa3']] as const) if (!put(id, 'caja-producto', 'Caja de empaque', pose(x, 0.8, z), parent)) return {ok: false, error: fail};
-  for (const [id, x, z, ry] of [['valla7', 4.75, 5.2, 0], ['valla8', 5.75, 5.2, 0], ['valla9', 6.25, 4.7, Math.PI / 2], ['valla10', 4.9, 3.6, 0]] as const) if (!add(id, 'valla-seguridad', 'Valla', {position: [x, 0, z], rotation: [0, ry, 0]})) return {ok: false, error: fail};
+  // Un solo piso de nave y una sola línea continua
+  if (!add('piso', 'piso-nave', 'Piso de nave', pose(4.5, -0.05, 2.5)) || !add('cinta', 'cinta-larga', 'Línea transportadora', pose(6, 0, 2.2))) return {ok: false, error: fail};
+  // El motor del tablero se lleva al cabezal de la línea
+  if (!step(setPose(p, 'motor', pose(1.65, 0, 2.2)))) return {ok: false, error: fail};
+  if (!add('mesa', 'mesa-trabajo', 'Mesa de estación', pose(3.4, 0, 1.4)) || !add('robot', 'brazo-robot', 'Brazo robótico 1', pose(6.2, 0, 1.3)) || !add('robot2', 'brazo-robot', 'Brazo robótico 2', pose(8, 0, 1.3))
+    || !add('comp', 'compresor', 'Compresor', pose(1, 0, 1.2)) || !add('torre', 'torre-luminosa', 'Torre', pose(8.9, 0, 1.3))) return {ok: false, error: fail};
+  for (const [i, x] of [2.8, 3.8, 4.8, 5.8, 6.8, 7.8].entries()) if (!put(`prod${i + 1}`, 'caja-producto', `Producto ${i + 1}`, pose(x, 0.8, 2.2), 'cinta')) return {ok: false, error: fail};
+  if (!put('foto', 'sensor-fotoelectrico', 'Sensor de cinta', pose(4.6, 0.8, 2.1), 'cinta') || !put('ind', 'sensor-inductivo', 'Sensor de cilindro', pose(3.83, 0.8, 1.55), 'mesa') || !put('valvula', 'valvula-5-2', 'Electroválvula', pose(3.4, 0.8, 1.4), 'mesa')
+    || !put('cil', 'cilindro-neumatico', 'Cilindro', pose(3.6, 0.8, 1.55), 'mesa') || !put('paro', 'paro-emergencia', 'Paro de emergencia', pose(3.75, 0.8, 1.25), 'mesa')) return {ok: false, error: fail};
+  // Al otro lado de la línea: área de proceso, empaque y reserva (equipo de escenario, sin alimentación)
+  if (!add('tanque', 'tanque', 'Tanque 1', pose(3, 0, 4.6)) || !add('tanque2', 'tanque', 'Tanque 2', pose(4.2, 0, 4.6)) || !add('tanque3', 'tanque', 'Tanque 3', pose(5.4, 0, 4.6))
+    || !add('mesa2', 'mesa-trabajo', 'Mesa de empaque 1', pose(7, 0, 4.4)) || !add('mesa3', 'mesa-trabajo', 'Mesa de empaque 2', pose(8.4, 0, 4.4)) || !add('comp2', 'compresor', 'Compresor 2', pose(9.8, 0, 4.4))) return {ok: false, error: fail};
+  for (const [id, x, z, parent] of [['pk1', 6.8, 4.4, 'mesa2'], ['pk2', 7.2, 4.4, 'mesa2'], ['pk3', 8.2, 4.4, 'mesa3'], ['pk4', 8.6, 4.4, 'mesa3']] as const) if (!put(id, 'caja-producto', 'Caja de empaque', pose(x, 0.8, z), parent)) return {ok: false, error: fail};
+  for (const [id, x] of [['valla1', 5.5], ['valla2', 6.5], ['valla3', 7.5], ['valla4', 8.5]] as const) if (!add(id, 'valla-seguridad', 'Valla', pose(x, 0, 3.05))) return {ok: false, error: fail};
   // Bornes de tierra y de neutro en el riel del PLC
   const railZ = p.poses.s2.position[2];
   if (!put('pe1', 'borne-tierra', 'PE', pose(0.09, 0.45, railZ), 'riel2') || !put('ne1', 'borne-neutro', 'N', pose(0.125, 0.45, railZ), 'riel2')) return {ok: false, error: fail};
-  // Canaletas del tablero (sobre la placa, junto a cada riel) y canales de piso hacia las máquinas de las dos estaciones
+  // Canaletas del tablero (sobre la placa, junto a cada riel) y un canal de piso corrido a lo largo de toda la línea
   for (const [id, def, x, y] of [['cn1', 'canaleta', -0.08, 0.86], ['cn2', 'canaleta', -0.08, 0.635], ['cn3', 'canaleta', -0.08, 0.56], ['cn4', 'canaleta', -0.08, 0.335], ['cv1', 'canaleta-vertical', -0.34, 0.6]] as const)
     if (!put(id, def, 'Canaleta', pose(x, y, 0.055), 'placa')) return {ok: false, error: fail};
-  for (const [id, x, z, ry, slab] of [['pz1', 0.4, 0.3, 0, 'piso'], ['pz2', 1.6, 0.3, 0, 'piso'], ['pz3', -0.25, 1.05, Math.PI / 2, 'piso'], ['pz4', 0.35, 1.95, 0, 'piso'], ['pz5', 1.55, 1.95, 0, 'piso'],
-    ['pz6', 3.2, 0.3, 0, 'piso2'], ['pz7', 4.4, 0.3, 0, 'piso2'], ['pz8', 5.6, 0.3, 0, 'piso2'], ['pz9', 3.0, 1.95, 0, 'piso2'], ['pz10', 4.2, 1.95, 0, 'piso2'], ['pz11', 5.4, 1.95, 0, 'piso2']] as const)
-    if (!put(id, 'canal-piso', 'Canal de piso', {position: [x, 0, z], rotation: [0, ry, 0]}, slab)) return {ok: false, error: fail};
+  for (const [i, x] of [0.2, 1.4, 2.6, 3.8, 5, 6.2, 7.4, 8.6].entries()) if (!put(`pz${i + 1}`, 'canal-piso', 'Canal de piso', pose(x, 0, 0.3), 'piso')) return {ok: false, error: fail};
   // Tierra y neutro pasan por sus bornes (se quitan los cables directos del ejemplo base)
   if (!cut(['red', 'PE'], ['motor', 'PE']) || !cut(['red', 'N'], ['fuente', 'N'])) return {ok: false, error: fail || 'No se encontraron los cables base de tierra y neutro.'};
   const T = (entityId: string, terminalId: string) => ({entityId, terminalId});
   const cables: [[string, string], [string, string]][] = [
-    [['red', 'PE'], ['pe1', '1']], [['pe1', '2'], ['motor', 'PE']], [['pe1', '2'], ['motor2', 'PE']], [['red', 'N'], ['ne1', '1']], [['ne1', '2'], ['fuente', 'N']],
-    // segundo motor en paralelo con el primero (mismo contactor)
-    [['km1', '2'], ['motor2', 'U1']], [['km1', '4'], ['motor2', 'V1']], [['km1', '6'], ['motor2', 'W1']],
+    [['red', 'PE'], ['pe1', '1']], [['pe1', '2'], ['motor', 'PE']], [['red', 'N'], ['ne1', '1']], [['ne1', '2'], ['fuente', 'N']],
     // sensores de tres hilos: cada terminal admite 2 cables, así que la alimentación se encadena entre sensores
     [['plc', 'L+'], ['foto', 'BN']], [['plc', 'M'], ['foto', 'BU']], [['foto', 'BK'], ['plc', 'DI2']],
     [['foto', 'BN'], ['ind', 'BN']], [['foto', 'BU'], ['ind', 'BU']], [['ind', 'BK'], ['plc', 'DI3']],

@@ -1,5 +1,5 @@
 import {lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode} from 'react';
-import {Boxes, Cable, Camera, ClipboardCheck, Gauge, Volume2, VolumeX, Wrench, ChevronRight, Check, Copy, Download, Eye, Focus, Hammer, Home, ListTree, Lock, Magnet, MousePointer2, MoreHorizontal, Pause, Play, Plus, Redo2, RotateCw, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Unlink, Upload, X} from 'lucide-react';
+import {Factory, Boxes, Cable, Camera, ClipboardCheck, Gauge, Volume2, VolumeX, Wrench, ChevronRight, Check, Copy, Download, Eye, Focus, Hammer, Home, ListTree, Lock, Magnet, MousePointer2, MoreHorizontal, Pause, Play, Plus, Redo2, RotateCw, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Unlink, Upload, X} from 'lucide-react';
 import {FloatingWindow} from '../components/FloatingWindow';
 import {useIndustriaProject} from './useIndustriaProject';
 import {addEntity, dependenciesOf, release, removeEntity, renameEntity, setEntityProp, setMode} from './model/commands.ts';
@@ -42,16 +42,26 @@ import '../styles/industria.css';
 const IndustriaCanvas = lazy(() => import('./scene/IndustriaCanvas'));
 
 const MODE_LABEL: Record<EducationMode, string> = {free: 'Libre', learning: 'Aprendizaje', test: 'Prueba'};
+/** Qué hace cada panel, en una frase (aparece al pasar el cursor y bajo el nombre en el menú). */
+const PANEL_HINT: Record<PanelId, string> = {
+  library: 'Busca y agrega equipos al escenario', structure: 'Lista de piezas: elige, renombra o borra', connections: 'Cables, redes y colores', instruments: 'Opera interruptores y pulsadores; mide',
+  faults: 'Inyecta una falla y practica el diagnóstico', activity: 'Actividades guiadas y su evaluación', inspector: 'Datos y montaje de la pieza elegida', cameras: 'Vistas predefinidas y cámaras guardadas', console: 'Registro de eventos de la sesión',
+};
+const VIEW_HINT: Record<ViewId, string> = {plant: 'Planta 3D: construye y observa la instalación', board: 'Tablero: alzado de la placa con sus aparatos y terminales', diagram: 'Diagramas: esquema eléctrico generado del proyecto', plc: 'PLC: programa en escalera', hmi: 'HMI: pantalla de operación', docs: 'Documentación: materiales, cables y entradas/salidas'};
+/** Agrupación del menú inferior según el orden natural de trabajo. */
+const DOCK_GROUPS: readonly {name: string; ids: readonly PanelId[]}[] = [
+  {name: 'Construir', ids: ['library', 'structure', 'inspector']}, {name: 'Cablear y probar', ids: ['connections', 'instruments', 'faults']}, {name: 'Más', ids: ['cameras', 'activity', 'console']},
+];
 const PANEL_LABEL: Record<PanelId, {title: string; eyebrow: string; Icon: typeof Boxes}> = {
-  library: {title: 'Piezas', eyebrow: 'Biblioteca', Icon: Boxes},
-  structure: {title: 'Estructura', eyebrow: 'Componentes del proyecto', Icon: ListTree},
-  connections: {title: 'Conexiones', eyebrow: 'Cableado y redes', Icon: Cable},
-  instruments: {title: 'Instrumentos', eyebrow: 'Mandos y multímetro', Icon: Gauge},
-  faults: {title: 'Fallas', eyebrow: 'Inyección y diagnóstico', Icon: Wrench},
+  library: {title: 'Piezas', eyebrow: 'Agrega equipos al escenario', Icon: Boxes},
+  structure: {title: 'Estructura', eyebrow: 'Todo lo que hay en el proyecto', Icon: ListTree},
+  connections: {title: 'Conexiones', eyebrow: 'Cables y colores', Icon: Cable},
+  instruments: {title: 'Instrumentos', eyebrow: 'Opera mandos y mide', Icon: Gauge},
+  faults: {title: 'Fallas', eyebrow: 'Practica el diagnóstico', Icon: Wrench},
   activity: {title: 'Actividad', eyebrow: 'Guía y evaluación', Icon: ClipboardCheck},
-  inspector: {title: 'Propiedades', eyebrow: 'Inspector', Icon: SlidersHorizontal},
-  cameras: {title: 'Escenario', eyebrow: 'Vistas y cámaras', Icon: Camera},
-  console: {title: 'Consola', eyebrow: 'Eventos', Icon: Terminal},
+  inspector: {title: 'Propiedades', eyebrow: 'Datos de la pieza elegida', Icon: SlidersHorizontal},
+  cameras: {title: 'Escenario', eyebrow: 'Vistas y cámaras guardadas', Icon: Camera},
+  console: {title: 'Consola', eyebrow: 'Registro de lo que pasa', Icon: Terminal},
 };
 const TARGET: Vec3 = [0, 0.8, 0];
 const PRESETS: {name: string; position: Vec3}[] = [
@@ -507,7 +517,7 @@ export default function IndustriaApp() {
       {ui.view !== 'plant' && <ErrorBoundary label={VIEWS.find(v => v.id === ui.view)?.label ?? 'Vista'} resetKey={project.id + ui.view}>{viewBody(ui.view)}</ErrorBoundary>}
       <div className="rb-workspace-controls rb-canvas-overlay">
         <div className="rb-camera-pill ind-views" role="group" aria-label="Vistas del proyecto">
-          {VIEWS.map(v => <button type="button" key={v.id} aria-pressed={ui.view === v.id} onClick={() => patchUi({view: v.id})}><span>{v.label}</span></button>)}
+          {VIEWS.map(v => <button type="button" key={v.id} aria-pressed={ui.view === v.id} title={VIEW_HINT[v.id]} onClick={() => patchUi({view: v.id})}><span>{v.label}</span></button>)}
         </div>
         <nav className="ind-path" aria-label="Ruta de navegación">{crumbs.map((c, i) => <span key={i}>{i > 0 && <ChevronRight size={14} aria-hidden="true" />}{i === 0 ? <button type="button" onClick={() => select([])}>{c}</button> : <b aria-current="location">{c}</b>}</span>)}</nav>
       </div>
@@ -518,18 +528,23 @@ export default function IndustriaApp() {
         <span className="rb-empty-eyebrow">MODO · INDUSTRIA</span>
         <strong>Tu instalación empieza aquí</strong>
         <p>Busca una pieza en Piezas, colócala y arrástrala hasta un anclaje para montarla. Todas son genéricas y sin datos de fabricante.</p>
-        <div className="rb-start-options"><button type="button" className="rb-start-primary" onClick={() => patchUi(u => ({panels: {...u.panels, structure: true}}))}><ListTree size={21} /><span><b>Abrir Estructura</b><small>Añade piezas y arrástralas al escenario</small></span><span aria-hidden="true">→</span></button></div>
+        <ol className="ind-steps" aria-label="Pasos"><li><b>1</b> Agrega piezas</li><li><b>2</b> Móntalas en su riel o losa</li><li><b>3</b> Cablea los terminales</li><li><b>4</b> Ejecuta y opera</li></ol>
+        <div className="rb-start-options"><button type="button" className="rb-start-primary" onClick={() => patchUi(u => ({panels: {...u.panels, structure: true}}))}><ListTree size={21} /><span><b>Abrir Estructura</b><small>Añade piezas y arrástralas al escenario</small></span><span aria-hidden="true">→</span></button>
+          <button type="button" className="rb-start-primary" onClick={() => loadExample('factory')}><Factory size={21} /><span><b>Ver una línea de producción</b><small>Carga el ejemplo ya montado y cableado</small></span><span aria-hidden="true">→</span></button></div>
       </section>}
     </main>
 
-    <nav className="tool-dock rb-dock" aria-label="Herramientas">
-      <button type="button" aria-label="Seleccionar" title="Seleccionar" aria-pressed="true"><MousePointer2 size={20} /></button>
-      <button type="button" aria-label="Cablear" title="Cablear: toca dos terminales para unirlos (Esc para salir)" aria-pressed={wiring} onClick={toggleWiring}><Cable size={20} /></button>
-      <button type="button" aria-label="Girar 90°" title="Girar la pieza seleccionada 90° (R)" disabled={simulate || !one || !!(one && parentMountOf(project, one.id))} onClick={rotateSelected}><RotateCw size={20} /></button>
-      <button type="button" aria-label="Imán" title="Imán: al soltar una pieza suelta se ajusta a la rejilla de 5 cm" aria-pressed={ui.magnet} onClick={() => patchUi(u => ({magnet: !u.magnet}))}><Magnet size={20} /></button>
-      <button type="button" aria-label="Encuadrar" title="Vista isométrica de todo (F)" onClick={() => setCamera({position: PRESETS[3].position, target: TARGET})}><Focus size={20} /></button>
-      <i aria-hidden="true" />
-      {PANEL_IDS.map(id => { const {title, Icon} = PANEL_LABEL[id]; return <button key={id} type="button" aria-label={title} title={title} aria-pressed={ui.panels[id]} onClick={() => togglePanel(id)}><Icon size={20} /><span>{title}</span></button>; })}
+    <nav className="tool-dock rb-dock ind-dock" aria-label="Herramientas">
+      <div className="ind-dock-group" role="group" aria-label="Herramientas del escenario"><small aria-hidden="true">Herramientas</small><div className="ind-dock-row">
+        <button type="button" aria-label="Seleccionar" title="Seleccionar: elige y arrastra piezas" aria-pressed="true"><MousePointer2 size={20} /><span>Seleccionar</span></button>
+        <button type="button" aria-label="Cablear" title="Cablear: toca dos terminales para unirlos (Esc para salir)" aria-pressed={wiring} onClick={toggleWiring}><Cable size={20} /><span>Cablear</span></button>
+        <button type="button" aria-label="Girar 90°" title="Girar la pieza seleccionada 90° (R)" disabled={simulate || !one || !!(one && parentMountOf(project, one.id))} onClick={rotateSelected}><RotateCw size={20} /><span>Girar</span></button>
+        <button type="button" aria-label="Imán" title="Imán: al soltar una pieza suelta se ajusta a la rejilla de 5 cm" aria-pressed={ui.magnet} onClick={() => patchUi(u => ({magnet: !u.magnet}))}><Magnet size={20} /><span>Imán</span></button>
+        <button type="button" aria-label="Encuadrar" title="Vista isométrica de todo (F)" onClick={() => setCamera({position: PRESETS[3].position, target: TARGET})}><Focus size={20} /><span>Encuadrar</span></button>
+      </div></div>
+      {DOCK_GROUPS.map(g => <div key={g.name} className="ind-dock-group" role="group" aria-label={g.name}><small aria-hidden="true">{g.name}</small><div className="ind-dock-row">
+        {g.ids.map(id => { const {title, Icon} = PANEL_LABEL[id]; return <button key={id} type="button" aria-label={title} title={`${title}: ${PANEL_HINT[id]}`} aria-pressed={ui.panels[id]} onClick={() => togglePanel(id)}><Icon size={20} /><span>{title}</span></button>; })}
+      </div></div>)}
     </nav>
 
     {PANEL_IDS.map(id => { const slot = id === 'library' ? 0 : panelSlot(id);

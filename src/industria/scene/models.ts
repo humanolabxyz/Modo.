@@ -51,6 +51,8 @@ function screws(shape: ShapeDef): Part[] {
 const poleXs = (shape: ShapeDef): number[] => (shape.terminals ?? []).filter(t => t.group === 'superior').map(t => t.position[0] - shape.center[0]).sort((a, b) => a - b);
 
 type Builder = (s: ShapeDef) => Part[];
+/** Posiciones x de las patas de una cinta: una cada ~1,8 m, siempre en los dos extremos. */
+const legXs = (w: number): number[] => { const n = Math.max(2, Math.round(w / 1.8) + 1); return Array.from({length: n}, (_, i) => -w / 2 + 0.05 + (i * (w - 0.1)) / (n - 1)); };
 const BUILDERS: Record<string, Builder> = {
   generico: s => { const [w, h, d] = s.size; return [box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.004, 0, w * 0.94, 0.008, d * 0.94, shade(s.color, 0.2), 'front', true), box(0, -h / 2 + 0.006, 0, w * 1.0, 0.012, d * 1.0, shade(s.color, -0.2), 'dark', true), ...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * (w / 2 - 0.02), h / 2 + 0.001, sz * (d / 2 - 0.02), 0.008, 0.003, 'y', METAL, 'screw', true)))]; },
   placa: s => { const [w, h, d] = s.size; const holes: Part[] = []; for (const sx of [-1, 1]) for (const y of [-h / 2 + 0.05, 0, h / 2 - 0.05]) holes.push(cyl(sx * (w / 2 - 0.04), y, 0, 0.011, d + 0.002, 'z', DARK, 'dark', true)); const edge = shade(s.color, 0.22); return [box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.003, d / 2 - 0.0005, w, 0.006, 0.001, edge, 'front', true), box(0, -h / 2 + 0.003, d / 2 - 0.0005, w, 0.006, 0.001, edge, 'front', true), box(-w / 2 + 0.003, 0, d / 2 - 0.0005, 0.006, h, 0.001, edge, 'front', true), box(w / 2 - 0.003, 0, d / 2 - 0.0005, 0.006, h, 0.001, edge, 'front', true), ...holes]; },
@@ -92,10 +94,10 @@ const BUILDERS: Record<string, Builder> = {
     box(-w / 2 + 0.03, 0, 0, 0.06, h, d, '#3a3f47', 'body'), box(w / 2 - 0.03, 0, 0, 0.06, h, d, '#3a3f47', 'body'), box(0, h / 2 - 0.02, 0, w, 0.04, d * 0.75, s.color, 'body'), box(0, -h / 2 + 0.05, 0, w, 0.04, d * 0.75, s.color, 'body'), ...bars,
     box(-w / 2 + 0.05, -h / 2 + 0.006, 0, 0.1, 0.012, 0.05, '#2a2f36', 'dark', true), box(w / 2 - 0.05, -h / 2 + 0.006, 0, 0.1, 0.012, 0.05, '#2a2f36', 'dark', true)]; },
   'cinta-transportadora': s => { const [w, h, d] = s.size, top = h / 2, leg = shade(s.color, -0.35), rail = shade(s.color, 0.18), roller = (x: number) => cyl(x, top - 0.03, 0, 0.03, d - 0.1, 'z', METAL, 'metal'); return [
-    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => box(sx * (w / 2 - 0.05), -0.05, sz * (d / 2 - 0.05), 0.06, h - 0.1, 0.06, leg, 'body'))),
+    ...legXs(w).flatMap((x, i, all) => [-1, 1].map(sz => box(x, -0.05, sz * (d / 2 - 0.05), 0.06, h - 0.1, 0.06, leg, 'body', i > 0 && i < all.length - 1))),
     box(0, top - 0.06, d / 2 - 0.03, w, 0.1, 0.06, rail, 'body'), box(0, top - 0.06, -d / 2 + 0.03, w, 0.1, 0.06, rail, 'body'),
     box(0, top - 0.012, 0, w - 0.08, 0.02, d - 0.12, '#2b2f35', 'dark'), roller(-w / 2 + 0.05), roller(w / 2 - 0.05),
-    ...Array.from({length: 15}, (_, i) => box(-w / 2 + 0.12 + i * ((w - 0.24) / 14), top - 0.0015, 0, 0.008, 0.001, d - 0.14, '#454b53', 'dark', true)),
+    ...Array.from({length: Math.max(15, Math.round(w * 9))}, (_, i) => box(-w / 2 + 0.12 + i * ((w - 0.24) / (Math.max(15, Math.round(w * 9)) - 1)), top - 0.0015, 0, 0.008, 0.001, d - 0.14, '#454b53', 'dark', true)),
     box(0, -h / 2 + 0.25, 0, w - 0.14, 0.03, 0.03, leg, 'dark', true), box(0, -h / 2 + 0.25, d / 2 - 0.05, w - 0.14, 0.03, 0.03, leg, 'dark', true)]; },
   'caja-producto': s => { const [w, h, d] = s.size; return [
     box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.0006, 0, 0.04, 0.0012, d, '#e7d9b4', 'label', true), box(0, h / 2 - 0.0006, 0, w, 0.0012, 0.003, shade(s.color, -0.25), 'dark', true),
@@ -217,7 +219,7 @@ const ENRICH: Record<string, Builder> = {
     cyl(w * 0.5 + 0.006, 0.004, 0, 0.006, 0.01, 'x', METAL, 'metal', true), cyl(-w * 0.25, h * 0.5 - 0.003, 0, 0.004, 0.006, 'y', '#e8a317', 'trim', true), box(0, -h * 0.5 + 0.004, 0, w * 1.2, 0.006, d * 0.7, '#2a2f36', 'dark', true), ...[-1, 1].map(sx => box(sx * w * 0.52, -h * 0.5 + 0.004, 0, 0.004, 0.006, 0.01, DARK, 'dark', true))]; },
   'paro-emergencia': s => [cyl(0, 0.011, 0, 0.031, 0.002, 'y', '#f2c200', 'trim', true), cyl(0, 0.003, 0, 0.0365, 0.002, 'y', '#f2c200', 'trim', true), box(0, -0.018, 0.0308, 0.03, 0.01, 0.0012, WHITE, 'label', true)],
   'cinta-transportadora': s => { const [w, h, d] = s.size, top = h / 2; return [
-    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => box(sx * (w / 2 - 0.05), -h / 2 + 0.01, sz * (d / 2 - 0.05), 0.1, 0.02, 0.1, '#20262d', 'dark', true))), box(0, top - 0.06, d / 2 - 0.0006, w - 0.02, 0.02, 0.0012, '#f2c200', 'label', true), box(0, top - 0.06, -d / 2 + 0.0006, w - 0.02, 0.02, 0.0012, '#f2c200', 'label', true),
+    ...legXs(w).flatMap(x => [-1, 1].map(sz => box(x, -h / 2 + 0.01, sz * (d / 2 - 0.05), 0.1, 0.02, 0.1, '#20262d', 'dark', true))), box(0, top - 0.06, d / 2 - 0.0006, w - 0.02, 0.02, 0.0012, '#f2c200', 'label', true), box(0, top - 0.06, -d / 2 + 0.0006, w - 0.02, 0.02, 0.0012, '#f2c200', 'label', true),
     box(w / 2 - 0.05, top - 0.07, 0, 0.1, 0.1, d - 0.1, shade(s.color, -0.2), 'dark', true), box(-w / 2 + 0.05, top - 0.07, 0, 0.1, 0.1, d - 0.1, shade(s.color, -0.2), 'dark', true)]; },
   'mesa-trabajo': s => { const [w, h, d] = s.size; return [...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * (w / 2 - 0.04), -h / 2 + 0.004, sz * (d / 2 - 0.04), 0.022, 0.008, 'y', '#20262d', 'dark', true))), box(0, -h / 2 + 0.215, d / 2 - 0.06, w - 0.1, 0.05, 0.004, shade(s.color, -0.25), 'dark', true)]; },
   'valla-seguridad': s => { const [w, h, d] = s.size; return [box(w / 2 - 0.03, 0.1, d / 2 + 0.0004, 0.04, 0.12, 0.0008, '#f2c200', 'label', true), box(w / 2 - 0.03, 0.1, d / 2 + 0.0012, 0.03, 0.012, 0.001, DARK, 'dark', true), ...[-1, 1].map(sx => cyl(sx * (w / 2 - 0.03), h / 2 - 0.1, 0, 0.012, 0.02, 'z', METAL, 'metal', true))]; },
@@ -241,6 +243,12 @@ function buttonExtra(s: ShapeDef, mark: 'I' | 'O'): Part[] {
 BUILDERS['borne-tierra'] = s => [...BUILDERS['borne-paso'](s), box(0, -s.size[1] * 0.36, s.size[2] * 0.5 + 0.0006, s.size[0] * 0.8, s.size[1] * 0.1, 0.0012, '#f2c200', 'label', true)];
 BUILDERS['borne-neutro'] = s => [...BUILDERS['borne-paso'](s), box(0, -s.size[1] * 0.36, s.size[2] * 0.5 + 0.0006, s.size[0] * 0.8, s.size[1] * 0.1, 0.0012, WHITE, 'label', true)];
 ENRICH['borne-tierra'] = ENRICH['borne-paso']; ENRICH['borne-neutro'] = ENRICH['borne-paso'];
+// Línea larga: la misma cinta, más larga (patas cada ~1,8 m). Piso de nave: losa lisa con juntas de dilatación, sin franjas de color (las pone la nave).
+BUILDERS['cinta-larga'] = BUILDERS['cinta-transportadora']; ENRICH['cinta-larga'] = ENRICH['cinta-transportadora'];
+BUILDERS['piso-nave'] = s => { const [w, h, d] = s.size, y = h / 2 - 0.0004, joint = shade(s.color, -0.22), out: Part[] = [box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.002, 0, w, 0.004, d, shade(s.color, 0.06), 'front')];
+  for (let x = -w / 2 + 3.5; x < w / 2 - 0.5; x += 3.5) out.push(box(x, y, 0, 0.03, 0.001, d, joint, 'dark', true));
+  for (let z = -d / 2 + 4; z < d / 2 - 0.5; z += 4) out.push(box(0, y, z, w, 0.001, 0.03, joint, 'dark', true));
+  return out; };
 
 /** Primitivas de una pieza en el sistema local del origen de su pose (ya desplazadas al centro de la caja del catálogo). */
 export function modelParts(definitionId: string, detail: Detail = 'high'): Part[] {

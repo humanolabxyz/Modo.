@@ -56,6 +56,12 @@ const DUCTS: readonly ShapeDef[] = [
   {id: 'canal-piso', name: 'Canal de piso', family: 'Infraestructura', subfamily: 'Conducción', description: 'Canal enterrado con rejilla para llevar los cables del tablero a las máquinas sin dejarlos a la vista por el piso.', size: [1.2, 0.04, 0.2], center: [0, 0.02, 0], color: '#8d96a3', status: 'generic', anchors: [BASE]},
 ];
 
+/** Línea larga y piso de nave (fase 17): la planta real es una sola línea continua sobre un solo piso, no losas ni tramos sueltos. */
+const LINE: readonly ShapeDef[] = [
+  {id: 'cinta-larga', name: 'Línea transportadora', family: 'Mecánica y movimiento', subfamily: 'Transporte', description: 'Cinta continua de ocho metros con patas cada dos metros y guías laterales: una sola línea para toda la estación. Se mueve con un motor trifásico junto a su cabezal; la cinta no gira sola en la simulación.' + NOSIM, size: [8, 0.8, 0.5], center: [0, 0.4, 0], color: '#8d9aa8', status: 'generic', anchors: [BASE, topHost(0.8, 3.7, 0.1, 'cinta', 'Superficie de la cinta')]},
+  {id: 'piso-nave', name: 'Piso de nave', family: 'Infraestructura', subfamily: 'Estructura', description: 'Losa continua de hormigón de catorce por ocho metros: el piso de toda la planta, con sus juntas de dilatación.' + NOSIM, size: [14, 0.05, 8], center: [0, 0.025, 0], color: '#b4bac3', status: 'generic', anchors: [BASE, topHost(0.05, 6.9, 3.9)]},
+];
+
 const FACTORY: readonly ShapeDef[] = [
   {id: 'piso-planta', name: 'Piso de planta', family: 'Infraestructura', subfamily: 'Estructura', description: 'Losa de planta con franjas de seguridad: base del escenario donde se colocan las máquinas.' + NOSIM, size: [4, 0.05, 3], center: [0, 0.025, 0], color: '#8f98a3', status: 'generic', anchors: [BASE, topHost(0.05, 1.9, 1.4)]},
   {id: 'mesa-trabajo', name: 'Mesa de trabajo', family: 'Infraestructura', subfamily: 'Estructura', description: 'Mesa de estación con repisa: sirve de apoyo a sensores, cajas y pequeños equipos.' + NOSIM, size: [1, 0.8, 0.6], center: [0, 0.4, 0], color: '#6f7b89', status: 'generic', anchors: [BASE, topHost(0.8, 0.45, 0.25)]},
@@ -153,6 +159,7 @@ export const ITEMS: readonly ShapeDef[] = [
   },
   // — Escenario de planta (fase 13): piezas de forma y montaje. Sin simulación salvo el motor y los pilotos que ya existían —
   ...BORNES,
+  ...LINE,
   ...FACTORY,
   ...DUCTS,
 ];
