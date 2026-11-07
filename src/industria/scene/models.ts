@@ -74,6 +74,60 @@ const BUILDERS: Record<string, Builder> = {
       cyl(w * 0.46, cy, 0, 0.0095, 0.05, 'x', METAL, 'metal', true), box(0, -h / 2 + 0.01, 0, w * 0.8, 0.02, d * 0.92, shade(s.color, -0.3), 'dark', true), cyl(-w * 0.46, cy, 0, r * 0.9, 0.03, 'x', '#46505e', 'trim', true),
       box(0.02, h / 2 - 0.0125 - 0.002, 0, 0.15, 0.025, 0.07, shade(s.color, -0.18), 'trim'), ...fan(cy, w, r), box(0.02, cy + r * 0.2, r * 0.96, 0.07, 0.04, 0.002, WHITE, 'label', true), ...screws(s)];
   },
+
+  // — Escenario de planta (fase 13): formas por tipo de equipo, en el sistema local centrado en la caja del catálogo —
+  'piso-planta': s => { const [w, h, d] = s.size, y = h / 2 - 0.0004, line = '#f2c200', joint = shade(s.color, -0.28); return [
+    box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.002, 0, w, 0.004, d, shade(s.color, 0.1), 'front'),
+    box(0, y, d / 2 - 0.06, w - 0.1, 0.001, 0.05, line, 'label', true), box(0, y, -d / 2 + 0.06, w - 0.1, 0.001, 0.05, line, 'label', true), box(-w / 2 + 0.06, y, 0, 0.05, 0.001, d - 0.1, line, 'label', true), box(w / 2 - 0.06, y, 0, 0.05, 0.001, d - 0.1, line, 'label', true),
+    ...[-1, 0, 1].map(k => box(k * (w / 4), y, 0, 0.004, 0.001, d, joint, 'dark', true)), ...[-0.5, 0.5].map(k => box(0, y, k * (d / 2), w, 0.001, 0.004, joint, 'dark', true))]; },
+  'mesa-trabajo': s => { const [w, h, d] = s.size, leg = shade(s.color, -0.3); return [
+    box(0, h / 2 - 0.025, 0, w, 0.05, d, s.color, 'body'), ...[-1, 1].flatMap(sx => [-1, 1].map(sz => box(sx * (w / 2 - 0.04), -0.025, sz * (d / 2 - 0.04), 0.05, h - 0.05, 0.05, leg, 'body'))),
+    box(0, -h / 2 + 0.2, 0, w - 0.1, 0.02, d - 0.1, shade(s.color, -0.15), 'front'), box(0, h / 2 - 0.07, d / 2 - 0.03, w - 0.1, 0.06, 0.012, leg, 'dark', true), box(0, h / 2 - 0.0258, 0, w - 0.02, 0.0016, d - 0.02, shade(s.color, 0.25), 'label', true)]; },
+  'valla-seguridad': s => { const [w, h, d] = s.size, mesh = '#6b7480', bars: Part[] = []; for (let i = 0; i < 11; i++) bars.push(box(-w / 2 + 0.1 + i * ((w - 0.2) / 10), 0, 0, 0.006, h - 0.12, 0.006, mesh, 'dark', true)); for (let j = 0; j < 6; j++) bars.push(box(0, -h / 2 + 0.08 + j * ((h - 0.16) / 5), 0, w - 0.12, 0.006, 0.006, mesh, 'dark', true)); return [
+    box(-w / 2 + 0.03, 0, 0, 0.06, h, d, '#3a3f47', 'body'), box(w / 2 - 0.03, 0, 0, 0.06, h, d, '#3a3f47', 'body'), box(0, h / 2 - 0.02, 0, w, 0.04, d * 0.75, s.color, 'body'), box(0, -h / 2 + 0.05, 0, w, 0.04, d * 0.75, s.color, 'body'), ...bars,
+    box(-w / 2 + 0.05, -h / 2 + 0.006, 0, 0.1, 0.012, 0.05, '#2a2f36', 'dark', true), box(w / 2 - 0.05, -h / 2 + 0.006, 0, 0.1, 0.012, 0.05, '#2a2f36', 'dark', true)]; },
+  'cinta-transportadora': s => { const [w, h, d] = s.size, top = h / 2, leg = shade(s.color, -0.35), rail = shade(s.color, 0.18), roller = (x: number) => cyl(x, top - 0.07, 0, 0.03, d - 0.1, 'z', METAL, 'metal'); return [
+    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => box(sx * (w / 2 - 0.05), -0.05, sz * (d / 2 - 0.05), 0.06, h - 0.1, 0.06, leg, 'body'))),
+    box(0, top - 0.09, d / 2 - 0.03, w, 0.1, 0.06, rail, 'body'), box(0, top - 0.09, -d / 2 + 0.03, w, 0.1, 0.06, rail, 'body'),
+    box(0, top - 0.07, 0, w - 0.08, 0.02, d - 0.12, '#2b2f35', 'dark'), roller(-w / 2 + 0.05), roller(w / 2 - 0.05),
+    ...Array.from({length: 15}, (_, i) => box(-w / 2 + 0.12 + i * ((w - 0.24) / 14), top - 0.0595, 0, 0.008, 0.001, d - 0.14, '#454b53', 'dark', true)),
+    box(0, -h / 2 + 0.25, 0, w - 0.14, 0.03, 0.03, leg, 'dark', true), box(0, -h / 2 + 0.25, d / 2 - 0.05, w - 0.14, 0.03, 0.03, leg, 'dark', true)]; },
+  'caja-producto': s => { const [w, h, d] = s.size; return [
+    box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.0006, 0, 0.04, 0.0012, d, '#e7d9b4', 'label', true), box(0, h / 2 - 0.0006, 0, w, 0.0012, 0.003, shade(s.color, -0.25), 'dark', true),
+    box(0, 0.005, d / 2 + 0.0006, w * 0.45, h * 0.3, 0.0012, WHITE, 'label', true), box(0, -h / 2 + 0.012, d / 2 + 0.0004, w, 0.002, 0.001, shade(s.color, -0.2), 'dark', true)]; },
+  'brazo-robot': s => { const orange = s.color, dark = '#30353d'; return [
+    cyl(-0.12, -0.5, 0, 0.23, 0.1, 'y', dark, 'dark'), cyl(-0.12, -0.38, 0, 0.17, 0.14, 'y', orange, 'body'), box(-0.12, -0.05, 0, 0.1, 0.5, 0.14, orange, 'body'),
+    cyl(-0.12, 0.22, 0, 0.075, 0.18, 'z', dark, 'dark'), box(0.06, 0.22, 0, 0.3, 0.09, 0.12, orange, 'body'), cyl(0.2, 0.22, 0, 0.05, 0.12, 'z', dark, 'dark'),
+    box(0.2, 0.13, 0, 0.05, 0.1, 0.05, METAL, 'metal'), box(0.18, 0.04, 0, 0.01, 0.08, 0.03, METAL, 'metal'), box(0.22, 0.04, 0, 0.01, 0.08, 0.03, METAL, 'metal'),
+    cyl(-0.12, -0.45, 0, 0.19, 0.012, 'y', shade(orange, -0.3), 'body', true), ...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(-0.12 + sx * 0.18, -0.545, sz * 0.18, 0.012, 0.012, 'y', METAL, 'metal', true))),
+    box(-0.12, -0.3, 0.071, 0.07, 0.12, 0.002, '#46505e', 'trim', true), ball(-0.12, 0.22, 0.095, 0.006, '#37d67a', 'led', true, '#37d67a')]; },
+  compresor: s => { const [w, h, d] = s.size, tank = '#2f7aa8'; return [
+    cyl(0, -0.2, 0, 0.17, 0.6, 'x', s.color, 'body'), cyl(-0.3, -0.2, 0, 0.17, 0.012, 'x', shade(tank, -0.2), 'body', true), cyl(0.3, -0.2, 0, 0.17, 0.012, 'x', shade(tank, -0.2), 'body', true),
+    box(-0.12, 0.1, 0, 0.2, 0.5, 0.2, shade(s.color, -0.3), 'body'), cyl(0.15, 0.12, 0, 0.08, 0.25, 'x', '#46505e', 'body'), box(-0.25, -0.38, 0, 0.06, 0.04, d * 0.8, DARK, 'dark'), box(0.25, -0.38, 0, 0.06, 0.04, d * 0.8, DARK, 'dark'),
+    cyl(0.25, -0.2, 0.172, 0.012, 0.012, 'z', METAL, 'metal'), cyl(-0.12, 0.36, 0, 0.05, 0.02, 'y', METAL, 'metal', true), cyl(0.05, -0.02, 0.17, 0.035, 0.012, 'z', WHITE, 'label', true), ...screws(s)]; },
+  'valvula-5-2': s => { const [w, h, d] = s.size; return [
+    box(0, 0, 0, w * 0.6, h, d, s.color, 'body'), cyl(-w * 0.4, 0, 0, 0.02, 0.018, 'x', '#2a2f36', 'trim'), cyl(w * 0.4, 0, 0, 0.02, 0.018, 'x', '#2a2f36', 'trim'),
+    box(0, h / 2 - 0.004, 0, w * 0.56, 0.008, d * 0.9, shade(s.color, 0.2), 'front', true), box(0, -0.005, d / 2 + 0.0006, w * 0.5, 0.02, 0.0012, WHITE, 'label', true),
+    ...[-0.025, 0, 0.025].map(x => cyl(x, -0.005, d / 2 + 0.002, 0.0075, 0.005, 'z', BRASS, 'metal', true)), ball(w * 0.4, 0.02, 0.0, 0.004, '#37d67a', 'led', true, '#37d67a'), ...screws(s)]; },
+  'cilindro-neumatico': s => { const [w, h, d] = s.size; return [
+    cyl(-0.06, 0, 0, 0.034, 0.28, 'x', s.color, 'body'), box(-0.19, 0, 0, 0.02, h, d, '#46505e', 'body'), box(0.07, 0, 0, 0.02, h, d, '#46505e', 'body'),
+    cyl(0.14, 0, 0, 0.008, 0.12, 'x', METAL, 'metal'), box(0.195, 0, 0, 0.01, 0.026, 0.026, METAL, 'metal'), box(-0.06, -h / 2 + 0.004, 0, 0.22, 0.008, d, DARK, 'dark', true),
+    ...[-0.12, 0.0].map(x => cyl(x, 0, 0, 0.0365, 0.004, 'x', shade(s.color, -0.3), 'dark', true)), box(-0.06, 0.0345, 0, 0.12, 0.001, 0.014, WHITE, 'label', true), ...screws(s)]; },
+  tanque: s => { const [w, h, d] = s.size, shell = s.color; return [
+    cyl(0, -0.02, 0, 0.28, 0.8, 'y', shell, 'body'), cyl(0, 0.4, 0, 0.22, 0.06, 'y', shade(shell, 0.15), 'body'), cyl(0, -0.46, 0, 0.2, 0.06, 'y', shade(shell, -0.15), 'body'),
+    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => box(sx * 0.21, -0.465, sz * 0.21, 0.04, 0.07, 0.04, DARK, 'dark'))),
+    box(0.17, -0.02, 0.265, 0.05, 0.5, 0.022, '#cfe6f2', 'lens'), box(0.17, -0.12, 0.2652, 0.034, 0.28, 0.002, '#2d7fd1', 'led', true), cyl(0, 0.35, 0, 0.285, 0.008, 'y', METAL, 'metal', true), cyl(0, -0.3, 0, 0.285, 0.008, 'y', METAL, 'metal', true),
+    cyl(0, 0.32, 0.285, 0.016, 0.03, 'z', METAL, 'metal', true), cyl(0, -0.34, 0.285, 0.016, 0.03, 'z', METAL, 'metal', true), ...screws(s)]; },
+  'sensor-inductivo': s => [cyl(0, -0.005, 0, 0.012, 0.05, 'y', s.color, 'body'), box(0, -0.014, 0, 0.028, 0.008, 0.028, shade(s.color, -0.15), 'body'), cyl(0, -0.03, 0, 0.0095, 0.002, 'y', '#e0a800', 'trim', true), ball(0, 0.021, 0.008, 0.0028, '#f0a020', 'led', true, '#f0a020'), ...screws(s)],
+  'sensor-fotoelectrico': s => { const [w, h, d] = s.size; return [
+    box(0, -0.004, 0, w, h * 0.9, d, s.color, 'body'), cyl(0, -0.004, d / 2 + 0.001, 0.011, 0.004, 'z', '#1a1f26', 'dark', true), cyl(0, -0.004, d / 2 + 0.003, 0.008, 0.003, 'z', '#9fd8ff', 'lens', true), ball(w * 0.32, 0.018, d / 2 + 0.001, 0.0026, '#37d67a', 'led', true, '#37d67a'),
+    box(0, -h / 2 + 0.004, 0, w * 1.0, 0.008, d, '#1a1f26', 'dark', true), ...screws(s)]; },
+  'torre-luminosa': s => [
+    box(0, -0.12, 0, 0.07, 0.06, 0.07, '#2a2f36', 'body'), cyl(0, -0.05, 0, 0.03, 0.06, 'y', '#d64545', 'body'), cyl(0, 0.01, 0, 0.03, 0.06, 'y', '#e8a317', 'body'), cyl(0, 0.07, 0, 0.03, 0.06, 'y', '#3aa655', 'body'), cyl(0, 0.12, 0, 0.032, 0.014, 'y', '#2a2f36', 'dark'),
+    ...[-0.05, 0.01, 0.07].map(y => cyl(0, y, 0, 0.0325, 0.004, 'y', '#1e2329', 'dark', true)), cyl(0, 0.14, 0, 0.012, 0.03, 'y', METAL, 'metal', true), ...screws(s)],
+  'paro-emergencia': s => [
+    box(0, -0.015, 0, 0.08, 0.05, 0.06, s.color, 'body'), cyl(0, 0.0, 0, 0.034, 0.008, 'y', '#2a2f36', 'dark'), cyl(0, 0.017, 0, 0.026, 0.03, 'y', '#d62b2b', 'trim'), cyl(0, 0.03, 0, 0.022, 0.006, 'y', shade('#d62b2b', 0.25), 'trim', true),
+    box(0, -0.036, 0.0308, 0.07, 0.006, 0.0012, '#2a2f36', 'dark', true), ...screws(s)],
 };
 
 /** Tapa del ventilador del motor: aro oscuro y rejilla de ranuras radiales (detalle fino). */

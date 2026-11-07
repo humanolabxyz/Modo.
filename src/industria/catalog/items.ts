@@ -29,6 +29,42 @@ function dinDevice(spec: {id: string; name: string; subfamily: string; descripti
   };
 }
 
+
+// ——— Piezas de escenario de planta (fase 13) ———
+// Son genéricas: la forma es la de cada TIPO de equipo (cinta de rodillos, cilindro, electroválvula, sensor cilíndrico…), no la réplica de un producto, y las medidas son de ejemplo.
+// No tienen simulación propia (el motor y los pilotos que sí se simulan son los de la fase 9): sirven para armar la planta, montar y cablear la topología.
+const NOSIM = ' Pieza de escenario: forma y montaje, sin simulación propia.';
+const BASE: AnchorDef = {id: 'base', label: 'Base', role: 'child', kind: 'surface', position: [0, 0, 0], normal: [0, -1, 0]};
+const topHost = (y: number, sx: number, sz: number, id = 'top', label = 'Cara superior'): AnchorDef => ({id, label, role: 'host', kind: 'surface', position: [0, y, 0], normal: [0, 1, 0], multi: true, slide: {axes: [[1, 0, 0], [0, 0, 1]], limits: [[-sx, sx], [-sz, sz]]}});
+const term = (id: string, position: Vec3, kind: TerminalDef['kind'], group: string, role?: TerminalDef['role']): TerminalDef => ({id, label: id, position, kind, group, ...(role ? {role} : {})});
+const PNEUMATIC_SOURCE = 'Puertos P (presión), A/B (trabajo) y terminales A1/A2 de bobina según la convención habitual de neumática y aparamenta. No contrastado con el documento de la norma.';
+const SENSOR_SOURCE = 'Colores/marcado BN (+), BU (−) y BK (salida) de sensores de tres hilos, convención habitual. No contrastado con la norma.';
+
+const FACTORY: readonly ShapeDef[] = [
+  {id: 'piso-planta', name: 'Piso de planta', family: 'Infraestructura', subfamily: 'Estructura', description: 'Losa de planta con franjas de seguridad: base del escenario donde se colocan las máquinas.' + NOSIM, size: [4, 0.05, 3], center: [0, 0.025, 0], color: '#8f98a3', status: 'generic', anchors: [BASE, topHost(0.05, 1.9, 1.4)]},
+  {id: 'mesa-trabajo', name: 'Mesa de trabajo', family: 'Infraestructura', subfamily: 'Estructura', description: 'Mesa de estación con repisa: sirve de apoyo a sensores, cajas y pequeños equipos.' + NOSIM, size: [1, 0.8, 0.6], center: [0, 0.4, 0], color: '#6f7b89', status: 'generic', anchors: [BASE, topHost(0.8, 0.45, 0.25)]},
+  {id: 'valla-seguridad', name: 'Valla de seguridad', family: 'Infraestructura', subfamily: 'Seguridad', description: 'Panel de malla con marco para delimitar la zona de una máquina.' + NOSIM, size: [1, 1.2, 0.04], center: [0, 0.6, 0], color: '#e0a800', status: 'generic', anchors: [BASE]},
+  {id: 'cinta-transportadora', name: 'Cinta transportadora', family: 'Mecánica y movimiento', subfamily: 'Transporte', description: 'Cinta de banda con rodillos y estructura. Se mueve con un motor trifásico colocado junto a su cabezal; la cinta no gira sola en la simulación.' + NOSIM, size: [1.6, 0.8, 0.5], center: [0, 0.4, 0], color: '#5d7288', status: 'generic', anchors: [BASE, topHost(0.8, 0.6, 0.1, 'cinta', 'Superficie de la cinta')]},
+  {id: 'caja-producto', name: 'Caja de producto', family: 'Procesos industriales', subfamily: 'Producto', description: 'Caja de cartón que representa la pieza que viaja por la línea.' + NOSIM, size: [0.2, 0.15, 0.2], center: [0, 0.075, 0], color: '#c9a26b', status: 'generic', anchors: [BASE]},
+  {id: 'brazo-robot', name: 'Brazo robótico', family: 'Robótica industrial', subfamily: 'Manipuladores', description: 'Brazo articulado de una estación de manipulación, con base, hombro, codo, muñeca y pinza. Sin cinemática: la pose es fija.' + NOSIM, size: [0.7, 1.1, 0.5], center: [0, 0.55, 0], color: '#e8741e', status: 'generic', anchors: [BASE]},
+  {id: 'compresor', name: 'Compresor de aire', family: 'Neumática', subfamily: 'Generación', description: 'Compresor con depósito horizontal, cabezal y motor. Su salida de aire es el puerto P.' + NOSIM, size: [0.7, 0.8, 0.35], center: [0, 0.4, 0], color: '#2f7aa8', status: 'generic', anchors: [BASE],
+    terminals: [term('P', [0.25, 0.2, 0.175], 'pipe', 'aire')], terminalSource: PNEUMATIC_SOURCE},
+  {id: 'valvula-5-2', name: 'Electroválvula de cinco vías', family: 'Neumática', subfamily: 'Distribución', description: 'Válvula de cinco vías y dos posiciones con bobina: puertos P, A y B y terminales A1/A2.' + NOSIM, size: [0.09, 0.07, 0.05], center: [0, 0.035, 0], color: '#3c6e91', status: 'generic', anchors: [BASE],
+    terminals: [term('A1', [-0.03, 0.07, 0], 'control', 'bobina'), term('A2', [-0.012, 0.07, 0], 'control', 'bobina'), term('P', [-0.025, 0.03, 0.025], 'pipe', 'aire'), term('A', [0, 0.03, 0.025], 'pipe', 'aire'), term('B', [0.025, 0.03, 0.025], 'pipe', 'aire')], terminalSource: PNEUMATIC_SOURCE},
+  {id: 'cilindro-neumatico', name: 'Cilindro neumático', family: 'Neumática', subfamily: 'Actuadores', description: 'Cilindro de doble efecto con camisa, vástago y dos puertos (A y B).' + NOSIM, size: [0.4, 0.07, 0.07], center: [0, 0.035, 0], color: '#a8b2bf', status: 'generic', anchors: [BASE],
+    terminals: [term('A', [-0.17, 0.07, 0], 'pipe', 'aire'), term('B', [0.05, 0.07, 0], 'pipe', 'aire')], terminalSource: PNEUMATIC_SOURCE},
+  {id: 'tanque', name: 'Tanque de proceso', family: 'Procesos industriales', subfamily: 'Depósitos', description: 'Depósito vertical con patas, mirilla de nivel y dos conexiones: entrada (E) y salida (S).' + NOSIM, size: [0.6, 1, 0.6], center: [0, 0.5, 0], color: '#9fb0bf', status: 'generic', anchors: [BASE],
+    terminals: [term('E', [0, 0.82, 0.3], 'pipe', 'conexión'), term('S', [0, 0.16, 0.3], 'pipe', 'conexión')], terminalSource: 'Conexiones de entrada (E) y salida (S) de proceso, convención didáctica.'},
+  {id: 'sensor-inductivo', name: 'Sensor inductivo', family: 'Instrumentación y sensores', subfamily: 'Proximidad', description: 'Sensor cilíndrico de proximidad de tres hilos: positivo (BN), negativo (BU) y salida (BK).' + NOSIM, size: [0.03, 0.06, 0.03], center: [0, 0.03, 0], color: '#c9ced6', status: 'generic', anchors: [BASE],
+    terminals: [term('BN', [-0.008, 0.06, 0], 'power', 'hilos', 'positive'), term('BU', [0.0, 0.06, 0], 'power', 'hilos', 'negative'), term('BK', [0.008, 0.06, 0], 'signal', 'hilos')], terminalSource: SENSOR_SOURCE},
+  {id: 'sensor-fotoelectrico', name: 'Sensor fotoeléctrico', family: 'Instrumentación y sensores', subfamily: 'Proximidad', description: 'Sensor óptico de tres hilos con lente y LED de estado: BN, BU y BK.' + NOSIM, size: [0.05, 0.07, 0.03], center: [0, 0.035, 0], color: '#2b6cb0', status: 'generic', anchors: [BASE],
+    terminals: [term('BN', [-0.014, 0.07, 0], 'power', 'hilos', 'positive'), term('BU', [0, 0.07, 0], 'power', 'hilos', 'negative'), term('BK', [0.014, 0.07, 0], 'signal', 'hilos')], terminalSource: SENSOR_SOURCE},
+  {id: 'torre-luminosa', name: 'Torre luminosa', family: 'Electricidad industrial', subfamily: 'Señalización', description: 'Columna de señalización de tres colores (rojo, ámbar, verde) con común. Para lámparas que sí se simulan usa el piloto luminoso.' + NOSIM, size: [0.07, 0.3, 0.07], center: [0, 0.15, 0], color: '#3aa655', status: 'generic', anchors: [BASE],
+    terminals: [term('R', [0, 0.24, 0.035], 'control', 'lámparas'), term('Y', [0, 0.18, 0.035], 'control', 'lámparas'), term('G', [0, 0.12, 0.035], 'control', 'lámparas'), term('COM', [0, 0.06, 0.035], 'control', 'común')], terminalSource: 'Marcado R/Y/G y común, convención didáctica.'},
+  {id: 'paro-emergencia', name: 'Paro de emergencia', family: 'Electricidad industrial', subfamily: 'Seguridad', description: 'Seta roja sobre base amarilla con contacto NC (11–12). Sin enclavamiento ni simulación propia.' + NOSIM, size: [0.08, 0.08, 0.06], center: [0, 0.04, 0], color: '#e0a800', status: 'generic', anchors: [BASE],
+    terminals: [term('11', [-0.015, 0.02, 0.03], 'control', 'contacto'), term('12', [0.015, 0.02, 0.03], 'control', 'contacto')], terminalSource: TERMINAL_SOURCE},
+];
+
 export const ITEMS: readonly ShapeDef[] = [
   // — Infraestructura: estructura y tablero —
   {
@@ -98,4 +134,6 @@ export const ITEMS: readonly ShapeDef[] = [
     terminals: [{id: 'U1', label: 'U1', position: [-0.04, 0.18, 0], kind: 'power', group: 'bornera'}, {id: 'V1', label: 'V1', position: [0, 0.18, 0], kind: 'power', group: 'bornera'}, {id: 'W1', label: 'W1', position: [0.04, 0.18, 0], kind: 'power', group: 'bornera'}, {id: 'PE', label: 'PE', position: [0.08, 0.18, 0], kind: 'earth', group: 'bornera', role: 'ground'}],
     terminalSource: 'Marcado U1/V1/W1 y PE según la convención habitual de motores trifásicos. No contrastado con el documento de la norma.',
   },
+  // — Escenario de planta (fase 13): piezas de forma y montaje. Sin simulación salvo el motor y los pilotos que ya existían —
+  ...FACTORY,
 ];

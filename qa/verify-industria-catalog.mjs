@@ -74,7 +74,7 @@ assert.deepEqual(searchItems('plc').map(i => i.id), ['plc-generico']);
 assert.ok(searchItems('A1').some(i => i.id === 'contactor-3p')); assert.deepEqual(searchItems('zzz'), []);
 assert.ok(searchItems('', 'Electricidad industrial').every(i => i.family === 'Electricidad industrial')); assert.equal(searchItems('').length, ITEMS.length);
 assert.ok(searchItems('interruptor 3p').every(i => i.id === 'breaker-3p')); ok('búsqueda sin tildes, por palabras, por terminal y por familia');
-const counts = countByFamily(); assert.equal(Object.values(counts).reduce((a, b) => a + b, 0), ITEMS.length); assert.equal(counts['Neumática'], 0); assert.ok(counts['Electricidad industrial'] >= 5); ok('conteo por familia (las familias sin piezas quedan en 0, sin inventar contenido)');
+const counts = countByFamily(); assert.equal(Object.values(counts).reduce((a, b) => a + b, 0), ITEMS.length); assert.equal(counts['Neumática'], 3); assert.equal(counts['Hidráulica'], 0); assert.ok(counts['Electricidad industrial'] >= 5); ok('conteo por familia (las familias sin piezas quedan en 0, sin inventar contenido)');
 
 // Compatibilidad: ids de la fase 3 y forma desconocida
 for (const id of ['generico', 'placa', 'riel', 'aparato-din']) assert.ok(listShapes().some(s => s.id === id), id);

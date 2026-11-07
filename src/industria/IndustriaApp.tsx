@@ -10,7 +10,7 @@ import {allTerminals, evaluate, MAX_WIRES_PER_TERMINAL, refKey, terminalDef} fro
 import {routeWire, tidyWires, unwire, wire} from './wiring/commands.ts';
 import {withStatuses} from './wiring/engine.ts';
 import {operableKind, simulate as runSimulation, SIM_ASSUMPTIONS, type SimInputs, type SimResult} from './sim/engine.ts';
-import {exampleDirectStart, examplePlcStartStop} from './sim/examples.ts';
+import {exampleDirectStart, exampleMiniFactory, examplePlcStartStop} from './sim/examples.ts';
 import {moveSymbol, moveToPage, arrangeAll} from './diagram/commands.ts';
 import {ErrorBoundary} from './ErrorBoundary';
 import {IndustriaSound} from './sound/sound.ts';
@@ -224,7 +224,7 @@ export default function IndustriaApp() {
     if (simStatus !== 'running') return;
     if (kind === 'switch') { if (down) setInputs(i => ({...i, [`hmi:${id}`]: !i[`hmi:${id}`]})); } else setInputs(i => ({...i, [`hmi:${id}`]: down}));
   };
-  const loadExample = async (which: 'direct' | 'plc' = 'direct') => { const r = which === 'plc' ? examplePlcStartStop() : exampleDirectStart(); if (!r.ok) { api.setMessage(r.error); return; } const {filename, text} = exportProject(r.value); if (await api.importFile(new File([text], filename))) { setProjectOpen(false); stopSim(); log(`Ejemplo cargado: ${which === 'plc' ? 'marcha/paro con PLC' : 'arranque directo'}`); } };
+  const loadExample = async (which: 'direct' | 'plc' | 'factory' = 'direct') => { const r = which === 'plc' ? examplePlcStartStop() : which === 'factory' ? exampleMiniFactory() : exampleDirectStart(); if (!r.ok) { api.setMessage(r.error); return; } const {filename, text} = exportProject(r.value); if (await api.importFile(new File([text], filename))) { setProjectOpen(false); stopSim(); log(`Ejemplo cargado: ${which === 'plc' ? 'marcha/paro con PLC' : which === 'factory' ? 'mini fábrica' : 'arranque directo'}`); } };
   const termLabel = (r: TerminalRef) => `${project.entities.find(e => e.id === r.entityId)?.label ?? r.entityId} · ${r.terminalId}`;
   const connect2 = (a: TerminalRef, b: TerminalRef) => {
     if (!guardEdit()) return false;
@@ -535,6 +535,7 @@ export default function IndustriaApp() {
           <button type="button" onClick={api.exportActive}><Download size={15} /> Exportar</button>
           <button type="button" onClick={() => loadExample('direct')} title="Crea un proyecto nuevo con un arranque directo ya montado y cableado">Ejemplo: arranque directo</button>
           <button type="button" onClick={() => loadExample('plc')} title="Crea un proyecto nuevo con PLC, programa en escalera y pantalla de HMI">Ejemplo: marcha/paro con PLC</button>
+          <button type="button" onClick={() => loadExample('factory')} title="Crea un proyecto nuevo con una planta: tablero con PLC, cinta con motor, robot, neumática, sensores, vallas y más">Ejemplo: mini fábrica</button>
           <button type="button" onClick={() => fileInput.current?.click()}><Upload size={15} /> Importar</button>
           <input ref={fileInput} type="file" accept=".json,application/json" hidden onChange={async e => { const f = e.target.files?.[0]; e.target.value = ''; if (f && await api.importFile(f)) setProjectOpen(false); }} />
         </div>
