@@ -7,7 +7,7 @@ import {moveEntity, rotateEntity, snapMount} from './build/commands.ts';
 import {GENERIC_NOTE, shapeOf, STATUS_LABEL} from './build/shapes.ts';
 import {countByFamily, FAMILIES, searchItems} from './catalog/search.ts';
 import {allTerminals, evaluate, MAX_WIRES_PER_TERMINAL, refKey, terminalDef} from './wiring/engine.ts';
-import {unwire, wire} from './wiring/commands.ts';
+import {routeWire, tidyWires, unwire, wire} from './wiring/commands.ts';
 import {withStatuses} from './wiring/engine.ts';
 import {operableKind, simulate as runSimulation, SIM_ASSUMPTIONS, type SimInputs, type SimResult} from './sim/engine.ts';
 import {exampleDirectStart, examplePlcStartStop} from './sim/examples.ts';
@@ -385,6 +385,11 @@ export default function IndustriaApp() {
         {terms.length === 0 && <p className="ind-note">Coloca piezas con terminales (contactor, PLC, fuente…) para poder cablearlas.</p>}
         <p className="ind-note">También puedes pulsar «Cablear» en el dock y tocar dos terminales en el escenario. Límite didáctico: {MAX_WIRES_PER_TERMINAL} cables por terminal.</p>
         <h4>Conexiones ({project.connections.length})</h4>
+        {project.connections.length > 0 && <div className="ind-wire-tools" role="group" aria-label="Organizar cables">
+          <button type="button" disabled={simulate || !project.connections.some(c => c.route?.length)} onClick={() => { if (guardEdit()) { api.run(p => tidyWires(p)); log('Cables ordenados: rutas manuales borradas'); } }} title="Borra las rutas manuales y reparte los cables en carriles">Ordenar todos</button>
+          <button type="button" disabled={simulate || !pickedConn || !project.connections.find(c => c.id === pickedConn)?.route?.length} onClick={() => { if (pickedConn && guardEdit()) { api.run(p => routeWire(p, pickedConn, [])); log('Cable con ruta automática'); } }} title="Devuelve el cable elegido a la ruta automática">Ruta automática</button>
+        </div>}
+        {pickedConn && !simulate && <p className="ind-note">Cable elegido: en el escenario arrastra los puntos azules para moverlo, arrastra un punto claro para añadir uno y haz doble clic en uno azul para quitarlo.</p>}
         {project.connections.length === 0 ? <p className="ind-note">Aún no hay cables.</p>
           : <ul className="ind-wires" aria-label="Conexiones">{project.connections.map(c => { const st = evaluation.status[c.id] ?? c.status, why = evaluation.reasons[c.id];
             return <li key={c.id} data-status={st} data-picked={pickedConn === c.id}><button type="button" className="ind-wire-main" onClick={() => setPickedConn(pickedConn === c.id ? null : c.id)} title="Resaltar en el escenario"><strong>{name(c.a)} → {name(c.b)}</strong><small><span className="ind-status" data-status={st}>{CHIP[st]}</span> {c.kind}{why && policy.showIssues ? ` · ${why.join(' ')}` : ''}</small></button>
@@ -484,7 +489,7 @@ export default function IndustriaApp() {
     <main className="rb-stage" aria-label="Escenario industrial">
       {ui.view === 'plant' && (supported
         ? <ErrorBoundary label="Escenario 3D" resetKey={project.id} onRetry={() => location.reload()}><Suspense fallback={<div className="ind-loading" role="status">Abriendo el escenario…</div>}>
-          <IndustriaCanvas key={glKey} project={project} selection={ui.selection} camera={ui.camera} cameraNonce={cameraNonce} editable={!simulate} magnet={ui.magnet} wiring={wiring} pending={pending} evaluation={evaluation} sim={sim} simRunning={simStatus === 'running'} onOperate={operate} onBlockedDrag={id => api.setMessage(`«${project.entities.find(e => e.id === id)?.label ?? id}» está montada y no se arrastra: suéltala en Propiedades (botón Soltar) o mueve el soporte al que está unida.`)} highlight={highlightIds} onTerminal={onTerminal} onSelect={select} onDrop={onDrop} onCameraRest={camera => patchUi({camera})} onContextLost={() => setGlKey(k => k + 1)} />
+          <IndustriaCanvas key={glKey} project={project} selection={ui.selection} camera={ui.camera} cameraNonce={cameraNonce} editable={!simulate} magnet={ui.magnet} wiring={wiring} pending={pending} evaluation={evaluation} sim={sim} simRunning={simStatus === 'running'} onOperate={operate} onBlockedDrag={id => api.setMessage(`«${project.entities.find(e => e.id === id)?.label ?? id}» está montada y no se arrastra: suéltala en Propiedades (botón Soltar) o mueve el soporte al que está unida.`)} highlight={highlightIds} editCable={pickedConn} onRoute={(id, interior) => { if (guardEdit()) { api.run(p => routeWire(p, id, interior)); log(interior.length ? 'Cable reubicado' : 'Cable con ruta automática'); } }} onTerminal={onTerminal} onSelect={select} onDrop={onDrop} onCameraRest={camera => patchUi({camera})} onContextLost={() => setGlKey(k => k + 1)} />
         </Suspense></ErrorBoundary>
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Industria necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>)}
       {ui.view !== 'plant' && <ErrorBoundary label={VIEWS.find(v => v.id === ui.view)?.label ?? 'Vista'} resetKey={project.id + ui.view}>{viewBody(ui.view)}</ErrorBoundary>}

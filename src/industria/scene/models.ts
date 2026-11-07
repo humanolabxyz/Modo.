@@ -31,6 +31,8 @@ function dinBody(w: number, h: number, d: number, color: string): Part[] {
     box(0, h / 2 - h * 0.05, d * 0.25, w * 0.98, h * 0.1, d * 0.5, DARK, 'dark', true),
     box(0, -h / 2 + h * 0.05, d * 0.25, w * 0.98, h * 0.1, d * 0.5, DARK, 'dark', true),
     box(0, -h * 0.4, -d / 2 + 0.003, Math.min(w * 0.6, 0.03), h * 0.12, 0.006, METAL, 'metal', true),
+    box(0, h * 0.39, d / 2 - 0.0006, w * 0.9, 0.0012, 0.0012, shade(color, 0.35), 'label', true),
+    box(-w * 0.46, 0, d * 0.3, 0.0012, h * 0.7, d * 0.38, shade(color, -0.12), 'dark', true), box(w * 0.46, 0, d * 0.3, 0.0012, h * 0.7, d * 0.38, shade(color, -0.12), 'dark', true),
   ];
 }
 
@@ -40,8 +42,8 @@ function screws(shape: ShapeDef): Part[] {
   for (const t of shape.terminals ?? []) {
     const [x, y, z] = [t.position[0] - shape.center[0], t.position[1] - shape.center[1], t.position[2] - shape.center[2]];
     const onTop = Math.abs(t.position[1] - top) < 0.002, r = Math.min(0.0042, Math.max(0.0028, shape.size[0] / 14));
-    if (onTop) { out.push(cyl(x, y + 0.002, z, r, 0.004, 'y', METAL, 'screw', true), box(x, y + 0.0042, z, r * 2.2, 0.0008, 0.0009, DARK, 'dark', true)); }
-    else { out.push(cyl(x, y, z + 0.002, r, 0.004, 'z', METAL, 'screw', true), box(x, y, z + 0.0042, r * 2.2, 0.0009, 0.0008, DARK, 'dark', true)); }
+    if (onTop) { out.push(box(x, y - 0.003, z, r * 3.4, 0.006, r * 3.4, DARK, 'dark', true), box(x, y - 0.0005, z, r * 3, 0.0012, r * 3, BRASS, 'metal', true), cyl(x, y + 0.002, z, r, 0.004, 'y', METAL, 'screw', true), box(x, y + 0.0042, z, r * 2.2, 0.0008, 0.0009, DARK, 'dark', true)); }
+    else { out.push(box(x, y, z - 0.003, r * 3.4, r * 3.4, 0.006, DARK, 'dark', true), box(x, y, z - 0.0005, r * 3, r * 3, 0.0012, BRASS, 'metal', true), cyl(x, y, z + 0.002, r, 0.004, 'z', METAL, 'screw', true), box(x, y, z + 0.0042, r * 2.2, 0.0009, 0.0008, DARK, 'dark', true)); }
   }
   return out;
 }
@@ -51,7 +53,7 @@ const poleXs = (shape: ShapeDef): number[] => (shape.terminals ?? []).filter(t =
 type Builder = (s: ShapeDef) => Part[];
 const BUILDERS: Record<string, Builder> = {
   generico: s => { const [w, h, d] = s.size; return [box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.004, 0, w * 0.94, 0.008, d * 0.94, shade(s.color, 0.2), 'front', true), box(0, -h / 2 + 0.006, 0, w * 1.0, 0.012, d * 1.0, shade(s.color, -0.2), 'dark', true), ...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * (w / 2 - 0.02), h / 2 + 0.001, sz * (d / 2 - 0.02), 0.008, 0.003, 'y', METAL, 'screw', true)))]; },
-  placa: s => { const [w, h, d] = s.size; const holes: Part[] = []; for (const sx of [-1, 1]) for (const y of [-h / 2 + 0.05, 0, h / 2 - 0.05]) holes.push(cyl(sx * (w / 2 - 0.04), y, 0, 0.011, d + 0.002, 'z', DARK, 'dark', true)); return [box(0, 0, 0, w, h, d, s.color, 'body'), ...holes]; },
+  placa: s => { const [w, h, d] = s.size; const holes: Part[] = []; for (const sx of [-1, 1]) for (const y of [-h / 2 + 0.05, 0, h / 2 - 0.05]) holes.push(cyl(sx * (w / 2 - 0.04), y, 0, 0.011, d + 0.002, 'z', DARK, 'dark', true)); const edge = shade(s.color, 0.22); return [box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.003, d / 2 - 0.0005, w, 0.006, 0.001, edge, 'front', true), box(0, -h / 2 + 0.003, d / 2 - 0.0005, w, 0.006, 0.001, edge, 'front', true), box(-w / 2 + 0.003, 0, d / 2 - 0.0005, 0.006, h, 0.001, edge, 'front', true), box(w / 2 - 0.003, 0, d / 2 - 0.0005, 0.006, h, 0.001, edge, 'front', true), ...holes]; },
   riel: s => { const [w, h, d] = s.size; const slots: Part[] = []; for (let x = -w / 2 + 0.025; x < w / 2 - 0.02; x += 0.05) slots.push(box(x, 0, d / 2 - 0.0008, 0.016, 0.0048, 0.0016, DARK, 'dark', true)); return [
     box(0, 0, -d / 2 + 0.001, w, h * 0.78, 0.002, s.color, 'body'), box(0, h * 0.5 - 0.0018, -d / 2 + 0.001, w, 0.0036, 0.002, s.color, 'body'), box(0, -h * 0.5 + 0.0018, -d / 2 + 0.001, w, 0.0036, 0.002, s.color, 'body'),
     box(0, 0, d / 2 - 0.001, w, h * 0.43, 0.002, shade(s.color, 0.12), 'front'), box(0, h * 0.215, 0, w, 0.0016, d * 0.9, s.color, 'body'), box(0, -h * 0.215, 0, w, 0.0016, d * 0.9, s.color, 'body'), ...slots]; },
@@ -70,9 +72,16 @@ const BUILDERS: Record<string, Builder> = {
     for (let i = -3; i <= 3; i++) fins.push(cyl(i * 0.02, cy, 0, r * 1.05, 0.006, 'x', shade(s.color, -0.08), 'body', true));
     return [cyl(0, cy, 0, r, w * 0.72, 'x', s.color, 'body'), ...fins, cyl(-w * 0.4, cy, 0, r * 0.98, 0.022, 'x', shade(s.color, -0.25), 'dark'), cyl(w * 0.4, cy, 0, r * 0.98, 0.018, 'x', shade(s.color, -0.12), 'front', true),
       cyl(w * 0.46, cy, 0, 0.0095, 0.05, 'x', METAL, 'metal', true), box(0, -h / 2 + 0.01, 0, w * 0.8, 0.02, d * 0.92, shade(s.color, -0.3), 'dark', true), cyl(-w * 0.46, cy, 0, r * 0.9, 0.03, 'x', '#46505e', 'trim', true),
-      box(0.02, h / 2 - 0.0125 - 0.002, 0, 0.15, 0.025, 0.07, shade(s.color, -0.18), 'trim'), ...screws(s)];
+      box(0.02, h / 2 - 0.0125 - 0.002, 0, 0.15, 0.025, 0.07, shade(s.color, -0.18), 'trim'), ...fan(cy, w, r), box(0.02, cy + r * 0.2, r * 0.96, 0.07, 0.04, 0.002, WHITE, 'label', true), ...screws(s)];
   },
 };
+
+/** Tapa del ventilador del motor: aro oscuro y rejilla de ranuras radiales (detalle fino). */
+function fan(cy: number, w: number, r: number): Part[] {
+  const out: Part[] = [cyl(-w * 0.5, cy, 0, r * 0.82, 0.004, 'x', DARK, 'dark', true)];
+  for (const k of [-0.5, 0, 0.5]) out.push(box(-w * 0.5 - 0.0025, cy + k * r, 0, 0.002, 0.0035, r * 1.5, shade(DARK, 0.3), 'dark', true), box(-w * 0.5 - 0.0025, cy, k * r, 0.002, r * 1.5, 0.0035, shade(DARK, 0.3), 'dark', true));
+  return out;
+}
 
 function breaker(s: ShapeDef): Part[] {
   const [w, h, d] = s.size, xs = poleXs(s), parts = [...dinBody(w, h, d, s.color)];

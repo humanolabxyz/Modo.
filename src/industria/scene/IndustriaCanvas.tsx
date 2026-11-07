@@ -1,12 +1,13 @@
 import {useEffect, useMemo, useRef, useState, type MutableRefObject, type ElementRef, type ReactNode} from 'react';
 import {Canvas, useFrame, useThree, type ThreeEvent} from '@react-three/fiber';
-import {Grid, Html, Line, OrbitControls} from '@react-three/drei';
-import {CurvePath, LineCurve3, Plane, TubeGeometry, Vector2, Vector3} from 'three';
+import {Grid, Html, Line, OrbitControls, RoundedBox} from '@react-three/drei';
+import {CatmullRomCurve3, DirectionalLight, Plane, TubeGeometry, Vector2, Vector3} from 'three';
 import type {IndustryProject, Pose, TerminalRef, Vec3} from '../model/types.ts';
 import type {CameraState} from '../model/ui.ts';
 import {shapeOf, type AnchorDef, type TerminalDef} from '../build/shapes.ts';
 import {refKey, type Evaluation} from '../wiring/engine.ts';
-import {CABLE_RADIUS, routeAll} from '../wiring/route.ts';
+import {CABLE_RADIUS, collisionBoxes, routeAll, segmentHits} from '../wiring/route.ts';
+import {flexCable, insertWaypoint, interiorOf, midpointsOf, moveWaypoint, removeWaypoint} from '../wiring/curve.ts';
 import {operableKind, type SimResult} from '../sim/engine.ts';
 import {modelParts, type Detail} from './models.ts';
 import {findSnapCandidates, movedPoses, overlapsOf, parentMountOf, snapToGrid, type SnapCandidate} from '../build/snap.ts';
@@ -28,6 +29,9 @@ export type IndustriaCanvasProps = {
   evaluation: Evaluation;
   /** Conexiones que se resaltan (las de la pieza seleccionada o la elegida en el panel). */
   highlight: readonly string[];
+  /** Cable elegido en el panel: muestra sus puntos de paso (arrastrar para moverlo, punto claro para añadir, doble clic para quitar). */
+  editCable: string | null;
+  onRoute(connectionId: string, interior: Vec3[]): void;
   onTerminal(ref: TerminalRef): void;
   /** Resultado de la simulación (null si está detenida) y si se puede operar con el ratón. */
   sim: SimResult | null;
@@ -79,25 +83,72 @@ function Terminals({entityId, terminals, dot, pending, hover, onTerminal, onHove
   })}</>;
 }
 
-/** Cable con grosor: tubo que sigue la ruta (sale perpendicular al terminal y rodea las piezas). */
+/** Cable flexible con grosor: curva suave por la ruta (esquinas redondeadas y caída en los tramos largos). */
 function CableTube({points, color, radius, emissive}: {points: Vec3[]; color: string; radius: number; emissive?: string}) {
   const geom = useMemo(() => {
-    const path = new CurvePath<Vector3>(); let length = 0;
-    for (let i = 1; i < points.length; i++) { const a = new Vector3(...points[i - 1]), b = new Vector3(...points[i]); if (a.distanceToSquared(b) > 1e-10) { path.add(new LineCurve3(a, b)); length += a.distanceTo(b); } }
-    return path.curves.length ? new TubeGeometry(path, Math.min(400, Math.max(8, Math.round(length / 0.008))), radius, 8, false) : null;
+    const pts: Vector3[] = []; let length = 0;
+    for (const p of points) { const v = new Vector3(...p); if (!pts.length || pts[pts.length - 1].distanceToSquared(v) > 1e-8) { if (pts.length) length += pts[pts.length - 1].distanceTo(v); pts.push(v); } }
+    return pts.length > 1 ? new TubeGeometry(new CatmullRomCurve3(pts, false, 'centripetal'), Math.min(600, Math.max(12, Math.round(length / 0.006))), radius, 10, false) : null;
   }, [points, radius]);
   useEffect(() => () => geom?.dispose(), [geom]);
-  return geom ? <mesh geometry={geom} raycast={() => null} renderOrder={4}><meshStandardMaterial color={color} roughness={0.55} metalness={0.05} emissive={emissive ?? '#000000'} emissiveIntensity={emissive ? 0.6 : 0} /></mesh> : null;
+  return geom ? <mesh geometry={geom} raycast={() => null} renderOrder={4}><meshStandardMaterial color={color} roughness={0.42} metalness={0.08} emissive={emissive ?? '#000000'} emissiveIntensity={emissive ? 0.6 : 0} /></mesh> : null;
 }
 
-function Cables({project, evaluation, highlight, sim}: {project: IndustryProject; evaluation: Evaluation; highlight: readonly string[]; sim: SimResult | null}) {
+/** Punta del cable: casquillo metálico corto en cada extremo. */
+function Ferrule({at, radius}: {at: Vec3; radius: number}) {
+  return <mesh position={at} raycast={() => null} renderOrder={4}><sphereGeometry args={[radius * 1.35, 10, 8]} /><meshStandardMaterial color="#c9ced6" metalness={0.8} roughness={0.3} /></mesh>;
+}
+
+function Cables({project, evaluation, highlight, sim, live: liveRoute}: {project: IndustryProject; evaluation: Evaluation; highlight: readonly string[]; sim: SimResult | null; live: {id: string; interior: Vec3[]} | null}) {
   const routes = useMemo(() => routeAll(project), [project.entities, project.poses, project.connections]);
+  const boxes = useMemo(() => [...collisionBoxes(project).values()], [project.entities, project.poses]);
+  const flexed = useMemo(() => { const m = new Map<string, Vec3[]>(); for (const [id, r] of routes) m.set(id, flexCable(r, {blocked: (a, b) => segmentHits(a, b, boxes)})); return m; }, [routes, boxes]);
+  const liveFlex = useMemo(() => { if (!liveRoute) return null; const r = routes.get(liveRoute.id); return r ? flexCable([r[0], ...liveRoute.interior, r[r.length - 1]]) : null; }, [liveRoute, routes]);
   return <>{project.connections.map(c => {
-    const route = routes.get(c.id); if (!route) return null;
+    const route = liveRoute?.id === c.id && liveFlex ? liveFlex : flexed.get(c.id); if (!route) return null;
     const status = evaluation.status[c.id] ?? c.status, strong = highlight.includes(c.id), live = !!sim?.liveConnections.has(c.id);
     const color = live ? '#ff9800' : status === 'invalid' ? '#d9302c' : sim ? '#8d98a8' : CABLE_COLOR[c.kind] ?? '#555f6d';
-    return <CableTube key={c.id} points={route} color={color} radius={CABLE_RADIUS * (strong ? 1.8 : live ? 1.25 : 1)} emissive={live ? '#ff9800' : status === 'invalid' ? '#d9302c' : undefined} />;
+    const r = CABLE_RADIUS * (strong ? 1.8 : live ? 1.25 : 1);
+    return <group key={c.id}>
+      <CableTube points={route} color={color} radius={r} emissive={live ? '#ff9800' : status === 'invalid' ? '#d9302c' : undefined} />
+      <Ferrule at={route[0]} radius={r} /><Ferrule at={route[route.length - 1]} radius={r} />
+    </group>;
   })}</>;
+}
+
+/** Puntos de paso del cable elegido: se arrastran en 3D (plano de la pantalla); el punto claro entre dos tramos añade uno nuevo; doble clic quita. */
+function CableHandles({project, id, dot, controls, onLive, onCommit}: {project: IndustryProject; id: string; dot: number; controls: MutableRefObject<Controls | null>; onLive(l: {id: string; interior: Vec3[]} | null): void; onCommit(interior: Vec3[]): void}) {
+  const {gl, camera: cam, raycaster, invalidate} = useThree();
+  const route = useMemo(() => routeAll(project).get(id) ?? null, [project.entities, project.poses, project.connections, id]);
+  const state = useRef<{interior: Vec3[]; index: number; plane: Plane} | null>(null);
+  const cleanup = useRef<() => void>(() => {});
+  useEffect(() => () => cleanup.current(), []);
+  if (!route) return null;
+  const interior = interiorOf(route), mids = midpointsOf(route);
+  const ndc = (x: number, y: number) => { const r = gl.domElement.getBoundingClientRect(); return new Vector2(((x - r.left) / r.width) * 2 - 1, -((y - r.top) / r.height) * 2 + 1); };
+  const start = (e: ThreeEvent<PointerEvent>, base: Vec3[], index: number) => {
+    e.stopPropagation();
+    const at = new Vector3(...base[index]), normal = cam.getWorldDirection(new Vector3()).negate();
+    state.current = {interior: base, index, plane: new Plane().setFromNormalAndCoplanarPoint(normal, at)};
+    if (controls.current) controls.current.enabled = false;
+    onLive({id, interior: base});
+    const move = (ev: PointerEvent) => {
+      const st = state.current; if (!st) return;
+      raycaster.setFromCamera(ndc(ev.clientX, ev.clientY), cam);
+      const hit = raycaster.ray.intersectPlane(st.plane, new Vector3()); if (!hit) return;
+      const to: Vec3 = [hit.x, Math.max(0.005, hit.y), hit.z];
+      st.interior = moveWaypoint(st.interior, st.index, to); onLive({id, interior: st.interior}); invalidate();
+    };
+    const end = () => { const st = state.current; state.current = null; cleanup.current(); if (controls.current) controls.current.enabled = true; onLive(null); if (st) onCommit(st.interior); };
+    addEventListener('pointermove', move); addEventListener('pointerup', end); addEventListener('pointercancel', end);
+    cleanup.current = () => { removeEventListener('pointermove', move); removeEventListener('pointerup', end); removeEventListener('pointercancel', end); };
+  };
+  return <>
+    {interior.map((p, i) => <mesh key={'w' + i} position={p} renderOrder={7} name="cable-waypoint" onPointerDown={e => start(e, interior, i)} onDoubleClick={e => { e.stopPropagation(); onCommit(removeWaypoint(interior, i)); }}>
+      <sphereGeometry args={[dot * 1.25, 14, 10]} /><meshBasicMaterial color="#2d6ff4" depthTest={false} transparent opacity={0.95} /></mesh>)}
+    {mids.map((p, i) => <mesh key={'m' + i} position={p} renderOrder={7} name="cable-midpoint" onPointerDown={e => start(e, insertWaypoint(interior, i, p), i)}>
+      <sphereGeometry args={[dot * 0.8, 12, 8]} /><meshBasicMaterial color="#ffffff" depthTest={false} transparent opacity={0.9} /></mesh>)}
+  </>;
 }
 
 /** Marcador sobre el motor que gira mientras está alimentado (con «reducir movimiento» queda quieto). */
@@ -118,9 +169,13 @@ function ModelMesh({definitionId, detail, selected, overlapping, glow}: {definit
     const intensity = p.emissive ? 0.9 : glowing ? 0.75 : selected && bodyLike ? 0.4 : 0;
     const color = overlapping && bodyLike ? '#d9534f' : p.color;
     const rotation: [number, number, number] = p.shape === 'cyl' ? (p.axis === 'x' ? [0, 0, Math.PI / 2] : p.axis === 'z' ? [Math.PI / 2, 0, 0] : [0, 0, 0]) : [0, 0, 0];
-    return <mesh key={i} position={p.pos} rotation={rotation} raycast={() => null}>
-      {p.shape === 'box' ? <boxGeometry args={p.size} /> : p.shape === 'cyl' ? <cylinderGeometry args={[p.size[0], p.size[0], p.size[1], 20]} /> : <sphereGeometry args={[p.size[0], 16, 12]} />}
-      <meshStandardMaterial color={color} emissive={emissive} emissiveIntensity={intensity} roughness={p.role === 'metal' || p.role === 'screw' ? 0.35 : 0.7} metalness={p.role === 'metal' || p.role === 'screw' ? 0.7 : 0.05} transparent={p.role === 'lens'} opacity={p.role === 'lens' ? 0.92 : 1} />
+    const shiny = p.role === 'metal' || p.role === 'screw', soft = detail === 'high' && p.shape === 'box' && !p.fine && Math.min(p.size[0], p.size[1], p.size[2]) > 0.012;
+    const mat = <meshStandardMaterial color={color} emissive={emissive} emissiveIntensity={intensity} roughness={shiny ? 0.28 : p.role === 'lens' ? 0.15 : p.role === 'trim' ? 0.45 : 0.55} metalness={shiny ? 0.85 : 0.04} transparent={p.role === 'lens'} opacity={p.role === 'lens' ? 0.92 : 1} />;
+    const shadowed = detail === 'high' && !p.fine;
+    if (soft) return <RoundedBox key={i} args={p.size} radius={Math.min(0.004, Math.min(p.size[0], p.size[1], p.size[2]) * 0.18)} smoothness={3} position={p.pos} raycast={() => null} castShadow={shadowed} receiveShadow>{mat}</RoundedBox>;
+    return <mesh key={i} position={p.pos} rotation={rotation} raycast={() => null} castShadow={shadowed} receiveShadow={detail === 'high'}>
+      {p.shape === 'box' ? <boxGeometry args={p.size} /> : p.shape === 'cyl' ? <cylinderGeometry args={[p.size[0], p.size[0], p.size[1], detail === 'high' ? 32 : 16]} /> : <sphereGeometry args={[p.size[0], detail === 'high' ? 20 : 12, detail === 'high' ? 14 : 8]} />}
+      {mat}
     </mesh>;
   })}</>;
 }
@@ -142,7 +197,18 @@ function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlappin
   </group>;
 }
 
-function Scene({project, selection, camera, cameraNonce, editable, magnet, wiring, pending, evaluation, highlight, onTerminal, sim, simRunning, onOperate, onBlockedDrag, onSelect, onDrop, onCameraRest, justDragged}: IndustriaCanvasProps & {justDragged: MutableRefObject<boolean>}) {
+/** Luz principal con sombras: encuadra la escena (centro y tamaño) y mira al centro. */
+function KeyLight({c, r, shadow}: {c: Vec3; r: number; shadow: boolean}) {
+  const light = useMemo(() => new DirectionalLight('#ffffff', 1.25), []);
+  useEffect(() => {
+    light.position.set(c[0] + r * 0.9, r * 1.8 + 0.5, c[2] + r * 1.1); light.target.position.set(c[0], 0, c[2]); light.target.updateMatrixWorld();
+    light.castShadow = shadow; light.shadow.mapSize.set(2048, 2048); light.shadow.bias = -0.0004; light.shadow.normalBias = 0.003;
+    const cam = light.shadow.camera; cam.left = -r * 1.4; cam.right = r * 1.4; cam.top = r * 1.4; cam.bottom = -r * 1.4; cam.near = 0.1; cam.far = r * 8 + 4; cam.updateProjectionMatrix();
+  }, [light, c, r, shadow]);
+  return <><primitive object={light} /><primitive object={light.target} /></>;
+}
+
+function Scene({project, selection, camera, cameraNonce, editable, magnet, wiring, pending, evaluation, highlight, editCable, onRoute, onTerminal, sim, simRunning, onOperate, onBlockedDrag, onSelect, onDrop, onCameraRest, justDragged}: IndustriaCanvasProps & {justDragged: MutableRefObject<boolean>}) {
   const {gl, camera: cam, raycaster, invalidate, scene} = useThree();
   const controls = useRef<Controls | null>(null);
   const drag = useRef<Drag | null>(null);
@@ -150,6 +216,7 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
   latest.current = {project, magnet, onDrop};
   const [preview, setPreview] = useState<Preview | null>(null);
   const [hover, setHover] = useState<string | null>(null);
+  const [liveCable, setLiveCable] = useState<{id: string; interior: Vec3[]} | null>(null);
   const dist = cam.position.distanceTo(controls.current?.target ?? new Vector3(0, 0.8, 0));
   const coarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches; // dedo: puntos de terminal más grandes
   const dot = Math.min(coarse ? 0.0085 : 0.009, Math.max(coarse ? 0.0085 : 0.005, dist * 0.0035));
@@ -158,6 +225,7 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
   useEffect(() => { let n = 0; scene.traverse(o => { if ((o as {isMesh?: boolean}).isMesh) n++; }); gl.domElement.dataset.meshes = String(n); });
 
   const poses = useMemo(() => (preview ? movedPoses(project, preview.id, preview.shown) : project.poses), [project, preview]);
+  const focus = useMemo(() => { const ps = Object.values(project.poses); if (!ps.length) return {c: [0, 0, 0] as Vec3, r: 1.2}; const xs = ps.map(p => p.position[0]), zs = ps.map(p => p.position[2]), cx = (Math.min(...xs) + Math.max(...xs)) / 2, cz = (Math.min(...zs) + Math.max(...zs)) / 2; return {c: [cx, 0, cz] as Vec3, r: Math.min(12, Math.max(1.2, Math.hypot(Math.max(...xs) - Math.min(...xs), Math.max(...zs) - Math.min(...zs)) / 2 + 0.8))}; }, [project.poses]);
   useEffect(() => { invalidate(); }, [poses, invalidate]);
 
   const cleanup = useRef<() => void>(() => {});
@@ -216,8 +284,11 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
   const dragging = preview !== null;
   const ghostEntity = preview?.candidate ? project.entities.find(x => x.id === preview.id) : undefined;
   return <>
-    <ambientLight intensity={0.9} />
-    <directionalLight position={[6, 10, 4]} intensity={1.1} />
+    <hemisphereLight args={['#ffffff', '#b9c3d1', 0.75]} />
+    <ambientLight intensity={0.25} />
+    <KeyLight c={focus.c} r={focus.r} shadow={project.entities.length <= 80} />
+    <directionalLight position={[-focus.r * 1.2, focus.r * 0.8 + 0.3, -focus.r * 0.6]} intensity={0.4} />
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.002, 0]} receiveShadow raycast={() => null}><planeGeometry args={[80, 80]} /><shadowMaterial opacity={0.2} /></mesh>
     <Grid args={[40, 40]} cellSize={0.5} cellThickness={0.6} cellColor="#d5dae1" sectionSize={5} sectionThickness={1} sectionColor="#bcc4cf" fadeDistance={40} fadeStrength={1} infiniteGrid />
     {project.entities.map(e => {
       const pose = poses[e.id]; if (!pose) return null;
@@ -236,14 +307,15 @@ function Scene({project, selection, camera, cameraNonce, editable, magnet, wirin
       <Line points={[preview.pose.position, preview.candidate.point]} color="#2d6ff4" lineWidth={1.5} dashed dashSize={0.04} gapSize={0.03} />
       <mesh position={preview.candidate.point}><sphereGeometry args={[0.022, 14, 10]} /><meshBasicMaterial color="#1f9d55" depthTest={false} transparent opacity={0.95} /></mesh>
     </>}
-    <Cables project={project} evaluation={evaluation} highlight={highlight} sim={sim} />
+    <Cables project={project} evaluation={evaluation} highlight={highlight} sim={sim} live={liveCable} />
+    {editable && !wiring && editCable && project.connections.some(c => c.id === editCable) && <CableHandles project={project} id={editCable} dot={dot} controls={controls} onLive={setLiveCable} onCommit={interior => onRoute(editCable, interior)} />}
     <CameraRig camera={camera} nonce={cameraNonce} onRest={onCameraRest} controls={controls} />
   </>;
 }
 
 export default function IndustriaCanvas(props: IndustriaCanvasProps) {
   const justDragged = useRef(false);
-  return <Canvas className="rb-canvas ind-canvas" frameloop="demand" dpr={[1, 1.75]} camera={{position: props.camera.position, fov: 45, near: 0.05, far: 500}} gl={{alpha: true, antialias: true}}
+  return <Canvas className="rb-canvas ind-canvas" frameloop="demand" shadows="soft" dpr={[1, 1.75]} camera={{position: props.camera.position, fov: 45, near: 0.05, far: 500}} gl={{alpha: true, antialias: true}}
     onCreated={({gl}) => { gl.domElement.addEventListener('webglcontextlost', e => { e.preventDefault(); props.onContextLost(); }); }}
     onPointerMissed={() => { if (!justDragged.current) props.onSelect([]); }} data-testid="industria-canvas">
     <Scene {...props} justDragged={justDragged} />

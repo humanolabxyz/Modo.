@@ -144,3 +144,4 @@
 .ind-editor{border:1px solid #e1e6ee;border-radius:14px;padding:6px 12px;background:#fafbfd}.ind-editor>summary{cursor:pointer;font-weight:700;padding:8px 0}.ind-editor textarea{width:100%;box-sizing:border-box;border:1px solid #d5dbe5;border-radius:12px;padding:8px 12px;font:inherit;resize:vertical}
 .ind-steps-edit{border:1px solid #e1e6ee;border-radius:12px;padding:8px 12px;display:grid;gap:6px}.ind-steps-edit legend{font-size:12px;font-weight:600;color:var(--id-muted,#667487);padding:0 6px}.ind-step{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.ind-error{color:#a23222}
 .ind-steps li>button{margin-left:auto;border:0;background:none;cursor:pointer;color:#667487}
+.ind-wire-tools{display:flex;gap:6px;flex-wrap:wrap}.ind-wire-tools button{min-height:36px;padding:4px 12px;border:1px solid #cfd6e1;border-radius:12px;background:#f3f5f9;font:inherit;color:inherit;cursor:pointer}.ind-wire-tools button:disabled{opacity:.5;cursor:default}
