@@ -1,5 +1,5 @@
 import {useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type FocusEvent} from 'react';
-import {ArrowRight, Bot, BookOpen, ChevronDown, FlaskConical, FolderOpen, PanelTop, Pause, Play, Plug, UsersRound} from 'lucide-react';
+import {ArrowRight, Bot, BookOpen, ChevronDown, Factory, FlaskConical, FolderOpen, PanelTop, Pause, Play, Plug, UsersRound} from 'lucide-react';
 import {InstallApp} from './InstallApp';
 import {HumanoLabBand} from './HumanoLabBand';
 import type {PracticeDocument} from '../data/practice';
@@ -14,6 +14,7 @@ const spaces = [
   {id:'lab', name:'Laboratorio', Icon:FlaskConical, href:'/laboratorio/', color:'dark'},
   {id:'community', name:'Comunidad', Icon:UsersRound, href:'/comunidad/', color:'blue'},
   {id:'robotics', name:'Robótica', Icon:Bot, href:'/robotica/', color:'dark', badge:'Beta'},
+  {id:'industry', name:'Industria', Icon:Factory, href:'/industria/', color:'dark', badge:'Beta'},
 ];
 const padded = (word: string) => word.padStart(word.length + Math.floor((9-word.length)/2), ' ').padEnd(9, ' ');
 
@@ -68,7 +69,7 @@ function SplitFlap() {
 
 export function Home({practice, onEnterPanel, onContinue, onImport, ready}: HomeProps) {
   const [selected, setSelected] = useState(1);
-  // En escritorio hay cinco tarjetas: la inicial es Laboratorio para que todas queden centradas y en orden (en tablet/teléfono sigue Estudio).
+  // En escritorio hay seis tarjetas (-2…+3): la inicial es Laboratorio para que queden en orden y el conjunto centrado (en tablet/teléfono sigue Estudio).
   useLayoutEffect(()=>{if(matchMedia('(min-width:1101px)').matches)setSelected(2);},[]);
   const [drag, setDrag] = useState(0);
   const gesture = useRef<{x:number; y:number; pointer:number; horizontal:boolean; dx:number}|null>(null);

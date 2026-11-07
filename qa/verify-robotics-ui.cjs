@@ -37,7 +37,7 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
       {
         const {c, p} = await open(browser, name, w, h, touch, base + '/');
         await p.locator('[data-module=panel]:not(:disabled)').waitFor();
-        assert.equal(await p.locator('.home-module').count(), 5, 'el inicio tiene 5 tarjetas');
+        assert.equal(await p.locator('.home-module').count(), 6, 'el inicio tiene 6 tarjetas');
         const card = p.locator('[data-module=robotics]');
         assert.equal(await card.getAttribute('aria-label'), 'Abrir Robótica · Beta');
         assert.equal(await card.locator('img').count(), 0, 'sin ilustración (D-09 pendiente)');

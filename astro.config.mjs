@@ -55,7 +55,7 @@ const roboticsOnlyChunks=(root,files)=>{
   return seen;
  };
  const entries=page=>{const f=byUrl.get(page);if(!f)return [];return [...readFileSync(f,'utf8').matchAll(/(?:src|href|component-url|renderer-url)="(\/_astro\/[^"]+\.js)"/g)].map(m=>m[1])};
- const heavyPages=['/robotica/','/arena/'];
+ const heavyPages=['/robotica/','/arena/','/industria/'];
  const others=reach([...byUrl.keys()].filter(u=>u.endsWith('.html')&&!heavyPages.some(page=>u.startsWith(page))).flatMap(entries));
  return new Set([...reach(heavyPages.flatMap(page=>entries(page+'index.html')))].filter(u=>!others.has(u)));
 };

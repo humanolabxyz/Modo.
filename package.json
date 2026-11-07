@@ -1,6 +1,6 @@
 {
   "name": "panellab-inacap-fase1",
-  "version": "2.8.2",
+  "version": "2.18.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -12,6 +12,7 @@
     "preview": "astro preview --host 127.0.0.1",
     "prepare:offline": "node scripts/prepare-geogebra.mjs && npm run check && npm run build",
     "offline": "node scripts/open-offline.mjs",
+    "verify:industria": "node qa/run-industria.mjs",
     "verify:offline": "node qa/verify-offline-travel.cjs",
     "check": "tsc --noEmit",
     "verify:academic": "node qa/verify-academic.mjs",

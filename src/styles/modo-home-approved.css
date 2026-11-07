@@ -108,3 +108,11 @@
 .home-module-art.art-robotics{top:14%;height:72%;width:130%;left:-15%}
 @media(max-width:1100px){.home-module-art.art-robotics{top:17%;height:68%;width:130%;left:-15%}}
 @media(max-width:600px){.home-module-art.art-robotics{top:18%;height:67%;width:135%;left:-17.5%}}
+
+/* Seis tarjetas en escritorio: posiciones -2…+3. Se reduce la tarjeta y se desplaza media separación para que el conjunto quede centrado y completo. */
+@media(min-width:1101px){.home-carousel{--card-w:clamp(170px,14.4vw,330px);--card-step:calc(var(--card-w)*1.02)}.modo-reference-home .home-module{left:calc(50% - var(--card-step)*.5)}}
+
+/* Industria: arte aislado de la estación de bombeo; deja libre la etiqueta inferior. */
+.home-module-art.art-industry{top:15%;height:66%;width:124%;left:-12%}
+@media(max-width:1100px){.home-module-art.art-industry{top:21%;height:56%;width:124%;left:-12%}}
+@media(max-width:600px){.home-module-art.art-industry{top:22%;height:55%;width:126%;left:-13%}}
