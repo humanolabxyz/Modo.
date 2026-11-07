@@ -165,10 +165,82 @@ function pushbutton(s: ShapeDef, color: string): Part[] {
   return [box(0, -h * 0.12, -d * 0.2, w, h * 0.7, d * 0.6, '#39424c', 'body'), box(0, h * 0.28, d * 0.05, w * 0.98, h * 0.2, d * 0.5, DARK, 'dark', true), cyl(0, -h * 0.12, d * 0.12, r * 1.2, 0.006, 'z', METAL, 'metal', true), cyl(0, -h * 0.12, d * 0.12 + 0.012, r, 0.014, 'z', color, 'trim'), box(0, -h * 0.45, -d / 2 + 0.003, Math.min(w * 0.6, 0.03), h * 0.1, 0.006, METAL, 'metal', true), ...screws(s)];
 }
 
+// ——— Detalle fino de cada equipo (fase 16): rasgos de los aparatos reales (cubrebornes, ventanas, diales, conectores, aletas, bridas…). Todo `fine`: con muchas piezas
+// en escena se omite y no cambia las cajas ni los terminales. Son rasgos genéricos de cada TIPO de equipo, no la réplica de un producto ni de un fabricante. ———
+const glass = (p: Part, opacity: number): Part => ({...p, opacity});
+const ENRICH: Record<string, Builder> = {
+  'breaker-1p': s => breakerExtra(s), 'breaker-3p': s => breakerExtra(s),
+  'contactor-3p': s => { const [w, h, d] = s.size, dk = shade(s.color, -0.3); return [
+    box(0, h / 2 - 0.006, d * 0.3, w * 0.96, 0.012, d * 0.4, dk, 'dark', true), box(0, -h / 2 + 0.006, d * 0.3, w * 0.96, 0.012, d * 0.4, dk, 'dark', true),
+    box(w * 0.18, h * 0.2, d / 2 + 0.0008, w * 0.4, h * 0.09, 0.0012, WHITE, 'label', true), ...[-0.3, 0, 0.3].map(k => box(w * k, h * 0.02, d / 2 + 0.002, w * 0.12, h * 0.2, 0.002, '#10151b', 'dark', true)),
+    box(-w * 0.5 + 0.0015, -h * 0.4, d * 0.1, 0.003, 0.012, 0.02, METAL, 'metal', true), box(w * 0.5 - 0.0015, -h * 0.4, d * 0.1, 0.003, 0.012, 0.02, METAL, 'metal', true), box(0, h * 0.4, d / 2 + 0.0006, w * 0.8, 0.0012, 0.0012, shade(s.color, 0.4), 'label', true)]; },
+  'rele-termico': s => { const [w, h, d] = s.size; return [
+    cyl(-w * 0.2, h * 0.24, d / 2 + 0.003, 0.0065, 0.006, 'z', '#2a5db0', 'trim', true), box(w * 0.18, h * 0.24, d / 2 + 0.0008, w * 0.5, h * 0.05, 0.0012, WHITE, 'label', true), ...[0, 1, 2, 3, 4].map(i => box(w * 0.18 - w * 0.2 + i * w * 0.1, h * 0.28, d / 2 + 0.0015, 0.0012, 0.006, 0.0012, DARK, 'dark', true)),
+    box(0, h / 2 - 0.006, d * 0.3, w * 0.96, 0.012, d * 0.4, shade(s.color, -0.3), 'dark', true), box(0, -h / 2 + 0.006, d * 0.3, w * 0.96, 0.012, d * 0.4, shade(s.color, -0.3), 'dark', true)]; },
+  'fuente-cc': s => { const [w, h, d] = s.size; return [
+    cyl(w * 0.25, -h * 0.08, d / 2 + 0.002, 0.0035, 0.004, 'z', METAL, 'metal', true), box(-w * 0.15, -h * 0.08, d / 2 + 0.0008, w * 0.4, h * 0.08, 0.0012, WHITE, 'label', true),
+    ...[-0.38, 0.38].map(sx => box(sx * w, 0, d * 0.3, 0.0012, h * 0.7, d * 0.38, shade(s.color, -0.25), 'dark', true)), box(0, h / 2 - 0.006, d * 0.3, w * 0.96, 0.012, d * 0.4, '#20262d', 'dark', true), box(0, -h / 2 + 0.006, d * 0.3, w * 0.96, 0.012, d * 0.4, '#20262d', 'dark', true)]; },
+  'plc-generico': s => { const [w, h, d] = s.size; return [
+    box(0, h / 2 - 0.007, d * 0.32, w * 0.94, 0.012, d * 0.36, '#3a7d54', 'trim', true), box(0, -h / 2 + 0.007, d * 0.32, w * 0.94, 0.012, d * 0.36, '#d98a2b', 'trim', true),
+    glass(box(w * 0.3, h * 0.1, d / 2 + 0.0015, w * 0.26, h * 0.16, 0.003, '#123047', 'lens', true), 0.95), box(w * 0.3, h * 0.1, d / 2 + 0.0034, w * 0.22, h * 0.1, 0.0006, '#7fd3ff', 'lens', true, '#2a7ea8'),
+    box(w * 0.33, -h * 0.12, d / 2 + 0.001, 0.017, 0.012, 0.002, '#1a1f26', 'dark', true), box(w * 0.33, -h * 0.12, d / 2 + 0.0023, 0.015, 0.01, 0.0008, METAL, 'metal', true), cyl(-w * 0.2, -h * 0.12, d / 2 + 0.002, 0.005, 0.004, 'z', '#c8ced6', 'metal', true),
+    ...[0, 1, 2].map(i => ball(w * 0.18 + i * 0.006, -h * 0.02, d / 2 + 0.002, 0.0022, ['#37d67a', '#f0a020', '#d9302c'][i], 'trim', true, ['#37d67a', '#f0a020', '#d9302c'][i]))]; },
+  'borne-paso': s => { const [w, h, d] = s.size; return [
+    box(0, h * 0.04, d * 0.5 + 0.0004, w * 0.8, h * 0.12, 0.0008, WHITE, 'label', true), box(0, 0, d * 0.5 - 0.002, w * 0.7, 0.005, 0.0025, DARK, 'dark', true),
+    box(w / 2 - 0.0003, 0, 0, 0.0006, h * 0.92, d * 0.82, shade(s.color, 0.25), 'front', true), box(0, h * 0.32, d * 0.5 - 0.004, w * 0.8, 0.008, 0.008, shade(s.color, -0.3), 'dark', true), box(0, -h * 0.32, d * 0.5 - 0.004, w * 0.8, 0.008, 0.008, shade(s.color, -0.3), 'dark', true)]; },
+  'pulsador-na': s => buttonExtra(s, 'I'), 'pulsador-nc': s => buttonExtra(s, 'O'),
+  piloto: s => { const [w, h, d] = s.size, r = Math.min(w, h) * 0.38; return [cyl(0, 0, d * 0.12 + 0.002, r * 1.3, 0.003, 'z', shade(METAL, -0.1), 'metal', true), cyl(0, 0, d * 0.12 - 0.003, r * 1.45, 0.003, 'z', '#2a2f36', 'dark', true), ball(-r * 0.3, r * 0.3, d * 0.12 + 0.0055, r * 0.18, WHITE, 'label', true)]; },
+  'red-3f': s => { const [w, h, d] = s.size; return [
+    cyl(w * 0.4, 0.02, d / 2 + 0.008, 0.012, 0.016, 'z', METAL, 'metal', true), box(w * 0.4, 0.02, d / 2 + 0.013, 0.012, 0.05, 0.008, '#2a2f36', 'trim', true), box(0, -h * 0.05, d / 2 + 0.0004, w * 0.96, 0.002, 0.0008, shade(s.color, -0.3), 'dark', true),
+    ...[0, 1, 2, 3].map(i => box(-w * 0.3 + i * 0.03, -h * 0.35, d / 2 + 0.001, 0.02, 0.004, 0.0016, DARK, 'dark', true)), box(-w * 0.35, h * 0.12, d / 2 + 0.0008, 0.06, 0.05, 0.0012, '#f2c200', 'label', true), box(-w * 0.35, h * 0.115, d / 2 + 0.0016, 0.008, 0.022, 0.0008, DARK, 'dark', true),
+    cyl(0, h / 2 - 0.011, 0, 0.012, 0.012, 'y', '#2a2f36', 'dark', true)]; },
+  'motor-3p': s => { const [w, h, d] = s.size, cy = 0.09 - s.center[1], r = Math.min(h, d) * 0.42; return [
+    cyl(0.02, h / 2 - 0.0125 - 0.002, 0.04, 0.0085, 0.022, 'z', '#2a2f36', 'dark', true), box(w * 0.46 - 0.007, cy, 0, 0.004, 0.006, 0.014, DARK, 'dark', true),
+    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * w * 0.3, -h / 2 + 0.021, sz * d * 0.4, 0.007, 0.004, 'y', METAL, 'metal', true))),
+    cyl(0, cy + r + 0.004, 0, 0.007, 0.012, 'y', METAL, 'metal', true), cyl(-w * 0.43, cy, 0, r * 0.4, 0.004, 'x', '#2a2f36', 'dark', true)]; },
+  'brazo-robot': s => { const dark = '#30353d', o = s.color; return [
+    cyl(-0.12, 0.22, 0.085, 0.045, 0.05, 'z', dark, 'dark', true), cyl(-0.12, 0.22, -0.085, 0.04, 0.03, 'z', shade(o, -0.2), 'body', true), cyl(0.2, 0.22, 0.07, 0.035, 0.03, 'z', dark, 'dark', true),
+    box(-0.12, -0.05, 0, 0.104, 0.02, 0.144, '#f2f2f2', 'label', true), box(0.06, 0.22, 0.0, 0.3, 0.012, 0.124, '#f2f2f2', 'label', true), box(0.18, 0.0, 0, 0.004, 0.025, 0.034, '#1a1f26', 'dark', true), box(0.22, 0.0, 0, 0.004, 0.025, 0.034, '#1a1f26', 'dark', true),
+    ...[0, 1, 2, 3].map(i => cyl(-0.12 + Math.cos(i * 1.57) * 0.15, -0.44, Math.sin(i * 1.57) * 0.15, 0.01, 0.01, 'y', METAL, 'metal', true)), cyl(-0.12, -0.255, 0, 0.17, 0.006, 'y', '#f2f2f2', 'label', true)]; },
+  compresor: s => { const [w, h, d] = s.size; return [
+    cyl(0.1, -0.02, 0, 0.014, 0.05, 'y', BRASS, 'metal', true), cyl(0.18, -0.025, 0, 0.012, 0.03, 'y', '#2a2f36', 'dark', true), cyl(-0.12, 0.372, 0, 0.04, 0.04, 'y', '#2a2f36', 'dark', true), box(-0.12, 0.1, 0.101, 0.2, 0.08, 0.002, '#2a2f36', 'dark', true),
+    cyl(0.28, -0.37, 0.0, 0.01, 0.03, 'y', BRASS, 'metal', true), ...[-0.3, -0.2, 0.2, 0.3].map(x => cyl(x, -0.2, 0, 0.1705, 0.006, 'x', shade(s.color, -0.35), 'dark', true)), ...[-1, 1].map(sx => cyl(sx * 0.25, -0.395, d * 0.36, 0.012, 0.012, 'y', '#2a2f36', 'dark', true))]; },
+  'valvula-5-2': s => { const [w, h, d] = s.size; return [
+    ...[-1, 1].map(sx => cyl(sx * w * 0.47, 0.012, 0, 0.007, 0.006, 'x', '#c0392b', 'trim', true)), box(w * 0.4, h / 2 + 0.008, 0, 0.018, 0.02, 0.018, '#1a1f26', 'trim', true), ...[-0.3, 0.3].map(sx => cyl(w * sx, -h / 2 + 0.003, d / 2 - 0.008, 0.005, 0.01, 'y', BRASS, 'metal', true)), box(0, h * 0.2, d / 2 + 0.0006, w * 0.5, 0.004, 0.0012, WHITE, 'label', true)]; },
+  'cilindro-neumatico': s => { const [w, h, d] = s.size; return [
+    ...[-1, 1].flatMap(sy => [-1, 1].map(sz => cyl(-0.06, sy * 0.027, sz * 0.027, 0.003, 0.3, 'x', METAL, 'metal', true))), cyl(-0.18, 0.032, 0, 0.004, 0.012, 'y', '#c0392b', 'trim', true), cyl(0.06, 0.032, 0, 0.004, 0.012, 'y', '#c0392b', 'trim', true), cyl(0.07, 0, 0, 0.012, 0.012, 'x', '#2a2f36', 'dark', true), box(0.1, 0, 0, 0.012, 0.005, 0.05, DARK, 'dark', true)]; },
+  tanque: s => { return [
+    cyl(0, 0.43, 0, 0.1, 0.02, 'y', METAL, 'metal', true), cyl(0.15, 0.46, 0, 0.012, 0.1, 'y', '#8a929e', 'metal', true), ...[0.1, -0.12].map(y => cyl(0, y, 0, 0.2815, 0.006, 'y', '#7d8a98', 'metal', true)),
+    ...[-1, 1].map(sx => box(sx * 0.2, -0.02, -0.28, 0.012, 0.74, 0.01, '#8a929e', 'metal', true)), cyl(0, 0.46, 0, 0.1, 0.004, 'y', '#2a2f36', 'dark', true)]; },
+  'sensor-inductivo': s => [cyl(0.0165, 0.012, 0, 0.0062, 0.01, 'x', METAL, 'metal', true), box(0.011, 0.012, 0, 0.003, 0.016, 0.016, '#2a2f36', 'dark', true), cyl(0, -0.03, 0, 0.0108, 0.002, 'y', '#c8ced6', 'metal', true)],
+  'sensor-fotoelectrico': s => { const [w, h, d] = s.size; return [
+    cyl(w * 0.5 + 0.006, 0.004, 0, 0.006, 0.01, 'x', METAL, 'metal', true), cyl(-w * 0.25, h * 0.5 - 0.003, 0, 0.004, 0.006, 'y', '#e8a317', 'trim', true), box(0, -h * 0.5 + 0.004, 0, w * 1.2, 0.006, d * 0.7, '#2a2f36', 'dark', true), ...[-1, 1].map(sx => box(sx * w * 0.52, -h * 0.5 + 0.004, 0, 0.004, 0.006, 0.01, DARK, 'dark', true))]; },
+  'paro-emergencia': s => [cyl(0, 0.011, 0, 0.031, 0.002, 'y', '#f2c200', 'trim', true), cyl(0, 0.003, 0, 0.0365, 0.002, 'y', '#f2c200', 'trim', true), box(0, -0.018, 0.0308, 0.03, 0.01, 0.0012, WHITE, 'label', true)],
+  'cinta-transportadora': s => { const [w, h, d] = s.size, top = h / 2; return [
+    ...[-1, 1].flatMap(sx => [-1, 1].map(sz => box(sx * (w / 2 - 0.05), -h / 2 + 0.01, sz * (d / 2 - 0.05), 0.1, 0.02, 0.1, '#20262d', 'dark', true))), box(0, top - 0.06, d / 2 - 0.0006, w - 0.02, 0.02, 0.0012, '#f2c200', 'label', true), box(0, top - 0.06, -d / 2 + 0.0006, w - 0.02, 0.02, 0.0012, '#f2c200', 'label', true),
+    box(w / 2 - 0.05, top - 0.07, 0, 0.1, 0.1, d - 0.1, shade(s.color, -0.2), 'dark', true), box(-w / 2 + 0.05, top - 0.07, 0, 0.1, 0.1, d - 0.1, shade(s.color, -0.2), 'dark', true)]; },
+  'mesa-trabajo': s => { const [w, h, d] = s.size; return [...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * (w / 2 - 0.04), -h / 2 + 0.004, sz * (d / 2 - 0.04), 0.022, 0.008, 'y', '#20262d', 'dark', true))), box(0, -h / 2 + 0.215, d / 2 - 0.06, w - 0.1, 0.05, 0.004, shade(s.color, -0.25), 'dark', true)]; },
+  'valla-seguridad': s => { const [w, h, d] = s.size; return [box(w / 2 - 0.03, 0.1, d / 2 + 0.0004, 0.04, 0.12, 0.0008, '#f2c200', 'label', true), box(w / 2 - 0.03, 0.1, d / 2 + 0.0012, 0.03, 0.012, 0.001, DARK, 'dark', true), ...[-1, 1].map(sx => cyl(sx * (w / 2 - 0.03), h / 2 - 0.1, 0, 0.012, 0.02, 'z', METAL, 'metal', true))]; },
+};
+
+/** Detalle de los interruptores automáticos: cubrebornes transparentes, indicador de posición y rótulo de características. */
+function breakerExtra(s: ShapeDef): Part[] {
+  const [w, h, d] = s.size;
+  return [glass(box(0, h / 2 - 0.011, d * 0.28, w * 0.9, 0.007, d * 0.38, '#a9bdd3', 'lens', true), 0.4), glass(box(0, -h / 2 + 0.011, d * 0.28, w * 0.9, 0.007, d * 0.38, '#a9bdd3', 'lens', true), 0.4),
+    box(0, -h * 0.2, d / 2 + 0.0008, w * 0.8, h * 0.09, 0.0012, WHITE, 'label', true), box(0, h * 0.37, d / 2 + 0.0008, w * 0.8, 0.003, 0.0012, DARK, 'dark', true),
+    ...(poleXs(s).length ? poleXs(s) : [0]).map(x => box(x, h * 0.2, d / 2 + 0.0008, Math.min(0.012, w * 0.34), 0.004, 0.0012, '#d62b2b', 'label', true))];
+}
+/** Pulsadores: aro moleteado y marca I (NA) u O (NC) sobre la cabeza. */
+function buttonExtra(s: ShapeDef, mark: 'I' | 'O'): Part[] {
+  const [w, h, d] = s.size, r = Math.min(w, h) * 0.34, y = -h * 0.12, z = d * 0.12 + 0.0195;
+  return [cyl(0, y, d * 0.12 + 0.003, r * 1.35, 0.003, 'z', shade(METAL, -0.1), 'metal', true), cyl(0, y, d * 0.12 - 0.003, r * 1.5, 0.003, 'z', '#20262d', 'dark', true),
+    ...(mark === 'I' ? [box(0, y, z, r * 0.16, r * 0.9, 0.001, WHITE, 'label', true)] : [cyl(0, y, z, r * 0.4, 0.001, 'z', WHITE, 'label', true), cyl(0, y, z + 0.0006, r * 0.26, 0.001, 'z', '#c0392b', 'label', true)])];
+}
+
 /** Primitivas de una pieza en el sistema local del origen de su pose (ya desplazadas al centro de la caja del catálogo). */
 export function modelParts(definitionId: string, detail: Detail = 'high'): Part[] {
   const shape = shapeOf(definitionId), build = BUILDERS[definitionId];
-  const parts = build ? build(shape) : [box(0, 0, 0, shape.size[0], shape.size[1], shape.size[2], shape.color, 'body')];
+  const parts = build ? [...build(shape), ...(ENRICH[definitionId]?.(shape) ?? [])] : [box(0, 0, 0, shape.size[0], shape.size[1], shape.size[2], shape.color, 'body')];
   return parts.filter(p => detail === 'high' || !p.fine).map(p => ({...p, pos: [p.pos[0] + shape.center[0], p.pos[1] + shape.center[1], p.pos[2] + shape.center[2]] as Vec3}));
 }
 
