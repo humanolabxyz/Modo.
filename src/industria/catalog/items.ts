@@ -60,6 +60,11 @@ const GABINETE: ShapeDef = {id: 'gabinete', name: 'Gabinete de tablero', family:
 const PLINTO: ShapeDef = {id: 'plinto-tablero', name: 'Plinto de tablero', family: 'Infraestructura', subfamily: 'Tablero', description: 'Base de hormigón con pernos de anclaje y boca de entrada de cables: el gabinete se monta encima, en la zona eléctrica y no en el área de trabajo.' + NOSIM,
   size: [1.2, 0.12, 0.5], center: [0, 0.06, 0], color: '#9ea4ab', status: 'generic', anchors: [BASE, {id: 'top', label: 'Cara superior', role: 'host', kind: 'surface', position: [0, 0.12, 0], normal: [0, 1, 0], multi: true, slide: {axes: [[1, 0, 0], [0, 0, 1]], limits: [[-0.1, 0.1], [-0.1, 0.1]]}}]};
 
+/** Sala eléctrica (fase 19): recinto propio del tablero, como en una planta real: muros, puerta de salida que abre hacia fuera con barra antipánico, señal de alto voltaje, luz de emergencia,
+ *  climatizador, bandeja de cables, extintor, pasillo libre marcado frente al tablero y paso de cables al piso. Sin techo para poder verla desde arriba. */
+const SALA: ShapeDef = {id: 'sala-electrica', name: 'Sala eléctrica', family: 'Infraestructura', subfamily: 'Tablero', description: 'Recinto del tablero con muros, puerta de salida con barra antipánico que abre hacia fuera, señal de peligro, luces, climatizador, bandeja de cables, extintor y el pasillo libre marcado en el piso. Los cables salen por una ranura al canal de piso. Sin techo, para verla desde arriba.' + NOSIM,
+  size: [5, 3.6, 3.4], center: [0, 1.8, 0], color: '#cfd3d8', status: 'generic', anchors: [BASE]};
+
 /** Canaleta ranurada para tablero: los cables viajan por dentro y salen por las ranuras laterales. Se monta sobre la placa. */
 const DORSO: AnchorDef = {id: 'dorso', label: 'Dorso', role: 'child', kind: 'surface', position: [0, 0, -0.025], normal: [0, 0, -1], up: [0, 1, 0]};
 const DUCTS: readonly ShapeDef[] = [
@@ -173,6 +178,7 @@ export const ITEMS: readonly ShapeDef[] = [
   ...BORNES,
   GABINETE,
   PLINTO,
+  SALA,
   ...LINE,
   ...FACTORY,
   ...DUCTS,

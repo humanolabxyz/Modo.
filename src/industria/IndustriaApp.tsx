@@ -8,6 +8,7 @@ import {GENERIC_NOTE, shapeOf, STATUS_LABEL} from './build/shapes.ts';
 import {countByFamily, FAMILIES, searchItems} from './catalog/search.ts';
 import {allTerminals, evaluate, MAX_WIRES_PER_TERMINAL, refKey, terminalDef} from './wiring/engine.ts';
 import {routeWire, tidyWires, unwire, wire} from './wiring/commands.ts';
+import {CLEAR_DEPTH, CLEAR_HEIGHT, CLEAR_MIN_WIDTH, frontClearance} from './build/clearance.ts';
 import {WIRE_COLORS, WIRE_COLOR_NOTE, wireLook, wireName} from './wiring/colors.ts';
 import {withStatuses} from './wiring/engine.ts';
 import {operableKind, simulate as runSimulation, SIM_ASSUMPTIONS, type SimInputs, type SimResult} from './sim/engine.ts';
@@ -439,6 +440,7 @@ export default function IndustriaApp() {
         <fieldset className="ind-pose" disabled={simulate || !!mountOf} aria-label="Giro"><legend>Giro (°)</legend>
           {(['X', 'Y', 'Z'] as const).map((name, i) => <PoseField key={name} label={`Giro ${name}`} value={rotationDegrees(pose.rotation)[i]} disabled={simulate || !!mountOf} onCommit={v => { if (guardEdit()) api.run(p => moveEntity(p, one.id, {...pose, rotation: pose.rotation.map((r, k) => (k === i ? (v * Math.PI) / 180 : r)) as Vec3})); }} />)}</fieldset>
         {one.definitionId === 'gabinete' && <label className="ind-field"><span>Puerta</span><select value={String(one.props.puerta ?? 'transparente')} disabled={simulate} onChange={e => { if (guardEdit()) api.run(p => setEntityProp(p, one.id, 'puerta', e.target.value)); }}><option value="transparente">Transparente (ver el interior)</option><option value="cerrada">Cerrada</option></select></label>}
+        {one.definitionId === 'gabinete' && (() => { const cl = frontClearance(project, one.id); if (!cl) return null; const names = cl.blockers.map(b => project.entities.find(e => e.id === b)?.label ?? b); return <p className="ind-note" data-clearance={cl.blockers.length ? 'ocupado' : 'libre'} role="status">{cl.blockers.length ? `Espacio libre frente al tablero ocupado por: ${names.join(', ')}.` : 'Espacio libre frente al tablero: despejado.'} Referencia de ejemplo: {String(CLEAR_DEPTH).replace('.', ',')} m de fondo, {String(CLEAR_MIN_WIDTH).replace('.', ',')} m de ancho y {String(CLEAR_HEIGHT).replace('.', ',')} m de altura (valores de otras normas, no contrastados con la norma chilena).</p>; })()}
         {hasVoltage && <PoseField label={one.definitionId === 'red-3f' ? 'Tensión fase–neutro configurada (V)' : 'Tensión de salida configurada (V)'} value={typeof one.props.voltage === 'number' ? one.props.voltage : 0} disabled={simulate} onCommit={v => { if (guardEdit()) api.run(p => setEntityProp(p, one.id, 'voltage', v > 0 ? v : null)); }} />}
         {mountOf ? <div className="ind-mount" data-mounted="true"><p className="ind-note">Montado en <b>{parentLabel}</b> ({mountOf.parent.anchorId} ← {mountOf.child.anchorId}, {mountOf.kind}). Soltar solo quita el montaje.</p>
           <button type="button" className="ind-delete" disabled={simulate} onClick={() => releaseMount(mountOf.id, one.label)}><Unlink size={15} /> Soltar</button></div>

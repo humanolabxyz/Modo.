@@ -154,9 +154,8 @@ export function exampleMiniFactory(): Result<IndustryProject> {
   for (const [id, def, x, y] of [['cn1', 'canaleta', -0.08, 0.86], ['cn2', 'canaleta', -0.08, 0.635], ['cn3', 'canaleta', -0.08, 0.56], ['cn4', 'canaleta', -0.08, 0.335], ['cv1', 'canaleta-vertical', -0.34, 0.6]] as const)
     if (!put(id, def, 'Canaleta', pose(X0 + x, Y0 + y, Z0 + 0.055), 'placa')) return {ok: false, error: fail};
   for (const [i, x] of [-3.4, -2.2, -1, 0.2, 1.4, 2.6, 3.8, 5, 6.2, 7.4, 8.6].entries()) if (!put(`pz${i + 1}`, 'canal-piso', 'Canal de piso', pose(x, 0, 0.15), 'piso')) return {ok: false, error: fail};
-  // La zona eléctrica va cercada por tres lados (el cuarto lado queda abierto hacia el canal de piso)
-  for (const [id, x, z, ry] of [['vz1', -4.5, 1.2, 0], ['vz2', -3.5, 1.2, 0], ['vz3', -2.5, 1.2, 0], ['vz4', -4.5, -0.9, 0], ['vz5', -3.5, -0.9, 0], ['vz6', -2.5, -0.9, 0], ['vz7', -5, -0.4, Math.PI / 2], ['vz8', -5, 0.6, Math.PI / 2]] as const)
-    if (!add(id, 'valla-seguridad', 'Valla de zona eléctrica', {position: [x, 0, z], rotation: [0, ry, 0]})) return {ok: false, error: fail};
+  // La SALA ELÉCTRICA rodea al tablero: muros, puerta de salida que abre hacia fuera, climatizador, bandeja y el pasillo libre marcado frente al gabinete
+  if (!put('sala', 'sala-electrica', 'Sala eléctrica', pose(X0, 0, Z0 + 0.15), 'piso')) return {ok: false, error: fail};
   // Tierra y neutro pasan por sus bornes (se quitan los cables directos del ejemplo base)
   if (!cut(['red', 'PE'], ['motor', 'PE']) || !cut(['red', 'N'], ['fuente', 'N'])) return {ok: false, error: fail || 'No se encontraron los cables base de tierra y neutro.'};
   const T = (entityId: string, terminalId: string) => ({entityId, terminalId});

@@ -211,6 +211,9 @@ function ProcessExtra({definitionId, id, proc, sim}: {definitionId: string; id: 
   return null;
 }
 
+/** Recintos huecos: solo se pueden seleccionar por esta zona (zócalo o base del muro), para no taparle el clic a lo que hay dentro. */
+const HIT_BOX: Record<string, {position: Vec3; size: Vec3}> = {gabinete: {position: [0, 0.05, 0], size: [1, 0.1, 0.35]}, 'sala-electrica': {position: [2.425, 0.15, 0], size: [0.15, 0.3, 3.1]}};
+
 function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlapping, draggable, onDown, xray, terminals, glow, extra, detail, swing, variant, doorMode}: {
   swing?: number; variant?: Variant; doorMode?: string; id: string; definitionId: string; pose: Pose; selected: boolean; ghost?: boolean; showAnchors: boolean; overlapping?: boolean; draggable: boolean; onDown?(e: ThreeEvent<PointerEvent>): void; xray?: boolean; terminals?: ReactNode; glow?: string; extra?: ReactNode; detail?: Detail;
 }) {
@@ -222,8 +225,8 @@ function Piece({id, definitionId, pose, selected, ghost, showAnchors, overlappin
       <ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} only={y => y < 0.12} />
       <group position={[-0.12, 0, 0]} rotation={[0, swing, 0]}><group position={[0.12, 0, 0]}><ModelMesh definitionId={definitionId} detail={detail ?? 'high'} selected={selected} overlapping={overlapping} glow={glow} only={y => y >= 0.12} /></group></group>
     </>}
-    <mesh position={definitionId === 'gabinete' ? [shape.center[0], 0.05, shape.center[2]] : shape.center} onPointerDown={ghost ? undefined : onDown} raycast={ghost || xray ? () => null : undefined}>
-      <boxGeometry args={definitionId === 'gabinete' ? [shape.size[0], 0.1, shape.size[2]] : shape.size} />
+    <mesh position={HIT_BOX[definitionId]?.position ?? shape.center} onPointerDown={ghost ? undefined : onDown} raycast={ghost || xray ? () => null : undefined}>
+      <boxGeometry args={HIT_BOX[definitionId]?.size ?? shape.size} />
       {!ghost ? <meshBasicMaterial transparent opacity={0} depthWrite={false} colorWrite={false} /> : <meshStandardMaterial color={color} transparent={ghost} opacity={ghost ? 0.4 : 1} depthWrite={!ghost} emissive={glow ?? (selected && !ghost ? '#1b4fc4' : '#000000')} emissiveIntensity={glow ? 0.75 : selected && !ghost ? 0.35 : 0} />}
     </mesh>
     {showAnchors && !ghost && <AnchorDots definitionId={definitionId} />}

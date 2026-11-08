@@ -44,10 +44,18 @@ for (const id of ['s1', 's2', 'h1']) assert.ok(p.mounts.some(m => m.child.entity
 assert.ok(p.mounts.some(m => m.child.entityId === 'plc' && m.parent.entityId === 'riel2'), 'el PLC sigue en el riel');
 assert.ok(p.mounts.some(m => m.child.entityId === 'gab' && m.parent.entityId === 'plinto'), 'el gabinete va sobre un plinto');
 const gx = p.poses.gab.position[0], lx = p.poses.cinta.position[0]; assert.ok(gx < lx - 4, 'el tablero está en una zona eléctrica aparte, lejos de la línea de trabajo');
-assert.ok(p.entities.filter(e => e.id.startsWith('vz')).length >= 6, 'la zona eléctrica está cercada');
+const sala = p.poses.sala.position; assert.ok(Math.abs(gx - sala[0]) < 2.5 && Math.abs(p.poses.gab.position[2] - sala[2]) < 1.7, 'el gabinete está dentro de la sala eléctrica');
+const {frontClearance} = await import('../src/industria/build/clearance.ts'); const cl = frontClearance(p, 'gab'); assert.deepEqual(cl.blockers, [], 'el espacio libre frente al tablero está despejado');
 const din = modelParts('pulsador-na', 'high', 'din'), door = modelParts('pulsador-na', 'high', 'door'); assert.notDeepEqual(din.map(x => x.pos), door.map(x => x.pos), 'el mando de puerta tiene su propia forma');
 const g = modelParts('gabinete', 'high'); assert.ok(g.some(x => x.tag === 'door') && g.some(x => x.role === 'metal') && g.length > 20, 'el gabinete lleva puerta, manija, bisagras y detalles');
 assert.deepEqual(mountProblems(p), [], 'los montajes en la puerta coinciden con la geometría');
 ok('el gabinete tiene puerta; marcha, paro y piloto están montados en ella y el PLC dentro, en el riel');
+// Si se pone algo delante del tablero, el espacio libre lo avisa
+const {addEntity} = await import('../src/industria/model/commands.ts');
+const gp = p.poses.gab.position, blocked = addEntity(p, {id: 'obstaculo', definitionId: 'mesa-trabajo', label: 'Mesa', pose: {position: [gp[0], 0, gp[2] + 0.175 + 0.6], rotation: [0, 0, 0]}}).value;
+assert.deepEqual(frontClearance(blocked, 'gab').blockers, ['obstaculo'], 'una mesa delante del tablero ocupa el espacio libre');
+const far = addEntity(p, {id: 'lejos', definitionId: 'mesa-trabajo', label: 'Mesa', pose: {position: [gp[0], 0, gp[2] + 3], rotation: [0, 0, 0]}}).value;
+assert.deepEqual(frontClearance(far, 'gab').blockers, [], 'a más de un metro no molesta');
+ok('el espacio libre frente al tablero avisa si hay algo delante y lo deja pasar si está lejos');
 console.log(`
 ${n} comprobaciones de la mini fábrica OK`);

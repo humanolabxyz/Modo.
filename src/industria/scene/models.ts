@@ -19,7 +19,7 @@ export function shade(hex: string, f: number): string {
   const n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255, mix = (c: number) => clamp(f >= 0 ? c + (255 - c) * f : c * (1 + f));
   return '#' + [mix(r), mix(g), mix(b)].map(c => c.toString(16).padStart(2, '0')).join('');
 }
-const DARK = '#2a3038', METAL = '#c4cad2', WHITE = '#f1f3f6', BRASS = '#b8893b';
+const DARK = '#2a3038', METAL = '#c4cad2', WHITE = '#f1f3f6', BRASS = '#b8893b', BAND_DARK = '#35496b';
 
 const box = (x: number, y: number, z: number, w: number, h: number, d: number, color: string, role: PartRole, fine = false, emissive?: string): Part => ({shape: 'box', pos: [x, y, z], size: [w, h, d], color, role, fine, ...(emissive ? {emissive} : {})});
 const cyl = (x: number, y: number, z: number, r: number, len: number, axis: 'x' | 'y' | 'z', color: string, role: PartRole, fine = false): Part => ({shape: 'cyl', pos: [x, y, z], size: [r, len, 0], axis, color, role, fine});
@@ -100,6 +100,26 @@ const BUILDERS: Record<string, Builder> = {
   'plinto-tablero': s => { const [w, h, d] = s.size; return [
     box(0, 0, 0, w, h, d, s.color, 'body'), box(0, h / 2 - 0.004, 0, w - 0.02, 0.008, d - 0.02, shade(s.color, 0.12), 'front', true), box(0, -0.01, d / 2 + 0.0006, w * 0.5, h * 0.55, 0.0012, '#2a2f36', 'dark', true),
     ...[-1, 1].flatMap(sx => [-1, 1].map(sz => cyl(sx * (w / 2 - 0.05), h / 2 + 0.008, sz * (d / 2 - 0.05), 0.009, 0.016, 'y', METAL, 'metal', true))), box(0, -h / 2 + 0.006, d / 2 + 0.0006, w, 0.012, 0.0012, shade(s.color, -0.2), 'dark', true)]; },
+
+  // — Sala eléctrica (fase 19): muros, puerta de salida con barra antipánico (cierra hacia fuera), ranura de cables, luces, climatizador, bandeja, extintor y pasillo marcado —
+  'sala-electrica': s => { const [w, h, d] = s.size, t = 0.15, c = s.color, dk = shade(c, -0.3), ex = w / 2 - t / 2, top = h / 2, bot = -h / 2, yFloor = bot + 0.021; return [
+    box(0, 0, -(d / 2 - t / 2), w, h, t, c, 'body'), box(0, 0, d / 2 - t / 2, w, h, t, c, 'body'), box(-ex, 0, 0, t, h, d - 2 * t, c, 'body'),
+    box(ex, 0, -0.95, t, h, 1.2, c, 'body'), box(ex, 0.15, -0.05, t, h - 0.3, 0.8, c, 'body'), box(ex, 0, 0.475, t, h, 0.35, c, 'body'), box(ex, bot + 2.1 + (h - 2.1) / 2, 1.1, t, h - 2.1, 0.9, c, 'body'),
+    box(0, bot + 0.02, 0, w - 2 * t, 0.04, d - 2 * t, '#7d838c', 'front'),
+    box(0, bot + 0.07, -(d / 2 - t - 0.001), w - 2 * t, 0.14, 0.002, BAND_DARK, 'dark', true), box(0, bot + 0.07, d / 2 - t - 0.001, w - 2 * t, 0.14, 0.002, BAND_DARK, 'dark', true),
+    // puerta de salida (verde) con barra antipánico por dentro, señal de peligro por fuera y luz de emergencia
+    box(ex - 0.045, bot + 1.05, 1.1, 0.04, 2.05, 0.88, '#3f6f4a', 'trim', true), box(ex - 0.075, bot + 1.0, 1.1, 0.02, 0.05, 0.7, METAL, 'metal', true), box(ex + t / 2 + 0.003, bot + 1.0, 1.1, 0.006, 0.05, 0.12, '#2a2f36', 'dark', true),
+    box(ex + t / 2 + 0.0004, bot + 2.5, 1.1, 0.004, 0.4, 0.4, '#f2c200', 'label', true), box(ex + t / 2 + 0.0045, bot + 2.5, 1.1, 0.002, 0.2, 0.025, DARK, 'dark', true), box(ex + t / 2 + 0.0045, bot + 2.37, 1.1, 0.002, 0.03, 0.03, DARK, 'dark', true),
+    box(ex - t / 2 - 0.03, bot + 2.25, 0.8, 0.06, 0.1, 0.22, '#f1f3f6', 'trim', true), ball(ex - t / 2 - 0.065, bot + 2.25, 0.8, 0.012, '#d62b2b', 'led', true, '#d62b2b'),
+    // luces de trabajo, climatizador, bandeja de cables, extintor
+    ...[-1.4, 0, 1.4].flatMap(x => [-0.8, 0.8].map(z => box(x, top - 0.12, z, 1.1, 0.05, 0.22, '#f4f6f8', 'trim', true, '#fff6d6'))),
+    box(-(w / 2 - t - 0.12), bot + 2.35, -0.9, 0.22, 0.32, 1.0, '#f1f3f6', 'trim', true), box(-(w / 2 - t - 0.025), bot + 2.28, -0.9, 0.03, 0.06, 0.9, '#2a2f36', 'dark', true), box(-(w / 2 - t - 0.12), bot + 2.35, 0.9, 0.18, 0.1, 0.16, '#d9dde2', 'trim', true),
+    box(0, top - 0.55, -0.7, w - 2 * t, 0.06, 0.34, '#9aa3ad', 'metal', true), ...Array.from({length: 17}, (_, i) => box(-w / 2 + t + 0.1 + i * ((w - 2 * t - 0.2) / 16), top - 0.55, -0.7, 0.03, 0.08, 0.36, '#7a838d', 'metal', true)),
+    ...[-1.8, 1.0].map(x => cyl(x, top - 0.55 + 0.22, -0.7, 0.01, 0.4, 'y', '#9aa3ad', 'metal', true)),
+    cyl(ex - t / 2 - 0.1, bot + 0.45, 1.45, 0.08, 0.5, 'y', '#d62b2b', 'trim', true), cyl(ex - t / 2 - 0.1, bot + 0.72, 1.45, 0.03, 0.06, 'y', '#2a2f36', 'dark', true), box(ex - t / 2 - 0.04, bot + 1.25, 1.45, 0.03, 0.25, 0.25, '#d62b2b', 'label', true),
+    // pasillo libre marcado frente al tablero (el tablero queda en el centro, mirando a +z) y franja de seguridad ante la puerta
+    box(0, yFloor, 1.175, 1.4, 0.002, 0.06, '#f2c200', 'label', true), box(-0.7, yFloor, 0.675, 0.06, 0.002, 1.06, '#f2c200', 'label', true), box(0.7, yFloor, 0.675, 0.06, 0.002, 1.06, '#f2c200', 'label', true),
+    box(ex - 0.5, yFloor, 1.1, 0.9, 0.002, 0.9, '#2a2f36', 'label', true), ...[0, 1, 2, 3].map(i => box(ex - 0.5 - 0.35 + i * 0.23, yFloor + 0.001, 1.1, 0.1, 0.002, 0.9, '#f2c200', 'label', true))]; },
 
   // — Escenario de planta (fase 13): formas por tipo de equipo, en el sistema local centrado en la caja del catálogo —
   'piso-planta': s => { const [w, h, d] = s.size, y = h / 2 - 0.0004, line = '#f2c200', joint = shade(s.color, -0.28); return [

@@ -44,7 +44,7 @@ export function segmentHits(a: Vec3, b: Vec3, obbs: readonly Obb[]): boolean {
 /** Cajas de todas las piezas, infladas con el grosor del cable. */
 export function collisionBoxes(p: IndustryProject): Map<string, Obb> {
   const out = new Map<string, Obb>();
-  for (const e of p.entities) { if (e.definitionId === 'gabinete') continue; /* hueco: los cables van por dentro */ const o = obbOfEntity(p, e.id, undefined, -CABLE_RADIUS); if (o) out.set(e.id, {...o, radius: Math.hypot(...o.half)}); }
+  for (const e of p.entities) { if (e.definitionId === 'gabinete' || e.definitionId === 'sala-electrica') continue; /* hueco: los cables van por dentro */ const o = obbOfEntity(p, e.id, undefined, -CABLE_RADIUS); if (o) out.set(e.id, {...o, radius: Math.hypot(...o.half)}); }
   return out;
 }
 
