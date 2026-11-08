@@ -1,6 +1,10 @@
-export const APP_VERSION='2.27.0';
+export const APP_VERSION='2.28.0';
 export const releases=[
- {version:APP_VERSION,date:'7 de noviembre de 2026',title:'Industria (Beta): sala eléctrica y espacio libre frente al tablero',groups:[
+ {version:APP_VERSION,date:'7 de noviembre de 2026',title:'Industria (Beta): puertas que abren',groups:[
+  {title:'Industria',items:['La puerta del gabinete de tablero y la de la sala eléctrica ahora abren: en Propiedades, «Puerta» → Abierta. La hoja gira en su bisagra con animación (100° el gabinete, 90° hacia fuera la sala), con su manija, rejillas, ventilador y rótulos. Los pulsadores y el piloto montados en la puerta del gabinete giran con ella y sus cables los siguen.','Al abrir el gabinete se comprueba el barrido de la hoja: si hay una pieza delante que la haría chocar, Propiedades avisa cuál es.']},
+  {title:'Alcance',items:['El barrido se calcula como el cuadrado que recorre la hoja (conservador). La puerta de la sala no avisa choques. No hay interlock: abrir la puerta no corta la energía.']}
+ ]},
+ {version:'2.27.0',date:'7 de noviembre de 2026',title:'Industria (Beta): sala eléctrica y espacio libre frente al tablero',groups:[
   {title:'Industria',items:['Nueva pieza «Sala eléctrica»: recinto del tablero con muros, puerta de salida verde con barra antipánico que abre hacia fuera, señal de alto voltaje, luz de emergencia, luces de trabajo, climatizador, bandeja de cables, extintor, pasillo libre marcado en el piso frente al gabinete y una ranura por donde los cables salen al canal de piso. Sin techo, para verla desde arriba. En la línea de producción el tablero, el plinto y la red trifásica están dentro de ella, aparte del área de trabajo.','Espacio libre frente al tablero: en Propiedades del gabinete aparece si el pasillo de 1 m de fondo, 1 m de ancho y 2 m de alto delante de la puerta está despejado o qué piezas lo ocupan.']},
   {title:'Alcance',items:['Las medidas del pasillo y de la sala son de ejemplo, tomadas de guías de otros países, y no están contrastadas con la norma chilena. La puerta de la sala no se abre con animación y no se modelan la iluminación en lux ni la carga térmica.']}
  ]},

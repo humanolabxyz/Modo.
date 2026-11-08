@@ -29,3 +29,16 @@ export function frontClearance(p: IndustryProject, id: string): Clearance | null
   const blockers = p.entities.filter(o => !mine.has(o.id) && !IGNORED.has(o.definitionId)).filter(o => { const b = obbOfEntity(p, o.id); return !!b && obbIntersect(zone, b); }).map(o => o.id);
   return {zone, depth: CLEAR_DEPTH, width, height: CLEAR_HEIGHT, blockers};
 }
+
+/** Barrido de la puerta del gabinete al abrir: el cuadrado que recorre la hoja de ancho de la puerta (bisagra a la izquierda). Devuelve las piezas que estorbarían. */
+export function doorSwing(p: IndustryProject, id: string): {zone: Obb; blockers: string[]} | null {
+  const e = p.entities.find(x => x.id === id), pose = p.poses[id];
+  if (!e || !pose || e.definitionId !== 'gabinete') return null;
+  const shape = shapeOf('gabinete'), rot = toTransform(pose).rotation, leaf = shape.size[0] - 0.02;
+  const center = add(pose.position, qRotate(rot, [-shape.size[0] / 2 + leaf / 2, shape.size[1] / 2, shape.size[2] / 2 + leaf / 2]));
+  const axes = [qRotate(rot, [1, 0, 0]), qRotate(rot, [0, 1, 0]), qRotate(rot, [0, 0, 1])] as Obb['axes'];
+  const zone = {center, axes, half: [leaf / 2 - 0.01, shape.size[1] / 2 - 0.01, leaf / 2 - 0.01]} as Obb;
+  const mine = new Set([id, ...descendantsOf(p, id)]);
+  const blockers = p.entities.filter(o => !mine.has(o.id) && !IGNORED.has(o.definitionId)).filter(o => { const b = obbOfEntity(p, o.id); return !!b && obbIntersect(zone, b); }).map(o => o.id);
+  return {zone, blockers};
+}

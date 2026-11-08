@@ -8,7 +8,7 @@ import type {Vec3} from '../model/types.ts';
 
 export type PartRole = 'body' | 'front' | 'trim' | 'metal' | 'screw' | 'lens' | 'led' | 'dark' | 'label';
 /** box: size = [ancho, alto, fondo]; cyl: size = [radio, largo, 0] a lo largo de `axis`; sphere: size = [radio, 0, 0]. */
-export type Part = {shape: 'box' | 'cyl' | 'sphere'; pos: Vec3; size: Vec3; axis?: 'x' | 'y' | 'z'; color: string; role: PartRole; emissive?: string; /** detalle fino: se omite con muchas piezas en escena */ fine?: boolean; /** transparencia de una pieza `lens` (por defecto 0,92) */ opacity?: number; /** `door`: parte de la puerta del gabinete (se vuelve transparente o se deja cerrada según la propiedad «puerta») */ tag?: 'door'};
+export type Part = {shape: 'box' | 'cyl' | 'sphere'; pos: Vec3; size: Vec3; axis?: 'x' | 'y' | 'z'; color: string; role: PartRole; emissive?: string; /** detalle fino: se omite con muchas piezas en escena */ fine?: boolean; /** transparencia de una pieza `lens` (por defecto 0,92) */ opacity?: number; /** `door`: panel de la puerta del gabinete (transparente, cerrado o abierto según la propiedad «puerta»); `doorfit`: herraje o adorno que gira con la puerta pero no se vuelve transparente */ tag?: 'door' | 'doorfit'};
 export type Detail = 'high' | 'low';
 /** `door`: el mando está montado en la puerta de un gabinete (frente redondo asomando, cuerpo y contactos dentro). */
 export type Variant = 'din' | 'door';
@@ -19,6 +19,7 @@ export function shade(hex: string, f: number): string {
   const n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255, mix = (c: number) => clamp(f >= 0 ? c + (255 - c) * f : c * (1 + f));
   return '#' + [mix(r), mix(g), mix(b)].map(c => c.toString(16).padStart(2, '0')).join('');
 }
+const fit = (p: Part): Part => ({...p, tag: 'doorfit'});
 const DARK = '#2a3038', METAL = '#c4cad2', WHITE = '#f1f3f6', BRASS = '#b8893b', BAND_DARK = '#35496b';
 
 const box = (x: number, y: number, z: number, w: number, h: number, d: number, color: string, role: PartRole, fine = false, emissive?: string): Part => ({shape: 'box', pos: [x, y, z], size: [w, h, d], color, role, fine, ...(emissive ? {emissive} : {})});
@@ -108,7 +109,7 @@ const BUILDERS: Record<string, Builder> = {
     box(0, bot + 0.02, 0, w - 2 * t, 0.04, d - 2 * t, '#7d838c', 'front'),
     box(0, bot + 0.07, -(d / 2 - t - 0.001), w - 2 * t, 0.14, 0.002, BAND_DARK, 'dark', true), box(0, bot + 0.07, d / 2 - t - 0.001, w - 2 * t, 0.14, 0.002, BAND_DARK, 'dark', true),
     // puerta de salida (verde) con barra antipánico por dentro, señal de peligro por fuera y luz de emergencia
-    box(ex - 0.045, bot + 1.05, 1.1, 0.04, 2.05, 0.88, '#3f6f4a', 'trim', true), box(ex - 0.075, bot + 1.0, 1.1, 0.02, 0.05, 0.7, METAL, 'metal', true), box(ex + t / 2 + 0.003, bot + 1.0, 1.1, 0.006, 0.05, 0.12, '#2a2f36', 'dark', true),
+    fit(box(ex - 0.045, bot + 1.05, 1.1, 0.04, 2.05, 0.88, '#3f6f4a', 'trim', true)), fit(box(ex - 0.075, bot + 1.0, 1.1, 0.02, 0.05, 0.7, METAL, 'metal', true)), fit(box(ex + t / 2 + 0.003, bot + 1.0, 1.1, 0.006, 0.05, 0.12, '#2a2f36', 'dark', true)),
     box(ex + t / 2 + 0.0004, bot + 2.5, 1.1, 0.004, 0.4, 0.4, '#f2c200', 'label', true), box(ex + t / 2 + 0.0045, bot + 2.5, 1.1, 0.002, 0.2, 0.025, DARK, 'dark', true), box(ex + t / 2 + 0.0045, bot + 2.37, 1.1, 0.002, 0.03, 0.03, DARK, 'dark', true),
     box(ex - t / 2 - 0.03, bot + 2.25, 0.8, 0.06, 0.1, 0.22, '#f1f3f6', 'trim', true), ball(ex - t / 2 - 0.065, bot + 2.25, 0.8, 0.012, '#d62b2b', 'led', true, '#d62b2b'),
     // luces de trabajo, climatizador, bandeja de cables, extintor
@@ -302,7 +303,9 @@ function doorOperator(s: ShapeDef): Part[] {
 /** Primitivas de una pieza en el sistema local del origen de su pose (ya desplazadas al centro de la caja del catálogo). */
 export function modelParts(definitionId: string, detail: Detail = 'high', variant: Variant = 'din'): Part[] {
   const shape = shapeOf(definitionId), build = BUILDERS[definitionId];
-  const parts = variant === 'door' && DOOR_OPERATORS.has(definitionId) ? doorOperator(shape) : build ? [...build(shape), ...(ENRICH[definitionId]?.(shape) ?? [])] : [box(0, 0, 0, shape.size[0], shape.size[1], shape.size[2], shape.color, 'body')];
+  const parts0 = variant === 'door' && DOOR_OPERATORS.has(definitionId) ? doorOperator(shape) : build ? [...build(shape), ...(ENRICH[definitionId]?.(shape) ?? [])] : [box(0, 0, 0, shape.size[0], shape.size[1], shape.size[2], shape.color, 'body')];
+  // Accesorios de la puerta del gabinete (manija, rejillas, ventilador, rótulos): giran con ella; las bisagras, los prensaestopas y las argollas no
+  const parts = definitionId === 'gabinete' ? parts0.map(p => (p.tag || (p.shape === 'cyl' && p.axis === 'y') || p.pos[2] <= shape.size[2] / 2 - 0.03 ? p : ({...p, tag: 'doorfit' as const}))) : parts0;
   return parts.filter(p => detail === 'high' || !p.fine).map(p => ({...p, pos: [p.pos[0] + shape.center[0], p.pos[1] + shape.center[1], p.pos[2] + shape.center[2]] as Vec3}));
 }
 
