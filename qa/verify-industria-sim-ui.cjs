@@ -38,14 +38,14 @@ function project(point, box) {
     assert.match(pr.name, /arranque directo/);
     await p.getByRole('button', {name: 'Piezas', exact: true}).click(); // cierra la biblioteca
     await p.getByRole('button', {name: 'Instrumentos', exact: true}).click();
-    assert.equal(await chip(), 'DETENIDO'); assert.match(await p.locator('[data-sim-state]').innerText(), /detenida/);
+    assert.equal(await chip(), 'Detenida'); assert.match(await p.locator('[data-sim-state]').innerText(), /detenida/);
     assert.ok(await op('QF1').isDisabled());
     await p.screenshot({path: out + '/sim-1-ejemplo.png'});
     pass('El ejemplo de arranque directo crea un proyecto nuevo con 10 piezas, 7 montajes y 19 cables; los mandos están bloqueados con la simulación detenida');
 
     // 2) Ejecutar y operar
     await p.getByRole('button', {name: 'Ejecutar'}).click();
-    assert.equal(await chip(), 'EJECUTANDO'); assert.equal(await state('M1'), 'Sin alimentar'); assert.equal(await state('Fuente'), 'Sin salida');
+    assert.equal(await chip(), 'En marcha'); assert.equal(await state('M1'), 'Sin alimentar'); assert.equal(await state('Fuente'), 'Sin salida');
     await op('QF1').click(); await op('QF2').click();
     assert.equal(await op('QF1').getAttribute('aria-pressed'), 'true'); assert.equal(await state('Fuente'), 'Con salida'); assert.equal(await state('M1'), 'Sin alimentar'); assert.equal(await state('KM1'), 'Sin excitar');
     const s1 = op('S1'), sb = await s1.boundingBox();
@@ -84,9 +84,9 @@ function project(point, box) {
     pass('Pulsar un interruptor en el escenario 3D lo abre o lo cierra');
 
     // 5) Pausa congela los mandos; Detener limpia
-    await p.getByRole('button', {name: 'Pausar'}).click(); assert.equal(await chip(), 'PAUSADO'); assert.ok(await op('QF2').isDisabled());
-    await p.getByRole('button', {name: 'Ejecutar'}).click(); assert.equal(await chip(), 'EJECUTANDO'); assert.ok(!(await op('QF2').isDisabled()));
-    await p.getByRole('button', {name: 'Detener'}).click(); assert.equal(await chip(), 'DETENIDO');
+    await p.getByRole('button', {name: 'Pausar'}).click(); assert.equal(await chip(), 'En pausa'); assert.ok(await op('QF2').isDisabled());
+    await p.getByRole('button', {name: 'Ejecutar'}).click(); assert.equal(await chip(), 'En marcha'); assert.ok(!(await op('QF2').isDisabled()));
+    await p.getByRole('button', {name: 'Detener'}).click(); assert.equal(await chip(), 'Detenida');
     assert.equal(await state('M1'), '—'); assert.equal(await op('QF1').getAttribute('aria-pressed'), 'false');
     pass('Pausar congela los mandos, Ejecutar reanuda y Detener apaga todo y suelta los mandos');
 
@@ -94,9 +94,8 @@ function project(point, box) {
     const saved = JSON.stringify(await stored());
     await p.getByRole('button', {name: 'Ejecutar'}).click(); await op('QF1').click(); await p.waitForTimeout(700);
     assert.equal(JSON.stringify(await stored()), saved, 'operar mandos no cambia el proyecto guardado');
-    assert.ok(await p.getByRole('button', {name: 'Cablear', exact: true}).isEnabled());
-    await p.getByRole('button', {name: 'Cablear', exact: true}).click(); assert.equal(await p.locator('.ind-wire-note').count(), 0, 'no se cablea en Simulación');
-    await p.getByRole('button', {name: 'Construir'}).click(); assert.equal(await chip(), 'DETENIDO');
+    assert.equal(await p.getByRole('button', {name: 'Cablear', exact: true}).count(), 0); assert.equal(await p.locator('.ind-wire-note').count(), 0, 'no se cablea en Simulación');
+    await p.getByRole('button', {name: 'Construir'}).click(); assert.equal(await chip(), 'Detenida');
     pass('Operar mandos no cambia el proyecto; en Simulación no se cablea; Construir detiene la simulación');
 
     // 7) Tensión configurable en el inspector (solo construcción)

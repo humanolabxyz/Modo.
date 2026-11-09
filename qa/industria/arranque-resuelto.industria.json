@@ -1,0 +1,544 @@
+{
+  "format": "modo-industria",
+  "version": 4,
+  "id": "e9212902-19b6-428b-abe7-a01cfd155f9a",
+  "name": "Actividad · Cablear un arranque directo",
+  "createdAt": "2026-11-09T11:51:38.414Z",
+  "updatedAt": "2026-11-09T11:51:38.414Z",
+  "mode": "learning",
+  "entities": [
+    {
+      "id": "placa",
+      "definitionId": "placa",
+      "label": "Placa",
+      "props": {}
+    },
+    {
+      "id": "riel",
+      "definitionId": "riel",
+      "label": "Riel",
+      "props": {}
+    },
+    {
+      "id": "qf1",
+      "definitionId": "breaker-3p",
+      "label": "QF1",
+      "props": {}
+    },
+    {
+      "id": "qf2",
+      "definitionId": "breaker-1p",
+      "label": "QF2",
+      "props": {}
+    },
+    {
+      "id": "fuente",
+      "definitionId": "fuente-cc",
+      "label": "Fuente",
+      "props": {
+        "voltage": 24
+      }
+    },
+    {
+      "id": "km1",
+      "definitionId": "contactor-3p",
+      "label": "KM1",
+      "props": {}
+    },
+    {
+      "id": "s1",
+      "definitionId": "pulsador-na",
+      "label": "S1",
+      "props": {}
+    },
+    {
+      "id": "h1",
+      "definitionId": "piloto",
+      "label": "H1",
+      "props": {}
+    },
+    {
+      "id": "red",
+      "definitionId": "red-3f",
+      "label": "Red 3F",
+      "props": {
+        "voltage": 230
+      }
+    },
+    {
+      "id": "motor",
+      "definitionId": "motor-3p",
+      "label": "M1",
+      "props": {}
+    }
+  ],
+  "mounts": [
+    {
+      "id": "m-efecb3ee",
+      "kind": "surface",
+      "parent": {
+        "entityId": "placa",
+        "anchorId": "cara"
+      },
+      "child": {
+        "entityId": "riel",
+        "anchorId": "dorso"
+      }
+    },
+    {
+      "id": "m-01dba9cc",
+      "kind": "din-rail",
+      "parent": {
+        "entityId": "riel",
+        "anchorId": "riel"
+      },
+      "child": {
+        "entityId": "qf1",
+        "anchorId": "clip"
+      }
+    },
+    {
+      "id": "m-89aaded6",
+      "kind": "din-rail",
+      "parent": {
+        "entityId": "riel",
+        "anchorId": "riel"
+      },
+      "child": {
+        "entityId": "qf2",
+        "anchorId": "clip"
+      }
+    },
+    {
+      "id": "m-171019ca",
+      "kind": "din-rail",
+      "parent": {
+        "entityId": "riel",
+        "anchorId": "riel"
+      },
+      "child": {
+        "entityId": "fuente",
+        "anchorId": "clip"
+      }
+    },
+    {
+      "id": "m-c4c2794e",
+      "kind": "din-rail",
+      "parent": {
+        "entityId": "riel",
+        "anchorId": "riel"
+      },
+      "child": {
+        "entityId": "km1",
+        "anchorId": "clip"
+      }
+    },
+    {
+      "id": "m-468e2193",
+      "kind": "din-rail",
+      "parent": {
+        "entityId": "riel",
+        "anchorId": "riel"
+      },
+      "child": {
+        "entityId": "s1",
+        "anchorId": "clip"
+      }
+    },
+    {
+      "id": "m-72453987",
+      "kind": "din-rail",
+      "parent": {
+        "entityId": "riel",
+        "anchorId": "riel"
+      },
+      "child": {
+        "entityId": "h1",
+        "anchorId": "clip"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "c-69461365",
+      "kind": "power",
+      "a": {
+        "entityId": "red",
+        "terminalId": "L1"
+      },
+      "b": {
+        "entityId": "qf1",
+        "terminalId": "1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-5e14b09c",
+      "kind": "power",
+      "a": {
+        "entityId": "red",
+        "terminalId": "L2"
+      },
+      "b": {
+        "entityId": "qf1",
+        "terminalId": "3"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-0569c663",
+      "kind": "power",
+      "a": {
+        "entityId": "red",
+        "terminalId": "L3"
+      },
+      "b": {
+        "entityId": "qf1",
+        "terminalId": "5"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-408fa9e5",
+      "kind": "power",
+      "a": {
+        "entityId": "qf1",
+        "terminalId": "2"
+      },
+      "b": {
+        "entityId": "km1",
+        "terminalId": "1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-9e7f69a5",
+      "kind": "power",
+      "a": {
+        "entityId": "qf1",
+        "terminalId": "4"
+      },
+      "b": {
+        "entityId": "km1",
+        "terminalId": "3"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-b5a4913b",
+      "kind": "power",
+      "a": {
+        "entityId": "qf1",
+        "terminalId": "6"
+      },
+      "b": {
+        "entityId": "km1",
+        "terminalId": "5"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-b5ee6b6c",
+      "kind": "power",
+      "a": {
+        "entityId": "km1",
+        "terminalId": "2"
+      },
+      "b": {
+        "entityId": "motor",
+        "terminalId": "U1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-77396f83",
+      "kind": "power",
+      "a": {
+        "entityId": "km1",
+        "terminalId": "4"
+      },
+      "b": {
+        "entityId": "motor",
+        "terminalId": "V1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-71cf634a",
+      "kind": "power",
+      "a": {
+        "entityId": "km1",
+        "terminalId": "6"
+      },
+      "b": {
+        "entityId": "motor",
+        "terminalId": "W1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-3614617b",
+      "kind": "earth",
+      "a": {
+        "entityId": "red",
+        "terminalId": "PE"
+      },
+      "b": {
+        "entityId": "motor",
+        "terminalId": "PE"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-d281b98c",
+      "kind": "power",
+      "a": {
+        "entityId": "red",
+        "terminalId": "L1"
+      },
+      "b": {
+        "entityId": "qf2",
+        "terminalId": "1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-c77050c5",
+      "kind": "power",
+      "a": {
+        "entityId": "qf2",
+        "terminalId": "2"
+      },
+      "b": {
+        "entityId": "fuente",
+        "terminalId": "L"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-a63596b7",
+      "kind": "power",
+      "a": {
+        "entityId": "red",
+        "terminalId": "N"
+      },
+      "b": {
+        "entityId": "fuente",
+        "terminalId": "N"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-fd0bbafb",
+      "kind": "control",
+      "a": {
+        "entityId": "fuente",
+        "terminalId": "L+"
+      },
+      "b": {
+        "entityId": "s1",
+        "terminalId": "3"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-302789c1",
+      "kind": "control",
+      "a": {
+        "entityId": "s1",
+        "terminalId": "4"
+      },
+      "b": {
+        "entityId": "km1",
+        "terminalId": "A1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-58ea8029",
+      "kind": "control",
+      "a": {
+        "entityId": "km1",
+        "terminalId": "A2"
+      },
+      "b": {
+        "entityId": "fuente",
+        "terminalId": "M"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-2afbabf4",
+      "kind": "control",
+      "a": {
+        "entityId": "fuente",
+        "terminalId": "L+"
+      },
+      "b": {
+        "entityId": "km1",
+        "terminalId": "13"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-297ad9d2",
+      "kind": "control",
+      "a": {
+        "entityId": "km1",
+        "terminalId": "14"
+      },
+      "b": {
+        "entityId": "h1",
+        "terminalId": "X1"
+      },
+      "status": "unverified"
+    },
+    {
+      "id": "c-4a9fb250",
+      "kind": "control",
+      "a": {
+        "entityId": "h1",
+        "terminalId": "X2"
+      },
+      "b": {
+        "entityId": "fuente",
+        "terminalId": "M"
+      },
+      "status": "unverified"
+    }
+  ],
+  "bindings": [],
+  "poses": {
+    "placa": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "riel": {
+      "position": [
+        0,
+        0.5,
+        0.015
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "qf1": {
+      "position": [
+        -0.125,
+        0.5,
+        0.05
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "qf2": {
+      "position": [
+        -0.07,
+        0.5,
+        0.05
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "fuente": {
+      "position": [
+        -0.015,
+        0.5,
+        0.05
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "km1": {
+      "position": [
+        0.055,
+        0.5,
+        0.0625
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "s1": {
+      "position": [
+        0.11,
+        0.5,
+        0.045
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "h1": {
+      "position": [
+        0.155,
+        0.5,
+        0.045
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "red": {
+      "position": [
+        -0.9,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "motor": {
+      "position": [
+        0.9,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "symbols": {},
+  "plc": {},
+  "hmi": {
+    "widgets": []
+  },
+  "faults": [],
+  "lesson": {
+    "activityId": "arranque",
+    "answers": {},
+    "submitted": null
+  }
+}

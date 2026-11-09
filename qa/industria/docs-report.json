@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "Tablero: alzado de la placa con 10 elementos (2 rieles y 8 aparatos), terminales con cable rellenos, y selección compartida",
+    "Documentación: materiales (todo genérico), cables, E/S, programa y redes; descarga .md y .csv completos",
+    "Inyectar una falla de cable la guarda en el proyecto y las fallas solo se ofrecen a piezas compatibles",
+    "Con la falla, el PLC activa DO0 pero KM1 no se excita; el diagnóstico señala el cable DO0 → A1 sin revelar la lista de fallas",
+    "En modo Prueba el diagnóstico automático se desactiva y las fallas ocultas no se listan",
+    "Quitar fallas, deshacer y recargar conservan las fallas en el proyecto",
+    "Sin desbordes en tablet (Tablero y Documentación)",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

@@ -1,0 +1,46 @@
+/* modo. Agro · Workspace. Estilos acotados a .agro-ws: no tocan a los demás módulos.
+   Interfaz blanca y negra editorial; el verde solo marca selección y acción; el mundo es el protagonista. */
+.agro-ws{--ink:#111115;--muted:#5f6675;--line:#d8dce6;--green:#1f7a3f;--green-soft:#e6f1ea;--panel:#ffffffee;position:fixed;inset:0;display:flex;flex-direction:column;background:#cfdbe6;color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;overscroll-behavior:none}
+.agro-ws :is(a,button,label,summary,input):focus-visible{outline:3px solid #a3cb2c;outline-offset:2px}
+.agro-bar{position:relative;z-index:5;display:flex;align-items:center;gap:12px;padding:max(8px,env(safe-area-inset-top)) 14px 8px;background:#fff;border-bottom:1px solid var(--line)}
+.agro-back{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:20px;border:1px solid var(--line);color:var(--ink);font-weight:700;text-decoration:none}
+.agro-back:hover{background:#f0f2f6}
+.agro-bar h1{display:flex;align-items:center;gap:8px;margin:0;font-size:20px;color:var(--green)}
+.agro-bar h1 em{font-style:normal;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--green-soft);color:var(--green)}
+.agro-crumb{display:flex;gap:8px;margin:0;font-size:14px;color:var(--muted);white-space:nowrap}.agro-crumb i{font-style:normal;opacity:.5}.agro-crumb span:last-child{color:var(--ink);font-weight:600}
+.agro-chip{margin-left:auto;font-size:12px;color:var(--muted);padding:4px 10px;border:1px solid var(--line);border-radius:12px;white-space:nowrap}
+.agro-menu{position:relative}.agro-menu summary{list-style:none;cursor:pointer;min-height:40px;display:inline-flex;align-items:center;padding:0 16px;border-radius:20px;background:var(--ink);color:#fff;font-weight:700;font-size:14px}.agro-menu summary::-webkit-details-marker{display:none}
+.agro-menu>div{position:absolute;right:0;top:46px;min-width:200px;padding:6px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 30px #11111526;display:grid;gap:2px}
+.agro-menu button,.agro-menu label{position:relative;display:flex;align-items:center;gap:10px;min-height:42px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);font:600 14px inherit;cursor:pointer;text-align:left}
+.agro-menu button:hover,.agro-menu label:hover{background:#f0f2f6}.agro-menu input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.agro-stage{position:relative;flex:1;min-height:0;overflow:hidden}
+.agro-canvas{position:absolute!important;inset:0;touch-action:none}.agro-canvas canvas{display:block;outline:none}
+.agro-loading-scene,.agro-gl-error{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:8px;padding:24px;text-align:center;color:#3c4656;font-weight:600}
+.agro-gl-error p{margin:0;font-weight:400;max-width:360px}.agro-gl-error button{min-height:40px;padding:0 18px;border-radius:20px;border:0;background:var(--ink);color:#fff;font-weight:700;cursor:pointer}
+.agro-cams{position:absolute;top:12px;left:12px;display:flex;gap:4px;padding:4px;border-radius:22px;background:var(--panel);backdrop-filter:blur(8px);box-shadow:0 6px 20px #1111152a}
+.agro-cams button{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 14px;border:0;border-radius:18px;background:transparent;color:var(--ink);font:600 14px inherit;cursor:pointer}
+.agro-cams button.on{background:var(--green);color:#fff}.agro-cams button:not(.on):hover{background:#eef0f4}
+.agro-hint{position:absolute;top:66px;left:12px;margin:0;max-width:min(440px,calc(100% - 24px));padding:5px 12px;border-radius:14px;background:#11111599;color:#fff;font-size:13px;pointer-events:none}
+.agro-tools{position:absolute;left:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;padding:6px;border-radius:22px;background:var(--panel);backdrop-filter:blur(8px);box-shadow:0 6px 20px #1111152a}
+.agro-tools button{display:grid;place-items:center;width:46px;height:46px;border:0;border-radius:16px;background:transparent;color:var(--ink);cursor:pointer}
+.agro-tools button.on{background:var(--green);color:#fff}.agro-tools button:not(.on):not(:disabled):hover{background:#eef0f4}.agro-tools button:disabled{opacity:.35;cursor:default}
+.agro-tools hr{width:60%;margin:2px auto;border:0;border-top:1px solid var(--line)}
+.agro-brush{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:18px;padding:10px 18px;border-radius:22px;background:var(--panel);backdrop-filter:blur(8px);box-shadow:0 6px 20px #1111152a;font-size:13px}
+.agro-brush label{display:grid;grid-template-columns:auto auto;gap:2px 8px;align-items:center;font-weight:600}.agro-brush label input{grid-column:1/-1;width:150px;accent-color:var(--green)}.agro-brush output{color:var(--muted);font-weight:400;justify-self:end}
+.agro-count{color:var(--muted);white-space:nowrap}
+.agro-info{position:absolute;left:78px;bottom:16px;display:grid;gap:6px;max-width:min(420px,calc(100% - 120px))}
+.agro-read{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:0;padding:8px 14px;border-radius:16px;background:var(--panel);backdrop-filter:blur(8px);box-shadow:0 6px 20px #1111152a;font-size:14px}.agro-read b{color:var(--green)}.agro-muted{color:var(--muted)}
+.agro-meta{margin:0;font-size:12px;color:#26303f;text-shadow:0 1px 2px #ffffffaa}
+.agro-mini{position:absolute;right:12px;bottom:16px;padding:6px;border-radius:18px;background:var(--panel);box-shadow:0 6px 20px #1111152a}.agro-mini[hidden]{display:none}
+.agro-minimap-canvas{display:block;width:160px;height:160px;border-radius:12px;cursor:crosshair}
+.agro-mini-toggle{position:absolute;right:12px;top:12px;display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:50%;background:var(--panel);box-shadow:0 6px 20px #1111152a;cursor:pointer;color:var(--ink)}.agro-mini-toggle[aria-pressed=true]{color:var(--green)}
+.agro-toast{position:absolute;left:50%;top:70px;transform:translateX(-50%);margin:0;max-width:min(520px,calc(100% - 24px));padding:10px 16px;border-radius:16px;background:var(--ink);color:#fff;font-size:14px;box-shadow:0 10px 30px #11111544}
+@media (max-width:760px){
+ .agro-crumb,.agro-chip{display:none}.agro-bar{gap:8px}.agro-menu{margin-left:auto}
+ .agro-cams button span{display:none}.agro-cams button{padding:0 12px}
+ .agro-hint{display:none}
+ .agro-tools{left:12px;top:64px;transform:none;flex-direction:row}.agro-tools button{width:42px;height:42px}.agro-tools hr{width:1px;height:26px;margin:auto 2px;border-top:0;border-left:1px solid var(--line)}
+ .agro-brush{bottom:84px;gap:12px;padding:8px 12px}.agro-brush label input{width:110px}
+ .agro-info{left:12px;bottom:12px;max-width:calc(100% - 200px)}.agro-minimap-canvas{width:110px;height:110px}.agro-mini{bottom:12px}
+}
+@media (prefers-color-scheme:dark){.agro-ws{--ink:#f3f4f8;--muted:#a9aebd;--line:#2c2f3a;--panel:#17171cee;--green-soft:#1d3326}.agro-bar{background:#17171c}.agro-back:hover,.agro-menu button:hover,.agro-menu label:hover,.agro-cams button:not(.on):hover,.agro-tools button:not(.on):not(:disabled):hover{background:#25262e}.agro-menu summary{background:#f3f4f8;color:#111115}.agro-menu>div{background:#17171c}.agro-bar h1{color:#7fd39a}.agro-bar h1 em{color:#7fd39a}.agro-toast,.agro-gl-error button{background:#f3f4f8;color:#111115}.agro-meta{color:#e8ecf3;text-shadow:0 1px 2px #000a}.agro-read b{color:#7fd39a}}

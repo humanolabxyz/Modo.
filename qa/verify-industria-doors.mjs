@@ -4,7 +4,7 @@ import {DOORS, doorAngle, doorPoses, hasDoor, stepDoor, wantsOpen} from '../src/
 import {modelParts} from '../src/industria/scene/models.ts';
 import {exampleMiniFactory} from '../src/industria/sim/examples.ts';
 import {doorSwing} from '../src/industria/build/clearance.ts';
-import {addEntity} from '../src/industria/model/commands.ts';
+import {addEntity, setConnectionRoute} from '../src/industria/model/commands.ts';
 import {routeAll} from '../src/industria/wiring/route.ts';
 import {terminalWorld} from '../src/industria/wiring/engine.ts';
 
@@ -31,10 +31,23 @@ assert.equal(open.plc, p.poses.plc, 'lo que está dentro no se mueve');
 ok('los mandos de la puerta giran con ella en torno a la bisagra (misma distancia y altura) y lo de dentro queda quieto');
 
 // Los cables de los mandos siguen a la puerta
-const proj = {...p, poses: open}, c = p.connections.find(x => x.a.entityId === 's1' || x.b.entityId === 's1'), r0 = routeAll(p).get(c.id), r1 = routeAll(proj).get(c.id);
+const proj = {...p, poses: open}, c = p.connections.find(x => x.a.entityId === 's1' || x.b.entityId === 's1'), r0 = routeAll(p).get(c.id), r1 = routeAll(proj, {gab: 1}).get(c.id);
 const t0 = terminalWorld(p, c.a.entityId === 's1' ? c.a : c.b), t1 = terminalWorld(proj, c.a.entityId === 's1' ? c.a : c.b);
 assert.ok(dist(t0, t1) > 0.3 && dist(r0[0], r1[0]) + dist(r0.at(-1), r1.at(-1)) > 0.3, 'el cable cambia de recorrido cuando la puerta se abre');
 ok('el cable del pulsador sale de su terminal con la puerta abierta');
+
+const routes = routeAll(p);
+const internal = p.connections.find(c => c.a.entityId === 'qf1' && c.b.entityId === 'km1');
+const field = p.connections.find(c => c.a.entityId === 'km1' && c.b.entityId === 'motor');
+const trunk = p.poses.cv1.position;
+assert.ok(routes.get(internal.id).filter(point => Math.abs(point[0] - trunk[0]) < 0.009 && Math.abs(point[2] - trunk[2]) < 0.001).length >= 2);
+const gland = routes.get(field.id).find(point => Math.abs(point[1] - (gab[1] + 0.006)) < 1e-6 && Math.abs(point[2] - (gab[2] + 0.02)) < 1e-6);
+assert.ok(gland && Math.abs(gland[0] - (gab[0] - 0.32)) < 0.01, 'fuerza sale por el prensaestopas de la base');
+assert.ok(r1.some(point => dist(point, [hinge[0], gab[1] + 0.855, hinge[2]]) < 0.09), 'el mazo pasa cerca de la bisagra');
+assert.deepEqual(routeAll(p).get(internal.id), routeAll(proj, {gab: 1}).get(internal.id), 'abrir no mueve el cableado fijo de la placa');
+const manual = setConnectionRoute(p, internal.id, [[1, 2, 3]]).value;
+assert.deepEqual(routeAll(manual).get(internal.id).slice(1, -1), [[1, 2, 3]]);
+ok('los cables internos usan la canaleta vertical, los de campo salen por la base y se conservan las rutas manuales');
 
 // Formas: panel y herrajes de la puerta del gabinete; hoja, barra y manija de la sala
 const g = modelParts('gabinete', 'high'); assert.ok(g.filter(x => x.tag === 'door').length === 1 && g.filter(x => x.tag === 'doorfit').length >= 8, 'panel y herrajes etiquetados');

@@ -7,6 +7,7 @@ import {obbOfEntity} from '../build/snap.ts';
 import type {Connection, IndustryProject, TerminalRef, Vec3} from '../model/types.ts';
 import {terminalDef, terminalWorld} from './engine.ts';
 import {toTransform} from '../build/snap.ts';
+import {cabinetRouter, type CabinetRouter} from './cabinetRoutes.ts';
 import {ductRoute, ductSegments, type DuctSeg} from './ducts.ts';
 
 export const CABLE_RADIUS = 0.0017; // m (≈ 3,4 mm de diámetro, de ejemplo)
@@ -48,51 +49,66 @@ export function collisionBoxes(p: IndustryProject): Map<string, Obb> {
   return out;
 }
 
-export function routeCable(p: IndustryProject, c: Connection, lane = 0, boxes = collisionBoxes(p), segs: readonly DuctSeg[] = ductSegments(p)): Vec3[] | null {
-  const a = terminalWorld(p, c.a), b = terminalWorld(p, c.b);
-  if (!a || !b) return null;
-  if (c.route?.length) return [a, ...c.route, b];
+export function routeCable(p: IndustryProject, c: Connection, lane = 0, boxes = collisionBoxes(p), segs: readonly DuctSeg[] = ductSegments(p), cabinets: CabinetRouter = cabinetRouter(p, segs, {})): Vec3[] | null {
+  const start = terminalWorld(p, c.a), end = terminalWorld(p, c.b);
+  if (!start || !end) return null;
+  if (c.route?.length) return [start, ...c.route, end];
   const na = terminalNormal(p, c.a), nb = terminalNormal(p, c.b);
-  const a1 = add(a, scale(na, STUB)), b1 = add(b, scale(nb, STUB));
+  const startStub = add(start, scale(na, STUB)), endStub = add(end, scale(nb, STUB));
+  const ca = cabinets?.end(c.a, start, startStub, lane), cb = cabinets?.end(c.b, end, endStub, lane);
+  const internal = ca && cb && cabinets?.localRun(ca, cb, lane);
+  const compact = (path: Vec3[]) => path.filter((point, i) => i === 0 || Math.hypot(...sub(point, path[i - 1])) > 1e-6);
+  if (internal) return compact(internal);
+  const group = c.kind === 'power' ? 0 : c.kind === 'earth' ? 1 : c.kind === 'control' ? 2 : 3;
+  const leadA = ca && cabinets?.leadOut(ca, lane, group);
+  const leadB = cb && cabinets?.leadOut(cb, lane, group);
+  const a = leadA?.at(-1) ?? start, b = leadB?.at(-1) ?? end;
+  const a1 = leadA ? [a[0], a[1] - 0.08, a[2]] as Vec3 : startStub;
+  const b1 = leadB ? [b[0], b[1] - 0.08, b[2]] as Vec3 : endStub;
+  const complete = (path: Vec3[]): Vec3[] => leadA || leadB
+    ? compact([...(leadA?.slice(0, -1) ?? []), ...path, ...(leadB?.slice(0, -1).reverse() ?? [])])
+    : path;
+  const availableDucts = leadA || leadB ? segs.filter(s => !cabinets?.cabinetOf(s.id)) : segs;
   const others = (skip: string[]) => [...boxes].filter(([id]) => !skip.includes(id)).map(([, o]) => o);
   const all = others([]), exceptA = others([c.a.entityId]), exceptB = others([c.b.entityId]);
   const clear = (path: Vec3[]) => path.every((q, i) => i === 0 || (i === 1 ? !segmentHits(path[0], q, exceptA) : i === path.length - 1 ? !segmentHits(path[i - 1], q, exceptB) : !segmentHits(path[i - 1], q, all)));
   // Con canaletas en el proyecto el cable viaja por dentro de ellas (salvo un puente muy corto entre terminales vecinos)
-  if (segs.length && Math.hypot(b[0] - a[0], b[1] - a[1], b[2] - a[2]) > 0.09) {
+  if (availableDucts.length && Math.hypot(b[0] - a[0], b[1] - a[1], b[2] - a[2]) > 0.09) {
     const duct = new Set(segs.map(s => s.id)), solid = [...boxes].filter(([id]) => !duct.has(id));
     // El primer tramo del cable puede cruzar su propia pieza y los soportes donde está montada (un sensor sobre la cinta baja por la estructura de la cinta)
     const skipOf = (id: string) => { const out = new Set([id]); for (let cur = id, g = 0; g < 8; g++) { const m = p.mounts.find(x => x.child.entityId === cur); if (!m) break; out.add(m.parent.entityId); cur = m.parent.entityId; } return out; };
     const hits = (skip: Set<string>) => (u: Vec3, v: Vec3, first: boolean) => segmentHits(u, v, solid.filter(([id]) => !(first && skip.has(id))).map(([, o]) => o));
-    const inDuct = ductRoute(segs, a, a1, b, b1, lane, hits(skipOf(c.a.entityId)), hits(skipOf(c.b.entityId)));
-    if (inDuct) return inDuct;
+    const inDuct = ductRoute(availableDucts, a, a1, b, b1, lane, hits(skipOf(ca?.cabinet.id ?? c.a.entityId)), hits(skipOf(cb?.cabinet.id ?? c.b.entityId)));
+    if (inDuct) return complete(inDuct);
   }
   // Puente corto entre terminales vecinos
   const direct: Vec3[] = [a, a1, b1, b];
-  if (Math.hypot(b1[0] - a1[0], b1[1] - a1[1], b1[2] - a1[2]) < 0.14 && clear(direct)) return direct;
+  if (Math.hypot(b1[0] - a1[0], b1[1] - a1[1], b1[2] - a1[2]) < 0.14 && clear(direct)) return complete(direct);
   const base = Math.max(a1[1], b1[1]);
   let last: Vec3[] = direct;
   for (const lift of LIFTS) {
     const top = base + lift + lane * 0.006;
     const path: Vec3[] = [a, a1, [a1[0], top, a1[2]], [b1[0], top, b1[2]], b1, b];
-    last = path; if (clear(path)) return path;
+    last = path; if (clear(path)) return complete(path);
   }
   // Si hay algo muy alto en medio (una placa), se rodea por un lado a poca altura en vez de subir por encima.
   const dx = b1[0] - a1[0], dz = b1[2] - a1[2], len = Math.hypot(dx, dz) || 1, perp: Vec3 = [-dz / len, 0, dx / len];
   for (const off of SIDE) for (const lift of [0.06, 0.16, 0.36]) {
     const top = base + lift + lane * 0.006, o = scale(perp, off);
     const path: Vec3[] = [a, a1, [a1[0], top, a1[2]], [a1[0] + o[0], top, a1[2] + o[2]], [b1[0] + o[0], top, b1[2] + o[2]], [b1[0], top, b1[2]], b1, b];
-    if (clear(path)) return path;
+    if (clear(path)) return complete(path);
   }
   for (const lift of HIGH) {
     const top = base + lift + lane * 0.006, path: Vec3[] = [a, a1, [a1[0], top, a1[2]], [b1[0], top, b1[2]], b1, b];
-    last = path; if (clear(path)) return path;
+    last = path; if (clear(path)) return complete(path);
   }
-  return last;
+  return complete(last);
 }
 
 /** Rutas de todos los cables (se calculan las cajas una sola vez). */
-export function routeAll(p: IndustryProject): Map<string, Vec3[]> {
+export function routeAll(p: IndustryProject, doors: Readonly<Record<string, number>> = {}): Map<string, Vec3[]> {
   const boxes = collisionBoxes(p), segs = ductSegments(p), out = new Map<string, Vec3[]>();
-  p.connections.forEach((c, i) => { const r = routeCable(p, c, i % 5, boxes, segs); if (r) out.set(c.id, r); });
+  const cabinets = cabinetRouter(p, segs, doors);
+  p.connections.forEach((c, i) => { const r = routeCable(p, c, i % 5, boxes, segs, cabinets); if (r) out.set(c.id, r); });
   return out;
 }

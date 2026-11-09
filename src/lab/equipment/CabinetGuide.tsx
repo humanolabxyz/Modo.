@@ -30,13 +30,13 @@ export function CabinetGuide({board,step,navigate,openKey,selectionLabel,propert
    </div>
    <div className="cab-zoom-slot" ref={onZoomHost}/>
   </div>
-  {activity!=='closed'?<FloatingWindow title="Actividad · Tableros" className="automation-window cabinet-activity-window" width={compact?(portrait?320:520):380} side="right" top={compact?10:180} heightFraction={compact?(portrait?.85:.95):.78} activation={activation} visible={activity==='open'} showControlsHint closeLabel="Cerrar actividad del taller" onClose={()=>setActivity('closed')} onMinimize={()=>setActivity('minimized')}>
+  {activity!=='closed'?<FloatingWindow title="Actividad · Tableros" className="automation-window cabinet-activity-window" width={compact?(portrait?320:520):380} side="right" top={compact?10:180} heightFraction={compact?(portrait?.85:.95):.78} activation={activation} visible={activity==='open'} showControlsHint closeLabel="Cerrar actividad del taller" onClose={()=>setActivity('closed')} onMinimize={()=>setActivity('minimized')} onRestore={()=>setActivity('open')}>
    <div ref={body} className="cab-activity-content">
     <header className="cab-guide-heading"><label><span>PASO {steps.findIndex(s=>s.id===step)+1} DE {steps.length}</span><select aria-label="Etapa del taller" value={step} onChange={e=>navigate(e.target.value as CabinetStep)}>{steps.map((s,i)=><option key={s.id} value={s.id}>{i+1}. {s.name}</option>)}</select></label></header>
     <div className="cab-guide-body">{children}</div>
     <details className="cab-stage-help"><summary>Qué hacer y qué comprobar</summary><h3>{goal.title}</h3><p>{goal.action}</p><p><b>Resultado esperado:</b> {goal.result}</p></details>
    </div>
   </FloatingWindow>:null}
-  {inspect!=='closed'&&selectionLabel?<FloatingWindow title={`Propiedades · ${selectionLabel}`} className="automation-window" width={330} side="right" top={compact?12:180} heightFraction={.75} activation={propertyActivation} visible={inspect==='open'} showControlsHint closeLabel="Cerrar propiedades del tablero" onClose={()=>setInspect('closed')} onMinimize={()=>setInspect('minimized')}>{properties}</FloatingWindow>:null}
+  {inspect!=='closed'&&selectionLabel?<FloatingWindow title={`Propiedades · ${selectionLabel}`} className="automation-window" width={330} side="right" top={compact?12:180} heightFraction={.75} activation={propertyActivation} visible={inspect==='open'} showControlsHint closeLabel="Cerrar propiedades del tablero" onClose={()=>setInspect('closed')} onMinimize={()=>setInspect('minimized')} onRestore={()=>setInspect('open')}>{properties}</FloatingWindow>:null}
  </>;
 }

@@ -116,3 +116,9 @@
 .home-module-art.art-industry{top:15%;height:66%;width:124%;left:-12%}
 @media(max-width:1100px){.home-module-art.art-industry{top:21%;height:56%;width:124%;left:-12%}}
 @media(max-width:600px){.home-module-art.art-industry{top:22%;height:55%;width:126%;left:-13%}}
+/* Agro (módulo Beta): tarjeta verde de la experiencia. El arte es provisional (SVG isométrico) hasta tener la ilustración aprobada. */
+.modo-reference-home .module-green{background:radial-gradient(ellipse at 20% 0%,#2f8a4d,#14502c 60%,#0b3320);box-shadow:0 20px 28px -14px #14502c88,inset 0 1px 2px #ffffff40}
+.module-green .home-module-icon{color:#1b7a3d}.module-green .home-module-arrow{color:#1b7a3d}
+.home-module-art.art-agro{top:14%;height:70%;width:118%;left:-9%}
+@media(max-width:1100px){.home-module-art.art-agro{top:19%;height:62%;width:118%;left:-9%}}
+@media(max-width:600px){.home-module-art.art-agro{top:20%;height:60%;width:120%;left:-10%}}

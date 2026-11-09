@@ -2,14 +2,13 @@
 body .mobile-floating-window[data-phone-layout=true] {
   min-height: 0 !important;
   border-radius: 12px;
-  transform: none !important;
 }
-.mobile-floating-window[data-phone-layout=true] .fw-edge,
-.mobile-floating-window[data-phone-layout=true]>.floating-window-footer,
-.mobile-floating-window[data-phone-layout=true] .floating-window-max {
+.mobile-floating-window[data-phone-layout=true]:not(.fw-free-touch) .fw-edge,
+.mobile-floating-window[data-phone-layout=true]:not(.fw-free-touch)>.floating-window-footer,
+.mobile-floating-window[data-phone-layout=true]:not(.fw-free-touch) .floating-window-max {
   display: none !important;
 }
-.mobile-floating-window[data-phone-layout=true]>.floating-window-header {
+.mobile-floating-window[data-phone-layout=true]:not(.fw-free-touch)>.floating-window-header {
   cursor: default;
   touch-action: pan-y;
 }
@@ -55,7 +54,8 @@ body .mobile-floating-window[data-phone-layout=true].is-editing-measurement .mea
 .diagram-menu-shortcut { display: none; }
 @media (pointer:coarse) and (max-width:520px), (pointer:coarse) and (max-height:520px) and (max-width:1000px) {
   .diagram-menu-shortcut { display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
-  body .app-shell.editor-workbench.is-compact .diagram-window[data-phone-layout=true] {
+  body .app-shell.editor-workbench.is-compact .diagram-window[data-phone-layout=true] { z-index: 120; }
+  body .app-shell.editor-workbench.is-compact .diagram-window[data-phone-layout=true]:not([data-adjusted=true]) {
     left: calc(env(safe-area-inset-left,0px) + 6px) !important;
     right: calc(env(safe-area-inset-right,0px) + 6px) !important;
     top: calc(var(--bar-total,44px) + 6px) !important;
@@ -64,17 +64,13 @@ body .mobile-floating-window[data-phone-layout=true].is-editing-measurement .mea
     height: auto !important;
     min-height: 0;
     max-height: none;
-    z-index: 120;
     transform: none !important;
   }
-  .diagram-window[data-phone-layout=true] .float-handle { display: none; }
-  .diagram-window[data-phone-layout=true] .diagram-pane-actions { cursor: default; gap: 4px; padding: 5px 8px; }
-  .diagram-window[data-phone-layout=true] .diagram-move-handle { cursor: default; }
-  .diagram-window[data-phone-layout=true] .diagram-pane-actions>button { min-height: 44px; padding: 6px 9px; }
+
   .diagram-window[data-phone-layout=true] .diagram-pane-body { -webkit-overflow-scrolling: touch; touch-action: pan-y; }
 }
 @media (pointer:coarse) and (orientation:landscape) and (max-height:520px) and (max-width:1000px) {
-  body .app-shell.editor-workbench.is-compact .diagram-window[data-phone-layout=true] {
+  body .app-shell.editor-workbench.is-compact .diagram-window[data-phone-layout=true]:not([data-adjusted=true]):not([data-max=true]) {
     left: auto !important;
     width: min(540px,64vw) !important;
   }

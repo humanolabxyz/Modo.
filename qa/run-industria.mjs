@@ -5,7 +5,7 @@ import {spawn, spawnSync} from 'node:child_process';
 const args = process.argv.slice(2), flag = name => args.includes(name), value = (name, fallback) => (args.includes(name) ? args[args.indexOf(name) + 1] : fallback);
 const port = Number(value('--port', 4399)), only = value('--only', ''), url = `http://127.0.0.1:${port}`;
 const NODE = ['model', 'build', 'catalog', 'wiring', 'sim', 'plc', 'diagram', 'faults', 'docs', 'activities', 'hardening', 'models', 'routing', 'flex', 'factory', 'hall', 'process', 'colors', 'doors', 'sound', 'perf'];
-const UI = ['shell', 'builder', 'catalog-ui', 'wiring-ui', 'sim-ui', 'views-ui', 'docs-ui', 'modes-ui', 'polish-ui', 'extras-ui', 'doors-ui', 'responsive', 'a11y', 'touch', 'offline', 'resilience'];
+const UI = ['shell', 'builder', 'catalog-ui', 'wiring-ui', 'sim-ui', 'views-ui', 'docs-ui', 'inspection-ui', 'modes-ui', 'polish-ui', 'extras-ui', 'doors-ui', 'cabinet-interaction', 'responsive', 'a11y', 'touch', 'offline', 'resilience'];
 const shell = process.platform === 'win32';
 const results = [];
 

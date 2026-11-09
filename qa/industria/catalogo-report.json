@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "La biblioteca lista el catálogo y marca cada pieza como «Genérico · no verificado»",
+    "La búsqueda ignora tildes, encuentra por terminal y avisa cuando no hay resultados",
+    "Se filtra por familia y las familias sin piezas aparecen deshabilitadas",
+    "El catálogo carga la miniatura y permite abrir, girar y cerrar el modelo 3D",
+    "La ficha muestra terminales, medidas de ejemplo y que no hay fuente de fabricante",
+    "Colocar crea la pieza con su definición; el inspector muestra estado y terminales",
+    "Recargar conserva la definición del catálogo",
+    "La biblioteca no desborda en tablet",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

@@ -1,0 +1,53 @@
+{
+  "base": "http://127.0.0.1:4327/",
+  "cpuThrottle": 4,
+  "duration": 4000,
+  "results": [
+    {
+      "name": "panel-idle-820",
+      "frames": 242,
+      "frameP95": 16.700000000000728,
+      "slowFrames": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "leadAttributeWrites": 0,
+      "TaskDuration": 0.0697,
+      "ScriptDuration": 0.0113,
+      "LayoutDuration": 0,
+      "RecalcStyleDuration": 0,
+      "LayoutCount": 0,
+      "RecalcStyleCount": 0
+    },
+    {
+      "name": "panel-running-820",
+      "frames": 241,
+      "frameP95": 16.700000000000728,
+      "slowFrames": 0,
+      "longTasks": 0,
+      "longMs": 0,
+      "leadAttributeWrites": 0,
+      "TaskDuration": 3.9096,
+      "ScriptDuration": 0.4243,
+      "LayoutDuration": 0.0307,
+      "RecalcStyleDuration": 0.0963,
+      "LayoutCount": 239,
+      "RecalcStyleCount": 239
+    },
+    {
+      "name": "panel-pan-running-820",
+      "frames": 147,
+      "frameP95": 33.400000000001455,
+      "slowFrames": 4,
+      "longTasks": 2,
+      "longMs": 548,
+      "leadAttributeWrites": 0,
+      "TaskDuration": 3.9714,
+      "ScriptDuration": 0.3326,
+      "LayoutDuration": 0.3185,
+      "RecalcStyleDuration": 0.5101,
+      "LayoutCount": 149,
+      "RecalcStyleCount": 149
+    }
+  ],
+  "errors": []
+}

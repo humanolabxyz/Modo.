@@ -1,38 +1,32 @@
 {
   "checks": [
-    "Fuerza de la lección = figura Nº2 de la guía: triángulo 2→W2, 4→U2, 6→V2; estrella con puente 1-3-5; devanados entre fases distintas",
+    "Fuerza del guardado de Matías: R/S/T a KT1 y KM1, puente L1–L2–L3 de KM2, extremos de cada devanado y tierra del motor.",
     "Rótulos del banco: principal KT1 (bobina, retención, polos y contactos temporizados), triángulo KM1, estrella KM2",
-    "El dibujo base y el de la variante con temporizador tienen el triángulo de la guía (2→W2, 4→U2, 6→V2)",
-    "Cada conexión del dibujo existe en los 40 cables del banco y cada cable se ve en el dibujo (mando y fuerza)"
+    "El dibujo base y el de la variante con temporizador tienen el triángulo de la guía (2→W2, 4→U2, 6→V2)"
   ],
-  "twoContactors": {
-    "feed": [
-      "L1",
-      "L2",
-      "L3"
-    ],
-    "mainFeed": [
-      "L1",
-      "L2",
-      "L3"
-    ],
-    "deltaOut": [
-      "W2",
-      "U2",
-      "V2"
-    ],
-    "starOut": [
-      "V2",
-      "U2",
-      "W2"
-    ],
-    "starBridge": true,
-    "thermalToMotor": [
-      true,
-      true,
-      true
-    ]
-  },
+  "twoContactors": [
+    {
+      "phase": "R",
+      "pole": 1,
+      "start": "U1",
+      "delta": "W2",
+      "star": "V2"
+    },
+    {
+      "phase": "S",
+      "pole": 2,
+      "start": "V1",
+      "delta": "U2",
+      "star": "U2"
+    },
+    {
+      "phase": "T",
+      "pole": 3,
+      "start": "W1",
+      "delta": "V2",
+      "star": "W2"
+    }
+  ],
   "baseDeltaOut": [
     "W2",
     "U2",

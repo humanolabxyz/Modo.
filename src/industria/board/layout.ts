@@ -14,16 +14,17 @@ export type Boards = {boards: Board[]; offBoard: {id: string; label: string; nam
 export const PLATE_DEFINITION = 'placa';
 const mm = (m: number) => Math.round(m * 10000) / 10; // metros → milímetros con una décima
 
-export function buildBoards(p: IndustryProject): Boards {
+export function buildBoards(p: IndustryProject, face: 'placa' | 'puerta' = 'placa'): Boards {
   const boards: Board[] = [], onBoard = new Set<string>();
   const wires = new Map<string, number>();
   for (const c of p.connections) for (const r of [c.a, c.b]) wires.set(`${r.entityId}:${r.terminalId}`, (wires.get(`${r.entityId}:${r.terminalId}`) ?? 0) + 1);
 
-  for (const plate of p.entities.filter(e => e.definitionId === PLATE_DEFINITION)) {
+  for (const plate of p.entities.filter(e => e.definitionId === (face === 'placa' ? PLATE_DEFINITION : 'gabinete'))) {
     const ps = shapeOf(plate.definitionId), pose = p.poses[plate.id]; if (!pose) continue;
     const inv = tInv(toTransform(pose)), minX = ps.center[0] - ps.size[0] / 2, maxY = ps.center[1] + ps.size[1] / 2;
     const devices: BoardDevice[] = [];
-    for (const id of descendantsOf(p, plate.id)) {
+    const mounted = face === 'placa' ? descendantsOf(p, plate.id) : p.mounts.filter(m => m.parent.entityId === plate.id && m.parent.anchorId === 'puerta').map(m => m.child.entityId);
+    for (const id of mounted) {
       const e = p.entities.find(x => x.id === id), dp = p.poses[id]; if (!e || !dp) continue;
       onBoard.add(id);
       const s = shapeOf(e.definitionId), rel = tMul(inv, toTransform(dp)), q = rel.rotation;

@@ -13,7 +13,7 @@ export function InspectorSheet({title,summary,openKey,children,floating=false,tr
   const trigger=<button type="button" className={`lab-inspector-trigger ${floating?'cab-guide-trigger':''}`} title={title} aria-label={`Abrir ${title.toLocaleLowerCase('es')}`} aria-haspopup="dialog" aria-expanded={open} data-window-state={open?'open':created?'minimized':'closed'} onClick={()=>{setOpen(true);setCreated(true);setActivation(v=>v+1);}}><SlidersHorizontal size={18}/><strong>{title}</strong><ChevronUp size={16}/></button>;
   return <>
     {triggerTarget?createPortal(trigger,triggerTarget):trigger}
-    {created&&<FloatingWindow title={title} eyebrow={summary} width={floating&&!compact?420:350} side="right" top={104} className={`lab-property-window ${floating?'cab-guide-window':''}`} showControlsHint={floating} activation={activation} visible={open} closeLabel={`Cerrar ${title.toLocaleLowerCase('es')}`} onMinimize={()=>setOpen(false)} onClose={()=>{setOpen(false);setCreated(false);}}><div className="lab-property-content">{children}</div></FloatingWindow>}
+    {created&&<FloatingWindow title={title} eyebrow={summary} width={floating&&!compact?420:350} side="right" top={104} className={`lab-property-window ${floating?'cab-guide-window':''}`} showControlsHint={floating} activation={activation} visible={open} closeLabel={`Cerrar ${title.toLocaleLowerCase('es')}`} onMinimize={()=>setOpen(false)} onRestore={()=>{setOpen(true);setActivation(v=>v+1)}} onClose={()=>{setOpen(false);setCreated(false);}}><div className="lab-property-content">{children}</div></FloatingWindow>}
   </>;
 
 }

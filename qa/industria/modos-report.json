@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "El panel Actividad explica el modo actual y ofrece las 4 actividades",
+    "Aprendizaje: la actividad parte en 0 de 5 pasos, con ✓/✗ en vivo y pistas en cada paso pendiente",
+    "Aprendizaje rechaza tierra con fuerza explicando por qué; el cable correcto se acepta y marca el paso ✓ en vivo",
+    "Una solución completa marca 5 de 5; el resultado depende del comportamiento, no de una solución concreta",
+    "Prueba: sin pasos en vivo, sin pistas, sin diagnóstico ni avisos de validación, con la falla oculta; el cable erróneo se permite",
+    "Entregar en modo Prueba calcula 2 de 2, muestra el resultado y descarga el informe",
+    "La entrega bloquea el proyecto; Reabrir lo libera sin perder nada",
+    "Salir de Prueba pide confirmación; en Libre las comprobaciones se piden a mano y sin pistas",
+    "Recargar conserva la actividad y las respuestas; sin desbordes en tablet",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

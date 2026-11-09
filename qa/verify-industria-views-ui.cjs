@@ -85,7 +85,7 @@ const LIB = 'modo:industria:library:v1';
     await view('Diagramas'); await p.getByRole('tab', {name: /Hoja 1/}).click(); await sym('qf1').locator('rect').click(); await p.getByRole('tab', {name: /Hoja 2/}).click(); await sym('qf2').locator('rect').click(); await p.waitForTimeout(300);
     assert.ok(await p.locator('svg g[data-connection][data-live=true]').count() > 5, 'hay cables con tensión');
     await view('PLC'); assert.equal(await p.locator('.ind-chipstate').first().innerText(), 'Alimentado');
-    const s1 = (await (async () => { await view('Diagramas'); await p.getByRole('tab', {name: /Hoja 2/}).click(); return sym('s1').locator('rect').boundingBox(); })());
+    const s1 = (await (async () => { await view('Diagramas'); await p.getByRole('tab', {name: /Hoja 2/}).click(); const switchSymbol = sym('s1').locator('rect'); await switchSymbol.scrollIntoViewIfNeeded(); return switchSymbol.boundingBox(); })());
     await p.mouse.move(s1.x + s1.width / 2, s1.y + s1.height / 2); await p.mouse.down(); await p.waitForTimeout(250);
     await view('PLC'); // cambiar de vista suelta el ratón en el navegador, pero el valor ya se leyó pulsado
     await p.mouse.up(); await p.waitForTimeout(300);

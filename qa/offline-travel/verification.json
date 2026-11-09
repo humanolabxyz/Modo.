@@ -1,7 +1,7 @@
 {
   "checks": [
     "Registro de caché al entrar directamente a Estudio, sin pasar por Inicio",
-    "506 archivos preparados, incluidos recursos nunca abiertos (156 MiB)",
+    "621 archivos preparados, incluidos recursos nunca abiertos (181 MiB)",
     "Sin acceso a red: importar práctica y recargar conserva los cinco cables",
     "Primera apertura sin red: equipment",
     "Primera apertura sin red: schematic",
@@ -28,7 +28,9 @@
     "file has 3D objects",
     "file has 3D objects",
     "file has 3D objects",
+    "file has 3D objects",
     "Failed to load resource: the server responded with a status of 416 ()",
+    "file has 3D objects",
     "file has 3D objects",
     "file has 3D objects",
     "file has 3D objects"
@@ -36,127 +38,127 @@
   "performance": [
     {
       "route": "/estudio?curso=s2-5",
-      "readyMs": 316
+      "readyMs": 257
     },
     {
       "route": "/sin-conexion/",
-      "readyMs": 92
+      "readyMs": 169
     },
     {
       "route": "/",
-      "readyMs": 202
+      "readyMs": 248
     },
     {
       "route": "/?view=simulator",
-      "readyMs": 421
+      "readyMs": 191
     },
     {
       "route": "/laboratorio?tool=equipment",
-      "readyMs": 375
+      "readyMs": 855
     },
     {
       "route": "/laboratorio?tool=schematic",
-      "readyMs": 828
+      "readyMs": 347
     },
     {
       "route": "/laboratorio?tool=plc",
-      "readyMs": 352
+      "readyMs": 364
     },
     {
       "route": "/laboratorio?tool=hmi",
-      "readyMs": 355
+      "readyMs": 356
     },
     {
       "route": "/laboratorio?tool=process",
-      "readyMs": 346
+      "readyMs": 358
     },
     {
       "route": "/laboratorio?tool=breadboard",
-      "readyMs": 458
+      "readyMs": 476
     },
     {
       "route": "/laboratorio?tool=temperature",
-      "readyMs": 398
+      "readyMs": 403
     },
     {
       "route": "/laboratorio?tool=detectors",
-      "readyMs": 880
+      "readyMs": 887
     },
     {
       "route": "/laboratorio?tool=soldering",
-      "readyMs": 69
+      "readyMs": 359
     },
     {
       "route": "/laboratorio?tool=plc",
-      "readyMs": 57
+      "readyMs": 360
     },
     {
       "route": "/laboratorio?tool=hmi",
-      "readyMs": 57
+      "readyMs": 360
     },
     {
       "route": "/laboratorio?tool=process",
-      "readyMs": 56
+      "readyMs": 359
     },
     {
       "route": "/laboratorio?tool=geogebra",
-      "readyMs": 1383
+      "readyMs": 1419
     },
     {
       "route": "/estudio?curso=s2-5&clase=mtfm01-problema-poblacion",
-      "readyMs": 404
+      "readyMs": 426
     },
     {
       "route": "/",
-      "readyMs": 97
+      "readyMs": 110
     },
     {
       "route": "/estudio?curso=s2-5",
-      "readyMs": 66
+      "readyMs": 68
     },
     {
       "route": "/sin-conexion/",
-      "readyMs": 128
+      "readyMs": 236
     },
     {
       "route": "/laboratorio?tool=breadboard",
-      "readyMs": 399
+      "readyMs": 402
     },
     {
       "route": "/laboratorio?tool=geogebra",
-      "readyMs": 1279
+      "readyMs": 1049
     },
     {
       "route": "/",
-      "readyMs": 113
+      "readyMs": 137
     },
     {
       "route": "/estudio?curso=s2-5",
-      "readyMs": 75
+      "readyMs": 69
     },
     {
       "route": "/sin-conexion/",
-      "readyMs": 127
+      "readyMs": 1878
     },
     {
       "route": "/laboratorio?tool=breadboard",
-      "readyMs": 394
+      "readyMs": 849
     },
     {
       "route": "/laboratorio?tool=geogebra",
-      "readyMs": 1047
+      "readyMs": 1052
     },
     {
       "route": "/laboratorio?tool=geogebra",
-      "readyMs": 1474
+      "readyMs": 3515
     },
     {
       "route": "/sin-conexion/",
-      "readyMs": 155
+      "readyMs": 2275
     }
   ],
   "requests": [],
-  "profile": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\.cache\\offline-browser-1792963764965",
-  "assets": 506,
-  "bytes": 163165925
+  "profile": "C:\\Users\\HUMANO LAB\\Desktop\\proyectos2026\\paneldecontrol\\PanelLab-INACAP\\.cache\\offline-browser-1794072132849",
+  "assets": 621,
+  "bytes": 190307604
 }

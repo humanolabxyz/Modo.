@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "Arrastrar una pieza montada muestra un aviso que explica cómo moverla y no cambia nada",
+    "El inspector gira la pieza en grados (X, Y, Z), entra en Deshacer y se bloquea en piezas montadas",
+    "Cuatro paneles abiertos a la vez: se escalonan, cada título queda a la vista y ninguno tapa el dock",
+    "El panel Piezas tiene 354 px de ancho (antes ≈210)",
+    "El pulsador NC se coloca desde la biblioteca y aparece entre los mandos",
+    "La hoja del esquema se descarga como SVG autónomo (con estilos, fondo, símbolos y referencias a otras hojas)",
+    "Al imprimir solo se ve la documentación o el esquema (sin barra, dock ni botones) y el navegador genera un PDF real",
+    "El alzado del tablero se ajusta a la pantalla sin desplazarse y los aparatos angostos muestran su rótulo girado",
+    "El motor alimentado gira (marcador animado), sigue girando con el sello y se detiene con Detener",
+    "Con pantalla táctil, el modo Cablear sugiere acercar la cámara o usar el panel",
+    "Cero errores de consola y de JavaScript"
+  ],
+  "errors": []
+}

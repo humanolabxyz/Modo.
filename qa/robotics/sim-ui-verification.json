@@ -1,12 +1,12 @@
 {
-  "url": "http://127.0.0.1:4330",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "el proyecto guardado abre en Simular, con el robot en su lugar y la simulación detenida",
-    "▶ el robot se mueve por la física: z máx 0.69 m, x -0.00…1.85 m, y no toca la caja",
+    "▶ el robot se mueve por la física: z máx 0.68 m, x -0.00…1.85 m, y no toca la caja",
     "la Consola muestra la velocidad de las ruedas y la distancia medida por el sensor",
     "Detener devuelve el robot al lugar donde lo armaste",
     "Escenario: agregar y quitar un obstáculo con la simulación detenida",
-    "sin la rueda derecha el resultado cambia (x 0.12, z 0.00; con rueda z máx 0.69)",
+    "sin la rueda derecha el resultado cambia (x 0.06, z -0.08; con rueda z máx 0.68)",
     "recargar y repetir: el proyecto guardado reproduce el mismo comportamiento",
     "sin errores de consola ni de página"
   ],

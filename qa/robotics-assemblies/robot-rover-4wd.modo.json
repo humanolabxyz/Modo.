@@ -1,13 +1,13 @@
 {
   "format": "modo-robotica",
   "version": 1,
-  "id": "ee9f45b8-6a86-4876-a388-8b698f937514",
+  "id": "00056c94-1c97-4472-be49-af7b0bf2a1b8",
   "name": "Rover 4WD",
-  "createdAt": "2026-11-01T16:48:35.910Z",
-  "updatedAt": "2026-11-01T16:48:35.910Z",
+  "createdAt": "2026-11-09T12:11:06.522Z",
+  "updatedAt": "2026-11-09T12:11:06.522Z",
   "parts": [
     {
-      "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+      "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
       "definitionId": "chassis-2wd",
       "label": "Chasis 2WD 1",
       "transform": {
@@ -28,7 +28,7 @@
       }
     },
     {
-      "instanceId": "fe27abad-2104-4d22-98c1-289896ce1745",
+      "instanceId": "8bf13dce-de17-4486-9a86-638cc2dce461",
       "definitionId": "dc-motor-tt",
       "label": "Motor DC TT 1",
       "transform": {
@@ -46,7 +46,7 @@
       }
     },
     {
-      "instanceId": "7ef63c79-c1f9-4890-9029-0296bf73c363",
+      "instanceId": "985faf09-6467-40f9-b47f-6e0581a6546c",
       "definitionId": "dc-motor-tt",
       "label": "Motor DC TT 2",
       "transform": {
@@ -64,7 +64,7 @@
       }
     },
     {
-      "instanceId": "f961f4c6-03bf-4f8a-802a-b09cd7132767",
+      "instanceId": "20f2efef-02c2-47e2-846b-84e34b4b7d65",
       "definitionId": "wheel-65",
       "label": "Rueda 65 mm 1",
       "transform": {
@@ -82,7 +82,7 @@
       }
     },
     {
-      "instanceId": "2b6b48dc-f41c-455f-8a7f-7e951753a5c8",
+      "instanceId": "38c58cfc-d1ce-4ac2-99ef-8993e88eb195",
       "definitionId": "wheel-65",
       "label": "Rueda 65 mm 2",
       "transform": {
@@ -100,7 +100,7 @@
       }
     },
     {
-      "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+      "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
       "definitionId": "arduino-uno-r3",
       "label": "Arduino UNO R3 1",
       "transform": {
@@ -121,7 +121,7 @@
       }
     },
     {
-      "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+      "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
       "definitionId": "breadboard-400",
       "label": "Protoboard 400 puntos 1",
       "transform": {
@@ -139,7 +139,7 @@
       }
     },
     {
-      "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+      "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
       "definitionId": "l298n-module",
       "label": "Driver L298N 1",
       "transform": {
@@ -162,7 +162,7 @@
       }
     },
     {
-      "instanceId": "05b3492e-792d-4875-87c0-6947f4ba21a3",
+      "instanceId": "287991f3-ecd2-48b6-9b8a-0977eeb92aad",
       "definitionId": "battery-holder-4aa",
       "label": "Portapilas 4×AA 1",
       "transform": {
@@ -183,7 +183,7 @@
       }
     },
     {
-      "instanceId": "2634b531-aaa1-45d9-b4db-dc2458c93945",
+      "instanceId": "ae2a09f5-b351-486f-81e9-a93702c2bdc1",
       "definitionId": "regulator-5v",
       "label": "Regulador 5 V buck-boost 1",
       "transform": {
@@ -201,7 +201,7 @@
       }
     },
     {
-      "instanceId": "3933d9ed-feaf-4bee-a680-268785799128",
+      "instanceId": "dc0e289a-a2b2-4aa7-b237-dca140bf275a",
       "definitionId": "power-switch",
       "label": "Interruptor general 1",
       "transform": {
@@ -222,7 +222,7 @@
       }
     },
     {
-      "instanceId": "c24ec03b-e824-4c6a-b01f-008d22301aac",
+      "instanceId": "c9e0df3c-f608-4efb-9311-99f5669e24db",
       "definitionId": "sensor-bracket",
       "label": "Soporte del sensor 1",
       "transform": {
@@ -240,7 +240,7 @@
       }
     },
     {
-      "instanceId": "c0069f1e-049a-4bd4-9cc4-dd76c75489f2",
+      "instanceId": "5407f4ff-3dd6-4570-9186-e607477649d7",
       "definitionId": "hc-sr04",
       "label": "Sensor HC-SR04 1",
       "transform": {
@@ -261,7 +261,7 @@
       }
     },
     {
-      "instanceId": "54dfea5b-c570-439c-b11c-57a48ab5bb5a",
+      "instanceId": "939ede92-6f98-4b06-a087-4821ab57bba1",
       "definitionId": "dc-motor-tt",
       "label": "Motor DC TT 3",
       "transform": {
@@ -279,7 +279,7 @@
       }
     },
     {
-      "instanceId": "3061e053-ae32-4b41-a315-1396bc2707e6",
+      "instanceId": "d77ebcd6-ebfb-4519-8380-d5a0ae96a45e",
       "definitionId": "dc-motor-tt",
       "label": "Motor DC TT 4",
       "transform": {
@@ -297,7 +297,7 @@
       }
     },
     {
-      "instanceId": "fadc672f-ad74-4227-9063-c43be6853a1a",
+      "instanceId": "4c0d7c25-4220-43ce-b4b8-8006a36dfd79",
       "definitionId": "wheel-65",
       "label": "Rueda 65 mm 3",
       "transform": {
@@ -315,7 +315,7 @@
       }
     },
     {
-      "instanceId": "2828ecb8-415f-4996-9bb7-9ae1ac1eb687",
+      "instanceId": "60a2ab63-4f1c-452f-9225-cc9458d4c88c",
       "definitionId": "wheel-65",
       "label": "Rueda 65 mm 4",
       "transform": {
@@ -333,7 +333,7 @@
       }
     },
     {
-      "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+      "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
       "definitionId": "l298n-module",
       "label": "Driver L298N 2",
       "transform": {
@@ -358,38 +358,38 @@
   ],
   "attachments": [
     {
-      "id": "2395ce24-0008-4a44-918d-de97ac4eec85",
+      "id": "22618b9c-ec7b-4178-8516-7a8235969d20",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-motor-rl"
       },
       "child": {
-        "instanceId": "fe27abad-2104-4d22-98c1-289896ce1745",
+        "instanceId": "8bf13dce-de17-4486-9a86-638cc2dce461",
         "anchorId": "base"
       }
     },
     {
-      "id": "ab3aad12-6a76-4a69-9b07-23105184d647",
+      "id": "6c8c6d7f-d050-43e1-a826-255043642fbe",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-motor-rr"
       },
       "child": {
-        "instanceId": "7ef63c79-c1f9-4890-9029-0296bf73c363",
+        "instanceId": "985faf09-6467-40f9-b47f-6e0581a6546c",
         "anchorId": "base"
       }
     },
     {
-      "id": "3f6878d9-af29-447f-8476-bd01cca54f99",
+      "id": "f4bc0d0b-4785-4181-b444-bcc8c727866d",
       "kind": "wheel-hinge",
       "parent": {
-        "instanceId": "fe27abad-2104-4d22-98c1-289896ce1745",
+        "instanceId": "8bf13dce-de17-4486-9a86-638cc2dce461",
         "anchorId": "axle-l"
       },
       "child": {
-        "instanceId": "f961f4c6-03bf-4f8a-802a-b09cd7132767",
+        "instanceId": "20f2efef-02c2-47e2-846b-84e34b4b7d65",
         "anchorId": "hub"
       },
       "axis": [
@@ -399,14 +399,14 @@
       ]
     },
     {
-      "id": "de74c67d-1d83-4a92-b9e7-1a071510ea3c",
+      "id": "c35d49bb-d95a-4bf9-bada-2340def4a412",
       "kind": "wheel-hinge",
       "parent": {
-        "instanceId": "7ef63c79-c1f9-4890-9029-0296bf73c363",
+        "instanceId": "985faf09-6467-40f9-b47f-6e0581a6546c",
         "anchorId": "axle-r"
       },
       "child": {
-        "instanceId": "2b6b48dc-f41c-455f-8a7f-7e951753a5c8",
+        "instanceId": "38c58cfc-d1ce-4ac2-99ef-8993e88eb195",
         "anchorId": "hub"
       },
       "axis": [
@@ -416,134 +416,134 @@
       ]
     },
     {
-      "id": "510a013a-efe3-449d-88cb-4611a8e2ce9a",
+      "id": "d2030568-7efa-466e-95a7-5babbd19adc6",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "board-left"
       },
       "child": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "anchorId": "base"
       }
     },
     {
-      "id": "6a36577b-0b89-454f-9ae0-bcb3ff493f6c",
+      "id": "baf1de6c-2543-4811-ab1b-58ab356e0027",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "breadboard"
       },
       "child": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "anchorId": "base"
       }
     },
     {
-      "id": "0613d1ac-7da6-430d-a509-3112ee3f5aec",
+      "id": "ba130f6a-5d16-49ab-a03a-58d0890f7795",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-driver-a"
       },
       "child": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "anchorId": "base"
       }
     },
     {
-      "id": "b685f07e-9141-4506-b155-50919e0c84d7",
+      "id": "d741ce0f-db75-494f-a79d-e40c0bd1e4e9",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-battery"
       },
       "child": {
-        "instanceId": "05b3492e-792d-4875-87c0-6947f4ba21a3",
+        "instanceId": "287991f3-ecd2-48b6-9b8a-0977eeb92aad",
         "anchorId": "base"
       }
     },
     {
-      "id": "e75d7d15-973e-4958-ad93-db9df3fa724b",
+      "id": "02f3a487-7c1e-4258-886f-053988648824",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-regulator"
       },
       "child": {
-        "instanceId": "2634b531-aaa1-45d9-b4db-dc2458c93945",
+        "instanceId": "ae2a09f5-b351-486f-81e9-a93702c2bdc1",
         "anchorId": "base"
       }
     },
     {
-      "id": "be521dee-a35b-410e-8ad8-4df4aed2301a",
+      "id": "ab8965bd-8b84-4a58-8b5f-dcec4a1a68e5",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-switch"
       },
       "child": {
-        "instanceId": "3933d9ed-feaf-4bee-a680-268785799128",
+        "instanceId": "dc0e289a-a2b2-4aa7-b237-dca140bf275a",
         "anchorId": "base"
       }
     },
     {
-      "id": "3f6a3aec-fa2a-4b9f-afe9-a74312a2706a",
+      "id": "3b243926-9b7c-4d5b-b99c-d0206aba6409",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "front"
       },
       "child": {
-        "instanceId": "c24ec03b-e824-4c6a-b01f-008d22301aac",
+        "instanceId": "c9e0df3c-f608-4efb-9311-99f5669e24db",
         "anchorId": "base"
       }
     },
     {
-      "id": "dd4c38b4-dd48-4712-80f0-ee6b71549cad",
+      "id": "d6ef5fad-6924-4f40-939a-117fc4ddb59e",
       "kind": "rigid",
       "parent": {
-        "instanceId": "c24ec03b-e824-4c6a-b01f-008d22301aac",
+        "instanceId": "c9e0df3c-f608-4efb-9311-99f5669e24db",
         "anchorId": "sensor"
       },
       "child": {
-        "instanceId": "c0069f1e-049a-4bd4-9cc4-dd76c75489f2",
+        "instanceId": "5407f4ff-3dd6-4570-9186-e607477649d7",
         "anchorId": "base"
       }
     },
     {
-      "id": "f2ca27bf-68e0-410f-9b42-1861f10312a5",
+      "id": "d38626cc-4bd5-459e-a881-52db3a2ad76d",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-motor-fl"
       },
       "child": {
-        "instanceId": "54dfea5b-c570-439c-b11c-57a48ab5bb5a",
+        "instanceId": "939ede92-6f98-4b06-a087-4821ab57bba1",
         "anchorId": "base"
       }
     },
     {
-      "id": "4df2ca38-6e04-44e2-9bb3-0850923547e1",
+      "id": "31a72b34-a6bb-4144-a4b3-93df4662a19e",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-motor-fr"
       },
       "child": {
-        "instanceId": "3061e053-ae32-4b41-a315-1396bc2707e6",
+        "instanceId": "d77ebcd6-ebfb-4519-8380-d5a0ae96a45e",
         "anchorId": "base"
       }
     },
     {
-      "id": "12c8708e-2855-4375-95b8-3231bfd7c443",
+      "id": "f9926d3f-8d2c-47ba-a3a0-ec908fc42fb9",
       "kind": "wheel-hinge",
       "parent": {
-        "instanceId": "54dfea5b-c570-439c-b11c-57a48ab5bb5a",
+        "instanceId": "939ede92-6f98-4b06-a087-4821ab57bba1",
         "anchorId": "axle-l"
       },
       "child": {
-        "instanceId": "fadc672f-ad74-4227-9063-c43be6853a1a",
+        "instanceId": "4c0d7c25-4220-43ce-b4b8-8006a36dfd79",
         "anchorId": "hub"
       },
       "axis": [
@@ -553,14 +553,14 @@
       ]
     },
     {
-      "id": "130beb06-6611-475f-ac6c-56e27c90276c",
+      "id": "5789f83e-a4ce-427e-8faf-48f816daf3d6",
       "kind": "wheel-hinge",
       "parent": {
-        "instanceId": "3061e053-ae32-4b41-a315-1396bc2707e6",
+        "instanceId": "d77ebcd6-ebfb-4519-8380-d5a0ae96a45e",
         "anchorId": "axle-r"
       },
       "child": {
-        "instanceId": "2828ecb8-415f-4996-9bb7-9ae1ac1eb687",
+        "instanceId": "60a2ab63-4f1c-452f-9225-cc9458d4c88c",
         "anchorId": "hub"
       },
       "axis": [
@@ -570,507 +570,507 @@
       ]
     },
     {
-      "id": "ff3701b5-38d3-46bd-96fe-8cc13d449438",
+      "id": "1593bf50-a120-4ebb-a676-ce2fbeab74fa",
       "kind": "rigid",
       "parent": {
-        "instanceId": "8535a0d4-b013-4e98-b317-096d631e9853",
+        "instanceId": "c7c17887-125d-4532-ae3a-897a0650740d",
         "anchorId": "4wd-driver-b"
       },
       "child": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "anchorId": "base"
       }
     }
   ],
   "connections": [
     {
-      "id": "8c4a5937-3bc2-41f0-a47e-96ba2b32ddb8",
+      "id": "1624c29d-7e51-42a4-8c24-a21974e4e871",
       "a": {
-        "instanceId": "05b3492e-792d-4875-87c0-6947f4ba21a3",
+        "instanceId": "287991f3-ecd2-48b6-9b8a-0977eeb92aad",
         "pinId": "B+"
       },
       "b": {
-        "instanceId": "3933d9ed-feaf-4bee-a680-268785799128",
+        "instanceId": "dc0e289a-a2b2-4aa7-b237-dca140bf275a",
         "pinId": "IN"
       },
       "color": "#d64545"
     },
     {
-      "id": "df7e138d-1ef0-4c41-a56a-0266eab89c24",
+      "id": "bef2705a-969e-4655-bc14-a3ec90b04bf4",
       "a": {
-        "instanceId": "3933d9ed-feaf-4bee-a680-268785799128",
+        "instanceId": "dc0e289a-a2b2-4aa7-b237-dca140bf275a",
         "pinId": "OUT"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "+12V"
       },
       "color": "#d64545"
     },
     {
-      "id": "606974c3-51d5-4525-b868-64ca0957e283",
+      "id": "6eb60dfe-b38e-4874-a2d1-e94bfc4b3aaf",
       "a": {
-        "instanceId": "3933d9ed-feaf-4bee-a680-268785799128",
+        "instanceId": "dc0e289a-a2b2-4aa7-b237-dca140bf275a",
         "pinId": "OUT"
       },
       "b": {
-        "instanceId": "2634b531-aaa1-45d9-b4db-dc2458c93945",
+        "instanceId": "ae2a09f5-b351-486f-81e9-a93702c2bdc1",
         "pinId": "VIN"
       },
       "color": "#d64545"
     },
     {
-      "id": "7530ba99-3d1c-4fc7-9ad2-5c312c17a572",
+      "id": "597d309f-b2cd-4fa4-96bd-26bc2801c48c",
       "a": {
-        "instanceId": "05b3492e-792d-4875-87c0-6947f4ba21a3",
+        "instanceId": "287991f3-ecd2-48b6-9b8a-0977eeb92aad",
         "pinId": "B-"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "GND"
       },
       "color": "#222222"
     },
     {
-      "id": "522f8ac7-5e1d-42c3-a7a5-f632a674a01e",
+      "id": "b2d57ce0-c8f6-4341-a24c-4a69edfb5835",
       "a": {
-        "instanceId": "05b3492e-792d-4875-87c0-6947f4ba21a3",
+        "instanceId": "287991f3-ecd2-48b6-9b8a-0977eeb92aad",
         "pinId": "B-"
       },
       "b": {
-        "instanceId": "2634b531-aaa1-45d9-b4db-dc2458c93945",
+        "instanceId": "ae2a09f5-b351-486f-81e9-a93702c2bdc1",
         "pinId": "GND"
       },
       "color": "#222222"
     },
     {
-      "id": "ca787c09-efb6-4a78-922b-eb7bec1f8512",
+      "id": "105d655d-195d-4902-837d-c6bc95070537",
       "a": {
-        "instanceId": "2634b531-aaa1-45d9-b4db-dc2458c93945",
+        "instanceId": "ae2a09f5-b351-486f-81e9-a93702c2bdc1",
         "pinId": "5V"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "L+1"
       },
       "color": "#d64545"
     },
     {
-      "id": "a294acae-726c-4c59-8f2b-108bd150a4c5",
+      "id": "d9c13082-83fe-49dd-aaca-6726b8831e1a",
       "a": {
-        "instanceId": "2634b531-aaa1-45d9-b4db-dc2458c93945",
+        "instanceId": "ae2a09f5-b351-486f-81e9-a93702c2bdc1",
         "pinId": "GND.OUT"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "L-1"
       },
       "color": "#222222"
     },
     {
-      "id": "21c6004c-68a5-4a4c-a8ac-920e1f17ec95",
+      "id": "01aabc2b-8c67-4002-97a0-9d3b7cb585cd",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "L+25"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "R+1"
       },
       "color": "#d64545"
     },
     {
-      "id": "eac4e19a-d306-4230-8512-a8a75e851bd9",
+      "id": "3ece1470-c87c-40f4-bcc0-34cb9ff83064",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "L-25"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "R-1"
       },
       "color": "#222222"
     },
     {
-      "id": "36e2a368-64aa-4c2f-a7db-9a6224048286",
+      "id": "c0d72a0b-9ce4-4257-96b2-ae0ddc829b4e",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "R+10"
       },
       "b": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "5V"
       },
       "color": "#d64545"
     },
     {
-      "id": "7020e774-37d6-4a2e-99d6-5f4ab62eb16f",
+      "id": "fd746370-99e4-4940-8f40-e46f9fbbd08a",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "R-10"
       },
       "b": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "GND.1"
       },
       "color": "#222222"
     },
     {
-      "id": "0e596818-77c4-4071-bf71-1bbea9510be7",
+      "id": "306f11ed-523b-4930-bb71-24beb6a754f3",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "R+5"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "+5V"
       },
       "color": "#d64545"
     },
     {
-      "id": "bb66beb6-8acf-48f2-ad22-c5216781dfa6",
+      "id": "fd16fbc3-c452-472d-a5b8-63aeaad445cf",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D4"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "IN1"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "abb3ebc3-9a2b-4156-b7a5-201c2c75167e",
+      "id": "1c8a3f17-850b-43cf-bdc2-bbdce0bde2e8",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D7"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "IN2"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "85bc4b38-6c7b-4d30-b349-c2bb72080e22",
+      "id": "918805ca-93b2-4dc5-9bb8-d22454a12cb0",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D8"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "IN3"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "97207c6d-b3c2-49ad-ba53-e48e49bbe083",
+      "id": "6f93d358-d609-4109-ae2e-4241e467deee",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D12"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "IN4"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "4950a835-c5f6-474a-a333-1bbb4d1ca6c7",
+      "id": "0fab289d-15ab-456a-b1a0-e721a679f3f3",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D5"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "ENA"
       },
       "color": "#e0a52a"
     },
     {
-      "id": "33d37c68-d710-45b1-b4f4-d75e0bd9cd60",
+      "id": "3f2280fb-da76-4fe8-bd93-d3398567d709",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D6"
       },
       "b": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "ENB"
       },
       "color": "#e0a52a"
     },
     {
-      "id": "1d4db21d-d442-4147-97e3-a60a1e9ea953",
+      "id": "365102c7-7595-4ac7-aa75-d2f5cd784de9",
       "a": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "OUT1"
       },
       "b": {
-        "instanceId": "fe27abad-2104-4d22-98c1-289896ce1745",
+        "instanceId": "8bf13dce-de17-4486-9a86-638cc2dce461",
         "pinId": "M+"
       },
       "color": "#d64545"
     },
     {
-      "id": "bcb931cb-64a0-430c-bbdc-5508179d25cc",
+      "id": "a6299d0e-0776-4b70-8779-14b5489e97d8",
       "a": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "OUT2"
       },
       "b": {
-        "instanceId": "fe27abad-2104-4d22-98c1-289896ce1745",
+        "instanceId": "8bf13dce-de17-4486-9a86-638cc2dce461",
         "pinId": "M-"
       },
       "color": "#222222"
     },
     {
-      "id": "daec3607-ee0a-4900-bc17-9167ab8b872c",
+      "id": "0c62b8ae-8f03-4387-94fc-a79043003a33",
       "a": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "OUT3"
       },
       "b": {
-        "instanceId": "7ef63c79-c1f9-4890-9029-0296bf73c363",
+        "instanceId": "985faf09-6467-40f9-b47f-6e0581a6546c",
         "pinId": "M+"
       },
       "color": "#d64545"
     },
     {
-      "id": "e5ab308b-62f7-4945-b8cc-ada1d24f06dd",
+      "id": "4da0b37e-32ea-48d9-99c4-cdd5e9a97060",
       "a": {
-        "instanceId": "8c55e75c-8a82-4f16-9257-fda331c49dc5",
+        "instanceId": "a3527085-ca9a-4df8-a9bd-9bbade8ca5aa",
         "pinId": "OUT4"
       },
       "b": {
-        "instanceId": "7ef63c79-c1f9-4890-9029-0296bf73c363",
+        "instanceId": "985faf09-6467-40f9-b47f-6e0581a6546c",
         "pinId": "M-"
       },
       "color": "#222222"
     },
     {
-      "id": "2ce332bd-8346-4ce9-8117-416360dd4220",
+      "id": "69be0083-12dd-432b-bcfd-9b73fe0d8156",
       "a": {
-        "instanceId": "c0069f1e-049a-4bd4-9cc4-dd76c75489f2",
+        "instanceId": "5407f4ff-3dd6-4570-9186-e607477649d7",
         "pinId": "VCC"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "L+5"
       },
       "color": "#d64545"
     },
     {
-      "id": "b9f9f081-5f6d-4622-a9eb-7b7db4dc6434",
+      "id": "367f55aa-4446-4376-bbcb-a7248850bcc2",
       "a": {
-        "instanceId": "c0069f1e-049a-4bd4-9cc4-dd76c75489f2",
+        "instanceId": "5407f4ff-3dd6-4570-9186-e607477649d7",
         "pinId": "GND"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "L-5"
       },
       "color": "#222222"
     },
     {
-      "id": "079f6842-63c4-4919-80f5-bc52ddffdd1e",
+      "id": "97a00147-de55-453a-b532-b605474c49e3",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D9"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "A5"
       },
       "color": "#2a8f4f"
     },
     {
-      "id": "742c16ee-d618-43a2-8be2-aa077df1d6dd",
+      "id": "aedf0d93-bb2a-4815-8dbf-0adc851ceb1e",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "E5"
       },
       "b": {
-        "instanceId": "c0069f1e-049a-4bd4-9cc4-dd76c75489f2",
+        "instanceId": "5407f4ff-3dd6-4570-9186-e607477649d7",
         "pinId": "TRIG"
       },
       "color": "#2a8f4f"
     },
     {
-      "id": "da690936-3252-4a14-9caa-1869c0156532",
+      "id": "2ebf83c3-2a31-495c-a375-1a84320bdf66",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D10"
       },
       "b": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "A7"
       },
       "color": "#2a8f4f"
     },
     {
-      "id": "04ae54c8-3e9c-4229-aec1-c4e273edcbab",
+      "id": "86858d08-8d39-4e0d-b562-6a3729bb895a",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "E7"
       },
       "b": {
-        "instanceId": "c0069f1e-049a-4bd4-9cc4-dd76c75489f2",
+        "instanceId": "5407f4ff-3dd6-4570-9186-e607477649d7",
         "pinId": "ECHO"
       },
       "color": "#2a8f4f"
     },
     {
-      "id": "6adb8008-001f-4c3a-8049-08915d339495",
+      "id": "86a76173-0ae0-4f22-9a75-0cb524375378",
       "a": {
-        "instanceId": "3933d9ed-feaf-4bee-a680-268785799128",
+        "instanceId": "dc0e289a-a2b2-4aa7-b237-dca140bf275a",
         "pinId": "OUT"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "+12V"
       },
       "color": "#d64545"
     },
     {
-      "id": "678eb2db-8f35-4c12-a1fd-48ccaab55d08",
+      "id": "842e4701-2071-4bd4-b627-12d499a91cc2",
       "a": {
-        "instanceId": "05b3492e-792d-4875-87c0-6947f4ba21a3",
+        "instanceId": "287991f3-ecd2-48b6-9b8a-0977eeb92aad",
         "pinId": "B-"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "GND"
       },
       "color": "#222222"
     },
     {
-      "id": "2549a5c3-e6f1-44f7-8749-f0d9407534d7",
+      "id": "2c3c1369-2712-4136-bebe-1b2c7d01b1cf",
       "a": {
-        "instanceId": "316ef477-33e4-48a2-9d1d-1855f2b09c1d",
+        "instanceId": "716703e2-1058-4046-9772-c3093acefa76",
         "pinId": "R+20"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "+5V"
       },
       "color": "#d64545"
     },
     {
-      "id": "b58aee96-ca48-4ca8-93fd-671aa965a39f",
+      "id": "67754728-5b46-4c53-bb5a-08567bdc80fa",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D4"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "IN1"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "8582bcad-d875-4554-b002-ecdfef8edf9a",
+      "id": "6a107478-4eed-46f5-8dbe-aa6d86b96ab0",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D7"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "IN2"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "e3260a1b-400e-4cd0-a131-0faa9629dc9c",
+      "id": "b2be859f-2e6d-4f00-9beb-bca3f683f1a1",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D8"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "IN3"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "b9a870de-20b3-450a-9151-001193af9a33",
+      "id": "6cb893e8-72dc-43b1-9f64-3572b131964d",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D12"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "IN4"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "04f8bfcd-62a6-4489-9049-9638c194853b",
+      "id": "e8558b62-5cb8-4511-9e04-20ed213c18c7",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D5"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "ENA"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "6eb8de32-e095-4d30-b456-501a67ba5be1",
+      "id": "922607a4-e0c3-47c9-bb89-7c7d0b5e1c9e",
       "a": {
-        "instanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+        "instanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
         "pinId": "D6"
       },
       "b": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "ENB"
       },
       "color": "#2a67a3"
     },
     {
-      "id": "ce740843-323b-4317-a3e2-51de8a7177fa",
+      "id": "5a7b8568-bc69-4031-a02e-4c4a452d3ea3",
       "a": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "OUT1"
       },
       "b": {
-        "instanceId": "54dfea5b-c570-439c-b11c-57a48ab5bb5a",
+        "instanceId": "939ede92-6f98-4b06-a087-4821ab57bba1",
         "pinId": "M+"
       },
       "color": "#d64545"
     },
     {
-      "id": "dd33aa2b-efcf-4a31-a910-0ec9298ab1f2",
+      "id": "7df52cff-3cef-4439-9ba1-c8a27a4ae4c2",
       "a": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "OUT2"
       },
       "b": {
-        "instanceId": "54dfea5b-c570-439c-b11c-57a48ab5bb5a",
+        "instanceId": "939ede92-6f98-4b06-a087-4821ab57bba1",
         "pinId": "M-"
       },
       "color": "#222222"
     },
     {
-      "id": "caede5d8-f1f0-4dc2-b92e-be3275c7f34e",
+      "id": "e510dbac-414d-4b45-bb02-adf0793c41da",
       "a": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "OUT3"
       },
       "b": {
-        "instanceId": "3061e053-ae32-4b41-a315-1396bc2707e6",
+        "instanceId": "d77ebcd6-ebfb-4519-8380-d5a0ae96a45e",
         "pinId": "M+"
       },
       "color": "#d64545"
     },
     {
-      "id": "c769c6eb-6c9d-4ea2-a058-512f2c15c078",
+      "id": "cbee1ad5-712b-4724-92f9-e0d1ec0264f5",
       "a": {
-        "instanceId": "0a7be665-2856-4cfc-a29e-eb936706fc20",
+        "instanceId": "7ec92d01-0fea-43c1-8cd8-dcc5496de447",
         "pinId": "OUT4"
       },
       "b": {
-        "instanceId": "3061e053-ae32-4b41-a315-1396bc2707e6",
+        "instanceId": "d77ebcd6-ebfb-4519-8380-d5a0ae96a45e",
         "pinId": "M-"
       },
       "color": "#222222"
@@ -1078,16 +1078,16 @@
   ],
   "firmware": [
     {
-      "id": "218031d9-33da-44a5-b3c4-19cc8f95721d",
-      "targetInstanceId": "e1a748f1-800a-4d96-a9c9-89bfbef6cc64",
+      "id": "cbdd66fd-6d65-457d-830e-d08248b91b50",
+      "targetInstanceId": "4357fb76-2a64-4fae-914f-49a8fbc270fd",
       "board": "arduino-uno-r3",
       "source": "// Evitar obstáculos: avanza; si el HC-SR04 ve algo a menos de 20 cm, gira a la derecha un momento.\n// Puente H: IN1=D4 IN2=D7 IN3=D8 IN4=D12, ENA=D5 ENB=D6. Sensor: TRIG=D9, ECHO=D10.\nlong distanciaCm() {\n  digitalWrite(9, LOW); delayMicroseconds(2); digitalWrite(9, HIGH); delayMicroseconds(10); digitalWrite(9, LOW);\n  unsigned long us = pulseIn(10, HIGH, 25000UL);\n  if (us == 0) return 400;\n  return us / 58;\n}\nvoid motores(bool izqAdelante, bool derAdelante, int fuerza) {\n  digitalWrite(4, izqAdelante); digitalWrite(7, !izqAdelante);\n  digitalWrite(8, derAdelante); digitalWrite(12, !derAdelante);\n  analogWrite(5, fuerza); analogWrite(6, fuerza);\n}\nvoid setup() { pinMode(4, OUTPUT); pinMode(7, OUTPUT); pinMode(8, OUTPUT); pinMode(12, OUTPUT); pinMode(9, OUTPUT); pinMode(10, INPUT); }\nvoid loop() {\n  if (distanciaCm() < 20) { motores(true, false, 200); delay(400); }\n  else motores(true, true, 200);\n  delay(30);\n}\n",
-      "updatedAt": "2026-11-01T16:48:35.904Z",
+      "updatedAt": "2026-11-09T12:11:06.518Z",
       "artifact": {
         "hex": ":100000000C9461000C9473000C9473000C947300B6\n:100010000C9473000C9473000C9473000C94730094\n:100020000C9473000C9473000C9473000C94730084\n:100030000C9473000C9473000C9473000C94730074\n:100040000C94B6010C9473000C9473000C94730020\n:100050000C9473000C9473000C9473000C94730054\n:100060000C9473000C947300000000002300260021\n:10007000290000000000240027002A0000000000E2\n:10008000250028002B0004040404040404040202D4\n:100090000202020203030303030301020408102007\n:1000A0004080010204081020010204081020000012\n:1000B0000008000201000003040700000000000027\n:1000C000000011241FBECFEFD8E0DEBFCDBF21E07E\n:1000D000A0E0B1E001C01D92A930B207E1F70E9493\n:1000E00045020C9404030C94000090E0FC01E255DE\n:1000F000FF4F2491FC01E656FF4F3491FC01EA5773\n:10010000FF4FE491EE23C9F0222339F0233001F1AF\n:10011000A8F4213019F1223029F1F0E0EE0FFF1F91\n:10012000E458FF4FA591B4918FB7F894EC91611109\n:1001300026C030953E233C938FBF08952730A9F009\n:100140002830C9F0243049F7809180008F7D03C0AA\n:10015000809180008F7780938000DFCF84B58F7788\n:1001600084BDDBCF84B58F7DFBCF8091B0008F77CE\n:100170008093B000D2CF8091B0008F7DF9CF3E2B1D\n:10018000DACFCF93DF9390E0FC01E656FF4F249146\n:100190008A579F4FFC0184918823D1F090E0880F0B\n:1001A000991FFC01EE58FF4FA591B491FC01E45852\n:1001B000FF4FC591D49161110EC09FB7F8948C91F7\n:1001C000E22FE0958E238C932881E223E8839FBF62\n:1001D000DF91CF9108958FB7F894EC91E22BEC93D7\n:1001E0008FBFF6CF3FB7F89480910501909106013B\n:1001F000A0910701B091080126B5A89B05C02F3F2B\n:1002000019F00196A11DB11D3FBFBA2FA92F982F3C\n:100210008827BC01CD01620F711D811D911D42E037\n:10022000660F771F881F991F4A95D1F708958F92FF\n:100230009F92AF92BF92CF92DF92EF92FF924B01CB\n:100240005C010E94F2006B017C010E94F2006C19BB\n:100250007D098E099F09683E734081059105A8F3C9\n:1002600021E0821A9108A108B10888EEC80E83E047\n:10027000D81EE11CF11C81149104A104B10429F7DA\n:10028000FF90EF90DF90CF90BF90AF909F908F90B6\n:100290000895E82FF0E0E255FF4FE491E33031F1AB\n:1002A00038F4E130B9F0E230D9F061E00C94750037\n:1002B000E73041F1E83079F1E430B9F7809180001E\n:1002C00080628093800088EC90E090938B00809314\n:1002D0008A00089584B5806884BD88EC87BD089540\n:1002E00084B5806284BD88EC88BD089580918000CB\n:1002F00080688093800088EC90E0909389008093E0\n:10030000880008958091B00080688093B00088ECE8\n:100310008093B30008958091B00080628093B00014\n:1003200088EC8093B4000895CF93C82F61E084E0F7\n:100330000E94750060E087E00E9475006C2F88E0E5\n:100340000E94750061E06C278CE00E94750061E0FE\n:1003500085E00E94C10085E00E94490161E086E0DD\n:100360000E94C10086E0CF910C9449011F920F9228\n:100370000FB60F9211242F933F938F939F93AF93B8\n:10038000BF938091010190910201A0910301B0916E\n:1003900004013091000123E0230F2D3758F5019619\n:1003A000A11DB11D209300018093010190930201D2\n:1003B000A0930301B093040180910501909106017F\n:1003C000A0910701B09108010196A11DB11D809374\n:1003D000050190930601A0930701B0930801BF9116\n:1003E000AF919F918F913F912F910F900FBE0F90E2\n:1003F0001F90189526E8230F0296A11DB11DD2CF9C\n:10040000CF92DF92EF92FF920F931F93E82FF92F75\n:1004100005C0015011092109310961F1908196232C\n:100420009417B9F305C0015011092109310911F1DF\n:10043000908196239413F7CFC12CD12CE12CF12C71\n:100440000AC08FEFC81AD80AE80AF80A0C151D0569\n:100450002E053F0579F080818623841791F36C2D5A\n:100460007D2D8E2D9F2D1F910F91FF90EF90DF908E\n:10047000CF90089560E070E080E090E01F910F91D0\n:10048000FF90EF90DF90CF900895789484B58260CC\n:1004900084BD84B5816084BD85B5826085BD85B528\n:1004A000816085BD80916E00816080936E001092A6\n:1004B0008100809181008260809381008091810021\n:1004C00081608093810080918000816080938000B2\n:1004D0008091B10084608093B1008091B000816010\n:1004E0008093B00080917A00846080937A0080913C\n:1004F0007A00826080937A0080917A008160809394\n:100500007A0080917A00806880937A001092C1000E\n:1005100061E084E00E94C10061E087E00E94C100C8\n:1005200061E088E00E94C10061E08CE00E94C100AF\n:1005300061E089E00E94C10060E08AE00E94C100A1\n:10054000C3E0D0E093E2E92EF12C24EAC22E20E0B1\n:10055000D22E30E9A32E30E0B32E40E0842E40E0CE\n:10056000942E60E089E00E947500CE010197F1F7BA\n:1005700061E089E00E947500C7010197F1F760E032\n:1005800089E00E947500F6016491F5018491E82FDD\n:10059000F0E0EE0FFF1FE859FF4F8591949108EAB4\n:1005A00011E620E030E0462F0E940002611571053F\n:1005B0008105910529F1DC01CB010196A11DB11D39\n:1005C000BF700097A105B105D9F088389440A10506\n:1005D000B105B0F480E00E94940160E971E080E030\n:1005E00090E00E9417016EE170E080E090E00E94D0\n:1005F00017018114910409F4B4CF0E940000B1CF17\n:0C06000081E00E949401EFCFF894FFCF3E\n:00000001FF\n",
         "origin": "remote-compiler",
         "sourceHash": "e745d5dc877b0e9de739b15b9d4b201fc8f21cb122bfab7e2cf76d2f1c3d8313",
-        "compiledAt": "2026-11-01T16:48:35.904Z"
+        "compiledAt": "2026-11-09T12:11:06.518Z"
       }
     }
   ],

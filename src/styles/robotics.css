@@ -293,7 +293,6 @@ body.rb-dragging,body.rb-dragging *{cursor:grabbing!important;user-select:none!i
 @media(max-width:600px){.rb-toast{top:auto;bottom:calc(116px + env(safe-area-inset-bottom,0px));right:8px;max-width:calc(100% - 16px)}}
 /* Robotics owns its blue accent, including floating windows rendered through a portal. */
 .rb-app,.rb-window{--rb-accent:#2563eb;--modo-accent:#2563eb;--rb-line:#dde3e8}
-.rb-window .floating-window-title h3{color:#215eb6}
 .rb-empty{box-sizing:border-box;top:47%;width:min(410px,calc(100% - 32px));padding:26px;text-align:left;border:1px solid #dce5f1;border-radius:22px;background:#fffffff5;box-shadow:0 12px 40px #243b5320;max-height:calc(100dvh - 190px);overflow:auto}
 .rb-empty-symbol{display:grid;place-items:center;width:48px;height:48px;margin-bottom:16px;border:1px solid #cbdcfa;border-radius:14px;background:#eaf2ff;color:#2563eb}
 .rb-empty-eyebrow{display:block;margin-bottom:7px;color:#5c7190;font-size:10px;font-weight:700;letter-spacing:.13em}
@@ -314,7 +313,6 @@ body.rb-dragging,body.rb-dragging *{cursor:grabbing!important;user-select:none!i
 .rb-window-code .rb-code-editor{min-height:260px;background:#0d1117;border-radius:12px}
 @media(max-width:600px){.rb-empty{padding:22px;top:47%;width:calc(100% - 32px)}.rb-empty-symbol{width:42px;height:42px;margin-bottom:12px}.rb-empty>strong{font-size:22px}.rb-empty>p{margin-bottom:16px}.rb-empty .rb-start-options button{min-height:68px;padding:12px}.rb-start-secondary{margin-top:14px;padding-top:12px}}
 @media(max-height:650px){.rb-empty{padding:16px;max-height:calc(100dvh - 150px)}.rb-empty-symbol{display:none}.rb-empty>p{margin:6px 0 12px}.rb-empty .rb-start-options button{min-height:58px;padding:10px}.rb-start-secondary{margin-top:10px;padding-top:8px}}
-body.modo-soft-ui.modo-identity .mobile-floating-window.rb-window .floating-window-header .floating-window-title h3{color:#215eb6}
 .rb-window-code .rb-code-editor{display:grid;grid-template-rows:minmax(260px,1fr);background:transparent}
 .rb-code-host .cm-editor{box-sizing:border-box}
 .rb-arm-controls{box-sizing:border-box;color:#35566a;font-size:14px;line-height:1.5;min-width:0}

@@ -1,0 +1,174 @@
+/* Marco de las ventanas de modo, incluida la barra de pestañas minimizadas. */
+.fw-browser-bar,
+.fw-tabstrip {
+  --fw-rail: var(--id-line, #e3e6f0);
+  --fw-tab: var(--id-blue, #073cff);
+  --fw-idle-tab: var(--id-card, #fff);
+  --fw-on-rail: var(--id-ink, #111115);
+  --fw-on-tab: var(--id-card, #fff);
+  --fw-tab-curve: 8px;
+}
+
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar:is(.floating-window-header, .diagram-pane-actions) {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 2px;
+  min-height: 33px;
+  padding: 4px 4px 0 9px;
+  border: 0;
+  border-bottom: 2px solid var(--fw-tab);
+  background: var(--fw-rail);
+  color: var(--fw-on-rail);
+}
+
+.fw-browser-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 0 1 178px;
+  gap: 6px;
+  min-width: 0;
+  margin-inline-end: auto;
+  margin-block-end: -1px;
+  padding: 2px 8px;
+  border-radius: var(--fw-tab-curve) var(--fw-tab-curve) 0 0;
+  background: var(--fw-tab);
+  color: var(--fw-on-tab);
+  cursor: grab;
+}
+.fw-browser-tab::before,
+.fw-browser-tab::after {
+  position: absolute;
+  bottom: 0;
+  width: var(--fw-tab-curve);
+  height: var(--fw-tab-curve);
+  content: '';
+  pointer-events: none;
+}
+.fw-browser-tab::before {
+  right: 100%;
+  border-bottom-right-radius: var(--fw-tab-curve);
+  box-shadow: 4px 4px 0 3px var(--fw-tab);
+  clip-path: inset(0);
+}
+.fw-browser-tab::after {
+  left: 100%;
+  border-bottom-left-radius: var(--fw-tab-curve);
+  box-shadow: -4px 4px 0 3px var(--fw-tab);
+  clip-path: inset(0);
+}
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar .fw-browser-tab > svg {
+  display: block;
+  flex: none;
+  box-sizing: content-box;
+  width: 13px;
+  height: 13px;
+  padding: 2px;
+  border-radius: 4px;
+  color: var(--fw-on-tab);
+  background: #ffffff26;
+}
+.fw-browser-tab > div { min-width: 0; }
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar .fw-browser-tab :is(h3, small, strong) {
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  color: var(--fw-on-tab);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar .fw-browser-tab :is(h3, strong) {
+  font: 600 13px/1.25 var(--ui-font, system-ui, sans-serif);
+}
+body .mobile-floating-window .fw-browser-bar .fw-browser-tab small {
+  color: #e5ebff;
+  font: 500 9px/1.2 var(--ui-font, system-ui, sans-serif);
+  text-transform: none;
+}
+
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar:is(.floating-window-header, .diagram-pane-actions) > button {
+  flex: 0 0 auto;
+  align-self: stretch;
+  width: 31px;
+  height: auto;
+  min-width: 0;
+  min-height: 28px;
+  margin: 0 0 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--fw-on-rail);
+}
+body .editor-workbench .fw-browser-bar.diagram-pane-actions > .diagram-menu-shortcut { width: auto; padding-inline: 8px; }
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar:is(.floating-window-header, .diagram-pane-actions) > button > svg { width: 14px; height: 14px; }
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar:is(.floating-window-header, .diagram-pane-actions) > button:hover {
+  background: var(--id-blue-soft, #eaeeff);
+  color: var(--fw-tab);
+}
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar:is(.floating-window-header, .diagram-pane-actions) > :is(.floating-window-close, .diagram-window-close):hover {
+  background: #b62b49;
+  color: #fff;
+}
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar :is(button, .fw-browser-tab):focus-visible,
+body .fw-tabstrip button:focus-visible {
+  outline: 2px solid var(--fw-tab);
+  outline-offset: -3px;
+}
+body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar .fw-browser-tab:focus-visible { outline-color: var(--fw-on-tab); }
+
+.fw-tabstrip {
+  position: fixed;
+  z-index: 5000;
+  inset: auto auto max(calc(env(safe-area-inset-bottom, 0px) + 8px), calc(var(--fw-dock-offset, 0px) + 6px)) 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  max-width: calc(100vw - 24px);
+  padding: 4px 5px 0;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #a5b1d6 var(--fw-rail);
+  border: 1px solid var(--fw-rail);
+  border-bottom: 2px solid var(--fw-tab);
+  border-radius: 9px 9px 5px 5px;
+  background: var(--fw-rail);
+  box-shadow: var(--id-shadow, 0 5px 15px #20233c33);
+}
+.fw-window-tab {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  border-radius: var(--fw-tab-curve) var(--fw-tab-curve) 0 0;
+  background: var(--fw-idle-tab);
+}
+.fw-window-tab:is(:hover, :focus-within) { background: var(--id-blue-soft, #eaeeff); }
+.fw-window-tab button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 7px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fw-on-rail);
+  font: 500 12px/1.2 var(--ui-font, system-ui, sans-serif);
+  cursor: pointer;
+}
+.fw-window-tab .fw-tab-restore { max-width: min(170px, 60vw); text-align: left; }
+.fw-tab-restore span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fw-window-tab svg { flex: none; }
+.fw-window-tab .fw-tab-close:hover { background: #f6dce5; color: #8d1730; }
+
+@media (pointer: coarse) {
+  body :is(.mobile-floating-window, .editor-workbench) .fw-browser-bar:is(.floating-window-header, .diagram-pane-actions) > button,
+  .fw-window-tab button { min-width: 38px; min-height: 44px; }
+}
+@media (max-width: 440px) {
+  body .editor-workbench .fw-browser-bar.diagram-pane-actions > .diagram-menu-shortcut span { display: none; }
+}

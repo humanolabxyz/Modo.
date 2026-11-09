@@ -1,11 +1,11 @@
-// Contraseña de la Beta de Robótica e Industria (solo Vercel). Protege /robotica/, /arena/ e /industria/ (y sus subrutas); el resto del sitio queda público.
+// Contraseña de la Beta de Robótica e Industria (solo Vercel). Protege /robotica/, /arena/, /industria/ y /agro/ (y sus subrutas); el resto del sitio queda público.
 // Una sola clave y una sola cookie para los módulos en Beta.
 // La clave NO está en el repositorio: se define en la variable de entorno ROBOTICA_BETA_PASSWORD. Sin ella la ruta se cierra (503).
 // Límite conocido: los archivos con hash de /_astro/ que usa Robótica no se protegen (no contienen datos, y no se pueden abrir sin la página).
 import {next} from '@vercel/functions';
 declare const process: {env: {ROBOTICA_BETA_PASSWORD?: string}};
 
-export const config = {matcher: ['/robotica', '/robotica/:path*', '/arena', '/arena/:path*', '/industria', '/industria/:path*']};
+export const config = {matcher: ['/robotica', '/robotica/:path*', '/arena', '/arena/:path*', '/industria', '/industria/:path*', '/agro', '/agro/:path*']};
 
 const COOKIE = 'modo-beta';
 const MAX_AGE = 60 * 60 * 24 * 30;
@@ -22,7 +22,7 @@ function same(a: string, b: string) {
   return diff === 0;
 }
 
-const moduleName = (request: Request) => (new URL(request.url).pathname.startsWith('/industria') ? 'Industria' : 'Robótica');
+const moduleName = (request: Request) => { const path = new URL(request.url).pathname; return path.startsWith('/industria') ? 'Industria' : path.startsWith('/agro') ? 'Agro' : 'Robótica'; };
 const page = (message: string, status: number, name = 'Robótica') => new Response(`<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>modo. Robótica (Beta)</title>
 <style>:root{color-scheme:light dark}body{margin:0;min-height:100vh;display:grid;place-items:center;font:16px/1.5 system-ui,sans-serif;background:#fafbfe;color:#111115}@media(prefers-color-scheme:dark){body{background:#111115;color:#f3f4f8}}
 main{width:min(360px,calc(100vw - 32px));padding:28px;border-radius:24px;background:#fff;box-shadow:0 12px 40px #11111526}@media(prefers-color-scheme:dark){main{background:#1b1b22}}

@@ -36,8 +36,8 @@ const settle = p => p.waitForTimeout(700); // guardado con retardo de 350 ms
     await p.locator('canvas').first().waitFor();
     const box = await p.locator('main.rb-stage').boundingBox();
     assert.ok(box.width > 1300 && box.height > 700, 'el escenario ocupa casi toda la pantalla');
-    for (const name of ['Seleccionar', 'Encuadrar', 'Piezas', 'Estructura', 'Propiedades', 'Escenario', 'Consola', 'Deshacer', 'Rehacer', 'Ejecutar', 'Detener', 'Opciones del proyecto']) assert.ok(await p.getByRole('button', {name, exact: true}).count() >= 1, 'falta el botón ' + name);
-    assert.equal(await p.locator('.rb-sim-chip').innerText(), 'DETENIDO');
+    for (const name of ['Orbitar', 'Desplazar', 'Mover pieza', 'Encuadrar', 'Piezas', 'Estructura', 'Propiedades', 'Escenario', 'Consola', 'Deshacer', 'Rehacer', 'Ejecutar', 'Detener', 'Opciones del proyecto']) assert.ok(await p.getByRole('button', {name, exact: true}).count() >= 1, 'falta el botón ' + name);
+    assert.equal(await p.locator('.rb-sim-chip').innerText(), 'Detenida');
     assert.ok(await p.getByRole('button', {name: 'Ejecutar'}).isEnabled() && await p.getByRole('button', {name: 'Detener'}).isDisabled(), 'fase 6: Ejecutar disponible, Detener solo con la simulación en marcha');
     assert.ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
     await p.screenshot({path: out + '/shell-1440.png'});

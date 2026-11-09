@@ -1,8 +1,8 @@
 {
-  "url": "http://127.0.0.1:4330",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "Consola → Serie y estado muestra «Controles del banco» con el potenciómetro y el pulsador",
-    "deslizador del potenciómetro → servo: 0°, 180° y 90° (Servo SG90 1: 89° → pide 89° · pulso 1461 µs)",
+    "deslizador del potenciómetro → servo: 0°, 180° y 90° (Servo SG90 1: 90° → pide 89° · pulso 1461 µs)",
     "la escena 3D sigue al modelo: el eje del servo dibujado marca 0°, 180° y 45° y la perilla del potenciómetro gira con el deslizador",
     "pulsador: se mantiene mientras el puntero está abajo y se suelta al levantarlo",
     "pulsador accesible por teclado: Espacio mantiene y soltar libera",

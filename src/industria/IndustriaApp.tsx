@@ -1,11 +1,13 @@
 import {lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode} from 'react';
-import {Factory, Boxes, Cable, Camera, ClipboardCheck, Gauge, Volume2, VolumeX, Wrench, ChevronRight, Check, Copy, Download, Eye, Focus, Hammer, Home, ListTree, Lock, Magnet, MousePointer2, MoreHorizontal, Pause, Play, Plus, Redo2, RotateCw, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Unlink, Upload, X} from 'lucide-react';
+import {Factory, Boxes, Cable, Camera, CircuitBoard, FileText, Monitor, Network, PanelTop, ClipboardCheck, Gauge, Volume2, VolumeX, Wrench, ChevronRight, Check, Copy, Download, Eye, Focus, Hammer, Hand, Home, ListTree, Lock, Move, Orbit, MousePointer2, Pause, Play, Plus, Redo2, RotateCw, SlidersHorizontal, Square, Terminal, Trash2, Undo2, Unlink, Upload, X} from 'lucide-react';
+import {containerOf, inspectionCamera, overviewCamera} from './model/inspection';
+import {restoreWindowTab} from '../components/WindowTabs';
 import {FloatingWindow} from '../components/FloatingWindow';
 import {useIndustriaProject} from './useIndustriaProject';
 import {addEntity, dependenciesOf, release, removeEntity, renameEntity, setEntityProp, setMode} from './model/commands.ts';
 import {moveEntity, rotateEntity, snapMount} from './build/commands.ts';
-import {GENERIC_NOTE, shapeOf, STATUS_LABEL} from './build/shapes.ts';
-import {countByFamily, FAMILIES, searchItems} from './catalog/search.ts';
+import {shapeOf, STATUS_LABEL} from './build/shapes.ts';
+import PartsLibrary from './views/PartsLibrary';
 import {allTerminals, evaluate, MAX_WIRES_PER_TERMINAL, refKey, terminalDef} from './wiring/engine.ts';
 import {routeWire, tidyWires, unwire, wire} from './wiring/commands.ts';
 import {CLEAR_DEPTH, CLEAR_HEIGHT, CLEAR_MIN_WIDTH, doorSwing, frontClearance} from './build/clearance.ts';
@@ -43,26 +45,20 @@ import '../styles/industria.css';
 const IndustriaCanvas = lazy(() => import('./scene/IndustriaCanvas'));
 
 const MODE_LABEL: Record<EducationMode, string> = {free: 'Libre', learning: 'Aprendizaje', test: 'Prueba'};
-/** Qué hace cada panel, en una frase (aparece al pasar el cursor y bajo el nombre en el menú). */
-const PANEL_HINT: Record<PanelId, string> = {
-  library: 'Busca y agrega equipos al escenario', structure: 'Lista de piezas: elige, renombra o borra', connections: 'Cables, redes y colores', instruments: 'Opera interruptores y pulsadores; mide',
-  faults: 'Inyecta una falla y practica el diagnóstico', activity: 'Actividades guiadas y su evaluación', inspector: 'Datos y montaje de la pieza elegida', cameras: 'Vistas predefinidas y cámaras guardadas', console: 'Registro de eventos de la sesión',
-};
+const VIEW_ICONS = {plant: Factory, board: PanelTop, diagram: Network, plc: CircuitBoard, hmi: Monitor, docs: FileText};
 const VIEW_HINT: Record<ViewId, string> = {plant: 'Planta 3D: construye y observa la instalación', board: 'Tablero: alzado de la placa con sus aparatos y terminales', diagram: 'Diagramas: esquema eléctrico generado del proyecto', plc: 'PLC: programa en escalera', hmi: 'HMI: pantalla de operación', docs: 'Documentación: materiales, cables y entradas/salidas'};
-/** Agrupación del menú inferior según el orden natural de trabajo. */
-const DOCK_GROUPS: readonly {name: string; ids: readonly PanelId[]}[] = [
-  {name: 'Construir', ids: ['library', 'structure', 'inspector']}, {name: 'Cablear y probar', ids: ['connections', 'instruments', 'faults']}, {name: 'Más', ids: ['cameras', 'activity', 'console']},
-];
+type PlantTool = 'orbit' | 'pan' | 'move' | 'wire' | 'operate';
+const PANEL_ORDER: readonly PanelId[] = ['library', 'structure', 'inspector', 'connections', 'instruments', 'faults', 'cameras', 'activity', 'console'];
 const PANEL_LABEL: Record<PanelId, {title: string; eyebrow: string; Icon: typeof Boxes}> = {
-  library: {title: 'Piezas', eyebrow: 'Agrega equipos al escenario', Icon: Boxes},
-  structure: {title: 'Estructura', eyebrow: 'Todo lo que hay en el proyecto', Icon: ListTree},
-  connections: {title: 'Conexiones', eyebrow: 'Cables y colores', Icon: Cable},
-  instruments: {title: 'Instrumentos', eyebrow: 'Opera mandos y mide', Icon: Gauge},
-  faults: {title: 'Fallas', eyebrow: 'Practica el diagnóstico', Icon: Wrench},
-  activity: {title: 'Actividad', eyebrow: 'Guía y evaluación', Icon: ClipboardCheck},
-  inspector: {title: 'Propiedades', eyebrow: 'Datos de la pieza elegida', Icon: SlidersHorizontal},
-  cameras: {title: 'Escenario', eyebrow: 'Vistas y cámaras guardadas', Icon: Camera},
-  console: {title: 'Consola', eyebrow: 'Registro de lo que pasa', Icon: Terminal},
+  library: {title: 'Piezas', eyebrow: 'Busca y agrega equipos', Icon: Boxes},
+  structure: {title: 'Estructura', eyebrow: 'Componentes y montajes', Icon: ListTree},
+  connections: {title: 'Conexiones', eyebrow: 'Conecta terminales y revisa redes', Icon: Network},
+  instruments: {title: 'Instrumentos', eyebrow: 'Acciona mandos y toma medidas', Icon: Gauge},
+  faults: {title: 'Fallas', eyebrow: 'Inyecta y diagnostica fallas', Icon: Wrench},
+  activity: {title: 'Actividad', eyebrow: 'Ejercicios guiados y evaluación', Icon: ClipboardCheck},
+  inspector: {title: 'Propiedades', eyebrow: 'Edita posición y montaje', Icon: SlidersHorizontal},
+  cameras: {title: 'Escenario', eyebrow: 'Cambia o guarda la cámara', Icon: Camera},
+  console: {title: 'Consola', eyebrow: 'Eventos de esta sesión', Icon: Terminal},
 };
 const TARGET: Vec3 = [0, 0.8, 0];
 const PRESETS: {name: string; position: Vec3}[] = [
@@ -91,7 +87,10 @@ export default function IndustriaApp() {
   const [newName, setNewName] = useState('');
   const [cameraName, setCameraName] = useState('');
   const [query, setQuery] = useState('');
-  const [wiring, setWiring] = useState(false);
+  const [uncoverDucts, setUncoverDucts] = useState(false);
+  const [closedCabinet, setClosedCabinet] = useState<string | null>(null);
+  const [tool, setTool] = useState<PlantTool>('orbit');
+  const wiring = tool === 'wire';
   const coarsePointer = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
   const [faultKind, setFaultKind] = useState<FaultKind>('wire-open');
   const [faultTarget, setFaultTarget] = useState('');
@@ -131,7 +130,9 @@ export default function IndustriaApp() {
     try { raw = localStorage.getItem(uiKey(project.id)); next = parseUi(raw); } catch { /* sin almacenamiento: valores por defecto */ }
     // En teléfono y tablet vertical la Biblioteca tapa el escenario: arranca cerrada si no hay una disposición guardada.
     if (raw === null && matchMedia('(max-width:900px)').matches) next = {...next, panels: {...next.panels, library: false}};
+    if (raw === null && project.entities.some(e => e.definitionId === 'sala-electrica')) next = {...next, camera: overviewCamera(project)};
     if (openActivity.current) { openActivity.current = false; next = {...next, panels: {...next.panels, library: false, activity: true}}; }
+    setTool('orbit'); setPending(null); setClosedCabinet(null); setUncoverDucts(false);
     setUi(next); setUiFor(project.id); setCameraNonce(n => n + 1);
   }, [api.ready, project.id]);
   useEffect(() => {
@@ -145,10 +146,19 @@ export default function IndustriaApp() {
   const one: Entity | undefined = selected.length === 1 ? selected[0] : undefined;
   const select = useCallback((ids: string[]) => {
     const first = project.entities.find(e => e.id === ids[0]);
-    patchUi({selection: ids, path: ids.length === 1 && first ? ['Planta', first.label] : ['Planta']});
-  }, [project.entities, patchUi]);
+    const path = ['Planta'];
+    if (ids.length === 1 && first) {
+      const cabinet = first.definitionId === 'gabinete' ? first : containerOf(project, first.id, 'gabinete');
+      const room = first.definitionId === 'sala-electrica' ? first : containerOf(project, cabinet?.id ?? first.id, 'sala-electrica');
+      for (const entity of [room, cabinet]) if (entity && entity.id !== first.id) path.push(entity.label);
+      path.push(first.label);
+    }
+    patchUi({selection: ids, path});
+  }, [project, patchUi]);
   const setCamera = (camera: CameraState) => { patchUi({camera}); setCameraNonce(n => n + 1); };
-  const togglePanel = (id: PanelId) => patchUi(u => ({panels: {...u.panels, [id]: !u.panels[id]}}));
+  const togglePanel = (id: PanelId) => {
+    if (!restoreWindowTab('industria:' + id)) patchUi(u => ({panels: {...u.panels, [id]: !u.panels[id]}}));
+  };
 
   // Teclado: deshacer/rehacer, Escape, F
   useEffect(() => {
@@ -158,7 +168,7 @@ export default function IndustriaApp() {
       const mod = e.ctrlKey || e.metaKey, key = e.key.toLowerCase();
       if (mod && key === 'z') { e.preventDefault(); (e.shiftKey ? api.redo : api.undo)(); }
       else if (mod && key === 'y') { e.preventDefault(); api.redo(); }
-      else if (!mod && key === 'escape') { if (pending) setPending(null); else if (wiring) setWiring(false); else select([]); }
+      else if (!mod && key === 'escape') { if (pending) setPending(null); else if (wiring) setTool('orbit'); else select([]); }
       else if (!mod && key === 'r') rotateSelected();
       else if (!mod && key === 'f') setCamera({position: PRESETS[3].position, target: TARGET});
     };
@@ -232,9 +242,9 @@ export default function IndustriaApp() {
     if (events.length) setSoundCount(c => c + events.length);
   }, [sim, inputs, simStatus, ui.sound, project.entities]);
   useEffect(() => { prevSim.current = sim ? {energized: sim.energized, plc: sim.plc} : {energized: {}, plc: {}}; }, [sim]);
-  const runSim = () => { if (simStatus === 'stopped') { setProc(emptyProcess()); setInputs({}); prevSim.current = {energized: {}, plc: {}}; setWiring(false); setPending(null); patchUi({operation: 'simulate'}); log('Simulación en marcha'); } else log('Simulación reanudada'); setSimStatus('running'); };
+  const runSim = () => { if (simStatus === 'stopped') { setProc(emptyProcess()); setInputs({}); prevSim.current = {energized: {}, plc: {}}; setTool('operate'); setPending(null); patchUi({operation: 'simulate'}); log('Simulación en marcha'); } else log('Simulación reanudada'); setSimStatus('running'); };
   const pauseSim = () => { if (simStatus === 'running') { setSimStatus('paused'); log('Simulación en pausa'); } };
-  const stopSim = () => { if (simStatus !== 'stopped') log('Simulación detenida'); setSimStatus('stopped'); setProc(emptyProcess()); setInputs({}); prevSim.current = {energized: {}, plc: {}}; };
+  const stopSim = () => { if (simStatus !== 'stopped') log('Simulación detenida'); setSimStatus('stopped'); setTool(current => current === 'operate' ? 'orbit' : current); setProc(emptyProcess()); setInputs({}); prevSim.current = {energized: {}, plc: {}}; };
   const operate = (id: string, down: boolean) => {
     if (simStatus !== 'running') return;
     const kind = operableKind(project.entities.find(e => e.id === id)?.definitionId ?? '');
@@ -262,7 +272,12 @@ export default function IndustriaApp() {
     if (refKey(pending) === refKey(ref)) { setPending(null); return; }
     connect2(pending, ref); setPending(null);
   };
-  const toggleWiring = () => { if (!wiring && !guardEdit()) return; setWiring(w => !w); setPending(null); };
+  const chooseTool = (next: PlantTool) => {
+    if ((next === 'move' || next === 'wire') && !guardEdit()) return;
+    setTool(next);
+    setPending(null);
+    if (ui.view !== 'plant') patchUi({view: 'plant'});
+  };
   const removeSelected = (id: string, confirm: boolean) => {
     if (!guardEdit()) return;
     const label = project.entities.find(e => e.id === id)?.label ?? id;
@@ -279,29 +294,11 @@ export default function IndustriaApp() {
   };
 
   const panelBody = (id: PanelId): ReactNode => {
-    if (id === 'library') {
-      const counts = countByFamily(), results = searchItems(query, family);
-      return <div className="ind-panel">
-        <input type="search" className="ind-search" placeholder="Buscar piezas, equipos o familias…" aria-label="Buscar en la biblioteca" value={query} onChange={e => setQuery(e.target.value)} />
-        <div className="ind-chips ind-fam" role="group" aria-label="Familias">
-          <button type="button" aria-pressed={family === null} onClick={() => setFamily(null)}>Todas</button>
-          {FAMILIES.map(f => <button type="button" key={f} aria-pressed={family === f} disabled={counts[f] === 0} title={counts[f] === 0 ? 'Sin piezas todavía' : `${counts[f]} pieza(s)`} onClick={() => setFamily(family === f ? null : f)}>{f}{counts[f] > 0 && <small> {counts[f]}</small>}</button>)}
-        </div>
-        <ul className="ind-shapes" aria-label="Resultados">{results.map(sh => <li key={sh.id} data-item={sh.id}>
-          <button type="button" disabled={simulate} onClick={() => addShape(sh.id)} title={`Colocar «${sh.name}»`}><span className="ind-chip" style={{background: sh.color}} aria-hidden="true" /><span><strong>{sh.name}</strong><small>{sh.subfamily ?? sh.family} · {STATUS_LABEL[sh.status]}</small></span><Plus size={15} /></button>
-          <details className="ind-item-info"><summary aria-label={`Datos de ${sh.name}`}>Datos</summary>
-            <p className="ind-note">{sh.description}</p>
-            <p className="ind-note">Medidas de ejemplo: {sh.size.map(v => Math.round(v * 1000)).join(' × ')} mm. {sh.status === 'verified' && sh.source ? `Fuente: ${sh.source.ref}.` : 'Sin fuente de fabricante.'}</p>
-            {sh.terminals && <p className="ind-note"><b>Terminales:</b> {sh.terminals.map(t => t.label).join(' · ')}<br />{sh.terminalSource}</p>}
-          </details></li>)}</ul>
-        {results.length === 0 && <p className="ind-note" role="status">Ninguna pieza coincide con «{query}»{family ? ` en ${family}` : ''}.</p>}
-        <p className="ind-note">{GENERIC_NOTE} Ninguna pieza lleva datos de un fabricante: cada una pasará a «Verificado» solo con su fuente (datasheet, norma o medición). Arrastra una pieza hasta un anclaje (punto verde) para montarla.</p>
-      </div>;
-    }
+    if (id === 'library') return <PartsLibrary query={query} family={family} disabled={simulate} supported={supported} onQuery={setQuery} onFamily={setFamily} onAdd={addShape} />;
     if (id === 'structure') return <div className="ind-panel">
       <div className="ind-add"><input value={newName} placeholder="Nombre del componente" aria-label="Nombre del componente nuevo" onChange={e => setNewName(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') addGeneric(); }} />
         <button type="button" onClick={addGeneric} disabled={simulate} title="Añade un componente genérico de prueba al modelo"><Plus size={15} /> Añadir</button></div>
-      {project.entities.length === 0 ? <p className="ind-note">Aún no hay componentes. Los genéricos sirven para probar el modelo compartido hasta que exista el catálogo.</p>
+      {project.entities.length === 0 ? <p className="ind-note">Aún no hay componentes. Abre Piezas para agregar equipos o añade aquí un bloque genérico.</p>
         : <ul className="ind-tree" role="tree" aria-label="Componentes">{project.entities.map(renderEntityRow)}</ul>}
     </div>;
     if (id === 'activity') {
@@ -412,7 +409,7 @@ export default function IndustriaApp() {
           <button type="button" disabled={simulate || !project.connections.some(c => c.route?.length)} onClick={() => { if (guardEdit()) { api.run(p => tidyWires(p)); log('Cables ordenados: rutas manuales borradas'); } }} title="Borra las rutas manuales y reparte los cables en carriles">Ordenar todos</button>
           <button type="button" disabled={simulate || !pickedConn || !project.connections.find(c => c.id === pickedConn)?.route?.length} onClick={() => { if (pickedConn && guardEdit()) { api.run(p => routeWire(p, pickedConn, [])); log('Cable con ruta automática'); } }} title="Devuelve el cable elegido a la ruta automática">Ruta automática</button>
         </div>}
-        {pickedConn && !simulate && <p className="ind-note">Cable elegido: en el escenario arrastra los puntos azules para moverlo, arrastra un punto claro para añadir uno y haz doble clic en uno azul para quitarlo.</p>}
+        {pickedConn && !simulate && <p className="ind-note">Cable elegido. Activa «Mover pieza» para arrastrar los puntos azules, añadir uno desde un punto claro o quitar uno con doble clic.</p>}
         {project.connections.length === 0 ? <p className="ind-note">Aún no hay cables.</p>
           : <ul className="ind-wires" aria-label="Conexiones">{project.connections.map(c => { const st = evaluation.status[c.id] ?? c.status, why = evaluation.reasons[c.id];
             return <li key={c.id} data-status={st} data-picked={pickedConn === c.id}><button type="button" className="ind-wire-main" onClick={() => setPickedConn(pickedConn === c.id ? null : c.id)} title="Resaltar en el escenario"><strong><i className="ind-swatch" style={{background: wireLook(project, c).color}} title={`${wireName(project, c)} · ${wireLook(project, c).name}`} aria-hidden="true" />{name(c.a)} → {name(c.b)}</strong><small><span className="ind-status" data-status={st}>{CHIP[st]}</span> {c.kind}{why && policy.showIssues ? ` · ${why.join(' ')}` : ''}</small></button>
@@ -433,13 +430,14 @@ export default function IndustriaApp() {
       const axis = (i: 0 | 1 | 2) => (v: number) => { if (guardEdit()) api.run(p => moveEntity(p, one.id, {...pose, position: pose.position.map((x, k) => (k === i ? v : x)) as Vec3})); };
       return <div className="ind-panel">
         <label className="ind-field"><span>Nombre</span><input defaultValue={one.label} key={one.id + one.label} disabled={simulate} onBlur={e => { const v = e.target.value.trim(); if (v && v !== one.label && guardEdit()) api.run(p => renameEntity(p, one.id, v)); }} /></label>
-        <p className="ind-note" aria-label="Identidad del componente">{shapeOf(one.definitionId).name} · {STATUS_LABEL[shapeOf(one.definitionId).status]} · id estable <code>{one.id}</code></p>
+        <div className="ind-part-identity"><img src={`/industria/components/${shapeOf(one.definitionId).id === 'desconocido' ? 'generico' : one.definitionId}.webp`} alt="" width={320} height={240} decoding="async" /><p className="ind-note" aria-label="Identidad del componente">{shapeOf(one.definitionId).name} · {STATUS_LABEL[shapeOf(one.definitionId).status]} · id estable <code>{one.id}</code></p></div>
         {shapeOf(one.definitionId).terminals && <details className="ind-item-info" data-terminals><summary>Terminales ({shapeOf(one.definitionId).terminals?.length})</summary><p className="ind-note">{shapeOf(one.definitionId).terminals?.map(t => t.label).join(' · ')}<br />{shapeOf(one.definitionId).terminalSource}</p></details>}
+        <label className="ind-check"><input type="checkbox" checked={ui.magnet} disabled={simulate} onChange={e => patchUi({magnet: e.target.checked})} /> Ajustar piezas a la rejilla (5 cm)</label>
         <fieldset className="ind-pose" disabled={simulate || !!mountOf}><legend>Posición en la planta (m)</legend>
           <PoseField label="X" value={pose.position[0]} disabled={simulate} onCommit={axis(0)} /><PoseField label="Y" value={pose.position[1]} disabled={simulate} onCommit={axis(1)} /><PoseField label="Z" value={pose.position[2]} disabled={simulate || !!mountOf} onCommit={axis(2)} /></fieldset>
         <fieldset className="ind-pose" disabled={simulate || !!mountOf} aria-label="Giro"><legend>Giro (°)</legend>
           {(['X', 'Y', 'Z'] as const).map((name, i) => <PoseField key={name} label={`Giro ${name}`} value={rotationDegrees(pose.rotation)[i]} disabled={simulate || !!mountOf} onCommit={v => { if (guardEdit()) api.run(p => moveEntity(p, one.id, {...pose, rotation: pose.rotation.map((r, k) => (k === i ? (v * Math.PI) / 180 : r)) as Vec3})); }} />)}</fieldset>
-        {one.definitionId === 'gabinete' && <label className="ind-field"><span>Puerta</span><select value={String(one.props.puerta ?? 'transparente')} disabled={simulate} onChange={e => { if (guardEdit()) api.run(p => setEntityProp(p, one.id, 'puerta', e.target.value)); }}><option value="transparente">Transparente (ver el interior)</option><option value="cerrada">Cerrada</option><option value="abierta">Abierta (gira en su bisagra)</option></select></label>}
+        {one.definitionId === 'gabinete' && <label className="ind-field"><span>Puerta</span><select value={String(one.props.puerta ?? 'cerrada')} disabled={simulate} onChange={e => { if (guardEdit()) { setClosedCabinet(null); patchUi({interior: null}); api.run(p => setEntityProp(p, one.id, 'puerta', e.target.value)); } }}><option value="transparente">Transparente (ver el interior)</option><option value="cerrada">Cerrada</option><option value="abierta">Abierta (gira en su bisagra)</option></select></label>}
         {one.definitionId === 'sala-electrica' && <label className="ind-field"><span>Puerta</span><select value={String(one.props.puerta ?? 'cerrada')} disabled={simulate} onChange={e => { if (guardEdit()) api.run(p => setEntityProp(p, one.id, 'puerta', e.target.value)); }}><option value="cerrada">Cerrada</option><option value="abierta">Abierta (hacia fuera)</option></select></label>}
         {one.definitionId === 'gabinete' && (() => { const sw = doorSwing(project, one.id); if (!sw || !sw.blockers.length) return null; return <p className="ind-note" data-door-swing="choca" role="alert">La puerta chocaría al abrir con: {sw.blockers.map(b => project.entities.find(e => e.id === b)?.label ?? b).join(', ')}. Deja libre el barrido de la hoja.</p>; })()}
         {one.definitionId === 'gabinete' && (() => { const cl = frontClearance(project, one.id); if (!cl) return null; const names = cl.blockers.map(b => project.entities.find(e => e.id === b)?.label ?? b); return <p className="ind-note" data-clearance={cl.blockers.length ? 'ocupado' : 'libre'} role="status">{cl.blockers.length ? `Espacio libre frente al tablero ocupado por: ${names.join(', ')}.` : 'Espacio libre frente al tablero: despejado.'} Referencia de ejemplo: {String(CLEAR_DEPTH).replace('.', ',')} m de fondo, {String(CLEAR_MIN_WIDTH).replace('.', ',')} m de ancho y {String(CLEAR_HEIGHT).replace('.', ',')} m de altura (valores de otras normas, no contrastados con la norma chilena).</p>; })()}
@@ -466,16 +464,43 @@ export default function IndustriaApp() {
         : <ul className="ind-saved">{ui.savedCameras.map(c => <li key={c.name}><button type="button" onClick={() => setCamera({position: c.position, target: c.target})}>{c.name}</button>
           <button type="button" aria-label={`Borrar la vista ${c.name}`} onClick={() => patchUi(u => ({savedCameras: u.savedCameras.filter(x => x.name !== c.name)}))}><X size={14} /></button></li>)}</ul>}
     </div>;
-    return <div className="ind-panel">{events.length === 0 ? <p className="ind-note">Sin eventos todavía. Aquí verás avisos del proyecto y, en la fase 6, alarmas de la simulación.</p> : <ol className="ind-events">{events.map((t, i) => <li key={i}>{t}</li>)}</ol>}</div>;
+    return <div className="ind-panel">{events.length === 0 ? <p className="ind-note">Aquí aparecerán los cambios del proyecto y los eventos de simulación.</p> : <ol className="ind-events">{events.map((t, i) => <li key={i}>{t}</li>)}</ol>}</div>;
+  };
+
+  const locate = (id: string, view: ViewId) => {
+    const entity = project.entities.find(e => e.id === id);
+    if (!entity) return;
+    select([id]);
+    patchUi({view});
+    if (view === 'plant') {
+      const cabinet = entity.definitionId === 'gabinete' ? entity : containerOf(project, id, 'gabinete');
+      const canOpen = cabinet && (cabinet.props.puerta === 'abierta' || !doorSwing(project, cabinet.id)?.blockers.length);
+      if (cabinet && !canOpen) api.setMessage('La puerta no tiene espacio para abrir. Mueve el obstáculo antes de inspeccionar el gabinete.');
+      setClosedCabinet(null);
+      patchUi({cutaway: true, interior: canOpen ? cabinet.id : null});
+      setCamera(inspectionCamera(project, cabinet ?? entity, true, innerWidth / innerHeight));
+      setTool('orbit');
+      setPending(null);
+    }
+  };
+
+  const toggleCabinetDoor = (id: string) => {
+    const physicalDoorOpen = project.entities.find(e => e.id === id)?.props.puerta === 'abierta';
+    if (ui.interior === id || (physicalDoorOpen && closedCabinet !== id)) {
+      setClosedCabinet(id);
+      patchUi({interior: null});
+      return;
+    }
+    locate(id, 'plant');
   };
 
   const viewBody = (view: ViewId): ReactNode => {
-    if (view === 'board') return <BoardView project={project} selection={ui.selection} sim={sim} onSelect={select} />;
-    if (view === 'docs') return <DocsView project={project} showIssues={policy.showIssues} />;
+    if (view === 'board') return <BoardView project={project} selection={ui.selection} sim={sim} onSelect={select} onLocate={locate} pickedConn={pickedConn} onPick={setPickedConn} />;
+    if (view === 'docs') return <DocsView project={project} showIssues={policy.showIssues} onLocate={locate} onView={view => patchUi({view})} />;
     if (view === 'diagram') return <DiagramView project={project} selection={ui.selection} sim={sim} simRunning={simStatus === 'running'} evaluation={evaluation} pickedConn={pickedConn} editable={!simulate}
-      onSelect={select} onPick={setPickedConn} onMove={(id, at) => { if (guardEdit()) api.run(p => moveSymbol(p, id, at)); }} onMovePage={(id, page) => { if (guardEdit() && api.run(p => moveToPage(p, id, page)).ok) log(`Símbolo movido a la hoja ${page}`); }} onArrange={() => { if (guardEdit() && api.run(arrangeAll).ok) log('Símbolos ordenados'); }} onOperate={operate} />;
-    if (view === 'plc') return <PlcView project={project} selection={ui.selection} sim={sim} editable={!simulate} showIssues={policy.showIssues} onChange={f => (guardEdit() ? api.run(f) : {ok: false, error: 'La estructura está protegida.'})} />;
-    if (view === 'hmi') return <HmiView project={project} sim={sim} simRunning={simStatus === 'running'} inputs={inputs} editable={!simulate} onChange={f => (guardEdit() ? api.run(f) : {ok: false, error: 'La estructura está protegida.'})} onWrite={writeHmi} />;
+      onSelect={select} onLocate={locate} onPick={setPickedConn} onMove={(id, at) => { if (guardEdit()) api.run(p => moveSymbol(p, id, at)); }} onMovePage={(id, page) => { if (guardEdit() && api.run(p => moveToPage(p, id, page)).ok) log(`Símbolo movido a la hoja ${page}`); }} onArrange={() => { if (guardEdit() && api.run(arrangeAll).ok) log('Símbolos ordenados'); }} onOperate={operate} />;
+    if (view === 'plc') return <PlcView project={project} selection={ui.selection} sim={sim} editable={!simulate} showIssues={policy.showIssues} onSimulate={runSim} onLocate={locate} onChange={f => (guardEdit() ? api.run(f) : {ok: false, error: 'La estructura está protegida.'})} />;
+    if (view === 'hmi') return <HmiView key={project.id} project={project} sim={sim} simRunning={simStatus === 'running'} inputs={inputs} editable={!simulate} onChange={f => (guardEdit() ? api.run(f) : {ok: false, error: 'La estructura está protegida.'})} onWrite={writeHmi} />;
     return null;
   };
   /** Cada panel de la derecha conserva el escalón que se le dio al abrirlo (el primero libre), para que no salten al abrir o cerrar otros. */
@@ -487,77 +512,110 @@ export default function IndustriaApp() {
     return panelSlots.current[id] ?? 0;
   };
 
+  const rooms = project.entities.filter(e => e.definitionId === 'sala-electrica');
+  const cabinets = project.entities.filter(e => e.definitionId === 'gabinete');
+  const cabinet = cabinets.find(e => e.id === one?.id)
+    ?? (one && containerOf(project, one.id, 'gabinete'))
+    ?? (one?.definitionId === 'sala-electrica' ? cabinets.find(e => containerOf(project, e.id, 'sala-electrica')?.id === one.id) : undefined)
+    ?? cabinets.find(e => e.id === ui.interior)
+    ?? cabinets[0];
+  const room = rooms.find(e => e.id === one?.id) ?? (cabinet && containerOf(project, cabinet.id, 'sala-electrica')) ?? rooms[0];
   const crumbs = ui.path;
-  return <div className="rb-app ind-app" data-mode={ui.operation} data-ready={api.ready} data-view={ui.view} data-sound={ui.sound ? 'on' : 'off'} data-sound-events={soundCount} data-left-panels={ui.panels.library || ui.panels.structure} data-testid="industria-app">
-    <header className="compact-bar rb-bar" aria-label="Industria">
-      <a href="/" aria-label="Inicio" title="Volver al inicio"><Home size={20} /></a>
-      <button type="button" className="rb-name" title="Opciones del proyecto" onClick={() => setProjectOpen(true)}>
-        <strong>{project.name}</strong>
-        <small role="status">{!api.ready ? 'Abriendo…' : api.storageBlocked ? 'Guardado desactivado' : api.saved ? <><Check size={11} /> Guardado</> : 'Guardando…'}</small>
-      </button>
-      <span className="ind-badge" aria-label="Módulo Industria">Industria</span>
-      <span className="rb-spacer" />
-      <div className="rb-sim" role="group" aria-label="Simulación">
-        <button type="button" className="rb-run" aria-label="Ejecutar" title="Ejecutar la simulación lógica" disabled={simStatus === 'running'} onClick={runSim}><Play size={17} /></button>
-        <button type="button" aria-label="Detener" disabled={simStatus === 'stopped'} onClick={stopSim}><Square size={15} /></button>
-        <button type="button" aria-label="Pausar" disabled={simStatus !== 'running'} onClick={pauseSim}><Pause size={15} /></button>
-        <span className="rb-sim-chip" role="status" data-sim={simStatus}>{simStatus === 'running' ? 'EJECUTANDO' : simStatus === 'paused' ? 'PAUSADO' : 'DETENIDO'}</span>
+  return <div className="rb-app ind-app" data-mode={ui.operation} data-ready={api.ready} data-view={ui.view} data-sound={ui.sound ? 'on' : 'off'} data-sound-events={soundCount} data-left-panels={ui.panels.library} data-tool={tool} data-testid="industria-app">
+    <header className="compact-bar rb-bar ind-topbar" aria-label="Industria">
+      <div className="ind-project-bar">
+        <a href="/" aria-label="Inicio" title="Volver al inicio"><Home size={19} /></a>
+        <button type="button" className="rb-name" aria-label="Opciones del proyecto" aria-haspopup="dialog" title={project.name} onClick={() => { if (!restoreWindowTab('industria:project')) setProjectOpen(true); }}>
+          <span>
+            <strong>{project.name}</strong>
+            <small role="status">{!api.ready ? 'Abriendo…' : api.storageBlocked ? 'Guardado desactivado' : api.saved ? <><Check size={11} /> Guardado</> : 'Guardando…'}</small>
+          </span>
+          <ChevronRight size={15} aria-hidden="true" />
+        </button>
       </div>
-      <button type="button" aria-label="Sonido" aria-pressed={ui.sound} title={ui.sound ? 'Apagar el sonido' : 'Activar el sonido (contactores, interruptores y motor)'} onClick={toggleSound}>{ui.sound ? <Volume2 size={18} /> : <VolumeX size={18} />}</button>
-      <button type="button" aria-label="Deshacer" title="Deshacer (Ctrl+Z)" disabled={!api.canUndo} onClick={api.undo}><Undo2 size={18} /></button>
-      <button type="button" aria-label="Rehacer" title="Rehacer (Ctrl+Shift+Z)" disabled={!api.canRedo} onClick={api.redo}><Redo2 size={18} /></button>
-      <div className="rb-mode" role="group" aria-label="Modo de trabajo">
-        <button type="button" aria-pressed={!simulate} onClick={() => { stopSim(); patchUi({operation: 'build'}); }}><Hammer size={15} /><span>Construir</span></button>
-        <button type="button" aria-pressed={simulate} onClick={() => patchUi({operation: 'simulate'})}><Eye size={15} /><span>Simular</span></button>
+      <div className="ind-session-bar">
+        <div className="rb-mode" role="group" aria-label="Modo de trabajo">
+          <button type="button" aria-pressed={!simulate} onClick={() => { stopSim(); setTool('orbit'); setPending(null); patchUi({operation: 'build'}); }}><Hammer size={15} /><span>Construir</span></button>
+          <button type="button" aria-pressed={simulate} onClick={() => { setTool(simStatus === 'running' ? 'operate' : 'orbit'); setPending(null); patchUi({operation: 'simulate'}); }}><Eye size={15} /><span>Simular</span></button>
+        </div>
+        <div className="rb-sim" role="group" aria-label="Controles de simulación">
+          <button type="button" className="rb-run" aria-label="Ejecutar" title="Ejecutar la simulación lógica" disabled={simStatus === 'running'} onClick={runSim}><Play size={16} /><span>{simStatus === 'paused' ? 'Reanudar' : 'Ejecutar'}</span></button>
+          <button type="button" aria-label="Pausar" title="Pausar" disabled={simStatus !== 'running'} onClick={pauseSim}><Pause size={15} /></button>
+          <button type="button" aria-label="Detener" title="Detener" disabled={simStatus === 'stopped'} onClick={stopSim}><Square size={14} /></button>
+          <span className="rb-sim-chip" role="status" data-sim={simStatus}>{simStatus === 'running' ? 'En marcha' : simStatus === 'paused' ? 'En pausa' : 'Detenida'}</span>
+        </div>
       </div>
-      <button type="button" aria-label="Opciones del proyecto" aria-haspopup="dialog" onClick={() => setProjectOpen(true)}><MoreHorizontal size={21} /></button>
+      <div className="ind-history-bar" role="group" aria-label="Edición y audio">
+        <button type="button" aria-label="Deshacer" title="Deshacer (Ctrl+Z)" disabled={!api.canUndo} onClick={api.undo}><Undo2 size={17} /></button>
+        <button type="button" aria-label="Rehacer" title="Rehacer (Ctrl+Shift+Z)" disabled={!api.canRedo} onClick={api.redo}><Redo2 size={17} /></button>
+        <button type="button" aria-label="Sonido" aria-pressed={ui.sound} title={ui.sound ? 'Apagar el sonido' : 'Activar el sonido'} onClick={toggleSound}>{ui.sound ? <Volume2 size={17} /> : <VolumeX size={17} />}</button>
+      </div>
     </header>
 
     <main className="rb-stage" aria-label="Escenario industrial">
       {ui.view === 'plant' && (supported
         ? <ErrorBoundary label="Escenario 3D" resetKey={project.id} onRetry={() => location.reload()}><Suspense fallback={<div className="ind-loading" role="status">Abriendo el escenario…</div>}>
-          <IndustriaCanvas key={glKey} project={project} selection={ui.selection} camera={ui.camera} cameraNonce={cameraNonce} proc={simStatus === 'stopped' ? null : proc} editable={!simulate} magnet={ui.magnet} wiring={wiring} pending={pending} evaluation={evaluation} sim={sim} simRunning={simStatus === 'running'} onOperate={operate} onBlockedDrag={id => api.setMessage(`«${project.entities.find(e => e.id === id)?.label ?? id}» está montada y no se arrastra: suéltala en Propiedades (botón Soltar) o mueve el soporte al que está unida.`)} highlight={highlightIds} editCable={pickedConn} onRoute={(id, interior) => { if (guardEdit()) { api.run(p => routeWire(p, id, interior)); log(interior.length ? 'Cable reubicado' : 'Cable con ruta automática'); } }} onTerminal={onTerminal} onSelect={select} onDrop={onDrop} onCameraRest={camera => patchUi({camera})} onContextLost={() => setGlKey(k => k + 1)} />
+          <IndustriaCanvas key={glKey} project={project} selection={ui.selection} camera={ui.camera} cameraNonce={cameraNonce} proc={simStatus === 'stopped' ? null : proc} editable={!simulate} cutaway={ui.cutaway} interior={ui.interior} closedCabinet={closedCabinet} uncoverDucts={uncoverDucts} onCabinetDoor={toggleCabinetDoor} magnet={ui.magnet} moveParts={!simulate && tool === 'move'} panCamera={tool === 'pan'} operateParts={tool === 'operate'} wiring={wiring} pending={pending} evaluation={evaluation} sim={sim} simRunning={simStatus === 'running'} onOperate={operate} onBlockedDrag={id => api.setMessage(`«${project.entities.find(e => e.id === id)?.label ?? id}» está montada y no se arrastra: suéltala en Propiedades (botón Soltar) o mueve el soporte al que está unida.`)} highlight={highlightIds} editCable={tool === 'move' ? pickedConn : null} onRoute={(id, interior) => { if (guardEdit()) { api.run(p => routeWire(p, id, interior)); log(interior.length ? 'Cable reubicado' : 'Cable con ruta automática'); } }} onTerminal={onTerminal} onSelect={select} onDrop={onDrop} onCameraRest={camera => patchUi({camera})} onContextLost={() => setGlKey(k => k + 1)} />
         </Suspense></ErrorBoundary>
         : <div className="rb-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Industria necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p><button type="button" onClick={() => setGlKey(k => k + 1)}>Reintentar</button></div>)}
       {ui.view !== 'plant' && <ErrorBoundary label={VIEWS.find(v => v.id === ui.view)?.label ?? 'Vista'} resetKey={project.id + ui.view}>{viewBody(ui.view)}</ErrorBoundary>}
       <div className="rb-workspace-controls rb-canvas-overlay">
         <div className="rb-camera-pill ind-views" role="group" aria-label="Vistas del proyecto">
-          {VIEWS.map(v => <button type="button" key={v.id} aria-pressed={ui.view === v.id} title={VIEW_HINT[v.id]} onClick={() => patchUi({view: v.id})}><span>{v.label}</span></button>)}
+          {VIEWS.map(v => { const Icon = VIEW_ICONS[v.id]; return <button type="button" key={v.id} aria-pressed={ui.view === v.id} title={VIEW_HINT[v.id]} onClick={() => patchUi({view: v.id})}><Icon size={16} aria-hidden="true" /><span>{v.label}</span></button>; })}
         </div>
-        <nav className="ind-path" aria-label="Ruta de navegación">{crumbs.map((c, i) => <span key={i}>{i > 0 && <ChevronRight size={14} aria-hidden="true" />}{i === 0 ? <button type="button" onClick={() => select([])}>{c}</button> : <b aria-current="location">{c}</b>}</span>)}</nav>
+        <nav className="ind-path" data-depth={crumbs.length} aria-label="Ruta de navegación">{crumbs.map((c, i) => <span key={i}>{i > 0 && <ChevronRight size={14} aria-hidden="true" />}{i === 0 ? <button type="button" onClick={() => select([])}>{c}</button> : <b aria-current="location">{c}</b>}</span>)}</nav>
       </div>
+      {ui.view === 'plant' && (rooms.length > 0 || cabinets.length > 0) && <div className="ind-inspection rb-canvas-overlay" role="group" aria-label="Inspección de planta">
+        <button type="button" onClick={() => { select([]); patchUi({interior: null}); setCamera(overviewCamera(project)); }}>Nave</button>
+        {room && <button type="button" onClick={() => { select([room.id]); patchUi({cutaway: true, interior: null}); setCamera(inspectionCamera(project, room, false, innerWidth / innerHeight)); }}>Sala eléctrica</button>}
+        {cabinets.length > 1 && <select aria-label="Gabinete a inspeccionar" value={cabinet?.id ?? ''} onChange={event => locate(event.target.value, 'plant')}>{cabinets.map(e => <option key={e.id} value={e.id}>{e.label}</option>)}</select>}
+        {cabinet && <button type="button" aria-pressed={ui.interior === cabinet.id} onClick={() => ui.interior === cabinet.id ? toggleCabinetDoor(cabinet.id) : locate(cabinet.id, 'plant')}>Interior del gabinete</button>}
+        {ui.interior && <button type="button" aria-pressed={uncoverDucts} onClick={() => setUncoverDucts(v => !v)}>Ver cables en canaletas</button>}
+        <button type="button" aria-pressed={ui.cutaway} onClick={() => patchUi(u => ({cutaway: !u.cutaway, interior: u.cutaway ? null : u.interior}))}>Corte automático</button>
+      </div>}
       {wiring && <div className="ind-sim-note ind-wire-note rb-canvas-overlay" role="status">{pending ? `Desde ${termLabel(pending)}: toca el terminal de destino (Esc cancela)` : 'Cablear: toca un terminal de origen'}{coarsePointer ? ' · Con el dedo, acerca la cámara o usa el panel Conexiones' : ''}</div>}
-      {simulate && <div className="ind-sim-note rb-canvas-overlay" role="status">{submitted ? 'Actividad entregada: el proyecto está bloqueado. Reábrela desde Actividad para editar.' : simStatus === 'running' ? 'Simulación en marcha: pulsa interruptores y pulsadores. Construir la detiene.' : 'Simulación: la estructura está protegida. Vuelve a Construir para editar.'}</div>}
+      {simulate && <div className="ind-sim-note rb-canvas-overlay" role="status">{submitted ? 'Actividad entregada: el proyecto está bloqueado. Reábrela desde Actividad para editar.' : simStatus === 'running' ? 'Simulación en marcha. Usa «Operar» para pulsar los mandos.' : 'Simulación: la estructura está protegida. Vuelve a Construir para editar.'}</div>}
       {ui.view === 'plant' && project.entities.length === 0 && api.ready && <section className="rb-empty rb-canvas-overlay" aria-label="Empezar en Industria">
         <div className="rb-empty-symbol" aria-hidden="true"><Boxes size={25} /></div>
         <span className="rb-empty-eyebrow">MODO · INDUSTRIA</span>
         <strong>Tu instalación empieza aquí</strong>
-        <p>Busca una pieza en Piezas, colócala y arrástrala hasta un anclaje para montarla. Todas son genéricas y sin datos de fabricante.</p>
-        <ol className="ind-steps" aria-label="Pasos"><li><b>1</b> Agrega piezas</li><li><b>2</b> Móntalas en su riel o losa</li><li><b>3</b> Cablea los terminales</li><li><b>4</b> Ejecuta y opera</li></ol>
-        <div className="rb-start-options"><button type="button" className="rb-start-primary" onClick={() => patchUi(u => ({panels: {...u.panels, structure: true}}))}><ListTree size={21} /><span><b>Abrir Estructura</b><small>Añade piezas y arrástralas al escenario</small></span><span aria-hidden="true">→</span></button>
+        <p>Agrega un equipo desde Piezas. Activa «Mover pieza» para arrastrarlo hasta un anclaje. Todas son genéricas y sin datos de fabricante.</p>
+        <ol className="ind-steps ind-start-steps" aria-label="Pasos"><li><b>1</b> Agrega piezas</li><li><b>2</b> Móntalas en su riel o losa</li><li><b>3</b> Cablea los terminales</li><li><b>4</b> Ejecuta y opera</li></ol>
+        <div className="rb-start-options"><button type="button" onClick={() => patchUi(u => ({panels: {...u.panels, structure: true}}))}><ListTree size={21} /><span><b>Abrir Estructura</b><small>Revisa y organiza tus componentes</small></span><span aria-hidden="true">→</span></button>
           <button type="button" className="rb-start-primary" onClick={() => loadExample('factory')}><Factory size={21} /><span><b>Ver una línea de producción</b><small>Carga el ejemplo ya montado y cableado</small></span><span aria-hidden="true">→</span></button></div>
       </section>}
     </main>
 
     <nav className="tool-dock rb-dock ind-dock" aria-label="Herramientas">
-      <div className="ind-dock-group" role="group" aria-label="Herramientas del escenario"><small aria-hidden="true">Herramientas</small><div className="ind-dock-row">
-        <button type="button" aria-label="Seleccionar" title="Seleccionar: elige y arrastra piezas" aria-pressed="true"><MousePointer2 size={20} /><span>Seleccionar</span></button>
-        <button type="button" aria-label="Cablear" title="Cablear: toca dos terminales para unirlos (Esc para salir)" aria-pressed={wiring} onClick={toggleWiring}><Cable size={20} /><span>Cablear</span></button>
-        <button type="button" aria-label="Girar 90°" title="Girar la pieza seleccionada 90° (R)" disabled={simulate || !one || !!(one && parentMountOf(project, one.id))} onClick={rotateSelected}><RotateCw size={20} /><span>Girar</span></button>
-        <button type="button" aria-label="Imán" title="Imán: al soltar una pieza suelta se ajusta a la rejilla de 5 cm" aria-pressed={ui.magnet} onClick={() => patchUi(u => ({magnet: !u.magnet}))}><Magnet size={20} /><span>Imán</span></button>
-        <button type="button" aria-label="Encuadrar" title="Vista isométrica de todo (F)" onClick={() => setCamera({position: PRESETS[3].position, target: TARGET})}><Focus size={20} /><span>Encuadrar</span></button>
-      </div></div>
-      {DOCK_GROUPS.map(g => <div key={g.name} className="ind-dock-group" role="group" aria-label={g.name}><small aria-hidden="true">{g.name}</small><div className="ind-dock-row">
-        {g.ids.map(id => { const {title, Icon} = PANEL_LABEL[id]; return <button key={id} type="button" aria-label={title} title={`${title}: ${PANEL_HINT[id]}`} aria-pressed={ui.panels[id]} onClick={() => togglePanel(id)}><Icon size={20} /><span>{title}</span></button>; })}
-      </div></div>)}
+      <div className="ind-tool-strip" role="group" aria-label="Herramientas de la planta 3D">
+        <span className="ind-strip-label" aria-hidden="true">Planta 3D</span>
+        <button type="button" aria-pressed={tool === 'orbit' && ui.view === 'plant'} title="Gira la vista alrededor de la planta" onClick={() => chooseTool('orbit')}><Orbit size={18} /><span>Orbitar</span></button>
+        <button type="button" aria-pressed={tool === 'pan' && ui.view === 'plant'} title="Desplaza la cámara de lado o en altura" onClick={() => chooseTool('pan')}><Hand size={18} /><span>Desplazar</span></button>
+        {simulate
+          ? <button type="button" aria-pressed={tool === 'operate' && ui.view === 'plant'} disabled={simStatus !== 'running'} title="Acciona interruptores y pulsadores en la planta" onClick={() => chooseTool('operate')}><MousePointer2 size={18} /><span>Operar</span></button>
+          : <><button type="button" aria-pressed={tool === 'move' && ui.view === 'plant'} title="Arrastra una pieza; con Mayús puedes subirla o bajarla" onClick={() => chooseTool('move')}><Move size={18} /><span>Mover pieza</span></button>
+            <button type="button" aria-pressed={wiring && ui.view === 'plant'} title="Une dos terminales en la planta" onClick={() => chooseTool(wiring ? 'orbit' : 'wire')}><Cable size={18} /><span>Cablear</span></button></>}
+        <button type="button" title="Vuelve a la vista isométrica (F)" onClick={() => { patchUi({view: 'plant'}); setCamera({position: PRESETS[3].position, target: TARGET}); }}><Focus size={18} /><span>Encuadrar</span></button>
+      </div>
+      <div className="ind-panel-strip" role="group" aria-label="Ventanas de trabajo" tabIndex={0}>
+        <span className="ind-strip-label" aria-hidden="true">Ventanas</span>
+        {PANEL_ORDER.map(id => { const {title, Icon, eyebrow} = PANEL_LABEL[id]; return <button key={id} type="button" aria-label={title} title={eyebrow} aria-pressed={ui.panels[id]} onClick={() => togglePanel(id)}><Icon size={17} /><span>{title}</span></button>; })}
+      </div>
+      {ui.view === 'plant' && <p className="ind-tool-help" aria-live="polite">{
+        tool === 'move' ? 'Arrastra la pieza. Con Mayús puedes subirla o bajarla.'
+          : tool === 'wire' ? 'Pulsa Esc para volver a orbitar.'
+          : tool === 'operate' ? 'Pulsa los mandos de la planta.'
+          : cabinet && tool === 'orbit' ? 'Pulsa la puerta del gabinete para abrirla o cerrarla.'
+          : `${tool === 'pan' ? 'Arrastra para desplazar la vista.' : 'Arrastra para girar alrededor de la planta.'} ${coarsePointer ? 'Pellizca para acercar.' : 'Rueda para acercar.'}`
+      }</p>}
     </nav>
 
     {PANEL_IDS.map(id => { const slot = id === 'library' ? 0 : panelSlot(id);
       // Los paneles de la derecha se escalonan para que cada título quede visible y ninguno tape por completo a otro.
-      return ui.panels[id] && <FloatingWindow key={id} passive scope=".rb-app" storageId={`industria:${id}`} title={PANEL_LABEL[id].title} eyebrow={PANEL_LABEL[id].eyebrow} width={id === 'console' ? 420 : 340}
-        side={id === 'library' ? 'left' : 'right'} cascade={46 * slot} onClose={() => togglePanel(id)} closeLabel={`Cerrar ${PANEL_LABEL[id].title}`} className={`rb-window ind-window ind-window-${id} ind-slot-${Math.min(slot, 6)}`}><ErrorBoundary label={PANEL_LABEL[id].title} resetKey={project.id}>{panelBody(id)}</ErrorBoundary></FloatingWindow>; })}
+      return ui.panels[id] && <FloatingWindow key={id} passive scope=".rb-app" storageId={`industria:${id}`} title={PANEL_LABEL[id].title} eyebrow={PANEL_LABEL[id].eyebrow} width={id === 'console' ? 420 : id === 'library' ? 354 : 340}
+        side={id === 'library' ? 'left' : 'right'} cascade={46 * slot} onClose={() => patchUi(u => ({panels: {...u.panels, [id]: false}}))} closeLabel={`Cerrar ${PANEL_LABEL[id].title}`} className={`rb-window ind-window ind-window-${id} ind-slot-${Math.min(slot, 6)}`}><ErrorBoundary label={PANEL_LABEL[id].title} resetKey={project.id}>{panelBody(id)}</ErrorBoundary></FloatingWindow>; })}
 
-    {projectOpen && <FloatingWindow passive scope=".rb-app" storageId="industria:project" title="Proyecto" eyebrow="Industria" width={400} side="center" onClose={() => setProjectOpen(false)} closeLabel="Cerrar Proyecto" className="rb-window ind-window ind-window-project">
+    {projectOpen && <FloatingWindow passive scope=".rb-app" storageId="industria:project" title="Proyecto" eyebrow="Archivos y ejemplos" width={400} side="center" onClose={() => setProjectOpen(false)} closeLabel="Cerrar Proyecto" className="rb-window ind-window ind-window-project">
       <div className="ind-panel">
         <label className="ind-field"><span>Nombre</span><input defaultValue={project.name} key={project.id} maxLength={80} onBlur={e => { const v = e.target.value.trim(); if (v && v !== project.name) api.rename(v); }} onKeyDown={e => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }} /></label>
         <label className="ind-field"><span>Modo educativo</span><select value={project.mode} onChange={e => { const next = e.target.value as EducationMode; if (project.mode === 'test' && next !== 'test' && !confirm('Salir del modo Prueba muestra los avisos, las pistas y las fallas ocultas. ¿Continuar?')) return; api.run(p => setMode(p, next)); log(`Modo: ${MODE_LABEL[next]}`); }}>{EDUCATION_MODES.map(m => <option key={m} value={m}>{MODE_LABEL[m]}</option>)}</select></label>
@@ -565,11 +623,15 @@ export default function IndustriaApp() {
           <button type="button" onClick={() => { if (api.create()) setProjectOpen(false); }}><Plus size={15} /> Nuevo</button>
           <button type="button" onClick={() => { if (api.duplicate()) setProjectOpen(false); }}><Copy size={15} /> Duplicar</button>
           <button type="button" onClick={api.exportActive}><Download size={15} /> Exportar</button>
+          <button type="button" onClick={() => fileInput.current?.click()}><Upload size={15} /> Importar</button>
+        </div>
+        <h4>Ejemplos</h4>
+        <div className="ind-examples">
           <button type="button" onClick={() => loadExample('direct')} title="Crea un proyecto nuevo con un arranque directo ya montado y cableado">Ejemplo: arranque directo</button>
           <button type="button" onClick={() => loadExample('plc')} title="Crea un proyecto nuevo con PLC, programa en escalera y pantalla de HMI">Ejemplo: marcha/paro con PLC</button>
           <button type="button" onClick={() => loadExample('factory')} title="Crea un proyecto nuevo con una planta: tablero con PLC, cinta con motor, robot, neumática, sensores, vallas y más">Ejemplo: mini fábrica</button>
-          <button type="button" onClick={() => fileInput.current?.click()}><Upload size={15} /> Importar</button>
-          <input ref={fileInput} type="file" accept=".json,application/json" hidden onChange={async e => { const f = e.target.files?.[0]; e.target.value = ''; if (f && await api.importFile(f)) setProjectOpen(false); }} />
+
+          <input ref={fileInput} type="file" aria-label="Archivo de proyecto" accept=".json,application/json" hidden onChange={async e => { const f = e.target.files?.[0]; e.target.value = ''; if (f && await api.importFile(f)) setProjectOpen(false); }} />
         </div>
         <h4>Proyectos ({api.projects.length})</h4>
         <ul className="ind-projects">{api.projects.map(p => <li key={p.id}><button type="button" aria-pressed={p.id === project.id} onClick={() => { api.select(p.id); setProjectOpen(false); }}><strong>{p.name}</strong><small>{p.entities.length} componente(s)</small></button>

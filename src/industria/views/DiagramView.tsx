@@ -2,6 +2,7 @@ import {useMemo, useRef, useState} from 'react';
 import {Download, Minus, Plus, Printer, Wand2} from 'lucide-react';
 import {shapeOf} from '../build/shapes.ts';
 import {autoLayout, bounds, crossPageStubs, electricalEntities, pageOf, pagesOf, pathOf, PAGE_TITLES, PIN_GAP, placementOf, symbolGeom, wirePoints, type XY} from '../diagram/layout.ts';
+import type {ViewId} from '../model/ui';
 import type {IndustryProject} from '../model/types.ts';
 import {operableKind, type SimResult} from '../sim/engine.ts';
 import type {Evaluation} from '../wiring/engine.ts';
@@ -10,15 +11,15 @@ const KIND_COLOR: Record<string, string> = {power: '#c0392b', control: '#2d6ff4'
 
 export type DiagramViewProps = {
   project: IndustryProject; selection: readonly string[]; sim: SimResult | null; simRunning: boolean; evaluation: Evaluation; pickedConn: string | null; editable: boolean;
-  onSelect(ids: string[]): void; onPick(id: string | null): void; onMove(id: string, at: XY): void; onMovePage(id: string, page: number): void; onArrange(): void; onOperate(id: string, down: boolean): void;
+  onSelect(ids: string[]): void; onLocate(id: string, view: ViewId): void; onPick(id: string | null): void; onMove(id: string, at: XY): void; onMovePage(id: string, page: number): void; onArrange(): void; onOperate(id: string, down: boolean): void;
 };
 
 const pageName = (page: number) => `Hoja ${page}${PAGE_TITLES[page - 1] ? ` · ${PAGE_TITLES[page - 1]}` : ''}`;
 
 /** Esquema funcional generado del modelo, por hojas: mismos ids que el 3D. Los símbolos son bloques genéricos (no IEC 60617). */
-export default function DiagramView({project, selection, sim, simRunning, evaluation, pickedConn, editable, onSelect, onPick, onMove, onMovePage, onArrange, onOperate}: DiagramViewProps) {
+export default function DiagramView({project, selection, sim, simRunning, evaluation, pickedConn, editable, onSelect, onLocate, onPick, onMove, onMovePage, onArrange, onOperate}: DiagramViewProps) {
   const [zoom, setZoom] = useState(1);
-  const [pageChoice, setPageChoice] = useState(1);
+  const [pageChoice, setPageChoice] = useState(() => selection[0] ? pageOf(project, selection[0], autoLayout(project)) : 1);
   const [drag, setDrag] = useState<{id: string; x: number; y: number} | null>(null);
   const svg = useRef<SVGSVGElement | null>(null);
   const auto = useMemo(() => autoLayout(project), [project]);
@@ -29,6 +30,10 @@ export default function DiagramView({project, selection, sim, simRunning, evalua
   const stubs = useMemo(() => crossPageStubs(view, page, auto), [view, page, auto]);
   const selected = project.entities.find(e => selection.length === 1 && e.id === selection[0] && entities.some(x => x.id === e.id));
 
+  const picked = project.connections.find(c => c.id === pickedConn);
+  const trace = evaluation.nets.find(n => n.connections.includes(pickedConn ?? ''));
+  const endLabel = (id: string, terminal: string) => (project.entities.find(e => e.id === id)?.label ?? id) + '.' + terminal;
+  const focusId = selected?.id ?? picked?.a.entityId;
   const start = (id: string, e: React.PointerEvent) => {
     e.stopPropagation(); onSelect([id]);
     const def = project.entities.find(x => x.id === id)?.definitionId ?? '';
@@ -75,6 +80,14 @@ export default function DiagramView({project, selection, sim, simRunning, evalua
         <select aria-label={`Hoja de ${selected.label}`} value={pageOf(project, selected.id, auto)} disabled={!editable} onChange={e => { const n = Number(e.target.value); onMovePage(selected.id, n); setPageChoice(n); }}>
           {[...pages, pages.length + 1].map(n => <option key={n} value={n}>{n > pages.length ? `Hoja ${n} (nueva)` : pageName(n)}</option>)}</select></label>}
     </div>
+    {(focusId || picked) && <div className="ind-related ind-trace">
+      {picked && <strong>{endLabel(picked.a.entityId, picked.a.terminalId)} → {endLabel(picked.b.entityId, picked.b.terminalId)}</strong>}
+      <div className="ind-chips">
+        {focusId && <><button type="button" onClick={() => onLocate(focusId, 'board')}>Ver en tablero</button><button type="button" onClick={() => onLocate(focusId, 'plant')}>Ver en planta</button></>}
+        {picked && pageOf(project, picked.a.entityId, auto) !== pageOf(project, picked.b.entityId, auto)
+          && <button type="button" onClick={() => setPageChoice(pageOf(project, page === pageOf(project, picked.a.entityId, auto) ? picked.b.entityId : picked.a.entityId, auto))}>Ir a la otra hoja</button>}
+      </div>
+    </div>}
     {entities.length === 0 ? <p className="ind-note ind-diagram-empty">No hay componentes con terminales. Coloca piezas desde Piezas y aparecerán aquí con el mismo id.</p>
       : <div className="ind-diagram-scroll"><svg ref={svg} width={w * zoom} height={h * zoom} viewBox={`0 0 ${w} ${h}`} role="group" aria-label={`Esquema, ${pageName(page)}`} data-page={page} onPointerDown={() => { onSelect([]); onPick(null); }}>
         {project.connections.map((c, i) => {
@@ -83,13 +96,13 @@ export default function DiagramView({project, selection, sim, simRunning, evalua
           const st = evaluation.status[c.id] ?? c.status, live = !!sim?.liveConnections.has(c.id), picked = pickedConn === c.id;
           const color = live ? '#ff9800' : st === 'invalid' ? '#d9302c' : sim ? '#9aa7b8' : KIND_COLOR[c.kind] ?? '#555f6d';
           return <g key={c.id} data-connection={c.id} data-live={live} data-status={st}>
-            <path d={pathOf(pts)} fill="none" stroke="transparent" strokeWidth={12} style={{cursor: 'pointer'}} onPointerDown={e => { e.stopPropagation(); onPick(picked ? null : c.id); }}><title>{`${c.a.entityId}.${c.a.terminalId} → ${c.b.entityId}.${c.b.terminalId}`}</title></path>
-            <path d={pathOf(pts)} fill="none" stroke={color} strokeWidth={picked ? 4 : live ? 3.2 : 2} strokeDasharray={!sim && st === 'unverified' ? '6 3' : undefined} strokeLinejoin="round" pointerEvents="none" />
+            <path d={pathOf(pts)} fill="none" stroke="transparent" strokeWidth={12} style={{cursor: 'pointer'}} onPointerDown={e => { e.stopPropagation(); onPick(picked ? null : c.id); }}><title>{`${endLabel(c.a.entityId, c.a.terminalId)} → ${endLabel(c.b.entityId, c.b.terminalId)}`}</title></path>
+            <path d={pathOf(pts)} fill="none" stroke={color} strokeWidth={picked || trace?.connections.includes(c.id) ? 4 : live ? 3.2 : 2} strokeDasharray={!sim && st === 'unverified' ? '6 3' : undefined} strokeLinejoin="round" pointerEvents="none" />
           </g>;
         })}
         {stubs.map((s, i) => {
           const c = project.connections.find(x => x.id === s.connectionId)!, live = !!sim?.liveConnections.has(c.id), color = live ? '#ff9800' : (evaluation.status[c.id] ?? c.status) === 'invalid' ? '#d9302c' : sim ? '#9aa7b8' : KIND_COLOR[c.kind] ?? '#555f6d';
-          return <g key={`${s.connectionId}${i}`} data-ref={s.connectionId}>
+          return <g key={`${s.connectionId}${i}`} data-ref={s.connectionId} role="button" tabIndex={0} aria-label={s.label} onPointerDown={event => { event.stopPropagation(); onPick(c.id); setPageChoice(pageOf(project, page === pageOf(project, c.a.entityId, auto) ? c.b.entityId : c.a.entityId, auto)); }} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onPick(c.id); setPageChoice(pageOf(project, page === pageOf(project, c.a.entityId, auto) ? c.b.entityId : c.a.entityId, auto)); } }}>
             <path d={pathOf(s.pts)} fill="none" stroke={color} strokeWidth={live ? 3.2 : 2} />
             <text x={s.at.x} y={s.at.y + (s.side === 'top' ? -2 : s.side === 'bottom' ? 10 : 4)} textAnchor={s.side === 'left' ? 'end' : s.side === 'right' ? 'start' : 'middle'} className="ind-ref-label">{s.label}</text>
           </g>;

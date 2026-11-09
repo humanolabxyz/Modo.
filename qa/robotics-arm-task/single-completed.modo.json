@@ -1,13 +1,13 @@
 {
   "format": "modo-robotica",
   "version": 1,
-  "id": "27bffc6f-60a8-4cbc-8018-aa2555617084",
+  "id": "cfaf79db-b3a3-446e-8115-bee990585cf9",
   "name": "Brazo educativo · práctica de pinza",
-  "createdAt": "2026-10-31T03:56:58.923Z",
-  "updatedAt": "2026-10-31T03:56:58.923Z",
+  "createdAt": "2026-11-09T11:59:03.217Z",
+  "updatedAt": "2026-11-09T11:59:03.217Z",
   "parts": [
     {
-      "instanceId": "81138057-13d2-4583-a325-6a1f7a1ecffb",
+      "instanceId": "ac487d1d-625b-4271-a6b6-f4bcdce214c0",
       "definitionId": "educational-arm-e6",
       "label": "Brazo educativo · referencia E6",
       "transform": {
@@ -37,7 +37,7 @@
       }
     },
     {
-      "instanceId": "039990c9-1a0b-4809-8c03-d05644ce0711",
+      "instanceId": "a3470508-50fa-4ceb-8658-0f7ec6939e66",
       "definitionId": "arm-practice-block",
       "label": "Pieza de práctica · 50 g",
       "transform": {
@@ -55,12 +55,12 @@
       },
       "props": {
         "massKg": 0.05,
-        "depositedBy": "81138057-13d2-4583-a325-6a1f7a1ecffb"
+        "depositedBy": "ac487d1d-625b-4271-a6b6-f4bcdce214c0"
       },
       "locked": false
     },
     {
-      "instanceId": "76749667-a54a-49d5-90cb-c532f6c1d522",
+      "instanceId": "bd9db170-e28b-4dbb-865c-e443859e3807",
       "definitionId": "arm-drop-zone",
       "label": "Zona de entrega",
       "transform": {
@@ -119,7 +119,7 @@
     }
   },
   "armProgram": {
-    "armId": "81138057-13d2-4583-a325-6a1f7a1ecffb",
+    "armId": "ac487d1d-625b-4271-a6b6-f4bcdce214c0",
     "points": [
       {
         "name": "1 · Sobre pieza",
@@ -159,7 +159,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+        "expectedHeld": "a3470508-50fa-4ceb-8658-0f7ec6939e66"
       },
       {
         "name": "1 · Levantar",
@@ -173,7 +173,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+        "expectedHeld": "a3470508-50fa-4ceb-8658-0f7ec6939e66"
       },
       {
         "name": "1 · Sobre destino",
@@ -187,7 +187,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+        "expectedHeld": "a3470508-50fa-4ceb-8658-0f7ec6939e66"
       },
       {
         "name": "1 · Depositar",
@@ -201,7 +201,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "039990c9-1a0b-4809-8c03-d05644ce0711"
+        "expectedHeld": "a3470508-50fa-4ceb-8658-0f7ec6939e66"
       },
       {
         "name": "1 · Soltar",

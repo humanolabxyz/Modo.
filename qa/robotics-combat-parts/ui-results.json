@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4330",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "desktop: tres accesorios individuales con miniaturas, tres robots editables, guardado/reapertura, cuña contra pala 4WD en arena y fuentes intactas.",
     "mobile: tres accesorios individuales con miniaturas, tres robots editables, guardado/reapertura, cuña contra pala 4WD en arena y fuentes intactas."

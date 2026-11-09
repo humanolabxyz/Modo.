@@ -92,3 +92,5 @@
 .fw-edge-sw,.fw-edge-se{height:14px}
 @media(pointer:coarse){.fw-edge-sw,.fw-edge-se{height:24px}}
 .mobile-floating-window[data-moving=true]{will-change:transform;user-select:none}
+
+.fw-free-touch[data-maximized=true] :is(.fw-edge, .floating-window-resize) { visibility: hidden; }

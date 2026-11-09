@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:4326",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "elegir «Robot 2 ruedas · evita obstáculos»: 0 de 21 pasos y el primero es subir la batería a 9 V",
     "«Hacerlo por mí» aplica los 3 ajustes y la guía pasa sola al primer cable (batería + → driver +12V, rojo)",

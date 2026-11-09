@@ -1,0 +1,121 @@
+// Malla de alturas del terreno de Agro. Puro (sin three ni React): se prueba en Node.
+// El mapa NO se guarda entero: se regenera desde la semilla y se le reaplican las ediciones (deltas) en orden.
+// Coordenadas del mundo: metros, centradas en el origen; x este, z sur, y arriba.
+import type {TerrainEdit} from '../model/types.ts';
+import {fbm} from './noise.ts';
+
+export type TerrainSpec = {sizeMeters: [number, number]; cellMeters: number; seed: number};
+
+export type Heightfield = {
+  sizeX: number; sizeZ: number; cell: number;
+  /** Puntos de la malla por lado (celdas + 1). */
+  nx: number; nz: number;
+  originX: number; originZ: number;
+  seed: number;
+  /** Alturas actuales (m), índice `j * nx + i`. */
+  data: Float32Array;
+  /** Alturas de la base procedural, sin ediciones. */
+  base: Float32Array;
+};
+
+export const MIN_HEIGHT = -50, MAX_HEIGHT = 500;
+
+const clamp = (v: number, lo: number, hi: number): number => (v < lo ? lo : v > hi ? hi : v);
+const smooth01 = (t: number): number => { const c = clamp(t, 0, 1); return c * c * (3 - 2 * c); };
+
+/** Relieve base en un punto: colinas, una ladera que sube hacia el este, cordón montañoso y una meseta llana en el centro (la zona de la finca). */
+function rawHeight(seed: number, x: number, z: number, sx: number, sz: number): number {
+  const u = x / sx;
+  const hills = (fbm(seed, x / 280 + 3.1, z / 280 - 7.7, 5) - 0.5) * 46;
+  const rise = smooth01((u - 0.05) / 0.45);
+  const mountains = rise * rise * (40 + 90 * fbm(seed + 13, x / 330, z / 330, 4));
+  const tilt = 10 * (u + 0.5);
+  return hills + mountains + tilt;
+}
+
+export function baseHeight(seed: number, x: number, z: number, sx: number, sz: number): number {
+  const h = rawHeight(seed, x, z, sx, sz), h0 = rawHeight(seed, 0, 0, sx, sz);
+  const d = Math.sqrt(x * x + z * z);
+  const w = 0.95 * (1 - smooth01((d - 100) / 170));
+  const detail = (fbm(seed + 7, x / 18, z / 18, 3) - 0.5) * 1.2;
+  return h * (1 - w) + h0 * w - h0 + 20 + detail * (1 - 0.7 * w);
+}
+
+export function createHeightfield(spec: TerrainSpec): Heightfield {
+  const [sizeX, sizeZ] = spec.sizeMeters, cell = spec.cellMeters;
+  const nx = Math.round(sizeX / cell) + 1, nz = Math.round(sizeZ / cell) + 1;
+  const originX = -sizeX / 2, originZ = -sizeZ / 2;
+  const base = new Float32Array(nx * nz);
+  for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) base[j * nx + i] = baseHeight(spec.seed, originX + i * cell, originZ + j * cell, sizeX, sizeZ);
+  return {sizeX, sizeZ, cell, nx, nz, originX, originZ, seed: spec.seed, data: new Float32Array(base), base};
+}
+
+/** Región de celdas (índices de la malla) que toca una edición, ampliada en 1 para las normales. */
+export function editCellBounds(hf: Heightfield, e: Pick<TerrainEdit, 'center' | 'radius'>): {i0: number; i1: number; j0: number; j1: number} {
+  return {
+    i0: Math.max(0, Math.floor((e.center[0] - e.radius - hf.originX) / hf.cell) - 1), i1: Math.min(hf.nx - 1, Math.ceil((e.center[0] + e.radius - hf.originX) / hf.cell) + 1),
+    j0: Math.max(0, Math.floor((e.center[1] - e.radius - hf.originZ) / hf.cell) - 1), j1: Math.min(hf.nz - 1, Math.ceil((e.center[1] + e.radius - hf.originZ) / hf.cell) + 1),
+  };
+}
+
+/**
+ * Aplica una edición. Atenuación suave (1 − t²)² con t = distancia / radio.
+ *  · raise / lower: `amount` = metros en el centro.   · level: `amount` = cota objetivo (m); el borde se funde con el terreno.
+ */
+export function applyEdit(hf: Heightfield, e: Pick<TerrainEdit, 'kind' | 'center' | 'radius' | 'amount'>): void {
+  const {i0, i1, j0, j1} = editCellBounds(hf, e), r2 = e.radius * e.radius;
+  for (let j = j0; j <= j1; j++) {
+    const dz = hf.originZ + j * hf.cell - e.center[1];
+    for (let i = i0; i <= i1; i++) {
+      const dx = hf.originX + i * hf.cell - e.center[0], d2 = dx * dx + dz * dz;
+      if (d2 >= r2) continue;
+      const t2 = d2 / r2, k = (1 - t2) * (1 - t2), idx = j * hf.nx + i, h = hf.data[idx];
+      const next = e.kind === 'raise' ? h + e.amount * k : e.kind === 'lower' ? h - e.amount * k : h + (e.amount - h) * k;
+      hf.data[idx] = clamp(next, MIN_HEIGHT, MAX_HEIGHT);
+    }
+  }
+}
+
+/** Vuelve a la base y reaplica las ediciones en orden (reproducible). */
+export function rebuild(hf: Heightfield, edits: readonly TerrainEdit[]): void {
+  hf.data.set(hf.base);
+  for (const e of edits) applyEdit(hf, e);
+}
+
+/** Cota (m) con interpolación bilineal. Fuera del mapa se toma el borde. */
+export function sampleHeight(hf: Heightfield, x: number, z: number): number {
+  const fi = clamp((x - hf.originX) / hf.cell, 0, hf.nx - 1), fj = clamp((z - hf.originZ) / hf.cell, 0, hf.nz - 1);
+  const i = Math.min(Math.floor(fi), hf.nx - 2), j = Math.min(Math.floor(fj), hf.nz - 2), u = fi - i, v = fj - j;
+  const a = hf.data[j * hf.nx + i], b = hf.data[j * hf.nx + i + 1], c = hf.data[(j + 1) * hf.nx + i], d = hf.data[(j + 1) * hf.nx + i + 1];
+  return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+}
+
+/** Pendiente (grados) por diferencias centrales. */
+export function slopeDegrees(hf: Heightfield, x: number, z: number): number {
+  const d = hf.cell;
+  const gx = (sampleHeight(hf, x + d, z) - sampleHeight(hf, x - d, z)) / (2 * d), gz = (sampleHeight(hf, x, z + d) - sampleHeight(hf, x, z - d)) / (2 * d);
+  return (Math.atan(Math.sqrt(gx * gx + gz * gz)) * 180) / Math.PI;
+}
+
+/** Normal unitaria [x, y, z] con paso `step` (m). */
+export function normalAt(hf: Heightfield, x: number, z: number, step = hf.cell): [number, number, number] {
+  const gx = (sampleHeight(hf, x + step, z) - sampleHeight(hf, x - step, z)) / (2 * step), gz = (sampleHeight(hf, x, z + step) - sampleHeight(hf, x, z - step)) / (2 * step);
+  const n = Math.sqrt(gx * gx + 1 + gz * gz);
+  return [-gx / n, 1 / n, -gz / n];
+}
+
+export const inBounds = (hf: Heightfield, x: number, z: number): boolean => x >= hf.originX && x <= hf.originX + hf.sizeX && z >= hf.originZ && z <= hf.originZ + hf.sizeZ;
+
+/** Suma de verificación (FNV-1a sobre los bits de las alturas): sirve para comprobar que dos terrenos son idénticos. */
+export function checksum(hf: Heightfield): string {
+  const words = new Uint32Array(hf.data.buffer, hf.data.byteOffset, hf.data.length);
+  let h = 0x811c9dc5;
+  for (let i = 0; i < words.length; i++) { h ^= words[i]; h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16).padStart(8, '0');
+}
+
+export function heightRange(hf: Heightfield): {min: number; max: number} {
+  let min = Infinity, max = -Infinity;
+  for (let i = 0; i < hf.data.length; i++) { const h = hf.data[i]; if (h < min) min = h; if (h > max) max = h; }
+  return {min, max};
+}

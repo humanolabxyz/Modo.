@@ -128,6 +128,8 @@ export function exampleMiniFactory(): Result<IndustryProject> {
   if (!step(setPose(p, 'red', pose(X0 - 0.9, 0, Z0)))) return {ok: false, error: fail};
   // Gabinete de tablero alrededor de la placa; los mandos (marcha, paro y piloto) pasan del riel a la PUERTA, como en un tablero real
   if (!put('gab', 'gabinete', 'Gabinete de tablero', pose(X0, Y0, Z0 + 0.15), 'plinto')) return {ok: false, error: fail};
+  const plateMount = findSnapCandidates(p, 'placa').find(candidate => candidate.parent.entityId === 'gab' && candidate.parent.anchorId === 'soporte-placa');
+  if (!plateMount || !step(snapMount(p, plateMount))) return {ok: false, error: fail || 'No se pudo fijar la placa al gabinete.'};
   for (const id of ['s1', 's2']) { const m = p.mounts.find(x => x.child.entityId === id); if (m && !step(release(p, m.id))) return {ok: false, error: fail}; }
   if (!add('h1', 'piloto', 'H1', pose(X0 + 0.2, Y0 + 0.95, Z0 + 0.29))) return {ok: false, error: fail};
   for (const [id, x] of [['s1', 0.3], ['s2', 0.4], ['h1', 0.2]] as const) {

@@ -64,7 +64,23 @@ const hold = async (cdp, loc, ms = 300, during) => { const {x, y} = await center
     await p.getByRole('button', {name: 'Piezas', exact: true}).tap(); await p.waitForTimeout(300);
     const before = (await saved()).poses.bloqueB.position, box = await p.locator('canvas').first().boundingBox();
     const a = project([before[0], 0.2, before[2]], box), z = project([before[0] + 0.8, 0.2, before[2] - 0.7], box);
-    await touch(cdp, 'touchStart', a.x, a.y); for (let i = 1; i <= 12; i++) { await touch(cdp, 'touchMove', a.x + (z.x - a.x) * i / 12, a.y + (z.y - a.y) * i / 12); await new Promise(r => setTimeout(r, 30)); } await touch(cdp, 'touchEnd'); await p.waitForTimeout(800);
+    const swipe = async () => {
+      await touch(cdp, 'touchStart', a.x, a.y);
+      for (let i = 1; i <= 12; i++) {
+        await touch(cdp, 'touchMove', a.x + (z.x - a.x) * i / 12, a.y + (z.y - a.y) * i / 12);
+        await p.waitForTimeout(30);
+      }
+      await touch(cdp, 'touchEnd');
+      await p.waitForTimeout(800);
+    };
+    const camera = () => p.evaluate(() => JSON.parse(localStorage.getItem(Object.keys(localStorage).find(key => key.startsWith('modo:industria:ui:')))).camera);
+    await swipe();
+    assert.notDeepEqual((await camera()).position, CAM.pos);
+    assert.deepEqual((await saved()).poses.bloqueB.position, before);
+    pass('Deslizar sobre una pieza con un dedo orbita la cámara sin mover la pieza');
+    await p.getByRole('button', {name: 'Encuadrar'}).tap(); await p.waitForTimeout(350);
+    await p.getByRole('button', {name: 'Mover pieza', exact: true}).tap();
+    await swipe();
     const after = (await saved()).poses.bloqueB.position;
     assert.ok(Math.hypot(after[0] - before[0], after[2] - before[2]) > 0.4, `la pieza se movió (${before} → ${after})`);
     for (const v of [after[0], after[2]]) assert.ok(Math.abs(v / 0.05 - Math.round(v / 0.05)) < 1e-3, 'ajustada a la rejilla del imán');

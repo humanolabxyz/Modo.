@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4330",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "Arrastrar desde la miniatura real permite colocar la pieza; Esc cancela sin agregar.",
     "escritorio: 35 miniaturas reales, búsqueda, categorías, agregar con ratón/tacto, modelos en pizarra y sin desbordamiento",

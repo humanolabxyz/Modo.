@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "La tarjeta Industria del Home abre /industria/",
+    "Carcasa: cabecera, dock con tooltips, escenario 3D protagonista y paneles flotantes cerrables",
+    "Tablero, Documentación, Diagramas, PLC y HMI son vistas reales: leen el mismo proyecto y avisan cuando no hay nada que mostrar",
+    "Deshacer y rehacer (botones, Ctrl+Z y Ctrl+Shift+Z) mueven el modelo guardado",
+    "En Simular no se edita la estructura; Construir la habilita",
+    "Recargar conserva proyecto, vista, paneles y selección (proyecto y UI en claves separadas)",
+    "Vistas de cámara y cámaras guardadas se persisten en el estado de UI",
+    "Exporta un .industria.json válido y rechaza un archivo de Robótica con un mensaje claro",
+    "Importar crea una copia con id nuevo",
+    "Una biblioteca ilegible bloquea el guardado y no se sobrescribe",
+    "Sin desbordes horizontales en 390, 768 y 1024 px",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

@@ -1,0 +1,6 @@
+[
+  "El documento declara idioma español y un título propio",
+  "Todas las vistas y paneles: todo control tiene nombre accesible, ids únicos, referencias ARIA válidas y contraste AA en el texto",
+  "Con Tab se recorren 134 controles (inicio, ejecutar, modos, dock…) y 134 muestran indicador de foco",
+  "Cero errores de consola y de JavaScript"
+]

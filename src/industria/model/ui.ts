@@ -21,6 +21,8 @@ export type IndustriaUi = {
   operation: Operation;
   camera: CameraState;
   savedCameras: SavedCamera[];
+  cutaway: boolean;
+  interior: string | null;
   panels: Record<PanelId, boolean>;
   selection: string[];
   /** Planta › Estación › Gabinete › Componente › Terminal (ids o nombres de nivel). */
@@ -39,6 +41,8 @@ export const defaultUi = (): IndustriaUi => ({
   operation: 'build',
   camera: {position: [6, 5, 7], target: [0, 0.8, 0]},
   savedCameras: [],
+  cutaway: true,
+  interior: null,
   panels: {library: true, inspector: false, cameras: false, structure: false, connections: false, instruments: false, faults: false, activity: false, console: false},
   selection: [],
   path: ['Planta'],
@@ -65,6 +69,8 @@ export function parseUi(raw: string | null): IndustriaUi {
     view: VIEWS.some(v => v.id === d.view) ? (d.view as ViewId) : base.view,
     operation: d.operation === 'simulate' ? 'simulate' : 'build',
     camera: camera && isVec3(camera.position) && isVec3(camera.target) ? {position: camera.position, target: camera.target} : base.camera,
+    cutaway: typeof d.cutaway === 'boolean' ? d.cutaway : base.cutaway,
+    interior: typeof d.interior === 'string' ? d.interior : null,
     savedCameras: Array.isArray(d.savedCameras) ? d.savedCameras.filter((c): c is SavedCamera => typeof c === 'object' && c !== null && typeof (c as SavedCamera).name === 'string' && isVec3((c as SavedCamera).position) && isVec3((c as SavedCamera).target)).slice(0, 20) : [],
     panels,
     selection: Array.isArray(d.selection) ? d.selection.filter((s): s is string => typeof s === 'string').slice(0, 200) : [],

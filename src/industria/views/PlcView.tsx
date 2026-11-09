@@ -3,11 +3,13 @@ import {Plus, Trash2, X} from 'lucide-react';
 import {COIL_MODES, type CoilMode, type IndustryProject, type Result} from '../model/types.ts';
 import {addBranch, addContact, addMemory, addRung, checkProgram, defaultPreset, isPlc, programOf, removeBranch, removeContact, removeMemory, removeRung, rungFlow, setCoil, setTerminalTag, tagsOf, terminalDirection, toggleContact, PLC_DEFINITION} from '../plc/program.ts';
 import type {SimResult} from '../sim/engine.ts';
+import type {ViewId} from '../model/ui';
+import LadderNetwork from './LadderNetwork';
 import {shapeOf} from '../build/shapes.ts';
 
 const MODE_TEXT: Record<CoilMode, string> = {out: 'Salida ( )', set: 'Activar (S)', reset: 'Desactivar (R)', ton: 'Temporizador TON', ctu: 'Contador CTU', ctr: 'Reset de contador'};
 type Change = (f: (p: IndustryProject) => Result<IndustryProject>) => Result<IndustryProject>;
-export type PlcViewProps = {project: IndustryProject; selection: readonly string[]; sim: SimResult | null; editable: boolean; onChange: Change; showIssues?: boolean};
+export type PlcViewProps = {project: IndustryProject; selection: readonly string[]; sim: SimResult | null; editable: boolean; onSimulate(): void; onLocate(id: string, view: ViewId): void; onChange: Change; showIssues?: boolean};
 
 function TagInput({value, disabled, label, onCommit}: {value: string; disabled: boolean; label: string; onCommit(v: string): void}) {
   const [text, setText] = useState(value);
@@ -16,9 +18,13 @@ function TagInput({value, disabled, label, onCommit}: {value: string; disabled: 
   return <input value={text} aria-label={label} disabled={disabled} maxLength={30} placeholder="sin variable" onChange={e => setText(e.target.value)} onBlur={commit} onKeyDown={e => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }} />;
 }
 
-/** Programa en escalera: contactos NA/NC en serie (rama) y en paralelo (ramas), bobinas de salida, set y reset. Sin temporizadores ni contadores. */
-export default function PlcView({project, selection, sim, editable, onChange, showIssues = true}: PlcViewProps) {
+/** Editor y monitor de las mismas redes Ladder del simulador. */
+export default function PlcView({project, selection, sim, editable: canEdit, onChange, onSimulate, onLocate, showIssues = true}: PlcViewProps) {
   const plcs = project.entities.filter(e => e.definitionId === PLC_DEFINITION);
+  const [mode, setMode] = useState<'edit' | 'monitor'>('edit');
+  const [validated, setValidated] = useState<{project: IndustryProject; plcId: string}>();
+  const monitoring = mode === 'monitor' || !!sim;
+  const editable = canEdit && !monitoring;
   const [pick, setPick] = useState('');
   const [mem, setMem] = useState('');
   const [newCoil, setNewCoil] = useState('');
@@ -35,14 +41,24 @@ export default function PlcView({project, selection, sim, editable, onChange, sh
       <strong>PLC</strong>
       {plcs.length > 1 ? <label className="ind-field"><span>Controlador</span><select value={plcId} onChange={e => setPick(e.target.value)}>{plcs.map(e => <option key={e.id} value={e.id}>{e.label}</option>)}</select></label> : <span>{plc.label}</span>}
       <span className="ind-chipstate" data-on={!!live?.powered}>{!sim ? 'Sin simular' : live?.powered ? 'Alimentado' : 'Sin alimentar'}</span>
-      <span className="ind-note">Escalera booleana: sin temporizadores, contadores ni números.</span>
+      <span className="ind-note">Controlador didáctico · contactos, bobinas, TON y CTU</span>
+      <div className="ind-chips ind-work-switch" role="group" aria-label="Modo del PLC">
+        <button type="button" aria-pressed={!monitoring} disabled={!canEdit} onClick={() => setMode('edit')}>Editar Ladder</button>
+        <button type="button" aria-pressed={monitoring} onClick={() => setMode('monitor')}>Monitorizar</button>
+        {showIssues && <button type="button" onClick={() => setValidated({project, plcId})}>Validar programa</button>}
+        {!sim && <button type="button" onClick={onSimulate}>Simular PLC</button>}
+      </div>
     </div>
-    <div className="ind-plc-body">
+    {showIssues && validated?.project === project && validated.plcId === plcId && <p className="ind-related" role="status">{issues.length ? 'Validación: ' + issues.length + ' aviso(s). Revisa la lista del programa.' : 'Validación del modelo: sin avisos.'}</p>}
+    <div className="ind-plc-body" data-monitor={monitoring}>
       <div className="ind-plc-vars">
+        <div className="ind-related"><strong>Proyecto PLC</strong><span>{plc.label}</span><button type="button" onClick={() => onLocate(plcId, 'plant')}>Localizar controlador</button></div>
         <h4>Variables de E/S</h4>
-        <ul className="ind-io" aria-label="Entradas y salidas">{terminals.map(t => { const tag = tags.find(x => x.terminalId === t.id); return <li key={t.id} data-on={!!(tag && vals[tag.name])}>
+        <ul className="ind-io" aria-label="Entradas y salidas">{terminals.map(t => { const tag = tags.find(x => x.terminalId === t.id);
+          const peers = project.connections.flatMap(c => c.a.entityId === plcId && c.a.terminalId === t.id ? [c.b] : c.b.entityId === plcId && c.b.terminalId === t.id ? [c.a] : []);
+          return <li key={t.id} data-on={!!(tag && vals[tag.name])}>
           <code>{t.label}</code><TagInput value={tag?.name ?? ''} label={`Variable de ${t.label}`} disabled={!editable} onCommit={v => run(p => setTerminalTag(p, plcId, t.id, v || null))} />
-          <b aria-label={`Valor de ${t.label}`}>{sim && tag ? (vals[tag.name] ? '1' : '0') : '–'}</b></li>; })}</ul>
+          <b aria-label={`Valor de ${t.label}`}>{sim && tag ? (vals[tag.name] ? '1' : '0') : '–'}</b>{peers.length > 0 && <small className="ind-plc-peer">{peers.map((ref, index) => <button key={index} type="button" onClick={() => onLocate(ref.entityId, 'plant')}>{project.entities.find(e => e.id === ref.entityId)?.label}.{ref.terminalId}</button>)}</small>}</li>; })}</ul>
         <h4>Variables internas</h4>
         <ul className="ind-io" aria-label="Variables internas">{program.memory.map(m => <li key={m} data-on={!!vals[m]}><code>M</code><span>{m}</span><b>{sim ? (vals[m] ? '1' : '0') : '–'}</b>
           <button type="button" aria-label={`Quitar ${m}`} disabled={!editable} onClick={() => run(p => removeMemory(p, plcId, m))}><X size={13} /></button></li>)}</ul>
@@ -55,6 +71,7 @@ export default function PlcView({project, selection, sim, editable, onChange, sh
         {program.rungs.map((r, i) => { const flow = rungFlow(r, vals); return <div className="ind-rung" key={r.id} data-on={!!sim && flow.on} data-rung={i + 1}>
           <div className="ind-rung-head"><b>Línea {i + 1}</b>{r.comment && <span className="ind-note">{r.comment}</span>}
             <button type="button" aria-label={`Eliminar la línea ${i + 1}`} disabled={!editable} onClick={() => run(p => removeRung(p, plcId, r.id))}><Trash2 size={13} /></button></div>
+          <LadderNetwork rung={r} number={i + 1} flow={flow} live={!!sim} />
           <div className="ind-rung-body">
             <div className="ind-branches">{r.branches.map((b, bi) => <div className="ind-branch" key={bi} role="group" aria-label={`Línea ${i + 1}, rama ${bi + 1}`}>
               {b.map((c, ci) => <span className="ind-contact" key={ci} data-on={!!sim && flow.branches[bi][ci]}>

@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Las 3 piezas se dibujan con su forma (146 mallas: carcasa, frente, tornillos, LED…) y cada cable es un tubo con grosor",
+    "Un temporizador TON de 1,2 s se programa desde la escalera, avanza con el reloj de la simulación, llega a su valor y se reinicia al parar el motor",
+    "El botón Sonido se activa y apaga; con sonido activo cada interruptor, pulsador y contactor pide su sonido",
+    "El relé térmico se coloca desde la biblioteca y se dispara y rearma desde los mandos",
+    "Un símbolo se pasa a una hoja nueva (sus cables se vuelven referencias «→ hoja n») y Deshacer vuelve a dos hojas",
+    "El editor arma una actividad con dos comprobaciones (cumplidas por la solución), la guarda, exporta una copia sin cables y, al abrirla, marca 1 de 2 pasos",
+    "Cero errores de consola y de JavaScript"
+  ],
+  "errors": []
+}

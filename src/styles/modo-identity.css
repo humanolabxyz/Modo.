@@ -257,7 +257,7 @@ body.modo-identity .app-shell.editor-workbench{background:var(--id-bg)!important
 /* Transición común (respeta movimiento reducido más abajo) */
 body.modo-identity :is(.lab-page,.editor-workbench,.study-shell,.community-page,.legal-header,.modo-home-shell,.release-main) :is(button,a,summary,select){transition:background-color .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease,transform .16s ease}
 /* Botones claros (píldora blanca): hover con fondo y borde */
-body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(button:not(:where(.lab-hmi-toggle,.lab-hmi-button,.lab-dock *,.tool-dock *,.lab-swatches *,.motion-seg-item,.lab-run,.lab-compact-run,.solder-commission-entry)),.lab-project-menu>summary,.lab-project-menu>div>a,.practice-menu>summary,.simulation-menu>summary):is(:hover,:focus-visible):not(:disabled):not([aria-pressed=true]){background:#f1f3fb;border-color:#c5cae0;box-shadow:var(--id-shadow-ctl),0 0 0 1px #c5cae055}
+body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(button:not(:where(.lab-hmi-toggle,.lab-hmi-button,.lab-dock *,.tool-dock *,.lab-swatches *,.motion-seg-item,.lab-run,.lab-compact-run,.solder-commission-entry,.fw-browser-bar > button)),.lab-project-menu>summary,.lab-project-menu>div>a,.practice-menu>summary,.simulation-menu>summary):is(:hover,:focus-visible):not(:disabled):not([aria-pressed=true]){background:#f1f3fb;border-color:#c5cae0;box-shadow:var(--id-shadow-ctl),0 0 0 1px #c5cae055}
 /* Principales (tinta): hover azul del Home */
 body.modo-soft-ui.modo-identity :is(.lab-page,.editor-workbench) :is(.lab-run:not(.running),.lab-compact-run:not(.running),.lab-apply,.geo-primary,.primary-action,.cade-practice-button):hover:not(:disabled){background:var(--id-blue);border-color:var(--id-blue);color:#fff}
 /* Pestañas no activas: azul suave */
@@ -279,7 +279,7 @@ body.modo-identity .modo-home-shell :is(.install-link,.home-import,.home-footer-
 body.modo-identity .modo-home-shell .home-footer-links a:hover,body.modo-identity .modo-home-shell .install-link:hover{text-decoration:underline;text-underline-offset:4px}
 body.modo-identity .modo-home-shell .home-version-popover a:hover{background:#f1f3fb;border-radius:12px}
 /* Ventanas flotantes: acciones de cabecera */
-body.modo-identity :is(.floating-window-header button,.diagram-pane-actions button,.floating-window-footer button):hover:not(:disabled){background:var(--id-blue-soft);color:var(--id-blue);border-color:transparent}
+body.modo-identity .floating-window-footer button:hover:not(:disabled){background:var(--id-blue-soft);color:var(--id-blue);border-color:transparent}
 
 /* Objetivos táctiles de al menos 36 px (móvil/tableta) */
 @media(max-width:800px){
@@ -305,9 +305,8 @@ body.modo-soft-ui.modo-identity .editor-workbench :is(.tutorial-trigger,.help-bt
 
 /* Ventanas flotantes (se montan fuera de .lab-page): mismas reglas de selección, hover y color */
 body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) :is(button,summary):is([aria-selected=true],[aria-pressed=true],.active,.on,.is-on,.current):not(.lab-hmi-toggle):not(:disabled){background:var(--id-ink);border-color:var(--id-ink);color:#fff}
-body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) button:not(:disabled):not([aria-selected=true]):not([aria-pressed=true]):not(.active):not(.on):not(.is-on):not(.current):not(.floating-window-resize):hover{background:#f1f3fb;border-color:#c5cae0;color:var(--id-ink)}
-body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) button:not(.floating-window-resize){border-radius:14px}
-body.modo-soft-ui.modo-identity .mobile-floating-window .floating-window-header button{border-radius:999px}
+body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) button:not(:disabled):not([aria-selected=true]):not([aria-pressed=true]):not(.active):not(.on):not(.is-on):not(.current):not(.floating-window-resize, :where(.fw-browser-bar > button)):hover{background:#f1f3fb;border-color:#c5cae0;color:var(--id-ink)}
+body.modo-soft-ui.modo-identity :is(.mobile-floating-window,.modal,.guide-window) button:not(.floating-window-resize, :where(.fw-browser-bar > button)){border-radius:14px}
 body.modo-soft-ui.modo-identity .mobile-floating-window .temp-tabs{border-radius:999px;background:#eef0f8;padding:3px;border:0}
 body.modo-soft-ui.modo-identity .mobile-floating-window .temp-tabs button{border-radius:999px;border-color:transparent;background:transparent;box-shadow:none}
 body.modo-soft-ui.modo-identity .mobile-floating-window .temp-tabs button[aria-selected=true]{background:var(--id-ink);color:#fff}

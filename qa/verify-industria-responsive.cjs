@@ -26,10 +26,19 @@ const PANELS = ['Piezas', 'Propiedades', 'Escenario', 'Estructura', 'Conexiones'
       const overflow = () => p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       const inside = async (sel, label) => { const r = await p.locator(sel).first().boundingBox(); if (!r) return; assert.ok(r.x >= -1 && r.y >= -1 && r.x + r.width <= w + 1 && r.y + r.height <= h + 1, `${name}: ${label} fuera de la pantalla (${JSON.stringify(r)})`); };
 
+      const topbar = await p.locator('.ind-topbar').boundingBox();
+      for (const control of await p.locator('.ind-topbar button, .ind-topbar a').all()) {
+        const rect = await control.boundingBox();
+        assert.ok(rect.x >= -1 && rect.y >= topbar.y - 1 && rect.x + rect.width <= w + 1 && rect.y + rect.height <= topbar.y + topbar.height + 1,
+          name + ': control fuera de la barra superior ' + JSON.stringify(rect));
+      }
+      const viewTabs = await p.locator('.ind-views').boundingBox();
+      assert.ok(viewTabs.y >= topbar.y + topbar.height, name + ': las vistas se solapan con la barra superior');
+
       // Dock: completo, dentro de la pantalla y con todos los botones alcanzables (visibles o con desplazamiento propio)
       const dock = await p.locator('nav.rb-dock').boundingBox();
       assert.ok(dock.x >= -1 && dock.x + dock.width <= w + 1, `${name}: el dock se sale (${Math.round(dock.x)}–${Math.round(dock.x + dock.width)} de ${w})`);
-      for (const label of ['Seleccionar', 'Cablear', 'Encuadrar', ...PANELS]) { const btn = p.locator('nav.rb-dock').getByRole('button', {name: label, exact: true}); assert.equal(await btn.count(), 1, `${name}: falta el botón ${label}`); }
+      for (const label of ['Orbitar', 'Desplazar', 'Mover pieza', 'Cablear', 'Encuadrar', ...PANELS]) { const btn = p.locator('nav.rb-dock').getByRole('button', {name: label, exact: true}); assert.equal(await btn.count(), 1, `${name}: falta el botón ${label}`); }
       assert.ok((await overflow()) <= 1, `${name}: desborde horizontal en la planta`);
 
       // Vistas

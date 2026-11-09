@@ -89,6 +89,9 @@ const BUILDERS: Record<string, Builder> = {
   gabinete: s => { const [w, h, d] = s.size, c = s.color, dk = shade(c, -0.4), t = 0.02, door = (p: Part): Part => ({...p, tag: 'door'}); return [
     box(-(w / 2 - t / 2), 0, 0, t, h, d, c, 'body'), box(w / 2 - t / 2, 0, 0, t, h, d, c, 'body'), box(0, h / 2 - t / 2, 0, w, t, d, shade(c, 0.08), 'body'), box(0, 0, -d / 2 + t / 2, w, h, t, shade(c, -0.08), 'body'), box(0, -h / 2 + 0.05, 0, w, 0.1, d, dk, 'body'),
     door(box(0, 0.05, d / 2 - t / 2, w - 0.02, h - 0.1, t, c, 'body')),
+    fit(box(-0.014, 0.255, 0.14, 0.83, 0.038, 0.020, '#454f5b', 'trim')),
+    box(-0.135, -h / 2 + 0.145, -0.115, 0.48, 0.058, 0.043, '#717b86', 'trim', true),
+    box(-0.34, -h / 2 + 0.22, -0.115, 0.054, 0.18, 0.042, '#717b86', 'trim', true),
     cyl(w * 0.36, 0.08, d / 2 + 0.01, 0.011, 0.02, 'z', METAL, 'metal'), box(w * 0.36, 0.08, d / 2 + 0.012, 0.03, 0.12, 0.012, '#2a2f36', 'trim', true), cyl(w * 0.36, 0.08, d / 2 + 0.003, 0.02, 0.003, 'z', '#20262d', 'dark', true),
     ...[0.42, 0.05, -0.32].map(y => cyl(-(w / 2 - 0.006), y, d / 2 - 0.004, 0.011, 0.09, 'y', METAL, 'metal', true)),
     box(0, 0.05 + (h - 0.1) / 2 - 0.006, d / 2 + 0.0004, w - 0.04, 0.012, 0.0008, dk, 'dark', true), box(0, 0.05 - (h - 0.1) / 2 + 0.006, d / 2 + 0.0004, w - 0.04, 0.012, 0.0008, dk, 'dark', true),
@@ -188,9 +191,14 @@ function fan(cy: number, w: number, r: number): Part[] {
 function ductParts(s: ShapeDef, axis: 'x' | 'y'): Part[] {
   const [w, h, d] = s.size, L = axis === 'x' ? w : h, T = axis === 'x' ? h : w, out: Part[] = [];
   const at = (u: number, v: number, z: number, lu: number, tv: number, dz: number, color: string, role: PartRole, fine = false) => (axis === 'x' ? box(u, v, z, lu, tv, dz, color, role, fine) : box(v, u, z, tv, lu, dz, color, role, fine));
-  out.push(at(0, 0, -d / 2 + 0.003, L, T, 0.006, s.color, 'body'), at(0, T / 2 - 0.003, 0, L, 0.006, d, shade(s.color, -0.06), 'body'), at(0, -T / 2 + 0.003, 0, L, 0.006, d, shade(s.color, -0.06), 'body'));
+  out.push(at(0, 0, -d / 2 + 0.003, L, T, 0.006, s.color, 'body'));
+  for (const side of [-1, 1]) {
+    const edge = side * (T / 2 - 0.003);
+    out.push(at(0, edge, -d / 2 + 0.009, L, 0.006, 0.018, shade(s.color, -0.12), 'body'));
+    for (const u of [-L / 2 + 0.007, L / 2 - 0.007]) out.push(at(u, edge, 0, 0.014, 0.006, d, shade(s.color, -0.06), 'body'));
+    for (let u = -L / 2 + 0.024; u < L / 2 - 0.009; u += 0.024) out.push(at(u, edge, 0.003, 0.014, 0.006, d - 0.008, shade(s.color, -0.06), 'trim', true));
+  }
   out.push({...at(0, 0, d / 2 - 0.0025, L - 0.004, T - 0.012, 0.005, '#dfe5ec', 'lens', false), opacity: 0.38});
-  for (let u = -L / 2 + 0.03; u < L / 2 - 0.01; u += 0.03) out.push(at(u, T / 2 - 0.003, d / 2 - 0.004, 0.006, 0.0062, 0.012, '#3b434d', 'dark', true), at(u, -T / 2 + 0.003, d / 2 - 0.004, 0.006, 0.0062, 0.012, '#3b434d', 'dark', true));
   for (const u of [-L / 2 + 0.02, L / 2 - 0.02]) out.push(at(u, 0, d / 2 + 0.0008, 0.008, 0.008, 0.002, METAL, 'metal', true));
   return out;
 }

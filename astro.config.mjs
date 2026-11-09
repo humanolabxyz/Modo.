@@ -55,7 +55,7 @@ const roboticsOnlyChunks=(root,files)=>{
   return seen;
  };
  const entries=page=>{const f=byUrl.get(page);if(!f)return [];return [...readFileSync(f,'utf8').matchAll(/(?:src|href|component-url|renderer-url)="(\/_astro\/[^"]+\.js)"/g)].map(m=>m[1])};
- const heavyPages=['/robotica/','/arena/','/industria/'];
+ const heavyPages=['/robotica/','/arena/','/industria/','/agro/'];
  const others=reach([...byUrl.keys()].filter(u=>u.endsWith('.html')&&!heavyPages.some(page=>u.startsWith(page))).flatMap(entries));
  return new Set([...reach(heavyPages.flatMap(page=>entries(page+'index.html')))].filter(u=>!others.has(u)));
 };
@@ -64,7 +64,7 @@ const stampServiceWorker=()=>({name:'panellab-stamp-sw',hooks:{'astro:build:done
  const files=walk(root).filter(p=>{const name=relative(root,p).split('\\').join('/');return !['sw.js','offline-assets.json'].includes(name)&&!/^vendor\/geogebra\/HTML5\/5\.0\/(web|webSimple)\//.test(name)});
  const assets=files.map(p=>({url:('/'+relative(root,p).split('\\').join('/')).replace(/\/index\.html$/,'/'),bytes:statSync(p).size}));
  const roboticsOnly=roboticsOnlyChunks(root,files);
- const urls=assets.map(a=>a.url).filter(u=>!roboticsOnly.has(u)).filter(u=>u.startsWith('/_astro/')||u==='/'||/^\/(?:estudio|laboratorio|legal|comunidad|versiones|sin-conexion)\/$/.test(u)||/^\/(?:brand\/(?!og-)(?!.*\.(?:mp4|jpg)$)|references\/|images\/home-approved\/|icons\/)/.test(u)||/^\/fonts\/[^/]+\.woff2$/.test(u)||/^\/fonts\/.*LICENSE\.(?:txt|md)$/.test(u)||['/THIRD_PARTY_NOTICES.txt','/panel-model.json','/manifest.webmanifest','/geogebra-frame.html'].includes(u));
+ const urls=assets.map(a=>a.url).filter(u=>!roboticsOnly.has(u)).filter(u=>u.startsWith('/_astro/')||u.startsWith('/industria/components/')||u==='/'||/^\/(?:estudio|laboratorio|legal|comunidad|versiones|sin-conexion)\/$/.test(u)||/^\/(?:brand\/(?!og-)(?!.*\.(?:mp4|jpg)$)|references\/|images\/home-approved\/|icons\/)/.test(u)||/^\/fonts\/[^/]+\.woff2$/.test(u)||/^\/fonts\/.*LICENSE\.(?:txt|md)$/.test(u)||['/THIRD_PARTY_NOTICES.txt','/panel-model.json','/manifest.webmanifest','/geogebra-frame.html'].includes(u));
  const hash=createHash('sha256');for(const file of files){hash.update(relative(root,file));hash.update(readFileSync(file));}const build=hash.digest('hex').slice(0,16);
  writeFileSync(join(root,'offline-assets.json'),JSON.stringify({version:1,build,bytes:assets.reduce((sum,a)=>sum+a.bytes,0),assets}));
  const body=readFileSync(sw,'utf8').replace('__BUILD__',build).replace('__PRECACHE__',JSON.stringify([...new Set([...urls,'/offline-assets.json'])]));

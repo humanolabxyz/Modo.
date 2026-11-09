@@ -1,0 +1,25 @@
+/* modo. Agro · Fase 4: reloj, clima, alertas, parcela y cultivo. Acotado a las clases .agro-*. */
+.agro-time{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 12px;max-width:min(560px,calc(100% - 480px));padding:6px 10px;border-radius:22px;background:var(--panel);backdrop-filter:blur(8px);box-shadow:0 6px 20px #1111152a;z-index:5}
+.agro-clock{display:grid;line-height:1.15}.agro-clock b{font-size:14px}.agro-clock span{font-size:11px;color:var(--muted)}
+.agro-speeds{display:flex;gap:2px;padding:2px;border-radius:18px;background:#0000000d}
+.agro-speeds button{display:inline-flex;align-items:center;gap:3px;min-height:34px;min-width:34px;padding:0 9px;border:0;border-radius:16px;background:transparent;color:var(--ink);font:700 12px inherit;cursor:pointer;justify-content:center}
+.agro-speeds button.on{background:var(--green);color:#fff}.agro-speeds button:not(.on):hover{background:#eef0f4}
+.agro-weather{margin:0;font-size:12px;color:var(--muted);white-space:nowrap}
+.agro-lag{flex-basis:100%;margin:0;font-size:12px;color:#8a6a00;text-align:center}
+.agro-alert-btn{display:inline-flex;align-items:center;gap:4px;min-height:34px;padding:0 10px;border:0;border-radius:17px;background:#0000000d;color:var(--ink);font:700 13px inherit;cursor:pointer}
+.agro-alert-btn.warn{background:#fff1c2;color:#6b5200}.agro-alert-btn.bad{background:#ffd9d6;color:#8a1c14}
+.agro-alerts{flex-basis:100%;max-height:260px;overflow:auto;padding:8px 6px 4px;border-top:1px solid var(--line)}
+.agro-alerts h4{margin:4px 0;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.agro-alerts ul{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:3px}.agro-alerts li{padding:6px 9px;border-radius:10px;background:#0000000a;font-size:13px;line-height:1.35}
+.agro-alerts li.bad{background:#ffe3e0;color:#7a1710}.agro-alerts li.warn{background:#fff4cf;color:#5f4900}.agro-alerts li small{display:block;color:var(--muted);font-size:11px}
+.agro-field{display:grid;gap:3px;font-size:13px;font-weight:600}.agro-field select{min-height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;padding:0 8px}
+.agro-meter{height:10px;border-radius:5px;background:#e3d3a8;overflow:hidden;margin:6px 0}.agro-meter i{display:block;height:100%;background:linear-gradient(90deg,#8bc34a,#2d9bff);border-radius:5px;transition:width .3s}
+.agro-actions{display:flex;flex-wrap:wrap;gap:6px}.agro-actions button{flex:1;min-height:40px;border-radius:12px;border:1px solid var(--line);font:700 13px inherit;cursor:pointer;background:#fff;color:var(--ink)}
+.agro-actions .agro-primary{background:var(--green);border-color:var(--green);color:#fff}.agro-actions button:disabled{opacity:.4;cursor:default}
+.agro-why.ready{background:var(--green-soft);border-color:#9fd3b0;color:#1d5c34}
+.agro-plain{list-style:none;margin:0;padding:0;font-size:13px;display:grid;gap:3px}
+@media (max-width:1100px){.agro-time{top:104px;left:78px;transform:none;max-width:min(560px,calc(100% - 96px));justify-content:flex-start}}
+@media (max-width:760px){.agro-time{top:112px;left:12px;max-width:calc(100% - 24px)}.agro-weather{white-space:normal}}
+@media (prefers-color-scheme:dark){.agro-speeds{background:#ffffff14}.agro-speeds button:not(.on):hover{background:#25262e}.agro-field select,.agro-actions button{background:#1d1e26;color:var(--ink)}.agro-alerts li{background:#ffffff10}.agro-alerts li.bad{background:#4a1f1b;color:#ffd9d6}.agro-alerts li.warn{background:#3b3010;color:#f0d98a}.agro-alert-btn{background:#ffffff14}.agro-alert-btn.warn{background:#3b3010;color:#f0d98a}.agro-alert-btn.bad{background:#4a1f1b;color:#ffd9d6}.agro-meter{background:#4a4030}.agro-lag{color:#f0d98a}}
+.agro-inspector dl.agro-readings{grid-template-columns:1fr;gap:3px}
+.agro-inspector dl.agro-readings dd{text-align:right}

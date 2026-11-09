@@ -1,0 +1,22 @@
+[
+  {
+    "wires": 41,
+    "cpuThrottle": 4,
+    "deviceScaleFactor": 2,
+    "frames": 225,
+    "p95": 33.30000000000018,
+    "longTasks": 0,
+    "longMs": 0,
+    "errors": []
+  },
+  {
+    "wires": 123,
+    "cpuThrottle": 4,
+    "deviceScaleFactor": 2,
+    "frames": 112,
+    "p95": 50.100000000000364,
+    "longTasks": 1,
+    "longMs": 50,
+    "errors": []
+  }
+]

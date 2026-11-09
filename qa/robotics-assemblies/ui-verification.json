@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:4326",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "escritorio robot-rover-4wd: armado distinto, selección, simulación, consola, guardado/recarga y encuadre",
     "movil robot-rover-4wd: armado distinto, selección, simulación, consola, guardado/recarga y encuadre"

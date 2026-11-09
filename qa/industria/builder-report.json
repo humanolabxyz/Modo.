@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "Orbitar y desplazar funcionan al iniciar el arrastre encima de una pieza sin cambiar su posición",
+    "El botón derecho desplaza la cámara aunque esté activo Mover pieza",
+    "Al acercar una pieza a un anclaje compatible aparece la vista previa; Escape cancela sin cambiar el modelo",
+    "Soltar sobre el anclaje monta el aparato en el riel (tipo din-rail), alineado a su frente",
+    "Deshacer y rehacer tratan montar+colocar como un solo paso",
+    "El riel montado no se arrastra; mover la placa arrastra riel y aparato juntos",
+    "Soltar quita solo el montaje: el aparato conserva identidad y posición y vuelve a poder arrastrarse",
+    "Girar 90° por botón y por la tecla R",
+    "El imán ajusta a la rejilla de 5 cm y se puede apagar",
+    "Soltar una pieza atravesando otra se permite y muestra un aviso",
+    "En Simular las piezas no se arrastran",
+    "Recargar conserva montajes y poses",
+    "Escenario del constructor sin desbordes en tablet",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

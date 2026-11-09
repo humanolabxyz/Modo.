@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "Si el archivo del escenario 3D no se descarga, aparece un aviso con «Reintentar», el resto de las vistas funciona y el proyecto no se toca",
+    "«Reintentar» recarga la página (el proyecto ya estaba guardado) y el escenario aparece",
+    "Sin WebGL: aviso claro y las vistas 2D, el PLC, la HMI y la documentación siguen funcionando"
+  ],
+  "errors": []
+}

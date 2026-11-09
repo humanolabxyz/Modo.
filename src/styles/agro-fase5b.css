@@ -1,0 +1,124 @@
+/* modo. Agro · Fase 5b: interfaz del workspace según las referencias (HUD superior, barra de modos, dock, inspector con pestañas, panel Automatizar, tarjeta de redes y etiquetas 3D).
+   Va al final: reordena lo de las fases anteriores sin quitar ninguno de sus controles. Acotado a .agro-ws. */
+.agro-ws{--pill:0 8px 24px #1a2a3a2e}
+
+/* ── HUD superior ── */
+.agro-hudrow{position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:10px;z-index:5;max-width:calc(100% - 700px)}
+.agro-chips{display:flex;gap:8px}
+.agro-hud-chip{display:flex;align-items:center;gap:10px;min-height:52px;padding:6px 16px 6px 12px;border-radius:26px;background:var(--panel);backdrop-filter:blur(10px);box-shadow:var(--pill)}
+.agro-hud-chip svg{flex:none;color:var(--green)}
+.agro-hud-chip span{display:grid;line-height:1.15}.agro-hud-chip b{font-size:16px}.agro-hud-chip small{font-size:12px;color:var(--muted)}
+.agro-ws .agro-cams{position:static;transform:none;padding:5px;gap:3px;box-shadow:var(--pill);flex:none}
+.agro-ws .agro-cams button:not(.on) span{display:none}.agro-ws .agro-cams button:not(.on){padding:0 12px}
+.agro-ws .agro-cams button{min-height:42px;padding:0 12px;border-radius:21px}
+.agro-ws .agro-time{top:12px;left:auto;right:12px;transform:none;max-width:none;justify-content:flex-end;min-height:52px;border-radius:26px;box-shadow:var(--pill);z-index:5}
+.agro-ws .agro-hint{top:86px;left:92px}
+.agro-ws .agro-mini-toggle{top:84px;right:12px;z-index:5}.agro-ws .agro-pieces-toggle{top:84px;right:62px;z-index:5}
+.agro-ws .agro-pieces{left:92px;right:auto;top:84px}
+.agro-ws .agro-inspector{top:136px;right:12px;width:344px;max-height:calc(100% - 136px - 190px);border-radius:24px;box-shadow:var(--pill);z-index:6}
+.agro-ws .agro-toast{top:132px}
+
+/* ── pestañas del inspector ── */
+.agro-tabs{display:flex;gap:4px;padding:4px;border-radius:20px;background:#0000000d}
+.agro-tabs button{flex:1;min-height:34px;border:0;border-radius:16px;background:transparent;color:var(--ink);font:700 13px inherit;cursor:pointer}
+.agro-tabs button.on{background:var(--green);color:#fff}
+.agro-wide{width:100%}
+
+/* ── barra de modos y dock ── */
+.agro-modes{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:4px;padding:6px;border-radius:30px;background:var(--panel);backdrop-filter:blur(10px);box-shadow:var(--pill);z-index:6}
+.agro-modes button{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border:0;border-radius:24px;background:transparent;color:var(--ink);font:700 15px inherit;cursor:pointer;white-space:nowrap}
+.agro-modes button.on{background:var(--green);color:#fff}.agro-modes button:not(.on):hover{background:#eef0f4}
+.agro-dock{position:absolute;left:92px;right:216px;bottom:78px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:center;padding:12px 14px;border-radius:26px;background:var(--panel);backdrop-filter:blur(10px);box-shadow:var(--pill);z-index:6}
+.agro-dock-cats{display:grid;grid-template-columns:repeat(2,auto);gap:6px}
+.agro-dock-cats button{min-height:36px;padding:0 16px;border:0;border-radius:18px;background:#0000000a;color:var(--ink);font:700 13px inherit;cursor:pointer}.agro-dock-cats button.on{background:var(--green);color:#fff}
+.agro-dock-items{display:flex;gap:8px;overflow-x:auto;padding:2px}
+.agro-dock-items button{flex:none;display:grid;justify-items:center;align-content:center;gap:4px;width:104px;min-height:82px;padding:8px 6px;border:2px solid transparent;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 2px 8px #1a2a3a22;cursor:pointer}
+.agro-dock-items button svg{color:var(--green)}.agro-dock-items button b{font-size:13px;text-align:center;line-height:1.15}
+.agro-dock-items button.on{border-color:#3cc36a;background:var(--green-soft)}
+.agro-dock-hint{grid-column:1/-1;margin:0;font-size:12.5px;color:var(--muted)}.agro-dock-hint.ok{color:var(--green);font-weight:700}.agro-dock-hint.bad{color:#b3261e;font-weight:700}
+.agro-layers{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);display:grid;gap:4px;min-width:260px;padding:12px 16px;border-radius:22px;background:var(--panel);backdrop-filter:blur(10px);box-shadow:var(--pill);z-index:7}
+.agro-layers header{display:flex;justify-content:space-between;align-items:center}.agro-layers label{display:flex;gap:10px;align-items:center;min-height:36px;font-weight:600;cursor:pointer}.agro-layers input{width:18px;height:18px;accent-color:var(--green)}
+.agro-layers .agro-icon{width:30px;height:30px}
+.agro-ctx{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:5px 6px 5px 14px;border-radius:26px;background:var(--panel);backdrop-filter:blur(10px);box-shadow:var(--pill);z-index:6}
+.agro-ctx span{font-weight:700;font-size:13px;margin-right:6px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.agro-ctx button{display:inline-flex;align-items:center;gap:6px;min-width:42px;min-height:42px;justify-content:center;border:0;border-radius:21px;background:#fff;color:var(--ink);font:700 13px inherit;cursor:pointer;box-shadow:0 2px 6px #1a2a3a1f}
+.agro-ctx button.txt{padding:0 14px;background:var(--green);color:#fff}.agro-ctx button.danger{color:#c0392b}
+.agro-ws[data-lift=dock] .agro-ctx{bottom:210px}
+.agro-ws .agro-catalog{bottom:78px;z-index:6}.agro-ws .agro-brush{bottom:78px;z-index:6}
+.agro-ws .agro-info{bottom:16px;left:92px;max-width:max(190px,calc(50% - 412px))}
+.agro-ws .agro-mini{right:12px;bottom:16px;padding:5px;border-radius:22px;border:3px solid #fff}
+.agro-netcard{position:absolute;left:92px;bottom:150px;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:20px;background:#14202bd9;color:#fff;backdrop-filter:blur(10px);box-shadow:var(--pill);z-index:5}
+.agro-netcard>div{display:flex;align-items:center;gap:10px}.agro-netcard>div+div{padding-left:14px;border-left:1px solid #ffffff33}
+.agro-netcard svg{flex:none;color:#7fe0a0}.agro-netcard span{display:grid;line-height:1.2}.agro-netcard b{font-size:12.5px}.agro-netcard em{font-style:normal;font-weight:700;font-size:14px}.agro-netcard small{color:#b9c6d4;font-size:12px}
+.agro-netcard button{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:50%;background:#ffffff1f;color:#fff;cursor:pointer}
+.agro-ws[data-lift=dock] .agro-netcard{bottom:214px}.agro-ws[data-lift=dock] .agro-info{bottom:16px}
+
+/* ── etiquetas flotantes sobre los equipos ── */
+.agro-tag{display:grid;gap:1px;padding:5px 12px;border-radius:14px;background:#fffffff0;color:#111115;box-shadow:0 4px 14px #1a2a3a40;white-space:nowrap;text-align:left;border-left:4px solid #2fb35a;transform:translateY(-6px)}
+.agro-tag b{font-size:13px}.agro-tag span{font-size:12px;color:#4a5260}.agro-tag.idle{border-left-color:#9aa0aa}.agro-tag.bad{border-left-color:#e04b4b}
+
+/* ── panel Automatizar ── */
+.agro-auto{position:absolute;left:50%;top:76px;transform:translateX(-50%);width:min(1120px,calc(100% - 200px));max-height:calc(100% - 76px - 104px);overflow:auto;padding:18px 22px 12px;border-radius:28px;background:#fffffff4;backdrop-filter:blur(12px);box-shadow:0 18px 50px #1a2a3a55;z-index:9;display:grid;gap:12px}
+.agro-auto header{display:flex;align-items:center;gap:10px}.agro-auto header>div{flex:1;display:grid}.agro-auto h2{margin:0;font-size:24px}.agro-auto header small{color:var(--muted);font-size:14px}
+.agro-auto header select{max-width:260px;min-height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;font:inherit;padding:0 8px}
+.agro-live{padding:8px 16px;border-radius:20px;background:#fff1c2;color:#6b5200;font-weight:700;font-size:13px}.agro-live.on{background:#dff3e6;color:#17663a}
+.agro-auto .agro-ghost{min-height:38px;padding:0 14px;font-size:14px}
+.agro-auto-tabs{display:flex;gap:6px}.agro-auto-tabs button{min-height:38px;padding:0 20px;border:1px solid var(--line);border-radius:19px;background:#fff;color:var(--ink);font:700 14px inherit;cursor:pointer}.agro-auto-tabs button.on{background:var(--green);border-color:var(--green);color:#fff}
+.agro-auto-body{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}
+.agro-auto-main{min-width:0;display:grid;gap:8px}.agro-auto-side{padding:14px;border-radius:20px;border:1px solid var(--line);background:#fff;display:grid;gap:6px}.agro-auto-side h3{margin:0;font-size:18px}
+.agro-demo{margin:0;text-align:right;font-size:12px;color:var(--muted)}
+.agro-auto .agro-rung{background:#fff}
+.agro-auto .agro-io li{grid-template-columns:14px 30px 1fr auto}.agro-auto .agro-io li span{font-size:12px}
+.agro-screen{display:grid;gap:12px;padding:18px;border-radius:24px;background:#0f1b24;color:#e6f1ff;box-shadow:inset 0 0 0 6px #25323d}
+.agro-screen-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid #ffffff22}.agro-screen-head h3{margin:0;font-size:22px;letter-spacing:.02em}
+.agro-screen-head span{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#aab6c2}.agro-screen-head span.on{color:#7fe0a0}.agro-screen-head i{width:10px;height:10px;border-radius:50%;background:#7a8794}.agro-screen-head span.on i{background:#2fd16f;box-shadow:0 0 8px #2fd16f}
+.agro-gauges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.agro-gauge{display:grid;justify-items:center;gap:4px;padding:16px 8px;border-radius:14px;border:1px solid #ffffff2a;background:#ffffff0a}.agro-gauge b{font-size:36px;line-height:1;color:#c7f5d3;font-variant-numeric:tabular-nums}.agro-gauge small{color:#aab6c2;font-size:12.5px;text-align:center}
+.agro-screen-btns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.agro-screen-btns button{min-height:48px;border:0;border-radius:12px;background:#1c3040;color:#e6f1ff;font:700 15px inherit;cursor:pointer}.agro-screen-btns button.on{background:#1f9d55;color:#fff}
+.agro-screen-list{list-style:none;margin:0;padding:0;display:grid;gap:4px;max-height:160px;overflow:auto}.agro-screen-list li{padding:6px 10px;border-radius:8px;background:#ffffff10;font-size:13px}.agro-screen-list li.bad{background:#4a1f1b}.agro-screen-list li.warn{background:#3b3010}.agro-screen-list small{display:block;color:#aab6c2}
+.agro-screen .agro-hmi{background:#ffffff0a;box-shadow:inset 0 0 0 1px #ffffff1f}
+
+/* ── ajustes por ancho ── */
+@media (max-width:1300px){
+ .agro-hud-chip small{display:none}.agro-hud-chip{min-height:46px}.agro-chips .agro-hud-chip:nth-child(3){display:none}
+}
+@media (max-width:1250px){
+ .agro-hudrow{max-width:calc(100% - 640px)}.agro-chips .agro-hud-chip:nth-child(2){display:none}
+}
+@media (max-width:1100px){
+ .agro-hudrow{max-width:calc(100% - 24px)}
+ .agro-ws .agro-time{top:76px;left:12px;right:auto;max-width:calc(100% - 24px);justify-content:flex-start}
+ .agro-ws .agro-hint{display:none}
+ .agro-ws .agro-tools{top:204px;transform:none}
+ .agro-ws .agro-inspector{top:124px;width:min(344px,calc(100% - 24px));max-height:calc(100% - 124px - 150px)}
+ .agro-ws .agro-mini-toggle,.agro-ws .agro-pieces-toggle{top:68px}
+ .agro-ws .agro-pieces{top:124px}
+ .agro-auto{width:calc(100% - 100px)}
+ .agro-auto-body{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+ .agro-chips{display:none}
+ .agro-ws .agro-time{top:64px;left:12px;right:12px;max-width:none;justify-content:flex-start;min-height:0;gap:2px 8px;padding:6px 8px;border-radius:20px}
+ .agro-ws .agro-time .agro-weather{display:none}.agro-ws .agro-speeds{max-width:100%;overflow-x:auto}
+ .agro-ws .agro-tools{top:176px;max-width:calc(100% - 24px);overflow-x:auto}
+ .agro-ws .agro-mini-toggle,.agro-ws .agro-pieces-toggle{top:12px}
+ .agro-ws .agro-pieces{top:64px}
+ .agro-modes{left:8px;right:8px;transform:none;overflow-x:auto;justify-content:flex-start;bottom:8px}.agro-modes button{padding:0 12px;min-height:42px}.agro-modes button span{display:none}
+ .agro-modes button.on span{display:inline}
+ .agro-dock{left:8px;right:8px;bottom:68px;grid-template-columns:1fr}.agro-dock-cats{grid-template-columns:repeat(4,auto);overflow-x:auto}
+ .agro-ws .agro-catalog,.agro-ws .agro-brush{bottom:68px}
+ .agro-netcard,.agro-ctx span{display:none}.agro-ctx{bottom:68px}
+ .agro-ws[data-lift=dock] .agro-ctx{bottom:196px}
+ .agro-auto{left:8px;right:8px;top:60px;width:auto;transform:none;max-height:calc(100% - 60px - 66px);padding:14px}
+ .agro-auto h2{font-size:20px}.agro-gauges{grid-template-columns:repeat(2,minmax(0,1fr))}.agro-gauge b{font-size:28px}
+ .agro-ws .agro-inspector{top:auto;bottom:68px;max-height:46%;right:8px}
+ .agro-ws .agro-mini{display:none}
+}
+@media (prefers-color-scheme:dark){
+ .agro-tabs{background:#ffffff14}.agro-modes button:not(.on):hover{background:#25262e}.agro-dock-items button,.agro-ctx button,.agro-auto-tabs button,.agro-auto-side,.agro-auto .agro-rung{background:#1d1e26;color:var(--ink)}
+ .agro-dock-cats button{background:#ffffff12}.agro-dock-items button.on{background:#1d3326}.agro-auto{background:#17171cf4}.agro-live{background:#3b3010;color:#f0d98a}.agro-live.on{background:#1d3326;color:#9be3b1}
+ .agro-tag{background:#17171cf0;color:#f3f4f8}.agro-tag span{color:#a9aebd}.agro-auto header select{background:#1d1e26;color:var(--ink)}
+}
+
+.agro-ws .agro-bar{z-index:20}

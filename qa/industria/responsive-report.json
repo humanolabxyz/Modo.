@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "telefono (390×844): sin desborde en las 6 vistas y los 9 paneles, dock completo y paneles dentro de la pantalla",
+    "tablet (768×1024): sin desborde en las 6 vistas y los 9 paneles, dock completo y paneles dentro de la pantalla",
+    "tablet-horizontal (1024×768): sin desborde en las 6 vistas y los 9 paneles, dock completo y paneles dentro de la pantalla",
+    "escritorio (1440×900): sin desborde en las 6 vistas y los 9 paneles, dock completo y paneles dentro de la pantalla",
+    "Cero errores de consola y de JavaScript en los cuatro tamaños"
+  ],
+  "errors": [],
+  "notes": []
+}

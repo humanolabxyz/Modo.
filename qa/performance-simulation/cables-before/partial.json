@@ -1,0 +1,17 @@
+[
+  {
+    "name": "panel-idle-820",
+    "frames": 241,
+    "frameP95": 16.700000000000728,
+    "slowFrames": 0,
+    "longTasks": 0,
+    "longMs": 0,
+    "leadAttributeWrites": 0,
+    "TaskDuration": 0.0764,
+    "ScriptDuration": 0.0166,
+    "LayoutDuration": 0,
+    "RecalcStyleDuration": 0,
+    "LayoutCount": 0,
+    "RecalcStyleCount": 0
+  }
+]

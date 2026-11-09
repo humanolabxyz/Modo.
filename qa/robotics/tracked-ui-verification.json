@@ -1,10 +1,11 @@
 {
-  "url": "http://localhost:4326",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "el robot de orugas se abre armado: 31 piezas en el 3D",
-    "▶ el robot avanza con sus orugas (z hasta 0.66 m)",
-    "la cabeza dibujada gira con el cuello: de -61° a +70° respecto del chasis",
-    "la pantalla de la cara cambió de imagen: 3 caras distintas (0, 1604, 2184 píxeles encendidos)",
+    "▶ el robot avanza con sus orugas (z hasta 0.55 m)",
+    "la cabeza dibujada gira con el cuello: de -70° a +70° respecto del chasis",
+    "la pantalla de la cara cambió de imagen: 4 caras distintas (0, 1240, 1604, 2184 píxeles encendidos)",
+    "el bosque está activo y la sorpresa y el giro llegan a la interfaz con el audio habilitado",
     "la Consola muestra la pantalla («bytes recibidos por I²C») y el ángulo del servo del cuello",
     "sin errores de consola"
   ],

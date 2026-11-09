@@ -19,3 +19,4 @@
 .app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .diagram-practice-entry>p{display:none}
 .app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window :is(.cade-reader,.cade-reader>.reader-workspace,.cade-artboard){width:100%;min-width:0;align-self:stretch;align-items:stretch}
 .app-shell.editor-workbench:not(.is-compact):not(.editor-reading) .diagram-window .cade-artboard{position:relative}
+.diagram-window .float-handle { touch-action: none; }

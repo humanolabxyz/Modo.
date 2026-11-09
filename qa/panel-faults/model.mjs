@@ -1943,6 +1943,23 @@ function solveSimulation(wires, input, previous = OFF_RELAYS(), timed = []) {
   const liveTerminals = [.../* @__PURE__ */ new Set([...base.liveTerminals, ...force.live])];
   return { ...base, motor: force.motor, liveTerminals, liveWireIds: wires.filter((w) => liveTerminals.includes(w.from.terminalId)).map((w) => w.id) };
 }
+function createSimulationSolver() {
+  let topology = null;
+  const cache = /* @__PURE__ */ new Map();
+  return (wires, input, previous = OFF_RELAYS(), timed = []) => {
+    if (topology !== wires) {
+      topology = wires;
+      cache.clear();
+    }
+    const key = JSON.stringify([input, previous, timed, MODULES.map((m) => [m.id, m.category]), TERMINALS.length]);
+    const cached = cache.get(key);
+    if (cached) return cached;
+    const result = solveSimulation(wires, input, previous, timed);
+    if (cache.size >= 16) cache.delete(cache.keys().next().value);
+    cache.set(key, result);
+    return result;
+  };
+}
 var SIMULATION_EXAMPLES = {
   lamp: { title: "Piloto con pulsador", pairs: [["FUENTE:F", "BOTONERAS:S3:3"], ["BOTONERAS:S3:4", "BOTONERAS:PILOTO_4"], ["FUENTE:N", "BOTONERAS:N"]] },
   hold: { title: "Marcha, mantenimiento y parada", pairs: [
@@ -1998,44 +2015,8 @@ var SIMULATION_EXAMPLES = {
   ] },
   simple: { title: "Marcha y paro con retenci\xF3n (el m\xE1s simple, de un compa\xF1ero)", pairs: SIMPLE_LESSON.pairs },
   inversion: { title: "Inversi\xF3n de giro con enclavamiento y paro (circuito de un compa\xF1ero)", pairs: INVERSION_LESSON.pairs },
-  starDelta: { title: "Estrella-tri\xE1ngulo \xB7 2 contactores + conjunto temporizado", pairs: [
-    // KT1 is the line contactor with pneumatic block. KM2 = star; KM1 = delta.
-    ["FUENTE:F", "CONTACTOR_TERMICO:95"],
-    ["CONTACTOR_TERMICO:96", "BOTONERAS:S2:1"],
-    ["BOTONERAS:S2:2", "BOTONERAS:S3:3"],
-    ["BOTONERAS:S3:3", "TEMPORIZADOR_1:13"],
-    ["BOTONERAS:S3:4", "TEMPORIZADOR_1:14"],
-    ["TEMPORIZADOR_1:14", "TEMPORIZADOR_1:A1"],
-    ["TEMPORIZADOR_1:A2", "FUENTE:N"],
-    ["TEMPORIZADOR_1:14", "TEMPORIZADOR_1:55"],
-    ["TEMPORIZADOR_1:56", "CONTACTOR_TERMICO:71"],
-    ["CONTACTOR_TERMICO:72", "CONTACTOR_TRIFASICO:A1"],
-    ["CONTACTOR_TRIFASICO:A2", "FUENTE:N"],
-    ["TEMPORIZADOR_1:14", "TEMPORIZADOR_1:67"],
-    ["TEMPORIZADOR_1:68", "CONTACTOR_TRIFASICO:71"],
-    ["CONTACTOR_TRIFASICO:72", "CONTACTOR_TERMICO:A1"],
-    ["CONTACTOR_TERMICO:A2", "FUENTE:N"],
-    ["FUENTE:R", "TEMPORIZADOR_1:L1"],
-    ["FUENTE:S", "TEMPORIZADOR_1:L2"],
-    ["FUENTE:T", "TEMPORIZADOR_1:L3"],
-    ["TEMPORIZADOR_1:T1", "BORNERA_MOTOR:U1"],
-    ["TEMPORIZADOR_1:T2", "BORNERA_MOTOR:V1"],
-    ["TEMPORIZADOR_1:T3", "BORNERA_MOTOR:W1"],
-    ["BORNERA_MOTOR:W2", "CONTACTOR_TRIFASICO:L1"],
-    ["BORNERA_MOTOR:U2", "CONTACTOR_TRIFASICO:L2"],
-    ["BORNERA_MOTOR:V2", "CONTACTOR_TRIFASICO:L3"],
-    ["CONTACTOR_TRIFASICO:T1", "CONTACTOR_TRIFASICO:T2"],
-    ["CONTACTOR_TRIFASICO:T2", "CONTACTOR_TRIFASICO:T3"],
-    ["BORNERA_MOTOR:U1", "CONTACTOR_TERMICO:L1"],
-    ["BORNERA_MOTOR:V1", "CONTACTOR_TERMICO:L2"],
-    ["BORNERA_MOTOR:W1", "CONTACTOR_TERMICO:L3"],
-    ["CONTACTOR_TERMICO:T1", "BORNERA_MOTOR:W2"],
-    ["CONTACTOR_TERMICO:T2", "BORNERA_MOTOR:U2"],
-    ["CONTACTOR_TERMICO:T3", "BORNERA_MOTOR:V2"],
-    ["FUENTE:N", "BOTONERAS:N"],
-    ["CONTACTOR_TRIFASICO:A1", "BOTONERAS:PILOTO_1"],
-    ["CONTACTOR_TERMICO:A1", "BOTONERAS:PILOTO_4"]
-  ] },
+  /* Mismo montaje que la lección «Estrella-triángulo · 2 contactores» (40 cables): una sola versión correcta. KT1 = principal con temporizador; KM2 = estrella; KM1 = triángulo. */
+  starDelta: { title: "Estrella-tri\xE1ngulo \xB7 2 contactores + conjunto temporizado", pairs: TWO_CONTACTOR_LESSON.pairs.map(([a3, b]) => [a3, b]) },
   starDeltaThree: { title: "Estrella-tri\xE1ngulo \xB7 3 contactores + temporizador separado", needs: ["CONTACTOR_TRIFASICO_3"], pairs: [
     // Mando: F → térmico → parada → marcha con retención en KM1. KM1:14 alimenta al temporizador y a los dos contactores de conmutación.
     ["FUENTE:F", "CONTACTOR_TERMICO:95"],
@@ -3435,6 +3416,7 @@ export {
   contactOhms,
   contactorIds,
   controlSourceVolts,
+  createSimulationSolver,
   defaultCalibration,
   effectiveWires,
   emptySimulation,

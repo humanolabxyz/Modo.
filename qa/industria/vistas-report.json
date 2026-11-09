@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "El ejemplo marcha/paro crea un proyecto v2 con programa de PLC y 4 widgets de HMI",
+    "El diagrama se reparte en dos hojas (fuerza y mando) con referencias entre ellas; seleccionar KM1 lo selecciona en todo el proyecto",
+    "Mover un símbolo se guarda sin tocar la pose 3D, entra en Deshacer/Rehacer y «Ordenar» recoloca todo",
+    "PLC: variables de E/S, variables internas con validación, líneas y contactos editables; renombrar arrastra el programa",
+    "HMI: se añaden y quitan widgets; los botones solo ofrecen variables internas",
+    "Con la simulación en marcha: S1 físico arranca, el sello mantiene la salida, la HMI para y arranca el motor, y el programa se ilumina",
+    "En Simulación el programa está protegido y operar no cambia el proyecto guardado",
+    "Recargar conserva programa y HMI; sin desbordes en tablet",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

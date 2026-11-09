@@ -157,7 +157,8 @@ export const rungFlow = (r: Rung, v: Record<string, boolean>): {branches: boolea
 };
 
 // — HMI —
-const widgetOk = (p: IndustryProject, w: Omit<HmiWidget, 'id'>): string | null => {
+const widgetOk = (p: IndustryProject, w: Omit<HmiWidget, 'id'>, existingId?: string): string | null => {
+  if (w.slot !== undefined && (!Number.isInteger(w.slot) || w.slot < 0 || w.slot >= LIMITS.widgets || p.hmi.widgets.some(x => x.id !== existingId && x.slot === w.slot))) return 'Elige una posición libre de la pantalla.';
   if (w.label.length > LIMITS.label) return 'El texto del widget es demasiado largo.';
   if (w.kind !== 'label') {
     if (!w.plcId || !isPlc(p, w.plcId)) return 'Elige el PLC al que se asocia el widget.';
@@ -175,7 +176,7 @@ export function addWidget(p: IndustryProject, w: Omit<HmiWidget, 'id'>): Result<
 }
 export function updateWidget(p: IndustryProject, id: string, patch: Partial<Omit<HmiWidget, 'id'>>): Result<IndustryProject> {
   const cur = p.hmi.widgets.find(w => w.id === id); if (!cur) return fail('El widget no existe.');
-  const next = {...cur, ...patch}, {id: _id, ...rest} = next; const bad = widgetOk(p, rest); if (bad) return fail(bad);
+  const next = {...cur, ...patch}, {id: _id, ...rest} = next; const bad = widgetOk(p, rest, id); if (bad) return fail(bad);
   return ok({...p, hmi: {widgets: p.hmi.widgets.map(w => (w.id === id ? next : w))}});
 }
 export function removeWidget(p: IndustryProject, id: string): Result<IndustryProject> {

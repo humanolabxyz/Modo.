@@ -1,0 +1,332 @@
+// Sesión de un mundo abierto: terreno editable + piezas + conexiones + historial UNIFICADO de deshacer/rehacer. Puro (sin React ni three).
+// Un solo historial para todo lo que el jugador hace: un trazo de terreno, colocar, mover, renombrar, eliminar… se deshacen en el orden en que ocurrieron.
+// Los estados de piezas y conexiones son inmutables (compartición estructural), así que cada paso del historial guarda solo dos referencias.
+import {defaultParams, itemById, portsFor, sizeOf} from '../catalog/items.ts';
+import {EMPTY_PROGRAM, bitOn, addressKind, exampleProgram, readRuntime, resetRuntime, writeRuntime} from '../plc/program.ts';
+import {runPlcs} from '../sim/plc.ts';
+import {ECON, available, buildSeconds, chargeLabor, deliverDue, initEconomy, isTracked, placeOrder} from '../economy/economy.ts';
+import {alertsOf, type Alert} from '../sim/alerts.ts';
+import type {AgroProgram, Clock, Economy, Entity, ExperienceMode, Pose, PortRef, PropValue, Result, SimSpeed, TerrainEditKind, WorldProject} from '../model/types.ts';
+import {TerrainModel, type StampResult} from '../terrain/model.ts';
+import {sampleHeight} from '../terrain/heightfield.ts';
+import * as cmd from './commands.ts';
+import {analyze, type Analysis} from '../sim/network.ts';
+import {connectPorts} from './connections.ts';
+import {isLiveKey, carryLive} from '../sim/live.ts';
+import {stepWorld, type SimEvent} from '../sim/step.ts';
+import {clearCrop, harvest, plant} from '../sim/soil.ts';
+import {timeInfo} from '../sim/clock.ts';
+import {checkPlacement, footprintSlope, portWorld} from './placement.ts';
+
+type Entry = {label: string; terrain: boolean; before: cmd.Parts; after: cmd.Parts};
+export const HISTORY_LIMIT = 200;
+const fail = (error: string): {ok: false; error: string} => ({ok: false, error});
+const poseAt = (hf: TerrainModel['hf'], x: number, z: number, yaw: number): Pose => ({position: [x, sampleHeight(hf, x, z), z], rotation: [0, yaw, 0]});
+
+export class WorldSession {
+  readonly terrain: TerrainModel;
+  private base: WorldProject;
+  private clock_: Clock;
+  private events_: SimEvent[] = [];
+  private economy_: Economy | null;
+  private parts_: cmd.Parts;
+  private undo_: Entry[] = [];
+  private redo_: Entry[] = [];
+  private strokeBefore: cmd.Parts | null = null;
+  private strokeStart = 0;
+  private listeners = new Set<() => void>();
+  /** Sube con cualquier cambio (terreno incluido): sirve para el autoguardado y para repintar. */
+  version = 0;
+
+  private constructor(world: WorldProject) {
+    this.base = world;
+    this.economy_ = world.economy ?? null;
+    this.clock_ = {...world.clock, speed: 0};   // un mundo siempre se abre en pausa
+    this.terrain = TerrainModel.fromTerrain(world.terrain);
+    this.parts_ = this.settle({entities: upgrade(refreshPorts(world.entities, world.connections)), connections: world.connections, ...(world.plc ? {plc: world.plc} : {})});
+    this.terrain.subscribe(() => this.changed());
+  }
+
+  static fromWorld(world: WorldProject): WorldSession { return new WorldSession(world); }
+
+  get id(): string { return this.base.id; }
+  get name(): string { return this.base.name; }
+  get site(): readonly [number, number] { return this.base.scenario.site ?? [0, 0]; }
+  get entities(): readonly Entity[] { return this.parts_.entities; }
+  get connections(): cmd.Parts['connections'] { return this.parts_.connections; }
+  get parts(): cmd.Parts { return this.parts_; }
+  get canUndo(): boolean { return this.undo_.length > 0 && !this.terrain.painting; }
+  get canRedo(): boolean { return this.redo_.length > 0 && !this.terrain.painting; }
+  get undoLabel(): string | null { return this.undo_.at(-1)?.label ?? null; }
+  /** Cambiar el nombre del mundo no entra en el historial de deshacer. */
+  setName(name: string): Result<string> {
+    const clean = name.trim();
+    if (!clean || clean.length > 80) return fail('El nombre del mundo no es válido.');
+    this.base = {...this.base, name: clean}; this.changed(); return {ok: true, value: clean};
+  }
+  entity(id: string): Entity | undefined { return this.parts_.entities.find(e => e.id === id); }
+
+  subscribe(fn: () => void): () => void { this.listeners.add(fn); return () => { this.listeners.delete(fn); }; }
+  private changed(): void { this.version++; for (const fn of this.listeners) fn(); }
+
+  /** Documento serializable del mundo tal como está ahora. */
+  toWorld(now = new Date().toISOString()): WorldProject {
+    const {plc: _stale, economy: _eco, ...base} = this.base;
+    return {...base, updatedAt: now, clock: {...this.clock_}, terrain: this.terrain.toTerrain(), entities: [...this.parts_.entities], connections: [...this.parts_.connections], ...(this.parts_.plc ? {plc: this.parts_.plc} : {}), ...(this.economy_ ? {economy: this.economy_} : {})};
+  }
+
+  private commit(label: string, next: cmd.Parts, terrain = false): void {
+    this.undo_.push({label, terrain, before: this.parts_, after: next});
+    if (this.undo_.length > HISTORY_LIMIT) this.undo_.shift();
+    this.redo_ = []; this.parts_ = this.settle(next); this.changed();
+  }
+  /** Resuelve la lógica de cada PLC con el estado actual (sin avanzar el tiempo): salidas coherentes tras cualquier cambio. */
+  private settle(parts: cmd.Parts): cmd.Parts {
+    if (!parts.plc) return parts;
+    const run = runPlcs(parts.entities, parts.connections, parts.plc, timeInfo(this.clock_).hour, 0);
+    if (run.entities === parts.entities) return parts;
+    for (const e of run.entities) {   // arranque o parada de la bomba por un cambio del jugador (interruptor, modo, pantalla, cable): también va al registro
+      const was = parts.entities.find(x => x.id === e.id);
+      if (e.type === 'tablero' && was && bitOn(was.state, 'Y0') !== bitOn(e.state, 'Y0')) this.events_ = [...this.events_, {at: this.clock_.simSeconds, level: 'info' as const, entityId: e.id, text: `El PLC de «${e.label}» ${bitOn(e.state, 'Y0') ? 'arrancó' : 'detuvo'} la bomba (salida Y0).`}].slice(-100);
+    }
+    return {...parts, entities: run.entities};
+  }
+  private apply<T>(label: string, r: Result<cmd.Parts>, pick: (p: cmd.Parts) => T): Result<T> {
+    if (!r.ok) return r;
+    this.commit(label, r.value); return {ok: true, value: pick(r.value)};
+  }
+
+  // ── Terreno ────────────────────────────────────────────────────────────
+  beginStroke(): void { if (this.strokeBefore === null) { this.strokeBefore = this.parts_; this.strokeStart = this.terrain.edits.length; this.terrain.beginStroke(); } }
+  stamp(kind: TerrainEditKind, x: number, z: number, radius: number, amount: number): StampResult { return this.terrain.stamp(kind, x, z, radius, amount); }
+
+  /** Cierra el trazo: las piezas apoyadas en la zona editada se vuelven a asentar en el suelo. Devuelve avisos (p. ej. una pendiente que ya no se admite). */
+  endStroke(): string[] {
+    const before = this.strokeBefore; if (before === null) return [];
+    const added = this.terrain.edits.length - this.strokeStart;
+    this.terrain.endStroke(); this.strokeBefore = null;
+    if (added <= 0) return [];
+    const warnings: string[] = [], hf = this.terrain.hf;
+    const reseated = before.entities.map(e => {
+      const y = sampleHeight(hf, e.pose.position[0], e.pose.position[2]);
+      if (Math.abs(y - e.pose.position[1]) < 1e-6) return e;
+      const moved: Entity = {...e, pose: {position: [e.pose.position[0], y, e.pose.position[2]], rotation: e.pose.rotation}}, def = itemById(e.type);
+      if (def) { const slope = footprintSlope(hf, moved.pose, sizeOf(def, e.params)); if (slope > def.maxSlopeDeg) warnings.push(`«${e.label}» quedó en una pendiente de ${slope.toFixed(1).replace('.', ',')}° (máximo ${def.maxSlopeDeg}°).`); }
+      return moved;
+    });
+    const entities = carryLive(this.parts_.entities, reseated); // el tiempo pudo correr durante el trazo
+    this.commit(added === 1 ? 'Editar terreno' : `Editar terreno (${added} marcas)`, {...before, entities}, true);
+    return warnings;
+  }
+
+  // ── Piezas ─────────────────────────────────────────────────────────────
+  /** Pose y validez de colocar `typeId` en (x, z): es lo que muestra el fantasma. */
+  previewPlacement(typeId: string, x: number, z: number, yaw: number, params: Record<string, PropValue> = {}, ignoreId?: string): {pose: Pose; check: Result<true>} {
+    const pose = poseAt(this.terrain.hf, x, z, yaw), def = itemById(typeId);
+    const merged = def ? {...cmdDefaults(typeId), ...params} : params;
+    const check = checkPlacement(this.terrain.hf, this.parts_.entities, typeId, pose, merged, ignoreId);
+    if (check.ok && !ignoreId && this.stockOf(typeId) < 1) return {pose, check: {ok: false as const, error: `No hay «${def?.name ?? typeId}» en el inventario: cómprala en Gestión → Inventario.`}};
+    return {pose, check};
+  }
+
+  place(typeId: string, x: number, z: number, yaw: number, options: {params?: Record<string, PropValue>; label?: string; id?: string} = {}): Result<Entity> {
+    const {pose, check} = this.previewPlacement(typeId, x, z, yaw, options.params);
+    if (!check.ok) return check;
+    const real = this.experience === 'real' && this.economy_ !== null && isTracked(typeId), def = itemById(typeId);
+    if (real && available(this.economy_!, this.parts_.entities, typeId) < 1) return fail(`No hay «${def?.name ?? typeId}» en el inventario: cómprala en Gestión → Inventario.`);
+    const built = cmd.buildEntity(typeId, pose, this.parts_.entities, options); if (!built.ok) return built;
+    let entity = built.value;
+    if (real && buildSeconds(typeId) > 0) entity = {...entity, state: {...entity.state, obraDesde: this.clock_.simSeconds, obraHasta: this.clock_.simSeconds + buildSeconds(typeId)}};
+    const added = cmd.addEntity(this.parts_, entity); if (!added.ok) return added;
+    if (real) this.economy_ = chargeLabor(this.economy_!, typeId, this.clock_.simSeconds, entity.label);
+    this.commit(`Colocar ${entity.label}`, added.value); return {ok: true, value: entity};
+  }
+
+  move(id: string, x: number, z: number, yaw?: number): Result<Entity> {
+    const e = this.entity(id); if (!e) return fail('La pieza no existe.');
+    const {pose, check} = this.previewPlacement(e.type, x, z, yaw ?? e.pose.rotation[1], e.params, id);
+    if (!check.ok) return check;
+    return this.apply(`Mover ${e.label}`, cmd.setPose(this.parts_, id, pose), p => p.entities.find(q => q.id === id)!);
+  }
+  rotate(id: string, deltaYaw: number): Result<Entity> {
+    const e = this.entity(id); if (!e) return fail('La pieza no existe.');
+    return this.move(id, e.pose.position[0], e.pose.position[2], e.pose.rotation[1] + deltaYaw);
+  }
+  rename(id: string, label: string): Result<Entity> { return this.apply('Renombrar', cmd.rename(this.parts_, id, label), p => p.entities.find(q => q.id === id)!); }
+  /** Cambia un parámetro. Si la pieza ya está conectada, se mantiene anclado en su sitio el primer puerto conectado (alargar una tubería la extiende desde donde está unida). */
+  setParam(id: string, key: string, value: number): Result<Entity> {
+    const e = this.entity(id); if (!e) return fail('La pieza no existe.');
+    const res = cmd.setParam(this.parts_, id, key, value); if (!res.ok) return res;
+    let next = res.value.entities.find(q => q.id === id)!;
+    const anchor = this.parts_.connections.find(c => c.kind === 'hydraulic' && (c.a.entityId === id || c.b.entityId === id));
+    if (anchor) {
+      const portId = anchor.a.entityId === id ? anchor.a.portId : anchor.b.portId, before = e.ports.find(p => p.id === portId), after = next.ports.find(p => p.id === portId);
+      if (before && after) { const wb = portWorld(e, before), wa = portWorld(next, after); next = {...next, pose: {position: [next.pose.position[0] + wb.x - wa.x, sampleHeight(this.terrain.hf, next.pose.position[0] + wb.x - wa.x, next.pose.position[2] + wb.z - wa.z), next.pose.position[2] + wb.z - wa.z], rotation: next.pose.rotation}}; }
+    }
+    const check = checkPlacement(this.terrain.hf, this.parts_.entities, e.type, next.pose, next.params, id);
+    if (!check.ok) return check;
+    return this.apply(`Cambiar ${key} de ${e.label}`, {ok: true, value: {...res.value, entities: res.value.entities.map(q => (q.id === id ? next : q))}}, p => p.entities.find(q => q.id === id)!);
+  }
+  remove(id: string, options: {confirm?: boolean} = {}): Result<Entity> & {dependencies?: cmd.Dependencies} {
+    const e = this.entity(id); if (!e) return fail('La pieza no existe.');
+    const res = cmd.removeEntity(this.parts_, id, options);
+    if (!res.ok) return {...res};
+    this.commit(`Eliminar ${e.label}`, res.value); return {ok: true, value: e, dependencies: res.dependencies};
+  }
+  /** Conexión física: valida compatibilidad y, en las hidráulicas, acopla la pieza (la mueve y la gira hasta que los puertos coinciden). */
+  connectPorts(a: PortRef, b: PortRef): Result<{docked: string | null}> {
+    const r = connectPorts(this.parts_, this.terrain.hf, a, b); if (!r.ok) return r;
+    this.commit(r.value.docked ? `Conectar y acoplar ${r.value.docked}` : 'Conectar', r.value.parts); return {ok: true, value: {docked: r.value.docked}};
+  }
+  disconnect(connectionId: string): Result<true> { return this.apply('Desconectar', cmd.disconnect(this.parts_, connectionId), () => true as const); }
+  setState(id: string, key: string, value: PropValue): Result<Entity> {
+    const e = this.entity(id); if (!e) return fail('La pieza no existe.');
+    if (isLiveKey(e.type, key)) { // agua, suelo y cultivo: parte de la simulación, fuera del historial
+      const r = cmd.setState(this.parts_, id, key, value); if (!r.ok) return r;
+      this.parts_ = this.settle(r.value); this.changed(); return {ok: true, value: this.parts_.entities.find(q => q.id === id)!};
+    }
+    return this.apply(`Cambiar ${key} de ${e.label}`, cmd.setState(this.parts_, id, key, value), p => p.entities.find(q => q.id === id)!);
+  }
+  private analysis_: {version: number; value: Analysis} | null = null;
+  /** Análisis de energía e hidráulica del estado actual (se recalcula solo cuando algo cambió). */
+  analyze(): Analysis {
+    if (!this.analysis_ || this.analysis_.version !== this.version) this.analysis_ = {version: this.version, value: analyze(this.parts_.entities, this.parts_.connections, this.terrain.hf)};
+    return this.analysis_.value;
+  }
+  connect(a: PortRef, b: PortRef): Result<true> { return this.apply('Conectar', cmd.connect(this.parts_, a, b), () => true as const); }
+  dependenciesOf(id: string): cmd.Dependencies { return cmd.dependenciesOf(this.parts_, id); }
+
+  // ── Tiempo, agua y cultivo (Fase 4) ──────────────────────────────────────
+  get clock(): Readonly<Clock> { return this.clock_; }
+  /** Registro de sucesos de esta sesión (más reciente al final). No se guarda en el archivo del mundo: el estado que lo explica sí. */
+  get events(): readonly SimEvent[] { return this.events_; }
+  setSpeed(speed: SimSpeed): void { if (this.clock_.speed === speed) return; this.clock_ = {...this.clock_, speed}; this.changed(); }
+  /** Avanza el mundo `seconds` segundos simulados (o menos si se agota `budgetMs`). Devuelve lo realmente avanzado. No entra en el historial. */
+  advance(seconds: number, budgetMs?: number): number {
+    if (!(seconds > 0)) return 0;
+    const r = stepWorld(this.parts_.entities, this.parts_.connections, this.terrain.hf, this.clock_, seconds, {budgetMs, plc: this.parts_.plc});
+    if (r.advanced <= 0) return 0;
+    this.clock_ = {...this.clock_, simSeconds: this.clock_.simSeconds + r.advanced};
+    this.parts_ = this.settle({...this.parts_, entities: r.entities});
+    if (r.events.length) this.events_ = [...this.events_, ...r.events].slice(-100);
+    this.receiveOrders();
+    this.changed(); return r.advanced;
+  }
+  /** Siembra un cultivo en una parcela (acción del jugador; no se deshace: el tiempo ya corrió). */
+  plant(parcelId: string, cropId: string): Result<Entity> { return this.act(parcelId, 'parcela', s => plant(s, cropId, timeInfo(this.clock_).dayIndex)); }
+  clearCrop(parcelId: string): Result<Entity> { return this.act(parcelId, 'parcela', s => ({ok: true as const, state: clearCrop(s)})); }
+  harvest(parcelId: string): Result<{entity: Entity; kg: number; tha: number}> {
+    const e = this.entity(parcelId); if (!e || e.type !== 'parcela') return fail('La parcela no existe.');
+    const area = Number(e.params.anchoM ?? 20) * Number(e.params.largoM ?? 30), r = harvest(e.state, area); if (!r.ok) return r;
+    this.parts_ = {...this.parts_, entities: this.parts_.entities.map(x => (x.id === parcelId ? {...x, state: r.state} : x))};
+    this.events_ = [...this.events_, {at: this.clock_.simSeconds, level: 'info' as const, entityId: parcelId, text: `Cosecha de «${e.label}»: ${Math.round(r.kg).toLocaleString('es-CL')} kg (${r.tha.toFixed(1).replace('.', ',')} t/ha).`}].slice(-100);
+    this.changed(); return {ok: true, value: {entity: this.entity(parcelId)!, kg: r.kg, tha: r.tha}};
+  }
+  private act(id: string, type: string, fn: (state: Record<string, PropValue>) => {ok: true; state: Record<string, PropValue>} | {ok: false; error: string}): Result<Entity> {
+    const e = this.entity(id); if (!e || e.type !== type) return fail('La pieza no existe.');
+    const r = fn(e.state); if (!r.ok) return r;
+    this.parts_ = {...this.parts_, entities: this.parts_.entities.map(x => (x.id === id ? {...x, state: r.state} : x))};
+    this.changed(); return {ok: true, value: this.entity(id)!};
+  }
+  // ── Inventario, compras y obras (Fase 6) ─────────────────────────────────
+  get experience(): ExperienceMode { return this.base.experience; }
+  /** Economía de la experiencia real (null en mundos libres que nunca fueron reales). */
+  get economy(): Readonly<Economy> | null { return this.economy_; }
+  /** Cambia el modo de la finca. «real» activa inventario, compras y obras; lo ya construido se considera recibido. Volver a «libre» conserva la economía pero deja de aplicarla. No entra en el historial. */
+  setExperience(mode: ExperienceMode): Result<ExperienceMode> {
+    if (this.base.experience === mode) return {ok: true, value: mode};
+    if (mode === 'real' && !this.economy_) this.economy_ = initEconomy(this.parts_.entities, this.clock_.simSeconds);
+    this.base = {...this.base, experience: mode};
+    if (mode !== 'real') { // al salir del modo real las obras en curso se terminan: en libre todo existe de inmediato
+      this.parts_ = {...this.parts_, entities: this.parts_.entities.map(e => (typeof e.state.obraHasta === 'number' && e.state.obraHasta > 0 ? {...e, state: {...e.state, obraHasta: 0}} : e))};
+    }
+    this.changed(); return {ok: true, value: mode};
+  }
+  /** Compra `qty` unidades de una pieza del catálogo. */
+  buy(type: string, qty: number): Result<Economy> {
+    if (this.experience !== 'real' || !this.economy_) return fail('Las compras solo existen en el modo real de la finca.');
+    const r = placeOrder(this.economy_, type, qty, this.clock_.simSeconds, itemById(type)?.name ?? type); if (!r.ok) return r;
+    this.economy_ = r.value; this.changed(); return r;
+  }
+  /** Unidades de `type` que se pueden colocar ahora (infinito fuera del modo real). */
+  stockOf(type: string): number { return this.experience === 'real' && this.economy_ ? available(this.economy_, this.parts_.entities, type) : Infinity; }
+  private receiveOrders(): void {
+    if (!this.economy_) return;
+    const r = deliverDue(this.economy_, this.clock_.simSeconds, t => itemById(t)?.name ?? t);
+    if (r.economy === this.economy_) return;
+    this.economy_ = r.economy; this.events_ = [...this.events_, ...r.received.map(x => ({at: x.at, level: 'info' as const, text: x.text}))].slice(-100);
+  }
+
+  /** Tras deshacer o rehacer se conserva el agua y el cultivo actuales: el tiempo no se deshace. */
+  private carry(next: cmd.Parts): cmd.Parts {
+    let entities = carryLive(this.parts_.entities, next.entities);
+    // Si el programa de un tablero cambia al deshacer o rehacer, su PLC parte de cero (los temporizadores del programa anterior no valen para el nuevo).
+    const stale = entities.filter(e => e.type === 'tablero' && this.parts_.plc?.[e.id] !== next.plc?.[e.id]);
+    if (stale.length) entities = entities.map(e => (stale.includes(e) ? {...e, state: {...e.state, ...resetRuntime(e.state, !!next.plc?.[e.id])}} : e));
+    return this.settle(entities === next.entities ? next : {...next, entities});
+  }
+
+  /** Alertas activas del estado actual (estanques, cultivos y tableros en automático). */
+  alerts(): Alert[] { return alertsOf(this.parts_.entities, this.analyze(), {connections: this.parts_.connections, plc: this.parts_.plc, hour: timeInfo(this.clock_).hour}); }
+
+  // ── PLC del tablero (Fase 5) ─────────────────────────────────────────────
+  /** Programa del tablero (vacío si no tiene). */
+  program(boardId: string): AgroProgram { return this.parts_.plc?.[boardId] ?? EMPTY_PROGRAM; }
+  /** Cambia el programa con una operación de `plc/program.ts`. Entra en el historial; el PLC parte de cero. */
+  editProgram(boardId: string, f: (p: AgroProgram) => Result<AgroProgram>): Result<true> {
+    const e = this.entity(boardId); if (!e) return fail('La pieza no existe.');
+    const next = f(this.program(boardId)); if (!next.ok) return next;
+    return this.apply(`Programar ${e.label}`, cmd.setProgram(this.parts_, boardId, next.value), () => true as const);
+  }
+  /** Carga el programa de ejemplo (riego por humedad). */
+  loadExample(boardId: string): Result<true> { return this.editProgram(boardId, () => ({ok: true, value: exampleProgram()})); }
+  clearProgram(boardId: string): Result<true> { const e = this.entity(boardId); if (!e) return fail('La pieza no existe.'); return this.apply(`Quitar programa de ${e.label}`, cmd.setProgram(this.parts_, boardId, null), () => true as const); }
+  /** HMI: escribe una marca interna (M) del PLC. Es una acción del operador en el tiempo presente: no entra en el historial. */
+  setTag(boardId: string, tag: string, value: boolean): Result<true> {
+    const e = this.entity(boardId), program = this.parts_.plc?.[boardId];
+    if (!e || e.type !== 'tablero' || !program) return fail('Este tablero no tiene programa.');
+    if (addressKind(tag) !== 'memory') return fail('Desde la pantalla solo se escriben marcas internas (M).');
+    const rt = readRuntime(e.state, program); rt.values[tag] = value;
+    this.parts_ = this.settle({...this.parts_, entities: this.parts_.entities.map(x => (x.id === boardId ? {...x, state: {...x.state, ...writeRuntime(program, rt)}} : x))});
+    this.changed(); return {ok: true, value: true};
+  }
+
+  // ── Historial ──────────────────────────────────────────────────────────
+  undo(): boolean {
+    if (!this.canUndo) return false;
+    const entry = this.undo_.pop()!;
+    if (entry.terrain && !this.terrain.undo()) { this.undo_.push(entry); return false; }
+    this.parts_ = this.carry(entry.before); this.redo_.push(entry); this.changed(); return true;
+  }
+  redo(): boolean {
+    if (!this.canRedo) return false;
+    const entry = this.redo_.pop()!;
+    if (entry.terrain && !this.terrain.redo()) { this.redo_.push(entry); return false; }
+    this.parts_ = this.carry(entry.after); this.undo_.push(entry); this.changed(); return true;
+  }
+}
+
+/** Mundos antiguos: completa los parámetros de catálogo que no existían cuando se guardaron (p. ej. el radio de riego del aspersor). */
+function upgrade(entities: Entity[]): Entity[] {
+  return entities.map(e => {
+    const def = itemById(e.type); if (!def) return e;
+    const fresh = defaultParams(def), missing = Object.keys(fresh).filter(k => !(k in e.params));
+    return missing.length ? {...e, params: {...Object.fromEntries(missing.map(k => [k, fresh[k]])), ...e.params}} : e;
+  });
+}
+
+function cmdDefaults(typeId: string): Record<string, PropValue> {
+  const def = itemById(typeId)!, out: Record<string, PropValue> = {};
+  for (const p of def.params) out[p.key] = p.default;
+  return out;
+}
+
+/** Al abrir un mundo se actualizan los puertos de cada pieza a la definición vigente del catálogo, siempre que sigan existiendo los puertos que ya tienen conexiones. */
+function refreshPorts(entities: Entity[], connections: cmd.Parts['connections']): Entity[] {
+  return entities.map(e => {
+    const def = itemById(e.type); if (!def) return e;
+    const fresh = portsFor(def, e.params), used = connections.flatMap(c => [c.a, c.b]).filter(r => r.entityId === e.id).map(r => r.portId);
+    if (!used.every(id => fresh.some(p => p.id === id))) return e;
+    return JSON.stringify(fresh) === JSON.stringify(e.ports) ? e : {...e, ports: fresh};
+  });
+}

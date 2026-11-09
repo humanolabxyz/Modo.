@@ -1,13 +1,13 @@
 {
   "format": "modo-robotica",
   "version": 1,
-  "id": "6a570a04-e677-447e-91b5-b46c7a856a76",
+  "id": "1fcbfa28-4d87-490f-b321-11b948cac21a",
   "name": "E6 · transferencia de tres piezas",
-  "createdAt": "2026-10-31T03:56:59.563Z",
-  "updatedAt": "2026-10-31T03:56:59.563Z",
+  "createdAt": "2026-11-09T11:59:03.784Z",
+  "updatedAt": "2026-11-09T11:59:03.784Z",
   "parts": [
     {
-      "instanceId": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa",
+      "instanceId": "abac5d97-8a45-4f55-bd65-86c4ccd25183",
       "definitionId": "educational-arm-e6",
       "label": "Brazo educativo · referencia E6",
       "transform": {
@@ -37,7 +37,7 @@
       }
     },
     {
-      "instanceId": "4c066743-bd8d-4800-9e16-2dc69fe4edef",
+      "instanceId": "643f570b-d77e-4037-bcde-b0fdb1f018aa",
       "definitionId": "arm-practice-block",
       "label": "Pieza 1 · 50 g",
       "transform": {
@@ -57,13 +57,13 @@
         "massKg": 0.05,
         "startX": 0.25,
         "startZ": 0.1,
-        "targetZone": "b8ae2941-08d9-446a-aa46-590e11e21108",
-        "depositedBy": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa"
+        "targetZone": "f98419d7-c2db-4632-ba98-a37969f2a991",
+        "depositedBy": "abac5d97-8a45-4f55-bd65-86c4ccd25183"
       },
       "locked": false
     },
     {
-      "instanceId": "b8ae2941-08d9-446a-aa46-590e11e21108",
+      "instanceId": "f98419d7-c2db-4632-ba98-a37969f2a991",
       "definitionId": "arm-drop-zone",
       "label": "Destino 1",
       "transform": {
@@ -82,7 +82,7 @@
       "locked": true
     },
     {
-      "instanceId": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7",
+      "instanceId": "85863d15-dcf5-49b0-8716-fcb5ef5ced94",
       "definitionId": "arm-practice-block",
       "label": "Pieza 2 · 50 g",
       "transform": {
@@ -102,13 +102,13 @@
         "massKg": 0.05,
         "startX": 0.38,
         "startZ": 0.1,
-        "targetZone": "671cda38-35d2-4f4d-b5d7-dd837f36e9e3",
-        "depositedBy": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa"
+        "targetZone": "b02bf6f7-b59a-4e68-bc7e-121128560249",
+        "depositedBy": "abac5d97-8a45-4f55-bd65-86c4ccd25183"
       },
       "locked": false
     },
     {
-      "instanceId": "671cda38-35d2-4f4d-b5d7-dd837f36e9e3",
+      "instanceId": "b02bf6f7-b59a-4e68-bc7e-121128560249",
       "definitionId": "arm-drop-zone",
       "label": "Destino 2",
       "transform": {
@@ -127,7 +127,7 @@
       "locked": true
     },
     {
-      "instanceId": "be2a94de-2987-434b-a395-bc9244d95424",
+      "instanceId": "a47092c1-bd95-4287-893b-a95faa5dcd82",
       "definitionId": "arm-practice-block",
       "label": "Pieza 3 · 50 g",
       "transform": {
@@ -147,13 +147,13 @@
         "massKg": 0.05,
         "startX": 0.25,
         "startZ": 0.23,
-        "targetZone": "04b0a697-672c-4f94-b60a-925a76093fcf",
-        "depositedBy": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa"
+        "targetZone": "e8c93f58-dc77-4681-a5a4-2907185fd885",
+        "depositedBy": "abac5d97-8a45-4f55-bd65-86c4ccd25183"
       },
       "locked": false
     },
     {
-      "instanceId": "04b0a697-672c-4f94-b60a-925a76093fcf",
+      "instanceId": "e8c93f58-dc77-4681-a5a4-2907185fd885",
       "definitionId": "arm-drop-zone",
       "label": "Destino 3",
       "transform": {
@@ -212,7 +212,7 @@
     }
   },
   "armProgram": {
-    "armId": "725bff3d-5ef3-4957-9f84-ff8fc1fea6fa",
+    "armId": "abac5d97-8a45-4f55-bd65-86c4ccd25183",
     "points": [
       {
         "name": "1 · Sobre pieza",
@@ -252,7 +252,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+        "expectedHeld": "643f570b-d77e-4037-bcde-b0fdb1f018aa"
       },
       {
         "name": "1 · Levantar",
@@ -266,7 +266,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+        "expectedHeld": "643f570b-d77e-4037-bcde-b0fdb1f018aa"
       },
       {
         "name": "1 · Sobre destino",
@@ -280,7 +280,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+        "expectedHeld": "643f570b-d77e-4037-bcde-b0fdb1f018aa"
       },
       {
         "name": "1 · Depositar",
@@ -294,7 +294,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "4c066743-bd8d-4800-9e16-2dc69fe4edef"
+        "expectedHeld": "643f570b-d77e-4037-bcde-b0fdb1f018aa"
       },
       {
         "name": "1 · Soltar",
@@ -360,7 +360,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+        "expectedHeld": "85863d15-dcf5-49b0-8716-fcb5ef5ced94"
       },
       {
         "name": "2 · Levantar",
@@ -374,7 +374,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+        "expectedHeld": "85863d15-dcf5-49b0-8716-fcb5ef5ced94"
       },
       {
         "name": "2 · Sobre destino",
@@ -388,7 +388,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+        "expectedHeld": "85863d15-dcf5-49b0-8716-fcb5ef5ced94"
       },
       {
         "name": "2 · Depositar",
@@ -402,7 +402,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "75a1009f-9cc5-4d2a-9aed-2ff8bd20a1a7"
+        "expectedHeld": "85863d15-dcf5-49b0-8716-fcb5ef5ced94"
       },
       {
         "name": "2 · Soltar",
@@ -468,7 +468,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+        "expectedHeld": "a47092c1-bd95-4287-893b-a95faa5dcd82"
       },
       {
         "name": "3 · Levantar",
@@ -482,7 +482,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+        "expectedHeld": "a47092c1-bd95-4287-893b-a95faa5dcd82"
       },
       {
         "name": "3 · Sobre destino",
@@ -496,7 +496,7 @@
         ],
         "kind": "MovJ",
         "gripperOpen": false,
-        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+        "expectedHeld": "a47092c1-bd95-4287-893b-a95faa5dcd82"
       },
       {
         "name": "3 · Depositar",
@@ -510,7 +510,7 @@
         ],
         "kind": "MovL",
         "gripperOpen": false,
-        "expectedHeld": "be2a94de-2987-434b-a395-bc9244d95424"
+        "expectedHeld": "a47092c1-bd95-4287-893b-a95faa5dcd82"
       },
       {
         "name": "3 · Soltar",

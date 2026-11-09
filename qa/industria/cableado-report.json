@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Tocar dos terminales en el escenario crea el cable: tipo «control», estado «Sin verificar»",
+    "Esc cancela el origen pendiente y luego sale del modo Cablear sin crear nada",
+    "Unir L y N de la fuente por el contactor se marca como cortocircuito, con el motivo y los dos cables en «Inválido»",
+    "Desconectar quita solo ese cable; el aviso desaparece y el estado guardado se actualiza",
+    "Unir PE con un terminal de fuerza se marca como error de tierra",
+    "El límite didáctico de 2 cables por terminal rechaza el tercero con un mensaje",
+    "Deshacer, rehacer y recargar conservan los cables",
+    "En Simular no se cablea ni se desconecta",
+    "Cablear no crea montajes",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

@@ -36,6 +36,7 @@ async function open(b, library, opts = {}) {
     let {c, p, stored} = await open(b, buildLib);
     const settle = () => p.waitForTimeout(700);
 
+    await p.getByRole('button', {name: 'Mover pieza', exact: true}).click();
     // 1) Arrastrar una pieza montada explica por qué no se mueve
     const pr = await stored(), rail = pr.poses.riel.position, box = await p.locator('canvas').first().boundingBox();
     const a = project([rail[0] + 0.2, 0.5, rail[2] + 0.005], box), z = project([1.2, 0.5, 1.2], box);

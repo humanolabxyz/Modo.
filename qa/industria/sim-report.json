@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "El ejemplo de arranque directo crea un proyecto nuevo con 10 piezas, 7 montajes y 19 cables; los mandos están bloqueados con la simulación detenida",
+    "Cerrar QF1 y QF2 energiza la fuente; mantener S1 excita KM1, alimenta el motor y enciende H1; soltarlo lo apaga (sin sello)",
+    "El multímetro mide tensión con los valores configurados, dice «sin lectura» sin referencia y distingue interruptor cerrado de abierto",
+    "Pulsar un interruptor en el escenario 3D lo abre o lo cierra",
+    "Pausar congela los mandos, Ejecutar reanuda y Detener apaga todo y suelta los mandos",
+    "Operar mandos no cambia el proyecto; en Simulación no se cablea; Construir detiene la simulación",
+    "La tensión de la red es un dato configurable del proyecto (no del catálogo)",
+    "Sin desbordes en tablet",
+    "Cero errores de consola, de JavaScript y de CSP; cero respuestas HTTP fallidas"
+  ],
+  "errors": []
+}

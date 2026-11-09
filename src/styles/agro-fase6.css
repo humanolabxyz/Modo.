@@ -1,0 +1,25 @@
+/* modo. Agro · Fase 6: colocación de precisión, inventario, compras y obras. Acotado a .agro-ws. */
+.agro-grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.agro-check{display:flex;gap:10px;align-items:center;min-height:36px;font-weight:600;font-size:13px;cursor:pointer}.agro-check input{width:18px;height:18px;accent-color:var(--green)}
+.agro-dockline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:12px;background:#0000000a;font-size:13px}.agro-dockline small{color:var(--muted)}
+.agro-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.agro-dock-items button small{font-size:11px;color:var(--green);font-weight:700}.agro-dock-items button small.none{color:#b3261e}
+.agro-manage-title{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:15px}
+.agro-manage-dock .agro-dock-items button:disabled{opacity:.5;cursor:not-allowed}.agro-manage-dock .agro-dock-items button small{color:var(--muted)}
+.agro-inv{position:absolute;right:12px;top:136px;width:440px;max-height:calc(100% - 136px - 220px);overflow:auto;padding:16px 18px;border-radius:26px;background:#fffffff4;backdrop-filter:blur(12px);box-shadow:0 18px 50px #1a2a3a55;z-index:8;display:grid;gap:10px}
+.agro-inv header{display:flex;justify-content:space-between;align-items:flex-start}.agro-inv h2{margin:0;font-size:22px}.agro-inv header small{color:var(--muted);font-size:13px;font-weight:600}
+.agro-inv-free{display:grid;gap:10px;padding:12px;border-radius:16px;background:#fff4cf;color:#5f4900;font-size:14px;line-height:1.45}.agro-inv-free p{margin:0}
+.agro-inv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.agro-inv-grid article{display:grid;gap:4px;padding:10px 12px;border-radius:16px;border:1px solid var(--line);background:#fff}.agro-inv-grid h3{margin:0;font-size:15px}
+.agro-inv-grid article[data-stock="0"] h3{color:var(--muted)}
+.agro-inv-nums{display:flex;flex-wrap:wrap;gap:2px 10px;margin:0;font-size:12.5px;color:var(--muted)}.agro-inv-nums b{color:var(--green);font-size:15px}
+.agro-qty input{width:58px;min-height:36px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;padding:0 6px}
+.agro-inv-grid .agro-row{align-items:center;gap:6px}.agro-inv-grid .agro-ghost{min-height:36px;padding:0 10px;font-size:12.5px;flex:1}
+.agro-inv-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.agro-inv-list li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:8px 12px;border-radius:12px;background:#0000000a;font-size:13.5px}.agro-inv-list li small,.agro-inv-list li .agro-meter{grid-column:1/-1;color:var(--muted)}
+.agro-inv-list li.done{opacity:.65}.agro-inv-list li.out span{color:#b3261e}.agro-inv-list li.in span{color:var(--green)}
+@media (max-width:1100px){.agro-inv{top:124px;width:min(440px,calc(100% - 24px))}}
+@media (max-width:760px){.agro-inv{top:auto;bottom:196px;max-height:44%;left:8px;right:8px;width:auto}.agro-inv-grid{grid-template-columns:1fr}.agro-manage-dock .agro-dock-items button{width:96px}}
+@media (prefers-color-scheme:dark){.agro-inv{background:#17171cf4}.agro-inv-grid article{background:#1d1e26}.agro-inv-free{background:#3b3010;color:#f0d98a}.agro-qty input{background:#1d1e26;color:var(--ink)}.agro-dockline,.agro-inv-list li{background:#ffffff10}}
+
+.agro-inspector .agro-tabs button{font-size:12.5px;padding:0 4px;white-space:nowrap}

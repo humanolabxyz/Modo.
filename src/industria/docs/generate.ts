@@ -13,7 +13,7 @@ export type ProgramDoc = {plc: string; lines: string[]};
 export type Documentation = {
   name: string; date: string; mode: string;
   bom: BomRow[]; wires: WireRow[]; io: IoRow[]; program: ProgramDoc[]; nets: {id: string; terminals: string[]}[]; issues: string[];
-  genericCount: number; disclaimer: string;
+  genericCount: number; disclaimer: string; purpose: string; steps: string[];
 };
 
 export const DISCLAIMER = 'Documentación generada automáticamente a partir del modelo de modo. Industria. Las piezas del catálogo son genéricas y no están verificadas: no incluyen referencias de fabricante ni valores eléctricos. No sustituye documentación de ingeniería.';
@@ -55,7 +55,19 @@ export function buildDocumentation(p: IndustryProject, date: string): Documentat
 
   const nets = ev.nets.map(n => ({id: n.id, terminals: n.terminals.map(t => `${label(t.entityId)}.${t.terminalId}`)}));
   const genericCount = p.entities.filter(e => shapeOf(e.definitionId).status !== 'verified').length;
-  return {name: p.name, date, mode: p.mode, bom, wires, io, program, nets, issues, genericCount, disclaimer: DISCLAIMER};
+  const hasLine = p.entities.some(e => e.definitionId === 'cinta-larga' || e.definitionId === 'cinta-transportadora');
+  const hasMotor = p.entities.some(e => e.definitionId === 'motor-3p');
+  const purpose = hasLine && program.length ? 'Inspeccionar el montaje y comprobar el control de una línea transportadora.'
+    : hasMotor ? 'Inspeccionar las conexiones y comprobar el mando simulado del motor.'
+    : 'Revisar la distribución, las conexiones y el comportamiento simulado de la instalación.';
+  const start = io.find(row => row.direction === 'Entrada' && row.tag === 'START' && row.connectedTo);
+  const stop = io.find(row => row.direction === 'Entrada' && row.tag === 'STOP' && row.connectedTo && row.plc === start?.plc);
+  const motor = io.find(row => row.direction === 'Salida' && row.tag === 'MOTOR' && row.connectedTo && row.plc === start?.plc);
+  const steps = ['Ubica los equipos en Planta 3D y revisa sus bornes en Tablero.'];
+  if (start && motor) steps.push('En la simulación, sigue la señal de ' + start.connectedTo + ' hacia ' + start.terminal + ' / START y observa ' + motor.terminal + ' / MOTOR hacia ' + motor.connectedTo + '.');
+  if (stop) steps.push('Prueba el paro desde ' + stop.connectedTo + ' y comprueba el estado de la salida en el monitor del PLC.');
+  else steps.push('Compara la respuesta simulada de los equipos con el esquema y sus conexiones.');
+  return {name: p.name, date, mode: p.mode, bom, wires, io, program, nets, issues, genericCount, disclaimer: DISCLAIMER, purpose, steps};
 }
 
 /** Un texto que empieza con = + - @ se interpretaría como fórmula al abrir el CSV en una hoja de cálculo: se neutraliza con una comilla simple. */
@@ -69,6 +81,7 @@ const table = (head: string[], rows: string[][]) => rows.length === 0 ? '_Sin da
 export function toMarkdown(d: Documentation): string {
   return [
     `# Documentación técnica · ${md(d.name)}`, '', `Generada el ${d.date}. Modo: ${d.mode}.`, '', `> ${d.disclaimer}`, '',
+    '## Propósito y secuencia de revisión', '', md(d.purpose), '', ...d.steps.map((step, i) => (i + 1) + '. ' + md(step)), '',
     `## 1. Lista de materiales`, '', table(['Cant.', 'Pieza', 'Familia', 'Estado', 'Referencias'], d.bom.map(r => [String(r.quantity), r.name, r.family, r.status, r.labels.join(' ')])),
     `## 2. Lista de cables`, '', table(['N.º', 'Desde', 'Hasta', 'Tipo', 'Estado', 'Red', 'Notas'], d.wires.map(r => [r.n, r.from, r.to, r.kind, r.status, r.net, r.notes])),
     `## 3. Entradas y salidas del PLC`, '', table(['PLC', 'Terminal', 'Tipo', 'Variable', 'Conectado a'], d.io.map(r => [r.plc, r.terminal, r.direction, r.tag || '—', r.connectedTo || '—'])),

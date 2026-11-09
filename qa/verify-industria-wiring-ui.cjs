@@ -97,8 +97,8 @@ const WORLD = {'fuente:L+': [-0.1 - 0.00875, 0.5 - 0.037, 0.03], 'km1:A1': [0.1 
     // 8) Simular protege el cableado
     await p.getByRole('button', {name: 'Simular'}).click();
     assert.ok(await form.getByRole('button', {name: 'Conectar', exact: true}).isDisabled()); assert.ok(await p.getByRole('button', {name: /Desconectar/}).first().isDisabled());
-    await p.getByRole('button', {name: 'Cablear', exact: true}).click();
-    assert.equal(await p.locator('.ind-wire-note').count(), 0, 'no entra al modo Cablear en Simulación');
+    assert.equal(await p.getByRole('button', {name: 'Cablear', exact: true}).count(), 0, 'Cablear se reserva para Construir');
+    assert.equal(await p.locator('.ind-wire-note').count(), 0);
     await p.getByRole('button', {name: 'Construir'}).click();
     pass('En Simular no se cablea ni se desconecta');
 

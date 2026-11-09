@@ -100,8 +100,8 @@
   "passed": 24,
   "total": 24,
   "functionalTestMs": {
-    "median": 24.35530000000017,
-    "max": 29.549199999999928
+    "median": 24.748599999999897,
+    "max": 29.03769999999986
   },
   "scope": "Simulación equivalente y reglas del encargo; no certificación física."
 }

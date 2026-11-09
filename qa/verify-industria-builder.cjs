@@ -36,13 +36,13 @@ const snapAttr = p => p.locator('canvas').first().getAttribute('data-snap');
 const near = (a, b, eps, msg) => assert.ok(Math.abs(a - b) <= eps, `${msg}: ${a} ≉ ${b}`);
 
 /** Arrastra con el ratón real desde la proyección de `from` hasta la de `to` (mundo → pantalla). */
-async function drag(p, from, to, {hold = false, steps = 14, shift = false} = {}) {
+async function drag(p, from, to, {hold = false, steps = 14, shift = false, button = 'left'} = {}) {
   const box = await p.locator('canvas').first().boundingBox(), a = project(from, box), z = project(to, box);
-  await p.mouse.move(a.x, a.y); await p.mouse.down();
+  await p.mouse.move(a.x, a.y); await p.mouse.down({button});
   if (shift) await p.keyboard.down('Shift');
   await p.mouse.move(a.x + (z.x - a.x) * 0.3, a.y + (z.y - a.y) * 0.3, {steps: 4});
   await p.mouse.move(z.x, z.y, {steps});
-  if (!hold) { await p.mouse.up(); if (shift) await p.keyboard.up('Shift'); await settle(p); }
+  if (!hold) { await p.mouse.up({button}); if (shift) await p.keyboard.up('Shift'); await settle(p); }
   return {a, z};
 }
 
@@ -54,6 +54,28 @@ async function drag(p, from, to, {hold = false, steps = 14, shift = false} = {})
     assert.equal(pr.mounts.length, 1); assert.equal(pr.entities.length, 5);
     const ap0 = pr.poses.aparato.position;
     await p.screenshot({path: out + '/builder-1-inicio.png'});
+
+    // La cámara puede arrancar encima de un bloque sin cambiar ninguna pose.
+    const camera = () => p.evaluate(() => JSON.parse(localStorage.getItem(Object.keys(localStorage).find(key => key.startsWith('modo:industria:ui:')))).camera);
+    const block = pr.poses.bloqueB.position;
+    assert.equal(await p.getByRole('button', {name: 'Orbitar', exact: true}).getAttribute('aria-pressed'), 'true');
+    await drag(p, [block[0], 0.2, block[2]], [block[0] + 1.4, 0.2, block[2]]);
+    assert.notDeepEqual((await camera()).position, CAM.pos);
+    assert.deepEqual((await proj(p)).poses, pr.poses);
+    await p.getByRole('button', {name: 'Encuadrar'}).click(); await settle(p);
+    await p.getByRole('button', {name: 'Desplazar', exact: true}).click();
+    await drag(p, [block[0], 0.2, block[2]], [block[0] + 1.4, 0.2, block[2]]);
+    assert.notDeepEqual((await camera()).target, CAM.target);
+    assert.deepEqual((await proj(p)).poses, pr.poses);
+    await p.getByRole('button', {name: 'Encuadrar'}).click(); await settle(p);
+    pass('Orbitar y desplazar funcionan al iniciar el arrastre encima de una pieza sin cambiar su posición');
+    await p.getByRole('button', {name: 'Mover pieza', exact: true}).click();
+
+    await drag(p, [block[0], 0.2, block[2]], [block[0] + 1.4, 0.2, block[2]], {button: 'right'});
+    assert.notDeepEqual((await camera()).target, CAM.target);
+    assert.deepEqual((await proj(p)).poses, pr.poses);
+    await p.getByRole('button', {name: 'Encuadrar'}).click(); await settle(p);
+    pass('El botón derecho desplaza la cámara aunque esté activo Mover pieza');
 
     // 1) Vista previa: al acercar el aparato al riel aparece el anclaje candidato; al alejarlo, no
     const railFront = [pr.poses.riel.position[0], 0.5, pr.poses.riel.position[2] + 0.005 + 0.03]; // el clip (z=-0.03) debe quedar sobre el frente del riel
@@ -122,12 +144,12 @@ async function drag(p, from, to, {hold = false, steps = 14, shift = false} = {})
     await drag(p, [preB[0], 0.2, preB[2]], [preB[0] + 0.83, 0.2, preB[2] - 0.67]);
     let pb = (await proj(p)).poses.bloqueB.position;
     for (const v of [pb[0], pb[2]]) near(v / 0.05, Math.round(v / 0.05), 1e-3, 'rejilla');
-    await p.getByRole('button', {name: 'Imán', exact: true}).click();
-    assert.equal(await p.getByRole('button', {name: 'Imán', exact: true}).getAttribute('aria-pressed'), 'false');
+    const grid = p.getByRole('checkbox', {name: 'Ajustar piezas a la rejilla (5 cm)'});
+    await grid.uncheck();
     await drag(p, [pb[0], 0.2, pb[2]], [pb[0] - 0.33, 0.2, pb[2] + 0.27]);
     pb = (await proj(p)).poses.bloqueB.position;
     assert.ok([pb[0], pb[2]].some(v => Math.abs(v / 0.05 - Math.round(v / 0.05)) > 0.02), 'sin imán no se ajusta a la rejilla');
-    await p.getByRole('button', {name: 'Imán', exact: true}).click();
+    await grid.check();
     pass('El imán ajusta a la rejilla de 5 cm y se puede apagar');
 
     // 8) Superposición: se permite pero avisa

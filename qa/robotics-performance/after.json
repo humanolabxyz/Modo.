@@ -1,0 +1,29 @@
+{
+  "errors": [],
+  "idle": {
+    "frame": 5,
+    "calls": 732,
+    "triangles": 143318,
+    "points": 0,
+    "lines": 0,
+    "geometries": 731,
+    "dpr": 1
+  },
+  "idleFrames": 0,
+  "running": {
+    "frame": 37,
+    "calls": 734,
+    "triangles": 143336,
+    "points": 0,
+    "lines": 0,
+    "geometries": 667,
+    "dpr": 1
+  },
+  "followAfterNavigation": "false",
+  "flyDistance": 0.095375,
+  "frames": {
+    "count": 22,
+    "p95": 283.3000000000011,
+    "max": 350.10000000000036
+  }
+}

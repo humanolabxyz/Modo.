@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Con red: el service worker controla la página y guarda /industria/ y 184 archivos",
+    "Sin conexión: /industria/ abre, muestra el escenario 3D y el modelo",
+    "Sin conexión: se carga un ejemplo, se simula (PLC, sello, motor) y se recorren todas las vistas",
+    "Sin conexión: el proyecto se guarda y vuelve al recargar",
+    "Sin conexión no fallan peticiones de la aplicación ni hay errores de JavaScript"
+  ],
+  "errors": [],
+  "failedRequests": []
+}

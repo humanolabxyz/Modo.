@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:4326",
+  "url": "http://127.0.0.1:4411",
   "checks": [
     "la guía sugerida para el robot es «Evitar obstáculos»; probar sin código explica que falta ponerlo",
     "paso 1: «Poner este código» → «Probar este paso» → «¡Paso superado!» (D4, D7, D8, D12 y D9 son salidas)",

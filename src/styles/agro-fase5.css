@@ -1,0 +1,36 @@
+/* modo. Agro · Fase 5: tablero con PLC, HMI y programa en escalera. Acotado a las clases .agro-*. */
+.agro-seg{display:flex;gap:2px;padding:2px;border-radius:20px;background:#0000000d}
+.agro-seg button{flex:1;min-height:38px;border:0;border-radius:18px;background:transparent;color:var(--ink);font:700 13px inherit;cursor:pointer}
+.agro-seg button.on{background:var(--green);color:#fff}.agro-seg button:not(.on):hover{background:#eef0f4}
+.agro-plc-state{margin:2px 0;font-size:13px;font-weight:700}.agro-plc-state[data-powered=false]{color:#8a6a00}.agro-plc-state[data-powered=true]{color:var(--green)}
+.agro-io{list-style:none;margin:6px 0;padding:0;display:grid;gap:3px;font-size:12.5px}
+.agro-io li{display:grid;grid-template-columns:14px 28px 1fr auto;align-items:center;gap:6px;padding:4px 8px;border-radius:9px;background:#0000000a}
+.agro-io li i,.agro-hmi-lamp i{width:12px;height:12px;border-radius:50%;background:#9aa0aa;box-shadow:inset 0 0 0 1px #0003}
+.agro-io li i.on,.agro-hmi-lamp.on i{background:#2fd16f;box-shadow:0 0 8px #2fd16f}
+.agro-io li b{font-family:ui-monospace,monospace}.agro-io li span{color:var(--muted);line-height:1.25}.agro-io li em{font-style:normal;font-weight:700;font-size:11px}
+.agro-hmi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:10px;border-radius:14px;background:#14202b;color:#e6f1ff}
+.agro-hmi-label{grid-column:1/-1;margin:0;font-weight:700;font-size:13px}
+.agro-hmi-lamp{display:flex;align-items:center;gap:8px;min-height:38px;padding:0 10px;border-radius:10px;background:#ffffff14;font-size:13px}
+.agro-hmi-switch{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:0 6px 0 12px;border-radius:12px;border:1px solid #ffffff33;background:#ffffff14;color:#e6f1ff;font:700 13px inherit;cursor:pointer;text-align:left}
+.agro-hmi-switch span{padding:6px 12px;border-radius:14px;background:#44505e;font-size:12px}.agro-hmi-switch.on span{background:#1f9d55;color:#fff}.agro-hmi-switch:disabled{opacity:.45;cursor:not-allowed}
+.agro-rung{margin:6px 0;padding:6px 8px;border-radius:12px;border:1px solid var(--line)}.agro-rung[data-on=true]{border-color:#9fd3b0}
+.agro-rung header{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.agro-mini-icon{min-width:30px!important;min-height:30px!important}
+.agro-rung summary{cursor:pointer;font-size:12.5px;font-weight:600;padding:6px 0}
+.agro-branch{margin:4px 0}.agro-branch small{color:var(--muted)}
+.agro-contacts{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.agro-contact{display:inline-flex;align-items:center;gap:2px;padding:2px 4px 2px 8px;border-radius:14px;background:#0000000f;font-size:12px}
+.agro-contact b{font-family:ui-monospace,monospace}
+.agro-contact button{min-width:26px;min-height:26px;border:0;border-radius:13px;background:transparent;color:var(--ink);font:700 11px inherit;cursor:pointer}.agro-contact button:hover{background:#0000001a}
+.agro-contacts select,.agro-coil select,.agro-coil input,.agro-newrung select{min-height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;padding:0 6px}
+.agro-coil{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}.agro-coil label{display:grid;gap:2px;font-size:12px;color:var(--muted)}.agro-coil input{width:110px}
+.agro-newrung{flex-wrap:wrap}.agro-newrung .agro-field{flex:1 1 200px}
+.agro-plc-issues li{padding:4px 8px;border-radius:8px}.agro-plc-issues li.warning{background:#fff4cf;color:#5f4900}.agro-plc-issues li.error{background:#ffe3e0;color:#7a1710}
+.agro-rung .ind-ladder-network{overflow-x:auto;margin:4px 0;background:#fff;border:1px solid var(--line);border-radius:8px}
+.agro-rung .ind-ladder-network svg{display:block;max-width:none}
+.agro-rung .ind-ladder-network path{fill:none;stroke:#546a80;stroke-width:2}
+.agro-rung .ind-ladder-network .ind-rail{stroke-width:3}
+.agro-rung .ind-ladder-network rect{fill:#fff}
+.agro-rung .ind-ladder-network text{text-anchor:middle;fill:#203a54;font:700 11px ui-monospace,monospace}
+.agro-rung .ind-ladder-network path.is-live,.agro-rung .ind-ladder-network .is-live path{stroke:#16834d;stroke-width:3}
+@media (prefers-color-scheme:dark){.agro-seg{background:#ffffff14}.agro-seg button:not(.on):hover{background:#25262e}.agro-io li,.agro-contact{background:#ffffff10}.agro-contacts select,.agro-coil select,.agro-coil input,.agro-newrung select{background:#1d1e26;color:var(--ink)}.agro-plc-issues li.warning{background:#3b3010;color:#f0d98a}.agro-plc-issues li.error{background:#4a1f1b;color:#ffd9d6}.agro-plc-state[data-powered=false]{color:#f0d98a}}

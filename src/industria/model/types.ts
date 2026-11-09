@@ -71,7 +71,7 @@ export const MAX_PRESET = {ton: 3_600_000, ctu: 100_000} as const;
 /** Pantalla de HMI: widgets que leen o escriben variables de un PLC. Un botón o interruptor escribe una variable interna del PLC. */
 export type HmiWidgetKind = 'lamp' | 'button' | 'switch' | 'label';
 export const HMI_WIDGET_KINDS: readonly HmiWidgetKind[] = ['lamp', 'button', 'switch', 'label'];
-export type HmiWidget = {id: string; kind: HmiWidgetKind; label: string; plcId?: string; tag?: string};
+export type HmiWidget = {id: string; kind: HmiWidgetKind; label: string; plcId?: string; tag?: string; slot?: number};
 export type HmiScreen = {widgets: HmiWidget[]};
 
 export const TAG_PATTERN = /^[A-Za-z_][A-Za-z0-9_]{0,29}$/;

@@ -179,12 +179,17 @@ export function parseIndustryProject(input: unknown, migrations: Migrations = MI
     plc[id] = {rungs, memory: [...raw.memory]};
   }
   const widgets: HmiWidget[] = [];
+  const widgetSlots = new Set<number>();
   if (p.hmi.widgets.length > LIMITS.widgets) return fail('La pantalla de HMI supera el límite de widgets.');
   for (const w of p.hmi.widgets as unknown[]) {
     if (!isRec(w) || !str(w.id, 80) || !oneOf(HMI_WIDGET_KINDS, w.kind) || typeof w.label !== 'string' || w.label.length > LIMITS.label) return fail('Hay un widget de HMI inválido.');
     if ((w.plcId !== undefined && (!str(w.plcId, 80) || !entityIds.has(w.plcId))) || (w.tag !== undefined && !tag(w.tag))) return fail('Un widget de HMI apunta a un PLC o variable inválidos.');
     if (!unique(w.id)) return fail(`El id «${w.id}» está repetido.`);
-    widgets.push({id: w.id, kind: w.kind, label: w.label, ...(w.plcId !== undefined ? {plcId: w.plcId as string} : {}), ...(w.tag !== undefined ? {tag: w.tag as string} : {})});
+    if (w.slot !== undefined) {
+      if (typeof w.slot !== 'number' || !Number.isInteger(w.slot) || w.slot < 0 || w.slot >= LIMITS.widgets || widgetSlots.has(w.slot)) return fail('Hay una posición de HMI inválida o repetida.');
+      widgetSlots.add(w.slot);
+    }
+    widgets.push({id: w.id, kind: w.kind, label: w.label, ...(typeof w.slot === 'number' ? {slot: w.slot} : {}), ...(w.plcId !== undefined ? {plcId: w.plcId as string} : {}), ...(w.tag !== undefined ? {tag: w.tag as string} : {})});
   }
 
   const faults: Fault[] = [];

@@ -1,6 +1,6 @@
 import {LESSON_SCHEMATICS,type LessonSchematicId} from '../data/lessonSchematics';
 import {useEffect,useRef,useState,type ReactNode} from 'react';
-import {GripHorizontal,ArrowUpRight,FileImage,Focus,FolderOpen,Minus,Plus,Upload,X,Hand,Route,Square,Undo2} from 'lucide-react';
+import {Network,ArrowUpRight,FileImage,Focus,FolderOpen,Maximize2,Minimize2,Minus,Plus,Upload,X,Hand,Route,Square,Undo2} from 'lucide-react';
 import {useSvgNavigation,currentSvgView} from '../hooks/useSvgNavigation';
 import {CadeDiagram,type CadeLearningProps} from './CadeDiagram';
 import {CADE_DRAWINGS,ESTRELLA_CADE} from '../data/cade';
@@ -9,9 +9,33 @@ import {LessonReference} from './LessonReference';
 import {FloatingWindow} from './FloatingWindow';
 import {MODULES,TERMINALS} from '../data/panel';
 import {CLASS_DIAGRAMS,type DiagramReference,type DiagramRegion,type ManualStep} from '../data/practice';
-type Props=CadeLearningProps&{onBankTargets?:(keys:string[])=>void;onDrawingChange?:(id:string)=>void;onMaterial?:(material:'cade'|'learn'|'image')=>void;lesson?:ReactNode;learningMode?:'free'|'guided'|'exam';routeOptions?:ReactNode;routeToolbar?:ReactNode;routeDetails?:ReactNode;readingOnly?:boolean;onExpand?:()=>void;onClose?:()=>void;hidden?:boolean;diagram:DiagramReference|null;activeRegion:DiagramRegion|null;selected:string|null;onDiagram:(d:DiagramReference|null)=>void;onStep:(s:ManualStep)=>void;onError:(message:string)=>void;recognitionImage?:string;onLocate:(id:string)=>void;activePath?:{x:number;y:number}[];steps?:ManualStep[];onSelectStep?:(id:string)=>void;/** Esquema de la lección en marcha: línea del paso, líneas armadas y bornes. */lessonView?:{key:string;active:number[];done:number[];ends:{x:number;y:number}[]};/** Al elegir una línea o un símbolo de un esquema de lección, el banco muestra el cable correspondiente. */onLessonLine?:(key:string,wireId:number)=>void;onLessonSymbol?:(key:string,symbolId:number)=>void;};
+type Props=CadeLearningProps&{onBankTargets?:(keys:string[])=>void;onDrawingChange?:(id:string)=>void;onMaterial?:(material:'cade'|'learn'|'image')=>void;lesson?:ReactNode;learningMode?:'free'|'guided'|'exam';routeOptions?:ReactNode;routeToolbar?:ReactNode;routeDetails?:ReactNode;readingOnly?:boolean;onExpand?:()=>void;onMinimize?:()=>void;onClose?:()=>void;hidden?:boolean;diagram:DiagramReference|null;activeRegion:DiagramRegion|null;selected:string|null;onDiagram:(d:DiagramReference|null)=>void;onStep:(s:ManualStep)=>void;onError:(message:string)=>void;recognitionImage?:string;onLocate:(id:string)=>void;activePath?:{x:number;y:number}[];steps?:ManualStep[];onSelectStep?:(id:string)=>void;/** Esquema de la lección en marcha: línea del paso, líneas armadas y bornes. */lessonView?:{key:string;active:number[];done:number[];ends:{x:number;y:number}[]};/** Al elegir una línea o un símbolo de un esquema de lección, el banco muestra el cable correspondiente. */onLessonLine?:(key:string,wireId:number)=>void;onLessonSymbol?:(key:string,symbolId:number)=>void;};
 type View={x:number;y:number;w:number;h:number};
-export function DiagramPane({hidden=false,diagram,activeRegion,selected,onDiagram,onStep,onError,recognitionImage,onLocate,onBankTargets,activePath,steps=[],onSelectStep,lessonView,onLessonLine,onLessonSymbol,lesson,learningMode,routeOptions,routeToolbar,routeDetails,readingOnly,onExpand,onClose,onMaterial,onDrawingChange,...cadeLearning}:Props){
+function DiagramWindowControl({label,title,close,onActivate,children}:{label:string;title?:string;close?:boolean;onActivate?:()=>void;children:ReactNode}){
+ const button=useRef<HTMLButtonElement>(null);
+ const touch=useRef<{id:number;x:number;y:number}|null>(null);
+ useEffect(()=>{
+  const el=button.current;if(!el)return;
+  const startTouch=(e:TouchEvent)=>{
+   const point=e.changedTouches[0];
+   touch.current=e.touches.length===1?{id:point.identifier,x:point.clientX,y:point.clientY}:null;
+  };
+  const endTouch=(e:TouchEvent)=>{
+   const start=touch.current;
+   touch.current=null;
+   const point=e.changedTouches[0];
+   if(!start||start.id!==point.identifier||!e.cancelable||Math.hypot(point.clientX-start.x,point.clientY-start.y)>12||!el.contains(document.elementFromPoint(point.clientX,point.clientY)))return;
+   // Tras redimensionar, el navegador puede omitir el click que normalmente sigue al toque.
+   e.preventDefault();
+   el.click();
+  };
+  el.addEventListener('touchstart',startTouch,{passive:true});
+  el.addEventListener('touchend',endTouch,{passive:false});
+  return ()=>{el.removeEventListener('touchstart',startTouch);el.removeEventListener('touchend',endTouch)};
+ },[]);
+ return <button ref={button} type="button" className={`diagram-window-control${close?' diagram-window-close':''}`} aria-label={label} title={title} onClick={onActivate}>{children}</button>;
+}
+export function DiagramPane({hidden=false,diagram,activeRegion,selected,onDiagram,onStep,onError,recognitionImage,onLocate,onBankTargets,activePath,steps=[],onSelectStep,lessonView,onLessonLine,onLessonSymbol,lesson,learningMode,routeOptions,routeToolbar,routeDetails,readingOnly,onExpand,onMinimize,onClose,onMaterial,onDrawingChange,...cadeLearning}:Props){
  const lessonMap=!!diagram?.id.startsWith('leccion-')&&!recognitionImage;
  const [tab,setTab]=useState<'cade'|'learn'|'image'>((activeRegion&&!lessonView)||recognitionImage?'image':'cade');
  const [cadeId,setCadeId]=useState<(typeof CADE_DRAWINGS)[number]['id']>('perfecto'),guidedCade=cadeId==='perfecto';
@@ -59,7 +83,7 @@ export function DiagramPane({hidden=false,diagram,activeRegion,selected,onDiagra
   setEditing(false);setDraftRegion(null);setPoints([]);setImageTool('pan');setFrom('');setTo('');setTitle('');setExplanation('');setReviewed(false);
  };
  return <aside hidden={hidden} className={`diagram-pane ${tab==='cade'&&!recognitionImage&&guidedCade&&routeToolbar?'has-route-toolbar':''} diagram-simple`} aria-label="Diagrama y material de estudio">
-  <div className="diagram-pane-actions"><span className="diagram-move-handle" role="button" tabIndex={0} aria-label="Mover ventana de diagrama" title="Arrastra la cabecera para mover; usa las flechas con el teclado"><GripHorizontal size={17} aria-hidden="true"/><strong>Diagrama</strong></span><button type="button" className="diagram-menu-shortcut" aria-label="Abrir menú del diagrama" onClick={()=>setMaterialOpen(true)} hidden={!!recognitionImage||cadeLearning.exam}><FolderOpen size={17}/><span>Menú</span></button><button onClick={onExpand}>{readingOnly?'Volver al banco':'Ampliar diagrama'}</button><button aria-label="Cerrar diagrama" onClick={onClose}><X size={16}/></button></div>
+  <div className="diagram-pane-actions fw-browser-bar"><span className="diagram-move-handle fw-browser-tab" role="button" tabIndex={0} aria-label="Mover ventana de diagrama" title="Arrastra la cabecera para mover; usa las flechas con el teclado"><Network size={16} aria-hidden="true"/><strong>Diagrama</strong></span><button type="button" className="diagram-menu-shortcut" aria-label="Abrir menú del diagrama" onClick={()=>setMaterialOpen(true)} hidden={!!recognitionImage||cadeLearning.exam}><FolderOpen size={17}/><span>Menú</span></button><DiagramWindowControl label="Minimizar: Diagrama" title="Minimizar a pestaña" onActivate={onMinimize}><Minus size={16}/></DiagramWindowControl><DiagramWindowControl label={readingOnly?'Volver al banco':'Ampliar diagrama'} title={readingOnly?'Restaurar tamaño anterior':'Maximizar diagrama'} onActivate={onExpand}>{readingOnly?<Minimize2 size={16}/>:<Maximize2 size={16}/>}</DiagramWindowControl><DiagramWindowControl label="Cerrar diagrama" close onActivate={onClose}><X size={16}/></DiagramWindowControl></div>
 
   {tab==='cade'&&!recognitionImage&&guidedCade&&routeToolbar}
   <div className="diagram-pane-body" data-material={recognitionImage?'image':tab}>

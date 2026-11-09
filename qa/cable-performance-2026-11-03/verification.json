@@ -1,0 +1,13 @@
+{
+  "logicalCases": 192,
+  "examplesRequiringOtherInventory": [
+    "starDeltaThree"
+  ],
+  "bufferUpdates": 100,
+  "checks": [
+    "logical cache matches uncached solver, including faults, controls, timers and cable removal",
+    "existing GPU buffers reused",
+    "outward surfaces and invisible picking remain valid",
+    "rope endpoints and finite path preserved"
+  ]
+}

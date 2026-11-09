@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Con toques reales se cierran QF1 y QF2 y el PLC se alimenta",
+    "Mantener S1 con el dedo arranca el motor y soltarlo no lo detiene (sello del PLC)",
+    "Los botones de la HMI se mantienen con el dedo: PARO apaga y MARCHA arranca con sello",
+    "Deslizar sobre una pieza con un dedo orbita la cámara sin mover la pieza",
+    "Arrastrar una pieza en el escenario con el dedo la mueve y la ajusta al imán, sin orbitar la cámara",
+    "El arrastre de una pieza no mueve la cámara",
+    "Cero errores de consola y de JavaScript"
+  ],
+  "errors": []
+}

@@ -53,6 +53,7 @@ const BORNES: readonly ShapeDef[] = [
 /** Gabinete de tablero (fase 18): caja metálica con puerta, placa de montaje interior y entrada de cables por abajo. Los mandos (pulsadores, pilotos) se montan en la PUERTA, los aparatos de fuerza y el PLC en el riel de la placa. */
 const GABINETE: ShapeDef = {id: 'gabinete', name: 'Gabinete de tablero', family: 'Infraestructura', subfamily: 'Tablero', description: 'Caja metálica con puerta, manija, bisagras, ventilación y prensaestopas inferiores. La placa de montaje va dentro y los pulsadores y pilotos en la puerta (puerta transparente o cerrada, en Propiedades).' + NOSIM,
   size: [1, 1.2, 0.35], center: [0, 0.6, 0], color: '#d3d7db', status: 'generic', anchors: [BASE,
+    {id: 'soporte-placa', label: 'Soporte de la placa', role: 'host', kind: 'structural', position: [0, 0.5, -0.16], normal: [0, 0, 1], up: [0, 1, 0]},
     {id: 'puerta', label: 'Puerta (mandos)', role: 'host', kind: 'panel', position: [0, 0.6, 0.175], normal: [0, 0, 1], up: [0, 1, 0], multi: true, slide: {axes: [[1, 0, 0], [0, 1, 0]], limits: [[-0.42, 0.42], [-0.5, 0.5]]}},
     {id: 'interior', label: 'Fondo interior', role: 'host', kind: 'surface', position: [0, 0.03, -0.12], normal: [0, 1, 0], multi: true, slide: {axes: [[1, 0, 0], [0, 0, 1]], limits: [[-0.1, 0.1], [-0.04, 0.04]]}}]};
 
@@ -119,6 +120,7 @@ export const ITEMS: readonly ShapeDef[] = [
     id: 'placa', name: 'Placa de montaje', family: 'Infraestructura', subfamily: 'Tablero', description: 'Placa vertical sobre la que se montan rieles y aparatos.', size: [0.8, 1, 0.02], center: [0, 0.5, 0], color: '#d9a066', status: 'generic',
     anchors: [
       {id: 'base', label: 'Base', role: 'child', kind: 'surface', position: [0, 0, 0], normal: [0, -1, 0]},
+      {id: 'dorso-placa', label: 'Dorso de la placa', role: 'child', kind: 'structural', position: [0, 0.5, -0.01], normal: [0, 0, -1], up: [0, 1, 0]},
       {id: 'cara', label: 'Cara frontal', role: 'host', kind: 'surface', position: [0, 0.5, 0.01], normal: [0, 0, 1], up: [0, 1, 0], multi: true,
         slide: {axes: [[1, 0, 0], [0, 1, 0]], limits: [[-0.35, 0.35], [-0.45, 0.45]]}},
     ],

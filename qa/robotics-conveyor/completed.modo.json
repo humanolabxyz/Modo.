@@ -1,13 +1,13 @@
 {
   "format": "modo-robotica",
   "version": 1,
-  "id": "d6b40a86-8793-493b-b213-4ddd8c992904",
-  "name": "Célula E6 · cinta y clasificación",
-  "createdAt": "2026-10-31T04:06:16.440Z",
-  "updatedAt": "2026-10-31T04:06:16.440Z",
+  "id": "8fbba6ca-c7e4-46c8-80a4-8334a0100c11",
+  "name": "Fábrica E6 · cinta y clasificación",
+  "createdAt": "2026-11-09T12:06:36.483Z",
+  "updatedAt": "2026-11-09T12:06:36.483Z",
   "parts": [
     {
-      "instanceId": "e4a3c646-accb-431b-842b-49fd1a452bc5",
+      "instanceId": "49c7b345-d538-427e-a3d2-ba3b25c22783",
       "definitionId": "educational-arm-e6",
       "label": "Brazo educativo · referencia E6",
       "transform": {
@@ -37,7 +37,7 @@
       }
     },
     {
-      "instanceId": "9d1db349-4189-4cb4-a249-7e1b26552203",
+      "instanceId": "98d065a9-9a5a-4bf3-9d72-48e4daf86f37",
       "definitionId": "educational-conveyor",
       "label": "Cinta · presencia y color",
       "transform": {
@@ -62,7 +62,7 @@
       }
     },
     {
-      "instanceId": "0c55e530-a372-4b31-aa81-39a2ad393406",
+      "instanceId": "83e8a193-1ad9-42b4-9fac-94ecbeb4c267",
       "definitionId": "arm-practice-block",
       "label": "Pieza rojo",
       "transform": {
@@ -86,13 +86,13 @@
         "surfaceR": 220,
         "surfaceG": 55,
         "surfaceB": 55,
-        "targetZone": "5f79e9a9-a878-43fa-874f-0038f7a67daf",
-        "depositedBy": "e4a3c646-accb-431b-842b-49fd1a452bc5"
+        "targetZone": "e54ab2ae-6f7c-481c-8811-56ac72581d4a",
+        "depositedBy": "49c7b345-d538-427e-a3d2-ba3b25c22783"
       },
       "locked": false
     },
     {
-      "instanceId": "5f79e9a9-a878-43fa-874f-0038f7a67daf",
+      "instanceId": "e54ab2ae-6f7c-481c-8811-56ac72581d4a",
       "definitionId": "arm-drop-zone",
       "label": "Destino rojo",
       "transform": {
@@ -117,7 +117,7 @@
       }
     },
     {
-      "instanceId": "1304e82c-bf02-49a2-9405-734c2ba75db3",
+      "instanceId": "76c0d0f4-7711-4c9d-9294-12d50fada8e6",
       "definitionId": "arm-practice-block",
       "label": "Pieza verde",
       "transform": {
@@ -141,13 +141,13 @@
         "surfaceR": 50,
         "surfaceG": 180,
         "surfaceB": 95,
-        "targetZone": "078052c7-a7a2-4f60-adf5-fa5813f2e9a9",
-        "depositedBy": "e4a3c646-accb-431b-842b-49fd1a452bc5"
+        "targetZone": "bcbfa67d-49c6-45d6-b255-e06b329d37fc",
+        "depositedBy": "49c7b345-d538-427e-a3d2-ba3b25c22783"
       },
       "locked": false
     },
     {
-      "instanceId": "078052c7-a7a2-4f60-adf5-fa5813f2e9a9",
+      "instanceId": "bcbfa67d-49c6-45d6-b255-e06b329d37fc",
       "definitionId": "arm-drop-zone",
       "label": "Destino verde",
       "transform": {
@@ -172,7 +172,7 @@
       }
     },
     {
-      "instanceId": "97475f8a-d645-48e4-b8c8-e1a5afd63ace",
+      "instanceId": "a6fb4e92-e448-4cbb-a507-71a945dd667a",
       "definitionId": "arm-practice-block",
       "label": "Pieza azul",
       "transform": {
@@ -196,13 +196,13 @@
         "surfaceR": 55,
         "surfaceG": 115,
         "surfaceB": 225,
-        "targetZone": "5d4303bf-bbad-4843-b2e8-89814488b9b6",
-        "depositedBy": "e4a3c646-accb-431b-842b-49fd1a452bc5"
+        "targetZone": "28db1961-ae18-4043-8743-fcd29a3533c9",
+        "depositedBy": "49c7b345-d538-427e-a3d2-ba3b25c22783"
       },
       "locked": false
     },
     {
-      "instanceId": "5d4303bf-bbad-4843-b2e8-89814488b9b6",
+      "instanceId": "28db1961-ae18-4043-8743-fcd29a3533c9",
       "definitionId": "arm-drop-zone",
       "label": "Destino azul",
       "transform": {
@@ -231,7 +231,52 @@
   "connections": [],
   "firmware": [],
   "scene": {
-    "obstacles": [],
+    "obstacles": [
+      {
+        "id": "almacen-entrada",
+        "shape": "box",
+        "size": [
+          0.7,
+          0.55,
+          0.55
+        ],
+        "transform": {
+          "position": [
+            -1.5,
+            0.275,
+            0.8
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "id": "almacen-salida",
+        "shape": "box",
+        "size": [
+          0.7,
+          0.55,
+          0.55
+        ],
+        "transform": {
+          "position": [
+            1.5,
+            0.275,
+            -0.85
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    ],
     "robotStart": {
       "position": [
         0,
@@ -248,7 +293,9 @@
     "physics": {
       "gravity": 9.81,
       "friction": 0.7
-    }
+    },
+    "theme": "factory",
+    "sizeM": 8
   },
   "workspace": {
     "mode": "simulate",

@@ -1,0 +1,152 @@
+/* Agro: flujo de creación y jerarquía de controles del espacio de trabajo. */
+.agro-wizard{width:min(1040px,100%);margin:0 auto;padding:14px 22px 32px;box-sizing:border-box}
+.agro-wizard-top,.agro-wizard-top b,.agro-wizard-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.agro-wizard-top{margin-bottom:16px}
+.agro-wizard-top b{color:var(--green)}
+.agro-wizard-sheet{padding:clamp(16px,4vw,36px);border:1px solid var(--line);border-radius:30px;background:var(--panel);box-shadow:var(--pill)}
+.agro-wizard-sheet h1{margin:22px 0 20px;font-size:clamp(24px,4vw,38px);letter-spacing:-.04em}
+.agro-wizard-sheet h1:focus{outline:none}
+.agro-wizard-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));overflow:auto}
+.agro-wizard-steps li{position:relative;min-width:0}
+.agro-wizard-steps li+li::before{content:'';position:absolute;top:17px;left:-28%;width:56%;height:2px;background:var(--line)}
+.agro-wizard-steps li:has(button[data-done=true])+li::before{background:var(--green)}
+.agro-wizard-steps button{width:100%;display:grid;justify-items:center;gap:6px;border:0;background:none;color:var(--ink);font:inherit;font-size:12px;font-weight:700;padding:4px 0;cursor:pointer}
+.agro-wizard-steps button:disabled{color:var(--muted);cursor:default}
+.agro-wizard-steps button span{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--line)}
+.agro-wizard-steps button[aria-current=step] span,.agro-wizard-steps button[data-done=true] span{background:var(--green);color:white}
+.agro-wizard-split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:center}
+.agro-wizard-fields{min-width:0;display:grid;gap:16px}
+.agro-wizard-fields>label{display:grid;gap:8px;font-size:14px;font-weight:700}
+.agro-wizard-fields input:not([type=range]),.agro-wizard-fields select{box-sizing:border-box;min-height:44px;width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);font:inherit}
+.agro-wizard-fields input[type=range]{width:100%;accent-color:var(--green)}
+.agro-wizard-value{color:var(--green)}
+.agro-wizard-fields p{margin:0;color:var(--muted);line-height:1.45}
+.agro-wizard-map{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#587e46}
+.agro-wizard-map canvas{display:block;width:100%;height:300px;object-fit:fill}
+.agro-wizard-map figcaption,.agro-wizard-site{position:absolute;display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:12px;font-size:13px;font-weight:700}
+.agro-wizard-map figcaption{bottom:10px;left:10px;color:white;background:#17251cde}
+.agro-wizard-site{top:50%;transform:translate(-50%,-50%);background:white;color:#195b24;box-shadow:0 3px 12px #0004;white-space:nowrap}
+.agro-wizard-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr));gap:12px}
+.agro-wizard-tiles button{display:grid;align-content:start;justify-items:start;gap:10px;min-height:100px;padding:16px;text-align:left;border:1px solid var(--line);border-radius:18px;background:var(--panel);color:var(--ink);font:inherit;cursor:pointer}
+.agro-wizard-tiles button[aria-pressed=true]{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green);background:var(--green-soft)}
+.agro-wizard-tiles button svg{color:var(--green)}
+.agro-wizard-tiles button small{color:var(--muted);line-height:1.4}
+.agro-wizard-review{margin:0;display:grid;gap:6px}
+.agro-wizard-review div{display:grid;grid-template-columns:minmax(90px,1fr) minmax(0,2fr);gap:8px;padding:9px 12px;border-radius:10px;background:var(--green-soft)}
+.agro-wizard-review dt{font-weight:700}
+.agro-wizard-review dd{margin:0;overflow-wrap:anywhere}
+.agro-wizard-actions{margin-top:24px;padding-top:14px;border-top:1px solid var(--line)}
+.agro-ws .agro-bar{min-height:56px}
+.agro-ws .agro-crumb{gap:8px}
+.agro-ws .agro-name-btn{border-radius:18px;background:var(--green-soft);padding:6px 12px}
+.agro-ws .agro-time{flex-wrap:nowrap}
+.agro-ws .agro-alerts,.agro-ws .agro-lag{position:absolute;top:calc(100% + 8px);right:0;width:min(360px,90vw);border-radius:14px;background:var(--panel);box-shadow:var(--pill)}
+.agro-ws .agro-lag{top:calc(100% + 4px);right:auto;left:0;width:auto}
+.agro-ws .agro-alerts{z-index:1}
+.agro-ws .agro-hudrow{max-width:none}
+.agro-dock-status{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.agro-dock-status label{display:flex;align-items:center;gap:4px;flex:none;font-size:12px;color:var(--muted)}
+.agro-dock-status input{accent-color:var(--green)}
+.agro-ws .agro-dock-items button[data-family=Agua] svg{color:#1275bc}
+.agro-ws .agro-dock-items button[data-family=Energía] svg{color:#a36a08}
+.agro-ws .agro-dock-items button[data-family=Control] svg{color:#5768a6}
+.agro-ws .agro-inspector{top:124px;max-height:calc(100% - 204px)}
+.agro-ws .agro-inv{top:124px;max-height:calc(100% - 204px)}
+.agro-ws .agro-netcard{left:84px;bottom:82px;max-width:min(360px,42vw)}
+.agro-ws .agro-netcard[data-detail]:not([data-detail=""]){max-width:min(420px,calc(100% - 28px));z-index:7}
+.agro-ws .agro-info{left:14px;bottom:166px;pointer-events:none}
+.agro-ws .agro-meta{font-size:11px}
+.agro-ws .agro-tools{z-index:5}
+.agro-ws[data-lift=dock] .agro-netcard{bottom:270px}
+.agro-ws[data-lift=dock] .agro-info{bottom:374px}
+.agro-ws[data-lift=dock] .agro-inspector{max-height:calc(100% - 314px)}
+.agro-ws[data-lift=dock] .agro-brush{bottom:250px}
+@media(max-width:1180px){
+  .agro-ws .agro-modes button{padding-inline:11px}
+}
+@media(max-width:760px){
+  .agro-wizard{padding:10px 10px 20px}
+  .agro-wizard-top b{font-size:14px}
+  .agro-wizard-steps{grid-template-columns:repeat(7,minmax(79px,1fr))}
+  .agro-wizard-split{grid-template-columns:1fr;gap:14px}
+  .agro-wizard-map canvas{height:210px}
+  .agro-ws .agro-bar{min-height:44px}
+  .agro-ws .agro-time{top:58px;flex-wrap:wrap}
+  .agro-ws .agro-tools{top:130px}
+  .agro-ws .agro-info{left:8px;bottom:73px;max-width:calc(100% - 16px)}
+  .agro-ws .agro-netcard[data-detail]:not([data-detail=""]){display:flex;left:8px;bottom:68px}
+  .agro-ws .agro-inv,.agro-ws .agro-inspector{top:auto;bottom:68px;max-height:48%}
+  .agro-ws[data-lift=dock] .agro-dock-items button{min-height:62px;width:82px}
+  .agro-ws[data-lift=dock] .agro-dock-cats button{min-height:30px;padding:0 10px}
+  .agro-ws[data-lift=dock] .agro-dock-status{align-items:flex-start}
+}
+
+.agro-dock-adjust{display:flex;align-items:center;gap:4px}
+.agro-dock-adjust button{display:grid;place-items:center;width:34px;height:32px;border:1px solid var(--line);border-radius:10px;color:var(--ink);background:var(--panel);cursor:pointer}
+@media(max-width:760px){
+  .agro-ws[data-lift=dock] .agro-inspector{bottom:216px;max-height:32%}
+  .agro-ws[data-lift=dock] .agro-info,.agro-ws[data-lift=dock] .agro-brush{bottom:224px}
+}
+
+.agro-workbar{position:absolute;z-index:6;left:14px;right:14px;bottom:14px;display:grid;gap:12px;pointer-events:none}
+.agro-workbar .agro-modes,.agro-workbar .agro-dock{position:static;transform:none;pointer-events:auto}
+.agro-workbar .agro-modes{justify-self:center;max-width:100%;box-sizing:border-box;overflow:auto}
+.agro-workbar .agro-dock{margin-right:194px}
+.agro-ws .agro-crumb{min-width:0}
+.agro-ws .agro-name-btn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:760px){
+  .agro-workbar{left:8px;right:8px;bottom:8px;gap:6px}
+  .agro-workbar .agro-modes{justify-self:stretch}
+  .agro-workbar .agro-dock{margin:0;padding:8px}
+  .agro-ws .agro-crumb{display:flex}
+  .agro-crumb>i,.agro-crumb>span,.agro-bar .agro-back span,.agro-bar h1 em{display:none}
+  .agro-ws .agro-menu summary{padding:0 12px}
+}
+/* Distribución del HUD y fichas renderizadas con los modelos de la escena. */
+.agro-ws .agro-work-brand{gap:10px;flex:none}
+.agro-modo-logo{display:block;width:72px;height:23px;background:currentColor;mask:url('/brand/modo-logo-horizontal-negro.svg') center/contain no-repeat;color:var(--ink)}
+.agro-ws .agro-crumb>span{padding:6px 12px;border-radius:18px;background:var(--panel);box-shadow:0 1px 5px #132b3f20}
+.agro-alert-wrap{position:relative;flex:none}
+.agro-ws .agro-alert-wrap .agro-alerts{max-width:calc(100vw - 28px);right:0;padding:12px;box-sizing:border-box;border:1px solid var(--line)}
+.agro-ws .agro-hudrow{left:14px;right:14px;justify-content:flex-end;gap:10px;pointer-events:none}
+.agro-hudrow>*{pointer-events:auto}
+.agro-ws .agro-chips{margin-right:auto;gap:0;padding:5px 10px;border-radius:26px;background:var(--panel);box-shadow:var(--pill)}
+.agro-ws .agro-hud-chip{min-height:40px;padding:4px 10px;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+.agro-ws .agro-hud-chip+.agro-hud-chip{border-left:1px solid var(--line)}
+.agro-ws .agro-hud-chip b{font-size:14px}
+.agro-ws .agro-hud-chip small{font-size:11px}
+.agro-ws .agro-cams button span{display:none}
+.agro-ws .agro-time{position:relative;inset:auto;transform:none;gap:10px;min-height:0;padding:0;max-width:none;border-radius:0;background:none;box-shadow:none;backdrop-filter:none}
+.agro-ws .agro-clock,.agro-playback{display:flex;align-items:center;gap:8px;padding:5px 10px;border-radius:24px;min-height:42px;background:var(--panel);box-shadow:var(--pill);white-space:nowrap}
+.agro-clock>div{display:grid;gap:1px}
+.agro-playback button,.agro-playback label{display:flex;align-items:center;gap:5px;min-height:36px;padding:0 9px;border:0;border-radius:18px;color:var(--ink);background:var(--green-soft);font:inherit;font-size:13px}
+.agro-playback button{cursor:pointer}
+.agro-playback button.on{color:#fff;background:var(--green)}
+.agro-playback select{padding:0 2px;border:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.agro-playback option{background:var(--panel);color:var(--ink)}
+.agro-dock-list{position:relative;min-width:0;overflow:hidden}
+.agro-dock-render{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.agro-ws .agro-dock-items button{min-height:96px;grid-template-rows:52px auto auto;gap:2px;padding:4px 6px 6px;border-color:var(--line)}
+.agro-ws .agro-dock-items button.on{border-color:var(--green)}
+.agro-model-preview{display:block;width:100%;height:52px;pointer-events:none}
+@media(max-width:760px){
+  .agro-ws .agro-work-brand{gap:4px;font-size:16px}
+  .agro-modo-logo{width:46px;height:18px}
+  .agro-ws .agro-hudrow{left:8px;right:8px;justify-content:flex-start;gap:6px;flex-wrap:wrap}
+  .agro-ws .agro-time{gap:4px;flex-wrap:nowrap}
+  .agro-ws .agro-clock,.agro-playback{padding:4px 6px;gap:4px;min-height:38px}
+  .agro-playback button{padding:0 6px}
+  .agro-playback button span,.agro-playback label svg,.agro-clock>svg{display:none}
+  .agro-ws .agro-cams{gap:2px;padding:3px}
+  .agro-ws .agro-cams button,.agro-ws .agro-cams button:not(.on){min-height:36px;padding:0 7px}
+  .agro-ws .agro-tools{top:112px}
+  .agro-ws .agro-mini-toggle,.agro-ws .agro-pieces-toggle{top:63px}
+  .agro-ws .agro-pieces{top:112px}
+  .agro-ws[data-lift=dock] .agro-dock-items button{min-height:82px;grid-template-rows:44px auto auto}
+  .agro-ws .agro-model-preview{height:44px}
+}
+.agro-dock-render *{pointer-events:none!important}
+@media(min-width:761px){
+  .agro-ws .agro-info{left:84px}
+  .agro-ws:not([data-lift=dock]) .agro-stage:has(.agro-netcard) .agro-info{bottom:214px}
+}

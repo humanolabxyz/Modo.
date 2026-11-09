@@ -545,8 +545,6 @@ body.modo-soft-ui .lab-dock-menu[role=menu] :is(small,kbd){color:var(--soft-mute
 body.modo-soft-ui .lab-dock-menu[role=menu]>button.on :is(small,kbd){color:#e6e7e8}
 body.modo-soft-ui .lab-dock-menu[role=menu]>button:focus-visible{outline:2px solid #565b61;outline-offset:-3px}
 
-body.modo-soft-ui .floating-window-title :is(h3,small){color:var(--soft-ink)}
-body.modo-soft-ui .floating-window-title>svg{color:var(--soft-muted)}
 
 /* Native tap overlays draw rectangular bounds around rounded and SVG controls. */
 body.modo-soft-ui :is(button,a,summary,label,select,[role=button],[role=radio],[role=menuitem]){-webkit-tap-highlight-color:transparent}

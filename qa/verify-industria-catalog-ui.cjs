@@ -35,11 +35,11 @@ const LIB = 'modo:industria:library:v1';
     pass('La búsqueda ignora tildes, encuentra por terminal y avisa cuando no hay resultados');
 
     // 3) Familias: filtrar; las vacías quedan deshabilitadas (sin inventar piezas)
-    const fam = p.getByRole('group', {name: 'Familias'});
-    assert.ok(await fam.getByRole('button', {name: /Hidráulica/}).isDisabled());
-    await fam.getByRole('button', {name: /Electricidad industrial/}).click();
-    assert.ok(await items.count() >= 5); assert.equal(await p.locator('.ind-shapes > li:has(small:text("Mecánica"))').count(), 0);
-    await fam.getByRole('button', {name: 'Todas'}).click();
+    const fam = p.getByRole('combobox', {name: 'Familia', exact: true});
+    assert.ok(await fam.locator('option[value="Hidráulica"]').evaluate(option => option.disabled));
+    await fam.selectOption('Electricidad industrial');
+    assert.ok(await items.count() >= 5); assert.equal(await p.locator('.ind-shapes > li[data-item="motor-3p"]').count(), 0);
+    await fam.selectOption('');
     pass('Se filtra por familia y las familias sin piezas aparecen deshabilitadas');
 
     // 4) Datos de la pieza: terminales y procedencia, sin fabricante
@@ -47,8 +47,25 @@ const LIB = 'modo:industria:library:v1';
     await items.first().locator('summary').click();
     const info = await items.first().locator('.ind-item-info').innerText();
     assert.match(info, /1 · 3 · 5 · 2 · 4 · 6 · A1 · A2 · 13 · 14/); assert.match(info, /No contrastado/); assert.match(info, /Sin fuente de fabricante/);
+    const img = items.first().locator('img');
+    await img.scrollIntoViewIfNeeded();
+    await p.waitForFunction(() => document.querySelector('.ind-part-image')?.naturalWidth > 0);
+    const toggle = p.getByRole('button', {name: 'Girar en 3D'});
+    await toggle.click();
+    const preview = p.getByRole('group', {name: /Modelo 3D de Contactor/});
+    await preview.locator('canvas').waitFor();
+    const canvas = preview.locator('canvas');
+    await canvas.scrollIntoViewIfNeeded();
+    await p.waitForTimeout(600); // La vista bajo demanda necesita pintar su primer cuadro.
+    const initial = await canvas.screenshot();
+    await preview.press('ArrowRight');
+    await p.waitForTimeout(200);
+    assert.ok(!initial.equals(await canvas.screenshot()), 'las flechas cambian la orientación renderizada');
     await p.screenshot({path: out + '/catalogo-1-biblioteca.png'});
-    pass('«Datos» muestra terminales, medidas de ejemplo y que no hay fuente de fabricante');
+    await p.getByRole('button', {name: 'Cerrar vista 3D'}).click();
+    assert.equal(await preview.count(), 0);
+    pass('El catálogo carga la miniatura y permite abrir, girar y cerrar el modelo 3D');
+    pass('La ficha muestra terminales, medidas de ejemplo y que no hay fuente de fabricante');
 
     // 5) Colocar desde la biblioteca: queda con su definición, seleccionada, y el inspector muestra estado y terminales
     await items.first().locator(':scope > button').click(); await p.waitForTimeout(700);
