@@ -1,0 +1,88 @@
+[
+  {
+    "label": "mundo1000-gpu",
+    "side": 1000,
+    "gpuRequested": true,
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 SUPER (0x000021C4) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "createToFirstFrameMs": 1187,
+    "orbit": {
+      "tris": 135051,
+      "calls": 120
+    },
+    "heapMBAfterLoad": 23,
+    "fpsOrbitDrag": {
+      "seconds": 6.01,
+      "rafTicks": 624,
+      "renderedFrames": 242,
+      "renderedFps": 40.2,
+      "worstGapBetweenRenderedFramesMs": 76
+    },
+    "strategic": {
+      "tris": 89123,
+      "calls": 181
+    },
+    "fpsStrategicIdle": {
+      "seconds": 6,
+      "rafTicks": 345,
+      "renderedFrames": 0,
+      "renderedFps": 0,
+      "worstGapBetweenRenderedFramesMs": 0
+    },
+    "fpsWalk": {
+      "seconds": 6,
+      "rafTicks": 10653,
+      "renderedFrames": 10653,
+      "renderedFps": 1775.4,
+      "worstGapBetweenRenderedFramesMs": 2.9
+    },
+    "walk": {
+      "tris": 121288,
+      "calls": 42
+    },
+    "heapMBEnd": 23,
+    "errors": []
+  },
+  {
+    "label": "mundo1200-gpu",
+    "side": 1200,
+    "gpuRequested": true,
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 SUPER (0x000021C4) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "createToFirstFrameMs": 1286,
+    "orbit": {
+      "tris": 136691,
+      "calls": 132
+    },
+    "heapMBAfterLoad": 25,
+    "fpsOrbitDrag": {
+      "seconds": 6,
+      "rafTicks": 622,
+      "renderedFrames": 243,
+      "renderedFps": 40.5,
+      "worstGapBetweenRenderedFramesMs": 78.4
+    },
+    "strategic": {
+      "tris": 97963,
+      "calls": 213
+    },
+    "fpsStrategicIdle": {
+      "seconds": 6.01,
+      "rafTicks": 346,
+      "renderedFrames": 0,
+      "renderedFps": 0,
+      "worstGapBetweenRenderedFramesMs": 0
+    },
+    "fpsWalk": {
+      "seconds": 6,
+      "rafTicks": 9537,
+      "renderedFrames": 9537,
+      "renderedFps": 1589.4,
+      "worstGapBetweenRenderedFramesMs": 6.1
+    },
+    "walk": {
+      "tris": 124788,
+      "calls": 52
+    },
+    "heapMBEnd": 25,
+    "errors": []
+  }
+]

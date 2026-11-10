@@ -1,0 +1,12 @@
+const {chromium} = require(process.env.BASE + '/qa/lib/playwright.cjs'); const out = process.env.OUT, base = 'http://127.0.0.1:4386';
+(async () => { const b = await chromium.launch({headless: true, args: ['--use-angle=d3d11', '--ignore-gpu-blocklist']}); const p = await (await b.newContext({viewport: {width: 1440, height: 900}})).newPage();
+  await p.goto(base + '/agro/'); await p.locator('[data-view=lobby]').waitFor(); await p.waitForTimeout(2200); await p.screenshot({path: out + '/01-lobby.png'});
+  await p.getByTestId('agro-new').click(); await p.getByLabel('Nombre del mundo').fill('Capturas'); await p.getByRole('button', {name: /Granja productiva/}).click(); await p.screenshot({path: out + '/02-asistente-paso1-plantilla.png'});
+  await p.getByTestId('agro-wizard-next').click(); await p.screenshot({path: out + '/03-asistente-paso2-territorio.png'});
+  await p.getByTestId('agro-wizard-next').click(); await p.screenshot({path: out + '/04-asistente-paso3-emplazamiento.png'});
+  for (let i = 0; i < 4; i++) await p.getByTestId('agro-wizard-next').click(); await p.screenshot({path: out + '/05-asistente-paso7-revision.png'}); await p.getByTestId('agro-create').click();
+  await p.locator('[data-view=workspace]').waitFor(); await p.waitForFunction(() => Number(document.querySelector('[data-testid=agro-app]')?.dataset.tris) > 0); await p.waitForTimeout(3000); await p.screenshot({path: out + '/06-workspace-orbita.png'});
+  await p.getByRole('button', {name: 'Estratégica', exact: true}).click(); await p.waitForTimeout(1500); await p.mouse.move(720, 450); for (let k = 0; k < 40; k++) await p.mouse.wheel(0, 240); await p.waitForTimeout(2000); await p.screenshot({path: out + '/07-cenital-alejado-maximo.png'});
+  await p.getByRole('button', {name: 'Órbita', exact: true}).click(); await p.waitForTimeout(800); await p.mouse.move(720, 450); for (let k = 0; k < 60; k++) await p.mouse.wheel(0, -200); await p.waitForTimeout(1500); await p.screenshot({path: out + '/08-orbita-cerca-del-suelo.png'});
+  await p.getByRole('button', {name: 'Caminar', exact: true}).click(); await p.waitForTimeout(1500); await p.screenshot({path: out + '/09-primera-persona.png'});
+  await b.close(); console.log('capturas listas'); })().catch(e => { console.error('ERROR', e.message); process.exit(1); });

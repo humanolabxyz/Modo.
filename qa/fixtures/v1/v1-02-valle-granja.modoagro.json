@@ -1,0 +1,678 @@
+{
+  "format": "modo-agro",
+  "version": 1,
+  "id": "ref-v1-02",
+  "name": "Ref V1 · valle con granja",
+  "createdAt": "2026-11-01T08:00:00.000Z",
+  "updatedAt": "2026-11-01T08:00:00.000Z",
+  "experience": "free",
+  "scenario": {
+    "origin": "template",
+    "label": "Granja productiva",
+    "provenance": "fictional",
+    "site": [
+      0,
+      0
+    ],
+    "land": {
+      "visibleHa": 100,
+      "administeredHa": 1,
+      "authorizedHa": 0,
+      "cultivatedHa": 0
+    }
+  },
+  "terrain": {
+    "sizeMeters": [
+      1000,
+      1000
+    ],
+    "cellMeters": 2,
+    "seed": 31,
+    "edits": []
+  },
+  "clock": {
+    "simSeconds": 0,
+    "speed": 0,
+    "seed": 31,
+    "startDate": "2026-09-21T08:00:00.000Z"
+  },
+  "entities": [
+    {
+      "id": "e-8fb9d7a7",
+      "type": "parcela",
+      "label": "Parcela 1",
+      "pose": {
+        "position": [
+          0,
+          20.12570571899414,
+          16
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "anchoM": 20,
+        "largoM": 30
+      },
+      "ports": [],
+      "state": {
+        "suelo": "franco",
+        "cultivo": "tomate",
+        "aguaMm": 108,
+        "gdd": 0,
+        "dano": 0,
+        "ks": 1,
+        "vivo": true,
+        "marchitezDias": 0,
+        "siembraDia": 0,
+        "riegoMm": 0,
+        "lluviaMm": 0,
+        "etMm": 0,
+        "drenajeMm": 0,
+        "escorrentiaMm": 0,
+        "cosechaKg": 0,
+        "cosechaTha": 0,
+        "cosechas": 0
+      },
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-824884aa",
+      "type": "panel-solar",
+      "label": "Panel solar 1",
+      "pose": {
+        "position": [
+          21,
+          20.02737855911255,
+          -7
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {},
+      "ports": [
+        {
+          "id": "salida",
+          "direction": "out",
+          "local": [
+            0,
+            0.5,
+            -0.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "label": "Salida DC",
+          "kind": "power",
+          "spec": {
+            "current": "dc",
+            "phases": 1,
+            "voltage": 48
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-2ba94e4b",
+      "type": "estanque",
+      "label": "Estanque 1",
+      "pose": {
+        "position": [
+          -10,
+          19.885828018188477,
+          -8
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "volumenMaxL": 10000
+      },
+      "ports": [
+        {
+          "id": "salida",
+          "direction": "out",
+          "local": [
+            1.3,
+            0.35,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Salida",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "entrada",
+          "direction": "in",
+          "local": [
+            -1.3,
+            2,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Entrada",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {
+        "nivelL": 8000
+      },
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-47bfcf18",
+      "type": "tuberia",
+      "label": "Tubería 1",
+      "pose": {
+        "position": [
+          -5.699999999999999,
+          19.9436092376709,
+          -7.999999999999999
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "largoM": 6,
+        "diametroMm": 50
+      },
+      "ports": [
+        {
+          "id": "a",
+          "direction": "bidirectional",
+          "local": [
+            -3,
+            0.1,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Extremo A",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "b",
+          "direction": "bidirectional",
+          "local": [
+            3,
+            0.1,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Extremo B",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-e38b6925",
+      "type": "bomba",
+      "label": "Bomba centrífuga 1",
+      "pose": {
+        "position": [
+          -2.349999999999999,
+          19.961906242370606,
+          -7.999999999999998
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "potenciaNominalKw": 2.2,
+        "alturaCierreM": 30,
+        "kCurva": 320000
+      },
+      "ports": [
+        {
+          "id": "succion",
+          "direction": "in",
+          "local": [
+            -0.35,
+            0.25,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Succión",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "descarga",
+          "direction": "out",
+          "local": [
+            0.35,
+            0.3,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Descarga",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "alim",
+          "direction": "in",
+          "local": [
+            0,
+            0.5,
+            0.1
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "label": "Alimentación",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-e6ef48d2",
+      "type": "tuberia",
+      "label": "Tubería 2",
+      "pose": {
+        "position": [
+          1.0000000000000009,
+          19.996234893798828,
+          -7.999999999999997
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "largoM": 6,
+        "diametroMm": 50
+      },
+      "ports": [
+        {
+          "id": "a",
+          "direction": "bidirectional",
+          "local": [
+            -3,
+            0.1,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Extremo A",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "b",
+          "direction": "bidirectional",
+          "local": [
+            3,
+            0.1,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Extremo B",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-f94892d4",
+      "type": "emisor",
+      "label": "Aspersor 1",
+      "pose": {
+        "position": [
+          4.200000000000001,
+          20.0175630569458,
+          -7.9999999999999964
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "caudalNominalLmin": 40,
+        "radioM": 8
+      },
+      "ports": [
+        {
+          "id": "entrada",
+          "direction": "in",
+          "local": [
+            -0.2,
+            0.3,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Entrada",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-c657ee56",
+      "type": "acometida",
+      "label": "Acometida eléctrica 1",
+      "pose": {
+        "position": [
+          8,
+          20.031442642211914,
+          -8
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "tensionV": 400
+      },
+      "ports": [
+        {
+          "id": "red",
+          "direction": "out",
+          "local": [
+            0,
+            1.25,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "label": "Salida de red",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-f241187e",
+      "type": "tablero",
+      "label": "Tablero de control 1",
+      "pose": {
+        "position": [
+          8,
+          20.00246810913086,
+          -4
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "secoPct": 50,
+        "humedoPct": 85,
+        "horaIniH": 0,
+        "horaFinH": 24
+      },
+      "ports": [
+        {
+          "id": "red",
+          "direction": "in",
+          "local": [
+            0,
+            1.32,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "label": "Red de entrada",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        },
+        {
+          "id": "salida-bomba",
+          "direction": "out",
+          "local": [
+            0.46,
+            0.6,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Salida a bomba",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        },
+        {
+          "id": "entrada-senal",
+          "direction": "in",
+          "local": [
+            -0.46,
+            0.6,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Entrada de sensor",
+          "kind": "signal",
+          "spec": {
+            "signal": "analog",
+            "level": "4-20mA"
+          }
+        }
+      ],
+      "state": {
+        "interruptor": false,
+        "modo": "manual",
+        "plcBits": 0,
+        "plcAcc": "",
+        "plcCnt": ""
+      },
+      "lifecycle": "installed",
+      "owner": "player"
+    }
+  ],
+  "connections": [
+    {
+      "id": "c-b08b8ae6",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-2ba94e4b",
+        "portId": "salida"
+      },
+      "b": {
+        "entityId": "e-47bfcf18",
+        "portId": "a"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-dfebad31",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-47bfcf18",
+        "portId": "b"
+      },
+      "b": {
+        "entityId": "e-e38b6925",
+        "portId": "succion"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-969ccb75",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-e38b6925",
+        "portId": "descarga"
+      },
+      "b": {
+        "entityId": "e-e6ef48d2",
+        "portId": "a"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-408b16e7",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-e6ef48d2",
+        "portId": "b"
+      },
+      "b": {
+        "entityId": "e-f94892d4",
+        "portId": "entrada"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-28d707ea",
+      "kind": "power",
+      "a": {
+        "entityId": "e-c657ee56",
+        "portId": "red"
+      },
+      "b": {
+        "entityId": "e-f241187e",
+        "portId": "red"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-9fe8d5fc",
+      "kind": "power",
+      "a": {
+        "entityId": "e-f241187e",
+        "portId": "salida-bomba"
+      },
+      "b": {
+        "entityId": "e-e38b6925",
+        "portId": "alim"
+      },
+      "status": "connected"
+    }
+  ]
+}

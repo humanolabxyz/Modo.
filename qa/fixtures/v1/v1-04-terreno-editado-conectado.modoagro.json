@@ -1,0 +1,990 @@
+{
+  "format": "modo-agro",
+  "version": 1,
+  "id": "ref-v1-04",
+  "name": "Ref V1 · 30 ediciones de terreno y red conectada",
+  "createdAt": "2026-11-01T08:00:00.000Z",
+  "updatedAt": "2026-11-01T08:00:00.000Z",
+  "experience": "free",
+  "scenario": {
+    "origin": "template",
+    "label": "Granja productiva",
+    "provenance": "fictional",
+    "site": [
+      0,
+      0
+    ],
+    "land": {
+      "visibleHa": 100,
+      "administeredHa": 1,
+      "authorizedHa": 0,
+      "cultivatedHa": 0
+    }
+  },
+  "terrain": {
+    "sizeMeters": [
+      1000,
+      1000
+    ],
+    "cellMeters": 2,
+    "seed": 9001,
+    "edits": [
+      {
+        "id": "e1",
+        "kind": "raise",
+        "center": [
+          -256.40468675410375,
+          -175.24362318217754
+        ],
+        "radius": 59.82995986123569,
+        "amount": 3.1832072995603085,
+        "at": 0
+      },
+      {
+        "id": "e2",
+        "kind": "lower",
+        "center": [
+          -197.36397683154792,
+          -135.83191838115454
+        ],
+        "radius": 24.276243019849062,
+        "amount": 2.247615381143987,
+        "at": 0
+      },
+      {
+        "id": "e3",
+        "kind": "level",
+        "center": [
+          218.74958012485877,
+          252.39783599972725
+        ],
+        "radius": 54.19622761546634,
+        "amount": 29.198820642195642,
+        "at": 0
+      },
+      {
+        "id": "e4",
+        "kind": "raise",
+        "center": [
+          317.84339724108577,
+          -112.60892320424318
+        ],
+        "radius": 27.428878240752965,
+        "amount": 3.149044276215136,
+        "at": 0
+      },
+      {
+        "id": "e5",
+        "kind": "lower",
+        "center": [
+          264.45854388875887,
+          133.7069746106863
+        ],
+        "radius": 59.48071298771538,
+        "amount": 1.3919053971767426,
+        "at": 0
+      },
+      {
+        "id": "e6",
+        "kind": "level",
+        "center": [
+          -342.5199414836243,
+          -193.23192667216063
+        ],
+        "radius": 38.40621000621468,
+        "amount": 29.407478503417224,
+        "at": 0
+      },
+      {
+        "id": "e7",
+        "kind": "raise",
+        "center": [
+          353.8939602789469,
+          90.40098339319229
+        ],
+        "radius": 19.82270240667276,
+        "amount": 2.2752467337995768,
+        "at": 0
+      },
+      {
+        "id": "e8",
+        "kind": "lower",
+        "center": [
+          -337.67389259301126,
+          224.27320089191198
+        ],
+        "radius": 22.79450557893142,
+        "amount": 3.6686070756986737,
+        "at": 0
+      },
+      {
+        "id": "e9",
+        "kind": "level",
+        "center": [
+          -172.1945391385816,
+          157.68525041639805
+        ],
+        "radius": 39.204584994586185,
+        "amount": 23.880260521546006,
+        "at": 0
+      },
+      {
+        "id": "e10",
+        "kind": "raise",
+        "center": [
+          -387.18732164707035,
+          -286.138934455812
+        ],
+        "radius": 58.817586628720164,
+        "amount": 2.689442596398294,
+        "at": 0
+      },
+      {
+        "id": "e11",
+        "kind": "lower",
+        "center": [
+          -337.9740674630739,
+          -100.28490796685219
+        ],
+        "radius": 29.198673017090186,
+        "amount": 2.051273850724101,
+        "at": 0
+      },
+      {
+        "id": "e12",
+        "kind": "level",
+        "center": [
+          -213.44185769557953,
+          -24.967271275818348
+        ],
+        "radius": 34.216912316624075,
+        "amount": 21.46597499260679,
+        "at": 0
+      },
+      {
+        "id": "e13",
+        "kind": "raise",
+        "center": [
+          -354.8218252020888,
+          -55.643199756741524
+        ],
+        "radius": 31.412584955105558,
+        "amount": 3.5418182983994484,
+        "at": 0
+      },
+      {
+        "id": "e14",
+        "kind": "lower",
+        "center": [
+          -261.5839198464528,
+          -293.76188796013594
+        ],
+        "radius": 25.254236231558025,
+        "amount": 3.949901591055095,
+        "at": 0
+      },
+      {
+        "id": "e15",
+        "kind": "level",
+        "center": [
+          -257.5394817744382,
+          287.73628771305084
+        ],
+        "radius": 16.865246862871572,
+        "amount": 26.812773351557553,
+        "at": 0
+      },
+      {
+        "id": "e16",
+        "kind": "raise",
+        "center": [
+          -339.5951556507498,
+          193.52498408406973
+        ],
+        "radius": 46.66801393730566,
+        "amount": 2.9130713315680623,
+        "at": 0
+      },
+      {
+        "id": "e17",
+        "kind": "lower",
+        "center": [
+          -362.3246783739887,
+          -258.28013829886913
+        ],
+        "radius": 39.84295048867352,
+        "amount": 1.692019384354353,
+        "at": 0
+      },
+      {
+        "id": "e18",
+        "kind": "level",
+        "center": [
+          -183.21715805213898,
+          -83.12406446784735
+        ],
+        "radius": 20.93133945018053,
+        "amount": 21.871415672358125,
+        "at": 0
+      },
+      {
+        "id": "e19",
+        "kind": "raise",
+        "center": [
+          -254.96501676971093,
+          251.3779081404209
+        ],
+        "radius": 48.828851947328076,
+        "amount": 3.703172003850341,
+        "at": 0
+      },
+      {
+        "id": "e20",
+        "kind": "lower",
+        "center": [
+          226.15648629143834,
+          189.95599877089262
+        ],
+        "radius": 54.246103030163795,
+        "amount": 4.135052637197077,
+        "at": 0
+      },
+      {
+        "id": "e21",
+        "kind": "level",
+        "center": [
+          159.1628159279935,
+          -255.361482873559
+        ],
+        "radius": 27.182302545988932,
+        "amount": 28.392982445657253,
+        "at": 0
+      },
+      {
+        "id": "e22",
+        "kind": "raise",
+        "center": [
+          -355.2635942818597,
+          218.52481830865145
+        ],
+        "radius": 49.42778923083097,
+        "amount": 1.1326673505827785,
+        "at": 0
+      },
+      {
+        "id": "e23",
+        "kind": "lower",
+        "center": [
+          -258.99576341034845,
+          342.74433106184006
+        ],
+        "radius": 54.17897367733531,
+        "amount": 3.8251844737678766,
+        "at": 0
+      },
+      {
+        "id": "e24",
+        "kind": "level",
+        "center": [
+          345.66247309558094,
+          38.54852821677923
+        ],
+        "radius": 58.750373215880245,
+        "amount": 22.355604853946716,
+        "at": 0
+      },
+      {
+        "id": "e25",
+        "kind": "raise",
+        "center": [
+          170.85647912463173,
+          207.78214670717716
+        ],
+        "radius": 58.121370506705716,
+        "amount": 4.099176276475191,
+        "at": 0
+      },
+      {
+        "id": "e26",
+        "kind": "lower",
+        "center": [
+          -205.2316423272714,
+          -372.9222571477294
+        ],
+        "radius": 46.99362491257489,
+        "amount": 3.589392221532762,
+        "at": 0
+      },
+      {
+        "id": "e27",
+        "kind": "level",
+        "center": [
+          -211.63002463290468,
+          -317.5389476120472
+        ],
+        "radius": 30.30452449223958,
+        "amount": 20.945223080925643,
+        "at": 0
+      },
+      {
+        "id": "e28",
+        "kind": "raise",
+        "center": [
+          389.5265782251954,
+          -282.76068288832903
+        ],
+        "radius": 57.92829463491216,
+        "amount": 1.0222431952133775,
+        "at": 0
+      },
+      {
+        "id": "e29",
+        "kind": "lower",
+        "center": [
+          -156.98753184406087,
+          337.47113160789013
+        ],
+        "radius": 21.985912589589134,
+        "amount": 2.0467773005366325,
+        "at": 0
+      },
+      {
+        "id": "e30",
+        "kind": "level",
+        "center": [
+          230.31374460551888,
+          -256.7792175337672
+        ],
+        "radius": 35.35063037183136,
+        "amount": 27.476162526290864,
+        "at": 0
+      }
+    ]
+  },
+  "clock": {
+    "simSeconds": 172800,
+    "speed": 0,
+    "seed": 9001,
+    "startDate": "2026-09-21T08:00:00.000Z"
+  },
+  "entities": [
+    {
+      "id": "e-62277cdd",
+      "type": "parcela",
+      "label": "Parcela 1",
+      "pose": {
+        "position": [
+          0,
+          20.16592788696289,
+          16
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "anchoM": 20,
+        "largoM": 30
+      },
+      "ports": [],
+      "state": {
+        "suelo": "franco",
+        "cultivo": "",
+        "aguaMm": 105.85849931018717,
+        "gdd": 0,
+        "dano": 0,
+        "ks": 1,
+        "vivo": true,
+        "marchitezDias": 0,
+        "siembraDia": -1,
+        "riegoMm": 0,
+        "lluviaMm": 0,
+        "etMm": 2.1415006898128195,
+        "drenajeMm": 0,
+        "escorrentiaMm": 0,
+        "cosechaKg": 0,
+        "cosechaTha": 0,
+        "cosechas": 0
+      },
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-34570272",
+      "type": "invernadero",
+      "label": "Invernadero 1",
+      "pose": {
+        "position": [
+          20,
+          20.110687255859375,
+          10
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "anchoM": 8,
+        "largoM": 20
+      },
+      "ports": [],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-c99e6317",
+      "type": "estanque",
+      "label": "Estanque 1",
+      "pose": {
+        "position": [
+          -10,
+          19.907732009887695,
+          -8
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "volumenMaxL": 10000
+      },
+      "ports": [
+        {
+          "id": "salida",
+          "direction": "out",
+          "local": [
+            1.3,
+            0.35,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Salida",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "entrada",
+          "direction": "in",
+          "local": [
+            -1.3,
+            2,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Entrada",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {
+        "nivelL": 1858.242054598363
+      },
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-2fa22743",
+      "type": "tuberia",
+      "label": "Tubería 1",
+      "pose": {
+        "position": [
+          -5.699999999999999,
+          19.95580425262451,
+          -7.999999999999999
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "largoM": 6,
+        "diametroMm": 50
+      },
+      "ports": [
+        {
+          "id": "a",
+          "direction": "bidirectional",
+          "local": [
+            -3,
+            0.1,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Extremo A",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "b",
+          "direction": "bidirectional",
+          "local": [
+            3,
+            0.1,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Extremo B",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-362cc11a",
+      "type": "bomba",
+      "label": "Bomba centrífuga 1",
+      "pose": {
+        "position": [
+          -2.349999999999999,
+          19.98620948791504,
+          -7.999999999999998
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "potenciaNominalKw": 2.2,
+        "alturaCierreM": 30,
+        "kCurva": 320000
+      },
+      "ports": [
+        {
+          "id": "succion",
+          "direction": "in",
+          "local": [
+            -0.35,
+            0.25,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Succión",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "descarga",
+          "direction": "out",
+          "local": [
+            0.35,
+            0.3,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Descarga",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "alim",
+          "direction": "in",
+          "local": [
+            0,
+            0.5,
+            0.1
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "label": "Alimentación",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-d11e54a0",
+      "type": "tuberia",
+      "label": "Tubería 2",
+      "pose": {
+        "position": [
+          1.0000000000000009,
+          19.998305320739746,
+          -7.999999999999997
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "largoM": 6,
+        "diametroMm": 50
+      },
+      "ports": [
+        {
+          "id": "a",
+          "direction": "bidirectional",
+          "local": [
+            -3,
+            0.1,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Extremo A",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        },
+        {
+          "id": "b",
+          "direction": "bidirectional",
+          "local": [
+            3,
+            0.1,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Extremo B",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-90e94e85",
+      "type": "emisor",
+      "label": "Aspersor 1",
+      "pose": {
+        "position": [
+          4.200000000000001,
+          19.990824508666993,
+          -7.9999999999999964
+        ],
+        "rotation": [
+          0,
+          -2.4492935982947064e-16,
+          0
+        ]
+      },
+      "params": {
+        "caudalNominalLmin": 40,
+        "radioM": 8
+      },
+      "ports": [
+        {
+          "id": "entrada",
+          "direction": "in",
+          "local": [
+            -0.2,
+            0.3,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Entrada",
+          "kind": "hydraulic",
+          "spec": {
+            "diameterMm": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-19c1f25f",
+      "type": "acometida",
+      "label": "Acometida eléctrica 1",
+      "pose": {
+        "position": [
+          8,
+          20.008392333984375,
+          -8
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "tensionV": 400
+      },
+      "ports": [
+        {
+          "id": "red",
+          "direction": "out",
+          "local": [
+            0,
+            1.25,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "label": "Salida de red",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        }
+      ],
+      "state": {},
+      "lifecycle": "installed",
+      "owner": "player"
+    },
+    {
+      "id": "e-c420ff82",
+      "type": "tablero",
+      "label": "Tablero de control 1",
+      "pose": {
+        "position": [
+          8,
+          20.0136661529541,
+          -4
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "params": {
+        "secoPct": 50,
+        "humedoPct": 85,
+        "horaIniH": 0,
+        "horaFinH": 24
+      },
+      "ports": [
+        {
+          "id": "red",
+          "direction": "in",
+          "local": [
+            0,
+            1.32,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "label": "Red de entrada",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        },
+        {
+          "id": "salida-bomba",
+          "direction": "out",
+          "local": [
+            0.46,
+            0.6,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "label": "Salida a bomba",
+          "kind": "power",
+          "spec": {
+            "current": "ac",
+            "phases": 3,
+            "voltage": 400,
+            "frequencyHz": 50
+          }
+        },
+        {
+          "id": "entrada-senal",
+          "direction": "in",
+          "local": [
+            -0.46,
+            0.6,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "label": "Entrada de sensor",
+          "kind": "signal",
+          "spec": {
+            "signal": "analog",
+            "level": "4-20mA"
+          }
+        }
+      ],
+      "state": {
+        "interruptor": true,
+        "modo": "manual",
+        "plcBits": 0,
+        "plcAcc": "",
+        "plcCnt": ""
+      },
+      "lifecycle": "installed",
+      "owner": "player"
+    }
+  ],
+  "connections": [
+    {
+      "id": "c-98e68058",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-c99e6317",
+        "portId": "salida"
+      },
+      "b": {
+        "entityId": "e-2fa22743",
+        "portId": "a"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-bf78a439",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-2fa22743",
+        "portId": "b"
+      },
+      "b": {
+        "entityId": "e-362cc11a",
+        "portId": "succion"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-aa535420",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-362cc11a",
+        "portId": "descarga"
+      },
+      "b": {
+        "entityId": "e-d11e54a0",
+        "portId": "a"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-36bb7c9f",
+      "kind": "hydraulic",
+      "a": {
+        "entityId": "e-d11e54a0",
+        "portId": "b"
+      },
+      "b": {
+        "entityId": "e-90e94e85",
+        "portId": "entrada"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-ac94d539",
+      "kind": "power",
+      "a": {
+        "entityId": "e-19c1f25f",
+        "portId": "red"
+      },
+      "b": {
+        "entityId": "e-c420ff82",
+        "portId": "red"
+      },
+      "status": "connected"
+    },
+    {
+      "id": "c-9ed4ff28",
+      "kind": "power",
+      "a": {
+        "entityId": "e-c420ff82",
+        "portId": "salida-bomba"
+      },
+      "b": {
+        "entityId": "e-362cc11a",
+        "portId": "alim"
+      },
+      "status": "connected"
+    }
+  ]
+}

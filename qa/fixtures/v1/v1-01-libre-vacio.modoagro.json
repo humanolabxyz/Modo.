@@ -1,0 +1,41 @@
+{
+  "format": "modo-agro",
+  "version": 1,
+  "id": "ref-v1-01",
+  "name": "Ref V1 · libre vacío",
+  "createdAt": "2026-11-01T08:00:00.000Z",
+  "updatedAt": "2026-11-01T08:00:00.000Z",
+  "experience": "free",
+  "scenario": {
+    "origin": "blank",
+    "label": "Mundo en blanco",
+    "provenance": "fictional",
+    "site": [
+      0,
+      0
+    ],
+    "land": {
+      "visibleHa": 100,
+      "administeredHa": 0,
+      "authorizedHa": 0,
+      "cultivatedHa": 0
+    }
+  },
+  "terrain": {
+    "sizeMeters": [
+      1000,
+      1000
+    ],
+    "cellMeters": 2,
+    "seed": 12345,
+    "edits": []
+  },
+  "clock": {
+    "simSeconds": 0,
+    "speed": 0,
+    "seed": 12345,
+    "startDate": "2026-09-21T08:00:00.000Z"
+  },
+  "entities": [],
+  "connections": []
+}
