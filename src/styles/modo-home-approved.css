@@ -110,7 +110,7 @@
 @media(max-width:600px){.home-module-art.art-robotics{top:18%;height:67%;width:135%;left:-17.5%}}
 
 /* Seis tarjetas en escritorio: posiciones -2…+3. Se reduce la tarjeta y se desplaza media separación para que el conjunto quede centrado y completo. */
-@media(min-width:1101px){.home-carousel{--card-w:clamp(170px,14.4vw,330px);--card-step:calc(var(--card-w)*1.02)}.modo-reference-home .home-module{left:calc(50% - var(--card-step)*.5)}}
+@media(min-width:1101px){.home-carousel{--card-w:clamp(220px,17vw,400px);--card-step:calc(var(--card-w)*.98)}.modo-reference-home .home-module{left:50%}}
 
 /* Industria: arte aislado de la estación de bombeo; deja libre la etiqueta inferior. */
 .home-module-art.art-industry{top:15%;height:66%;width:124%;left:-12%}
@@ -122,3 +122,18 @@
 .home-module-art.art-agro{top:14%;height:70%;width:118%;left:-9%}
 @media(max-width:1100px){.home-module-art.art-agro{top:19%;height:62%;width:118%;left:-9%}}
 @media(max-width:600px){.home-module-art.art-agro{top:20%;height:60%;width:120%;left:-10%}}
+
+/* Portadas: la ilustración sale de la tarjeta (el recorte ya no se corta en el borde), las tarjetas quedan centradas con cualquier cantidad de módulos
+   y se ven 2 de cada lado completas y una tercera asomando (semitransparente, cortada por el borde) para indicar que hay más (el carrusel es circular: con más módulos no se desordena, los lejanos se ocultan). */
+.modo-reference-home .home-module{overflow:visible}
+.home-carousel-stage{height:calc(var(--card-h) + 92px)}
+.modo-reference-home .home-module{top:70px}
+.modo-reference-home .home-module .home-module-art{transform:translateY(-15%) scale(1.1);transform-origin:50% 70%;transition:transform 650ms cubic-bezier(.2,.75,.2,1)}
+.modo-reference-home .home-module.is-selected .home-module-art{transform:translateY(-22%) scale(1.2)}
+.modo-reference-home .home-module[data-far]{opacity:0;pointer-events:none}
+.modo-reference-home .home-module{transition:transform 650ms cubic-bezier(.2,.75,.2,1),opacity 350ms,box-shadow 350ms,border-color 250ms}
+@media(max-width:600px){.home-carousel-stage{height:calc(var(--card-h) + 70px)}.modo-reference-home .home-module{top:52px}}
+
+.modo-reference-home .home-module[data-edge]{opacity:.5;filter:saturate(.8)}
+.home-carousel{overflow:visible}
+@media(max-width:1100px){.modo-reference-home .home-module[data-edge]{opacity:0;pointer-events:none}}

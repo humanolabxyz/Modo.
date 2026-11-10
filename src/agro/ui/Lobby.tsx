@@ -30,7 +30,7 @@ export function Lobby(p: LobbyProps) {
     </header>
     <main className="agro-lobby-main">
       <section className="agro-hero" aria-labelledby="agro-hero-title">
-        <img src="/images/home-approved/agro.svg" alt="" width="320" height="320" />
+        <img src="/images/home-approved/agro.webp" alt="" width="320" height="244" />
         <h2 id="agro-hero-title">{first ? 'Construye tu primera finca' : 'Tu mundo agrícola'}</h2>
         <p>{first ? 'Elige el terreno, prepara tu finca y simula en 3D. Todo se guarda en este navegador.' : 'Continúa donde lo dejaste o crea un mundo nuevo.'}</p>
         <div className="agro-menu-buttons">
