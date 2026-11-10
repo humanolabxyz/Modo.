@@ -1,6 +1,6 @@
 // Modelo editable del terreno: malla + lista de ediciones + deshacer/rehacer por trazo + versión por chunk. Puro.
 // La fuente de verdad guardada es `terrain.edits` (deltas sobre la base de la semilla); la malla de alturas se deriva de ellas.
-import {LIMITS, type Terrain, type TerrainEdit, type TerrainEditKind} from '../model/types.ts';
+import {LIMITS, type Terrain, type TerrainEdit, type TerrainEditKind, type TerritoryId} from '../model/types.ts';
 import {applyEdit, checksum, createHeightfield, editCellBounds, rebuild, type Heightfield} from './heightfield.ts';
 
 export const CHUNK_CELLS = 50;
@@ -21,8 +21,11 @@ export class TerrainModel {
   private nextId = 1;
   private listeners = new Set<() => void>();
 
-  private constructor(hf: Heightfield) {
-    this.hf = hf;
+  /** Territorio del mundo (se conserva tal cual al guardar). */
+  readonly presetId: TerritoryId;
+
+  private constructor(hf: Heightfield, presetId: TerritoryId) {
+    this.hf = hf; this.presetId = presetId;
     this.chunksX = Math.ceil((hf.nx - 1) / CHUNK_CELLS);
     this.chunksZ = Math.ceil((hf.nz - 1) / CHUNK_CELLS);
     this.versions = new Uint32Array(this.chunksX * this.chunksZ).fill(1);
@@ -30,7 +33,7 @@ export class TerrainModel {
 
   /** Crea el modelo desde el terreno guardado en el mundo: regenera la base y reaplica las ediciones. */
   static fromTerrain(terrain: Terrain): TerrainModel {
-    const model = new TerrainModel(createHeightfield(terrain));
+    const model = new TerrainModel(createHeightfield(terrain), terrain.presetId);
     model.edits_ = terrain.edits.map(e => ({...e, center: [e.center[0], e.center[1]] as [number, number]}));
     rebuild(model.hf, model.edits_);
     const used = new Set(model.edits_.map(e => e.id));
@@ -48,9 +51,13 @@ export class TerrainModel {
   subscribe(fn: () => void): () => void { this.listeners.add(fn); return () => { this.listeners.delete(fn); }; }
   private emit(): void { for (const fn of this.listeners) fn(); }
 
-  /** Terreno serializable (la semilla y el tamaño no cambian; las ediciones son las vigentes). */
+  /**
+   * Terreno serializable (la semilla y el tamaño no cambian). Solo incluye las ediciones CONFIRMADAS: las marcas de un trazo todavía abierto (que aún no entró al historial)
+   * nunca se serializan, ni siquiera en un guardado forzado al salir de la página o al cerrar el mundo.
+   */
   toTerrain(): Terrain {
-    return {sizeMeters: [this.hf.sizeX, this.hf.sizeZ], cellMeters: this.hf.cell, seed: this.hf.seed, edits: this.edits_.map(e => ({...e, center: [e.center[0], e.center[1]] as [number, number]}))};
+    const confirmed = this.edits_.slice(0, this.edits_.length - (this.stroke_ ?? 0));
+    return {sizeMeters: [this.hf.sizeX, this.hf.sizeZ], cellMeters: this.hf.cell, seed: this.hf.seed, generatorVersion: this.hf.generatorVersion, presetId: this.presetId, edits: confirmed.map(e => ({...e, center: [e.center[0], e.center[1]] as [number, number]}))};
   }
 
   private touch(e: Pick<TerrainEdit, 'center' | 'radius'>): void {

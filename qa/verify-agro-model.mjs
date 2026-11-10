@@ -17,7 +17,7 @@ const entity = (id, type, ports, extra = {}) => ({id, type, label: id, pose: {po
 
 // Formato y mundo vacío
 const empty = newWorld('Granja de prueba', {seed: 1234, now: '2026-11-08T12:00:00.000Z'});
-assert.equal(empty.format, 'modo-agro'); assert.equal(FORMAT, 'modo-agro'); assert.equal(empty.version, CURRENT_VERSION); assert.equal(empty.version, 1);
+assert.equal(empty.format, 'modo-agro'); assert.equal(FORMAT, 'modo-agro'); assert.equal(empty.version, CURRENT_VERSION); assert.equal(empty.version, 2);
 assert.equal(empty.terrain.sizeMeters[0] * empty.terrain.sizeMeters[1] / 10_000, empty.scenario.land.visibleHa);
 assert.equal(empty.scenario.land.cultivatedHa, 0); assert.equal(empty.entities.length, 0);
 assert.ok(parseWorld(empty).ok); ok('mundo vacío válido (100 ha visibles, 0 cultivadas)');
@@ -41,9 +41,11 @@ const exported = exportWorld(parsed.value); assert.match(exported.filename, /\.m
 const again = parseWorldText(exported.text); assert.ok(again.ok, again.error);
 assert.deepEqual(again.value, parsed.value); ok('exportar e importar conserva el mundo exactamente');
 
-// Normalización: los campos desconocidos no sobreviven
-const extra = clone(world); extra.hackeo = {x: 1}; extra.entities[0].oculto = true;
-const clean = parseWorld(extra); assert.ok(clean.ok); assert.equal('hackeo' in clean.value, false); assert.equal('oculto' in clean.value.entities[0], false); ok('descarta campos desconocidos');
+// Validación estricta (D2, Etapa 1): los campos desconocidos se RECHAZAN nombrando el campo; nunca se descartan en silencio
+const extra = clone(world); extra.hackeo = {x: 1};
+const r1 = parseWorld(extra); assert.equal(r1.ok, false); assert.match(r1.error, /campo desconocido «hackeo»/);
+const extra2 = clone(world); extra2.entities[0].oculto = true;
+const r2 = parseWorld(extra2); assert.equal(r2.ok, false); assert.match(r2.error, /campo desconocido «oculto»/); ok('rechaza campos desconocidos nombrando el campo (no los descarta en silencio)');
 
 // Migración y formatos ajenos
 assert.ok(migrateWorld(clone(empty)).ok); ok('migración de la versión vigente');

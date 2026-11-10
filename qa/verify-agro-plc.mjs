@@ -275,9 +275,8 @@ function run(w, days, {refill = true, trace = true} = {}) {
   bad(mut(d => { d.plc[w.board].hmi = 'x'; }), /formato/);
   bad(mut(d => { d.plc = [1]; }), /no son válidos/);
   bad(mut(d => { d.plc[w.board].rungs[0].branches = [null]; }), /mal formados/);
-  const clean = must(mut(d => { d.plc[w.board].extra = 'x'; d.plc[w.board].rungs[0].extra = 1; d.plc[w.board].hmi[0].evil = '<script>'; }));
-  assert.equal('extra' in clean.plc[w.board], false); assert.equal('extra' in clean.plc[w.board].rungs[0], false); assert.equal('evil' in clean.plc[w.board].hmi[0], false);
-  ok('archivo dañado: programa de una pieza que no es tablero, bobina sobre una entrada, direcciones y modos inventados, preset ausente, más de 12 líneas, ids repetidos, interruptor sobre una salida y formas rotas se rechazan; los campos desconocidos se descartan');
+  bad(mut(d => { d.plc[w.board].extra = 'x'; }), /campo desconocido «extra»/); bad(mut(d => { d.plc[w.board].rungs[0].extra = 1; }), /campo desconocido «extra»/); bad(mut(d => { d.plc[w.board].hmi[0].evil = '<script>'; }), /campo desconocido «evil»/);
+  ok('archivo dañado: programa de una pieza que no es tablero, bobina sobre una entrada, direcciones y modos inventados, preset ausente, más de 12 líneas, ids repetidos, interruptor sobre una salida y formas rotas se rechazan; los campos desconocidos también se rechazan (D2)');
 }
 {
   const w = plcWorld({}); assert.ok(w.s.program(w.board).rungs.length > 0);

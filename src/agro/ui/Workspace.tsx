@@ -1,6 +1,7 @@
 import {Component, lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode} from 'react';
 import {ArrowLeft, ChevronsDown, ChevronsUp, Download, Cable, Equal, Eye, Footprints, List, Map as MapIcon, MousePointer2, Orbit, Redo2, Ruler, Satellite, Undo2} from 'lucide-react';
 import {exportWorld} from '../model/validate.ts';
+import {STROKE_RETRY_MS, autosaveDecision} from '../store/autosave.ts';
 import type {Entity, PortRef, PropValue} from '../model/types.ts';
 import type {CameraMode, CameraReport, GhostInfo, Metrics, Point, Tool} from '../scene/AgroCanvas.tsx';
 import {slopeDegrees} from '../terrain/heightfield.ts';
@@ -52,10 +53,15 @@ function useAutosave(session: WorldSession, store: WorldStore, persistent: boole
   const [at, setAt] = useState<Date | null>(null);
   const savedVersion = useRef(session.version), running = useRef<Promise<void> | null>(null), timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const flush = useCallback(async (): Promise<void> => {
+  const flush = useCallback(async (force = false): Promise<void> => {
     if (timer.current) { clearTimeout(timer.current); timer.current = null; }
     if (running.current) await running.current;
-    if (session.version === savedVersion.current) { setState(s => (s === 'pending' ? 'saved' : s)); return; }
+    const decision = autosaveDecision(session, savedVersion.current, force);
+    if (!decision.save) {
+      if (decision.reason === 'sin-cambios') setState(s => (s === 'pending' ? 'saved' : s));
+      else { setState(s => (s === 'saving' ? s : 'pending')); timer.current = setTimeout(() => void flush(), STROKE_RETRY_MS); }   // trazo de terreno abierto: se espera a que se cierre
+      return;
+    }
     const job = (async () => {
       const version = session.version; setState('saving');
       const r = await store.save(session.toWorld());
@@ -68,10 +74,10 @@ function useAutosave(session: WorldSession, store: WorldStore, persistent: boole
   useEffect(() => {
     if (!persistent) return;
     const off = session.subscribe(() => { if (session.version === savedVersion.current) return; setState(s => (s === 'saving' ? s : 'pending')); if (!timer.current) timer.current = setTimeout(() => void flush(), 700); });
-    const hidden = () => { if (document.visibilityState === 'hidden') void flush(); };
-    const leave = () => { void flush(); };
+    const hidden = () => { if (document.visibilityState === 'hidden') void flush(true); };
+    const leave = () => { void flush(true); };
     document.addEventListener('visibilitychange', hidden); window.addEventListener('pagehide', leave);
-    return () => { off(); document.removeEventListener('visibilitychange', hidden); window.removeEventListener('pagehide', leave); if (timer.current) clearTimeout(timer.current); void flush(); };
+    return () => { off(); document.removeEventListener('visibilitychange', hidden); window.removeEventListener('pagehide', leave); if (timer.current) clearTimeout(timer.current); void flush(true); };
   }, [session, persistent, flush]);
   return {state, error, at, flush};
 }
@@ -198,7 +204,7 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
     setNotice(`Mundo exportado: ${session.entities.length} piezas y ${session.terrain.edits.length} ediciones de terreno.`);
   };
   const rename = () => { menu.current?.removeAttribute('open'); const n = prompt('Nombre del mundo', session.name); if (n !== null) { const r = session.setName(n); if (!r.ok) setNotice(r.error); } };
-  const exit = async () => { setLeaving(true); await save.flush(); await onExit(); };
+  const exit = async () => { setLeaving(true); await save.flush(true); await onExit(); };
 
   const readout = (label: string, p: Point | null, id: string) => p ? <p className="agro-read" data-testid={id}><b>{label}</b><span>Cota {num.format(p.y)} m</span><span>Pendiente {num.format(slopeDegrees(hf, p.x, p.z))}°</span><span>x {int.format(p.x)} · z {int.format(p.z)}</span></p> : null;
   const analysis = session.analyze();

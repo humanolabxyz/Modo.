@@ -4,8 +4,9 @@
 import {migrate as migrateVersion} from '../../industria/model/validate.ts';
 import {validateProgram} from '../plc/program.ts';
 import {checkPorts} from './ports.ts';
+import {GENERATOR_VERSIONS, VALLEY_SEED} from '../terrain/generators.ts';
 import {
-  CONNECTION_STATUSES, CURRENT_VERSION, EXPERIENCE_MODES, FORMAT, LIFECYCLES, LIMITS, PHYSICAL_STATUSES, PORT_DIRECTIONS, PORT_KINDS, PROVENANCES, SIM_SPEEDS, TERRAIN_EDIT_KINDS,
+  CONNECTION_STATUSES, CURRENT_VERSION, EXPERIENCE_MODES, FORMAT, LIFECYCLES, LIMITS, PHYSICAL_STATUSES, PORT_DIRECTIONS, PORT_KINDS, PROVENANCES, SIM_SPEEDS, TERRAIN_EDIT_KINDS, TERRITORY_IDS,
   type AgroProgram, type Clock, type Connection, type Economy, type LedgerEntry, type Order, type Entity, type Port, type Result, type Scenario, type Terrain, type TerrainEdit, type Vec3, type WorldProject,
 } from './types.ts';
 
@@ -22,11 +23,31 @@ const safeKey = (k: string): boolean => !DANGEROUS.has(k);
 const isoDate = (v: unknown): v is string => typeof v === 'string' && v.length <= 40 && !Number.isNaN(Date.parse(v));
 const unit = (v: Vec3): boolean => Math.abs(Math.hypot(v[0], v[1], v[2]) - 1) < 0.01;
 
+/** Validación estricta (D2): un objeto de forma fija solo puede traer las claves que esta versión conoce. Un campo desconocido NUNCA se descarta en silencio: el archivo se rechaza y se dice cuál es. */
+function unknownKey(rec: Rec, allowed: readonly string[], where: string): string | null {
+  for (const k of Object.keys(rec)) if (!allowed.includes(k)) return `${where}: campo desconocido «${k.slice(0, 40)}». El archivo no se abrió ni se modificó (puede venir de una versión más nueva de modo. Agro o estar alterado).`;
+  return null;
+}
+
 /** Formatos de otros módulos de modo.: se reconocen para dar un mensaje útil y nunca se aceptan. */
 export const OTHER_FORMATS: Record<string, string> = {'modo-industria': 'Industria', 'modo-robotica': 'Robótica', 'panellab-laboratory': 'Laboratorio', 'modo-panel': 'Panel de control', 'modo-equipment': 'Equipos', 'modo-cabinet-report': 'Tableros'};
 
-/** Cada entrada `n` convierte un mundo de la versión `n` a la `n + 1`. Hoy solo existe la versión 1: aquí se añadirán las migraciones. */
-export const MIGRATIONS: Record<number, (raw: Rec) => Rec> = {};
+/**
+ * Cada entrada `n` convierte un mundo de la versión `n` a la `n + 1` (devuelve una copia; nunca modifica el original).
+ * v1 → v2: el terreno declara que usa el generador 1 (el original, congelado) y su territorio, y el escenario lo repite.
+ *   Territorio inferido: semilla 31 = «Valle central» (así lo creaba el asistente); cualquier otra = «Mundo libre». Es solo una etiqueta: el terreno no cambia.
+ *   Si un archivo v1 ya trae esos campos, no es un v1 genuino: se rechaza (no se sobrescriben en silencio).
+ */
+export const MIGRATIONS: Record<number, (raw: Rec) => Rec> = {
+  1: raw => {
+    const terrain = raw.terrain, scenario = raw.scenario;
+    if (!isRec(terrain) || !isRec(scenario)) return raw;   // la validación posterior da el mensaje concreto
+    for (const k of ['generatorVersion', 'presetId']) if (k in terrain) throw new Error(`El archivo declara ser de la versión 1 pero el terreno ya trae «${k}», un campo de la versión 2.`);
+    if ('territory' in scenario) throw new Error('El archivo declara ser de la versión 1 pero el escenario ya trae «territory», un campo de la versión 2.');
+    const preset = terrain.seed === VALLEY_SEED ? 'valley' : 'free';
+    return {...raw, terrain: {...terrain, generatorVersion: 1, presetId: preset}, scenario: {...scenario, territory: preset}};
+  },
+};
 
 /** Lleva cualquier archivo conocido a la versión vigente. Rechaza formatos ajenos, versiones futuras o sin ruta de migración. */
 export function migrateWorld(raw: unknown): Result<Rec> {
@@ -36,13 +57,14 @@ export function migrateWorld(raw: unknown): Result<Rec> {
     const owner = typeof format === 'string' && Object.hasOwn(OTHER_FORMATS, format) ? OTHER_FORMATS[format] : undefined;
     return fail(owner ? `Este archivo es de ${owner}; ábrelo en ${owner}.` : 'El archivo no es un mundo de Agro (falta el formato «modo-agro»).');
   }
-  return migrateVersion(raw, MIGRATIONS, CURRENT_VERSION);
+  try { return migrateVersion(raw, MIGRATIONS, CURRENT_VERSION); } catch (e) { return fail(e instanceof Error ? e.message : 'No se pudo migrar el archivo.'); }
 }
 
 function parsePort(raw: unknown, where: string): Result<Port> {
   if (!isRec(raw)) return fail(`${where}: el puerto no es válido.`);
   if (!str(raw.id, LIMITS.id) || !safeKey(raw.id)) return fail(`${where}: id de puerto inválido.`);
   const at = `${where}, puerto «${raw.id}»`;
+  { const u = unknownKey(raw, ['id', 'label', 'kind', 'direction', 'local', 'normal', 'spec'], at); if (u) return fail(u); }
   if (!oneOf(PORT_KINDS, raw.kind)) return fail(`${at}: tipo de puerto desconocido.`);
   if (!oneOf(PORT_DIRECTIONS, raw.direction)) return fail(`${at}: dirección inválida.`);
   if (raw.label !== undefined && !str(raw.label, LIMITS.label)) return fail(`${at}: etiqueta inválida.`);
@@ -50,6 +72,7 @@ function parsePort(raw: unknown, where: string): Result<Port> {
   if (!vec3(raw.normal) || !unit(raw.normal)) return fail(`${at}: la normal debe ser un vector unitario.`);
   const s = raw.spec;
   if (!isRec(s)) return fail(`${at}: faltan las especificaciones.`);
+  { const allowed = raw.kind === 'hydraulic' ? ['diameterMm', 'connector'] : raw.kind === 'power' ? ['current', 'phases', 'voltage', 'frequencyHz'] : raw.kind === 'signal' ? ['signal', 'level'] : ['mount']; const u = unknownKey(s, allowed, `${at}, especificaciones`); if (u) return fail(u); }
   const base = {id: raw.id, direction: raw.direction, local: [...raw.local] as Vec3, normal: [...raw.normal] as Vec3, ...(raw.label !== undefined ? {label: raw.label as string} : {})};
   switch (raw.kind) {
     case 'hydraulic':
@@ -91,8 +114,10 @@ function parseEntity(raw: unknown, index: number): Result<Entity> {
   if (!isRec(raw)) return fail(`${at}: no es válida.`);
   if (!str(raw.id, LIMITS.id) || !safeKey(raw.id)) return fail(`${at}: id inválido.`);
   const where = `${at} «${raw.id}»`;
+  { const u = unknownKey(raw, ['id', 'type', 'label', 'pose', 'params', 'state', 'ports', 'lifecycle', 'owner', 'provenance', 'locked'], where); if (u) return fail(u); }
   if (!str(raw.type, LIMITS.id)) return fail(`${where}: falta el tipo.`);
   if (!str(raw.label, LIMITS.label)) return fail(`${where}: nombre inválido.`);
+  if (isRec(raw.pose)) { const u = unknownKey(raw.pose, ['position', 'rotation'], `${where}: pose`); if (u) return fail(u); }
   if (!isRec(raw.pose) || !vec3(raw.pose.position) || !vec3(raw.pose.rotation)) return fail(`${where}: pose inválida (posición y rotación son tres números).`);
   const params = parseDict(raw.params, `${where}: parámetros`); if (!params.ok) return params;
   const state = parseDict(raw.state, `${where}: estado`); if (!state.ok) return state;
@@ -119,11 +144,13 @@ function parseConnection(raw: unknown, index: number, byId: Map<string, Entity>)
   if (!isRec(raw)) return fail(`${at}: no es válida.`);
   if (!str(raw.id, LIMITS.id) || !safeKey(raw.id)) return fail(`${at}: id inválido.`);
   const where = `${at} «${raw.id}»`;
+  { const u = unknownKey(raw, ['id', 'kind', 'a', 'b', 'status', 'reason', 'route'], where); if (u) return fail(u); }
   if (!oneOf(PORT_KINDS, raw.kind)) return fail(`${where}: tipo desconocido.`);
   if (!oneOf(CONNECTION_STATUSES, raw.status)) return fail(`${where}: estado desconocido.`);
   const refs: Port[] = [];
   for (const side of ['a', 'b'] as const) {
     const ref = raw[side];
+    if (isRec(ref)) { const u = unknownKey(ref, ['entityId', 'portId'], `${where}: extremo «${side}»`); if (u) return fail(u); }
     if (!isRec(ref) || !str(ref.entityId, LIMITS.id) || !str(ref.portId, LIMITS.id)) return fail(`${where}: el extremo «${side}» no es válido.`);
     const entity = byId.get(ref.entityId);
     if (!entity) return fail(`${where}: el componente «${ref.entityId}» no existe.`);
@@ -149,11 +176,14 @@ function parseConnection(raw: unknown, index: number, byId: Map<string, Entity>)
 
 function parseScenario(raw: unknown): Result<Scenario> {
   if (!isRec(raw)) return fail('Falta el escenario.');
+  { const u = unknownKey(raw, ['site', 'origin', 'label', 'provenance', 'land', 'territory'], 'Escenario'); if (u) return fail(u); }
   if (raw.origin !== 'template' && raw.origin !== 'location' && raw.origin !== 'blank') return fail('Origen del escenario desconocido.');
   if (!str(raw.label, LIMITS.label)) return fail('Falta el nombre del escenario.');
   if (!oneOf(PROVENANCES, raw.provenance)) return fail('Procedencia del escenario desconocida.');
   const land = raw.land;
   if (!isRec(land)) return fail('Faltan las superficies del escenario.');
+  { const u = unknownKey(land, ['visibleHa', 'administeredHa', 'authorizedHa', 'cultivatedHa'], 'Superficies del escenario'); if (u) return fail(u); }
+  if (!oneOf(TERRITORY_IDS, raw.territory)) return fail(`El territorio del escenario es desconocido (${TERRITORY_IDS.map(t => '«' + t + '»').join(', ')}).`);
   const keys = ['visibleHa', 'administeredHa', 'authorizedHa', 'cultivatedHa'] as const;
   for (const k of keys) if (!num(land[k]) || (land[k] as number) < 0) return fail(`Superficie «${k}» inválida.`);
   const [v, ad, au, cu] = keys.map(k => land[k] as number);
@@ -161,28 +191,33 @@ function parseScenario(raw: unknown): Result<Scenario> {
   if (ad > v || au > v || cu > ad) return fail('Las superficies no son coherentes: lo cultivado cabe en lo administrado y todo cabe en lo visible.');
   const site = raw.site;
   if (site !== undefined && (!Array.isArray(site) || site.length !== 2 || !site.every(num))) return fail('El emplazamiento es inválido.');
-  return {ok: true, value: {origin: raw.origin, label: raw.label, provenance: raw.provenance, ...(site ? {site: [site[0], site[1]] as [number, number]} : {}), land: {visibleHa: v, administeredHa: ad, authorizedHa: au, cultivatedHa: cu}}};
+  return {ok: true, value: {origin: raw.origin, label: raw.label, provenance: raw.provenance, ...(site ? {site: [site[0], site[1]] as [number, number]} : {}), land: {visibleHa: v, administeredHa: ad, authorizedHa: au, cultivatedHa: cu}, territory: raw.territory}};
 }
 
 function parseTerrain(raw: unknown): Result<Terrain> {
   if (!isRec(raw)) return fail('Falta el terreno.');
+  { const u = unknownKey(raw, ['sizeMeters', 'cellMeters', 'seed', 'generatorVersion', 'presetId', 'edits'], 'Terreno'); if (u) return fail(u); }
   const size = raw.sizeMeters;
   if (!Array.isArray(size) || size.length !== 2 || !size.every(num) || size.some(s => s <= 0 || s > LIMITS.maxSideMeters)) return fail(`El tamaño del terreno debe ser dos números entre 0 y ${LIMITS.maxSideMeters} m.`);
   if (!num(raw.cellMeters) || raw.cellMeters < LIMITS.minCellMeters || raw.cellMeters > Math.min(size[0], size[1])) return fail('El tamaño de celda del terreno es inválido.');
   if (!Number.isInteger(raw.seed) || (raw.seed as number) < 0 || (raw.seed as number) > 0x7fffffff) return fail('La semilla del terreno debe ser un entero de 31 bits.');
+  if (!Number.isInteger(raw.generatorVersion) || !GENERATOR_VERSIONS.includes(raw.generatorVersion as number)) return fail(`El terreno usa el generador de relieve «${String(raw.generatorVersion).slice(0, 20)}», que esta versión de modo. Agro no conoce (conoce: ${GENERATOR_VERSIONS.join(', ')}). Actualiza modo. Agro: el mundo no se abrió ni se modificó.`);
+  if (!oneOf(TERRITORY_IDS, raw.presetId)) return fail('El territorio del terreno es desconocido.');
   if (!Array.isArray(raw.edits) || raw.edits.length > LIMITS.terrainEdits) return fail(`Demasiadas ediciones de terreno (máximo ${LIMITS.terrainEdits}).`);
   const edits: TerrainEdit[] = [], ids = new Set<string>();
   for (const [i, e] of raw.edits.entries()) {
     if (!isRec(e) || !str(e.id, LIMITS.id) || !safeKey(e.id) || !oneOf(TERRAIN_EDIT_KINDS, e.kind)) return fail(`Edición de terreno ${i + 1} inválida.`);
+    { const u = unknownKey(e, ['id', 'kind', 'center', 'radius', 'amount', 'at'], `Edición de terreno «${e.id}»`); if (u) return fail(u); }
     if (ids.has(e.id)) return fail(`Edición de terreno repetida: «${e.id}».`);
     if (!Array.isArray(e.center) || e.center.length !== 2 || !e.center.every(num) || !num(e.radius) || e.radius <= 0 || !num(e.amount) || !num(e.at) || e.at < 0) return fail(`Edición de terreno «${e.id}» fuera de rango.`);
     ids.add(e.id); edits.push({id: e.id, kind: e.kind, center: [e.center[0], e.center[1]], radius: e.radius, amount: e.amount, at: e.at});
   }
-  return {ok: true, value: {sizeMeters: [size[0], size[1]], cellMeters: raw.cellMeters, seed: raw.seed as number, edits}};
+  return {ok: true, value: {sizeMeters: [size[0], size[1]], cellMeters: raw.cellMeters, seed: raw.seed as number, generatorVersion: raw.generatorVersion as number, presetId: raw.presetId, edits}};
 }
 
 function parseClock(raw: unknown): Result<Clock> {
   if (!isRec(raw)) return fail('Falta el reloj de simulación.');
+  { const u = unknownKey(raw, ['simSeconds', 'speed', 'seed', 'startDate'], 'Reloj de simulación'); if (u) return fail(u); }
   if (!num(raw.simSeconds) || raw.simSeconds < 0) return fail('El tiempo simulado debe ser un número no negativo.');
   if (!oneOf(SIM_SPEEDS, raw.speed)) return fail(`La velocidad debe ser una de ${SIM_SPEEDS.join(', ')}.`);
   if (!Number.isInteger(raw.seed) || (raw.seed as number) < 0 || (raw.seed as number) > 0x7fffffff) return fail('La semilla de simulación debe ser un entero de 31 bits.');
@@ -190,16 +225,18 @@ function parseClock(raw: unknown): Result<Clock> {
   return {ok: true, value: {simSeconds: raw.simSeconds, speed: raw.speed, seed: raw.seed as number, startDate: raw.startDate}};
 }
 
-/** Valida un mundo ya leído (JSON). Lo migra a la versión vigente y devuelve una copia limpia (sin campos desconocidos). */
+/** Valida un mundo ya leído (JSON). Lo migra a la versión vigente (sin modificar el original) y devuelve una copia. Rechaza —con el campo concreto— todo lo desconocido o incompatible: nada se descarta en silencio. */
 export function parseWorld(input: unknown): Result<WorldProject> {
   const migrated = migrateWorld(input); if (!migrated.ok) return migrated;
   const raw = migrated.value;
+  { const u = unknownKey(raw, ['format', 'version', 'id', 'name', 'createdAt', 'updatedAt', 'experience', 'scenario', 'terrain', 'clock', 'entities', 'connections', 'plc', 'economy'], 'Mundo'); if (u) return fail(u); }
   if (!str(raw.id, LIMITS.id) || !safeKey(raw.id)) return fail('El mundo no tiene un id válido.');
   if (!str(raw.name, LIMITS.name)) return fail('El nombre del mundo no es válido.');
   if (!isoDate(raw.createdAt) || !isoDate(raw.updatedAt)) return fail('Las fechas del mundo no son válidas.');
   if (!oneOf(EXPERIENCE_MODES, raw.experience)) return fail('La experiencia debe ser «learning», «free» o «real».');
   const scenario = parseScenario(raw.scenario); if (!scenario.ok) return scenario;
   const terrain = parseTerrain(raw.terrain); if (!terrain.ok) return terrain;
+  if (scenario.value.territory !== terrain.value.presetId) return fail(`El territorio del escenario («${scenario.value.territory}») no coincide con el del terreno («${terrain.value.presetId}»).`);
   if (scenario.value.site?.some((coordinate, axis) => Math.abs(coordinate) > terrain.value.sizeMeters[axis] / 2)) return fail('El emplazamiento queda fuera del terreno.');
   const clock = parseClock(raw.clock); if (!clock.ok) return clock;
   if (!Array.isArray(raw.entities) || raw.entities.length > LIMITS.entities) return fail(`La lista de componentes es inválida (máximo ${LIMITS.entities}).`);
@@ -223,24 +260,26 @@ export function parseWorld(input: unknown): Result<WorldProject> {
   return {ok: true, value: {format: FORMAT, version: CURRENT_VERSION, id: raw.id, name: raw.name, createdAt: raw.createdAt, updatedAt: raw.updatedAt, experience: raw.experience, scenario: scenario.value, terrain: terrain.value, clock: clock.value, entities, connections, ...(plc.value ? {plc: plc.value} : {}), ...(economy.value ? {economy: economy.value} : {})}};
 }
 
-/** Economía (Fase 6): opcional; números finitos y listas acotadas. Se copian solo los campos conocidos. */
+/** Economía (Fase 6): opcional; números finitos y listas acotadas. Los campos desconocidos se rechazan. */
 function parseEconomy(raw: unknown): Result<Economy | undefined> {
   if (raw === undefined) return {ok: true, value: undefined};
+  if (isRec(raw)) { const u = unknownKey(raw, ['money', 'delivered', 'orders', 'ledger'], 'Economía'); if (u) return fail(u); }
   if (!isRec(raw) || !num(raw.money) || !isRec(raw.delivered) || !Array.isArray(raw.orders) || !Array.isArray(raw.ledger)) return fail('La economía del mundo no tiene el formato esperado.');
   if (raw.orders.length > 200 || raw.ledger.length > 200) return fail('La economía del mundo tiene demasiados pedidos o movimientos.');
   const delivered: Record<string, number> = {};
   for (const [k, v] of Object.entries(raw.delivered)) { if (!safeKey(k) || k.length > 40 || !num(v) || !Number.isInteger(v) || v < 0 || v > 100_000) return fail(`Economía: unidades recibidas inválidas en «${k}».`); delivered[k] = v; }
   const orders: Order[] = [];
   for (const o of raw.orders) {
+    if (isRec(o)) { const u = unknownKey(o, ['id', 'type', 'qty', 'cost', 'orderedAt', 'deliverAt', 'delivered'], 'Economía, pedido'); if (u) return fail(u); }
     if (!isRec(o) || !str(o.id, 60) || !str(o.type, 40) || !safeKey(o.type) || !num(o.qty) || !Number.isInteger(o.qty) || o.qty < 1 || o.qty > 1000 || !num(o.cost) || !num(o.orderedAt) || !num(o.deliverAt) || typeof o.delivered !== 'boolean') return fail('Economía: un pedido no es válido.');
     orders.push({id: o.id, type: o.type, qty: o.qty, cost: o.cost, orderedAt: o.orderedAt, deliverAt: o.deliverAt, delivered: o.delivered});
   }
   const ledger: LedgerEntry[] = [];
-  for (const l of raw.ledger) { if (!isRec(l) || !num(l.at) || !num(l.amount) || typeof l.text !== 'string' || l.text.length > LIMITS.text) return fail('Economía: un movimiento no es válido.'); ledger.push({at: l.at, text: l.text, amount: l.amount}); }
+  for (const l of raw.ledger) { if (isRec(l)) { const u = unknownKey(l, ['at', 'text', 'amount'], 'Economía, movimiento'); if (u) return fail(u); } if (!isRec(l) || !num(l.at) || !num(l.amount) || typeof l.text !== 'string' || l.text.length > LIMITS.text) return fail('Economía: un movimiento no es válido.'); ledger.push({at: l.at, text: l.text, amount: l.amount}); }
   return {ok: true, value: {money: raw.money, delivered, orders, ledger}};
 }
 
-/** Programas de PLC (Fase 5): opcionales; cada uno pertenece a un tablero que existe. Se copian solo los campos conocidos. */
+/** Programas de PLC (Fase 5): opcionales; cada uno pertenece a un tablero que existe. Los campos desconocidos se rechazan. */
 function parsePlc(raw: unknown, byId: Map<string, Entity>): Result<Record<string, AgroProgram> | undefined> {
   if (raw === undefined) return {ok: true, value: undefined};
   if (!isRec(raw)) return fail('Los programas de PLC no son válidos.');
@@ -248,6 +287,13 @@ function parsePlc(raw: unknown, byId: Map<string, Entity>): Result<Record<string
   for (const [id, p] of Object.entries(raw)) {
     if (byId.get(id)?.type !== 'tablero') return fail(`Hay un programa de PLC para «${id}», que no es un tablero del mundo.`);
     if (!isRec(p) || !Array.isArray(p.rungs) || !Array.isArray(p.hmi)) return fail(`El programa de PLC de «${id}» no tiene el formato esperado.`);
+    { const u = unknownKey(p, ['rungs', 'hmi'], `Programa de PLC de «${id}»`); if (u) return fail(u); }
+    for (const r of p.rungs) if (isRec(r)) {
+      let u = unknownKey(r, ['id', 'comment', 'branches', 'coil'], `Programa de PLC de «${id}», línea`); if (u) return fail(u);
+      if (isRec(r.coil)) { u = unknownKey(r.coil, ['tag', 'mode', 'preset'], `Programa de PLC de «${id}», bobina`); if (u) return fail(u); }
+      if (Array.isArray(r.branches)) for (const b of r.branches) if (Array.isArray(b)) for (const c of b) if (isRec(c)) { u = unknownKey(c, ['tag', 'nc'], `Programa de PLC de «${id}», contacto`); if (u) return fail(u); }
+    }
+    for (const w of p.hmi) if (isRec(w)) { const u = unknownKey(w, ['id', 'kind', 'label', 'tag'], `Programa de PLC de «${id}», pantalla`); if (u) return fail(u); }
     const rungs = p.rungs.map(r => (isRec(r) && isRec(r.coil) && Array.isArray(r.branches) ? {id: String(r.id), ...(typeof r.comment === 'string' ? {comment: r.comment.slice(0, LIMITS.text)} : {}), branches: r.branches.map(b => (Array.isArray(b) ? b.map(c => (isRec(c) ? {tag: String(c.tag), ...(c.nc === true ? {nc: true} : {})} : null)) : null)), coil: {tag: String(r.coil.tag), mode: String(r.coil.mode), ...(typeof r.coil.preset === 'number' ? {preset: r.coil.preset} : {})}} : null));
     const hmi = p.hmi.map(w => (isRec(w) ? {id: String(w.id), kind: String(w.kind), label: String(w.label), ...(typeof w.tag === 'string' ? {tag: w.tag} : {})} : null));
     if (rungs.some(r => r === null || r.branches.some(b => b === null || b.some(c => c === null))) || hmi.some(w => w === null)) return fail(`El programa de PLC de «${id}» tiene elementos mal formados.`);

@@ -2,9 +2,10 @@
 // El mapa NO se guarda entero: se regenera desde la semilla y se le reaplican las ediciones (deltas) en orden.
 // Coordenadas del mundo: metros, centradas en el origen; x este, z sur, y arriba.
 import type {TerrainEdit} from '../model/types.ts';
-import {fbm} from './noise.ts';
+import {DEFAULT_GENERATOR_VERSION, generatorFor} from './generators.ts';
 
-export type TerrainSpec = {sizeMeters: [number, number]; cellMeters: number; seed: number};
+/** `generatorVersion` omitido = 1 (el generador original de la Fase 6). */
+export type TerrainSpec = {sizeMeters: [number, number]; cellMeters: number; seed: number; generatorVersion?: number};
 
 export type Heightfield = {
   sizeX: number; sizeZ: number; cell: number;
@@ -12,6 +13,8 @@ export type Heightfield = {
   nx: number; nz: number;
   originX: number; originZ: number;
   seed: number;
+  /** Versión del generador que produjo `base` (ver generators.ts). */
+  generatorVersion: number;
   /** Alturas actuales (m), índice `j * nx + i`. */
   data: Float32Array;
   /** Alturas de la base procedural, sin ediciones. */
@@ -21,33 +24,18 @@ export type Heightfield = {
 export const MIN_HEIGHT = -50, MAX_HEIGHT = 500;
 
 const clamp = (v: number, lo: number, hi: number): number => (v < lo ? lo : v > hi ? hi : v);
-const smooth01 = (t: number): number => { const c = clamp(t, 0, 1); return c * c * (3 - 2 * c); };
-
-/** Relieve base en un punto: colinas, una ladera que sube hacia el este, cordón montañoso y una meseta llana en el centro (la zona de la finca). */
-function rawHeight(seed: number, x: number, z: number, sx: number, sz: number): number {
-  const u = x / sx;
-  const hills = (fbm(seed, x / 280 + 3.1, z / 280 - 7.7, 5) - 0.5) * 46;
-  const rise = smooth01((u - 0.05) / 0.45);
-  const mountains = rise * rise * (40 + 90 * fbm(seed + 13, x / 330, z / 330, 4));
-  const tilt = 10 * (u + 0.5);
-  return hills + mountains + tilt;
-}
-
-export function baseHeight(seed: number, x: number, z: number, sx: number, sz: number): number {
-  const h = rawHeight(seed, x, z, sx, sz), h0 = rawHeight(seed, 0, 0, sx, sz);
-  const d = Math.sqrt(x * x + z * z);
-  const w = 0.95 * (1 - smooth01((d - 100) / 170));
-  const detail = (fbm(seed + 7, x / 18, z / 18, 3) - 0.5) * 1.2;
-  return h * (1 - w) + h0 * w - h0 + 20 + detail * (1 - 0.7 * w);
+/** Relieve base de la semilla con el generador de la versión dada (por defecto la 1). La implementación vive en generators.ts y está congelada por versión. */
+export function baseHeight(seed: number, x: number, z: number, sx: number, sz: number, generatorVersion: number = DEFAULT_GENERATOR_VERSION): number {
+  return generatorFor(generatorVersion)(seed, x, z, sx, sz);
 }
 
 export function createHeightfield(spec: TerrainSpec): Heightfield {
   const [sizeX, sizeZ] = spec.sizeMeters, cell = spec.cellMeters;
   const nx = Math.round(sizeX / cell) + 1, nz = Math.round(sizeZ / cell) + 1;
   const originX = -sizeX / 2, originZ = -sizeZ / 2;
-  const base = new Float32Array(nx * nz);
-  for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) base[j * nx + i] = baseHeight(spec.seed, originX + i * cell, originZ + j * cell, sizeX, sizeZ);
-  return {sizeX, sizeZ, cell, nx, nz, originX, originZ, seed: spec.seed, data: new Float32Array(base), base};
+  const generatorVersion = spec.generatorVersion ?? DEFAULT_GENERATOR_VERSION, generate = generatorFor(generatorVersion), base = new Float32Array(nx * nz);
+  for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) base[j * nx + i] = generate(spec.seed, originX + i * cell, originZ + j * cell, sizeX, sizeZ);
+  return {sizeX, sizeZ, cell, nx, nz, originX, originZ, seed: spec.seed, generatorVersion, data: new Float32Array(base), base};
 }
 
 /** Región de celdas (índices de la malla) que toca una edición, ampliada en 1 para las normales. */

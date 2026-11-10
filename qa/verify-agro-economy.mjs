@@ -105,8 +105,8 @@ const link = (s, a, ap, b, bp) => must(s.connectPorts({entityId: a.id, portId: a
   bad(mut(d => { d.economy.money = 'mucho'; }), /economía/i); bad(mut(d => { d.economy.delivered = {bomba: -1}; }), /recibidas/); bad(mut(d => { d.economy.delivered = {bomba: 1.5}; }), /recibidas/);
   bad(mut(d => { d.economy.orders[0].qty = 0; }), /pedido/); bad(mut(d => { d.economy.orders[0].delivered = 'si'; }), /pedido/); bad(mut(d => { d.economy.orders = new Array(201).fill(d.economy.orders[0]); }), /demasiados/);
   bad(mut(d => { d.economy.ledger[0].text = 'x'.repeat(500); }), /movimiento/); bad(mut(d => { d.economy = [1]; }), /formato/);
-  const clean = must(mut(d => { d.economy.extra = 1; d.economy.orders[0].evil = '<b>'; })); assert.equal('extra' in clean.economy, false); assert.equal('evil' in clean.economy.orders[0], false);
-  ok('archivo dañado: dinero no numérico, unidades negativas o con decimales, pedidos mal formados, demasiados pedidos y textos largos se rechazan; los campos desconocidos se descartan');
+  bad(mut(d => { d.economy.extra = 1; }), /campo desconocido «extra»/); bad(mut(d => { d.economy.orders[0].evil = '<b>'; }), /campo desconocido «evil»/);
+  ok('archivo dañado: dinero no numérico, unidades negativas o con decimales, pedidos mal formados, demasiados pedidos y textos largos se rechazan; los campos desconocidos también se rechazan (D2)');
 }
 
 // ── Rendimiento ────────────────────────────────────────────────────────

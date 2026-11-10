@@ -1,6 +1,7 @@
 import {newWorld} from '../model/defaults.ts';
 import type {Entity, ExperienceMode, Result, TerrainEdit, WorldProject} from '../model/types.ts';
 import {baseHeight} from '../terrain/heightfield.ts';
+import {DEFAULT_GENERATOR_VERSION, VALLEY_SEED} from '../terrain/generators.ts';
 import {WorldSession} from './session.ts';
 
 export const TEMPLATES = {blank: 'Mundo en blanco', farm: 'Granja productiva', greenhouse: 'Cultivo protegido'} as const;
@@ -20,11 +21,11 @@ export function siteX(site: WorldSetup['site']) {
 
 export function setupTerrain(setup: WorldSetup, cellMeters = 2): WorldProject['terrain'] {
   const {side, relief, radius} = setup, x = siteX(setup.site);
-  const seed = setup.territory === 'valley' ? 31 : setup.seed;
+  const seed = setup.territory === 'valley' ? VALLEY_SEED : setup.seed, generatorVersion = DEFAULT_GENERATOR_VERSION;
   const edits: TerrainEdit[] = relief === 'level'
-    ? [{id: 'emplazamiento', kind: 'level', center: [x, 0], radius, amount: baseHeight(seed, x, 0, side, side), at: 0}]
+    ? [{id: 'emplazamiento', kind: 'level', center: [x, 0], radius, amount: baseHeight(seed, x, 0, side, side, generatorVersion), at: 0}]
     : [];
-  return {sizeMeters: [side, side], cellMeters, seed, edits};
+  return {sizeMeters: [side, side], cellMeters, seed, generatorVersion, presetId: setup.territory, edits};
 }
 
 export function createConfiguredWorld(setup: WorldSetup): Result<WorldProject> {
@@ -35,6 +36,7 @@ export function createConfiguredWorld(setup: WorldSetup): Result<WorldProject> {
     origin: setup.template === 'blank' ? 'blank' : 'template',
     label: TEMPLATES[setup.template],
     provenance: 'fictional',
+    territory: setup.territory,
     site: [siteX(setup.site), 0],
     land: {visibleHa, administeredHa: setup.resources.length ? 1 : 0, authorizedHa: 0, cultivatedHa: 0},
   };

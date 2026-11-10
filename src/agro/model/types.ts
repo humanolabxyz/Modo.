@@ -12,7 +12,8 @@ export type Vec3 = [number, number, number];
 export type Result<T> = {ok: true; value: T} | {ok: false; error: string};
 
 export const FORMAT = 'modo-agro' as const;
-export const CURRENT_VERSION = 1;
+/** Versión 2 (consolidación 3D, Etapa 1): el terreno declara su `generatorVersion` y su territorio (`presetId`), y el escenario su `territory`. Los mundos v1 se migran al abrirse (ver `MIGRATIONS` en validate.ts). */
+export const CURRENT_VERSION = 2;
 
 export const UNITS = {length: 'm', time: 's', angle: 'rad', pressure: 'bar', flow: 'L/min', power: 'kW', voltage: 'V', area: 'ha'} as const;
 
@@ -108,6 +109,10 @@ export type Connection = {
 /** Superficies distintas: lo visible no es lo propio ni lo autorizado ni lo cultivado. */
 export type LandTenure = {visibleHa: number; administeredHa: number; authorizedHa: number; cultivatedHa: number};
 
+/** Territorios generables. Todos usan el mismo motor de terreno; cambian parámetros, no código (V2 §2). Hoy existen dos; el resto llega en la Etapa 3. */
+export type TerritoryId = 'free' | 'valley';
+export const TERRITORY_IDS: readonly TerritoryId[] = ['free', 'valley'];
+
 export type Scenario = {
   /** Centro inicial de la finca en metros (x, z), cuando se elige en el asistente. */
   site?: [number, number];
@@ -116,6 +121,8 @@ export type Scenario = {
   label: string;
   provenance: Provenance;
   land: LandTenure;
+  /** Territorio con el que se generó el mundo (igual a `terrain.presetId`). */
+  territory: TerritoryId;
 };
 
 export type TerrainEditKind = 'raise' | 'lower' | 'level';
@@ -129,6 +136,10 @@ export type Terrain = {
   /** Tamaño de celda de la malla base (m). */
   cellMeters: number;
   seed: number;
+  /** Versión del generador de relieve base (terrain/generators.ts). `seed` + `generatorVersion` + tamaño reproducen la base; `edits` son deltas encima. */
+  generatorVersion: number;
+  /** Territorio elegido al crear el mundo. */
+  presetId: TerritoryId;
   edits: TerrainEdit[];
 };
 

@@ -1,4 +1,5 @@
 import {newId} from '../../industria/model/defaults.ts'; // reutilizado: mismo generador de ids estables que Industria
+import {DEFAULT_GENERATOR_VERSION} from '../terrain/generators.ts';
 import {CURRENT_VERSION, FORMAT, type Pose, type WorldProject} from './types.ts';
 
 export {newId};
@@ -23,8 +24,8 @@ export function newWorld(name = 'Mundo sin nombre', options: {seed?: number; now
     createdAt: now,
     updatedAt: now,
     experience: 'free',
-    scenario: {origin: 'blank', label: 'Mundo en blanco', provenance: 'user', land: {visibleHa: 100, administeredHa: 0, authorizedHa: 0, cultivatedHa: 0}},
-    terrain: {sizeMeters: [1000, 1000], cellMeters: 2, seed, edits: []},
+    scenario: {origin: 'blank', label: 'Mundo en blanco', provenance: 'user', land: {visibleHa: 100, administeredHa: 0, authorizedHa: 0, cultivatedHa: 0}, territory: 'free'},
+    terrain: {sizeMeters: [1000, 1000], cellMeters: 2, seed, generatorVersion: DEFAULT_GENERATOR_VERSION, presetId: 'free', edits: []},
     clock: {simSeconds: 0, speed: 0, seed, startDate: '2026-09-21T08:00:00.000Z'},
     entities: [],
     connections: [],
