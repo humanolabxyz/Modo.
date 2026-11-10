@@ -35,12 +35,12 @@ ok(`generador V1: ${GOLDEN_CHECKSUMS.length} terrenos (400–1200 m, semillas 1�
 const GOLDEN_HEIGHTS = [[[31, 0, 0, 1000, 1000], 20.056409164228423], [[31, 123.5, -456.25, 1000, 1000], 16.902525550306997], [[12345, -300, 200, 1000, 1000], 6.645902166890303], [[777, 499, -499, 1200, 1200], 91.1511452408462], [[987654321, 0.5, 0.5, 400, 400], 19.95489335621021]];
 for (const [args, h] of GOLDEN_HEIGHTS) { assert.equal(baseHeightV1(...args), h); assert.equal(baseHeight(...args), h); assert.equal(baseHeight(...args, 1), h); }
 ok('generador V1: la altura en 5 puntos coincide bit a bit (===) con el valor original, por baseHeightV1, baseHeight y baseHeight(…, 1)');
-assert.deepEqual([...GENERATOR_VERSIONS], [1]); assert.equal(DEFAULT_GENERATOR_VERSION, 1); assert.equal(GENERATORS[1], baseHeightV1); assert.ok(Object.isFrozen(GENERATORS));
-for (const v of [0, 2, -1, 1.5, NaN, '1', '__proto__', 'constructor']) assert.throws(() => generatorFor(v), /desconocido/);
-assert.throws(() => createHeightfield({sizeMeters: [400, 400], cellMeters: 2, seed: 1, generatorVersion: 2}), /desconocido/);
+assert.deepEqual([...GENERATOR_VERSIONS], [1, 2]); assert.equal(DEFAULT_GENERATOR_VERSION, 1); assert.equal(GENERATORS[1], baseHeightV1); assert.ok(Object.isFrozen(GENERATORS));
+for (const v of [0, 3, -1, 1.5, NaN, '1', '__proto__', 'constructor']) assert.throws(() => generatorFor(v), /desconocido/);
+assert.throws(() => createHeightfield({sizeMeters: [400, 400], cellMeters: 2, seed: 1, generatorVersion: 3}), /desconocido/);
 assert.equal(createHeightfield({sizeMeters: [400, 400], cellMeters: 2, seed: 5}).generatorVersion, 1); assert.equal(createHeightfield({sizeMeters: [400, 400], cellMeters: 2, seed: 5, generatorVersion: 1}).checksum, undefined);
 assert.equal(checksum(createHeightfield({sizeMeters: [400, 400], cellMeters: 2, seed: 5})), checksum(createHeightfield({sizeMeters: [400, 400], cellMeters: 2, seed: 5, generatorVersion: 1})));
-ok('el registro de generadores es de solo lectura, solo conoce la versión 1 y rechaza versiones inexistentes o nombres peligrosos; sin versión se usa la 1');
+ok('el registro de generadores es de solo lectura, conoce las versiones 1 y 2 y rechaza versiones inexistentes o nombres peligrosos; sin versión se usa la 1');
 
 // ── Los cinco mundos de referencia V1 ────────────────────────────────────
 assert.equal(CURRENT_VERSION, 2); assert.equal(typeof MIGRATIONS[1], 'function');
@@ -119,12 +119,12 @@ for (const v of [0, -1, 1.5, '2', null, undefined, NaN]) bad(mut(d => { d.versio
 bad(mut(d => { delete d.version; }), /versión válida/);
 bad(mut(d => { d.format = 'modo-industria'; }), /Industria/); bad(mut(d => { d.format = 'otra'; }), /no es un mundo de Agro/);
 ok('versiones: la futura (3, 99) se rechaza con «versión más nueva»; ausente, 0, negativa, decimal, texto, null o NaN no son versiones válidas; formatos ajenos se rechazan');
-bad(mut(d => { d.terrain.generatorVersion = 2; }), /generador de relieve «2».*no conoce/); bad(mut(d => { d.terrain.generatorVersion = '1'; }), /generador de relieve/); bad(mut(d => { d.terrain.generatorVersion = 1.5; }), /generador de relieve/);
+bad(mut(d => { d.terrain.generatorVersion = 3; }), /generador de relieve «3».*no conoce/); bad(mut(d => { d.terrain.generatorVersion = '1'; }), /generador de relieve/); bad(mut(d => { d.terrain.generatorVersion = 1.5; }), /generador de relieve/);
 bad(mut(d => { delete d.terrain.generatorVersion; }), /generador de relieve/); bad(mut(d => { d.terrain.generatorVersion = 0; }), /generador de relieve/); bad(mut(d => { d.terrain.generatorVersion = null; }), /generador de relieve/);
 bad(mut(d => { d.terrain.presetId = 'marte'; }), /territorio del terreno es desconocido/); bad(mut(d => { delete d.terrain.presetId; }), /territorio del terreno/);
 bad(mut(d => { d.scenario.territory = 'marte'; }), /territorio del escenario es desconocido/); bad(mut(d => { delete d.scenario.territory; }), /territorio del escenario/);
 bad(mut(d => { d.scenario.territory = d.terrain.presetId === 'free' ? 'valley' : 'free'; }), /no coincide/);
-ok('un terreno con un generador desconocido (2, «1», 1.5, 0, null o ausente) o con un territorio inexistente/incoherente se rechaza con un mensaje claro: nunca se abre con otro algoritmo');
+ok('un terreno con un generador desconocido (3, «1», 1.5, 0, null o ausente) o con un territorio inexistente/incoherente se rechaza con un mensaje claro: nunca se abre con otro algoritmo');
 // Un v1 «falso» que ya trae campos v2 no se acepta (no se pisan en silencio)
 {
   const raw = JSON.parse(fixtureText('v1-02-valle-granja.modoagro.json'));
@@ -237,14 +237,16 @@ const F4 = 'v1-04-terreno-editado-conectado.modoagro.json', F3 = 'v1-03-real-eco
 // ── Protección del autoguardado ──────────────────────────────────────────
 {
   const w = must(createConfiguredWorld({name: 'A', seed: 321, template: 'farm', territory: 'free', side: 1000, site: 'center', relief: 'natural', radius: 60, resources: ['parcel', 'irrigation'], water: 80, experience: 'free', start: '2026-09-21'}));
-  const s = WorldSession.fromWorld(w), saved = s.version;
+  const s = WorldSession.fromWorld(w), saved = s.saveVersion;
   assert.deepEqual(autosaveDecision(s, saved), {save: false, reason: 'sin-cambios'});
   s.beginStroke(); assert.ok(s.stamp('raise', 300, 300, 20, 2).ok);
   assert.ok(s.terrain.painting); assert.notEqual(s.version, saved);
+  assert.deepEqual(autosaveDecision(s, saved, true), {save: false, reason: 'sin-cambios'});
+  must(s.setName('Cambio independiente del trazo'));
   assert.deepEqual(autosaveDecision(s, saved), {save: false, reason: 'trazo-en-curso'});
   assert.deepEqual(autosaveDecision(s, saved, true), {save: true});
   s.endStroke(); assert.ok(!s.terrain.painting);
-  assert.deepEqual(autosaveDecision(s, saved), {save: true}); assert.deepEqual(autosaveDecision(s, s.version), {save: false, reason: 'sin-cambios'});
+  assert.deepEqual(autosaveDecision(s, saved), {save: true}); assert.deepEqual(autosaveDecision(s, s.saveVersion), {save: false, reason: 'sin-cambios'});
   must(parseWorld(s.toWorld()));
 }
 ok('autoguardado: con un trazo de terreno abierto se espera (no se guarda un trazo a medias); al cerrarlo se guarda; la salida de la página fuerza el guardado; sin cambios no guarda');

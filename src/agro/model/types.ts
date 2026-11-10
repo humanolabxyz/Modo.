@@ -85,6 +85,8 @@ export type Entity = {
   owner: string;
   provenance?: Provenance;
   locked?: boolean;
+  /** Huella local de una parcela; ausente conserva la rectangular histórica. */
+  parcelPolygon?: [number,number][];
 };
 
 // ── Conexiones ─────────────────────────────────────────────────────────────
@@ -109,9 +111,10 @@ export type Connection = {
 /** Superficies distintas: lo visible no es lo propio ni lo autorizado ni lo cultivado. */
 export type LandTenure = {visibleHa: number; administeredHa: number; authorizedHa: number; cultivatedHa: number};
 
-/** Territorios generables. Todos usan el mismo motor de terreno; cambian parámetros, no código (V2 §2). Hoy existen dos; el resto llega en la Etapa 3. */
-export type TerritoryId = 'free' | 'valley';
-export const TERRITORY_IDS: readonly TerritoryId[] = ['free', 'valley'];
+/** Territorios generables. Todos usan el mismo motor de terreno; cambian parámetros, no código (V2 §2). La Etapa 3 conserva seis perfiles sobre generadores versionados. */
+export const TERRITORY_IDS = ['free', 'valley', 'oasis-norte', 'desierto', 'ladera', 'valle-rio'] as const;
+export type TerritoryId = typeof TERRITORY_IDS[number];
+export type TerrainParameters = {reliefStrength: number; roughness: number; baseElevationM: number; valleyBias: number; vegetation: number; rocks: number};
 
 export type Scenario = {
   /** Centro inicial de la finca en metros (x, z), cuando se elige en el asistente. */
@@ -125,10 +128,12 @@ export type Scenario = {
   territory: TerritoryId;
 };
 
-export type TerrainEditKind = 'raise' | 'lower' | 'level';
-export const TERRAIN_EDIT_KINDS: readonly TerrainEditKind[] = ['raise', 'lower', 'level'];
-/** Edición de relieve como delta sobre la base procedural (la base se regenera desde `seed`). */
-export type TerrainEdit = {id: string; kind: TerrainEditKind; center: [number, number]; radius: number; amount: number; /** segundo simulado en que ocurrió */ at: number};
+export const SURFACE_IDS = ['grass','soil','gravel','sand'] as const;
+export type SurfaceId = typeof SURFACE_IDS[number];
+export type TerrainEditKind = 'raise' | 'lower' | 'level' | 'smooth' | 'restore' | 'paint' | 'slope' | 'terrace' | 'ditch' | 'road';
+export const TERRAIN_EDIT_KINDS: readonly TerrainEditKind[] = ['raise', 'lower', 'level', 'smooth', 'restore', 'paint', 'slope', 'terrace', 'ditch', 'road'];
+/** Operación de autoría versionada: pincel, región o trazado. La pintura se guarda en su capa visual. */
+export type TerrainEdit = {id: string; kind: TerrainEditKind; center: [number, number]; radius: number; amount: number; algorithmVersion?: 1; material?: SurfaceId; points?: [number,number][]; width?: number; grade?: number; stepHeight?: number; heights?: number[]; /** segundo simulado en que ocurrió */ at: number};
 
 export type Terrain = {
   /** Lado del mapa en metros [este-oeste, norte-sur]. 1000×1000 = 100 ha. */
@@ -140,7 +145,11 @@ export type Terrain = {
   generatorVersion: number;
   /** Territorio elegido al crear el mundo. */
   presetId: TerritoryId;
+  /** Configuración explícita del generador 2. Los terrenos V1 conservan su documento original. */
+  params?: TerrainParameters;
   edits: TerrainEdit[];
+  /** Capa exclusivamente visual, independiente del suelo científico. */
+  surfaceEdits?: TerrainEdit[];
 };
 
 /** Segundos simulados por segundo real. 0 = pausa. 3600 = «1 hora por segundo»; 86400 = «1 día por segundo» (Fase 4: un cultivo dura meses). */

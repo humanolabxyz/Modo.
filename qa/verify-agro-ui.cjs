@@ -5,14 +5,19 @@ const {chromium} = require('./lib/playwright.cjs');
 const base = (process.env.AGRO_URL || 'http://127.0.0.1:4386').replace(/\/$/, '');
 const out = process.env.AGRO_QA_OUT || 'qa/agro';
 fs.mkdirSync(out, {recursive: true});
-const report = {checks: [], errors: [], metrics: {}}, pass = s => { report.checks.push(s); console.log('PASS', s); };
+const report = {checks: [], errors: [], diagnostics: [], metrics: {}}, pass = s => { report.checks.push(s); console.log('PASS', s); };
 
 async function open(b, viewport = {width: 1440, height: 900}) {
   const c = await b.newContext({viewport, serviceWorkers: 'block', acceptDownloads: true});
   await c.addInitScript(() => { localStorage.setItem('modo-tutoriales-bienvenida-v1', 'seen'); sessionStorage.setItem('modo-opened-v2', '1'); });
   const p = await c.newPage();
-  p.on('pageerror', e => report.errors.push(e.message));
-  p.on('console', m => { if (m.type() === 'error') report.errors.push(m.text()); });
+  const diagnostic = detail => {
+    const entry = {url: p.url(), after: report.checks.at(-1) ?? 'inicio', ...detail};
+    report.diagnostics.push(entry);
+    fs.appendFileSync(`${out}/diagnostics.jsonl`, JSON.stringify(entry) + '\n');
+  };
+  p.on('pageerror', e => {report.errors.push(e.message); diagnostic({kind: 'pageerror', name: e.name, message: e.message, stack: e.stack});});
+  p.on('console', m => { if (m.type() === 'error') {report.errors.push(m.text()); diagnostic({kind: 'console', message: m.text(), location: m.location()});} });
   p.on('response', r => { if (r.status() >= 400) report.errors.push(`${r.status()} ${r.url()}`); });
   return {c, p};
 }
@@ -76,7 +81,8 @@ async function pickItem(p, id) {
     const worldId = await attr(p, 'data-world');
     assert.match(p.url(), new RegExp(`#/mundo/${worldId}$`));
     const tris = await num(p, 'data-tris'), calls = await num(p, 'data-calls');
-    assert.ok(tris > 5000 && tris < 150_000, `${tris} triángulos`); assert.ok(calls > 0 && calls < 200);
+    // Presupuesto de humo de un mundo vacío con cinturón y horizonte activos.
+    assert.ok(tris > 5000 && tris < 230_000, `${tris} triángulos`); assert.ok(calls > 0 && calls < 200);
     report.metrics.orbit = {tris, calls};
     pass(`crear un mundo abre el workspace con terreno 3D (${tris} triángulos, ${calls} dibujos) y lo guarda solo`);
 
@@ -91,10 +97,19 @@ async function pickItem(p, id) {
     for (const [name, mode] of [['Estratégica', 'strategic'], ['Caminar', 'walk'], ['Órbita', 'orbit']]) {
       await p.getByRole('button', {name, exact: true}).click(); await waitAttr(p, 'mode', 'eq', mode); await p.waitForTimeout(500);
       assert.equal(await p.locator('[data-testid=agro-selected]').innerText(), sel);
-      if (mode === 'strategic') { await rendered(p); report.metrics.strategic = {tris: await num(p, 'data-tris'), calls: await num(p, 'data-calls')}; assert.ok(report.metrics.strategic.tris < 200_000); await p.screenshot({path: `${out}/agro-estrategica.png`}); }
+      if (mode === 'strategic') { await rendered(p); report.metrics.strategic = {tris: await num(p, 'data-tris'), calls: await num(p, 'data-calls')}; assert.ok(report.metrics.strategic.tris < 260_000); await p.screenshot({path: `${out}/agro-estrategica.png`}); }
       if (mode === 'walk') {
         const x0 = await num(p, 'data-cam-x'), z0 = await num(p, 'data-cam-z');
-        await p.keyboard.down('w'); await p.waitForTimeout(1500); await p.keyboard.up('w'); await p.waitForTimeout(400);
+        await p.keyboard.down('w');
+        try {
+          // SwiftShader puede dibujar pocos cuadros por segundo. La caminata
+          // limita dt: esperar el desplazamiento real evita depender de 1,5 s
+          // de reloj de pared, conservando el umbral de movimiento comprobado.
+          await p.waitForFunction(([x,z]) => {
+            const d=document.querySelector('[data-testid=agro-app]').dataset;
+            return Math.hypot(Number(d.camX)-x,Number(d.camZ)-z)>3;
+          }, [x0,z0], {timeout: 15000});
+        } finally { await p.keyboard.up('w'); }
         assert.ok(Math.hypot((await num(p, 'data-cam-x')) - x0, (await num(p, 'data-cam-z')) - z0) > 3);
       }
     }
@@ -104,12 +119,15 @@ async function pickItem(p, id) {
     const checksum0 = await attr(p, 'data-checksum'), before = await cota(p);
     await p.mouse.down(); await p.mouse.up();
     await waitAttr(p, 'edits', 'num', 1);
+    assert.equal(await p.getByRole('dialog', {name: 'Revisar edición de terreno'}).count(), 0);
     await p.mouse.move(721, 560); await p.waitForTimeout(250);
     assert.ok((await cota(p)) > before + 0.4);
     const checksum1 = await attr(p, 'data-checksum');
     await p.getByRole('button', {name: 'Deshacer'}).click(); await waitAttr(p, 'edits', 'num', 0); assert.equal(await attr(p, 'data-checksum'), checksum0);
     await p.getByRole('button', {name: 'Rehacer'}).click(); await waitAttr(p, 'edits', 'num', 1); assert.equal(await attr(p, 'data-checksum'), checksum1);
     pass('pincel: subir terreno, deshacer y rehacer devuelven el terreno exacto');
+    assert.equal(await num(p,'data-speed'),0);
+    await p.getByRole('button',{name:'Volver a partida',exact:true}).click();
     await p.getByRole('button', {name: 'Seleccionar'}).click(); await p.mouse.move(720, 560); await p.mouse.click(720, 560);
 
     // ── Colocar piezas ─────────────────────────────────────────────────────
@@ -635,7 +653,6 @@ async function pickItem(p, id) {
     const real = report.errors.filter(e => !/Service Worker|THREE\.Clock/.test(e));
     assert.deepEqual(real, [], 'errores de consola o de red: ' + real.join(' | '));
     pass('sin errores de consola ni respuestas 4xx/5xx');
-  } finally { await b.close(); }
-  fs.writeFileSync(`${out}/verification.json`, JSON.stringify(report, null, 2));
+  } finally { await b.close(); fs.writeFileSync(`${out}/verification.json`, JSON.stringify(report, null, 2)); }
   console.log(`\n${report.checks.length} bloques OK`);
 })().catch(e => { console.error(e); process.exit(1); });

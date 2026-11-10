@@ -11,14 +11,14 @@ const when = (session: WorldSession, at: number): string => { const t = timeInfo
 /** Panel «Inventario y compras». */
 export function InventoryPanel({session, onClose, onNotice}: {session: WorldSession; onClose(): void; onNotice(m: string): void}) {
   const [tab, setTab] = useState<'stock' | 'orders' | 'works' | 'ledger'>('stock'), [qty, setQty] = useState<Record<string, number>>({});
-  const eco = session.economy, real = session.experience === 'real' && eco !== null, now = session.clock.simSeconds;
+  const eco = session.economy, real = session.policy.inventory && eco !== null, now = session.clock.simSeconds;
   const works = session.entities.filter(inConstruction);
   const items = ITEMS.filter(i => i.id in ECON);
   return <section className="agro-inv" role="dialog" aria-label="Inventario y compras" data-testid="agro-inventory">
-    <header><div><h2>Inventario y compras</h2><small>{real ? `Modo real · ${clp(eco!.money)}` : 'Modo libre · sin costos'}</small></div>
+    <header><div><h2>Inventario y compras</h2><small>{real ? `Modo real · ${clp(eco!.money)}` : session.policy.label+' · sin costos'}</small></div>
       <button type="button" className="agro-icon" aria-label="Cerrar inventario" onClick={onClose}><X size={18} aria-hidden="true" /></button></header>
     {!real ? <div className="agro-inv-free" data-testid="agro-inv-free">
-      <p><b>En modo libre no hay inventario, costos ni tiempos de obra:</b> cada pieza se coloca al instante, sin límite. En modo real hay que comprar las piezas, esperar al proveedor y pagar el montaje, que además toma tiempo.</p>
+      <p><b>{session.experience==='learning'?'En aprendizaje':'En modo libre'} no hay inventario, costos ni tiempos de obra:</b> cada pieza se coloca al instante, sin límite. En modo real hay que comprar las piezas, esperar al proveedor y pagar el montaje, que además toma tiempo.</p>
       <button type="button" className="agro-primary" data-testid="agro-go-real" onClick={() => { const r = session.setExperience('real'); onNotice(r.ok ? `Modo real activado: capital inicial ${clp(session.economy!.money)} (ilustrativo). Lo ya construido se considera recibido.` : r.error); }}>Activar el modo real</button>
     </div> : <>
       <div className="agro-tabs" role="tablist" aria-label="Secciones del inventario">

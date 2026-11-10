@@ -1,8 +1,9 @@
 // Del mundo al solver: arma la red hidráulica con las piezas y conexiones reales, la resuelve y traduce el resultado a bar y L/min por puerto y por pieza.
 import type {Connection, Entity} from '../model/types.ts';
-import {sampleHeight, type Heightfield} from '../terrain/heightfield.ts';
+import type {Heightfield} from '../terrain/heightfield.ts';
 import {connectionGap, isStretched} from '../world/connections.ts';
 import {portWorld} from '../world/placement.ts';
+import {pipePortElevation} from '../world/pipeElevation.ts';
 import {BAR_PER_M, solveNetwork, type Link, type SolverNode} from './hydraulics.ts';
 import {analyzePower, type PowerResult} from './power.ts';
 
@@ -61,7 +62,7 @@ function analyzeInstalled(entities: readonly Entity[], connections: readonly Con
   for (const e of entities) if (e.type === 'te') { u.join(key(e.id, 'a'), key(e.id, 'b')); u.join(key(e.id, 'a'), key(e.id, 'c')); }
 
   // Elevación de cada puerto: las tuberías siguen el suelo; las demás piezas, su propia altura.
-  const elevation = (e: Entity, portId: string): number => { const p = e.ports.find(q => q.id === portId)!, w = portWorld(e, p); return e.type === 'tuberia' ? sampleHeight(hf, w.x, w.z) + p.local[1] : w.y; };
+  const elevation = (e: Entity, portId: string): number => { const p = e.ports.find(q => q.id === portId)!; return e.type === 'tuberia' ? pipePortElevation(hf, e, p) : portWorld(e, p).y; };
 
   const nodes = new Map<string, SolverNode>(), node = (e: Entity, portId: string): string => { const id = u.find(key(e.id, portId)); if (!nodes.has(id)) nodes.set(id, {id}); return id; };
   const links: Link[] = [], tankInfo: Record<string, {surface: number; level: number; salida: string | null; entrada: string; dry: boolean}> = {};

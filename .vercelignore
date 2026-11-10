@@ -30,3 +30,5 @@ analisis-materias-2026-10-17
 # Classic utiliza web3d (incluye CAS y 3D); no subir motores alternativos duplicados.
 public/vendor/geogebra/HTML5/5.0/web
 public/vendor/geogebra/HTML5/5.0/webSimple
+
+public/agro/_galeria/

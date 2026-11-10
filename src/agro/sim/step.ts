@@ -1,3 +1,4 @@
+import {parcelArea} from '../world/parcelGeometry.ts';
 // Avance del mundo en el tiempo (Fase 4). Puro: recibe las piezas y devuelve las piezas nuevas; no toca el historial ni el reloj.
 //
 // Cada paso: (1) se toma la red hidráulica del instante (`analyze`), (2) el estanque entrega agua y baja de nivel, (3) esa agua llega a las parcelas
@@ -87,7 +88,7 @@ export function stepWorld(entities: readonly Entity[], connections: readonly Con
         return {...e, state: {...e.state, nivelL: after}};
       }
       if (e.type === 'parcela') {
-        const irr = irrigation[e.id], area = Math.max(1, num(e.params.anchoM, 20) * num(e.params.largoM, 30));
+        const irr = irrigation[e.id], area = Math.max(1, parcelArea(e));
         const irrigMm = irr ? (irr.lmin * dt) / 60 / area : 0, crop = cropById(e.state.cultivo);
         const before = viewOf(e.state);
         const state = stepParcel(e.state, {dtS: dt, et0Mm, rainMm, rainRateMmH: rainMm > 0 ? rainRateMmH : 0, irrigMm, irrRunoffMm: irr ? irrigMm * irr.runoffFraction : 0, gddDay: crop ? gddOfDay(crop, weather.tMeanC) : 0});

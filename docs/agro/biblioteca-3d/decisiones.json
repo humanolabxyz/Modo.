@@ -1,0 +1,4828 @@
+[
+ {
+  "id": "quat-cultivos/Apple_1",
+  "name": "Apple_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Apple_1.glb",
+  "tris": 80,
+  "sizeM": [
+   0.238,
+   0.247,
+   0.107
+  ],
+  "bytes": 5508,
+  "materials": [
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Apple_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Apple_2",
+  "name": "Apple_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Apple_2.glb",
+  "tris": 252,
+  "sizeM": [
+   0.515,
+   0.939,
+   0.438
+  ],
+  "bytes": 19660,
+  "materials": [
+   "Wood",
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Apple_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Apple_3",
+  "name": "Apple_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Apple_3.glb",
+  "tris": 446,
+  "sizeM": [
+   1.166,
+   2.087,
+   0.974
+  ],
+  "bytes": 33240,
+  "materials": [
+   "Wood",
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Apple_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Apple_4",
+  "name": "Apple_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Apple_4.glb",
+  "tris": 1584,
+  "sizeM": [
+   1.864,
+   2.763,
+   1.579
+  ],
+  "bytes": 120272,
+  "materials": [
+   "Wood",
+   "Green_Tree",
+   "DarkGreen_Tree",
+   "DarkRed"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Apple_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Apple_Crop",
+  "name": "Apple_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Apple_Crop.glb",
+  "tris": 440,
+  "sizeM": [
+   0.158,
+   0.168,
+   0.158
+  ],
+  "bytes": 33332,
+  "materials": [
+   "DarkRed.003",
+   "DarkBrown",
+   "DarkGreen.002"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Apple_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Apple_Harvested",
+  "name": "Apple_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Apple_Harvested.glb",
+  "tris": 984,
+  "sizeM": [
+   1.801,
+   2.763,
+   1.579
+  ],
+  "bytes": 71964,
+  "materials": [
+   "Wood",
+   "Green_Tree",
+   "DarkGreen_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Apple_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Bamboo_1",
+  "name": "Bamboo_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Sin territorio ni cultivo que lo use todavía; queda en el catálogo para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Bamboo_1.glb",
+  "tris": 82,
+  "sizeM": [
+   0.383,
+   0.513,
+   0.072
+  ],
+  "bytes": 5860,
+  "materials": [
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Bamboo_2",
+  "name": "Bamboo_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Sin territorio ni cultivo que lo use todavía; queda en el catálogo para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Bamboo_2.glb",
+  "tris": 300,
+  "sizeM": [
+   0.205,
+   0.733,
+   0.148
+  ],
+  "bytes": 16872,
+  "materials": [
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Bamboo_3",
+  "name": "Bamboo_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Sin territorio ni cultivo que lo use todavía; queda en el catálogo para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Bamboo_3.glb",
+  "tris": 492,
+  "sizeM": [
+   0.338,
+   1.547,
+   0.358
+  ],
+  "bytes": 26324,
+  "materials": [
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Bamboo_4",
+  "name": "Bamboo_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Sin territorio ni cultivo que lo use todavía; queda en el catálogo para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Bamboo_4.glb",
+  "tris": 644,
+  "sizeM": [
+   0.53,
+   2.726,
+   0.558
+  ],
+  "bytes": 34008,
+  "materials": [
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Bamboo_Crop",
+  "name": "Bamboo_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Sin territorio ni cultivo que lo use todavía; queda en el catálogo para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Bamboo_Crop.glb",
+  "tris": 108,
+  "sizeM": [
+   0.097,
+   0.326,
+   0.099
+  ],
+  "bytes": 7224,
+  "materials": [
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Beet_1",
+  "name": "Beet_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Beet_1.glb",
+  "tris": 121,
+  "sizeM": [
+   0.334,
+   0.653,
+   0.098
+  ],
+  "bytes": 8368,
+  "materials": [
+   "DarkGreen",
+   "DarkRed"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Beet_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Beet_2",
+  "name": "Beet_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Beet_2.glb",
+  "tris": 217,
+  "sizeM": [
+   0.213,
+   0.86,
+   0.139
+  ],
+  "bytes": 13124,
+  "materials": [
+   "DarkRed",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Beet_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Beet_3",
+  "name": "Beet_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Beet_3.glb",
+  "tris": 323,
+  "sizeM": [
+   0.509,
+   0.869,
+   0.23
+  ],
+  "bytes": 18272,
+  "materials": [
+   "DarkRed",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Beet_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Beet_4",
+  "name": "Beet_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Beet_4.glb",
+  "tris": 480,
+  "sizeM": [
+   0.751,
+   1.102,
+   0.39
+  ],
+  "bytes": 27208,
+  "materials": [
+   "DarkRed",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Beet_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Beet_Crop",
+  "name": "Beet_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Beet_Crop.glb",
+  "tris": 165,
+  "sizeM": [
+   0.316,
+   0.519,
+   0.316
+  ],
+  "bytes": 9928,
+  "materials": [
+   "DarkRed"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Beet_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/BushBerries_1",
+  "name": "BushBerries_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/BushBerries_1.glb",
+  "tris": 88,
+  "sizeM": [
+   0.259,
+   0.353,
+   0.05
+  ],
+  "bytes": 6788,
+  "materials": [
+   "Green_Bush",
+   "DarkBrown"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_1.blend"
+ },
+ {
+  "id": "quat-cultivos/BushBerries_2",
+  "name": "BushBerries_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/BushBerries_2.glb",
+  "tris": 140,
+  "sizeM": [
+   0.592,
+   0.506,
+   0.515
+  ],
+  "bytes": 8608,
+  "materials": [
+   "Green_Bush"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_2.blend"
+ },
+ {
+  "id": "quat-cultivos/BushBerries_3",
+  "name": "BushBerries_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/BushBerries_3.glb",
+  "tris": 164,
+  "sizeM": [
+   1.275,
+   0.744,
+   1.108
+  ],
+  "bytes": 9900,
+  "materials": [
+   "Green_Bush"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_3.blend"
+ },
+ {
+  "id": "quat-cultivos/BushBerries_4",
+  "name": "BushBerries_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/BushBerries_4.glb",
+  "tris": 892,
+  "sizeM": [
+   1.719,
+   1.276,
+   1.392
+  ],
+  "bytes": 50040,
+  "materials": [
+   "Green_Bush",
+   "Berry"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_4.blend"
+ },
+ {
+  "id": "quat-cultivos/BushBerries_Crop",
+  "name": "BushBerries_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/BushBerries_Crop.glb",
+  "tris": 48,
+  "sizeM": [
+   0.169,
+   0.132,
+   0.166
+  ],
+  "bytes": 3684,
+  "materials": [
+   "Berry"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/BushBerries_Harvested",
+  "name": "BushBerries_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/BushBerries_Harvested.glb",
+  "tris": 364,
+  "sizeM": [
+   1.718,
+   1.246,
+   1.32
+  ],
+  "bytes": 20760,
+  "materials": [
+   "Green_Bush"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Cactus_1",
+  "name": "Cactus_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Cactus_1.glb",
+  "tris": 112,
+  "sizeM": [
+   0.093,
+   0.167,
+   0.093
+  ],
+  "bytes": 7144,
+  "materials": [
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Cactus_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Cactus_2",
+  "name": "Cactus_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Cactus_2.glb",
+  "tris": 220,
+  "sizeM": [
+   0.298,
+   0.378,
+   0.301
+  ],
+  "bytes": 15476,
+  "materials": [
+   "DarkGreen2",
+   "LightOrange"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Cactus_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Cactus_3",
+  "name": "Cactus_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Cactus_3.glb",
+  "tris": 320,
+  "sizeM": [
+   0.394,
+   0.722,
+   0.382
+  ],
+  "bytes": 22220,
+  "materials": [
+   "DarkGreen2",
+   "LightOrange"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-cactus-a",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Cactus_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Cactus_4",
+  "name": "Cactus_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Cactus_4.glb",
+  "tris": 1814,
+  "sizeM": [
+   1.305,
+   1.433,
+   0.563
+  ],
+  "bytes": 113764,
+  "materials": [
+   "DarkGreen2",
+   "LightOrange",
+   "Pink"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-cactus-b",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Cactus_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Cactus_Crop",
+  "name": "Cactus_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Cactus_Crop.glb",
+  "tris": 256,
+  "sizeM": [
+   0.362,
+   0.236,
+   0.366
+  ],
+  "bytes": 15296,
+  "materials": [
+   "Pink"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Cactus_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Cactus_Harvested",
+  "name": "Cactus_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Cactus_Harvested.glb",
+  "tris": 1302,
+  "sizeM": [
+   1.094,
+   1.257,
+   0.563
+  ],
+  "bytes": 84576,
+  "materials": [
+   "DarkGreen2",
+   "LightOrange"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Cactus_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Carrot_1",
+  "name": "Carrot_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Carrot_1.glb",
+  "tris": 88,
+  "sizeM": [
+   0.355,
+   0.35,
+   0.069
+  ],
+  "bytes": 5932,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Carrot_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Carrot_2",
+  "name": "Carrot_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Carrot_2.glb",
+  "tris": 262,
+  "sizeM": [
+   0.161,
+   0.313,
+   0.065
+  ],
+  "bytes": 16740,
+  "materials": [
+   "LightOrange",
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Carrot_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Carrot_3",
+  "name": "Carrot_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Carrot_3.glb",
+  "tris": 408,
+  "sizeM": [
+   0.334,
+   0.521,
+   0.258
+  ],
+  "bytes": 24284,
+  "materials": [
+   "LightOrange",
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Carrot_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Carrot_4",
+  "name": "Carrot_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Carrot_4.glb",
+  "tris": 514,
+  "sizeM": [
+   0.677,
+   1.279,
+   0.502
+  ],
+  "bytes": 31312,
+  "materials": [
+   "LightOrange",
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Carrot_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Carrot_Crop",
+  "name": "Carrot_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Carrot_Crop.glb",
+  "tris": 186,
+  "sizeM": [
+   0.239,
+   0.881,
+   0.239
+  ],
+  "bytes": 13024,
+  "materials": [
+   "LightOrange",
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Carrot_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Coconut_Half",
+  "name": "Coconut_Half",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "descartar",
+  "why": "Fuera del alcance agrícola actual y con exceso de triángulos para su tamaño (hongos de ~1.300 t).",
+  "file": "/agro/_galeria/quat-cultivos/Coconut_Half.glb",
+  "tris": 132,
+  "sizeM": [
+   0.784,
+   0.777,
+   0.412
+  ],
+  "bytes": 11008,
+  "materials": [
+   "DarkBrown",
+   "White"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Coconut_Half.blend"
+ },
+ {
+  "id": "quat-cultivos/Corn_1",
+  "name": "Corn_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Corn_1.glb",
+  "tris": 88,
+  "sizeM": [
+   0.167,
+   0.387,
+   0.032
+  ],
+  "bytes": 5932,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Corn_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Corn_2",
+  "name": "Corn_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Corn_2.glb",
+  "tris": 140,
+  "sizeM": [
+   0.284,
+   0.659,
+   0.305
+  ],
+  "bytes": 8788,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Corn_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Corn_3",
+  "name": "Corn_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Corn_3.glb",
+  "tris": 348,
+  "sizeM": [
+   0.675,
+   1.247,
+   0.573
+  ],
+  "bytes": 20164,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Corn_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Corn_4",
+  "name": "Corn_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Corn_4.glb",
+  "tris": 958,
+  "sizeM": [
+   0.887,
+   1.967,
+   0.649
+  ],
+  "bytes": 56768,
+  "materials": [
+   "DarkGreen2",
+   "Yellow",
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Corn_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Corn_Crop",
+  "name": "Corn_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Corn_Crop.glb",
+  "tris": 80,
+  "sizeM": [
+   0.348,
+   0.149,
+   0.149
+  ],
+  "bytes": 6560,
+  "materials": [
+   "DarkGreen2",
+   "Yellow"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Corn_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Corn_Harvested",
+  "name": "Corn_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Corn_Harvested.glb",
+  "tris": 638,
+  "sizeM": [
+   0.887,
+   1.967,
+   0.649
+  ],
+  "bytes": 36800,
+  "materials": [
+   "Yellow",
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Corn_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Flowers_Crop",
+  "name": "Flowers_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Flowers_Crop.glb",
+  "tris": 134,
+  "sizeM": [
+   0.292,
+   0.116,
+   0.293
+  ],
+  "bytes": 9364,
+  "materials": [
+   "Cyan",
+   "Yellow"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Flowers_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Flowers_Harvested",
+  "name": "Flowers_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Flowers_Harvested.glb",
+  "tris": 100,
+  "sizeM": [
+   0.193,
+   0.715,
+   0.067
+  ],
+  "bytes": 6312,
+  "materials": [
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Flowers_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Flower_1",
+  "name": "Flower_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Flower_1.glb",
+  "tris": 80,
+  "sizeM": [
+   0.127,
+   0.11,
+   0.024
+  ],
+  "bytes": 5512,
+  "materials": [
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Flower_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Flower_2",
+  "name": "Flower_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Flower_2.glb",
+  "tris": 42,
+  "sizeM": [
+   0.084,
+   0.412,
+   0.05
+  ],
+  "bytes": 3360,
+  "materials": [
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Flower_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Flower_3",
+  "name": "Flower_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Flower_3.glb",
+  "tris": 152,
+  "sizeM": [
+   0.194,
+   0.507,
+   0.199
+  ],
+  "bytes": 10200,
+  "materials": [
+   "Cyan",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Flower_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Flower_4",
+  "name": "Flower_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Flower_4.glb",
+  "tris": 230,
+  "sizeM": [
+   0.292,
+   0.821,
+   0.293
+  ],
+  "bytes": 14264,
+  "materials": [
+   "Cyan",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Flower_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Grass_1",
+  "name": "Grass_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Grass_1.glb",
+  "tris": 64,
+  "sizeM": [
+   0.25,
+   0.253,
+   0.273
+  ],
+  "bytes": 4740,
+  "materials": [
+   "Green_Grass"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Grass_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Grass_2",
+  "name": "Grass_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Grass_2.glb",
+  "tris": 64,
+  "sizeM": [
+   0.25,
+   0.524,
+   0.273
+  ],
+  "bytes": 4740,
+  "materials": [
+   "Green_Grass"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Grass_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Grass_3",
+  "name": "Grass_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Grass_3.glb",
+  "tris": 112,
+  "sizeM": [
+   0.374,
+   0.795,
+   0.282
+  ],
+  "bytes": 7476,
+  "materials": [
+   "Green_Grass"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Grass_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Grass_4",
+  "name": "Grass_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Grass_4.glb",
+  "tris": 192,
+  "sizeM": [
+   0.374,
+   1.013,
+   0.327
+  ],
+  "bytes": 12036,
+  "materials": [
+   "Green_Grass"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Grass_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Lettuce_1",
+  "name": "Lettuce_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Lettuce_1.glb",
+  "tris": 88,
+  "sizeM": [
+   0.276,
+   0.294,
+   0.111
+  ],
+  "bytes": 5936,
+  "materials": [
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Lettuce_2",
+  "name": "Lettuce_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Lettuce_2.glb",
+  "tris": 400,
+  "sizeM": [
+   0.369,
+   0.354,
+   0.367
+  ],
+  "bytes": 22880,
+  "materials": [
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Lettuce_3",
+  "name": "Lettuce_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Lettuce_3.glb",
+  "tris": 612,
+  "sizeM": [
+   0.623,
+   0.382,
+   0.676
+  ],
+  "bytes": 36064,
+  "materials": [
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Lettuce_4",
+  "name": "Lettuce_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Lettuce_4.glb",
+  "tris": 1392,
+  "sizeM": [
+   1.044,
+   0.474,
+   1.044
+  ],
+  "bytes": 79716,
+  "materials": [
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Lettuce_Crop",
+  "name": "Lettuce_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Lettuce_Crop.glb",
+  "tris": 112,
+  "sizeM": [
+   0.364,
+   0.404,
+   0.364
+  ],
+  "bytes": 7136,
+  "materials": [
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Lettuce_Harvested",
+  "name": "Lettuce_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Lettuce_Harvested.glb",
+  "tris": 1280,
+  "sizeM": [
+   1.044,
+   0.474,
+   1.044
+  ],
+  "bytes": 74060,
+  "materials": [
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Mushroom_1",
+  "name": "Mushroom_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Fuera del alcance agrícola actual y con exceso de triángulos para su tamaño (hongos de ~1.300 t).",
+  "file": "/agro/_galeria/quat-cultivos/Mushroom_1.glb",
+  "tris": 160,
+  "sizeM": [
+   0.108,
+   0.119,
+   0.108
+  ],
+  "bytes": 10504,
+  "materials": [
+   "Mushroom1",
+   "Red"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Mushroom_2",
+  "name": "Mushroom_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Fuera del alcance agrícola actual y con exceso de triángulos para su tamaño (hongos de ~1.300 t).",
+  "file": "/agro/_galeria/quat-cultivos/Mushroom_2.glb",
+  "tris": 604,
+  "sizeM": [
+   0.142,
+   0.224,
+   0.142
+  ],
+  "bytes": 36220,
+  "materials": [
+   "Mushroom1",
+   "Red"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Mushroom_3",
+  "name": "Mushroom_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Fuera del alcance agrícola actual y con exceso de triángulos para su tamaño (hongos de ~1.300 t).",
+  "file": "/agro/_galeria/quat-cultivos/Mushroom_3.glb",
+  "tris": 920,
+  "sizeM": [
+   0.245,
+   0.286,
+   0.244
+  ],
+  "bytes": 53452,
+  "materials": [
+   "Mushroom1",
+   "Red"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Mushroom_4",
+  "name": "Mushroom_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Fuera del alcance agrícola actual y con exceso de triángulos para su tamaño (hongos de ~1.300 t).",
+  "file": "/agro/_galeria/quat-cultivos/Mushroom_4.glb",
+  "tris": 1760,
+  "sizeM": [
+   0.445,
+   0.399,
+   0.445
+  ],
+  "bytes": 99264,
+  "materials": [
+   "Mushroom1",
+   "Red"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Mushroom_Crop",
+  "name": "Mushroom_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Fuera del alcance agrícola actual y con exceso de triángulos para su tamaño (hongos de ~1.300 t).",
+  "file": "/agro/_galeria/quat-cultivos/Mushroom_Crop.glb",
+  "tris": 1280,
+  "sizeM": [
+   0.436,
+   0.119,
+   0.436
+  ],
+  "bytes": 75436,
+  "materials": [
+   "Mushroom1",
+   "Red"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Mushroom_Harvested",
+  "name": "Mushroom_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Fuera del alcance agrícola actual y con exceso de triángulos para su tamaño (hongos de ~1.300 t).",
+  "file": "/agro/_galeria/quat-cultivos/Mushroom_Harvested.glb",
+  "tris": 526,
+  "sizeM": [
+   0.191,
+   0.295,
+   0.191
+  ],
+  "bytes": 27132,
+  "materials": [
+   "Mushroom1"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Orange_1",
+  "name": "Orange_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Orange_1.glb",
+  "tris": 80,
+  "sizeM": [
+   0.238,
+   0.247,
+   0.107
+  ],
+  "bytes": 5512,
+  "materials": [
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Orange_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Orange_2",
+  "name": "Orange_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Orange_2.glb",
+  "tris": 252,
+  "sizeM": [
+   0.439,
+   0.939,
+   0.521
+  ],
+  "bytes": 19664,
+  "materials": [
+   "Wood",
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Orange_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Orange_3",
+  "name": "Orange_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Orange_3.glb",
+  "tris": 336,
+  "sizeM": [
+   0.922,
+   2.124,
+   1.115
+  ],
+  "bytes": 25608,
+  "materials": [
+   "Wood",
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-citrico-a",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Orange_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Orange_4",
+  "name": "Orange_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Orange_4.glb",
+  "tris": 1244,
+  "sizeM": [
+   1.864,
+   2.763,
+   1.579
+  ],
+  "bytes": 94640,
+  "materials": [
+   "Wood",
+   "Green_Tree",
+   "Orange"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-citrico-b",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Orange_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Orange_Crop",
+  "name": "Orange_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Orange_Crop.glb",
+  "tris": 208,
+  "sizeM": [
+   0.151,
+   0.151,
+   0.151
+  ],
+  "bytes": 15796,
+  "materials": [
+   "Orange"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Orange_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Orange_Harvested",
+  "name": "Orange_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Orange_Harvested.glb",
+  "tris": 744,
+  "sizeM": [
+   1.801,
+   2.763,
+   1.579
+  ],
+  "bytes": 54240,
+  "materials": [
+   "Wood",
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Orange_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/PalmTree_1",
+  "name": "PalmTree_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/PalmTree_1.glb",
+  "tris": 176,
+  "sizeM": [
+   0.355,
+   0.35,
+   0.418
+  ],
+  "bytes": 10788,
+  "materials": [
+   "Green_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_1.blend"
+ },
+ {
+  "id": "quat-cultivos/PalmTree_2",
+  "name": "PalmTree_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/PalmTree_2.glb",
+  "tris": 776,
+  "sizeM": [
+   1.094,
+   1.525,
+   1.437
+  ],
+  "bytes": 45028,
+  "materials": [
+   "Wood",
+   "Green_Tree",
+   "DarkGreen_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_2.blend"
+ },
+ {
+  "id": "quat-cultivos/PalmTree_3",
+  "name": "PalmTree_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/PalmTree_3.glb",
+  "tris": 1220,
+  "sizeM": [
+   1.311,
+   2.232,
+   1.629
+  ],
+  "bytes": 69396,
+  "materials": [
+   "Wood",
+   "Green_Tree",
+   "DarkGreen_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-palma-a",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_3.blend"
+ },
+ {
+  "id": "quat-cultivos/PalmTree_4",
+  "name": "PalmTree_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/PalmTree_4.glb",
+  "tris": 2100,
+  "sizeM": [
+   1.813,
+   3.251,
+   2.045
+  ],
+  "bytes": 125856,
+  "materials": [
+   "Wood",
+   "Green_Tree",
+   "DarkGreen_Tree",
+   "Coconuts"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-palma-b",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_4.blend"
+ },
+ {
+  "id": "quat-cultivos/PalmTree_Crop",
+  "name": "PalmTree_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/PalmTree_Crop.glb",
+  "tris": 82,
+  "sizeM": [
+   0.224,
+   0.224,
+   0.226
+  ],
+  "bytes": 7444,
+  "materials": [
+   "Coconuts"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/PalmTree_Harvested",
+  "name": "PalmTree_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "arboles-vegetacion",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/PalmTree_Harvested.glb",
+  "tris": 1772,
+  "sizeM": [
+   1.813,
+   3.251,
+   2.045
+  ],
+  "bytes": 99692,
+  "materials": [
+   "Wood",
+   "Green_Tree",
+   "DarkGreen_Tree"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Pumpkin_1",
+  "name": "Pumpkin_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Pumpkin_1.glb",
+  "tris": 132,
+  "sizeM": [
+   0.217,
+   0.391,
+   0.093
+  ],
+  "bytes": 8896,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Pumpkin_2",
+  "name": "Pumpkin_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Pumpkin_2.glb",
+  "tris": 862,
+  "sizeM": [
+   0.468,
+   0.254,
+   0.44
+  ],
+  "bytes": 48560,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Pumpkin_3",
+  "name": "Pumpkin_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "adaptar",
+  "why": "Más de 2.400 triángulos por planta: hay que decimar antes de usarlo en una parcela completa.",
+  "file": "/agro/_galeria/quat-cultivos/Pumpkin_3.glb",
+  "tris": 1752,
+  "sizeM": [
+   0.875,
+   0.393,
+   0.749
+  ],
+  "bytes": 96480,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Pumpkin_4",
+  "name": "Pumpkin_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "adaptar",
+  "why": "Más de 2.400 triángulos por planta: hay que decimar antes de usarlo en una parcela completa.",
+  "file": "/agro/_galeria/quat-cultivos/Pumpkin_4.glb",
+  "tris": 2896,
+  "sizeM": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "bytes": 158652,
+  "materials": [
+   "Orange",
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Pumpkin_Crop",
+  "name": "Pumpkin_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Pumpkin_Crop.glb",
+  "tris": 396,
+  "sizeM": [
+   0.588,
+   0.554,
+   0.578
+  ],
+  "bytes": 22916,
+  "materials": [
+   "Orange",
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Pumpkin_Harvested",
+  "name": "Pumpkin_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "adaptar",
+  "why": "Más de 2.400 triángulos por planta: hay que decimar antes de usarlo en una parcela completa.",
+  "file": "/agro/_galeria/quat-cultivos/Pumpkin_Harvested.glb",
+  "tris": 2540,
+  "sizeM": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "bytes": 139048,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Rice_1",
+  "name": "Rice_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "pendiente",
+  "why": "Especie sin parámetros en el motor (solo hay tomate) y sin uso en el norte de Chile: preparada para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Rice_1.glb",
+  "tris": 88,
+  "sizeM": [
+   0.158,
+   0.368,
+   0.031
+  ],
+  "bytes": 5932,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Rice_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Rice_2",
+  "name": "Rice_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "pendiente",
+  "why": "Especie sin parámetros en el motor (solo hay tomate) y sin uso en el norte de Chile: preparada para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Rice_2.glb",
+  "tris": 294,
+  "sizeM": [
+   0.255,
+   0.565,
+   0.127
+  ],
+  "bytes": 17252,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Rice_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Rice_3",
+  "name": "Rice_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "pendiente",
+  "why": "Especie sin parámetros en el motor (solo hay tomate) y sin uso en el norte de Chile: preparada para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Rice_3.glb",
+  "tris": 628,
+  "sizeM": [
+   0.619,
+   0.769,
+   0.238
+  ],
+  "bytes": 35628,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Rice_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Rice_4",
+  "name": "Rice_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "pendiente",
+  "why": "Especie sin parámetros en el motor (solo hay tomate) y sin uso en el norte de Chile: preparada para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Rice_4.glb",
+  "tris": 1940,
+  "sizeM": [
+   0.779,
+   0.953,
+   0.881
+  ],
+  "bytes": 108412,
+  "materials": [
+   "Green",
+   "LightGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Rice_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Rice_Crop",
+  "name": "Rice_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "pendiente",
+  "why": "Especie sin parámetros en el motor (solo hay tomate) y sin uso en el norte de Chile: preparada para ampliaciones.",
+  "file": "/agro/_galeria/quat-cultivos/Rice_Crop.glb",
+  "tris": 370,
+  "sizeM": [
+   0.906,
+   0.046,
+   0.387
+  ],
+  "bytes": 21360,
+  "materials": [
+   "LightGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Rice_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Tomato_1",
+  "name": "Tomato_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Etapas 1–4 relacionadas con las etapas del motor del tomate (CROP_STAGE_MODELS).",
+  "file": "/agro/_galeria/quat-cultivos/Tomato_1.glb",
+  "tris": 60,
+  "sizeM": [
+   0.101,
+   0.179,
+   0.065
+  ],
+  "bytes": 4328,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "cultivo-tomate-1",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Tomato_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Tomato_2",
+  "name": "Tomato_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Etapas 1–4 relacionadas con las etapas del motor del tomate (CROP_STAGE_MODELS).",
+  "file": "/agro/_galeria/quat-cultivos/Tomato_2.glb",
+  "tris": 266,
+  "sizeM": [
+   0.377,
+   0.791,
+   0.187
+  ],
+  "bytes": 16176,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "cultivo-tomate-2",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Tomato_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Tomato_3",
+  "name": "Tomato_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Etapas 1–4 relacionadas con las etapas del motor del tomate (CROP_STAGE_MODELS).",
+  "file": "/agro/_galeria/quat-cultivos/Tomato_3.glb",
+  "tris": 1194,
+  "sizeM": [
+   0.641,
+   1.428,
+   0.586
+  ],
+  "bytes": 68784,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "cultivo-tomate-3",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Tomato_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Tomato_4",
+  "name": "Tomato_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Etapas 1–4 relacionadas con las etapas del motor del tomate (CROP_STAGE_MODELS).",
+  "file": "/agro/_galeria/quat-cultivos/Tomato_4.glb",
+  "tris": 1518,
+  "sizeM": [
+   0.793,
+   1.72,
+   0.81
+  ],
+  "bytes": 91376,
+  "materials": [
+   "Red",
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "cultivo-tomate-4",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Tomato_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Tomato_Crop",
+  "name": "Tomato_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Tomato_Crop.glb",
+  "tris": 344,
+  "sizeM": [
+   0.178,
+   0.148,
+   0.178
+  ],
+  "bytes": 26168,
+  "materials": [
+   "Red",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Tomato_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Tomato_Harvested",
+  "name": "Tomato_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Tomato_Harvested.glb",
+  "tris": 1358,
+  "sizeM": [
+   0.793,
+   1.72,
+   0.81
+  ],
+  "bytes": 78132,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Tomato_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Watermelon_1",
+  "name": "Watermelon_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Watermelon_1.glb",
+  "tris": 132,
+  "sizeM": [
+   0.217,
+   0.391,
+   0.093
+  ],
+  "bytes": 8896,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Watermelon_2",
+  "name": "Watermelon_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Watermelon_2.glb",
+  "tris": 862,
+  "sizeM": [
+   0.468,
+   0.254,
+   0.44
+  ],
+  "bytes": 48564,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Watermelon_3",
+  "name": "Watermelon_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "adaptar",
+  "why": "Más de 2.400 triángulos por planta: hay que decimar antes de usarlo en una parcela completa.",
+  "file": "/agro/_galeria/quat-cultivos/Watermelon_3.glb",
+  "tris": 1752,
+  "sizeM": [
+   0.875,
+   0.393,
+   0.749
+  ],
+  "bytes": 96484,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Watermelon_4",
+  "name": "Watermelon_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "adaptar",
+  "why": "Más de 2.400 triángulos por planta: hay que decimar antes de usarlo en una parcela completa.",
+  "file": "/agro/_galeria/quat-cultivos/Watermelon_4.glb",
+  "tris": 2600,
+  "sizeM": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "bytes": 143540,
+  "materials": [
+   "Green",
+   "DarkGreen2",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Watermelon_Crop",
+  "name": "Watermelon_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Watermelon_Crop.glb",
+  "tris": 220,
+  "sizeM": [
+   0.444,
+   0.351,
+   0.369
+  ],
+  "bytes": 14232,
+  "materials": [
+   "Green",
+   "DarkGreen2"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_Crop.blend"
+ },
+ {
+  "id": "quat-cultivos/Watermelon_Harvested",
+  "name": "Watermelon_Harvested",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "adaptar",
+  "why": "Más de 2.400 triángulos por planta: hay que decimar antes de usarlo en una parcela completa.",
+  "file": "/agro/_galeria/quat-cultivos/Watermelon_Harvested.glb",
+  "tris": 2380,
+  "sizeM": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "bytes": 130408,
+  "materials": [
+   "Green",
+   "DarkGreen"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_Harvested.blend"
+ },
+ {
+  "id": "quat-cultivos/Wheat_1",
+  "name": "Wheat_1",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Wheat_1.glb",
+  "tris": 40,
+  "sizeM": [
+   0.121,
+   0.219,
+   0.033
+  ],
+  "bytes": 3292,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Wheat_1.blend"
+ },
+ {
+  "id": "quat-cultivos/Wheat_2",
+  "name": "Wheat_2",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Wheat_2.glb",
+  "tris": 118,
+  "sizeM": [
+   0.072,
+   0.539,
+   0.124
+  ],
+  "bytes": 7628,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Wheat_2.blend"
+ },
+ {
+  "id": "quat-cultivos/Wheat_3",
+  "name": "Wheat_3",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Wheat_3.glb",
+  "tris": 246,
+  "sizeM": [
+   0.165,
+   0.694,
+   0.243
+  ],
+  "bytes": 14448,
+  "materials": [
+   "Green"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Wheat_3.blend"
+ },
+ {
+  "id": "quat-cultivos/Wheat_4",
+  "name": "Wheat_4",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Wheat_4.glb",
+  "tris": 102,
+  "sizeM": [
+   0.098,
+   0.948,
+   0.056
+  ],
+  "bytes": 6384,
+  "materials": [
+   "Yellow"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Wheat_4.blend"
+ },
+ {
+  "id": "quat-cultivos/Wheat_Crop",
+  "name": "Wheat_Crop",
+  "pack": "quat-cultivos",
+  "packName": "Quaternius · cultivos (LowPoly Models)",
+  "family": "cultivos",
+  "status": "listo",
+  "why": "Colores planos y apagados, de bajo polígono y escala en metros creíble. Utilizable como variante por especie y etapa cuando exista el cultivo en el motor.",
+  "file": "/agro/_galeria/quat-cultivos/Wheat_Crop.glb",
+  "tris": 612,
+  "sizeM": [
+   0.591,
+   0.105,
+   0.758
+  ],
+  "bytes": 33184,
+  "materials": [
+   "Yellow"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194644Z-1-001/Blends/Wheat_Crop.blend"
+ },
+ {
+  "id": "quat-granja/Barn",
+  "name": "Barn",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "adaptar",
+  "why": "Paleta de granja americana (rojo y blanco); se atenúa la saturación y se ajusta a la huella funcional.",
+  "file": "/agro/_galeria/quat-granja/Barn.glb",
+  "tris": 2910,
+  "sizeM": [
+   7.727,
+   6.009,
+   8.222
+  ],
+  "bytes": 125344,
+  "materials": [
+   "DarkRed",
+   "White",
+   "LightRed",
+   "RoofBlack"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "estructura-granero",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/Barn.blend"
+ },
+ {
+  "id": "quat-granja/BigBarn",
+  "name": "BigBarn",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "adaptar",
+  "why": "Paleta de granja americana (rojo y blanco): conviene un tinte de tierra para el norte de Chile antes de usarlo.",
+  "file": "/agro/_galeria/quat-granja/BigBarn.glb",
+  "tris": 4224,
+  "sizeM": [
+   7.727,
+   7.887,
+   8.222
+  ],
+  "bytes": 183860,
+  "materials": [
+   "DarkRed",
+   "White",
+   "LightRed",
+   "RoofBlack"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/BigBarn.blend"
+ },
+ {
+  "id": "quat-granja/ChickenCoop",
+  "name": "ChickenCoop",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "pendiente",
+  "why": "Corresponde a ganadería (no existe en el motor).",
+  "file": "/agro/_galeria/quat-granja/ChickenCoop.glb",
+  "tris": 948,
+  "sizeM": [
+   2.407,
+   1.851,
+   2.154
+  ],
+  "bytes": 47208,
+  "materials": [
+   "White",
+   "LightRed",
+   "Brown",
+   "DarkRed",
+   "RoofBlack"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/ChickenCoop.blend"
+ },
+ {
+  "id": "quat-granja/Fence",
+  "name": "Fence",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "listo",
+  "why": "Estructura ambiental de bajo polígono; puede usarse como decoración (no es una pieza funcional).",
+  "file": "/agro/_galeria/quat-granja/Fence.glb",
+  "tris": 188,
+  "sizeM": [
+   5.89,
+   1.097,
+   0.166
+  ],
+  "bytes": 10272,
+  "materials": [
+   "Brown"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "estructura-cerca",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/Fence.blend"
+ },
+ {
+  "id": "quat-granja/Fence2",
+  "name": "Fence2",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "listo",
+  "why": "Estructura ambiental de bajo polígono; puede usarse como decoración (no es una pieza funcional).",
+  "file": "/agro/_galeria/quat-granja/Fence2.glb",
+  "tris": 324,
+  "sizeM": [
+   5.89,
+   1.173,
+   0.166
+  ],
+  "bytes": 16468,
+  "materials": [
+   "Brown"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/Fence2.blend"
+ },
+ {
+  "id": "quat-granja/OpenBarn",
+  "name": "OpenBarn",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "adaptar",
+  "why": "Paleta de granja americana (rojo y blanco): conviene un tinte de tierra para el norte de Chile antes de usarlo.",
+  "file": "/agro/_galeria/quat-granja/OpenBarn.glb",
+  "tris": 1612,
+  "sizeM": [
+   5.744,
+   4.743,
+   6.182
+  ],
+  "bytes": 74712,
+  "materials": [
+   "DarkRed",
+   "White",
+   "LightRed",
+   "Brown",
+   "RoofBlack"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/OpenBarn.blend"
+ },
+ {
+  "id": "quat-granja/Silo",
+  "name": "Silo",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "adaptar",
+  "why": "Paleta de granja americana (rojo y blanco): conviene un tinte de tierra para el norte de Chile antes de usarlo.",
+  "file": "/agro/_galeria/quat-granja/Silo.glb",
+  "tris": 1592,
+  "sizeM": [
+   3.668,
+   9.069,
+   3.51
+  ],
+  "bytes": 68232,
+  "materials": [
+   "LightRed",
+   "White",
+   "DarkRed",
+   "Brown",
+   "Grey"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/Silo.blend"
+ },
+ {
+  "id": "quat-granja/Silo_House",
+  "name": "Silo_House",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "adaptar",
+  "why": "Paleta de granja americana (rojo y blanco): conviene un tinte de tierra para el norte de Chile antes de usarlo.",
+  "file": "/agro/_galeria/quat-granja/Silo_House.glb",
+  "tris": 2880,
+  "sizeM": [
+   5.338,
+   9.067,
+   3.51
+  ],
+  "bytes": 126264,
+  "materials": [
+   "LightRed",
+   "Grey",
+   "DarkRed",
+   "Brown",
+   "White",
+   "DarkGrey",
+   "Black"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/Silo_House.blend"
+ },
+ {
+  "id": "quat-granja/SmallBarn",
+  "name": "SmallBarn",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "adaptar",
+  "why": "Paleta de granja americana (rojo y blanco): conviene un tinte de tierra para el norte de Chile antes de usarlo.",
+  "file": "/agro/_galeria/quat-granja/SmallBarn.glb",
+  "tris": 2176,
+  "sizeM": [
+   6.079,
+   4.961,
+   6.274
+  ],
+  "bytes": 95512,
+  "materials": [
+   "DarkRed",
+   "White",
+   "LightRed",
+   "RoofBlack"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/SmallBarn.blend"
+ },
+ {
+  "id": "quat-granja/TowerWindmill",
+  "name": "TowerWindmill",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "descartar",
+  "why": "7.800 triángulos y 7 materiales: desproporcionado para una estructura decorativa.",
+  "file": "/agro/_galeria/quat-granja/TowerWindmill.glb",
+  "tris": 7827,
+  "sizeM": [
+   7.924,
+   11.413,
+   4.991
+  ],
+  "bytes": 327008,
+  "materials": [
+   "DarkGrey",
+   "RoofBlack",
+   "LightBrown",
+   "White",
+   "Black",
+   "Grey",
+   "DarkBrown"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/TowerWindmill.blend"
+ },
+ {
+  "id": "quat-granja/WaterTower",
+  "name": "WaterTower",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "listo",
+  "why": "Estructura ambiental de bajo polígono; puede usarse como decoración (no es una pieza funcional).",
+  "file": "/agro/_galeria/quat-granja/WaterTower.glb",
+  "tris": 2507,
+  "sizeM": [
+   2.532,
+   8.429,
+   2.489
+  ],
+  "bytes": 103992,
+  "materials": [
+   "Brown",
+   "Grey",
+   "DarkGrey"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/WaterTower.blend"
+ },
+ {
+  "id": "quat-granja/Well",
+  "name": "Well",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "listo",
+  "why": "Estructura ambiental de bajo polígono; puede usarse como decoración (no es una pieza funcional).",
+  "file": "/agro/_galeria/quat-granja/Well.glb",
+  "tris": 2880,
+  "sizeM": [
+   1.277,
+   2.146,
+   1.487
+  ],
+  "bytes": 151556,
+  "materials": [
+   "Grey",
+   "Brown",
+   "LightRed",
+   "White",
+   "DarkGrey"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/Well.blend"
+ },
+ {
+  "id": "quat-granja/Windmill",
+  "name": "Windmill",
+  "pack": "quat-granja",
+  "packName": "Quaternius · estructuras de granja (LowPoly Models)",
+  "family": "estructuras-agricolas",
+  "status": "adaptar",
+  "why": "Paleta de granja americana (rojo y blanco); se atenúa la saturación y se ajusta a la huella funcional.",
+  "file": "/agro/_galeria/quat-granja/Windmill.glb",
+  "tris": 1440,
+  "sizeM": [
+   6.508,
+   11.196,
+   1.898
+  ],
+  "bytes": 73212,
+  "materials": [
+   "Brown",
+   "Grey"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "estructura-molino",
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194737Z-1-001/Blend/Windmill.blend"
+ },
+ {
+  "id": "quat-plataforma/BirchTree_1",
+  "name": "BirchTree_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/BirchTree_1.glb",
+  "tris": 4596,
+  "sizeM": [
+   2.708,
+   5.453,
+   1.943
+  ],
+  "bytes": 203860,
+  "materials": [
+   "BirchTree_Bark",
+   "BirchTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_1.blend"
+ },
+ {
+  "id": "quat-plataforma/BirchTree_2",
+  "name": "BirchTree_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/BirchTree_2.glb",
+  "tris": 7660,
+  "sizeM": [
+   3.347,
+   7.57,
+   2.813
+  ],
+  "bytes": 295368,
+  "materials": [
+   "BirchTree_Bark",
+   "BirchTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_2.blend"
+ },
+ {
+  "id": "quat-plataforma/BirchTree_3",
+  "name": "BirchTree_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/BirchTree_3.glb",
+  "tris": 6818,
+  "sizeM": [
+   3.433,
+   5.754,
+   2.267
+  ],
+  "bytes": 439968,
+  "materials": [
+   "BirchTree_Bark",
+   "BirchTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_3.blend"
+ },
+ {
+  "id": "quat-plataforma/BirchTree_4",
+  "name": "BirchTree_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/BirchTree_4.glb",
+  "tris": 3562,
+  "sizeM": [
+   2.776,
+   4.215,
+   1.839
+  ],
+  "bytes": 141724,
+  "materials": [
+   "BirchTree_Bark",
+   "BirchTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_4.blend"
+ },
+ {
+  "id": "quat-plataforma/BirchTree_5",
+  "name": "BirchTree_5",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/BirchTree_5.glb",
+  "tris": 4520,
+  "sizeM": [
+   3.582,
+   5.522,
+   3.515
+  ],
+  "bytes": 182608,
+  "materials": [
+   "BirchTree_Bark",
+   "BirchTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_5.blend"
+ },
+ {
+  "id": "quat-plataforma/Bush",
+  "name": "Bush",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Bush.glb",
+  "tris": 400,
+  "sizeM": [
+   1.857,
+   1.47,
+   1.77
+  ],
+  "bytes": 29172,
+  "materials": [
+   "Bush_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-arbusto-a",
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Bush.blend"
+ },
+ {
+  "id": "quat-plataforma/Bush_Flowers",
+  "name": "Bush_Flowers",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Bush_Flowers.glb",
+  "tris": 478,
+  "sizeM": [
+   1.857,
+   1.472,
+   1.77
+  ],
+  "bytes": 33328,
+  "materials": [
+   "Bush_Leaves",
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Bush_Flowers.blend"
+ },
+ {
+  "id": "quat-plataforma/Bush_Large",
+  "name": "Bush_Large",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Bush_Large.glb",
+  "tris": 276,
+  "sizeM": [
+   2.639,
+   2.44,
+   2.441
+  ],
+  "bytes": 20500,
+  "materials": [
+   "Bush_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-arbusto-b",
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Bush_Large.blend"
+ },
+ {
+  "id": "quat-plataforma/Bush_Large_Flowers",
+  "name": "Bush_Large_Flowers",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Bush_Large_Flowers.glb",
+  "tris": 402,
+  "sizeM": [
+   2.639,
+   2.497,
+   2.441
+  ],
+  "bytes": 26736,
+  "materials": [
+   "Bush_Leaves",
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Bush_Large_Flowers.blend"
+ },
+ {
+  "id": "quat-plataforma/Bush_Small",
+  "name": "Bush_Small",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Bush_Small.glb",
+  "tris": 190,
+  "sizeM": [
+   2.368,
+   2.015,
+   2.147
+  ],
+  "bytes": 14480,
+  "materials": [
+   "Bush_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Bush_Small.blend"
+ },
+ {
+  "id": "quat-plataforma/Bush_Small_Flowers",
+  "name": "Bush_Small_Flowers",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Bush_Small_Flowers.glb",
+  "tris": 274,
+  "sizeM": [
+   2.368,
+   2.068,
+   2.147
+  ],
+  "bytes": 18892,
+  "materials": [
+   "Bush_Leaves",
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Bush_Small_Flowers.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_1",
+  "name": "DeadTree_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_1.glb",
+  "tris": 4792,
+  "sizeM": [
+   3.092,
+   6.196,
+   1.295
+  ],
+  "bytes": 122816,
+  "materials": [
+   "NormalTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_1.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_10",
+  "name": "DeadTree_10",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_10.glb",
+  "tris": 3208,
+  "sizeM": [
+   5.461,
+   7.126,
+   3.245
+  ],
+  "bytes": 82812,
+  "materials": [
+   "MapleTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_10.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_2",
+  "name": "DeadTree_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_2.glb",
+  "tris": 5344,
+  "sizeM": [
+   3.424,
+   6.196,
+   1.446
+  ],
+  "bytes": 137044,
+  "materials": [
+   "NormalTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_2.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_3",
+  "name": "DeadTree_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_3.glb",
+  "tris": 4928,
+  "sizeM": [
+   4.219,
+   4.958,
+   1.702
+  ],
+  "bytes": 126228,
+  "materials": [
+   "NormalTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_3.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_4",
+  "name": "DeadTree_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_4.glb",
+  "tris": 3528,
+  "sizeM": [
+   4.85,
+   4.61,
+   1.669
+  ],
+  "bytes": 90876,
+  "materials": [
+   "NormalTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_4.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_5",
+  "name": "DeadTree_5",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_5.glb",
+  "tris": 1360,
+  "sizeM": [
+   1.441,
+   2.604,
+   1.534
+  ],
+  "bytes": 35656,
+  "materials": [
+   "NormalTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_5.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_6",
+  "name": "DeadTree_6",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_6.glb",
+  "tris": 2984,
+  "sizeM": [
+   5.407,
+   6.414,
+   3.299
+  ],
+  "bytes": 77080,
+  "materials": [
+   "MapleTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_6.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_7",
+  "name": "DeadTree_7",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_7.glb",
+  "tris": 3504,
+  "sizeM": [
+   6.137,
+   6.314,
+   5.034
+  ],
+  "bytes": 90028,
+  "materials": [
+   "MapleTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_7.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_8",
+  "name": "DeadTree_8",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_8.glb",
+  "tris": 4944,
+  "sizeM": [
+   8.166,
+   6.277,
+   4.802
+  ],
+  "bytes": 126728,
+  "materials": [
+   "MapleTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_8.blend"
+ },
+ {
+  "id": "quat-plataforma/DeadTree_9",
+  "name": "DeadTree_9",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Árbol seco útil para desierto y montaña (Etapa 7) con paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/DeadTree_9.glb",
+  "tris": 824,
+  "sizeM": [
+   2.059,
+   3.302,
+   0.718
+  ],
+  "bytes": 22388,
+  "materials": [
+   "MapleTree_Bark"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_9.blend"
+ },
+ {
+  "id": "quat-plataforma/Flower_1",
+  "name": "Flower_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Flower_1.glb",
+  "tris": 162,
+  "sizeM": [
+   0.268,
+   0.489,
+   0.204
+  ],
+  "bytes": 7208,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Flower_1.blend"
+ },
+ {
+  "id": "quat-plataforma/Flower_1_Clump",
+  "name": "Flower_1_Clump",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Flower_1_Clump.glb",
+  "tris": 620,
+  "sizeM": [
+   0.471,
+   0.671,
+   0.435
+  ],
+  "bytes": 24460,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Flower_1_Clump.blend"
+ },
+ {
+  "id": "quat-plataforma/Flower_2",
+  "name": "Flower_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Flower_2.glb",
+  "tris": 34,
+  "sizeM": [
+   0.239,
+   0.361,
+   0.247
+  ],
+  "bytes": 2040,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Flower_2.blend"
+ },
+ {
+  "id": "quat-plataforma/Flower_2_Clump",
+  "name": "Flower_2_Clump",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Flower_2_Clump.glb",
+  "tris": 136,
+  "sizeM": [
+   0.426,
+   0.451,
+   0.373
+  ],
+  "bytes": 4868,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Flower_2_Clump.blend"
+ },
+ {
+  "id": "quat-plataforma/Flower_3_Clump",
+  "name": "Flower_3_Clump",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Flower_3_Clump.glb",
+  "tris": 136,
+  "sizeM": [
+   0.426,
+   0.451,
+   0.373
+  ],
+  "bytes": 4868,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Flower_3_Clump.blend"
+ },
+ {
+  "id": "quat-plataforma/Flower_4_Clump",
+  "name": "Flower_4_Clump",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Flower_4_Clump.glb",
+  "tris": 136,
+  "sizeM": [
+   0.568,
+   0.601,
+   0.498
+  ],
+  "bytes": 4844,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Flower_4_Clump.blend"
+ },
+ {
+  "id": "quat-plataforma/Flower_5_Clump",
+  "name": "Flower_5_Clump",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Flower_5_Clump.glb",
+  "tris": 136,
+  "sizeM": [
+   0.426,
+   0.451,
+   0.373
+  ],
+  "bytes": 4840,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Flower_5_Clump.blend"
+ },
+ {
+  "id": "quat-plataforma/Grass_Large",
+  "name": "Grass_Large",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Grass_Large.glb",
+  "tris": 108,
+  "sizeM": [
+   0.708,
+   0.485,
+   0.498
+  ],
+  "bytes": 6532,
+  "materials": [
+   "Grass"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Grass_Large.blend"
+ },
+ {
+  "id": "quat-plataforma/Grass_Large_Extruded",
+  "name": "Grass_Large_Extruded",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Grass_Large_Extruded.glb",
+  "tris": 516,
+  "sizeM": [
+   0.745,
+   0.509,
+   0.497
+  ],
+  "bytes": 27616,
+  "materials": [
+   "Grass"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Grass_Large_Extruded.blend"
+ },
+ {
+  "id": "quat-plataforma/Grass_Small",
+  "name": "Grass_Small",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Grass_Small.glb",
+  "tris": 58,
+  "sizeM": [
+   0.47,
+   0.394,
+   0.278
+  ],
+  "bytes": 3984,
+  "materials": [
+   "Grass"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Grass_Small.blend"
+ },
+ {
+  "id": "quat-plataforma/MapleTree_1",
+  "name": "MapleTree_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/MapleTree_1.glb",
+  "tris": 3848,
+  "sizeM": [
+   6.229,
+   6.644,
+   4.904
+  ],
+  "bytes": 138348,
+  "materials": [
+   "MapleTree_Bark",
+   "MapleTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_1.blend"
+ },
+ {
+  "id": "quat-plataforma/MapleTree_2",
+  "name": "MapleTree_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/MapleTree_2.glb",
+  "tris": 4800,
+  "sizeM": [
+   6.701,
+   6.714,
+   6.244
+  ],
+  "bytes": 181532,
+  "materials": [
+   "MapleTree_Bark",
+   "MapleTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_2.blend"
+ },
+ {
+  "id": "quat-plataforma/MapleTree_3",
+  "name": "MapleTree_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/MapleTree_3.glb",
+  "tris": 6678,
+  "sizeM": [
+   8.98,
+   6.987,
+   6.613
+  ],
+  "bytes": 248896,
+  "materials": [
+   "MapleTree_Bark",
+   "MapleTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_3.blend"
+ },
+ {
+  "id": "quat-plataforma/MapleTree_4",
+  "name": "MapleTree_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/MapleTree_4.glb",
+  "tris": 1256,
+  "sizeM": [
+   2.77,
+   3.594,
+   2.435
+  ],
+  "bytes": 53408,
+  "materials": [
+   "MapleTree_Bark",
+   "MapleTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_4.blend"
+ },
+ {
+  "id": "quat-plataforma/MapleTree_5",
+  "name": "MapleTree_5",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/MapleTree_5.glb",
+  "tris": 4504,
+  "sizeM": [
+   7.012,
+   7.28,
+   5.076
+  ],
+  "bytes": 174316,
+  "materials": [
+   "MapleTree_Bark",
+   "MapleTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_5.blend"
+ },
+ {
+  "id": "quat-plataforma/NormalTree_1",
+  "name": "NormalTree_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/NormalTree_1.glb",
+  "tris": 8520,
+  "sizeM": [
+   4.051,
+   6.867,
+   2.744
+  ],
+  "bytes": 384568,
+  "materials": [
+   "NormalTree_Bark",
+   "NormalTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_1.blend"
+ },
+ {
+  "id": "quat-plataforma/NormalTree_2",
+  "name": "NormalTree_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/NormalTree_2.glb",
+  "tris": 8084,
+  "sizeM": [
+   4.554,
+   6.555,
+   2.786
+  ],
+  "bytes": 329632,
+  "materials": [
+   "NormalTree_Bark",
+   "NormalTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_2.blend"
+ },
+ {
+  "id": "quat-plataforma/NormalTree_3",
+  "name": "NormalTree_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/NormalTree_3.glb",
+  "tris": 7096,
+  "sizeM": [
+   5.039,
+   5.281,
+   2.88
+  ],
+  "bytes": 278776,
+  "materials": [
+   "NormalTree_Bark",
+   "NormalTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_3.blend"
+ },
+ {
+  "id": "quat-plataforma/NormalTree_4",
+  "name": "NormalTree_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/NormalTree_4.glb",
+  "tris": 6338,
+  "sizeM": [
+   5.673,
+   5.096,
+   2.401
+  ],
+  "bytes": 288364,
+  "materials": [
+   "NormalTree_Bark",
+   "NormalTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_4.blend"
+ },
+ {
+  "id": "quat-plataforma/NormalTree_5",
+  "name": "NormalTree_5",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Árbol del paquete Platformer: textura pintada de estilo videojuego, 2–8 mil triángulos y mapas normales de hasta 22 MB. No encaja con el estilo semirrealista optimizado ni con la flora chilena.",
+  "file": "/agro/_galeria/quat-plataforma/NormalTree_5.glb",
+  "tris": 2182,
+  "sizeM": [
+   3.097,
+   2.98,
+   2.566
+  ],
+  "bytes": 93984,
+  "materials": [
+   "NormalTree_Bark",
+   "NormalTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_5.blend"
+ },
+ {
+  "id": "quat-plataforma/PalmTree_1",
+  "name": "PalmTree_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Duplicado de la palmera del paquete de cultivos (esa tiene colores planos y encaja mejor).",
+  "file": "/agro/_galeria/quat-plataforma/PalmTree_1.glb",
+  "tris": 472,
+  "sizeM": [
+   5.092,
+   5.103,
+   4.947
+  ],
+  "bytes": 16820,
+  "materials": [
+   "PalmTree_Trunk",
+   "PalmTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_1.blend"
+ },
+ {
+  "id": "quat-plataforma/PalmTree_2",
+  "name": "PalmTree_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Duplicado de la palmera del paquete de cultivos (esa tiene colores planos y encaja mejor).",
+  "file": "/agro/_galeria/quat-plataforma/PalmTree_2.glb",
+  "tris": 368,
+  "sizeM": [
+   5.583,
+   5.28,
+   4.769
+  ],
+  "bytes": 13536,
+  "materials": [
+   "PalmTree_Trunk",
+   "PalmTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_2.blend"
+ },
+ {
+  "id": "quat-plataforma/PalmTree_3",
+  "name": "PalmTree_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Duplicado de la palmera del paquete de cultivos (esa tiene colores planos y encaja mejor).",
+  "file": "/agro/_galeria/quat-plataforma/PalmTree_3.glb",
+  "tris": 344,
+  "sizeM": [
+   4.473,
+   4.666,
+   4.222
+  ],
+  "bytes": 12688,
+  "materials": [
+   "PalmTree_Trunk",
+   "PalmTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_3.blend"
+ },
+ {
+  "id": "quat-plataforma/PalmTree_4",
+  "name": "PalmTree_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Duplicado de la palmera del paquete de cultivos (esa tiene colores planos y encaja mejor).",
+  "file": "/agro/_galeria/quat-plataforma/PalmTree_4.glb",
+  "tris": 472,
+  "sizeM": [
+   4.747,
+   3.65,
+   4.952
+  ],
+  "bytes": 16820,
+  "materials": [
+   "PalmTree_Trunk",
+   "PalmTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_4.blend"
+ },
+ {
+  "id": "quat-plataforma/PalmTree_5",
+  "name": "PalmTree_5",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "descartar",
+  "why": "Duplicado de la palmera del paquete de cultivos (esa tiene colores planos y encaja mejor).",
+  "file": "/agro/_galeria/quat-plataforma/PalmTree_5.glb",
+  "tris": 264,
+  "sizeM": [
+   3.492,
+   1.796,
+   3.622
+  ],
+  "bytes": 10764,
+  "materials": [
+   "PalmTree_Trunk",
+   "PalmTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_5.blend"
+ },
+ {
+  "id": "quat-plataforma/Petals_1",
+  "name": "Petals_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Petals_1.glb",
+  "tris": 90,
+  "sizeM": [
+   1.09,
+   0.967,
+   0.896
+  ],
+  "bytes": 5072,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Petals_1.blend"
+ },
+ {
+  "id": "quat-plataforma/Petals_2",
+  "name": "Petals_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Petals_2.glb",
+  "tris": 12,
+  "sizeM": [
+   0.853,
+   0.662,
+   0.866
+  ],
+  "bytes": 1680,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Petals_2.blend"
+ },
+ {
+  "id": "quat-plataforma/Petals_3",
+  "name": "Petals_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Petals_3.glb",
+  "tris": 6,
+  "sizeM": [
+   0.589,
+   0.544,
+   0.566
+  ],
+  "bytes": 1416,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Petals_3.blend"
+ },
+ {
+  "id": "quat-plataforma/Petals_4",
+  "name": "Petals_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Petals_4.glb",
+  "tris": 6,
+  "sizeM": [
+   0.415,
+   0.221,
+   0.376
+  ],
+  "bytes": 1380,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Petals_4.blend"
+ },
+ {
+  "id": "quat-plataforma/PineTree_1",
+  "name": "PineTree_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Conífera pintada: posible para Laderas y montaña en la Etapa 7, pero necesita paleta lisa y reducir triángulos.",
+  "file": "/agro/_galeria/quat-plataforma/PineTree_1.glb",
+  "tris": 2128,
+  "sizeM": [
+   2.977,
+   4.502,
+   3.034
+  ],
+  "bytes": 61232,
+  "materials": [
+   "PineTree_Bark",
+   "PineTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PineTree_1.blend"
+ },
+ {
+  "id": "quat-plataforma/PineTree_2",
+  "name": "PineTree_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Conífera pintada: posible para Laderas y montaña en la Etapa 7, pero necesita paleta lisa y reducir triángulos.",
+  "file": "/agro/_galeria/quat-plataforma/PineTree_2.glb",
+  "tris": 2716,
+  "sizeM": [
+   3.277,
+   6.909,
+   2.979
+  ],
+  "bytes": 80504,
+  "materials": [
+   "PineTree_Bark",
+   "PineTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PineTree_2.blend"
+ },
+ {
+  "id": "quat-plataforma/PineTree_3",
+  "name": "PineTree_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Conífera pintada: posible para Laderas y montaña en la Etapa 7, pero necesita paleta lisa y reducir triángulos.",
+  "file": "/agro/_galeria/quat-plataforma/PineTree_3.glb",
+  "tris": 1998,
+  "sizeM": [
+   1.763,
+   2.347,
+   1.749
+  ],
+  "bytes": 56928,
+  "materials": [
+   "PineTree_Bark",
+   "PineTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-pino-b",
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PineTree_3.blend"
+ },
+ {
+  "id": "quat-plataforma/PineTree_4",
+  "name": "PineTree_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Conífera pintada: posible para Laderas y montaña en la Etapa 7, pero necesita paleta lisa y reducir triángulos.",
+  "file": "/agro/_galeria/quat-plataforma/PineTree_4.glb",
+  "tris": 2686,
+  "sizeM": [
+   4.842,
+   4.485,
+   3.25
+  ],
+  "bytes": 78312,
+  "materials": [
+   "PineTree_Bark",
+   "PineTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PineTree_4.blend"
+ },
+ {
+  "id": "quat-plataforma/PineTree_5",
+  "name": "PineTree_5",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "pendiente",
+  "why": "Conífera pintada: posible para Laderas y montaña en la Etapa 7, pero necesita paleta lisa y reducir triángulos.",
+  "file": "/agro/_galeria/quat-plataforma/PineTree_5.glb",
+  "tris": 838,
+  "sizeM": [
+   3.308,
+   4.301,
+   3.286
+  ],
+  "bytes": 29288,
+  "materials": [
+   "PineTree_Bark",
+   "PineTree_Leaves"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "veg-pino-a",
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/PineTree_5.blend"
+ },
+ {
+  "id": "quat-plataforma/Plant_1",
+  "name": "Plant_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Plant_1.glb",
+  "tris": 420,
+  "sizeM": [
+   1.593,
+   0.878,
+   1.644
+  ],
+  "bytes": 15788,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Plant_1.blend"
+ },
+ {
+  "id": "quat-plataforma/Plant_2",
+  "name": "Plant_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Plant_2.glb",
+  "tris": 160,
+  "sizeM": [
+   1.396,
+   0.659,
+   1.531
+  ],
+  "bytes": 6704,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Plant_2.blend"
+ },
+ {
+  "id": "quat-plataforma/Plant_Flowers",
+  "name": "Plant_Flowers",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "arboles-vegetacion",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Plant_Flowers.glb",
+  "tris": 330,
+  "sizeM": [
+   1.485,
+   1.489,
+   1.796
+  ],
+  "bytes": 11408,
+  "materials": [
+   "Flowers"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Plant_Flowers.blend"
+ },
+ {
+  "id": "quat-plataforma/Rock_1",
+  "name": "Rock_1",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "terrenos-rocas",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Rock_1.glb",
+  "tris": 228,
+  "sizeM": [
+   0.711,
+   1.082,
+   0.887
+  ],
+  "bytes": 12204,
+  "materials": [
+   "Rock"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "roca-a",
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Rock_1.blend"
+ },
+ {
+  "id": "quat-plataforma/Rock_2",
+  "name": "Rock_2",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "terrenos-rocas",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Rock_2.glb",
+  "tris": 202,
+  "sizeM": [
+   1.054,
+   1.125,
+   1.076
+  ],
+  "bytes": 11116,
+  "materials": [
+   "Rock"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "roca-b",
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Rock_2.blend"
+ },
+ {
+  "id": "quat-plataforma/Rock_3",
+  "name": "Rock_3",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "terrenos-rocas",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Rock_3.glb",
+  "tris": 712,
+  "sizeM": [
+   0.844,
+   1.313,
+   0.897
+  ],
+  "bytes": 34892,
+  "materials": [
+   "Rock"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Rock_3.blend"
+ },
+ {
+  "id": "quat-plataforma/Rock_4",
+  "name": "Rock_4",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "terrenos-rocas",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Rock_4.glb",
+  "tris": 456,
+  "sizeM": [
+   0.859,
+   2.153,
+   0.812
+  ],
+  "bytes": 23780,
+  "materials": [
+   "Rock"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": null,
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Rock_4.blend"
+ },
+ {
+  "id": "quat-plataforma/Rock_5",
+  "name": "Rock_5",
+  "pack": "quat-plataforma",
+  "packName": "Quaternius · Ultimate Platformer Pack",
+  "family": "terrenos-rocas",
+  "status": "adaptar",
+  "why": "Textura pintada de estilo videojuego (no se incorpora); la geometría sirve con una paleta lisa.",
+  "file": "/agro/_galeria/quat-plataforma/Rock_5.glb",
+  "tris": 632,
+  "sizeM": [
+   1.291,
+   1.695,
+   1.317
+  ],
+  "bytes": 32552,
+  "materials": [
+   "Rock"
+  ],
+  "anims": [],
+  "skinned": false,
+  "integratedAs": "roca-c",
+  "palette": "sin color (textura no incorporada)",
+  "original": "drive-download-20261110T194800Z-1-001/Blends/Rock_5.blend"
+ },
+ {
+  "id": "quat-animales/Cow",
+  "name": "Cow",
+  "pack": "quat-animales",
+  "packName": "Quaternius · Farm Animals Pack",
+  "family": "animales",
+  "status": "pendiente",
+  "why": "Con esqueleto y 6 animaciones (Death, Idle, Jump, Run, Walk, WalkSlow). No hay entidad de ganadería en el motor: queda preparado.",
+  "file": "/agro/_galeria/quat-animales/Cow.glb",
+  "tris": 796,
+  "sizeM": [
+   2.25,
+   5.148,
+   9.172
+  ],
+  "bytes": 377884,
+  "materials": [
+   "White",
+   "Black",
+   "Pink"
+  ],
+  "anims": [
+   "Death",
+   "Idle",
+   "Jump",
+   "Run",
+   "Walk",
+   "WalkSlow"
+  ],
+  "skinned": true,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194858Z-1-001/Blends/Cow.blend"
+ },
+ {
+  "id": "quat-animales/Horse",
+  "name": "Horse",
+  "pack": "quat-animales",
+  "packName": "Quaternius · Farm Animals Pack",
+  "family": "animales",
+  "status": "pendiente",
+  "why": "Con esqueleto y 6 animaciones (Death, Idle, Jump, Run, Walk, WalkSlow). No hay entidad de ganadería en el motor: queda preparado.",
+  "file": "/agro/_galeria/quat-animales/Horse.glb",
+  "tris": 690,
+  "sizeM": [
+   2.57,
+   6.905,
+   9.235
+  ],
+  "bytes": 343784,
+  "materials": [
+   "Material.003",
+   "Material.006"
+  ],
+  "anims": [
+   "Death",
+   "Idle",
+   "Jump",
+   "Run",
+   "Walk",
+   "WalkSlow"
+  ],
+  "skinned": true,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194858Z-1-001/Blends/Horse.blend"
+ },
+ {
+  "id": "quat-animales/Llama",
+  "name": "Llama",
+  "pack": "quat-animales",
+  "packName": "Quaternius · Farm Animals Pack",
+  "family": "animales",
+  "status": "pendiente",
+  "why": "Con esqueleto y 6 animaciones (Death, Idle, Jump, Run, Walk, WalkSlow). No hay entidad de ganadería en el motor: queda preparado.",
+  "file": "/agro/_galeria/quat-animales/Llama.glb",
+  "tris": 662,
+  "sizeM": [
+   1.576,
+   5.853,
+   4.912
+  ],
+  "bytes": 306376,
+  "materials": [
+   "Brown",
+   "White",
+   "Grey"
+  ],
+  "anims": [
+   "Death",
+   "Idle",
+   "Jump",
+   "Run",
+   "Walk",
+   "WalkSlow"
+  ],
+  "skinned": true,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194858Z-1-001/Blends/Llama.blend"
+ },
+ {
+  "id": "quat-animales/Pig",
+  "name": "Pig",
+  "pack": "quat-animales",
+  "packName": "Quaternius · Farm Animals Pack",
+  "family": "animales",
+  "status": "pendiente",
+  "why": "Con esqueleto y 6 animaciones (Death, Idle, Jump, Run, Walk, WalkSlow). No hay entidad de ganadería en el motor: queda preparado.",
+  "file": "/agro/_galeria/quat-animales/Pig.glb",
+  "tris": 562,
+  "sizeM": [
+   3.311,
+   4.59,
+   9.784
+  ],
+  "bytes": 298632,
+  "materials": [
+   "Material.003",
+   "Material"
+  ],
+  "anims": [
+   "Death",
+   "Idle",
+   "Jump",
+   "Run",
+   "Walk",
+   "WalkSlow"
+  ],
+  "skinned": true,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194858Z-1-001/Blends/Pig.blend"
+ },
+ {
+  "id": "quat-animales/Pug",
+  "name": "Pug",
+  "pack": "quat-animales",
+  "packName": "Quaternius · Farm Animals Pack",
+  "family": "animales",
+  "status": "descartar",
+  "why": "No es un animal de granja pertinente para los territorios chilenos del juego.",
+  "file": "/agro/_galeria/quat-animales/Pug.glb",
+  "tris": 644,
+  "sizeM": [
+   0.575,
+   1.052,
+   1.388
+  ],
+  "bytes": 290300,
+  "materials": [
+   "Beige",
+   "Brown"
+  ],
+  "anims": [
+   "Death",
+   "Idle",
+   "Jump",
+   "Run",
+   "Walk",
+   "WalkSlow"
+  ],
+  "skinned": true,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194858Z-1-001/Blends/Pug.blend"
+ },
+ {
+  "id": "quat-animales/Sheep",
+  "name": "Sheep",
+  "pack": "quat-animales",
+  "packName": "Quaternius · Farm Animals Pack",
+  "family": "animales",
+  "status": "pendiente",
+  "why": "Con esqueleto y 6 animaciones (Death, Idle, Jump, Run, Walk, WalkSlow). No hay entidad de ganadería en el motor: queda preparado.",
+  "file": "/agro/_galeria/quat-animales/Sheep.glb",
+  "tris": 612,
+  "sizeM": [
+   2.221,
+   4.36,
+   5.919
+  ],
+  "bytes": 299004,
+  "materials": [
+   "White",
+   "Black"
+  ],
+  "anims": [
+   "Death",
+   "Idle",
+   "Jump",
+   "Run",
+   "Walk",
+   "WalkSlow"
+  ],
+  "skinned": true,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194858Z-1-001/Blends/Sheep.blend"
+ },
+ {
+  "id": "quat-animales/Zebra",
+  "name": "Zebra",
+  "pack": "quat-animales",
+  "packName": "Quaternius · Farm Animals Pack",
+  "family": "animales",
+  "status": "descartar",
+  "why": "No es un animal de granja pertinente para los territorios chilenos del juego.",
+  "file": "/agro/_galeria/quat-animales/Zebra.glb",
+  "tris": 1354,
+  "sizeM": [
+   2.57,
+   7.072,
+   9.235
+  ],
+  "bytes": 422452,
+  "materials": [
+   "White",
+   "Black"
+  ],
+  "anims": [
+   "Death",
+   "Idle",
+   "Jump",
+   "Run",
+   "Walk",
+   "WalkSlow"
+  ],
+  "skinned": true,
+  "integratedAs": null,
+  "palette": "colores planos",
+  "original": "drive-download-20261110T194858Z-1-001/Blends/Zebra.blend"
+ }
+]

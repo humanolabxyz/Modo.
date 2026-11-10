@@ -1,3 +1,7 @@
+import {validatePolygon} from '../terrain/geometry.ts';
+import {parcelWorldPolygon} from '../world/parcelGeometry.ts';
+import {compileOperation} from '../terrain/operations.ts';
+import {SURFACE_IDS} from './types.ts';
 // Validación y migración de mundos de Agro. Lógica pura (sin React): se prueba en Node.
 // Nunca confía en el archivo: comprueba tipos, rangos, límites, ids únicos y referencias entre puertos y conexiones.
 // La lógica de versiones se REUTILIZA de Industria (`migrate` es genérica en sus migraciones y su versión actual).
@@ -5,9 +9,10 @@ import {migrate as migrateVersion} from '../../industria/model/validate.ts';
 import {validateProgram} from '../plc/program.ts';
 import {checkPorts} from './ports.ts';
 import {GENERATOR_VERSIONS, VALLEY_SEED} from '../terrain/generators.ts';
+import {TERRAIN_CONTROLS} from '../terrain/presets.ts';
 import {
   CONNECTION_STATUSES, CURRENT_VERSION, EXPERIENCE_MODES, FORMAT, LIFECYCLES, LIMITS, PHYSICAL_STATUSES, PORT_DIRECTIONS, PORT_KINDS, PROVENANCES, SIM_SPEEDS, TERRAIN_EDIT_KINDS, TERRITORY_IDS,
-  type AgroProgram, type Clock, type Connection, type Economy, type LedgerEntry, type Order, type Entity, type Port, type Result, type Scenario, type Terrain, type TerrainEdit, type Vec3, type WorldProject,
+  type AgroProgram, type Clock, type Connection, type Economy, type LedgerEntry, type Order, type Entity, type Port, type Result, type Scenario, type Terrain, type TerrainEdit, type TerrainParameters, type Vec3, type WorldProject,
 } from './types.ts';
 
 type Rec = Record<string, unknown>;
@@ -44,6 +49,9 @@ export const MIGRATIONS: Record<number, (raw: Rec) => Rec> = {
     if (!isRec(terrain) || !isRec(scenario)) return raw;   // la validación posterior da el mensaje concreto
     for (const k of ['generatorVersion', 'presetId']) if (k in terrain) throw new Error(`El archivo declara ser de la versión 1 pero el terreno ya trae «${k}», un campo de la versión 2.`);
     if ('territory' in scenario) throw new Error('El archivo declara ser de la versión 1 pero el escenario ya trae «territory», un campo de la versión 2.');
+    if('surfaceEdits' in terrain)throw new Error('El archivo v1 contiene una capa visual de v2.');
+    if(Array.isArray(terrain.edits)&&terrain.edits.some(e=>isRec(e)&&(!['raise','lower','level'].includes(String(e.kind))||'algorithmVersion' in e)))throw new Error('El archivo v1 contiene operaciones de una versión posterior.');
+    if(Array.isArray(raw.entities)&&raw.entities.some(e=>isRec(e)&&'parcelPolygon' in e))throw new Error('El archivo v1 contiene geometría poligonal de v2.');
     const preset = terrain.seed === VALLEY_SEED ? 'valley' : 'free';
     return {...raw, terrain: {...terrain, generatorVersion: 1, presetId: preset}, scenario: {...scenario, territory: preset}};
   },
@@ -114,7 +122,7 @@ function parseEntity(raw: unknown, index: number): Result<Entity> {
   if (!isRec(raw)) return fail(`${at}: no es válida.`);
   if (!str(raw.id, LIMITS.id) || !safeKey(raw.id)) return fail(`${at}: id inválido.`);
   const where = `${at} «${raw.id}»`;
-  { const u = unknownKey(raw, ['id', 'type', 'label', 'pose', 'params', 'state', 'ports', 'lifecycle', 'owner', 'provenance', 'locked'], where); if (u) return fail(u); }
+  { const u = unknownKey(raw, ['id', 'type', 'label', 'pose', 'params', 'state', 'ports', 'lifecycle', 'owner', 'provenance', 'locked', 'parcelPolygon'], where); if (u) return fail(u); }
   if (!str(raw.type, LIMITS.id)) return fail(`${where}: falta el tipo.`);
   if (!str(raw.label, LIMITS.label)) return fail(`${where}: nombre inválido.`);
   if (isRec(raw.pose)) { const u = unknownKey(raw.pose, ['position', 'rotation'], `${where}: pose`); if (u) return fail(u); }
@@ -132,9 +140,16 @@ function parseEntity(raw: unknown, index: number): Result<Entity> {
   if (!str(raw.owner, LIMITS.id) || !safeKey(raw.owner)) return fail(`${where}: falta el propietario.`);
   if (raw.provenance !== undefined && !oneOf(PROVENANCES, raw.provenance)) return fail(`${where}: procedencia desconocida.`);
   if (raw.locked !== undefined && typeof raw.locked !== 'boolean') return fail(`${where}: «locked» debe ser verdadero o falso.`);
+  if(raw.parcelPolygon!==undefined) {
+    if(raw.type!=='parcela')return fail('Solo las parcelas admiten una huella poligonal.');
+    const shape=validatePolygon(raw.parcelPolygon);if(!shape.ok)return shape;
+    if(typeof params.value.anchoM!=='number'||typeof params.value.largoM!=='number')return fail('Las dimensiones poligonales deben ser numéricas.');
+    const w=params.value.anchoM,d=params.value.largoM;
+    if(!Number.isFinite(w)||!Number.isFinite(d)||w<5||d<5||w>200||d>200||shape.value.some(([x,z])=>Math.abs(x)>w/2+1e-6||Math.abs(z)>d/2+1e-6))return fail('La huella no cabe en las dimensiones de la parcela.');
+  }
   return {ok: true, value: {
     id: raw.id, type: raw.type, label: raw.label, pose: {position: [...raw.pose.position] as Vec3, rotation: [...raw.pose.rotation] as Vec3},
-    params: params.value, ports, state: state.value, lifecycle: raw.lifecycle, owner: raw.owner,
+    params: params.value, ...(raw.parcelPolygon?{parcelPolygon:structuredClone(raw.parcelPolygon) as [number,number][]}:{}), ports, state: state.value, lifecycle: raw.lifecycle, owner: raw.owner,
     ...(raw.provenance !== undefined ? {provenance: raw.provenance as Entity['provenance']} : {}), ...(raw.locked !== undefined ? {locked: raw.locked as boolean} : {}),
   }};
 }
@@ -196,23 +211,51 @@ function parseScenario(raw: unknown): Result<Scenario> {
 
 function parseTerrain(raw: unknown): Result<Terrain> {
   if (!isRec(raw)) return fail('Falta el terreno.');
-  { const u = unknownKey(raw, ['sizeMeters', 'cellMeters', 'seed', 'generatorVersion', 'presetId', 'edits'], 'Terreno'); if (u) return fail(u); }
+  { const u = unknownKey(raw, ['sizeMeters', 'cellMeters', 'seed', 'generatorVersion', 'presetId', 'params', 'edits', 'surfaceEdits'], 'Terreno'); if (u) return fail(u); }
   const size = raw.sizeMeters;
   if (!Array.isArray(size) || size.length !== 2 || !size.every(num) || size.some(s => s <= 0 || s > LIMITS.maxSideMeters)) return fail(`El tamaño del terreno debe ser dos números entre 0 y ${LIMITS.maxSideMeters} m.`);
   if (!num(raw.cellMeters) || raw.cellMeters < LIMITS.minCellMeters || raw.cellMeters > Math.min(size[0], size[1])) return fail('El tamaño de celda del terreno es inválido.');
   if (!Number.isInteger(raw.seed) || (raw.seed as number) < 0 || (raw.seed as number) > 0x7fffffff) return fail('La semilla del terreno debe ser un entero de 31 bits.');
   if (!Number.isInteger(raw.generatorVersion) || !GENERATOR_VERSIONS.includes(raw.generatorVersion as number)) return fail(`El terreno usa el generador de relieve «${String(raw.generatorVersion).slice(0, 20)}», que esta versión de modo. Agro no conoce (conoce: ${GENERATOR_VERSIONS.join(', ')}). Actualiza modo. Agro: el mundo no se abrió ni se modificó.`);
   if (!oneOf(TERRITORY_IDS, raw.presetId)) return fail('El territorio del terreno es desconocido.');
+  let params: TerrainParameters | undefined;
+  if (raw.generatorVersion === 1) {
+    if ('params' in raw || !['free', 'valley'].includes(raw.presetId)) return fail('El generador V1 solo admite los territorios originales y no usa parámetros.');
+  } else {
+    if (!isRec(raw.params)) return fail('Faltan los parámetros del generador de relieve V2.');
+    const keys = Object.keys(TERRAIN_CONTROLS) as (keyof TerrainParameters)[];
+    const unknown = unknownKey(raw.params, keys, 'Parámetros del terreno'); if (unknown) return fail(unknown);
+    for (const key of keys) {
+      const v = raw.params[key], {min, max, label} = TERRAIN_CONTROLS[key];
+      if (!num(v) || v < min || v > max) return fail(`${label} debe estar entre ${min} y ${max}.`);
+    }
+    params = {...raw.params} as TerrainParameters;
+  }
   if (!Array.isArray(raw.edits) || raw.edits.length > LIMITS.terrainEdits) return fail(`Demasiadas ediciones de terreno (máximo ${LIMITS.terrainEdits}).`);
   const edits: TerrainEdit[] = [], ids = new Set<string>();
-  for (const [i, e] of raw.edits.entries()) {
+  if(raw.surfaceEdits!==undefined && (!Array.isArray(raw.surfaceEdits)||raw.surfaceEdits.length>LIMITS.terrainEdits))return fail('Capa visual inválida.');
+  const allEdits=[...raw.edits,...(raw.surfaceEdits as unknown[]??[])];
+  if(allEdits.length>LIMITS.terrainEdits)return fail('Demasiadas operaciones de terreno.');
+  for (const [i, e] of allEdits.entries()) {
     if (!isRec(e) || !str(e.id, LIMITS.id) || !safeKey(e.id) || !oneOf(TERRAIN_EDIT_KINDS, e.kind)) return fail(`Edición de terreno ${i + 1} inválida.`);
-    { const u = unknownKey(e, ['id', 'kind', 'center', 'radius', 'amount', 'at'], `Edición de terreno «${e.id}»`); if (u) return fail(u); }
+    { const u = unknownKey(e, ['id', 'kind', 'center', 'radius', 'amount', 'at', 'algorithmVersion', 'material', 'points', 'width', 'grade', 'stepHeight', 'heights'], `Edición de terreno «${e.id}»`); if (u) return fail(u); }
     if (ids.has(e.id)) return fail(`Edición de terreno repetida: «${e.id}».`);
     if (!Array.isArray(e.center) || e.center.length !== 2 || !e.center.every(num) || !num(e.radius) || e.radius <= 0 || !num(e.amount) || !num(e.at) || e.at < 0) return fail(`Edición de terreno «${e.id}» fuera de rango.`);
-    ids.add(e.id); edits.push({id: e.id, kind: e.kind, center: [e.center[0], e.center[1]], radius: e.radius, amount: e.amount, at: e.at});
+    if (e.algorithmVersion !== undefined && e.algorithmVersion !== 1) return fail('Versión de operación de terreno desconocida.');
+    if (['smooth','restore'].includes(e.kind) && (e.algorithmVersion !== 1 || e.amount < 0 || e.amount > 1)) return fail('Suavizado inválido.');
+    if(e.kind==='paint' && (e.algorithmVersion!==1||!oneOf(SURFACE_IDS,e.material)))return fail('Pintura visual inválida.');
+    if(i<raw.edits.length && e.kind==='paint')return fail('La pintura pertenece a surfaceEdits.');
+    if(i>=raw.edits.length && e.kind!=='paint')return fail('La capa visual solo admite pintura.');
+    if(['raise','lower','level'].includes(e.kind)&&[e.material,e.points,e.width,e.grade,e.stepHeight,e.heights].some(v=>v!==undefined))return fail('El pincel histórico no admite geometría adicional.');
+    if(!['raise','lower','level'].includes(e.kind)) {
+      if(e.algorithmVersion!==1)return fail('La operación debe declarar algorithmVersion 1.');
+      const checked=compileOperation({originX:-size[0]/2,originZ:-size[1]/2,sizeX:size[0],sizeZ:size[1]},e as unknown as TerrainEdit);
+      if(!checked.ok)return checked;
+      if(Math.abs(e.center[0]-checked.value.center[0])>1e-6||Math.abs(e.center[1]-checked.value.center[1])>1e-6||Math.abs(e.radius-checked.value.radius)>1e-6)return fail('Los límites de la operación no coinciden con su geometría.');
+    }
+    ids.add(e.id); edits.push({id: e.id, kind: e.kind, center: [e.center[0], e.center[1]], radius: e.radius, amount: e.amount, at: e.at, ...(e.algorithmVersion === 1 ? {algorithmVersion: 1 as const} : {}), ...(e.material !== undefined ? {material:e.material as TerrainEdit['material']} : {}), ...(e.points ? {points:structuredClone(e.points) as [number,number][]} : {}), ...(e.width!==undefined?{width:e.width as number}:{}), ...(e.grade!==undefined?{grade:e.grade as number}:{}), ...(e.stepHeight!==undefined?{stepHeight:e.stepHeight as number}:{}), ...(e.heights?{heights:[...e.heights as number[]]}:{})});
   }
-  return {ok: true, value: {sizeMeters: [size[0], size[1]], cellMeters: raw.cellMeters, seed: raw.seed as number, generatorVersion: raw.generatorVersion as number, presetId: raw.presetId, edits}};
+  return {ok: true, value: {sizeMeters: [size[0], size[1]], cellMeters: raw.cellMeters, seed: raw.seed as number, generatorVersion: raw.generatorVersion as number, presetId: raw.presetId, ...(params && {params}), edits:edits.filter(e=>e.kind!=='paint'), ...(edits.some(e=>e.kind==='paint') ? {surfaceEdits:edits.filter(e=>e.kind==='paint')} : {})}};
 }
 
 function parseClock(raw: unknown): Result<Clock> {

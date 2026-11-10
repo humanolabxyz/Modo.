@@ -91,11 +91,11 @@ h.undo(); h.undo(); must(h.place('valvula', -25, 25, 0)); assert.equal(h.redo(),
 const h2 = mk(); must(h2.place('bomba', 0, 0, 0)); h2.beginStroke(); assert.equal(h2.canUndo, false); assert.equal(h2.undo(), false); h2.endStroke(); ok('no se puede deshacer en mitad de un trazo');
 const h3 = mk(); for (let k = 0; k < HISTORY_LIMIT + 20; k++) { h3.rename(must(h3.place('sensor-humedad', (k % 10) * 3 - 15, Math.floor(k / 10) * 3 - 15, 0, {label: `S${k}`})).id, `R${k}`); if (k > 20) break; } assert.ok(h3.entities.length > 0); ok('el historial está acotado');
 
-// El terreno editado bajo una pieza la vuelve a apoyar y avisa si la pendiente ya no es válida
+// El terreno editado bajo una pieza permite reasentar con confirmación y avisa si la pendiente no se admite.
 const g = mk(), tk = must(g.place('estanque', 0, 0, 0)), y0 = tk.pose.position[1];
-g.beginStroke(); g.stamp('raise', 0, 0, 30, 3); const warn = g.endStroke();
+g.beginStroke(); g.stamp('raise', 0, 0, 30, 3); assert.ok(g.endStroke()); must(g.commitStroke('reseat'));
 assert.ok(g.entity(tk.id).pose.position[1] > y0 + 2.5); assert.ok(Math.abs(g.entity(tk.id).pose.position[1] - sampleHeight(g.terrain.hf, 0, 0)) < 1e-6); ok('subir el terreno bajo una pieza la sube con él');
-g.beginStroke(); g.stamp('raise', 3, 0, 5, 3); const warn2 = g.endStroke(); assert.ok(warn2.some(w => /Estanque 1.*pendiente/.test(w))); ok('un relieve que deja una pieza en pendiente no permitida da un aviso');
+g.beginStroke(); g.stamp('raise', 3, 0, 5, 3); const warn2 = g.endStroke(); assert.match(warn2.entities.find(e => e.id === tk.id).blocker, /Pendiente/); must(g.commitStroke('keep')); ok('un relieve que deja una pieza en pendiente no permitida da un aviso');
 assert.ok(g.undo()); assert.ok(g.undo()); assert.ok(Math.abs(g.entity(tk.id).pose.position[1] - y0) < 1e-6); assert.ok(g.undo() === true); assert.equal(g.entity(tk.id), undefined); ok('deshacer el terreno devuelve también la altura de la pieza');
 
 // ── Picking y medición ──────────────────────────────────────────────────

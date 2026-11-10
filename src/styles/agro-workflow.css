@@ -19,6 +19,12 @@
 .agro-wizard-fields>label{display:grid;gap:8px;font-size:14px;font-weight:700}
 .agro-wizard-fields input:not([type=range]),.agro-wizard-fields select{box-sizing:border-box;min-height:44px;width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);font:inherit}
 .agro-wizard-fields input[type=range]{width:100%;accent-color:var(--green)}
+.agro-wizard-fields>label:has(input[type=checkbox]){display:flex;align-items:center;gap:8px}
+.agro-wizard-fields input[type=checkbox]{width:20px;min-height:20px;accent-color:var(--green)}
+.agro-territory-params{border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.agro-territory-params summary{cursor:pointer;font-weight:700}
+.agro-territory-params label{display:block;margin-top:12px;font-size:.9rem}
+.agro-territory-caption{align-self:flex-start;padding:3px 8px;border-radius:10px;background:#17251fbb;color:#fff;text-transform:none}
 .agro-wizard-value{color:var(--green)}
 .agro-wizard-fields p{margin:0;color:var(--muted);line-height:1.45}
 .agro-wizard-map{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#587e46}
@@ -150,3 +156,15 @@
   .agro-ws .agro-info{left:84px}
   .agro-ws:not([data-lift=dock]) .agro-stage:has(.agro-netcard) .agro-info{bottom:214px}
 }
+
+/* Editor de escenario, separado del tiempo y los trabajos de la partida. */
+.agro-editor-toggle{position:absolute;left:92px;top:106px;z-index:12;border:1px solid #b8c8bb;border-radius:18px;background:#fff;padding:9px 15px;color:#176437;font-weight:700}
+.agro-editor-return{position:absolute;left:92px;top:152px;z-index:12}
+.agro-terrain-editor{position:absolute;right:18px;top:106px;width:348px;box-sizing:border-box;max-height:calc(100% - 215px);overflow:auto;z-index:15;padding:18px;background:#f8faf7f5;border:1px solid #d0d9cf;border-radius:22px;box-shadow:0 12px 35px #1c342922;font-size:13px}
+.agro-terrain-editor header{display:grid;gap:4px}.agro-terrain-editor header strong{font-size:18px}.agro-terrain-editor p{line-height:1.45}.agro-terrain-editor label{display:grid;gap:5px;margin:12px 0}.agro-terrain-editor input,.agro-terrain-editor select{min-height:38px;width:100%;box-sizing:border-box;padding:8px;border:1px solid #c5d0c3;border-radius:9px;background:#fff}.agro-terrain-editor>div{display:flex;gap:8px;margin-top:12px}.agro-terrain-editor button{padding:10px;border-radius:12px;border:1px solid #bdcdbd}.agro-terrain-editor .agro-primary{background:#1d783b;color:white}
+@media(max-width:700px){.agro-editor-toggle{top:56px;left:12px}.agro-editor-return{top:56px;left:160px;max-width:220px}.agro-terrain-editor{top:auto;bottom:84px;left:78px;right:10px;width:auto;max-height:43%;padding:12px}.agro-terrain-editor header small,.agro-terrain-editor>p:first-of-type{display:none}}
+
+.agro-terrain-editor>div{flex-wrap:wrap}.agro-terrain-editor>div>button{flex:1 1 auto;min-width:0}
+
+.agro-learning{position:absolute;z-index:14;right:18px;top:106px;width:348px;box-sizing:border-box;max-height:calc(100% - 310px);overflow:auto;padding:16px 18px;background:#f8faf7f5;border:1px solid #cdd9cb;border-radius:22px;box-shadow:0 12px 35px #1c342922;font-size:13px}.agro-learning header{display:flex;justify-content:space-between;align-items:center}.agro-learning header strong{font-size:17px}.agro-learning button{border:1px solid #c5d0c3;border-radius:12px;padding:6px 10px;background:white;color:#1c6e36}.agro-learning ol{list-style:none;margin:0;padding:0}.agro-learning li{padding:12px 0;border-top:1px solid #dbe4d9}.agro-learning li p{margin:5px 0;line-height:1.4}.agro-learning [data-status=ready] strong span{color:#1b843b}.agro-learning [data-status=review] strong span{color:#a46916}
+@media(max-width:700px){.agro-learning{left:78px;right:10px;width:auto;top:auto;bottom:84px;max-height:44%;padding:12px}}

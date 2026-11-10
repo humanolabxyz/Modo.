@@ -166,7 +166,7 @@ const reading = (s, e) => s.analyze().elements[e.id];
 
   // Desnivel: subir el terreno bajo el aspersor
   const {s: sc, sprinkler: sc1} = build(), f1 = reading(sc, sc1).flowLmin, at = sc.entity(sc1.id).pose.position;
-  sc.beginStroke(); for (let k = 0; k < 3; k++) sc.stamp('raise', at[0], at[2], 12, 3); sc.endStroke();
+  sc.beginStroke(); for (let k = 0; k < 3; k++) sc.stamp('raise', at[0], at[2], 12, 3); assert.ok(sc.endStroke()); must(sc.commitStroke('reseat'));
   assert.ok(sc.entity(sc1.id).pose.position[1] > at[1] + 5); assert.ok(reading(sc, sc1).flowLmin < f1); ok(`el desnivel cuenta: elevar el terreno bajo el aspersor ${(sc.entity(sc1.id).pose.position[1] - at[1]).toFixed(1)} m baja el caudal de ${f1.toFixed(0)} a ${reading(sc, sc1).flowLmin.toFixed(0)} L/min`);
 }
 

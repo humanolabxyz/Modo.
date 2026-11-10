@@ -3,11 +3,13 @@
 // sus ediciones (deltas, algunas con cota absoluta): si el algoritmo cambiara, los mundos existentes cambiarían. Todo cambio de algoritmo es una versión nueva.
 // La versión 1 es el generador original de la Fase 6 (Valle central y Mundo libre), movido aquí sin tocar una sola operación (Etapa 1 de la consolidación 3D).
 import {fbm} from './noise.ts';
+import {baseHeightV2} from './generatorV2.ts';
+import type {TerrainParameters, TerritoryId} from '../model/types.ts';
 
 /** Semilla fija del territorio «Valle central» (escenario didáctico reproducible de la Fase 6). */
 export const VALLEY_SEED = 31;
 
-export type BaseHeightFn = (seed: number, x: number, z: number, sx: number, sz: number) => number;
+export type BaseHeightFn = (seed: number, x: number, z: number, sx: number, sz: number, preset?: TerritoryId, params?: TerrainParameters) => number;
 
 const clamp = (v: number, lo: number, hi: number): number => (v < lo ? lo : v > hi ? hi : v);
 const smooth01 = (t: number): number => { const c = clamp(t, 0, 1); return c * c * (3 - 2 * c); };
@@ -32,7 +34,7 @@ export function baseHeightV1(seed: number, x: number, z: number, sx: number, sz:
 }
 
 /** Registro de generadores por versión. Una versión que no está aquí no se puede abrir. */
-export const GENERATORS: Readonly<Record<number, BaseHeightFn>> = Object.freeze({1: baseHeightV1});
+export const GENERATORS: Readonly<Record<number, BaseHeightFn>> = Object.freeze({1: baseHeightV1, 2: baseHeightV2});
 /** Versiones que esta aplicación sabe generar. */
 export const GENERATOR_VERSIONS: readonly number[] = Object.freeze(Object.keys(GENERATORS).map(Number).sort((a, b) => a - b));
 /** Generador con el que se crean los mundos nuevos mientras no haya otro aprobado. */

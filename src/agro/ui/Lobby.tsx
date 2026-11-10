@@ -1,3 +1,4 @@
+import {EXPERIENCE_POLICIES} from '../world/experience.ts';
 import {useRef, useState} from 'react';
 import {ArrowLeft, Copy, Download, FilePlus2, FileWarning, Play, Sprout, Trash2, Upload} from 'lucide-react';
 import {WorldWizard} from './WorldWizard.tsx';
@@ -50,7 +51,7 @@ export function Lobby(p: LobbyProps) {
           {p.worlds.map(w => <li key={w.id} className={w.readable ? '' : 'broken'} data-world-id={w.id}>
             <div className="agro-world-info">
               <strong>{w.name}</strong>
-              {w.readable ? <span>{w.entities} {w.entities === 1 ? 'pieza' : 'piezas'} · {w.edits} {w.edits === 1 ? 'edición' : 'ediciones'} de terreno · Última sesión {dateOf(w.updatedAt)}</span>
+              {w.readable ? <span>{(Object.values(EXPERIENCE_POLICIES).find(p=>p.id===w.experience)?.label ?? 'Experiencia desconocida')} · {w.entities} {w.entities === 1 ? 'pieza' : 'piezas'} · {w.edits} {w.edits === 1 ? 'edición' : 'ediciones'} de terreno · Última sesión {dateOf(w.updatedAt)}</span>
                 : <span className="agro-broken"><FileWarning size={14} aria-hidden="true" /> No se pudo leer: {w.error}. No se modificó.</span>}
             </div>
             <div className="agro-world-actions">

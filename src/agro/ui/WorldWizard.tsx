@@ -1,10 +1,14 @@
+import {EXPERIENCE_POLICIES} from '../world/experience.ts';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {ArrowLeft, ArrowRight, Check, Droplets, Layers3, MapPin, Mountain, Sprout, Sun, Warehouse, Wheat} from 'lucide-react';
 import {newSeed} from '../model/defaults.ts';
 import {clp, START_MONEY} from '../economy/economy.ts';
 import {TerrainModel} from '../terrain/model.ts';
 import {renderMinimap} from '../terrain/minimap.ts';
-import {RESOURCES, SITES, TEMPLATES, TERRITORIES, setupTerrain, siteX, type Resource, type WorldSetup} from '../world/setup.ts';
+import {RESOURCES, SITES, TEMPLATES, setupTerrain, siteX, type Resource, type WorldSetup} from '../world/setup.ts';
+import {TERRAIN_CONTROLS, TERRITORIES} from '../terrain/presets.ts';
+import {VALLEY_SEED} from '../terrain/generators.ts';
+import type {TerrainParameters} from '../model/types.ts';
 
 const STEPS = ['Plantilla', 'Territorio', 'Emplazamiento', 'Edición', 'Recursos', 'Simulación', 'Revisión'];
 const TITLES = ['Elige una plantilla', 'Elige el territorio', 'Define el emplazamiento', 'Edita el terreno', 'Recursos iniciales', 'Configura la simulación', 'Revisión y creación'];
@@ -18,15 +22,15 @@ const area = (side: number) => side ** 2 / 10000;
 
 function TerritoryPreview({setup}: {setup: WorldSetup}) {
   const canvas = useRef<HTMLCanvasElement>(null);
-  const {side, seed, site, relief, radius, territory} = setup;
-  const hf = useMemo(() => TerrainModel.fromTerrain(setupTerrain(setup, 4)).hf, [side, seed, site, relief, radius, territory]); // eslint-disable-line react-hooks/exhaustive-deps
+  const {side, seed, site, relief, radius, territory, terrainParams} = setup;
+  const hf = useMemo(() => TerrainModel.fromTerrain(setupTerrain(setup, 4)).hf, [side, seed, site, relief, radius, territory, terrainParams]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     canvas.current?.getContext('2d')?.putImageData(new ImageData(new Uint8ClampedArray(renderMinimap(hf, 240)), 240, 240), 0, 0);
   }, [hf]);
   return <figure className="agro-wizard-map">
     <canvas ref={canvas} width={240} height={240} aria-label="Mapa generado del terreno" role="img" />
     <span className="agro-wizard-site" style={{left: (0.5 + siteX(site) / side) * 100 + '%'}}><MapPin size={18} />{SITES[site]}</span>
-    <figcaption><Mountain size={16} />{area(side)} ha · {TERRITORIES[territory]}</figcaption>
+    <figcaption><Mountain size={16} />{area(side)} ha · {TERRITORIES[territory].name}</figcaption>
   </figure>;
 }
 
@@ -34,7 +38,7 @@ export function WorldWizard({busy, error, onCancel, onCreate}: {busy: boolean; e
   const [step, setStep] = useState(0);
   const [setup, setSetup] = useState<WorldSetup>(() => ({
     name: 'Mi granja', seed: newSeed(), template: 'blank', territory: 'free', side: 1000, site: 'center',
-    relief: 'natural', radius: 60, resources: [], water: 80, experience: 'free', start: '2026-09-21',
+    terrainParams: {...TERRITORIES.free.params}, relief: 'natural', radius: 60, resources: [], water: 80, experience: 'free', start: '2026-09-21',
   }));
   const heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => { heading.current?.focus(); }, [step]);
@@ -42,7 +46,9 @@ export function WorldWizard({busy, error, onCancel, onCreate}: {busy: boolean; e
   const irrigation = setup.resources.includes('irrigation');
   const resourceNames = setup.resources.includes('irrigation') && !setup.resources.includes('parcel')
     ? [...setup.resources, 'parcel' as const] : setup.resources;
-  const valid = setup.name.trim() !== '' && /^\d{4}-\d{2}-\d{2}$/.test(setup.start) && Number.isFinite(Date.parse(setup.start)) && setup.start >= '1900-01-01' && setup.start <= '2199-12-31';
+  const legacyValley = setup.territory === 'valley' && !setup.terrainParams;
+  const valid = setup.name.trim() !== '' && Number.isInteger(setup.seed) && setup.seed >= 0 && setup.seed <= 2147483647 &&
+    /^\d{4}-\d{2}-\d{2}$/.test(setup.start) && Number.isFinite(Date.parse(setup.start)) && setup.start >= '1900-01-01' && setup.start <= '2199-12-31';
 
   return <main className="agro-wizard" data-testid="agro-wizard">
     <header className="agro-wizard-top">
@@ -71,11 +77,28 @@ export function WorldWizard({busy, error, onCancel, onCreate}: {busy: boolean; e
             </div>
           </>}
           {step === 1 && <>
-            <label>Origen del terreno<select value={setup.territory} onChange={e => patch({territory: e.target.value as WorldSetup['territory']})}>
-              {Object.entries(TERRITORIES).map(([id, label]) => <option key={id} value={id}>{label}</option>)}
+            <label>Origen del terreno<select value={setup.territory} onChange={e => {
+              const territory = e.target.value as WorldSetup['territory'];
+              patch({territory, seed: territory === 'valley' ? VALLEY_SEED : newSeed(), terrainParams: territory === 'valley' ? undefined : {...TERRITORIES[territory].params}});
+            }}>
+              {Object.entries(TERRITORIES).map(([id, preset]) => <option key={id} value={id}>{preset.name}</option>)}
             </select></label>
-            <p>El mapa se genera para la simulación. El Valle central es un escenario didáctico con relieve reproducible.</p>
-            {setup.territory === 'free' && <button className="agro-secondary" type="button" onClick={() => patch({seed: newSeed()})}>Generar otro relieve</button>}
+            <p>{TERRITORIES[setup.territory].description} Territorio ficticio generado para la simulación.</p>
+            {setup.territory === 'valley' && <label><input type="checkbox" checked={legacyValley} onChange={e => patch(e.target.checked
+              ? {seed: VALLEY_SEED, terrainParams: undefined}
+              : {terrainParams: {...TERRITORIES.valley.params}})} /> Usar el relieve clásico del Valle central</label>}
+            <label>Semilla<input type="number" min={0} max={2147483647} step={1} inputMode="numeric" disabled={legacyValley}
+              value={Number.isFinite(setup.seed) ? setup.seed : ''} onChange={e => patch({seed: e.target.valueAsNumber})} /></label>
+            {!legacyValley && <button className="agro-secondary" type="button" onClick={() => patch({seed: newSeed()})}>Generar otro relieve</button>}
+            {setup.terrainParams && <details className="agro-territory-params">
+              <summary>Personalizar relieve y cobertura</summary>
+              {(Object.keys(TERRAIN_CONTROLS) as (keyof TerrainParameters)[]).map(key => {
+                const {label, min, max, step, unit} = TERRAIN_CONTROLS[key], value = setup.terrainParams![key];
+                return <label key={key}>{label} <span className="agro-wizard-value">{value.toLocaleString('es-CL')}{unit}</span>
+                  <input type="range" aria-label={label} min={min} max={max} step={step} value={value}
+                    onChange={e => patch({terrainParams: {...setup.terrainParams!, [key]: +e.target.value}})} /></label>;
+              })}
+            </details>}
           </>}
           {step === 2 && <>
             <label>Superficie del mundo <span className="agro-wizard-value">{area(setup.side)} ha</span><input type="range" min={400} max={1200} step={100} value={setup.side} onChange={e => patch({side: +e.target.value})} /></label>
@@ -97,18 +120,20 @@ export function WorldWizard({busy, error, onCancel, onCreate}: {busy: boolean; e
             <p>El riego incluye parcela, estanque, bomba, tuberías, aspersor, tablero y acometida, con sus conexiones. El panel solar queda como equipo independiente.</p>
           </>}
           {step === 5 && <>
-            <label>Modo de trabajo<select value={setup.experience} onChange={e => patch({experience: e.target.value as WorldSetup['experience']})}><option value="free">Libre · construcción inmediata</option><option value="real">Real · compras y tiempos de obra</option></select></label>
+            <label>Modo de trabajo<select value={setup.experience} onChange={e => patch({experience: e.target.value as WorldSetup['experience']})}>{Object.values(EXPERIENCE_POLICIES).map(p=><option key={p.id} value={p.id}>{p.label}</option>)}</select></label>
             <label>Fecha de inicio<input type="date" min="1900-01-01" max="2199-12-31" required value={setup.start} onChange={e => patch({start: e.target.value})} /></label>
-            <p>La fecha determina la temporada del clima simulado. El mundo abre en pausa.{setup.experience === 'real' && ' Los recursos iniciales se entregan montados. Las nuevas compras usan el capital inicial de ' + clp(START_MONEY) + '.'}</p>
+            <p>{EXPERIENCE_POLICIES[setup.experience].description}</p>
+            <p>La fecha determina la temporada del clima simulado. El mundo abre en pausa.{EXPERIENCE_POLICIES[setup.experience].inventory && ' Los recursos iniciales se entregan montados. Las nuevas compras usan el capital inicial de ' + clp(START_MONEY) + '.'}</p>
           </>}
           {step === 6 && <dl className="agro-wizard-review">
             {[
-              ['Mundo', setup.name.trim()], ['Plantilla', TEMPLATES[setup.template]], ['Territorio', TERRITORIES[setup.territory]],
+              ['Mundo', setup.name.trim()], ['Plantilla', TEMPLATES[setup.template]], ['Territorio', TERRITORIES[setup.territory].name],
+              ['Semilla', String(setup.seed)],
               ['Emplazamiento', area(setup.side) + ' ha · ' + SITES[setup.site]],
               ['Edición', setup.relief === 'level' ? 'Nivelación de ' + setup.radius + ' m' : 'Relieve natural'],
               ['Recursos', resourceNames.map(id => RESOURCES[id]).join(', ') || 'Terreno vacío'],
               ...(irrigation ? [['Agua inicial', setup.water + ' %']] : []),
-              ['Simulación', (setup.experience === 'real' ? 'Modo real · ' + clp(START_MONEY) : 'Modo libre') + ' · ' + setup.start],
+              ['Simulación', (EXPERIENCE_POLICIES[setup.experience].label + (EXPERIENCE_POLICIES[setup.experience].inventory?' · '+clp(START_MONEY):'')) + ' · ' + setup.start],
             ].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>}
         </div>

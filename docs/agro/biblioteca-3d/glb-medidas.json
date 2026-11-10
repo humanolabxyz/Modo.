@@ -1,0 +1,7432 @@
+[
+ {
+  "file": "quat-animales/Cow.glb",
+  "bytes": 377884,
+  "tris": 796,
+  "prims": 3,
+  "min": [
+   -1.125,
+   -0.068,
+   -3.776
+  ],
+  "size": [
+   2.25,
+   5.148,
+   9.172
+  ],
+  "materials": [
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Black",
+    "c": [
+     0.029,
+     0.029,
+     0.029
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Pink",
+    "c": [
+     0.8,
+     0.176,
+     0.217
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [
+   {
+    "n": "Death",
+    "ch": 84
+   },
+   {
+    "n": "Idle",
+    "ch": 84
+   },
+   {
+    "n": "Jump",
+    "ch": 84
+   },
+   {
+    "n": "Run",
+    "ch": 84
+   },
+   {
+    "n": "Walk",
+    "ch": 84
+   },
+   {
+    "n": "WalkSlow",
+    "ch": 84
+   }
+  ],
+  "skins": 1
+ },
+ {
+  "file": "quat-animales/Horse.glb",
+  "bytes": 343784,
+  "tris": 690,
+  "prims": 2,
+  "min": [
+   -1.285,
+   0.018,
+   -4.118
+  ],
+  "size": [
+   2.57,
+   6.905,
+   9.235
+  ],
+  "materials": [
+   {
+    "n": "Material.003",
+    "c": [
+     0.175,
+     0.074,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Material.006",
+    "c": [
+     0.02,
+     0.02,
+     0.02
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [
+   {
+    "n": "Death",
+    "ch": 84
+   },
+   {
+    "n": "Idle",
+    "ch": 84
+   },
+   {
+    "n": "Jump",
+    "ch": 84
+   },
+   {
+    "n": "Run",
+    "ch": 84
+   },
+   {
+    "n": "Walk",
+    "ch": 84
+   },
+   {
+    "n": "WalkSlow",
+    "ch": 84
+   }
+  ],
+  "skins": 1
+ },
+ {
+  "file": "quat-animales/Llama.glb",
+  "bytes": 306376,
+  "tris": 662,
+  "prims": 3,
+  "min": [
+   -0.788,
+   -0.013,
+   -2.026
+  ],
+  "size": [
+   1.576,
+   5.853,
+   4.912
+  ],
+  "materials": [
+   {
+    "n": "Brown",
+    "c": [
+     0.191,
+     0.095,
+     0.051
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Grey",
+    "c": [
+     0.202,
+     0.202,
+     0.202
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [
+   {
+    "n": "Death",
+    "ch": 72
+   },
+   {
+    "n": "Idle",
+    "ch": 72
+   },
+   {
+    "n": "Jump",
+    "ch": 72
+   },
+   {
+    "n": "Run",
+    "ch": 72
+   },
+   {
+    "n": "Walk",
+    "ch": 72
+   },
+   {
+    "n": "WalkSlow",
+    "ch": 72
+   }
+  ],
+  "skins": 1
+ },
+ {
+  "file": "quat-animales/Pig.glb",
+  "bytes": 298632,
+  "tris": 562,
+  "prims": 2,
+  "min": [
+   -1.656,
+   -0.002,
+   -4.586
+  ],
+  "size": [
+   3.311,
+   4.59,
+   9.784
+  ],
+  "materials": [
+   {
+    "n": "Material.003",
+    "c": [
+     0.687,
+     0.356,
+     0.371
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Material",
+    "c": [
+     0.202,
+     0.087,
+     0.049
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [
+   {
+    "n": "Death",
+    "ch": 72
+   },
+   {
+    "n": "Idle",
+    "ch": 72
+   },
+   {
+    "n": "Jump",
+    "ch": 72
+   },
+   {
+    "n": "Run",
+    "ch": 72
+   },
+   {
+    "n": "Walk",
+    "ch": 72
+   },
+   {
+    "n": "WalkSlow",
+    "ch": 72
+   }
+  ],
+  "skins": 1
+ },
+ {
+  "file": "quat-animales/Pug.glb",
+  "bytes": 290300,
+  "tris": 644,
+  "prims": 2,
+  "min": [
+   -0.288,
+   -0.007,
+   -0.582
+  ],
+  "size": [
+   0.575,
+   1.052,
+   1.388
+  ],
+  "materials": [
+   {
+    "n": "Beige",
+    "c": [
+     0.799,
+     0.604,
+     0.337
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Brown",
+    "c": [
+     0.04,
+     0.014,
+     0.009
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [
+   {
+    "n": "Death",
+    "ch": 72
+   },
+   {
+    "n": "Idle",
+    "ch": 72
+   },
+   {
+    "n": "Jump",
+    "ch": 72
+   },
+   {
+    "n": "Run",
+    "ch": 72
+   },
+   {
+    "n": "Walk",
+    "ch": 72
+   },
+   {
+    "n": "WalkSlow",
+    "ch": 72
+   }
+  ],
+  "skins": 1
+ },
+ {
+  "file": "quat-animales/Sheep.glb",
+  "bytes": 299004,
+  "tris": 612,
+  "prims": 2,
+  "min": [
+   -1.111,
+   -0.01,
+   -2.409
+  ],
+  "size": [
+   2.221,
+   4.36,
+   5.919
+  ],
+  "materials": [
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Black",
+    "c": [
+     0.037,
+     0.037,
+     0.037
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [
+   {
+    "n": "Death",
+    "ch": 72
+   },
+   {
+    "n": "Idle",
+    "ch": 72
+   },
+   {
+    "n": "Jump",
+    "ch": 72
+   },
+   {
+    "n": "Run",
+    "ch": 72
+   },
+   {
+    "n": "Walk",
+    "ch": 72
+   },
+   {
+    "n": "WalkSlow",
+    "ch": 72
+   }
+  ],
+  "skins": 1
+ },
+ {
+  "file": "quat-animales/Zebra.glb",
+  "bytes": 422452,
+  "tris": 1354,
+  "prims": 2,
+  "min": [
+   -1.285,
+   -0.044,
+   -4.164
+  ],
+  "size": [
+   2.57,
+   7.072,
+   9.235
+  ],
+  "materials": [
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Black",
+    "c": [
+     0.029,
+     0.029,
+     0.029
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [
+   {
+    "n": "Death",
+    "ch": 84
+   },
+   {
+    "n": "Idle",
+    "ch": 84
+   },
+   {
+    "n": "Jump",
+    "ch": 84
+   },
+   {
+    "n": "Run",
+    "ch": 84
+   },
+   {
+    "n": "Walk",
+    "ch": 84
+   },
+   {
+    "n": "WalkSlow",
+    "ch": 84
+   }
+  ],
+  "skins": 1
+ },
+ {
+  "file": "quat-cultivos/Apple_1.glb",
+  "bytes": 5508,
+  "tris": 80,
+  "prims": 1,
+  "min": [
+   -0.106,
+   0,
+   -0.081
+  ],
+  "size": [
+   0.238,
+   0.247,
+   0.107
+  ],
+  "materials": [
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Apple_2.glb",
+  "bytes": 19660,
+  "tris": 252,
+  "prims": 2,
+  "min": [
+   -0.177,
+   0,
+   -0.26
+  ],
+  "size": [
+   0.515,
+   0.939,
+   0.438
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Apple_3.glb",
+  "bytes": 33240,
+  "tris": 446,
+  "prims": 2,
+  "min": [
+   -0.422,
+   0,
+   -0.721
+  ],
+  "size": [
+   1.166,
+   2.087,
+   0.974
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Apple_4.glb",
+  "bytes": 120272,
+  "tris": 1584,
+  "prims": 4,
+  "min": [
+   -0.682,
+   0,
+   -1.102
+  ],
+  "size": [
+   1.864,
+   2.763,
+   1.579
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen_Tree",
+    "c": [
+     0.053,
+     0.091,
+     0.037
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkRed",
+    "c": [
+     0.128,
+     0.021,
+     0.035
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Apple_Crop.glb",
+  "bytes": 33332,
+  "tris": 440,
+  "prims": 3,
+  "min": [
+   -0.079,
+   -0.078,
+   -0.079
+  ],
+  "size": [
+   0.158,
+   0.168,
+   0.158
+  ],
+  "materials": [
+   {
+    "n": "DarkRed.003",
+    "c": [
+     0.133,
+     0.028,
+     0.019
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkBrown",
+    "c": [
+     0.157,
+     0.071,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen.002",
+    "c": [
+     0.031,
+     0.061,
+     0.028
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Apple_Harvested.glb",
+  "bytes": 71964,
+  "tris": 984,
+  "prims": 3,
+  "min": [
+   -0.682,
+   0,
+   -1.102
+  ],
+  "size": [
+   1.801,
+   2.763,
+   1.579
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen_Tree",
+    "c": [
+     0.053,
+     0.091,
+     0.037
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Bamboo_1.glb",
+  "bytes": 5860,
+  "tris": 82,
+  "prims": 2,
+  "min": [
+   -0.233,
+   -0.001,
+   -0.01
+  ],
+  "size": [
+   0.383,
+   0.513,
+   0.072
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Bamboo_2.glb",
+  "bytes": 16872,
+  "tris": 300,
+  "prims": 2,
+  "min": [
+   -0.09,
+   -0.003,
+   -0.082
+  ],
+  "size": [
+   0.205,
+   0.733,
+   0.148
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Bamboo_3.glb",
+  "bytes": 26324,
+  "tris": 492,
+  "prims": 2,
+  "min": [
+   -0.149,
+   -0.004,
+   -0.167
+  ],
+  "size": [
+   0.338,
+   1.547,
+   0.358
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Bamboo_4.glb",
+  "bytes": 34008,
+  "tris": 644,
+  "prims": 2,
+  "min": [
+   -0.238,
+   -0.033,
+   -0.264
+  ],
+  "size": [
+   0.53,
+   2.726,
+   0.558
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Bamboo_Crop.glb",
+  "bytes": 7224,
+  "tris": 108,
+  "prims": 2,
+  "min": [
+   -0.046,
+   -0.165,
+   -0.05
+  ],
+  "size": [
+   0.097,
+   0.326,
+   0.099
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Beet_1.glb",
+  "bytes": 8368,
+  "tris": 121,
+  "prims": 2,
+  "min": [
+   -0.163,
+   -0.031,
+   -0.076
+  ],
+  "size": [
+   0.334,
+   0.653,
+   0.098
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkRed",
+    "c": [
+     0.128,
+     0.021,
+     0.035
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Beet_2.glb",
+  "bytes": 13124,
+  "tris": 217,
+  "prims": 2,
+  "min": [
+   -0.064,
+   -0.237,
+   -0.069
+  ],
+  "size": [
+   0.213,
+   0.86,
+   0.139
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.128,
+     0.021,
+     0.035
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Beet_3.glb",
+  "bytes": 18272,
+  "tris": 323,
+  "prims": 2,
+  "min": [
+   -0.193,
+   -0.266,
+   -0.115
+  ],
+  "size": [
+   0.509,
+   0.869,
+   0.23
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.128,
+     0.021,
+     0.035
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Beet_4.glb",
+  "bytes": 27208,
+  "tris": 480,
+  "prims": 2,
+  "min": [
+   -0.345,
+   -0.321,
+   -0.232
+  ],
+  "size": [
+   0.751,
+   1.102,
+   0.39
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.128,
+     0.021,
+     0.035
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Beet_Crop.glb",
+  "bytes": 9928,
+  "tris": 165,
+  "prims": 1,
+  "min": [
+   -0.176,
+   -0.318,
+   -0.145
+  ],
+  "size": [
+   0.316,
+   0.519,
+   0.316
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.128,
+     0.021,
+     0.035
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/BushBerries_1.glb",
+  "bytes": 6788,
+  "tris": 88,
+  "prims": 2,
+  "min": [
+   -0.138,
+   0.002,
+   -0.013
+  ],
+  "size": [
+   0.259,
+   0.353,
+   0.05
+  ],
+  "materials": [
+   {
+    "n": "Green_Bush",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkBrown",
+    "c": [
+     0.157,
+     0.071,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/BushBerries_2.glb",
+  "bytes": 8608,
+  "tris": 140,
+  "prims": 1,
+  "min": [
+   -0.31,
+   -0.008,
+   -0.235
+  ],
+  "size": [
+   0.592,
+   0.506,
+   0.515
+  ],
+  "materials": [
+   {
+    "n": "Green_Bush",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/BushBerries_3.glb",
+  "bytes": 9900,
+  "tris": 164,
+  "prims": 1,
+  "min": [
+   -0.631,
+   -0.009,
+   -0.523
+  ],
+  "size": [
+   1.275,
+   0.744,
+   1.108
+  ],
+  "materials": [
+   {
+    "n": "Green_Bush",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/BushBerries_4.glb",
+  "bytes": 50040,
+  "tris": 892,
+  "prims": 2,
+  "min": [
+   -0.861,
+   -0.032,
+   -0.723
+  ],
+  "size": [
+   1.719,
+   1.276,
+   1.392
+  ],
+  "materials": [
+   {
+    "n": "Green_Bush",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Berry",
+    "c": [
+     0.467,
+     0.027,
+     0.038
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/BushBerries_Crop.glb",
+  "bytes": 3684,
+  "tris": 48,
+  "prims": 1,
+  "min": [
+   -0.084,
+   -0.05,
+   -0.09
+  ],
+  "size": [
+   0.169,
+   0.132,
+   0.166
+  ],
+  "materials": [
+   {
+    "n": "Berry",
+    "c": [
+     0.467,
+     0.027,
+     0.038
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/BushBerries_Harvested.glb",
+  "bytes": 20760,
+  "tris": 364,
+  "prims": 1,
+  "min": [
+   -0.861,
+   -0.032,
+   -0.651
+  ],
+  "size": [
+   1.718,
+   1.246,
+   1.32
+  ],
+  "materials": [
+   {
+    "n": "Green_Bush",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Cactus_1.glb",
+  "bytes": 7144,
+  "tris": 112,
+  "prims": 1,
+  "min": [
+   -0.046,
+   -0.003,
+   -0.046
+  ],
+  "size": [
+   0.093,
+   0.167,
+   0.093
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Cactus_2.glb",
+  "bytes": 15476,
+  "tris": 220,
+  "prims": 2,
+  "min": [
+   -0.154,
+   -0.007,
+   -0.152
+  ],
+  "size": [
+   0.298,
+   0.378,
+   0.301
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Cactus_3.glb",
+  "bytes": 22220,
+  "tris": 320,
+  "prims": 2,
+  "min": [
+   -0.191,
+   -0.008,
+   -0.192
+  ],
+  "size": [
+   0.394,
+   0.722,
+   0.382
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Cactus_4.glb",
+  "bytes": 113764,
+  "tris": 1814,
+  "prims": 3,
+  "min": [
+   -0.598,
+   -0.011,
+   -0.282
+  ],
+  "size": [
+   1.305,
+   1.433,
+   0.563
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Pink",
+    "c": [
+     0.467,
+     0.113,
+     0.277
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Cactus_Crop.glb",
+  "bytes": 15296,
+  "tris": 256,
+  "prims": 1,
+  "min": [
+   -0.167,
+   -0.002,
+   -0.183
+  ],
+  "size": [
+   0.362,
+   0.236,
+   0.366
+  ],
+  "materials": [
+   {
+    "n": "Pink",
+    "c": [
+     0.467,
+     0.113,
+     0.277
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Cactus_Harvested.glb",
+  "bytes": 84576,
+  "tris": 1302,
+  "prims": 2,
+  "min": [
+   -0.513,
+   -0.011,
+   -0.282
+  ],
+  "size": [
+   1.094,
+   1.257,
+   0.563
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Carrot_1.glb",
+  "bytes": 5932,
+  "tris": 88,
+  "prims": 1,
+  "min": [
+   -0.189,
+   0.002,
+   -0.018
+  ],
+  "size": [
+   0.355,
+   0.35,
+   0.069
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Carrot_2.glb",
+  "bytes": 16740,
+  "tris": 262,
+  "prims": 2,
+  "min": [
+   -0.079,
+   -0.151,
+   -0.028
+  ],
+  "size": [
+   0.161,
+   0.313,
+   0.065
+  ],
+  "materials": [
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Carrot_3.glb",
+  "bytes": 24284,
+  "tris": 408,
+  "prims": 2,
+  "min": [
+   -0.182,
+   -0.244,
+   -0.171
+  ],
+  "size": [
+   0.334,
+   0.521,
+   0.258
+  ],
+  "materials": [
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Carrot_4.glb",
+  "bytes": 31312,
+  "tris": 514,
+  "prims": 3,
+  "min": [
+   -0.379,
+   -0.61,
+   -0.306
+  ],
+  "size": [
+   0.677,
+   1.279,
+   0.502
+  ],
+  "materials": [
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Carrot_Crop.glb",
+  "bytes": 13024,
+  "tris": 186,
+  "prims": 3,
+  "min": [
+   -0.119,
+   -0.646,
+   -0.102
+  ],
+  "size": [
+   0.239,
+   0.881,
+   0.239
+  ],
+  "materials": [
+   {
+    "n": "LightOrange",
+    "c": [
+     0.549,
+     0.329,
+     0.105
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Coconut_Half.glb",
+  "bytes": 11008,
+  "tris": 132,
+  "prims": 2,
+  "min": [
+   -0.392,
+   -0.376,
+   -0.383
+  ],
+  "size": [
+   0.784,
+   0.777,
+   0.412
+  ],
+  "materials": [
+   {
+    "n": "DarkBrown",
+    "c": [
+     0.157,
+     0.071,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.458,
+     0.458,
+     0.458
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Corn_1.glb",
+  "bytes": 5932,
+  "tris": 88,
+  "prims": 1,
+  "min": [
+   -0.089,
+   0.001,
+   -0.008
+  ],
+  "size": [
+   0.167,
+   0.387,
+   0.032
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Corn_2.glb",
+  "bytes": 8788,
+  "tris": 140,
+  "prims": 1,
+  "min": [
+   -0.094,
+   0,
+   -0.134
+  ],
+  "size": [
+   0.284,
+   0.659,
+   0.305
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Corn_3.glb",
+  "bytes": 20164,
+  "tris": 348,
+  "prims": 1,
+  "min": [
+   -0.319,
+   0,
+   -0.252
+  ],
+  "size": [
+   0.675,
+   1.247,
+   0.573
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Corn_4.glb",
+  "bytes": 56768,
+  "tris": 958,
+  "prims": 3,
+  "min": [
+   -0.437,
+   0.003,
+   -0.365
+  ],
+  "size": [
+   0.887,
+   1.967,
+   0.649
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Yellow",
+    "c": [
+     0.448,
+     0.355,
+     0.113
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Corn_Crop.glb",
+  "bytes": 6560,
+  "tris": 80,
+  "prims": 2,
+  "min": [
+   -0.059,
+   -0.074,
+   -0.074
+  ],
+  "size": [
+   0.348,
+   0.149,
+   0.149
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Yellow",
+    "c": [
+     0.448,
+     0.355,
+     0.113
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Corn_Harvested.glb",
+  "bytes": 36800,
+  "tris": 638,
+  "prims": 2,
+  "min": [
+   -0.437,
+   0.003,
+   -0.365
+  ],
+  "size": [
+   0.887,
+   1.967,
+   0.649
+  ],
+  "materials": [
+   {
+    "n": "Yellow",
+    "c": [
+     0.448,
+     0.355,
+     0.113
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Flowers_Crop.glb",
+  "bytes": 9364,
+  "tris": 134,
+  "prims": 2,
+  "min": [
+   -0.147,
+   -0.015,
+   -0.146
+  ],
+  "size": [
+   0.292,
+   0.116,
+   0.293
+  ],
+  "materials": [
+   {
+    "n": "Cyan",
+    "c": [
+     0,
+     0.247,
+     0.253
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Yellow",
+    "c": [
+     0.448,
+     0.355,
+     0.113
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Flowers_Harvested.glb",
+  "bytes": 6312,
+  "tris": 100,
+  "prims": 1,
+  "min": [
+   -0.096,
+   0,
+   -0.045
+  ],
+  "size": [
+   0.193,
+   0.715,
+   0.067
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Flower_1.glb",
+  "bytes": 5512,
+  "tris": 80,
+  "prims": 1,
+  "min": [
+   -0.064,
+   0,
+   -0.008
+  ],
+  "size": [
+   0.127,
+   0.11,
+   0.024
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Flower_2.glb",
+  "bytes": 3360,
+  "tris": 42,
+  "prims": 1,
+  "min": [
+   -0.036,
+   0,
+   -0.035
+  ],
+  "size": [
+   0.084,
+   0.412,
+   0.05
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Flower_3.glb",
+  "bytes": 10200,
+  "tris": 152,
+  "prims": 2,
+  "min": [
+   -0.1,
+   0,
+   -0.101
+  ],
+  "size": [
+   0.194,
+   0.507,
+   0.199
+  ],
+  "materials": [
+   {
+    "n": "Cyan",
+    "c": [
+     0,
+     0.247,
+     0.253
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Flower_4.glb",
+  "bytes": 14264,
+  "tris": 230,
+  "prims": 2,
+  "min": [
+   -0.15,
+   0,
+   -0.151
+  ],
+  "size": [
+   0.292,
+   0.821,
+   0.293
+  ],
+  "materials": [
+   {
+    "n": "Cyan",
+    "c": [
+     0,
+     0.247,
+     0.253
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Grass_1.glb",
+  "bytes": 4740,
+  "tris": 64,
+  "prims": 1,
+  "min": [
+   -0.073,
+   -0.016,
+   -0.119
+  ],
+  "size": [
+   0.25,
+   0.253,
+   0.273
+  ],
+  "materials": [
+   {
+    "n": "Green_Grass",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Grass_2.glb",
+  "bytes": 4740,
+  "tris": 64,
+  "prims": 1,
+  "min": [
+   -0.073,
+   -0.016,
+   -0.119
+  ],
+  "size": [
+   0.25,
+   0.524,
+   0.273
+  ],
+  "materials": [
+   {
+    "n": "Green_Grass",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Grass_3.glb",
+  "bytes": 7476,
+  "tris": 112,
+  "prims": 1,
+  "min": [
+   -0.197,
+   -0.016,
+   -0.119
+  ],
+  "size": [
+   0.374,
+   0.795,
+   0.282
+  ],
+  "materials": [
+   {
+    "n": "Green_Grass",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Grass_4.glb",
+  "bytes": 12036,
+  "tris": 192,
+  "prims": 1,
+  "min": [
+   -0.197,
+   -0.016,
+   -0.164
+  ],
+  "size": [
+   0.374,
+   1.013,
+   0.327
+  ],
+  "materials": [
+   {
+    "n": "Green_Grass",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Lettuce_1.glb",
+  "bytes": 5936,
+  "tris": 88,
+  "prims": 1,
+  "min": [
+   -0.147,
+   0.002,
+   -0.041
+  ],
+  "size": [
+   0.276,
+   0.294,
+   0.111
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Lettuce_2.glb",
+  "bytes": 22880,
+  "tris": 400,
+  "prims": 1,
+  "min": [
+   -0.18,
+   -0.044,
+   -0.189
+  ],
+  "size": [
+   0.369,
+   0.354,
+   0.367
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Lettuce_3.glb",
+  "bytes": 36064,
+  "tris": 612,
+  "prims": 1,
+  "min": [
+   -0.333,
+   -0.069,
+   -0.327
+  ],
+  "size": [
+   0.623,
+   0.382,
+   0.676
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Lettuce_4.glb",
+  "bytes": 79716,
+  "tris": 1392,
+  "prims": 1,
+  "min": [
+   -0.522,
+   -0.067,
+   -0.522
+  ],
+  "size": [
+   1.044,
+   0.474,
+   1.044
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Lettuce_Crop.glb",
+  "bytes": 7136,
+  "tris": 112,
+  "prims": 1,
+  "min": [
+   -0.182,
+   -0.017,
+   -0.182
+  ],
+  "size": [
+   0.364,
+   0.404,
+   0.364
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Lettuce_Harvested.glb",
+  "bytes": 74060,
+  "tris": 1280,
+  "prims": 1,
+  "min": [
+   -0.522,
+   -0.067,
+   -0.522
+  ],
+  "size": [
+   1.044,
+   0.474,
+   1.044
+  ],
+  "materials": [
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Mushroom_1.glb",
+  "bytes": 10504,
+  "tris": 160,
+  "prims": 2,
+  "min": [
+   -0.053,
+   0,
+   -0.055
+  ],
+  "size": [
+   0.108,
+   0.119,
+   0.108
+  ],
+  "materials": [
+   {
+    "n": "Mushroom1",
+    "c": [
+     0.448,
+     0.427,
+     0.335
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Red",
+    "c": [
+     0.168,
+     0.043,
+     0.018
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Mushroom_2.glb",
+  "bytes": 36220,
+  "tris": 604,
+  "prims": 2,
+  "min": [
+   -0.07,
+   -0.001,
+   -0.072
+  ],
+  "size": [
+   0.142,
+   0.224,
+   0.142
+  ],
+  "materials": [
+   {
+    "n": "Mushroom1",
+    "c": [
+     0.448,
+     0.427,
+     0.335
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Red",
+    "c": [
+     0.168,
+     0.043,
+     0.018
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Mushroom_3.glb",
+  "bytes": 53452,
+  "tris": 920,
+  "prims": 2,
+  "min": [
+   -0.123,
+   0,
+   -0.122
+  ],
+  "size": [
+   0.245,
+   0.286,
+   0.244
+  ],
+  "materials": [
+   {
+    "n": "Mushroom1",
+    "c": [
+     0.448,
+     0.427,
+     0.335
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Red",
+    "c": [
+     0.168,
+     0.043,
+     0.018
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Mushroom_4.glb",
+  "bytes": 99264,
+  "tris": 1760,
+  "prims": 2,
+  "min": [
+   -0.223,
+   0,
+   -0.223
+  ],
+  "size": [
+   0.445,
+   0.399,
+   0.445
+  ],
+  "materials": [
+   {
+    "n": "Mushroom1",
+    "c": [
+     0.448,
+     0.427,
+     0.335
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Red",
+    "c": [
+     0.168,
+     0.043,
+     0.018
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Mushroom_Crop.glb",
+  "bytes": 75436,
+  "tris": 1280,
+  "prims": 2,
+  "min": [
+   -0.225,
+   -0.065,
+   -0.205
+  ],
+  "size": [
+   0.436,
+   0.119,
+   0.436
+  ],
+  "materials": [
+   {
+    "n": "Mushroom1",
+    "c": [
+     0.448,
+     0.427,
+     0.335
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Red",
+    "c": [
+     0.168,
+     0.043,
+     0.018
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Mushroom_Harvested.glb",
+  "bytes": 27132,
+  "tris": 526,
+  "prims": 1,
+  "min": [
+   -0.096,
+   0,
+   -0.096
+  ],
+  "size": [
+   0.191,
+   0.295,
+   0.191
+  ],
+  "materials": [
+   {
+    "n": "Mushroom1",
+    "c": [
+     0.448,
+     0.427,
+     0.335
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Orange_1.glb",
+  "bytes": 5512,
+  "tris": 80,
+  "prims": 1,
+  "min": [
+   -0.106,
+   0,
+   -0.081
+  ],
+  "size": [
+   0.238,
+   0.247,
+   0.107
+  ],
+  "materials": [
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Orange_2.glb",
+  "bytes": 19664,
+  "tris": 252,
+  "prims": 2,
+  "min": [
+   -0.252,
+   0,
+   -0.34
+  ],
+  "size": [
+   0.439,
+   0.939,
+   0.521
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Orange_3.glb",
+  "bytes": 25608,
+  "tris": 336,
+  "prims": 2,
+  "min": [
+   -0.104,
+   0,
+   -0.874
+  ],
+  "size": [
+   0.922,
+   2.124,
+   1.115
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Orange_4.glb",
+  "bytes": 94640,
+  "tris": 1244,
+  "prims": 3,
+  "min": [
+   -0.682,
+   0,
+   -0.476
+  ],
+  "size": [
+   1.864,
+   2.763,
+   1.579
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Orange",
+    "c": [
+     0.604,
+     0.223,
+     0.053
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Orange_Crop.glb",
+  "bytes": 15796,
+  "tris": 208,
+  "prims": 1,
+  "min": [
+   -0.076,
+   -0.069,
+   -0.076
+  ],
+  "size": [
+   0.151,
+   0.151,
+   0.151
+  ],
+  "materials": [
+   {
+    "n": "Orange",
+    "c": [
+     0.604,
+     0.223,
+     0.053
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Orange_Harvested.glb",
+  "bytes": 54240,
+  "tris": 744,
+  "prims": 2,
+  "min": [
+   -0.682,
+   0,
+   -0.476
+  ],
+  "size": [
+   1.801,
+   2.763,
+   1.579
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/PalmTree_1.glb",
+  "bytes": 10788,
+  "tris": 176,
+  "prims": 1,
+  "min": [
+   -0.189,
+   0.002,
+   -0.189
+  ],
+  "size": [
+   0.355,
+   0.35,
+   0.418
+  ],
+  "materials": [
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/PalmTree_2.glb",
+  "bytes": 45028,
+  "tris": 776,
+  "prims": 3,
+  "min": [
+   -0.483,
+   -0.026,
+   -0.757
+  ],
+  "size": [
+   1.094,
+   1.525,
+   1.437
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen_Tree",
+    "c": [
+     0.053,
+     0.091,
+     0.037
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/PalmTree_3.glb",
+  "bytes": 69396,
+  "tris": 1220,
+  "prims": 3,
+  "min": [
+   -0.528,
+   -0.027,
+   -0.857
+  ],
+  "size": [
+   1.311,
+   2.232,
+   1.629
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen_Tree",
+    "c": [
+     0.053,
+     0.091,
+     0.037
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/PalmTree_4.glb",
+  "bytes": 125856,
+  "tris": 2100,
+  "prims": 4,
+  "min": [
+   -0.663,
+   -0.017,
+   -1.076
+  ],
+  "size": [
+   1.813,
+   3.251,
+   2.045
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen_Tree",
+    "c": [
+     0.053,
+     0.091,
+     0.037
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Coconuts",
+    "c": [
+     0.253,
+     0.114,
+     0.096
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/PalmTree_Crop.glb",
+  "bytes": 7444,
+  "tris": 82,
+  "prims": 1,
+  "min": [
+   -0.112,
+   -0.108,
+   -0.113
+  ],
+  "size": [
+   0.224,
+   0.224,
+   0.226
+  ],
+  "materials": [
+   {
+    "n": "Coconuts",
+    "c": [
+     0.253,
+     0.114,
+     0.096
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/PalmTree_Harvested.glb",
+  "bytes": 99692,
+  "tris": 1772,
+  "prims": 3,
+  "min": [
+   -0.663,
+   -0.017,
+   -1.076
+  ],
+  "size": [
+   1.813,
+   3.251,
+   2.045
+  ],
+  "materials": [
+   {
+    "n": "Wood",
+    "c": [
+     0.153,
+     0.07,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green_Tree",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen_Tree",
+    "c": [
+     0.053,
+     0.091,
+     0.037
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Pumpkin_1.glb",
+  "bytes": 8896,
+  "tris": 132,
+  "prims": 2,
+  "min": [
+   -0.077,
+   0,
+   -0.026
+  ],
+  "size": [
+   0.217,
+   0.391,
+   0.093
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Pumpkin_2.glb",
+  "bytes": 48560,
+  "tris": 862,
+  "prims": 2,
+  "min": [
+   -0.408,
+   0.009,
+   -0.258
+  ],
+  "size": [
+   0.468,
+   0.254,
+   0.44
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Pumpkin_3.glb",
+  "bytes": 96480,
+  "tris": 1752,
+  "prims": 2,
+  "min": [
+   -0.478,
+   -0.031,
+   -0.402
+  ],
+  "size": [
+   0.875,
+   0.393,
+   0.749
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Pumpkin_4.glb",
+  "bytes": 158652,
+  "tris": 2896,
+  "prims": 3,
+  "min": [
+   -0.509,
+   -0.042,
+   -0.665
+  ],
+  "size": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "materials": [
+   {
+    "n": "Orange",
+    "c": [
+     0.604,
+     0.223,
+     0.053
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Pumpkin_Crop.glb",
+  "bytes": 22916,
+  "tris": 396,
+  "prims": 2,
+  "min": [
+   -0.296,
+   0.003,
+   -0.289
+  ],
+  "size": [
+   0.588,
+   0.554,
+   0.578
+  ],
+  "materials": [
+   {
+    "n": "Orange",
+    "c": [
+     0.604,
+     0.223,
+     0.053
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Pumpkin_Harvested.glb",
+  "bytes": 139048,
+  "tris": 2540,
+  "prims": 2,
+  "min": [
+   -0.509,
+   -0.042,
+   -0.665
+  ],
+  "size": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Rice_1.glb",
+  "bytes": 5932,
+  "tris": 88,
+  "prims": 1,
+  "min": [
+   -0.084,
+   0.001,
+   -0.008
+  ],
+  "size": [
+   0.158,
+   0.368,
+   0.031
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Rice_2.glb",
+  "bytes": 17252,
+  "tris": 294,
+  "prims": 1,
+  "min": [
+   -0.165,
+   -0.015,
+   -0.061
+  ],
+  "size": [
+   0.255,
+   0.565,
+   0.127
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Rice_3.glb",
+  "bytes": 35628,
+  "tris": 628,
+  "prims": 1,
+  "min": [
+   -0.279,
+   -0.023,
+   -0.108
+  ],
+  "size": [
+   0.619,
+   0.769,
+   0.238
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Rice_4.glb",
+  "bytes": 108412,
+  "tris": 1940,
+  "prims": 2,
+  "min": [
+   -0.379,
+   -0.038,
+   -0.336
+  ],
+  "size": [
+   0.779,
+   0.953,
+   0.881
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightGreen",
+    "c": [
+     0.532,
+     0.662,
+     0.201
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Rice_Crop.glb",
+  "bytes": 21360,
+  "tris": 370,
+  "prims": 1,
+  "min": [
+   -0.586,
+   -0.052,
+   -0.267
+  ],
+  "size": [
+   0.906,
+   0.046,
+   0.387
+  ],
+  "materials": [
+   {
+    "n": "LightGreen",
+    "c": [
+     0.532,
+     0.662,
+     0.201
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Tomato_1.glb",
+  "bytes": 4328,
+  "tris": 60,
+  "prims": 1,
+  "min": [
+   -0.034,
+   0,
+   -0.028
+  ],
+  "size": [
+   0.101,
+   0.179,
+   0.065
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Tomato_2.glb",
+  "bytes": 16176,
+  "tris": 266,
+  "prims": 1,
+  "min": [
+   -0.179,
+   -0.007,
+   -0.096
+  ],
+  "size": [
+   0.377,
+   0.791,
+   0.187
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Tomato_3.glb",
+  "bytes": 68784,
+  "tris": 1194,
+  "prims": 1,
+  "min": [
+   -0.3,
+   -0.002,
+   -0.272
+  ],
+  "size": [
+   0.641,
+   1.428,
+   0.586
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Tomato_4.glb",
+  "bytes": 91376,
+  "tris": 1518,
+  "prims": 2,
+  "min": [
+   -0.37,
+   0,
+   -0.336
+  ],
+  "size": [
+   0.793,
+   1.72,
+   0.81
+  ],
+  "materials": [
+   {
+    "n": "Red",
+    "c": [
+     0.168,
+     0.043,
+     0.018
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Tomato_Crop.glb",
+  "bytes": 26168,
+  "tris": 344,
+  "prims": 2,
+  "min": [
+   -0.089,
+   -0.053,
+   -0.089
+  ],
+  "size": [
+   0.178,
+   0.148,
+   0.178
+  ],
+  "materials": [
+   {
+    "n": "Red",
+    "c": [
+     0.168,
+     0.043,
+     0.018
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Tomato_Harvested.glb",
+  "bytes": 78132,
+  "tris": 1358,
+  "prims": 1,
+  "min": [
+   -0.37,
+   0,
+   -0.336
+  ],
+  "size": [
+   0.793,
+   1.72,
+   0.81
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Watermelon_1.glb",
+  "bytes": 8896,
+  "tris": 132,
+  "prims": 2,
+  "min": [
+   -0.077,
+   0,
+   -0.026
+  ],
+  "size": [
+   0.217,
+   0.391,
+   0.093
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Watermelon_2.glb",
+  "bytes": 48564,
+  "tris": 862,
+  "prims": 2,
+  "min": [
+   -0.408,
+   0.009,
+   -0.258
+  ],
+  "size": [
+   0.468,
+   0.254,
+   0.44
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Watermelon_3.glb",
+  "bytes": 96484,
+  "tris": 1752,
+  "prims": 2,
+  "min": [
+   -0.478,
+   -0.031,
+   -0.402
+  ],
+  "size": [
+   0.875,
+   0.393,
+   0.749
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Watermelon_4.glb",
+  "bytes": 143540,
+  "tris": 2600,
+  "prims": 3,
+  "min": [
+   -0.498,
+   -0.205,
+   -0.653
+  ],
+  "size": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Watermelon_Crop.glb",
+  "bytes": 14232,
+  "tris": 220,
+  "prims": 2,
+  "min": [
+   -0.222,
+   -0.175,
+   -0.185
+  ],
+  "size": [
+   0.444,
+   0.351,
+   0.369
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen2",
+    "c": [
+     0.087,
+     0.152,
+     0.06
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Watermelon_Harvested.glb",
+  "bytes": 130408,
+  "tris": 2380,
+  "prims": 2,
+  "min": [
+   -0.498,
+   -0.205,
+   -0.653
+  ],
+  "size": [
+   1.29,
+   0.59,
+   1.075
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGreen",
+    "c": [
+     0.147,
+     0.168,
+     0.092
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Wheat_1.glb",
+  "bytes": 3292,
+  "tris": 40,
+  "prims": 1,
+  "min": [
+   -0.118,
+   0,
+   -0.015
+  ],
+  "size": [
+   0.121,
+   0.219,
+   0.033
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Wheat_2.glb",
+  "bytes": 7628,
+  "tris": 118,
+  "prims": 1,
+  "min": [
+   -0.043,
+   0,
+   -0.054
+  ],
+  "size": [
+   0.072,
+   0.539,
+   0.124
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Wheat_3.glb",
+  "bytes": 14448,
+  "tris": 246,
+  "prims": 1,
+  "min": [
+   -0.127,
+   0,
+   -0.115
+  ],
+  "size": [
+   0.165,
+   0.694,
+   0.243
+  ],
+  "materials": [
+   {
+    "n": "Green",
+    "c": [
+     0.232,
+     0.448,
+     0.126
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Wheat_4.glb",
+  "bytes": 6384,
+  "tris": 102,
+  "prims": 1,
+  "min": [
+   -0.083,
+   0,
+   -0.041
+  ],
+  "size": [
+   0.098,
+   0.948,
+   0.056
+  ],
+  "materials": [
+   {
+    "n": "Yellow",
+    "c": [
+     0.448,
+     0.355,
+     0.113
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-cultivos/Wheat_Crop.glb",
+  "bytes": 33184,
+  "tris": 612,
+  "prims": 1,
+  "min": [
+   -0.275,
+   -0.052,
+   -0.363
+  ],
+  "size": [
+   0.591,
+   0.105,
+   0.758
+  ],
+  "materials": [
+   {
+    "n": "Yellow",
+    "c": [
+     0.448,
+     0.355,
+     0.113
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/Barn.glb",
+  "bytes": 125344,
+  "tris": 2910,
+  "prims": 14,
+  "min": [
+   -3.862,
+   0.002,
+   -3.989
+  ],
+  "size": [
+   7.727,
+   6.009,
+   8.222
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.253,
+     0.053,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "RoofBlack",
+    "c": [
+     0.099,
+     0.099,
+     0.099
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/BigBarn.glb",
+  "bytes": 183860,
+  "tris": 4224,
+  "prims": 14,
+  "min": [
+   -3.863,
+   -0.004,
+   -4.063
+  ],
+  "size": [
+   7.727,
+   7.887,
+   8.222
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.253,
+     0.053,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "RoofBlack",
+    "c": [
+     0.099,
+     0.099,
+     0.099
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/ChickenCoop.glb",
+  "bytes": 47208,
+  "tris": 948,
+  "prims": 5,
+  "min": [
+   -1.203,
+   -0.003,
+   -0.948
+  ],
+  "size": [
+   2.407,
+   1.851,
+   2.154
+  ],
+  "materials": [
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkRed",
+    "c": [
+     0.253,
+     0.053,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "RoofBlack",
+    "c": [
+     0.099,
+     0.099,
+     0.099
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/Fence.glb",
+  "bytes": 10272,
+  "tris": 188,
+  "prims": 1,
+  "min": [
+   -2.945,
+   -0.011,
+   -0.083
+  ],
+  "size": [
+   5.89,
+   1.097,
+   0.166
+  ],
+  "materials": [
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/Fence2.glb",
+  "bytes": 16468,
+  "tris": 324,
+  "prims": 1,
+  "min": [
+   -2.945,
+   -0.009,
+   -0.083
+  ],
+  "size": [
+   5.89,
+   1.173,
+   0.166
+  ],
+  "materials": [
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/OpenBarn.glb",
+  "bytes": 74712,
+  "tris": 1612,
+  "prims": 5,
+  "min": [
+   -2.839,
+   0.001,
+   -3.091
+  ],
+  "size": [
+   5.744,
+   4.743,
+   6.182
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.253,
+     0.053,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "RoofBlack",
+    "c": [
+     0.099,
+     0.099,
+     0.099
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/Silo.glb",
+  "bytes": 68232,
+  "tris": 1592,
+  "prims": 5,
+  "min": [
+   -1.75,
+   -0.049,
+   -1.665
+  ],
+  "size": [
+   3.668,
+   9.069,
+   3.51
+  ],
+  "materials": [
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkRed",
+    "c": [
+     0.253,
+     0.053,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Grey",
+    "c": [
+     0.439,
+     0.439,
+     0.439
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/Silo_House.glb",
+  "bytes": 126264,
+  "tris": 2880,
+  "prims": 7,
+  "min": [
+   -3.421,
+   -0.048,
+   -1.665
+  ],
+  "size": [
+   5.338,
+   9.067,
+   3.51
+  ],
+  "materials": [
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Grey",
+    "c": [
+     0.439,
+     0.439,
+     0.439
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkRed",
+    "c": [
+     0.253,
+     0.053,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGrey",
+    "c": [
+     0.22,
+     0.22,
+     0.22
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Black",
+    "c": [
+     0.039,
+     0.037,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/SmallBarn.glb",
+  "bytes": 95512,
+  "tris": 2176,
+  "prims": 11,
+  "min": [
+   -3.091,
+   0,
+   -3.112
+  ],
+  "size": [
+   6.079,
+   4.961,
+   6.274
+  ],
+  "materials": [
+   {
+    "n": "DarkRed",
+    "c": [
+     0.253,
+     0.053,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "RoofBlack",
+    "c": [
+     0.099,
+     0.099,
+     0.099
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/TowerWindmill.glb",
+  "bytes": 327008,
+  "tris": 7827,
+  "prims": 8,
+  "min": [
+   -3.948,
+   -0.034,
+   -2.586
+  ],
+  "size": [
+   7.924,
+   11.413,
+   4.991
+  ],
+  "materials": [
+   {
+    "n": "DarkGrey",
+    "c": [
+     0.22,
+     0.22,
+     0.22
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "RoofBlack",
+    "c": [
+     0.099,
+     0.099,
+     0.099
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightBrown",
+    "c": [
+     0.411,
+     0.27,
+     0.134
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Black",
+    "c": [
+     0.039,
+     0.037,
+     0.04
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Grey",
+    "c": [
+     0.439,
+     0.439,
+     0.439
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkBrown",
+    "c": [
+     0.179,
+     0.119,
+     0.061
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/WaterTower.glb",
+  "bytes": 103992,
+  "tris": 2507,
+  "prims": 3,
+  "min": [
+   -1.193,
+   -0.072,
+   -1.245
+  ],
+  "size": [
+   2.532,
+   8.429,
+   2.489
+  ],
+  "materials": [
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Grey",
+    "c": [
+     0.439,
+     0.439,
+     0.439
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGrey",
+    "c": [
+     0.22,
+     0.22,
+     0.22
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/Well.glb",
+  "bytes": 151556,
+  "tris": 2880,
+  "prims": 5,
+  "min": [
+   -0.638,
+   -0.007,
+   -0.687
+  ],
+  "size": [
+   1.277,
+   2.146,
+   1.487
+  ],
+  "materials": [
+   {
+    "n": "Grey",
+    "c": [
+     0.439,
+     0.439,
+     0.439
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "LightRed",
+    "c": [
+     0.342,
+     0.07,
+     0.052
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "White",
+    "c": [
+     0.87,
+     0.8,
+     0.8
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "DarkGrey",
+    "c": [
+     0.147,
+     0.147,
+     0.147
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-granja/Windmill.glb",
+  "bytes": 73212,
+  "tris": 1440,
+  "prims": 4,
+  "min": [
+   -2.259,
+   0.002,
+   -0.949
+  ],
+  "size": [
+   6.508,
+   11.196,
+   1.898
+  ],
+  "materials": [
+   {
+    "n": "Brown",
+    "c": [
+     0.281,
+     0.096,
+     0.047
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Grey",
+    "c": [
+     0.439,
+     0.439,
+     0.439
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/BirchTree_1.glb",
+  "bytes": 203860,
+  "tris": 4596,
+  "prims": 2,
+  "min": [
+   -1.342,
+   -0.018,
+   -0.874
+  ],
+  "size": [
+   2.708,
+   5.453,
+   1.943
+  ],
+  "materials": [
+   {
+    "n": "BirchTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "BirchTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/BirchTree_2.glb",
+  "bytes": 295368,
+  "tris": 7660,
+  "prims": 2,
+  "min": [
+   -1.701,
+   -0.03,
+   -1.278
+  ],
+  "size": [
+   3.347,
+   7.57,
+   2.813
+  ],
+  "materials": [
+   {
+    "n": "BirchTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "BirchTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/BirchTree_3.glb",
+  "bytes": 439968,
+  "tris": 6818,
+  "prims": 2,
+  "min": [
+   -1.663,
+   -0.008,
+   -0.925
+  ],
+  "size": [
+   3.433,
+   5.754,
+   2.267
+  ],
+  "materials": [
+   {
+    "n": "BirchTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "BirchTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/BirchTree_4.glb",
+  "bytes": 141724,
+  "tris": 3562,
+  "prims": 2,
+  "min": [
+   -1.353,
+   -0.013,
+   -0.873
+  ],
+  "size": [
+   2.776,
+   4.215,
+   1.839
+  ],
+  "materials": [
+   {
+    "n": "BirchTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "BirchTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/BirchTree_5.glb",
+  "bytes": 182608,
+  "tris": 4520,
+  "prims": 2,
+  "min": [
+   -1.692,
+   -0.014,
+   -1.752
+  ],
+  "size": [
+   3.582,
+   5.522,
+   3.515
+  ],
+  "materials": [
+   {
+    "n": "BirchTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "BirchTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Bush.glb",
+  "bytes": 29172,
+  "tris": 400,
+  "prims": 1,
+  "min": [
+   -0.931,
+   -0.567,
+   -0.859
+  ],
+  "size": [
+   1.857,
+   1.47,
+   1.77
+  ],
+  "materials": [
+   {
+    "n": "Bush_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Bush_Flowers.glb",
+  "bytes": 33328,
+  "tris": 478,
+  "prims": 2,
+  "min": [
+   -0.931,
+   -0.567,
+   -0.859
+  ],
+  "size": [
+   1.857,
+   1.472,
+   1.77
+  ],
+  "materials": [
+   {
+    "n": "Bush_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Bush_Large.glb",
+  "bytes": 20500,
+  "tris": 276,
+  "prims": 1,
+  "min": [
+   -1.332,
+   -0.828,
+   -1.212
+  ],
+  "size": [
+   2.639,
+   2.44,
+   2.441
+  ],
+  "materials": [
+   {
+    "n": "Bush_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Bush_Large_Flowers.glb",
+  "bytes": 26736,
+  "tris": 402,
+  "prims": 2,
+  "min": [
+   -1.307,
+   -0.828,
+   -1.228
+  ],
+  "size": [
+   2.639,
+   2.497,
+   2.441
+  ],
+  "materials": [
+   {
+    "n": "Bush_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Bush_Small.glb",
+  "bytes": 14480,
+  "tris": 190,
+  "prims": 1,
+  "min": [
+   -1.202,
+   -0.906,
+   -1.072
+  ],
+  "size": [
+   2.368,
+   2.015,
+   2.147
+  ],
+  "materials": [
+   {
+    "n": "Bush_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Bush_Small_Flowers.glb",
+  "bytes": 18892,
+  "tris": 274,
+  "prims": 2,
+  "min": [
+   -1.202,
+   -0.906,
+   -1.072
+  ],
+  "size": [
+   2.368,
+   2.068,
+   2.147
+  ],
+  "materials": [
+   {
+    "n": "Bush_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_1.glb",
+  "bytes": 122816,
+  "tris": 4792,
+  "prims": 1,
+  "min": [
+   -1.652,
+   -0.01,
+   -0.676
+  ],
+  "size": [
+   3.092,
+   6.196,
+   1.295
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_10.glb",
+  "bytes": 82812,
+  "tris": 3208,
+  "prims": 1,
+  "min": [
+   -3.019,
+   0.001,
+   -1.314
+  ],
+  "size": [
+   5.461,
+   7.126,
+   3.245
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_2.glb",
+  "bytes": 137044,
+  "tris": 5344,
+  "prims": 1,
+  "min": [
+   -1.788,
+   -0.01,
+   -0.809
+  ],
+  "size": [
+   3.424,
+   6.196,
+   1.446
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_3.glb",
+  "bytes": 126228,
+  "tris": 4928,
+  "prims": 1,
+  "min": [
+   -1.353,
+   -0.01,
+   -0.919
+  ],
+  "size": [
+   4.219,
+   4.958,
+   1.702
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_4.glb",
+  "bytes": 90876,
+  "tris": 3528,
+  "prims": 1,
+  "min": [
+   -2.968,
+   -0.009,
+   -0.936
+  ],
+  "size": [
+   4.85,
+   4.61,
+   1.669
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_5.glb",
+  "bytes": 35656,
+  "tris": 1360,
+  "prims": 1,
+  "min": [
+   -0.665,
+   0,
+   -0.81
+  ],
+  "size": [
+   1.441,
+   2.604,
+   1.534
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_6.glb",
+  "bytes": 77080,
+  "tris": 2984,
+  "prims": 1,
+  "min": [
+   -1.639,
+   0.001,
+   -1.368
+  ],
+  "size": [
+   5.407,
+   6.414,
+   3.299
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_7.glb",
+  "bytes": 90028,
+  "tris": 3504,
+  "prims": 1,
+  "min": [
+   -4.148,
+   0.001,
+   -2.871
+  ],
+  "size": [
+   6.137,
+   6.314,
+   5.034
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_8.glb",
+  "bytes": 126728,
+  "tris": 4944,
+  "prims": 1,
+  "min": [
+   -4.018,
+   0.001,
+   -2.871
+  ],
+  "size": [
+   8.166,
+   6.277,
+   4.802
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/DeadTree_9.glb",
+  "bytes": 22388,
+  "tris": 824,
+  "prims": 1,
+  "min": [
+   -0.745,
+   -0.005,
+   -0.141
+  ],
+  "size": [
+   2.059,
+   3.302,
+   0.718
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Flower_1.glb",
+  "bytes": 7208,
+  "tris": 162,
+  "prims": 1,
+  "min": [
+   -0.136,
+   -0.004,
+   -0.08
+  ],
+  "size": [
+   0.268,
+   0.489,
+   0.204
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Flower_1_Clump.glb",
+  "bytes": 24460,
+  "tris": 620,
+  "prims": 1,
+  "min": [
+   -0.239,
+   -0.005,
+   -0.222
+  ],
+  "size": [
+   0.471,
+   0.671,
+   0.435
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Flower_2.glb",
+  "bytes": 2040,
+  "tris": 34,
+  "prims": 1,
+  "min": [
+   -0.041,
+   -0.008,
+   -0.084
+  ],
+  "size": [
+   0.239,
+   0.361,
+   0.247
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Flower_2_Clump.glb",
+  "bytes": 4868,
+  "tris": 136,
+  "prims": 1,
+  "min": [
+   -0.189,
+   0.001,
+   -0.19
+  ],
+  "size": [
+   0.426,
+   0.451,
+   0.373
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Flower_3_Clump.glb",
+  "bytes": 4868,
+  "tris": 136,
+  "prims": 1,
+  "min": [
+   -0.189,
+   0.001,
+   -0.19
+  ],
+  "size": [
+   0.426,
+   0.451,
+   0.373
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Flower_4_Clump.glb",
+  "bytes": 4844,
+  "tris": 136,
+  "prims": 1,
+  "min": [
+   -0.252,
+   0.001,
+   -0.253
+  ],
+  "size": [
+   0.568,
+   0.601,
+   0.498
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Flower_5_Clump.glb",
+  "bytes": 4840,
+  "tris": 136,
+  "prims": 1,
+  "min": [
+   -0.189,
+   0.001,
+   -0.19
+  ],
+  "size": [
+   0.426,
+   0.451,
+   0.373
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Grass_Large.glb",
+  "bytes": 6532,
+  "tris": 108,
+  "prims": 1,
+  "min": [
+   -0.336,
+   -0.003,
+   -0.327
+  ],
+  "size": [
+   0.708,
+   0.485,
+   0.498
+  ],
+  "materials": [
+   {
+    "n": "Grass",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Grass_Large_Extruded.glb",
+  "bytes": 27616,
+  "tris": 516,
+  "prims": 1,
+  "min": [
+   -0.354,
+   -0.003,
+   -0.33
+  ],
+  "size": [
+   0.745,
+   0.509,
+   0.497
+  ],
+  "materials": [
+   {
+    "n": "Grass",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Grass_Small.glb",
+  "bytes": 3984,
+  "tris": 58,
+  "prims": 1,
+  "min": [
+   -0.25,
+   -0.005,
+   -0.156
+  ],
+  "size": [
+   0.47,
+   0.394,
+   0.278
+  ],
+  "materials": [
+   {
+    "n": "Grass",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/MapleTree_1.glb",
+  "bytes": 138348,
+  "tris": 3848,
+  "prims": 2,
+  "min": [
+   -2.076,
+   0.001,
+   -2.449
+  ],
+  "size": [
+   6.229,
+   6.644,
+   4.904
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "MapleTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/MapleTree_2.glb",
+  "bytes": 181532,
+  "tris": 4800,
+  "prims": 2,
+  "min": [
+   -4.342,
+   0.001,
+   -3.495
+  ],
+  "size": [
+   6.701,
+   6.714,
+   6.244
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "MapleTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/MapleTree_3.glb",
+  "bytes": 248896,
+  "tris": 6678,
+  "prims": 2,
+  "min": [
+   -4.41,
+   0.001,
+   -3.936
+  ],
+  "size": [
+   8.98,
+   6.987,
+   6.613
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "MapleTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/MapleTree_4.glb",
+  "bytes": 53408,
+  "tris": 1256,
+  "prims": 2,
+  "min": [
+   -1.128,
+   -0.005,
+   -1.313
+  ],
+  "size": [
+   2.77,
+   3.594,
+   2.435
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "MapleTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/MapleTree_5.glb",
+  "bytes": 174316,
+  "tris": 4504,
+  "prims": 2,
+  "min": [
+   -3.609,
+   0.001,
+   -2.43
+  ],
+  "size": [
+   7.012,
+   7.28,
+   5.076
+  ],
+  "materials": [
+   {
+    "n": "MapleTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "MapleTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/NormalTree_1.glb",
+  "bytes": 384568,
+  "tris": 8520,
+  "prims": 2,
+  "min": [
+   -2.131,
+   -0.01,
+   -1.498
+  ],
+  "size": [
+   4.051,
+   6.867,
+   2.744
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "NormalTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/NormalTree_2.glb",
+  "bytes": 329632,
+  "tris": 8084,
+  "prims": 2,
+  "min": [
+   -2.372,
+   -0.01,
+   -1.342
+  ],
+  "size": [
+   4.554,
+   6.555,
+   2.786
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "NormalTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/NormalTree_3.glb",
+  "bytes": 278776,
+  "tris": 7096,
+  "prims": 2,
+  "min": [
+   -1.889,
+   -0.01,
+   -1.38
+  ],
+  "size": [
+   5.039,
+   5.281,
+   2.88
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "NormalTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/NormalTree_4.glb",
+  "bytes": 288364,
+  "tris": 6338,
+  "prims": 2,
+  "min": [
+   -3.074,
+   -0.009,
+   -1.298
+  ],
+  "size": [
+   5.673,
+   5.096,
+   2.401
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "NormalTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/NormalTree_5.glb",
+  "bytes": 93984,
+  "tris": 2182,
+  "prims": 2,
+  "min": [
+   -1.554,
+   0,
+   -1.273
+  ],
+  "size": [
+   3.097,
+   2.98,
+   2.566
+  ],
+  "materials": [
+   {
+    "n": "NormalTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "NormalTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PalmTree_1.glb",
+  "bytes": 16820,
+  "tris": 472,
+  "prims": 2,
+  "min": [
+   -2.735,
+   0.01,
+   -2.725
+  ],
+  "size": [
+   5.092,
+   5.103,
+   4.947
+  ],
+  "materials": [
+   {
+    "n": "PalmTree_Trunk",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PalmTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PalmTree_2.glb",
+  "bytes": 13536,
+  "tris": 368,
+  "prims": 2,
+  "min": [
+   -1.4,
+   -0.04,
+   -2.814
+  ],
+  "size": [
+   5.583,
+   5.28,
+   4.769
+  ],
+  "materials": [
+   {
+    "n": "PalmTree_Trunk",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PalmTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PalmTree_3.glb",
+  "bytes": 12688,
+  "tris": 344,
+  "prims": 2,
+  "min": [
+   -2.483,
+   -0.037,
+   -1.969
+  ],
+  "size": [
+   4.473,
+   4.666,
+   4.222
+  ],
+  "materials": [
+   {
+    "n": "PalmTree_Trunk",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PalmTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PalmTree_4.glb",
+  "bytes": 16820,
+  "tris": 472,
+  "prims": 2,
+  "min": [
+   -0.706,
+   0.01,
+   -2.53
+  ],
+  "size": [
+   4.747,
+   3.65,
+   4.952
+  ],
+  "materials": [
+   {
+    "n": "PalmTree_Trunk",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PalmTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PalmTree_5.glb",
+  "bytes": 10764,
+  "tris": 264,
+  "prims": 2,
+  "min": [
+   -1.846,
+   -0.007,
+   -1.626
+  ],
+  "size": [
+   3.492,
+   1.796,
+   3.622
+  ],
+  "materials": [
+   {
+    "n": "PalmTree_Trunk",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PalmTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Petals_1.glb",
+  "bytes": 5072,
+  "tris": 90,
+  "prims": 1,
+  "min": [
+   -0.538,
+   -0.453,
+   -0.45
+  ],
+  "size": [
+   1.09,
+   0.967,
+   0.896
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Petals_2.glb",
+  "bytes": 1680,
+  "tris": 12,
+  "prims": 1,
+  "min": [
+   -0.425,
+   -0.192,
+   -0.416
+  ],
+  "size": [
+   0.853,
+   0.662,
+   0.866
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Petals_3.glb",
+  "bytes": 1416,
+  "tris": 6,
+  "prims": 1,
+  "min": [
+   -0.294,
+   -0.169,
+   -0.242
+  ],
+  "size": [
+   0.589,
+   0.544,
+   0.566
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Petals_4.glb",
+  "bytes": 1380,
+  "tris": 6,
+  "prims": 1,
+  "min": [
+   -0.21,
+   -0.067,
+   -0.172
+  ],
+  "size": [
+   0.415,
+   0.221,
+   0.376
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PineTree_1.glb",
+  "bytes": 61232,
+  "tris": 2128,
+  "prims": 2,
+  "min": [
+   -1.488,
+   0.003,
+   -1.542
+  ],
+  "size": [
+   2.977,
+   4.502,
+   3.034
+  ],
+  "materials": [
+   {
+    "n": "PineTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PineTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PineTree_2.glb",
+  "bytes": 80504,
+  "tris": 2716,
+  "prims": 2,
+  "min": [
+   -1.554,
+   0.004,
+   -1.418
+  ],
+  "size": [
+   3.277,
+   6.909,
+   2.979
+  ],
+  "materials": [
+   {
+    "n": "PineTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PineTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PineTree_3.glb",
+  "bytes": 56928,
+  "tris": 1998,
+  "prims": 2,
+  "min": [
+   -0.844,
+   0.002,
+   -0.829
+  ],
+  "size": [
+   1.763,
+   2.347,
+   1.749
+  ],
+  "materials": [
+   {
+    "n": "PineTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PineTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PineTree_4.glb",
+  "bytes": 78312,
+  "tris": 2686,
+  "prims": 2,
+  "min": [
+   -1.21,
+   -0.01,
+   -1.225
+  ],
+  "size": [
+   4.842,
+   4.485,
+   3.25
+  ],
+  "materials": [
+   {
+    "n": "PineTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PineTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/PineTree_5.glb",
+  "bytes": 29288,
+  "tris": 838,
+  "prims": 2,
+  "min": [
+   -1.586,
+   0,
+   -1.715
+  ],
+  "size": [
+   3.308,
+   4.301,
+   3.286
+  ],
+  "materials": [
+   {
+    "n": "PineTree_Bark",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   },
+   {
+    "n": "PineTree_Leaves",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Plant_1.glb",
+  "bytes": 15788,
+  "tris": 420,
+  "prims": 1,
+  "min": [
+   -0.768,
+   -0.183,
+   -0.725
+  ],
+  "size": [
+   1.593,
+   0.878,
+   1.644
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Plant_2.glb",
+  "bytes": 6704,
+  "tris": 160,
+  "prims": 1,
+  "min": [
+   -0.701,
+   -0.175,
+   -0.724
+  ],
+  "size": [
+   1.396,
+   0.659,
+   1.531
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Plant_Flowers.glb",
+  "bytes": 11408,
+  "tris": 330,
+  "prims": 1,
+  "min": [
+   -0.745,
+   -0.253,
+   -0.773
+  ],
+  "size": [
+   1.485,
+   1.489,
+   1.796
+  ],
+  "materials": [
+   {
+    "n": "Flowers",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Rock_1.glb",
+  "bytes": 12204,
+  "tris": 228,
+  "prims": 1,
+  "min": [
+   -0.452,
+   -0.105,
+   -0.286
+  ],
+  "size": [
+   0.711,
+   1.082,
+   0.887
+  ],
+  "materials": [
+   {
+    "n": "Rock",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Rock_2.glb",
+  "bytes": 11116,
+  "tris": 202,
+  "prims": 1,
+  "min": [
+   -0.701,
+   -0.121,
+   -0.509
+  ],
+  "size": [
+   1.054,
+   1.125,
+   1.076
+  ],
+  "materials": [
+   {
+    "n": "Rock",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Rock_3.glb",
+  "bytes": 34892,
+  "tris": 712,
+  "prims": 1,
+  "min": [
+   -0.478,
+   -0.126,
+   -0.451
+  ],
+  "size": [
+   0.844,
+   1.313,
+   0.897
+  ],
+  "materials": [
+   {
+    "n": "Rock",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Rock_4.glb",
+  "bytes": 23780,
+  "tris": 456,
+  "prims": 1,
+  "min": [
+   -0.466,
+   -0.21,
+   -0.563
+  ],
+  "size": [
+   0.859,
+   2.153,
+   0.812
+  ],
+  "materials": [
+   {
+    "n": "Rock",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ },
+ {
+  "file": "quat-plataforma/Rock_5.glb",
+  "bytes": 32552,
+  "tris": 632,
+  "prims": 1,
+  "min": [
+   -0.858,
+   -0.102,
+   -0.623
+  ],
+  "size": [
+   1.291,
+   1.695,
+   1.317
+  ],
+  "materials": [
+   {
+    "n": "Rock",
+    "c": [
+     1,
+     1,
+     1
+    ],
+    "tex": false,
+    "mode": "OPAQUE"
+   }
+  ],
+  "images": 0,
+  "anims": [],
+  "skins": 0
+ }
+]

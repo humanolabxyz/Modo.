@@ -1,8 +1,9 @@
 import {useEffect, useMemo, useRef} from 'react';
 import {useFrame, useThree} from '@react-three/fiber';
-import {BufferAttribute, BufferGeometry, Mesh, MeshStandardMaterial, Sphere, Vector3, type Group} from 'three';
+import {BufferAttribute, BufferGeometry, Mesh, MeshStandardMaterial, Sphere, Vector3, type Group, type Texture} from 'three';
 import {buildChunk, chunkRect, lodForDistance, LOD_STRIDES, type ChunkData} from '../terrain/chunks.ts';
 import type {TerrainModel} from '../terrain/model.ts';
+import {groundUV} from './groundTexture.ts';
 
 type Slot = {mesh: Mesh; lod: number; version: number; cache: Map<number, {version: number; geometry: BufferGeometry}>};
 
@@ -11,6 +12,7 @@ function toGeometry(d: ChunkData): BufferGeometry {
   g.setAttribute('position', new BufferAttribute(d.positions, 3));
   g.setAttribute('normal', new BufferAttribute(d.normals, 3));
   g.setAttribute('color', new BufferAttribute(d.colors, 3));
+  g.setAttribute('uv', new BufferAttribute(groundUV(d.positions), 2));
   g.setIndex(new BufferAttribute(d.indices, 1));
   g.boundingSphere = new Sphere(new Vector3(...d.center), d.radius);
   return g;
@@ -19,12 +21,12 @@ function toGeometry(d: ChunkData): BufferGeometry {
 const MAX_BUILDS_PER_FRAME = 6;
 
 /** Terreno por chunks: cada uno elige su nivel de detalle según la distancia a la cámara y se reconstruye solo si su versión cambia. */
-export function TerrainMesh({model}: {model: TerrainModel}) {
+export function TerrainMesh({model, grain}: {model: TerrainModel; grain: Texture}) {
   const group = useRef<Group>(null);
   const slots = useRef(new Map<number, Slot>());
   const dirty = useRef(true);
   const {camera, invalidate} = useThree();
-  const material = useMemo(() => new MeshStandardMaterial({vertexColors: true, roughness: 1, metalness: 0}), []);
+  const material = useMemo(() => new MeshStandardMaterial({map: grain, vertexColors: true, roughness: 1, metalness: 0}), [grain]);
 
   useEffect(() => {
     dirty.current = true; invalidate();
@@ -49,7 +51,7 @@ export function TerrainMesh({model}: {model: TerrainModel}) {
       if (!cached || cached.version !== version) {
         if (builds >= MAX_BUILDS_PER_FRAME) { pending = true; continue; }
         builds++;
-        const geometry = toGeometry(buildChunk(hf, cx, cz, lod));
+        const geometry = toGeometry(buildChunk(hf, cx, cz, lod, true));
         if (!slot) { const mesh = new Mesh(geometry, material); mesh.frustumCulled = true; slot = {mesh, lod, version, cache: new Map()}; slots.current.set(index, slot); parent.add(mesh); }
         else if (cached) cached.geometry.dispose();
         slot.cache.set(lod, {version, geometry});

@@ -3,7 +3,7 @@
 // Potencia y señal: son cables, no se acoplan; basta con que la distancia sea razonable.
 import {checkPorts} from '../model/ports.ts';
 import {newId} from '../model/defaults.ts';
-import {LIMITS, type Connection, type Entity, type Pose, type PortRef, type Result} from '../model/types.ts';
+import {LIMITS, type Connection, type Entity, type Pose, type PortRef, type Result, type Vec3} from '../model/types.ts';
 import type {Heightfield} from '../terrain/heightfield.ts';
 import {sampleHeight} from '../terrain/heightfield.ts';
 import * as cmd from './commands.ts';
@@ -12,6 +12,9 @@ import {checkPlacement, portWorld} from './placement.ts';
 /** Máxima separación (m, en planta) para que dos puertos hidráulicos cuenten como unidos. */
 export const DOCK_TOLERANCE = 0.25;
 export const CABLE_MAX = 300;
+export function cablePoints(a: {x: number; y: number; z: number}, b: {x: number; y: number; z: number}): Vec3[] {
+  return [[a.x, a.y, a.z], [(a.x + b.x) / 2, Math.max(a.y, b.y) + 0.35, (a.z + b.z) / 2], [b.x, b.y, b.z]];
+}
 const fail = (error: string): {ok: false; error: string} => ({ok: false, error});
 const same = (x: PortRef, y: PortRef): boolean => x.entityId === y.entityId && x.portId === y.portId;
 

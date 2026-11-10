@@ -6,6 +6,7 @@ import {PORT_COLORS} from '../scene/EntityMesh.tsx';
 import {sampleHeight, slopeDegrees} from '../terrain/heightfield.ts';
 import {compatibleTargets} from '../world/connections.ts';
 import {portWorld} from '../world/placement.ts';
+import {TERRAIN_ISSUE} from '../world/pipeElevation.ts';
 import {inConstruction, obraProgress} from '../economy/economy.ts';
 import {timeInfo} from '../sim/clock.ts';
 import type {WorldSession} from '../world/session.ts';
@@ -126,10 +127,12 @@ export function Inspector({session, entity, onClose, onDelete, onNotice, onAutom
   const label = (id: string) => session.entity(id)?.label ?? id;
   const analysis = session.analyze(), stretched = new Set(analysis.stretched.map(x => x.connectionId));
   const busy = new Set(session.connections.flatMap(c => [`${c.a.entityId}:${c.a.portId}`, `${c.b.entityId}:${c.b.portId}`]));
+  const terrainIssue = entity.state[TERRAIN_ISSUE];
   return <aside className="agro-inspector" aria-label={`Inspector de ${entity.label}`} data-testid="agro-inspector" data-entity={entity.id}>
     <header><div><small>{def.family} · {def.name}</small>
       <input className="agro-name" value={name} maxLength={80} aria-label="Nombre de la pieza" onChange={e => setName(e.target.value)} onBlur={() => { if (name.trim() !== entity.label) { const r = session.rename(entity.id, name); report(r); if (!r.ok) setName(entity.label); } }} onKeyDown={e => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }} /></div>
       <button type="button" className="agro-icon" aria-label="Cerrar inspector" onClick={onClose}><X size={16} aria-hidden="true" /></button></header>
+    {typeof terrainIssue === 'string' && <p className="agro-terrain-issue"><strong>Incidencia de terreno.</strong> {terrainIssue}</p>}
     <dl>
       <dt>Posición</dt><dd data-testid="agro-ins-pos">x {num1.format(entity.pose.position[0])} · z {num1.format(entity.pose.position[2])}</dd>
       <dt>Cota</dt><dd>{num1.format(sampleHeight(hf, entity.pose.position[0], entity.pose.position[2]))} m</dd>
@@ -143,7 +146,7 @@ export function Inspector({session, entity, onClose, onDelete, onNotice, onAutom
     {tab === 'general' && <>
     {inConstruction(entity) && <p className="agro-why" role="status" data-testid="agro-obra">En obra: {Math.round(obraProgress(entity, session.clock.simSeconds) * 100)} % · termina el {timeInfo({simSeconds: Number(entity.state.obraHasta), startDate: session.clock.startDate}).dateLabel} a las {timeInfo({simSeconds: Number(entity.state.obraHasta), startDate: session.clock.startDate}).timeLabel}. Hasta entonces no existe para el agua ni la energía.</p>}
     <Controls entity={entity} session={session} report={report} onAutomate={onAutomate} />
-    {def.params.map(p => <NumberField key={p.key} label={p.label} unit={p.unit} value={Number(entity.params[p.key] ?? p.default)} min={p.min} max={p.max} step={p.step} onCommit={v => report(session.setParam(entity.id, p.key, v))} />)}
+    {def.params.filter(p=>!entity.parcelPolygon||!['anchoM','largoM'].includes(p.key)).map(p => <NumberField key={p.key} label={p.label} unit={p.unit} value={Number(entity.params[p.key] ?? p.default)} min={p.min} max={p.max} step={p.step} onCommit={v => report(session.setParam(entity.id, p.key, v))} />)}
     </>}
     {tab === 'data' && <Readings entity={entity} session={session} />}
     {tab === 'conn' && <>

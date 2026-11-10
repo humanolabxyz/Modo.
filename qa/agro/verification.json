@@ -1,18 +1,18 @@
 {
   "checks": [
     "primer ingreso: el lobby invita a crear el primer mundo (sin mundos ni «Continuar») y mantiene la CSP estricta",
-    "crear un mundo abre el workspace con terreno 3D (125534 triángulos, 49 dibujos) y lo guarda solo",
+    "crear un mundo abre el workspace con terreno 3D (137758 triángulos, 45 dibujos) y lo guarda solo",
     "terreno: cota y pendiente al pasar el puntero; órbita, estratégica y caminata; la selección sobrevive al cambio de cámara",
     "pincel: subir terreno, deshacer y rehacer devuelven el terreno exacto",
     "colocar: el fantasma indica que se puede y un clic coloca «Bomba centrífuga 1» sobre el terreno",
     "no deja colocar encima de otra pieza y dice con cuál choca",
     "el catálogo coloca bomba, estanque y tubería; Esc sale del modo colocar",
     "seleccionar una pieza abre el inspector con nombre, medidas y sus 3 puertos tipados",
-    "arrastrar la pieza la mueve (x 1,0 · z -4,0 → x 1,0 · z -6,5) sin tocar el terreno ni duplicarla",
+    "arrastrar la pieza la mueve (x 1,0 · z -2,0 → x 1,0 · z -4,5) sin tocar el terreno ni duplicarla",
     "girar con E o con el botón; Ctrl+Z deshace los giros y el movimiento en orden",
     "cambiar el largo de la tubería recalcula sus medidas; un valor fuera de rango se rechaza con su motivo",
     "eliminar una pieza sin conexiones es inmediato y se deshace",
-    "medir: Medir Distancia 2,8 m Horizontal 2,8 m Desnivel -0,0 m Pendiente 0,6°",
+    "medir: Medir Distancia 2,9 m Horizontal 2,9 m Desnivel -0,1 m Pendiente 1,2°",
     "recargar la página reabre el mismo mundo desde IndexedDB: 3 piezas, 1 edición de terreno y terreno idéntico",
     "Mis mundos resume piezas y ediciones; «Continuar» vuelve al último mundo",
     "eliminar «Estanque 1» con conexiones pide confirmación (cancelar no borra nada, confirmar sí) y se deshace",
@@ -39,7 +39,7 @@
     "en automático con el suelo seco (X0 activa) pero el interruptor «Riego automático» de la pantalla apagado, el PLC mantiene Y0 apagada: la bomba no corre",
     "al encender «Riego automático» en la pantalla el PLC activa Y0: el piloto se enciende, la pantalla dice «EN OPERACIÓN», el medidor de caudal marca el riego y la bomba entrega caudal",
     "al llegar el suelo al umbral húmedo el PLC apaga Y0 y la bomba se detiene; el registro y el histórico de la pantalla anotan arranque y parada y los 6 medidores muestran valores del modelo",
-    "la barra de modos abre el dock de piezas por categoría (Construir: todas; Electricidad: energía y control); elegir una ficha deja la pieza lista para colocar y Esc la suelta",
+    "Construir concentra las piezas por categoría; Riego y Electricidad abren la lectura de red; Esc cancela la pieza",
     "«Capas» muestra y oculta las etiquetas flotantes con el nombre y el estado de cada equipo",
     "la barra contextual de la pieza abre «Automatizar»; recargar conserva el programa, el modo automático y la hora simulada; el mundo reabre en pausa",
     "en modo real, Gestión abre «Inventario y compras»: lo recibido menos lo colocado (1 bomba disponible, 0 estanques) y el dinero que queda tras la compra y el montaje",
@@ -56,14 +56,15 @@
     "sin errores de consola ni respuestas 4xx/5xx"
   ],
   "errors": [],
+  "diagnostics": [],
   "metrics": {
     "orbit": {
-      "tris": 125534,
-      "calls": 49
+      "tris": 137758,
+      "calls": 45
     },
     "strategic": {
-      "tris": 104510,
-      "calls": 117
+      "tris": 153562,
+      "calls": 112
     }
   }
 }

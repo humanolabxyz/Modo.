@@ -4,6 +4,7 @@ import {useMemo} from 'react';
 import {BoxGeometry} from 'three';
 import {itemById, sizeOf} from '../catalog/items.ts';
 import {BarnMesh, FenceMesh, GreenhouseMesh, WindmillMesh} from './InfrastructureMesh.tsx';
+import {GlbInstances, GlbObject, useModel} from './GlbModels.tsx';
 import {Boards, Instances, Mat, type ModelInstance} from './ModelParts.tsx';
 import {bitOn} from '../plc/program.ts';
 import type {Entity, Port, PropValue} from '../model/types.ts';
@@ -139,12 +140,21 @@ export function EntityBody({type, params, state, tint = null, live = {}}: {type:
       <mesh position={[0, 0.95, 0.13]}><boxGeometry args={[0.28, 0.36, 0.14]} /><Mat c="#c9ced6" tint={tint} metal={0.3} /></mesh>
       <mesh position={[0, 0.98, 0.205]}><cylinderGeometry args={[0.07, 0.07, 0.02, 14]} /><meshBasicMaterial color="#2a3a4a" /></mesh>
     </group>;
-    case 'granero': return <BarnMesh tint={tint} />;
+    case 'granero': return <GlbObject id="estructura-granero" tint={tint} fallback={<BarnMesh tint={tint} />} />;
     case 'invernadero': return <GreenhouseMesh width={num(params.anchoM, 8)} length={num(params.largoM, 20)} tint={tint} />;
-    case 'molino': return <WindmillMesh tint={tint} />;
-    case 'cerca': return <FenceMesh length={num(params.largoM, 10)} tint={tint} />;
+    case 'molino': return <GlbObject id="estructura-molino" tint={tint} fallback={<WindmillMesh tint={tint} />} />;
+    case 'cerca': return <FenceBody length={num(params.largoM, 10)} tint={tint} />;
     default: return null;
   }
+}
+
+/** Cerca: tramos repetidos del modelo de la biblioteca (5,9 m cada uno, ajustados al largo de la pieza). Sin modelo o en el fantasma de colocación, la cerca de siempre. */
+const FENCE_SEGMENT_M = 5.89;
+function FenceBody({length, tint}: {length: number; tint: Tint}) {
+  const model = useModel('estructura-cerca');
+  if (tint || !model || length < 3.5) return <FenceMesh length={length} tint={tint} />; // un tramo tan corto quedaría deformado: se usa la cerca de siempre
+  const n = Math.max(1, Math.round(length / FENCE_SEGMENT_M)), seg = length / n;
+  return <GlbInstances id="estructura-cerca" items={Array.from({length: n}, (_, i) => ({x: -length / 2 + seg * (i + 0.5), y: 0, z: 0, sx: seg / FENCE_SEGMENT_M}))} />;
 }
 
 /** Marcadores de los puertos: posición, color por tipo y una marca hacia donde apunta su normal. */

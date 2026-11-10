@@ -1,16 +1,16 @@
 import {newWorld} from '../model/defaults.ts';
-import type {Entity, ExperienceMode, Result, TerrainEdit, WorldProject} from '../model/types.ts';
+import type {Entity, ExperienceMode, Result, TerrainEdit, TerrainParameters, TerritoryId, WorldProject} from '../model/types.ts';
 import {baseHeight} from '../terrain/heightfield.ts';
-import {DEFAULT_GENERATOR_VERSION, VALLEY_SEED} from '../terrain/generators.ts';
+import {VALLEY_SEED} from '../terrain/generators.ts';
+import {TERRITORIES} from '../terrain/presets.ts';
 import {WorldSession} from './session.ts';
 
 export const TEMPLATES = {blank: 'Mundo en blanco', farm: 'Granja productiva', greenhouse: 'Cultivo protegido'} as const;
-export const TERRITORIES = {free: 'Mundo libre', valley: 'Valle central · generado'} as const;
 export const SITES = {center: 'Centro', west: 'Oeste', east: 'Este'} as const;
 export const RESOURCES = {parcel: 'Parcela', greenhouse: 'Invernadero', irrigation: 'Riego conectado', solar: 'Panel solar'} as const;
 export type Resource = keyof typeof RESOURCES;
 export type WorldSetup = {
-  name: string; seed: number; template: keyof typeof TEMPLATES; territory: keyof typeof TERRITORIES;
+  name: string; seed: number; template: keyof typeof TEMPLATES; territory: TerritoryId; terrainParams?: TerrainParameters;
   side: number; site: keyof typeof SITES; relief: 'natural' | 'level'; radius: number;
   resources: Resource[]; water: number; experience: ExperienceMode; start: string;
 };
@@ -21,11 +21,13 @@ export function siteX(site: WorldSetup['site']) {
 
 export function setupTerrain(setup: WorldSetup, cellMeters = 2): WorldProject['terrain'] {
   const {side, relief, radius} = setup, x = siteX(setup.site);
-  const seed = setup.territory === 'valley' ? VALLEY_SEED : setup.seed, generatorVersion = DEFAULT_GENERATOR_VERSION;
+  const legacy = !setup.terrainParams && (setup.territory === 'free' || setup.territory === 'valley');
+  const seed = legacy && setup.territory === 'valley' ? VALLEY_SEED : setup.seed, generatorVersion = legacy ? 1 : 2;
+  const params = legacy ? undefined : {...(setup.terrainParams ?? TERRITORIES[setup.territory].params)};
   const edits: TerrainEdit[] = relief === 'level'
-    ? [{id: 'emplazamiento', kind: 'level', center: [x, 0], radius, amount: baseHeight(seed, x, 0, side, side, generatorVersion), at: 0}]
+    ? [{id: 'emplazamiento', kind: 'level', center: [x, 0], radius, amount: baseHeight(seed, x, 0, side, side, generatorVersion, setup.territory, params), at: 0}]
     : [];
-  return {sizeMeters: [side, side], cellMeters, seed, generatorVersion, presetId: setup.territory, edits};
+  return {sizeMeters: [side, side], cellMeters, seed, generatorVersion, presetId: setup.territory, ...(params && {params}), edits};
 }
 
 export function createConfiguredWorld(setup: WorldSetup): Result<WorldProject> {

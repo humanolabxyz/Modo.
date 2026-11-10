@@ -13,9 +13,12 @@
     "prepare:offline": "node scripts/prepare-geogebra.mjs && npm run check && npm run build",
     "offline": "node scripts/open-offline.mjs",
     "verify:industria": "node qa/run-industria.mjs",
-    "verify:agro": "node qa/verify-agro-model.mjs && node qa/verify-agro-terrain.mjs && node qa/verify-agro-world.mjs && node qa/verify-agro-hydraulics.mjs && node qa/verify-agro-sim.mjs && node qa/verify-agro-plc.mjs && node qa/verify-agro-economy.mjs && node qa/verify-agro-migration.mjs",
+    "verify:agro": "node qa/verify-agro-model.mjs && node qa/verify-agro-terrain.mjs && node qa/verify-agro-world.mjs && node qa/verify-agro-hydraulics.mjs && node qa/verify-agro-sim.mjs && node qa/verify-agro-plc.mjs && node qa/verify-agro-economy.mjs && node qa/verify-agro-migration.mjs && node qa/verify-agro-terrain-impact.mjs && node qa/verify-agro-territories.mjs && node qa/verify-agro-editor.mjs && node qa/verify-agro-experience.mjs && node --experimental-strip-types qa/verify-agro-models.mjs",
+    "verify:agro-editor": "node qa/verify-agro-editor.mjs",
+    "verify:agro-editor-ui": "node qa/verify-agro-editor-ui.cjs",
     "verify:agro-migration-ui": "node qa/verify-agro-migration-ui.cjs",
     "verify:agro-ui": "node qa/verify-agro-ui.cjs",
+    "verify:agro-territory-ui": "node qa/verify-agro-territory-ui.cjs",
     "verify:offline": "node qa/verify-offline-travel.cjs",
     "check": "tsc --noEmit",
     "verify:academic": "node qa/verify-academic.mjs",
@@ -140,7 +143,10 @@
     "verify:robotics-controls-ui": "node qa/verify-robotics-controls-ui.cjs",
     "perf:robotics-sim": "node qa/perf-robotics-sim.mjs",
     "verify:robotics-sound": "node qa/verify-robotics-sound.mjs",
-    "verify:robotics-sound-ui": "node qa/verify-robotics-sound-ui.cjs"
+    "verify:robotics-sound-ui": "node qa/verify-robotics-sound-ui.cjs",
+    "verify:agro-experience": "node qa/verify-agro-experience.mjs",
+    "verify:agro-models": "node --experimental-strip-types qa/verify-agro-models.mjs",
+    "verify:agro-experience-ui": "node qa/verify-agro-experience-ui.cjs"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.0",

@@ -1,3 +1,4 @@
+import {polygonParcelGeometry} from './ParcelGeometry.ts';
 import {useEffect, useMemo, useRef, useSyncExternalStore} from 'react';
 import {useFrame, useThree} from '@react-three/fiber';
 import {Html, Line} from '@react-three/drei';
@@ -5,7 +6,8 @@ import {BufferAttribute, BufferGeometry, CanvasTexture, DoubleSide, SRGBColorSpa
 import {itemById, portsFor, sizeOf} from '../catalog/items.ts';
 import type {Entity, Pose, PortRef, PropValue} from '../model/types.ts';
 import {sampleHeight} from '../terrain/heightfield.ts';
-import {compatibleTargets} from '../world/connections.ts';
+import {cablePoints, compatibleTargets} from '../world/connections.ts';
+import {pipePortElevation} from '../world/pipeElevation.ts';
 import type {WorldSession} from '../world/session.ts';
 import {measure, portWorld} from '../world/placement.ts';
 import {EntityBody, Outline, PortMarkers, type PortMark} from './EntityMesh.tsx';
@@ -24,11 +26,12 @@ const OK = '#2fb35a', BAD = '#e04b4b';
 const fmt = new Intl.NumberFormat('es-CL', {maximumFractionDigits: 1, minimumFractionDigits: 1});
 type Vec = [number, number, number];
 
-/** Parcela: rectángulo traslúcido que sigue el relieve (es una zona del suelo, no una caja). */
+/** Parcela: cubierta rectangular o poligonal traslúcida que sigue el relieve (es una zona del suelo, no una caja). */
 function ParcelMesh({entity, session, selected, hover, tint}: {entity: Entity; session: WorldSession; selected: boolean; hover: boolean; tint: string | null}) {
   const {invalidate} = useThree();
   const [w, , d] = sizeOf(itemById('parcela')!, entity.params), yaw = entity.pose.rotation[1], [px, , pz] = entity.pose.position;
   const {fill, border} = useMemo(() => {
+    if(entity.parcelPolygon)return polygonParcelGeometry(entity,session.terrain.hf);
     const hf = session.terrain.hf, step = 2, nu = Math.max(1, Math.round(w / step)), nv = Math.max(1, Math.round(d / step)), c = Math.cos(yaw), s = Math.sin(yaw);
     const at = (u: number, v: number): Vec => { const lx = (u / nu - 0.5) * w, lz = (v / nv - 0.5) * d, x = px + lx * c + lz * s, z = pz - lx * s + lz * c; return [x, sampleHeight(hf, x, z) + 0.22, z]; };
     const pos = new Float32Array((nu + 1) * (nv + 1) * 3), idx: number[] = [];
@@ -38,8 +41,8 @@ function ParcelMesh({entity, session, selected, hover, tint}: {entity: Entity; s
     const ring: Vec[] = [];
     for (let u = 0; u <= nu; u++) ring.push(at(u, 0)); for (let v = 1; v <= nv; v++) ring.push(at(nu, v)); for (let u = nu - 1; u >= 0; u--) ring.push(at(u, nv)); for (let v = nv - 1; v >= 0; v--) ring.push(at(0, v));
     return {fill: g, border: ring.map(p => [p[0], p[1] + 0.05, p[2]] as Vec)};
-  }, [session.terrain.edits.length, w, d, yaw, px, pz]); // eslint-disable-line react-hooks/exhaustive-deps
-  useEffect(() => { invalidate(); }, [fill, invalidate]);
+  }, [session.terrain.edits.length, w, d, yaw, px, pz, entity.parcelPolygon]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { invalidate();return ()=>fill.dispose(); }, [fill, invalidate]);
   const v = viewOf(entity.state), mix = (a: string, b: string, t: number): string => { const pa = [1, 3, 5].map(i => parseInt(a.slice(i, i + 2), 16)), pb = [1, 3, 5].map(i => parseInt(b.slice(i, i + 2), 16)); return '#' + pa.map((x, i) => Math.round(x + (pb[i] - x) * t).toString(16).padStart(2, '0')).join(''); };
   const color = tint ?? (selected ? '#43c76d' : mix('#c9a45a', '#4d9a3a', v.available));   // seco → ocre, húmedo → verde
   const cycle = v.crop ? Math.min(1, v.gdd / v.crop.stages[v.crop.stages.length - 1].from) : 0;
@@ -57,14 +60,17 @@ function Wires({session}: {session: WorldSession}) {
   const wires = connections.flatMap(c => {
     const a = find(c.a), b = find(c.b); if (!a || !b || c.kind === 'hydraulic') return [];
     const live = analysis.power.live.has(`${c.a.entityId}:${c.a.portId}`) && analysis.power.live.has(`${c.b.entityId}:${c.b.portId}`) || c.kind === 'signal';
-    const mid: Vec = [(a.w.x + b.w.x) / 2, Math.max(a.w.y, b.w.y) + 0.35, (a.w.z + b.w.z) / 2];
-    return [{id: c.id, kind: c.kind, live, points: [[a.w.x, a.w.y, a.w.z], mid, [b.w.x, b.w.y, b.w.z]] as Vec[]}];
+    return [{id: c.id, kind: c.kind, live, points: cablePoints(a.w, b.w)}];
   });
   const stretched = analysis.stretched.map(s => { const c = connections.find(x => x.id === s.connectionId)!, a = find(c.a), b = find(c.b); return a && b ? {id: s.connectionId, points: [[a.w.x, a.w.y + 0.1, a.w.z], [b.w.x, b.w.y + 0.1, b.w.z]] as Vec[]} : null; }).filter(Boolean) as {id: string; points: Vec[]}[];
   const flows = entities.flatMap(e => {
     const r = analysis.elements[e.id]; if (e.type !== 'tuberia' || !r || r.kind !== 'tuberia' || Math.abs(r.flowLmin) < 1e-6) return [];
-    const [pa, pb] = [e.ports[0], e.ports[1]].map(p => portWorld(e, p)); const hf = session.terrain.hf, z = (w: {x: number; z: number}) => sampleHeight(hf, w.x, w.z) + 0.2;
-    return [{id: e.id, dir: Math.sign(r.flowLmin), speed: Math.min(4, Math.max(0.4, r.velocity)), points: [[pa.x, z(pa), pa.z], [pb.x, z(pb), pb.z]] as Vec[]}];
+    const hf = session.terrain.committedHeightfield;
+    const points = e.ports.slice(0, 2).map(p => {
+      const {x, z} = portWorld(e, p);
+      return [x, pipePortElevation(hf, e, p) - p.local[1] + 0.2, z] as Vec;
+    });
+    return [{id: e.id, dir: Math.sign(r.flowLmin), speed: Math.min(4, Math.max(0.4, r.velocity)), points}];
   });
   const speeds = useRef<Record<string, number>>({}); speeds.current = Object.fromEntries(flows.map(f => [f.id, f.dir * f.speed]));
   useFrame((_, dt) => {
@@ -99,6 +105,7 @@ export function EntityLayer({session, selectedId, overlay, measurePoints, showPo
     return out;
   }, [connect.active, connect.from, overlay.hoverPort, session.version]); // eslint-disable-line react-hooks/exhaustive-deps
   return <group name="piezas">
+    {session.parcelPreview && <ParcelMesh entity={session.parcelPreview} session={session} selected={false} hover={false} tint="#50c765" />}
     {session.entities.map(e => {
       const dragging = overlay.drag?.id === e.id, pose = dragging ? overlay.drag!.pose : e.pose, tint = dragging ? (overlay.drag!.valid ? OK : BAD) : inConstruction(e) ? '#f0b24a' : null, sel = e.id === selectedId;
       if (e.type === 'parcela') return <group key={e.id}><ParcelMesh entity={{...e, pose}} session={session} selected={sel} hover={hover === e.id} tint={tint} />{!tint && <CropRows entity={{...e, pose}} session={session} />}</group>;

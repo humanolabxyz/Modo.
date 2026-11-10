@@ -5,6 +5,8 @@ import type {Analysis} from './network.ts';
 import {parcelAt} from '../world/placement.ts';
 import {deadVolumeL} from './step.ts';
 import {viewOf} from './soil.ts';
+import {needsTerrainReview} from '../world/impact.ts';
+import {TERRAIN_ISSUE} from '../world/pipeElevation.ts';
 
 export type Alert = {level: 'info' | 'warn' | 'bad'; text: string; entityId: string};
 const RANK = {bad: 0, warn: 1, info: 2} as const;
@@ -13,7 +15,13 @@ const pct = (v: number): string => `${Math.round(v * 100)} %`;
 /** `ctx` (Fase 5) permite avisar de tableros en automático mal armados; sin él solo se evalúan estanques y parcelas. */
 export function alertsOf(entities: readonly Entity[], analysis: Analysis, ctx?: {connections: readonly Connection[]; plc?: Record<string, AgroProgram>; hour?: number}): Alert[] {
   const out: Alert[] = [];
+  const pending = ctx?.connections.filter(needsTerrainReview) ?? [];
+  if (pending.length) {
+    const byId = new Map(entities.map(e => [e.id, e.label]));
+    for (const c of pending) out.push({level: 'warn', entityId: c.a.entityId, text: `«${byId.get(c.a.entityId)}» ↔ «${byId.get(c.b.entityId)}»: ${c.reason}`});
+  }
   for (const e of entities) {
+    if (typeof e.state[TERRAIN_ISSUE] === 'string') out.push({level: 'warn', entityId: e.id, text: `«${e.label}»: ${e.state[TERRAIN_ISSUE]}`});
     if (e.type === 'tablero' && ctx && e.state.modo === 'auto') {
       const program = ctx.plc?.[e.id];
       if (!program || program.rungs.length === 0) out.push({level: 'warn', entityId: e.id, text: `«${e.label}» está en modo automático pero no tiene programa: la bomba no recibirá energía.`});

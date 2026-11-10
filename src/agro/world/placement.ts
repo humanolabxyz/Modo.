@@ -1,3 +1,5 @@
+import {parcelWorldPolygon,parcelContains} from './parcelGeometry.ts';
+import {polygonsOverlap,insidePolygon,type Point2} from '../terrain/geometry.ts';
 // Colocación sobre el terreno: huellas, pendiente, solapes, picking de piezas y medición. Puro (sin three).
 import {itemById, sizeOf} from '../catalog/items.ts';
 import type {Entity, Pose, Port, Result, Vec3} from '../model/types.ts';
@@ -23,6 +25,14 @@ export function overlaps(a: [number, number][], b: [number, number][], tolerance
   return true;
 }
 
+export function entityFootprint(e:Entity):Point2[] {return e.parcelPolygon?parcelWorldPolygon(e):footprint(e.pose,sizeOf(itemById(e.type)!,e.params));}
+export function polygonSlope(hf:Heightfield,polygon:Point2[]):number {
+ let worst=0;for(const [x,z] of polygon)worst=Math.max(worst,slopeDegrees(hf,x,z));
+ const xs=polygon.map(p=>p[0]),zs=polygon.map(p=>p[1]);
+ for(let z=Math.min(...zs);z<=Math.max(...zs);z+=Math.max(2,hf.cell))for(let x=Math.min(...xs);x<=Math.max(...xs);x+=Math.max(2,hf.cell))if(insidePolygon([x,z],polygon))worst=Math.max(worst,slopeDegrees(hf,x,z));
+ return worst;
+}
+
 /** Cota a la que se apoya una pieza: el suelo en el centro de su huella. */
 export const groundY = (hf: Heightfield, x: number, z: number): number => sampleHeight(hf, x, z);
 
@@ -34,16 +44,16 @@ export function footprintSlope(hf: Heightfield, pose: Pose, size: Vec3): number 
 }
 
 /** ¿Se puede colocar `typeId` con esa pose? Devuelve el motivo legible cuando no. `ignoreId` excluye la pieza que se está moviendo. */
-export function checkPlacement(hf: Heightfield, entities: readonly Entity[], typeId: string, pose: Pose, params: Record<string, number | string | boolean>, ignoreId?: string): Result<true> {
+export function checkPlacement(hf: Heightfield, entities: readonly Entity[], typeId: string, pose: Pose, params: Record<string, number | string | boolean>, ignoreId?: string, parcelPolygon?: Point2[]): Result<true> {
   const def = itemById(typeId); if (!def) return fail(`Tipo de pieza desconocido: «${typeId}».`);
-  const size = sizeOf(def, params), corners = footprint(pose, size);
+  const size = sizeOf(def, params), corners = parcelPolygon?parcelWorldPolygon({pose,params,parcelPolygon}):footprint(pose, size);
   for (const [x, z] of corners) if (!inBounds(hf, x, z)) return fail('La pieza se sale del mapa.');
-  const slope = footprintSlope(hf, pose, size);
+  const slope = parcelPolygon?polygonSlope(hf,corners):footprintSlope(hf, pose, size);
   if (slope > def.maxSlopeDeg) return fail(`La pendiente del suelo (${slope.toFixed(1).replace('.', ',')}°) supera el máximo de ${def.maxSlopeDeg}° para ${def.name.toLowerCase()}.`);
   for (const other of entities) {
     if (other.id === ignoreId) continue;
     const od = itemById(other.type); if (!od) continue;
-    if (!def.solid && !od.solid) { if (overlaps(corners, footprint(other.pose, sizeOf(od, other.params)), 0)) return fail(`Se solapa con la parcela «${other.label}».`); continue; }
+    if (!def.solid && !od.solid) { if (polygonsOverlap(corners, entityFootprint(other))) return fail(`Se solapa con la parcela «${other.label}».`); continue; }
     if (!def.solid || !od.solid) continue; // una pieza puede estar sobre una parcela
     if (overlaps(corners, footprint(other.pose, sizeOf(od, other.params)))) return fail(`Se solapa con «${other.label}».`);
   }
@@ -79,6 +89,7 @@ export function pickEntity(entities: readonly Entity[], ray: Ray, maxDistance = 
 export function parcelAt(entities: readonly Entity[], x: number, z: number): Entity | null {
   for (let i = entities.length - 1; i >= 0; i--) {
     const e = entities[i]; if (e.type !== 'parcela') continue;
+    if(e.parcelPolygon){if(parcelContains(e,x,z))return e;continue;}
     const def = itemById('parcela')!, size = sizeOf(def, e.params), yaw = yawOf(e.pose), c = Math.cos(yaw), s = Math.sin(yaw);
     const dx = x - e.pose.position[0], dz = z - e.pose.position[2], lx = dx * c - dz * s, lz = dx * s + dz * c;
     if (Math.abs(lx) <= size[0] / 2 && Math.abs(lz) <= size[2] / 2) return e;

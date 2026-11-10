@@ -1,0 +1,6248 @@
+{
+ "packs": {
+  "drive-download-20261110T194644Z-1-001": {
+   "id": "quat-cultivos",
+   "name": "Quaternius · cultivos (LowPoly Models)",
+   "license": "CC0 1.0 (License.txt del paquete)",
+   "author": "Quaternius"
+  },
+  "drive-download-20261110T194737Z-1-001": {
+   "id": "quat-granja",
+   "name": "Quaternius · estructuras de granja (LowPoly Models)",
+   "license": "CC0 1.0 (License.txt del paquete)",
+   "author": "Quaternius"
+  },
+  "drive-download-20261110T194800Z-1-001": {
+   "id": "quat-plataforma",
+   "name": "Quaternius · Ultimate Platformer Pack",
+   "license": "CC0 1.0 (License.txt del paquete)",
+   "author": "Quaternius"
+  },
+  "drive-download-20261110T194858Z-1-001": {
+   "id": "quat-animales",
+   "name": "Quaternius · Farm Animals Pack",
+   "license": "CC0 1.0 (License.txt del paquete)",
+   "author": "Quaternius"
+  }
+ },
+ "models": [
+  {
+   "name": "Apple_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Apple_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Apple_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Apple_1.obj"
+   },
+   "bytes": {
+    "blend": 501248,
+    "fbx": 16060,
+    "obj": 3663
+   },
+   "verts": 44,
+   "tris": 80,
+   "size": [
+    0.238,
+    0.247,
+    0.107
+   ],
+   "materials": [
+    "Green_Tree"
+   ],
+   "mtl": "Apple_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "3b114a30ad0d37233d025617bd69c031dd998126"
+  },
+  {
+   "name": "Apple_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Apple_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Apple_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Apple_2.obj"
+   },
+   "bytes": {
+    "blend": 541980,
+    "fbx": 23340,
+    "obj": 15067
+   },
+   "verts": 133,
+   "tris": 252,
+   "size": [
+    0.515,
+    0.939,
+    0.438
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree"
+   ],
+   "mtl": "Apple_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "8f08f69b243e7d1826c5770e38a92f77a723e5b1"
+  },
+  {
+   "name": "Apple_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Apple_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Apple_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Apple_3.obj"
+   },
+   "bytes": {
+    "blend": 550252,
+    "fbx": 27276,
+    "obj": 27672
+   },
+   "verts": 236,
+   "tris": 446,
+   "size": [
+    1.166,
+    2.087,
+    0.974
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree"
+   ],
+   "mtl": "Apple_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "bfd4cc8820a4e86f747058c53183bd0d1f660484"
+  },
+  {
+   "name": "Apple_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Apple_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Apple_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Apple_4.obj"
+   },
+   "bytes": {
+    "blend": 644248,
+    "fbx": 51644,
+    "obj": 104272
+   },
+   "verts": 834,
+   "tris": 1584,
+   "size": [
+    1.864,
+    2.763,
+    1.579
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree",
+    "DarkGreen_Tree",
+    "DarkRed"
+   ],
+   "mtl": "Apple_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "20f216e2870a716d6a921a1671624fba9469482f"
+  },
+  {
+   "name": "Apple_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Apple_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Apple_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Apple_Crop.obj"
+   },
+   "bytes": {
+    "blend": 558084,
+    "fbx": 28828,
+    "obj": 29673
+   },
+   "verts": 229,
+   "tris": 440,
+   "size": [
+    0.158,
+    0.168,
+    0.158
+   ],
+   "materials": [
+    "DarkRed.003",
+    "DarkBrown",
+    "DarkGreen.002"
+   ],
+   "mtl": "Apple_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "ebb138aa52ebc197acf7efde91c53688833153c4"
+  },
+  {
+   "name": "Apple_Harvested",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Apple_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Apple_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Apple_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 591480,
+    "fbx": 38028,
+    "obj": 62051
+   },
+   "verts": 510,
+   "tris": 984,
+   "size": [
+    1.801,
+    2.763,
+    1.579
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree",
+    "DarkGreen_Tree"
+   ],
+   "mtl": "Apple_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a456585e4dc0238436f2e162d8562a793fad7edd"
+  },
+  {
+   "name": "Bamboo_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Bamboo_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Bamboo_1.obj"
+   },
+   "bytes": {
+    "blend": 507596,
+    "fbx": 17388,
+    "obj": 3528
+   },
+   "verts": 50,
+   "tris": 82,
+   "size": [
+    0.383,
+    0.513,
+    0.072
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Bamboo_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "2f0f7b43f134c2915f31fff729d3cea586bf447c"
+  },
+  {
+   "name": "Bamboo_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Bamboo_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Bamboo_2.obj"
+   },
+   "bytes": {
+    "blend": 517432,
+    "fbx": 21468,
+    "obj": 12189
+   },
+   "verts": 170,
+   "tris": 300,
+   "size": [
+    0.205,
+    0.733,
+    0.148
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Bamboo_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "46e0a6d3a6208ecfbac807a5394e04368dbbf559"
+  },
+  {
+   "name": "Bamboo_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Bamboo_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Bamboo_3.obj"
+   },
+   "bytes": {
+    "blend": 526560,
+    "fbx": 25276,
+    "obj": 20504
+   },
+   "verts": 284,
+   "tris": 492,
+   "size": [
+    0.338,
+    1.547,
+    0.358
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Bamboo_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "781574ccf5a54c8e7af6dd4c762ec83994f9aeed"
+  },
+  {
+   "name": "Bamboo_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Bamboo_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Bamboo_4.obj"
+   },
+   "bytes": {
+    "blend": 533540,
+    "fbx": 28028,
+    "obj": 26301
+   },
+   "verts": 369,
+   "tris": 644,
+   "size": [
+    0.53,
+    2.726,
+    0.558
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Bamboo_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "fa5a5d8a562089cbaa6c2b14d375d13dc54971b7"
+  },
+  {
+   "name": "Bamboo_Crop",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Bamboo_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Bamboo_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Bamboo_Crop.obj"
+   },
+   "bytes": {
+    "blend": 508368,
+    "fbx": 17164,
+    "obj": 4463
+   },
+   "verts": 56,
+   "tris": 108,
+   "size": [
+    0.097,
+    0.326,
+    0.099
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Bamboo_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "1e468c23250104b5173888d55f0a81a77b34bc93"
+  },
+  {
+   "name": "Beet_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Beet_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Beet_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Beet_1.obj"
+   },
+   "bytes": {
+    "blend": 509668,
+    "fbx": 18348,
+    "obj": 5702
+   },
+   "verts": 75,
+   "tris": 121,
+   "size": [
+    0.334,
+    0.653,
+    0.098
+   ],
+   "materials": [
+    "DarkGreen",
+    "DarkRed"
+   ],
+   "mtl": "Beet_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "6e47327b27dd610fb6a18c553a83d787b2f1f6f2"
+  },
+  {
+   "name": "Beet_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Beet_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Beet_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Beet_2.obj"
+   },
+   "bytes": {
+    "blend": 513892,
+    "fbx": 19852,
+    "obj": 9792
+   },
+   "verts": 123,
+   "tris": 217,
+   "size": [
+    0.213,
+    0.86,
+    0.139
+   ],
+   "materials": [
+    "DarkRed",
+    "DarkGreen"
+   ],
+   "mtl": "Beet_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "cbf64907baedbe37788a24bd897e47afec82c601"
+  },
+  {
+   "name": "Beet_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Beet_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Beet_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Beet_3.obj"
+   },
+   "bytes": {
+    "blend": 518996,
+    "fbx": 21900,
+    "obj": 14800
+   },
+   "verts": 185,
+   "tris": 323,
+   "size": [
+    0.509,
+    0.869,
+    0.23
+   ],
+   "materials": [
+    "DarkRed",
+    "DarkGreen"
+   ],
+   "mtl": "Beet_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "98d01abbc3ec6c7d1b6f76dfb557b2ea7ca719e2"
+  },
+  {
+   "name": "Beet_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Beet_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Beet_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Beet_4.obj"
+   },
+   "bytes": {
+    "blend": 526544,
+    "fbx": 25740,
+    "obj": 22927
+   },
+   "verts": 276,
+   "tris": 480,
+   "size": [
+    0.751,
+    1.102,
+    0.39
+   ],
+   "materials": [
+    "DarkRed",
+    "DarkGreen"
+   ],
+   "mtl": "Beet_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "888ae5a286a37ce87d08064861b36b67a3760d56"
+  },
+  {
+   "name": "Beet_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Beet_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Beet_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Beet_Crop.obj"
+   },
+   "bytes": {
+    "blend": 511204,
+    "fbx": 18876,
+    "obj": 7462
+   },
+   "verts": 95,
+   "tris": 165,
+   "size": [
+    0.316,
+    0.519,
+    0.316
+   ],
+   "materials": [
+    "DarkRed"
+   ],
+   "mtl": "Beet_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "f41ed1b11cd58124e7d42ccb8d3c18800a62be40"
+  },
+  {
+   "name": "BushBerries_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/BushBerries_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/BushBerries_1.obj"
+   },
+   "bytes": {
+    "blend": 512032,
+    "fbx": 17436,
+    "obj": 4060
+   },
+   "verts": 48,
+   "tris": 88,
+   "size": [
+    0.259,
+    0.353,
+    0.05
+   ],
+   "materials": [
+    "Green_Bush",
+    "DarkBrown"
+   ],
+   "mtl": "BushBerries_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "691b1116b5bb9031bf298d9eeafa41a1c88f922c"
+  },
+  {
+   "name": "BushBerries_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/BushBerries_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/BushBerries_2.obj"
+   },
+   "bytes": {
+    "blend": 522016,
+    "fbx": 18476,
+    "obj": 6084
+   },
+   "verts": 72,
+   "tris": 140,
+   "size": [
+    0.592,
+    0.506,
+    0.515
+   ],
+   "materials": [
+    "Green_Bush"
+   ],
+   "mtl": "BushBerries_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "d1d3642fcf09c522b3ca770c981c5a8ababd6251"
+  },
+  {
+   "name": "BushBerries_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/BushBerries_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/BushBerries_3.obj"
+   },
+   "bytes": {
+    "blend": 510880,
+    "fbx": 18972,
+    "obj": 7112
+   },
+   "verts": 84,
+   "tris": 164,
+   "size": [
+    1.275,
+    0.744,
+    1.108
+   ],
+   "materials": [
+    "Green_Bush"
+   ],
+   "mtl": "BushBerries_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "069eb576b42cdd0d96e65eefe45068a589dc5938"
+  },
+  {
+   "name": "BushBerries_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/BushBerries_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/BushBerries_4.obj"
+   },
+   "bytes": {
+    "blend": 543424,
+    "fbx": 33596,
+    "obj": 41665
+   },
+   "verts": 470,
+   "tris": 892,
+   "size": [
+    1.719,
+    1.276,
+    1.392
+   ],
+   "materials": [
+    "Green_Bush",
+    "Berry"
+   ],
+   "mtl": "BushBerries_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "6f7a58e8d29e44cfdf44a507df08ece020f025e6"
+  },
+  {
+   "name": "BushBerries_Crop",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/BushBerries_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/BushBerries_Crop.obj"
+   },
+   "bytes": {
+    "blend": 505816,
+    "fbx": 16604,
+    "obj": 2220
+   },
+   "verts": 26,
+   "tris": 48,
+   "size": [
+    0.169,
+    0.132,
+    0.166
+   ],
+   "materials": [
+    "Berry"
+   ],
+   "mtl": "BushBerries_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "b6c384be7e168b91782c2ca217d0b8c26c9063cb"
+  },
+  {
+   "name": "BushBerries_Harvested",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/BushBerries_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/BushBerries_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/BushBerries_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 519720,
+    "fbx": 22940,
+    "obj": 16364
+   },
+   "verts": 184,
+   "tris": 364,
+   "size": [
+    1.718,
+    1.246,
+    1.32
+   ],
+   "materials": [
+    "Green_Bush"
+   ],
+   "mtl": "BushBerries_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "591716c987955e0071f41fe616996199e2fd9331"
+  },
+  {
+   "name": "Cactus_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Cactus_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Cactus_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Cactus_1.obj"
+   },
+   "bytes": {
+    "blend": 502536,
+    "fbx": 16092,
+    "obj": 4933
+   },
+   "verts": 58,
+   "tris": 112,
+   "size": [
+    0.093,
+    0.167,
+    0.093
+   ],
+   "materials": [
+    "DarkGreen2"
+   ],
+   "mtl": "Cactus_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a2157b3050c9c893e6bb56c072cb42cca859704e"
+  },
+  {
+   "name": "Cactus_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Cactus_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Cactus_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Cactus_2.obj"
+   },
+   "bytes": {
+    "blend": 515576,
+    "fbx": 20684,
+    "obj": 12448
+   },
+   "verts": 148,
+   "tris": 220,
+   "size": [
+    0.298,
+    0.378,
+    0.301
+   ],
+   "materials": [
+    "DarkGreen2",
+    "LightOrange"
+   ],
+   "mtl": "Cactus_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "991e4440c22ca5cbac67267ccbf3822b863cd11d"
+  },
+  {
+   "name": "Cactus_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Cactus_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Cactus_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Cactus_3.obj"
+   },
+   "bytes": {
+    "blend": 521624,
+    "fbx": 23420,
+    "obj": 19225
+   },
+   "verts": 226,
+   "tris": 320,
+   "size": [
+    0.394,
+    0.722,
+    0.382
+   ],
+   "materials": [
+    "DarkGreen2",
+    "LightOrange"
+   ],
+   "mtl": "Cactus_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "0056bb2b6b6f2e0f03a73d527255977a0a276460"
+  },
+  {
+   "name": "Cactus_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Cactus_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Cactus_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Cactus_4.obj"
+   },
+   "bytes": {
+    "blend": 606008,
+    "fbx": 58988,
+    "obj": 104527
+   },
+   "verts": 1179,
+   "tris": 1814,
+   "size": [
+    1.305,
+    1.433,
+    0.563
+   ],
+   "materials": [
+    "DarkGreen2",
+    "LightOrange",
+    "Pink"
+   ],
+   "mtl": "Cactus_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "9d289245a71607a7bf4607216a10173f76a91e7f"
+  },
+  {
+   "name": "Cactus_Crop",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Cactus_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Cactus_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Cactus_Crop.obj"
+   },
+   "bytes": {
+    "blend": 515360,
+    "fbx": 20684,
+    "obj": 11728
+   },
+   "verts": 132,
+   "tris": 256,
+   "size": [
+    0.362,
+    0.236,
+    0.366
+   ],
+   "materials": [
+    "Pink"
+   ],
+   "mtl": "Cactus_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "7c4478a134ad589d263947419912a53617dd2c28"
+  },
+  {
+   "name": "Cactus_Harvested",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Cactus_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Cactus_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Cactus_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 576584,
+    "fbx": 47964,
+    "obj": 78413
+   },
+   "verts": 915,
+   "tris": 1302,
+   "size": [
+    1.094,
+    1.257,
+    0.563
+   ],
+   "materials": [
+    "DarkGreen2",
+    "LightOrange"
+   ],
+   "mtl": "Cactus_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "65a8cba95f05e11e0c68741e25874b4dc05dc7b5"
+  },
+  {
+   "name": "Carrot_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Carrot_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Carrot_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Carrot_1.obj"
+   },
+   "bytes": {
+    "blend": 501600,
+    "fbx": 16284,
+    "obj": 4025
+   },
+   "verts": 48,
+   "tris": 88,
+   "size": [
+    0.355,
+    0.35,
+    0.069
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Carrot_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "46c647e192f9df3cf724b3d642aaf1f44ea8e69d"
+  },
+  {
+   "name": "Carrot_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Carrot_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Carrot_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Carrot_2.obj"
+   },
+   "bytes": {
+    "blend": 516000,
+    "fbx": 21180,
+    "obj": 12531
+   },
+   "verts": 139,
+   "tris": 262,
+   "size": [
+    0.161,
+    0.313,
+    0.065
+   ],
+   "materials": [
+    "LightOrange",
+    "Green"
+   ],
+   "mtl": "Carrot_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "784987bfd1434b02a6d9655e85b278c7c621dcb1"
+  },
+  {
+   "name": "Carrot_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Carrot_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Carrot_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Carrot_3.obj"
+   },
+   "bytes": {
+    "blend": 522580,
+    "fbx": 23996,
+    "obj": 19276
+   },
+   "verts": 215,
+   "tris": 408,
+   "size": [
+    0.334,
+    0.521,
+    0.258
+   ],
+   "materials": [
+    "LightOrange",
+    "Green"
+   ],
+   "mtl": "Carrot_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "d6e4ab5e8504034de56eef34fa6975b144a07e60"
+  },
+  {
+   "name": "Carrot_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Carrot_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Carrot_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Carrot_4.obj"
+   },
+   "bytes": {
+    "blend": 533512,
+    "fbx": 27324,
+    "obj": 24675
+   },
+   "verts": 271,
+   "tris": 514,
+   "size": [
+    0.677,
+    1.279,
+    0.502
+   ],
+   "materials": [
+    "LightOrange",
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Carrot_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "fe8cbb444e130227a0ec787f0ea54921397e74a3"
+  },
+  {
+   "name": "Carrot_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Carrot_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Carrot_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Carrot_Crop.obj"
+   },
+   "bytes": {
+    "blend": 518600,
+    "fbx": 20540,
+    "obj": 8866
+   },
+   "verts": 107,
+   "tris": 186,
+   "size": [
+    0.239,
+    0.881,
+    0.239
+   ],
+   "materials": [
+    "LightOrange",
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Carrot_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "30819cedea97f5ee2f7f6f3bafed05c2871a91c1"
+  },
+  {
+   "name": "Coconut_Half",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Coconut_Half.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Coconut_Half.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Coconut_Half.obj"
+   },
+   "bytes": {
+    "blend": 524200,
+    "fbx": 18668,
+    "obj": 7583
+   },
+   "verts": 68,
+   "tris": 132,
+   "size": [
+    0.784,
+    0.777,
+    0.412
+   ],
+   "materials": [
+    "DarkBrown",
+    "White"
+   ],
+   "mtl": "Coconut_Half.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a17710a7fd84b53bae9a6fbefb81155cbf7b89a8"
+  },
+  {
+   "name": "Corn_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Corn_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Corn_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Corn_1.obj"
+   },
+   "bytes": {
+    "blend": 501600,
+    "fbx": 16300,
+    "obj": 4018
+   },
+   "verts": 48,
+   "tris": 88,
+   "size": [
+    0.167,
+    0.387,
+    0.032
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Corn_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "0f48911871acc1716274182f0688d4352c20e808"
+  },
+  {
+   "name": "Corn_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Corn_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Corn_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Corn_2.obj"
+   },
+   "bytes": {
+    "blend": 504184,
+    "fbx": 17580,
+    "obj": 6494
+   },
+   "verts": 82,
+   "tris": 140,
+   "size": [
+    0.284,
+    0.659,
+    0.305
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Corn_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "e7fe052e0c2e46d642462df0fa0bf4cdf9b577a8"
+  },
+  {
+   "name": "Corn_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Corn_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Corn_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Corn_3.obj"
+   },
+   "bytes": {
+    "blend": 513772,
+    "fbx": 21900,
+    "obj": 16504
+   },
+   "verts": 197,
+   "tris": 348,
+   "size": [
+    0.675,
+    1.247,
+    0.573
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Corn_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "d3c136395307120114da2acf21e95bb43bd20202"
+  },
+  {
+   "name": "Corn_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Corn_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Corn_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Corn_4.obj"
+   },
+   "bytes": {
+    "blend": 555248,
+    "fbx": 37660,
+    "obj": 48075
+   },
+   "verts": 535,
+   "tris": 958,
+   "size": [
+    0.887,
+    1.967,
+    0.649
+   ],
+   "materials": [
+    "DarkGreen2",
+    "Yellow",
+    "Green"
+   ],
+   "mtl": "Corn_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "ed0051dc72be7f374bbc676ee1add9c6e686089e"
+  },
+  {
+   "name": "Corn_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Corn_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Corn_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Corn_Crop.obj"
+   },
+   "bytes": {
+    "blend": 507584,
+    "fbx": 16972,
+    "obj": 3884
+   },
+   "verts": 42,
+   "tris": 80,
+   "size": [
+    0.348,
+    0.149,
+    0.149
+   ],
+   "materials": [
+    "DarkGreen2",
+    "Yellow"
+   ],
+   "mtl": "Corn_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "9ff4a3c4bd393d7c1857fa1474df4d2c8049e1a2"
+  },
+  {
+   "name": "Corn_Harvested",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Corn_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Corn_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Corn_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 533272,
+    "fbx": 29148,
+    "obj": 31007
+   },
+   "verts": 365,
+   "tris": 638,
+   "size": [
+    0.887,
+    1.967,
+    0.649
+   ],
+   "materials": [
+    "Yellow",
+    "Green"
+   ],
+   "mtl": "Corn_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "78f64547cab9e835fd5999a7d3d6bc7abbb3b6ca"
+  },
+  {
+   "name": "Flowers_Crop",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Flowers_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Flowers_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Flowers_Crop.obj"
+   },
+   "bytes": {
+    "blend": 511408,
+    "fbx": 18348,
+    "obj": 6121
+   },
+   "verts": 69,
+   "tris": 134,
+   "size": [
+    0.292,
+    0.116,
+    0.293
+   ],
+   "materials": [
+    "Cyan",
+    "Yellow"
+   ],
+   "mtl": "Flowers_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "031bef2386299eb41849fad75454eb8247575b4f"
+  },
+  {
+   "name": "Flowers_Harvested",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Flowers_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Flowers_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Flowers_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 503944,
+    "fbx": 15836,
+    "obj": 4003
+   },
+   "verts": 64,
+   "tris": 100,
+   "size": [
+    0.193,
+    0.715,
+    0.067
+   ],
+   "materials": [
+    "DarkGreen2"
+   ],
+   "mtl": "Flowers_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "95e6843d79cfecdca0f33184f75cd96117152343"
+  },
+  {
+   "name": "Flower_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Flower_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Flower_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Flower_1.obj"
+   },
+   "bytes": {
+    "blend": 501248,
+    "fbx": 16156,
+    "obj": 3687
+   },
+   "verts": 44,
+   "tris": 80,
+   "size": [
+    0.127,
+    0.11,
+    0.024
+   ],
+   "materials": [
+    "DarkGreen2"
+   ],
+   "mtl": "Flower_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "5333b685799c4f52b65d8debe0d3e52cd33c0e62"
+  },
+  {
+   "name": "Flower_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Flower_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Flower_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Flower_2.obj"
+   },
+   "bytes": {
+    "blend": 500156,
+    "fbx": 15308,
+    "obj": 1951
+   },
+   "verts": 24,
+   "tris": 42,
+   "size": [
+    0.084,
+    0.412,
+    0.05
+   ],
+   "materials": [
+    "DarkGreen2"
+   ],
+   "mtl": "Flower_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "e7e581d4814d80f267bd1bfa7a9ee081d922ac77"
+  },
+  {
+   "name": "Flower_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Flower_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Flower_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Flower_3.obj"
+   },
+   "bytes": {
+    "blend": 512624,
+    "fbx": 18652,
+    "obj": 6772
+   },
+   "verts": 86,
+   "tris": 152,
+   "size": [
+    0.194,
+    0.507,
+    0.199
+   ],
+   "materials": [
+    "Cyan",
+    "DarkGreen2"
+   ],
+   "mtl": "Flower_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "c91c17b847481101fc787ef561ae52172df2e5b7"
+  },
+  {
+   "name": "Flower_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Flower_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Flower_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Flower_4.obj"
+   },
+   "bytes": {
+    "blend": 517284,
+    "fbx": 19740,
+    "obj": 9938
+   },
+   "verts": 132,
+   "tris": 230,
+   "size": [
+    0.292,
+    0.821,
+    0.293
+   ],
+   "materials": [
+    "Cyan",
+    "DarkGreen2"
+   ],
+   "mtl": "Flower_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "f9c1028ffb02449541739fa8ac7639d181feeb20"
+  },
+  {
+   "name": "Grass_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Grass_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Grass_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Grass_1.obj"
+   },
+   "bytes": {
+    "blend": 500704,
+    "fbx": 15884,
+    "obj": 3199
+   },
+   "verts": 40,
+   "tris": 64,
+   "size": [
+    0.25,
+    0.253,
+    0.273
+   ],
+   "materials": [
+    "Green_Grass"
+   ],
+   "mtl": "Grass_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "7bfa64f92d64cf507cc98450e114deaec4882e8e"
+  },
+  {
+   "name": "Grass_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Grass_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Grass_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Grass_2.obj"
+   },
+   "bytes": {
+    "blend": 500704,
+    "fbx": 15868,
+    "obj": 3212
+   },
+   "verts": 40,
+   "tris": 64,
+   "size": [
+    0.25,
+    0.524,
+    0.273
+   ],
+   "materials": [
+    "Green_Grass"
+   ],
+   "mtl": "Grass_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "c918ad833ab6e484cd49a38e4233434d97110604"
+  },
+  {
+   "name": "Grass_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Grass_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Grass_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Grass_3.obj"
+   },
+   "bytes": {
+    "blend": 503056,
+    "fbx": 16972,
+    "obj": 5584
+   },
+   "verts": 70,
+   "tris": 112,
+   "size": [
+    0.374,
+    0.795,
+    0.282
+   ],
+   "materials": [
+    "Green_Grass"
+   ],
+   "mtl": "Grass_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "fac58efeedd3c2df7bf9d7564f479e18bac5bbde"
+  },
+  {
+   "name": "Grass_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Grass_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Grass_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Grass_4.obj"
+   },
+   "bytes": {
+    "blend": 506976,
+    "fbx": 18764,
+    "obj": 9628
+   },
+   "verts": 120,
+   "tris": 192,
+   "size": [
+    0.374,
+    1.013,
+    0.327
+   ],
+   "materials": [
+    "Green_Grass"
+   ],
+   "mtl": "Grass_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "08337cd7d23c3f37734410a681fcd38f167e04de"
+  },
+  {
+   "name": "Lettuce_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Lettuce_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Lettuce_1.obj"
+   },
+   "bytes": {
+    "blend": 501600,
+    "fbx": 16332,
+    "obj": 4033
+   },
+   "verts": 48,
+   "tris": 88,
+   "size": [
+    0.276,
+    0.294,
+    0.111
+   ],
+   "materials": [
+    "DarkGreen"
+   ],
+   "mtl": "Lettuce_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "25d50fac396a8cf2b65d5fbdb4bd8d527500238f"
+  },
+  {
+   "name": "Lettuce_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Lettuce_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Lettuce_2.obj"
+   },
+   "bytes": {
+    "blend": 515408,
+    "fbx": 22060,
+    "obj": 18289
+   },
+   "verts": 204,
+   "tris": 400,
+   "size": [
+    0.369,
+    0.354,
+    0.367
+   ],
+   "materials": [
+    "DarkGreen"
+   ],
+   "mtl": "Lettuce_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "bf057fb976b1b85a94647e5a2f0bb80adb074be4"
+  },
+  {
+   "name": "Lettuce_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Lettuce_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Lettuce_3.obj"
+   },
+   "bytes": {
+    "blend": 526352,
+    "fbx": 27564,
+    "obj": 30165
+   },
+   "verts": 316,
+   "tris": 612,
+   "size": [
+    0.623,
+    0.382,
+    0.676
+   ],
+   "materials": [
+    "DarkGreen"
+   ],
+   "mtl": "Lettuce_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "95e1923ae2ef70b7a4aa25322e8b88877853ba39"
+  },
+  {
+   "name": "Lettuce_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Lettuce_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Lettuce_4.obj"
+   },
+   "bytes": {
+    "blend": 562432,
+    "fbx": 42060,
+    "obj": 68429
+   },
+   "verts": 714,
+   "tris": 1392,
+   "size": [
+    1.044,
+    0.474,
+    1.044
+   ],
+   "materials": [
+    "DarkGreen"
+   ],
+   "mtl": "Lettuce_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "5654ab3dae8ec453b545e2ac599997a9750ef266"
+  },
+  {
+   "name": "Lettuce_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Lettuce_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Lettuce_Crop.obj"
+   },
+   "bytes": {
+    "blend": 499040,
+    "fbx": 20604,
+    "obj": 4685
+   },
+   "verts": 58,
+   "tris": 112,
+   "size": [
+    0.404,
+    0.424,
+    0.404
+   ],
+   "materials": [
+    "DarkGreen"
+   ],
+   "mtl": "Lettuce_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "8674f51364e96eee0b989331cdb74edee86d2c0c"
+  },
+  {
+   "name": "Lettuce_Harvested",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Lettuce_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Lettuce_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Lettuce_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 557408,
+    "fbx": 40268,
+    "obj": 63366
+   },
+   "verts": 656,
+   "tris": 1280,
+   "size": [
+    1.044,
+    0.474,
+    1.044
+   ],
+   "materials": [
+    "DarkGreen"
+   ],
+   "mtl": "Lettuce_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "8d1d73cb5e83b54586260764b976ff95138a098e"
+  },
+  {
+   "name": "Mushroom_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Mushroom_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Mushroom_1.obj"
+   },
+   "bytes": {
+    "blend": 510744,
+    "fbx": 18300,
+    "obj": 6981
+   },
+   "verts": 82,
+   "tris": 160,
+   "size": [
+    0.108,
+    0.119,
+    0.108
+   ],
+   "materials": [
+    "Mushroom1",
+    "Red"
+   ],
+   "mtl": "Mushroom_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "ef7e8e886d81d5365fa87cd5b7d00edd06b73335"
+  },
+  {
+   "name": "Mushroom_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Mushroom_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Mushroom_2.obj"
+   },
+   "bytes": {
+    "blend": 532080,
+    "fbx": 27452,
+    "obj": 29764
+   },
+   "verts": 322,
+   "tris": 604,
+   "size": [
+    0.142,
+    0.224,
+    0.142
+   ],
+   "materials": [
+    "Mushroom1",
+    "Red"
+   ],
+   "mtl": "Mushroom_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "9de7081eb7a6d6a73180ba0bc44c37f3029aaff8"
+  },
+  {
+   "name": "Mushroom_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Mushroom_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Mushroom_3.obj"
+   },
+   "bytes": {
+    "blend": 546984,
+    "fbx": 32684,
+    "obj": 44498
+   },
+   "verts": 490,
+   "tris": 920,
+   "size": [
+    0.245,
+    0.286,
+    0.244
+   ],
+   "materials": [
+    "Mushroom1",
+    "Red"
+   ],
+   "mtl": "Mushroom_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "7b2dd97536481f8946cc9f0abc39630d76252bd5"
+  },
+  {
+   "name": "Mushroom_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Mushroom_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Mushroom_4.obj"
+   },
+   "bytes": {
+    "blend": 585944,
+    "fbx": 49580,
+    "obj": 83870
+   },
+   "verts": 930,
+   "tris": 1760,
+   "size": [
+    0.445,
+    0.399,
+    0.445
+   ],
+   "materials": [
+    "Mushroom1",
+    "Red"
+   ],
+   "mtl": "Mushroom_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "18ed0ae7fa5f83859e413a536df098fe76a646ca"
+  },
+  {
+   "name": "Mushroom_Crop",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Mushroom_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Mushroom_Crop.obj"
+   },
+   "bytes": {
+    "blend": 564824,
+    "fbx": 40940,
+    "obj": 63183
+   },
+   "verts": 690,
+   "tris": 1280,
+   "size": [
+    0.436,
+    0.119,
+    0.436
+   ],
+   "materials": [
+    "Mushroom1",
+    "Red"
+   ],
+   "mtl": "Mushroom_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "7ca445eb6fef57d722ed600f3fadbd4a3a4bfd89"
+  },
+  {
+   "name": "Mushroom_Harvested",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Mushroom_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Mushroom_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Mushroom_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 526640,
+    "fbx": 24252,
+    "obj": 22116
+   },
+   "verts": 265,
+   "tris": 526,
+   "size": [
+    0.191,
+    0.295,
+    0.191
+   ],
+   "materials": [
+    "Mushroom1"
+   ],
+   "mtl": "Mushroom_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "20864fd53282ba3d4c3c8fcc67bf442147dfbcb7"
+  },
+  {
+   "name": "Orange_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Orange_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Orange_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Orange_1.obj"
+   },
+   "bytes": {
+    "blend": 501248,
+    "fbx": 16060,
+    "obj": 3666
+   },
+   "verts": 44,
+   "tris": 80,
+   "size": [
+    0.238,
+    0.247,
+    0.107
+   ],
+   "materials": [
+    "Green_Tree"
+   ],
+   "mtl": "Orange_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "6b5f6925fff79484b87d3205eb59759aaf0bf732"
+  },
+  {
+   "name": "Orange_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Orange_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Orange_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Orange_2.obj"
+   },
+   "bytes": {
+    "blend": 541980,
+    "fbx": 23372,
+    "obj": 15122
+   },
+   "verts": 133,
+   "tris": 252,
+   "size": [
+    0.439,
+    0.939,
+    0.521
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree"
+   ],
+   "mtl": "Orange_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "10f119ec009d2de5bedccafc94228d18e179c181"
+  },
+  {
+   "name": "Orange_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Orange_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Orange_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Orange_3.obj"
+   },
+   "bytes": {
+    "blend": 541864,
+    "fbx": 25052,
+    "obj": 20562
+   },
+   "verts": 178,
+   "tris": 336,
+   "size": [
+    0.922,
+    2.124,
+    1.115
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree"
+   ],
+   "mtl": "Orange_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "7ba569e9955306240e8e20063d2128e43b3f55a8"
+  },
+  {
+   "name": "Orange_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Orange_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Orange_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Orange_4.obj"
+   },
+   "bytes": {
+    "blend": 621656,
+    "fbx": 44780,
+    "obj": 82055
+   },
+   "verts": 658,
+   "tris": 1244,
+   "size": [
+    1.864,
+    2.763,
+    1.579
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree",
+    "Orange"
+   ],
+   "mtl": "Orange_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "0de051a6ba067245e3774f2841be2323f5b03ac1"
+  },
+  {
+   "name": "Orange_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Orange_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Orange_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Orange_Crop.obj"
+   },
+   "bytes": {
+    "blend": 518160,
+    "fbx": 18220,
+    "obj": 12152
+   },
+   "verts": 106,
+   "tris": 208,
+   "size": [
+    0.151,
+    0.151,
+    0.151
+   ],
+   "materials": [
+    "Orange"
+   ],
+   "mtl": "Orange_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "8852dcd6380e711d29543a4c3b8b03170aca2194"
+  },
+  {
+   "name": "Orange_Harvested",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Orange_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Orange_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Orange_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 577656,
+    "fbx": 33292,
+    "obj": 46552
+   },
+   "verts": 388,
+   "tris": 744,
+   "size": [
+    1.801,
+    2.763,
+    1.579
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree"
+   ],
+   "mtl": "Orange_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "64075603ee76e0a9523bf19bcf33aa9194821fba"
+  },
+  {
+   "name": "PalmTree_1",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/PalmTree_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/PalmTree_1.obj"
+   },
+   "bytes": {
+    "blend": 505664,
+    "fbx": 17964,
+    "obj": 7986
+   },
+   "verts": 96,
+   "tris": 176,
+   "size": [
+    0.355,
+    0.35,
+    0.418
+   ],
+   "materials": [
+    "Green_Tree"
+   ],
+   "mtl": "PalmTree_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "5ee84a286562fad933708145887452b24227d17b"
+  },
+  {
+   "name": "PalmTree_2",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/PalmTree_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/PalmTree_2.obj"
+   },
+   "bytes": {
+    "blend": 551416,
+    "fbx": 32748,
+    "obj": 36463
+   },
+   "verts": 402,
+   "tris": 776,
+   "size": [
+    1.094,
+    1.525,
+    1.437
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree",
+    "DarkGreen_Tree"
+   ],
+   "mtl": "PalmTree_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "1fed65924707590d9ef997c82914129659b515d6"
+  },
+  {
+   "name": "PalmTree_3",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/PalmTree_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/PalmTree_3.obj"
+   },
+   "bytes": {
+    "blend": 575112,
+    "fbx": 41884,
+    "obj": 57861
+   },
+   "verts": 632,
+   "tris": 1220,
+   "size": [
+    1.311,
+    2.232,
+    1.629
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree",
+    "DarkGreen_Tree"
+   ],
+   "mtl": "PalmTree_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "f7edef2189941b50e99f3498bb9ae8a50f8f1e3e"
+  },
+  {
+   "name": "PalmTree_4",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/PalmTree_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/PalmTree_4.obj"
+   },
+   "bytes": {
+    "blend": 640080,
+    "fbx": 62908,
+    "obj": 101618
+   },
+   "verts": 1090,
+   "tris": 2100,
+   "size": [
+    1.813,
+    3.251,
+    2.045
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree",
+    "DarkGreen_Tree",
+    "Coconuts"
+   ],
+   "mtl": "PalmTree_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "9e285ddaafabc753c637ceb1d60d98ecba0e626d"
+  },
+  {
+   "name": "PalmTree_Crop",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/PalmTree_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/PalmTree_Crop.obj"
+   },
+   "bytes": {
+    "blend": 505320,
+    "fbx": 16396,
+    "obj": 5316
+   },
+   "verts": 43,
+   "tris": 82,
+   "size": [
+    0.224,
+    0.224,
+    0.226
+   ],
+   "materials": [
+    "Coconuts"
+   ],
+   "mtl": "PalmTree_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "faf001911459cf50d58a00ec4e731b39b2a993ea"
+  },
+  {
+   "name": "PalmTree_Harvested",
+   "pack": "quat-cultivos",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/PalmTree_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/PalmTree_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/PalmTree_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 604576,
+    "fbx": 53308,
+    "obj": 84440
+   },
+   "verts": 918,
+   "tris": 1772,
+   "size": [
+    1.813,
+    3.251,
+    2.045
+   ],
+   "materials": [
+    "Wood",
+    "Green_Tree",
+    "DarkGreen_Tree"
+   ],
+   "mtl": "PalmTree_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a22b6a7d1f8131f4b6742ac523555666c8780d24"
+  },
+  {
+   "name": "Pumpkin_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Pumpkin_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Pumpkin_1.obj"
+   },
+   "bytes": {
+    "blend": 509712,
+    "fbx": 18268,
+    "obj": 5840
+   },
+   "verts": 72,
+   "tris": 132,
+   "size": [
+    0.217,
+    0.391,
+    0.093
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Pumpkin_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "0ee0af9aad207e0b72a2526c51f1ddbfd774cec4"
+  },
+  {
+   "name": "Pumpkin_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Pumpkin_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Pumpkin_2.obj"
+   },
+   "bytes": {
+    "blend": 541948,
+    "fbx": 33164,
+    "obj": 40229
+   },
+   "verts": 441,
+   "tris": 862,
+   "size": [
+    0.468,
+    0.254,
+    0.44
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Pumpkin_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "3355776036b7ad290a117d7f5bdadc9649d3ff1a"
+  },
+  {
+   "name": "Pumpkin_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Pumpkin_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Pumpkin_3.obj"
+   },
+   "bytes": {
+    "blend": 581060,
+    "fbx": 50924,
+    "obj": 81760
+   },
+   "verts": 889,
+   "tris": 1752,
+   "size": [
+    0.875,
+    0.393,
+    0.749
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Pumpkin_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "8d7aad6fea181c61caf54a75becd8f31a202970b"
+  },
+  {
+   "name": "Pumpkin_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Pumpkin_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Pumpkin_4.obj"
+   },
+   "bytes": {
+    "blend": 642708,
+    "fbx": 74204,
+    "obj": 139301
+   },
+   "verts": 1483,
+   "tris": 2896,
+   "size": [
+    1.29,
+    0.59,
+    1.075
+   ],
+   "materials": [
+    "Orange",
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Pumpkin_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "897f06376bd573e2cecd407bfcc6a20a13f43a03"
+  },
+  {
+   "name": "Pumpkin_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Pumpkin_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Pumpkin_Crop.obj"
+   },
+   "bytes": {
+    "blend": 525728,
+    "fbx": 22684,
+    "obj": 17510
+   },
+   "verts": 200,
+   "tris": 396,
+   "size": [
+    0.588,
+    0.554,
+    0.578
+   ],
+   "materials": [
+    "Orange",
+    "Green"
+   ],
+   "mtl": "Pumpkin_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "c43626417d1b2706bd2100c817f9556313d83750"
+  },
+  {
+   "name": "Pumpkin_Harvested",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Pumpkin_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Pumpkin_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Pumpkin_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 627212,
+    "fbx": 68060,
+    "obj": 121588
+   },
+   "verts": 1303,
+   "tris": 2540,
+   "size": [
+    1.29,
+    0.59,
+    1.075
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Pumpkin_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "8981f0b09ae22e85ec3078bd3131dad991611ba7"
+  },
+  {
+   "name": "Rice_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Rice_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Rice_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Rice_1.obj"
+   },
+   "bytes": {
+    "blend": 501600,
+    "fbx": 16300,
+    "obj": 4017
+   },
+   "verts": 48,
+   "tris": 88,
+   "size": [
+    0.158,
+    0.368,
+    0.031
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Rice_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "c88edab337b065cbd9c240aed665d085aae3547d"
+  },
+  {
+   "name": "Rice_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Rice_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Rice_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Rice_2.obj"
+   },
+   "bytes": {
+    "blend": 511028,
+    "fbx": 20684,
+    "obj": 13705
+   },
+   "verts": 160,
+   "tris": 294,
+   "size": [
+    0.255,
+    0.565,
+    0.127
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Rice_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "76193dbe8c2d2833884aa13bff8e0bfcd7a22473"
+  },
+  {
+   "name": "Rice_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Rice_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Rice_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Rice_3.obj"
+   },
+   "bytes": {
+    "blend": 526328,
+    "fbx": 27660,
+    "obj": 30138
+   },
+   "verts": 342,
+   "tris": 628,
+   "size": [
+    0.619,
+    0.769,
+    0.238
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Rice_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "38ac1c6718f0f14a55b7a32168129e9fabea3746"
+  },
+  {
+   "name": "Rice_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Rice_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Rice_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Rice_4.obj"
+   },
+   "bytes": {
+    "blend": 591920,
+    "fbx": 55020,
+    "obj": 93599
+   },
+   "verts": 1036,
+   "tris": 1940,
+   "size": [
+    0.779,
+    0.953,
+    0.881
+   ],
+   "materials": [
+    "Green",
+    "LightGreen"
+   ],
+   "mtl": "Rice_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "94a596098786451bacd58492191f904febaa158e"
+  },
+  {
+   "name": "Rice_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Rice_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Rice_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Rice_Crop.obj"
+   },
+   "bytes": {
+    "blend": 514208,
+    "fbx": 21948,
+    "obj": 17218
+   },
+   "verts": 191,
+   "tris": 370,
+   "size": [
+    0.906,
+    0.046,
+    0.387
+   ],
+   "materials": [
+    "LightGreen"
+   ],
+   "mtl": "Rice_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "eafd0bef8c467466316dde72f38eb0b0d9696f58"
+  },
+  {
+   "name": "Tomato_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Tomato_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Tomato_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Tomato_1.obj"
+   },
+   "bytes": {
+    "blend": 500248,
+    "fbx": 15676,
+    "obj": 2678
+   },
+   "verts": 32,
+   "tris": 60,
+   "size": [
+    0.101,
+    0.179,
+    0.065
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Tomato_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "23d1366f637c99256ad8a7f5650e84ac0a3966ae"
+  },
+  {
+   "name": "Tomato_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Tomato_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Tomato_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Tomato_2.obj"
+   },
+   "bytes": {
+    "blend": 510124,
+    "fbx": 20268,
+    "obj": 12700
+   },
+   "verts": 142,
+   "tris": 266,
+   "size": [
+    0.377,
+    0.791,
+    0.187
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Tomato_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "e779969c77875592db30dc049c66a848342f5349"
+  },
+  {
+   "name": "Tomato_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Tomato_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Tomato_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Tomato_3.obj"
+   },
+   "bytes": {
+    "blend": 553940,
+    "fbx": 39932,
+    "obj": 59484
+   },
+   "verts": 638,
+   "tris": 1194,
+   "size": [
+    0.641,
+    1.428,
+    0.586
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Tomato_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "907e6730efd218295a2e039c495b682147056788"
+  },
+  {
+   "name": "Tomato_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Tomato_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Tomato_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Tomato_4.obj"
+   },
+   "bytes": {
+    "blend": 578380,
+    "fbx": 49612,
+    "obj": 77859
+   },
+   "verts": 822,
+   "tris": 1518,
+   "size": [
+    0.793,
+    1.72,
+    0.81
+   ],
+   "materials": [
+    "Red",
+    "Green"
+   ],
+   "mtl": "Tomato_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "fce213745a6f9ba09746f181d58d91877c7fb0b7"
+  },
+  {
+   "name": "Tomato_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Tomato_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Tomato_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Tomato_Crop.obj"
+   },
+   "bytes": {
+    "blend": 530096,
+    "fbx": 22124,
+    "obj": 20801
+   },
+   "verts": 176,
+   "tris": 344,
+   "size": [
+    0.178,
+    0.148,
+    0.178
+   ],
+   "materials": [
+    "Red",
+    "DarkGreen"
+   ],
+   "mtl": "Tomato_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "4f1e16075be765132c11eb661b8584a4b864921a"
+  },
+  {
+   "name": "Tomato_Harvested",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Tomato_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Tomato_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Tomato_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 567820,
+    "fbx": 44732,
+    "obj": 67848
+   },
+   "verts": 726,
+   "tris": 1358,
+   "size": [
+    0.793,
+    1.72,
+    0.81
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Tomato_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "867e6805e7245edf283bcb40c4780292a27414b1"
+  },
+  {
+   "name": "Watermelon_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Watermelon_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Watermelon_1.obj"
+   },
+   "bytes": {
+    "blend": 509712,
+    "fbx": 18268,
+    "obj": 5849
+   },
+   "verts": 72,
+   "tris": 132,
+   "size": [
+    0.217,
+    0.391,
+    0.093
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Watermelon_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "ed224e23786a85e7a85fbd0a13705769bc307666"
+  },
+  {
+   "name": "Watermelon_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Watermelon_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Watermelon_2.obj"
+   },
+   "bytes": {
+    "blend": 541948,
+    "fbx": 33164,
+    "obj": 40238
+   },
+   "verts": 441,
+   "tris": 862,
+   "size": [
+    0.468,
+    0.254,
+    0.44
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Watermelon_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "c1478e58a8f9c47dcae49f2ebe292388484c875d"
+  },
+  {
+   "name": "Watermelon_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Watermelon_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Watermelon_3.obj"
+   },
+   "bytes": {
+    "blend": 581060,
+    "fbx": 50924,
+    "obj": 81769
+   },
+   "verts": 889,
+   "tris": 1752,
+   "size": [
+    0.875,
+    0.393,
+    0.749
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Watermelon_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "40b1b6911c0e2090ecb02fac8a6918de0b15766d"
+  },
+  {
+   "name": "Watermelon_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Watermelon_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Watermelon_4.obj"
+   },
+   "bytes": {
+    "blend": 625388,
+    "fbx": 68972,
+    "obj": 125364
+   },
+   "verts": 1327,
+   "tris": 2600,
+   "size": [
+    1.29,
+    0.59,
+    1.075
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen2",
+    "DarkGreen"
+   ],
+   "mtl": "Watermelon_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "871a762fc1b75e0a8db184b7250a4274c5a2786a"
+  },
+  {
+   "name": "Watermelon_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Watermelon_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Watermelon_Crop.obj"
+   },
+   "bytes": {
+    "blend": 513928,
+    "fbx": 19388,
+    "obj": 10160
+   },
+   "verts": 112,
+   "tris": 220,
+   "size": [
+    0.444,
+    0.351,
+    0.369
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen2"
+   ],
+   "mtl": "Watermelon_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "7cc9d7796e2a67ea4ba0278b2d5cef68e7419967"
+  },
+  {
+   "name": "Watermelon_Harvested",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Watermelon_Harvested.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Watermelon_Harvested.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Watermelon_Harvested.obj"
+   },
+   "bytes": {
+    "blend": 609028,
+    "fbx": 63804,
+    "obj": 113588
+   },
+   "verts": 1215,
+   "tris": 2380,
+   "size": [
+    1.29,
+    0.59,
+    1.075
+   ],
+   "materials": [
+    "Green",
+    "DarkGreen"
+   ],
+   "mtl": "Watermelon_Harvested.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "e2b501484d0428a3ae1cd797ffe24fd7363fcfe5"
+  },
+  {
+   "name": "Wheat_1",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Wheat_1.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Wheat_1.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Wheat_1.obj"
+   },
+   "bytes": {
+    "blend": 499440,
+    "fbx": 15244,
+    "obj": 1879
+   },
+   "verts": 22,
+   "tris": 40,
+   "size": [
+    0.121,
+    0.219,
+    0.033
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Wheat_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a8de57816c3411ecb2644e1b823105aad5c1f5ab"
+  },
+  {
+   "name": "Wheat_2",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Wheat_2.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Wheat_2.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Wheat_2.obj"
+   },
+   "bytes": {
+    "blend": 503040,
+    "fbx": 16940,
+    "obj": 5449
+   },
+   "verts": 65,
+   "tris": 118,
+   "size": [
+    0.072,
+    0.539,
+    0.124
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Wheat_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "3bd7be404424a76f768d51939f1f53d6c9b17024"
+  },
+  {
+   "name": "Wheat_3",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Wheat_3.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Wheat_3.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Wheat_3.obj"
+   },
+   "bytes": {
+    "blend": 508832,
+    "fbx": 19660,
+    "obj": 11301
+   },
+   "verts": 133,
+   "tris": 246,
+   "size": [
+    0.165,
+    0.694,
+    0.243
+   ],
+   "materials": [
+    "Green"
+   ],
+   "mtl": "Wheat_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "063705e11a837fc659953720830c46f55d5d68ee"
+  },
+  {
+   "name": "Wheat_4",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Wheat_4.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Wheat_4.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Wheat_4.obj"
+   },
+   "bytes": {
+    "blend": 502176,
+    "fbx": 16524,
+    "obj": 4439
+   },
+   "verts": 53,
+   "tris": 102,
+   "size": [
+    0.098,
+    0.948,
+    0.056
+   ],
+   "materials": [
+    "Yellow"
+   ],
+   "mtl": "Wheat_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "1dec08d478a17715e8b3380f6f0e70bd002795dd"
+  },
+  {
+   "name": "Wheat_Crop",
+   "pack": "quat-cultivos",
+   "family": "cultivos",
+   "formats": {
+    "blend": "drive-download-20261110T194644Z-1-001/Blends/Wheat_Crop.blend",
+    "fbx": "drive-download-20261110T194644Z-1-001/FBX/Wheat_Crop.fbx",
+    "obj": "drive-download-20261110T194644Z-1-001/OBJ/Wheat_Crop.obj"
+   },
+   "bytes": {
+    "blend": 525216,
+    "fbx": 26316,
+    "obj": 25436
+   },
+   "verts": 318,
+   "tris": 612,
+   "size": [
+    0.591,
+    0.105,
+    0.758
+   ],
+   "materials": [
+    "Yellow"
+   ],
+   "mtl": "Wheat_Crop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "95ad7b27d7baedf9aec986722d9f7410881a1952"
+  },
+  {
+   "name": "Barn",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/Barn.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/Barn.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/Barn.obj"
+   },
+   "bytes": {
+    "blend": 674776,
+    "fbx": 59484,
+    "obj": 112900
+   },
+   "verts": 1924,
+   "tris": 2910,
+   "size": [
+    7.727,
+    6.009,
+    8.222
+   ],
+   "materials": [
+    "DarkRed",
+    "White",
+    "LightRed",
+    "RoofBlack"
+   ],
+   "mtl": "Barn.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "373961840f9092d2079c96a4cd8a08ed238a0b86"
+  },
+  {
+   "name": "BigBarn",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/BigBarn.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/BigBarn.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/BigBarn.obj"
+   },
+   "bytes": {
+    "blend": 742232,
+    "fbx": 75900,
+    "obj": 166324
+   },
+   "verts": 2908,
+   "tris": 4224,
+   "size": [
+    7.727,
+    7.887,
+    8.222
+   ],
+   "materials": [
+    "DarkRed",
+    "White",
+    "LightRed",
+    "RoofBlack"
+   ],
+   "mtl": "BigBarn.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "1543e7760c0d2653011092906b9c7b3852928488"
+  },
+  {
+   "name": "ChickenCoop",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/ChickenCoop.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/ChickenCoop.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/ChickenCoop.obj"
+   },
+   "bytes": {
+    "blend": 567788,
+    "fbx": 30796,
+    "obj": 35548
+   },
+   "verts": 600,
+   "tris": 948,
+   "size": [
+    2.407,
+    1.851,
+    2.154
+   ],
+   "materials": [
+    "White",
+    "LightRed",
+    "Brown",
+    "DarkRed",
+    "RoofBlack"
+   ],
+   "mtl": "ChickenCoop.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "f753e7334ecf431273c42ae18e28fcd740c70db1"
+  },
+  {
+   "name": "Fence",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/Fence.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/Fence.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/Fence.obj"
+   },
+   "bytes": {
+    "blend": 506040,
+    "fbx": 17308,
+    "obj": 7087
+   },
+   "verts": 104,
+   "tris": 188,
+   "size": [
+    5.89,
+    1.097,
+    0.166
+   ],
+   "materials": [
+    "Brown"
+   ],
+   "mtl": "Fence.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "cd00974f78d365e9cbcdbab262c2f6509344ecf9"
+  },
+  {
+   "name": "Fence2",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/Fence2.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/Fence2.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/Fence2.obj"
+   },
+   "bytes": {
+    "blend": 512504,
+    "fbx": 18156,
+    "obj": 10840
+   },
+   "verts": 196,
+   "tris": 324,
+   "size": [
+    5.89,
+    1.173,
+    0.166
+   ],
+   "materials": [
+    "Brown"
+   ],
+   "mtl": "Fence2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "ff6ff9e62d4357fe0ec3f46bd0c03d7d76a14f47"
+  },
+  {
+   "name": "OpenBarn",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/OpenBarn.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/OpenBarn.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/OpenBarn.obj"
+   },
+   "bytes": {
+    "blend": 595340,
+    "fbx": 38860,
+    "obj": 55920
+   },
+   "verts": 908,
+   "tris": 1612,
+   "size": [
+    5.744,
+    4.743,
+    6.182
+   ],
+   "materials": [
+    "DarkRed",
+    "White",
+    "LightRed",
+    "Brown",
+    "RoofBlack"
+   ],
+   "mtl": "OpenBarn.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "e3df3e7a63a76c6ae0266a375db131be5523791a"
+  },
+  {
+   "name": "Silo",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/Silo.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/Silo.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/Silo.obj"
+   },
+   "bytes": {
+    "blend": 595900,
+    "fbx": 38588,
+    "obj": 53181
+   },
+   "verts": 780,
+   "tris": 1592,
+   "size": [
+    3.668,
+    9.069,
+    3.51
+   ],
+   "materials": [
+    "LightRed",
+    "White",
+    "DarkRed",
+    "Brown",
+    "Grey"
+   ],
+   "mtl": "Silo.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "32c23456395d56470a847a137c8cba9d0888e6f7"
+  },
+  {
+   "name": "Silo_House",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/Silo_House.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/Silo_House.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/Silo_House.obj"
+   },
+   "bytes": {
+    "blend": 666868,
+    "fbx": 57292,
+    "obj": 101499
+   },
+   "verts": 1502,
+   "tris": 2880,
+   "size": [
+    5.338,
+    9.067,
+    3.51
+   ],
+   "materials": [
+    "LightRed",
+    "Grey",
+    "DarkRed",
+    "Brown",
+    "White",
+    "DarkGrey",
+    "Black"
+   ],
+   "mtl": "Silo_House.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "9bb900fbb7b7368322f751970808ade00fd048c1"
+  },
+  {
+   "name": "SmallBarn",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/SmallBarn.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/SmallBarn.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/SmallBarn.obj"
+   },
+   "bytes": {
+    "blend": 634908,
+    "fbx": 50396,
+    "obj": 83731
+   },
+   "verts": 1431,
+   "tris": 2176,
+   "size": [
+    6.079,
+    4.961,
+    6.274
+   ],
+   "materials": [
+    "DarkRed",
+    "White",
+    "LightRed",
+    "RoofBlack"
+   ],
+   "mtl": "SmallBarn.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "341af9fa247f29e2ff02dd6d04af2c8c140fbf9b"
+  },
+  {
+   "name": "TowerWindmill",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/TowerWindmill.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/TowerWindmill.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/TowerWindmill.obj"
+   },
+   "bytes": {
+    "blend": 884588,
+    "fbx": 142620,
+    "obj": 288686
+   },
+   "verts": 3787,
+   "tris": 7827,
+   "size": [
+    7.924,
+    11.413,
+    4.991
+   ],
+   "materials": [
+    "DarkGrey",
+    "RoofBlack",
+    "LightBrown",
+    "White",
+    "Black",
+    "Grey",
+    "DarkBrown"
+   ],
+   "mtl": "TowerWindmill.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "61c2d14522f75d8d3de06b1ae28b8381f6ff33e2"
+  },
+  {
+   "name": "WaterTower",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/WaterTower.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/WaterTower.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/WaterTower.obj"
+   },
+   "bytes": {
+    "blend": 622368,
+    "fbx": 46076,
+    "obj": 87367
+   },
+   "verts": 1155,
+   "tris": 2507,
+   "size": [
+    2.532,
+    8.429,
+    2.489
+   ],
+   "materials": [
+    "Brown",
+    "Grey",
+    "DarkGrey"
+   ],
+   "mtl": "WaterTower.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a11695b402704144ce5979b4647f81b63ffb0d77"
+  },
+  {
+   "name": "Well",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/Well.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/Well.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/Well.obj"
+   },
+   "bytes": {
+    "blend": 670132,
+    "fbx": 68316,
+    "obj": 131536
+   },
+   "verts": 1612,
+   "tris": 2880,
+   "size": [
+    1.277,
+    2.146,
+    1.487
+   ],
+   "materials": [
+    "Grey",
+    "Brown",
+    "LightRed",
+    "White",
+    "DarkGrey"
+   ],
+   "mtl": "Well.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "3b37d84404bdd3bfd30cb16f15b09444cf7d59f5"
+  },
+  {
+   "name": "Windmill",
+   "pack": "quat-granja",
+   "family": "estructuras-agricolas",
+   "formats": {
+    "blend": "drive-download-20261110T194737Z-1-001/Blend/Windmill.blend",
+    "fbx": "drive-download-20261110T194737Z-1-001/FBX/Windmill.fbx",
+    "obj": "drive-download-20261110T194737Z-1-001/OBJ/Windmill.obj"
+   },
+   "bytes": {
+    "blend": 575324,
+    "fbx": 39436,
+    "obj": 59010
+   },
+   "verts": 716,
+   "tris": 1440,
+   "size": [
+    6.508,
+    11.196,
+    1.898
+   ],
+   "materials": [
+    "Brown",
+    "Grey"
+   ],
+   "mtl": "Windmill.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "f3d8f294b89a8fda201007fb3bc3108077b80be5"
+  },
+  {
+   "name": "AllModels",
+   "pack": "quat-plataforma",
+   "family": "sin-clasificar",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/AllModels.blend"
+   },
+   "bytes": {
+    "blend": 36730024
+   }
+  },
+  {
+   "name": "BirchTree_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/BirchTree_1.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/BirchTree_1.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/BirchTree_1.obj"
+   },
+   "bytes": {
+    "blend": 1055536,
+    "fbx": 214508,
+    "gltf": 3420,
+    "obj": 515573
+   },
+   "gltf": {
+    "images": [
+     "BirchTree_Bark_Normal.png",
+     "BirchTree_Bark.jpg",
+     "BirchTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 5264,
+   "tris": 4598,
+   "size": [
+    2.708,
+    5.453,
+    1.943
+   ],
+   "materials": [
+    "BirchTree_Bark",
+    "BirchTree_Leaves"
+   ],
+   "mtl": "BirchTree_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "3c19b9cfe8b95c89464ac5a00e2f1c0319949b94"
+  },
+  {
+   "name": "BirchTree_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/BirchTree_2.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/BirchTree_2.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/BirchTree_2.obj"
+   },
+   "bytes": {
+    "blend": 1334860,
+    "fbx": 317804,
+    "gltf": 3419,
+    "obj": 764539
+   },
+   "gltf": {
+    "images": [
+     "BirchTree_Bark_Normal.png",
+     "BirchTree_Bark.jpg",
+     "BirchTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 7359,
+   "tris": 7660,
+   "size": [
+    3.347,
+    7.57,
+    2.813
+   ],
+   "materials": [
+    "BirchTree_Bark",
+    "BirchTree_Leaves"
+   ],
+   "mtl": "BirchTree_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "7ac62533544a9a4fc2978dee7f45083622453b08"
+  },
+  {
+   "name": "BirchTree_3",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/BirchTree_3.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/BirchTree_3.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/BirchTree_3.obj"
+   },
+   "bytes": {
+    "blend": 1558800,
+    "fbx": 347036,
+    "gltf": 3814,
+    "obj": 916886
+   },
+   "gltf": {
+    "images": [
+     "BirchTree_Bark_Normal.png",
+     "BirchTree_Bark.jpg",
+     "BirchTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 9731,
+   "tris": 6818,
+   "size": [
+    3.433,
+    5.754,
+    2.267
+   ],
+   "materials": [
+    "BirchTree_Bark",
+    "BirchTree_Leaves"
+   ],
+   "mtl": "BirchTree_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "9efdbc57125a28f520a39d9bdd75add8f4aca8d4"
+  },
+  {
+   "name": "BirchTree_4",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/BirchTree_4.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/BirchTree_4.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/BirchTree_4.obj"
+   },
+   "bytes": {
+    "blend": 938740,
+    "fbx": 158348,
+    "gltf": 3419,
+    "obj": 370995
+   },
+   "gltf": {
+    "images": [
+     "BirchTree_Bark_Normal.png",
+     "BirchTree_Bark.jpg",
+     "BirchTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 3528,
+   "tris": 3562,
+   "size": [
+    2.776,
+    4.215,
+    1.839
+   ],
+   "materials": [
+    "BirchTree_Bark",
+    "BirchTree_Leaves"
+   ],
+   "mtl": "BirchTree_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "6029fb8566c6a281041df8c465f5075d2d4f1bb6"
+  },
+  {
+   "name": "BirchTree_5",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/BirchTree_5.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/BirchTree_5.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/BirchTree_5.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/BirchTree_5.obj"
+   },
+   "bytes": {
+    "blend": 1031392,
+    "fbx": 197228,
+    "gltf": 3418,
+    "obj": 481282
+   },
+   "gltf": {
+    "images": [
+     "BirchTree_Bark_Normal.png",
+     "BirchTree_Bark.jpg",
+     "BirchTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 4586,
+   "tris": 4520,
+   "size": [
+    3.582,
+    5.522,
+    3.515
+   ],
+   "materials": [
+    "BirchTree_Bark",
+    "BirchTree_Leaves"
+   ],
+   "mtl": "BirchTree_5.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "42466dfee688f2ed89a427fe955d8834a726a03e"
+  },
+  {
+   "name": "Bush",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Bush.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Bush.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Bush.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Bush.obj"
+   },
+   "bytes": {
+    "blend": 614292,
+    "fbx": 38748,
+    "gltf": 1972,
+    "obj": 70641
+   },
+   "gltf": {
+    "images": [
+     "Bush_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 800,
+   "tris": 400,
+   "size": [
+    1.094,
+    0.692,
+    1.048
+   ],
+   "materials": [
+    "Bush_Leaves"
+   ],
+   "mtl": "Bush.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "01aac69c0c5676c54fe7d6b1ce71b031baaf58eb"
+  },
+  {
+   "name": "Bush_Flowers",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Bush_Flowers.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Bush_Flowers.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Bush_Flowers.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Bush_Flowers.obj"
+   },
+   "bytes": {
+    "blend": 675132,
+    "fbx": 42668,
+    "gltf": 3319,
+    "obj": 80593
+   },
+   "gltf": {
+    "images": [
+     "Bush_Leaves.png",
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 891,
+   "tris": 478,
+   "size": [
+    1.094,
+    0.759,
+    1.111
+   ],
+   "materials": [
+    "Bush_Leaves",
+    "Flowers"
+   ],
+   "mtl": "Bush_Flowers.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "6b8dba702c1e2e83e96ef1d73e55c40a9154a4a1"
+  },
+  {
+   "name": "Bush_Large",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Bush_Large.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Bush_Large.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Bush_Large.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Bush_Large.obj"
+   },
+   "bytes": {
+    "blend": 605064,
+    "fbx": 31228,
+    "gltf": 1984,
+    "obj": 46789
+   },
+   "gltf": {
+    "images": [
+     "Bush_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 553,
+   "tris": 276,
+   "size": [
+    1.903,
+    1.219,
+    0.724
+   ],
+   "materials": [
+    "Bush_Leaves"
+   ],
+   "mtl": "Bush_Large.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "48b57bf3f4a1408d53f48575ec51e14621c6481a"
+  },
+  {
+   "name": "Bush_Large_Flowers",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Bush_Large_Flowers.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Bush_Large_Flowers.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Bush_Large_Flowers.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Bush_Large_Flowers.obj"
+   },
+   "bytes": {
+    "blend": 671156,
+    "fbx": 36988,
+    "gltf": 3335,
+    "obj": 62656
+   },
+   "gltf": {
+    "images": [
+     "Bush_Leaves.png",
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 700,
+   "tris": 402,
+   "size": [
+    1.93,
+    1.258,
+    0.762
+   ],
+   "materials": [
+    "Bush_Leaves",
+    "Flowers"
+   ],
+   "mtl": "Bush_Large_Flowers.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "103484375ac20f3b9528aaaeab5ab141bcb22064"
+  },
+  {
+   "name": "Bush_Small",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Bush_Small.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Bush_Small.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Bush_Small.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Bush_Small.obj"
+   },
+   "bytes": {
+    "blend": 593740,
+    "fbx": 25948,
+    "gltf": 1983,
+    "obj": 33551
+   },
+   "gltf": {
+    "images": [
+     "Bush_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 381,
+   "tris": 190,
+   "size": [
+    1.903,
+    0.778,
+    0.724
+   ],
+   "materials": [
+    "Bush_Leaves"
+   ],
+   "mtl": "Bush_Small.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "6dbd5d2a104471b1f7c129641a38bf9fa4af1d88"
+  },
+  {
+   "name": "Bush_Small_Flowers",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Bush_Small_Flowers.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Bush_Small_Flowers.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Bush_Small_Flowers.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Bush_Small_Flowers.obj"
+   },
+   "bytes": {
+    "blend": 649608,
+    "fbx": 30044,
+    "gltf": 3330,
+    "obj": 44069
+   },
+   "gltf": {
+    "images": [
+     "Bush_Leaves.png",
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 479,
+   "tris": 274,
+   "size": [
+    1.926,
+    0.817,
+    0.762
+   ],
+   "materials": [
+    "Bush_Leaves",
+    "Flowers"
+   ],
+   "mtl": "Bush_Small_Flowers.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "0d0a94d5432fb5c3f09ad14897c2c046feceaecb"
+  },
+  {
+   "name": "DeadTree_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_1.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_1.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_1.obj"
+   },
+   "bytes": {
+    "blend": 922048,
+    "fbx": 164860,
+    "gltf": 2057,
+    "obj": 342321
+   },
+   "gltf": {
+    "images": [
+     "NormalTree_Bark_Normal.png",
+     "NormalTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 2571,
+   "tris": 4792,
+   "size": [
+    3.092,
+    6.196,
+    1.295
+   ],
+   "materials": [
+    "NormalTree_Bark"
+   ],
+   "mtl": "DeadTree_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "dd2a51626c5a17c7e7c6359eb6b02da9bdd9836a"
+  },
+  {
+   "name": "DeadTree_10",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_10.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_10.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_10.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_10.obj"
+   },
+   "bytes": {
+    "blend": 814792,
+    "fbx": 111756,
+    "gltf": 2048,
+    "obj": 224693
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 1729,
+   "tris": 3208,
+   "size": [
+    5.461,
+    7.126,
+    3.245
+   ],
+   "materials": [
+    "MapleTree_Bark"
+   ],
+   "mtl": "DeadTree_10.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "03073b5d0438a13cf5a439020217089187ba22ea"
+  },
+  {
+   "name": "DeadTree_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_2.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_2.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_2.obj"
+   },
+   "bytes": {
+    "blend": 969068,
+    "fbx": 171420,
+    "gltf": 2058,
+    "obj": 383537
+   },
+   "gltf": {
+    "images": [
+     "NormalTree_Bark_Normal.png",
+     "NormalTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 2872,
+   "tris": 5344,
+   "size": [
+    3.424,
+    6.196,
+    1.446
+   ],
+   "materials": [
+    "NormalTree_Bark"
+   ],
+   "mtl": "DeadTree_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "5b20b7d617471590d8ef6017de2ed2693bcd4ec4"
+  },
+  {
+   "name": "DeadTree_3",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_3.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_3.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_3.obj"
+   },
+   "bytes": {
+    "blend": 933620,
+    "fbx": 158092,
+    "gltf": 2058,
+    "obj": 352590
+   },
+   "gltf": {
+    "images": [
+     "NormalTree_Bark_Normal.png",
+     "NormalTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 2644,
+   "tris": 4928,
+   "size": [
+    4.219,
+    4.958,
+    1.702
+   ],
+   "materials": [
+    "NormalTree_Bark"
+   ],
+   "mtl": "DeadTree_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "23c36ee9e97ff6ac667e2f77da8dd8a97312df3f"
+  },
+  {
+   "name": "DeadTree_4",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_4.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_4.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_4.obj"
+   },
+   "bytes": {
+    "blend": 19903168,
+    "fbx": 124316,
+    "gltf": 2052,
+    "obj": 248876
+   },
+   "gltf": {
+    "images": [
+     "NormalTree_Bark_Normal.png",
+     "NormalTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 1889,
+   "tris": 3528,
+   "size": [
+    4.85,
+    4.61,
+    1.669
+   ],
+   "materials": [
+    "NormalTree_Bark"
+   ],
+   "mtl": "DeadTree_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "e351479023ca67178676740a232e0a59636eaf89"
+  },
+  {
+   "name": "DeadTree_5",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_5.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_5.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_5.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_5.obj"
+   },
+   "bytes": {
+    "blend": 629972,
+    "fbx": 57164,
+    "gltf": 2048,
+    "obj": 91295
+   },
+   "gltf": {
+    "images": [
+     "NormalTree_Bark_Normal.png",
+     "NormalTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 730,
+   "tris": 1360,
+   "size": [
+    1.441,
+    2.604,
+    1.534
+   ],
+   "materials": [
+    "NormalTree_Bark"
+   ],
+   "mtl": "DeadTree_5.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "12a8ab7f0fdb150a260738d6791ec393e6aae028"
+  },
+  {
+   "name": "DeadTree_6",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_6.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_6.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_6.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_6.obj"
+   },
+   "bytes": {
+    "blend": 776152,
+    "fbx": 105356,
+    "gltf": 2045,
+    "obj": 208498
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 1607,
+   "tris": 2984,
+   "size": [
+    5.407,
+    6.414,
+    3.299
+   ],
+   "materials": [
+    "MapleTree_Bark"
+   ],
+   "mtl": "DeadTree_6.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "47e3ca2cf3aa353daba58e4e33623b3785c88c3e"
+  },
+  {
+   "name": "DeadTree_7",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_7.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_7.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_7.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_7.obj"
+   },
+   "bytes": {
+    "blend": 820188,
+    "fbx": 122204,
+    "gltf": 2046,
+    "obj": 247686
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 1882,
+   "tris": 3504,
+   "size": [
+    6.137,
+    6.314,
+    5.034
+   ],
+   "materials": [
+    "MapleTree_Bark"
+   ],
+   "mtl": "DeadTree_7.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "06b36a4937107334b345d5b8381b72bf30b676a3"
+  },
+  {
+   "name": "DeadTree_8",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_8.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_8.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_8.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_8.obj"
+   },
+   "bytes": {
+    "blend": 967996,
+    "fbx": 164604,
+    "gltf": 2045,
+    "obj": 353771
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 2662,
+   "tris": 4944,
+   "size": [
+    8.166,
+    6.277,
+    4.802
+   ],
+   "materials": [
+    "MapleTree_Bark"
+   ],
+   "mtl": "DeadTree_8.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "2c884d89cf3a007698f7cac65c3e8df216604b27"
+  },
+  {
+   "name": "DeadTree_9",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/DeadTree_9.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/DeadTree_9.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/DeadTree_9.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/DeadTree_9.obj"
+   },
+   "bytes": {
+    "blend": 606996,
+    "fbx": 38876,
+    "gltf": 2041,
+    "obj": 54984
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 447,
+   "tris": 824,
+   "size": [
+    2.059,
+    3.302,
+    0.718
+   ],
+   "materials": [
+    "MapleTree_Bark"
+   ],
+   "mtl": "DeadTree_9.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "88be6bb06669da7c582b330a089cdf04b7f7c235"
+  },
+  {
+   "name": "Flower_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Flower_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Flower_1.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Flower_1.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Flower_1.obj"
+   },
+   "bytes": {
+    "blend": 633116,
+    "fbx": 20380,
+    "gltf": 1849,
+    "obj": 16513
+   },
+   "gltf": {
+    "images": [
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 161,
+   "tris": 162,
+   "size": [
+    0.268,
+    0.489,
+    0.204
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Flower_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "2cddcb9e91771acb80d6c76eba89d77ca52487c9"
+  },
+  {
+   "name": "Flower_1_Clump",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Flower_1_Clump.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Flower_1_Clump.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Flower_1_Clump.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Flower_1_Clump.obj"
+   },
+   "bytes": {
+    "blend": 689864,
+    "fbx": 37308,
+    "gltf": 1865,
+    "obj": 65417
+   },
+   "gltf": {
+    "images": [
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 612,
+   "tris": 620,
+   "size": [
+    0.471,
+    0.671,
+    0.435
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Flower_1_Clump.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "06e58d99b6f9fb53ab1f3380ad86740289d06159"
+  },
+  {
+   "name": "Flower_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Flower_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Flower_2.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Flower_2.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Flower_2.obj"
+   },
+   "bytes": {
+    "blend": 616516,
+    "fbx": 15452,
+    "gltf": 1890,
+    "obj": 2500
+   },
+   "gltf": {
+    "images": [
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 23,
+   "tris": 34,
+   "size": [
+    0.239,
+    0.361,
+    0.247
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Flower_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "c32bdf91aee4dce7745e499b589b3b8c0d54f170"
+  },
+  {
+   "name": "Flower_2_Clump",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Flower_2_Clump.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Flower_2_Clump.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Flower_2_Clump.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Flower_2_Clump.obj"
+   },
+   "bytes": {
+    "blend": 626344,
+    "fbx": 18284,
+    "gltf": 1903,
+    "obj": 9914
+   },
+   "gltf": {
+    "images": [
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 92,
+   "tris": 136,
+   "size": [
+    0.426,
+    0.451,
+    0.373
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Flower_2_Clump.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "ccfd5b9729abd8c6635ef8bde01e8c1310f7c19b"
+  },
+  {
+   "name": "Flower_3_Clump",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Flower_3_Clump.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Flower_3_Clump.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Flower_3_Clump.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Flower_3_Clump.obj"
+   },
+   "bytes": {
+    "blend": 626344,
+    "fbx": 18284,
+    "gltf": 1903,
+    "obj": 9914
+   },
+   "gltf": {
+    "images": [
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 92,
+   "tris": 136,
+   "size": [
+    0.426,
+    0.451,
+    0.373
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Flower_3_Clump.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "e80131802780f845a9c3b4e32bec3cf097acb827"
+  },
+  {
+   "name": "Flower_4_Clump",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Flower_4_Clump.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Flower_4_Clump.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Flower_4_Clump.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Flower_4_Clump.obj"
+   },
+   "bytes": {
+    "blend": 626344,
+    "fbx": 18300,
+    "gltf": 1855,
+    "obj": 9918
+   },
+   "gltf": {
+    "images": [
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 92,
+   "tris": 136,
+   "size": [
+    0.426,
+    0.451,
+    0.373
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Flower_4_Clump.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "b53777abc1641603f4cd34e339e1a9c0178e510c"
+  },
+  {
+   "name": "Flower_5_Clump",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Flower_5_Clump.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Flower_5_Clump.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Flower_5_Clump.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Flower_5_Clump.obj"
+   },
+   "bytes": {
+    "blend": 626344,
+    "fbx": 18300,
+    "gltf": 1851,
+    "obj": 9914
+   },
+   "gltf": {
+    "images": [
+     "Flowers.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 92,
+   "tris": 136,
+   "size": [
+    0.426,
+    0.451,
+    0.373
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Flower_5_Clump.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "27965018b55ec80680586e559153042853c2a24b"
+  },
+  {
+   "name": "Grass_Large",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Grass_Large.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Grass_Large.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Grass_Large.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Grass_Large.obj"
+   },
+   "bytes": {
+    "blend": 522812,
+    "fbx": 14940,
+    "gltf": 1825,
+    "obj": 8268
+   },
+   "gltf": {
+    "images": [
+     "Grass.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 150,
+   "tris": 108,
+   "size": [
+    0.708,
+    0.485,
+    0.498
+   ],
+   "materials": [
+    "None"
+   ],
+   "mtl": "Grass_Large.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "7934b1a84f4d6694076e981d751f218b48c653c4"
+  },
+  {
+   "name": "Grass_Large_Extruded",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Grass_Large_Extruded.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Grass_Large_Extruded.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Grass_Large_Extruded.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Grass_Large_Extruded.obj"
+   },
+   "bytes": {
+    "blend": 547240,
+    "fbx": 30652,
+    "gltf": 1846,
+    "obj": 37656
+   },
+   "gltf": {
+    "images": [
+     "Grass.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 300,
+   "tris": 516,
+   "size": [
+    0.745,
+    0.509,
+    0.497
+   ],
+   "materials": [
+    "Grass"
+   ],
+   "mtl": "Grass_Large_Extruded.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "d255a996cae797b22594ecb1f993a52e64de494b"
+  },
+  {
+   "name": "Grass_Small",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Grass_Small.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Grass_Small.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/Grass_Small.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Grass_Small.obj"
+   },
+   "bytes": {
+    "blend": 513124,
+    "fbx": 16988,
+    "gltf": 1819,
+    "obj": 6577
+   },
+   "gltf": {
+    "images": [
+     "Grass.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 1
+   },
+   "missingTextures": [],
+   "verts": 80,
+   "tris": 58,
+   "size": [
+    0.47,
+    0.394,
+    0.278
+   ],
+   "materials": [
+    "Grass"
+   ],
+   "mtl": "Grass_Small.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "c0783d10ac8919d01429d0cf5be41ae1ddef99a4"
+  },
+  {
+   "name": "MapleTree_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/MapleTree_1.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/MapleTree_1.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/MapleTree_1.obj"
+   },
+   "bytes": {
+    "blend": 951596,
+    "fbx": 160700,
+    "gltf": 3415,
+    "obj": 366036
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg",
+     "MapleTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 3335,
+   "tris": 3848,
+   "size": [
+    6.229,
+    6.644,
+    4.904
+   ],
+   "materials": [
+    "MapleTree_Bark",
+    "MapleTree_Leaves"
+   ],
+   "mtl": "MapleTree_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "2365fd1913cf1cdd713de0e6946c09dc02237f42"
+  },
+  {
+   "name": "MapleTree_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/MapleTree_2.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/MapleTree_2.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/MapleTree_2.obj"
+   },
+   "bytes": {
+    "blend": 1031480,
+    "fbx": 204092,
+    "gltf": 3417,
+    "obj": 485695
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg",
+     "MapleTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 4474,
+   "tris": 4800,
+   "size": [
+    6.701,
+    6.714,
+    6.244
+   ],
+   "materials": [
+    "MapleTree_Bark",
+    "MapleTree_Leaves"
+   ],
+   "mtl": "MapleTree_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "f0ef8936a12f567d0ee4f0f0a9d4672a29eb4869"
+  },
+  {
+   "name": "MapleTree_3",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/MapleTree_3.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/MapleTree_3.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/MapleTree_3.obj"
+   },
+   "bytes": {
+    "blend": 1209404,
+    "fbx": 272380,
+    "gltf": 3415,
+    "obj": 672203
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg",
+     "MapleTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 6130,
+   "tris": 6678,
+   "size": [
+    8.98,
+    6.987,
+    6.613
+   ],
+   "materials": [
+    "MapleTree_Bark",
+    "MapleTree_Leaves"
+   ],
+   "mtl": "MapleTree_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "bf4c90e5bce8f77484455302d6a58178d0a736f4"
+  },
+  {
+   "name": "MapleTree_4",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/MapleTree_4.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/MapleTree_4.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/MapleTree_4.obj"
+   },
+   "bytes": {
+    "blend": 694684,
+    "fbx": 66636,
+    "gltf": 3405,
+    "obj": 132807
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg",
+     "MapleTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 1311,
+   "tris": 1256,
+   "size": [
+    2.77,
+    3.594,
+    2.435
+   ],
+   "materials": [
+    "MapleTree_Bark",
+    "MapleTree_Leaves"
+   ],
+   "mtl": "MapleTree_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "bec64fc91e93ff5810cc03988081cffbe2186c42"
+  },
+  {
+   "name": "MapleTree_5",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/MapleTree_5.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/MapleTree_5.fbx",
+    "gltf": "drive-download-20261110T194800Z-1-001/glTF/MapleTree_5.gltf",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/MapleTree_5.obj"
+   },
+   "bytes": {
+    "blend": 1006468,
+    "fbx": 194076,
+    "gltf": 3417,
+    "obj": 462329
+   },
+   "gltf": {
+    "images": [
+     "MapleTree_Bark_Normal.png",
+     "MapleTree_Bark.jpg",
+     "MapleTree_Leaves.png"
+    ],
+    "anims": 0,
+    "skins": 0,
+    "materials": 2
+   },
+   "missingTextures": [],
+   "verts": 4321,
+   "tris": 4504,
+   "size": [
+    7.012,
+    7.28,
+    5.076
+   ],
+   "materials": [
+    "MapleTree_Bark",
+    "MapleTree_Leaves"
+   ],
+   "mtl": "MapleTree_5.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "hash": "603e78322aec99698de9f35b384b8fef59676b8c"
+  },
+  {
+   "name": "NormalTree_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/NormalTree_1.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/NormalTree_1.obj"
+   },
+   "bytes": {
+    "blend": 1466108,
+    "fbx": 396636,
+    "obj": 1026264
+   },
+   "verts": 10027,
+   "tris": 8520,
+   "size": [
+    4.051,
+    6.867,
+    2.744
+   ],
+   "materials": [
+    "NormalTree_Bark",
+    "NormalTree_Leaves"
+   ],
+   "mtl": "NormalTree_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "ae6de57d3266f568917c217cf9fbcd75ed945107"
+  },
+  {
+   "name": "NormalTree_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/NormalTree_2.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/NormalTree_2.obj"
+   },
+   "bytes": {
+    "blend": 1367920,
+    "fbx": 338396,
+    "obj": 857465
+   },
+   "verts": 8352,
+   "tris": 8084,
+   "size": [
+    4.554,
+    6.555,
+    2.786
+   ],
+   "materials": [
+    "NormalTree_Bark",
+    "NormalTree_Leaves"
+   ],
+   "mtl": "NormalTree_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "cba51ba22276ad633a5997f219295dcea2edb30a"
+  },
+  {
+   "name": "NormalTree_3",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/NormalTree_3.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/NormalTree_3.obj"
+   },
+   "bytes": {
+    "blend": 1260328,
+    "fbx": 290620,
+    "obj": 720589
+   },
+   "verts": 6980,
+   "tris": 7096,
+   "size": [
+    5.039,
+    5.281,
+    2.88
+   ],
+   "materials": [
+    "NormalTree_Bark",
+    "NormalTree_Leaves"
+   ],
+   "mtl": "NormalTree_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "acb4b8d2daac76540fa8a7c0faa3c3e08381e786"
+  },
+  {
+   "name": "NormalTree_4",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/NormalTree_4.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/NormalTree_4.obj"
+   },
+   "bytes": {
+    "blend": 41259424,
+    "fbx": 297308,
+    "obj": 734121
+   },
+   "verts": 7509,
+   "tris": 6338,
+   "size": [
+    5.673,
+    5.096,
+    2.401
+   ],
+   "materials": [
+    "NormalTree_Bark",
+    "NormalTree_Leaves"
+   ],
+   "mtl": "NormalTree_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "6593a7a9289dc31487f16dc8e2b8765f0f67e35a"
+  },
+  {
+   "name": "NormalTree_5",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/NormalTree_5.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/NormalTree_5.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/NormalTree_5.obj"
+   },
+   "bytes": {
+    "blend": 787156,
+    "fbx": 109164,
+    "obj": 240123
+   },
+   "verts": 2374,
+   "tris": 2182,
+   "size": [
+    3.097,
+    2.98,
+    2.566
+   ],
+   "materials": [
+    "NormalTree_Bark",
+    "NormalTree_Leaves"
+   ],
+   "mtl": "NormalTree_5.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "d37839c388f0e949693944de3c16ba1808faf758"
+  },
+  {
+   "name": "PalmTree_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PalmTree_1.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PalmTree_1.obj"
+   },
+   "bytes": {
+    "blend": 604216,
+    "fbx": 29180,
+    "obj": 37942
+   },
+   "verts": 349,
+   "tris": 472,
+   "size": [
+    5.092,
+    5.103,
+    4.947
+   ],
+   "materials": [
+    "PalmTree_Trunk",
+    "PalmTree_Leaves"
+   ],
+   "mtl": "PalmTree_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "52bfc5c58948c45bd1afe11f195ff044a3522034"
+  },
+  {
+   "name": "PalmTree_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PalmTree_2.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PalmTree_2.obj"
+   },
+   "bytes": {
+    "blend": 577964,
+    "fbx": 25820,
+    "obj": 29133
+   },
+   "verts": 270,
+   "tris": 368,
+   "size": [
+    5.583,
+    5.28,
+    4.769
+   ],
+   "materials": [
+    "PalmTree_Trunk",
+    "PalmTree_Leaves"
+   ],
+   "mtl": "PalmTree_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "36d25221103395a51802fc48ebfc9e6e0f3e0426"
+  },
+  {
+   "name": "PalmTree_3",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PalmTree_3.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PalmTree_3.obj"
+   },
+   "bytes": {
+    "blend": 575672,
+    "fbx": 25004,
+    "obj": 27113
+   },
+   "verts": 249,
+   "tris": 344,
+   "size": [
+    4.473,
+    4.666,
+    4.222
+   ],
+   "materials": [
+    "PalmTree_Trunk",
+    "PalmTree_Leaves"
+   ],
+   "mtl": "PalmTree_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "0656fd54c10de241b056f06836c88e55ba1dc07e"
+  },
+  {
+   "name": "PalmTree_4",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PalmTree_4.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PalmTree_4.obj"
+   },
+   "bytes": {
+    "blend": 587528,
+    "fbx": 29228,
+    "obj": 37722
+   },
+   "verts": 349,
+   "tris": 472,
+   "size": [
+    4.747,
+    3.65,
+    4.952
+   ],
+   "materials": [
+    "PalmTree_Trunk",
+    "PalmTree_Leaves"
+   ],
+   "mtl": "PalmTree_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a382e4e31d45899e2b8adcb4f433f3e6c28a43f9"
+  },
+  {
+   "name": "PalmTree_5",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PalmTree_5.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PalmTree_5.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PalmTree_5.obj"
+   },
+   "bytes": {
+    "blend": 568952,
+    "fbx": 22764,
+    "obj": 22126
+   },
+   "verts": 209,
+   "tris": 264,
+   "size": [
+    3.492,
+    1.796,
+    3.622
+   ],
+   "materials": [
+    "PalmTree_Trunk",
+    "PalmTree_Leaves"
+   ],
+   "mtl": "PalmTree_5.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "6210d9c63c189bbe06d384e1abb2faaafece628a"
+  },
+  {
+   "name": "Petals_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Petals_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Petals_1.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Petals_1.obj"
+   },
+   "bytes": {
+    "blend": 581600,
+    "fbx": 18332,
+    "obj": 10578
+   },
+   "verts": 105,
+   "tris": 90,
+   "size": [
+    0.638,
+    0.627,
+    0.67
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Petals_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "373b8e5dd123a43fda3a665347a97291d33f7f63"
+  },
+  {
+   "name": "Petals_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Petals_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Petals_2.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Petals_2.obj"
+   },
+   "bytes": {
+    "blend": 596168,
+    "fbx": 14908,
+    "obj": 1460
+   },
+   "verts": 14,
+   "tris": 12,
+   "size": [
+    0.661,
+    0.202,
+    0.574
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Petals_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "88c720f6fb52bf9c696b0f54733e68fc7981251e"
+  },
+  {
+   "name": "Petals_3",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Petals_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Petals_3.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Petals_3.obj"
+   },
+   "bytes": {
+    "blend": 689388,
+    "fbx": 14588,
+    "obj": 780
+   },
+   "verts": 7,
+   "tris": 6,
+   "size": [
+    0.471,
+    0.18,
+    0.383
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Petals_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "6bd497d0833e413dd86cf7ecb0f8c3f14083e655"
+  },
+  {
+   "name": "Petals_4",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Petals_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Petals_4.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Petals_4.obj"
+   },
+   "bytes": {
+    "blend": 689388,
+    "fbx": 14588,
+    "obj": 781
+   },
+   "verts": 7,
+   "tris": 6,
+   "size": [
+    0.415,
+    0.155,
+    0.342
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Petals_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "8e917c58f762476c860c1afce228384e33dff79d"
+  },
+  {
+   "name": "PineTree_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PineTree_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PineTree_1.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PineTree_1.obj"
+   },
+   "bytes": {
+    "blend": 751416,
+    "fbx": 80700,
+    "obj": 161124
+   },
+   "verts": 1347,
+   "tris": 2128,
+   "size": [
+    2.977,
+    4.502,
+    3.034
+   ],
+   "materials": [
+    "PineTree_Bark",
+    "PineTree_Leaves"
+   ],
+   "mtl": "PineTree_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "2787a6a825646fc42fa537eefff39f1d38c9a6e6"
+  },
+  {
+   "name": "PineTree_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PineTree_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PineTree_2.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PineTree_2.obj"
+   },
+   "bytes": {
+    "blend": 787188,
+    "fbx": 99852,
+    "obj": 213505
+   },
+   "verts": 1832,
+   "tris": 2716,
+   "size": [
+    3.277,
+    6.909,
+    2.979
+   ],
+   "materials": [
+    "PineTree_Bark",
+    "PineTree_Leaves"
+   ],
+   "mtl": "PineTree_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "5c5366bd6706e8672b7f6c0e77c063709a432c51"
+  },
+  {
+   "name": "PineTree_3",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PineTree_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PineTree_3.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PineTree_3.obj"
+   },
+   "bytes": {
+    "blend": 716980,
+    "fbx": 76748,
+    "obj": 148555
+   },
+   "verts": 1237,
+   "tris": 1998,
+   "size": [
+    1.763,
+    2.347,
+    1.749
+   ],
+   "materials": [
+    "PineTree_Bark",
+    "PineTree_Leaves"
+   ],
+   "mtl": "PineTree_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "462309c67f76aa551411cbd656ceee2994399cbe"
+  },
+  {
+   "name": "PineTree_4",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PineTree_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PineTree_4.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PineTree_4.obj"
+   },
+   "bytes": {
+    "blend": 782200,
+    "fbx": 98012,
+    "obj": 209447
+   },
+   "verts": 1766,
+   "tris": 2686,
+   "size": [
+    4.842,
+    4.485,
+    3.25
+   ],
+   "materials": [
+    "PineTree_Bark",
+    "PineTree_Leaves"
+   ],
+   "mtl": "PineTree_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "2161b68ba37e41310a24d8be8a44f1515b1bb372"
+  },
+  {
+   "name": "PineTree_5",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/PineTree_5.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/PineTree_5.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/PineTree_5.obj"
+   },
+   "bytes": {
+    "blend": 621252,
+    "fbx": 41356,
+    "obj": 73133
+   },
+   "verts": 682,
+   "tris": 838,
+   "size": [
+    3.308,
+    4.301,
+    3.286
+   ],
+   "materials": [
+    "PineTree_Bark",
+    "PineTree_Leaves"
+   ],
+   "mtl": "PineTree_5.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "3b248cdad9a21b7821ca1a455a78314018ef1906"
+  },
+  {
+   "name": "Plant_1",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Plant_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Plant_1.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Plant_1.obj"
+   },
+   "bytes": {
+    "blend": 629196,
+    "fbx": 27532,
+    "obj": 38489
+   },
+   "verts": 378,
+   "tris": 420,
+   "size": [
+    1.242,
+    0.686,
+    1.201
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Plant_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "7a691ac27d69f589f12379d7f318d968699a5a3f"
+  },
+  {
+   "name": "Plant_2",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Plant_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Plant_2.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Plant_2.obj"
+   },
+   "bytes": {
+    "blend": 606232,
+    "fbx": 19052,
+    "obj": 14350
+   },
+   "verts": 144,
+   "tris": 160,
+   "size": [
+    1.396,
+    0.552,
+    1.466
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Plant_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "1913814b00733136ef0182d8eceb72cc1bd7d2b1"
+  },
+  {
+   "name": "Plant_Flowers",
+   "pack": "quat-plataforma",
+   "family": "arboles-vegetacion",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Plant_Flowers.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Plant_Flowers.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Plant_Flowers.obj"
+   },
+   "bytes": {
+    "blend": 626188,
+    "fbx": 24220,
+    "obj": 27785
+   },
+   "verts": 259,
+   "tris": 330,
+   "size": [
+    1.485,
+    1.181,
+    1.533
+   ],
+   "materials": [
+    "Flowers"
+   ],
+   "mtl": "Plant_Flowers.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "565d7a86b9acbea352d39674110d55eb9bf5d1a8"
+  },
+  {
+   "name": "Rock_1",
+   "pack": "quat-plataforma",
+   "family": "terrenos-rocas",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Rock_1.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Rock_1.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Rock_1.obj"
+   },
+   "bytes": {
+    "blend": 526504,
+    "fbx": 22428,
+    "obj": 16279
+   },
+   "verts": 116,
+   "tris": 228,
+   "size": [
+    0.711,
+    1.082,
+    0.887
+   ],
+   "materials": [
+    "Rock"
+   ],
+   "mtl": "Rock_1.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "711d60369048a307cb28862a1321e6adf6f60871"
+  },
+  {
+   "name": "Rock_2",
+   "pack": "quat-plataforma",
+   "family": "terrenos-rocas",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Rock_2.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Rock_2.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Rock_2.obj"
+   },
+   "bytes": {
+    "blend": 526856,
+    "fbx": 21708,
+    "obj": 15108
+   },
+   "verts": 103,
+   "tris": 202,
+   "size": [
+    1.054,
+    1.125,
+    1.076
+   ],
+   "materials": [
+    "Rock"
+   ],
+   "mtl": "Rock_2.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "e58a01ef12532bea67c095346303499c5b7ba1e0"
+  },
+  {
+   "name": "Rock_3",
+   "pack": "quat-plataforma",
+   "family": "terrenos-rocas",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Rock_3.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Rock_3.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Rock_3.obj"
+   },
+   "bytes": {
+    "blend": 569112,
+    "fbx": 39932,
+    "obj": 52178
+   },
+   "verts": 364,
+   "tris": 712,
+   "size": [
+    0.844,
+    1.313,
+    0.897
+   ],
+   "materials": [
+    "Rock"
+   ],
+   "mtl": "Rock_3.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "155c194db3da3e15dfd09cde91011b32ea054116"
+  },
+  {
+   "name": "Rock_4",
+   "pack": "quat-plataforma",
+   "family": "terrenos-rocas",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Rock_4.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Rock_4.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Rock_4.obj"
+   },
+   "bytes": {
+    "blend": 547880,
+    "fbx": 30940,
+    "obj": 33798
+   },
+   "verts": 232,
+   "tris": 456,
+   "size": [
+    0.859,
+    2.153,
+    0.812
+   ],
+   "materials": [
+    "Rock"
+   ],
+   "mtl": "Rock_4.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "1500481752bc7b32bccdbb4865264c31f8719cf2"
+  },
+  {
+   "name": "Rock_5",
+   "pack": "quat-plataforma",
+   "family": "terrenos-rocas",
+   "formats": {
+    "blend": "drive-download-20261110T194800Z-1-001/Blends/Rock_5.blend",
+    "fbx": "drive-download-20261110T194800Z-1-001/FBX/Rock_5.fbx",
+    "obj": "drive-download-20261110T194800Z-1-001/OBJ/Rock_5.obj"
+   },
+   "bytes": {
+    "blend": 563408,
+    "fbx": 37820,
+    "obj": 48472
+   },
+   "verts": 322,
+   "tris": 632,
+   "size": [
+    1.291,
+    1.695,
+    1.317
+   ],
+   "materials": [
+    "Rock"
+   ],
+   "mtl": "Rock_5.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "e2c82e03bd9da576c4f7b8050fd1b7cb1587da8e"
+  },
+  {
+   "name": "Cow",
+   "pack": "quat-animales",
+   "family": "animales",
+   "formats": {
+    "blend": "drive-download-20261110T194858Z-1-001/Blends/Cow.blend",
+    "fbx": "drive-download-20261110T194858Z-1-001/FBX/Cow.fbx",
+    "obj": "drive-download-20261110T194858Z-1-001/OBJ/Cow.obj"
+   },
+   "bytes": {
+    "blend": 970088,
+    "fbx": 1044076,
+    "obj": 37645
+   },
+   "verts": 400,
+   "tris": 796,
+   "size": [
+    2.267,
+    5.148,
+    9.173
+   ],
+   "materials": [
+    "White",
+    "Black",
+    "Pink"
+   ],
+   "mtl": "Cow.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "5943bfb6a210f255f4129eed5bd0e9cc55df0492"
+  },
+  {
+   "name": "Horse",
+   "pack": "quat-animales",
+   "family": "animales",
+   "formats": {
+    "blend": "drive-download-20261110T194858Z-1-001/Blends/Horse.blend",
+    "fbx": "drive-download-20261110T194858Z-1-001/FBX/Horse.fbx",
+    "obj": "drive-download-20261110T194858Z-1-001/OBJ/Horse.obj"
+   },
+   "bytes": {
+    "blend": 975328,
+    "fbx": 1023564,
+    "obj": 32780
+   },
+   "verts": 347,
+   "tris": 690,
+   "size": [
+    2.561,
+    6.906,
+    9.241
+   ],
+   "materials": [
+    "Material.003",
+    "Material.006"
+   ],
+   "mtl": "Horse.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "85238046839ed62cc4e66cb90b15a866f37f4456"
+  },
+  {
+   "name": "Llama",
+   "pack": "quat-animales",
+   "family": "animales",
+   "formats": {
+    "blend": "drive-download-20261110T194858Z-1-001/Blends/Llama.blend",
+    "fbx": "drive-download-20261110T194858Z-1-001/FBX/Llama.fbx",
+    "obj": "drive-download-20261110T194858Z-1-001/OBJ/Llama.obj"
+   },
+   "bytes": {
+    "blend": 928212,
+    "fbx": 361020,
+    "obj": 31139
+   },
+   "verts": 332,
+   "tris": 662,
+   "size": [
+    1.568,
+    5.858,
+    4.907
+   ],
+   "materials": [
+    "Brown",
+    "White",
+    "Grey"
+   ],
+   "mtl": "Llama.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "a8b6e324105b802a7649330784e9ab6a48a84bc0"
+  },
+  {
+   "name": "Pig",
+   "pack": "quat-animales",
+   "family": "animales",
+   "formats": {
+    "blend": "drive-download-20261110T194858Z-1-001/Blends/Pig.blend",
+    "fbx": "drive-download-20261110T194858Z-1-001/FBX/Pig.fbx",
+    "obj": "drive-download-20261110T194858Z-1-001/OBJ/Pig.obj"
+   },
+   "bytes": {
+    "blend": 904380,
+    "fbx": 360156,
+    "obj": 26397
+   },
+   "verts": 283,
+   "tris": 562,
+   "size": [
+    3.304,
+    4.575,
+    9.77
+   ],
+   "materials": [
+    "Material.003",
+    "Material"
+   ],
+   "mtl": "Pig.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "3d00cbbc7af363d1dd44522a3dd7ab708f9576cc"
+  },
+  {
+   "name": "Pug",
+   "pack": "quat-animales",
+   "family": "animales",
+   "formats": {
+    "blend": "drive-download-20261110T194858Z-1-001/Blends/Pug.blend",
+    "fbx": "drive-download-20261110T194858Z-1-001/FBX/Pug.fbx",
+    "obj": "drive-download-20261110T194858Z-1-001/OBJ/Pug.obj"
+   },
+   "bytes": {
+    "blend": 859268,
+    "fbx": 361020,
+    "obj": 29298
+   },
+   "verts": 324,
+   "tris": 644,
+   "size": [
+    1.447,
+    2.653,
+    3.5
+   ],
+   "materials": [
+    "Beige",
+    "Brown"
+   ],
+   "mtl": "Pug.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "93908bd8ea621cd6f3e846eb2e024ec57e07dc7d"
+  },
+  {
+   "name": "Sheep",
+   "pack": "quat-animales",
+   "family": "animales",
+   "formats": {
+    "blend": "drive-download-20261110T194858Z-1-001/Blends/Sheep.blend",
+    "fbx": "drive-download-20261110T194858Z-1-001/FBX/Sheep.fbx",
+    "obj": "drive-download-20261110T194858Z-1-001/OBJ/Sheep.obj"
+   },
+   "bytes": {
+    "blend": 923936,
+    "fbx": 356796,
+    "obj": 28778
+   },
+   "verts": 307,
+   "tris": 612,
+   "size": [
+    2.225,
+    4.365,
+    5.919
+   ],
+   "materials": [
+    "White",
+    "Black"
+   ],
+   "mtl": "Sheep.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "75b48bb932456c93775b1a6c753ae133dcee77d0"
+  },
+  {
+   "name": "Zebra",
+   "pack": "quat-animales",
+   "family": "animales",
+   "formats": {
+    "blend": "drive-download-20261110T194858Z-1-001/Blends/Zebra.blend",
+    "fbx": "drive-download-20261110T194858Z-1-001/FBX/Zebra.fbx",
+    "obj": "drive-download-20261110T194858Z-1-001/OBJ/Zebra.obj"
+   },
+   "bytes": {
+    "blend": 981412,
+    "fbx": 1042300,
+    "obj": 63252
+   },
+   "verts": 679,
+   "tris": 1354,
+   "size": [
+    2.559,
+    7.074,
+    9.234
+   ],
+   "materials": [
+    "White",
+    "Black"
+   ],
+   "mtl": "Zebra.mtl",
+   "mtlFound": true,
+   "textures": [],
+   "missingTextures": [],
+   "hash": "062c77f72b0f9512d72f3324e4c13e2490f23d64"
+  }
+ ],
+ "dupExact": [],
+ "dupName": [
+  {
+   "name": "Flower_1",
+   "packs": [
+    "quat-cultivos",
+    "quat-plataforma"
+   ]
+  },
+  {
+   "name": "Flower_2",
+   "packs": [
+    "quat-cultivos",
+    "quat-plataforma"
+   ]
+  },
+  {
+   "name": "PalmTree_1",
+   "packs": [
+    "quat-cultivos",
+    "quat-plataforma"
+   ]
+  },
+  {
+   "name": "PalmTree_2",
+   "packs": [
+    "quat-cultivos",
+    "quat-plataforma"
+   ]
+  },
+  {
+   "name": "PalmTree_3",
+   "packs": [
+    "quat-cultivos",
+    "quat-plataforma"
+   ]
+  },
+  {
+   "name": "PalmTree_4",
+   "packs": [
+    "quat-cultivos",
+    "quat-plataforma"
+   ]
+  }
+ ],
+ "extra": [
+  {
+   "file": "Ground037_2K-JPG/Ground037.png",
+   "bytes": 513329
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG.blend",
+   "bytes": 1109220
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG.mtlx",
+   "bytes": 2272
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG.tres",
+   "bytes": 1020
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG.usdc",
+   "bytes": 2982
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG_AmbientOcclusion.jpg",
+   "bytes": 2102448
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG_Color.jpg",
+   "bytes": 8674228
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG_Displacement.jpg",
+   "bytes": 1721182
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG_NormalDX.jpg",
+   "bytes": 10344770
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG_NormalGL.jpg",
+   "bytes": 10341826
+  },
+  {
+   "file": "Ground037_2K-JPG/Ground037_2K-JPG_Roughness.jpg",
+   "bytes": 3058522
+  },
+  {
+   "file": "model (2).glb",
+   "bytes": 390640
+  },
+  {
+   "file": "model (3).glb",
+   "bytes": 789488
+  },
+  {
+   "file": "model (4).glb",
+   "bytes": 91048
+  },
+  {
+   "file": "model (5).glb",
+   "bytes": 1274496
+  },
+  {
+   "file": "model (6).glb",
+   "bytes": 1909532
+  }
+ ],
+ "totalFiles": 879
+}

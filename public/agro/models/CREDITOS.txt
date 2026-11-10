@@ -1,0 +1,35 @@
+Modelos 3D de la biblioteca de modo. Agro — créditos y licencia
+
+Todos los modelos de esta carpeta son copias convertidas (Blender 4.4 → GLB) y, en algunos casos, simplificadas u opcionalmente recoloreadas, de obras de Quaternius
+publicadas bajo CC0 1.0 Universal (dedicación al dominio público): https://creativecommons.org/publicdomain/zero/1.0/
+La licencia no exige atribución; se acredita de todos modos: https://www.patreon.com/quaternius
+
+Paquetes de origen:
+- Quaternius · cultivos (LowPoly Models)
+- Quaternius · estructuras de granja (LowPoly Models)
+- Quaternius · Ultimate Platformer Pack
+- Quaternius · Farm Animals Pack
+
+Modelos incluidos:
+- estructura-granero.glb ← Quaternius · LowPoly Models (estructuras de granja) · Barn.blend
+- estructura-molino.glb ← Quaternius · LowPoly Models (estructuras de granja) · Windmill.blend
+- estructura-cerca.glb ← Quaternius · LowPoly Models (estructuras de granja) · Fence.blend
+- veg-palma-a.glb ← Quaternius · LowPoly Models (cultivos) · PalmTree_3.blend (simplificado a 75 % de triángulos)
+- veg-palma-b.glb ← Quaternius · LowPoly Models (cultivos) · PalmTree_4.blend (simplificado a 55 % de triángulos)
+- veg-citrico-a.glb ← Quaternius · LowPoly Models (cultivos) · Orange_3.blend
+- veg-citrico-b.glb ← Quaternius · LowPoly Models (cultivos) · Orange_4.blend (simplificado a 60 % de triángulos)
+- veg-cactus-a.glb ← Quaternius · LowPoly Models (cultivos) · Cactus_3.blend
+- veg-cactus-b.glb ← Quaternius · LowPoly Models (cultivos) · Cactus_4.blend (simplificado a 50 % de triángulos)
+- veg-arbusto-a.glb ← Quaternius · Ultimate Platformer Pack · Bush.blend (paleta de color propia)
+- veg-arbusto-b.glb ← Quaternius · Ultimate Platformer Pack · Bush_Large.blend (paleta de color propia)
+- veg-pino-a.glb ← Quaternius · Ultimate Platformer Pack · PineTree_5.blend (paleta de color propia)
+- veg-pino-b.glb ← Quaternius · Ultimate Platformer Pack · PineTree_3.blend (simplificado a 50 % de triángulos) (paleta de color propia)
+- roca-a.glb ← Quaternius · Ultimate Platformer Pack · Rock_1.blend (paleta de color propia)
+- roca-b.glb ← Quaternius · Ultimate Platformer Pack · Rock_2.blend (paleta de color propia)
+- roca-c.glb ← Quaternius · Ultimate Platformer Pack · Rock_5.blend (paleta de color propia)
+- cultivo-tomate-1.glb ← Quaternius · LowPoly Models (cultivos) · Tomato_1.blend
+- cultivo-tomate-2.glb ← Quaternius · LowPoly Models (cultivos) · Tomato_2.blend
+- cultivo-tomate-3.glb ← Quaternius · LowPoly Models (cultivos) · Tomato_3.blend (simplificado a 45 % de triángulos)
+- cultivo-tomate-4.glb ← Quaternius · LowPoly Models (cultivos) · Tomato_4.blend (simplificado a 45 % de triángulos)
+
+Procedencia detallada y decisiones: docs/agro/biblioteca-3d/

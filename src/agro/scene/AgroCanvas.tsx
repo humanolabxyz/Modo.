@@ -1,7 +1,8 @@
 import {useCallback, useEffect, useMemo, useRef, useState, type MutableRefObject} from 'react';
 import {Canvas, useFrame, useThree} from '@react-three/fiber';
-import {OrbitControls, Sky} from '@react-three/drei';
-import {BufferAttribute, BufferGeometry, Color, Group, LineBasicMaterial, LineLoop, MOUSE, TOUCH, Vector3} from 'three';
+import {Line, OrbitControls} from '@react-three/drei';
+import {SkyDome} from './SkyDome.tsx';
+import {BufferAttribute, BufferGeometry, Color, Group, LineBasicMaterial, LineLoop, Mesh, MOUSE, PerspectiveCamera, Raycaster, TOUCH, Vector3, type Intersection} from 'three';
 import {itemById} from '../catalog/items.ts';
 import type {Entity, PortRef, PropValue} from '../model/types.ts';
 import {inBounds, sampleHeight} from '../terrain/heightfield.ts';
@@ -12,9 +13,16 @@ import {EntityLayer, type Overlay} from './EntityLayer.tsx';
 import {Clouds, Vegetation} from './Vegetation.tsx';
 import {Landscape} from './Landscape.tsx';
 import {TerrainMesh} from './TerrainMesh.tsx';
+import {terrainReviewScene, TerrainReviewLayer, type ReviewFocus, type ReviewTarget} from './TerrainReview.tsx';
+import type {ImpactReport} from '../world/impact.ts';
+import {ExteriorTerrain} from './ExteriorTerrain.tsx';
+import {sceneryHeight} from '../terrain/exterior.ts';
+import {cameraDistances, playablePoint} from '../terrain/navigation.ts';
+import {TERRITORIES} from '../terrain/presets.ts';
+import {groundTexture} from './groundTexture.ts';
 
 export type CameraMode = 'orbit' | 'strategic' | 'walk';
-export type Tool = 'select' | 'measure' | 'connect' | 'raise' | 'lower' | 'level' | 'place';
+export type Tool = 'select' | 'measure' | 'connect' | 'raise' | 'lower' | 'level' | 'place' | 'edit';
 export type Point = {x: number; y: number; z: number};
 export type CameraReport = {x: number; z: number; yaw: number};
 export type Metrics = {triangles: number; calls: number};
@@ -24,6 +32,10 @@ export type AgroCanvasProps = {
   session: WorldSession; mode: CameraMode; tool: Tool; placing: string | null; placingParams: Record<string, PropValue>; yaw: number; gridSnap: boolean; showPorts: boolean; labels?: boolean;
   radius: number; strength: number; selectedPoint: Point | null; selectedId: string | null; measurePoints: Point[];
   goto: {x: number; z: number; nonce: number} | null;
+  onEditPoint?(p: Point):void;
+  editorPoints?: Point[]; editorClosed?: boolean;
+  review: ImpactReport | null;
+  reviewFocus: ReviewFocus | null;
   connectFrom: PortRef | null; onPortClick(ref: PortRef | null): void; onPortHover(ref: PortRef | null): void;
   onHover(p: Point | null): void; onSelectPoint(p: Point | null): void; onSelectEntity(id: string | null): void; onMeasure(p: Point): void; onPlaced(e: Entity): void; onGhost(info: GhostInfo): void;
   onCamera(c: CameraReport): void; onMetrics(m: Metrics): void; onNotice(message: string): void;
@@ -37,15 +49,18 @@ type WalkState = {x: number; z: number; yaw: number; pitch: number; keys: Set<st
 type Saved = {position: Vector3; target: Vector3};
 
 /** Cámaras: órbita (construir e inspeccionar), estratégica (vista territorial) y caminata (primera persona). Cada modo recuerda su posición. */
-function CameraRig({session, mode, tool, goto, walk, onCamera, onMetrics}: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 'goto' | 'onCamera' | 'onMetrics'> & {walk: MutableRefObject<WalkState>}) {
-  const {camera, gl, controls: ctl, invalidate} = useThree();
+function CameraRig({session, mode, tool, goto, walk, onCamera, onMetrics, reviewing}: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 'goto' | 'onCamera' | 'onMetrics'> & {walk: MutableRefObject<WalkState>; reviewing: boolean}) {
+  const {camera, gl, scene, controls: ctl, invalidate, size} = useThree();
   const controls = ctl as unknown as {target: Vector3; update(): void; enabled: boolean} | null;
   const saved = useRef<Partial<Record<CameraMode, Saved>>>({});
   const prevMode = useRef<CameraMode>('orbit');
   const accum = useRef({report: 0});
   const hf = session.terrain.hf;
   const brush = isBrush(tool);
+  const distances = cameraDistances(hf, size.width / Math.max(1, size.height));
   const started = useRef(false);
+  const floorProbe = useMemo(() => new Raycaster(new Vector3(), new Vector3(0, -1, 0)), []);
+  const floorHits = useRef<Intersection[]>([]);
 
   useEffect(() => { // encuadre inicial: la finca (meseta central) desde un costado
     if (!controls || started.current) return;
@@ -62,24 +77,27 @@ function CameraRig({session, mode, tool, goto, walk, onCamera, onMetrics}: Pick<
       const here = prev === 'walk' ? new Vector3(walk.current.x, sampleHeight(hf, walk.current.x, walk.current.z), walk.current.z) : controls.target.clone();
       if (mode === 'walk') {
         const dir = camera.getWorldDirection(new Vector3());
-        walk.current.x = Math.max(hf.originX + 5, Math.min(hf.originX + hf.sizeX - 5, here.x)); walk.current.z = Math.max(hf.originZ + 5, Math.min(hf.originZ + hf.sizeZ - 5, here.z));
+        [walk.current.x, walk.current.z] = playablePoint(hf, here.x, here.z, 2);
         walk.current.yaw = Math.atan2(-dir.x, -dir.z); walk.current.pitch = 0;
       } else {
         const s = saved.current[mode];
         if (s && prev !== 'walk') { camera.position.copy(s.position); controls.target.copy(s.target); }
-        else if (mode === 'strategic') { controls.target.set(here.x, sampleHeight(hf, here.x, here.z), here.z); camera.position.set(here.x, 950, here.z + 420); }
+        else if (mode === 'strategic') {
+          const overview = cameraDistances(hf, size.width / Math.max(1, size.height)).overview, g = sampleHeight(hf, 0, 0);
+          controls.target.set(0, g, 0); camera.position.set(0, g + overview * 0.96, overview * 0.28);
+        }
         else { const g = sampleHeight(hf, here.x, here.z); controls.target.set(here.x, g, here.z); camera.position.set(here.x + 26, g + 26, here.z + 52); }
         controls.update();
       }
       prevMode.current = mode;
     }
     invalidate();
-  }, [mode, controls, camera, hf, invalidate, walk]);
+  }, [mode, controls, camera, hf, invalidate, walk, size.width, size.height]);
 
   useEffect(() => {
     if (!goto || !controls) return;
     const y = sampleHeight(hf, goto.x, goto.z);
-    if (mode === 'walk') { walk.current.x = goto.x; walk.current.z = goto.z; }
+    if (mode === 'walk') { [walk.current.x, walk.current.z] = playablePoint(hf, goto.x, goto.z, 2); }
     else { const d = new Vector3(goto.x - controls.target.x, y - controls.target.y, goto.z - controls.target.z); camera.position.add(d); controls.target.add(d); controls.update(); }
     invalidate();
   }, [goto?.nonce]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -106,13 +124,40 @@ function CameraRig({session, mode, tool, goto, walk, onCamera, onMetrics}: Pick<
       const fwd = (k.has('w') || k.has('arrowup') ? 1 : 0) - (k.has('s') || k.has('arrowdown') ? 1 : 0), side = (k.has('d') || k.has('arrowright') ? 1 : 0) - (k.has('a') || k.has('arrowleft') ? 1 : 0);
       if (fwd || side) {
         const sin = Math.sin(w.yaw), cos = Math.cos(w.yaw), nx = w.x + (-sin * fwd + cos * side) * speed, nz = w.z + (-cos * fwd - sin * side) * speed;
-        if (inBounds(hf, nx, nz)) { w.x = nx; w.z = nz; }
+        [w.x, w.z] = playablePoint(hf, nx, nz, 2);
       }
       camera.rotation.order = 'YXZ'; camera.rotation.set(w.pitch, w.yaw, 0);
       camera.position.set(w.x, sampleHeight(hf, w.x, w.z) + EYE, w.z);
       if (k.size) state.invalidate();
-    } else if (camera.position.y < sampleHeight(hf, camera.position.x, camera.position.z) + 2) {
-      camera.position.y = sampleHeight(hf, camera.position.x, camera.position.z) + 2; // la cámara no atraviesa el suelo
+    } else {
+      if (controls && !reviewing) {
+        const t = controls.target, [x, z] = playablePoint(hf, t.x, t.z);
+        const dx = x - t.x, dz = z - t.z;
+        const ground = sampleHeight(hf, x, z), lift = Math.min(90, Math.max(16, Math.min(hf.sizeX, hf.sizeZ) * 0.09));
+        const dy = Math.max(ground - 20, Math.min(ground + lift, t.y)) - t.y;
+        if (Math.abs(dx) + Math.abs(dy) + Math.abs(dz) > 1e-4) {
+          camera.position.x += dx; camera.position.y += dy; camera.position.z += dz;
+          t.set(x, t.y + dy, z); controls.update();
+        }
+      }
+      let floor = sceneryHeight(hf, camera.position.x, camera.position.z) + 2;
+      if (!inBounds(hf, camera.position.x, camera.position.z)) {
+        // A distancia la malla interpola entre anillos: puede quedar por encima
+        // del generador analítico. La cámara debe respetar la superficie dibujada.
+        // Se evita modificar el raycast vacío que excluye el exterior del picking.
+        const exterior = scene.getObjectByName('cinturón y horizonte escénicos');
+        if (exterior instanceof Mesh) {
+          floorProbe.ray.origin.set(camera.position.x, Math.max(10000, floor + 1000), camera.position.z);
+          const hits = floorHits.current; hits.length = 0;
+          Mesh.prototype.raycast.call(exterior, floorProbe, hits);
+          for (const hit of hits) floor = Math.max(floor, hit.point.y + 2);
+        }
+      }
+      if (camera.position.y < floor) {
+        camera.position.y = floor;
+        if (controls) controls.update();
+        invalidate();
+      }
     }
     const a = accum.current; a.report += dt;
     if (a.report > 0.12) {
@@ -128,7 +173,7 @@ function CameraRig({session, mode, tool, goto, walk, onCamera, onMetrics}: Pick<
 
   const strategic = mode === 'strategic';
   return <OrbitControls makeDefault enabled={mode !== 'walk'} enableDamping={false}
-    minDistance={strategic ? 250 : 6} maxDistance={strategic ? 1900 : 750} maxPolarAngle={strategic ? 1.1 : 1.5} minPolarAngle={strategic ? 0.02 : 0.05}
+    minDistance={strategic && !reviewing ? Math.min(240, distances.overview * 0.32) : 6} maxDistance={strategic ? distances.overview : distances.orbit} maxPolarAngle={strategic ? 0.88 : 1.47} minPolarAngle={strategic ? 0.02 : 0.05}
     mouseButtons={brush ? {LEFT: NONE, MIDDLE: MOUSE.PAN, RIGHT: MOUSE.ROTATE} : {LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN}}
     touches={brush ? {ONE: NONE_TOUCH, TWO: TOUCH.DOLLY_ROTATE} : {ONE: TOUCH.ROTATE, TWO: TOUCH.DOLLY_PAN}} />;
 }
@@ -136,7 +181,7 @@ function CameraRig({session, mode, tool, goto, walk, onCamera, onMetrics}: Pick<
 const snap = (v: number, on: boolean): number => (on ? Math.round(v * 2) / 2 : v);
 
 /** Puntero: pincel, selección de piezas y del suelo, arrastrar para mover, fantasma de colocación y medición. Todo con el picking analítico. */
-function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 'placing' | 'placingParams' | 'yaw' | 'gridSnap' | 'radius' | 'strength' | 'onHover' | 'onSelectPoint' | 'onSelectEntity' | 'onMeasure' | 'onPlaced' | 'onGhost' | 'onNotice' | 'onPortClick' | 'onPortHover'> & {ring: LineLoop; setOverlay: (f: (o: Overlay) => Overlay) => void}) {
+function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 'placing' | 'placingParams' | 'yaw' | 'gridSnap' | 'radius' | 'strength' | 'onHover' | 'onSelectPoint' | 'onSelectEntity' | 'onMeasure' | 'onPlaced' | 'onGhost' | 'onNotice' | 'onPortClick' | 'onPortHover' | 'onEditPoint'> & {ring: LineLoop; setOverlay: (f: (o: Overlay) => Overlay) => void}) {
   const {gl, camera, raycaster, invalidate, controls} = useThree();
   const {session, ring, setOverlay} = props, hf = session.terrain.hf;
   const live = useRef(props); live.current = props;
@@ -176,7 +221,7 @@ function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 
       const rr = ray(e), hit = raycastHeightfield(hf, rr.origin, rr.dir), ent = pickEntity(session.entities, rr);
       return {point: hit ? {x: hit.x, y: hit.y, z: hit.z} : null, distance: hit ? hit.distance : Infinity, entity: ent && ent.distance <= (hit ? hit.distance : Infinity) + 0.05 ? ent : null};
     };
-    let painting: {last: Point; target: number; kind: 'raise' | 'lower' | 'level'} | null = null;
+    let painting: {pointerId: number; last: Point; target: number; kind: 'raise' | 'lower' | 'level'} | null = null;
     let down: {x: number; y: number; t: number; entityId: string | null} | null = null;
     let drag: {id: string; yaw: number; moved: boolean; last: {x: number; z: number} | null} | null = null;
     const ctl = controls as unknown as {enabled: boolean} | null;
@@ -185,17 +230,17 @@ function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 
       if (!painting) return;
       const {radius, strength, onNotice} = live.current;
       const res = session.stamp(painting.kind, p.x, p.z, radius, painting.kind === 'level' ? painting.target : strength);
-      if (!res.ok) { onNotice(res.error); painting = null; session.endStroke(); }
+      if (!res.ok) onNotice(res.error);
     };
 
     const onDown = (e: PointerEvent) => {
       const {tool, mode} = live.current;
-      if (mode === 'walk' || (e.button !== 0 && e.pointerType === 'mouse')) return;
+      if (!e.isPrimary || session.terrain.painting || mode === 'walk' || (e.button !== 0 && e.pointerType === 'mouse')) return;
       down = {x: e.clientX, y: e.clientY, t: performance.now(), entityId: null};
       const c = cast(e);
       if (isBrush(tool)) {
         if (!c.point) return;
-        session.beginStroke(); painting = {last: c.point, target: c.point.y, kind: tool};
+        session.beginStroke(); painting = {pointerId: e.pointerId, last: c.point, target: c.point.y, kind: tool};
         el.setPointerCapture(e.pointerId); stamp(c.point); place(c.point); return;
       }
       if (tool === 'select' && c.entity) {
@@ -207,6 +252,8 @@ function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 
 
     const onMove = (e: PointerEvent) => {
       const {tool, mode} = live.current;
+      if (!e.isPrimary || session.terrainImpact) return;
+      if (painting && (!session.terrain.painting || tool !== painting.kind || mode === 'walk')) cancel(e);
       if (mode === 'walk') return;
       const c = cast(e); lastPoint.current = c.point; live.current.onHover(c.point); place(c.point);
       if (painting && c.point) { const dx = c.point.x - painting.last.x, dz = c.point.z - painting.last.z; if (Math.sqrt(dx * dx + dz * dz) >= live.current.radius * 0.4) { painting.last = c.point; stamp(c.point); } return; }
@@ -223,8 +270,14 @@ function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 
     };
 
     const onUp = (e: PointerEvent) => {
+      if (!e.isPrimary) return;
       const {tool, mode} = live.current, d = down; down = null;
-      if (painting) { painting = null; const warnings = session.endStroke(); if (warnings.length) live.current.onNotice(warnings[0]); return; }
+      if (painting?.pointerId === e.pointerId) {
+        const valid = tool === painting.kind && mode !== 'walk';
+        painting = null;
+        if (valid) session.endStroke(); else session.abortStroke();
+        return;
+      }
       if (ctl && mode !== 'walk') ctl.enabled = true;
       if (drag) {
         const g = drag; drag = null; setOverlay(o => ({...o, drag: null}));
@@ -234,6 +287,7 @@ function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 
       if (!d || mode === 'walk' || Math.hypot(e.clientX - d.x, e.clientY - d.y) >= 5 || performance.now() - d.t >= 600) return;
       if (d.entityId) return; // ya se seleccionó al pulsar
       const c = cast(e);
+      if (tool === 'edit') { if(c.point)live.current.onEditPoint?.(c.point); return; }
       if (tool === 'select') {
         const parcel = c.point ? parcelAt(session.entities, c.point.x, c.point.z) : null;
         if (parcel) live.current.onSelectEntity(parcel.id); else { live.current.onSelectEntity(null); live.current.onSelectPoint(c.point); }
@@ -246,11 +300,18 @@ function Interaction(props: Pick<AgroCanvasProps, 'session' | 'mode' | 'tool' | 
         updateGhost(c.point);
       }
     };
+    const cancel = (e: PointerEvent) => {
+      if (!e.isPrimary) return;
+      if (painting?.pointerId === e.pointerId) { painting = null; session.abortStroke(); }
+      down = null;
+      if (drag) { drag = null; setOverlay(o => ({...o, drag: null})); }
+      if (ctl) ctl.enabled = live.current.mode !== 'walk';
+    };
     const onLeave = () => { lastPoint.current = null; live.current.onHover(null); place(null); setOverlay(o => ({...o, ghost: null, hoverId: null})); if (ghostKey.current) { ghostKey.current = ''; live.current.onGhost(null); } };
-    el.addEventListener('pointerdown', onDown, true); el.addEventListener('pointermove', onMove); el.addEventListener('pointerup', onUp); el.addEventListener('pointercancel', onUp); el.addEventListener('pointerleave', onLeave);
+    el.addEventListener('pointerdown', onDown, true); el.addEventListener('pointermove', onMove); el.addEventListener('pointerup', onUp); el.addEventListener('pointercancel', cancel); el.addEventListener('lostpointercapture', cancel); el.addEventListener('pointerleave', onLeave);
     return () => {
-      el.removeEventListener('pointerdown', onDown, true); el.removeEventListener('pointermove', onMove); el.removeEventListener('pointerup', onUp); el.removeEventListener('pointercancel', onUp); el.removeEventListener('pointerleave', onLeave);
-      if (painting) session.endStroke(); if (ctl) ctl.enabled = live.current.mode !== 'walk';
+      el.removeEventListener('pointerdown', onDown, true); el.removeEventListener('pointermove', onMove); el.removeEventListener('pointerup', onUp); el.removeEventListener('pointercancel', cancel); el.removeEventListener('lostpointercapture', cancel); el.removeEventListener('pointerleave', onLeave);
+      if (painting) session.abortStroke(); if (ctl) ctl.enabled = live.current.mode !== 'walk';
     };
   }, [gl, camera, raycaster, hf, session, controls]); // eslint-disable-line react-hooks/exhaustive-deps
   return null;
@@ -272,8 +333,48 @@ function Pin({session, point}: {session: WorldSession; point: Point | null}) {
   </group>;
 }
 
+/** La revisión encuadra el punto en la zona que deja libre el diálogo y devuelve la cámara al cerrar. */
+function ReviewCamera({target, onCamera}: {target?: ReviewTarget; onCamera(c: CameraReport): void}) {
+  const {camera, controls, size, invalidate} = useThree();
+  const orbit = controls as unknown as {target: Vector3; update(): void} | null;
+  const mobile = size.width < 760;
+  const reportPosition = useCallback(() => {
+    const dir = camera.getWorldDirection(new Vector3());
+    onCamera({x: camera.position.x, z: camera.position.z, yaw: Math.atan2(dir.x, dir.z)});
+  }, [camera, onCamera]);
+  useEffect(() => {
+    if (!(camera instanceof PerspectiveCamera)) return;
+    const sheetHeight = Math.min(innerHeight * 0.68, innerHeight - 64);
+    const sideWidth = Math.min(450, size.width * 0.46);
+    camera.setViewOffset(size.width, size.height, mobile ? 0 : sideWidth / 2 + 6, mobile ? sheetHeight / 2 + 3 : 0, size.width, size.height);
+    invalidate();
+    return () => { camera.clearViewOffset(); invalidate(); };
+  }, [camera, size.width, size.height, mobile, invalidate]);
+  useEffect(() => {
+    if (!orbit) return;
+    const originalPosition = camera.position.clone(), originalTarget = orbit.target.clone();
+    return () => {
+      camera.position.copy(originalPosition); orbit.target.copy(originalTarget); orbit.update(); reportPosition(); invalidate();
+    };
+  }, [camera, orbit, invalidate, reportPosition]);
+  useEffect(() => {
+    if (!target || !orbit) return;
+    const direction = camera.position.clone().sub(orbit.target).normalize();
+    orbit.target.set(...target.point);
+    camera.position.copy(orbit.target).addScaledVector(direction, target.distance * (mobile ? 1.4 : 1));
+    orbit.update(); reportPosition(); invalidate();
+  }, [camera, orbit, target, mobile, invalidate, reportPosition]);
+  return null;
+}
+
 function Scene(props: AgroCanvasProps) {
   const {session, mode, tool} = props;
+  const atmosphere = TERRITORIES[session.terrain.presetId].landscape;
+  const grain = useMemo(groundTexture, []);
+  useEffect(() => () => grain.dispose(), [grain]);
+  const review = useMemo(() => props.review && terrainReviewScene(session, props.review), [session, props.review]);
+  const focus = props.reviewFocus;
+  const target = focus && (focus.kind === 'entity' ? review?.installations : review?.links)?.find(row => row.id === focus.id)?.target;
   const walk = useRef<WalkState>({x: 0, z: 0, yaw: 0, pitch: 0, keys: new Set()});
   const [overlay, setOverlayState] = useState<Overlay>({});
   const setOverlay = useCallback((f: (o: Overlay) => Overlay) => setOverlayState(f), []);
@@ -284,26 +385,32 @@ function Scene(props: AgroCanvasProps) {
   }, []);
   const sun = useMemo(() => new Vector3(0.5, 0.62, 0.35).normalize().multiplyScalar(1000), []);
   return <>
-    <color attach="background" args={['#bcd9ef']} />
-    <fog attach="fog" args={['#cfe3f2', 700, 3200]} />
-    <Sky distance={4800} sunPosition={sun.toArray()} turbidity={2.6} rayleigh={2.2} mieCoefficient={0.004} mieDirectionalG={0.8} />
-    <hemisphereLight args={['#d6ebff', '#6f8a46', 1.05]} />
-    <directionalLight position={sun.toArray()} intensity={2.5} color="#fff1d6" />
-    <TerrainMesh model={session.terrain} />
+    <color attach="background" args={[atmosphere.haze]} />
+    <fog attach="fog" args={[atmosphere.haze, atmosphere.dust ? 430 : 780, atmosphere.dust ? 4700 : 6100]} />
+    <SkyDome haze={atmosphere.haze} dust={atmosphere.dust} sun={sun} />
+    <hemisphereLight args={['#d6ebff', atmosphere.dust ? '#986c48' : '#6f8a46', 1.1]} />
+    <directionalLight position={sun.toArray()} intensity={2.45} color={atmosphere.dust ? '#ffd7a5' : '#fff1d6'} />
+    {!!props.editorPoints?.length && <group name="trazado del editor">
+      {props.editorPoints.map((p,i)=><mesh key={i} position={[p.x,sampleHeight(session.terrain.hf,p.x,p.z)+0.6,p.z]} raycast={()=>null}><sphereGeometry args={[0.6,10,8]} /><meshBasicMaterial color="#e7ff64" depthTest={false} /></mesh>)}
+      {props.editorPoints.length>1 && <Line points={[...props.editorPoints,...(props.editorClosed?[props.editorPoints[0]]:[])].map(p=>[p.x,sampleHeight(session.terrain.hf,p.x,p.z)+0.6,p.z])} color="#e7ff64" lineWidth={2} depthTest={false} />}
+    </group>}
+    <TerrainMesh model={session.terrain} grain={grain} />
+    <ExteriorTerrain model={session.terrain} grain={grain} />
     <Vegetation session={session} />
     <Landscape session={session} />
-    <Clouds />
-    <EntityLayer session={session} selectedId={props.selectedId} overlay={overlay} measurePoints={props.measurePoints} showPorts={props.showPorts} labels={props.labels ?? false} connect={{active: tool === 'connect', from: props.connectFrom}} />
+    <Clouds seed={session.terrain.hf.seed} cover={atmosphere.clouds} />
+    <EntityLayer session={session} selectedId={props.selectedId} overlay={overlay} measurePoints={props.measurePoints} showPorts={props.showPorts} labels={!review && (props.labels ?? false)} connect={{active: tool === 'connect', from: props.connectFrom}} />
+    {review && <><TerrainReviewLayer scene={review} focus={focus} /><ReviewCamera target={target ?? undefined} onCamera={props.onCamera} /></>}
     <primitive object={ring} />
     <Pin session={session} point={props.selectedPoint} />
-    <CameraRig session={session} mode={mode} tool={tool} goto={props.goto} walk={walk} onCamera={props.onCamera} onMetrics={props.onMetrics} />
-    <Interaction session={session} mode={mode} tool={tool} placing={props.placing} placingParams={props.placingParams} yaw={props.yaw} gridSnap={props.gridSnap} radius={props.radius} strength={props.strength}
+    <CameraRig session={session} mode={mode} tool={tool} goto={props.goto} walk={walk} onCamera={props.onCamera} onMetrics={props.onMetrics} reviewing={!!review} />
+    <Interaction onEditPoint={props.onEditPoint} session={session} mode={mode} tool={tool} placing={props.placing} placingParams={props.placingParams} yaw={props.yaw} gridSnap={props.gridSnap} radius={props.radius} strength={props.strength}
       onHover={props.onHover} onSelectPoint={props.onSelectPoint} onSelectEntity={props.onSelectEntity} onMeasure={props.onMeasure} onPlaced={props.onPlaced} onGhost={props.onGhost} onNotice={props.onNotice} onPortClick={props.onPortClick} onPortHover={props.onPortHover} ring={ring} setOverlay={setOverlay} />
   </>;
 }
 
 export default function AgroCanvas(props: AgroCanvasProps) {
-  return <Canvas className="agro-canvas" frameloop={props.mode === 'walk' ? 'always' : 'demand'} dpr={[1, 1.75]} camera={{position: [26, 46, 52], fov: 50, near: 0.5, far: 7000}} gl={{antialias: true, alpha: false}} data-testid="agro-canvas"
+  return <Canvas className="agro-canvas" frameloop={props.mode === 'walk' ? 'always' : 'demand'} dpr={[1, 1.75]} camera={{position: [26, 46, 52], fov: 50, near: 0.5, far: 15500}} gl={{antialias: true, alpha: false}} data-testid="agro-canvas"
     onCreated={({camera}) => { camera.lookAt(0, 20, 0); }}>
     <Scene {...props} />
   </Canvas>;

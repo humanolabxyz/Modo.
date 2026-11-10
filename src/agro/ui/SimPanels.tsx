@@ -1,3 +1,4 @@
+import {parcelArea,parcelPerimeter} from '../world/parcelGeometry.ts';
 // Paneles de tiempo, alertas, parcela y cultivo (Fase 4).
 import {useRef, useState} from 'react';
 import {Bell, CalendarDays, Gauge, Pause, Play} from 'lucide-react';
@@ -55,7 +56,7 @@ export function SimulationAlerts({session}: {session: WorldSession}) {
 
 /** Suelo, cultivo, humedad, balance de agua y acciones de siembra y cosecha de una parcela. */
 export function ParcelPanel({entity, session, report}: {entity: Entity; session: WorldSession; report: Report}) {
-  const v = viewOf(entity.state), s = entity.state, area = Number(entity.params.anchoM ?? 20) * Number(entity.params.largoM ?? 30);
+  const v = viewOf(entity.state), s = entity.state, area = parcelArea(entity);
   const t = timeInfo(session.clock), age = typeof s.siembraDia === 'number' && s.siembraDia >= 0 ? t.dayIndex - s.siembraDia : null;
   const cycle = v.crop ? Math.min(1, v.gdd / v.crop.stages[v.crop.stages.length - 1].from) : 0;
   const num = (k: string) => Number(s[k] ?? 0);
@@ -67,7 +68,7 @@ export function ParcelPanel({entity, session, report}: {entity: Entity; session:
   if (v.crop) rows.push(['Cultivo', `${v.crop.name}${v.alive ? '' : ' (muerto)'}`], ['Etapa', v.alive ? v.stage!.label : 'Muerto'], ['Avance del ciclo', `${f0.format(cycle * 100)} % (${f0.format(v.gdd)} °C·día)`], ['Edad', age === null ? '—' : `${age} días`], ['Rendimiento esperado', `${f0.format(v.expectedYield * 100)} % del potencial (${f1.format(v.crop.yieldPotentialTha * v.expectedYield)} t/ha)`]);
   if (num('cosechas') > 0) rows.push(['Última cosecha', `${f0.format(num('cosechaKg'))} kg (${f1.format(num('cosechaTha'))} t/ha)`]);
   return <>
-    <h4>Suelo y cultivo</h4>
+    <h4>Suelo y cultivo</h4><p>{entity.parcelPolygon?'Poligonal':'Rectangular'} · {area.toLocaleString('es-CL')} m² · perímetro {parcelPerimeter(entity).toFixed(1)} m</p>
     <label className="agro-field"><span>Tipo de suelo</span><select aria-label="Tipo de suelo" value={v.soil.id} onChange={e => report(session.setState(entity.id, 'suelo', e.target.value))}>{SOILS.map(x => <option key={x.id} value={x.id}>{x.label}</option>)}</select></label>
     <div className="agro-meter" role="img" aria-label={`Agua útil ${f0.format(v.available * 100)} %`} data-testid="agro-meter"><i style={{width: `${v.available * 100}%`}} /></div>
     <dl className="agro-readings" data-testid="agro-soil">{rows.map(([k, x]) => <div key={k}><dt>{k}</dt><dd>{x}</dd></div>)}</dl>

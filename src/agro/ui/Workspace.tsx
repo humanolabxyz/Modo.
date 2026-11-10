@@ -1,16 +1,23 @@
+import {LearningPanel} from './LearningPanel.tsx';
+import {EXPERIENCE_POLICIES} from '../world/experience.ts';
+import {TerrainEditor} from './TerrainEditor.tsx';
 import {Component, lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode} from 'react';
 import {ArrowLeft, ChevronsDown, ChevronsUp, Download, Cable, Equal, Eye, Footprints, List, Map as MapIcon, MousePointer2, Orbit, Redo2, Ruler, Satellite, Undo2} from 'lucide-react';
 import {exportWorld} from '../model/validate.ts';
 import {STROKE_RETRY_MS, autosaveDecision} from '../store/autosave.ts';
 import type {Entity, PortRef, PropValue} from '../model/types.ts';
 import type {CameraMode, CameraReport, GhostInfo, Metrics, Point, Tool} from '../scene/AgroCanvas.tsx';
+import type {ReviewFocus} from '../scene/TerrainReview.tsx';
+import type {ImpactReport} from '../world/impact.ts';
 import {slopeDegrees} from '../terrain/heightfield.ts';
+import {decorativeFeatures} from '../terrain/surface.ts';
+import {TERRITORIES} from '../terrain/presets.ts';
 import {MAX_RADIUS, MIN_RADIUS} from '../terrain/model.ts';
 import type {WorldStore} from '../store/worlds.ts';
 import {measure} from '../world/placement.ts';
 import type {WorldSession} from '../world/session.ts';
 import {Minimap} from './Minimap.tsx';
-import {ConfirmDialog} from './Panels.tsx';
+import {ConfirmDialog, TerrainImpactDialog} from './Panels.tsx';
 import {Inspector} from './Inspector.tsx';
 import {SimulationAlerts, TimeBar} from './SimPanels.tsx';
 import {AutomationPanel} from './AutomationPanel.tsx';
@@ -51,7 +58,7 @@ function useAutosave(session: WorldSession, store: WorldStore, persistent: boole
   const [state, setState] = useState<SaveState>('saved');
   const [error, setError] = useState('');
   const [at, setAt] = useState<Date | null>(null);
-  const savedVersion = useRef(session.version), running = useRef<Promise<void> | null>(null), timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const savedVersion = useRef(session.saveVersion), running = useRef<Promise<void> | null>(null), timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const flush = useCallback(async (force = false): Promise<void> => {
     if (timer.current) { clearTimeout(timer.current); timer.current = null; }
@@ -63,9 +70,9 @@ function useAutosave(session: WorldSession, store: WorldStore, persistent: boole
       return;
     }
     const job = (async () => {
-      const version = session.version; setState('saving');
+      const version = session.saveVersion; setState('saving');
       const r = await store.save(session.toWorld());
-      if (r.ok) { savedVersion.current = version; setError(''); setAt(new Date()); setState(session.version === version ? 'saved' : 'pending'); await store.setActive(session.id); }
+      if (r.ok) { savedVersion.current = version; setError(''); setAt(new Date()); setState(session.saveVersion === version ? 'saved' : 'pending'); await store.setActive(session.id); }
       else { setError(r.error); setState('error'); }
     })();
     running.current = job; await job; running.current = null;
@@ -73,7 +80,7 @@ function useAutosave(session: WorldSession, store: WorldStore, persistent: boole
 
   useEffect(() => {
     if (!persistent) return;
-    const off = session.subscribe(() => { if (session.version === savedVersion.current) return; setState(s => (s === 'saving' ? s : 'pending')); if (!timer.current) timer.current = setTimeout(() => void flush(), 700); });
+    const off = session.subscribe(() => { if (session.saveVersion === savedVersion.current) return; setState(s => (s === 'saving' ? s : 'pending')); if (!timer.current) timer.current = setTimeout(() => void flush(), 700); });
     const hidden = () => { if (document.visibilityState === 'hidden') void flush(true); };
     const leave = () => { void flush(true); };
     document.addEventListener('visibilitychange', hidden); window.addEventListener('pagehide', leave);
@@ -87,6 +94,10 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
   const version = useSyncExternalStore(session.subscribe.bind(session), () => session.version);
   const save = useAutosave(session, store, persistent);
   const [mode, setMode] = useState<CameraMode>('orbit');
+  const [guideOpen,setGuideOpen]=useState(true);
+  const [editor,setEditor]=useState(false);
+  const [editorPointMode,setEditorPointMode]=useState<'center'|'polygon'|'path'>('center');
+  const [editorPoints,setEditorPoints]=useState<Point[]>([]);
   const [tool, setTool] = useState<Tool>('select');
   const [placing, setPlacing] = useState<string | null>(null);
   const [yaw, setYaw] = useState(0);
@@ -112,11 +123,16 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
   const [labels, setLabels] = useState(true);
   const [autoBoard, setAutoBoard] = useState<string | null>(null);
   const [pendingDelete, setPendingDelete] = useState<{id: string; text: string} | null>(null);
+  const [reviewSelection, setReviewSelection] = useState<{report: ImpactReport; focus: ReviewFocus} | null>(null);
   const [webgl] = useState(hasWebGL);
   const [leaving, setLeaving] = useState(false);
   const menu = useRef<HTMLDetailsElement>(null);
   const hf = session.terrain.hf;
+  const territory = TERRITORIES[hf.presetId], features = decorativeFeatures(hf);
+  const decoration = [features.water && 'Río', features.road && 'camino'].filter(Boolean).join(' y ');
   const selected: Entity | undefined = selectedId ? session.entity(selectedId) : undefined;
+  const review = session.terrainImpact;
+  const reviewFocus = review && reviewSelection?.report === review ? reviewSelection.focus : null;
 
   const speed = session.clock.speed;
   const [lag, setLag] = useState(false);
@@ -159,7 +175,7 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
   }, [session, describePort]);
   const placingParams = useMemo<Record<string, PropValue>>(() => ({}), []);
 
-  const pickTool = (t: Tool) => { setTool(t); setConnectFrom(null); setPortHover(null); if (t !== 'place') { setPlacing(null); setGhost(null); } if (t !== 'measure') setMeasurePoints([]); if (t !== 'select') { setSelectedPoint(null); } };
+  const pickTool = (t: Tool) => { if(t==='edit'){setSelectedId(null);setWmode('inspect');setAutoBoard(null);} if(session.operationPreview||session.parcelPreview){setNotice('Aplica o cancela la vista previa antes de cambiar de herramienta.');return;} if(['raise','lower','level'].includes(t)&&!editor){setEditor(true);session.setEditorActive(true);}  setTool(t); setConnectFrom(null); setPortHover(null); if (t !== 'place') { setPlacing(null); setGhost(null); } if (t !== 'measure') setMeasurePoints([]); if (t !== 'select') { setSelectedPoint(null); } };
   const pickItem = (id: string) => { setPlacing(id); setTool('place'); setMeasurePoints([]); setSelectedId(null); setSelectedPoint(null); };
   const openAutomate = (preferred?: string) => {
     const boards = session.entities.filter(e => e.type === 'tablero'), id = preferred ?? (selected?.type === 'tablero' ? selected.id : boards[0]?.id);
@@ -184,6 +200,12 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
 
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
+      if(session.parcelPreview){if(e.key==='Escape'){e.preventDefault();session.abortStroke();}return;}
+      if (session.terrainImpact) return;
+      if (session.terrain.painting) {
+        if (e.key === 'Escape') { e.preventDefault(); session.abortStroke(); }
+        return;
+      }
       if (e.target instanceof HTMLElement && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) && e.key !== 'Escape') return;
       const k = e.key.toLowerCase();
       if ((e.ctrlKey || e.metaKey) && k === 'z') { e.preventDefault(); if (e.shiftKey) session.redo(); else session.undo(); }
@@ -198,15 +220,15 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
 
   const download = () => {
     menu.current?.removeAttribute('open');
-    const {filename, text} = exportWorld(session.toWorld());
+    const world = session.toWorld(), {filename, text} = exportWorld(world);
     const url = URL.createObjectURL(new Blob([text], {type: 'application/json'})), a = document.createElement('a');
     a.href = url; a.download = filename; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-    setNotice(`Mundo exportado: ${session.entities.length} piezas y ${session.terrain.edits.length} ediciones de terreno.`);
+    setNotice(`Mundo exportado: ${world.entities.length} piezas y ${world.terrain.edits.length} ediciones de terreno.`);
   };
   const rename = () => { menu.current?.removeAttribute('open'); const n = prompt('Nombre del mundo', session.name); if (n !== null) { const r = session.setName(n); if (!r.ok) setNotice(r.error); } };
   const exit = async () => { setLeaving(true); await save.flush(true); await onExit(); };
 
-  const readout = (label: string, p: Point | null, id: string) => p ? <p className="agro-read" data-testid={id}><b>{label}</b><span>Cota {num.format(p.y)} m</span><span>Pendiente {num.format(slopeDegrees(hf, p.x, p.z))}°</span><span>x {int.format(p.x)} · z {int.format(p.z)}</span></p> : null;
+  const readout = (label: string, p: Point | null, id: string) => p ? <p className="agro-read" data-testid={id}><b>{label}</b><span>Cota {num.format(p.y)} m</span><span>Pendiente {num.format(slopeDegrees(hf, p.x, p.z))}° · {num.format(Math.tan(slopeDegrees(hf,p.x,p.z)*Math.PI/180)*100)} %</span><span>x {int.format(p.x)} · z {int.format(p.z)}</span></p> : null;
   const analysis = session.analyze();
   const showDock = wmode === 'build' && mode !== 'walk';
   const alertCount = session.alerts().length;
@@ -222,35 +244,42 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
     <header className="agro-bar">
       <h1 className="agro-work-brand"><span className="agro-modo-logo" aria-label="modo." role="img" /><span>Agro</span></h1>
       <button type="button" className="agro-back" onClick={() => void exit()} disabled={leaving} aria-label="Volver a Mis mundos"><ArrowLeft size={16} aria-hidden="true" /><span>Mis mundos</span></button>
-      <p className="agro-crumb"><button type="button" className="agro-name-btn" onClick={rename} title="Cambiar nombre" data-testid="agro-world-name">{session.name}</button><span>Workspace 3D</span></p>
+      <p className="agro-crumb"><button type="button" className="agro-name-btn" onClick={rename} title="Cambiar nombre" data-testid="agro-world-name">{session.name}</button><span>{session.policy.label}</span></p>
       <button type="button" className={`agro-chip ${save.state}`} data-testid="agro-save" title={save.error || 'Los mundos se guardan solos en este navegador.'} onClick={() => void save.flush()}>{chip}</button>
       <SimulationAlerts session={session} />
       <details ref={menu} className="agro-menu"><summary>Archivo</summary>
         <div role="menu">
           <button type="button" role="menuitem" onClick={download}><Download size={15} aria-hidden="true" />Exportar mundo</button>
 
-          <button type="button" role="menuitem" data-testid="agro-exp-free" aria-checked={session.experience !== 'real'} onClick={() => { menu.current?.removeAttribute('open'); session.setExperience('free'); setNotice('Modo libre: sin inventario, costos ni tiempos de obra.'); }}>{session.experience !== 'real' ? '● ' : '○ '}Modo libre</button>
-          <button type="button" role="menuitem" data-testid="agro-exp-real" aria-checked={session.experience === 'real'} onClick={() => { menu.current?.removeAttribute('open'); session.setExperience('real'); setNotice(`Modo real: hay que comprar las piezas, esperar al proveedor y pagar el montaje. Dinero: CLP $${Math.round(session.economy?.money ?? 0).toLocaleString('es-CL')} (ilustrativo).`); }}>{session.experience === 'real' ? '● ' : '○ '}Modo real</button>
+          {Object.values(EXPERIENCE_POLICIES).map(policy=><button key={policy.id} type="button" role="menuitemradio" data-testid={`agro-exp-${policy.id}`} aria-checked={session.experience===policy.id} onClick={()=>{
+            menu.current?.removeAttribute('open');const r=session.setExperience(policy.id);
+            if(!r.ok){setNotice(r.error);return;}if(policy.guidedChecks)setGuideOpen(true);setNotice(policy.label+': '+policy.description);
+          }}>{session.experience===policy.id?'● ':'○ '}{policy.label}</button>)}
+          {session.policy.guidedChecks&&<button type="button" role="menuitem" data-testid="agro-guide-toggle" onClick={()=>{menu.current?.removeAttribute('open');setGuideOpen(v=>!v);}}>{guideOpen?'Ocultar':'Mostrar'} guía de aprendizaje</button>}
         </div>
       </details>
     </header>
 
-    <main className="agro-stage">
+    <main className="agro-stage" data-reviewing={!!review}>
       {webgl ? <Boundary><Suspense fallback={<div className="agro-loading-scene" role="status">Generando el terreno…</div>}>
-        <AgroCanvas session={session} mode={mode} tool={tool} placing={placing} placingParams={placingParams} yaw={yaw} gridSnap={gridSnap} showPorts={showPorts || tool === 'connect'} labels={labels && mode !== 'strategic'} radius={radius} strength={strength}
-          selectedPoint={selectedPoint} selectedId={selectedId} measurePoints={measurePoints} goto={goto} onHover={onHover} onSelectPoint={onSelectPoint} onSelectEntity={onSelectEntity} onMeasure={onMeasure}
+        <AgroCanvas editorPoints={editor?editorPoints:[]} editorClosed={editorPointMode==='polygon'} onEditPoint={p=>{if(!session.terrain.painting&&!session.parcelPreview)setEditorPoints(pts=>editorPointMode==='center'?[p]:[...pts,p].slice(0,64));}} session={session} mode={mode} tool={tool} placing={placing} placingParams={placingParams} yaw={yaw} gridSnap={gridSnap} showPorts={showPorts || tool === 'connect'} labels={labels && mode !== 'strategic'} radius={radius} strength={strength}
+          selectedPoint={selectedPoint} selectedId={selectedId} measurePoints={measurePoints} goto={goto} review={review} reviewFocus={reviewFocus} onHover={onHover} onSelectPoint={onSelectPoint} onSelectEntity={onSelectEntity} onMeasure={onMeasure}
           onPlaced={onPlaced} onGhost={setGhost} connectFrom={connectFrom} onPortClick={onPortClick} onPortHover={setPortHover} onCamera={onCamera} onMetrics={onMetrics} onNotice={onNotice} />
       </Suspense></Boundary> : <div className="agro-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Agro necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p></div>}
 
       <div className="agro-hudrow">
         <WeatherChips session={session} />
         <div className="agro-cams" role="group" aria-label="Cámara">
-          {MODES.map(({id, label, Icon}) => <button key={id} type="button" className={mode === id ? 'on' : ''} aria-pressed={mode === id} aria-label={label} title={label} onClick={() => { if (id === 'walk') pickTool('select'); setMode(id); }}><Icon size={18} aria-hidden="true" /><span>{label}</span></button>)}
+          {MODES.map(({id, label, Icon}) => <button key={id} type="button" className={mode === id ? 'on' : ''} aria-pressed={mode === id} aria-label={label} title={label} disabled={editor&&id==='walk'} onClick={() => { if (id === 'walk') pickTool('select'); setMode(id); }}><Icon size={18} aria-hidden="true" /><span>{label}</span></button>)}
         </div>
-        <TimeBar session={session} lag={lag} />
+        <div inert={editor}><TimeBar session={session} lag={lag} /></div>
       </div>
-      <p className="agro-hint" role="note">{current.hint}</p>
+      <p className="agro-hint" role="note">{mode === 'strategic' ? 'El minimapa marca el área jugable · El paisaje exterior es escénico' : current.hint}</p>
 
+      <button type="button" className="agro-editor-toggle" aria-pressed={editor} onClick={()=>{const active=!editor;session.setEditorActive(active);setEditor(active);setSelectedId(null);setPieces(false);setWmode('inspect');setAutoBoard(null);if(active&&mode==='walk')setMode('orbit');setEditorPoints([]);pickTool(active?'edit':'select');}}>{editor?'Volver a partida':'Editar mapa'}</button>
+      {session.policy.guidedChecks&&guideOpen&&!editor&&!selected&&!autoBoard&&(wmode==='inspect'||wmode==='build')&&<LearningPanel session={session} onClose={()=>setGuideOpen(false)} onLocate={id=>{setSelectedId(id);const e=session.entity(id);if(e)goTo(e.pose.position[0],e.pose.position[2]);}} />}
+      {editor && tool==='edit' && <TerrainEditor onPointMode={setEditorPointMode} onRemoveLast={()=>setEditorPoints(pts=>pts.slice(0,-1))} session={session} points={editorPoints} onClear={()=>setEditorPoints([])} onNotice={onNotice} />}
+      {editor && tool!=='edit' && <button type="button" className="agro-editor-return" onClick={()=>pickTool('edit')}>Herramientas del mapa</button>}
       <div className="agro-tools" role="toolbar" aria-label="Herramientas" aria-orientation="vertical">
         {TOOLS.slice(0, 3).map(({id, label, Icon}) => <button key={id} type="button" className={tool === id ? 'on' : ''} aria-pressed={tool === id} aria-label={label} title={label} disabled={mode === 'walk' && id !== 'select'} onClick={() => pickTool(id)}><Icon size={20} aria-hidden="true" /></button>)}
         <hr />
@@ -283,6 +312,7 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
         {readout('Seleccionado', selectedPoint, 'agro-selected')}{readout('Puntero', hover, 'agro-hover')}
         {!hover && !selectedPoint && tool === 'select' && !selected && <p className="agro-read agro-muted"><Eye size={14} aria-hidden="true" /><span>Mueve el puntero sobre el terreno para ver cota y pendiente</span></p>}
         <p className="agro-meta" data-testid="agro-meta">{int.format(hf.sizeX * hf.sizeZ / 10_000)} ha · {session.entities.length} {session.entities.length === 1 ? 'pieza' : 'piezas'}</p>
+        <p className="agro-meta agro-territory-caption">{territory.name}{decoration && ` · ${decoration} ${features.water && features.road ? 'decorativos' : 'decorativo'}`}</p>
       </div>
 
       <div className="agro-mini" hidden={!mini}>{mini && <Minimap hf={hf} revision={terrainRev} camera={camera} onGoto={goTo} />}</div>
@@ -294,6 +324,9 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
 
       {notice && <p className="agro-toast" role="status" data-testid="agro-notice">{notice}</p>}
       {pendingDelete && <ConfirmDialog title="Eliminar con conexiones" confirmLabel="Eliminar pieza y conexiones" onConfirm={confirmDelete} onCancel={() => setPendingDelete(null)}><p data-testid="agro-confirm-text">{pendingDelete.text}</p><p>Se quitarán también esas conexiones. Puedes deshacerlo con Ctrl+Z.</p></ConfirmDialog>}
+      {review && <TerrainImpactDialog report={review} focus={reviewFocus} onLocate={webgl ? focus => setReviewSelection({report: review, focus}) : undefined}
+        onCancel={() => { setReviewSelection(null); session.abortStroke(); }}
+        onApply={option => { const result = session.commitStroke(option); if (result.ok) setReviewSelection(null); return result; }} />}
     </main>
   </div>;
 }

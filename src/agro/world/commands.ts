@@ -5,6 +5,7 @@ import {checkPorts} from '../model/ports.ts';
 import {newId} from '../model/defaults.ts';
 import {RUNTIME_KEYS, resetRuntime, validateProgram} from '../plc/program.ts';
 import {LIMITS, type AgroProgram, type Connection, type Entity, type Pose, type PortRef, type PropValue, type Result} from '../model/types.ts';
+import {clearTerrainSupport} from './pipeElevation.ts';
 
 export type Parts = {entities: Entity[]; connections: Connection[]; /** programas de PLC por id de tablero (Fase 5); se omite si no hay ninguno */ plc?: Record<string, AgroProgram>};
 const fail = (error: string): {ok: false; error: string} => ({ok: false, error});
@@ -35,7 +36,7 @@ export function addEntity(parts: Parts, entity: Entity): Result<Parts> {
 export function setPose(parts: Parts, id: string, pose: Pose): Result<Parts> {
   const e = parts.entities.find(x => x.id === id); if (!e) return fail('La pieza no existe.');
   if (e.locked) return fail(`«${e.label}» está bloqueada.`);
-  return ok({...parts, entities: parts.entities.map(x => (x.id === id ? {...x, pose: {position: [...pose.position], rotation: [...pose.rotation]}} : x))});
+  return ok({...parts, entities: parts.entities.map(x => (x.id === id ? {...x, pose: {position: [...pose.position], rotation: [...pose.rotation]}, state: clearTerrainSupport(x.state)} : x))});
 }
 
 export function rename(parts: Parts, id: string, label: string): Result<Parts> {
