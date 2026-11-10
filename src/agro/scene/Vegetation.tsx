@@ -6,7 +6,7 @@ import {CanvasTexture, Color, InstancedMesh, Object3D, SRGBColorSpace} from 'thr
 import {hash2} from '../terrain/noise.ts';
 import {sampleHeight, slopeDegrees} from '../terrain/heightfield.ts';
 import {valueNoise} from '../terrain/noise.ts';
-import {roadDist, roadPoints} from '../terrain/landmarks.ts';
+import {roadContains} from '../terrain/roads.ts';
 import {itemById, sizeOf} from '../catalog/items.ts';
 import type {WorldSession} from '../world/session.ts';
 import {sceneryHeight} from '../terrain/exterior.ts';
@@ -18,15 +18,13 @@ import {pickVariant} from '../models/normalize.ts';
 import {GlbInstances, useReadyModels, type GlbItem} from './GlbModels.tsx';
 
 type Tree = {x: number; y: number; z: number; s: number; kind: 0 | 1 | 2; hue: number; yaw: number};
-/** Radio alrededor del sitio (m) dentro del cual la vegetación usa los modelos de la biblioteca. */
-const NEAR_MODEL_M = 170;
 const GREENS = ['#3c6232', '#466f36', '#345834', '#638042', '#748645'], PINES = ['#325c44', '#426749', '#2b5340'], SHRUBS = ['#6c7440', '#7a824c', '#555f38'];
 
 /** Árboles repartidos por el paisaje, sin pisar piezas ni parcelas. `sig` cambia solo al mover o poner piezas o al editar el terreno. */
 function scatter(session: WorldSession): Tree[] {
   const hf = session.terrain.hf, seed = hf.seed, out: Tree[] = [];
   const keep = session.entities.map(e => { const def = itemById(e.type); const [w, , d] = def ? sizeOf(def, e.params) : [2, 0, 2]; return {x: e.pose.position[0], z: e.pose.position[2], r: Math.hypot(w, d) / 2 + 5}; });
-  const half = Math.min(hf.sizeX, hf.sizeZ) / 2, road = roadPoints(seed, half), features = decorativeFeatures(hf);
+  const features = decorativeFeatures(hf);
   const density = hf.params?.vegetation ?? TERRITORIES[hf.presetId].params.vegetation;
   if (density === 0) return out;
   const [siteX, siteZ] = session.site, arid = TERRITORIES[hf.presetId].landscape.dust;
@@ -47,7 +45,7 @@ function scatter(session: WorldSession): Tree[] {
     const probability = density * (arid ? 0.025 + green * 1.6 : 0.19 + green * 1.2) * (0.38 + grove * 0.9);
     if (hash2(seed + 303, k, 3) > probability) continue;
     if (features.water) { const river = waterSection(hf, z); if (Math.abs(x - river.x) < river.half + 2) continue; }
-    if (!outside && features.road && roadDist(seed, half, x, z, road) < 5) continue;
+    if (!outside && (roadContains(hf.baseRoads, x, z, 3) || roadContains(hf.surfaceEdits, x, z, 3))) continue;
     const pick = hash2(seed + 404, k, 4);
     const kind: 0 | 1 | 2 = pick < (arid ? 0.58 : 0.17) ? 2 : !arid && (slope > 17 || pick > 0.73) ? 1 : 0;
     out.push({x, y, z, s: 0.7 + hash2(seed + 606, k, 6) * 0.95, kind, hue: hash2(seed + 707, k, 7), yaw: hash2(seed + 808, k, 8) * Math.PI * 2});
@@ -59,19 +57,18 @@ export function Vegetation({session}: {session: WorldSession}) {
   const {invalidate} = useThree();
   const sig = session.entities.map(e => `${e.type}:${e.pose.position[0].toFixed(1)}:${e.pose.position[2].toFixed(1)}`).join('|') + `#${session.terrain.edits.length}`;
   const trees = useMemo(() => scatter(session), [sig, session.terrain]); // eslint-disable-line react-hooks/exhaustive-deps
-  // Etapa 6: en los territorios con biblioteca (hoy Oasis nortino y desierto) la vegetación cercana al sitio usa modelos reales; lo lejano, y todo lo que
-  // no tenga modelo cargado, conserva la vegetación procedural de antes.
+  // Se usan modelos en todo el paisaje; la geometría provisional sigue disponible si falla la carga.
   const set = VEGETATION_SETS[session.terrain.presetId], ids = useMemo(() => (set ? [...set.trees, ...set.shrubs] : []), [set]), ready = useReadyModels(ids);
   // Ecosistemas con intención (palmares, huertos, matorral, pinares, cactales) según humedad y pendiente; en todos los territorios.
   const ecoIds = useMemo(() => ecosystemModelIds(session.terrain.presetId), [session.terrain.presetId]), ecoReady = useReadyModels(ecoIds);
   const ecosystems = useMemo(() => ecosystemPlacements(session, ecoReady, session.entities.map(e => { const def = itemById(e.type); const [w, , d] = def ? sizeOf(def, e.params) : [2, 0, 2]; return {x: e.pose.position[0], z: e.pose.position[2], r: Math.hypot(w, d) / 2 + 5}; })), [sig, session.terrain, ecoReady]); // eslint-disable-line react-hooks/exhaustive-deps
   const {procedural, placed} = useMemo(() => {
     const placed: Record<string, GlbItem[]> = {}, procedural: Tree[] = [];
-    const [sx, sz] = session.site;
     for (const t of trees) {
-      const pool = (t.kind === 2 ? set?.shrubs : t.kind === 0 ? set?.trees : undefined)?.filter(id => ready.has(id));
-      if (!pool?.length || Math.hypot(t.x - sx, t.z - sz) > NEAR_MODEL_M) { procedural.push(t); continue; }
-      (placed[pickVariant(pool, t.hue)] ??= []).push({x: t.x, y: t.y, z: t.z, yaw: t.yaw, s: 0.85 + (t.s - 0.7) / 0.95 * 0.4});
+      const pool = (t.kind === 2 || !set?.trees.length ? set?.shrubs : set.trees)?.filter(id => ready.has(id));
+      if (!pool?.length) { procedural.push(t); continue; }
+      // Las variantes y la escala son estables para cada árbol, también al reabrir el mapa.
+      (placed[pickVariant(pool, t.hue)] ??= []).push({x: t.x, y: t.y, z: t.z, yaw: t.yaw, s: 0.7 + (t.s - 0.7) / 0.95 * 0.65});
     }
     for (const [id, items] of Object.entries(ecosystems)) (placed[id] ??= []).push(...items);
     return {procedural, placed};

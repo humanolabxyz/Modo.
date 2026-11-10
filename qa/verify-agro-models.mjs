@@ -48,7 +48,7 @@ const TRIS_BUDGET = {estructuras: 3200, vegetacion: 1300, cultivo: 700, roca: 70
     for (const id of [...set.trees, ...set.shrubs, ...set.rocks]) assert.ok(modelById(id), `${terr}: ${id}`);
   }
   for (const t of Object.keys(TERRITORIES)) { assert.ok(VEGETATION_SETS[t], `${t} tiene conjunto`); for (const k of ECOSYSTEMS[t] ?? []) for (const id of [...k.species, ...(k.under ?? [])]) assert.ok(modelById(id), `${t}/${k.name}: ${id}`); assert.ok(ECOSYSTEMS[t]?.length, `${t} tiene ecosistemas`); }
-  assert.deepEqual(VEGETATION_SETS.valley.trees, [], 'los territorios verdes conservan su arbolado procedural');
+  for (const territory of ['free', 'valley', 'ladera', 'valle-rio']) assert.ok(VEGETATION_SETS[territory].trees.length, `${territory}: modelos de árboles disponibles`);
   assert.deepEqual(new Set([0.01, 0.5, 0.99].map(t => pickVariant(['a', 'b'], t))), new Set(['a', 'b'])); assert.equal(pickVariant(['a', 'b', 'c'], 0.9999), 'c');
   ok('cada etapa del tomate del motor tiene su modelo; los territorios con biblioteca solo referencian modelos existentes');
 }

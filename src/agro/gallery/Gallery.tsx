@@ -5,7 +5,7 @@ import {Html, OrbitControls} from '@react-three/drei';
 import {useEffect, useMemo, useState} from 'react';
 import {Color} from 'three';
 import {GlbInstances, GlbObject, useModel} from '../scene/GlbModels.tsx';
-import {modelById, registerModel} from '../models/library.ts';
+import {LIBRARY, modelById, registerModel} from '../models/library.ts';
 import type {ModelEntry, ModelStatus} from '../models/types.ts';
 import './gallery.css';
 
@@ -23,8 +23,14 @@ const VIEW_LABEL: Record<ViewKey, string> = {tresCuartos: '3/4', frontal: 'Front
 /** Entrada sintética para ver un candidato a tamaño real (1 unidad = 1 m), con la paleta de la biblioteca si ya está integrado. */
 const entryFor = (c: Candidate): ModelEntry => {
   const base = c.integratedAs ? modelById(c.integratedAs) : undefined;
+  if(base && c.file===base.file)return {...base,id:'g:'+c.id};
   return {id: 'g:' + c.id, label: c.name, family: 'arboles-vegetacion', status: c.status, file: c.file, source: base?.source ?? {pack: c.packName, author: 'Quaternius', license: 'CC0', licenseUrl: '', original: c.original}, fit: {mode: 'scale', scale: 1}, palette: base?.palette, tone: base?.tone};
 };
+
+/** La biblioteca integrada funciona incluso cuando no están los archivos opcionales de la galería completa. */
+export function integratedCandidates(): Data {
+  return {generated:'local',models:LIBRARY.filter(m=>m.file).map(m=>({id:`integrado:${m.id}`,name:m.label,pack:m.source.pack,packName:m.source.pack,family:m.family,status:m.status,why:m.notes??'Modelo integrado en Agro.',file:m.file!,tris:m.metrics?.tris??0,bytes:m.metrics?.bytes??0,sizeM:m.metrics?.sizeM?[...m.metrics.sizeM]:undefined,materials:[],anims:[],skinned:false,integratedAs:m.id,palette:'Paleta integrada',original:m.source.original}))};
+}
 
 function Lights({arid = true}: {arid?: boolean}) {
   // Misma iluminación que el Workspace de Agro en territorios áridos.
@@ -111,7 +117,7 @@ export default function Gallery() {
   const [data, setData] = useState<Data | null | undefined>(undefined);
   const [family, setFamily] = useState('todas'), [status, setStatus] = useState<'todos' | ModelStatus>('todos'), [q, setQ] = useState(''), [mode, setMode] = useState<Mode>('modelo');
   const [sel, setSel] = useState<Candidate | null>(null), [view, setView] = useState<ViewKey>('tresCuartos'), [token, setToken] = useState(0), [person, setPerson] = useState(true);
-  useEffect(() => { fetch('/agro/_galeria/candidates.json').then(r => (r.ok ? r.json() : null)).then(d => { setData(d); if (d?.models?.length) setSel(d.models.find((m: Candidate) => m.integratedAs) ?? d.models[0]); }).catch(() => setData(null)); }, []);
+  useEffect(() => { const fallback=integratedCandidates();fetch('/agro/_galeria/candidates.json').then(r => (r.ok ? r.json() : fallback)).catch(() => fallback).then(d => { setData(d); if (d?.models?.length) setSel(d.models.find((m: Candidate) => m.integratedAs) ?? d.models[0]); }); }, []);
   const list = useMemo(() => (data?.models ?? []).filter(m => (family === 'todas' || m.family === family) && (status === 'todos' || m.status === status) && (!q || (m.name + m.pack).toLowerCase().includes(q.toLowerCase()))), [data, family, status, q]);
   const counts = useMemo(() => { const c: Record<string, number> = {}; for (const m of data?.models ?? []) c[m.status] = (c[m.status] ?? 0) + 1; return c; }, [data]);
   if (data === undefined) return <div className="gal-msg">Cargando galería…</div>;
@@ -120,14 +126,14 @@ export default function Gallery() {
   return <div className="gal" data-testid="agro-gallery">
     <aside className="gal-side">
       <h1>Biblioteca 3D · candidatos</h1>
-      <p className="gal-sub">{data.models.length} modelos del kit · {Object.entries(counts).map(([k, v]) => `${v} ${STATUS[k as ModelStatus].label.toLowerCase()}`).join(' · ')}</p>
+      <p className="gal-sub">{data.models.length} {data.generated==='local'?'modelos integrados':'modelos del kit'} · {Object.entries(counts).map(([k, v]) => `${v} ${STATUS[k as ModelStatus].label.toLowerCase()}`).join(' · ')}</p>
       <div className="gal-filters">
         <input placeholder="Buscar por nombre o paquete" value={q} onChange={e => setQ(e.target.value)} aria-label="Buscar" />
         <select value={family} onChange={e => setFamily(e.target.value)} aria-label="Familia"><option value="todas">Todas las familias</option>{families.map(f => <option key={f} value={f}>{FAMILY_LABEL[f] ?? f}</option>)}</select>
         <select value={status} onChange={e => setStatus(e.target.value as 'todos' | ModelStatus)} aria-label="Estado"><option value="todos">Todos los estados</option>{(Object.keys(STATUS) as ModelStatus[]).map(s => <option key={s} value={s}>{STATUS[s].label}</option>)}</select>
       </div>
       <ul className="gal-list">{list.map(m => <li key={m.id}><button className={sel?.id === m.id ? 'on' : ''} onClick={() => { setSel(m); setMode('modelo'); setToken(t => t + 1); }}>
-        <span className="dot" style={{background: STATUS[m.status].color}} /><span className="nm">{m.name}{m.integratedAs && <b title="Integrado en el simulador"> ●</b>}</span><span className="pk">{m.packName.replace('Quaternius · ', '')}</span><span className="tr">{m.tris} t</span></button></li>)}</ul>
+        <span className="dot" style={{background: STATUS[m.status].color}} /><span className="nm">{m.name}{m.integratedAs && <b title="Integrado en el simulador"> ●</b>}</span><span className="pk">{m.packName.replace('Quaternius · ', '')}</span><span className="tr">{m.tris ? `${m.tris} t` : ''}</span></button></li>)}</ul>
     </aside>
     <main className="gal-main">
       <div className="gal-bar">
@@ -149,7 +155,7 @@ export default function Gallery() {
       <p className="why">{sel.why}</p>
       <dl>
         <dt>Familia</dt><dd>{FAMILY_LABEL[sel.family] ?? sel.family}</dd><dt>Paquete</dt><dd>{sel.packName}</dd><dt>Licencia</dt><dd>CC0 1.0 (License.txt del paquete)</dd>
-        <dt>Triángulos</dt><dd>{sel.tris.toLocaleString('es-CL')}</dd><dt>Medidas (m)</dt><dd>{sel.sizeM?.map(v => v.toFixed(2)).join(' × ')}</dd><dt>Peso GLB</dt><dd>{(sel.bytes / 1024).toFixed(0)} KB</dd>
+        <dt>Triángulos</dt><dd>{sel.tris ? sel.tris.toLocaleString('es-CL') : 'Sin datos'}</dd><dt>Medidas (m)</dt><dd>{sel.sizeM?.map(v => v.toFixed(2)).join(' × ') ?? 'Sin datos'}</dd><dt>Peso GLB</dt><dd>{sel.bytes ? `${(sel.bytes / 1024).toFixed(0)} KB` : 'Sin datos'}</dd>
         <dt>Materiales</dt><dd>{sel.materials.join(', ')}</dd><dt>Color</dt><dd>{sel.palette}</dd>{sel.anims.length > 0 && <><dt>Animaciones</dt><dd>{sel.anims.join(', ')}{sel.skinned ? ' · con esqueleto' : ''}</dd></>}
         <dt>Archivo original</dt><dd className="mono">{sel.original}</dd>
       </dl>

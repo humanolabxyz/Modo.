@@ -2,8 +2,8 @@ import {pathSample} from './geometry.ts';
 import type {TerrainEdit} from '../model/types.ts';
 import type {Heightfield} from './heightfield.ts';
 import {channelAxis, smooth} from './generatorV2.ts';
-import {riverInfo, riverX, roadDist, roadPoints} from './landmarks.ts';
-import {hash2, valueNoise} from './noise.ts';
+import {riverInfo, riverX} from './landmarks.ts';
+import {valueNoise} from './noise.ts';
 import {TERRITORIES} from './presets.ts';
 
 export type Color3 = [number, number, number];
@@ -61,8 +61,6 @@ export function greenCover(hf: SurfaceContext, x: number, z: number, ny: number)
   return clamp((patch - 0.27) * 1.38) * flat;
 }
 
-const roads = new Map<string, ReturnType<typeof roadPoints>>();
-
 /** Paleta compartida por la malla jugable, el cinturón escénico y el minimapa. */
 export function surfaceColor(hf: SurfaceContext, x: number, z: number, y: number, ny: number): Color3 {
   const {surface} = TERRITORIES[hf.presetId];
@@ -70,24 +68,10 @@ export function surfaceColor(hf: SurfaceContext, x: number, z: number, y: number
   const fine = valueNoise(hf.seed + 31, x / 9, z / 9);
   const green = greenCover(hf, x, z, ny);
   let color = mix(surface.open, surface.green, green);
-  color = mix(color, surface.dry, smooth((coarse - 0.49) / 0.47) * (1 - green) * 0.73);
-  // Un mosaico irregular de praderas y suelo seco en las planicies del valle.
-  if (hf.presetId === 'valle-rio' || hf.presetId === 'valley') {
-    const u = (x + 0.18 * z + (coarse - 0.5) * 35) / 128, v = (z - 0.12 * x) / 154;
-    const edge = Math.min(u - Math.floor(u), 1 - (u - Math.floor(u)), v - Math.floor(v), 1 - (v - Math.floor(v)));
-    const patch = hash2(hf.seed + 219, Math.floor(u), Math.floor(v));
-    color = mix(color, patch > 0.66 ? surface.dry : surface.green, smooth(edge / 0.13) * smooth((ny - 0.98) / 0.02) * 0.48);
-  }
+  color = mix(color, surface.dry, smooth((coarse - 0.55) / 0.6) * (1 - green) * 0.25);
   const rock = clamp((0.976 - ny) * 4 + Math.max(0, y - (hf.params?.baseElevationM ?? 20) - 95) / 350);
   color = mix(color, surface.rock, rock);
-  const half = Math.min(hf.sizeX, hf.sizeZ) / 2, features = decorativeFeatures(hf);
-  if (features.road && x >= -half && x <= 32 && Math.abs(z) < Math.min(180, half)) {
-    const key = `${hf.seed}:${half}`;
-    let road = roads.get(key);
-    if (!road) { road = roadPoints(hf.seed, half); if (roads.size >= 16) roads.clear(); roads.set(key, road); }
-    const distance = roadDist(hf.seed, half, x, z, road);
-    color = mix(color, [0.59, 0.48, 0.34], clamp((4.5 - distance) / 2.4) * smooth((x + half) / 30) * smooth((ny - 0.9) / 0.08));
-  }
+  const features = decorativeFeatures(hf);
   if (features.water) {
     const water = waterSection(hf, z), d = Math.abs(x - water.x);
     color = mix(color, [0.61, 0.56, 0.40], clamp((water.half + 5 - d) / 5));
@@ -97,7 +81,7 @@ export function surfaceColor(hf: SurfaceContext, x: number, z: number, y: number
     const d=edit.points ? pathSample([x,z],edit.points).distance/(edit.width!/2) : Math.hypot(x-edit.center[0],z-edit.center[1])/edit.radius;
     if(d>=1)continue;
     const palette={grass:[0.31,0.53,0.22],soil:[0.48,0.32,0.20],gravel:[0.52,0.53,0.49],sand:[0.81,0.69,0.48]};
-    color=mix(color,palette[edit.kind==='road'?'gravel':edit.material??'soil'],(1-d*d)**2*(edit.kind==='paint'?edit.amount:1));
+    color=mix(color,palette[edit.kind==='road'?'soil':edit.material??'soil'],(1-d*d)**2*(edit.kind==='paint'?edit.amount:1));
   }
   const light = 0.91 + 0.18 * fine;
   return [color[0] * light, color[1] * light, color[2] * light];

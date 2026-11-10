@@ -159,6 +159,8 @@
 
 /* Editor de escenario, separado del tiempo y los trabajos de la partida. */
 .agro-editor-toggle{position:absolute;left:92px;top:106px;z-index:12;border:1px solid #b8c8bb;border-radius:18px;background:#fff;padding:9px 15px;color:#176437;font-weight:700}
+.agro-road-toggle{position:absolute;left:220px;top:106px;z-index:12;border:1px solid #927950;border-radius:18px;background:#fff8eb;padding:9px 15px;color:#674a27;font-weight:700}
+@media(max-width:700px){.agro-road-toggle{top:56px;left:145px}}
 .agro-editor-return{position:absolute;left:92px;top:152px;z-index:12}
 .agro-terrain-editor{position:absolute;right:18px;top:106px;width:348px;box-sizing:border-box;max-height:calc(100% - 215px);overflow:auto;z-index:15;padding:18px;background:#f8faf7f5;border:1px solid #d0d9cf;border-radius:22px;box-shadow:0 12px 35px #1c342922;font-size:13px}
 .agro-terrain-editor header{display:grid;gap:4px}.agro-terrain-editor header strong{font-size:18px}.agro-terrain-editor p{line-height:1.45}.agro-terrain-editor label{display:grid;gap:5px;margin:12px 0}.agro-terrain-editor input,.agro-terrain-editor select{min-height:38px;width:100%;box-sizing:border-box;padding:8px;border:1px solid #c5d0c3;border-radius:9px;background:#fff}.agro-terrain-editor>div{display:flex;gap:8px;margin-top:12px}.agro-terrain-editor button{padding:10px;border-radius:12px;border:1px solid #bdcdbd}.agro-terrain-editor .agro-primary{background:#1d783b;color:white}

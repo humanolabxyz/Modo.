@@ -13,6 +13,7 @@ import {sceneryHeight} from '../terrain/exterior.ts';
 import {VEGETATION_SETS} from '../models/library.ts';
 import {pickVariant} from '../models/normalize.ts';
 import {GlbInstances, useReadyModels, type GlbItem} from './GlbModels.tsx';
+import {roadContains} from '../terrain/roads.ts';
 
 const none = () => null;
 
@@ -49,6 +50,7 @@ function Scatter({session, keep}: {session: WorldSession; keep: {x: number; z: n
     const [sx, sz] = session.site, features = decorativeFeatures(hf);
     const R: {x: number; y: number; z: number; s: number; r: number}[] = [], F: typeof R = [];
     const clear = (x: number, z: number) => {
+      if (roadContains(hf.baseRoads,x,z,2) || roadContains(hf.surfaceEdits,x,z,2)) return false;
       if (features.water) { const river = waterSection(hf, z); if (Math.abs(x - river.x) < river.half + 2) return false; }
       return !keep.some(p => Math.hypot(p.x - x, p.z - z) < p.r);
     };

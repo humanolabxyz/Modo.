@@ -4,7 +4,7 @@
 import {hash2} from '../terrain/noise.ts';
 import {sampleHeight, slopeDegrees} from '../terrain/heightfield.ts';
 import {greenCover, decorativeFeatures, waterSection} from '../terrain/surface.ts';
-import {roadDist, roadPoints} from '../terrain/landmarks.ts';
+import {roadContains} from '../terrain/roads.ts';
 import type {WorldSession} from '../world/session.ts';
 import type {TerritoryId} from '../model/types.ts';
 import type {GlbItem} from './GlbModels.tsx';
@@ -40,10 +40,10 @@ export type Placed = Record<string, GlbItem[]>;
 export function ecosystemPlacements(session: WorldSession, ready: ReadonlySet<string>, keep: readonly {x: number; z: number; r: number}[]): Placed {
   const hf = session.terrain.hf, kinds = ECOSYSTEMS[hf.presetId], out: Placed = {};
   if (!kinds) return out;
-  const seed = hf.seed, [sx, sz] = session.site, half = Math.min(hf.sizeX, hf.sizeZ) / 2 - 14, features = decorativeFeatures(hf), road = roadPoints(seed, half);
+  const seed = hf.seed, [sx, sz] = session.site, half = Math.min(hf.sizeX, hf.sizeZ) / 2 - 14, features = decorativeFeatures(hf);
   const free = (x: number, z: number, slope: number, maxSlope: number) => {
     if (slope > maxSlope || Math.hypot(x - sx, z - sz) < 22 || keep.some(p => Math.hypot(p.x - x, p.z - z) < p.r)) return false;
-    if (features.road && roadDist(seed, half, x, z, road) < 6) return false;
+    if (roadContains(hf.baseRoads, x, z, 3) || roadContains(hf.surfaceEdits, x, z, 3)) return false;
     if (features.water) { const river = waterSection(hf, z); if (Math.abs(x - river.x) < river.half + 3) return false; }
     return true;
   };

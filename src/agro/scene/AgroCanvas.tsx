@@ -2,7 +2,7 @@ import {useCallback, useEffect, useMemo, useRef, useState, type MutableRefObject
 import {Canvas, useFrame, useThree} from '@react-three/fiber';
 import {Line, OrbitControls} from '@react-three/drei';
 import {SkyDome} from './SkyDome.tsx';
-import {BufferAttribute, BufferGeometry, Color, Group, LineBasicMaterial, LineLoop, Mesh, MOUSE, PerspectiveCamera, Raycaster, TOUCH, Vector3, type Intersection} from 'three';
+import {BufferAttribute, BufferGeometry, Color, Group, LineBasicMaterial, LineLoop, Mesh, MOUSE, PerspectiveCamera, Raycaster, RepeatWrapping, SRGBColorSpace, TextureLoader, TOUCH, Vector3, type Intersection} from 'three';
 import {itemById} from '../catalog/items.ts';
 import type {Entity, PortRef, PropValue} from '../model/types.ts';
 import {inBounds, sampleHeight} from '../terrain/heightfield.ts';
@@ -13,13 +13,15 @@ import {EntityLayer, type Overlay} from './EntityLayer.tsx';
 import {Clouds, Vegetation} from './Vegetation.tsx';
 import {Landscape} from './Landscape.tsx';
 import {TerrainMesh} from './TerrainMesh.tsx';
+import {RuralRoads} from './RuralRoads.tsx';
+import {GroundDetails} from './GroundDetails.tsx';
 import {terrainReviewScene, TerrainReviewLayer, type ReviewFocus, type ReviewTarget} from './TerrainReview.tsx';
 import type {ImpactReport} from '../world/impact.ts';
 import {ExteriorTerrain} from './ExteriorTerrain.tsx';
 import {sceneryHeight} from '../terrain/exterior.ts';
 import {cameraDistances, playablePoint} from '../terrain/navigation.ts';
 import {TERRITORIES} from '../terrain/presets.ts';
-import {groundTexture} from './groundTexture.ts';
+import {groundTexture, type GroundPhotos} from './groundTexture.ts';
 
 export type CameraMode = 'orbit' | 'strategic' | 'walk';
 export type Tool = 'select' | 'measure' | 'connect' | 'raise' | 'lower' | 'level' | 'place' | 'edit';
@@ -369,9 +371,19 @@ function ReviewCamera({target, onCamera}: {target?: ReviewTarget; onCamera(c: Ca
 
 function Scene(props: AgroCanvasProps) {
   const {session, mode, tool} = props;
+  const {invalidate} = useThree();
   const atmosphere = TERRITORIES[session.terrain.presetId].landscape;
-  const grain = useMemo(groundTexture, []);
+  const grain = useMemo(() => groundTexture(invalidate), [invalidate]);
   useEffect(() => () => grain.dispose(), [grain]);
+  const [photos,setPhotos]=useState<GroundPhotos|null>(null);
+  useEffect(()=>{
+    let live=true;const loader=new TextureLoader();
+    const grass=loader.load('/agro/textures/sparse-grass-polyhaven.jpg',ready),dirt=loader.load('/agro/textures/dirt-polyhaven.jpg',ready);
+    let loaded=0;
+    function ready(){if(!live||++loaded<2)return;setPhotos({grass,dirt});invalidate();}
+    for(const texture of [grass,dirt]){texture.wrapS=texture.wrapT=RepeatWrapping;texture.colorSpace=SRGBColorSpace;texture.anisotropy=4;}
+    return ()=>{live=false;grass.dispose();dirt.dispose();};
+  },[invalidate]);
   const review = useMemo(() => props.review && terrainReviewScene(session, props.review), [session, props.review]);
   const focus = props.reviewFocus;
   const target = focus && (focus.kind === 'entity' ? review?.installations : review?.links)?.find(row => row.id === focus.id)?.target;
@@ -394,8 +406,10 @@ function Scene(props: AgroCanvasProps) {
       {props.editorPoints.map((p,i)=><mesh key={i} position={[p.x,sampleHeight(session.terrain.hf,p.x,p.z)+0.6,p.z]} raycast={()=>null}><sphereGeometry args={[0.6,10,8]} /><meshBasicMaterial color="#e7ff64" depthTest={false} /></mesh>)}
       {props.editorPoints.length>1 && <Line points={[...props.editorPoints,...(props.editorClosed?[props.editorPoints[0]]:[])].map(p=>[p.x,sampleHeight(session.terrain.hf,p.x,p.z)+0.6,p.z])} color="#e7ff64" lineWidth={2} depthTest={false} />}
     </group>}
-    <TerrainMesh model={session.terrain} grain={grain} />
-    <ExteriorTerrain model={session.terrain} grain={grain} />
+    <TerrainMesh model={session.terrain} grain={grain} photos={photos} />
+    <RuralRoads session={session} grain={grain} />
+    <GroundDetails session={session} />
+    <ExteriorTerrain model={session.terrain} grain={grain} photos={photos} />
     <Vegetation session={session} />
     <Landscape session={session} />
     <Clouds seed={session.terrain.hf.seed} cover={atmosphere.clouds} />

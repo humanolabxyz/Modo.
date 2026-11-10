@@ -4,6 +4,7 @@ import {polygonsOverlap,insidePolygon,type Point2} from '../terrain/geometry.ts'
 import {itemById, sizeOf} from '../catalog/items.ts';
 import type {Entity, Pose, Port, Result, Vec3} from '../model/types.ts';
 import {inBounds, sampleHeight, slopeDegrees, type Heightfield} from '../terrain/heightfield.ts';
+import {roadOverlapsPolygon} from '../terrain/roads.ts';
 
 export const yawOf = (pose: Pose): number => pose.rotation[1];
 const fail = (error: string): {ok: false; error: string} => ({ok: false, error});
@@ -48,6 +49,7 @@ export function checkPlacement(hf: Heightfield, entities: readonly Entity[], typ
   const def = itemById(typeId); if (!def) return fail(`Tipo de pieza desconocido: «${typeId}».`);
   const size = sizeOf(def, params), corners = parcelPolygon?parcelWorldPolygon({pose,params,parcelPolygon}):footprint(pose, size);
   for (const [x, z] of corners) if (!inBounds(hf, x, z)) return fail('La pieza se sale del mapa.');
+  if (def.solid && [...(hf.baseRoads ?? []), ...(hf.surfaceEdits ?? [])].some(edit => roadOverlapsPolygon(edit, corners))) return fail('La estructura ocupa un camino reservado para circulación.');
   const slope = parcelPolygon?polygonSlope(hf,corners):footprintSlope(hf, pose, size);
   if (slope > def.maxSlopeDeg) return fail(`La pendiente del suelo (${slope.toFixed(1).replace('.', ',')}°) supera el máximo de ${def.maxSlopeDeg}° para ${def.name.toLowerCase()}.`);
   for (const other of entities) {

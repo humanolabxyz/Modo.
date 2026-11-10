@@ -1,6 +1,7 @@
 import {experiencePolicy} from './experience.ts';
 import {EXPERIENCE_MODES} from '../model/types.ts';
 import {validatePolygon} from '../terrain/geometry.ts';
+import {roadOverlapsPolygon, ruralRoads} from '../terrain/roads.ts';
 import {parcelArea} from './parcelGeometry.ts';
 import {compileOperation, type TerrainOperation} from '../terrain/operations.ts';
 // Sesión de un mundo abierto: terreno editable + piezas + conexiones + historial UNIFICADO de deshacer/rehacer. Puro (sin React ni three).
@@ -22,7 +23,7 @@ import {isLiveKey, carryLive} from '../sim/live.ts';
 import {stepWorld, type SimEvent} from '../sim/step.ts';
 import {clearCrop, harvest, plant} from '../sim/soil.ts';
 import {timeInfo} from '../sim/clock.ts';
-import {checkPlacement, portWorld} from './placement.ts';
+import {checkPlacement, entityFootprint, portWorld} from './placement.ts';
 import {markTerrainReview, previewTerrainImpact, type ImpactReport} from './impact.ts';
 import {clearTerrainSupport, PIPE_ELEVATIONS, TERRAIN_ISSUE} from './pipeElevation.ts';
 
@@ -57,6 +58,7 @@ export class WorldSession {
     this.economy_ = world.economy ?? null;
     this.clock_ = {...world.clock, speed: 0};   // un mundo siempre se abre en pausa
     this.terrain = TerrainModel.fromTerrain(world.terrain);
+    this.terrain.hf.baseRoads = ruralRoads(this.terrain.hf.sizeX, this.terrain.hf.sizeZ, world.scenario.site ?? [0, 0]);
     this.parts_ = this.settle({entities: upgrade(refreshPorts(world.entities, world.connections)), connections: world.connections, ...(world.plc ? {plc: world.plc} : {})});
     this.terrain.subscribe(() => { if (!this.restoringHistory) this.changed(false); });
   }
@@ -147,9 +149,13 @@ export class WorldSession {
     this.changed(false);
   }
   previewTerrainOperation(op:TerrainOperation): Result<true> {
-    if(!this.editorActive)return fail('Abre Editar mapa para modificar directamente el escenario.');
+    if(!this.editorActive && op.kind !== 'road')return fail('Abre Editar mapa para modificar directamente el escenario.');
     if(this.terrain.painting||this.parcelPreview)return strokeBusy();
     const compiled=compileOperation(this.terrain.hf,op);if(!compiled.ok)return compiled;
+    if (op.kind === 'road') {
+      const blocked = this.parts_.entities.find(e => itemById(e.type)?.solid && roadOverlapsPolygon(compiled.value, entityFootprint(e)));
+      if (blocked) return fail(`El camino cruza la estructura «${blocked.label}». Ajusta el trazado.`);
+    }
     this.terrain.beginStroke();const applied=this.terrain.applyOperation({...compiled.value,at:this.clock_.simSeconds});
     if(!applied.ok){this.terrain.abortStroke();return applied;}
     const {hf,committedHeightfield}=this.terrain;

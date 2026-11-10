@@ -1,6 +1,8 @@
 import {LearningPanel} from './LearningPanel.tsx';
 import {EXPERIENCE_POLICIES} from '../world/experience.ts';
 import {TerrainEditor} from './TerrainEditor.tsx';
+import {snapToRoad} from '../terrain/roads.ts';
+import {sampleHeight} from '../terrain/heightfield.ts';
 import {Component, lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode} from 'react';
 import {ArrowLeft, ChevronsDown, ChevronsUp, Download, Cable, Equal, Eye, Footprints, List, Map as MapIcon, MousePointer2, Orbit, Redo2, Ruler, Satellite, Undo2} from 'lucide-react';
 import {exportWorld} from '../model/validate.ts';
@@ -96,6 +98,7 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
   const [mode, setMode] = useState<CameraMode>('orbit');
   const [guideOpen,setGuideOpen]=useState(true);
   const [editor,setEditor]=useState(false);
+  const [roadBuilding,setRoadBuilding]=useState(false);
   const [editorPointMode,setEditorPointMode]=useState<'center'|'polygon'|'path'>('center');
   const [editorPoints,setEditorPoints]=useState<Point[]>([]);
   const [tool, setTool] = useState<Tool>('select');
@@ -175,7 +178,7 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
   }, [session, describePort]);
   const placingParams = useMemo<Record<string, PropValue>>(() => ({}), []);
 
-  const pickTool = (t: Tool) => { if(t==='edit'){setSelectedId(null);setWmode('inspect');setAutoBoard(null);} if(session.operationPreview||session.parcelPreview){setNotice('Aplica o cancela la vista previa antes de cambiar de herramienta.');return;} if(['raise','lower','level'].includes(t)&&!editor){setEditor(true);session.setEditorActive(true);}  setTool(t); setConnectFrom(null); setPortHover(null); if (t !== 'place') { setPlacing(null); setGhost(null); } if (t !== 'measure') setMeasurePoints([]); if (t !== 'select') { setSelectedPoint(null); } };
+  const pickTool = (t: Tool) => { if(t==='edit'){setSelectedId(null);setWmode('inspect');setAutoBoard(null);} if(session.operationPreview||session.parcelPreview){setNotice('Aplica o cancela la vista previa antes de cambiar de herramienta.');return;} if(t!=='edit')setRoadBuilding(false); if(['raise','lower','level'].includes(t)&&!editor){setEditor(true);session.setEditorActive(true);}  setTool(t); setConnectFrom(null); setPortHover(null); if (t !== 'place') { setPlacing(null); setGhost(null); } if (t !== 'measure') setMeasurePoints([]); if (t !== 'select') { setSelectedPoint(null); } };
   const pickItem = (id: string) => { setPlacing(id); setTool('place'); setMeasurePoints([]); setSelectedId(null); setSelectedPoint(null); };
   const openAutomate = (preferred?: string) => {
     const boards = session.entities.filter(e => e.type === 'tablero'), id = preferred ?? (selected?.type === 'tablero' ? selected.id : boards[0]?.id);
@@ -262,7 +265,7 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
 
     <main className="agro-stage" data-reviewing={!!review}>
       {webgl ? <Boundary><Suspense fallback={<div className="agro-loading-scene" role="status">Generando el terreno…</div>}>
-        <AgroCanvas editorPoints={editor?editorPoints:[]} editorClosed={editorPointMode==='polygon'} onEditPoint={p=>{if(!session.terrain.painting&&!session.parcelPreview)setEditorPoints(pts=>editorPointMode==='center'?[p]:[...pts,p].slice(0,64));}} session={session} mode={mode} tool={tool} placing={placing} placingParams={placingParams} yaw={yaw} gridSnap={gridSnap} showPorts={showPorts || tool === 'connect'} labels={labels && mode !== 'strategic'} radius={radius} strength={strength}
+        <AgroCanvas editorPoints={editor||roadBuilding?editorPoints:[]} editorClosed={editorPointMode==='polygon'} onEditPoint={p=>{if(!session.terrain.painting&&!session.parcelPreview){if(roadBuilding){const hf=session.terrain.hf,[x,z]=snapToRoad([...(hf.baseRoads??[]),...(hf.surfaceEdits??[])],[p.x,p.z]);p={x,z,y:sampleHeight(hf,x,z)};}setEditorPoints(pts=>editorPointMode==='center'?[p]:[...pts,p].slice(0,64));}}} session={session} mode={mode} tool={tool} placing={placing} placingParams={placingParams} yaw={yaw} gridSnap={gridSnap} showPorts={showPorts || tool === 'connect'} labels={labels && mode !== 'strategic'} radius={radius} strength={strength}
           selectedPoint={selectedPoint} selectedId={selectedId} measurePoints={measurePoints} goto={goto} review={review} reviewFocus={reviewFocus} onHover={onHover} onSelectPoint={onSelectPoint} onSelectEntity={onSelectEntity} onMeasure={onMeasure}
           onPlaced={onPlaced} onGhost={setGhost} connectFrom={connectFrom} onPortClick={onPortClick} onPortHover={setPortHover} onCamera={onCamera} onMetrics={onMetrics} onNotice={onNotice} />
       </Suspense></Boundary> : <div className="agro-gl-error" role="alert"><strong>Este dispositivo no puede mostrar gráficos 3D</strong><p>Agro necesita WebGL. Prueba con otro navegador o activa la aceleración por hardware.</p></div>}
@@ -276,9 +279,11 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
       </div>
       <p className="agro-hint" role="note">{mode === 'strategic' ? 'El minimapa marca el área jugable · El paisaje exterior es escénico' : current.hint}</p>
 
-      <button type="button" className="agro-editor-toggle" aria-pressed={editor} onClick={()=>{const active=!editor;session.setEditorActive(active);setEditor(active);setSelectedId(null);setPieces(false);setWmode('inspect');setAutoBoard(null);if(active&&mode==='walk')setMode('orbit');setEditorPoints([]);pickTool(active?'edit':'select');}}>{editor?'Volver a partida':'Editar mapa'}</button>
+      <button type="button" className="agro-editor-toggle" aria-pressed={editor} onClick={()=>{if(session.operationPreview||session.parcelPreview){setNotice('Aplica o cancela la vista previa antes de cambiar de herramienta.');return;}const active=!editor;setRoadBuilding(false);session.setEditorActive(active);setEditor(active);setSelectedId(null);setPieces(false);setWmode('inspect');setAutoBoard(null);if(active&&mode==='walk')setMode('orbit');setEditorPointMode('center');setEditorPoints([]);pickTool(active?'edit':'select');}}>{editor?'Volver a partida':'Editar mapa'}</button>
+      {!editor && <button type="button" className="agro-road-toggle" aria-pressed={roadBuilding} onClick={()=>{if(session.operationPreview){setNotice('Aplica o cancela el camino antes de cerrar la herramienta.');return;}const active=!roadBuilding;setRoadBuilding(active);setEditorPoints([]);setEditorPointMode('path');if(active&&mode==='walk')setMode('orbit');pickTool(active?'edit':'select');}}>{roadBuilding?'Cerrar caminos':'Construir caminos'}</button>}
       {session.policy.guidedChecks&&guideOpen&&!editor&&!selected&&!autoBoard&&(wmode==='inspect'||wmode==='build')&&<LearningPanel session={session} onClose={()=>setGuideOpen(false)} onLocate={id=>{setSelectedId(id);const e=session.entity(id);if(e)goTo(e.pose.position[0],e.pose.position[2]);}} />}
       {editor && tool==='edit' && <TerrainEditor onPointMode={setEditorPointMode} onRemoveLast={()=>setEditorPoints(pts=>pts.slice(0,-1))} session={session} points={editorPoints} onClear={()=>setEditorPoints([])} onNotice={onNotice} />}
+      {roadBuilding && tool==='edit' && <TerrainEditor roadOnly onPointMode={setEditorPointMode} onRemoveLast={()=>setEditorPoints(pts=>pts.slice(0,-1))} session={session} points={editorPoints} onClear={()=>setEditorPoints([])} onNotice={onNotice} />}
       {editor && tool!=='edit' && <button type="button" className="agro-editor-return" onClick={()=>pickTool('edit')}>Herramientas del mapa</button>}
       <div className="agro-tools" role="toolbar" aria-label="Herramientas" aria-orientation="vertical">
         {TOOLS.slice(0, 3).map(({id, label, Icon}) => <button key={id} type="button" className={tool === id ? 'on' : ''} aria-pressed={tool === id} aria-label={label} title={label} disabled={mode === 'walk' && id !== 'select'} onClick={() => pickTool(id)}><Icon size={20} aria-hidden="true" /></button>)}
@@ -315,7 +320,7 @@ export function Workspace({session, store, persistent, onExit}: WorkspaceProps) 
         <p className="agro-meta agro-territory-caption">{territory.name}{decoration && ` · ${decoration} ${features.water && features.road ? 'decorativos' : 'decorativo'}`}</p>
       </div>
 
-      <div className="agro-mini" hidden={!mini}>{mini && <Minimap hf={hf} revision={terrainRev} camera={camera} onGoto={goTo} />}</div>
+      <div className="agro-mini" hidden={!mini}>{mini && <Minimap hf={hf} revision={terrainRev} camera={camera} entities={session.entities} connections={session.connections} onGoto={goTo} />}</div>
       <button type="button" className="agro-pieces-toggle" aria-pressed={pieces} aria-label="Lista de piezas" title="Lista de piezas" onClick={() => setPieces(v => !v)}><List size={18} aria-hidden="true" /></button>
       {pieces && <div className="agro-pieces" role="region" aria-label="Piezas del mundo" data-testid="agro-pieces">
         {session.entities.length === 0 ? <p className="agro-muted">Todavía no hay piezas. Abre «Construir» para colocar una.</p> : <ul>{session.entities.map(e => <li key={e.id}><button type="button" className={e.id === selectedId ? 'on' : ''} onClick={() => { setSelectedId(e.id); setSelectedPoint(null); setWmode('inspect'); setAutoBoard(null); pickTool('select'); goTo(e.pose.position[0], e.pose.position[2]); }}>{e.label}</button></li>)}</ul>}

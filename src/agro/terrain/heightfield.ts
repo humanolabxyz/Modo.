@@ -21,6 +21,8 @@ export type Heightfield = {
   /** Alturas actuales (m), índice `j * nx + i`. */
   data: Float32Array;
   surfaceEdits?: TerrainEdit[];
+  /** Red derivada del escenario; no modifica el archivo del mundo. */
+  baseRoads?: TerrainEdit[];
   /** Alturas de la base procedural, sin ediciones. */
   base: Float32Array;
   /** Valores confirmados bajo la vista previa de un trazo. */

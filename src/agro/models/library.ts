@@ -66,12 +66,14 @@ export const CROP_STAGE_MODELS: Record<string, Record<string, string>> = {
   tomate: {establecimiento: 'cultivo-tomate-1', vegetativo: 'cultivo-tomate-2', floracion: 'cultivo-tomate-3', fructificacion: 'cultivo-tomate-4', madurez: 'cultivo-tomate-4'},
 };
 
-/** Vegetación por territorio. Los territorios que no aparecen conservan la vegetación procedural de antes. */
+/** Vegetación decorativa disponible para cada territorio. */
 export type VegetationSet = {trees: readonly string[]; shrubs: readonly string[]; rocks: readonly string[]};
 const ROCKS = ['roca-a', 'roca-b', 'roca-c'];
 export const VEGETATION_SETS: Partial<Record<TerritoryId, VegetationSet>> = {
   'oasis-norte': {trees: ['veg-palma-a', 'veg-palma-b', 'veg-citrico-a', 'veg-citrico-b'], shrubs: ['veg-arbusto-a', 'veg-arbusto-b', 'veg-cactus-a', 'veg-cactus-b'], rocks: ROCKS},
   desierto: {trees: [], shrubs: ['veg-cactus-a', 'veg-cactus-b', 'veg-arbusto-b'], rocks: ROCKS},
-  // Territorios verdes: el arbolado procedural se conserva; los modelos entran como ecosistemas (scene/ecosystems.ts) y rocas.
-  free: {trees: [], shrubs: [], rocks: ROCKS}, valley: {trees: [], shrubs: [], rocks: ROCKS}, ladera: {trees: [], shrubs: [], rocks: ROCKS}, 'valle-rio': {trees: [], shrubs: [], rocks: ROCKS},
+  free: {trees: ['veg-citrico-a', 'veg-citrico-b', 'veg-pino-a', 'veg-pino-b'], shrubs: ['veg-arbusto-a', 'veg-arbusto-b'], rocks: ROCKS},
+  valley: {trees: ['veg-citrico-a', 'veg-citrico-b', 'veg-pino-a', 'veg-pino-b'], shrubs: ['veg-arbusto-a', 'veg-arbusto-b'], rocks: ROCKS},
+  ladera: {trees: ['veg-pino-a', 'veg-pino-b'], shrubs: ['veg-arbusto-a', 'veg-arbusto-b'], rocks: ROCKS},
+  'valle-rio': {trees: ['veg-citrico-a', 'veg-citrico-b', 'veg-pino-a', 'veg-pino-b'], shrubs: ['veg-arbusto-a', 'veg-arbusto-b'], rocks: ROCKS},
 };

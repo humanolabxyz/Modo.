@@ -100,6 +100,7 @@ for(const kind of ['smooth','restore','paint','slope','terrace','ditch','road'])
   ...(kind==='paint'?{material:'sand'}:{}),
   ...(kind==='slope'||kind==='terrace'?{points:shapePoints,width:3,...(kind==='slope'?{grade:0}:{stepHeight:3})}:{}),
   ...(kind==='ditch'||kind==='road'?{points:[[-16,0],[16,0]],width:6,...(kind==='road'?{heights:[20,20]}:{})}:{})};
+ if(kind==='road'){assert.match(check.previewTerrainOperation(descriptor).error,/estructura/);assert.deepEqual(check.toWorld(document.updatedAt),document);continue;}
  must(check.previewTerrainOperation(descriptor));
  if(kind==='paint')assert.equal(check.terrainImpact,null);else assert.ok(check.terrainImpact?.entities.some(e=>e.id===check.entities[0].id),kind);
  assert.deepEqual(check.analyze(),analysis);assert.deepEqual(check.toWorld(document.updatedAt),document);check.abortStroke();

@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {createConfiguredWorld} from '../src/agro/world/setup.ts';
+import {WorldSession} from '../src/agro/world/session.ts';
+import {groundDetails} from '../src/agro/terrain/groundDetails.ts';
+import {roadContains} from '../src/agro/terrain/roads.ts';
+const must=r=>{assert.ok(r.ok,r.error);return r.value;};
+const world=must(createConfiguredWorld({name:'Detalle',seed:31,territory:'valley',side:400,template:'blank',site:'center',relief:'natural',radius:30,resources:[],water:80,experience:'free',start:'2026-09-21'}));
+const session=WorldSession.fromWorld(world),hf=session.terrain.hf, first=groundDetails(hf,session.site,[]);
+assert.deepEqual(groundDetails(hf,session.site,[]),first);
+assert.ok(first.grass.length>100);assert.ok(first.twigs.length>10);assert.ok(first.stones.length>10);
+for(const p of [...first.grass,...first.twigs,...first.stones])assert.ok(!roadContains(hf.baseRoads,p.x,p.z,1));
+const keep=[{x:0,z:0,r:25}], cleared=groundDetails(hf,session.site,keep);
+for(const p of [...cleared.grass,...cleared.twigs,...cleared.stones])assert.ok(Math.hypot(p.x,p.z)>=25);
+assert.deepEqual(session.toWorld().terrain,world.terrain);
+console.log('PASS detalle natural determinista, variado, fuera de caminos y construcciones, sin modificar el mundo');

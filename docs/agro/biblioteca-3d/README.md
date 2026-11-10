@@ -11,7 +11,7 @@ Sistema para que las piezas, la vegetación y los cultivos del simulador se dibu
 | `src/agro/models/normalize.ts` | Escala y pivote (puro, probado en Node): origen al centro de la huella, base en y = 0. |
 | `src/agro/models/loader.ts` | Carga con `GLTFLoader`, normaliza, armoniza materiales (liso, sin metal, sombreado plano como el resto del mundo), fusiona por material y cachea. Un fallo devuelve `null` (un aviso, una sola vez) y nunca lanza. |
 | `src/agro/scene/GlbModels.tsx` | `GlbObject` (pieza única con `fallback`), `GlbInstances` (instancias; una malla por material), `useModel`, `useReadyModels`. |
-| `src/agro/gallery/` + `src/pages/agro-galeria-3d.astro` | Galería de revisión en `/agro-galeria-3d/` (solo útil en local: necesita `public/agro/_galeria/`). |
+| `src/agro/gallery/` + `src/pages/agro-galeria-3d.astro` | Galería local en `/agro-galeria-3d/`. Si falta el paquete opcional `public/agro/_galeria/`, permite revisar los modelos ya integrados; el inventario completo sigue requiriendo los candidatos convertidos. |
 | `tools/agro-assets/` | `inventory.mjs`, `convert-batch.py`, `analyze.mjs`, `build-library.mjs`, `report.mjs`. |
 
 ## Dónde se usan (todo con respaldo)
